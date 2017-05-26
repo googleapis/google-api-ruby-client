@@ -20,14 +20,14 @@ module Google
   module Apis
     # Google Cloud Natural Language API
     #
-    # Google Cloud Natural Language API provides natural language understanding
-    # technologies to developers. Examples include sentiment analysis, entity
-    # recognition, and text annotations.
+    # Provides natural language understanding technologies to developers. Examples
+    # include sentiment analysis, entity recognition, entity sentiment analysis, and
+    # text annotations.
     #
     # @see https://cloud.google.com/natural-language/
     module LanguageV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20170502'
+      REVISION = '20170525'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

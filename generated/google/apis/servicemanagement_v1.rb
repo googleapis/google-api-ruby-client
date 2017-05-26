@@ -27,10 +27,7 @@ module Google
     # @see https://cloud.google.com/service-management/
     module ServicemanagementV1
       VERSION = 'V1'
-      REVISION = '20170428'
-
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
+      REVISION = '20170519'
 
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
@@ -40,6 +37,9 @@ module Google
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Manage your Google API service configuration
+      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
     end
   end
 end

@@ -60,11 +60,11 @@ module Google
         #   A valid path would be:
         #   - /v1/projects/my-project/services/servicemanagement.googleapis.com:disable
         # @param [Google::Apis::ServiceuserV1::DisableServiceRequest] disable_service_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -77,15 +77,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def disable_service(name, disable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def disable_service(name, disable_service_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/{+name}:disable', options)
           command.request_representation = Google::Apis::ServiceuserV1::DisableServiceRequest::Representation
           command.request_object = disable_service_request_object
           command.response_representation = Google::Apis::ServiceuserV1::Operation::Representation
           command.response_class = Google::Apis::ServiceuserV1::Operation
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -98,11 +98,11 @@ module Google
         #   A valid path would be:
         #   - /v1/projects/my-project/services/servicemanagement.googleapis.com:enable
         # @param [Google::Apis::ServiceuserV1::EnableServiceRequest] enable_service_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -115,15 +115,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enable_service(name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def enable_service(name, enable_service_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/{+name}:enable', options)
           command.request_representation = Google::Apis::ServiceuserV1::EnableServiceRequest::Representation
           command.request_object = enable_service_request_object
           command.response_representation = Google::Apis::ServiceuserV1::Operation::Representation
           command.response_class = Google::Apis::ServiceuserV1::Operation
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -137,11 +137,11 @@ module Google
         #   call.
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -154,15 +154,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_services(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_services(parent, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/services', options)
           command.response_representation = Google::Apis::ServiceuserV1::ListEnabledServicesResponse::Representation
           command.response_class = Google::Apis::ServiceuserV1::ListEnabledServicesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -175,11 +175,11 @@ module Google
         #   call.
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -192,14 +192,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_services(page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_services(page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/services:search', options)
           command.response_representation = Google::Apis::ServiceuserV1::SearchServicesResponse::Representation
           command.response_class = Google::Apis::ServiceuserV1::SearchServicesResponse
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
 

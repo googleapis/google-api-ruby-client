@@ -49,7 +49,7 @@ module Google
       # error message is needed, put the localized message in the error details or
       # localize it in the client. The optional error details may contain arbitrary
       # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` which can be used for common error conditions.
+      # in the package `google.rpc` that can be used for common error conditions.
       # # Language mapping
       # The `Status` message is the logical representation of the error model, but it
       # is not necessarily the actual wire format. When the `Status` message is
@@ -65,7 +65,7 @@ module Google
       # it may embed the `Status` in the normal response to indicate the partial
       # errors.
       # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting purpose.
+      # have a `Status` message for error reporting.
       # - Batch operations. If a client uses batch request and batch response, the
       # `Status` message should be used directly inside batch response, one for
       # each error sub-response.
@@ -76,6 +76,12 @@ module Google
       # be used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
+      
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
       
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
@@ -89,21 +95,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -136,14 +136,6 @@ module Google
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
       
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
@@ -178,7 +170,7 @@ module Google
         # error message is needed, put the localized message in the error details or
         # localize it in the client. The optional error details may contain arbitrary
         # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` which can be used for common error conditions.
+        # in the package `google.rpc` that can be used for common error conditions.
         # # Language mapping
         # The `Status` message is the logical representation of the error model, but it
         # is not necessarily the actual wire format. When the `Status` message is
@@ -194,7 +186,7 @@ module Google
         # it may embed the `Status` in the normal response to indicate the partial
         # errors.
         # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting purpose.
+        # have a `Status` message for error reporting.
         # - Batch operations. If a client uses batch request and batch response, the
         # `Status` message should be used directly inside batch response, one for
         # each error sub-response.
@@ -215,17 +207,25 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
         end
       end
       

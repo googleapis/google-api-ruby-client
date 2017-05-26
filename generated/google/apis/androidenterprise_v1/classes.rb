@@ -748,14 +748,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_purchased
       
-        # The state of permission acceptance with this product. This field is only set
-        # if the product is approved. Possible states are:
+        # The permission approval status of the product. This field is only set if the
+        # product is approved. Possible states are:
         # - "currentApproved", the current set of permissions is approved, but
         # additional permissions will require the administrator to reapprove the product
-        # (if the product was approved without specifying what to when the required
-        # permissions change, this is the default),
-        # - "needsReapproval", there are permissions which need to be accepted (
-        # currently the product is not assignable),
+        # (If the product was approved without specifying the approved permissions
+        # setting, then this is the default behavior.),
+        # - "needsReapproval", the product has unapproved permissions. No additional
+        # product licenses can be assigned until the product is reapproved,
         # - "allCurrentAndFutureApproved", the current permissions are approved and any
         # future permission updates will be automatically approved without administrator
         # review.
@@ -1273,6 +1273,11 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::NewPermissionsEvent]
         attr_accessor :new_permissions_event
       
+        # Type of the notification.
+        # Corresponds to the JSON property `notificationType`
+        # @return [String]
+        attr_accessor :notification_type
+      
         # An event generated when a product's approval status is changed.
         # Corresponds to the JSON property `productApprovalEvent`
         # @return [Google::Apis::AndroidenterpriseV1::ProductApprovalEvent]
@@ -1301,6 +1306,7 @@ module Google
           @install_failure_event = args[:install_failure_event] if args.key?(:install_failure_event)
           @new_device_event = args[:new_device_event] if args.key?(:new_device_event)
           @new_permissions_event = args[:new_permissions_event] if args.key?(:new_permissions_event)
+          @notification_type = args[:notification_type] if args.key?(:notification_type)
           @product_approval_event = args[:product_approval_event] if args.key?(:product_approval_event)
           @product_availability_change_event = args[:product_availability_change_event] if args.key?(:product_availability_change_event)
           @timestamp_millis = args[:timestamp_millis] if args.key?(:timestamp_millis)
@@ -1687,11 +1693,12 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo]
         attr_accessor :approval_url_info
       
-        # The permissions being approved with this app. This can either be the current
-        # set of permissions only (additional permissions added to the app through
-        # updates will require review by the administrator) or all current and future
-        # permissions for the app. If not specified, only the current set of permissions
-        # will be approved.
+        # Sets how new permission requests for the product are handled. "allPermissions"
+        # automatically approves all current and future permissions for the product. "
+        # currentPermissionsOnly" approves the current set of permissions for the
+        # product, but any future permissions added through updates will require manual
+        # reapproval. If not specified, only the current set of permissions will be
+        # approved.
         # Corresponds to the JSON property `approvedPermissions`
         # @return [String]
         attr_accessor :approved_permissions

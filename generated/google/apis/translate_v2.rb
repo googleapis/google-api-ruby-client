@@ -18,14 +18,21 @@ require 'google/apis/translate_v2/representations.rb'
 
 module Google
   module Apis
-    # Translate API
+    # Google Cloud Translation API
     #
-    # Translates text from one language to another.
+    # The Google Cloud Translation API lets websites and programs integrate with
+    # Google Translate programmatically.
     #
-    # @see https://developers.google.com/translate/v2/using_rest
+    # @see https://code.google.com/apis/language/translate/v2/getting_started.html
     module TranslateV2
       VERSION = 'V2'
-      REVISION = '20160627'
+      REVISION = '20170502'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Translate text from one language to another using Google Translate
+      AUTH_CLOUD_TRANSLATION = 'https://www.googleapis.com/auth/cloud-translation'
     end
   end
 end

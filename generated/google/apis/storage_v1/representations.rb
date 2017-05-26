@@ -25,6 +25,12 @@ module Google
       class Bucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Billing
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CorsConfiguration
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -219,6 +225,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
       
+          property :billing, as: 'billing', class: Google::Apis::StorageV1::Bucket::Billing, decorator: Google::Apis::StorageV1::Bucket::Billing::Representation
+      
           collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
       
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
@@ -247,6 +255,13 @@ module Google
       
           property :website, as: 'website', class: Google::Apis::StorageV1::Bucket::Website, decorator: Google::Apis::StorageV1::Bucket::Website::Representation
       
+        end
+        
+        class Billing
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :requester_pays, as: 'requesterPays'
+          end
         end
         
         class CorsConfiguration

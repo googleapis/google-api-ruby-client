@@ -22,265 +22,6 @@ module Google
   module Apis
     module MlV1
       
-      # Response message for the ListModels method.
-      class GoogleCloudMlV1ListModelsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of models.
-        # Corresponds to the JSON property `models`
-        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Model>]
-        attr_accessor :models
-      
-        # Optional. Pass this token as the `page_token` field of the request for a
-        # subsequent call.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @models = args[:models] if args.key?(:models)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Represents input parameters for a training job.
-      class GoogleCloudMlV1TrainingInput
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The number of parameter server replicas to use for the training
-        # job. Each replica in the cluster will be of the type specified in
-        # `parameter_server_type`.
-        # This value can only be used when `scale_tier` is set to `CUSTOM`.If you
-        # set this value, you must also set `parameter_server_type`.
-        # Corresponds to the JSON property `parameterServerCount`
-        # @return [Fixnum]
-        attr_accessor :parameter_server_count
-      
-        # Required. The Google Cloud Storage location of the packages with
-        # the training program and any additional dependencies.
-        # The maximum number of package URIs is 100.
-        # Corresponds to the JSON property `packageUris`
-        # @return [Array<String>]
-        attr_accessor :package_uris
-      
-        # Optional. The number of worker replicas to use for the training job. Each
-        # replica in the cluster will be of the type specified in `worker_type`.
-        # This value can only be used when `scale_tier` is set to `CUSTOM`. If you
-        # set this value, you must also set `worker_type`.
-        # Corresponds to the JSON property `workerCount`
-        # @return [Fixnum]
-        attr_accessor :worker_count
-      
-        # Optional. Specifies the type of virtual machine to use for your training
-        # job's master worker.
-        # The following types are supported:
-        # <dl>
-        # <dt>standard</dt>
-        # <dd>
-        # A basic machine configuration suitable for training simple models with
-        # small to moderate datasets.
-        # </dd>
-        # <dt>large_model</dt>
-        # <dd>
-        # A machine with a lot of memory, specially suited for parameter servers
-        # when your model is large (having many hidden layers or layers with very
-        # large numbers of nodes).
-        # </dd>
-        # <dt>complex_model_s</dt>
-        # <dd>
-        # A machine suitable for the master and workers of the cluster when your
-        # model requires more computation than the standard machine can handle
-        # satisfactorily.
-        # </dd>
-        # <dt>complex_model_m</dt>
-        # <dd>
-        # A machine with roughly twice the number of cores and roughly double the
-        # memory of <code suppresswarning="true">complex_model_s</code>.
-        # </dd>
-        # <dt>complex_model_l</dt>
-        # <dd>
-        # A machine with roughly twice the number of cores and roughly double the
-        # memory of <code suppresswarning="true">complex_model_m</code>.
-        # </dd>
-        # <dt>standard_gpu</dt>
-        # <dd>
-        # A machine equivalent to <code suppresswarning="true">standard</code> that
-        # also includes a
-        # <a href="/ml-engine/docs/how-tos/using-gpus">
-        # GPU that you can use in your trainer</a>.
-        # </dd>
-        # <dt>complex_model_m_gpu</dt>
-        # <dd>
-        # A machine equivalent to
-        # <code suppresswarning="true">coplex_model_m</code> that also includes
-        # four GPUs.
-        # </dd>
-        # </dl>
-        # You must set this value when `scaleTier` is set to `CUSTOM`.
-        # Corresponds to the JSON property `masterType`
-        # @return [String]
-        attr_accessor :master_type
-      
-        # Optional. The Google Cloud ML runtime version to use for training.  If not
-        # set, Google Cloud ML will choose the latest stable version.
-        # Corresponds to the JSON property `runtimeVersion`
-        # @return [String]
-        attr_accessor :runtime_version
-      
-        # Required. The Python module name to run after installing the packages.
-        # Corresponds to the JSON property `pythonModule`
-        # @return [String]
-        attr_accessor :python_module
-      
-        # Optional. Specifies the type of virtual machine to use for your training
-        # job's worker nodes.
-        # The supported values are the same as those described in the entry for
-        # `masterType`.
-        # This value must be present when `scaleTier` is set to `CUSTOM` and
-        # `workerCount` is greater than zero.
-        # Corresponds to the JSON property `workerType`
-        # @return [String]
-        attr_accessor :worker_type
-      
-        # Optional. Command line arguments to pass to the program.
-        # Corresponds to the JSON property `args`
-        # @return [Array<String>]
-        attr_accessor :args
-      
-        # Required. The Google Compute Engine region to run the training job in.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        # Optional. Specifies the type of virtual machine to use for your training
-        # job's parameter server.
-        # The supported values are the same as those described in the entry for
-        # `master_type`.
-        # This value must be present when `scaleTier` is set to `CUSTOM` and
-        # `parameter_server_count` is greater than zero.
-        # Corresponds to the JSON property `parameterServerType`
-        # @return [String]
-        attr_accessor :parameter_server_type
-      
-        # Required. Specifies the machine types, the number of replicas for workers
-        # and parameter servers.
-        # Corresponds to the JSON property `scaleTier`
-        # @return [String]
-        attr_accessor :scale_tier
-      
-        # Optional. A Google Cloud Storage path in which to store training outputs
-        # and other data needed for training. This path is passed to your TensorFlow
-        # program as the 'job_dir' command-line argument. The benefit of specifying
-        # this field is that Cloud ML validates the path for use in training.
-        # Corresponds to the JSON property `jobDir`
-        # @return [String]
-        attr_accessor :job_dir
-      
-        # Represents a set of hyperparameters to optimize.
-        # Corresponds to the JSON property `hyperparameters`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec]
-        attr_accessor :hyperparameters
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @parameter_server_count = args[:parameter_server_count] if args.key?(:parameter_server_count)
-          @package_uris = args[:package_uris] if args.key?(:package_uris)
-          @worker_count = args[:worker_count] if args.key?(:worker_count)
-          @master_type = args[:master_type] if args.key?(:master_type)
-          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
-          @python_module = args[:python_module] if args.key?(:python_module)
-          @worker_type = args[:worker_type] if args.key?(:worker_type)
-          @args = args[:args] if args.key?(:args)
-          @region = args[:region] if args.key?(:region)
-          @parameter_server_type = args[:parameter_server_type] if args.key?(:parameter_server_type)
-          @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
-          @job_dir = args[:job_dir] if args.key?(:job_dir)
-          @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
-        end
-      end
-      
-      # Represents a training or prediction job.
-      class GoogleCloudMlV1Job
-        include Google::Apis::Core::Hashable
-      
-        # Represents results of a training job. Output only.
-        # Corresponds to the JSON property `trainingOutput`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingOutput]
-        attr_accessor :training_output
-      
-        # Output only. When the job was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Represents input parameters for a training job.
-        # Corresponds to the JSON property `trainingInput`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingInput]
-        attr_accessor :training_input
-      
-        # Output only. The detailed state of a job.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Represents input parameters for a prediction job.
-        # Corresponds to the JSON property `predictionInput`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionInput]
-        attr_accessor :prediction_input
-      
-        # Output only. The details of a failure or a cancellation.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
-        # Required. The user-specified id of the job.
-        # Corresponds to the JSON property `jobId`
-        # @return [String]
-        attr_accessor :job_id
-      
-        # Output only. When the job processing was completed.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. When the job processing was started.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # Represents results of a prediction job.
-        # Corresponds to the JSON property `predictionOutput`
-        # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput]
-        attr_accessor :prediction_output
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @training_output = args[:training_output] if args.key?(:training_output)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @training_input = args[:training_input] if args.key?(:training_input)
-          @state = args[:state] if args.key?(:state)
-          @prediction_input = args[:prediction_input] if args.key?(:prediction_input)
-          @error_message = args[:error_message] if args.key?(:error_message)
-          @job_id = args[:job_id] if args.key?(:job_id)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @prediction_output = args[:prediction_output] if args.key?(:prediction_output)
-        end
-      end
-      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or
       # an HTML page.
@@ -312,16 +53,22 @@ module Google
       class GoogleApiHttpBody
         include Google::Apis::Core::Hashable
       
+        # The HTTP Content-Type string representing the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # Application specific response metadata. Must be set in the first response
+        # for streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
         # HTTP body binary data.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :data
-      
-        # The HTTP Content-Type string representing the content type of the body.
-        # Corresponds to the JSON property `contentType`
-        # @return [String]
-        attr_accessor :content_type
       
         def initialize(**args)
            update!(**args)
@@ -329,8 +76,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data = args[:data] if args.key?(:data)
           @content_type = args[:content_type] if args.key?(:content_type)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # Returns service account information associated with a project.
+      class GoogleCloudMlV1GetConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # The project number for `service_account`.
+        # Corresponds to the JSON property `serviceAccountProject`
+        # @return [Fixnum]
+        attr_accessor :service_account_project
+      
+        # The service account Cloud ML uses to access resources in the project.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account_project = args[:service_account_project] if args.key?(:service_account_project)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -342,38 +115,6 @@ module Google
       # models.versions/list).
       class GoogleCloudMlV1beta1Version
         include Google::Apis::Core::Hashable
-      
-        # Optional. The Google Cloud ML runtime version to use for this deployment.
-        # If not set, Google Cloud ML will choose a version.
-        # Corresponds to the JSON property `runtimeVersion`
-        # @return [String]
-        attr_accessor :runtime_version
-      
-        # Output only. The time the version was last used for prediction.
-        # Corresponds to the JSON property `lastUseTime`
-        # @return [String]
-        attr_accessor :last_use_time
-      
-        # Optional. The description specified for the version when it was created.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Required. The Google Cloud Storage location of the trained model used to
-        # create the version. See the
-        # [overview of model
-        # deployment](/ml-engine/docs/concepts/deployment-overview) for more
-        # informaiton.
-        # When passing Version to
-        # [projects.models.versions.create](/ml-engine/reference/rest/v1beta1/projects.
-        # models.versions/create)
-        # the model service uses the specified location as the source of the model.
-        # Once deployed, the model version is hosted by the prediction service, so
-        # this location is useful only as a historical record.
-        # The total number of model files can't exceed 1000.
-        # Corresponds to the JSON property `deploymentUri`
-        # @return [String]
-        attr_accessor :deployment_uri
       
         # Output only. If true, this version will be used to handle prediction
         # requests that do not specify a version.
@@ -401,45 +142,52 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The time the version was last used for prediction.
+        # Corresponds to the JSON property `lastUseTime`
+        # @return [String]
+        attr_accessor :last_use_time
+      
+        # Optional. The Google Cloud ML runtime version to use for this deployment.
+        # If not set, Google Cloud ML will choose a version.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        # Optional. The description specified for the version when it was created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The Google Cloud Storage location of the trained model used to
+        # create the version. See the
+        # [overview of model
+        # deployment](/ml-engine/docs/concepts/deployment-overview) for more
+        # informaiton.
+        # When passing Version to
+        # [projects.models.versions.create](/ml-engine/reference/rest/v1beta1/projects.
+        # models.versions/create)
+        # the model service uses the specified location as the source of the model.
+        # Once deployed, the model version is hosted by the prediction service, so
+        # this location is useful only as a historical record.
+        # The total number of model files can't exceed 1000.
+        # Corresponds to the JSON property `deploymentUri`
+        # @return [String]
+        attr_accessor :deployment_uri
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
-          @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
-          @description = args[:description] if args.key?(:description)
-          @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
           @is_default = args[:is_default] if args.key?(:is_default)
           @create_time = args[:create_time] if args.key?(:create_time)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Returns service account information associated with a project.
-      class GoogleCloudMlV1GetConfigResponse
-        include Google::Apis::Core::Hashable
-      
-        # The project number for `service_account`.
-        # Corresponds to the JSON property `serviceAccountProject`
-        # @return [Fixnum]
-        attr_accessor :service_account_project
-      
-        # The service account Cloud ML uses to access resources in the project.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @service_account_project = args[:service_account_project] if args.key?(:service_account_project)
-          @service_account = args[:service_account] if args.key?(:service_account)
+          @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @description = args[:description] if args.key?(:description)
+          @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
         end
       end
       
@@ -487,6 +235,11 @@ module Google
       class GoogleCloudMlV1PredictionOutput
         include Google::Apis::Core::Hashable
       
+        # The number of generated predictions.
+        # Corresponds to the JSON property `predictionCount`
+        # @return [Fixnum]
+        attr_accessor :prediction_count
+      
         # The number of data instances which resulted in errors.
         # Corresponds to the JSON property `errorCount`
         # @return [Fixnum]
@@ -502,21 +255,16 @@ module Google
         # @return [Float]
         attr_accessor :node_hours
       
-        # The number of generated predictions.
-        # Corresponds to the JSON property `predictionCount`
-        # @return [Fixnum]
-        attr_accessor :prediction_count
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @prediction_count = args[:prediction_count] if args.key?(:prediction_count)
           @error_count = args[:error_count] if args.key?(:error_count)
           @output_path = args[:output_path] if args.key?(:output_path)
           @node_hours = args[:node_hours] if args.key?(:node_hours)
-          @prediction_count = args[:prediction_count] if args.key?(:prediction_count)
         end
       end
       
@@ -524,15 +272,15 @@ module Google
       class GoogleLongrunningListOperationsResponse
         include Google::Apis::Core::Hashable
       
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
         # A list of operations that matches the specified filter in the request.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::MlV1::GoogleLongrunningOperation>]
         attr_accessor :operations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -540,8 +288,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -571,6 +319,12 @@ module Google
       class GoogleCloudMlV1TrainingOutput
         include Google::Apis::Core::Hashable
       
+        # Results for individual Hyperparameter trials.
+        # Only set for hyperparameter tuning jobs.
+        # Corresponds to the JSON property `trials`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput>]
+        attr_accessor :trials
+      
         # The number of hyperparameter tuning trials that completed successfully.
         # Only set for hyperparameter tuning jobs.
         # Corresponds to the JSON property `completedTrialCount`
@@ -588,22 +342,16 @@ module Google
         # @return [Float]
         attr_accessor :consumed_ml_units
       
-        # Results for individual Hyperparameter trials.
-        # Only set for hyperparameter tuning jobs.
-        # Corresponds to the JSON property `trials`
-        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput>]
-        attr_accessor :trials
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @trials = args[:trials] if args.key?(:trials)
           @completed_trial_count = args[:completed_trial_count] if args.key?(:completed_trial_count)
           @is_hyperparameter_tuning_job = args[:is_hyperparameter_tuning_job] if args.key?(:is_hyperparameter_tuning_job)
           @consumed_ml_units = args[:consumed_ml_units] if args.key?(:consumed_ml_units)
-          @trials = args[:trials] if args.key?(:trials)
         end
       end
       
@@ -834,15 +582,15 @@ module Google
       class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
         include Google::Apis::Core::Hashable
       
-        # The objective value at this training step.
-        # Corresponds to the JSON property `objectiveValue`
-        # @return [Float]
-        attr_accessor :objective_value
-      
         # The global training step for this metric.
         # Corresponds to the JSON property `trainingStep`
         # @return [Fixnum]
         attr_accessor :training_step
+      
+        # The objective value at this training step.
+        # Corresponds to the JSON property `objectiveValue`
+        # @return [Float]
+        attr_accessor :objective_value
       
         def initialize(**args)
            update!(**args)
@@ -850,8 +598,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @objective_value = args[:objective_value] if args.key?(:objective_value)
           @training_step = args[:training_step] if args.key?(:training_step)
+          @objective_value = args[:objective_value] if args.key?(:objective_value)
         end
       end
       
@@ -1010,6 +758,31 @@ module Google
       class GoogleCloudMlV1PredictionInput
         include Google::Apis::Core::Hashable
       
+        # Required. The format of the input data files.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
+        # Optional. The Google Cloud ML runtime version to use for this batch
+        # prediction. If not set, Google Cloud ML will pick the runtime version used
+        # during the CreateVersion request for this model version, or choose the
+        # latest stable version when model version information is not available
+        # such as when the model is specified by uri.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        # Required. The Google Cloud Storage location of the input data files.
+        # May contain wildcards.
+        # Corresponds to the JSON property `inputPaths`
+        # @return [Array<String>]
+        attr_accessor :input_paths
+      
+        # Required. The Google Compute Engine region to run the prediction job in.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # Use this field if you want to specify a version of the model to use. The
         # string is formatted the same way as `model_version`, with the addition
         # of the version information:
@@ -1043,46 +816,21 @@ module Google
         # @return [String]
         attr_accessor :uri
       
-        # Required. The format of the input data files.
-        # Corresponds to the JSON property `dataFormat`
-        # @return [String]
-        attr_accessor :data_format
-      
-        # Optional. The Google Cloud ML runtime version to use for this batch
-        # prediction. If not set, Google Cloud ML will pick the runtime version used
-        # during the CreateVersion request for this model version, or choose the
-        # latest stable version when model version information is not available
-        # such as when the model is specified by uri.
-        # Corresponds to the JSON property `runtimeVersion`
-        # @return [String]
-        attr_accessor :runtime_version
-      
-        # Required. The Google Cloud Storage location of the input data files.
-        # May contain wildcards.
-        # Corresponds to the JSON property `inputPaths`
-        # @return [Array<String>]
-        attr_accessor :input_paths
-      
-        # Required. The Google Compute Engine region to run the prediction job in.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @input_paths = args[:input_paths] if args.key?(:input_paths)
+          @region = args[:region] if args.key?(:region)
           @version_name = args[:version_name] if args.key?(:version_name)
           @model_name = args[:model_name] if args.key?(:model_name)
           @output_path = args[:output_path] if args.key?(:output_path)
           @max_worker_count = args[:max_worker_count] if args.key?(:max_worker_count)
           @uri = args[:uri] if args.key?(:uri)
-          @data_format = args[:data_format] if args.key?(:data_format)
-          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
-          @input_paths = args[:input_paths] if args.key?(:input_paths)
-          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -1212,6 +960,22 @@ module Google
       class GoogleCloudMlV1HyperparameterSpec
         include Google::Apis::Core::Hashable
       
+        # Required. The type of goal to use for tuning. Available types are
+        # `MAXIMIZE` and `MINIMIZE`.
+        # Defaults to `MAXIMIZE`.
+        # Corresponds to the JSON property `goal`
+        # @return [String]
+        attr_accessor :goal
+      
+        # Optional. The Tensorflow summary tag name to use for optimizing trials. For
+        # current versions of Tensorflow, this tag name should exactly match what is
+        # shown in Tensorboard, including all scopes.  For versions of Tensorflow
+        # prior to 0.12, this should be only the tag passed to tf.Summary.
+        # By default, "training/hptuning/metric" will be used.
+        # Corresponds to the JSON property `hyperparameterMetricTag`
+        # @return [String]
+        attr_accessor :hyperparameter_metric_tag
+      
         # Required. The set of parameters to tune.
         # Corresponds to the JSON property `params`
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec>]
@@ -1236,33 +1000,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_parallel_trials
       
-        # Required. The type of goal to use for tuning. Available types are
-        # `MAXIMIZE` and `MINIMIZE`.
-        # Defaults to `MAXIMIZE`.
-        # Corresponds to the JSON property `goal`
-        # @return [String]
-        attr_accessor :goal
-      
-        # Optional. The Tensorflow summary tag name to use for optimizing trials. For
-        # current versions of Tensorflow, this tag name should exactly match what is
-        # shown in Tensorboard, including all scopes.  For versions of Tensorflow
-        # prior to 0.12, this should be only the tag passed to tf.Summary.
-        # By default, "training/hptuning/metric" will be used.
-        # Corresponds to the JSON property `hyperparameterMetricTag`
-        # @return [String]
-        attr_accessor :hyperparameter_metric_tag
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @goal = args[:goal] if args.key?(:goal)
+          @hyperparameter_metric_tag = args[:hyperparameter_metric_tag] if args.key?(:hyperparameter_metric_tag)
           @params = args[:params] if args.key?(:params)
           @max_trials = args[:max_trials] if args.key?(:max_trials)
           @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
-          @goal = args[:goal] if args.key?(:goal)
-          @hyperparameter_metric_tag = args[:hyperparameter_metric_tag] if args.key?(:hyperparameter_metric_tag)
         end
       end
       
@@ -1270,16 +1018,16 @@ module Google
       class GoogleCloudMlV1ListJobsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of jobs.
-        # Corresponds to the JSON property `jobs`
-        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Job>]
-        attr_accessor :jobs
-      
         # Optional. Pass this token as the `page_token` field of the request for a
         # subsequent call.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # The list of jobs.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Job>]
+        attr_accessor :jobs
       
         def initialize(**args)
            update!(**args)
@@ -1287,8 +1035,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @jobs = args[:jobs] if args.key?(:jobs)
         end
       end
       
@@ -1343,7 +1091,7 @@ module Google
         # error message is needed, put the localized message in the error details or
         # localize it in the client. The optional error details may contain arbitrary
         # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` which can be used for common error conditions.
+        # in the package `google.rpc` that can be used for common error conditions.
         # # Language mapping
         # The `Status` message is the logical representation of the error model, but it
         # is not necessarily the actual wire format. When the `Status` message is
@@ -1359,7 +1107,7 @@ module Google
         # it may embed the `Status` in the normal response to indicate the partial
         # errors.
         # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting purpose.
+        # have a `Status` message for error reporting.
         # - Batch operations. If a client uses batch request and batch response, the
         # `Status` message should be used directly inside batch response, one for
         # each error sub-response.
@@ -1409,19 +1157,6 @@ module Google
       class GoogleCloudMlV1Model
         include Google::Apis::Core::Hashable
       
-        # Optional. The list of regions where the model is going to be deployed.
-        # Currently only one region per model is supported.
-        # Defaults to 'us-central1' if nothing is set.
-        # Note:
-        # *   No matter where a model is deployed, it can always be accessed by
-        # users from anywhere, both for online and batch prediction.
-        # *   The region for a batch prediction job is set by the region field when
-        # submitting the batch prediction job and does not take its value from
-        # this field.
-        # Corresponds to the JSON property `regions`
-        # @return [Array<String>]
-        attr_accessor :regions
-      
         # Required. The name specified for the model when it was created.
         # The model name must be unique within the project it is created in.
         # Corresponds to the JSON property `name`
@@ -1450,17 +1185,30 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
       
+        # Optional. The list of regions where the model is going to be deployed.
+        # Currently only one region per model is supported.
+        # Defaults to 'us-central1' if nothing is set.
+        # Note:
+        # *   No matter where a model is deployed, it can always be accessed by
+        # users from anywhere, both for online and batch prediction.
+        # *   The region for a batch prediction job is set by the region field when
+        # submitting the batch prediction job and does not take its value from
+        # this field.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @regions = args[:regions] if args.key?(:regions)
           @name = args[:name] if args.key?(:name)
           @description = args[:description] if args.key?(:description)
           @online_prediction_logging = args[:online_prediction_logging] if args.key?(:online_prediction_logging)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @regions = args[:regions] if args.key?(:regions)
         end
       end
       
@@ -1483,6 +1231,32 @@ module Google
         end
       end
       
+      # Response message for the ListVersions method.
+      class GoogleCloudMlV1ListVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of versions.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Version>]
+        attr_accessor :versions
+      
+        # Optional. Pass this token as the `page_token` field of the request for a
+        # subsequent call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @versions = args[:versions] if args.key?(:versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Request message for the CancelJob method.
       class GoogleCloudMlV1CancelJobRequest
         include Google::Apis::Core::Hashable
@@ -1493,32 +1267,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Response message for the ListVersions method.
-      class GoogleCloudMlV1ListVersionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Pass this token as the `page_token` field of the request for a
-        # subsequent call.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of versions.
-        # Corresponds to the JSON property `versions`
-        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Version>]
-        attr_accessor :versions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @versions = args[:versions] if args.key?(:versions)
         end
       end
       
@@ -1558,7 +1306,7 @@ module Google
       # error message is needed, put the localized message in the error details or
       # localize it in the client. The optional error details may contain arbitrary
       # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` which can be used for common error conditions.
+      # in the package `google.rpc` that can be used for common error conditions.
       # # Language mapping
       # The `Status` message is the logical representation of the error model, but it
       # is not necessarily the actual wire format. When the `Status` message is
@@ -1574,7 +1322,7 @@ module Google
       # it may embed the `Status` in the normal response to indicate the partial
       # errors.
       # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting purpose.
+      # have a `Status` message for error reporting.
       # - Batch operations. If a client uses batch request and batch response, the
       # `Status` message should be used directly inside batch response, one for
       # each error sub-response.
@@ -1585,6 +1333,12 @@ module Google
       # be used directly after any stripping needed for security/privacy reasons.
       class GoogleRpcStatus
         include Google::Apis::Core::Hashable
+      
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
       
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
@@ -1598,11 +1352,32 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Response message for the ListModels method.
+      class GoogleCloudMlV1ListModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of models.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Model>]
+        attr_accessor :models
+      
+        # Optional. Pass this token as the `page_token` field of the request for a
+        # subsequent call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -1610,9 +1385,241 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
+          @models = args[:models] if args.key?(:models)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Represents input parameters for a training job.
+      class GoogleCloudMlV1TrainingInput
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Google Cloud ML runtime version to use for training.  If not
+        # set, Google Cloud ML will choose the latest stable version.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        # Required. The Python module name to run after installing the packages.
+        # Corresponds to the JSON property `pythonModule`
+        # @return [String]
+        attr_accessor :python_module
+      
+        # Optional. Specifies the type of virtual machine to use for your training
+        # job's worker nodes.
+        # The supported values are the same as those described in the entry for
+        # `masterType`.
+        # This value must be present when `scaleTier` is set to `CUSTOM` and
+        # `workerCount` is greater than zero.
+        # Corresponds to the JSON property `workerType`
+        # @return [String]
+        attr_accessor :worker_type
+      
+        # Optional. Command line arguments to pass to the program.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Required. The Google Compute Engine region to run the training job in.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Optional. Specifies the type of virtual machine to use for your training
+        # job's parameter server.
+        # The supported values are the same as those described in the entry for
+        # `master_type`.
+        # This value must be present when `scaleTier` is set to `CUSTOM` and
+        # `parameter_server_count` is greater than zero.
+        # Corresponds to the JSON property `parameterServerType`
+        # @return [String]
+        attr_accessor :parameter_server_type
+      
+        # Required. Specifies the machine types, the number of replicas for workers
+        # and parameter servers.
+        # Corresponds to the JSON property `scaleTier`
+        # @return [String]
+        attr_accessor :scale_tier
+      
+        # Optional. A Google Cloud Storage path in which to store training outputs
+        # and other data needed for training. This path is passed to your TensorFlow
+        # program as the 'job_dir' command-line argument. The benefit of specifying
+        # this field is that Cloud ML validates the path for use in training.
+        # Corresponds to the JSON property `jobDir`
+        # @return [String]
+        attr_accessor :job_dir
+      
+        # Represents a set of hyperparameters to optimize.
+        # Corresponds to the JSON property `hyperparameters`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec]
+        attr_accessor :hyperparameters
+      
+        # Optional. The number of parameter server replicas to use for the training
+        # job. Each replica in the cluster will be of the type specified in
+        # `parameter_server_type`.
+        # This value can only be used when `scale_tier` is set to `CUSTOM`.If you
+        # set this value, you must also set `parameter_server_type`.
+        # Corresponds to the JSON property `parameterServerCount`
+        # @return [Fixnum]
+        attr_accessor :parameter_server_count
+      
+        # Required. The Google Cloud Storage location of the packages with
+        # the training program and any additional dependencies.
+        # The maximum number of package URIs is 100.
+        # Corresponds to the JSON property `packageUris`
+        # @return [Array<String>]
+        attr_accessor :package_uris
+      
+        # Optional. The number of worker replicas to use for the training job. Each
+        # replica in the cluster will be of the type specified in `worker_type`.
+        # This value can only be used when `scale_tier` is set to `CUSTOM`. If you
+        # set this value, you must also set `worker_type`.
+        # Corresponds to the JSON property `workerCount`
+        # @return [Fixnum]
+        attr_accessor :worker_count
+      
+        # Optional. Specifies the type of virtual machine to use for your training
+        # job's master worker.
+        # The following types are supported:
+        # <dl>
+        # <dt>standard</dt>
+        # <dd>
+        # A basic machine configuration suitable for training simple models with
+        # small to moderate datasets.
+        # </dd>
+        # <dt>large_model</dt>
+        # <dd>
+        # A machine with a lot of memory, specially suited for parameter servers
+        # when your model is large (having many hidden layers or layers with very
+        # large numbers of nodes).
+        # </dd>
+        # <dt>complex_model_s</dt>
+        # <dd>
+        # A machine suitable for the master and workers of the cluster when your
+        # model requires more computation than the standard machine can handle
+        # satisfactorily.
+        # </dd>
+        # <dt>complex_model_m</dt>
+        # <dd>
+        # A machine with roughly twice the number of cores and roughly double the
+        # memory of <code suppresswarning="true">complex_model_s</code>.
+        # </dd>
+        # <dt>complex_model_l</dt>
+        # <dd>
+        # A machine with roughly twice the number of cores and roughly double the
+        # memory of <code suppresswarning="true">complex_model_m</code>.
+        # </dd>
+        # <dt>standard_gpu</dt>
+        # <dd>
+        # A machine equivalent to <code suppresswarning="true">standard</code> that
+        # also includes a
+        # <a href="/ml-engine/docs/how-tos/using-gpus">
+        # GPU that you can use in your trainer</a>.
+        # </dd>
+        # <dt>complex_model_m_gpu</dt>
+        # <dd>
+        # A machine equivalent to
+        # <code suppresswarning="true">complex_model_m</code> that also includes
+        # four GPUs.
+        # </dd>
+        # </dl>
+        # You must set this value when `scaleTier` is set to `CUSTOM`.
+        # Corresponds to the JSON property `masterType`
+        # @return [String]
+        attr_accessor :master_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @python_module = args[:python_module] if args.key?(:python_module)
+          @worker_type = args[:worker_type] if args.key?(:worker_type)
+          @args = args[:args] if args.key?(:args)
+          @region = args[:region] if args.key?(:region)
+          @parameter_server_type = args[:parameter_server_type] if args.key?(:parameter_server_type)
+          @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
+          @job_dir = args[:job_dir] if args.key?(:job_dir)
+          @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
+          @parameter_server_count = args[:parameter_server_count] if args.key?(:parameter_server_count)
+          @package_uris = args[:package_uris] if args.key?(:package_uris)
+          @worker_count = args[:worker_count] if args.key?(:worker_count)
+          @master_type = args[:master_type] if args.key?(:master_type)
+        end
+      end
+      
+      # Represents a training or prediction job.
+      class GoogleCloudMlV1Job
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the job processing was completed.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. When the job processing was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Represents results of a prediction job.
+        # Corresponds to the JSON property `predictionOutput`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput]
+        attr_accessor :prediction_output
+      
+        # Represents results of a training job. Output only.
+        # Corresponds to the JSON property `trainingOutput`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingOutput]
+        attr_accessor :training_output
+      
+        # Output only. When the job was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Represents input parameters for a training job.
+        # Corresponds to the JSON property `trainingInput`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingInput]
+        attr_accessor :training_input
+      
+        # Represents input parameters for a prediction job.
+        # Corresponds to the JSON property `predictionInput`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1PredictionInput]
+        attr_accessor :prediction_input
+      
+        # Output only. The detailed state of a job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The details of a failure or a cancellation.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Required. The user-specified id of the job.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @prediction_output = args[:prediction_output] if args.key?(:prediction_output)
+          @training_output = args[:training_output] if args.key?(:training_output)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @training_input = args[:training_input] if args.key?(:training_input)
+          @prediction_input = args[:prediction_input] if args.key?(:prediction_input)
+          @state = args[:state] if args.key?(:state)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
     end

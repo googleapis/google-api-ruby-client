@@ -23,6 +23,33 @@ module Google
     module TranslateV2
       
       # 
+      class LanguagesResource
+        include Google::Apis::Core::Hashable
+      
+        # Supported language code, generally consisting of its ISO 639-1
+        # identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including
+        # language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Human readable name of the language localized to the target language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
       class ListDetectionsResponse
         include Google::Apis::Core::Hashable
       
@@ -41,25 +68,15 @@ module Google
         end
       end
       
-      # 
-      class DetectionsResource
+      # The request message for discovering supported languages.
+      class GetSupportedLanguagesRequest
         include Google::Apis::Core::Hashable
       
-        # The confidence of the detection resul of this language.
-        # Corresponds to the JSON property `confidence`
-        # @return [Float]
-        attr_accessor :confidence
-      
-        # A boolean to indicate is the language detection result reliable.
-        # Corresponds to the JSON property `isReliable`
-        # @return [Boolean]
-        attr_accessor :is_reliable
-        alias_method :is_reliable?, :is_reliable
-      
-        # The language we detect
-        # Corresponds to the JSON property `language`
+        # The language to use to return localized, human readable names of supported
+        # languages.
+        # Corresponds to the JSON property `target`
         # @return [String]
-        attr_accessor :language
+        attr_accessor :target
       
         def initialize(**args)
            update!(**args)
@@ -67,9 +84,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @confidence = args[:confidence] if args.key?(:confidence)
-          @is_reliable = args[:is_reliable] if args.key?(:is_reliable)
-          @language = args[:language] if args.key?(:language)
+          @target = args[:target] if args.key?(:target)
         end
       end
       
@@ -96,18 +111,24 @@ module Google
       end
       
       # 
-      class LanguagesResource
+      class DetectionsResource
         include Google::Apis::Core::Hashable
       
-        # The language code.
+        # The confidence of the detection result of this language.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # A boolean to indicate is the language detection result reliable.
+        # Corresponds to the JSON property `isReliable`
+        # @return [Boolean]
+        attr_accessor :is_reliable
+        alias_method :is_reliable?, :is_reliable
+      
+        # The language we detected.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
-      
-        # The localized name of the language if target parameter is given.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
       
         def initialize(**args)
            update!(**args)
@@ -115,12 +136,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @is_reliable = args[:is_reliable] if args.key?(:is_reliable)
           @language = args[:language] if args.key?(:language)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
       # 
+      class TranslationsResource
+        include Google::Apis::Core::Hashable
+      
+        # Text translated into the target language.
+        # Corresponds to the JSON property `translatedText`
+        # @return [String]
+        attr_accessor :translated_text
+      
+        # The source language of the initial request, detected automatically, if
+        # no source language was passed within the initial request. If the
+        # source language was passed, auto-detection of the language will not
+        # occur and this field will be empty.
+        # Corresponds to the JSON property `detectedSourceLanguage`
+        # @return [String]
+        attr_accessor :detected_source_language
+      
+        # The `model` type used for this translation. Valid values are
+        # listed in public documentation. Can be different from requested `model`.
+        # Present only if specific model type was explicitly requested.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @translated_text = args[:translated_text] if args.key?(:translated_text)
+          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # The main language translation response message.
       class ListTranslationsResponse
         include Google::Apis::Core::Hashable
       
@@ -139,19 +197,41 @@ module Google
         end
       end
       
-      # 
-      class TranslationsResource
+      # The main translation request message for the Cloud Translation API.
+      class TranslateTextRequest
         include Google::Apis::Core::Hashable
       
-        # Detected source language if source parameter is unspecified.
-        # Corresponds to the JSON property `detectedSourceLanguage`
-        # @return [String]
-        attr_accessor :detected_source_language
+        # The input text to translate. Repeat this parameter to perform translation
+        # operations on multiple text inputs.
+        # Corresponds to the JSON property `q`
+        # @return [Array<String>]
+        attr_accessor :q
       
-        # The translation.
-        # Corresponds to the JSON property `translatedText`
+        # The format of the source text, in either HTML (default) or plain-text. A
+        # value of "html" indicates HTML and a value of "text" indicates plain-text.
+        # Corresponds to the JSON property `format`
         # @return [String]
-        attr_accessor :translated_text
+        attr_accessor :format
+      
+        # The language of the source text, set to one of the language codes listed in
+        # Language Support. If the source language is not specified, the API will
+        # attempt to identify the source language automatically and return it within
+        # the response.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # The `model` type requested for this translation. Valid values are
+        # listed in public documentation.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # The language to use for translation of the input text, set to one of the
+        # language codes listed in Language Support.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
       
         def initialize(**args)
            update!(**args)
@@ -159,8 +239,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
-          @translated_text = args[:translated_text] if args.key?(:translated_text)
+          @q = args[:q] if args.key?(:q)
+          @format = args[:format] if args.key?(:format)
+          @source = args[:source] if args.key?(:source)
+          @model = args[:model] if args.key?(:model)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # The request message for language detection.
+      class DetectLanguageRequest
+        include Google::Apis::Core::Hashable
+      
+        # The input text upon which to perform language detection. Repeat this
+        # parameter to perform language detection on multiple text inputs.
+        # Corresponds to the JSON property `q`
+        # @return [Array<String>]
+        attr_accessor :q
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @q = args[:q] if args.key?(:q)
         end
       end
     end

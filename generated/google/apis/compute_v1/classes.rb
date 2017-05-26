@@ -893,23 +893,20 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
       
-        # The identifier of the Stackdriver Monitoring metric. The metric cannot have
-        # negative values and should be a utilization metric, which means that the
+        # The identifier (type) of the Stackdriver Monitoring metric. The metric cannot
+        # have negative values and should be a utilization metric, which means that the
         # number of virtual machines handling requests should increase or decrease
-        # proportionally to the metric. The metric must also have a label of compute.
-        # googleapis.com/resource_id with the value of the instance's unique ID,
-        # although this alone does not guarantee that the metric is valid.
-        # For example, the following is a valid metric:
-        # compute.googleapis.com/instance/network/received_bytes_count
-        # The following is not a valid metric because it does not increase or decrease
-        # based on usage:
-        # compute.googleapis.com/instance/cpu/reserved_cores
+        # proportionally to the metric.
+        # The metric must have a value type of INT64 or DOUBLE.
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # Target value of the metric which autoscaler should maintain. Must be a
+        # The target value of the metric that autoscaler should maintain. This must be a
         # positive value.
+        # For example, a good metric to use as a utilization_target is compute.
+        # googleapis.com/instance/network/received_bytes_count. The autoscaler will work
+        # to keep this value constant for each of the instances.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -1229,6 +1226,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :health_checks
       
+        # Identity-Aware Proxy
+        # Corresponds to the JSON property `iap`
+        # @return [Google::Apis::ComputeV1::BackendServiceIap]
+        attr_accessor :iap
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -1321,6 +1323,7 @@ module Google
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
+          @iap = args[:iap] if args.key?(:iap)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
@@ -1421,6 +1424,44 @@ module Google
         def update!(**args)
           @health_status = args[:health_status] if args.key?(:health_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Identity-Aware Proxy
+      class BackendServiceIap
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # 
+        # Corresponds to the JSON property `oauth2ClientId`
+        # @return [String]
+        attr_accessor :oauth2_client_id
+      
+        # 
+        # Corresponds to the JSON property `oauth2ClientSecret`
+        # @return [String]
+        attr_accessor :oauth2_client_secret
+      
+        # [Output Only] SHA256 hash value for the field oauth2_client_secret above.
+        # Corresponds to the JSON property `oauth2ClientSecretSha256`
+        # @return [String]
+        attr_accessor :oauth2_client_secret_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @oauth2_client_id = args[:oauth2_client_id] if args.key?(:oauth2_client_id)
+          @oauth2_client_secret = args[:oauth2_client_secret] if args.key?(:oauth2_client_secret)
+          @oauth2_client_secret_sha256 = args[:oauth2_client_secret_sha256] if args.key?(:oauth2_client_secret_sha256)
         end
       end
       
@@ -1804,6 +1845,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Labels to apply to this disk. These can be later modified by the setLabels
+        # method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Output Only] Last attach timestamp in RFC3339 text format.
         # Corresponds to the JSON property `lastAttachTimestamp`
         # @return [String]
@@ -1940,6 +1987,7 @@ module Google
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @last_attach_timestamp = args[:last_attach_timestamp] if args.key?(:last_attach_timestamp)
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
           @licenses = args[:licenses] if args.key?(:licenses)
@@ -2489,7 +2537,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Ony] Type of the resource. Always compute#firewall for firewall rules.
+        # [Output Only] Type of the resource. Always compute#firewall for firewall rules.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2662,13 +2710,14 @@ module Google
         # The IP address that this forwarding rule is serving on behalf of.
         # For global forwarding rules, the address must be a global IP. For regional
         # forwarding rules, the address must live in the same region as the forwarding
-        # rule. By default, this field is empty and an ephemeral IP from the same scope (
-        # global or regional) will be assigned.
+        # rule. By default, this field is empty and an ephemeral IPv4 address from the
+        # same scope (global or regional) will be assigned. A regional forwarding rule
+        # supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnetwork configured for the forwarding rule.
         # A reserved address cannot be used. If the field is empty, the IP address will
         # be automatically allocated from the internal IP range of the subnetwork or
-        # network configured for this forwarding rule. Only IPv4 is supported.
+        # network configured for this forwarding rule.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -3003,6 +3052,42 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class GlobalSetLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fingerprint of the previous set of labels for this resource, used to
+        # detect conflicts. The fingerprint is initially generated by Compute Engine and
+        # changes after every request to modify or update labels. You must always
+        # provide an up-to-date fingerprint hash when updating or changing labels. Make
+        # a get() request to the resource to get the latest fingerprint.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # A list of labels to apply for this resource. Each label key & value must
+        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash. For example, "webserver-frontend": "images". A label value can also be
+        # empty (e.g. "my-label": "").
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -3732,11 +3817,11 @@ module Google
         attr_accessor :family
       
         # A list of features to enable on the guest OS. Applicable for bootable images
-        # only. Currently, only one feature can be enabled, VIRTIO_SCSCI_MULTIQUEUE,
+        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
         # which allows each virtual CPU to have its own queue. For Windows images, you
-        # can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.
+        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
         # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
-        # VIRTIO_SCSCI_MULTIQUEUE.
+        # VIRTIO_SCSI_MULTIQUEUE.
         # For new Windows images, the server might also populate this field with the
         # value WINDOWS, to indicate that this is a Windows image. This value is purely
         # informational and does not enable or disable any features.
@@ -3759,6 +3844,12 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Labels to apply to this image. These can be later modified by the setLabels
+        # method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Any applicable license URI.
         # Corresponds to the JSON property `licenses`
@@ -3838,6 +3929,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @image_encryption_key = args[:image_encryption_key] if args.key?(:image_encryption_key)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
@@ -3978,6 +4070,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Labels to apply to this instance. These can be later modified by the setLabels
+        # method.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Full or partial URL of the machine type resource to use for this instance, in
         # the format: zones/zone/machineTypes/machine-type. This is provided by the
         # client when the instance is created. For example, the following is a valid
@@ -4071,6 +4169,7 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
@@ -5213,6 +5312,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AttachedDisk>]
         attr_accessor :disks
       
+        # Labels to apply to instances that are created from this template.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The machine type to use for instances that are created from this template.
         # Corresponds to the JSON property `machineType`
         # @return [String]
@@ -5254,6 +5358,7 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
+          @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
@@ -5515,6 +5620,34 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstancesSetLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Fingerprint of the previous set of labels for this resource, used to prevent
+        # conflicts. Provide the latest fingerprint value when making a request to add
+        # or change labels.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -7007,6 +7140,12 @@ module Google
         # @return [Google::Apis::ComputeV1::UsageExportLocation]
         attr_accessor :usage_export_location
       
+        # [Output Only] The role this project has in a Cross Project Network (XPN)
+        # configuration. Currently only HOST projects are differentiated.
+        # Corresponds to the JSON property `xpnProjectStatus`
+        # @return [String]
+        attr_accessor :xpn_project_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7024,6 +7163,102 @@ module Google
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @usage_export_location = args[:usage_export_location] if args.key?(:usage_export_location)
+          @xpn_project_status = args[:xpn_project_status] if args.key?(:xpn_project_status)
+        end
+      end
+      
+      # 
+      class ProjectsDisableXpnResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # XpnResourceId
+        # Corresponds to the JSON property `xpnResource`
+        # @return [Google::Apis::ComputeV1::XpnResourceId]
+        attr_accessor :xpn_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @xpn_resource = args[:xpn_resource] if args.key?(:xpn_resource)
+        end
+      end
+      
+      # 
+      class ProjectsEnableXpnResourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # XpnResourceId
+        # Corresponds to the JSON property `xpnResource`
+        # @return [Google::Apis::ComputeV1::XpnResourceId]
+        attr_accessor :xpn_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @xpn_resource = args[:xpn_resource] if args.key?(:xpn_resource)
+        end
+      end
+      
+      # 
+      class ProjectsGetXpnResources
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Type of resource. Always compute#projectsGetXpnResources for
+        # lists of XPN resources.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # XPN resources attached to this project as their XPN host.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ComputeV1::XpnResourceId>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class ProjectsListXpnHostsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional organization ID managed by Cloud Resource Manager, for which to list
+        # XPN host projects. If not specified, the organization will be inferred from
+        # the project.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organization = args[:organization] if args.key?(:organization)
         end
       end
       
@@ -8565,6 +8800,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Labels to apply to this snapshot. These can be later modified by the setLabels
+        # method. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # [Output Only] A list of public visible licenses that apply to this snapshot.
         # This can be because the original image had licenses attached (such as a
         # Windows image).
@@ -8641,6 +8882,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -8833,13 +9075,14 @@ module Google
         attr_accessor :creation_timestamp
       
         # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # create the resource. This field can be set only at resource creation time.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # [Output Only] The gateway address for default routes to reach destination
-        # addresses outside this subnetwork.
+        # addresses outside this subnetwork. This field can be set only at resource
+        # creation time.
         # Corresponds to the JSON property `gatewayAddress`
         # @return [String]
         attr_accessor :gateway_address
@@ -8853,7 +9096,7 @@ module Google
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
         # 168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported.
+        # IPv4 is supported. This field can be set only at resource creation time.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -8876,19 +9119,22 @@ module Google
       
         # The URL of the network to which this subnetwork belongs, provided by the
         # client when initially creating the subnetwork. Only networks that are in the
-        # distributed mode can have subnetworks.
+        # distributed mode can have subnetworks. This field can be set only at resource
+        # creation time.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Whether the VMs in this subnet can access Google services without assigned
-        # external IP addresses.
+        # external IP addresses. This field can be both set at resource creation time
+        # and updated using setPrivateIpGoogleAccess.
         # Corresponds to the JSON property `privateIpGoogleAccess`
         # @return [Boolean]
         attr_accessor :private_ip_google_access
         alias_method :private_ip_google_access?, :private_ip_google_access
       
-        # URL of the region where the Subnetwork resides.
+        # URL of the region where the Subnetwork resides. This field can be set only at
+        # resource creation time.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -11327,6 +11573,81 @@ module Google
         end
       end
       
+      # 
+      class XpnHostList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] A list of XPN host project URLs.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::Project>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#xpnHostList for lists of XPN
+        # hosts.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # XpnResourceId
+      class XpnResourceId
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the XPN resource. In the case of projects, this field matches the
+        # project's name, not the canonical ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The type of the XPN resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A Zone resource.
       class Zone
         include Google::Apis::Core::Hashable
@@ -11439,6 +11760,36 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class ZoneSetLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fingerprint of the previous set of labels for this resource, used to
+        # detect conflicts. The fingerprint is initially generated by Compute Engine and
+        # changes after every request to modify or update labels. You must always
+        # provide an up-to-date fingerprint hash in order to update or change labels.
+        # Make a get() request to the resource to get the latest fingerprint.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # The labels to set for this resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
     end

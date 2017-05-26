@@ -5135,6 +5135,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -5306,6 +5309,9 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -5398,7 +5404,8 @@ module Google
         # is marked as DONE when the group is created even if the instances in the group
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
-        # A managed instance group can have up to 1000 VM instances per group.
+        # A managed instance group can have up to 1000 VM instances per group. Please
+        # contact Cloud Support if you need an increase in this limit.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5627,6 +5634,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -5677,6 +5687,9 @@ module Google
         # the resize actions are scheduled even if the group has not yet added or
         # deleted any instances. You must separately verify the status of the creating
         # or deleting actions with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5731,6 +5744,9 @@ module Google
         # instances. You must separately verify the status of the creating,
         # creatingWithoutRetries, or deleting actions with the get or
         # listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6425,6 +6441,9 @@ module Google
         
         # Removes one or more instances from the specified instance group, but does not
         # delete those instances.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration before
+        # the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6920,7 +6939,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Attaches a Disk resource to an instance.
+        # Attaches an existing Disk resource to an instance. You must first create the
+        # disk before you can attach it. It is not possible to create and attach a disk
+        # at the same time. For more information, read Adding a persistent disk to your
+        # instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7658,6 +7680,54 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the minimum cpu/platform that this instance should be started as. This
+        # is called on a stopped instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeBeta::InstancesSetMinCpuPlatformRequest] instances_set_min_cpu_platform_request_object
+        # @param [String] request_id
+        #   begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_min_cpu_platform(project, zone, instance, instances_set_min_cpu_platform_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMinCpuPlatform', options)
+          command.request_representation = Google::Apis::ComputeBeta::InstancesSetMinCpuPlatformRequest::Representation
+          command.request_object = instances_set_min_cpu_platform_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10004,6 +10074,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -10097,6 +10170,9 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -10415,6 +10491,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -10466,6 +10545,9 @@ module Google
         # resize actions are scheduled even if the group has not yet added or deleted
         # any instances. You must separately verify the status of the creating or
         # deleting actions with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12936,7 +13018,7 @@ module Google
         end
         
         # Set whether VMs in this subnet can access Google services without assigning
-        # external IP addresses through Cloudpath.
+        # external IP addresses through Private Google Access.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region

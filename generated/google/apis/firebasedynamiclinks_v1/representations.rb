@@ -22,6 +22,18 @@ module Google
   module Apis
     module FirebasedynamiclinksV1
       
+      class NavigationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyticsInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,28 +82,35 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AndroidInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DynamicLinkWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NavigationInfo
+      class AndroidInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IosInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+      class NavigationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_forced_redirect, as: 'enableForcedRedirect'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class IosInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ios_custom_scheme, as: 'iosCustomScheme'
+          property :ios_bundle_id, as: 'iosBundleId'
+          property :ios_fallback_link, as: 'iosFallbackLink'
+          property :ios_app_store_id, as: 'iosAppStoreId'
+          property :ios_ipad_fallback_link, as: 'iosIpadFallbackLink'
+          property :ios_ipad_bundle_id, as: 'iosIpadBundleId'
+        end
       end
       
       class AnalyticsInfo
@@ -107,21 +126,21 @@ module Google
       class CreateShortDynamicLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :suffix, as: 'suffix', class: Google::Apis::FirebasedynamiclinksV1::Suffix, decorator: Google::Apis::FirebasedynamiclinksV1::Suffix::Representation
-      
           property :dynamic_link_info, as: 'dynamicLinkInfo', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo::Representation
       
           property :long_dynamic_link, as: 'longDynamicLink'
+          property :suffix, as: 'suffix', class: Google::Apis::FirebasedynamiclinksV1::Suffix, decorator: Google::Apis::FirebasedynamiclinksV1::Suffix::Representation
+      
         end
       end
       
       class CreateShortDynamicLinkResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
-      
           property :short_link, as: 'shortLink'
           property :preview_link, as: 'previewLink'
+          collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
+      
         end
       end
       
@@ -138,8 +157,8 @@ module Google
           property :utm_medium, as: 'utmMedium'
           property :utm_term, as: 'utmTerm'
           property :utm_source, as: 'utmSource'
-          property :utm_campaign, as: 'utmCampaign'
           property :gclid, as: 'gclid'
+          property :utm_campaign, as: 'utmCampaign'
           property :utm_content, as: 'utmContent'
         end
       end
@@ -147,8 +166,6 @@ module Google
       class DynamicLinkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :dynamic_link_domain, as: 'dynamicLinkDomain'
-          property :link, as: 'link'
           property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
       
           property :social_meta_tag_info, as: 'socialMetaTagInfo', class: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo, decorator: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo::Representation
@@ -159,25 +176,35 @@ module Google
       
           property :analytics_info, as: 'analyticsInfo', class: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo::Representation
       
+          property :dynamic_link_domain, as: 'dynamicLinkDomain'
+          property :link, as: 'link'
         end
       end
       
       class ITunesConnectAnalytics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :at, as: 'at'
           property :ct, as: 'ct'
           property :mt, as: 'mt'
           property :pt, as: 'pt'
-          property :at, as: 'at'
         end
       end
       
       class SocialMetaTagInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :social_description, as: 'socialDescription'
           property :social_title, as: 'socialTitle'
           property :social_image_link, as: 'socialImageLink'
+          property :social_description, as: 'socialDescription'
+        end
+      end
+      
+      class DynamicLinkWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :warning_message, as: 'warningMessage'
+          property :warning_code, as: 'warningCode'
         end
       end
       
@@ -188,33 +215,6 @@ module Google
           property :android_fallback_link, as: 'androidFallbackLink'
           property :android_package_name, as: 'androidPackageName'
           property :android_min_package_version_code, as: 'androidMinPackageVersionCode'
-        end
-      end
-      
-      class DynamicLinkWarning
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :warning_code, as: 'warningCode'
-          property :warning_message, as: 'warningMessage'
-        end
-      end
-      
-      class NavigationInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_forced_redirect, as: 'enableForcedRedirect'
-        end
-      end
-      
-      class IosInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ios_ipad_fallback_link, as: 'iosIpadFallbackLink'
-          property :ios_ipad_bundle_id, as: 'iosIpadBundleId'
-          property :ios_custom_scheme, as: 'iosCustomScheme'
-          property :ios_bundle_id, as: 'iosBundleId'
-          property :ios_fallback_link, as: 'iosFallbackLink'
-          property :ios_app_store_id, as: 'iosAppStoreId'
         end
       end
     end

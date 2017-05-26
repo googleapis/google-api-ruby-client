@@ -1308,8 +1308,11 @@ module Google
         #   than the specified number of attendees, only the participant is returned.
         #   Optional.
         # @param [Fixnum] max_results
-        #   Maximum number of events returned on one result page. By default the value is
-        #   250 events. The page size can never be larger than 2500 events. Optional.
+        #   Maximum number of events returned on one result page. The number of events in
+        #   the resulting page may be less than this value, or none at all, even if there
+        #   are more events matching the query. Incomplete pages can be detected by a non-
+        #   empty nextPageToken field in the response. By default the value is 250 events.
+        #   The page size can never be larger than 2500 events. Optional.
         # @param [String] order_by
         #   The order of the events returned in the result. Optional. The default is an
         #   unspecified, stable order.
@@ -1663,8 +1666,11 @@ module Google
         #   than the specified number of attendees, only the participant is returned.
         #   Optional.
         # @param [Fixnum] max_results
-        #   Maximum number of events returned on one result page. By default the value is
-        #   250 events. The page size can never be larger than 2500 events. Optional.
+        #   Maximum number of events returned on one result page. The number of events in
+        #   the resulting page may be less than this value, or none at all, even if there
+        #   are more events matching the query. Incomplete pages can be detected by a non-
+        #   empty nextPageToken field in the response. By default the value is 250 events.
+        #   The page size can never be larger than 2500 events. Optional.
         # @param [String] order_by
         #   The order of the events returned in the result. Optional. The default is an
         #   unspecified, stable order.

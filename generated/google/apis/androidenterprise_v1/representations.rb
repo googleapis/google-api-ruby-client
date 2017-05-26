@@ -713,6 +713,7 @@ module Google
       
           property :new_permissions_event, as: 'newPermissionsEvent', class: Google::Apis::AndroidenterpriseV1::NewPermissionsEvent, decorator: Google::Apis::AndroidenterpriseV1::NewPermissionsEvent::Representation
       
+          property :notification_type, as: 'notificationType'
           property :product_approval_event, as: 'productApprovalEvent', class: Google::Apis::AndroidenterpriseV1::ProductApprovalEvent, decorator: Google::Apis::AndroidenterpriseV1::ProductApprovalEvent::Representation
       
           property :product_availability_change_event, as: 'productAvailabilityChangeEvent', class: Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent, decorator: Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent::Representation

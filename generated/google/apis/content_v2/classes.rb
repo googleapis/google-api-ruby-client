@@ -176,6 +176,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Whether the account's website is claimed or not.
+        # Corresponds to the JSON property `websiteClaimed`
+        # @return [Boolean]
+        attr_accessor :website_claimed
+        alias_method :website_claimed?, :website_claimed
+      
         def initialize(**args)
            update!(**args)
         end
@@ -185,6 +191,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @data_quality_issues = args[:data_quality_issues] if args.key?(:data_quality_issues)
           @kind = args[:kind] if args.key?(:kind)
+          @website_claimed = args[:website_claimed] if args.key?(:website_claimed)
         end
       end
       
@@ -442,6 +449,26 @@ module Google
       end
       
       # 
+      class AccountsClaimWebsiteResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # accountsClaimWebsiteResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class BatchAccountsRequest
         include Google::Apis::Core::Hashable
       
@@ -469,8 +496,8 @@ module Google
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
       
-        # The ID of the account to get or delete. Only defined if the method is get or
-        # delete.
+        # The ID of the targeted account. Only defined if the method is get, delete or
+        # claimwebsite.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
@@ -490,6 +517,13 @@ module Google
         # @return [String]
         attr_accessor :request_method
       
+        # Only applicable if the method is claimwebsite. Indicates whether or not to
+        # take the claim from another account in case there is a conflict.
+        # Corresponds to the JSON property `overwrite`
+        # @return [Boolean]
+        attr_accessor :overwrite
+        alias_method :overwrite?, :overwrite
+      
         def initialize(**args)
            update!(**args)
         end
@@ -501,6 +535,7 @@ module Google
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
+          @overwrite = args[:overwrite] if args.key?(:overwrite)
         end
       end
       

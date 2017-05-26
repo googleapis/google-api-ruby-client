@@ -98,8 +98,10 @@ module Google
           # - PROTOCOL_OPENRTB_2_2
           # - PROTOCOL_OPENRTB_2_3
           # - PROTOCOL_OPENRTB_2_4
+          # - PROTOCOL_OPENRTB_2_5
           # - PROTOCOL_OPENRTB_PROTOBUF_2_3
           # - PROTOCOL_OPENRTB_PROTOBUF_2_4
+          # - PROTOCOL_OPENRTB_PROTOBUF_2_5
           # Corresponds to the JSON property `bidProtocol`
           # @return [String]
           attr_accessor :bid_protocol
@@ -611,7 +613,8 @@ module Google
         # The granular status of this ad in specific contexts. A context here relates to
         # where something ultimately serves (for example, a physical location, a
         # platform, an HTTPS vs HTTP request, or the type of auction). Read-only. This
-        # field should not be set in requests.
+        # field should not be set in requests. See the examples in the Creatives guide
+        # for more details.
         # Corresponds to the JSON property `servingRestrictions`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Creative::ServingRestriction>]
         attr_accessor :serving_restrictions
@@ -1392,7 +1395,7 @@ module Google
       
         # The timestamp (in ms since epoch) when the original reservation price for the
         # deal was first converted to DFP currency. This is used to convert the
-        # contracted price into advertiser's currency without discrepancy.
+        # contracted price into buyer's currency without discrepancy.
         # Corresponds to the JSON property `currencyConversionTimeMs`
         # @return [Fixnum]
         attr_accessor :currency_conversion_time_ms
@@ -1930,6 +1933,13 @@ module Google
         attr_accessor :is_rfp_template
         alias_method :is_rfp_template?, :is_rfp_template
       
+        # True, if the buyside inventory setup is complete for this deal. (readonly,
+        # except via OrderSetupCompleted action)
+        # Corresponds to the JSON property `isSetupComplete`
+        # @return [Boolean]
+        attr_accessor :is_setup_complete
+        alias_method :is_setup_complete?, :is_setup_complete
+      
         # Identifies what kind of resource this is. Value: the fixed string "
         # adexchangebuyer#marketplaceDeal".
         # Corresponds to the JSON property `kind`
@@ -2013,6 +2023,7 @@ module Google
           @flight_start_time_ms = args[:flight_start_time_ms] if args.key?(:flight_start_time_ms)
           @inventory_description = args[:inventory_description] if args.key?(:inventory_description)
           @is_rfp_template = args[:is_rfp_template] if args.key?(:is_rfp_template)
+          @is_setup_complete = args[:is_setup_complete] if args.key?(:is_setup_complete)
           @kind = args[:kind] if args.key?(:kind)
           @last_update_time_ms = args[:last_update_time_ms] if args.key?(:last_update_time_ms)
           @name = args[:name] if args.key?(:name)
@@ -2698,12 +2709,11 @@ module Google
         end
       end
       
-      # Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an
-      # product can become [0,1] deals. To check if there is a PricePerBuyer for a
-      # particular buyer or buyer/advertiser pair, we look for the most specific
-      # matching rule - we first look for a rule matching the buyer and advertiser,
-      # next a rule with the buyer but an empty advertiser list, and otherwise look
-      # for a matching rule where no buyer is set.
+      # Used to specify pricing rules for buyers. Each PricePerBuyer in a product can
+      # become [0,1] deals. To check if there is a PricePerBuyer for a particular
+      # buyer we look for the most specific matching rule - we first look for a rule
+      # matching the buyer and otherwise look for a matching rule where no buyer is
+      # set.
       class PricePerBuyer
         include Google::Apis::Core::Hashable
       
@@ -2711,6 +2721,11 @@ module Google
         # Corresponds to the JSON property `auctionTier`
         # @return [String]
         attr_accessor :auction_tier
+      
+        # Reference to the buyer that will get billed.
+        # Corresponds to the JSON property `billedBuyer`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
+        attr_accessor :billed_buyer
       
         # The buyer who will pay this price. If unset, all buyers can pay this price (if
         # the advertisers match, and there's no more specific rule matching the buyer).
@@ -2730,6 +2745,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auction_tier = args[:auction_tier] if args.key?(:auction_tier)
+          @billed_buyer = args[:billed_buyer] if args.key?(:billed_buyer)
           @buyer = args[:buyer] if args.key?(:buyer)
           @price = args[:price] if args.key?(:price)
         end
@@ -2772,6 +2788,18 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # The billed buyer corresponding to the buyer that created the offer. (readonly,
+        # except on create)
+        # Corresponds to the JSON property `billedBuyer`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
+        attr_accessor :billed_buyer
+      
+        # The buyer that created the offer if this is a buyer initiated offer (readonly,
+        # except on create)
+        # Corresponds to the JSON property `buyer`
+        # @return [Google::Apis::AdexchangebuyerV1_4::Buyer]
+        attr_accessor :buyer
+      
         # Creation time in ms. since epoch (readonly)
         # Corresponds to the JSON property `creationTimeMs`
         # @return [Fixnum]
@@ -2781,6 +2809,11 @@ module Google
         # Corresponds to the JSON property `creatorContacts`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::ContactInformation>]
         attr_accessor :creator_contacts
+      
+        # The role that created the offer. Set to BUYER for buyer initiated offers.
+        # Corresponds to the JSON property `creatorRole`
+        # @return [String]
+        attr_accessor :creator_role
       
         # The set of fields around delivery control that are interesting for a buyer to
         # see but are non-negotiable. These are set by the publisher. This message is
@@ -2917,8 +2950,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billed_buyer = args[:billed_buyer] if args.key?(:billed_buyer)
+          @buyer = args[:buyer] if args.key?(:buyer)
           @creation_time_ms = args[:creation_time_ms] if args.key?(:creation_time_ms)
           @creator_contacts = args[:creator_contacts] if args.key?(:creator_contacts)
+          @creator_role = args[:creator_role] if args.key?(:creator_role)
           @delivery_control = args[:delivery_control] if args.key?(:delivery_control)
           @flight_end_time_ms = args[:flight_end_time_ms] if args.key?(:flight_end_time_ms)
           @flight_start_time_ms = args[:flight_start_time_ms] if args.key?(:flight_start_time_ms)
@@ -3007,7 +3043,8 @@ module Google
         alias_method :is_renegotiating?, :is_renegotiating
       
         # True, if the buyside inventory setup is complete for this proposal. (readonly,
-        # except via OrderSetupCompleted action)
+        # except via OrderSetupCompleted action) Deprecated in favor of deal level setup
+        # complete flag.
         # Corresponds to the JSON property `isSetupComplete`
         # @return [Boolean]
         attr_accessor :is_setup_complete
@@ -3410,6 +3447,11 @@ module Google
         # @return [String]
         attr_accessor :creative_size_type
       
+        # The native template for native ad.
+        # Corresponds to the JSON property `nativeTemplate`
+        # @return [String]
+        attr_accessor :native_template
+      
         # For regular or video creative size type, specifies the size of the creative.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueSize]
@@ -3428,6 +3470,7 @@ module Google
         def update!(**args)
           @companion_sizes = args[:companion_sizes] if args.key?(:companion_sizes)
           @creative_size_type = args[:creative_size_type] if args.key?(:creative_size_type)
+          @native_template = args[:native_template] if args.key?(:native_template)
           @size = args[:size] if args.key?(:size)
           @skippable_ad_type = args[:skippable_ad_type] if args.key?(:skippable_ad_type)
         end

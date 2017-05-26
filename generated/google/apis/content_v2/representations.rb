@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountsClaimWebsiteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchAccountsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -980,6 +986,7 @@ module Google
           collection :data_quality_issues, as: 'dataQualityIssues', class: Google::Apis::ContentV2::AccountStatusDataQualityIssue, decorator: Google::Apis::ContentV2::AccountStatusDataQualityIssue::Representation
       
           property :kind, as: 'kind'
+          property :website_claimed, as: 'websiteClaimed'
         end
       end
       
@@ -1049,6 +1056,13 @@ module Google
         end
       end
       
+      class AccountsClaimWebsiteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+        end
+      end
+      
       class BatchAccountsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1066,6 +1080,7 @@ module Google
           property :batch_id, as: 'batchId'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
+          property :overwrite, as: 'overwrite'
         end
       end
       

@@ -1396,7 +1396,9 @@ module Google
         attr_accessor :has_augmented_permissions
         alias_method :has_augmented_permissions?, :has_augmented_permissions
       
-        # Whether this file has a thumbnail.
+        # Whether this file has a thumbnail. This does not indicate whether the
+        # requesting app has access to the thumbnail. To check access, look for the
+        # presence of the thumbnailLink field.
         # Corresponds to the JSON property `hasThumbnail`
         # @return [Boolean]
         attr_accessor :has_thumbnail
@@ -2377,8 +2379,8 @@ module Google
         # @return [String]
         attr_accessor :auth_key
       
-        # Whether the account of the permission has been deleted. This field only
-        # pertains to user and group permissions.
+        # Whether the account associated with this permission has been deleted. This
+        # field only pertains to user and group permissions.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -2937,9 +2939,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An image file and cropping parameters from which a background image for this
-        # Team Drive is set. This is a write only field that can only be set on a drive.
-        # teamdrives.update request that does not set themeId. When specified, all
-        # fields of the backgroundImageFile must be set.
+        # Team Drive is set. This is a write only field; it can only be set on drive.
+        # teamdrives.update requests that don't set themeId. When specified, all fields
+        # of the backgroundImageFile must be set.
         # Corresponds to the JSON property `backgroundImageFile`
         # @return [Google::Apis::DriveV2::TeamDrive::BackgroundImageFile]
         attr_accessor :background_image_file
@@ -2980,8 +2982,8 @@ module Google
         # set of possible teamDriveThemes can be retrieved from a drive.about.get
         # response. When not specified on a drive.teamdrives.insert request, a random
         # theme is chosen from which the background image and color are set. This is a
-        # write only field that can only be set on a request that does not set colorRgb
-        # or backgroundImageFile.
+        # write-only field; it can only be set on requests that don't set colorRgb or
+        # backgroundImageFile.
         # Corresponds to the JSON property `themeId`
         # @return [String]
         attr_accessor :theme_id
@@ -3003,9 +3005,9 @@ module Google
         end
         
         # An image file and cropping parameters from which a background image for this
-        # Team Drive is set. This is a write only field that can only be set on a drive.
-        # teamdrives.update request that does not set themeId. When specified, all
-        # fields of the backgroundImageFile must be set.
+        # Team Drive is set. This is a write only field; it can only be set on drive.
+        # teamdrives.update requests that don't set themeId. When specified, all fields
+        # of the backgroundImageFile must be set.
         class BackgroundImageFile
           include Google::Apis::Core::Hashable
         
@@ -3014,26 +3016,27 @@ module Google
           # @return [String]
           attr_accessor :id
         
-          # The width of the cropped image in the closed range of 0 to 1, which is the
-          # width of the cropped image divided by the width of the entire image. The
-          # height is computed by applying a width to height aspect ratio of 80 to 9. The
-          # resulting image must be at least 1280 pixels wide and 144 pixels high.
+          # The width of the cropped image in the closed range of 0 to 1. This value
+          # represents the width of the cropped image divided by the width of the entire
+          # image. The height is computed by applying a width to height aspect ratio of 80
+          # to 9. The resulting image must be at least 1280 pixels wide and 144 pixels
+          # high.
           # Corresponds to the JSON property `width`
           # @return [Float]
           attr_accessor :width
         
           # The X coordinate of the upper left corner of the cropping area in the
-          # background image. This is a value in the closed range of 0 to 1 which is the
-          # horizontal distance from the left side of the entire image to the left side of
-          # the cropping area divided by the width of the entire image.
+          # background image. This is a value in the closed range of 0 to 1. This value
+          # represents the horizontal distance from the left side of the entire image to
+          # the left side of the cropping area divided by the width of the entire image.
           # Corresponds to the JSON property `xCoordinate`
           # @return [Float]
           attr_accessor :x_coordinate
         
           # The Y coordinate of the upper left corner of the cropping area in the
-          # background image. This is a value in the closed range of 0 to 1 which is the
-          # vertical distance from the top side of the entire image to the top side of the
-          # cropping area divided by the height of the entire image.
+          # background image. This is a value in the closed range of 0 to 1. This value
+          # represents the vertical distance from the top side of the entire image to the
+          # top side of the cropping area divided by the height of the entire image.
           # Corresponds to the JSON property `yCoordinate`
           # @return [Float]
           attr_accessor :y_coordinate

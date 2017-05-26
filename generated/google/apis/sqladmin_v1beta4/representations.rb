@@ -190,12 +190,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Labels
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LocationPreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -543,6 +537,7 @@ module Google
       
           property :database, as: 'database'
           property :file_type, as: 'fileType'
+          property :import_user, as: 'importUser'
           property :kind, as: 'kind'
           property :uri, as: 'uri'
         end
@@ -631,14 +626,6 @@ module Google
           property :time_to_retire, as: 'timeToRetire', type: DateTime
       
           property :type, as: 'type'
-        end
-      end
-      
-      class Labels
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
-          property :value, as: 'value'
         end
       end
       
@@ -777,8 +764,7 @@ module Google
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
       
           property :kind, as: 'kind'
-          collection :labels, as: 'labels', class: Google::Apis::SqladminV1beta4::Labels, decorator: Google::Apis::SqladminV1beta4::Labels::Representation
-      
+          hash :labels, as: 'labels'
           property :location_preference, as: 'locationPreference', class: Google::Apis::SqladminV1beta4::LocationPreference, decorator: Google::Apis::SqladminV1beta4::LocationPreference::Representation
       
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1beta4::MaintenanceWindow, decorator: Google::Apis::SqladminV1beta4::MaintenanceWindow::Representation

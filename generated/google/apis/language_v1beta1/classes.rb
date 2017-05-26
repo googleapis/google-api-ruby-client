@@ -111,16 +111,16 @@ module Google
       class AnalyzeSyntaxRequest
         include Google::Apis::Core::Hashable
       
-        # The encoding type used by the API to calculate offsets.
-        # Corresponds to the JSON property `encodingType`
-        # @return [String]
-        attr_accessor :encoding_type
-      
         # ################################################################ #
         # Represents the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
+      
+        # The encoding type used by the API to calculate offsets.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
       
         def initialize(**args)
            update!(**args)
@@ -128,8 +128,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
           @document = args[:document] if args.key?(:document)
+          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
         end
       end
       
@@ -171,33 +171,11 @@ module Google
       class AnalyzeEntitiesResponse
         include Google::Apis::Core::Hashable
       
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
         # The recognized entities in the input document.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::LanguageV1beta1::Entity>]
         attr_accessor :entities
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @language = args[:language] if args.key?(:language)
-          @entities = args[:entities] if args.key?(:entities)
-        end
-      end
-      
-      # The syntax analysis response message.
-      class AnalyzeSyntaxResponse
-        include Google::Apis::Core::Hashable
-      
         # The language of the text, which will be the same as the language specified
         # in the request or, if not specified, the automatically-detected language.
         # See Document.language field for more details.
@@ -205,25 +183,14 @@ module Google
         # @return [String]
         attr_accessor :language
       
-        # Sentences in the input document.
-        # Corresponds to the JSON property `sentences`
-        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
-        attr_accessor :sentences
-      
-        # Tokens, along with their syntactic information, in the input document.
-        # Corresponds to the JSON property `tokens`
-        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
-        attr_accessor :tokens
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
           @language = args[:language] if args.key?(:language)
-          @sentences = args[:sentences] if args.key?(:sentences)
-          @tokens = args[:tokens] if args.key?(:tokens)
         end
       end
       
@@ -279,6 +246,39 @@ module Google
         end
       end
       
+      # The syntax analysis response message.
+      class AnalyzeSyntaxResponse
+        include Google::Apis::Core::Hashable
+      
+        # The language of the text, which will be the same as the language specified
+        # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Sentences in the input document.
+        # Corresponds to the JSON property `sentences`
+        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
+        attr_accessor :sentences
+      
+        # Tokens, along with their syntactic information, in the input document.
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
+        attr_accessor :tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @sentences = args[:sentences] if args.key?(:sentences)
+          @tokens = args[:tokens] if args.key?(:tokens)
+        end
+      end
+      
       # The request message for the text annotation API, which can perform multiple
       # analysis types (sentiment, entities, and syntax) in one call.
       class AnnotateTextRequest
@@ -317,6 +317,19 @@ module Google
       class AnnotateTextResponse
         include Google::Apis::Core::Hashable
       
+        # Sentences in the input document. Populated if the user enables
+        # AnnotateTextRequest.Features.extract_syntax.
+        # Corresponds to the JSON property `sentences`
+        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
+        attr_accessor :sentences
+      
+        # Tokens, along with their syntactic information, in the input document.
+        # Populated if the user enables
+        # AnnotateTextRequest.Features.extract_syntax.
+        # Corresponds to the JSON property `tokens`
+        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
+        attr_accessor :tokens
+      
         # Entities, along with their semantic information, in the input document.
         # Populated if the user enables
         # AnnotateTextRequest.Features.extract_entities.
@@ -337,30 +350,17 @@ module Google
         # @return [String]
         attr_accessor :language
       
-        # Sentences in the input document. Populated if the user enables
-        # AnnotateTextRequest.Features.extract_syntax.
-        # Corresponds to the JSON property `sentences`
-        # @return [Array<Google::Apis::LanguageV1beta1::Sentence>]
-        attr_accessor :sentences
-      
-        # Tokens, along with their syntactic information, in the input document.
-        # Populated if the user enables
-        # AnnotateTextRequest.Features.extract_syntax.
-        # Corresponds to the JSON property `tokens`
-        # @return [Array<Google::Apis::LanguageV1beta1::Token>]
-        attr_accessor :tokens
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @sentences = args[:sentences] if args.key?(:sentences)
+          @tokens = args[:tokens] if args.key?(:tokens)
           @entities = args[:entities] if args.key?(:entities)
           @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
           @language = args[:language] if args.key?(:language)
-          @sentences = args[:sentences] if args.key?(:sentences)
-          @tokens = args[:tokens] if args.key?(:tokens)
         end
       end
       
@@ -450,11 +450,6 @@ module Google
       class Token
         include Google::Apis::Core::Hashable
       
-        # Represents part of speech information for a token.
-        # Corresponds to the JSON property `partOfSpeech`
-        # @return [Google::Apis::LanguageV1beta1::PartOfSpeech]
-        attr_accessor :part_of_speech
-      
         # Represents an output piece of text.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::LanguageV1beta1::TextSpan]
@@ -470,16 +465,21 @@ module Google
         # @return [String]
         attr_accessor :lemma
       
+        # Represents part of speech information for a token.
+        # Corresponds to the JSON property `partOfSpeech`
+        # @return [Google::Apis::LanguageV1beta1::PartOfSpeech]
+        attr_accessor :part_of_speech
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @part_of_speech = args[:part_of_speech] if args.key?(:part_of_speech)
           @text = args[:text] if args.key?(:text)
           @dependency_edge = args[:dependency_edge] if args.key?(:dependency_edge)
           @lemma = args[:lemma] if args.key?(:lemma)
+          @part_of_speech = args[:part_of_speech] if args.key?(:part_of_speech)
         end
       end
       
@@ -497,7 +497,7 @@ module Google
       # error message is needed, put the localized message in the error details or
       # localize it in the client. The optional error details may contain arbitrary
       # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` which can be used for common error conditions.
+      # in the package `google.rpc` that can be used for common error conditions.
       # # Language mapping
       # The `Status` message is the logical representation of the error model, but it
       # is not necessarily the actual wire format. When the `Status` message is
@@ -513,7 +513,7 @@ module Google
       # it may embed the `Status` in the normal response to indicate the partial
       # errors.
       # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting purpose.
+      # have a `Status` message for error reporting.
       # - Batch operations. If a client uses batch request and batch response, the
       # `Status` message should be used directly inside batch response, one for
       # each error sub-response.
@@ -524,13 +524,6 @@ module Google
       # be used directly after any stripping needed for security/privacy reasons.
       class Status
         include Google::Apis::Core::Hashable
-      
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
       
         # A list of messages that carry the error details.  There will be a
         # common set of message types for APIs to use.
@@ -543,15 +536,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -647,18 +647,6 @@ module Google
       class Document
         include Google::Apis::Core::Hashable
       
-        # The language of the document (if not specified, the language is
-        # automatically detected). Both ISO and BCP-47 language codes are
-        # accepted.<br>
-        # [Language Support](https://cloud.google.com/natural-language/docs/languages)
-        # lists currently supported languages for each API method.
-        # If the language (either specified by the caller or automatically detected)
-        # is not supported by the called API method, an `INVALID_ARGUMENT` error
-        # is returned.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
         # Required. If the type is not set or is `TYPE_UNSPECIFIED`,
         # returns an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `type`
@@ -678,16 +666,28 @@ module Google
         # @return [String]
         attr_accessor :gcs_content_uri
       
+        # The language of the document (if not specified, the language is
+        # automatically detected). Both ISO and BCP-47 language codes are
+        # accepted.<br>
+        # [Language Support](/natural-language/docs/languages)
+        # lists currently supported languages for each API method.
+        # If the language (either specified by the caller or automatically detected)
+        # is not supported by the called API method, an `INVALID_ARGUMENT` error
+        # is returned.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @language = args[:language] if args.key?(:language)
           @type = args[:type] if args.key?(:type)
           @content = args[:content] if args.key?(:content)
           @gcs_content_uri = args[:gcs_content_uri] if args.key?(:gcs_content_uri)
+          @language = args[:language] if args.key?(:language)
         end
       end
       

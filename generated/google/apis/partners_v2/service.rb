@@ -34,25 +34,88 @@ module Google
       # @see https://developers.google.com/partners/
       class PartnersService < Google::Apis::Core::BaseService
         # @return [String]
-        #  API key. Your API key identifies your project and provides you with API access,
-        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
-        attr_accessor :key
-
-        # @return [String]
         #  Available to use for quota purposes for server-side applications. Can be any
         #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
+
+        # @return [String]
+        #  API key. Your API key identifies your project and provides you with API access,
+        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
+        attr_accessor :key
 
         def initialize
           super('https://partners.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
-        # Lists the Offers available for the current user
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
+        # Lists advertiser leads for a user's associated company.
+        # Should only be called within the context of an authorized logged in user.
         # @param [String] request_metadata_partners_session_id
         #   Google Partners session ID.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] page_token
+        #   A token identifying a page of results that the server returns.
+        #   Typically, this is the value of `ListLeadsResponse.next_page_token`
+        #   returned from the previous call to
+        #   ListLeads.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer leads than requested.
+        #   If unspecified, server picks an appropriate default.
+        # @param [String] request_metadata_traffic_source_traffic_source_id
+        #   Identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_locale
+        #   Locale to use for the current request.
+        # @param [String] request_metadata_user_overrides_ip_address
+        #   IP address to use instead of the user's geo-located IP address.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] order_by
+        #   How to order Leads. Currently, only `create_time`
+        #   and `create_time desc` are supported
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PartnersV2::ListLeadsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PartnersV2::ListLeadsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_leads(request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, order_by: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/leads', options)
+          command.response_representation = Google::Apis::PartnersV2::ListLeadsResponse::Representation
+          command.response_class = Google::Apis::PartnersV2::ListLeadsResponse
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
+          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
+          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
+          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Offers available for the current user
         # @param [String] request_metadata_traffic_source_traffic_source_id
         #   Identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
@@ -67,6 +130,10 @@ module Google
         #   Second level identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
         #   traffic to us.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -84,17 +151,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_offers(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_offers(request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/offers', options)
           command.response_representation = Google::Apis::PartnersV2::ListOffersResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListOffersResponse
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
           command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
           command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
           command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -121,16 +188,16 @@ module Google
         #   Experiment IDs the current request belongs to.
         # @param [Boolean] entire_company
         #   if true, show history for the entire company.  Requires user to be admin.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
         # @param [String] order_by
         #   Comma-separated list of fields to order by, e.g.: "foo,bar,baz".
         #   Use "foo desc" to sort descending.
         #   List of valid field names is: name, offer_code, expiration_time, status,
         #   last_modified_time, sender_name, creation_time, country_code,
         #   offer_type.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -148,7 +215,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_offer_histories(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, entire_company: nil, request_metadata_traffic_source_traffic_sub_id: nil, order_by: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_offer_histories(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, entire_company: nil, order_by: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/offers/history', options)
           command.response_representation = Google::Apis::PartnersV2::ListOffersHistoryResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListOffersHistoryResponse
@@ -161,8 +228,8 @@ module Google
           command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
           command.query['entireCompany'] = entire_company unless entire_company.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -170,6 +237,12 @@ module Google
         
         # Lists analytics data for a user's associated company.
         # Should only be called within the context of an authorized logged in user.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
         # @param [String] request_metadata_user_overrides_user_id
         #   Logged-in user ID to impersonate instead of the user's ID.
         # @param [String] request_metadata_partners_session_id
@@ -198,12 +271,6 @@ module Google
         #   Locale to use for the current request.
         # @param [String] request_metadata_user_overrides_ip_address
         #   IP address to use instead of the user's geo-located IP address.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -221,10 +288,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_analytics(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_analytics(request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/analytics', options)
           command.response_representation = Google::Apis::PartnersV2::ListAnalyticsResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListAnalyticsResponse
+          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
           command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
           command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -232,22 +301,12 @@ module Google
           command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
           command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
           command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists states for current user.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
         # @param [String] request_metadata_traffic_source_traffic_source_id
         #   Identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
@@ -258,6 +317,14 @@ module Google
         #   IP address to use instead of the user's geo-located IP address.
         # @param [Array<String>, String] request_metadata_experiment_ids
         #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -275,17 +342,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_states(request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_user_states(request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/userStates', options)
           command.response_representation = Google::Apis::PartnersV2::ListUserStatesResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListUserStatesResponse
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
           command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
           command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -346,14 +413,10 @@ module Google
         
         # Updates the specified lead.
         # @param [Google::Apis::PartnersV2::Lead] lead_object
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
         # @param [String] request_metadata_user_overrides_user_id
         #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
         # @param [String] request_metadata_traffic_source_traffic_source_id
         #   Identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
@@ -368,6 +431,10 @@ module Google
         #   Only `state` and `adwords_customer_id` are currently supported.
         # @param [Array<String>, String] request_metadata_experiment_ids
         #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -385,20 +452,20 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_leads(lead_object = nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, update_mask: nil, request_metadata_experiment_ids: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def update_leads(lead_object = nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, update_mask: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v2/leads', options)
           command.request_representation = Google::Apis::PartnersV2::Lead::Representation
           command.request_object = lead_object
           command.response_representation = Google::Apis::PartnersV2::Lead::Representation
           command.response_class = Google::Apis::PartnersV2::Lead
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
           command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
           command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -464,28 +531,239 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a company.
-        # @param [String] company_id
-        #   The ID of the company to retrieve.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] view
-        #   The view of `Company` resource to be returned. This must not be
-        #   `COMPANY_VIEW_UNSPECIFIED`.
-        # @param [String] address
-        #   The address to use for sorting the company's addresses by proximity.
-        #   If not given, the geo-located address of the request is used.
-        #   Used when order_by is set.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
+        # Creates a user's company relation. Affiliates the user to a company.
+        # @param [String] user_id
+        #   The ID of the user. Can be set to <code>me</code> to mean
+        #   the currently authenticated user.
+        # @param [Google::Apis::PartnersV2::CompanyRelation] company_relation_object
         # @param [String] request_metadata_traffic_source_traffic_source_id
         #   Identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
         #   traffic to us.
+        # @param [String] request_metadata_locale
+        #   Locale to use for the current request.
         # @param [String] request_metadata_user_overrides_ip_address
         #   IP address to use instead of the user's geo-located IP address.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PartnersV2::CompanyRelation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PartnersV2::CompanyRelation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_company_relation(user_id, company_relation_object = nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v2/users/{userId}/companyRelation', options)
+          command.request_representation = Google::Apis::PartnersV2::CompanyRelation::Representation
+          command.request_object = company_relation_object
+          command.response_representation = Google::Apis::PartnersV2::CompanyRelation::Representation
+          command.response_class = Google::Apis::PartnersV2::CompanyRelation
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
+          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
+          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
+          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a user's company relation. Unaffiliaites the user from a company.
+        # @param [String] user_id
+        #   The ID of the user. Can be set to <code>me</code> to mean
+        #   the currently authenticated user.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] request_metadata_traffic_source_traffic_source_id
+        #   Identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_locale
+        #   Locale to use for the current request.
+        # @param [String] request_metadata_user_overrides_ip_address
+        #   IP address to use instead of the user's geo-located IP address.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PartnersV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PartnersV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_company_relation(user_id, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2/users/{userId}/companyRelation', options)
+          command.response_representation = Google::Apis::PartnersV2::Empty::Representation
+          command.response_class = Google::Apis::PartnersV2::Empty
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
+          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
+          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
+          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a user.
+        # @param [String] user_id
+        #   Identifier of the user. Can be set to <code>me</code> to mean the currently
+        #   authenticated user.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
+        # @param [String] user_view
+        #   Specifies what parts of the user information to return.
+        # @param [String] request_metadata_traffic_source_traffic_source_id
+        #   Identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_locale
+        #   Locale to use for the current request.
+        # @param [String] request_metadata_user_overrides_ip_address
+        #   IP address to use instead of the user's geo-located IP address.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PartnersV2::User] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PartnersV2::User]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user(user_id, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, user_view: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/users/{userId}', options)
+          command.response_representation = Google::Apis::PartnersV2::User::Representation
+          command.response_class = Google::Apis::PartnersV2::User
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['userView'] = user_view unless user_view.nil?
+          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
+          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
+          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
+          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a user's profile. A user can only update their own profile and
+        # should only be called within the context of a logged in user.
+        # @param [Google::Apis::PartnersV2::UserProfile] user_profile_object
+        # @param [String] request_metadata_traffic_source_traffic_source_id
+        #   Identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_locale
+        #   Locale to use for the current request.
+        # @param [String] request_metadata_user_overrides_ip_address
+        #   IP address to use instead of the user's geo-located IP address.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PartnersV2::UserProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PartnersV2::UserProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_profile(user_profile_object = nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2/users/profile', options)
+          command.request_representation = Google::Apis::PartnersV2::UserProfile::Representation
+          command.request_object = user_profile_object
+          command.response_representation = Google::Apis::PartnersV2::UserProfile::Representation
+          command.response_class = Google::Apis::PartnersV2::UserProfile
+          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
+          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
+          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
+          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a company.
+        # @param [String] company_id
+        #   The ID of the company to retrieve.
         # @param [Array<String>, String] request_metadata_experiment_ids
         #   Experiment IDs the current request belongs to.
         # @param [String] currency_code
@@ -500,6 +778,25 @@ module Google
         #   Second level identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
         #   traffic to us.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
+        # @param [String] view
+        #   The view of `Company` resource to be returned. This must not be
+        #   `COMPANY_VIEW_UNSPECIFIED`.
+        # @param [String] request_metadata_locale
+        #   Locale to use for the current request.
+        # @param [String] address
+        #   The address to use for sorting the company's addresses by proximity.
+        #   If not given, the geo-located address of the request is used.
+        #   Used when order_by is set.
+        # @param [String] request_metadata_traffic_source_traffic_source_id
+        #   Identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_user_overrides_ip_address
+        #   IP address to use instead of the user's geo-located IP address.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -517,28 +814,41 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_company(company_id, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, view: nil, address: nil, request_metadata_locale: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, currency_code: nil, order_by: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def get_company(company_id, request_metadata_experiment_ids: nil, currency_code: nil, order_by: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, view: nil, request_metadata_locale: nil, address: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_user_overrides_ip_address: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/companies/{companyId}', options)
           command.response_representation = Google::Apis::PartnersV2::GetCompanyResponse::Representation
           command.response_class = Google::Apis::PartnersV2::GetCompanyResponse
           command.params['companyId'] = company_id unless company_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['view'] = view unless view.nil?
-          command.query['address'] = address unless address.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
           command.query['currencyCode'] = currency_code unless currency_code.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
+          command.query['address'] = address unless address.nil?
+          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
+          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists companies.
+        # @param [Fixnum] min_monthly_budget_nanos
+        #   Number of nano (10^-9) units of the amount.
+        #   The value must be between -999,999,999 and +999,999,999 inclusive.
+        #   If `units` is positive, `nanos` must be positive or zero.
+        #   If `units` is zero, `nanos` can be positive, zero, or negative.
+        #   If `units` is negative, `nanos` must be negative or zero.
+        #   For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
         # @param [String] company_name
         #   Company name to search for.
         # @param [String] page_token
@@ -576,10 +886,10 @@ module Google
         #   specializations, or one of the services in the "services" field.
         # @param [String] max_monthly_budget_currency_code
         #   The 3-letter currency code defined in ISO 4217.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
         # @param [String] min_monthly_budget_currency_code
         #   The 3-letter currency code defined in ISO 4217.
+        # @param [String] request_metadata_user_overrides_user_id
+        #   Logged-in user ID to impersonate instead of the user's ID.
         # @param [String] view
         #   The view of the `Company` resource to be returned. This must not be
         #   `COMPANY_VIEW_UNSPECIFIED`.
@@ -609,19 +919,6 @@ module Google
         #   Identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
         #   traffic to us.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [Fixnum] min_monthly_budget_nanos
-        #   Number of nano (10^-9) units of the amount.
-        #   The value must be between -999,999,999 and +999,999,999 inclusive.
-        #   If `units` is positive, `nanos` must be positive or zero.
-        #   If `units` is zero, `nanos` can be positive, zero, or negative.
-        #   If `units` is negative, `nanos` must be negative or zero.
-        #   For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -639,10 +936,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_companies(company_name: nil, page_token: nil, industries: nil, website_url: nil, gps_motivations: nil, language_codes: nil, page_size: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, order_by: nil, specializations: nil, max_monthly_budget_currency_code: nil, request_metadata_user_overrides_user_id: nil, min_monthly_budget_currency_code: nil, view: nil, request_metadata_locale: nil, address: nil, min_monthly_budget_units: nil, max_monthly_budget_nanos: nil, services: nil, max_monthly_budget_units: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_traffic_source_traffic_sub_id: nil, min_monthly_budget_nanos: nil, request_metadata_partners_session_id: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_companies(min_monthly_budget_nanos: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, company_name: nil, page_token: nil, industries: nil, website_url: nil, gps_motivations: nil, language_codes: nil, page_size: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, order_by: nil, specializations: nil, max_monthly_budget_currency_code: nil, min_monthly_budget_currency_code: nil, request_metadata_user_overrides_user_id: nil, view: nil, request_metadata_locale: nil, address: nil, min_monthly_budget_units: nil, max_monthly_budget_nanos: nil, services: nil, max_monthly_budget_units: nil, request_metadata_traffic_source_traffic_source_id: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/companies', options)
           command.response_representation = Google::Apis::PartnersV2::ListCompaniesResponse::Representation
           command.response_class = Google::Apis::PartnersV2::ListCompaniesResponse
+          command.query['minMonthlyBudget.nanos'] = min_monthly_budget_nanos unless min_monthly_budget_nanos.nil?
+          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
+          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['companyName'] = company_name unless company_name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['industries'] = industries unless industries.nil?
@@ -655,8 +955,8 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['specializations'] = specializations unless specializations.nil?
           command.query['maxMonthlyBudget.currencyCode'] = max_monthly_budget_currency_code unless max_monthly_budget_currency_code.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
           command.query['minMonthlyBudget.currencyCode'] = min_monthly_budget_currency_code unless min_monthly_budget_currency_code.nil?
+          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
           command.query['view'] = view unless view.nil?
           command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
           command.query['address'] = address unless address.nil?
@@ -665,9 +965,6 @@ module Google
           command.query['services'] = services unless services.nil?
           command.query['maxMonthlyBudget.units'] = max_monthly_budget_units unless max_monthly_budget_units.nil?
           command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['minMonthlyBudget.nanos'] = min_monthly_budget_nanos unless min_monthly_budget_nanos.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -701,236 +998,6 @@ module Google
           command.response_representation = Google::Apis::PartnersV2::CreateLeadResponse::Representation
           command.response_class = Google::Apis::PartnersV2::CreateLeadResponse
           command.params['companyId'] = company_id unless company_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a user's company relation. Affiliates the user to a company.
-        # @param [String] user_id
-        #   The ID of the user. Can be set to <code>me</code> to mean
-        #   the currently authenticated user.
-        # @param [Google::Apis::PartnersV2::CompanyRelation] company_relation_object
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] request_metadata_traffic_source_traffic_source_id
-        #   Identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
-        # @param [String] request_metadata_user_overrides_ip_address
-        #   IP address to use instead of the user's geo-located IP address.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PartnersV2::CompanyRelation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PartnersV2::CompanyRelation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_company_relation(user_id, company_relation_object = nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/users/{userId}/companyRelation', options)
-          command.request_representation = Google::Apis::PartnersV2::CompanyRelation::Representation
-          command.request_object = company_relation_object
-          command.response_representation = Google::Apis::PartnersV2::CompanyRelation::Representation
-          command.response_class = Google::Apis::PartnersV2::CompanyRelation
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a user's company relation. Unaffiliaites the user from a company.
-        # @param [String] user_id
-        #   The ID of the user. Can be set to <code>me</code> to mean
-        #   the currently authenticated user.
-        # @param [String] request_metadata_traffic_source_traffic_source_id
-        #   Identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
-        # @param [String] request_metadata_user_overrides_ip_address
-        #   IP address to use instead of the user's geo-located IP address.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PartnersV2::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PartnersV2::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user_company_relation(user_id, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2/users/{userId}/companyRelation', options)
-          command.response_representation = Google::Apis::PartnersV2::Empty::Representation
-          command.response_class = Google::Apis::PartnersV2::Empty
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a user.
-        # @param [String] user_id
-        #   Identifier of the user. Can be set to <code>me</code> to mean the currently
-        #   authenticated user.
-        # @param [String] request_metadata_user_overrides_ip_address
-        #   IP address to use instead of the user's geo-located IP address.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] user_view
-        #   Specifies what parts of the user information to return.
-        # @param [String] request_metadata_traffic_source_traffic_source_id
-        #   Identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PartnersV2::User] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PartnersV2::User]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user(user_id, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, user_view: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/users/{userId}', options)
-          command.response_representation = Google::Apis::PartnersV2::User::Representation
-          command.response_class = Google::Apis::PartnersV2::User
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['userView'] = user_view unless user_view.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a user's profile. A user can only update their own profile and
-        # should only be called within the context of a logged in user.
-        # @param [Google::Apis::PartnersV2::UserProfile] user_profile_object
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] request_metadata_traffic_source_traffic_source_id
-        #   Identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
-        # @param [String] request_metadata_user_overrides_ip_address
-        #   IP address to use instead of the user's geo-located IP address.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PartnersV2::UserProfile] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PartnersV2::UserProfile]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_profile(user_profile_object = nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v2/users/profile', options)
-          command.request_representation = Google::Apis::PartnersV2::UserProfile::Representation
-          command.request_object = user_profile_object
-          command.response_representation = Google::Apis::PartnersV2::UserProfile::Representation
-          command.response_class = Google::Apis::PartnersV2::UserProfile
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1001,16 +1068,10 @@ module Google
         # Gets an Exam Token for a Partner's user to take an exam in the Exams System
         # @param [String] exam_type
         #   The exam type we are requesting a token for.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
         # @param [String] request_metadata_user_overrides_user_id
         #   Logged-in user ID to impersonate instead of the user's ID.
+        # @param [String] request_metadata_partners_session_id
+        #   Google Partners session ID.
         # @param [String] request_metadata_traffic_source_traffic_source_id
         #   Identifier to indicate where the traffic comes from.
         #   An identifier has multiple letters created by a team which redirected the
@@ -1019,6 +1080,12 @@ module Google
         #   Locale to use for the current request.
         # @param [String] request_metadata_user_overrides_ip_address
         #   IP address to use instead of the user's geo-located IP address.
+        # @param [Array<String>, String] request_metadata_experiment_ids
+        #   Experiment IDs the current request belongs to.
+        # @param [String] request_metadata_traffic_source_traffic_sub_id
+        #   Second level identifier to indicate where the traffic comes from.
+        #   An identifier has multiple letters created by a team which redirected the
+        #   traffic to us.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1036,85 +1103,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_exam_token(exam_type, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_partners_session_id: nil, request_metadata_user_overrides_user_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def get_exam_token(exam_type, request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/exams/{examType}/token', options)
           command.response_representation = Google::Apis::PartnersV2::ExamToken::Representation
           command.response_class = Google::Apis::PartnersV2::ExamToken
           command.params['examType'] = exam_type unless exam_type.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists advertiser leads for a user's associated company.
-        # Should only be called within the context of an authorized logged in user.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] page_token
-        #   A token identifying a page of results that the server returns.
-        #   Typically, this is the value of `ListLeadsResponse.next_page_token`
-        #   returned from the previous call to
-        #   ListLeads.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer leads than requested.
-        #   If unspecified, server picks an appropriate default.
-        # @param [String] request_metadata_traffic_source_traffic_source_id
-        #   Identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
-        # @param [String] request_metadata_user_overrides_ip_address
-        #   IP address to use instead of the user's geo-located IP address.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] order_by
-        #   How to order Leads. Currently, only `create_time`
-        #   and `create_time desc` are supported
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PartnersV2::ListLeadsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PartnersV2::ListLeadsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_leads(request_metadata_user_overrides_user_id: nil, request_metadata_partners_session_id: nil, page_token: nil, page_size: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_locale: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_experiment_ids: nil, request_metadata_traffic_source_traffic_sub_id: nil, order_by: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/leads', options)
-          command.response_representation = Google::Apis::PartnersV2::ListLeadsResponse::Representation
-          command.response_class = Google::Apis::PartnersV2::ListLeadsResponse
           command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
           command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
           command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
           command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
           command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
           command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1123,8 +1123,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['key'] = key unless key.nil?
         end
       end
     end

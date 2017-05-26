@@ -856,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesSetMinCpuPlatformRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesSetServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2979,6 +2985,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
       
@@ -3331,6 +3338,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
+          property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
       
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
@@ -3433,6 +3441,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :machine_type, as: 'machineType'
+        end
+      end
+      
+      class InstancesSetMinCpuPlatformRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
       
@@ -5129,6 +5144,7 @@ module Google
       class Zone
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_cpu_platforms, as: 'availableCpuPlatforms'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       

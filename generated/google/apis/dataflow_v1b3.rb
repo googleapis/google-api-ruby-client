@@ -25,7 +25,10 @@ module Google
     # @see https://cloud.google.com/dataflow
     module DataflowV1b3
       VERSION = 'V1b3'
-      REVISION = '20170318'
+      REVISION = '20170520'
+
+      # View and manage your Google Compute Engine resources
+      AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -802,7 +802,7 @@ module Google
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
         # @param [String] filter
-        #   A filter expression for filtering listed instances.
+        #   Reserved for future use.
         # @param [Fixnum] max_results
         #   The maximum number of results to return per response.
         # @param [String] page_token

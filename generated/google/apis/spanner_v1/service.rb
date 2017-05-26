@@ -48,10 +48,18 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets information about a particular instance.
-        # @param [String] name
-        #   Required. The name of the requested instance. Values are of the form
-        #   `projects/<project>/instances/<instance>`.
+        # Lists the supported instance configurations for a given project.
+        # @param [String] parent
+        #   Required. The name of the project for which a list of supported instance
+        #   configurations is requested. Values are of the form
+        #   `projects/<project>`.
+        # @param [Fixnum] page_size
+        #   Number of instance configurations to be returned in the response. If 0 or
+        #   less, defaults to the server's maximum allowed page size.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a
+        #   next_page_token
+        #   from a previous ListInstanceConfigsResponse.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -61,126 +69,52 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::Instance] parsed result object
+        # @yieldparam result [Google::Apis::SpannerV1::ListInstanceConfigsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SpannerV1::Instance]
+        # @return [Google::Apis::SpannerV1::ListInstanceConfigsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance(name, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_instance_configs(parent, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/instanceConfigs', options)
+          command.response_representation = Google::Apis::SpannerV1::ListInstanceConfigsResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListInstanceConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a particular instance configuration.
+        # @param [String] name
+        #   Required. The name of the requested instance configuration. Values are of
+        #   the form `projects/<project>/instanceConfigs/<config>`.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::InstanceConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::InstanceConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_config(name, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::SpannerV1::Instance::Representation
-          command.response_class = Google::Apis::SpannerV1::Instance
+          command.response_representation = Google::Apis::SpannerV1::InstanceConfig::Representation
+          command.response_class = Google::Apis::SpannerV1::InstanceConfig
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an instance, and begins allocating or releasing resources
-        # as requested. The returned long-running
-        # operation can be used to track the
-        # progress of updating the instance. If the named instance does not
-        # exist, returns `NOT_FOUND`.
-        # Immediately upon completion of this request:
-        # * For resource types for which a decrease in the instance's allocation
-        # has been requested, billing is based on the newly-requested level.
-        # Until completion of the returned operation:
-        # * Cancelling the operation sets its metadata's
-        # cancel_time, and begins
-        # restoring resources to their pre-request values. The operation
-        # is guaranteed to succeed at undoing all resource changes,
-        # after which point it terminates with a `CANCELLED` status.
-        # * All other attempts to modify the instance are rejected.
-        # * Reading the instance via the API continues to give the pre-request
-        # resource levels.
-        # Upon completion of the returned operation:
-        # * Billing begins for all successfully-allocated resources (some types
-        # may have lower than the requested levels).
-        # * All newly-reserved resources are available for serving the instance's
-        # tables.
-        # * The instance's new resource levels are readable via the API.
-        # The returned long-running operation will
-        # have a name of the format `<instance_name>/operations/<operation_id>` and
-        # can be used to track the instance modification.  The
-        # metadata field type is
-        # UpdateInstanceMetadata.
-        # The response field type is
-        # Instance, if successful.
-        # Authorization requires `spanner.instances.update` permission on
-        # resource name.
-        # @param [String] name
-        #   Required. A unique identifier for the instance, which cannot be changed
-        #   after the instance is created. Values are of the form
-        #   `projects/<project>/instances/a-z*[a-z0-9]`. The final
-        #   segment of the name must be between 6 and 30 characters in length.
-        # @param [Google::Apis::SpannerV1::UpdateInstanceRequest] update_instance_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_instance(name, update_instance_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::SpannerV1::UpdateInstanceRequest::Representation
-          command.request_object = update_instance_request_object
-          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
-          command.response_class = Google::Apis::SpannerV1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns permissions that the caller has on the specified instance resource.
-        # Attempting this RPC on a non-existent Cloud Spanner instance resource will
-        # result in a NOT_FOUND error if the user has `spanner.instances.list`
-        # permission on the containing Google Cloud Project. Otherwise returns an
-        # empty set of permissions.
-        # @param [String] resource
-        #   REQUIRED: The Cloud Spanner resource for which permissions are being tested.
-        #   The format is `projects/<project ID>/instances/<instance ID>` for instance
-        #   resources and `projects/<project ID>/instances/<instance ID>/databases/<
-        #   database ID>` for database resources.
-        # @param [Google::Apis::SpannerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::TestIamPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::TestIamPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_instance_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
-          command.request_representation = Google::Apis::SpannerV1::TestIamPermissionsRequest::Representation
-          command.request_object = test_iam_permissions_request_object
-          command.response_representation = Google::Apis::SpannerV1::TestIamPermissionsResponse::Representation
-          command.response_class = Google::Apis::SpannerV1::TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -227,6 +161,10 @@ module Google
         # @param [String] parent
         #   Required. The name of the project for which a list of instances is
         #   requested. Values are of the form `projects/<project>`.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a
+        #   next_page_token from a
+        #   previous ListInstancesResponse.
         # @param [Fixnum] page_size
         #   Number of instances to be returned in the response. If 0 or less, defaults
         #   to the server's maximum allowed page size.
@@ -247,10 +185,6 @@ module Google
         #   * name:howl labels.env:dev --> The instance's name contains "howl" and
         #   it has the label "env" with its value
         #   containing "dev".
-        # @param [String] page_token
-        #   If non-empty, `page_token` should contain a
-        #   next_page_token from a
-        #   previous ListInstancesResponse.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -268,14 +202,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instances(parent, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_instances(parent, page_token: nil, page_size: nil, filter: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/instances', options)
           command.response_representation = Google::Apis::SpannerV1::ListInstancesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListInstancesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -419,17 +353,187 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets information about a particular instance.
+        # @param [String] name
+        #   Required. The name of the requested instance. Values are of the form
+        #   `projects/<project>/instances/<instance>`.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Instance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Instance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance(name, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::Instance::Representation
+          command.response_class = Google::Apis::SpannerV1::Instance
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an instance, and begins allocating or releasing resources
+        # as requested. The returned long-running
+        # operation can be used to track the
+        # progress of updating the instance. If the named instance does not
+        # exist, returns `NOT_FOUND`.
+        # Immediately upon completion of this request:
+        # * For resource types for which a decrease in the instance's allocation
+        # has been requested, billing is based on the newly-requested level.
+        # Until completion of the returned operation:
+        # * Cancelling the operation sets its metadata's
+        # cancel_time, and begins
+        # restoring resources to their pre-request values. The operation
+        # is guaranteed to succeed at undoing all resource changes,
+        # after which point it terminates with a `CANCELLED` status.
+        # * All other attempts to modify the instance are rejected.
+        # * Reading the instance via the API continues to give the pre-request
+        # resource levels.
+        # Upon completion of the returned operation:
+        # * Billing begins for all successfully-allocated resources (some types
+        # may have lower than the requested levels).
+        # * All newly-reserved resources are available for serving the instance's
+        # tables.
+        # * The instance's new resource levels are readable via the API.
+        # The returned long-running operation will
+        # have a name of the format `<instance_name>/operations/<operation_id>` and
+        # can be used to track the instance modification.  The
+        # metadata field type is
+        # UpdateInstanceMetadata.
+        # The response field type is
+        # Instance, if successful.
+        # Authorization requires `spanner.instances.update` permission on
+        # resource name.
+        # @param [String] name
+        #   Required. A unique identifier for the instance, which cannot be changed
+        #   after the instance is created. Values are of the form
+        #   `projects/<project>/instances/a-z*[a-z0-9]`. The final
+        #   segment of the name must be between 6 and 30 characters in length.
+        # @param [Google::Apis::SpannerV1::UpdateInstanceRequest] update_instance_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_instance(name, update_instance_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SpannerV1::UpdateInstanceRequest::Representation
+          command.request_object = update_instance_request_object
+          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
+          command.response_class = Google::Apis::SpannerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that the caller has on the specified instance resource.
+        # Attempting this RPC on a non-existent Cloud Spanner instance resource will
+        # result in a NOT_FOUND error if the user has `spanner.instances.list`
+        # permission on the containing Google Cloud Project. Otherwise returns an
+        # empty set of permissions.
+        # @param [String] resource
+        #   REQUIRED: The Cloud Spanner resource for which permissions are being tested.
+        #   The format is `projects/<project ID>/instances/<instance ID>` for instance
+        #   resources and `projects/<project ID>/instances/<instance ID>/databases/<
+        #   database ID>` for database resources.
+        # @param [Google::Apis::SpannerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_instance_iam_permissions(resource, test_iam_permissions_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::SpannerV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::SpannerV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the schema of a Cloud Spanner database as a list of formatted
+        # DDL statements. This method does not show pending schema updates, those may
+        # be queried using the Operations API.
+        # @param [String] database
+        #   Required. The database whose schema we wish to get.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::GetDatabaseDdlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::GetDatabaseDdlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_database_ddl(database, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+database}/ddl', options)
+          command.response_representation = Google::Apis::SpannerV1::GetDatabaseDdlResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::GetDatabaseDdlResponse
+          command.params['database'] = database unless database.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Cloud Spanner databases.
         # @param [String] parent
         #   Required. The instance whose databases should be listed.
         #   Values are of the form `projects/<project>/instances/<instance>`.
-        # @param [Fixnum] page_size
-        #   Number of databases to be returned in the response. If 0 or less,
-        #   defaults to the server's maximum allowed page size.
         # @param [String] page_token
         #   If non-empty, `page_token` should contain a
         #   next_page_token from a
         #   previous ListDatabasesResponse.
+        # @param [Fixnum] page_size
+        #   Number of databases to be returned in the response. If 0 or less,
+        #   defaults to the server's maximum allowed page size.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -447,13 +551,52 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_databases(parent, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_instance_databases(parent, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/databases', options)
           command.response_representation = Google::Apis::SpannerV1::ListDatabasesResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListDatabasesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on a database resource. Replaces any
+        # existing policy.
+        # Authorization requires `spanner.databases.setIamPolicy` permission on
+        # resource.
+        # @param [String] resource
+        #   REQUIRED: The Cloud Spanner resource for which the policy is being set. The
+        #   format is `projects/<project ID>/instances/<instance ID>` for instance
+        #   resources and `projects/<project ID>/instances/<instance ID>/databases/<
+        #   database ID>` for databases resources.
+        # @param [Google::Apis::SpannerV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_database_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::SpannerV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::SpannerV1::Policy::Representation
+          command.response_class = Google::Apis::SpannerV1::Policy
+          command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -495,45 +638,6 @@ module Google
           command.response_representation = Google::Apis::SpannerV1::Operation::Representation
           command.response_class = Google::Apis::SpannerV1::Operation
           command.params['parent'] = parent unless parent.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy on a database resource. Replaces any
-        # existing policy.
-        # Authorization requires `spanner.databases.setIamPolicy` permission on
-        # resource.
-        # @param [String] resource
-        #   REQUIRED: The Cloud Spanner resource for which the policy is being set. The
-        #   format is `projects/<project ID>/instances/<instance ID>` for instance
-        #   resources and `projects/<project ID>/instances/<instance ID>/databases/<
-        #   database ID>` for databases resources.
-        # @param [Google::Apis::SpannerV1::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_database_iam_policy(resource, set_iam_policy_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::SpannerV1::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::SpannerV1::Policy::Representation
-          command.response_class = Google::Apis::SpannerV1::Policy
-          command.params['resource'] = resource unless resource.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -718,50 +822,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the schema of a Cloud Spanner database as a list of formatted
-        # DDL statements. This method does not show pending schema updates, those may
-        # be queried using the Operations API.
-        # @param [String] database
-        #   Required. The database whose schema we wish to get.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::GetDatabaseDdlResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::GetDatabaseDdlResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_database_ddl(database, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+database}/ddl', options)
-          command.response_representation = Google::Apis::SpannerV1::GetDatabaseDdlResponse::Representation
-          command.response_class = Google::Apis::SpannerV1::GetDatabaseDdlResponse
-          command.params['database'] = database unless database.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding below allows API services to override the binding
         # to use different resource name schemes, such as `users/*/operations`.
         # @param [String] name
         #   The name of the operation collection.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
         # @param [String] filter
         #   The standard list filter.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -779,14 +851,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_database_operations(name, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_instance_database_operations(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -896,46 +968,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a session. Returns `NOT_FOUND` if the session does not exist.
-        # This is mainly useful for determining whether a session is still
-        # alive.
-        # @param [String] name
-        #   Required. The name of the session to retrieve.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::Session] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::Session]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_database_session(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::SpannerV1::Session::Representation
-          command.response_class = Google::Apis::SpannerV1::Session
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Like ExecuteSql, except returns the result
-        # set as a stream. Unlike ExecuteSql, there
-        # is no limit on the size of the returned result set. However, no
-        # individual row in the result set can exceed 100 MiB, and no
-        # column value can exceed 10 MiB.
+        # Commits a transaction. The request includes the mutations to be
+        # applied to rows in the database.
+        # `Commit` might return an `ABORTED` error. This can occur at any time;
+        # commonly, the cause is conflicts with concurrent
+        # transactions. However, it can also happen for a variety of other
+        # reasons. If `Commit` returns `ABORTED`, the caller should re-attempt
+        # the transaction from the beginning, re-using the same session.
         # @param [String] session
-        #   Required. The session in which the SQL query should be performed.
-        # @param [Google::Apis::SpannerV1::ExecuteSqlRequest] execute_sql_request_object
+        #   Required. The session in which the transaction to be committed is running.
+        # @param [Google::Apis::SpannerV1::CommitRequest] commit_request_object
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -945,51 +987,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::PartialResultSet] parsed result object
+        # @yieldparam result [Google::Apis::SpannerV1::CommitResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SpannerV1::PartialResultSet]
+        # @return [Google::Apis::SpannerV1::CommitResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def execute_project_instance_database_session_streaming_sql(session, execute_sql_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:executeStreamingSql', options)
-          command.request_representation = Google::Apis::SpannerV1::ExecuteSqlRequest::Representation
-          command.request_object = execute_sql_request_object
-          command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
-          command.response_class = Google::Apis::SpannerV1::PartialResultSet
+        def commit_session(session, commit_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+session}:commit', options)
+          command.request_representation = Google::Apis::SpannerV1::CommitRequest::Representation
+          command.request_object = commit_request_object
+          command.response_representation = Google::Apis::SpannerV1::CommitResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::CommitResponse
           command.params['session'] = session unless session.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Ends a session, releasing server resources associated with it.
-        # @param [String] name
-        #   Required. The name of the session to delete.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_instance_database_session(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::SpannerV1::Empty::Representation
-          command.response_class = Google::Apis::SpannerV1::Empty
-          command.params['name'] = name unless name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -1031,16 +1043,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Commits a transaction. The request includes the mutations to be
-        # applied to rows in the database.
-        # `Commit` might return an `ABORTED` error. This can occur at any time;
-        # commonly, the cause is conflicts with concurrent
-        # transactions. However, it can also happen for a variety of other
-        # reasons. If `Commit` returns `ABORTED`, the caller should re-attempt
-        # the transaction from the beginning, re-using the same session.
-        # @param [String] session
-        #   Required. The session in which the transaction to be committed is running.
-        # @param [Google::Apis::SpannerV1::CommitRequest] commit_request_object
+        # Ends a session, releasing server resources associated with it.
+        # @param [String] name
+        #   Required. The name of the session to delete.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -1050,20 +1055,55 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::CommitResponse] parsed result object
+        # @yieldparam result [Google::Apis::SpannerV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SpannerV1::CommitResponse]
+        # @return [Google::Apis::SpannerV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_session(session, commit_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:commit', options)
-          command.request_representation = Google::Apis::SpannerV1::CommitRequest::Representation
-          command.request_object = commit_request_object
-          command.response_representation = Google::Apis::SpannerV1::CommitResponse::Representation
-          command.response_class = Google::Apis::SpannerV1::CommitResponse
+        def delete_project_instance_database_session(name, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::Empty::Representation
+          command.response_class = Google::Apis::SpannerV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Like ExecuteSql, except returns the result
+        # set as a stream. Unlike ExecuteSql, there
+        # is no limit on the size of the returned result set. However, no
+        # individual row in the result set can exceed 100 MiB, and no
+        # column value can exceed 10 MiB.
+        # @param [String] session
+        #   Required. The session in which the SQL query should be performed.
+        # @param [Google::Apis::SpannerV1::ExecuteSqlRequest] execute_sql_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::PartialResultSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::PartialResultSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_project_instance_database_session_streaming_sql(session, execute_sql_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+session}:executeStreamingSql', options)
+          command.request_representation = Google::Apis::SpannerV1::ExecuteSqlRequest::Representation
+          command.request_object = execute_sql_request_object
+          command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
+          command.response_class = Google::Apis::SpannerV1::PartialResultSet
           command.params['session'] = session unless session.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1111,6 +1151,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Like Read, except returns the result set as a
+        # stream. Unlike Read, there is no limit on the
+        # size of the returned result set. However, no individual row in
+        # the result set can exceed 100 MiB, and no column value can exceed
+        # 10 MiB.
+        # @param [String] session
+        #   Required. The session in which the read should be performed.
+        # @param [Google::Apis::SpannerV1::ReadRequest] read_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::PartialResultSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::PartialResultSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def streaming_project_instance_database_session_read(session, read_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+session}:streamingRead', options)
+          command.request_representation = Google::Apis::SpannerV1::ReadRequest::Representation
+          command.request_object = read_request_object
+          command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
+          command.response_class = Google::Apis::SpannerV1::PartialResultSet
+          command.params['session'] = session unless session.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Rolls back a transaction, releasing any locks it holds. It is a good
         # idea to call this for any transaction that includes one or more
         # Read or ExecuteSql requests and
@@ -1144,43 +1221,6 @@ module Google
           command.request_object = rollback_request_object
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
-          command.params['session'] = session unless session.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Like Read, except returns the result set as a
-        # stream. Unlike Read, there is no limit on the
-        # size of the returned result set. However, no individual row in
-        # the result set can exceed 100 MiB, and no column value can exceed
-        # 10 MiB.
-        # @param [String] session
-        #   Required. The session in which the read should be performed.
-        # @param [Google::Apis::SpannerV1::ReadRequest] read_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::PartialResultSet] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::PartialResultSet]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def streaming_project_instance_database_session_read(session, read_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+session}:streamingRead', options)
-          command.request_representation = Google::Apis::SpannerV1::ReadRequest::Representation
-          command.request_object = read_request_object
-          command.response_representation = Google::Apis::SpannerV1::PartialResultSet::Representation
-          command.response_class = Google::Apis::SpannerV1::PartialResultSet
           command.params['session'] = session unless session.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1275,6 +1315,112 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a session. Returns `NOT_FOUND` if the session does not exist.
+        # This is mainly useful for determining whether a session is still
+        # alive.
+        # @param [String] name
+        #   Required. The name of the session to retrieve.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Session] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Session]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_database_session(name, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::Session::Representation
+          command.response_class = Google::Apis::SpannerV1::Session
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the
+        # server doesn't support this method, it returns `UNIMPLEMENTED`.
+        # NOTE: the `name` binding below allows API services to override the binding
+        # to use different resource name schemes, such as `users/*/operations`.
+        # @param [String] name
+        #   The name of the operation collection.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_operations(name, page_token: nil, page_size: nil, filter: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation.  Clients can use this
+        # method to poll the operation result at intervals as recommended by the API
+        # service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_operation(name, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
+          command.response_class = Google::Apis::SpannerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation.  The server
         # makes a best effort to cancel the operation, but success is not
         # guaranteed.  If the server doesn't support this method, it returns
@@ -1341,152 +1487,6 @@ module Google
           command =  make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Empty::Representation
           command.response_class = Google::Apis::SpannerV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding below allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`.
-        # @param [String] name
-        #   The name of the operation collection.
-        # @param [String] filter
-        #   The standard list filter.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_operations(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
-          command.params['name'] = name unless name.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
-        # @param [String] name
-        #   The name of the operation resource.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
-          command.response_class = Google::Apis::SpannerV1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists the supported instance configurations for a given project.
-        # @param [String] parent
-        #   Required. The name of the project for which a list of supported instance
-        #   configurations is requested. Values are of the form
-        #   `projects/<project>`.
-        # @param [String] page_token
-        #   If non-empty, `page_token` should contain a
-        #   next_page_token
-        #   from a previous ListInstanceConfigsResponse.
-        # @param [Fixnum] page_size
-        #   Number of instance configurations to be returned in the response. If 0 or
-        #   less, defaults to the server's maximum allowed page size.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::ListInstanceConfigsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::ListInstanceConfigsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_configs(parent, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/instanceConfigs', options)
-          command.response_representation = Google::Apis::SpannerV1::ListInstanceConfigsResponse::Representation
-          command.response_class = Google::Apis::SpannerV1::ListInstanceConfigsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets information about a particular instance configuration.
-        # @param [String] name
-        #   Required. The name of the requested instance configuration. Values are of
-        #   the form `projects/<project>/instanceConfigs/<config>`.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpannerV1::InstanceConfig] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpannerV1::InstanceConfig]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_config(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::SpannerV1::InstanceConfig::Representation
-          command.response_class = Google::Apis::SpannerV1::InstanceConfig
           command.params['name'] = name unless name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?

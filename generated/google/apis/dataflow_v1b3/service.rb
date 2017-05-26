@@ -80,16 +80,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Request the job status.
+        # Launch a template.
         # @param [String] project_id
-        #   A project id.
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
+        # @param [String] gcs_path
+        #   Required. A Cloud Storage path to the template from which to create
+        #   the job.
+        #   Must be valid Cloud Storage URL, beginning with 'gs://'.
         # @param [String] location
-        #   The location which contains the job specified by job_id.
-        # @param [String] job_id
-        #   The job to get messages for.
-        # @param [String] start_time
-        #   Return only metric data that has changed since this time.
-        #   Default is to return all information about all metrics for the job.
+        #   The location to which to direct the request.
+        # @param [Boolean] validate_only
+        #   If true, the request is validated but not actually executed.
+        #   Defaults to false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -99,22 +102,256 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::JobMetrics] parsed result object
+        # @yieldparam result [Google::Apis::DataflowV1b3::LaunchTemplateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataflowV1b3::JobMetrics]
+        # @return [Google::Apis::DataflowV1b3::LaunchTemplateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_job_metrics(project_id, location, job_id, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics', options)
-          command.response_representation = Google::Apis::DataflowV1b3::JobMetrics::Representation
-          command.response_class = Google::Apis::DataflowV1b3::JobMetrics
+        def launch_project_template(project_id, launch_template_parameters_object = nil, gcs_path: nil, location: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates:launch', options)
+          command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
+          command.request_object = launch_template_parameters_object
+          command.response_representation = Google::Apis::DataflowV1b3::LaunchTemplateResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::LaunchTemplateResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['gcsPath'] = gcs_path unless gcs_path.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the template associated with a template.
+        # @param [String] project_id
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [String] gcs_path
+        #   Required. A Cloud Storage path to the template from which to
+        #   create the job.
+        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
+        # @param [String] location
+        #   The location to which to direct the request.
+        # @param [String] view
+        #   The view to retrieve. Defaults to METADATA_ONLY.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::GetTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::GetTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_template(project_id, gcs_path: nil, location: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/templates:get', options)
+          command.response_representation = Google::Apis::DataflowV1b3::GetTemplateResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::GetTemplateResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['gcsPath'] = gcs_path unless gcs_path.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Cloud Dataflow job from a template.
+        # @param [String] project_id
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Job] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Job]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_job_from_template(project_id, create_job_from_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates', options)
+          command.request_representation = Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest::Representation
+          command.request_object = create_job_from_template_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Job
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Send a worker_message to the service.
+        # @param [String] project_id
+        #   The project to send the WorkerMessages to.
+        # @param [String] location
+        #   The location which contains the job
+        # @param [Google::Apis::DataflowV1b3::SendWorkerMessagesRequest] send_worker_messages_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::SendWorkerMessagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::SendWorkerMessagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def worker_project_location_messages(project_id, location, send_worker_messages_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/WorkerMessages', options)
+          command.request_representation = Google::Apis::DataflowV1b3::SendWorkerMessagesRequest::Representation
+          command.request_object = send_worker_messages_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::SendWorkerMessagesResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::SendWorkerMessagesResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
-          command.params['jobId'] = job_id unless job_id.nil?
-          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Cloud Dataflow job from a template.
+        # @param [String] project_id
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [String] location
+        #   The location to which to direct the request.
+        # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Job] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Job]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_job_from_template_with_location(project_id, location, create_job_from_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates', options)
+          command.request_representation = Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest::Representation
+          command.request_object = create_job_from_template_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Job
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Launch a template.
+        # @param [String] project_id
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [String] location
+        #   The location to which to direct the request.
+        # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
+        # @param [String] gcs_path
+        #   Required. A Cloud Storage path to the template from which to create
+        #   the job.
+        #   Must be valid Cloud Storage URL, beginning with 'gs://'.
+        # @param [Boolean] validate_only
+        #   If true, the request is validated but not actually executed.
+        #   Defaults to false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::LaunchTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::LaunchTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def launch_project_location_template(project_id, location, launch_template_parameters_object = nil, gcs_path: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/templates:launch', options)
+          command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
+          command.request_object = launch_template_parameters_object
+          command.response_representation = Google::Apis::DataflowV1b3::LaunchTemplateResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::LaunchTemplateResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['gcsPath'] = gcs_path unless gcs_path.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the template associated with a template.
+        # @param [String] project_id
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [String] location
+        #   The location to which to direct the request.
+        # @param [String] view
+        #   The view to retrieve. Defaults to METADATA_ONLY.
+        # @param [String] gcs_path
+        #   Required. A Cloud Storage path to the template from which to
+        #   create the job.
+        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::GetTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::GetTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_template(project_id, location, view: nil, gcs_path: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/templates:get', options)
+          command.response_representation = Google::Apis::DataflowV1b3::GetTemplateResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::GetTemplateResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['gcsPath'] = gcs_path unless gcs_path.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -164,6 +401,8 @@ module Google
         #   The project which owns the jobs.
         # @param [String] location
         #   The location that contains this job.
+        # @param [String] filter
+        #   The kind of filter to use.
         # @param [String] page_token
         #   Set this to the 'next_page_token' field of a previous response
         #   to request additional results in a long list.
@@ -173,8 +412,6 @@ module Google
         #   and an unspecified server-defined limit.
         # @param [String] view
         #   Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.
-        # @param [String] filter
-        #   The kind of filter to use.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -192,16 +429,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_jobs(project_id, location, page_token: nil, page_size: nil, view: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_jobs(project_id, location, filter: nil, page_token: nil, page_size: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['view'] = view unless view.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -288,14 +525,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Reports the status of dataflow WorkItems leased by a worker.
+        # Request the job status.
         # @param [String] project_id
-        #   The project which owns the WorkItem's job.
+        #   A project id.
         # @param [String] location
-        #   The location which contains the WorkItem's job.
+        #   The location which contains the job specified by job_id.
         # @param [String] job_id
-        #   The job which the WorkItem is part of.
-        # @param [Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest] report_work_item_status_request_object
+        #   The job to get messages for.
+        # @param [String] start_time
+        #   Return only metric data that has changed since this time.
+        #   Default is to return all information about all metrics for the job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -305,20 +544,97 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse] parsed result object
+        # @yieldparam result [Google::Apis::DataflowV1b3::JobMetrics] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse]
+        # @return [Google::Apis::DataflowV1b3::JobMetrics]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_project_location_job_work_item_status(project_id, location, job_id, report_work_item_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus', options)
-          command.request_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest::Representation
-          command.request_object = report_work_item_status_request_object
-          command.response_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse
+        def get_project_location_job_metrics(project_id, location, job_id, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics', options)
+          command.response_representation = Google::Apis::DataflowV1b3::JobMetrics::Representation
+          command.response_class = Google::Apis::DataflowV1b3::JobMetrics
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get encoded debug configuration for component. Not cacheable.
+        # @param [String] project_id
+        #   The project id.
+        # @param [String] location
+        #   The location which contains the job specified by job_id.
+        # @param [String] job_id
+        #   The job id.
+        # @param [Google::Apis::DataflowV1b3::GetDebugConfigRequest] get_debug_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::GetDebugConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::GetDebugConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_job_debug_config(project_id, location, job_id, get_debug_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig', options)
+          command.request_representation = Google::Apis::DataflowV1b3::GetDebugConfigRequest::Representation
+          command.request_object = get_debug_config_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::GetDebugConfigResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::GetDebugConfigResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Send encoded debug capture data for component.
+        # @param [String] project_id
+        #   The project id.
+        # @param [String] location
+        #   The location which contains the job specified by job_id.
+        # @param [String] job_id
+        #   The job id.
+        # @param [Google::Apis::DataflowV1b3::SendDebugCaptureRequest] send_debug_capture_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::SendDebugCaptureResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::SendDebugCaptureResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_job_debug_capture(project_id, location, job_id, send_debug_capture_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture', options)
+          command.request_representation = Google::Apis::DataflowV1b3::SendDebugCaptureRequest::Representation
+          command.request_object = send_debug_capture_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::SendDebugCaptureResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::SendDebugCaptureResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -358,6 +674,45 @@ module Google
           command.request_object = lease_work_item_request_object
           command.response_representation = Google::Apis::DataflowV1b3::LeaseWorkItemResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::LeaseWorkItemResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reports the status of dataflow WorkItems leased by a worker.
+        # @param [String] project_id
+        #   The project which owns the WorkItem's job.
+        # @param [String] location
+        #   The location which contains the WorkItem's job.
+        # @param [String] job_id
+        #   The job which the WorkItem is part of.
+        # @param [Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest] report_work_item_status_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_project_location_job_work_item_status(project_id, location, job_id, report_work_item_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusRequest::Representation
+          command.request_object = report_work_item_status_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ReportWorkItemStatusResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -423,129 +778,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Launch a template.
-        # @param [String] project_id
-        #   Required. The ID of the Cloud Platform project that the job belongs to.
-        # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
-        # @param [Boolean] dry_run
-        #   Whether or not the job should actually be executed after
-        #   validating parameters. Defaults to false. Validation errors do
-        #   not cause the HTTP request to fail if true.
-        # @param [String] gcs_path
-        #   Required. A Cloud Storage path to the template from which to create
-        #   the job.
-        #   Must be valid Cloud Storage URL, beginning with 'gs://'.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::LaunchTemplateResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::LaunchTemplateResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def launch_project_template(project_id, launch_template_parameters_object = nil, dry_run: nil, gcs_path: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates:launch', options)
-          command.request_representation = Google::Apis::DataflowV1b3::LaunchTemplateParameters::Representation
-          command.request_object = launch_template_parameters_object
-          command.response_representation = Google::Apis::DataflowV1b3::LaunchTemplateResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::LaunchTemplateResponse
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.query['dryRun'] = dry_run unless dry_run.nil?
-          command.query['gcsPath'] = gcs_path unless gcs_path.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Get the template associated with a template.
-        # @param [String] project_id
-        #   Required. The ID of the Cloud Platform project that the job belongs to.
-        # @param [String] view
-        #   The view to retrieve. Defaults to METADATA_ONLY.
-        # @param [String] gcs_path
-        #   Required. A Cloud Storage path to the template from which to
-        #   create the job.
-        #   Must be a valid Cloud Storage URL, beginning with `gs://`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::GetTemplateResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::GetTemplateResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_template(project_id, view: nil, gcs_path: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1b3/projects/{projectId}/templates:get', options)
-          command.response_representation = Google::Apis::DataflowV1b3::GetTemplateResponse::Representation
-          command.response_class = Google::Apis::DataflowV1b3::GetTemplateResponse
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.query['view'] = view unless view.nil?
-          command.query['gcsPath'] = gcs_path unless gcs_path.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a Cloud Dataflow job from a template.
-        # @param [String] project_id
-        #   Required. The ID of the Cloud Platform project that the job belongs to.
-        # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataflowV1b3::Job] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataflowV1b3::Job]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_job_from_template(project_id, create_job_from_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1b3/projects/{projectId}/templates', options)
-          command.request_representation = Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest::Representation
-          command.request_object = create_job_from_template_request_object
-          command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
-          command.response_class = Google::Apis::DataflowV1b3::Job
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the state of the specified Cloud Dataflow job.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
         #   The job ID.
-        # @param [String] location
-        #   The location that contains this job.
         # @param [String] view
         #   The level of information requested in response.
+        # @param [String] location
+        #   The location that contains this job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -563,14 +804,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_job(project_id, job_id, location: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_job(project_id, job_id, view: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataflowV1b3::Job::Representation
           command.response_class = Google::Apis::DataflowV1b3::Job
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
-          command.query['location'] = location unless location.nil?
           command.query['view'] = view unless view.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -710,11 +951,11 @@ module Google
         #   A project id.
         # @param [String] job_id
         #   The job to get messages for.
-        # @param [String] location
-        #   The location which contains the job specified by job_id.
         # @param [String] start_time
         #   Return only metric data that has changed since this time.
         #   Default is to return all information about all metrics for the job.
+        # @param [String] location
+        #   The location which contains the job specified by job_id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -732,14 +973,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_job_metrics(project_id, job_id, location: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_job_metrics(project_id, job_id, start_time: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}/metrics', options)
           command.response_representation = Google::Apis::DataflowV1b3::JobMetrics::Representation
           command.response_class = Google::Apis::DataflowV1b3::JobMetrics
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
-          command.query['location'] = location unless location.nil?
           command.query['startTime'] = start_time unless start_time.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -899,13 +1140,13 @@ module Google
         #   (i.e. return up to the latest messages available).
         # @param [String] location
         #   The location which contains the job specified by job_id.
-        # @param [String] start_time
-        #   If specified, return only messages with timestamps >= start_time.
-        #   The default is the job creation time (i.e. beginning of messages).
         # @param [String] page_token
         #   If supplied, this should be the value of next_page_token returned
         #   by an earlier call. This will cause the next page of results to
         #   be returned.
+        # @param [String] start_time
+        #   If specified, return only messages with timestamps >= start_time.
+        #   The default is the job creation time (i.e. beginning of messages).
         # @param [Fixnum] page_size
         #   If specified, determines the maximum number of messages to
         #   return.  If unspecified, the service may choose an appropriate
@@ -929,7 +1170,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_job_messages(project_id, job_id, end_time: nil, location: nil, start_time: nil, page_token: nil, page_size: nil, minimum_importance: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_job_messages(project_id, job_id, end_time: nil, location: nil, page_token: nil, start_time: nil, page_size: nil, minimum_importance: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1b3/projects/{projectId}/jobs/{jobId}/messages', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobMessagesResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobMessagesResponse
@@ -937,8 +1178,8 @@ module Google
           command.params['jobId'] = job_id unless job_id.nil?
           command.query['endTime'] = end_time unless end_time.nil?
           command.query['location'] = location unless location.nil?
-          command.query['startTime'] = start_time unless start_time.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['minimumImportance'] = minimum_importance unless minimum_importance.nil?
           command.query['fields'] = fields unless fields.nil?

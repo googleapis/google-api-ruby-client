@@ -22,16 +22,449 @@ module Google
   module Apis
     module ServicecontrolV1
       
+      # Response message for the AllocateQuota method.
+      class AllocateQuotaResponse
+        include Google::Apis::Core::Hashable
+      
+        # The same operation_id value used in the AllocateQuotaRequest. Used for
+        # logging and diagnostics purposes.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # ID of the actual config used to process the request.
+        # Corresponds to the JSON property `serviceConfigId`
+        # @return [String]
+        attr_accessor :service_config_id
+      
+        # Indicates the decision of the allocate.
+        # Corresponds to the JSON property `allocateErrors`
+        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
+        attr_accessor :allocate_errors
+      
+        # Quota metrics to indicate the result of allocation. Depending on the
+        # request, one or more of the following metrics will be included:
+        # 1. For rate quota, per quota group or per quota metric incremental usage
+        # will be specified using the following delta metric:
+        # "serviceruntime.googleapis.com/api/consumer/quota_used_count"
+        # 2. For allocation quota, per quota metric total usage will be specified
+        # using the following gauge metric:
+        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        # 3. For both rate quota and allocation quota, the quota limit reached
+        # condition will be specified using the following boolean metric:
+        # "serviceruntime.googleapis.com/quota/exceeded"
+        # 4. For allocation quota, value for each quota limit associated with
+        # the metrics will be specified using the following gauge metric:
+        # "serviceruntime.googleapis.com/quota/limit"
+        # Corresponds to the JSON property `quotaMetrics`
+        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
+        attr_accessor :quota_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @allocate_errors = args[:allocate_errors] if args.key?(:allocate_errors)
+          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
+        end
+      end
+      
+      # Request message for the ReleaseQuota method.
+      class ReleaseQuotaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies which version of service configuration should be used to process
+        # the request. If unspecified or no matching version can be found, the latest
+        # one will be used.
+        # Corresponds to the JSON property `serviceConfigId`
+        # @return [String]
+        attr_accessor :service_config_id
+      
+        # Represents information regarding a quota operation.
+        # Corresponds to the JSON property `releaseOperation`
+        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
+        attr_accessor :release_operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @release_operation = args[:release_operation] if args.key?(:release_operation)
+        end
+      end
+      
+      # 
+      class QuotaError
+        include Google::Apis::Core::Hashable
+      
+        # Subject to whom this error applies. See the specific enum for more details
+        # on this field. For example, "clientip:<ip address of client>" or
+        # "project:<Google developer project id>".
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # Free-form text that provides details on the cause of the error.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Error code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subject = args[:subject] if args.key?(:subject)
+          @description = args[:description] if args.key?(:description)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # Metadata about the request.
+      class RequestMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The user agent of the caller.
+        # This information is not authenticated and should be treated accordingly.
+        # For example:
+        # +   `google-api-python-client/1.4.0`:
+        # The request was made by the Google API client for Python.
+        # +   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:
+        # The request was made by the Google Cloud SDK CLI (gcloud).
+        # +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`
+        # :
+        # The request was made from the `my-project` App Engine app.
+        # NOLINT
+        # Corresponds to the JSON property `callerSuppliedUserAgent`
+        # @return [String]
+        attr_accessor :caller_supplied_user_agent
+      
+        # The IP address of the caller.
+        # Corresponds to the JSON property `callerIp`
+        # @return [String]
+        attr_accessor :caller_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @caller_supplied_user_agent = args[:caller_supplied_user_agent] if args.key?(:caller_supplied_user_agent)
+          @caller_ip = args[:caller_ip] if args.key?(:caller_ip)
+        end
+      end
+      
+      # 
+      class CheckInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of fields and label keys that are ignored by the server.
+        # The client doesn't need to send them for following requests to improve
+        # performance and allow better aggregation.
+        # Corresponds to the JSON property `unusedArguments`
+        # @return [Array<String>]
+        attr_accessor :unused_arguments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unused_arguments = args[:unused_arguments] if args.key?(:unused_arguments)
+        end
+      end
+      
+      # Response message for the ReleaseQuota method.
+      class ReleaseQuotaResponse
+        include Google::Apis::Core::Hashable
+      
+        # ID of the actual config used to process the request.
+        # Corresponds to the JSON property `serviceConfigId`
+        # @return [String]
+        attr_accessor :service_config_id
+      
+        # Indicates the decision of the release.
+        # Corresponds to the JSON property `releaseErrors`
+        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
+        attr_accessor :release_errors
+      
+        # Quota metrics to indicate the result of release. Depending on the
+        # request, one or more of the following metrics will be included:
+        # 1. For rate quota, per quota group or per quota metric released amount
+        # will be specified using the following delta metric:
+        # "serviceruntime.googleapis.com/api/consumer/quota_refund_count"
+        # 2. For allocation quota, per quota metric total usage will be specified
+        # using the following gauge metric:
+        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        # 3. For allocation quota, value for each quota limit associated with
+        # the metrics will be specified using the following gauge metric:
+        # "serviceruntime.googleapis.com/quota/limit"
+        # Corresponds to the JSON property `quotaMetrics`
+        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
+        attr_accessor :quota_metrics
+      
+        # The same operation_id value used in the ReleaseQuotaRequest. Used for
+        # logging and diagnostics purposes.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @release_errors = args[:release_errors] if args.key?(:release_errors)
+          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
+      # Request message for the AllocateQuota method.
+      class AllocateQuotaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies which version of service configuration should be used to process
+        # the request. If unspecified or no matching version can be found, the latest
+        # one will be used.
+        # Corresponds to the JSON property `serviceConfigId`
+        # @return [String]
+        attr_accessor :service_config_id
+      
+        # Represents information regarding a quota operation.
+        # Corresponds to the JSON property `allocateOperation`
+        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
+        attr_accessor :allocate_operation
+      
+        # Allocation mode for this operation.
+        # Deprecated: use QuotaMode inside the QuotaOperation.
+        # Corresponds to the JSON property `allocationMode`
+        # @return [String]
+        attr_accessor :allocation_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @allocate_operation = args[:allocate_operation] if args.key?(:allocate_operation)
+          @allocation_mode = args[:allocation_mode] if args.key?(:allocation_mode)
+        end
+      end
+      
+      # Represents a set of metric values in the same metric.
+      # Each metric value in the set should have a unique combination of start time,
+      # end time, and label values.
+      class MetricValueSet
+        include Google::Apis::Core::Hashable
+      
+        # The metric name defined in the service configuration.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        # The values in this metric.
+        # Corresponds to the JSON property `metricValues`
+        # @return [Array<Google::Apis::ServicecontrolV1::MetricValue>]
+        attr_accessor :metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @metric_values = args[:metric_values] if args.key?(:metric_values)
+        end
+      end
+      
+      # Represents the processing error of one `Operation` in the request.
+      class ReportError
+        include Google::Apis::Core::Hashable
+      
+        # The Operation.operation_id value from the request.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ServicecontrolV1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class StartReconciliationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents information regarding a quota operation.
+        # Corresponds to the JSON property `reconciliationOperation`
+        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
+        attr_accessor :reconciliation_operation
+      
+        # Specifies which version of service configuration should be used to process
+        # the request. If unspecified or no matching version can be found, the latest
+        # one will be used.
+        # Corresponds to the JSON property `serviceConfigId`
+        # @return [String]
+        attr_accessor :service_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reconciliation_operation = args[:reconciliation_operation] if args.key?(:reconciliation_operation)
+          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+        end
+      end
+      
+      # Defines the errors to be returned in
+      # google.api.servicecontrol.v1.CheckResponse.check_errors.
+      class CheckError
+        include Google::Apis::Core::Hashable
+      
+        # Free-form text providing details on the error cause of the error.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # The error code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # Contains the quota information for a quota check response.
+      class QuotaInfo
+        include Google::Apis::Core::Hashable
+      
+        # Map of quota group name to the actual number of tokens consumed. If the
+        # quota check was not successful, then this will not be populated due to no
+        # quota consumption.
+        # Deprecated: Use quota_metrics to get per quota group usage.
+        # Corresponds to the JSON property `quotaConsumed`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :quota_consumed
+      
+        # Quota metrics to indicate the usage. Depending on the check request, one or
+        # more of the following metrics will be included:
+        # 1. For rate quota, per quota group or per quota metric incremental usage
+        # will be specified using the following delta metric:
+        # "serviceruntime.googleapis.com/api/consumer/quota_used_count"
+        # 2. For allocation quota, per quota metric total usage will be specified
+        # using the following gauge metric:
+        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        # 3. For both rate quota and allocation quota, the quota limit reached
+        # condition will be specified using the following boolean metric:
+        # "serviceruntime.googleapis.com/quota/exceeded"
+        # Corresponds to the JSON property `quotaMetrics`
+        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
+        attr_accessor :quota_metrics
+      
+        # Quota Metrics that have exceeded quota limits.
+        # For QuotaGroup-based quota, this is QuotaGroup.name
+        # For QuotaLimit-based quota, this is QuotaLimit.name
+        # See: google.api.Quota
+        # Deprecated: Use quota_metrics to get per quota group limit exceeded status.
+        # Corresponds to the JSON property `limitExceeded`
+        # @return [Array<String>]
+        attr_accessor :limit_exceeded
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quota_consumed = args[:quota_consumed] if args.key?(:quota_consumed)
+          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
+          @limit_exceeded = args[:limit_exceeded] if args.key?(:limit_exceeded)
+        end
+      end
+      
       # Request message for the Check method.
       class CheckRequest
         include Google::Apis::Core::Hashable
-      
-        # Indicates if service activation check should be skipped for this request.
-        # Default behavior is to perform the check and apply relevant quota.
-        # Corresponds to the JSON property `skipActivationCheck`
-        # @return [Boolean]
-        attr_accessor :skip_activation_check
-        alias_method :skip_activation_check?, :skip_activation_check
       
         # Represents information regarding an operation.
         # Corresponds to the JSON property `operation`
@@ -52,37 +485,29 @@ module Google
         # @return [String]
         attr_accessor :service_config_id
       
+        # Indicates if service activation check should be skipped for this request.
+        # Default behavior is to perform the check and apply relevant quota.
+        # Corresponds to the JSON property `skipActivationCheck`
+        # @return [Boolean]
+        attr_accessor :skip_activation_check
+        alias_method :skip_activation_check?, :skip_activation_check
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @skip_activation_check = args[:skip_activation_check] if args.key?(:skip_activation_check)
           @operation = args[:operation] if args.key?(:operation)
           @request_project_settings = args[:request_project_settings] if args.key?(:request_project_settings)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
+          @skip_activation_check = args[:skip_activation_check] if args.key?(:skip_activation_check)
         end
       end
       
       # Represents information regarding a quota operation.
       class QuotaOperation
         include Google::Apis::Core::Hashable
-      
-        # Quota mode for this operation.
-        # Corresponds to the JSON property `quotaMode`
-        # @return [String]
-        attr_accessor :quota_mode
-      
-        # Fully qualified name of the API method for which this quota operation is
-        # requested. This name is used for matching quota rules or metric rules and
-        # billing status rules defined in service configuration. This field is not
-        # required if the quota operation is performed on non-API resources.
-        # Example of an RPC method name:
-        # google.example.library.v1.LibraryService.CreateShelf
-        # Corresponds to the JSON property `methodName`
-        # @return [String]
-        attr_accessor :method_name
       
         # Represents information about this operation. Each MetricValueSet
         # corresponds to a metric defined in the service configuration.
@@ -123,18 +548,33 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
+        # Fully qualified name of the API method for which this quota operation is
+        # requested. This name is used for matching quota rules or metric rules and
+        # billing status rules defined in service configuration. This field is not
+        # required if the quota operation is performed on non-API resources.
+        # Example of an RPC method name:
+        # google.example.library.v1.LibraryService.CreateShelf
+        # Corresponds to the JSON property `methodName`
+        # @return [String]
+        attr_accessor :method_name
+      
+        # Quota mode for this operation.
+        # Corresponds to the JSON property `quotaMode`
+        # @return [String]
+        attr_accessor :quota_mode
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @quota_mode = args[:quota_mode] if args.key?(:quota_mode)
-          @method_name = args[:method_name] if args.key?(:method_name)
           @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
           @labels = args[:labels] if args.key?(:labels)
           @consumer_id = args[:consumer_id] if args.key?(:consumer_id)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @method_name = args[:method_name] if args.key?(:method_name)
+          @quota_mode = args[:quota_mode] if args.key?(:quota_mode)
         end
       end
       
@@ -190,57 +630,14 @@ module Google
         end
       end
       
-      # Response message for the Report method.
-      class ReportResponse
-        include Google::Apis::Core::Hashable
-      
-        # Quota usage for each quota release `Operation` request.
-        # Fully or partially failed quota release request may or may not be present
-        # in `report_quota_info`. For example, a failed quota release request will
-        # have the current quota usage info when precise quota library returns the
-        # info. A deadline exceeded quota request will not have quota usage info.
-        # If there is no quota release request, report_quota_info will be empty.
-        # Corresponds to the JSON property `reportInfos`
-        # @return [Array<Google::Apis::ServicecontrolV1::ReportInfo>]
-        attr_accessor :report_infos
-      
-        # The actual config id used to process the request.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        # Partial failures, one for each `Operation` in the request that failed
-        # processing. There are three possible combinations of the RPC status:
-        # 1. The combination of a successful RPC status and an empty `report_errors`
-        # list indicates a complete success where all `Operations` in the
-        # request are processed successfully.
-        # 2. The combination of a successful RPC status and a non-empty
-        # `report_errors` list indicates a partial success where some
-        # `Operations` in the request succeeded. Each
-        # `Operation` that failed processing has a corresponding item
-        # in this list.
-        # 3. A failed RPC status indicates a general non-deterministic failure.
-        # When this happens, it's impossible to know which of the
-        # 'Operations' in the request succeeded or failed.
-        # Corresponds to the JSON property `reportErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::ReportError>]
-        attr_accessor :report_errors
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @report_infos = args[:report_infos] if args.key?(:report_infos)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-          @report_errors = args[:report_errors] if args.key?(:report_errors)
-        end
-      end
-      
       # Represents information regarding an operation.
       class Operation
         include Google::Apis::Core::Hashable
+      
+        # Represents the properties needed for quota operations.
+        # Corresponds to the JSON property `quotaProperties`
+        # @return [Google::Apis::ServicecontrolV1::QuotaProperties]
+        attr_accessor :quota_properties
       
         # Identity of the consumer who is using the service.
         # This field should be filled in for the operations initiated by a
@@ -339,17 +736,13 @@ module Google
         # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
         attr_accessor :metric_value_sets
       
-        # Represents the properties needed for quota operations.
-        # Corresponds to the JSON property `quotaProperties`
-        # @return [Google::Apis::ServicecontrolV1::QuotaProperties]
-        attr_accessor :quota_properties
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @quota_properties = args[:quota_properties] if args.key?(:quota_properties)
           @consumer_id = args[:consumer_id] if args.key?(:consumer_id)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @operation_name = args[:operation_name] if args.key?(:operation_name)
@@ -361,7 +754,54 @@ module Google
           @log_entries = args[:log_entries] if args.key?(:log_entries)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
           @metric_value_sets = args[:metric_value_sets] if args.key?(:metric_value_sets)
-          @quota_properties = args[:quota_properties] if args.key?(:quota_properties)
+        end
+      end
+      
+      # Response message for the Report method.
+      class ReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # Partial failures, one for each `Operation` in the request that failed
+        # processing. There are three possible combinations of the RPC status:
+        # 1. The combination of a successful RPC status and an empty `report_errors`
+        # list indicates a complete success where all `Operations` in the
+        # request are processed successfully.
+        # 2. The combination of a successful RPC status and a non-empty
+        # `report_errors` list indicates a partial success where some
+        # `Operations` in the request succeeded. Each
+        # `Operation` that failed processing has a corresponding item
+        # in this list.
+        # 3. A failed RPC status indicates a general non-deterministic failure.
+        # When this happens, it's impossible to know which of the
+        # 'Operations' in the request succeeded or failed.
+        # Corresponds to the JSON property `reportErrors`
+        # @return [Array<Google::Apis::ServicecontrolV1::ReportError>]
+        attr_accessor :report_errors
+      
+        # Quota usage for each quota release `Operation` request.
+        # Fully or partially failed quota release request may or may not be present
+        # in `report_quota_info`. For example, a failed quota release request will
+        # have the current quota usage info when precise quota library returns the
+        # info. A deadline exceeded quota request will not have quota usage info.
+        # If there is no quota release request, report_quota_info will be empty.
+        # Corresponds to the JSON property `reportInfos`
+        # @return [Array<Google::Apis::ServicecontrolV1::ReportInfo>]
+        attr_accessor :report_infos
+      
+        # The actual config id used to process the request.
+        # Corresponds to the JSON property `serviceConfigId`
+        # @return [String]
+        attr_accessor :service_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_errors = args[:report_errors] if args.key?(:report_errors)
+          @report_infos = args[:report_infos] if args.key?(:report_infos)
+          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
         end
       end
       
@@ -426,7 +866,7 @@ module Google
       # error message is needed, put the localized message in the error details or
       # localize it in the client. The optional error details may contain arbitrary
       # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` which can be used for common error conditions.
+      # in the package `google.rpc` that can be used for common error conditions.
       # # Language mapping
       # The `Status` message is the logical representation of the error model, but it
       # is not necessarily the actual wire format. When the `Status` message is
@@ -442,7 +882,7 @@ module Google
       # it may embed the `Status` in the normal response to indicate the partial
       # errors.
       # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting purpose.
+      # have a `Status` message for error reporting.
       # - Batch operations. If a client uses batch request and batch response, the
       # `Status` message should be used directly inside batch response, one for
       # each error sub-response.
@@ -519,84 +959,63 @@ module Google
         end
       end
       
-      # An individual log entry.
-      class LogEntry
-        include Google::Apis::Core::Hashable
-      
-        # A set of user-defined (key, value) data that provides additional
-        # information about the log entry.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The severity of the log entry. The default value is
-        # `LogSeverity.DEFAULT`.
-        # Corresponds to the JSON property `severity`
-        # @return [String]
-        attr_accessor :severity
-      
-        # A unique ID for the log entry used for deduplication. If omitted,
-        # the implementation will generate one based on operation_id.
-        # Corresponds to the JSON property `insertId`
-        # @return [String]
-        attr_accessor :insert_id
-      
-        # Required. The log to which this log entry belongs. Examples: `"syslog"`,
-        # `"book_log"`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The log entry payload, represented as a structure that
-        # is expressed as a JSON object.
-        # Corresponds to the JSON property `structPayload`
-        # @return [Hash<String,Object>]
-        attr_accessor :struct_payload
-      
-        # The log entry payload, represented as a Unicode string (UTF-8).
-        # Corresponds to the JSON property `textPayload`
-        # @return [String]
-        attr_accessor :text_payload
-      
-        # The log entry payload, represented as a protocol buffer that is
-        # expressed as a JSON object. You can only pass `protoPayload`
-        # values that belong to a set of approved types.
-        # Corresponds to the JSON property `protoPayload`
-        # @return [Hash<String,Object>]
-        attr_accessor :proto_payload
-      
-        # The time the event described by the log entry occurred. If
-        # omitted, defaults to operation start time.
-        # Corresponds to the JSON property `timestamp`
-        # @return [String]
-        attr_accessor :timestamp
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @severity = args[:severity] if args.key?(:severity)
-          @insert_id = args[:insert_id] if args.key?(:insert_id)
-          @name = args[:name] if args.key?(:name)
-          @struct_payload = args[:struct_payload] if args.key?(:struct_payload)
-          @text_payload = args[:text_payload] if args.key?(:text_payload)
-          @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
-          @timestamp = args[:timestamp] if args.key?(:timestamp)
-        end
-      end
-      
       # Common audit log format for Google Cloud Platform API operations.
       class AuditLog
         include Google::Apis::Core::Hashable
       
-        # The name of the API service performing the operation. For example,
-        # `"datastore.googleapis.com"`.
-        # Corresponds to the JSON property `serviceName`
-        # @return [String]
-        attr_accessor :service_name
+        # The number of items returned from a List or Query API method,
+        # if applicable.
+        # Corresponds to the JSON property `numResponseItems`
+        # @return [Fixnum]
+        attr_accessor :num_response_items
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ServicecontrolV1::Status]
+        attr_accessor :status
+      
+        # Authentication information for the operation.
+        # Corresponds to the JSON property `authenticationInfo`
+        # @return [Google::Apis::ServicecontrolV1::AuthenticationInfo]
+        attr_accessor :authentication_info
       
         # The operation response. This may not include all response elements,
         # such as those that are too large, privacy-sensitive, or duplicated
@@ -607,6 +1026,12 @@ module Google
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
+      
+        # The name of the API service performing the operation. For example,
+        # `"datastore.googleapis.com"`.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
       
         # The name of the service method or operation.
         # For API calls, this should be the name of the API method.
@@ -654,59 +1079,77 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :service_data
       
-        # The number of items returned from a List or Query API method,
-        # if applicable.
-        # Corresponds to the JSON property `numResponseItems`
-        # @return [Fixnum]
-        attr_accessor :num_response_items
+        def initialize(**args)
+           update!(**args)
+        end
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` which can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting purpose.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::ServicecontrolV1::Status]
-        attr_accessor :status
+        # Update properties of this object
+        def update!(**args)
+          @num_response_items = args[:num_response_items] if args.key?(:num_response_items)
+          @status = args[:status] if args.key?(:status)
+          @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
+          @response = args[:response] if args.key?(:response)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @method_name = args[:method_name] if args.key?(:method_name)
+          @authorization_info = args[:authorization_info] if args.key?(:authorization_info)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @request = args[:request] if args.key?(:request)
+          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @service_data = args[:service_data] if args.key?(:service_data)
+        end
+      end
       
-        # Authentication information for the operation.
-        # Corresponds to the JSON property `authenticationInfo`
-        # @return [Google::Apis::ServicecontrolV1::AuthenticationInfo]
-        attr_accessor :authentication_info
+      # An individual log entry.
+      class LogEntry
+        include Google::Apis::Core::Hashable
+      
+        # The time the event described by the log entry occurred. If
+        # omitted, defaults to operation start time.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # A set of user-defined (key, value) data that provides additional
+        # information about the log entry.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The severity of the log entry. The default value is
+        # `LogSeverity.DEFAULT`.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # A unique ID for the log entry used for deduplication. If omitted,
+        # the implementation will generate one based on operation_id.
+        # Corresponds to the JSON property `insertId`
+        # @return [String]
+        attr_accessor :insert_id
+      
+        # Required. The log to which this log entry belongs. Examples: `"syslog"`,
+        # `"book_log"`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The log entry payload, represented as a structure that
+        # is expressed as a JSON object.
+        # Corresponds to the JSON property `structPayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :struct_payload
+      
+        # The log entry payload, represented as a Unicode string (UTF-8).
+        # Corresponds to the JSON property `textPayload`
+        # @return [String]
+        attr_accessor :text_payload
+      
+        # The log entry payload, represented as a protocol buffer that is
+        # expressed as a JSON object. You can only pass `protoPayload`
+        # values that belong to a set of approved types.
+        # Corresponds to the JSON property `protoPayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :proto_payload
       
         def initialize(**args)
            update!(**args)
@@ -714,23 +1157,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @service_name = args[:service_name] if args.key?(:service_name)
-          @response = args[:response] if args.key?(:response)
-          @method_name = args[:method_name] if args.key?(:method_name)
-          @authorization_info = args[:authorization_info] if args.key?(:authorization_info)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-          @request = args[:request] if args.key?(:request)
-          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
-          @service_data = args[:service_data] if args.key?(:service_data)
-          @num_response_items = args[:num_response_items] if args.key?(:num_response_items)
-          @status = args[:status] if args.key?(:status)
-          @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @labels = args[:labels] if args.key?(:labels)
+          @severity = args[:severity] if args.key?(:severity)
+          @insert_id = args[:insert_id] if args.key?(:insert_id)
+          @name = args[:name] if args.key?(:name)
+          @struct_payload = args[:struct_payload] if args.key?(:struct_payload)
+          @text_payload = args[:text_payload] if args.key?(:text_payload)
+          @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
         end
       end
       
       # Represents a single metric value.
       class MetricValue
         include Google::Apis::Core::Hashable
+      
+        # A boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # The end of the time period over which this metric value's measurement
+        # applies.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
       
         # The start of the time period over which this metric value's measurement
         # applies. The time period has different semantics for different metric
@@ -745,17 +1197,17 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::Money]
         attr_accessor :money_value
       
+        # A text string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
         # The labels describing the metric value.
         # See comments on google.api.servicecontrol.v1.Operation.labels for
         # the overriding relationship.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
-        # A text string value.
-        # Corresponds to the JSON property `stringValue`
-        # @return [String]
-        attr_accessor :string_value
       
         # A double precision floating point value.
         # Corresponds to the JSON property `doubleValue`
@@ -778,17 +1230,48 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::Distribution]
         attr_accessor :distribution_value
       
-        # A boolean value.
-        # Corresponds to the JSON property `boolValue`
-        # @return [Boolean]
-        attr_accessor :bool_value
-        alias_method :bool_value?, :bool_value
+        def initialize(**args)
+           update!(**args)
+        end
       
-        # The end of the time period over which this metric value's measurement
-        # applies.
-        # Corresponds to the JSON property `endTime`
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @money_value = args[:money_value] if args.key?(:money_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @labels = args[:labels] if args.key?(:labels)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class Money
+        include Google::Apis::Core::Hashable
+      
+        # The 3-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
         # @return [String]
-        attr_accessor :end_time
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount.
+        # The value must be between -999,999,999 and +999,999,999 inclusive.
+        # If `units` is positive, `nanos` must be positive or zero.
+        # If `units` is zero, `nanos` can be positive, zero, or negative.
+        # If `units` is negative, `nanos` must be negative or zero.
+        # For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount.
+        # For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
       
         def initialize(**args)
            update!(**args)
@@ -796,15 +1279,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @money_value = args[:money_value] if args.key?(:money_value)
-          @labels = args[:labels] if args.key?(:labels)
-          @string_value = args[:string_value] if args.key?(:string_value)
-          @double_value = args[:double_value] if args.key?(:double_value)
-          @int64_value = args[:int64_value] if args.key?(:int64_value)
-          @distribution_value = args[:distribution_value] if args.key?(:distribution_value)
-          @bool_value = args[:bool_value] if args.key?(:bool_value)
-          @end_time = args[:end_time] if args.key?(:end_time)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
       
@@ -862,43 +1339,6 @@ module Google
         end
       end
       
-      # Represents an amount of money with its currency type.
-      class Money
-        include Google::Apis::Core::Hashable
-      
-        # The 3-letter currency code defined in ISO 4217.
-        # Corresponds to the JSON property `currencyCode`
-        # @return [String]
-        attr_accessor :currency_code
-      
-        # Number of nano (10^-9) units of the amount.
-        # The value must be between -999,999,999 and +999,999,999 inclusive.
-        # If `units` is positive, `nanos` must be positive or zero.
-        # If `units` is zero, `nanos` can be positive, zero, or negative.
-        # If `units` is negative, `nanos` must be negative or zero.
-        # For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
-        # The whole units of the amount.
-        # For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-        # Corresponds to the JSON property `units`
-        # @return [Fixnum]
-        attr_accessor :units
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @currency_code = args[:currency_code] if args.key?(:currency_code)
-          @nanos = args[:nanos] if args.key?(:nanos)
-          @units = args[:units] if args.key?(:units)
-        end
-      end
-      
       # Describing buckets with arbitrary user-provided width.
       class ExplicitBuckets
         include Google::Apis::Core::Hashable
@@ -940,16 +1380,26 @@ module Google
       class Distribution
         include Google::Apis::Core::Hashable
       
-        # The total number of samples in the distribution. Must be >= 0.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
+        # Describing buckets with constant width.
+        # Corresponds to the JSON property `linearBuckets`
+        # @return [Google::Apis::ServicecontrolV1::LinearBuckets]
+        attr_accessor :linear_buckets
+      
+        # The minimum of the population of values. Ignored if `count` is zero.
+        # Corresponds to the JSON property `minimum`
+        # @return [Float]
+        attr_accessor :minimum
       
         # The arithmetic mean of the samples in the distribution. If `count` is
         # zero then this field must be zero.
         # Corresponds to the JSON property `mean`
         # @return [Float]
         attr_accessor :mean
+      
+        # The total number of samples in the distribution. Must be >= 0.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
       
         # The number of samples in each histogram bucket. `bucket_counts` are
         # optional. If present, they must sum to the `count` value.
@@ -987,37 +1437,35 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::ExponentialBuckets]
         attr_accessor :exponential_buckets
       
-        # Describing buckets with constant width.
-        # Corresponds to the JSON property `linearBuckets`
-        # @return [Google::Apis::ServicecontrolV1::LinearBuckets]
-        attr_accessor :linear_buckets
-      
-        # The minimum of the population of values. Ignored if `count` is zero.
-        # Corresponds to the JSON property `minimum`
-        # @return [Float]
-        attr_accessor :minimum
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @count = args[:count] if args.key?(:count)
+          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
+          @minimum = args[:minimum] if args.key?(:minimum)
           @mean = args[:mean] if args.key?(:mean)
+          @count = args[:count] if args.key?(:count)
           @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
           @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
           @maximum = args[:maximum] if args.key?(:maximum)
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
           @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
-          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
-          @minimum = args[:minimum] if args.key?(:minimum)
         end
       end
       
       # Describing buckets with exponentially growing width.
       class ExponentialBuckets
         include Google::Apis::Core::Hashable
+      
+        # The i'th exponential bucket covers the interval
+        # [scale * growth_factor^(i-1), scale * growth_factor^i)
+        # where i ranges from 1 to num_finite_buckets inclusive.
+        # Must be larger than 1.0.
+        # Corresponds to the JSON property `growthFactor`
+        # @return [Float]
+        attr_accessor :growth_factor
       
         # The i'th exponential bucket covers the interval
         # [scale * growth_factor^(i-1), scale * growth_factor^i)
@@ -1034,23 +1482,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_finite_buckets
       
-        # The i'th exponential bucket covers the interval
-        # [scale * growth_factor^(i-1), scale * growth_factor^i)
-        # where i ranges from 1 to num_finite_buckets inclusive.
-        # Must be larger than 1.0.
-        # Corresponds to the JSON property `growthFactor`
-        # @return [Float]
-        attr_accessor :growth_factor
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
           @scale = args[:scale] if args.key?(:scale)
           @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
-          @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
         end
       end
       
@@ -1092,17 +1532,6 @@ module Google
       class StartReconciliationResponse
         include Google::Apis::Core::Hashable
       
-        # The same operation_id value used in the StartReconciliationRequest. Used
-        # for logging and diagnostics purposes.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # Indicates the decision of the reconciliation start.
-        # Corresponds to the JSON property `reconciliationErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
-        attr_accessor :reconciliation_errors
-      
         # ID of the actual config used to process the request.
         # Corresponds to the JSON property `serviceConfigId`
         # @return [String]
@@ -1120,27 +1549,33 @@ module Google
         # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
         attr_accessor :quota_metrics
       
+        # The same operation_id value used in the StartReconciliationRequest. Used
+        # for logging and diagnostics purposes.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Indicates the decision of the reconciliation start.
+        # Corresponds to the JSON property `reconciliationErrors`
+        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
+        attr_accessor :reconciliation_errors
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @reconciliation_errors = args[:reconciliation_errors] if args.key?(:reconciliation_errors)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
           @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @reconciliation_errors = args[:reconciliation_errors] if args.key?(:reconciliation_errors)
         end
       end
       
       # Represents the properties needed for quota operations.
       class QuotaProperties
         include Google::Apis::Core::Hashable
-      
-        # Quota mode for this operation.
-        # Corresponds to the JSON property `quotaMode`
-        # @return [String]
-        attr_accessor :quota_mode
       
         # LimitType IDs that should be used for checking quota. Key in this map
         # should be a valid LimitType string, and the value is the ID to be used. For
@@ -1157,20 +1592,32 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :limit_by_ids
       
+        # Quota mode for this operation.
+        # Corresponds to the JSON property `quotaMode`
+        # @return [String]
+        attr_accessor :quota_mode
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @quota_mode = args[:quota_mode] if args.key?(:quota_mode)
           @limit_by_ids = args[:limit_by_ids] if args.key?(:limit_by_ids)
+          @quota_mode = args[:quota_mode] if args.key?(:quota_mode)
         end
       end
       
       # Describing buckets with constant width.
       class LinearBuckets
         include Google::Apis::Core::Hashable
+      
+        # The number of finite buckets. With the underflow and overflow buckets,
+        # the total number of buckets is `num_finite_buckets` + 2.
+        # See comments on `bucket_options` for details.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
       
         # The i'th linear bucket covers the interval
         # [offset + (i-1) * width, offset + i * width)
@@ -1187,22 +1634,15 @@ module Google
         # @return [Float]
         attr_accessor :offset
       
-        # The number of finite buckets. With the underflow and overflow buckets,
-        # the total number of buckets is `num_finite_buckets` + 2.
-        # See comments on `bucket_options` for details.
-        # Corresponds to the JSON property `numFiniteBuckets`
-        # @return [Fixnum]
-        attr_accessor :num_finite_buckets
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
           @width = args[:width] if args.key?(:width)
           @offset = args[:offset] if args.key?(:offset)
-          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
         end
       end
       
@@ -1210,464 +1650,25 @@ module Google
       class AuthenticationInfo
         include Google::Apis::Core::Hashable
       
+        # The email address of the authenticated user making the request.
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
         # The authority selector specified by the requestor, if any.
         # It is not guaranteed that the principal was allowed to use this authority.
         # Corresponds to the JSON property `authoritySelector`
         # @return [String]
         attr_accessor :authority_selector
       
-        # The email address of the authenticated user making the request.
-        # Corresponds to the JSON property `principalEmail`
-        # @return [String]
-        attr_accessor :principal_email
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
-        end
-      end
-      
-      # Response message for the AllocateQuota method.
-      class AllocateQuotaResponse
-        include Google::Apis::Core::Hashable
-      
-        # The same operation_id value used in the AllocateQuotaRequest. Used for
-        # logging and diagnostics purposes.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # ID of the actual config used to process the request.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        # Indicates the decision of the allocate.
-        # Corresponds to the JSON property `allocateErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
-        attr_accessor :allocate_errors
-      
-        # Quota metrics to indicate the result of allocation. Depending on the
-        # request, one or more of the following metrics will be included:
-        # 1. For rate quota, per quota group or per quota metric incremental usage
-        # will be specified using the following delta metric:
-        # "serviceruntime.googleapis.com/api/consumer/quota_used_count"
-        # 2. For allocation quota, per quota metric total usage will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 3. For both rate quota and allocation quota, the quota limit reached
-        # condition will be specified using the following boolean metric:
-        # "serviceruntime.googleapis.com/quota/exceeded"
-        # 4. For allocation quota, value for each quota limit associated with
-        # the metrics will be specified using the following gauge metric:
-        # "serviceruntime.googleapis.com/quota/limit"
-        # Corresponds to the JSON property `quotaMetrics`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
-        attr_accessor :quota_metrics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-          @allocate_errors = args[:allocate_errors] if args.key?(:allocate_errors)
-          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
-        end
-      end
-      
-      # Request message for the ReleaseQuota method.
-      class ReleaseQuotaRequest
-        include Google::Apis::Core::Hashable
-      
-        # Specifies which version of service configuration should be used to process
-        # the request. If unspecified or no matching version can be found, the latest
-        # one will be used.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        # Represents information regarding a quota operation.
-        # Corresponds to the JSON property `releaseOperation`
-        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
-        attr_accessor :release_operation
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-          @release_operation = args[:release_operation] if args.key?(:release_operation)
-        end
-      end
-      
-      # Metadata about the request.
-      class RequestMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The user agent of the caller.
-        # This information is not authenticated and should be treated accordingly.
-        # For example:
-        # +   `google-api-python-client/1.4.0`:
-        # The request was made by the Google API client for Python.
-        # +   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:
-        # The request was made by the Google Cloud SDK CLI (gcloud).
-        # +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`
-        # :
-        # The request was made from the `my-project` App Engine app.
-        # Corresponds to the JSON property `callerSuppliedUserAgent`
-        # @return [String]
-        attr_accessor :caller_supplied_user_agent
-      
-        # The IP address of the caller.
-        # Corresponds to the JSON property `callerIp`
-        # @return [String]
-        attr_accessor :caller_ip
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @caller_supplied_user_agent = args[:caller_supplied_user_agent] if args.key?(:caller_supplied_user_agent)
-          @caller_ip = args[:caller_ip] if args.key?(:caller_ip)
-        end
-      end
-      
-      # 
-      class QuotaError
-        include Google::Apis::Core::Hashable
-      
-        # Subject to whom this error applies. See the specific enum for more details
-        # on this field. For example, "clientip:<ip address of client>" or
-        # "project:<Google developer project id>".
-        # Corresponds to the JSON property `subject`
-        # @return [String]
-        attr_accessor :subject
-      
-        # Free-form text that provides details on the cause of the error.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Error code.
-        # Corresponds to the JSON property `code`
-        # @return [String]
-        attr_accessor :code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @subject = args[:subject] if args.key?(:subject)
-          @description = args[:description] if args.key?(:description)
-          @code = args[:code] if args.key?(:code)
-        end
-      end
-      
-      # 
-      class CheckInfo
-        include Google::Apis::Core::Hashable
-      
-        # A list of fields and label keys that are ignored by the server.
-        # The client doesn't need to send them for following requests to improve
-        # performance and allow better aggregation.
-        # Corresponds to the JSON property `unusedArguments`
-        # @return [Array<String>]
-        attr_accessor :unused_arguments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @unused_arguments = args[:unused_arguments] if args.key?(:unused_arguments)
-        end
-      end
-      
-      # Response message for the ReleaseQuota method.
-      class ReleaseQuotaResponse
-        include Google::Apis::Core::Hashable
-      
-        # Indicates the decision of the release.
-        # Corresponds to the JSON property `releaseErrors`
-        # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
-        attr_accessor :release_errors
-      
-        # Quota metrics to indicate the result of release. Depending on the
-        # request, one or more of the following metrics will be included:
-        # 1. For rate quota, per quota group or per quota metric released amount
-        # will be specified using the following delta metric:
-        # "serviceruntime.googleapis.com/api/consumer/quota_refund_count"
-        # 2. For allocation quota, per quota metric total usage will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 3. For allocation quota, value for each quota limit associated with
-        # the metrics will be specified using the following gauge metric:
-        # "serviceruntime.googleapis.com/quota/limit"
-        # Corresponds to the JSON property `quotaMetrics`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
-        attr_accessor :quota_metrics
-      
-        # The same operation_id value used in the ReleaseQuotaRequest. Used for
-        # logging and diagnostics purposes.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # ID of the actual config used to process the request.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @release_errors = args[:release_errors] if args.key?(:release_errors)
-          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
-      # Request message for the AllocateQuota method.
-      class AllocateQuotaRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents information regarding a quota operation.
-        # Corresponds to the JSON property `allocateOperation`
-        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
-        attr_accessor :allocate_operation
-      
-        # Allocation mode for this operation.
-        # Deprecated: use QuotaMode inside the QuotaOperation.
-        # Corresponds to the JSON property `allocationMode`
-        # @return [String]
-        attr_accessor :allocation_mode
-      
-        # Specifies which version of service configuration should be used to process
-        # the request. If unspecified or no matching version can be found, the latest
-        # one will be used.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allocate_operation = args[:allocate_operation] if args.key?(:allocate_operation)
-          @allocation_mode = args[:allocation_mode] if args.key?(:allocation_mode)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
-      # Represents a set of metric values in the same metric.
-      # Each metric value in the set should have a unique combination of start time,
-      # end time, and label values.
-      class MetricValueSet
-        include Google::Apis::Core::Hashable
-      
-        # The metric name defined in the service configuration.
-        # Corresponds to the JSON property `metricName`
-        # @return [String]
-        attr_accessor :metric_name
-      
-        # The values in this metric.
-        # Corresponds to the JSON property `metricValues`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValue>]
-        attr_accessor :metric_values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metric_name = args[:metric_name] if args.key?(:metric_name)
-          @metric_values = args[:metric_values] if args.key?(:metric_values)
-        end
-      end
-      
-      # Represents the processing error of one `Operation` in the request.
-      class ReportError
-        include Google::Apis::Core::Hashable
-      
-        # The Operation.operation_id value from the request.
-        # Corresponds to the JSON property `operationId`
-        # @return [String]
-        attr_accessor :operation_id
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` which can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting purpose.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::ServicecontrolV1::Status]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @operation_id = args[:operation_id] if args.key?(:operation_id)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # Defines the errors to be returned in
-      # google.api.servicecontrol.v1.CheckResponse.check_errors.
-      class CheckError
-        include Google::Apis::Core::Hashable
-      
-        # The error code.
-        # Corresponds to the JSON property `code`
-        # @return [String]
-        attr_accessor :code
-      
-        # Free-form text providing details on the error cause of the error.
-        # Corresponds to the JSON property `detail`
-        # @return [String]
-        attr_accessor :detail
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @detail = args[:detail] if args.key?(:detail)
-        end
-      end
-      
-      # 
-      class StartReconciliationRequest
-        include Google::Apis::Core::Hashable
-      
-        # Represents information regarding a quota operation.
-        # Corresponds to the JSON property `reconciliationOperation`
-        # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
-        attr_accessor :reconciliation_operation
-      
-        # Specifies which version of service configuration should be used to process
-        # the request. If unspecified or no matching version can be found, the latest
-        # one will be used.
-        # Corresponds to the JSON property `serviceConfigId`
-        # @return [String]
-        attr_accessor :service_config_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @reconciliation_operation = args[:reconciliation_operation] if args.key?(:reconciliation_operation)
-          @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
-        end
-      end
-      
-      # Contains the quota information for a quota check response.
-      class QuotaInfo
-        include Google::Apis::Core::Hashable
-      
-        # Quota Metrics that have exceeded quota limits.
-        # For QuotaGroup-based quota, this is QuotaGroup.name
-        # For QuotaLimit-based quota, this is QuotaLimit.name
-        # See: google.api.Quota
-        # Deprecated: Use quota_metrics to get per quota group limit exceeded status.
-        # Corresponds to the JSON property `limitExceeded`
-        # @return [Array<String>]
-        attr_accessor :limit_exceeded
-      
-        # Map of quota group name to the actual number of tokens consumed. If the
-        # quota check was not successful, then this will not be populated due to no
-        # quota consumption.
-        # Deprecated: Use quota_metrics to get per quota group usage.
-        # Corresponds to the JSON property `quotaConsumed`
-        # @return [Hash<String,Fixnum>]
-        attr_accessor :quota_consumed
-      
-        # Quota metrics to indicate the usage. Depending on the check request, one or
-        # more of the following metrics will be included:
-        # 1. For rate quota, per quota group or per quota metric incremental usage
-        # will be specified using the following delta metric:
-        # "serviceruntime.googleapis.com/api/consumer/quota_used_count"
-        # 2. For allocation quota, per quota metric total usage will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 3. For both rate quota and allocation quota, the quota limit reached
-        # condition will be specified using the following boolean metric:
-        # "serviceruntime.googleapis.com/quota/exceeded"
-        # Corresponds to the JSON property `quotaMetrics`
-        # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
-        attr_accessor :quota_metrics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @limit_exceeded = args[:limit_exceeded] if args.key?(:limit_exceeded)
-          @quota_consumed = args[:quota_consumed] if args.key?(:quota_consumed)
-          @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
+          @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
         end
       end
     end

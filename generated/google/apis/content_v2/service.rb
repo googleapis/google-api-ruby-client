@@ -86,6 +86,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Claims the website of a Merchant Center sub-account. This method can only be
+        # called for multi-client accounts.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account.
+        # @param [Fixnum] account_id
+        #   The ID of the account whose website is claimed.
+        # @param [Boolean] overwrite
+        #   Flag to remove any existing claim on the requested website by another account
+        #   and replace it with a claim from this account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::AccountsClaimWebsiteResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::AccountsClaimWebsiteResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def claimwebsite_account(merchant_id, account_id, overwrite: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/accounts/{accountId}/claimwebsite', options)
+          command.response_representation = Google::Apis::ContentV2::AccountsClaimWebsiteResponse::Representation
+          command.response_class = Google::Apis::ContentV2::AccountsClaimWebsiteResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['overwrite'] = overwrite unless overwrite.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)
         # accounts in a single request.
         # @param [Google::Apis::ContentV2::BatchAccountsRequest] batch_accounts_request_object
@@ -2053,6 +2096,9 @@ module Google
         # Gets the statuses of multiple products in a single request. This method can
         # only be called for non-multi-client accounts.
         # @param [Google::Apis::ContentV2::BatchProductStatusesRequest] batch_product_statuses_request_object
+        # @param [Boolean] include_attributes
+        #   Flag to include full product data in the results of this request. The default
+        #   value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2074,12 +2120,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_product_status(batch_product_statuses_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_product_status(batch_product_statuses_request_object = nil, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'productstatuses/batch', options)
           command.request_representation = Google::Apis::ContentV2::BatchProductStatusesRequest::Representation
           command.request_object = batch_product_statuses_request_object
           command.response_representation = Google::Apis::ContentV2::BatchProductStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::BatchProductStatusesResponse
+          command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2092,6 +2139,9 @@ module Google
         #   The ID of the managing account.
         # @param [String] product_id
         #   The ID of the product.
+        # @param [Boolean] include_attributes
+        #   Flag to include full product data in the result of this get request. The
+        #   default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2113,12 +2163,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_product_status(merchant_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_product_status(merchant_id, product_id, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/productstatuses/{productId}', options)
           command.response_representation = Google::Apis::ContentV2::ProductStatus::Representation
           command.response_class = Google::Apis::ContentV2::ProductStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
+          command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2129,6 +2180,9 @@ module Google
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
+        # @param [Boolean] include_attributes
+        #   Flag to include full product data in the results of the list request. The
+        #   default value is false.
         # @param [Boolean] include_invalid_inserted_items
         #   Flag to include the invalid inserted items in the result of the list request.
         #   By default the invalid items are not shown (the default value is false).
@@ -2158,11 +2212,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_product_statuses(merchant_id, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_product_statuses(merchant_id, include_attributes: nil, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/productstatuses', options)
           command.response_representation = Google::Apis::ContentV2::ListProductStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListProductStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['includeInvalidInsertedItems'] = include_invalid_inserted_items unless include_invalid_inserted_items.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

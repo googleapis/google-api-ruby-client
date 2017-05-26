@@ -20,14 +20,13 @@ module Google
   module Apis
     # Stackdriver Error Reporting API
     #
-    # Stackdriver Error Reporting groups and counts similar errors from cloud
-    # services. The Stackdriver Error Reporting API provides a way to report new
-    # errors and read access to error groups and their associated errors.
+    # Groups and counts similar errors from cloud services and applications, reports
+    # new errors, and provides access to error groups and their associated errors.
     #
     # @see https://cloud.google.com/error-reporting/
     module ClouderrorreportingV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20170414'
+      REVISION = '20170517'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

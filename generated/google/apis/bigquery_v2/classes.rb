@@ -830,9 +830,10 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only] All errors and warnings encountered during the running of the
-        # job. Errors here do not necessarily mean that the job has completed or was
-        # unsuccessful.
+        # [Output-only] The first errors or warnings encountered during the running of
+        # the job. The final message includes the number of errors that caused the
+        # process to stop. Errors here do not necessarily mean that the job has
+        # completed or was unsuccessful.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::BigqueryV2::ErrorProto>]
         attr_accessor :errors
@@ -1443,7 +1444,8 @@ module Google
         # @return [String]
         attr_accessor :priority
       
-        # [Required] BigQuery SQL query to execute.
+        # [Required] SQL query text to execute. The useLegacySql field can be used to
+        # indicate whether the query uses legacy SQL or standard SQL.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1933,8 +1935,10 @@ module Google
         # @return [Google::Apis::BigqueryV2::ErrorProto]
         attr_accessor :error_result
       
-        # [Output-only] All errors encountered during the running of the job. Errors
-        # here do not necessarily mean that the job has completed or was unsuccessful.
+        # [Output-only] The first errors encountered during the running of the job. The
+        # final message includes the number of errors that caused the process to stop.
+        # Errors here do not necessarily mean that the job has completed or was
+        # unsuccessful.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::BigqueryV2::ErrorProto>]
         attr_accessor :errors
@@ -2304,9 +2308,10 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only] All errors and warnings encountered during the running of the
-        # job. Errors here do not necessarily mean that the job has completed or was
-        # unsuccessful.
+        # [Output-only] The first errors or warnings encountered during the running of
+        # the job. The final message includes the number of errors that caused the
+        # process to stop. Errors here do not necessarily mean that the job has
+        # completed or was unsuccessful.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::BigqueryV2::ErrorProto>]
         attr_accessor :errors
@@ -2778,7 +2783,7 @@ module Google
       class TableFieldSchema
         include Google::Apis::Core::Hashable
       
-        # [Optional] The field description. The maximum length is 16K characters.
+        # [Optional] The field description. The maximum length is 1,024 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

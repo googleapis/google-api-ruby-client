@@ -1086,6 +1086,7 @@
 "/coordinate:v1/LocationListResponse": list_location_response
 "/coordinate:v1/TeamListResponse": list_team_response
 "/coordinate:v1/WorkerListResponse": list_worker_response
+"/dataflow:v1b3/dataflow.projects.locations.templates.create": create_job_from_template_with_location
 "/dataflow:v1b3/CounterStructuredName/otherOrigin": other_origin
 "/dataflow:v1b3/CounterStructuredName/standardOrigin": standard_origin
 "/dataflow:v1b3/KeyRangeLocation/persistentDirectory": persistent_directory

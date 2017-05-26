@@ -3030,7 +3030,8 @@ module Google
         attr_accessor :content_type
       
         # The ID that uniquely identifies the reference that this reference duplicates.
-        # This field is only present if the reference's status is duplicate_on_hold.
+        # This field is only present if the reference's status is inactive with reason
+        # REASON_DUPLICATE_FOR_OWNERS.
         # Corresponds to the JSON property `duplicateLeader`
         # @return [String]
         attr_accessor :duplicate_leader

@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/service-management/
     module ServiceuserV1
       VERSION = 'V1'
-      REVISION = '20170428'
+      REVISION = '20170519'
 
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'

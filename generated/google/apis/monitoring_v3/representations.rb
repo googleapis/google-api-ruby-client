@@ -22,6 +22,96 @@ module Google
   module Apis
     module MonitoringV3
       
+      class TypedValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CollectdPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Linear
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Option
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Explicit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Exponential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Point
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTimeSeriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Group
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Type
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,93 +203,157 @@ module Google
       end
       
       class TypedValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :distribution_value, as: 'distributionValue', class: Google::Apis::MonitoringV3::Distribution, decorator: Google::Apis::MonitoringV3::Distribution::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :bool_value, as: 'boolValue'
+          property :string_value, as: 'stringValue'
+          property :double_value, as: 'doubleValue'
+        end
       end
       
       class CollectdPayload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type_instance, as: 'typeInstance'
+          hash :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :type, as: 'type'
+          property :plugin, as: 'plugin'
+          property :plugin_instance, as: 'pluginInstance'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          collection :values, as: 'values', class: Google::Apis::MonitoringV3::CollectdValue, decorator: Google::Apis::MonitoringV3::CollectdValue::Representation
+      
+        end
       end
       
       class Linear
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_finite_buckets, as: 'numFiniteBuckets'
+          property :width, as: 'width'
+          property :offset, as: 'offset'
+        end
       end
       
       class Option
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          hash :value, as: 'value'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Explicit
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bounds, as: 'bounds'
+        end
       end
       
       class TimeInterval
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
       end
       
       class Exponential
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :growth_factor, as: 'growthFactor'
+          property :scale, as: 'scale'
+          property :num_finite_buckets, as: 'numFiniteBuckets'
+        end
       end
       
       class Point
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
+          property :interval, as: 'interval', class: Google::Apis::MonitoringV3::TimeInterval, decorator: Google::Apis::MonitoringV3::TimeInterval::Representation
       
-      class Field
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class Metric
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          hash :labels, as: 'labels'
+        end
       end
       
-      class LabelDescriptor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+      class Field
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_name, as: 'jsonName'
+          property :kind, as: 'kind'
+          collection :options, as: 'options', class: Google::Apis::MonitoringV3::Option, decorator: Google::Apis::MonitoringV3::Option::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :oneof_index, as: 'oneofIndex'
+          property :cardinality, as: 'cardinality'
+          property :packed, as: 'packed'
+          property :default_value, as: 'defaultValue'
+          property :name, as: 'name'
+          property :type_url, as: 'typeUrl'
+          property :number, as: 'number'
+        end
       end
       
       class ListTimeSeriesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
       
-      class Type
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+      class LabelDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :description, as: 'description'
+          property :value_type, as: 'valueType'
+        end
       end
       
       class Group
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :is_cluster, as: 'isCluster'
+          property :filter, as: 'filter'
+          property :name, as: 'name'
+          property :parent_name, as: 'parentName'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class Type
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::MonitoringV3::Field, decorator: Google::Apis::MonitoringV3::Field::Representation
+      
+          property :name, as: 'name'
+          collection :oneofs, as: 'oneofs'
+          property :source_context, as: 'sourceContext', class: Google::Apis::MonitoringV3::SourceContext, decorator: Google::Apis::MonitoringV3::SourceContext::Representation
+      
+          property :syntax, as: 'syntax'
+          collection :options, as: 'options', class: Google::Apis::MonitoringV3::Option, decorator: Google::Apis::MonitoringV3::Option::Representation
+      
+        end
       end
       
       class BucketOptions
@@ -234,23 +388,23 @@ module Google
       class MetricDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit, as: 'unit'
+          collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
+      
           property :name, as: 'name'
           property :type, as: 'type'
           property :value_type, as: 'valueType'
           property :metric_kind, as: 'metricKind'
           property :display_name, as: 'displayName'
           property :description, as: 'description'
-          property :unit, as: 'unit'
-          collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
-      
         end
       end
       
       class Range
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :min, as: 'min'
           property :max, as: 'max'
+          property :min, as: 'min'
         end
       end
       
@@ -276,11 +430,11 @@ module Google
       class CreateCollectdTimeSeriesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :collectd_version, as: 'collectdVersion'
           property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
           collection :collectd_payloads, as: 'collectdPayloads', class: Google::Apis::MonitoringV3::CollectdPayload, decorator: Google::Apis::MonitoringV3::CollectdPayload::Representation
       
-          property :collectd_version, as: 'collectdVersion'
         end
       end
       
@@ -296,14 +450,14 @@ module Google
       class TimeSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
-      
-          property :metric_kind, as: 'metricKind'
           property :metric, as: 'metric', class: Google::Apis::MonitoringV3::Metric, decorator: Google::Apis::MonitoringV3::Metric::Representation
       
           collection :points, as: 'points', class: Google::Apis::MonitoringV3::Point, decorator: Google::Apis::MonitoringV3::Point::Representation
       
           property :value_type, as: 'valueType'
+          property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
+      
+          property :metric_kind, as: 'metricKind'
         end
       end
       
@@ -349,166 +503,12 @@ module Google
       class MonitoredResourceDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
           property :display_name, as: 'displayName'
           property :description, as: 'description'
           property :type, as: 'type'
           collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
       
-        end
-      end
-      
-      class TypedValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bool_value, as: 'boolValue'
-          property :string_value, as: 'stringValue'
-          property :double_value, as: 'doubleValue'
-          property :int64_value, :numeric_string => true, as: 'int64Value'
-          property :distribution_value, as: 'distributionValue', class: Google::Apis::MonitoringV3::Distribution, decorator: Google::Apis::MonitoringV3::Distribution::Representation
-      
-        end
-      end
-      
-      class CollectdPayload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type_instance, as: 'typeInstance'
-          hash :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
-      
-          property :type, as: 'type'
-          property :plugin, as: 'plugin'
-          property :plugin_instance, as: 'pluginInstance'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          collection :values, as: 'values', class: Google::Apis::MonitoringV3::CollectdValue, decorator: Google::Apis::MonitoringV3::CollectdValue::Representation
-      
-        end
-      end
-      
-      class Linear
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :num_finite_buckets, as: 'numFiniteBuckets'
-          property :width, as: 'width'
-          property :offset, as: 'offset'
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Option
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :value, as: 'value'
           property :name, as: 'name'
-        end
-      end
-      
-      class Explicit
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bounds, as: 'bounds'
-        end
-      end
-      
-      class TimeInterval
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_time, as: 'startTime'
-          property :end_time, as: 'endTime'
-        end
-      end
-      
-      class Exponential
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :scale, as: 'scale'
-          property :num_finite_buckets, as: 'numFiniteBuckets'
-          property :growth_factor, as: 'growthFactor'
-        end
-      end
-      
-      class Point
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
-      
-          property :interval, as: 'interval', class: Google::Apis::MonitoringV3::TimeInterval, decorator: Google::Apis::MonitoringV3::TimeInterval::Representation
-      
-        end
-      end
-      
-      class Field
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :type_url, as: 'typeUrl'
-          property :number, as: 'number'
-          property :kind, as: 'kind'
-          property :json_name, as: 'jsonName'
-          collection :options, as: 'options', class: Google::Apis::MonitoringV3::Option, decorator: Google::Apis::MonitoringV3::Option::Representation
-      
-          property :oneof_index, as: 'oneofIndex'
-          property :cardinality, as: 'cardinality'
-          property :packed, as: 'packed'
-          property :default_value, as: 'defaultValue'
-        end
-      end
-      
-      class Metric
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
-          hash :labels, as: 'labels'
-        end
-      end
-      
-      class LabelDescriptor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
-          property :description, as: 'description'
-          property :value_type, as: 'valueType'
-        end
-      end
-      
-      class ListTimeSeriesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class Type
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :options, as: 'options', class: Google::Apis::MonitoringV3::Option, decorator: Google::Apis::MonitoringV3::Option::Representation
-      
-          collection :fields, as: 'fields', class: Google::Apis::MonitoringV3::Field, decorator: Google::Apis::MonitoringV3::Field::Representation
-      
-          property :name, as: 'name'
-          collection :oneofs, as: 'oneofs'
-          property :syntax, as: 'syntax'
-          property :source_context, as: 'sourceContext', class: Google::Apis::MonitoringV3::SourceContext, decorator: Google::Apis::MonitoringV3::SourceContext::Representation
-      
-        end
-      end
-      
-      class Group
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :parent_name, as: 'parentName'
-          property :display_name, as: 'displayName'
-          property :is_cluster, as: 'isCluster'
-          property :filter, as: 'filter'
         end
       end
     end

@@ -31,6 +31,11 @@ module Google
         # @return [Array<Google::Apis::StorageV1::BucketAccessControl>]
         attr_accessor :acl
       
+        # The bucket's billing configuration.
+        # Corresponds to the JSON property `billing`
+        # @return [Google::Apis::StorageV1::Bucket::Billing]
+        attr_accessor :billing
+      
         # The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         # Corresponds to the JSON property `cors`
         # @return [Array<Google::Apis::StorageV1::Bucket::CorsConfiguration>]
@@ -144,6 +149,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl = args[:acl] if args.key?(:acl)
+          @billing = args[:billing] if args.key?(:billing)
           @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @etag = args[:etag] if args.key?(:etag)
@@ -163,6 +169,26 @@ module Google
           @updated = args[:updated] if args.key?(:updated)
           @versioning = args[:versioning] if args.key?(:versioning)
           @website = args[:website] if args.key?(:website)
+        end
+        
+        # The bucket's billing configuration.
+        class Billing
+          include Google::Apis::Core::Hashable
+        
+          # When set to true, bucket is requester pays.
+          # Corresponds to the JSON property `requesterPays`
+          # @return [Boolean]
+          attr_accessor :requester_pays
+          alias_method :requester_pays?, :requester_pays
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @requester_pays = args[:requester_pays] if args.key?(:requester_pays)
+          end
         end
         
         # 

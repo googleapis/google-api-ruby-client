@@ -862,6 +862,12 @@ module Google
         # @return [String]
         attr_accessor :file_type
       
+        # The PostgreSQL user to use for this import operation. Defaults to
+        # cloudsqlsuperuser. Does not apply to MySQL instances.
+        # Corresponds to the JSON property `importUser`
+        # @return [String]
+        attr_accessor :import_user
+      
         # This is always sql#importContext.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -883,6 +889,7 @@ module Google
           @csv_import_options = args[:csv_import_options] if args.key?(:csv_import_options)
           @database = args[:database] if args.key?(:database)
           @file_type = args[:file_type] if args.key?(:file_type)
+          @import_user = args[:import_user] if args.key?(:import_user)
           @kind = args[:kind] if args.key?(:kind)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -1128,31 +1135,6 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @time_to_retire = args[:time_to_retire] if args.key?(:time_to_retire)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # User defined labels for Cloud SQL instances.
-      class Labels
-        include Google::Apis::Core::Hashable
-      
-        # The key of the label.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # The value of the label.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1414,7 +1396,7 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # The URI of the instance related to the operation.
+        # 
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -1688,7 +1670,7 @@ module Google
       
         # User defined labels.
         # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::SqladminV1beta4::Labels>]
+        # @return [Hash<String,String>]
         attr_accessor :labels
       
         # Preferred location. This specifies where a Cloud SQL instance should
@@ -1727,7 +1709,7 @@ module Google
         attr_accessor :settings_version
       
         # Configuration to increase storage size automatically. The default value is
-        # false. Applies only to Second Generation instances.
+        # true. Applies only to Second Generation instances.
         # Corresponds to the JSON property `storageAutoResize`
         # @return [Boolean]
         attr_accessor :storage_auto_resize

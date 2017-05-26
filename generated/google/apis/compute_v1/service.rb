@@ -1964,6 +1964,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on a disk. To learn more about labels, read the Labeling or
+        # Tagging Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeV1::ZoneSetLabelsRequest] zone_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_disk_labels(project, zone, resource, zone_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeV1::ZoneSetLabelsRequest::Representation
+          command.request_object = zone_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified firewall.
         # @param [String] project
         #   Project ID for this request.
@@ -4339,6 +4384,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on an image. To learn more about labels, read the Labeling or
+        # Tagging Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeV1::GlobalSetLabelsRequest] global_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_image_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/images/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeV1::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Schedules a group action to remove the specified instances from the managed
         # instance group. Abandoning an instance does not delete the instance, but it
         # does remove the instance from any target pools that are applied by the managed
@@ -4347,6 +4434,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -4518,6 +4608,9 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -4610,7 +4703,8 @@ module Google
         # is marked as DONE when the group is created even if the instances in the group
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
-        # A managed instance group can have up to 1000 VM instances per group.
+        # A managed instance group can have up to 1000 VM instances per group. Please
+        # contact Cloud Support if you need an increase in this limit.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4791,6 +4885,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -4841,6 +4938,9 @@ module Google
         # the resize actions are scheduled even if the group has not yet added or
         # deleted any instances. You must separately verify the status of the creating
         # or deleting actions with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5401,6 +5501,9 @@ module Google
         
         # Removes one or more instances from the specified instance group, but does not
         # delete those instances.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration before
+        # the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5811,7 +5914,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Attaches a Disk resource to an instance.
+        # Attaches an existing Disk resource to an instance. You must first create the
+        # disk before you can attach it. It is not possible to create and attach a disk
+        # at the same time. For more information, read Adding a persistent disk to your
+        # instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6285,6 +6391,51 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['autoDelete'] = auto_delete unless auto_delete.nil?
           command.query['deviceName'] = device_name unless device_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets labels on an instance. To learn more about labels, read the Labeling or
+        # Tagging Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeV1::InstancesSetLabelsRequest] instances_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_labels(project, zone, instance, instances_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeV1::InstancesSetLabelsRequest::Representation
+          command.request_object = instances_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7115,6 +7266,154 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Disable this project as an XPN host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/disableXpnHost', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disable an XPN resource associated with this host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::ProjectsDisableXpnResourceRequest] projects_disable_xpn_resource_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_project_xpn_resource(project, projects_disable_xpn_resource_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/disableXpnResource', options)
+          command.request_representation = Google::Apis::ComputeV1::ProjectsDisableXpnResourceRequest::Representation
+          command.request_object = projects_disable_xpn_resource_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enable this project as an XPN host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/enableXpnHost', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enable XPN resource (a.k.a service project or service folder in the future)
+        # for a host project, so that subnetworks in the host project can be used by
+        # instances in the service project or folder.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::ProjectsEnableXpnResourceRequest] projects_enable_xpn_resource_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_project_xpn_resource(project, projects_enable_xpn_resource_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/enableXpnResource', options)
+          command.request_representation = Google::Apis::ComputeV1::ProjectsEnableXpnResourceRequest::Representation
+          command.request_object = projects_enable_xpn_resource_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified Project resource.
         # @param [String] project
         #   Project ID for this request.
@@ -7144,6 +7443,131 @@ module Google
           command.response_representation = Google::Apis::ComputeV1::Project::Representation
           command.response_class = Google::Apis::ComputeV1::Project
           command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the XPN host project that this project links to. May be empty if no link
+        # exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Project] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Project]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/getXpnHost', options)
+          command.response_representation = Google::Apis::ComputeV1::Project::Representation
+          command.response_class = Google::Apis::ComputeV1::Project
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get XPN resources associated with this host project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        # @param [Fixnum] max_results
+        # @param [String] order_by
+        # @param [String] page_token
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::ProjectsGetXpnResources] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::ProjectsGetXpnResources]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_xpn_resources(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/getXpnResources', options)
+          command.response_representation = Google::Apis::ComputeV1::ProjectsGetXpnResources::Representation
+          command.response_class = Google::Apis::ComputeV1::ProjectsGetXpnResources
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all XPN host projects visible to the user in an organization.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
+        # @param [String] filter
+        # @param [Fixnum] max_results
+        # @param [String] order_by
+        # @param [String] page_token
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::XpnHostList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::XpnHostList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/listXpnHosts', options)
+          command.request_representation = Google::Apis::ComputeV1::ProjectsListXpnHostsRequest::Representation
+          command.request_object = projects_list_xpn_hosts_request_object
+          command.response_representation = Google::Apis::ComputeV1::XpnHostList::Representation
+          command.response_class = Google::Apis::ComputeV1::XpnHostList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7951,6 +8375,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -8044,6 +8471,9 @@ module Google
         # DONE when the action is scheduled even if the instances are still being
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -8314,6 +8744,9 @@ module Google
         # DONE when the action is scheduled even if the instances have not yet been
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
@@ -8365,6 +8798,9 @@ module Google
         # resize actions are scheduled even if the group has not yet added or deleted
         # any instances. You must separately verify the status of the creating or
         # deleting actions with the listmanagedinstances method.
+        # If the group is part of a backend service that has enabled connection draining,
+        # it can take up to 60 seconds after the connection draining duration has
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9837,6 +10273,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on a snapshot. To learn more about labels, read the Labeling
+        # or Tagging Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeV1::GlobalSetLabelsRequest] global_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_snapshot_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/snapshots/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeV1::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified SslCertificate resource.
         # @param [String] project
         #   Project ID for this request.
@@ -10358,7 +10836,7 @@ module Google
         end
         
         # Set whether VMs in this subnet can access Google services without assigning
-        # external IP addresses through Cloudpath.
+        # external IP addresses through Private Google Access.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region

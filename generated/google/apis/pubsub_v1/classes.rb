@@ -22,6 +22,184 @@ module Google
   module Apis
     module PubsubV1
       
+      # Request for the ModifyAckDeadline method.
+      class ModifyAckDeadlineRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of acknowledgment IDs.
+        # Corresponds to the JSON property `ackIds`
+        # @return [Array<String>]
+        attr_accessor :ack_ids
+      
+        # The new ack deadline with respect to the time this request was sent to
+        # the Pub/Sub system. For example, if the value is 10, the new
+        # ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
+        # was made. Specifying zero may immediately make the message available for
+        # another pull request.
+        # The minimum deadline you can specify is 0 seconds.
+        # The maximum deadline you can specify is 600 seconds (10 minutes).
+        # Corresponds to the JSON property `ackDeadlineSeconds`
+        # @return [Fixnum]
+        attr_accessor :ack_deadline_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
+          @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to
+        # specify access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+        # `members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **Example**
+        # `
+        # "bindings": [
+        # `
+        # "role": "roles/owner",
+        # "members": [
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        # ]
+        # `,
+        # `
+        # "role": "roles/viewer",
+        # "members": ["user:sean@example.com"]
+        # `
+        # ]
+        # `
+        # For a description of IAM and its features, see the
+        # [IAM developer's guide](https://cloud.google.com/iam).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::PubsubV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # A message data and its attributes. The message payload must not be empty;
+      # it must contain either a non-empty data field, or at least one attribute.
+      class Message
+        include Google::Apis::Core::Hashable
+      
+        # Optional attributes for this message.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # ID of this message, assigned by the server when the message is published.
+        # Guaranteed to be unique within the topic. This value may be read by a
+        # subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        # delivery. It must not be populated by the publisher in a `Publish` call.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # The time at which the message was published, populated by the server when
+        # it receives the `Publish` call. It must not be populated by the
+        # publisher in a `Publish` call.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        # The message payload.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # Request for the ModifyPushConfig method.
+      class ModifyPushConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a push delivery endpoint.
+        # Corresponds to the JSON property `pushConfig`
+        # @return [Google::Apis::PubsubV1::PushConfig]
+        attr_accessor :push_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @push_config = args[:push_config] if args.key?(:push_config)
+        end
+      end
+      
+      # Associates `members` with a `role`.
+      class Binding
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities requesting access for a Cloud Platform resource.
+        # `members` can have the following values:
+        # * `allUsers`: A special identifier that represents anyone who is
+        # on the internet; with or without a Google account.
+        # * `allAuthenticatedUsers`: A special identifier that represents anyone
+        # who is authenticated with a Google account or a service account.
+        # * `user:`emailid``: An email address that represents a specific Google
+        # account. For example, `alice@gmail.com` or `joe@example.com`.
+        # * `serviceAccount:`emailid``: An email address that represents a service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
+        # * `group:`emailid``: An email address that represents a Google group.
+        # For example, `admins@example.com`.
+        # * `domain:`domain``: A Google Apps domain name that represents all the
+        # users of that domain. For example, `google.com` or `example.com`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to `members`.
+        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Required
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
       # Request for the Acknowledge method.
       class AcknowledgeRequest
         include Google::Apis::Core::Hashable
@@ -492,184 +670,6 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
           @bindings = args[:bindings] if args.key?(:bindings)
-        end
-      end
-      
-      # Request for the ModifyAckDeadline method.
-      class ModifyAckDeadlineRequest
-        include Google::Apis::Core::Hashable
-      
-        # The new ack deadline with respect to the time this request was sent to
-        # the Pub/Sub system. For example, if the value is 10, the new
-        # ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        # was made. Specifying zero may immediately make the message available for
-        # another pull request.
-        # The minimum deadline you can specify is 0 seconds.
-        # The maximum deadline you can specify is 600 seconds (10 minutes).
-        # Corresponds to the JSON property `ackDeadlineSeconds`
-        # @return [Fixnum]
-        attr_accessor :ack_deadline_seconds
-      
-        # List of acknowledgment IDs.
-        # Corresponds to the JSON property `ackIds`
-        # @return [Array<String>]
-        attr_accessor :ack_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
-          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-        # `members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
-        # **Example**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/owner",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
-        # ]
-        # `,
-        # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
-        # `
-        # ]
-        # `
-        # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::PubsubV1::Policy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-        end
-      end
-      
-      # A message data and its attributes. The message payload must not be empty;
-      # it must contain either a non-empty data field, or at least one attribute.
-      class Message
-        include Google::Apis::Core::Hashable
-      
-        # Optional attributes for this message.
-        # Corresponds to the JSON property `attributes`
-        # @return [Hash<String,String>]
-        attr_accessor :attributes
-      
-        # ID of this message, assigned by the server when the message is published.
-        # Guaranteed to be unique within the topic. This value may be read by a
-        # subscriber that receives a `PubsubMessage` via a `Pull` call or a push
-        # delivery. It must not be populated by the publisher in a `Publish` call.
-        # Corresponds to the JSON property `messageId`
-        # @return [String]
-        attr_accessor :message_id
-      
-        # The time at which the message was published, populated by the server when
-        # it receives the `Publish` call. It must not be populated by the
-        # publisher in a `Publish` call.
-        # Corresponds to the JSON property `publishTime`
-        # @return [String]
-        attr_accessor :publish_time
-      
-        # The message payload.
-        # Corresponds to the JSON property `data`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @message_id = args[:message_id] if args.key?(:message_id)
-          @publish_time = args[:publish_time] if args.key?(:publish_time)
-          @data = args[:data] if args.key?(:data)
-        end
-      end
-      
-      # Request for the ModifyPushConfig method.
-      class ModifyPushConfigRequest
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for a push delivery endpoint.
-        # Corresponds to the JSON property `pushConfig`
-        # @return [Google::Apis::PubsubV1::PushConfig]
-        attr_accessor :push_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @push_config = args[:push_config] if args.key?(:push_config)
-        end
-      end
-      
-      # Associates `members` with a `role`.
-      class Binding
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` or `joe@example.com`.
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `domain:`domain``: A Google Apps domain name that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
-        # Corresponds to the JSON property `members`
-        # @return [Array<String>]
-        attr_accessor :members
-      
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @members = args[:members] if args.key?(:members)
-          @role = args[:role] if args.key?(:role)
         end
       end
     end

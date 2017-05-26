@@ -1,3 +1,8 @@
+# 0.11.3
+* Add `RequestOptions.api_format_version` to opt-in to receive v2 error messages
+* Fix `to_json` signature to allow args
+* Regenerate APIs
+
 # 0.11.2
 * Regenerate all APIs except `dataflow:v1b3`
 * Add `dfareporting:v2.8`

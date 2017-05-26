@@ -1336,23 +1336,20 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
       
-        # The identifier of the Stackdriver Monitoring metric. The metric cannot have
-        # negative values and should be a utilization metric, which means that the
+        # The identifier (type) of the Stackdriver Monitoring metric. The metric cannot
+        # have negative values and should be a utilization metric, which means that the
         # number of virtual machines handling requests should increase or decrease
-        # proportionally to the metric. The metric must also have a label of compute.
-        # googleapis.com/resource_id with the value of the instance's unique ID,
-        # although this alone does not guarantee that the metric is valid.
-        # For example, the following is a valid metric:
-        # compute.googleapis.com/instance/network/received_bytes_count
-        # The following is not a valid metric because it does not increase or decrease
-        # based on usage:
-        # compute.googleapis.com/instance/cpu/reserved_cores
+        # proportionally to the metric.
+        # The metric must have a value type of INT64 or DOUBLE.
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # Target value of the metric which autoscaler should maintain. Must be a
+        # The target value of the metric that autoscaler should maintain. This must be a
         # positive value.
+        # For example, a good metric to use as a utilization_target is compute.
+        # googleapis.com/instance/network/received_bytes_count. The autoscaler will work
+        # to keep this value constant for each of the instances.
         # Corresponds to the JSON property `utilizationTarget`
         # @return [Float]
         attr_accessor :utilization_target
@@ -1893,7 +1890,7 @@ module Google
         # @return [String]
         attr_accessor :oauth2_client_secret
       
-        # 
+        # [Output Only] SHA256 hash value for the field oauth2_client_secret above.
         # Corresponds to the JSON property `oauth2ClientSecretSha256`
         # @return [String]
         attr_accessor :oauth2_client_secret_sha256
@@ -3418,7 +3415,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Ony] Type of the resource. Always compute#firewall for firewall rules.
+        # [Output Only] Type of the resource. Always compute#firewall for firewall rules.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3635,13 +3632,14 @@ module Google
         # The IP address that this forwarding rule is serving on behalf of.
         # For global forwarding rules, the address must be a global IP. For regional
         # forwarding rules, the address must live in the same region as the forwarding
-        # rule. By default, this field is empty and an ephemeral IP from the same scope (
-        # global or regional) will be assigned.
+        # rule. By default, this field is empty and an ephemeral IPv4 address from the
+        # same scope (global or regional) will be assigned. A regional forwarding rule
+        # supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
         # address belonging to the network/subnetwork configured for the forwarding rule.
         # A reserved address cannot be used. If the field is empty, the IP address will
         # be automatically allocated from the internal IP range of the subnetwork or
-        # network configured for this forwarding rule. Only IPv4 is supported.
+        # network configured for this forwarding rule.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -4775,11 +4773,11 @@ module Google
         attr_accessor :family
       
         # A list of features to enable on the guest OS. Applicable for bootable images
-        # only. Currently, only one feature can be enabled, VIRTIO_SCSCI_MULTIQUEUE,
+        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
         # which allows each virtual CPU to have its own queue. For Windows images, you
-        # can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.
+        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
         # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
-        # VIRTIO_SCSCI_MULTIQUEUE.
+        # VIRTIO_SCSI_MULTIQUEUE.
         # For new Windows images, the server might also populate this field with the
         # value WINDOWS, to indicate that this is a Windows image. This value is purely
         # informational and does not enable or disable any features.
@@ -5084,6 +5082,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::Metadata]
         attr_accessor :metadata
       
+        # Minimum cpu/platform to be used by this instance. We may schedule on the
+        # specified or later cpu/platform.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -5160,6 +5164,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -6495,6 +6500,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::Metadata]
         attr_accessor :metadata
       
+        # Minimum cpu/platform to be used by this instance. The instance may be
+        # scheduled on the specified or later cpu/platform.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # An array of network access configurations for this interface.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
@@ -6530,6 +6541,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -6857,6 +6869,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # 
+      class InstancesSetMinCpuPlatformRequest
+        include Google::Apis::Core::Hashable
+      
+        # Minimum cpu/platform this instance should be started at.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
       
@@ -10683,13 +10714,14 @@ module Google
         attr_accessor :creation_timestamp
       
         # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # create the resource. This field can be set only at resource creation time.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # [Output Only] The gateway address for default routes to reach destination
-        # addresses outside this subnetwork.
+        # addresses outside this subnetwork. This field can be set only at resource
+        # creation time.
         # Corresponds to the JSON property `gatewayAddress`
         # @return [String]
         attr_accessor :gateway_address
@@ -10703,7 +10735,7 @@ module Google
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
         # 168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported.
+        # IPv4 is supported. This field can be set only at resource creation time.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -10726,19 +10758,22 @@ module Google
       
         # The URL of the network to which this subnetwork belongs, provided by the
         # client when initially creating the subnetwork. Only networks that are in the
-        # distributed mode can have subnetworks.
+        # distributed mode can have subnetworks. This field can be set only at resource
+        # creation time.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Whether the VMs in this subnet can access Google services without assigned
-        # external IP addresses.
+        # external IP addresses. This field can be both set at resource creation time
+        # and updated using setPrivateIpGoogleAccess.
         # Corresponds to the JSON property `privateIpGoogleAccess`
         # @return [Boolean]
         attr_accessor :private_ip_google_access
         alias_method :private_ip_google_access?, :private_ip_google_access
       
-        # URL of the region where the Subnetwork resides.
+        # URL of the region where the Subnetwork resides. This field can be set only at
+        # resource creation time.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -13532,6 +13567,11 @@ module Google
       class Zone
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Available cpu/platform selections for the zone.
+        # Corresponds to the JSON property `availableCpuPlatforms`
+        # @return [Array<String>]
+        attr_accessor :available_cpu_platforms
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -13584,6 +13624,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @available_cpu_platforms = args[:available_cpu_platforms] if args.key?(:available_cpu_platforms)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)

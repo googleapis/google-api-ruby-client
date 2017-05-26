@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceIap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -372,6 +378,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -682,6 +694,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesSetMachineTypeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -881,6 +899,30 @@ module Google
       end
       
       class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsDisableXpnResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsEnableXpnResourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsGetXpnResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectsListXpnHostsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1486,6 +1528,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class XpnHostList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class XpnResourceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Zone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1493,6 +1547,12 @@ module Google
       end
       
       class ZoneList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneSetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1771,6 +1831,8 @@ module Google
           property :enable_cdn, as: 'enableCDN'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :health_checks, as: 'healthChecks'
+          property :iap, as: 'iap', class: Google::Apis::ComputeV1::BackendServiceIap, decorator: Google::Apis::ComputeV1::BackendServiceIap::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
@@ -1811,6 +1873,16 @@ module Google
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatus::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BackendServiceIap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :oauth2_client_id, as: 'oauth2ClientId'
+          property :oauth2_client_secret, as: 'oauth2ClientSecret'
+          property :oauth2_client_secret_sha256, as: 'oauth2ClientSecretSha256'
         end
       end
       
@@ -1917,6 +1989,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :last_attach_timestamp, as: 'lastAttachTimestamp'
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
           collection :licenses, as: 'licenses'
@@ -2187,6 +2260,14 @@ module Google
         end
       end
       
+      class GlobalSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+        end
+      end
+      
       class GuestOsFeature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2357,6 +2438,7 @@ module Google
           property :image_encryption_key, as: 'imageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
@@ -2403,6 +2485,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
@@ -2711,6 +2794,7 @@ module Google
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
       
+          hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
@@ -2793,6 +2877,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstancesSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
         end
       end
       
@@ -3169,6 +3261,40 @@ module Google
           property :self_link, as: 'selfLink'
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeV1::UsageExportLocation, decorator: Google::Apis::ComputeV1::UsageExportLocation::Representation
       
+          property :xpn_project_status, as: 'xpnProjectStatus'
+        end
+      end
+      
+      class ProjectsDisableXpnResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :xpn_resource, as: 'xpnResource', class: Google::Apis::ComputeV1::XpnResourceId, decorator: Google::Apis::ComputeV1::XpnResourceId::Representation
+      
+        end
+      end
+      
+      class ProjectsEnableXpnResourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :xpn_resource, as: 'xpnResource', class: Google::Apis::ComputeV1::XpnResourceId, decorator: Google::Apis::ComputeV1::XpnResourceId::Representation
+      
+        end
+      end
+      
+      class ProjectsGetXpnResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ComputeV1::XpnResourceId, decorator: Google::Apis::ComputeV1::XpnResourceId::Representation
+      
+        end
+      end
+      
+      class ProjectsListXpnHostsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :organization, as: 'organization'
         end
       end
       
@@ -3574,6 +3700,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -4258,6 +4385,26 @@ module Google
         end
       end
       
+      class XpnHostList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Project, decorator: Google::Apis::ComputeV1::Project::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class XpnResourceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :type, as: 'type'
+        end
+      end
+      
       class Zone
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4283,6 +4430,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ZoneSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
         end
       end
     end

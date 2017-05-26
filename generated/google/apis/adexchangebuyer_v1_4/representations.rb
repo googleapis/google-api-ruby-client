@@ -1025,6 +1025,7 @@ module Google
           property :flight_start_time_ms, :numeric_string => true, as: 'flightStartTimeMs'
           property :inventory_description, as: 'inventoryDescription'
           property :is_rfp_template, as: 'isRfpTemplate'
+          property :is_setup_complete, as: 'isSetupComplete'
           property :kind, as: 'kind'
           property :last_update_time_ms, :numeric_string => true, as: 'lastUpdateTimeMs'
           property :name, as: 'name'
@@ -1207,6 +1208,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auction_tier, as: 'auctionTier'
+          property :billed_buyer, as: 'billedBuyer', class: Google::Apis::AdexchangebuyerV1_4::Buyer, decorator: Google::Apis::AdexchangebuyerV1_4::Buyer::Representation
+      
           property :buyer, as: 'buyer', class: Google::Apis::AdexchangebuyerV1_4::Buyer, decorator: Google::Apis::AdexchangebuyerV1_4::Buyer::Representation
       
           property :price, as: 'price', class: Google::Apis::AdexchangebuyerV1_4::Price, decorator: Google::Apis::AdexchangebuyerV1_4::Price::Representation
@@ -1225,9 +1228,14 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billed_buyer, as: 'billedBuyer', class: Google::Apis::AdexchangebuyerV1_4::Buyer, decorator: Google::Apis::AdexchangebuyerV1_4::Buyer::Representation
+      
+          property :buyer, as: 'buyer', class: Google::Apis::AdexchangebuyerV1_4::Buyer, decorator: Google::Apis::AdexchangebuyerV1_4::Buyer::Representation
+      
           property :creation_time_ms, :numeric_string => true, as: 'creationTimeMs'
           collection :creator_contacts, as: 'creatorContacts', class: Google::Apis::AdexchangebuyerV1_4::ContactInformation, decorator: Google::Apis::AdexchangebuyerV1_4::ContactInformation::Representation
       
+          property :creator_role, as: 'creatorRole'
           property :delivery_control, as: 'deliveryControl', class: Google::Apis::AdexchangebuyerV1_4::DeliveryControl, decorator: Google::Apis::AdexchangebuyerV1_4::DeliveryControl::Representation
       
           property :flight_end_time_ms, :numeric_string => true, as: 'flightEndTimeMs'
@@ -1373,6 +1381,7 @@ module Google
           collection :companion_sizes, as: 'companionSizes', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize::Representation
       
           property :creative_size_type, as: 'creativeSizeType'
+          property :native_template, as: 'nativeTemplate'
           property :size, as: 'size', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize::Representation
       
           property :skippable_ad_type, as: 'skippableAdType'

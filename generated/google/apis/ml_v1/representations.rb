@@ -22,37 +22,19 @@ module Google
   module Apis
     module MlV1
       
-      class GoogleCloudMlV1ListModelsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudMlV1TrainingInput
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudMlV1Job
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleApiHttpBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudMlV1beta1Version
+      class GoogleCloudMlV1GetConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudMlV1GetConfigResponse
+      class GoogleCloudMlV1beta1Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,13 +148,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudMlV1CancelJobRequest
+      class GoogleCloudMlV1ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudMlV1ListVersionsResponse
+      class GoogleCloudMlV1CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,74 +173,29 @@ module Google
       end
       
       class GoogleCloudMlV1ListModelsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :models, as: 'models', class: Google::Apis::MlV1::GoogleCloudMlV1Model, decorator: Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :next_page_token, as: 'nextPageToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GoogleCloudMlV1TrainingInput
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :parameter_server_count, :numeric_string => true, as: 'parameterServerCount'
-          collection :package_uris, as: 'packageUris'
-          property :worker_count, :numeric_string => true, as: 'workerCount'
-          property :master_type, as: 'masterType'
-          property :runtime_version, as: 'runtimeVersion'
-          property :python_module, as: 'pythonModule'
-          property :worker_type, as: 'workerType'
-          collection :args, as: 'args'
-          property :region, as: 'region'
-          property :parameter_server_type, as: 'parameterServerType'
-          property :scale_tier, as: 'scaleTier'
-          property :job_dir, as: 'jobDir'
-          property :hyperparameters, as: 'hyperparameters', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GoogleCloudMlV1Job
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :training_output, as: 'trainingOutput', class: Google::Apis::MlV1::GoogleCloudMlV1TrainingOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1TrainingOutput::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :create_time, as: 'createTime'
-          property :training_input, as: 'trainingInput', class: Google::Apis::MlV1::GoogleCloudMlV1TrainingInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1TrainingInput::Representation
-      
-          property :state, as: 'state'
-          property :prediction_input, as: 'predictionInput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput::Representation
-      
-          property :error_message, as: 'errorMessage'
-          property :job_id, as: 'jobId'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          property :prediction_output, as: 'predictionOutput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GoogleApiHttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, :base64 => true, as: 'data'
           property :content_type, as: 'contentType'
-        end
-      end
-      
-      class GoogleCloudMlV1beta1Version
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :runtime_version, as: 'runtimeVersion'
-          property :last_use_time, as: 'lastUseTime'
-          property :description, as: 'description'
-          property :deployment_uri, as: 'deploymentUri'
-          property :is_default, as: 'isDefault'
-          property :create_time, as: 'createTime'
-          property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1beta1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1beta1ManualScaling::Representation
-      
-          property :name, as: 'name'
+          collection :extensions, as: 'extensions'
+          property :data, :base64 => true, as: 'data'
         end
       end
       
@@ -267,6 +204,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_account_project, :numeric_string => true, as: 'serviceAccountProject'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudMlV1beta1Version
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_default, as: 'isDefault'
+          property :create_time, as: 'createTime'
+          property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1beta1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1beta1ManualScaling::Representation
+      
+          property :name, as: 'name'
+          property :last_use_time, as: 'lastUseTime'
+          property :runtime_version, as: 'runtimeVersion'
+          property :description, as: 'description'
+          property :deployment_uri, as: 'deploymentUri'
         end
       end
       
@@ -285,19 +237,19 @@ module Google
       class GoogleCloudMlV1PredictionOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :prediction_count, :numeric_string => true, as: 'predictionCount'
           property :error_count, :numeric_string => true, as: 'errorCount'
           property :output_path, as: 'outputPath'
           property :node_hours, as: 'nodeHours'
-          property :prediction_count, :numeric_string => true, as: 'predictionCount'
         end
       end
       
       class GoogleLongrunningListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::MlV1::GoogleLongrunningOperation, decorator: Google::Apis::MlV1::GoogleLongrunningOperation::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -311,11 +263,11 @@ module Google
       class GoogleCloudMlV1TrainingOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput::Representation
+      
           property :completed_trial_count, :numeric_string => true, as: 'completedTrialCount'
           property :is_hyperparameter_tuning_job, as: 'isHyperparameterTuningJob'
           property :consumed_ml_units, as: 'consumedMLUnits'
-          collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput::Representation
-      
         end
       end
       
@@ -330,8 +282,8 @@ module Google
       class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :objective_value, as: 'objectiveValue'
           property :training_step, :numeric_string => true, as: 'trainingStep'
+          property :objective_value, as: 'objectiveValue'
         end
       end
       
@@ -366,15 +318,15 @@ module Google
       class GoogleCloudMlV1PredictionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_format, as: 'dataFormat'
+          property :runtime_version, as: 'runtimeVersion'
+          collection :input_paths, as: 'inputPaths'
+          property :region, as: 'region'
           property :version_name, as: 'versionName'
           property :model_name, as: 'modelName'
           property :output_path, as: 'outputPath'
           property :max_worker_count, :numeric_string => true, as: 'maxWorkerCount'
           property :uri, as: 'uri'
-          property :data_format, as: 'dataFormat'
-          property :runtime_version, as: 'runtimeVersion'
-          collection :input_paths, as: 'inputPaths'
-          property :region, as: 'region'
         end
       end
       
@@ -409,21 +361,21 @@ module Google
       class GoogleCloudMlV1HyperparameterSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :goal, as: 'goal'
+          property :hyperparameter_metric_tag, as: 'hyperparameterMetricTag'
           collection :params, as: 'params', class: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec::Representation
       
           property :max_trials, as: 'maxTrials'
           property :max_parallel_trials, as: 'maxParallelTrials'
-          property :goal, as: 'goal'
-          property :hyperparameter_metric_tag, as: 'hyperparameterMetricTag'
         end
       end
       
       class GoogleCloudMlV1ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :jobs, as: 'jobs', class: Google::Apis::MlV1::GoogleCloudMlV1Job, decorator: Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -448,12 +400,12 @@ module Google
       class GoogleCloudMlV1Model
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :regions, as: 'regions'
           property :name, as: 'name'
           property :description, as: 'description'
           property :online_prediction_logging, as: 'onlinePredictionLogging'
           property :default_version, as: 'defaultVersion', class: Google::Apis::MlV1::GoogleCloudMlV1Version, decorator: Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
       
+          collection :regions, as: 'regions'
         end
       end
       
@@ -463,18 +415,18 @@ module Google
         end
       end
       
-      class GoogleCloudMlV1CancelJobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class GoogleCloudMlV1ListVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :versions, as: 'versions', class: Google::Apis::MlV1::GoogleCloudMlV1Version, decorator: Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
       
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudMlV1CancelJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -488,9 +440,58 @@ module Google
       class GoogleRpcStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
           property :code, as: 'code'
           property :message, as: 'message'
-          collection :details, as: 'details'
+        end
+      end
+      
+      class GoogleCloudMlV1ListModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::MlV1::GoogleCloudMlV1Model, decorator: Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudMlV1TrainingInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :runtime_version, as: 'runtimeVersion'
+          property :python_module, as: 'pythonModule'
+          property :worker_type, as: 'workerType'
+          collection :args, as: 'args'
+          property :region, as: 'region'
+          property :parameter_server_type, as: 'parameterServerType'
+          property :scale_tier, as: 'scaleTier'
+          property :job_dir, as: 'jobDir'
+          property :hyperparameters, as: 'hyperparameters', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec::Representation
+      
+          property :parameter_server_count, :numeric_string => true, as: 'parameterServerCount'
+          collection :package_uris, as: 'packageUris'
+          property :worker_count, :numeric_string => true, as: 'workerCount'
+          property :master_type, as: 'masterType'
+        end
+      end
+      
+      class GoogleCloudMlV1Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :prediction_output, as: 'predictionOutput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput::Representation
+      
+          property :training_output, as: 'trainingOutput', class: Google::Apis::MlV1::GoogleCloudMlV1TrainingOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1TrainingOutput::Representation
+      
+          property :create_time, as: 'createTime'
+          property :training_input, as: 'trainingInput', class: Google::Apis::MlV1::GoogleCloudMlV1TrainingInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1TrainingInput::Representation
+      
+          property :prediction_input, as: 'predictionInput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput::Representation
+      
+          property :state, as: 'state'
+          property :error_message, as: 'errorMessage'
+          property :job_id, as: 'jobId'
         end
       end
     end

@@ -22,10 +22,10 @@ module Google
     #
     # Access source code repositories hosted by Google.
     #
-    # @see https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
+    # @see https://cloud.google.com/source-repositories/docs/apis
     module SourcerepoV1
       VERSION = 'V1'
-      REVISION = '20170410'
+      REVISION = '20170502'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

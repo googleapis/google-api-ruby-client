@@ -22,144 +22,6 @@ module Google
   module Apis
     module SpannerV1
       
-      class CreateInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReadOnly
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExecuteSqlRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReadRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Write
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReadWrite
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResultSet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateDatabaseDdlRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PartialResultSet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateInstanceMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResultSetMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TransactionSelector
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Mutation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class KeySet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GetDatabaseDdlResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,7 +148,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CommitRequest
+      class ListInstanceConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,19 +160,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListInstanceConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GetIamPolicyRequest
+      class CommitRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,13 +202,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListInstancesResponse
+      class KeyRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class KeyRange
+      class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,256 +251,141 @@ module Google
       end
       
       class CreateInstanceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :instance_id, as: 'instanceId'
-          property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, as: 'value'
-          property :sys, as: 'sys'
-          property :iam, as: 'iam'
-          collection :values, as: 'values'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_type, as: 'logType'
-          collection :exempted_members, as: 'exemptedMembers'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ReadOnly
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :strong, as: 'strong'
-          property :min_read_timestamp, as: 'minReadTimestamp'
-          property :max_staleness, as: 'maxStaleness'
-          property :read_timestamp, as: 'readTimestamp'
-          property :return_read_timestamp, as: 'returnReadTimestamp'
-          property :exact_staleness, as: 'exactStaleness'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ExecuteSqlRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query_mode, as: 'queryMode'
-          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :resume_token, :base64 => true, as: 'resumeToken'
-          hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
-      
-          property :sql, as: 'sql'
-          hash :params, as: 'params'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :version, as: 'version'
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::SpannerV1::AuditConfig, decorator: Google::Apis::SpannerV1::AuditConfig::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          collection :bindings, as: 'bindings', class: Google::Apis::SpannerV1::Binding, decorator: Google::Apis::SpannerV1::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::SpannerV1::Rule, decorator: Google::Apis::SpannerV1::Rule::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ReadRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :table, as: 'table'
-          property :limit, :numeric_string => true, as: 'limit'
-          property :index, as: 'index'
-          property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          collection :columns, as: 'columns'
-          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
-      
-          property :resume_token, :base64 => true, as: 'resumeToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Write
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :columns, as: 'columns'
-          collection :values, as: 'values', :class => Array do
-        include Representable::JSON::Collection
-        items
-      end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :table, as: 'table'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ReadWrite
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error', class: Google::Apis::SpannerV1::Status, decorator: Google::Apis::SpannerV1::Status::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          hash :metadata, as: 'metadata'
-          property :done, as: 'done'
-          hash :response, as: 'response'
-          property :name, as: 'name'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          property :message, as: 'message'
-          collection :details, as: 'details'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ResultSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :stats, as: 'stats', class: Google::Apis::SpannerV1::ResultSetStats, decorator: Google::Apis::SpannerV1::ResultSetStats::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          collection :rows, as: 'rows', :class => Array do
-        include Representable::JSON::Collection
-        items
-      end
-      
-          property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
-      
-        end
-      end
-      
-      class UpdateDatabaseDdlRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :statements, as: 'statements'
-          property :operation_id, as: 'operationId'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :members, as: 'members'
-          property :role, as: 'role'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDatabaseDdlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PartialResultSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chunked_value, as: 'chunkedValue'
-          property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          collection :values, as: 'values'
-          property :resume_token, :base64 => true, as: 'resumeToken'
-          property :stats, as: 'stats', class: Google::Apis::SpannerV1::ResultSetStats, decorator: Google::Apis::SpannerV1::ResultSetStats::Representation
-      
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class UpdateInstanceMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cancel_time, as: 'cancelTime'
-          property :end_time, as: 'endTime'
-          property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :start_time, as: 'startTime'
-        end
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ResultSetMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::Transaction, decorator: Google::Apis::SpannerV1::Transaction::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :row_type, as: 'rowType', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TransactionSelector
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :single_use, as: 'singleUse', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :begin, as: 'begin', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
-      
-          property :id, :base64 => true, as: 'id'
-        end
-      end
-      
-      class Mutation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :insert, as: 'insert', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
-      
-          property :insert_or_update, as: 'insertOrUpdate', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
-      
-          property :update, as: 'update', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
-      
-          property :replace, as: 'replace', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
-      
-          property :delete, as: 'delete', class: Google::Apis::SpannerV1::Delete, decorator: Google::Apis::SpannerV1::Delete::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class KeySet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ranges, as: 'ranges', class: Google::Apis::SpannerV1::KeyRange, decorator: Google::Apis::SpannerV1::KeyRange::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          collection :keys, as: 'keys', :class => Array do
-        include Representable::JSON::Collection
-        items
+        include Google::Apis::Core::JsonObjectSupport
       end
       
-          property :all, as: 'all'
-        end
+      class Mutation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GetDatabaseDdlResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :statements, as: 'statements'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Database
@@ -652,21 +399,21 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :node_count, as: 'nodeCount'
           hash :labels, as: 'labels'
           property :config, as: 'config'
           property :state, as: 'state'
           property :name, as: 'name'
-          property :display_name, as: 'displayName'
-          property :node_count, as: 'nodeCount'
         end
       end
       
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :update_mask, as: 'updateMask'
           property :policy, as: 'policy', class: Google::Apis::SpannerV1::Policy, decorator: Google::Apis::SpannerV1::Policy::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -689,17 +436,17 @@ module Google
       class Transaction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, :base64 => true, as: 'id'
           property :read_timestamp, as: 'readTimestamp'
+          property :id, :base64 => true, as: 'id'
         end
       end
       
       class UpdateDatabaseDdlMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
           collection :statements, as: 'statements'
           collection :commit_timestamps, as: 'commitTimestamps'
-          property :database, as: 'database'
         end
       end
       
@@ -762,17 +509,19 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
           property :struct_type, as: 'structType', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
       
           property :array_element_type, as: 'arrayElementType', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
       
-          property :code, as: 'code'
         end
       end
       
       class PlanNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+          hash :execution_stats, as: 'executionStats'
           property :short_representation, as: 'shortRepresentation', class: Google::Apis::SpannerV1::ShortRepresentation, decorator: Google::Apis::SpannerV1::ShortRepresentation::Representation
       
           property :index, as: 'index'
@@ -780,29 +529,27 @@ module Google
           property :kind, as: 'kind'
           collection :child_links, as: 'childLinks', class: Google::Apis::SpannerV1::ChildLink, decorator: Google::Apis::SpannerV1::ChildLink::Representation
       
-          hash :metadata, as: 'metadata'
-          hash :execution_stats, as: 'executionStats'
         end
       end
       
       class CreateInstanceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cancel_time, as: 'cancelTime'
-          property :end_time, as: 'endTime'
           property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
       
           property :start_time, as: 'startTime'
+          property :cancel_time, as: 'cancelTime'
+          property :end_time, as: 'endTime'
         end
       end
       
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
           collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::SpannerV1::AuditLogConfig, decorator: Google::Apis::SpannerV1::AuditLogConfig::Representation
       
           collection :exempted_members, as: 'exemptedMembers'
-          property :service, as: 'service'
         end
       end
       
@@ -824,8 +571,25 @@ module Google
       class Delete
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :table, as: 'table'
           property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
+      
+          property :table, as: 'table'
+        end
+      end
+      
+      class ListInstanceConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :instance_configs, as: 'instanceConfigs', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
+      
+        end
+      end
+      
+      class BeginTransactionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :options, as: 'options', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
       
         end
       end
@@ -841,33 +605,16 @@ module Google
         end
       end
       
-      class BeginTransactionRequest
+      class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :options, as: 'options', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
-      
-        end
-      end
-      
-      class ListInstanceConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :instance_configs, as: 'instanceConfigs', class: Google::Apis::SpannerV1::InstanceConfig, decorator: Google::Apis::SpannerV1::InstanceConfig::Representation
-      
+          collection :permissions, as: 'permissions'
         end
       end
       
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
         end
       end
       
@@ -912,22 +659,22 @@ module Google
         end
       end
       
+      class KeyRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :start_closed, as: 'startClosed'
+          collection :start_open, as: 'startOpen'
+          collection :end_open, as: 'endOpen'
+          collection :end_closed, as: 'endClosed'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :instances, as: 'instances', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
       
-        end
-      end
-      
-      class KeyRange
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :end_open, as: 'endOpen'
-          collection :end_closed, as: 'endClosed'
-          collection :start_closed, as: 'startClosed'
-          collection :start_open, as: 'startOpen'
         end
       end
       
@@ -977,6 +724,259 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :extra_statements, as: 'extraStatements'
           property :create_statement, as: 'createStatement'
+        end
+      end
+      
+      class CreateInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
+      
+          property :instance_id, as: 'instanceId'
+        end
+      end
+      
+      class Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam, as: 'iam'
+          collection :values, as: 'values'
+          property :op, as: 'op'
+          property :svc, as: 'svc'
+          property :value, as: 'value'
+          property :sys, as: 'sys'
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_type, as: 'logType'
+          collection :exempted_members, as: 'exemptedMembers'
+        end
+      end
+      
+      class ReadOnly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_staleness, as: 'maxStaleness'
+          property :read_timestamp, as: 'readTimestamp'
+          property :return_read_timestamp, as: 'returnReadTimestamp'
+          property :exact_staleness, as: 'exactStaleness'
+          property :strong, as: 'strong'
+          property :min_read_timestamp, as: 'minReadTimestamp'
+        end
+      end
+      
+      class ExecuteSqlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :params, as: 'params'
+          property :query_mode, as: 'queryMode'
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
+      
+          property :resume_token, :base64 => true, as: 'resumeToken'
+          hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
+      
+          property :sql, as: 'sql'
+        end
+      end
+      
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, :base64 => true, as: 'etag'
+          property :iam_owned, as: 'iamOwned'
+          collection :rules, as: 'rules', class: Google::Apis::SpannerV1::Rule, decorator: Google::Apis::SpannerV1::Rule::Representation
+      
+          property :version, as: 'version'
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::SpannerV1::AuditConfig, decorator: Google::Apis::SpannerV1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::SpannerV1::Binding, decorator: Google::Apis::SpannerV1::Binding::Representation
+      
+        end
+      end
+      
+      class ReadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
+      
+          property :resume_token, :base64 => true, as: 'resumeToken'
+          property :table, as: 'table'
+          property :limit, :numeric_string => true, as: 'limit'
+          property :index, as: 'index'
+          property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
+      
+        end
+      end
+      
+      class Write
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table'
+          collection :columns, as: 'columns'
+          collection :values, as: 'values', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+        end
+      end
+      
+      class DataAccessOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ReadWrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :error, as: 'error', class: Google::Apis::SpannerV1::Status, decorator: Google::Apis::SpannerV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :done, as: 'done'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
+      class ResultSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rows, as: 'rows', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+          property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
+      
+          property :stats, as: 'stats', class: Google::Apis::SpannerV1::ResultSetStats, decorator: Google::Apis::SpannerV1::ResultSetStats::Representation
+      
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
+      class UpdateDatabaseDdlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :statements, as: 'statements'
+          property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class PartialResultSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stats, as: 'stats', class: Google::Apis::SpannerV1::ResultSetStats, decorator: Google::Apis::SpannerV1::ResultSetStats::Representation
+      
+          property :chunked_value, as: 'chunkedValue'
+          property :metadata, as: 'metadata', class: Google::Apis::SpannerV1::ResultSetMetadata, decorator: Google::Apis::SpannerV1::ResultSetMetadata::Representation
+      
+          collection :values, as: 'values'
+          property :resume_token, :base64 => true, as: 'resumeToken'
+        end
+      end
+      
+      class UpdateInstanceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :end_time, as: 'endTime'
+          property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
+      
+        end
+      end
+      
+      class ResultSetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_type, as: 'rowType', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
+      
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::Transaction, decorator: Google::Apis::SpannerV1::Transaction::Representation
+      
+        end
+      end
+      
+      class TransactionSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :single_use, as: 'singleUse', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
+      
+          property :begin, as: 'begin', class: Google::Apis::SpannerV1::TransactionOptions, decorator: Google::Apis::SpannerV1::TransactionOptions::Representation
+      
+          property :id, :base64 => true, as: 'id'
+        end
+      end
+      
+      class KeySet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ranges, as: 'ranges', class: Google::Apis::SpannerV1::KeyRange, decorator: Google::Apis::SpannerV1::KeyRange::Representation
+      
+          collection :keys, as: 'keys', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+          property :all, as: 'all'
+        end
+      end
+      
+      class Mutation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insert, as: 'insert', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
+      
+          property :insert_or_update, as: 'insertOrUpdate', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
+      
+          property :update, as: 'update', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
+      
+          property :replace, as: 'replace', class: Google::Apis::SpannerV1::Write, decorator: Google::Apis::SpannerV1::Write::Representation
+      
+          property :delete, as: 'delete', class: Google::Apis::SpannerV1::Delete, decorator: Google::Apis::SpannerV1::Delete::Representation
+      
+        end
+      end
+      
+      class GetDatabaseDdlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :statements, as: 'statements'
         end
       end
     end
