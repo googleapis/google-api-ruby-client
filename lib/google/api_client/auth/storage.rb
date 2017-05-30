@@ -39,8 +39,7 @@ module Google
       # @param [Object] store
       #  Storage object
       def initialize(store)
-        @store= store
-        @authorization = nil
+        @store = store
       end
 
       ##
