@@ -84,38 +84,6 @@ Google::Apis::RequestOptions.default.retries = 5
 
 # Allow testing different adapters
 Google::Apis::ClientOptions.default.use_net_http = true if ENV['USE_NET_HTTP']
-# Temporarily patch WebMock to allow chunked responses for Net::HTTP
-module Net
-  module WebMockHTTPResponse
-    def eval_chunk(chunk)
-      chunk if chunk.is_a?(String)
-      chunk.read if chunk.is_a?(IO)
-      chunk.call if chunk.is_a?(Proc)
-      fail chunk if chunk.is_a?(Class)
-      chunk
-    end
-
-    def read_body(dest = nil, &block)
-      if !(defined?(@__read_body_previously_called).nil?) && @__read_body_previously_called
-        return super
-      end
-      return @body if dest.nil? && block.nil?
-      fail ArgumentError.new('both arg and block given for HTTP method') if dest && block
-      return nil if @body.nil?
-
-      dest ||= ::Net::ReadAdapter.new(block)
-      body_parts = Array(@body)
-      body_parts.each do |chunk|
-        chunk = eval_chunk(chunk)
-        dest << chunk
-      end
-      @body = dest
-    ensure
-      # allow subsequent calls to #read_body to proceed as normal, without our hack...
-      @__read_body_previously_called = true
-    end
-  end
-end
 
 class WebMockHTTPClient
   def eval_chunk(chunk)
