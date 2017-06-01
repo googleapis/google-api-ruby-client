@@ -69,6 +69,13 @@ module Google
                 break if @max && item_count > @max
                 yield item
               end
+            elsif items.kind_of?(Hash)
+              items.each do |key, val|
+                item_count = item_count + 1
+                break if @max && item_count > @max
+                item = { key => val }
+                yield item
+              end
             elsif items
               # yield singular non-nil items (for genomics API)
               yield items
