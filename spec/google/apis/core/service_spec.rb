@@ -351,7 +351,7 @@ EOF
       end
 
       it 'should collate hash entries' do
-        expect(service.fetch_all(items: :hash_) { |token| responses[token] } ).to contain_exactly({ 'foo' => 1 }, { 'bar' => 2 }, { 'baz' => 3 })
+        expect(service.fetch_all(items: :hash_) { |token| responses[token] } ).to contain_exactly(['foo', 1], ['bar', 2], ['baz', 3])
       end
 
       it 'should allow limiting the number of items to fetch' do

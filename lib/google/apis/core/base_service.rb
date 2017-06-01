@@ -73,8 +73,7 @@ module Google
               items.each do |key, val|
                 item_count = item_count + 1
                 break if @max && item_count > @max
-                item = { key => val }
-                yield item
+                yield key, val
               end
             elsif items
               # yield singular non-nil items (for genomics API)
