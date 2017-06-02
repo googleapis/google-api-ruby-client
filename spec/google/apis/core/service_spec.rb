@@ -313,11 +313,11 @@ EOF
       let(:responses) do
         data = {}
         data[nil] = OpenStruct.new(
-          next_page_token: 'p1', alt_page_token: 'p2', items: ['a', 'b', 'c'], alt_items: [1, 2, 3], singular: 'foo')
+          next_page_token: 'p1', alt_page_token: 'p2', items: ['a', 'b', 'c'], alt_items: [1, 2, 3], singular: 'foo', hash_: { 'foo' => 1, 'bar' => 2 })
         data['p1'] = OpenStruct.new(
-          next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar')
+          next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar', hash_: nil)
         data['p2'] = OpenStruct.new(
-          next_page_token: nil, alt_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7, 8, 9], singular: 'baz')
+          next_page_token: nil, alt_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7, 8, 9], singular: 'baz', hash_: { 'baz' => 3 })
         data
       end
 
@@ -348,6 +348,10 @@ EOF
 
       it 'should allow iterating over singular items' do
         expect(service.fetch_all(items: :singular) { |token| responses[token] } ).to contain_exactly('foo', 'bar', 'baz')
+      end
+
+      it 'should collate hash entries' do
+        expect(service.fetch_all(items: :hash_) { |token| responses[token] } ).to contain_exactly(['foo', 1], ['bar', 2], ['baz', 3])
       end
 
       it 'should allow limiting the number of items to fetch' do
