@@ -76,13 +76,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RequestMetadata
+      class CreateLeadRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateLeadRequest
+      class RequestMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,13 +208,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CertificationExamStatus
+      class ExamToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExamToken
+      class CertificationExamStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,13 +274,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PublicProfile
+      class AdWordsManagerAccountInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AdWordsManagerAccountInfo
+      class PublicProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -319,26 +319,29 @@ module Google
       class AnalyticsSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile_views_count, as: 'profileViewsCount'
           property :search_views_count, as: 'searchViewsCount'
           property :contacts_count, as: 'contactsCount'
-          property :profile_views_count, as: 'profileViewsCount'
         end
       end
       
       class LogMessageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :level, as: 'level'
-          property :details, as: 'details'
           hash :client_info, as: 'clientInfo'
           property :request_metadata, as: 'requestMetadata', class: Google::Apis::PartnersV2::RequestMetadata, decorator: Google::Apis::PartnersV2::RequestMetadata::Representation
       
+          property :level, as: 'level'
+          property :details, as: 'details'
         end
       end
       
       class Lead
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_number, as: 'phoneNumber'
+          property :adwords_customer_id, :numeric_string => true, as: 'adwordsCustomerId'
+          property :create_time, as: 'createTime'
           property :marketing_opt_in, as: 'marketingOptIn'
           property :type, as: 'type'
           property :min_monthly_budget, as: 'minMonthlyBudget', class: Google::Apis::PartnersV2::Money, decorator: Google::Apis::PartnersV2::Money::Representation
@@ -350,11 +353,8 @@ module Google
           collection :gps_motivations, as: 'gpsMotivations'
           property :email, as: 'email'
           property :family_name, as: 'familyName'
-          property :comments, as: 'comments'
           property :id, as: 'id'
-          property :phone_number, as: 'phoneNumber'
-          property :adwords_customer_id, :numeric_string => true, as: 'adwordsCustomerId'
-          property :create_time, as: 'createTime'
+          property :comments, as: 'comments'
         end
       end
       
@@ -370,9 +370,9 @@ module Google
       class ListUserStatesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :user_states, as: 'userStates'
           property :response_metadata, as: 'responseMetadata', class: Google::Apis::PartnersV2::ResponseMetadata, decorator: Google::Apis::PartnersV2::ResponseMetadata::Representation
       
-          collection :user_states, as: 'userStates'
         end
       end
       
@@ -385,14 +385,18 @@ module Google
           property :badge_tier, as: 'badgeTier'
           property :phone_number, as: 'phoneNumber'
           property :website, as: 'website'
+          property :primary_country_code, as: 'primaryCountryCode'
           property :company_id, as: 'companyId'
+          property :primary_language_code, as: 'primaryLanguageCode'
           property :logo_url, as: 'logoUrl'
           property :resolved_timestamp, as: 'resolvedTimestamp'
           property :company_admin, as: 'companyAdmin'
-          property :address, as: 'address'
           property :is_pending, as: 'isPending'
+          property :address, as: 'address'
           property :creation_time, as: 'creationTime'
           property :state, as: 'state'
+          property :primary_address, as: 'primaryAddress', class: Google::Apis::PartnersV2::Location, decorator: Google::Apis::PartnersV2::Location::Representation
+      
           property :name, as: 'name'
           property :manager_account, :numeric_string => true, as: 'managerAccount'
         end
@@ -401,9 +405,9 @@ module Google
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :month, as: 'month'
           property :year, as: 'year'
           property :day, as: 'day'
-          property :month, as: 'month'
         end
       end
       
@@ -421,6 +425,18 @@ module Google
         end
       end
       
+      class CreateLeadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lead, as: 'lead', class: Google::Apis::PartnersV2::Lead, decorator: Google::Apis::PartnersV2::Lead::Representation
+      
+          property :recaptcha_challenge, as: 'recaptchaChallenge', class: Google::Apis::PartnersV2::RecaptchaChallenge, decorator: Google::Apis::PartnersV2::RecaptchaChallenge::Representation
+      
+          property :request_metadata, as: 'requestMetadata', class: Google::Apis::PartnersV2::RequestMetadata, decorator: Google::Apis::PartnersV2::RequestMetadata::Representation
+      
+        end
+      end
+      
       class RequestMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -431,18 +447,6 @@ module Google
           property :user_overrides, as: 'userOverrides', class: Google::Apis::PartnersV2::UserOverrides, decorator: Google::Apis::PartnersV2::UserOverrides::Representation
       
           property :partners_session_id, as: 'partnersSessionId'
-        end
-      end
-      
-      class CreateLeadRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :lead, as: 'lead', class: Google::Apis::PartnersV2::Lead, decorator: Google::Apis::PartnersV2::Lead::Representation
-      
-          property :recaptcha_challenge, as: 'recaptchaChallenge', class: Google::Apis::PartnersV2::RecaptchaChallenge, decorator: Google::Apis::PartnersV2::RecaptchaChallenge::Representation
-      
-          property :request_metadata, as: 'requestMetadata', class: Google::Apis::PartnersV2::RequestMetadata, decorator: Google::Apis::PartnersV2::RequestMetadata::Representation
-      
         end
       end
       
@@ -457,33 +461,33 @@ module Google
       class ExamStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :warning, as: 'warning'
-          property :expiration, as: 'expiration'
-          property :last_passed, as: 'lastPassed'
           property :exam_type, as: 'examType'
           property :passed, as: 'passed'
           property :taken, as: 'taken'
+          property :warning, as: 'warning'
+          property :expiration, as: 'expiration'
+          property :last_passed, as: 'lastPassed'
         end
       end
       
       class ListOffersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :available_offers, as: 'availableOffers', class: Google::Apis::PartnersV2::AvailableOffer, decorator: Google::Apis::PartnersV2::AvailableOffer::Representation
-      
           property :response_metadata, as: 'responseMetadata', class: Google::Apis::PartnersV2::ResponseMetadata, decorator: Google::Apis::PartnersV2::ResponseMetadata::Representation
       
           property :no_offer_reason, as: 'noOfferReason'
+          collection :available_offers, as: 'availableOffers', class: Google::Apis::PartnersV2::AvailableOffer, decorator: Google::Apis::PartnersV2::AvailableOffer::Representation
+      
         end
       end
       
       class CountryOfferInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :get_y_amount, as: 'getYAmount'
           property :offer_country_code, as: 'offerCountryCode'
           property :spend_x_amount, as: 'spendXAmount'
           property :offer_type, as: 'offerType'
-          property :get_y_amount, as: 'getYAmount'
         end
       end
       
@@ -501,26 +505,26 @@ module Google
       class OfferCustomer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :get_y_amount, as: 'getYAmount'
-          property :name, as: 'name'
-          property :spend_x_amount, as: 'spendXAmount'
           property :adwords_url, as: 'adwordsUrl'
           property :creation_time, as: 'creationTime'
           property :eligibility_days_left, as: 'eligibilityDaysLeft'
           property :offer_type, as: 'offerType'
           property :external_cid, :numeric_string => true, as: 'externalCid'
           property :country_code, as: 'countryCode'
+          property :get_y_amount, as: 'getYAmount'
+          property :name, as: 'name'
+          property :spend_x_amount, as: 'spendXAmount'
         end
       end
       
       class CertificationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_certified, as: 'isCertified'
           collection :exam_statuses, as: 'examStatuses', class: Google::Apis::PartnersV2::CertificationExamStatus, decorator: Google::Apis::PartnersV2::CertificationExamStatus::Representation
       
           property :type, as: 'type'
           property :user_count, as: 'userCount'
+          property :is_certified, as: 'isCertified'
         end
       end
       
@@ -545,6 +549,7 @@ module Google
       class ListOffersHistoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_show_entire_company, as: 'canShowEntireCompany'
           property :total_results, as: 'totalResults'
           property :showing_entire_company, as: 'showingEntireCompany'
           collection :offers, as: 'offers', class: Google::Apis::PartnersV2::HistoricalOffer, decorator: Google::Apis::PartnersV2::HistoricalOffer::Representation
@@ -552,7 +557,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :response_metadata, as: 'responseMetadata', class: Google::Apis::PartnersV2::ResponseMetadata, decorator: Google::Apis::PartnersV2::ResponseMetadata::Representation
       
-          property :can_show_entire_company, as: 'canShowEntireCompany'
         end
       end
       
@@ -575,11 +579,11 @@ module Google
       class Certification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :certification_type, as: 'certificationType'
+          property :last_achieved, as: 'lastAchieved'
           property :achieved, as: 'achieved'
           property :expiration, as: 'expiration'
           property :warning, as: 'warning'
-          property :certification_type, as: 'certificationType'
-          property :last_achieved, as: 'lastAchieved'
         end
       end
       
@@ -598,9 +602,9 @@ module Google
           collection :certification_status, as: 'certificationStatus', class: Google::Apis::PartnersV2::Certification, decorator: Google::Apis::PartnersV2::Certification::Representation
       
           property :company_verification_email, as: 'companyVerificationEmail'
-          property :company, as: 'company', class: Google::Apis::PartnersV2::CompanyRelation, decorator: Google::Apis::PartnersV2::CompanyRelation::Representation
-      
           property :profile, as: 'profile', class: Google::Apis::PartnersV2::UserProfile, decorator: Google::Apis::PartnersV2::UserProfile::Representation
+      
+          property :company, as: 'company', class: Google::Apis::PartnersV2::CompanyRelation, decorator: Google::Apis::PartnersV2::CompanyRelation::Representation
       
         end
       end
@@ -608,12 +612,12 @@ module Google
       class ListAnalyticsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analytics, as: 'analytics', class: Google::Apis::PartnersV2::Analytics, decorator: Google::Apis::PartnersV2::Analytics::Representation
+      
           property :next_page_token, as: 'nextPageToken'
           property :response_metadata, as: 'responseMetadata', class: Google::Apis::PartnersV2::ResponseMetadata, decorator: Google::Apis::PartnersV2::ResponseMetadata::Representation
       
           property :analytics_summary, as: 'analyticsSummary', class: Google::Apis::PartnersV2::AnalyticsSummary, decorator: Google::Apis::PartnersV2::AnalyticsSummary::Representation
-      
-          collection :analytics, as: 'analytics', class: Google::Apis::PartnersV2::Analytics, decorator: Google::Apis::PartnersV2::Analytics::Representation
       
         end
       end
@@ -633,47 +637,47 @@ module Google
       class Company
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :profile_status, as: 'profileStatus'
-          property :primary_language_code, as: 'primaryLanguageCode'
-          collection :locations, as: 'locations', class: Google::Apis::PartnersV2::Location, decorator: Google::Apis::PartnersV2::Location::Representation
+          property :primary_location, as: 'primaryLocation', class: Google::Apis::PartnersV2::Location, decorator: Google::Apis::PartnersV2::Location::Representation
       
-          property :converted_min_monthly_budget, as: 'convertedMinMonthlyBudget', class: Google::Apis::PartnersV2::Money, decorator: Google::Apis::PartnersV2::Money::Representation
-      
-          collection :industries, as: 'industries'
-          property :website_url, as: 'websiteUrl'
-          collection :additional_websites, as: 'additionalWebsites'
-          property :primary_adwords_manager_account_id, :numeric_string => true, as: 'primaryAdwordsManagerAccountId'
-          property :name, as: 'name'
-          collection :localized_infos, as: 'localizedInfos', class: Google::Apis::PartnersV2::LocalizedCompanyInfo, decorator: Google::Apis::PartnersV2::LocalizedCompanyInfo::Representation
-      
-          collection :certification_statuses, as: 'certificationStatuses', class: Google::Apis::PartnersV2::CertificationStatus, decorator: Google::Apis::PartnersV2::CertificationStatus::Representation
-      
-          property :id, as: 'id'
+          collection :services, as: 'services'
           property :original_min_monthly_budget, as: 'originalMinMonthlyBudget', class: Google::Apis::PartnersV2::Money, decorator: Google::Apis::PartnersV2::Money::Representation
       
           property :public_profile, as: 'publicProfile', class: Google::Apis::PartnersV2::PublicProfile, decorator: Google::Apis::PartnersV2::PublicProfile::Representation
       
-          property :primary_location, as: 'primaryLocation', class: Google::Apis::PartnersV2::Location, decorator: Google::Apis::PartnersV2::Location::Representation
-      
-          collection :services, as: 'services'
           collection :ranks, as: 'ranks', class: Google::Apis::PartnersV2::Rank, decorator: Google::Apis::PartnersV2::Rank::Representation
       
           collection :specialization_status, as: 'specializationStatus', class: Google::Apis::PartnersV2::SpecializationStatus, decorator: Google::Apis::PartnersV2::SpecializationStatus::Representation
       
           property :badge_tier, as: 'badgeTier'
-          collection :auto_approval_email_domains, as: 'autoApprovalEmailDomains'
           collection :company_types, as: 'companyTypes'
+          collection :auto_approval_email_domains, as: 'autoApprovalEmailDomains'
+          property :primary_language_code, as: 'primaryLanguageCode'
+          property :profile_status, as: 'profileStatus'
+          collection :locations, as: 'locations', class: Google::Apis::PartnersV2::Location, decorator: Google::Apis::PartnersV2::Location::Representation
+      
+          property :converted_min_monthly_budget, as: 'convertedMinMonthlyBudget', class: Google::Apis::PartnersV2::Money, decorator: Google::Apis::PartnersV2::Money::Representation
+      
+          collection :industries, as: 'industries'
+          collection :additional_websites, as: 'additionalWebsites'
+          property :website_url, as: 'websiteUrl'
+          property :primary_adwords_manager_account_id, :numeric_string => true, as: 'primaryAdwordsManagerAccountId'
+          property :name, as: 'name'
+          collection :localized_infos, as: 'localizedInfos', class: Google::Apis::PartnersV2::LocalizedCompanyInfo, decorator: Google::Apis::PartnersV2::LocalizedCompanyInfo::Representation
+      
+          property :id, as: 'id'
+          collection :certification_statuses, as: 'certificationStatuses', class: Google::Apis::PartnersV2::CertificationStatus, decorator: Google::Apis::PartnersV2::CertificationStatus::Representation
+      
         end
       end
       
       class CreateLeadResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :response_metadata, as: 'responseMetadata', class: Google::Apis::PartnersV2::ResponseMetadata, decorator: Google::Apis::PartnersV2::ResponseMetadata::Representation
-      
           property :lead, as: 'lead', class: Google::Apis::PartnersV2::Lead, decorator: Google::Apis::PartnersV2::Lead::Representation
       
           property :recaptcha_status, as: 'recaptchaStatus'
+          property :response_metadata, as: 'responseMetadata', class: Google::Apis::PartnersV2::ResponseMetadata, decorator: Google::Apis::PartnersV2::ResponseMetadata::Representation
+      
         end
       end
       
@@ -690,45 +694,45 @@ module Google
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :postal_code, as: 'postalCode'
-          property :sorting_code, as: 'sortingCode'
-          property :language_code, as: 'languageCode'
-          collection :address_line, as: 'addressLine'
           property :locality, as: 'locality'
           property :administrative_area, as: 'administrativeArea'
           property :lat_lng, as: 'latLng', class: Google::Apis::PartnersV2::LatLng, decorator: Google::Apis::PartnersV2::LatLng::Representation
       
           property :address, as: 'address'
-          property :region_code, as: 'regionCode'
           property :dependent_locality, as: 'dependentLocality'
-        end
-      end
-      
-      class CertificationExamStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :number_users_pass, as: 'numberUsersPass'
-          property :type, as: 'type'
+          property :region_code, as: 'regionCode'
+          property :postal_code, as: 'postalCode'
+          property :language_code, as: 'languageCode'
+          property :sorting_code, as: 'sortingCode'
+          collection :address_line, as: 'addressLine'
         end
       end
       
       class ExamToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exam_id, :numeric_string => true, as: 'examId'
           property :token, as: 'token'
           property :exam_type, as: 'examType'
-          property :exam_id, :numeric_string => true, as: 'examId'
+        end
+      end
+      
+      class CertificationExamStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :number_users_pass, as: 'numberUsersPass'
         end
       end
       
       class OptIns
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :special_offers, as: 'specialOffers'
+          property :performance_suggestions, as: 'performanceSuggestions'
           property :physical_mail, as: 'physicalMail'
           property :phone_contact, as: 'phoneContact'
           property :market_comm, as: 'marketComm'
-          property :special_offers, as: 'specialOffers'
-          property :performance_suggestions, as: 'performanceSuggestions'
         end
       end
       
@@ -743,22 +747,22 @@ module Google
       class UserProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+          property :profile_public, as: 'profilePublic'
+          collection :channels, as: 'channels'
+          collection :job_functions, as: 'jobFunctions'
           property :given_name, as: 'givenName'
           property :address, as: 'address', class: Google::Apis::PartnersV2::Location, decorator: Google::Apis::PartnersV2::Location::Representation
       
           collection :industries, as: 'industries'
           collection :languages, as: 'languages'
+          property :family_name, as: 'familyName'
           property :email_opt_ins, as: 'emailOptIns', class: Google::Apis::PartnersV2::OptIns, decorator: Google::Apis::PartnersV2::OptIns::Representation
       
-          property :family_name, as: 'familyName'
           collection :markets, as: 'markets'
           property :phone_number, as: 'phoneNumber'
           property :adwords_manager_account, :numeric_string => true, as: 'adwordsManagerAccount'
           property :primary_country_code, as: 'primaryCountryCode'
-          property :email_address, as: 'emailAddress'
-          collection :channels, as: 'channels'
-          property :profile_public, as: 'profilePublic'
-          collection :job_functions, as: 'jobFunctions'
         end
       end
       
@@ -773,76 +777,65 @@ module Google
       class HistoricalOffer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :offer_country_code, as: 'offerCountryCode'
+          property :expiration_time, as: 'expirationTime'
+          property :offer_code, as: 'offerCode'
           property :creation_time, as: 'creationTime'
-          property :status, as: 'status'
           property :client_email, as: 'clientEmail'
+          property :status, as: 'status'
           property :client_id, :numeric_string => true, as: 'clientId'
           property :client_name, as: 'clientName'
           property :last_modified_time, as: 'lastModifiedTime'
           property :adwords_url, as: 'adwordsUrl'
           property :offer_type, as: 'offerType'
           property :sender_name, as: 'senderName'
-          property :offer_country_code, as: 'offerCountryCode'
-          property :expiration_time, as: 'expirationTime'
-          property :offer_code, as: 'offerCode'
         end
       end
       
       class LogUserEventRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_metadata, as: 'requestMetadata', class: Google::Apis::PartnersV2::RequestMetadata, decorator: Google::Apis::PartnersV2::RequestMetadata::Representation
+      
+          property :url, as: 'url'
+          collection :event_datas, as: 'eventDatas', class: Google::Apis::PartnersV2::EventData, decorator: Google::Apis::PartnersV2::EventData::Representation
+      
+          property :event_scope, as: 'eventScope'
           property :event_category, as: 'eventCategory'
           property :lead, as: 'lead', class: Google::Apis::PartnersV2::Lead, decorator: Google::Apis::PartnersV2::Lead::Representation
       
           property :event_action, as: 'eventAction'
-          property :url, as: 'url'
-          property :request_metadata, as: 'requestMetadata', class: Google::Apis::PartnersV2::RequestMetadata, decorator: Google::Apis::PartnersV2::RequestMetadata::Representation
-      
-          collection :event_datas, as: 'eventDatas', class: Google::Apis::PartnersV2::EventData, decorator: Google::Apis::PartnersV2::EventData::Representation
-      
-          property :event_scope, as: 'eventScope'
         end
       end
       
       class UserOverrides
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ip_address, as: 'ipAddress'
           property :user_id, as: 'userId'
+          property :ip_address, as: 'ipAddress'
         end
       end
       
       class AnalyticsDataPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_count, as: 'eventCount'
           collection :event_locations, as: 'eventLocations', class: Google::Apis::PartnersV2::LatLng, decorator: Google::Apis::PartnersV2::LatLng::Representation
       
-          property :event_count, as: 'eventCount'
         end
       end
       
       class Analytics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :contacts, as: 'contacts', class: Google::Apis::PartnersV2::AnalyticsDataPoint, decorator: Google::Apis::PartnersV2::AnalyticsDataPoint::Representation
-      
           property :event_date, as: 'eventDate', class: Google::Apis::PartnersV2::Date, decorator: Google::Apis::PartnersV2::Date::Representation
       
           property :profile_views, as: 'profileViews', class: Google::Apis::PartnersV2::AnalyticsDataPoint, decorator: Google::Apis::PartnersV2::AnalyticsDataPoint::Representation
       
           property :search_views, as: 'searchViews', class: Google::Apis::PartnersV2::AnalyticsDataPoint, decorator: Google::Apis::PartnersV2::AnalyticsDataPoint::Representation
       
-        end
-      end
+          property :contacts, as: 'contacts', class: Google::Apis::PartnersV2::AnalyticsDataPoint, decorator: Google::Apis::PartnersV2::AnalyticsDataPoint::Representation
       
-      class PublicProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :profile_image, as: 'profileImage'
-          property :display_name, as: 'displayName'
-          property :display_image_url, as: 'displayImageUrl'
-          property :id, as: 'id'
-          property :url, as: 'url'
         end
       end
       
@@ -851,6 +844,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, :numeric_string => true, as: 'id'
           property :customer_name, as: 'customerName'
+        end
+      end
+      
+      class PublicProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :url, as: 'url'
+          property :profile_image, as: 'profileImage'
+          property :display_name, as: 'displayName'
+          property :display_image_url, as: 'displayImageUrl'
         end
       end
       
@@ -865,14 +869,18 @@ module Google
       class RecaptchaChallenge
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
           property :response, as: 'response'
+          property :id, as: 'id'
         end
       end
       
       class AvailableOffer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :offer_level, as: 'offerLevel'
+          property :name, as: 'name'
+          property :qualified_customers_complete, as: 'qualifiedCustomersComplete'
+          property :id, :numeric_string => true, as: 'id'
           collection :country_offer_infos, as: 'countryOfferInfos', class: Google::Apis::PartnersV2::CountryOfferInfo, decorator: Google::Apis::PartnersV2::CountryOfferInfo::Representation
       
           property :offer_type, as: 'offerType'
@@ -883,27 +891,23 @@ module Google
           property :show_special_offer_copy, as: 'showSpecialOfferCopy'
           property :available, as: 'available'
           property :description, as: 'description'
-          property :offer_level, as: 'offerLevel'
-          property :name, as: 'name'
-          property :id, :numeric_string => true, as: 'id'
-          property :qualified_customers_complete, as: 'qualifiedCustomersComplete'
         end
       end
       
       class LatLng
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
+          property :latitude, as: 'latitude'
         end
       end
       
       class Money
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :units, :numeric_string => true, as: 'units'
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
-          property :units, :numeric_string => true, as: 'units'
         end
       end
     end

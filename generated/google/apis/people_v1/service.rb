@@ -33,14 +33,14 @@ module Google
       # @see https://developers.google.com/people/
       class PeopleServiceService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
 
         def initialize
           super('https://people.googleapis.com/', '')
@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_people(request_mask_include_field: nil, resource_names: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def get_person_batch_get(request_mask_include_field: nil, resource_names: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/people:batchGet', options)
           command.response_representation = Google::Apis::PeopleV1::GetPeopleResponse::Representation
           command.response_class = Google::Apis::PeopleV1::GetPeopleResponse
@@ -185,8 +185,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

@@ -128,14 +128,14 @@ module Google
         # For backwards compatibility, the default name includes the operations
         # collection id, however overriding users must ensure the name binding
         # is the parent resource, without the operations collection id.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] filter
-        #   The standard list filter.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] filter
+        #   The standard list filter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,14 +153,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(page_size: nil, filter: nil, name: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(name: nil, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/operations', options)
           command.response_representation = Google::Apis::SpeechV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpeechV1beta1::ListOperationsResponse
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -198,6 +198,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Performs synchronous speech recognition: receive results after all audio
+        # has been sent and processed.
+        # @param [Google::Apis::SpeechV1beta1::SyncRecognizeRequest] sync_recognize_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpeechV1beta1::SyncRecognizeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpeechV1beta1::SyncRecognizeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def syncrecognize_speech(sync_recognize_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/speech:syncrecognize', options)
+          command.request_representation = Google::Apis::SpeechV1beta1::SyncRecognizeRequest::Representation
+          command.request_object = sync_recognize_request_object
+          command.response_representation = Google::Apis::SpeechV1beta1::SyncRecognizeResponse::Representation
+          command.response_class = Google::Apis::SpeechV1beta1::SyncRecognizeResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Performs asynchronous speech recognition: receive results via the
         # [google.longrunning.Operations]
         # (/speech/reference/rest/v1beta1/operations#Operation)
@@ -222,43 +253,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def async_recognize_speech(async_recognize_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def asyncrecognize_speech(async_recognize_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta1/speech:asyncrecognize', options)
           command.request_representation = Google::Apis::SpeechV1beta1::AsyncRecognizeRequest::Representation
           command.request_object = async_recognize_request_object
           command.response_representation = Google::Apis::SpeechV1beta1::Operation::Representation
           command.response_class = Google::Apis::SpeechV1beta1::Operation
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs synchronous speech recognition: receive results after all audio
-        # has been sent and processed.
-        # @param [Google::Apis::SpeechV1beta1::SyncRecognizeRequest] sync_recognize_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SpeechV1beta1::SyncRecognizeResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SpeechV1beta1::SyncRecognizeResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sync_recognize_speech(sync_recognize_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/speech:syncrecognize', options)
-          command.request_representation = Google::Apis::SpeechV1beta1::SyncRecognizeRequest::Representation
-          command.request_object = sync_recognize_request_object
-          command.response_representation = Google::Apis::SpeechV1beta1::SyncRecognizeResponse::Representation
-          command.response_class = Google::Apis::SpeechV1beta1::SyncRecognizeResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

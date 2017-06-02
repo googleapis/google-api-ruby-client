@@ -55,11 +55,11 @@ module Google
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840).
         #   Example: `projects/my-project-123`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -72,118 +72,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_events(project_name, quota_user: nil, fields: nil, options: nil, &block)
+        def delete_project_events(project_name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1beta1/{+projectName}/events', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::DeleteEventsResponse
           command.params['projectName'] = project_name unless project_name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Report an individual error event.
-        # This endpoint accepts <strong>either</strong> an OAuth token,
-        # <strong>or</strong> an
-        # <a href="https://support.google.com/cloud/answer/6158862">API key</a>
-        # for authentication. To use an API key, append it to the URL as the value of
-        # a `key` parameter. For example:
-        # <pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
-        # project/events:report?key=123ABC456</pre>
-        # @param [String] project_name
-        #   [Required] The resource name of the Google Cloud Platform project. Written
-        #   as `projects/` plus the
-        #   [Google Cloud Platform project ID](https://support.google.com/cloud/answer/
-        #   6158840).
-        #   Example: `projects/my-project-123`.
-        # @param [Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent] reported_error_event_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_project_event(project_name, reported_error_event_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+projectName}/events:report', options)
-          command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent::Representation
-          command.request_object = reported_error_event_object
-          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse::Representation
-          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse
-          command.params['projectName'] = project_name unless project_name.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists the specified events.
-        # @param [String] project_name
-        #   [Required] The resource name of the Google Cloud Platform project. Written
-        #   as `projects/` plus the
-        #   [Google Cloud Platform project
-        #   ID](https://support.google.com/cloud/answer/6158840).
-        #   Example: `projects/my-project-123`.
-        # @param [String] service_filter_resource_type
-        #   [Optional] The exact value to match against
-        #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.resource_type).
-        # @param [String] time_range_period
-        #   Restricts the query to the specified time range.
-        # @param [String] group_id
-        #   [Required] The group for which events shall be returned.
-        # @param [String] page_token
-        #   [Optional] A `next_page_token` provided by a previous response.
-        # @param [String] service_filter_service
-        #   [Optional] The exact value to match against
-        #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.service).
-        # @param [Fixnum] page_size
-        #   [Optional] The maximum number of results to return per response.
-        # @param [String] service_filter_version
-        #   [Optional] The exact value to match against
-        #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.version).
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_events(project_name, service_filter_resource_type: nil, time_range_period: nil, group_id: nil, page_token: nil, service_filter_service: nil, page_size: nil, service_filter_version: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+projectName}/events', options)
-          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse::Representation
-          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse
-          command.params['projectName'] = project_name unless project_name.nil?
-          command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
-          command.query['timeRange.period'] = time_range_period unless time_range_period.nil?
-          command.query['groupId'] = group_id unless group_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -196,11 +91,11 @@ module Google
         #   <code>groupStats.list</code></a> to return a list of groups belonging to
         #   this project.
         #   Example: <code>projects/my-project-123/groups/my-group</code>
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -213,13 +108,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_group(group_name, quota_user: nil, fields: nil, options: nil, &block)
+        def get_project_group(group_name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+groupName}', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup
           command.params['groupName'] = group_name unless group_name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -229,11 +124,11 @@ module Google
         #   The group resource name.
         #   Example: <code>projects/my-project-123/groups/my-groupid</code>
         # @param [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] error_group_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -246,15 +141,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_group(name, error_group_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def update_project_group(name, error_group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
           command.request_object = error_group_object
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ErrorGroup
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -286,13 +181,13 @@ module Google
         # @param [Fixnum] page_size
         #   [Optional] The maximum number of results to return per response.
         #   Default is 20.
+        # @param [String] order
+        #   [Optional] The sort order in which the results are returned.
+        #   Default is `COUNT_DESC`.
         # @param [String] service_filter_version
         #   [Optional] The exact value to match against
         #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.version).
-        # @param [String] order
-        #   [Optional] The sort order in which the results are returned.
-        #   Default is `COUNT_DESC`.
         # @param [String] service_filter_resource_type
         #   [Optional] The exact value to match against
         #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
@@ -300,11 +195,11 @@ module Google
         # @param [String] alignment_time
         #   [Optional] Time where the timed counts shall be aligned if rounded
         #   alignment is chosen. Default is 00:00 UTC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -317,7 +212,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_group_stats(project_name, timed_count_duration: nil, page_token: nil, time_range_period: nil, alignment: nil, group_id: nil, service_filter_service: nil, page_size: nil, service_filter_version: nil, order: nil, service_filter_resource_type: nil, alignment_time: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_project_group_stats(project_name, timed_count_duration: nil, page_token: nil, time_range_period: nil, alignment: nil, group_id: nil, service_filter_service: nil, page_size: nil, order: nil, service_filter_version: nil, service_filter_resource_type: nil, alignment_time: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1beta1/{+projectName}/groupStats', options)
           command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse::Representation
           command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListGroupStatsResponse
@@ -329,12 +224,117 @@ module Google
           command.query['groupId'] = group_id unless group_id.nil?
           command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
           command.query['order'] = order unless order.nil?
+          command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
           command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
           command.query['alignmentTime'] = alignment_time unless alignment_time.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Report an individual error event.
+        # This endpoint accepts <strong>either</strong> an OAuth token,
+        # <strong>or</strong> an
+        # <a href="https://support.google.com/cloud/answer/6158862">API key</a>
+        # for authentication. To use an API key, append it to the URL as the value of
+        # a `key` parameter. For example:
+        # <pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
+        # project/events:report?key=123ABC456</pre>
+        # @param [String] project_name
+        #   [Required] The resource name of the Google Cloud Platform project. Written
+        #   as `projects/` plus the
+        #   [Google Cloud Platform project ID](https://support.google.com/cloud/answer/
+        #   6158840).
+        #   Example: `projects/my-project-123`.
+        # @param [Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent] reported_error_event_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_project_event(project_name, reported_error_event_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+projectName}/events:report', options)
+          command.request_representation = Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent::Representation
+          command.request_object = reported_error_event_object
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ReportErrorEventResponse
+          command.params['projectName'] = project_name unless project_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the specified events.
+        # @param [String] project_name
+        #   [Required] The resource name of the Google Cloud Platform project. Written
+        #   as `projects/` plus the
+        #   [Google Cloud Platform project
+        #   ID](https://support.google.com/cloud/answer/6158840).
+        #   Example: `projects/my-project-123`.
+        # @param [String] group_id
+        #   [Required] The group for which events shall be returned.
+        # @param [String] service_filter_service
+        #   [Optional] The exact value to match against
+        #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
+        #   ServiceContext#FIELDS.service).
+        # @param [String] page_token
+        #   [Optional] A `next_page_token` provided by a previous response.
+        # @param [Fixnum] page_size
+        #   [Optional] The maximum number of results to return per response.
+        # @param [String] service_filter_version
+        #   [Optional] The exact value to match against
+        #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
+        #   ServiceContext#FIELDS.version).
+        # @param [String] service_filter_resource_type
+        #   [Optional] The exact value to match against
+        #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
+        #   ServiceContext#FIELDS.resource_type).
+        # @param [String] time_range_period
+        #   Restricts the query to the specified time range.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_events(project_name, group_id: nil, service_filter_service: nil, page_token: nil, page_size: nil, service_filter_version: nil, service_filter_resource_type: nil, time_range_period: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+projectName}/events', options)
+          command.response_representation = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse::Representation
+          command.response_class = Google::Apis::ClouderrorreportingV1beta1::ListEventsResponse
+          command.params['projectName'] = project_name unless project_name.nil?
+          command.query['groupId'] = group_id unless group_id.nil?
+          command.query['serviceFilter.service'] = service_filter_service unless service_filter_service.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['serviceFilter.version'] = service_filter_version unless service_filter_version.nil?
+          command.query['serviceFilter.resourceType'] = service_filter_resource_type unless service_filter_resource_type.nil?
+          command.query['timeRange.period'] = time_range_period unless time_range_period.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
 

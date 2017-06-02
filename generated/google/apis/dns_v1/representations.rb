@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListChangesResponse
+      class ChangesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListManagedZonesResponse
+      class ManagedZonesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,7 +64,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListResourceRecordSetsResponse
+      class ResourceRecordSetsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -84,7 +84,7 @@ module Google
         end
       end
       
-      class ListChangesResponse
+      class ChangesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :changes, as: 'changes', class: Google::Apis::DnsV1::Change, decorator: Google::Apis::DnsV1::Change::Representation
@@ -108,7 +108,7 @@ module Google
         end
       end
       
-      class ListManagedZonesResponse
+      class ManagedZonesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
@@ -153,7 +153,7 @@ module Google
         end
       end
       
-      class ListResourceRecordSetsResponse
+      class ResourceRecordSetsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'

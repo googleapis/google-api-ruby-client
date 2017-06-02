@@ -493,7 +493,7 @@ module Google
       end
       
       # The request to add resources to the resource view.
-      class AddResourcesRequest
+      class ZoneViewsAddResourcesRequest
         include Google::Apis::Core::Hashable
       
         # The list of resources to be added.
@@ -512,7 +512,7 @@ module Google
       end
       
       # 
-      class GetServiceResponse
+      class ZoneViewsGetServiceResponse
         include Google::Apis::Core::Hashable
       
         # The service information.
@@ -574,7 +574,7 @@ module Google
       end
       
       # The response to a list resource request.
-      class ListResourcesResponse
+      class ZoneViewsListResourcesResponse
         include Google::Apis::Core::Hashable
       
         # The formatted JSON that is requested by the user.
@@ -605,7 +605,7 @@ module Google
       end
       
       # The request to remove resources from the resource view.
-      class RemoveResourcesRequest
+      class ZoneViewsRemoveResourcesRequest
         include Google::Apis::Core::Hashable
       
         # The list of resources to be removed.
@@ -624,7 +624,7 @@ module Google
       end
       
       # 
-      class SetServiceRequest
+      class ZoneViewsSetServiceRequest
         include Google::Apis::Core::Hashable
       
         # The service information to be updated.

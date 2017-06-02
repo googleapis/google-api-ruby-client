@@ -22,6 +22,59 @@ module Google
   module Apis
     module SearchconsoleV1
       
+      # Mobile-friendly test request.
+      class RunMobileFriendlyTestRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL for inspection.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Whether or not screenshot is requested. Default is false.
+        # Corresponds to the JSON property `requestScreenshot`
+        # @return [Boolean]
+        attr_accessor :request_screenshot
+        alias_method :request_screenshot?, :request_screenshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+          @request_screenshot = args[:request_screenshot] if args.key?(:request_screenshot)
+        end
+      end
+      
+      # Describe image data.
+      class Image
+        include Google::Apis::Core::Hashable
+      
+        # The mime-type of the image data.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Image data in format determined by the mime type. Currently, the format
+        # will always be "image/png", but this might change in the future.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
       # Mobile-friendly issue.
       class MobileFriendlyIssue
         include Google::Apis::Core::Hashable
@@ -46,6 +99,16 @@ module Google
       class RunMobileFriendlyTestResponse
         include Google::Apis::Core::Hashable
       
+        # Information about embedded resources issues.
+        # Corresponds to the JSON property `resourceIssues`
+        # @return [Array<Google::Apis::SearchconsoleV1::ResourceIssue>]
+        attr_accessor :resource_issues
+      
+        # Final state of the test, including error details if necessary.
+        # Corresponds to the JSON property `testStatus`
+        # @return [Google::Apis::SearchconsoleV1::TestStatus]
+        attr_accessor :test_status
+      
         # Test verdict, whether the page is mobile friendly or not.
         # Corresponds to the JSON property `mobileFriendliness`
         # @return [String]
@@ -61,27 +124,17 @@ module Google
         # @return [Google::Apis::SearchconsoleV1::Image]
         attr_accessor :screenshot
       
-        # Information about embedded resources issues.
-        # Corresponds to the JSON property `resourceIssues`
-        # @return [Array<Google::Apis::SearchconsoleV1::ResourceIssue>]
-        attr_accessor :resource_issues
-      
-        # Final state of the test, including error details if necessary.
-        # Corresponds to the JSON property `testStatus`
-        # @return [Google::Apis::SearchconsoleV1::TestStatus]
-        attr_accessor :test_status
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @resource_issues = args[:resource_issues] if args.key?(:resource_issues)
+          @test_status = args[:test_status] if args.key?(:test_status)
           @mobile_friendliness = args[:mobile_friendliness] if args.key?(:mobile_friendliness)
           @mobile_friendly_issues = args[:mobile_friendly_issues] if args.key?(:mobile_friendly_issues)
           @screenshot = args[:screenshot] if args.key?(:screenshot)
-          @resource_issues = args[:resource_issues] if args.key?(:resource_issues)
-          @test_status = args[:test_status] if args.key?(:test_status)
         end
       end
       
@@ -145,59 +198,6 @@ module Google
         def update!(**args)
           @status = args[:status] if args.key?(:status)
           @details = args[:details] if args.key?(:details)
-        end
-      end
-      
-      # Describe image data.
-      class Image
-        include Google::Apis::Core::Hashable
-      
-        # Image data in format determined by the mime type. Currently, the format
-        # will always be "image/png", but this might change in the future.
-        # Corresponds to the JSON property `data`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :data
-      
-        # The mime-type of the image data.
-        # Corresponds to the JSON property `mimeType`
-        # @return [String]
-        attr_accessor :mime_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data = args[:data] if args.key?(:data)
-          @mime_type = args[:mime_type] if args.key?(:mime_type)
-        end
-      end
-      
-      # Mobile-friendly test request.
-      class RunMobileFriendlyTestRequest
-        include Google::Apis::Core::Hashable
-      
-        # URL for inspection.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        # Whether or not screenshot is requested. Default is false.
-        # Corresponds to the JSON property `requestScreenshot`
-        # @return [Boolean]
-        attr_accessor :request_screenshot
-        alias_method :request_screenshot?, :request_screenshot
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @url = args[:url] if args.key?(:url)
-          @request_screenshot = args[:request_screenshot] if args.key?(:request_screenshot)
         end
       end
     end

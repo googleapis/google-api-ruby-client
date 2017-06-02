@@ -664,7 +664,7 @@ module Google
       end
       
       # The list of elections available for this version of the API.
-      class QueryElectionsResponse
+      class ElectionsQueryResponse
         include Google::Apis::Core::Hashable
       
         # A list of available elections

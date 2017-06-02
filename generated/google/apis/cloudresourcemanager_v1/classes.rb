@@ -22,6 +22,687 @@ module Google
   module Apis
     module CloudresourcemanagerV1
       
+      # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
+      # for configurations of Cloud Platform resources.
+      class OrgPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The time stamp the `Policy` was previously updated. This is set by the
+        # server, not specified by the caller, and represents the last time a call to
+        # `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
+        # be ignored.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Version of the `Policy`. Default version is 0;
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # Ignores policies set above this resource and restores the
+        # `constraint_default` enforcement behavior of the specific `Constraint` at
+        # this resource.
+        # Suppose that `constraint_default` is set to `ALLOW` for the
+        # `Constraint` `constraints/serviceuser.services`. Suppose that organization
+        # foo.com sets a `Policy` at their Organization resource node that restricts
+        # the allowed service activations to deny all service activations. They
+        # could then set a `Policy` with the `policy_type` `restore_default` on
+        # several experimental projects, restoring the `constraint_default`
+        # enforcement of the `Constraint` for only those projects, allowing those
+        # projects to have all services activated.
+        # Corresponds to the JSON property `restoreDefault`
+        # @return [Google::Apis::CloudresourcemanagerV1::RestoreDefault]
+        attr_accessor :restore_default
+      
+        # Used in `policy_type` to specify how `list_policy` behaves at this
+        # resource.
+        # A `ListPolicy` can define specific values that are allowed or denied by
+        # setting either the `allowed_values` or `denied_values` fields. It can also
+        # be used to allow or deny all values, by setting the `all_values` field. If
+        # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
+        # or `denied_values` must be set (attempting to set both or neither will
+        # result in a failed request). If `all_values` is set to either `ALLOW` or
+        # `DENY`, `allowed_values` and `denied_values` must be unset.
+        # Corresponds to the JSON property `listPolicy`
+        # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
+        attr_accessor :list_policy
+      
+        # An opaque tag indicating the current version of the `Policy`, used for
+        # concurrency control.
+        # When the `Policy` is returned from either a `GetPolicy` or a
+        # `ListOrgPolicy` request, this `etag` indicates the version of the current
+        # `Policy` to use when executing a read-modify-write loop.
+        # When the `Policy` is returned from a `GetEffectivePolicy` request, the
+        # `etag` will be unset.
+        # When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value
+        # that was returned from a `GetOrgPolicy` request as part of a
+        # read-modify-write loop for concurrency control. Not setting the `etag`in a
+        # `SetOrgPolicy` request will result in an unconditional write of the
+        # `Policy`.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # The name of the `Constraint` the `Policy` is configuring, for example,
+        # `constraints/serviceuser.services`.
+        # Immutable after creation.
+        # Corresponds to the JSON property `constraint`
+        # @return [String]
+        attr_accessor :constraint
+      
+        # Used in `policy_type` to specify how `boolean_policy` will behave at this
+        # resource.
+        # Corresponds to the JSON property `booleanPolicy`
+        # @return [Google::Apis::CloudresourcemanagerV1::BooleanPolicy]
+        attr_accessor :boolean_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+          @restore_default = args[:restore_default] if args.key?(:restore_default)
+          @list_policy = args[:list_policy] if args.key?(:list_policy)
+          @etag = args[:etag] if args.key?(:etag)
+          @constraint = args[:constraint] if args.key?(:constraint)
+          @boolean_policy = args[:boolean_policy] if args.key?(:boolean_policy)
+        end
+      end
+      
+      # Used in `policy_type` to specify how `boolean_policy` will behave at this
+      # resource.
+      class BooleanPolicy
+        include Google::Apis::Core::Hashable
+      
+        # If `true`, then the `Policy` is enforced. If `false`, then any
+        # configuration is acceptable.
+        # Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess`
+        # with `constraint_default` set to `ALLOW`. A `Policy` for that
+        # `Constraint` exhibits the following behavior:
+        # - If the `Policy` at this resource has enforced set to `false`, serial
+        # port connection attempts will be allowed.
+        # - If the `Policy` at this resource has enforced set to `true`, serial
+        # port connection attempts will be refused.
+        # - If the `Policy` at this resource is `RestoreDefault`, serial port
+        # connection attempts will be allowed.
+        # - If no `Policy` is set at this resource or anywhere higher in the
+        # resource hierarchy, serial port connection attempts will be allowed.
+        # - If no `Policy` is set at this resource, but one exists higher in the
+        # resource hierarchy, the behavior is as if the`Policy` were set at
+        # this resource.
+        # The following examples demonstrate the different possible layerings:
+        # Example 1 (nearest `Constraint` wins):
+        # `organizations/foo` has a `Policy` with:
+        # `enforced: false`
+        # `projects/bar` has no `Policy` set.
+        # The constraint at `projects/bar` and `organizations/foo` will not be
+        # enforced.
+        # Example 2 (enforcement gets replaced):
+        # `organizations/foo` has a `Policy` with:
+        # `enforced: false`
+        # `projects/bar` has a `Policy` with:
+        # `enforced: true`
+        # The constraint at `organizations/foo` is not enforced.
+        # The constraint at `projects/bar` is enforced.
+        # Example 3 (RestoreDefault):
+        # `organizations/foo` has a `Policy` with:
+        # `enforced: true`
+        # `projects/bar` has a `Policy` with:
+        # `RestoreDefault: ```
+        # The constraint at `organizations/foo` is enforced.
+        # The constraint at `projects/bar` is not enforced, because
+        # `constraint_default` for the `Constraint` is `ALLOW`.
+        # Corresponds to the JSON property `enforced`
+        # @return [Boolean]
+        attr_accessor :enforced
+        alias_method :enforced?, :enforced
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforced = args[:enforced] if args.key?(:enforced)
+        end
+      end
+      
+      # A Lien represents an encumbrance on the actions that can be performed on a
+      # resource.
+      class Lien
+        include Google::Apis::Core::Hashable
+      
+        # A system-generated unique identifier for this Lien.
+        # Example: `liens/1234abcd`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Concise user-visible strings indicating why an action cannot be performed
+        # on a resource. Maximum lenth of 200 characters.
+        # Example: 'Holds production API key'
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # A stable, user-visible/meaningful string identifying the origin of the
+        # Lien, intended to be inspected programmatically. Maximum length of 200
+        # characters.
+        # Example: 'compute.googleapis.com'
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        # The types of operations which should be blocked as a result of this Lien.
+        # Each value should correspond to an IAM permission. The server will
+        # validate the permissions against those for which Liens are supported.
+        # An empty list is meaningless and will be rejected.
+        # Example: ['resourcemanager.projects.delete']
+        # Corresponds to the JSON property `restrictions`
+        # @return [Array<String>]
+        attr_accessor :restrictions
+      
+        # A reference to the resource this Lien is attached to. The server will
+        # validate the parent against those for which Liens are supported.
+        # Example: `projects/1234`
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The creation time of this Lien.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @reason = args[:reason] if args.key?(:reason)
+          @origin = args[:origin] if args.key?(:origin)
+          @restrictions = args[:restrictions] if args.key?(:restrictions)
+          @parent = args[:parent] if args.key?(:parent)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
+      # Identifying information for a single ancestor of a project.
+      class Ancestor
+        include Google::Apis::Core::Hashable
+      
+        # A container to reference an id for any resource type. A `resource` in Google
+        # Cloud Platform is a generic term for something you (a developer) may want to
+        # interact with through one of our API's. Some examples are an App Engine app,
+        # a Compute Engine instance, a Cloud SQL database, and so on.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
+      # A `Constraint` that allows or disallows a list of string values, which are
+      # configured by an Organization's policy administrator with a `Policy`.
+      class ListConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Google Cloud Console will try to default to a configuration
+        # that matches the value specified in this `Constraint`.
+        # Corresponds to the JSON property `suggestedValue`
+        # @return [String]
+        attr_accessor :suggested_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggested_value = args[:suggested_value] if args.key?(:suggested_value)
+        end
+      end
+      
+      # The request sent to the SetOrgPolicyRequest method.
+      class SetOrgPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
+        # for configurations of Cloud Platform resources.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::CloudresourcemanagerV1::OrgPolicy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # Request message for `SetIamPolicy` method.
+      class SetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, the
+        # following default mask is used:
+        # paths: "bindings, etag"
+        # This field is only used by Cloud IAM.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Defines an Identity and Access Management (IAM) policy. It is used to
+        # specify access control policies for Cloud Platform resources.
+        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+        # `members` to a `role`, where the members can be user accounts, Google groups,
+        # Google domains, and service accounts. A `role` is a named list of permissions
+        # defined by IAM.
+        # **Example**
+        # `
+        # "bindings": [
+        # `
+        # "role": "roles/owner",
+        # "members": [
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+        # ]
+        # `,
+        # `
+        # "role": "roles/viewer",
+        # "members": ["user:sean@example.com"]
+        # `
+        # ]
+        # `
+        # For a description of IAM and its features, see the
+        # [IAM developer's guide](https://cloud.google.com/iam).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The root node in the resource hierarchy to which a particular entity's
+      # (e.g., company) resources belong.
+      class Organization
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the Organization was created. Assigned by the server.
+        # @OutputOnly
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # The entity that owns an Organization. The lifetime of the Organization and
+        # all of its descendants are bound to the `OrganizationOwner`. If the
+        # `OrganizationOwner` is deleted, the Organization and all its descendants will
+        # be deleted.
+        # Corresponds to the JSON property `owner`
+        # @return [Google::Apis::CloudresourcemanagerV1::OrganizationOwner]
+        attr_accessor :owner
+      
+        # The organization's current lifecycle state. Assigned by the server.
+        # @OutputOnly
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # Output Only. The resource name of the organization. This is the
+        # organization's relative path in the API. Its format is
+        # "organizations/[organization_id]". For example, "organizations/1234".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A friendly string to be used to refer to the Organization in the UI.
+        # Assigned by the server, set to the primary domain of the G Suite
+        # customer that owns the organization.
+        # @OutputOnly
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @owner = args[:owner] if args.key?(:owner)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @name = args[:name] if args.key?(:name)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # The response returned from the ListAvailableOrgPolicyConstraints method.
+      # Returns all `Constraints` that could be set at this level of the hierarchy
+      # (contrast with the response from `ListPolicies`, which returns all policies
+      # which are set).
+      class ListAvailableOrgPolicyConstraintsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token used to retrieve the next page. This is currently not used.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The collection of constraints that are settable on the request resource.
+        # Corresponds to the JSON property `constraints`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Constraint>]
+        attr_accessor :constraints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @constraints = args[:constraints] if args.key?(:constraints)
+        end
+      end
+      
+      # Used in `policy_type` to specify how `list_policy` behaves at this
+      # resource.
+      # A `ListPolicy` can define specific values that are allowed or denied by
+      # setting either the `allowed_values` or `denied_values` fields. It can also
+      # be used to allow or deny all values, by setting the `all_values` field. If
+      # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
+      # or `denied_values` must be set (attempting to set both or neither will
+      # result in a failed request). If `all_values` is set to either `ALLOW` or
+      # `DENY`, `allowed_values` and `denied_values` must be unset.
+      class ListPolicy
+        include Google::Apis::Core::Hashable
+      
+        # List of values allowed  at this resource. an only be set if no values are
+        # set for `denied_values` and `all_values` is set to
+        # `ALL_VALUES_UNSPECIFIED`.
+        # Corresponds to the JSON property `allowedValues`
+        # @return [Array<String>]
+        attr_accessor :allowed_values
+      
+        # Optional. The Google Cloud Console will try to default to a configuration
+        # that matches the value specified in this `Policy`. If `suggested_value`
+        # is not set, it will inherit the value specified higher in the hierarchy,
+        # unless `inherit_from_parent` is `false`.
+        # Corresponds to the JSON property `suggestedValue`
+        # @return [String]
+        attr_accessor :suggested_value
+      
+        # Determines the inheritance behavior for this `Policy`.
+        # By default, a `ListPolicy` set at a resource supercedes any `Policy` set
+        # anywhere up the resource hierarchy. However, if `inherit_from_parent` is
+        # set to `true`, then the values from the effective `Policy` of the parent
+        # resource are inherited, meaning the values set in this `Policy` are
+        # added to the values inherited up the hierarchy.
+        # Setting `Policy` hierarchies that inherit both allowed values and denied
+        # values isn't recommended in most circumstances to keep the configuration
+        # simple and understandable. However, it is possible to set a `Policy` with
+        # `allowed_values` set that inherits a `Policy` with `denied_values` set.
+        # In this case, the values that are allowed must be in `allowed_values` and
+        # not present in `denied_values`.
+        # For example, suppose you have a `Constraint`
+        # `constraints/serviceuser.services`, which has a `constraint_type` of
+        # `list_constraint`, and with `constraint_default` set to `ALLOW`.
+        # Suppose that at the Organization level, a `Policy` is applied that
+        # restricts the allowed API activations to ``E1`, `E2``. Then, if a
+        # `Policy` is applied to a project below the Organization that has
+        # `inherit_from_parent` set to `false` and field all_values set to DENY,
+        # then an attempt to activate any API will be denied.
+        # The following examples demonstrate different possible layerings:
+        # Example 1 (no inherited values):
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: “E1” allowed_values:”E2”`
+        # ``projects/bar`` has `inherit_from_parent` `false` and values:
+        # `allowed_values: "E3" allowed_values: "E4"`
+        # The accepted values at `organizations/foo` are `E1`, `E2`.
+        # The accepted values at `projects/bar` are `E3`, and `E4`.
+        # Example 2 (inherited values):
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: “E1” allowed_values:”E2”`
+        # `projects/bar` has a `Policy` with values:
+        # `value: “E3” value: ”E4” inherit_from_parent: true`
+        # The accepted values at `organizations/foo` are `E1`, `E2`.
+        # The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
+        # Example 3 (inheriting both allowed and denied values):
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: "E1" allowed_values: "E2"`
+        # `projects/bar` has a `Policy` with:
+        # `denied_values: "E1"`
+        # The accepted values at `organizations/foo` are `E1`, `E2`.
+        # The value accepted at `projects/bar` is `E2`.
+        # Example 4 (RestoreDefault):
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: “E1” allowed_values:”E2”`
+        # `projects/bar` has a `Policy` with values:
+        # `RestoreDefault: ```
+        # The accepted values at `organizations/foo` are `E1`, `E2`.
+        # The accepted values at `projects/bar` are either all or none depending on
+        # the value of `constraint_default` (if `ALLOW`, all; if
+        # `DENY`, none).
+        # Example 5 (no policy inherits parent policy):
+        # `organizations/foo` has no `Policy` set.
+        # `projects/bar` has no `Policy` set.
+        # The accepted values at both levels are either all or none depending on
+        # the value of `constraint_default` (if `ALLOW`, all; if
+        # `DENY`, none).
+        # Example 6 (ListConstraint allowing all):
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: “E1” allowed_values: ”E2”`
+        # `projects/bar` has a `Policy` with:
+        # `all: ALLOW`
+        # The accepted values at `organizations/foo` are `E1`, E2`.
+        # Any value is accepted at `projects/bar`.
+        # Example 7 (ListConstraint allowing none):
+        # `organizations/foo` has a `Policy` with values:
+        # `allowed_values: “E1” allowed_values: ”E2”`
+        # `projects/bar` has a `Policy` with:
+        # `all: DENY`
+        # The accepted values at `organizations/foo` are `E1`, E2`.
+        # No value is accepted at `projects/bar`.
+        # Corresponds to the JSON property `inheritFromParent`
+        # @return [Boolean]
+        attr_accessor :inherit_from_parent
+        alias_method :inherit_from_parent?, :inherit_from_parent
+      
+        # List of values denied at this resource. Can only be set if no values are
+        # set for `allowed_values` and `all_values` is set to
+        # `ALL_VALUES_UNSPECIFIED`.
+        # Corresponds to the JSON property `deniedValues`
+        # @return [Array<String>]
+        attr_accessor :denied_values
+      
+        # The policy all_values state.
+        # Corresponds to the JSON property `allValues`
+        # @return [String]
+        attr_accessor :all_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @suggested_value = args[:suggested_value] if args.key?(:suggested_value)
+          @inherit_from_parent = args[:inherit_from_parent] if args.key?(:inherit_from_parent)
+          @denied_values = args[:denied_values] if args.key?(:denied_values)
+          @all_values = args[:all_values] if args.key?(:all_values)
+        end
+      end
+      
+      # Response from the GetAncestry method.
+      class GetAncestryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Ancestors are ordered from bottom to top of the resource hierarchy. The
+        # first ancestor is the project itself, followed by the project's parent,
+        # etc.
+        # Corresponds to the JSON property `ancestor`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Ancestor>]
+        attr_accessor :ancestor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestor = args[:ancestor] if args.key?(:ancestor)
+        end
+      end
+      
+      # Provides the configuration for logging a type of permissions.
+      # Example:
+      # `
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `
+      # ]
+      # `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+      # foo@gmail.com from DATA_READ logging.
+      class AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that do not cause logging for this type of
+        # permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # The request sent to the `SearchOrganizations` method.
+      class SearchOrganizationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # An optional query string used to filter the Organizations to return in
+        # the response. Filter rules are case-insensitive.
+        # Organizations may be filtered by `owner.directoryCustomerId` or by
+        # `domain`, where the domain is a Google for Work domain, for example:
+        # |Filter|Description|
+        # |------|-----------|
+        # |owner.directorycustomerid:123456789|Organizations with
+        # `owner.directory_customer_id` equal to `123456789`.|
+        # |domain:google.com|Organizations corresponding to the domain `google.com`.|
+        # This field is optional.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # A pagination token returned from a previous call to `SearchOrganizations`
+        # that indicates from where listing should continue.
+        # This field is optional.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The maximum number of Organizations to return in the response.
+        # This field is optional.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+        end
+      end
+      
+      # The request sent to the
+      # GetAncestry
+      # method.
+      class GetAncestryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -44,44 +725,9 @@ module Google
         end
       end
       
-      # The request sent to the [ListAvailableOrgPolicyConstraints]
-      # google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.
-      class ListAvailableOrgPolicyConstraintsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Page token used to retrieve the next page. This is currently unsupported
-        # and will be ignored. The server may at any point start using this field.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        # Size of the pages to be returned. This is currently unsupported and will
-        # be ignored. The server may at any point start using this field to limit
-        # page size.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_token = args[:page_token] if args.key?(:page_token)
-          @page_size = args[:page_size] if args.key?(:page_size)
-        end
-      end
-      
       # Metadata describing a long running folder operation
       class FolderOperation
         include Google::Apis::Core::Hashable
-      
-        # The resource name of the folder or organization we are either creating
-        # the folder under or moving the folder to.
-        # Corresponds to the JSON property `destinationParent`
-        # @return [String]
-        attr_accessor :destination_parent
       
         # The type of this operation.
         # Corresponds to the JSON property `operationType`
@@ -99,16 +745,22 @@ module Google
         # @return [String]
         attr_accessor :source_parent
       
+        # The resource name of the folder or organization we are either creating
+        # the folder under or moving the folder to.
+        # Corresponds to the JSON property `destinationParent`
+        # @return [String]
+        attr_accessor :destination_parent
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @source_parent = args[:source_parent] if args.key?(:source_parent)
+          @destination_parent = args[:destination_parent] if args.key?(:destination_parent)
         end
       end
       
@@ -185,24 +837,23 @@ module Google
         end
       end
       
-      # A container to reference an id for any resource type. A `resource` in Google
-      # Cloud Platform is a generic term for something you (a developer) may want to
-      # interact with through one of our API's. Some examples are an App Engine app,
-      # a Compute Engine instance, a Cloud SQL database, and so on.
-      class ResourceId
+      # The request sent to the [ListAvailableOrgPolicyConstraints]
+      # google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.
+      class ListAvailableOrgPolicyConstraintsRequest
         include Google::Apis::Core::Hashable
       
-        # Required field representing the resource type this id is for.
-        # At present, the valid types are: "organization"
-        # Corresponds to the JSON property `type`
+        # Page token used to retrieve the next page. This is currently unsupported
+        # and will be ignored. The server may at any point start using this field.
+        # Corresponds to the JSON property `pageToken`
         # @return [String]
-        attr_accessor :type
+        attr_accessor :page_token
       
-        # Required field for the type-specific id. This should correspond to the id
-        # used in the type-specific API's.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
+        # Size of the pages to be returned. This is currently unsupported and will
+        # be ignored. The server may at any point start using this field to limit
+        # page size.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
       
         def initialize(**args)
            update!(**args)
@@ -210,8 +861,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @type = args[:type] if args.key?(:type)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+        end
+      end
+      
+      # A container to reference an id for any resource type. A `resource` in Google
+      # Cloud Platform is a generic term for something you (a developer) may want to
+      # interact with through one of our API's. Some examples are an App Engine app,
+      # a Compute Engine instance, a Cloud SQL database, and so on.
+      class ResourceId
+        include Google::Apis::Core::Hashable
+      
+        # Required field for the type-specific id. This should correspond to the id
+        # used in the type-specific API's.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required field representing the resource type this id is for.
+        # At present, the valid types are: "organization"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -266,6 +947,14 @@ module Google
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
       
         # The normal response of the operation in case of success.  If the original
         # method returns no data on success, such as `Delete`, the response is
@@ -337,25 +1026,17 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
-          @done = args[:done] if args.key?(:done)
         end
       end
       
@@ -475,6 +1156,12 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # A list of messages that carry the error details.  There will be a
+        # common set of message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
         # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
@@ -487,21 +1174,15 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -509,16 +1190,16 @@ module Google
       class ListLiensResponse
         include Google::Apis::Core::Hashable
       
-        # A list of Liens.
-        # Corresponds to the JSON property `liens`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Lien>]
-        attr_accessor :liens
-      
         # Token to retrieve the next page of results, or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # A list of Liens.
+        # Corresponds to the JSON property `liens`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Lien>]
+        attr_accessor :liens
       
         def initialize(**args)
            update!(**args)
@@ -526,8 +1207,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @liens = args[:liens] if args.key?(:liens)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @liens = args[:liens] if args.key?(:liens)
         end
       end
       
@@ -546,17 +1227,6 @@ module Google
       # `Policy` being defined or inherited for the resource in question.
       class Constraint
         include Google::Apis::Core::Hashable
-      
-        # A `Constraint` that allows or disallows a list of string values, which are
-        # configured by an Organization's policy administrator with a `Policy`.
-        # Corresponds to the JSON property `listConstraint`
-        # @return [Google::Apis::CloudresourcemanagerV1::ListConstraint]
-        attr_accessor :list_constraint
-      
-        # Version of the `Constraint`. Default version is 0;
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
       
         # The human readable name.
         # Mutable.
@@ -590,19 +1260,30 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Version of the `Constraint`. Default version is 0;
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # A `Constraint` that allows or disallows a list of string values, which are
+        # configured by an Organization's policy administrator with a `Policy`.
+        # Corresponds to the JSON property `listConstraint`
+        # @return [Google::Apis::CloudresourcemanagerV1::ListConstraint]
+        attr_accessor :list_constraint
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
-          @version = args[:version] if args.key?(:version)
           @display_name = args[:display_name] if args.key?(:display_name)
           @description = args[:description] if args.key?(:description)
           @boolean_constraint = args[:boolean_constraint] if args.key?(:boolean_constraint)
           @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
           @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
+          @list_constraint = args[:list_constraint] if args.key?(:list_constraint)
         end
       end
       
@@ -846,12 +1527,6 @@ module Google
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Projects that matched the list filter. This list can
-        # be paginated.
-        # Corresponds to the JSON property `projects`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
-        attr_accessor :projects
-      
         # Pagination token.
         # If the result set is too large to fit in a single response, this token
         # is returned. It encodes the position of the current result cursor.
@@ -864,14 +1539,20 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The list of Projects that matched the list filter. This list can
+        # be paginated.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::Project>]
+        attr_accessor :projects
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @projects = args[:projects] if args.key?(:projects)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @projects = args[:projects] if args.key?(:projects)
         end
       end
       
@@ -880,41 +1561,6 @@ module Google
       # Google Cloud Platform resources.
       class Project
         include Google::Apis::Core::Hashable
-      
-        # The number uniquely identifying the project.
-        # Example: <code>415104041262</code>
-        # Read-only.
-        # Corresponds to the JSON property `projectNumber`
-        # @return [Fixnum]
-        attr_accessor :project_number
-      
-        # A container to reference an id for any resource type. A `resource` in Google
-        # Cloud Platform is a generic term for something you (a developer) may want to
-        # interact with through one of our API's. Some examples are an App Engine app,
-        # a Compute Engine instance, a Cloud SQL database, and so on.
-        # Corresponds to the JSON property `parent`
-        # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
-        attr_accessor :parent
-      
-        # Creation time.
-        # Read-only.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The labels associated with this Project.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
-        # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
-        # No more than 256 labels can be associated with a given resource.
-        # Clients should store labels in a representation such as JSON that does not
-        # depend on specific characters being disallowed.
-        # Example: <code>"environment" : "dev"</code>
-        # Read-write.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
       
         # The user-assigned display name of the Project.
         # It must be 4 to 30 characters.
@@ -942,19 +1588,82 @@ module Google
         # @return [String]
         attr_accessor :lifecycle_state
       
+        # The number uniquely identifying the project.
+        # Example: <code>415104041262</code>
+        # Read-only.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
+        # A container to reference an id for any resource type. A `resource` in Google
+        # Cloud Platform is a generic term for something you (a developer) may want to
+        # interact with through one of our API's. Some examples are an App Engine app,
+        # a Compute Engine instance, a Cloud SQL database, and so on.
+        # Corresponds to the JSON property `parent`
+        # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
+        attr_accessor :parent
+      
+        # The labels associated with this Project.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 256 labels can be associated with a given resource.
+        # Clients should store labels in a representation such as JSON that does not
+        # depend on specific characters being disallowed.
+        # Example: <code>"environment" : "dev"</code>
+        # Read-write.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Creation time.
+        # Read-only.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @project_number = args[:project_number] if args.key?(:project_number)
-          @parent = args[:parent] if args.key?(:parent)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @project_number = args[:project_number] if args.key?(:project_number)
+          @parent = args[:parent] if args.key?(:parent)
+          @labels = args[:labels] if args.key?(:labels)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
+      # The response returned from the ListOrgPolicies method. It will be empty
+      # if no `Policies` are set on the resource.
+      class ListOrgPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token used to retrieve the next page. This is currently not used, but
+        # the server may at any point start supplying a valid token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The `Policies` that are set on the resource. It will be empty if no
+        # `Policies` are set.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1::OrgPolicy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policies = args[:policies] if args.key?(:policies)
         end
       end
       
@@ -988,34 +1697,6 @@ module Google
         end
       end
       
-      # The response returned from the ListOrgPolicies method. It will be empty
-      # if no `Policies` are set on the resource.
-      class ListOrgPoliciesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The `Policies` that are set on the resource. It will be empty if no
-        # `Policies` are set.
-        # Corresponds to the JSON property `policies`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::OrgPolicy>]
-        attr_accessor :policies
-      
-        # Page token used to retrieve the next page. This is currently not used, but
-        # the server may at any point start supplying a valid token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policies = args[:policies] if args.key?(:policies)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # A classification of the Folder Operation error.
       class FolderOperationError
         include Google::Apis::Core::Hashable
@@ -1032,687 +1713,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error_message_id = args[:error_message_id] if args.key?(:error_message_id)
-        end
-      end
-      
-      # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
-      # for configurations of Cloud Platform resources.
-      class OrgPolicy
-        include Google::Apis::Core::Hashable
-      
-        # The time stamp the `Policy` was previously updated. This is set by the
-        # server, not specified by the caller, and represents the last time a call to
-        # `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
-        # be ignored.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # Version of the `Policy`. Default version is 0;
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        # Ignores policies set above this resource and restores the
-        # `constraint_default` enforcement behavior of the specific `Constraint` at
-        # this resource.
-        # Suppose that `constraint_default` is set to `ALLOW` for the
-        # `Constraint` `constraints/serviceuser.services`. Suppose that organization
-        # foo.com sets a `Policy` at their Organization resource node that restricts
-        # the allowed service activations to deny all service activations. They
-        # could then set a `Policy` with the `policy_type` `restore_default` on
-        # several experimental projects, restoring the `constraint_default`
-        # enforcement of the `Constraint` for only those projects, allowing those
-        # projects to have all services activated.
-        # Corresponds to the JSON property `restoreDefault`
-        # @return [Google::Apis::CloudresourcemanagerV1::RestoreDefault]
-        attr_accessor :restore_default
-      
-        # Used in `policy_type` to specify how `list_policy` behaves at this
-        # resource.
-        # A `ListPolicy` can define specific values that are allowed or denied by
-        # setting either the `allowed_values` or `denied_values` fields. It can also
-        # be used to allow or deny all values, by setting the `all_values` field. If
-        # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
-        # or `denied_values` must be set (attempting to set both or neither will
-        # result in a failed request). If `all_values` is set to either `ALLOW` or
-        # `DENY`, `allowed_values` and `denied_values` must be unset.
-        # Corresponds to the JSON property `listPolicy`
-        # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
-        attr_accessor :list_policy
-      
-        # An opaque tag indicating the current version of the `Policy`, used for
-        # concurrency control.
-        # When the `Policy` is returned from either a `GetPolicy` or a
-        # `ListOrgPolicy` request, this `etag` indicates the version of the current
-        # `Policy` to use when executing a read-modify-write loop.
-        # When the `Policy` is returned from a `GetEffectivePolicy` request, the
-        # `etag` will be unset.
-        # When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value
-        # that was returned from a `GetOrgPolicy` request as part of a
-        # read-modify-write loop for concurrency control. Not setting the `etag`in a
-        # `SetOrgPolicy` request will result in an unconditional write of the
-        # `Policy`.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # Used in `policy_type` to specify how `boolean_policy` will behave at this
-        # resource.
-        # Corresponds to the JSON property `booleanPolicy`
-        # @return [Google::Apis::CloudresourcemanagerV1::BooleanPolicy]
-        attr_accessor :boolean_policy
-      
-        # The name of the `Constraint` the `Policy` is configuring, for example,
-        # `constraints/serviceuser.services`.
-        # Immutable after creation.
-        # Corresponds to the JSON property `constraint`
-        # @return [String]
-        attr_accessor :constraint
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @version = args[:version] if args.key?(:version)
-          @restore_default = args[:restore_default] if args.key?(:restore_default)
-          @list_policy = args[:list_policy] if args.key?(:list_policy)
-          @etag = args[:etag] if args.key?(:etag)
-          @boolean_policy = args[:boolean_policy] if args.key?(:boolean_policy)
-          @constraint = args[:constraint] if args.key?(:constraint)
-        end
-      end
-      
-      # Used in `policy_type` to specify how `boolean_policy` will behave at this
-      # resource.
-      class BooleanPolicy
-        include Google::Apis::Core::Hashable
-      
-        # If `true`, then the `Policy` is enforced. If `false`, then any
-        # configuration is acceptable.
-        # Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess`
-        # with `constraint_default` set to `ALLOW`. A `Policy` for that
-        # `Constraint` exhibits the following behavior:
-        # - If the `Policy` at this resource has enforced set to `false`, serial
-        # port connection attempts will be allowed.
-        # - If the `Policy` at this resource has enforced set to `true`, serial
-        # port connection attempts will be refused.
-        # - If the `Policy` at this resource is `RestoreDefault`, serial port
-        # connection attempts will be allowed.
-        # - If no `Policy` is set at this resource or anywhere higher in the
-        # resource hierarchy, serial port connection attempts will be allowed.
-        # - If no `Policy` is set at this resource, but one exists higher in the
-        # resource hierarchy, the behavior is as if the`Policy` were set at
-        # this resource.
-        # The following examples demonstrate the different possible layerings:
-        # Example 1 (nearest `Constraint` wins):
-        # `organizations/foo` has a `Policy` with:
-        # `enforced: false`
-        # `projects/bar` has no `Policy` set.
-        # The constraint at `projects/bar` and `organizations/foo` will not be
-        # enforced.
-        # Example 2 (enforcement gets replaced):
-        # `organizations/foo` has a `Policy` with:
-        # `enforced: false`
-        # `projects/bar` has a `Policy` with:
-        # `enforced: true`
-        # The constraint at `organizations/foo` is not enforced.
-        # The constraint at `projects/bar` is enforced.
-        # Example 3 (RestoreDefault):
-        # `organizations/foo` has a `Policy` with:
-        # `enforced: true`
-        # `projects/bar` has a `Policy` with:
-        # `RestoreDefault: ```
-        # The constraint at `organizations/foo` is enforced.
-        # The constraint at `projects/bar` is not enforced, because
-        # `constraint_default` for the `Constraint` is `ALLOW`.
-        # Corresponds to the JSON property `enforced`
-        # @return [Boolean]
-        attr_accessor :enforced
-        alias_method :enforced?, :enforced
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enforced = args[:enforced] if args.key?(:enforced)
-        end
-      end
-      
-      # A Lien represents an encumbrance on the actions that can be performed on a
-      # resource.
-      class Lien
-        include Google::Apis::Core::Hashable
-      
-        # A system-generated unique identifier for this Lien.
-        # Example: `liens/1234abcd`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Concise user-visible strings indicating why an action cannot be performed
-        # on a resource. Maximum lenth of 200 characters.
-        # Example: 'Holds production API key'
-        # Corresponds to the JSON property `reason`
-        # @return [String]
-        attr_accessor :reason
-      
-        # A stable, user-visible/meaningful string identifying the origin of the
-        # Lien, intended to be inspected programmatically. Maximum length of 200
-        # characters.
-        # Example: 'compute.googleapis.com'
-        # Corresponds to the JSON property `origin`
-        # @return [String]
-        attr_accessor :origin
-      
-        # The types of operations which should be blocked as a result of this Lien.
-        # Each value should correspond to an IAM permission. The server will
-        # validate the permissions against those for which Liens are supported.
-        # An empty list is meaningless and will be rejected.
-        # Example: ['resourcemanager.projects.delete']
-        # Corresponds to the JSON property `restrictions`
-        # @return [Array<String>]
-        attr_accessor :restrictions
-      
-        # A reference to the resource this Lien is attached to. The server will
-        # validate the parent against those for which Liens are supported.
-        # Example: `projects/1234`
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        # The creation time of this Lien.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @reason = args[:reason] if args.key?(:reason)
-          @origin = args[:origin] if args.key?(:origin)
-          @restrictions = args[:restrictions] if args.key?(:restrictions)
-          @parent = args[:parent] if args.key?(:parent)
-          @create_time = args[:create_time] if args.key?(:create_time)
-        end
-      end
-      
-      # Identifying information for a single ancestor of a project.
-      class Ancestor
-        include Google::Apis::Core::Hashable
-      
-        # A container to reference an id for any resource type. A `resource` in Google
-        # Cloud Platform is a generic term for something you (a developer) may want to
-        # interact with through one of our API's. Some examples are an App Engine app,
-        # a Compute Engine instance, a Cloud SQL database, and so on.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::CloudresourcemanagerV1::ResourceId]
-        attr_accessor :resource_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-        end
-      end
-      
-      # A `Constraint` that allows or disallows a list of string values, which are
-      # configured by an Organization's policy administrator with a `Policy`.
-      class ListConstraint
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The Google Cloud Console will try to default to a configuration
-        # that matches the value specified in this `Constraint`.
-        # Corresponds to the JSON property `suggestedValue`
-        # @return [String]
-        attr_accessor :suggested_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @suggested_value = args[:suggested_value] if args.key?(:suggested_value)
-        end
-      end
-      
-      # The request sent to the SetOrgPolicyRequest method.
-      class SetOrgPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Defines a Cloud Organization `Policy` which is used to specify `Constraints`
-        # for configurations of Cloud Platform resources.
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::CloudresourcemanagerV1::OrgPolicy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-        # `members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
-        # **Example**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/owner",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
-        # ]
-        # `,
-        # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
-        # `
-        # ]
-        # `
-        # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::CloudresourcemanagerV1::Policy]
-        attr_accessor :policy
-      
-        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the
-        # following default mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The root node in the resource hierarchy to which a particular entity's
-      # (e.g., company) resources belong.
-      class Organization
-        include Google::Apis::Core::Hashable
-      
-        # The entity that owns an Organization. The lifetime of the Organization and
-        # all of its descendants are bound to the `OrganizationOwner`. If the
-        # `OrganizationOwner` is deleted, the Organization and all its descendants will
-        # be deleted.
-        # Corresponds to the JSON property `owner`
-        # @return [Google::Apis::CloudresourcemanagerV1::OrganizationOwner]
-        attr_accessor :owner
-      
-        # The organization's current lifecycle state. Assigned by the server.
-        # @OutputOnly
-        # Corresponds to the JSON property `lifecycleState`
-        # @return [String]
-        attr_accessor :lifecycle_state
-      
-        # Output Only. The resource name of the organization. This is the
-        # organization's relative path in the API. Its format is
-        # "organizations/[organization_id]". For example, "organizations/1234".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # A friendly string to be used to refer to the Organization in the UI.
-        # Assigned by the server, set to the primary domain of the G Suite
-        # customer that owns the organization.
-        # @OutputOnly
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Timestamp when the Organization was created. Assigned by the server.
-        # @OutputOnly
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @owner = args[:owner] if args.key?(:owner)
-          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
-          @name = args[:name] if args.key?(:name)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
-        end
-      end
-      
-      # The response returned from the ListAvailableOrgPolicyConstraints method.
-      # Returns all `Constraints` that could be set at this level of the hierarchy
-      # (contrast with the response from `ListPolicies`, which returns all policies
-      # which are set).
-      class ListAvailableOrgPolicyConstraintsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The collection of constraints that are settable on the request resource.
-        # Corresponds to the JSON property `constraints`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Constraint>]
-        attr_accessor :constraints
-      
-        # Page token used to retrieve the next page. This is currently not used.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @constraints = args[:constraints] if args.key?(:constraints)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Used in `policy_type` to specify how `list_policy` behaves at this
-      # resource.
-      # A `ListPolicy` can define specific values that are allowed or denied by
-      # setting either the `allowed_values` or `denied_values` fields. It can also
-      # be used to allow or deny all values, by setting the `all_values` field. If
-      # `all_values` is `ALL_VALUES_UNSPECIFIED`, exactly one of `allowed_values`
-      # or `denied_values` must be set (attempting to set both or neither will
-      # result in a failed request). If `all_values` is set to either `ALLOW` or
-      # `DENY`, `allowed_values` and `denied_values` must be unset.
-      class ListPolicy
-        include Google::Apis::Core::Hashable
-      
-        # The policy all_values state.
-        # Corresponds to the JSON property `allValues`
-        # @return [String]
-        attr_accessor :all_values
-      
-        # List of values allowed  at this resource. an only be set if no values are
-        # set for `denied_values` and `all_values` is set to
-        # `ALL_VALUES_UNSPECIFIED`.
-        # Corresponds to the JSON property `allowedValues`
-        # @return [Array<String>]
-        attr_accessor :allowed_values
-      
-        # Optional. The Google Cloud Console will try to default to a configuration
-        # that matches the value specified in this `Policy`. If `suggested_value`
-        # is not set, it will inherit the value specified higher in the hierarchy,
-        # unless `inherit_from_parent` is `false`.
-        # Corresponds to the JSON property `suggestedValue`
-        # @return [String]
-        attr_accessor :suggested_value
-      
-        # Determines the inheritance behavior for this `Policy`.
-        # By default, a `ListPolicy` set at a resource supercedes any `Policy` set
-        # anywhere up the resource hierarchy. However, if `inherit_from_parent` is
-        # set to `true`, then the values from the effective `Policy` of the parent
-        # resource are inherited, meaning the values set in this `Policy` are
-        # added to the values inherited up the hierarchy.
-        # Setting `Policy` hierarchies that inherit both allowed values and denied
-        # values isn't recommended in most circumstances to keep the configuration
-        # simple and understandable. However, it is possible to set a `Policy` with
-        # `allowed_values` set that inherits a `Policy` with `denied_values` set.
-        # In this case, the values that are allowed must be in `allowed_values` and
-        # not present in `denied_values`.
-        # For example, suppose you have a `Constraint`
-        # `constraints/serviceuser.services`, which has a `constraint_type` of
-        # `list_constraint`, and with `constraint_default` set to `ALLOW`.
-        # Suppose that at the Organization level, a `Policy` is applied that
-        # restricts the allowed API activations to ``E1`, `E2``. Then, if a
-        # `Policy` is applied to a project below the Organization that has
-        # `inherit_from_parent` set to `false` and field all_values set to DENY,
-        # then an attempt to activate any API will be denied.
-        # The following examples demonstrate different possible layerings:
-        # Example 1 (no inherited values):
-        # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values:”E2”`
-        # ``projects/bar`` has `inherit_from_parent` `false` and values:
-        # `allowed_values: "E3" allowed_values: "E4"`
-        # The accepted values at `organizations/foo` are `E1`, `E2`.
-        # The accepted values at `projects/bar` are `E3`, and `E4`.
-        # Example 2 (inherited values):
-        # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values:”E2”`
-        # `projects/bar` has a `Policy` with values:
-        # `value: “E3” value: ”E4” inherit_from_parent: true`
-        # The accepted values at `organizations/foo` are `E1`, `E2`.
-        # The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
-        # Example 3 (inheriting both allowed and denied values):
-        # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: "E1" allowed_values: "E2"`
-        # `projects/bar` has a `Policy` with:
-        # `denied_values: "E1"`
-        # The accepted values at `organizations/foo` are `E1`, `E2`.
-        # The value accepted at `projects/bar` is `E2`.
-        # Example 4 (RestoreDefault):
-        # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values:”E2”`
-        # `projects/bar` has a `Policy` with values:
-        # `RestoreDefault: ```
-        # The accepted values at `organizations/foo` are `E1`, `E2`.
-        # The accepted values at `projects/bar` are either all or none depending on
-        # the value of `constraint_default` (if `ALLOW`, all; if
-        # `DENY`, none).
-        # Example 5 (no policy inherits parent policy):
-        # `organizations/foo` has no `Policy` set.
-        # `projects/bar` has no `Policy` set.
-        # The accepted values at both levels are either all or none depending on
-        # the value of `constraint_default` (if `ALLOW`, all; if
-        # `DENY`, none).
-        # Example 6 (ListConstraint allowing all):
-        # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values: ”E2”`
-        # `projects/bar` has a `Policy` with:
-        # `all: ALLOW`
-        # The accepted values at `organizations/foo` are `E1`, E2`.
-        # Any value is accepted at `projects/bar`.
-        # Example 7 (ListConstraint allowing none):
-        # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values: ”E2”`
-        # `projects/bar` has a `Policy` with:
-        # `all: DENY`
-        # The accepted values at `organizations/foo` are `E1`, E2`.
-        # No value is accepted at `projects/bar`.
-        # Corresponds to the JSON property `inheritFromParent`
-        # @return [Boolean]
-        attr_accessor :inherit_from_parent
-        alias_method :inherit_from_parent?, :inherit_from_parent
-      
-        # List of values denied at this resource. Can only be set if no values are
-        # set for `allowed_values` and `all_values` is set to
-        # `ALL_VALUES_UNSPECIFIED`.
-        # Corresponds to the JSON property `deniedValues`
-        # @return [Array<String>]
-        attr_accessor :denied_values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @all_values = args[:all_values] if args.key?(:all_values)
-          @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
-          @suggested_value = args[:suggested_value] if args.key?(:suggested_value)
-          @inherit_from_parent = args[:inherit_from_parent] if args.key?(:inherit_from_parent)
-          @denied_values = args[:denied_values] if args.key?(:denied_values)
-        end
-      end
-      
-      # Response from the GetAncestry method.
-      class GetAncestryResponse
-        include Google::Apis::Core::Hashable
-      
-        # Ancestors are ordered from bottom to top of the resource hierarchy. The
-        # first ancestor is the project itself, followed by the project's parent,
-        # etc.
-        # Corresponds to the JSON property `ancestor`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1::Ancestor>]
-        attr_accessor :ancestor
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ancestor = args[:ancestor] if args.key?(:ancestor)
-        end
-      end
-      
-      # Provides the configuration for logging a type of permissions.
-      # Example:
-      # `
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:foo@gmail.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE",
-      # `
-      # ]
-      # `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
-      class AuditLogConfig
-        include Google::Apis::Core::Hashable
-      
-        # The log type that this config enables.
-        # Corresponds to the JSON property `logType`
-        # @return [String]
-        attr_accessor :log_type
-      
-        # Specifies the identities that do not cause logging for this type of
-        # permission.
-        # Follows the same format of Binding.members.
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_type = args[:log_type] if args.key?(:log_type)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-        end
-      end
-      
-      # The request sent to the `SearchOrganizations` method.
-      class SearchOrganizationsRequest
-        include Google::Apis::Core::Hashable
-      
-        # A pagination token returned from a previous call to `SearchOrganizations`
-        # that indicates from where listing should continue.
-        # This field is optional.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        # The maximum number of Organizations to return in the response.
-        # This field is optional.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        # An optional query string used to filter the Organizations to return in
-        # the response. Filter rules are case-insensitive.
-        # Organizations may be filtered by `owner.directoryCustomerId` or by
-        # `domain`, where the domain is a Google for Work domain, for example:
-        # |Filter|Description|
-        # |------|-----------|
-        # |owner.directorycustomerid:123456789|Organizations with
-        # `owner.directory_customer_id` equal to `123456789`.|
-        # |domain:google.com|Organizations corresponding to the domain `google.com`.|
-        # This field is optional.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_token = args[:page_token] if args.key?(:page_token)
-          @page_size = args[:page_size] if args.key?(:page_size)
-          @filter = args[:filter] if args.key?(:filter)
-        end
-      end
-      
-      # The request sent to the
-      # GetAncestry
-      # method.
-      class GetAncestryRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
     end

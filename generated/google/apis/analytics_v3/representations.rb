@@ -76,7 +76,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeleteUploadDataRequest
+      class AnalyticsDataimportDeleteUploadDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -738,7 +738,7 @@ module Google
         end
       end
       
-      class DeleteUploadDataRequest
+      class AnalyticsDataimportDeleteUploadDataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_data_import_uids, as: 'customDataImportUids'
@@ -1833,7 +1833,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :bucket_id, as: 'bucketId'
-            property :obj_id, as: 'objectId'
+            property :object_id_prop, as: 'objectId'
           end
         end
         

@@ -93,7 +93,7 @@ module Google
       end
       
       # 
-      class ListApkListingsResponse
+      class ApkListingsListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -163,7 +163,7 @@ module Google
       end
       
       # 
-      class ListApksResponse
+      class ApksListResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -460,7 +460,7 @@ module Google
       end
       
       # 
-      class ListEntitlementsResponse
+      class EntitlementsListResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -519,7 +519,7 @@ module Google
       end
       
       # 
-      class UploadExpansionFilesResponse
+      class ExpansionFilesUploadResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -701,7 +701,7 @@ module Google
       end
       
       # 
-      class DeleteAllImagesResponse
+      class ImagesDeleteAllResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -720,7 +720,7 @@ module Google
       end
       
       # 
-      class ListImagesResponse
+      class ImagesListResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -739,7 +739,7 @@ module Google
       end
       
       # 
-      class UploadImagesResponse
+      class ImagesUploadResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -870,12 +870,12 @@ module Google
       end
       
       # 
-      class InAppProductsBatchRequest
+      class InappproductsBatchRequest
         include Google::Apis::Core::Hashable
       
         # 
         # Corresponds to the JSON property `entrys`
-        # @return [Array<Google::Apis::AndroidpublisherV2::InAppProductsBatchRequestEntry>]
+        # @return [Array<Google::Apis::AndroidpublisherV2::InappproductsBatchRequestEntry>]
         attr_accessor :entrys
       
         def initialize(**args)
@@ -889,7 +889,7 @@ module Google
       end
       
       # 
-      class InAppProductsBatchRequestEntry
+      class InappproductsBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # 
@@ -899,12 +899,12 @@ module Google
       
         # 
         # Corresponds to the JSON property `inappproductsinsertrequest`
-        # @return [Google::Apis::AndroidpublisherV2::InsertInAppProductsRequest]
+        # @return [Google::Apis::AndroidpublisherV2::InappproductsInsertRequest]
         attr_accessor :inappproductsinsertrequest
       
         # 
         # Corresponds to the JSON property `inappproductsupdaterequest`
-        # @return [Google::Apis::AndroidpublisherV2::UpdateInAppProductsRequest]
+        # @return [Google::Apis::AndroidpublisherV2::InappproductsUpdateRequest]
         attr_accessor :inappproductsupdaterequest
       
         # 
@@ -926,12 +926,12 @@ module Google
       end
       
       # 
-      class InAppProductsBatchResponse
+      class InappproductsBatchResponse
         include Google::Apis::Core::Hashable
       
         # 
         # Corresponds to the JSON property `entrys`
-        # @return [Array<Google::Apis::AndroidpublisherV2::InAppProductsBatchResponseEntry>]
+        # @return [Array<Google::Apis::AndroidpublisherV2::InappproductsBatchResponseEntry>]
         attr_accessor :entrys
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -952,7 +952,7 @@ module Google
       end
       
       # 
-      class InAppProductsBatchResponseEntry
+      class InappproductsBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # 
@@ -962,12 +962,12 @@ module Google
       
         # 
         # Corresponds to the JSON property `inappproductsinsertresponse`
-        # @return [Google::Apis::AndroidpublisherV2::InsertInAppProductsResponse]
+        # @return [Google::Apis::AndroidpublisherV2::InappproductsInsertResponse]
         attr_accessor :inappproductsinsertresponse
       
         # 
         # Corresponds to the JSON property `inappproductsupdateresponse`
-        # @return [Google::Apis::AndroidpublisherV2::UpdateInAppProductsResponse]
+        # @return [Google::Apis::AndroidpublisherV2::InappproductsUpdateResponse]
         attr_accessor :inappproductsupdateresponse
       
         def initialize(**args)
@@ -983,7 +983,7 @@ module Google
       end
       
       # 
-      class InsertInAppProductsRequest
+      class InappproductsInsertRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -1002,7 +1002,7 @@ module Google
       end
       
       # 
-      class InsertInAppProductsResponse
+      class InappproductsInsertResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -1021,7 +1021,7 @@ module Google
       end
       
       # 
-      class ListInAppProductsResponse
+      class InappproductsListResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -1059,7 +1059,7 @@ module Google
       end
       
       # 
-      class UpdateInAppProductsRequest
+      class InappproductsUpdateRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -1078,7 +1078,7 @@ module Google
       end
       
       # 
-      class UpdateInAppProductsResponse
+      class InappproductsUpdateResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -1141,7 +1141,7 @@ module Google
       end
       
       # 
-      class ListListingsResponse
+      class ListingsListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1610,7 +1610,7 @@ module Google
       end
       
       # 
-      class DeferSubscriptionPurchasesRequest
+      class SubscriptionPurchasesDeferRequest
         include Google::Apis::Core::Hashable
       
         # A SubscriptionDeferralInfo contains the data needed to defer a subscription
@@ -1630,7 +1630,7 @@ module Google
       end
       
       # 
-      class DeferSubscriptionPurchasesResponse
+      class SubscriptionPurchasesDeferResponse
         include Google::Apis::Core::Hashable
       
         # The new expiry time for the subscription in milliseconds since the Epoch.
@@ -1755,7 +1755,7 @@ module Google
       end
       
       # 
-      class ListTracksResponse
+      class TracksListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "

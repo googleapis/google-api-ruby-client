@@ -430,7 +430,7 @@ module Google
         # on inserts and updates. SMS reminders are only available for G Suite customers.
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :delivery_method
+        attr_accessor :method_prop
       
         # The type of notification. Possible values are:
         # - "eventCreation" - Notification sent when a new event is put on the calendar.
@@ -448,7 +448,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @delivery_method = args[:delivery_method] if args.key?(:delivery_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -1082,7 +1082,7 @@ module Google
           # - "chip" - The gadget displays when the event is clicked.
           # Corresponds to the JSON property `display`
           # @return [String]
-          attr_accessor :display_mode
+          attr_accessor :display_prop
         
           # The gadget's height in pixels. The height must be an integer greater than 0.
           # Optional.
@@ -1127,7 +1127,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @display_mode = args[:display_mode] if args.key?(:display_mode)
+            @display_prop = args[:display_prop] if args.key?(:display_prop)
             @height = args[:height] if args.key?(:height)
             @icon_link = args[:icon_link] if args.key?(:icon_link)
             @link = args[:link] if args.key?(:link)
@@ -1443,7 +1443,7 @@ module Google
         # - "popup" - Reminders are sent via a UI popup.
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :reminder_method
+        attr_accessor :method_prop
       
         # Number of minutes before the start of the event when the reminder should
         # trigger. Valid values are between 0 and 40320 (4 weeks in minutes).
@@ -1457,7 +1457,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @reminder_method = args[:reminder_method] if args.key?(:reminder_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @minutes = args[:minutes] if args.key?(:minutes)
         end
       end

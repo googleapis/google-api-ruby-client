@@ -314,18 +314,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ListDeploymentsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2::DeploymentsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2::ListDeploymentsResponse]
+        # @return [Google::Apis::DeploymentmanagerV2::DeploymentsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_deployments(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/global/deployments', options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2::ListDeploymentsResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2::ListDeploymentsResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2::DeploymentsListResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2::DeploymentsListResponse
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -677,18 +677,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ListManifestsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ManifestsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2::ListManifestsResponse]
+        # @return [Google::Apis::DeploymentmanagerV2::ManifestsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_manifests(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/global/deployments/{deployment}/manifests', options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2::ListManifestsResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2::ListManifestsResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2::ManifestsListResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2::ManifestsListResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['filter'] = filter unless filter.nil?
@@ -793,18 +793,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ListOperationsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2::OperationsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2::ListOperationsResponse]
+        # @return [Google::Apis::DeploymentmanagerV2::OperationsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/global/operations', options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2::ListOperationsResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2::OperationsListResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2::OperationsListResponse
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -913,18 +913,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ListResourcesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ResourcesListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2::ListResourcesResponse]
+        # @return [Google::Apis::DeploymentmanagerV2::ResourcesListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_resources(project, deployment, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/global/deployments/{deployment}/resources', options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2::ListResourcesResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2::ListResourcesResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2::ResourcesListResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2::ResourcesListResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['filter'] = filter unless filter.nil?
@@ -991,18 +991,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2::ListTypesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2::TypesListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2::ListTypesResponse]
+        # @return [Google::Apis::DeploymentmanagerV2::TypesListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/global/types', options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2::ListTypesResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2::ListTypesResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2::TypesListResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2::TypesListResponse
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

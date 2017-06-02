@@ -26,7 +26,7 @@ module Google
     # @see https://code.google.com/apis/language/translate/v2/getting_started.html
     module TranslateV2
       VERSION = 'V2'
-      REVISION = '20170502'
+      REVISION = '20170525'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

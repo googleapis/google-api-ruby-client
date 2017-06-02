@@ -784,7 +784,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MoveInstanceRequest
+      class InstanceMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -881,6 +881,12 @@ module Google
       end
       
       class LogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigCloudAuditOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1546,25 +1552,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AddTargetPoolsHealthCheckRequest
+      class TargetPoolsAddHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AddTargetPoolsInstanceRequest
+      class TargetPoolsAddInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RemoveTargetPoolsHealthCheckRequest
+      class TargetPoolsRemoveHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RemoveTargetPoolsInstanceRequest
+      class TargetPoolsRemoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1738,13 +1744,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ValidateUrlMapsRequest
+      class UrlMapsValidateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ValidateUrlMapsResponse
+      class UrlMapsValidateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2994,6 +3000,7 @@ module Google
           property :self_link, as: 'selfLink'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeBeta::ServiceAccount, decorator: Google::Apis::ComputeBeta::ServiceAccount::Representation
       
+          property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :tags, as: 'tags', class: Google::Apis::ComputeBeta::Tags, decorator: Google::Apis::ComputeBeta::Tags::Representation
@@ -3317,7 +3324,7 @@ module Google
         end
       end
       
-      class MoveInstanceRequest
+      class InstanceMoveRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
@@ -3480,8 +3487,17 @@ module Google
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::ComputeBeta::LogConfigCloudAuditOptions, decorator: Google::Apis::ComputeBeta::LogConfigCloudAuditOptions::Representation
+      
           property :counter, as: 'counter', class: Google::Apis::ComputeBeta::LogConfigCounterOptions, decorator: Google::Apis::ComputeBeta::LogConfigCounterOptions::Representation
       
+        end
+      end
+      
+      class LogConfigCloudAuditOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_name, as: 'logName'
         end
       end
       
@@ -4704,7 +4720,7 @@ module Google
         end
       end
       
-      class AddTargetPoolsHealthCheckRequest
+      class TargetPoolsAddHealthCheckRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeBeta::HealthCheckReference, decorator: Google::Apis::ComputeBeta::HealthCheckReference::Representation
@@ -4712,7 +4728,7 @@ module Google
         end
       end
       
-      class AddTargetPoolsInstanceRequest
+      class TargetPoolsAddInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ComputeBeta::InstanceReference, decorator: Google::Apis::ComputeBeta::InstanceReference::Representation
@@ -4720,7 +4736,7 @@ module Google
         end
       end
       
-      class RemoveTargetPoolsHealthCheckRequest
+      class TargetPoolsRemoveHealthCheckRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeBeta::HealthCheckReference, decorator: Google::Apis::ComputeBeta::HealthCheckReference::Representation
@@ -4728,7 +4744,7 @@ module Google
         end
       end
       
-      class RemoveTargetPoolsInstanceRequest
+      class TargetPoolsRemoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ComputeBeta::InstanceReference, decorator: Google::Apis::ComputeBeta::InstanceReference::Representation
@@ -5022,7 +5038,7 @@ module Google
         end
       end
       
-      class ValidateUrlMapsRequest
+      class UrlMapsValidateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource', class: Google::Apis::ComputeBeta::UrlMap, decorator: Google::Apis::ComputeBeta::UrlMap::Representation
@@ -5030,7 +5046,7 @@ module Google
         end
       end
       
-      class ValidateUrlMapsResponse
+      class UrlMapsValidateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeBeta::UrlMapValidationResult, decorator: Google::Apis::ComputeBeta::UrlMapValidationResult::Representation

@@ -441,7 +441,7 @@ module Google
       end
       
       # Request template for the delete upload data request.
-      class DeleteUploadDataRequest
+      class AnalyticsDataimportDeleteUploadDataRequest
         include Google::Apis::Core::Hashable
       
         # A list of upload UIDs.
@@ -4917,7 +4917,7 @@ module Google
           # Id of the file object containing the report data.
           # Corresponds to the JSON property `objectId`
           # @return [String]
-          attr_accessor :obj_id
+          attr_accessor :object_id_prop
         
           def initialize(**args)
              update!(**args)
@@ -4926,7 +4926,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @bucket_id = args[:bucket_id] if args.key?(:bucket_id)
-            @obj_id = args[:obj_id] if args.key?(:obj_id)
+            @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           end
         end
         

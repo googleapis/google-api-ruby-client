@@ -20,13 +20,13 @@ module Google
   module Apis
     # Google Cloud Key Management Service (KMS) API
     #
-    # Manages encryption for your cloud services the same way you do on-premise. You
-    # can generate, use, rotate, and destroy AES256 encryption keys.
+    # Manages encryption for your cloud services the same way you do on-premises.
+    # You can generate, use, rotate, and destroy AES256 encryption keys.
     #
     # @see https://cloud.google.com/kms/
     module CloudkmsV1
       VERSION = 'V1'
-      REVISION = '20170515'
+      REVISION = '20170523'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

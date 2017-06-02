@@ -91,7 +91,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_pagespeed(url, filter_third_party_resources: nil, locale: nil, rule: nil, screenshot: nil, strategy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def runpagespeed_pagespeedapi(url, filter_third_party_resources: nil, locale: nil, rule: nil, screenshot: nil, strategy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'runPagespeed', options)
           command.response_representation = Google::Apis::PagespeedonlineV2::Result::Representation
           command.response_class = Google::Apis::PagespeedonlineV2::Result

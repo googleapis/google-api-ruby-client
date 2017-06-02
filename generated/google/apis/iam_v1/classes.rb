@@ -22,83 +22,6 @@ module Google
   module Apis
     module IamV1
       
-      # Audit log information specific to Cloud IAM. This message is serialized
-      # as an `Any` type in the `ServiceData` message of an
-      # `AuditLog` message.
-      class AuditData
-        include Google::Apis::Core::Hashable
-      
-        # The difference delta between two policies.
-        # Corresponds to the JSON property `policyDelta`
-        # @return [Google::Apis::IamV1::PolicyDelta]
-        attr_accessor :policy_delta
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_delta = args[:policy_delta] if args.key?(:policy_delta)
-        end
-      end
-      
-      # One delta entry for Binding. Each individual change (only one member in each
-      # entry) to a binding will be a separate entry.
-      class BindingDelta
-        include Google::Apis::Core::Hashable
-      
-        # The action that was performed on a Binding.
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # A single identity requesting access for a Cloud Platform resource.
-        # Follows the same format of Binding.members.
-        # Required
-        # Corresponds to the JSON property `member`
-        # @return [String]
-        attr_accessor :member
-      
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @member = args[:member] if args.key?(:member)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # The difference delta between two policies.
-      class PolicyDelta
-        include Google::Apis::Core::Hashable
-      
-        # The delta for Bindings between two policies.
-        # Corresponds to the JSON property `bindingDeltas`
-        # @return [Array<Google::Apis::IamV1::BindingDelta>]
-        attr_accessor :binding_deltas
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @binding_deltas = args[:binding_deltas] if args.key?(:binding_deltas)
-        end
-      end
-      
       # The service account list response.
       class ListServiceAccountsResponse
         include Google::Apis::Core::Hashable
@@ -193,26 +116,6 @@ module Google
         end
       end
       
-      # The service account sign blob request.
-      class SignBlobRequest
-        include Google::Apis::Core::Hashable
-      
-        # The bytes to sign.
-        # Corresponds to the JSON property `bytesToSign`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :bytes_to_sign
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bytes_to_sign = args[:bytes_to_sign] if args.key?(:bytes_to_sign)
-        end
-      end
-      
       # A role in the Identity and Access Management API.
       class Role
         include Google::Apis::Core::Hashable
@@ -246,6 +149,26 @@ module Google
           @title = args[:title] if args.key?(:title)
           @name = args[:name] if args.key?(:name)
           @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # The service account sign blob request.
+      class SignBlobRequest
+        include Google::Apis::Core::Hashable
+      
+        # The bytes to sign.
+        # Corresponds to the JSON property `bytesToSign`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :bytes_to_sign
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bytes_to_sign = args[:bytes_to_sign] if args.key?(:bytes_to_sign)
         end
       end
       
@@ -333,6 +256,60 @@ module Google
         end
       end
       
+      # The grantable role query request.
+      class QueryGrantableRolesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional pagination token returned in an earlier
+        # QueryGrantableRolesResponse.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional limit on the number of roles to include in the response.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Required. The full resource name to query from the list of grantable roles.
+        # The name follows the Google Cloud Platform resource format.
+        # For example, a Cloud Platform project with id `my-project` will be named
+        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A service account in the Identity and Access Management API.
       # To create a service account, specify the `project_id` and the `account_id`
       # for the account.  The `account_id` is unique within the project, and is used
@@ -349,28 +326,6 @@ module Google
       # `unique_id` of the service account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
-      
-        # Used to perform a consistent read-modify-write.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # The resource name of the service account in the following format:
-        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        # Requests using `-` as a wildcard for the project will infer the project
-        # from the `account` and the `account` value can be the `email` address or
-        # the `unique_id` of the service account.
-        # In responses the resource name will always be in the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # @OutputOnly The email address of the service account.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
       
         # @OutputOnly The id of the project that owns the service account.
         # Corresponds to the JSON property `projectId`
@@ -395,31 +350,52 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Used to perform a consistent read-modify-write.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # The resource name of the service account in the following format:
+        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
+        # Requests using `-` as a wildcard for the project will infer the project
+        # from the `account` and the `account` value can be the `email` address or
+        # the `unique_id` of the service account.
+        # In responses the resource name will always be in the format
+        # `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # @OutputOnly The email address of the service account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @name = args[:name] if args.key?(:name)
-          @email = args[:email] if args.key?(:email)
           @project_id = args[:project_id] if args.key?(:project_id)
           @oauth2_client_id = args[:oauth2_client_id] if args.key?(:oauth2_client_id)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @email = args[:email] if args.key?(:email)
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
+      # The service account keys list response.
+      class ListServiceAccountKeysResponse
         include Google::Apis::Core::Hashable
+      
+        # The public keys for the service account.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::IamV1::ServiceAccountKey>]
+        attr_accessor :keys
       
         def initialize(**args)
            update!(**args)
@@ -427,41 +403,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # The grantable role query request.
-      class QueryGrantableRolesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The full resource name to query from the list of grantable roles.
-        # The name follows the Google Cloud Platform resource format.
-        # For example, a Cloud Platform project with id `my-project` will be named
-        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
-        # Corresponds to the JSON property `fullResourceName`
-        # @return [String]
-        attr_accessor :full_resource_name
-      
-        # Optional pagination token returned in an earlier
-        # QueryGrantableRolesResponse.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        # Optional limit on the number of roles to include in the response.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
-          @page_token = args[:page_token] if args.key?(:page_token)
-          @page_size = args[:page_size] if args.key?(:page_size)
+          @keys = args[:keys] if args.key?(:keys)
         end
       end
       
@@ -485,25 +427,6 @@ module Google
         end
       end
       
-      # The service account keys list response.
-      class ListServiceAccountKeysResponse
-        include Google::Apis::Core::Hashable
-      
-        # The public keys for the service account.
-        # Corresponds to the JSON property `keys`
-        # @return [Array<Google::Apis::IamV1::ServiceAccountKey>]
-        attr_accessor :keys
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @keys = args[:keys] if args.key?(:keys)
-        end
-      end
-      
       # Represents a service account key.
       # A service account has two sets of key-pairs: user-managed, and
       # system-managed.
@@ -518,20 +441,6 @@ module Google
       # Service Account API.
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
-      
-        # The key can be used after this timestamp.
-        # Corresponds to the JSON property `validAfterTime`
-        # @return [String]
-        attr_accessor :valid_after_time
-      
-        # The output format for the private key.
-        # Only provided in `CreateServiceAccountKey` responses, not
-        # in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
-        # Google never exposes system-managed private keys, and never retains
-        # user-managed private keys.
-        # Corresponds to the JSON property `privateKeyType`
-        # @return [String]
-        attr_accessor :private_key_type
       
         # The private key data. Only provided in `CreateServiceAccountKey`
         # responses.
@@ -562,31 +471,39 @@ module Google
         # @return [String]
         attr_accessor :key_algorithm
       
+        # The output format for the private key.
+        # Only provided in `CreateServiceAccountKey` responses, not
+        # in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
+        # Google never exposes system-managed private keys, and never retains
+        # user-managed private keys.
+        # Corresponds to the JSON property `privateKeyType`
+        # @return [String]
+        attr_accessor :private_key_type
+      
+        # The key can be used after this timestamp.
+        # Corresponds to the JSON property `validAfterTime`
+        # @return [String]
+        attr_accessor :valid_after_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @valid_after_time = args[:valid_after_time] if args.key?(:valid_after_time)
-          @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
           @private_key_data = args[:private_key_data] if args.key?(:private_key_data)
           @public_key_data = args[:public_key_data] if args.key?(:public_key_data)
           @name = args[:name] if args.key?(:name)
           @valid_before_time = args[:valid_before_time] if args.key?(:valid_before_time)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
+          @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
+          @valid_after_time = args[:valid_after_time] if args.key?(:valid_after_time)
         end
       end
       
       # The service account key create request.
       class CreateServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `includePublicKeyData`
-        # @return [Boolean]
-        attr_accessor :include_public_key_data
-        alias_method :include_public_key_data?, :include_public_key_data
       
         # Which type of key and algorithm to use for the key.
         # The default is currently a 2K RSA key.  However this may change in the
@@ -601,63 +518,21 @@ module Google
         # @return [String]
         attr_accessor :private_key_type
       
+        # 
+        # Corresponds to the JSON property `includePublicKeyData`
+        # @return [Boolean]
+        attr_accessor :include_public_key_data
+        alias_method :include_public_key_data?, :include_public_key_data
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @include_public_key_data = args[:include_public_key_data] if args.key?(:include_public_key_data)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @private_key_type = args[:private_key_type] if args.key?(:private_key_type)
-        end
-      end
-      
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # The service account sign blob response.
-      class SignBlobResponse
-        include Google::Apis::Core::Hashable
-      
-        # The id of the key used to sign the blob.
-        # Corresponds to the JSON property `keyId`
-        # @return [String]
-        attr_accessor :key_id
-      
-        # The signed blob.
-        # Corresponds to the JSON property `signature`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :signature
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key_id = args[:key_id] if args.key?(:key_id)
-          @signature = args[:signature] if args.key?(:signature)
+          @include_public_key_data = args[:include_public_key_data] if args.key?(:include_public_key_data)
         end
       end
       
@@ -683,6 +558,54 @@ module Google
         def update!(**args)
           @key_id = args[:key_id] if args.key?(:key_id)
           @signed_jwt = args[:signed_jwt] if args.key?(:signed_jwt)
+        end
+      end
+      
+      # The service account sign blob response.
+      class SignBlobResponse
+        include Google::Apis::Core::Hashable
+      
+        # The signed blob.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        # The id of the key used to sign the blob.
+        # Corresponds to the JSON property `keyId`
+        # @return [String]
+        attr_accessor :key_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signature = args[:signature] if args.key?(:signature)
+          @key_id = args[:key_id] if args.key?(:key_id)
+        end
+      end
+      
+      # Request message for `TestIamPermissions` method.
+      class TestIamPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the `resource`. Permissions with
+        # wildcards (such as '*' or 'storage.*') are not allowed. For more
+        # information see
+        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -769,6 +692,83 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
           @bindings = args[:bindings] if args.key?(:bindings)
+        end
+      end
+      
+      # Audit log information specific to Cloud IAM. This message is serialized
+      # as an `Any` type in the `ServiceData` message of an
+      # `AuditLog` message.
+      class AuditData
+        include Google::Apis::Core::Hashable
+      
+        # The difference delta between two policies.
+        # Corresponds to the JSON property `policyDelta`
+        # @return [Google::Apis::IamV1::PolicyDelta]
+        attr_accessor :policy_delta
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_delta = args[:policy_delta] if args.key?(:policy_delta)
+        end
+      end
+      
+      # One delta entry for Binding. Each individual change (only one member in each
+      # entry) to a binding will be a separate entry.
+      class BindingDelta
+        include Google::Apis::Core::Hashable
+      
+        # Role that is assigned to `members`.
+        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Required
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # The action that was performed on a Binding.
+        # Required
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # A single identity requesting access for a Cloud Platform resource.
+        # Follows the same format of Binding.members.
+        # Required
+        # Corresponds to the JSON property `member`
+        # @return [String]
+        attr_accessor :member
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role = args[:role] if args.key?(:role)
+          @action = args[:action] if args.key?(:action)
+          @member = args[:member] if args.key?(:member)
+        end
+      end
+      
+      # The difference delta between two policies.
+      class PolicyDelta
+        include Google::Apis::Core::Hashable
+      
+        # The delta for Bindings between two policies.
+        # Corresponds to the JSON property `bindingDeltas`
+        # @return [Array<Google::Apis::IamV1::BindingDelta>]
+        attr_accessor :binding_deltas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binding_deltas = args[:binding_deltas] if args.key?(:binding_deltas)
         end
       end
     end

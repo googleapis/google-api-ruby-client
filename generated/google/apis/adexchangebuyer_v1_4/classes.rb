@@ -2223,19 +2223,19 @@ module Google
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency50thPercentile`
         # @return [Float]
-        attr_accessor :latency_50th_percentile
+        attr_accessor :latency50th_percentile
       
         # The 85th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency85thPercentile`
         # @return [Float]
-        attr_accessor :latency_85th_percentile
+        attr_accessor :latency85th_percentile
       
         # The 95th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency95thPercentile`
         # @return [Float]
-        attr_accessor :latency_95th_percentile
+        attr_accessor :latency95th_percentile
       
         # Rate of various quota account statuses per quota check.
         # Corresponds to the JSON property `noQuotaInRegion`
@@ -2304,9 +2304,9 @@ module Google
           @hosted_match_status_rate = args[:hosted_match_status_rate] if args.key?(:hosted_match_status_rate)
           @inventory_match_rate = args[:inventory_match_rate] if args.key?(:inventory_match_rate)
           @kind = args[:kind] if args.key?(:kind)
-          @latency_50th_percentile = args[:latency_50th_percentile] if args.key?(:latency_50th_percentile)
-          @latency_85th_percentile = args[:latency_85th_percentile] if args.key?(:latency_85th_percentile)
-          @latency_95th_percentile = args[:latency_95th_percentile] if args.key?(:latency_95th_percentile)
+          @latency50th_percentile = args[:latency50th_percentile] if args.key?(:latency50th_percentile)
+          @latency85th_percentile = args[:latency85th_percentile] if args.key?(:latency85th_percentile)
+          @latency95th_percentile = args[:latency95th_percentile] if args.key?(:latency95th_percentile)
           @no_quota_in_region = args[:no_quota_in_region] if args.key?(:no_quota_in_region)
           @out_of_quota = args[:out_of_quota] if args.key?(:out_of_quota)
           @pixel_match_requests = args[:pixel_match_requests] if args.key?(:pixel_match_requests)

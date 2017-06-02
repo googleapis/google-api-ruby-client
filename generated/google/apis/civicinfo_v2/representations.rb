@@ -100,7 +100,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class QueryElectionsResponse
+      class ElectionsQueryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -353,7 +353,7 @@ module Google
         end
       end
       
-      class QueryElectionsResponse
+      class ElectionsQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :elections, as: 'elections', class: Google::Apis::CivicinfoV2::Election, decorator: Google::Apis::CivicinfoV2::Election::Representation

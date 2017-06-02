@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_ga_data(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, include_empty_rows: nil, max_results: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_datum_ga(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, include_empty_rows: nil, max_results: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'data/ga', options)
           command.response_representation = Google::Apis::AnalyticsV3::GaData::Representation
           command.response_class = Google::Apis::AnalyticsV3::GaData
@@ -187,7 +187,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_mcf_data(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, max_results: nil, sampling_level: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_datum_mcf(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, max_results: nil, sampling_level: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'data/mcf', options)
           command.response_representation = Google::Apis::AnalyticsV3::McfData::Representation
           command.response_class = Google::Apis::AnalyticsV3::McfData
@@ -245,7 +245,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_realtime_data(ids, metrics, dimensions: nil, filters: nil, max_results: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_datum_realtime(ids, metrics, dimensions: nil, filters: nil, max_results: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'data/realtime', options)
           command.response_representation = Google::Apis::AnalyticsV3::RealtimeData::Representation
           command.response_class = Google::Apis::AnalyticsV3::RealtimeData
@@ -290,7 +290,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_summaries(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_account_summaries(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accountSummaries', options)
           command.response_representation = Google::Apis::AnalyticsV3::AccountSummaries::Representation
           command.response_class = Google::Apis::AnalyticsV3::AccountSummaries
@@ -328,7 +328,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_user_link(account_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_account_user_link(account_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/entityUserLinks/{linkId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['linkId'] = link_id unless link_id.nil?
@@ -363,7 +363,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account_user_link(account_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_account_user_link(account_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/entityUserLinks', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.request_object = entity_user_link_object
@@ -405,7 +405,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_user_links(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_account_user_links(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/entityUserLinks', options)
           command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLinks
@@ -445,7 +445,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_user_link(account_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_account_user_link(account_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/entityUserLinks/{linkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.request_object = entity_user_link_object
@@ -486,7 +486,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accounts(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_accounts(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts', options)
           command.response_representation = Google::Apis::AnalyticsV3::Accounts::Representation
           command.response_class = Google::Apis::AnalyticsV3::Accounts
@@ -529,7 +529,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_custom_data_sources(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_custom_data_sources(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources', options)
           command.response_representation = Google::Apis::AnalyticsV3::CustomDataSources::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDataSources
@@ -571,7 +571,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_custom_dimension(account_id, web_property_id, custom_dimension_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_custom_dimension(account_id, web_property_id, custom_dimension_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimension
@@ -611,7 +611,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_custom_dimension(account_id, web_property_id, custom_dimension_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_custom_dimension(account_id, web_property_id, custom_dimension_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions', options)
           command.request_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.request_object = custom_dimension_object
@@ -656,7 +656,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_custom_dimensions(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_custom_dimensions(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions', options)
           command.response_representation = Google::Apis::AnalyticsV3::CustomDimensions::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimensions
@@ -702,7 +702,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.request_object = custom_dimension_object
@@ -750,7 +750,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.request_object = custom_dimension_object
@@ -794,7 +794,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_custom_metric(account_id, web_property_id, custom_metric_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_custom_metric(account_id, web_property_id, custom_metric_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetric
@@ -834,7 +834,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_custom_metric(account_id, web_property_id, custom_metric_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_custom_metric(account_id, web_property_id, custom_metric_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics', options)
           command.request_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.request_object = custom_metric_object
@@ -879,7 +879,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_custom_metrics(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_custom_metrics(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics', options)
           command.response_representation = Google::Apis::AnalyticsV3::CustomMetrics::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetrics
@@ -925,7 +925,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.request_object = custom_metric_object
@@ -973,7 +973,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.request_object = custom_metric_object
@@ -1019,7 +1019,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_experiment(account_id, web_property_id, profile_id, experiment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_experiment(account_id, web_property_id, profile_id, experiment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1061,7 +1061,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_experiment(account_id, web_property_id, profile_id, experiment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_experiment(account_id, web_property_id, profile_id, experiment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiment
@@ -1104,7 +1104,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_experiment(account_id, web_property_id, profile_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_experiment(account_id, web_property_id, profile_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments', options)
           command.request_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.request_object = experiment_object
@@ -1152,7 +1152,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_experiments(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_experiments(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments', options)
           command.response_representation = Google::Apis::AnalyticsV3::Experiments::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiments
@@ -1198,7 +1198,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_experiment(account_id, web_property_id, profile_id, experiment_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_experiment(account_id, web_property_id, profile_id, experiment_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.request_object = experiment_object
@@ -1245,7 +1245,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_experiment(account_id, web_property_id, profile_id, experiment_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_experiment(account_id, web_property_id, profile_id, experiment_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.request_object = experiment_object
@@ -1287,7 +1287,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_filter(account_id, filter_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_filter(account_id, filter_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/filters/{filterId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
@@ -1325,7 +1325,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_filter(account_id, filter_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_filter(account_id, filter_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/filters/{filterId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
@@ -1362,7 +1362,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_filter(account_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_filter(account_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/filters', options)
           command.request_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.request_object = filter_object
@@ -1404,7 +1404,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_filters(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_filters(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/filters', options)
           command.response_representation = Google::Apis::AnalyticsV3::Filters::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filters
@@ -1444,7 +1444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_filter(account_id, filter_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_filter(account_id, filter_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/filters/{filterId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.request_object = filter_object
@@ -1485,7 +1485,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_filter(account_id, filter_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_filter(account_id, filter_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/filters/{filterId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.request_object = filter_object
@@ -1529,7 +1529,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_goal(account_id, web_property_id, profile_id, goal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_goal(account_id, web_property_id, profile_id, goal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goal
@@ -1572,7 +1572,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_goal(account_id, web_property_id, profile_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_goal(account_id, web_property_id, profile_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals', options)
           command.request_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.request_object = goal_object
@@ -1624,7 +1624,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_goals(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_goals(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals', options)
           command.response_representation = Google::Apis::AnalyticsV3::Goals::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goals
@@ -1670,7 +1670,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_goal(account_id, web_property_id, profile_id, goal_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_goal(account_id, web_property_id, profile_id, goal_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.request_object = goal_object
@@ -1717,7 +1717,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_goal(account_id, web_property_id, profile_id, goal_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_goal(account_id, web_property_id, profile_id, goal_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.request_object = goal_object
@@ -1763,7 +1763,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_profile_filter_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1805,7 +1805,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_profile_filter_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLink
@@ -1848,7 +1848,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_profile_filter_link(account_id, web_property_id, profile_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_profile_filter_link(account_id, web_property_id, profile_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks', options)
           command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.request_object = profile_filter_link_object
@@ -1899,7 +1899,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_profile_filter_links(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_profile_filter_links(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks', options)
           command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLinks
@@ -1945,7 +1945,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.request_object = profile_filter_link_object
@@ -1992,7 +1992,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.request_object = profile_filter_link_object
@@ -2038,7 +2038,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_profile_user_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_profile_user_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2079,7 +2079,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_profile_user_link(account_id, web_property_id, profile_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_profile_user_link(account_id, web_property_id, profile_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.request_object = entity_user_link_object
@@ -2131,7 +2131,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_profile_user_links(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_profile_user_links(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks', options)
           command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLinks
@@ -2177,7 +2177,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_profile_user_link(account_id, web_property_id, profile_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_profile_user_link(account_id, web_property_id, profile_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.request_object = entity_user_link_object
@@ -2221,7 +2221,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_profile(account_id, web_property_id, profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_profile(account_id, web_property_id, profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2260,7 +2260,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_profile(account_id, web_property_id, profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_profile(account_id, web_property_id, profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profile
@@ -2300,7 +2300,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_profile(account_id, web_property_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_profile(account_id, web_property_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles', options)
           command.request_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.request_object = profile_object
@@ -2349,7 +2349,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_profiles(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_profiles(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles', options)
           command.response_representation = Google::Apis::AnalyticsV3::Profiles::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profiles
@@ -2392,7 +2392,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_profile(account_id, web_property_id, profile_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_profile(account_id, web_property_id, profile_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.request_object = profile_object
@@ -2436,7 +2436,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_profile(account_id, web_property_id, profile_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_profile(account_id, web_property_id, profile_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.request_object = profile_object
@@ -2734,7 +2734,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_segments(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_segments(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/segments', options)
           command.response_representation = Google::Apis::AnalyticsV3::Segments::Representation
           command.response_class = Google::Apis::AnalyticsV3::Segments
@@ -2776,7 +2776,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2818,7 +2818,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::UnsampledReport::Representation
           command.response_class = Google::Apis::AnalyticsV3::UnsampledReport
@@ -2861,7 +2861,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports', options)
           command.request_representation = Google::Apis::AnalyticsV3::UnsampledReport::Representation
           command.request_object = unsampled_report_object
@@ -2912,7 +2912,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_unsampled_reports(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_unsampled_reports(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports', options)
           command.response_representation = Google::Apis::AnalyticsV3::UnsampledReports::Representation
           command.response_class = Google::Apis::AnalyticsV3::UnsampledReports
@@ -2934,7 +2934,7 @@ module Google
         #   Web property Id for the uploads to be deleted.
         # @param [String] custom_data_source_id
         #   Custom data source Id for the uploads to be deleted.
-        # @param [Google::Apis::AnalyticsV3::DeleteUploadDataRequest] delete_upload_data_request_object
+        # @param [Google::Apis::AnalyticsV3::AnalyticsDataimportDeleteUploadDataRequest] analytics_dataimport_delete_upload_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2956,10 +2956,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_upload_data(account_id, web_property_id, custom_data_source_id, delete_upload_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_upload_upload_data(account_id, web_property_id, custom_data_source_id, analytics_dataimport_delete_upload_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData', options)
-          command.request_representation = Google::Apis::AnalyticsV3::DeleteUploadDataRequest::Representation
-          command.request_object = delete_upload_data_request_object
+          command.request_representation = Google::Apis::AnalyticsV3::AnalyticsDataimportDeleteUploadDataRequest::Representation
+          command.request_object = analytics_dataimport_delete_upload_data_request_object
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
           command.params['customDataSourceId'] = custom_data_source_id unless custom_data_source_id.nil?
@@ -2999,7 +2999,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_upload(account_id, web_property_id, custom_data_source_id, upload_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_upload(account_id, web_property_id, custom_data_source_id, upload_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Upload::Representation
           command.response_class = Google::Apis::AnalyticsV3::Upload
@@ -3046,7 +3046,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_uploads(account_id, web_property_id, custom_data_source_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_uploads(account_id, web_property_id, custom_data_source_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads', options)
           command.response_representation = Google::Apis::AnalyticsV3::Uploads::Representation
           command.response_class = Google::Apis::AnalyticsV3::Uploads
@@ -3093,7 +3093,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_data(account_id, web_property_id, custom_data_source_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_management_upload_data(account_id, web_property_id, custom_data_source_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads', options)
           else
@@ -3140,7 +3140,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3179,7 +3179,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLink
@@ -3219,7 +3219,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_web_property_ad_words_link(account_id, web_property_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_web_property_ad_words_link(account_id, web_property_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.request_object = entity_ad_words_link_object
@@ -3264,7 +3264,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_web_property_ad_words_links(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_web_property_ad_words_links(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks', options)
           command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLinks
@@ -3308,7 +3308,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.request_object = entity_ad_words_link_object
@@ -3352,7 +3352,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.request_object = entity_ad_words_link_object
@@ -3393,7 +3393,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_web_property(account_id, web_property_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_management_webproperty(account_id, web_property_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}', options)
           command.response_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperty
@@ -3432,7 +3432,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_web_property(account_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_webproperty(account_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties', options)
           command.request_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.request_object = webproperty_object
@@ -3475,7 +3475,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_web_properties(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_webproperties(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties', options)
           command.response_representation = Google::Apis::AnalyticsV3::Webproperties::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperties
@@ -3515,7 +3515,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_web_property(account_id, web_property_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_webproperty(account_id, web_property_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'management/accounts/{accountId}/webproperties/{webPropertyId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.request_object = webproperty_object
@@ -3556,7 +3556,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_web_property(account_id, web_property_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_webproperty(account_id, web_property_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.request_object = webproperty_object
@@ -3598,7 +3598,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_web_property_user_link(account_id, web_property_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_management_webproperty_user_link(account_id, web_property_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3636,7 +3636,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_web_property_user_link(account_id, web_property_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_webproperty_user_link(account_id, web_property_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.request_object = entity_user_link_object
@@ -3683,7 +3683,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_web_property_user_links(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_management_webproperty_user_links(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks', options)
           command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLinks
@@ -3726,7 +3726,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_web_property_user_link(account_id, web_property_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_webproperty_user_link(account_id, web_property_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}', options)
           command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.request_object = entity_user_link_object
@@ -3766,7 +3766,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_metadata_columns(report_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_metadatum_columns(report_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'metadata/{reportType}/columns', options)
           command.response_representation = Google::Apis::AnalyticsV3::Columns::Representation
           command.response_class = Google::Apis::AnalyticsV3::Columns
@@ -3800,7 +3800,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_ticket(account_ticket_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_provisioning_account_ticket(account_ticket_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'provisioning/createAccountTicket', options)
           command.request_representation = Google::Apis::AnalyticsV3::AccountTicket::Representation
           command.request_object = account_ticket_object

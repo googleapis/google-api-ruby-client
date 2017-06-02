@@ -23,12 +23,12 @@ module Google
     module PagespeedonlineV2
       
       # 
-      class FormatString
+      class PagespeedApiFormatStringV2
         include Google::Apis::Core::Hashable
       
         # List of arguments for the format string.
         # Corresponds to the JSON property `args`
-        # @return [Array<Google::Apis::PagespeedonlineV2::FormatString::Arg>]
+        # @return [Array<Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg>]
         attr_accessor :args
       
         # A localized format string with ``FOO`` placeholders, where 'FOO' is the key of
@@ -63,13 +63,13 @@ module Google
           # for a SNAPSHOT_RECT argument, it means that that argument refers to the entire
           # snapshot.
           # Corresponds to the JSON property `rects`
-          # @return [Array<Google::Apis::PagespeedonlineV2::FormatString::Arg::Rect>]
+          # @return [Array<Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::Rect>]
           attr_accessor :rects
         
           # Secondary screen rectangles being referred to, with dimensions measured in CSS
           # pixels. This is only ever used for SNAPSHOT_RECT arguments.
           # Corresponds to the JSON property `secondary_rects`
-          # @return [Array<Google::Apis::PagespeedonlineV2::FormatString::Arg::SecondaryRect>]
+          # @return [Array<Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::SecondaryRect>]
           attr_accessor :secondary_rects
         
           # Type of argument. One of URL, STRING_LITERAL, INT_LITERAL, BYTES, DURATION,
@@ -173,7 +173,7 @@ module Google
       end
       
       # 
-      class Image
+      class PagespeedApiImageV2
         include Google::Apis::Core::Hashable
       
         # Image data base64 encoded.
@@ -200,7 +200,7 @@ module Google
         # The region of the page that is captured by this image, with dimensions
         # measured in CSS pixels.
         # Corresponds to the JSON property `page_rect`
-        # @return [Google::Apis::PagespeedonlineV2::Image::PageRect]
+        # @return [Google::Apis::PagespeedonlineV2::PagespeedApiImageV2::PageRect]
         attr_accessor :page_rect
       
         # Width of screenshot in pixels.
@@ -307,7 +307,7 @@ module Google
       
         # Base64-encoded screenshot of the page that was analyzed.
         # Corresponds to the JSON property `screenshot`
-        # @return [Google::Apis::PagespeedonlineV2::Image]
+        # @return [Google::Apis::PagespeedonlineV2::PagespeedApiImageV2]
         attr_accessor :screenshot
       
         # Title of the page, as displayed in the browser's title bar.
@@ -394,7 +394,7 @@ module Google
             # A brief summary description for the rule, indicating at a high level what
             # should be done to follow the rule and what benefit can be gained by doing so.
             # Corresponds to the JSON property `summary`
-            # @return [Google::Apis::PagespeedonlineV2::FormatString]
+            # @return [Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2]
             attr_accessor :summary
           
             # List of blocks of URLs. Each block may contain a heading and a list of URLs.
@@ -422,7 +422,7 @@ module Google
             
               # Heading to be displayed with the list of URLs.
               # Corresponds to the JSON property `header`
-              # @return [Google::Apis::PagespeedonlineV2::FormatString]
+              # @return [Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2]
               attr_accessor :header
             
               # List of entries that provide information about URLs in the url block. Optional.
@@ -446,13 +446,13 @@ module Google
               
                 # List of entries that provide additional details about a single URL. Optional.
                 # Corresponds to the JSON property `details`
-                # @return [Array<Google::Apis::PagespeedonlineV2::FormatString>]
+                # @return [Array<Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2>]
                 attr_accessor :details
               
                 # A format string that gives information about the URL, and a list of arguments
                 # for that format string.
                 # Corresponds to the JSON property `result`
-                # @return [Google::Apis::PagespeedonlineV2::FormatString]
+                # @return [Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2]
                 attr_accessor :result
               
                 def initialize(**args)

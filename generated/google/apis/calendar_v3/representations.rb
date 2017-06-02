@@ -344,7 +344,7 @@ module Google
       class CalendarNotification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :delivery_method, as: 'method'
+          property :method_prop, as: 'method'
           property :type, as: 'type'
         end
       end
@@ -490,7 +490,7 @@ module Google
         class Gadget
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :display_mode, as: 'display'
+            property :display_prop, as: 'display'
             property :height, as: 'height'
             property :icon_link, as: 'iconLink'
             property :link, as: 'link'
@@ -579,7 +579,7 @@ module Google
       class EventReminder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :reminder_method, as: 'method'
+          property :method_prop, as: 'method'
           property :minutes, as: 'minutes'
         end
       end

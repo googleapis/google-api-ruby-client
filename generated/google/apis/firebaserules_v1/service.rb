@@ -172,11 +172,6 @@ module Google
         # @param [String] name
         #   Resource name for the project.
         #   Format: `projects/`project_id``
-        # @param [Fixnum] page_size
-        #   Page size to load. Maximum of 100. Defaults to 10.
-        #   Note: `page_size` is just a hint and the service may choose to load less
-        #   than `page_size` due to the size of the output. To traverse all of the
-        #   releases, caller should iterate until the `page_token` is empty.
         # @param [String] filter
         #   `Ruleset` filter. The list method supports filters with restrictions on
         #   `Ruleset.name`.
@@ -185,6 +180,11 @@ module Google
         #   Example: `create_time > date("2017-01-01") AND name=UUID-*`
         # @param [String] page_token
         #   Next page token for loading the next batch of `Ruleset` instances.
+        # @param [Fixnum] page_size
+        #   Page size to load. Maximum of 100. Defaults to 10.
+        #   Note: `page_size` is just a hint and the service may choose to load less
+        #   than `page_size` due to the size of the output. To traverse all of the
+        #   releases, caller should iterate until the `page_token` is empty.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -202,14 +202,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_rulesets(name, page_size: nil, filter: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_rulesets(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}/rulesets', options)
           command.response_representation = Google::Apis::FirebaserulesV1::ListRulesetsResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::ListRulesetsResponse
           command.params['name'] = name unless name.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -247,88 +247,6 @@ module Google
           command.request_object = ruleset_object
           command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Ruleset
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Create a `Release`.
-        # Release names should reflect the developer's deployment practices. For
-        # example, the release name may include the environment name, application
-        # name, application version, or any other name meaningful to the developer.
-        # Once a `Release` refers to a `Ruleset`, the rules can be enforced by
-        # Firebase Rules-enabled services.
-        # More than one `Release` may be 'live' concurrently. Consider the following
-        # three `Release` names for `projects/foo` and the `Ruleset` to which they
-        # refer.
-        # Release Name                    | Ruleset Name
-        # --------------------------------|-------------
-        # projects/foo/releases/prod      | projects/foo/rulesets/uuid123
-        # projects/foo/releases/prod/beta | projects/foo/rulesets/uuid123
-        # projects/foo/releases/prod/v23  | projects/foo/rulesets/uuid456
-        # The table reflects the `Ruleset` rollout in progress. The `prod` and
-        # `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23`
-        # refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be
-        # updated using the UpdateRelease method.
-        # @param [String] name
-        #   Resource name for the project which owns this `Release`.
-        #   Format: `projects/`project_id``
-        # @param [Google::Apis::FirebaserulesV1::Release] release_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaserulesV1::Release] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaserulesV1::Release]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}/releases', options)
-          command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
-          command.request_object = release_object
-          command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
-          command.response_class = Google::Apis::FirebaserulesV1::Release
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Delete a `Release` by resource name.
-        # @param [String] name
-        #   Resource name for the `Release` to delete.
-        #   Format: `projects/`project_id`/releases/`release_id``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaserulesV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaserulesV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_release(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
-          command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -478,6 +396,88 @@ module Google
           command.request_object = release_object
           command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Release
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a `Release`.
+        # Release names should reflect the developer's deployment practices. For
+        # example, the release name may include the environment name, application
+        # name, application version, or any other name meaningful to the developer.
+        # Once a `Release` refers to a `Ruleset`, the rules can be enforced by
+        # Firebase Rules-enabled services.
+        # More than one `Release` may be 'live' concurrently. Consider the following
+        # three `Release` names for `projects/foo` and the `Ruleset` to which they
+        # refer.
+        # Release Name                    | Ruleset Name
+        # --------------------------------|-------------
+        # projects/foo/releases/prod      | projects/foo/rulesets/uuid123
+        # projects/foo/releases/prod/beta | projects/foo/rulesets/uuid123
+        # projects/foo/releases/prod/v23  | projects/foo/rulesets/uuid456
+        # The table reflects the `Ruleset` rollout in progress. The `prod` and
+        # `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23`
+        # refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be
+        # updated using the UpdateRelease method.
+        # @param [String] name
+        #   Resource name for the project which owns this `Release`.
+        #   Format: `projects/`project_id``
+        # @param [Google::Apis::FirebaserulesV1::Release] release_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaserulesV1::Release] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaserulesV1::Release]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}/releases', options)
+          command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
+          command.request_object = release_object
+          command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
+          command.response_class = Google::Apis::FirebaserulesV1::Release
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a `Release` by resource name.
+        # @param [String] name
+        #   Resource name for the `Release` to delete.
+        #   Format: `projects/`project_id`/releases/`release_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaserulesV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaserulesV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_release(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
+          command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

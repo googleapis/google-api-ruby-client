@@ -22,74 +22,6 @@ module Google
   module Apis
     module CloudkmsV1
       
-      # Options for counters
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metric = args[:metric] if args.key?(:metric)
-          @field = args[:field] if args.key?(:field)
-        end
-      end
-      
-      # Provides the configuration for logging a type of permissions.
-      # Example:
-      # `
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:foo@gmail.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE",
-      # `
-      # ]
-      # `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
-      class AuditLogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the identities that do not cause logging for this type of
-        # permission.
-        # Follows the same format of Binding.members.
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
-        # The log type that this config enables.
-        # Corresponds to the JSON property `logType`
-        # @return [String]
-        attr_accessor :log_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
       # Response message for KeyManagementService.Decrypt.
       class DecryptResponse
         include Google::Apis::Core::Hashable
@@ -132,6 +64,83 @@ module Google
         end
       end
       
+      # A KeyRing is a toplevel logical grouping of CryptoKeys.
+      class KeyRing
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this KeyRing was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The resource name for the KeyRing in the format
+        # `projects/*/locations/*/keyRings/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response message for KeyManagementService.Encrypt.
+      class EncryptResponse
+        include Google::Apis::Core::Hashable
+      
+        # The encrypted data.
+        # Corresponds to the JSON property `ciphertext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ciphertext
+      
+        # The resource name of the CryptoKeyVersion used in encryption.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The response message for Locations.ListLocations.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::CloudkmsV1::Location>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
       # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
@@ -160,18 +169,6 @@ module Google
       # [IAM developer's guide](https://cloud.google.com/iam).
       class Policy
         include Google::Apis::Core::Hashable
-      
-        # Specifies cloud audit logging configuration for this policy.
-        # Corresponds to the JSON property `auditConfigs`
-        # @return [Array<Google::Apis::CloudkmsV1::AuditConfig>]
-        attr_accessor :audit_configs
-      
-        # Associates a list of `members` to a `role`.
-        # Multiple `bindings` must not be specified for the same `role`.
-        # `bindings` with no members will result in an error.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::CloudkmsV1::Binding>]
-        attr_accessor :bindings
       
         # `etag` is used for optimistic concurrency control as a way to help
         # prevent simultaneous updates of a policy from overwriting each other.
@@ -211,95 +208,30 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::CloudkmsV1::AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members` to a `role`.
+        # Multiple `bindings` must not be specified for the same `role`.
+        # `bindings` with no members will result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::CloudkmsV1::Binding>]
+        attr_accessor :bindings
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
-          @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
           @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Response message for KeyManagementService.Encrypt.
-      class EncryptResponse
-        include Google::Apis::Core::Hashable
-      
-        # The resource name of the CryptoKeyVersion used in encryption.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The encrypted data.
-        # Corresponds to the JSON property `ciphertext`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :ciphertext
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
-        end
-      end
-      
-      # A KeyRing is a toplevel logical grouping of CryptoKeys.
-      class KeyRing
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time at which this KeyRing was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The resource name for the KeyRing in the format
-        # `projects/*/locations/*/keyRings/*`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # The response message for Locations.ListLocations.
-      class ListLocationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of locations that matches the specified filter in the request.
-        # Corresponds to the JSON property `locations`
-        # @return [Array<Google::Apis::CloudkmsV1::Location>]
-        attr_accessor :locations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @locations = args[:locations] if args.key?(:locations)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
         end
       end
       
@@ -430,13 +362,6 @@ module Google
       class AuditConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies a service that will be enabled for audit logging.
-        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-        # `allServices` is a special value that covers all services.
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
         # The configuration for logging of each type of permission.
         # Next ID: 4
         # Corresponds to the JSON property `auditLogConfigs`
@@ -448,15 +373,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @service = args[:service] if args.key?(:service)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -467,6 +399,11 @@ module Google
       # version for the operation.
       class CryptoKeyVersion
         include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this CryptoKeyVersion was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
       
         # The current state of the CryptoKeyVersion.
         # Corresponds to the JSON property `state`
@@ -493,22 +430,17 @@ module Google
         # @return [String]
         attr_accessor :destroy_time
       
-        # Output only. The time at which this CryptoKeyVersion was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @state = args[:state] if args.key?(:state)
           @name = args[:name] if args.key?(:name)
           @destroy_event_time = args[:destroy_event_time] if args.key?(:destroy_event_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
-          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -575,6 +507,12 @@ module Google
       class EncryptRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The data to encrypt. Must be no larger than 64KiB.
+        # Corresponds to the JSON property `plaintext`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :plaintext
+      
         # Optional data that, if specified, must also be provided during decryption
         # through DecryptRequest.additional_authenticated_data.  Must be no
         # larger than 64KiB.
@@ -583,31 +521,20 @@ module Google
         # @return [String]
         attr_accessor :additional_authenticated_data
       
-        # Required. The data to encrypt. Must be no larger than 64KiB.
-        # Corresponds to the JSON property `plaintext`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :plaintext
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @additional_authenticated_data = args[:additional_authenticated_data] if args.key?(:additional_authenticated_data)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @additional_authenticated_data = args[:additional_authenticated_data] if args.key?(:additional_authenticated_data)
         end
       end
       
       # Response message for KeyManagementService.ListCryptoKeyVersions.
       class ListCryptoKeyVersionsResponse
         include Google::Apis::Core::Hashable
-      
-        # The list of CryptoKeyVersions.
-        # Corresponds to the JSON property `cryptoKeyVersions`
-        # @return [Array<Google::Apis::CloudkmsV1::CryptoKeyVersion>]
-        attr_accessor :crypto_key_versions
       
         # A token to retrieve next page of results. Pass this value in
         # ListCryptoKeyVersionsRequest.page_token to retrieve the next page of
@@ -622,15 +549,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_size
       
+        # The list of CryptoKeyVersions.
+        # Corresponds to the JSON property `cryptoKeyVersions`
+        # @return [Array<Google::Apis::CloudkmsV1::CryptoKeyVersion>]
+        attr_accessor :crypto_key_versions
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @crypto_key_versions = args[:crypto_key_versions] if args.key?(:crypto_key_versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
+          @crypto_key_versions = args[:crypto_key_versions] if args.key?(:crypto_key_versions)
         end
       end
       
@@ -736,23 +668,6 @@ module Google
       class CryptoKey
         include Google::Apis::Core::Hashable
       
-        # The immutable purpose of this CryptoKey. Currently, the only acceptable
-        # purpose is ENCRYPT_DECRYPT.
-        # Corresponds to the JSON property `purpose`
-        # @return [String]
-        attr_accessor :purpose
-      
-        # At next_rotation_time, the Key Management Service will automatically:
-        # 1. Create a new version of this CryptoKey.
-        # 2. Mark the new version as primary.
-        # Key rotations performed manually via
-        # CreateCryptoKeyVersion and
-        # UpdateCryptoKeyPrimaryVersion
-        # do not affect next_rotation_time.
-        # Corresponds to the JSON property `nextRotationTime`
-        # @return [String]
-        attr_accessor :next_rotation_time
-      
         # Output only. The time at which this CryptoKey was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -780,18 +695,35 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The immutable purpose of this CryptoKey. Currently, the only acceptable
+        # purpose is ENCRYPT_DECRYPT.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        # At next_rotation_time, the Key Management Service will automatically:
+        # 1. Create a new version of this CryptoKey.
+        # 2. Mark the new version as primary.
+        # Key rotations performed manually via
+        # CreateCryptoKeyVersion and
+        # UpdateCryptoKeyPrimaryVersion
+        # do not affect next_rotation_time.
+        # Corresponds to the JSON property `nextRotationTime`
+        # @return [String]
+        attr_accessor :next_rotation_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @purpose = args[:purpose] if args.key?(:purpose)
-          @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
           @primary = args[:primary] if args.key?(:primary)
           @name = args[:name] if args.key?(:name)
+          @purpose = args[:purpose] if args.key?(:purpose)
+          @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
         end
       end
       
@@ -830,15 +762,6 @@ module Google
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the
-        # following default mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
         # Defines an Identity and Access Management (IAM) policy. It is used to
         # specify access control policies for Cloud Platform resources.
         # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
@@ -869,14 +792,23 @@ module Google
         # @return [Google::Apis::CloudkmsV1::Policy]
         attr_accessor :policy
       
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, the
+        # following default mask is used:
+        # paths: "bindings, etag"
+        # This field is only used by Cloud IAM.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
           @policy = args[:policy] if args.key?(:policy)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -913,17 +845,6 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The canonical id for this location. For example: `"us-east1"`.
-        # Corresponds to the JSON property `locationId`
-        # @return [String]
-        attr_accessor :location_id
-      
-        # Service-specific metadata. For example the available capacity at the given
-        # location.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
         # Cross-service attributes for the location. For example
         # `"cloud.googleapis.com/region": "us-east1"`
         # Corresponds to the JSON property `labels`
@@ -936,16 +857,27 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Service-specific metadata. For example the available capacity at the given
+        # location.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @location_id = args[:location_id] if args.key?(:location_id)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -985,17 +917,6 @@ module Google
       class Condition
         include Google::Apis::Core::Hashable
       
-        # Trusted attributes supplied by any service that owns resources and uses
-        # the IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # DEPRECATED. Use 'values' instead.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
         # The objects of the condition. This is mutually exclusive with 'value'.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
@@ -1016,18 +937,97 @@ module Google
         # @return [String]
         attr_accessor :svc
       
+        # DEPRECATED. Use 'values' instead.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # Trusted attributes supplied by any service that owns resources and uses
+        # the IAM system for access control.
+        # Corresponds to the JSON property `sys`
+        # @return [String]
+        attr_accessor :sys
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @sys = args[:sys] if args.key?(:sys)
-          @value = args[:value] if args.key?(:value)
           @values = args[:values] if args.key?(:values)
           @iam = args[:iam] if args.key?(:iam)
           @op = args[:op] if args.key?(:op)
           @svc = args[:svc] if args.key?(:svc)
+          @value = args[:value] if args.key?(:value)
+          @sys = args[:sys] if args.key?(:sys)
+        end
+      end
+      
+      # Options for counters
+      class CounterOptions
+        include Google::Apis::Core::Hashable
+      
+        # The metric to update.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The field value to attribute.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Provides the configuration for logging a type of permissions.
+      # Example:
+      # `
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `
+      # ]
+      # `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+      # foo@gmail.com from DATA_READ logging.
+      class AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        # Specifies the identities that do not cause logging for this type of
+        # permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_type = args[:log_type] if args.key?(:log_type)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
         end
       end
     end

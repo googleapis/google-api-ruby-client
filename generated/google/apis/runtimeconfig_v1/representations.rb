@@ -22,12 +22,6 @@ module Google
   module Apis
     module RuntimeconfigV1
       
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,9 +47,9 @@ module Google
       end
       
       class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Status
@@ -70,9 +64,9 @@ module Google
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::RuntimeconfigV1::Operation, decorator: Google::Apis::RuntimeconfigV1::Operation::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -89,6 +83,12 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

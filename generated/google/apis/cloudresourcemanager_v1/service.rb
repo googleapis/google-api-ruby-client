@@ -48,39 +48,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists `Constraints` that could be applied on the specified resource.
-        # @param [String] resource
-        #   Name of the resource to list `Constraints` for.
-        # @param [Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest] list_available_org_policy_constraints_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_available_org_policy_constraints(resource, list_available_org_policy_constraints_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest::Representation
-          command.request_object = list_available_org_policy_constraints_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists all the `Policies` set for a particular resource.
         # @param [String] resource
         #   Name of the resource to list Policies for.
@@ -108,6 +75,39 @@ module Google
           command.request_object = list_org_policies_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `Constraints` that could be applied on the specified resource.
+        # @param [String] resource
+        #   Name of the resource to list `Constraints` for.
+        # @param [Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest] list_available_org_policy_constraints_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_available_org_policy_constraints(resource, list_available_org_policy_constraints_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:listAvailableOrgPolicyConstraints', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsRequest::Representation
+          command.request_object = list_available_org_policy_constraints_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::ListAvailableOrgPolicyConstraintsResponse
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -565,74 +565,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the effective `Policy` on a resource. This is the result of merging
-        # `Policies` in the resource hierarchy. The returned `Policy` will not have
-        # an `etag`set because it is a computed `Policy` across multiple resources.
-        # @param [String] resource
-        #   The name of the resource to start computing the effective `Policy`.
-        # @param [Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest] get_effective_org_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::OrgPolicy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::OrgPolicy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_folder_effective_org_policy(resource, get_effective_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest::Representation
-          command.request_object = get_effective_org_policy_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::OrgPolicy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Clears a `Policy` from a resource.
-        # @param [String] resource
-        #   Name of the resource for the `Policy` to clear.
-        # @param [Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest] clear_org_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clear_folder_org_policy(resource, clear_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest::Representation
-          command.request_object = clear_org_policy_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::Empty
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates the specified `Policy` on the resource. Creates a new `Policy` for
         # that `Constraint` on the resource if one does not exist.
         # Not supplying an `etag` on the request `Policy` results in an unconditional
@@ -766,6 +698,107 @@ module Google
           command.request_object = get_org_policy_request_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::OrgPolicy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the effective `Policy` on a resource. This is the result of merging
+        # `Policies` in the resource hierarchy. The returned `Policy` will not have
+        # an `etag`set because it is a computed `Policy` across multiple resources.
+        # @param [String] resource
+        #   The name of the resource to start computing the effective `Policy`.
+        # @param [Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest] get_effective_org_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::OrgPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::OrgPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_effective_org_policy(resource, get_effective_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:getEffectiveOrgPolicy', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::GetEffectiveOrgPolicyRequest::Representation
+          command.request_object = get_effective_org_policy_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::OrgPolicy::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::OrgPolicy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Clears a `Policy` from a resource.
+        # @param [String] resource
+        #   Name of the resource for the `Policy` to clear.
+        # @param [Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest] clear_org_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clear_folder_org_policy(resource, clear_org_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:clearOrgPolicy', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::ClearOrgPolicyRequest::Representation
+          command.request_object = clear_org_policy_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::Empty::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::Empty
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the `Policies` set for a particular resource.
+        # @param [String] resource
+        #   Name of the resource to list Policies for.
+        # @param [Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest] list_org_policies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_org_policies(resource, list_org_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest::Representation
+          command.request_object = list_org_policies_request_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1359,39 +1392,6 @@ module Google
           command.request_object = project_object
           command.response_representation = Google::Apis::CloudresourcemanagerV1::Operation::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV1::Operation
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all the `Policies` set for a particular resource.
-        # @param [String] resource
-        #   Name of the resource to list Policies for.
-        # @param [Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest] list_org_policies_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_org_policies(resource, list_org_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+resource}:listOrgPolicies', options)
-          command.request_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesRequest::Representation
-          command.request_object = list_org_policies_request_object
-          command.response_representation = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse::Representation
-          command.response_class = Google::Apis::CloudresourcemanagerV1::ListOrgPoliciesResponse
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

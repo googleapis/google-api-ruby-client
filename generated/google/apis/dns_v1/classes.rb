@@ -74,7 +74,7 @@ module Google
       
       # The response to a request to enumerate Changes to a ResourceRecordSets
       # collection.
-      class ListChangesResponse
+      class ChangesListResponse
         include Google::Apis::Core::Hashable
       
         # The requested changes.
@@ -183,7 +183,7 @@ module Google
       end
       
       # 
-      class ListManagedZonesResponse
+      class ManagedZonesListResponse
         include Google::Apis::Core::Hashable
       
         # Type of resource.
@@ -364,7 +364,7 @@ module Google
       end
       
       # 
-      class ListResourceRecordSetsResponse
+      class ResourceRecordSetsListResponse
         include Google::Apis::Core::Hashable
       
         # Type of resource.

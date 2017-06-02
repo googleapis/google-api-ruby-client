@@ -2168,10 +2168,15 @@ module Google
         end
       end
       
-      # A usage-commitment with a start / end time. Users create commitments for
-      # particular resources (e.g. memory). Actual usage is first deducted from
-      # available commitments made prior, perhaps at a reduced price (as laid out in
-      # the commitment).
+      # Represents a Commitment resource. Creating a Commitment resource means that
+      # you are purchasing a committed use contract with an explicit start and end
+      # time. You can create commitments based on vCPUs and memory usage and receive
+      # discounted rates. For full details, read Signing Up for Committed Use
+      # Discounts.
+      # Committed use discounts are subject to Google Cloud Platform's Service
+      # Specific Terms. By purchasing a committed use discount, you agree to these
+      # terms. Committed use discounts will not renew, so you must purchase a new
+      # commitment to continue receiving discounts.
       class Commitment
         include Google::Apis::Core::Hashable
       
@@ -2241,7 +2246,7 @@ module Google
         attr_accessor :start_timestamp
       
         # [Output Only] Status of the commitment with regards to eventual expiration (
-        # each commitment has an end-date defined). One of the following values:
+        # each commitment has an end date defined). One of the following values:
         # NOT_YET_ACTIVE, ACTIVE, EXPIRED.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -5124,6 +5129,13 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # [Output Only] Whether a VM has been restricted for start because Compute
+        # Engine has detected suspicious activity.
+        # Corresponds to the JSON property `startRestricted`
+        # @return [Boolean]
+        attr_accessor :start_restricted
+        alias_method :start_restricted?, :start_restricted
+      
         # [Output Only] The status of the instance. One of the following values:
         # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
         # TERMINATED.
@@ -5170,6 +5182,7 @@ module Google
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @start_restricted = args[:start_restricted] if args.key?(:start_restricted)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tags = args[:tags] if args.key?(:tags)
@@ -6419,7 +6432,7 @@ module Google
       end
       
       # 
-      class MoveInstanceRequest
+      class InstanceMoveRequest
         include Google::Apis::Core::Hashable
       
         # The URL of the destination zone to move the instance. This can be a full or
@@ -6460,8 +6473,8 @@ module Google
         # IP addresses other than their own and receive packets with destination IP
         # addresses other than their own. If these instances will be used as an IP
         # gateway or it will be set as the next-hop in a Route resource, specify true.
-        # If unsure, leave this set to false. See the Enable IP forwarding for instances
-        # documentation for more information.
+        # If unsure, leave this set to false. See the Enable IP forwarding documentation
+        # for more information.
         # Corresponds to the JSON property `canIpForward`
         # @return [Boolean]
         attr_accessor :can_ip_forward
@@ -6984,6 +6997,11 @@ module Google
       class LogConfig
         include Google::Apis::Core::Hashable
       
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::ComputeBeta::LogConfigCloudAuditOptions]
+        attr_accessor :cloud_audit
+      
         # Options for counters
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::ComputeBeta::LogConfigCounterOptions]
@@ -6995,7 +7013,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
           @counter = args[:counter] if args.key?(:counter)
+        end
+      end
+      
+      # Write a Cloud Audit log
+      class LogConfigCloudAuditOptions
+        include Google::Apis::Core::Hashable
+      
+        # The log_name to populate in the Cloud Audit Record.
+        # Corresponds to the JSON property `logName`
+        # @return [String]
+        attr_accessor :log_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_name = args[:log_name] if args.key?(:log_name)
         end
       end
       
@@ -9329,11 +9367,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The amount of the resource purchased (in a type-dependent unit, such as bytes).
+        # For vCPUs, this can just be an integer. For memory, this must be provided in
+        # MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every
+        # vCPU.
         # Corresponds to the JSON property `amount`
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Type of resource for which this commitment applies.
+        # Type of resource for which this commitment applies. Possible values are VCPU
+        # and MEMORY
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -11928,7 +11970,7 @@ module Google
       end
       
       # 
-      class AddTargetPoolsHealthCheckRequest
+      class TargetPoolsAddHealthCheckRequest
         include Google::Apis::Core::Hashable
       
         # The HttpHealthCheck to add to the target pool.
@@ -11947,7 +11989,7 @@ module Google
       end
       
       # 
-      class AddTargetPoolsInstanceRequest
+      class TargetPoolsAddInstanceRequest
         include Google::Apis::Core::Hashable
       
         # A full or partial URL to an instance to add to this target pool. This can be a
@@ -11971,7 +12013,7 @@ module Google
       end
       
       # 
-      class RemoveTargetPoolsHealthCheckRequest
+      class TargetPoolsRemoveHealthCheckRequest
         include Google::Apis::Core::Hashable
       
         # Health check URL to be removed. This can be a full or valid partial URL. For
@@ -11995,7 +12037,7 @@ module Google
       end
       
       # 
-      class RemoveTargetPoolsInstanceRequest
+      class TargetPoolsRemoveInstanceRequest
         include Google::Apis::Core::Hashable
       
         # URLs of the instances to be removed from target pool.
@@ -13099,7 +13141,7 @@ module Google
       end
       
       # 
-      class ValidateUrlMapsRequest
+      class UrlMapsValidateRequest
         include Google::Apis::Core::Hashable
       
         # A UrlMap resource. This resource defines the mapping from URL to the
@@ -13120,7 +13162,7 @@ module Google
       end
       
       # 
-      class ValidateUrlMapsResponse
+      class UrlMapsValidateResponse
         include Google::Apis::Core::Hashable
       
         # Message representing the validation result for a UrlMap.

@@ -187,7 +187,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_container(account_id, container_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container(account_id, container_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers', options)
           command.request_representation = Google::Apis::TagmanagerV1::Container::Representation
           command.request_object = container_object
@@ -226,7 +226,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_container(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_container(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
@@ -262,7 +262,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_container(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_container(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Container::Representation
           command.response_class = Google::Apis::TagmanagerV1::Container
@@ -298,7 +298,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_containers(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_containers(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListContainersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListContainersResponse
@@ -339,7 +339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_container(account_id, container_id, container_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container(account_id, container_id, container_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Container::Representation
           command.request_object = container_object
@@ -979,7 +979,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_tag(account_id, container_id, tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_tag(account_id, container_id, tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/tags', options)
           command.request_representation = Google::Apis::TagmanagerV1::Tag::Representation
           command.request_object = tag_object
@@ -1021,7 +1021,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_container_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
@@ -1060,7 +1060,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_container_tag(account_id, container_id, tag_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Tag::Representation
           command.response_class = Google::Apis::TagmanagerV1::Tag
@@ -1099,7 +1099,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tags(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_container_tags(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/tags', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListTagsResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListTagsResponse
@@ -1143,7 +1143,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_tag(account_id, container_id, tag_id, tag_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_tag(account_id, container_id, tag_id, tag_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/tags/{tagId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Tag::Representation
           command.request_object = tag_object
@@ -1186,7 +1186,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_trigger(account_id, container_id, trigger_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_trigger(account_id, container_id, trigger_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/triggers', options)
           command.request_representation = Google::Apis::TagmanagerV1::Trigger::Representation
           command.request_object = trigger_object
@@ -1228,7 +1228,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_container_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
@@ -1267,7 +1267,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_container_trigger(account_id, container_id, trigger_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Trigger::Representation
           command.response_class = Google::Apis::TagmanagerV1::Trigger
@@ -1306,7 +1306,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_triggers(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_container_triggers(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/triggers', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListTriggersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListTriggersResponse
@@ -1350,7 +1350,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_trigger(account_id, container_id, trigger_id, trigger_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_trigger(account_id, container_id, trigger_id, trigger_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Trigger::Representation
           command.request_object = trigger_object
@@ -1393,7 +1393,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_variable(account_id, container_id, variable_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_variable(account_id, container_id, variable_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/variables', options)
           command.request_representation = Google::Apis::TagmanagerV1::Variable::Representation
           command.request_object = variable_object
@@ -1435,7 +1435,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_container_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
@@ -1474,7 +1474,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_container_variable(account_id, container_id, variable_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::Variable::Representation
           command.response_class = Google::Apis::TagmanagerV1::Variable
@@ -1513,7 +1513,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_variables(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_container_variables(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/variables', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListVariablesResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListVariablesResponse
@@ -1557,7 +1557,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_variable(account_id, container_id, variable_id, variable_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_variable(account_id, container_id, variable_id, variable_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/variables/{variableId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::Variable::Representation
           command.request_object = variable_object
@@ -1600,7 +1600,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_version(account_id, container_id, create_container_version_request_version_options_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_container_version(account_id, container_id, create_container_version_request_version_options_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions', options)
           command.request_representation = Google::Apis::TagmanagerV1::CreateContainerVersionRequestVersionOptions::Representation
           command.request_object = create_container_version_request_version_options_object
@@ -1642,7 +1642,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_container_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['containerId'] = container_id unless container_id.nil?
@@ -1682,7 +1682,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_container_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
@@ -1725,7 +1725,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_versions(account_id, container_id, headers: nil, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_container_versions(account_id, container_id, headers: nil, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/containers/{containerId}/versions', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListContainerVersionsResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListContainerVersionsResponse
@@ -1770,7 +1770,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_version(account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def publish_account_container_version(account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish', options)
           command.response_representation = Google::Apis::TagmanagerV1::PublishContainerVersionResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::PublishContainerVersionResponse
@@ -1815,7 +1815,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_account_container_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore', options)
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
@@ -1856,7 +1856,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def undelete_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def undelete_account_container_version(account_id, container_id, container_version_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete', options)
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
@@ -1901,7 +1901,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_version(account_id, container_id, container_version_id, container_version_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_version(account_id, container_id, container_version_id, container_version_object = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::ContainerVersion::Representation
           command.request_object = container_version_object
@@ -1942,7 +1942,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_permission(account_id, user_access_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_permission(account_id, user_access_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/{accountId}/permissions', options)
           command.request_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
           command.request_object = user_access_object
@@ -1982,7 +1982,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_permission(account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_permission(account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'accounts/{accountId}/permissions/{permissionId}', options)
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
@@ -2018,7 +2018,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permission(account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_permission(account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/permissions/{permissionId}', options)
           command.response_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
           command.response_class = Google::Apis::TagmanagerV1::UserAccess
@@ -2055,7 +2055,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_permissions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_permissions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/permissions', options)
           command.response_representation = Google::Apis::TagmanagerV1::ListAccountUsersResponse::Representation
           command.response_class = Google::Apis::TagmanagerV1::ListAccountUsersResponse
@@ -2093,7 +2093,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(account_id, permission_id, user_access_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_permission(account_id, permission_id, user_access_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'accounts/{accountId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::TagmanagerV1::UserAccess::Representation
           command.request_object = user_access_object

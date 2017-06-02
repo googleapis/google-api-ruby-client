@@ -34,31 +34,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AbandonInstancesRequest
+      class InstanceGroupManagersAbandonInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeleteInstancesRequest
+      class InstanceGroupManagersDeleteInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RecreateInstancesRequest
+      class InstanceGroupManagersRecreateInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetInstanceTemplateRequest
+      class InstanceGroupManagersSetInstanceTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetTargetPoolsRequest
+      class InstanceGroupManagersSetTargetPoolsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -139,35 +139,35 @@ module Google
         end
       end
       
-      class AbandonInstancesRequest
+      class InstanceGroupManagersAbandonInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
         end
       end
       
-      class DeleteInstancesRequest
+      class InstanceGroupManagersDeleteInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
         end
       end
       
-      class RecreateInstancesRequest
+      class InstanceGroupManagersRecreateInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
         end
       end
       
-      class SetInstanceTemplateRequest
+      class InstanceGroupManagersSetInstanceTemplateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
         end
       end
       
-      class SetTargetPoolsRequest
+      class InstanceGroupManagersSetTargetPoolsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'

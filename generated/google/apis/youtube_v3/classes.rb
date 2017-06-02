@@ -502,7 +502,7 @@ module Google
       end
       
       # 
-      class ListActivitiesResponse
+      class ActivityListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -681,7 +681,7 @@ module Google
       end
       
       # 
-      class ListCaptionsResponse
+      class CaptionListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -1250,7 +1250,7 @@ module Google
       end
       
       # 
-      class ListChannelsResponse
+      class ChannelListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -1465,7 +1465,7 @@ module Google
       end
       
       # 
-      class ListChannelSectionsResponse
+      class ChannelSectionListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -1922,7 +1922,7 @@ module Google
       end
       
       # 
-      class ListCommentsResponse
+      class CommentListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -2148,7 +2148,7 @@ module Google
       end
       
       # 
-      class ListCommentThreadsResponse
+      class CommentThreadListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -2977,7 +2977,7 @@ module Google
       end
       
       # 
-      class ListGuideCategoriesResponse
+      class GuideCategoryListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -3115,7 +3115,7 @@ module Google
       end
       
       # 
-      class ListI18nLanguagesResponse
+      class I18nLanguageListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -3225,7 +3225,7 @@ module Google
       end
       
       # 
-      class ListI18nRegionsResponse
+      class I18nRegionListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -3837,7 +3837,7 @@ module Google
       end
       
       # 
-      class ListLiveBroadcastsResponse
+      class LiveBroadcastListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -5140,7 +5140,7 @@ module Google
       end
       
       # 
-      class ListLiveStreamsResponse
+      class LiveStreamListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -5624,7 +5624,7 @@ module Google
       end
       
       # 
-      class ListPlaylistItemsResponse
+      class PlaylistItemListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -5786,7 +5786,7 @@ module Google
       end
       
       # 
-      class ListPlaylistResponse
+      class PlaylistListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -6141,7 +6141,7 @@ module Google
       end
       
       # 
-      class SearchListsResponse
+      class SearchListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -6542,7 +6542,7 @@ module Google
       end
       
       # 
-      class ListSubscriptionResponse
+      class SubscriptionListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -6950,7 +6950,7 @@ module Google
       end
       
       # 
-      class SetThumbnailResponse
+      class ThumbnailSetResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -7222,7 +7222,7 @@ module Google
       end
       
       # 
-      class ListVideoAbuseReportReasonResponse
+      class VideoAbuseReportReasonListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -7393,7 +7393,7 @@ module Google
       end
       
       # 
-      class ListVideoCategoryResponse
+      class VideoCategoryListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -7797,7 +7797,7 @@ module Google
       end
       
       # 
-      class GetVideoRatingResponse
+      class VideoGetRatingResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -7841,7 +7841,7 @@ module Google
       end
       
       # 
-      class ListVideosResponse
+      class VideoListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.

@@ -469,12 +469,12 @@ module Google
       end
       
       # 
-      class BatchAccountsRequest
+      class AccountsCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountsBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::AccountsCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -488,7 +488,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch accounts request.
-      class AccountsBatchRequestEntry
+      class AccountsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # Account data.
@@ -515,7 +515,7 @@ module Google
         # 
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         # Only applicable if the method is claimwebsite. Indicates whether or not to
         # take the claim from another account in case there is a conflict.
@@ -534,18 +534,18 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @overwrite = args[:overwrite] if args.key?(:overwrite)
         end
       end
       
       # 
-      class BatchAccountsResponse
+      class AccountsCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountsBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::AccountsCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -566,7 +566,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch accounts response.
-      class AccountsBatchResponseEntry
+      class AccountsCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # Account data.
@@ -604,7 +604,7 @@ module Google
       end
       
       # 
-      class ListAccountsResponse
+      class AccountsListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -636,12 +636,12 @@ module Google
       end
       
       # 
-      class BatchAccountStatusesRequest
+      class AccountstatusesCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountStatusesBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::AccountstatusesCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -655,7 +655,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch accountstatuses request.
-      class AccountStatusesBatchRequestEntry
+      class AccountstatusesCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the (sub-)account whose status to get.
@@ -676,7 +676,7 @@ module Google
         # The method (get).
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         def initialize(**args)
            update!(**args)
@@ -687,17 +687,17 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
         end
       end
       
       # 
-      class BatchAccountStatusesResponse
+      class AccountstatusesCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountStatusesBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::AccountstatusesCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -718,7 +718,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch accountstatuses response.
-      class AccountStatusesBatchResponseEntry
+      class AccountstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The status of an account, i.e., information about its products, which is
@@ -750,7 +750,7 @@ module Google
       end
       
       # 
-      class ListAccountStatusesResponse
+      class AccountstatusesListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -782,12 +782,12 @@ module Google
       end
       
       # 
-      class BatchAccountTaxRequest
+      class AccounttaxCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountTaxBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::AccounttaxCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -801,7 +801,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch accounttax request.
-      class AccountTaxBatchRequestEntry
+      class AccounttaxCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the account for which to get/update account tax settings.
@@ -827,7 +827,7 @@ module Google
         # 
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         def initialize(**args)
            update!(**args)
@@ -839,17 +839,17 @@ module Google
           @account_tax = args[:account_tax] if args.key?(:account_tax)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
         end
       end
       
       # 
-      class BatchAccountTaxResponse
+      class AccounttaxCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountTaxBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::AccounttaxCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -870,7 +870,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch accounttax response.
-      class AccountTaxBatchResponseEntry
+      class AccounttaxCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The tax settings of a merchant account.
@@ -908,7 +908,7 @@ module Google
       end
       
       # 
-      class ListAccountTaxResponse
+      class AccounttaxListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1348,12 +1348,12 @@ module Google
       end
       
       # 
-      class BatchDatafeedsRequest
+      class DatafeedsCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::DatafeedsBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::DatafeedsCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -1367,7 +1367,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch datafeeds request.
-      class DatafeedsBatchRequestEntry
+      class DatafeedsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # An entry ID, unique within the batch request.
@@ -1393,7 +1393,7 @@ module Google
         # 
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         def initialize(**args)
            update!(**args)
@@ -1405,17 +1405,17 @@ module Google
           @datafeed = args[:datafeed] if args.key?(:datafeed)
           @datafeed_id = args[:datafeed_id] if args.key?(:datafeed_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
         end
       end
       
       # 
-      class BatchDatafeedsResponse
+      class DatafeedsCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::DatafeedsBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::DatafeedsCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1436,7 +1436,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch datafeeds response.
-      class DatafeedsBatchResponseEntry
+      class DatafeedsCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the request entry this entry responds to.
@@ -1467,7 +1467,7 @@ module Google
       end
       
       # 
-      class ListDatafeedsResponse
+      class DatafeedsListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1499,12 +1499,12 @@ module Google
       end
       
       # 
-      class BatchDatafeedStatusesRequest
+      class DatafeedstatusesCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::DatafeedStatusesBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::DatafeedstatusesCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -1518,7 +1518,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch datafeedstatuses request.
-      class DatafeedStatusesBatchRequestEntry
+      class DatafeedstatusesCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # An entry ID, unique within the batch request.
@@ -1539,7 +1539,7 @@ module Google
         # 
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         def initialize(**args)
            update!(**args)
@@ -1550,17 +1550,17 @@ module Google
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @datafeed_id = args[:datafeed_id] if args.key?(:datafeed_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
         end
       end
       
       # 
-      class BatchDatafeedStatusesResponse
+      class DatafeedstatusesCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::DatafeedStatusesBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1581,7 +1581,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch datafeedstatuses response.
-      class DatafeedStatusesBatchResponseEntry
+      class DatafeedstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the request entry this entry responds to.
@@ -1613,7 +1613,7 @@ module Google
       end
       
       # 
-      class ListDatafeedStatusesResponse
+      class DatafeedstatusesListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1898,12 +1898,12 @@ module Google
       end
       
       # 
-      class BatchInventoryRequest
+      class InventoryCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::InventoryBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::InventoryCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -1917,7 +1917,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch inventory request.
-      class InventoryBatchRequestEntry
+      class InventoryCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # An entry ID, unique within the batch request.
@@ -1961,12 +1961,12 @@ module Google
       end
       
       # 
-      class BatchInventoryResponse
+      class InventoryCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::InventoryBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::InventoryCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1987,7 +1987,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch inventory response.
-      class InventoryBatchResponseEntry
+      class InventoryCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the request entry this entry responds to.
@@ -2049,7 +2049,7 @@ module Google
       end
       
       # 
-      class SetInventoryRequest
+      class InventorySetRequest
         include Google::Apis::Core::Hashable
       
         # The availability of the product.
@@ -2123,7 +2123,7 @@ module Google
       end
       
       # 
-      class SetInventoryResponse
+      class InventorySetResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -5260,12 +5260,12 @@ module Google
       end
       
       # 
-      class BatchProductsRequest
+      class ProductsCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::ProductsBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::ProductsCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -5279,7 +5279,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch products request.
-      class ProductsBatchRequestEntry
+      class ProductsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # An entry ID, unique within the batch request.
@@ -5295,7 +5295,7 @@ module Google
         # 
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         # Product data.
         # Corresponds to the JSON property `product`
@@ -5316,19 +5316,19 @@ module Google
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @product = args[:product] if args.key?(:product)
           @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
       # 
-      class BatchProductsResponse
+      class ProductsCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::ProductsBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::ProductsCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -5349,7 +5349,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch products response.
-      class ProductsBatchResponseEntry
+      class ProductsCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the request entry this entry responds to.
@@ -5387,7 +5387,7 @@ module Google
       end
       
       # 
-      class ListProductsResponse
+      class ProductsListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -5419,12 +5419,12 @@ module Google
       end
       
       # 
-      class BatchProductStatusesRequest
+      class ProductstatusesCustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::ProductStatusesBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::ProductstatusesCustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -5438,7 +5438,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch productstatuses request.
-      class ProductStatusesBatchRequestEntry
+      class ProductstatusesCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # An entry ID, unique within the batch request.
@@ -5454,7 +5454,7 @@ module Google
         # 
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :request_method
+        attr_accessor :method_prop
       
         # The ID of the product whose status to get.
         # Corresponds to the JSON property `productId`
@@ -5469,18 +5469,18 @@ module Google
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @request_method = args[:request_method] if args.key?(:request_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @product_id = args[:product_id] if args.key?(:product_id)
         end
       end
       
       # 
-      class BatchProductStatusesResponse
+      class ProductstatusesCustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::ProductStatusesBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::ProductstatusesCustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -5501,7 +5501,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch productstatuses response.
-      class ProductStatusesBatchResponseEntry
+      class ProductstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the request entry this entry responds to.
@@ -5540,7 +5540,7 @@ module Google
       end
       
       # 
-      class ListProductStatusesResponse
+      class ProductstatusesListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#

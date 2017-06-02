@@ -22,23 +22,17 @@ module Google
   module Apis
     module SpeechV1beta1
       
-      # The top-level message sent by the client for the `SyncRecognize` method.
-      class SyncRecognizeRequest
+      # The only message returned to the client by `SyncRecognize`. method. It
+      # contains the result as zero or more sequential `SpeechRecognitionResult`
+      # messages.
+      class SyncRecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # Provides information to the recognizer that specifies how to process the
-        # request.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
-        attr_accessor :config
-      
-        # Contains audio data in the encoding specified in the `RecognitionConfig`.
-        # Either `content` or `uri` must be supplied. Supplying both or neither
-        # returns google.rpc.Code.INVALID_ARGUMENT. See
-        # [audio limits](https://cloud.google.com/speech/limits#content).
-        # Corresponds to the JSON property `audio`
-        # @return [Google::Apis::SpeechV1beta1::RecognitionAudio]
-        attr_accessor :audio
+        # *Output-only* Sequential list of transcription results corresponding to
+        # sequential portions of audio.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
+        attr_accessor :results
       
         def initialize(**args)
            update!(**args)
@@ -46,8 +40,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @config = args[:config] if args.key?(:config)
-          @audio = args[:audio] if args.key?(:audio)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -123,28 +116,6 @@ module Google
         end
       end
       
-      # The only message returned to the client by `SyncRecognize`. method. It
-      # contains the result as zero or more sequential `SpeechRecognitionResult`
-      # messages.
-      class SyncRecognizeResponse
-        include Google::Apis::Core::Hashable
-      
-        # *Output-only* Sequential list of transcription results corresponding to
-        # sequential portions of audio.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::SpeechV1beta1::SpeechRecognitionResult>]
-        attr_accessor :results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @results = args[:results] if args.key?(:results)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -161,56 +132,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::SpeechV1beta1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # Provides "hints" to the speech recognizer to favor specific words and phrases
-      # in the results.
-      class SpeechContext
-        include Google::Apis::Core::Hashable
-      
-        # *Optional* A list of strings containing words and phrases "hints" so that
-        # the speech recognition is more likely to recognize them. This can be used
-        # to improve the accuracy for specific words and phrases, for example, if
-        # specific commands are typically spoken by the user. This can also be used
-        # to add additional words to the vocabulary of the recognizer. See
-        # [usage limits](https://cloud.google.com/speech/limits#content).
-        # Corresponds to the JSON property `phrases`
-        # @return [Array<String>]
-        attr_accessor :phrases
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @phrases = args[:phrases] if args.key?(:phrases)
         end
       end
       
@@ -242,6 +163,56 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @transcript = args[:transcript] if args.key?(:transcript)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpeechV1beta1::Operation>]
+        attr_accessor :operations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operations = args[:operations] if args.key?(:operations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Provides "hints" to the speech recognizer to favor specific words and phrases
+      # in the results.
+      class SpeechContext
+        include Google::Apis::Core::Hashable
+      
+        # *Optional* A list of strings containing words and phrases "hints" so that
+        # the speech recognition is more likely to recognize them. This can be used
+        # to improve the accuracy for specific words and phrases, for example, if
+        # specific commands are typically spoken by the user. This can also be used
+        # to add additional words to the vocabulary of the recognizer. See
+        # [usage limits](https://cloud.google.com/speech/limits#content).
+        # Corresponds to the JSON property `phrases`
+        # @return [Array<String>]
+        attr_accessor :phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phrases = args[:phrases] if args.key?(:phrases)
         end
       end
       
@@ -492,6 +463,35 @@ module Google
           @speech_context = args[:speech_context] if args.key?(:speech_context)
           @encoding = args[:encoding] if args.key?(:encoding)
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
+        end
+      end
+      
+      # The top-level message sent by the client for the `SyncRecognize` method.
+      class SyncRecognizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Provides information to the recognizer that specifies how to process the
+        # request.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::SpeechV1beta1::RecognitionConfig]
+        attr_accessor :config
+      
+        # Contains audio data in the encoding specified in the `RecognitionConfig`.
+        # Either `content` or `uri` must be supplied. Supplying both or neither
+        # returns google.rpc.Code.INVALID_ARGUMENT. See
+        # [audio limits](https://cloud.google.com/speech/limits#content).
+        # Corresponds to the JSON property `audio`
+        # @return [Google::Apis::SpeechV1beta1::RecognitionAudio]
+        attr_accessor :audio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @audio = args[:audio] if args.key?(:audio)
         end
       end
     end

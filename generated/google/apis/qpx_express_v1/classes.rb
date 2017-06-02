@@ -1226,7 +1226,7 @@ module Google
       end
       
       # A QPX Express search request.
-      class SearchTripsRequest
+      class TripsSearchRequest
         include Google::Apis::Core::Hashable
       
         # A QPX Express search request, which will yield one or more solutions.
@@ -1245,7 +1245,7 @@ module Google
       end
       
       # A QPX Express search response.
-      class SearchTripsResponse
+      class TripsSearchResponse
         include Google::Apis::Core::Hashable
       
         # Identifies this as a QPX Express API search response resource. Value: the

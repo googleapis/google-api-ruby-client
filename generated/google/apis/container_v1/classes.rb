@@ -22,67 +22,9 @@ module Google
   module Apis
     module ContainerV1
       
-      # RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
-      # NodePool upgrade. This will be an no-op if the last upgrade successfully
-      # completed.
-      class RollbackNodePoolUpgradeRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # UpdateClusterRequest updates the settings of a cluster.
-      class UpdateClusterRequest
-        include Google::Apis::Core::Hashable
-      
-        # ClusterUpdate describes an update to the cluster. Exactly one update can
-        # be applied to a cluster with each request, so at most one field can be
-        # provided.
-        # Corresponds to the JSON property `update`
-        # @return [Google::Apis::ContainerV1::ClusterUpdate]
-        attr_accessor :update
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @update = args[:update] if args.key?(:update)
-        end
-      end
-      
       # A Google Container Engine cluster.
       class Cluster
         include Google::Apis::Core::Hashable
-      
-        # [Output only] The number of nodes currently in the cluster.
-        # Corresponds to the JSON property `currentNodeCount`
-        # @return [Fixnum]
-        attr_accessor :current_node_count
-      
-        # The monitoring service the cluster should use to write metrics.
-        # Currently available options:
-        # * `monitoring.googleapis.com` - the Google Cloud Monitoring service.
-        # * `none` - no metrics will be exported from the cluster.
-        # * if left as an empty string, `monitoring.googleapis.com` will be used.
-        # Corresponds to the JSON property `monitoringService`
-        # @return [String]
-        attr_accessor :monitoring_service
-      
-        # The name of the Google Compute Engine
-        # [network](/compute/docs/networks-and-firewalls#networks) to which the
-        # cluster is connected. If left unspecified, the `default` network
-        # will be used.
-        # Corresponds to the JSON property `network`
-        # @return [String]
-        attr_accessor :network
       
         # The fingerprint of the set of labels for this cluster.
         # Corresponds to the JSON property `labelFingerprint`
@@ -96,19 +38,6 @@ module Google
         # @return [String]
         attr_accessor :zone
       
-        # [Output only] The time the cluster will be automatically
-        # deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        # Corresponds to the JSON property `expireTime`
-        # @return [String]
-        attr_accessor :expire_time
-      
-        # [Output only] The size of the address space on each node for hosting
-        # containers. This is provisioned from within the `container_ipv4_cidr`
-        # range.
-        # Corresponds to the JSON property `nodeIpv4CidrSize`
-        # @return [Fixnum]
-        attr_accessor :node_ipv4_cidr_size
-      
         # The logging service the cluster should use to write logs.
         # Currently available options:
         # * `logging.googleapis.com` - the Google Cloud Logging service.
@@ -117,6 +46,19 @@ module Google
         # Corresponds to the JSON property `loggingService`
         # @return [String]
         attr_accessor :logging_service
+      
+        # [Output only] The size of the address space on each node for hosting
+        # containers. This is provisioned from within the `container_ipv4_cidr`
+        # range.
+        # Corresponds to the JSON property `nodeIpv4CidrSize`
+        # @return [Fixnum]
+        attr_accessor :node_ipv4_cidr_size
+      
+        # [Output only] The time the cluster will be automatically
+        # deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
       
         # [Output only] Additional information about the current status of this
         # cluster, if available.
@@ -189,12 +131,6 @@ module Google
         # @return [String]
         attr_accessor :initial_cluster_version
       
-        # Configuration for the legacy Attribute Based Access Control authorization
-        # mode.
-        # Corresponds to the JSON property `legacyAbac`
-        # @return [Google::Apis::ContainerV1::LegacyAbac]
-        attr_accessor :legacy_abac
-      
         # [Output only] The IP address of this cluster's master endpoint.
         # The endpoint can be accessed from the internet at
         # `https://username:password@endpoint/`.
@@ -203,6 +139,12 @@ module Google
         # Corresponds to the JSON property `endpoint`
         # @return [String]
         attr_accessor :endpoint
+      
+        # Configuration for the legacy Attribute Based Access Control authorization
+        # mode.
+        # Corresponds to the JSON property `legacyAbac`
+        # @return [Google::Apis::ContainerV1::LegacyAbac]
+        attr_accessor :legacy_abac
       
         # [Output only] The time the cluster was created, in
         # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -230,12 +172,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # The node pools associated with this cluster.
-        # This field should not be set if "node_config" or "initial_node_count" are
-        # specified.
-        # Corresponds to the JSON property `nodePools`
-        # @return [Array<Google::Apis::ContainerV1::NodePool>]
-        attr_accessor :node_pools
+        # [Output only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
       
         # The list of Google Compute Engine
         # [locations](/compute/docs/zones#available) in which the cluster's nodes
@@ -244,10 +184,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :locations
       
-        # [Output only] Server-defined URL for the resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
+        # The node pools associated with this cluster.
+        # This field should not be set if "node_config" or "initial_node_count" are
+        # specified.
+        # Corresponds to the JSON property `nodePools`
+        # @return [Array<Google::Apis::ContainerV1::NodePool>]
+        attr_accessor :node_pools
       
         # [Output only] The resource URLs of [instance
         # groups](/compute/docs/instance-groups/) associated with this
@@ -281,20 +223,39 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output only] The number of nodes currently in the cluster.
+        # Corresponds to the JSON property `currentNodeCount`
+        # @return [Fixnum]
+        attr_accessor :current_node_count
+      
+        # The monitoring service the cluster should use to write metrics.
+        # Currently available options:
+        # * `monitoring.googleapis.com` - the Google Cloud Monitoring service.
+        # * `none` - no metrics will be exported from the cluster.
+        # * if left as an empty string, `monitoring.googleapis.com` will be used.
+        # Corresponds to the JSON property `monitoringService`
+        # @return [String]
+        attr_accessor :monitoring_service
+      
+        # The name of the Google Compute Engine
+        # [network](/compute/docs/networks-and-firewalls#networks) to which the
+        # cluster is connected. If left unspecified, the `default` network
+        # will be used.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
-          @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
-          @network = args[:network] if args.key?(:network)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @zone = args[:zone] if args.key?(:zone)
-          @expire_time = args[:expire_time] if args.key?(:expire_time)
-          @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
+          @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @status_message = args[:status_message] if args.key?(:status_message)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
@@ -306,18 +267,21 @@ module Google
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @name = args[:name] if args.key?(:name)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
-          @legacy_abac = args[:legacy_abac] if args.key?(:legacy_abac)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @legacy_abac = args[:legacy_abac] if args.key?(:legacy_abac)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
-          @node_pools = args[:node_pools] if args.key?(:node_pools)
-          @locations = args[:locations] if args.key?(:locations)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @locations = args[:locations] if args.key?(:locations)
+          @node_pools = args[:node_pools] if args.key?(:node_pools)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @description = args[:description] if args.key?(:description)
+          @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
+          @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
+          @network = args[:network] if args.key?(:network)
         end
       end
       
@@ -418,50 +382,6 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # The metadata key/value pairs assigned to instances in the cluster.
-        # Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes
-        # in length. These are reflected as part of a URL in the metadata server.
-        # Additionally, to avoid ambiguity, keys must not conflict with any other
-        # metadata keys for the project or be one of the four reserved keys:
-        # "instance-template", "kube-env", "startup-script", and "user-data"
-        # Values are free-form strings, and only have meaning as interpreted by
-        # the image running in the instance. The only restriction placed on them is
-        # that each value's size must be less than or equal to 32 KB.
-        # The total size of all keys and values must be less than 512 KB.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
-        # Size of the disk attached to each node, specified in GB.
-        # The smallest allowed disk size is 10GB.
-        # If unspecified, the default disk size is 100GB.
-        # Corresponds to the JSON property `diskSizeGb`
-        # @return [Fixnum]
-        attr_accessor :disk_size_gb
-      
-        # The list of instance tags applied to all nodes. Tags are used to identify
-        # valid sources or targets for network firewalls and are specified by
-        # the client during cluster or node pool creation. Each tag within the list
-        # must comply with RFC1035.
-        # Corresponds to the JSON property `tags`
-        # @return [Array<String>]
-        attr_accessor :tags
-      
-        # The Google Cloud Platform Service Account to be used by the node VMs. If
-        # no Service Account is specified, the "default" service account is used.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        # The name of a Google Compute Engine [machine
-        # type](/compute/docs/machine-types) (e.g.
-        # `n1-standard-1`).
-        # If unspecified, the default machine type is
-        # `n1-standard-1`.
-        # Corresponds to the JSON property `machineType`
-        # @return [String]
-        attr_accessor :machine_type
-      
         # The image type to use for this node. Note that for a given image type,
         # the latest version of it will be used.
         # Corresponds to the JSON property `imageType`
@@ -512,22 +432,66 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_count
       
+        # The metadata key/value pairs assigned to instances in the cluster.
+        # Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes
+        # in length. These are reflected as part of a URL in the metadata server.
+        # Additionally, to avoid ambiguity, keys must not conflict with any other
+        # metadata keys for the project or be one of the four reserved keys:
+        # "instance-template", "kube-env", "startup-script", and "user-data"
+        # Values are free-form strings, and only have meaning as interpreted by
+        # the image running in the instance. The only restriction placed on them is
+        # that each value's size must be less than or equal to 32 KB.
+        # The total size of all keys and values must be less than 512 KB.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Size of the disk attached to each node, specified in GB.
+        # The smallest allowed disk size is 10GB.
+        # If unspecified, the default disk size is 100GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # The list of instance tags applied to all nodes. Tags are used to identify
+        # valid sources or targets for network firewalls and are specified by
+        # the client during cluster or node pool creation. Each tag within the list
+        # must comply with RFC1035.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # The Google Cloud Platform Service Account to be used by the node VMs. If
+        # no Service Account is specified, the "default" service account is used.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # The name of a Google Compute Engine [machine
+        # type](/compute/docs/machine-types) (e.g.
+        # `n1-standard-1`).
+        # If unspecified, the default machine type is
+        # `n1-standard-1`.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
-          @tags = args[:tags] if args.key?(:tags)
-          @service_account = args[:service_account] if args.key?(:service_account)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @image_type = args[:image_type] if args.key?(:image_type)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @labels = args[:labels] if args.key?(:labels)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @tags = args[:tags] if args.key?(:tags)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
         end
       end
       
@@ -536,6 +500,20 @@ module Google
       # certificates.
       class MasterAuth
         include Google::Apis::Core::Hashable
+      
+        # The password to use for HTTP basic authentication to the master endpoint.
+        # Because the master endpoint is open to the Internet, you should create a
+        # strong password.  If a password is provided for cluster creation, username
+        # must be non-empty.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # [Output only] Base64-encoded public certificate used by clients to
+        # authenticate to the cluster endpoint.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
       
         # The username to use for HTTP basic authentication to the master endpoint.
         # For clusters v1.6.0 and later, you can disable basic authentication by
@@ -556,31 +534,17 @@ module Google
         # @return [String]
         attr_accessor :cluster_ca_certificate
       
-        # The password to use for HTTP basic authentication to the master endpoint.
-        # Because the master endpoint is open to the Internet, you should create a
-        # strong password.  If a password is provided for cluster creation, username
-        # must be non-empty.
-        # Corresponds to the JSON property `password`
-        # @return [String]
-        attr_accessor :password
-      
-        # [Output only] Base64-encoded public certificate used by clients to
-        # authenticate to the cluster endpoint.
-        # Corresponds to the JSON property `clientCertificate`
-        # @return [String]
-        attr_accessor :client_certificate
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @username = args[:username] if args.key?(:username)
           @client_key = args[:client_key] if args.key?(:client_key)
           @cluster_ca_certificate = args[:cluster_ca_certificate] if args.key?(:cluster_ca_certificate)
-          @password = args[:password] if args.key?(:password)
-          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
         end
       end
       
@@ -617,17 +581,17 @@ module Google
       class ListClustersResponse
         include Google::Apis::Core::Hashable
       
-        # If any zones are listed here, the list of clusters returned
-        # may be missing those zones.
-        # Corresponds to the JSON property `missingZones`
-        # @return [Array<String>]
-        attr_accessor :missing_zones
-      
         # A list of clusters in the project in the specified zone, or
         # across all ones.
         # Corresponds to the JSON property `clusters`
         # @return [Array<Google::Apis::ContainerV1::Cluster>]
         attr_accessor :clusters
+      
+        # If any zones are listed here, the list of clusters returned
+        # may be missing those zones.
+        # Corresponds to the JSON property `missingZones`
+        # @return [Array<String>]
+        attr_accessor :missing_zones
       
         def initialize(**args)
            update!(**args)
@@ -635,8 +599,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @missing_zones = args[:missing_zones] if args.key?(:missing_zones)
           @clusters = args[:clusters] if args.key?(:clusters)
+          @missing_zones = args[:missing_zones] if args.key?(:missing_zones)
         end
       end
       
@@ -660,33 +624,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
-        end
-      end
-      
-      # SetMasterAuthRequest updates the admin password of a cluster.
-      class SetMasterAuthRequest
-        include Google::Apis::Core::Hashable
-      
-        # The authentication information for accessing the master endpoint.
-        # Authentication can be done using HTTP basic auth or using client
-        # certificates.
-        # Corresponds to the JSON property `update`
-        # @return [Google::Apis::ContainerV1::MasterAuth]
-        attr_accessor :update
-      
-        # The exact form of action to be taken on the master auth
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @update = args[:update] if args.key?(:update)
-          @action = args[:action] if args.key?(:action)
         end
       end
       
@@ -725,11 +662,45 @@ module Google
         end
       end
       
+      # SetMasterAuthRequest updates the admin password of a cluster.
+      class SetMasterAuthRequest
+        include Google::Apis::Core::Hashable
+      
+        # The authentication information for accessing the master endpoint.
+        # Authentication can be done using HTTP basic auth or using client
+        # certificates.
+        # Corresponds to the JSON property `update`
+        # @return [Google::Apis::ContainerV1::MasterAuth]
+        attr_accessor :update
+      
+        # The exact form of action to be taken on the master auth
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update = args[:update] if args.key?(:update)
+          @action = args[:action] if args.key?(:action)
+        end
+      end
+      
       # ClusterUpdate describes an update to the cluster. Exactly one update can
       # be applied to a cluster with each request, so at most one field can be
       # provided.
       class ClusterUpdate
         include Google::Apis::Core::Hashable
+      
+        # The Kubernetes version to change the master to. The only valid value is the
+        # latest supported version. Use "-" to have the server automatically select
+        # the latest version.
+        # Corresponds to the JSON property `desiredMasterVersion`
+        # @return [String]
+        attr_accessor :desired_master_version
       
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
@@ -782,19 +753,13 @@ module Google
         # @return [String]
         attr_accessor :desired_node_version
       
-        # The Kubernetes version to change the master to. The only valid value is the
-        # latest supported version. Use "-" to have the server automatically select
-        # the latest version.
-        # Corresponds to the JSON property `desiredMasterVersion`
-        # @return [String]
-        attr_accessor :desired_master_version
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
@@ -802,7 +767,6 @@ module Google
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
-          @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
         end
       end
       
@@ -830,6 +794,25 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # SetNodePoolManagementRequest sets the node management properties of a node
       # pool.
       class SetNodePoolManagementRequest
@@ -848,25 +831,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @management = args[:management] if args.key?(:management)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -1000,27 +964,6 @@ module Google
       class NodePool
         include Google::Apis::Core::Hashable
       
-        # [Output only] The status of the nodes in this pool instance.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Parameters that describe the nodes in a cluster.
-        # Corresponds to the JSON property `config`
-        # @return [Google::Apis::ContainerV1::NodeConfig]
-        attr_accessor :config
-      
-        # [Output only] Additional information about the current status of this
-        # node pool instance, if available.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # The name of the node pool.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
         # Corresponds to the JSON property `autoscaling`
@@ -1046,11 +989,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output only] The version of the Kubernetes of this node.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
         # [Output only] The resource URLs of [instance
         # groups](/compute/docs/instance-groups/) associated with this
         # node pool.
@@ -1058,22 +996,48 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
+        # [Output only] The version of the Kubernetes of this node.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        # [Output only] The status of the nodes in this pool instance.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Parameters that describe the nodes in a cluster.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ContainerV1::NodeConfig]
+        attr_accessor :config
+      
+        # [Output only] Additional information about the current status of this
+        # node pool instance, if available.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # The name of the node pool.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @status = args[:status] if args.key?(:status)
-          @config = args[:config] if args.key?(:config)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @name = args[:name] if args.key?(:name)
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @management = args[:management] if args.key?(:management)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @version = args[:version] if args.key?(:version)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
+          @version = args[:version] if args.key?(:version)
+          @status = args[:status] if args.key?(:status)
+          @config = args[:config] if args.key?(:config)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1081,12 +1045,6 @@ module Google
       # node pool.
       class NodeManagement
         include Google::Apis::Core::Hashable
-      
-        # AutoUpgradeOptions defines the set of options for the user to control how
-        # the Auto Upgrades will proceed.
-        # Corresponds to the JSON property `upgradeOptions`
-        # @return [Google::Apis::ContainerV1::AutoUpgradeOptions]
-        attr_accessor :upgrade_options
       
         # A flag that specifies whether node auto-upgrade is enabled for the node
         # pool. If enabled, node auto-upgrade helps keep the nodes in your node pool
@@ -1105,15 +1063,21 @@ module Google
         attr_accessor :auto_repair
         alias_method :auto_repair?, :auto_repair
       
+        # AutoUpgradeOptions defines the set of options for the user to control how
+        # the Auto Upgrades will proceed.
+        # Corresponds to the JSON property `upgradeOptions`
+        # @return [Google::Apis::ContainerV1::AutoUpgradeOptions]
+        attr_accessor :upgrade_options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @upgrade_options = args[:upgrade_options] if args.key?(:upgrade_options)
           @auto_upgrade = args[:auto_upgrade] if args.key?(:auto_upgrade)
           @auto_repair = args[:auto_repair] if args.key?(:auto_repair)
+          @upgrade_options = args[:upgrade_options] if args.key?(:upgrade_options)
         end
       end
       
@@ -1156,6 +1120,13 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
+        # The name of the Google Compute Engine
+        # [zone](/compute/docs/zones#available) in which the operation
+        # is taking place.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         # The current status of the operation.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -1191,19 +1162,13 @@ module Google
         # @return [String]
         attr_accessor :operation_type
       
-        # The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the operation
-        # is taking place.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
           @status = args[:status] if args.key?(:status)
           @name = args[:name] if args.key?(:name)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -1211,7 +1176,6 @@ module Google
           @target_link = args[:target_link] if args.key?(:target_link)
           @detail = args[:detail] if args.key?(:detail)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -1241,6 +1205,42 @@ module Google
         def update!(**args)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
+        end
+      end
+      
+      # RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
+      # NodePool upgrade. This will be an no-op if the last upgrade successfully
+      # completed.
+      class RollbackNodePoolUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # UpdateClusterRequest updates the settings of a cluster.
+      class UpdateClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # ClusterUpdate describes an update to the cluster. Exactly one update can
+        # be applied to a cluster with each request, so at most one field can be
+        # provided.
+        # Corresponds to the JSON property `update`
+        # @return [Google::Apis::ContainerV1::ClusterUpdate]
+        attr_accessor :update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update = args[:update] if args.key?(:update)
         end
       end
     end

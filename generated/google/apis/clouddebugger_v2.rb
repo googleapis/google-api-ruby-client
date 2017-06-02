@@ -26,7 +26,7 @@ module Google
     # @see http://cloud.google.com/debugger
     module ClouddebuggerV2
       VERSION = 'V2'
-      REVISION = '20170413'
+      REVISION = '20170518'
 
       # Manage cloud debugger
       AUTH_CLOUD_DEBUGGER = 'https://www.googleapis.com/auth/cloud_debugger'

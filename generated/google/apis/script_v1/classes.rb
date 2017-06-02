@@ -22,11 +22,83 @@ module Google
   module Apis
     module ScriptV1
       
+      # A stack trace through the script that shows where the execution failed.
+      class ScriptStackTraceElement
+        include Google::Apis::Core::Hashable
+      
+        # The name of the function that failed.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # The line number where the script failed.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function = args[:function] if args.key?(:function)
+          @line_number = args[:line_number] if args.key?(:line_number)
+        end
+      end
+      
+      # An object that provides information about the nature of an error in the Apps
+      # Script Execution API. If an
+      # `run` call succeeds but the
+      # script function (or Apps Script itself) throws an exception, the response
+      # body's `error` field contains a
+      # `Status` object. The `Status` object's `details` field
+      # contains an array with a single one of these `ExecutionError` objects.
+      class ExecutionError
+        include Google::Apis::Core::Hashable
+      
+        # The error type, for example `TypeError` or `ReferenceError`. If the error
+        # type is unavailable, this field is not included.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The error message thrown by Apps Script, usually localized into the user's
+        # language.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # An array of objects that provide a stack trace through the script to show
+        # where the execution failed, with the deepest call first.
+        # Corresponds to the JSON property `scriptStackTraceElements`
+        # @return [Array<Google::Apis::ScriptV1::ScriptStackTraceElement>]
+        attr_accessor :script_stack_trace_elements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
+        end
+      end
+      
       # If a `run` call succeeds but the script function (or Apps Script itself)
       # throws an exception, the response body's `error` field will contain this `
       # Status` object.
       class Status
         include Google::Apis::Core::Hashable
+      
+        # A developer-facing error message, which is in English. Any user-facing error
+        # message is localized and sent in the [`google.rpc.Status.details`](google.rpc.
+        # Status.details) field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
       
         # An array that contains a single `ExecutionError` object that provides
         # information about the nature of the error.
@@ -40,22 +112,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A developer-facing error message, which is in English. Any user-facing error
-        # message is localized and sent in the [`google.rpc.Status.details`](google.rpc.
-        # Status.details) field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -64,20 +129,6 @@ module Google
       # based on the implementation of the script.
       class ExecutionRequest
         include Google::Apis::Core::Hashable
-      
-        # For Android add-ons only. An ID that represents the user's current session
-        # in the Android app for Google Docs or Sheets, included as extra data in the
-        # [`Intent`](https://developer.android.com/guide/components/intents-filters.html)
-        # that launches the add-on. When an Android add-on is run with a session
-        # state, it gains the privileges of a
-        # [bound](https://developers.google.com/apps-script/guides/bound) script &mdash;
-        # that is, it can access information like the user's current cursor position
-        # (in Docs) or selected cell (in Sheets). To retrieve the state, call
-        # `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
-        # Optional.
-        # Corresponds to the JSON property `sessionState`
-        # @return [String]
-        attr_accessor :session_state
       
         # The name of the function to execute in the given script. The name does not
         # include parentheses or parameters.
@@ -102,16 +153,30 @@ module Google
         # @return [Array<Object>]
         attr_accessor :parameters
       
+        # For Android add-ons only. An ID that represents the user's current session
+        # in the Android app for Google Docs or Sheets, included as extra data in the
+        # [`Intent`](https://developer.android.com/guide/components/intents-filters.html)
+        # that launches the add-on. When an Android add-on is run with a session
+        # state, it gains the privileges of a
+        # [bound](https://developers.google.com/apps-script/guides/bound) script &mdash;
+        # that is, it can access information like the user's current cursor position
+        # (in Docs) or selected cell (in Sheets). To retrieve the state, call
+        # `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
+        # Optional.
+        # Corresponds to the JSON property `sessionState`
+        # @return [String]
+        attr_accessor :session_state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @session_state = args[:session_state] if args.key?(:session_state)
           @function = args[:function] if args.key?(:function)
           @dev_mode = args[:dev_mode] if args.key?(:dev_mode)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @session_state = args[:session_state] if args.key?(:session_state)
         end
       end
       
@@ -119,11 +184,6 @@ module Google
       # specified by the operation resource names.
       class JoinAsyncRequest
         include Google::Apis::Core::Hashable
-      
-        # Timeout for information retrieval in milliseconds.
-        # Corresponds to the JSON property `timeout`
-        # @return [String]
-        attr_accessor :timeout
       
         # The script id which specifies the script which all processes in the names
         # field must be from.
@@ -137,15 +197,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :names
       
+        # Timeout for information retrieval in milliseconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @timeout = args[:timeout] if args.key?(:timeout)
           @script_id = args[:script_id] if args.key?(:script_id)
           @names = args[:names] if args.key?(:names)
+          @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
       
@@ -256,71 +321,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @results = args[:results] if args.key?(:results)
-        end
-      end
-      
-      # A stack trace through the script that shows where the execution failed.
-      class ScriptStackTraceElement
-        include Google::Apis::Core::Hashable
-      
-        # The name of the function that failed.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        # The line number where the script failed.
-        # Corresponds to the JSON property `lineNumber`
-        # @return [Fixnum]
-        attr_accessor :line_number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @function = args[:function] if args.key?(:function)
-          @line_number = args[:line_number] if args.key?(:line_number)
-        end
-      end
-      
-      # An object that provides information about the nature of an error in the Apps
-      # Script Execution API. If an
-      # `run` call succeeds but the
-      # script function (or Apps Script itself) throws an exception, the response
-      # body's `error` field contains a
-      # `Status` object. The `Status` object's `details` field
-      # contains an array with a single one of these `ExecutionError` objects.
-      class ExecutionError
-        include Google::Apis::Core::Hashable
-      
-        # The error type, for example `TypeError` or `ReferenceError`. If the error
-        # type is unavailable, this field is not included.
-        # Corresponds to the JSON property `errorType`
-        # @return [String]
-        attr_accessor :error_type
-      
-        # The error message thrown by Apps Script, usually localized into the user's
-        # language.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
-        # An array of objects that provide a stack trace through the script to show
-        # where the execution failed, with the deepest call first.
-        # Corresponds to the JSON property `scriptStackTraceElements`
-        # @return [Array<Google::Apis::ScriptV1::ScriptStackTraceElement>]
-        attr_accessor :script_stack_trace_elements
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_type = args[:error_type] if args.key?(:error_type)
-          @error_message = args[:error_message] if args.key?(:error_message)
-          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
         end
       end
     end

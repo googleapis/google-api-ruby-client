@@ -424,7 +424,7 @@ module Google
       
       # A response containing a partial list of deployments and a page token used to
       # build the next request if the request has been truncated.
-      class ListDeploymentsResponse
+      class DeploymentsListResponse
         include Google::Apis::Core::Hashable
       
         # [Output Only] The deployments contained in this response.
@@ -609,7 +609,7 @@ module Google
       
       # A response containing a partial list of manifests and a page token used to
       # build the next request if the request has been truncated.
-      class ListManifestsResponse
+      class ManifestsListResponse
         include Google::Apis::Core::Hashable
       
         # [Output Only] Manifests contained in this list response.
@@ -924,7 +924,7 @@ module Google
       
       # A response containing a partial list of operations and a page token used to
       # build the next request if the request has been truncated.
-      class ListOperationsResponse
+      class OperationsListResponse
         include Google::Apis::Core::Hashable
       
         # [Output Only] A token used to continue a truncated list request.
@@ -1385,7 +1385,7 @@ module Google
       
       # A response containing a partial list of resources and a page token used to
       # build the next request if the request has been truncated.
-      class ListResourcesResponse
+      class ResourcesListResponse
         include Google::Apis::Core::Hashable
       
         # A token used to continue a truncated list request.
@@ -1579,7 +1579,7 @@ module Google
       end
       
       # A response that returns all Types supported by Deployment Manager
-      class ListTypesResponse
+      class TypesListResponse
         include Google::Apis::Core::Hashable
       
         # A token used to continue a truncated list request.

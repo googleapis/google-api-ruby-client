@@ -192,7 +192,7 @@ module Google
       end
       
       # Backup run list results.
-      class ListBackupRunsResponse
+      class BackupRunsListResponse
         include Google::Apis::Core::Hashable
       
         # A list of backup runs in reverse chronological order of the enqueued time.
@@ -593,7 +593,7 @@ module Google
       end
       
       # Database list response.
-      class ListDatabasesResponse
+      class DatabasesListResponse
         include Google::Apis::Core::Hashable
       
         # List of database resources in the instance.
@@ -815,7 +815,7 @@ module Google
       end
       
       # Flags list response.
-      class ListFlagsResponse
+      class FlagsListResponse
         include Google::Apis::Core::Hashable
       
         # List of flags.
@@ -922,7 +922,7 @@ module Google
       end
       
       # Database instance clone request.
-      class CloneInstancesRequest
+      class InstancesCloneRequest
         include Google::Apis::Core::Hashable
       
         # Database instance clone context.
@@ -941,7 +941,7 @@ module Google
       end
       
       # Database instance export request.
-      class ExportInstancesRequest
+      class InstancesExportRequest
         include Google::Apis::Core::Hashable
       
         # Database instance export context.
@@ -979,7 +979,7 @@ module Google
       end
       
       # Database instance import request.
-      class ImportInstancesRequest
+      class InstancesImportRequest
         include Google::Apis::Core::Hashable
       
         # Database instance import context.
@@ -998,7 +998,7 @@ module Google
       end
       
       # Database instances list response.
-      class ListInstancesResponse
+      class InstancesListResponse
         include Google::Apis::Core::Hashable
       
         # List of database instance resources.
@@ -1030,7 +1030,7 @@ module Google
       end
       
       # Database instance restore backup request.
-      class RestoreInstancesBackupRequest
+      class InstancesRestoreBackupRequest
         include Google::Apis::Core::Hashable
       
         # Database instance restore from backup context.
@@ -1492,7 +1492,7 @@ module Google
       end
       
       # Database instance list operations response.
-      class ListOperationsResponse
+      class OperationsListResponse
         include Google::Apis::Core::Hashable
       
         # List of operation resources.
@@ -1668,7 +1668,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # User defined labels.
+        # User-provided labels, represented as a dictionary where each label is a single
+        # key value pair.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1872,7 +1873,7 @@ module Google
       end
       
       # SslCerts insert request.
-      class InsertSslCertsRequest
+      class SslCertsInsertRequest
         include Google::Apis::Core::Hashable
       
         # User supplied name. Must be a distinct name from the other certificates for
@@ -1893,7 +1894,7 @@ module Google
       end
       
       # SslCert insert response.
-      class InsertSslCertsResponse
+      class SslCertsInsertResponse
         include Google::Apis::Core::Hashable
       
         # SslCertDetail.
@@ -1932,7 +1933,7 @@ module Google
       end
       
       # SslCerts list response.
-      class ListSslCertsResponse
+      class SslCertsListResponse
         include Google::Apis::Core::Hashable
       
         # List of client certificates for the instance.
@@ -2001,7 +2002,7 @@ module Google
       end
       
       # Tiers list response.
-      class ListTiersResponse
+      class TiersListResponse
         include Google::Apis::Core::Hashable
       
         # List of tiers.
@@ -2113,7 +2114,7 @@ module Google
       end
       
       # User list response.
-      class ListUsersResponse
+      class UsersListResponse
         include Google::Apis::Core::Hashable
       
         # List of user resources in the instance.

@@ -106,7 +106,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GenerateReportResponse
+      class AdsenseReportsGenerateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Header
@@ -364,12 +364,12 @@ module Google
         end
       end
       
-      class GenerateReportResponse
+      class AdsenseReportsGenerateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :averages, as: 'averages'
           property :end_date, as: 'endDate'
-          collection :headers, as: 'headers', class: Google::Apis::AdsenseV1_4::GenerateReportResponse::Header, decorator: Google::Apis::AdsenseV1_4::GenerateReportResponse::Header::Representation
+          collection :headers, as: 'headers', class: Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Header, decorator: Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Header::Representation
       
           property :kind, as: 'kind'
           collection :rows, as: 'rows', :class => Array do

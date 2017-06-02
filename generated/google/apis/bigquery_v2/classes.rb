@@ -1020,7 +1020,7 @@ module Google
       end
       
       # 
-      class CancelJobResponse
+      class JobCancelResponse
         include Google::Apis::Core::Hashable
       
         # The final state of the job.
@@ -1375,7 +1375,8 @@ module Google
         # [Optional] If true and query uses legacy SQL dialect, allows the query to
         # produce arbitrarily large result tables at a slight cost in performance.
         # Requires destinationTable to be set. For standard SQL queries, this flag is
-        # ignored and large results are always allowed.
+        # ignored and large results are always allowed. However, you must still set
+        # destinationTable when result size exceeds the allowed maximum response size.
         # Corresponds to the JSON property `allowLargeResults`
         # @return [Boolean]
         attr_accessor :allow_large_results
@@ -1398,7 +1399,8 @@ module Google
         attr_accessor :default_dataset
       
         # [Optional] Describes the table where the query results should be stored. If
-        # not present, a new table will be created to store the results.
+        # not present, a new table will be created to store the results. This property
+        # must be set for large results that exceed the maximum response size.
         # Corresponds to the JSON property `destinationTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :destination_table
@@ -2605,7 +2607,7 @@ module Google
       end
       
       # 
-      class InsertAllTableDataRequest
+      class TableDataInsertAllRequest
         include Google::Apis::Core::Hashable
       
         # [Optional] Accept rows that contain values that do not match the schema. The
@@ -2623,7 +2625,7 @@ module Google
       
         # The rows to insert.
         # Corresponds to the JSON property `rows`
-        # @return [Array<Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row>]
+        # @return [Array<Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row>]
         attr_accessor :rows
       
         # [Optional] Insert all valid rows of a request, even if invalid rows exist. The
@@ -2685,12 +2687,12 @@ module Google
       end
       
       # 
-      class InsertAllTableDataResponse
+      class TableDataInsertAllResponse
         include Google::Apis::Core::Hashable
       
         # An array of errors for rows that were not inserted.
         # Corresponds to the JSON property `insertErrors`
-        # @return [Array<Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError>]
+        # @return [Array<Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError>]
         attr_accessor :insert_errors
       
         # The resource type of the response.

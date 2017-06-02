@@ -22,7 +22,7 @@ module Google
   module Apis
     module SiteVerificationV1
       
-      class GetWebResourceTokenRequest
+      class SiteVerificationWebResourceGettokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Site
@@ -34,13 +34,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetWebResourceTokenResponse
+      class SiteVerificationWebResourceGettokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListWebResourceResponse
+      class SiteVerificationWebResourceListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,10 +58,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetWebResourceTokenRequest
+      class SiteVerificationWebResourceGettokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site::Representation
+          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenRequest::Site::Representation
       
           property :verification_method, as: 'verificationMethod'
         end
@@ -75,15 +75,15 @@ module Google
         end
       end
       
-      class GetWebResourceTokenResponse
+      class SiteVerificationWebResourceGettokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :verification_method, as: 'method'
+          property :method_prop, as: 'method'
           property :token, as: 'token'
         end
       end
       
-      class ListWebResourceResponse
+      class SiteVerificationWebResourceListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource, decorator: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Representation

@@ -214,18 +214,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::ListContactsResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::ContactsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::ListContactsResponse]
+        # @return [Google::Apis::MirrorV1::ContactsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_contacts(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'contacts', options)
-          command.response_representation = Google::Apis::MirrorV1::ListContactsResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::ListContactsResponse
+          command.response_representation = Google::Apis::MirrorV1::ContactsListResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::ContactsListResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -357,18 +357,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::ListLocationsResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::LocationsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::ListLocationsResponse]
+        # @return [Google::Apis::MirrorV1::LocationsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_locations(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'locations', options)
-          command.response_representation = Google::Apis::MirrorV1::ListLocationsResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::ListLocationsResponse
+          command.response_representation = Google::Apis::MirrorV1::LocationsListResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::LocationsListResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -496,18 +496,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::ListSubscriptionsResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::SubscriptionsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::ListSubscriptionsResponse]
+        # @return [Google::Apis::MirrorV1::SubscriptionsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'subscriptions', options)
-          command.response_representation = Google::Apis::MirrorV1::ListSubscriptionsResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::ListSubscriptionsResponse
+          command.response_representation = Google::Apis::MirrorV1::SubscriptionsListResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::SubscriptionsListResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -693,18 +693,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::ListTimelineResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::TimelineListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::ListTimelineResponse]
+        # @return [Google::Apis::MirrorV1::TimelineListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timelines(bundle_id: nil, include_deleted: nil, max_results: nil, order_by: nil, page_token: nil, pinned_only: nil, source_item_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'timeline', options)
-          command.response_representation = Google::Apis::MirrorV1::ListTimelineResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::ListTimelineResponse
+          command.response_representation = Google::Apis::MirrorV1::TimelineListResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::TimelineListResponse
           command.query['bundleId'] = bundle_id unless bundle_id.nil?
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -946,18 +946,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::ListAttachmentsResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::AttachmentsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::ListAttachmentsResponse]
+        # @return [Google::Apis::MirrorV1::AttachmentsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timeline_attachments(item_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'timeline/{itemId}/attachments', options)
-          command.response_representation = Google::Apis::MirrorV1::ListAttachmentsResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::ListAttachmentsResponse
+          command.response_representation = Google::Apis::MirrorV1::AttachmentsListResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::AttachmentsListResponse
           command.params['itemId'] = item_id unless item_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

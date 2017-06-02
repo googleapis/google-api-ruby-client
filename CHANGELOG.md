@@ -1,3 +1,54 @@
+# 0.12.0
+* *Breaking change* - Change behavior of `fetch_all` to collect Hash responses
+  into a single collection.
+  For responses that return a Hash, `fetch_all` used to return an array of
+  Hashes in version 0.11.3 and below:
+  ```
+  items = service.fetch_all do |token|
+    service.aggregated_autoscaler_list(project, page_token: token)
+  end
+
+  items.each do |item|
+    item.each do |key, val|
+      puts String(key) + " => " + val.to_json
+    end
+  end
+  ```
+  The new behavior is to return an array of [ key, value ] arrays:
+  ```
+  items = service.fetch_all do |token|
+    service.foo(project, page_token: token)
+  end
+
+  items.each do |key, val|
+    puts String(key) + " => " + val.to_json
+  end
+  ```
+* Regenerate APIs
+* Remove non-discoverable APIs:
+  * adexchangebuyer:v1\_3
+  * appengine:v1beta4
+  * appengine:v1beta5
+  * autoscaler:v1beta2
+  * classroom:v1beta1
+  * cloudkms:v1beta1
+  * cloudlatencytest:v2
+  * container:v1beta1
+  * coordinate:v1
+  * datastore:v1beta2
+  * datastore:v1beta3
+  * deploymentmanager:v2beta2
+  * dfareporting:v2\_1
+  * dfareporting:v2\_3
+  * dfareporting:v2\_5
+  * dfareporting:v2\_6
+  * gan:v1beta1
+  * genomics:v1beta2
+  * logging:v1beta3
+  * manager:v1beta2
+  * pubsub:v1beta2
+  * tracing:v1
+
 # 0.11.3
 * Add `RequestOptions.api_format_version` to opt-in to receive v2 error messages
 * Fix `to_json` signature to allow args

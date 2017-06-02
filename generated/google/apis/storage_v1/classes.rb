@@ -38,8 +38,8 @@ module Google
       
         # The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         # Corresponds to the JSON property `cors`
-        # @return [Array<Google::Apis::StorageV1::Bucket::CorsConfiguration>]
-        attr_accessor :cors_configurations
+        # @return [Array<Google::Apis::StorageV1::Bucket::Cor>]
+        attr_accessor :cors
       
         # Default access controls to apply to new objects when no ACL is provided.
         # Corresponds to the JSON property `defaultObjectAcl`
@@ -150,7 +150,7 @@ module Google
         def update!(**args)
           @acl = args[:acl] if args.key?(:acl)
           @billing = args[:billing] if args.key?(:billing)
-          @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
+          @cors = args[:cors] if args.key?(:cors)
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
@@ -192,7 +192,7 @@ module Google
         end
         
         # 
-        class CorsConfiguration
+        class Cor
           include Google::Apis::Core::Hashable
         
           # The value, in seconds, to return in the  Access-Control-Max-Age header used in
@@ -206,7 +206,7 @@ module Google
           # any method".
           # Corresponds to the JSON property `method`
           # @return [Array<String>]
-          attr_accessor :http_method
+          attr_accessor :method_prop
         
           # The list of Origins eligible to receive CORS response headers. Note: "*" is
           # permitted in the list of origins, and means "any Origin".
@@ -227,7 +227,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @max_age_seconds = args[:max_age_seconds] if args.key?(:max_age_seconds)
-            @http_method = args[:http_method] if args.key?(:http_method)
+            @method_prop = args[:method_prop] if args.key?(:method_prop)
             @origin = args[:origin] if args.key?(:origin)
             @response_header = args[:response_header] if args.key?(:response_header)
           end

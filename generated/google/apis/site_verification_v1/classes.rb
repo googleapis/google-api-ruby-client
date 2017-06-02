@@ -23,12 +23,12 @@ module Google
     module SiteVerificationV1
       
       # 
-      class GetWebResourceTokenRequest
+      class SiteVerificationWebResourceGettokenRequest
         include Google::Apis::Core::Hashable
       
         # The site for which a verification token will be generated.
         # Corresponds to the JSON property `site`
-        # @return [Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site]
+        # @return [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenRequest::Site]
         attr_accessor :site
       
         # The verification method that will be used to verify this site. For sites, '
@@ -75,7 +75,7 @@ module Google
       end
       
       # 
-      class GetWebResourceTokenResponse
+      class SiteVerificationWebResourceGettokenResponse
         include Google::Apis::Core::Hashable
       
         # The verification method to use in conjunction with this token. For FILE, the
@@ -85,7 +85,7 @@ module Google
         # placed in a TXT record of the domain.
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :verification_method
+        attr_accessor :method_prop
       
         # The verification token. The token must be placed appropriately in order for
         # verification to succeed.
@@ -99,13 +99,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @verification_method = args[:verification_method] if args.key?(:verification_method)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @token = args[:token] if args.key?(:token)
         end
       end
       
       # 
-      class ListWebResourceResponse
+      class SiteVerificationWebResourceListResponse
         include Google::Apis::Core::Hashable
       
         # The list of sites that are owned by the authenticated user.

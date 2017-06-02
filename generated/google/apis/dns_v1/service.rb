@@ -167,18 +167,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DnsV1::ListChangesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DnsV1::ChangesListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DnsV1::ListChangesResponse]
+        # @return [Google::Apis::DnsV1::ChangesListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_changes(project, managed_zone, max_results: nil, page_token: nil, sort_by: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/changes', options)
-          command.response_representation = Google::Apis::DnsV1::ListChangesResponse::Representation
-          command.response_class = Google::Apis::DnsV1::ListChangesResponse
+          command.response_representation = Google::Apis::DnsV1::ChangesListResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ChangesListResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -329,18 +329,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DnsV1::ListManagedZonesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DnsV1::ManagedZonesListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DnsV1::ListManagedZonesResponse]
+        # @return [Google::Apis::DnsV1::ManagedZonesListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_managed_zones(project, dns_name: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/managedZones', options)
-          command.response_representation = Google::Apis::DnsV1::ListManagedZonesResponse::Representation
-          command.response_class = Google::Apis::DnsV1::ListManagedZonesResponse
+          command.response_representation = Google::Apis::DnsV1::ManagedZonesListResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ManagedZonesListResponse
           command.params['project'] = project unless project.nil?
           command.query['dnsName'] = dns_name unless dns_name.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -417,18 +417,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DnsV1::ListResourceRecordSetsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DnsV1::ResourceRecordSetsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DnsV1::ListResourceRecordSetsResponse]
+        # @return [Google::Apis::DnsV1::ResourceRecordSetsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_resource_record_sets(project, managed_zone, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/rrsets', options)
-          command.response_representation = Google::Apis::DnsV1::ListResourceRecordSetsResponse::Representation
-          command.response_class = Google::Apis::DnsV1::ListResourceRecordSetsResponse
+          command.response_representation = Google::Apis::DnsV1::ResourceRecordSetsListResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ResourceRecordSetsListResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

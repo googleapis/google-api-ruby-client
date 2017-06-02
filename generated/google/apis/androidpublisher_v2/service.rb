@@ -284,7 +284,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_apk_listing(package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_edit_apklisting(package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
@@ -325,7 +325,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_all_apk_listings(package_name, edit_id, apk_version_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def deleteall_edit_apklisting(package_name, edit_id, apk_version_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
@@ -370,7 +370,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_apk_listing(package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_edit_apklisting(package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ApkListing
@@ -405,18 +405,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListApkListingsResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ApkListingsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListApkListingsResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ApkListingsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_apk_listings(package_name, edit_id, apk_version_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_edit_apklistings(package_name, edit_id, apk_version_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListApkListingsResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListApkListingsResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ApkListingsListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ApkListingsListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['apkVersionCode'] = apk_version_code unless apk_version_code.nil?
@@ -461,7 +461,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_apk_listing(package_name, edit_id, apk_version_code, language, apk_listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_apklisting(package_name, edit_id, apk_version_code, language, apk_listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
           command.request_object = apk_listing_object
@@ -512,7 +512,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_apk_listing(package_name, edit_id, apk_version_code, language, apk_listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_apklisting(package_name, edit_id, apk_version_code, language, apk_listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
           command.request_object = apk_listing_object
@@ -559,7 +559,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_externally_hosted_apk(package_name, edit_id, apks_add_externally_hosted_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def addexternallyhosted_edit_apk(package_name, edit_id, apks_add_externally_hosted_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks/externallyHosted', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedRequest::Representation
           command.request_object = apks_add_externally_hosted_request_object
@@ -592,18 +592,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListApksResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ApksListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListApksResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ApksListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_apks(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_edit_apks(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListApksResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListApksResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ApksListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ApksListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -643,7 +643,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_apk(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_edit_apk(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks', options)
           else
@@ -744,7 +744,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_detail(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_edit_detail(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/details', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::AppDetails
@@ -784,7 +784,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_detail(package_name, edit_id, app_details_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_detail(package_name, edit_id, app_details_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/edits/{editId}/details', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
           command.request_object = app_details_object
@@ -826,7 +826,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_detail(package_name, edit_id, app_details_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_detail(package_name, edit_id, app_details_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/edits/{editId}/details', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
           command.request_object = app_details_object
@@ -871,7 +871,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_edit_expansionfile(package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ExpansionFile
@@ -919,7 +919,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_expansionfile(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
           command.request_object = expansion_file_object
@@ -968,7 +968,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_expansionfile(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
           command.request_object = expansion_file_object
@@ -1011,15 +1011,15 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::UploadExpansionFilesResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ExpansionFilesUploadResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::UploadExpansionFilesResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ExpansionFilesUploadResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_edit_expansionfile(package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           else
@@ -1027,8 +1027,8 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.response_representation = Google::Apis::AndroidpublisherV2::UploadExpansionFilesResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::UploadExpansionFilesResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFilesUploadResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ExpansionFilesUploadResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['apkVersionCode'] = apk_version_code unless apk_version_code.nil?
@@ -1073,7 +1073,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_image(package_name, edit_id, language, image_type, image_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_edit_image(package_name, edit_id, language, image_type, image_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
@@ -1110,18 +1110,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_all_images(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def deleteall_edit_image(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::DeleteAllImagesResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['language'] = language unless language.nil?
@@ -1156,18 +1156,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListImagesResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ImagesListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListImagesResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ImagesListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_images(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_edit_images(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListImagesResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListImagesResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ImagesListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ImagesListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['language'] = language unless language.nil?
@@ -1207,15 +1207,15 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::UploadImagesResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ImagesUploadResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::UploadImagesResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ImagesUploadResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_image(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_edit_image(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command =  make_simple_command(:post, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
           else
@@ -1223,8 +1223,8 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.response_representation = Google::Apis::AndroidpublisherV2::UploadImagesResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::UploadImagesResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ImagesUploadResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ImagesUploadResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['language'] = language unless language.nil?
@@ -1265,7 +1265,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_listing(package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_edit_listing(package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
@@ -1303,7 +1303,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_all_listings(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def deleteall_edit_listing(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
@@ -1343,7 +1343,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_listing(package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_edit_listing(package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/listings/{language}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Listing
@@ -1375,18 +1375,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListListingsResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListingsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListListingsResponse]
+        # @return [Google::Apis::AndroidpublisherV2::ListingsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_listings(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_edit_listings(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/listings', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListListingsResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListListingsResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::ListingsListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::ListingsListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1427,7 +1427,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_listing(package_name, edit_id, language, listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_listing(package_name, edit_id, language, listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/edits/{editId}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
           command.request_object = listing_object
@@ -1473,7 +1473,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_listing(package_name, edit_id, language, listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_listing(package_name, edit_id, language, listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/edits/{editId}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
           command.request_object = listing_object
@@ -1516,7 +1516,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_tester(package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_edit_tester(package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/testers/{track}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Testers
@@ -1558,7 +1558,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_tester(package_name, edit_id, track, testers_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_tester(package_name, edit_id, track, testers_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/edits/{editId}/testers/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
           command.request_object = testers_object
@@ -1602,7 +1602,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_tester(package_name, edit_id, track, testers_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_tester(package_name, edit_id, track, testers_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/edits/{editId}/testers/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
           command.request_object = testers_object
@@ -1647,7 +1647,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_track(package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_edit_track(package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/tracks/{track}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Track::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Track
@@ -1679,18 +1679,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListTracksResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::TracksListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListTracksResponse]
+        # @return [Google::Apis::AndroidpublisherV2::TracksListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tracks(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_edit_tracks(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/edits/{editId}/tracks', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListTracksResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListTracksResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::TracksListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::TracksListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1731,7 +1731,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/edits/{editId}/tracks/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Track::Representation
           command.request_object = track_object
@@ -1778,7 +1778,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/edits/{editId}/tracks/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Track::Representation
           command.request_object = track_object
@@ -1816,18 +1816,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListEntitlementsResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::EntitlementsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListEntitlementsResponse]
+        # @return [Google::Apis::AndroidpublisherV2::EntitlementsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_entitlements(package_name, max_results: nil, product_id: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/entitlements', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListEntitlementsResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListEntitlementsResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::EntitlementsListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::EntitlementsListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['productId'] = product_id unless product_id.nil?
@@ -1840,7 +1840,7 @@ module Google
         end
         
         # 
-        # @param [Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest] in_app_products_batch_request_object
+        # @param [Google::Apis::AndroidpublisherV2::InappproductsBatchRequest] inappproducts_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1854,20 +1854,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::InappproductsBatchResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse]
+        # @return [Google::Apis::AndroidpublisherV2::InappproductsBatchResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_in_app_products(in_app_products_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_inappproduct(inappproducts_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'inappproducts/batch', options)
-          command.request_representation = Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest::Representation
-          command.request_object = in_app_products_batch_request_object
-          command.response_representation = Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse
+          command.request_representation = Google::Apis::AndroidpublisherV2::InappproductsBatchRequest::Representation
+          command.request_object = inappproducts_batch_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV2::InappproductsBatchResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::InappproductsBatchResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1901,7 +1901,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_in_app_product(package_name, sku, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_inappproduct(package_name, sku, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{packageName}/inappproducts/{sku}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['sku'] = sku unless sku.nil?
@@ -1936,7 +1936,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_in_app_product(package_name, sku, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_inappproduct(package_name, sku, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/inappproducts/{sku}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::InAppProduct
@@ -1977,7 +1977,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_in_app_product(package_name, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_inappproduct(package_name, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{packageName}/inappproducts', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.request_object = in_app_product_object
@@ -2012,18 +2012,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListInAppProductsResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::InappproductsListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::ListInAppProductsResponse]
+        # @return [Google::Apis::AndroidpublisherV2::InappproductsListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_in_app_products(package_name, max_results: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_inappproducts(package_name, max_results: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{packageName}/inappproducts', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListInAppProductsResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListInAppProductsResponse
+          command.response_representation = Google::Apis::AndroidpublisherV2::InappproductsListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::InappproductsListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['startIndex'] = start_index unless start_index.nil?
@@ -2066,7 +2066,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_in_app_product(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_inappproduct(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.request_object = in_app_product_object
@@ -2113,7 +2113,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_in_app_product(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_inappproduct(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.request_object = in_app_product_object
@@ -2219,7 +2219,7 @@ module Google
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
         #   The token provided to the user's device when the subscription was purchased.
-        # @param [Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesRequest] defer_subscription_purchases_request_object
+        # @param [Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferRequest] subscription_purchases_defer_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2233,20 +2233,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse]
+        # @return [Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def defer_purchase_subscription(package_name, subscription_id, token, defer_subscription_purchases_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def defer_purchase_subscription(package_name, subscription_id, token, subscription_purchases_defer_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer', options)
-          command.request_representation = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesRequest::Representation
-          command.request_object = defer_subscription_purchases_request_object
-          command.response_representation = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse
+          command.request_representation = Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferRequest::Representation
+          command.request_object = subscription_purchases_defer_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?

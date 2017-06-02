@@ -22,9 +22,138 @@ module Google
   module Apis
     module ClassroomV1
       
+      # Teacher of a course.
+      class Teacher
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of the user.
+        # When specified as a parameter of a request, this identifier can be one of
+        # the following:
+        # * the numeric identifier for the user
+        # * the email address of the user
+        # * the string literal `"me"`, indicating the requesting user
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # Identifier of the course.
+        # Read-only.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Global information for a user.
+        # Corresponds to the JSON property `profile`
+        # @return [Google::Apis::ClassroomV1::UserProfile]
+        attr_accessor :profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @profile = args[:profile] if args.key?(:profile)
+        end
+      end
+      
+      # Request to reclaim a student submission.
+      class ReclaimStudentSubmissionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Student work for an assignment.
+      class AssignmentSubmission
+        include Google::Apis::Core::Hashable
+      
+        # Attachments added by the student.
+        # Drive files that correspond to materials with a share mode of
+        # STUDENT_COPY may not exist yet if the student has not accessed the
+        # assignment in Classroom.
+        # Some attachment metadata is only populated if the requesting user has
+        # permission to access it. Identifier and alternate_link fields are always
+        # available, but others (e.g. title) may not be.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::ClassroomV1::Attachment>]
+        attr_accessor :attachments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+        end
+      end
+      
+      # Material attached to course work.
+      # When creating attachments, setting the `form` field is not supported.
+      class Material
+        include Google::Apis::Core::Hashable
+      
+        # URL item.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::ClassroomV1::Link]
+        attr_accessor :link
+      
+        # YouTube video item.
+        # Corresponds to the JSON property `youtubeVideo`
+        # @return [Google::Apis::ClassroomV1::YouTubeVideo]
+        attr_accessor :youtube_video
+      
+        # Drive file that is used as material for course work.
+        # Corresponds to the JSON property `driveFile`
+        # @return [Google::Apis::ClassroomV1::SharedDriveFile]
+        attr_accessor :drive_file
+      
+        # Google Forms item.
+        # Corresponds to the JSON property `form`
+        # @return [Google::Apis::ClassroomV1::Form]
+        attr_accessor :form
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @link = args[:link] if args.key?(:link)
+          @youtube_video = args[:youtube_video] if args.key?(:youtube_video)
+          @drive_file = args[:drive_file] if args.key?(:drive_file)
+          @form = args[:form] if args.key?(:form)
+        end
+      end
+      
       # Course work created by a teacher for students of the course.
       class CourseWork
         include Google::Apis::Core::Hashable
+      
+        # Additional details for assignments.
+        # Corresponds to the JSON property `assignment`
+        # @return [Google::Apis::ClassroomV1::Assignment]
+        attr_accessor :assignment
+      
+        # Type of this course work.
+        # The type is set when the course work is created and cannot be changed.
+        # Corresponds to the JSON property `workType`
+        # @return [String]
+        attr_accessor :work_type
+      
+        # Additional details for multiple-choice questions.
+        # Corresponds to the JSON property `multipleChoiceQuestion`
+        # @return [Google::Apis::ClassroomV1::MultipleChoiceQuestion]
+        attr_accessor :multiple_choice_question
       
         # Optional description of this course work.
         # If set, the description must be a valid UTF-8 string containing no more
@@ -88,12 +217,6 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Additional materials.
-        # CourseWork must have no more than 20 material items.
-        # Corresponds to the JSON property `materials`
-        # @return [Array<Google::Apis::ClassroomV1::Material>]
-        attr_accessor :materials
-      
         # Whether this course work item is associated with the Developer Console
         # project making the request.
         # See google.classroom.Work.CreateCourseWork for more
@@ -103,6 +226,12 @@ module Google
         # @return [Boolean]
         attr_accessor :associated_with_developer
         alias_method :associated_with_developer?, :associated_with_developer
+      
+        # Additional materials.
+        # CourseWork must have no more than 20 material items.
+        # Corresponds to the JSON property `materials`
+        # @return [Array<Google::Apis::ClassroomV1::Material>]
+        attr_accessor :materials
       
         # Timestamp of the most recent change to this course work.
         # Read-only.
@@ -124,28 +253,15 @@ module Google
         # @return [Float]
         attr_accessor :max_points
       
-        # Additional details for multiple-choice questions.
-        # Corresponds to the JSON property `multipleChoiceQuestion`
-        # @return [Google::Apis::ClassroomV1::MultipleChoiceQuestion]
-        attr_accessor :multiple_choice_question
-      
-        # Type of this course work.
-        # The type is set when the course work is created and cannot be changed.
-        # Corresponds to the JSON property `workType`
-        # @return [String]
-        attr_accessor :work_type
-      
-        # Additional details for assignments.
-        # Corresponds to the JSON property `assignment`
-        # @return [Google::Apis::ClassroomV1::Assignment]
-        attr_accessor :assignment
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @assignment = args[:assignment] if args.key?(:assignment)
+          @work_type = args[:work_type] if args.key?(:work_type)
+          @multiple_choice_question = args[:multiple_choice_question] if args.key?(:multiple_choice_question)
           @description = args[:description] if args.key?(:description)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @due_date = args[:due_date] if args.key?(:due_date)
@@ -155,14 +271,11 @@ module Google
           @id = args[:id] if args.key?(:id)
           @due_time = args[:due_time] if args.key?(:due_time)
           @title = args[:title] if args.key?(:title)
-          @materials = args[:materials] if args.key?(:materials)
           @associated_with_developer = args[:associated_with_developer] if args.key?(:associated_with_developer)
+          @materials = args[:materials] if args.key?(:materials)
           @update_time = args[:update_time] if args.key?(:update_time)
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
           @max_points = args[:max_points] if args.key?(:max_points)
-          @multiple_choice_question = args[:multiple_choice_question] if args.key?(:multiple_choice_question)
-          @work_type = args[:work_type] if args.key?(:work_type)
-          @assignment = args[:assignment] if args.key?(:assignment)
         end
       end
       
@@ -369,6 +482,11 @@ module Google
       class DriveFolder
         include Google::Apis::Core::Hashable
       
+        # Drive API resource ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Title of the Drive folder.
         # Read-only.
         # Corresponds to the JSON property `title`
@@ -381,20 +499,15 @@ module Google
         # @return [String]
         attr_accessor :alternate_link
       
-        # Drive API resource ID.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @title = args[:title] if args.key?(:title)
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
-          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -423,13 +536,6 @@ module Google
       # may not have a creation time or update time.
       class StudentSubmission
         include Google::Apis::Core::Hashable
-      
-        # Optional grade. If unset, no grade was set.
-        # This must be a non-negative integer value.
-        # This may be modified only by course teachers.
-        # Corresponds to the JSON property `assignedGrade`
-        # @return [Float]
-        attr_accessor :assigned_grade
       
         # Student work for a multiple-choice question.
         # Corresponds to the JSON property `multipleChoiceSubmission`
@@ -469,19 +575,19 @@ module Google
         # @return [String]
         attr_accessor :alternate_link
       
-        # Whether this submission is late.
-        # Read-only.
-        # Corresponds to the JSON property `late`
-        # @return [Boolean]
-        attr_accessor :late
-        alias_method :late?, :late
-      
         # Optional pending grade. If unset, no grade was set.
         # This must be a non-negative integer value.
         # This is only visible to and modifiable by course teachers.
         # Corresponds to the JSON property `draftGrade`
         # @return [Float]
         attr_accessor :draft_grade
+      
+        # Whether this submission is late.
+        # Read-only.
+        # Corresponds to the JSON property `late`
+        # @return [Boolean]
+        attr_accessor :late
+        alias_method :late?, :late
       
         # Type of course work this submission is for.
         # Read-only.
@@ -527,21 +633,27 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional grade. If unset, no grade was set.
+        # This must be a non-negative integer value.
+        # This may be modified only by course teachers.
+        # Corresponds to the JSON property `assignedGrade`
+        # @return [Float]
+        attr_accessor :assigned_grade
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @assigned_grade = args[:assigned_grade] if args.key?(:assigned_grade)
           @multiple_choice_submission = args[:multiple_choice_submission] if args.key?(:multiple_choice_submission)
           @assignment_submission = args[:assignment_submission] if args.key?(:assignment_submission)
           @associated_with_developer = args[:associated_with_developer] if args.key?(:associated_with_developer)
           @short_answer_submission = args[:short_answer_submission] if args.key?(:short_answer_submission)
           @update_time = args[:update_time] if args.key?(:update_time)
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
-          @late = args[:late] if args.key?(:late)
           @draft_grade = args[:draft_grade] if args.key?(:draft_grade)
+          @late = args[:late] if args.key?(:late)
           @course_work_type = args[:course_work_type] if args.key?(:course_work_type)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @state = args[:state] if args.key?(:state)
@@ -549,6 +661,20 @@ module Google
           @course_work_id = args[:course_work_id] if args.key?(:course_work_id)
           @course_id = args[:course_id] if args.key?(:course_id)
           @id = args[:id] if args.key?(:id)
+          @assigned_grade = args[:assigned_grade] if args.key?(:assigned_grade)
+        end
+      end
+      
+      # Request to turn in a student submission.
+      class TurnInStudentSubmissionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -578,40 +704,6 @@ module Google
         end
       end
       
-      # Request to turn in a student submission.
-      class TurnInStudentSubmissionRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request to modify the attachments of a student submission.
-      class ModifyAttachmentsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Attachments to add.
-        # A student submission may not have more than 20 attachments.
-        # Form attachments are not supported.
-        # Corresponds to the JSON property `addAttachments`
-        # @return [Array<Google::Apis::ClassroomV1::Attachment>]
-        attr_accessor :add_attachments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @add_attachments = args[:add_attachments] if args.key?(:add_attachments)
-        end
-      end
-      
       # Response when listing course work.
       class ListCourseWorkResponse
         include Google::Apis::Core::Hashable
@@ -638,15 +730,30 @@ module Google
         end
       end
       
+      # Request to modify the attachments of a student submission.
+      class ModifyAttachmentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Attachments to add.
+        # A student submission may not have more than 20 attachments.
+        # Form attachments are not supported.
+        # Corresponds to the JSON property `addAttachments`
+        # @return [Array<Google::Apis::ClassroomV1::Attachment>]
+        attr_accessor :add_attachments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_attachments = args[:add_attachments] if args.key?(:add_attachments)
+        end
+      end
+      
       # YouTube video item.
       class YouTubeVideo
         include Google::Apis::Core::Hashable
-      
-        # URL of a thumbnail image of the YouTube video.
-        # Read-only.
-        # Corresponds to the JSON property `thumbnailUrl`
-        # @return [String]
-        attr_accessor :thumbnail_url
       
         # YouTube API resource ID.
         # Corresponds to the JSON property `id`
@@ -665,16 +772,22 @@ module Google
         # @return [String]
         attr_accessor :alternate_link
       
+        # URL of a thumbnail image of the YouTube video.
+        # Read-only.
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @id = args[:id] if args.key?(:id)
           @title = args[:title] if args.key?(:title)
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
         end
       end
       
@@ -701,53 +814,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @invitations = args[:invitations] if args.key?(:invitations)
-        end
-      end
-      
-      # An invitation to become the guardian of a specified user, sent to a specified
-      # email address.
-      class GuardianInvitation
-        include Google::Apis::Core::Hashable
-      
-        # ID of the student (in standard format)
-        # Corresponds to the JSON property `studentId`
-        # @return [String]
-        attr_accessor :student_id
-      
-        # The state that this invitation is in.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Email address that the invitation was sent to.
-        # This field is only visible to domain administrators.
-        # Corresponds to the JSON property `invitedEmailAddress`
-        # @return [String]
-        attr_accessor :invited_email_address
-      
-        # The time that this invitation was created.
-        # Read-only.
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
-        # Unique identifier for this invitation.
-        # Read-only.
-        # Corresponds to the JSON property `invitationId`
-        # @return [String]
-        attr_accessor :invitation_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @student_id = args[:student_id] if args.key?(:student_id)
-          @state = args[:state] if args.key?(:state)
-          @invited_email_address = args[:invited_email_address] if args.key?(:invited_email_address)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
-          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
         end
       end
       
@@ -786,6 +852,53 @@ module Google
           @you_tube_video = args[:you_tube_video] if args.key?(:you_tube_video)
           @form = args[:form] if args.key?(:form)
           @link = args[:link] if args.key?(:link)
+        end
+      end
+      
+      # An invitation to become the guardian of a specified user, sent to a specified
+      # email address.
+      class GuardianInvitation
+        include Google::Apis::Core::Hashable
+      
+        # The time that this invitation was created.
+        # Read-only.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Unique identifier for this invitation.
+        # Read-only.
+        # Corresponds to the JSON property `invitationId`
+        # @return [String]
+        attr_accessor :invitation_id
+      
+        # ID of the student (in standard format)
+        # Corresponds to the JSON property `studentId`
+        # @return [String]
+        attr_accessor :student_id
+      
+        # The state that this invitation is in.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Email address that the invitation was sent to.
+        # This field is only visible to domain administrators.
+        # Corresponds to the JSON property `invitedEmailAddress`
+        # @return [String]
+        attr_accessor :invited_email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @student_id = args[:student_id] if args.key?(:student_id)
+          @state = args[:state] if args.key?(:state)
+          @invited_email_address = args[:invited_email_address] if args.key?(:invited_email_address)
         end
       end
       
@@ -887,12 +1000,6 @@ module Google
       class Form
         include Google::Apis::Core::Hashable
       
-        # Title of the Form.
-        # Read-only.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
         # URL of a thumbnail image of the Form.
         # Read-only.
         # Corresponds to the JSON property `thumbnailUrl`
@@ -912,16 +1019,22 @@ module Google
         # @return [String]
         attr_accessor :form_url
       
+        # Title of the Form.
+        # Read-only.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @title = args[:title] if args.key?(:title)
           @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @response_url = args[:response_url] if args.key?(:response_url)
           @form_url = args[:form_url] if args.key?(:form_url)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -955,6 +1068,12 @@ module Google
       class Link
         include Google::Apis::Core::Hashable
       
+        # URL of a thumbnail image of the target URL.
+        # Read-only.
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
         # URL to link to.
         # This must be a valid UTF-8 string containing between 1 and 2024 characters.
         # Corresponds to the JSON property `url`
@@ -967,21 +1086,15 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # URL of a thumbnail image of the target URL.
-        # Read-only.
-        # Corresponds to the JSON property `thumbnailUrl`
-        # @return [String]
-        attr_accessor :thumbnail_url
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @url = args[:url] if args.key?(:url)
           @title = args[:title] if args.key?(:title)
-          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
         end
       end
       
@@ -1077,16 +1190,16 @@ module Google
       class ListGuardianInvitationsResponse
         include Google::Apis::Core::Hashable
       
+        # Guardian invitations that matched the list request.
+        # Corresponds to the JSON property `guardianInvitations`
+        # @return [Array<Google::Apis::ClassroomV1::GuardianInvitation>]
+        attr_accessor :guardian_invitations
+      
         # Token identifying the next page of results to return. If empty, no further
         # results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
-      
-        # Guardian invitations that matched the list request.
-        # Corresponds to the JSON property `guardianInvitations`
-        # @return [Array<Google::Apis::ClassroomV1::GuardianInvitation>]
-        attr_accessor :guardian_invitations
       
         def initialize(**args)
            update!(**args)
@@ -1094,8 +1207,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @guardian_invitations = args[:guardian_invitations] if args.key?(:guardian_invitations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1157,6 +1270,41 @@ module Google
         end
       end
       
+      # Details of the user's name.
+      class Name
+        include Google::Apis::Core::Hashable
+      
+        # The user's first name.
+        # Read-only.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
+      
+        # The user's last name.
+        # Read-only.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # The user's full name formed by concatenating the first and last name
+        # values.
+        # Read-only.
+        # Corresponds to the JSON property `fullName`
+        # @return [String]
+        attr_accessor :full_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @full_name = args[:full_name] if args.key?(:full_name)
+        end
+      end
+      
       # A material attached to a course as part of a material set.
       class CourseMaterial
         include Google::Apis::Core::Hashable
@@ -1191,41 +1339,6 @@ module Google
           @you_tube_video = args[:you_tube_video] if args.key?(:you_tube_video)
           @form = args[:form] if args.key?(:form)
           @link = args[:link] if args.key?(:link)
-        end
-      end
-      
-      # Details of the user's name.
-      class Name
-        include Google::Apis::Core::Hashable
-      
-        # The user's first name.
-        # Read-only.
-        # Corresponds to the JSON property `givenName`
-        # @return [String]
-        attr_accessor :given_name
-      
-        # The user's last name.
-        # Read-only.
-        # Corresponds to the JSON property `familyName`
-        # @return [String]
-        attr_accessor :family_name
-      
-        # The user's full name formed by concatenating the first and last name
-        # values.
-        # Read-only.
-        # Corresponds to the JSON property `fullName`
-        # @return [String]
-        attr_accessor :full_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @given_name = args[:given_name] if args.key?(:given_name)
-          @family_name = args[:family_name] if args.key?(:family_name)
-          @full_name = args[:full_name] if args.key?(:full_name)
         end
       end
       
@@ -1315,75 +1428,6 @@ module Google
       class Course
         include Google::Apis::Core::Hashable
       
-        # Section of the course.
-        # For example, "Period 2".
-        # If set, this field must be a valid UTF-8 string and no longer than 2800
-        # characters.
-        # Corresponds to the JSON property `section`
-        # @return [String]
-        attr_accessor :section
-      
-        # Identifier for this course assigned by Classroom.
-        # When
-        # creating a course,
-        # you may optionally set this identifier to an
-        # alias string in the
-        # request to create a corresponding alias. The `id` is still assigned by
-        # Classroom and cannot be updated after the course is created.
-        # Specifying this field in a course update mask results in an error.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Optional room location.
-        # For example, "301".
-        # If set, this field must be a valid UTF-8 string and no longer than 650
-        # characters.
-        # Corresponds to the JSON property `room`
-        # @return [String]
-        attr_accessor :room
-      
-        # The email address of a Google group containing all members of the course.
-        # This group does not accept email and can only be used for permissions.
-        # Read-only.
-        # Corresponds to the JSON property `courseGroupEmail`
-        # @return [String]
-        attr_accessor :course_group_email
-      
-        # Enrollment code to use when joining this course.
-        # Specifying this field in a course update mask results in an error.
-        # Read-only.
-        # Corresponds to the JSON property `enrollmentCode`
-        # @return [String]
-        attr_accessor :enrollment_code
-      
-        # Sets of materials that appear on the "about" page of this course.
-        # Read-only.
-        # Corresponds to the JSON property `courseMaterialSets`
-        # @return [Array<Google::Apis::ClassroomV1::CourseMaterialSet>]
-        attr_accessor :course_material_sets
-      
-        # Optional heading for the description.
-        # For example, "Welcome to 10th Grade Biology."
-        # If set, this field must be a valid UTF-8 string and no longer than 3600
-        # characters.
-        # Corresponds to the JSON property `descriptionHeading`
-        # @return [String]
-        attr_accessor :description_heading
-      
-        # Time of the most recent update to this course.
-        # Specifying this field in a course update mask results in an error.
-        # Read-only.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # Absolute link to this course in the Classroom web UI.
-        # Read-only.
-        # Corresponds to the JSON property `alternateLink`
-        # @return [String]
-        attr_accessor :alternate_link
-      
         # Whether or not guardian notifications are enabled for this course.
         # Read-only.
         # Corresponds to the JSON property `guardiansEnabled`
@@ -1448,21 +1492,81 @@ module Google
         # @return [Google::Apis::ClassroomV1::DriveFolder]
         attr_accessor :teacher_folder
       
+        # Section of the course.
+        # For example, "Period 2".
+        # If set, this field must be a valid UTF-8 string and no longer than 2800
+        # characters.
+        # Corresponds to the JSON property `section`
+        # @return [String]
+        attr_accessor :section
+      
+        # Identifier for this course assigned by Classroom.
+        # When
+        # creating a course,
+        # you may optionally set this identifier to an
+        # alias string in the
+        # request to create a corresponding alias. The `id` is still assigned by
+        # Classroom and cannot be updated after the course is created.
+        # Specifying this field in a course update mask results in an error.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional room location.
+        # For example, "301".
+        # If set, this field must be a valid UTF-8 string and no longer than 650
+        # characters.
+        # Corresponds to the JSON property `room`
+        # @return [String]
+        attr_accessor :room
+      
+        # The email address of a Google group containing all members of the course.
+        # This group does not accept email and can only be used for permissions.
+        # Read-only.
+        # Corresponds to the JSON property `courseGroupEmail`
+        # @return [String]
+        attr_accessor :course_group_email
+      
+        # Sets of materials that appear on the "about" page of this course.
+        # Read-only.
+        # Corresponds to the JSON property `courseMaterialSets`
+        # @return [Array<Google::Apis::ClassroomV1::CourseMaterialSet>]
+        attr_accessor :course_material_sets
+      
+        # Enrollment code to use when joining this course.
+        # Specifying this field in a course update mask results in an error.
+        # Read-only.
+        # Corresponds to the JSON property `enrollmentCode`
+        # @return [String]
+        attr_accessor :enrollment_code
+      
+        # Optional heading for the description.
+        # For example, "Welcome to 10th Grade Biology."
+        # If set, this field must be a valid UTF-8 string and no longer than 3600
+        # characters.
+        # Corresponds to the JSON property `descriptionHeading`
+        # @return [String]
+        attr_accessor :description_heading
+      
+        # Time of the most recent update to this course.
+        # Specifying this field in a course update mask results in an error.
+        # Read-only.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Absolute link to this course in the Classroom web UI.
+        # Read-only.
+        # Corresponds to the JSON property `alternateLink`
+        # @return [String]
+        attr_accessor :alternate_link
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @section = args[:section] if args.key?(:section)
-          @id = args[:id] if args.key?(:id)
-          @room = args[:room] if args.key?(:room)
-          @course_group_email = args[:course_group_email] if args.key?(:course_group_email)
-          @enrollment_code = args[:enrollment_code] if args.key?(:enrollment_code)
-          @course_material_sets = args[:course_material_sets] if args.key?(:course_material_sets)
-          @description_heading = args[:description_heading] if args.key?(:description_heading)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
           @guardians_enabled = args[:guardians_enabled] if args.key?(:guardians_enabled)
           @owner_id = args[:owner_id] if args.key?(:owner_id)
           @course_state = args[:course_state] if args.key?(:course_state)
@@ -1471,6 +1575,15 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @name = args[:name] if args.key?(:name)
           @teacher_folder = args[:teacher_folder] if args.key?(:teacher_folder)
+          @section = args[:section] if args.key?(:section)
+          @id = args[:id] if args.key?(:id)
+          @room = args[:room] if args.key?(:room)
+          @course_group_email = args[:course_group_email] if args.key?(:course_group_email)
+          @course_material_sets = args[:course_material_sets] if args.key?(:course_material_sets)
+          @enrollment_code = args[:enrollment_code] if args.key?(:enrollment_code)
+          @description_heading = args[:description_heading] if args.key?(:description_heading)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
         end
       end
       
@@ -1543,119 +1656,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Teacher of a course.
-      class Teacher
-        include Google::Apis::Core::Hashable
-      
-        # Identifier of the course.
-        # Read-only.
-        # Corresponds to the JSON property `courseId`
-        # @return [String]
-        attr_accessor :course_id
-      
-        # Global information for a user.
-        # Corresponds to the JSON property `profile`
-        # @return [Google::Apis::ClassroomV1::UserProfile]
-        attr_accessor :profile
-      
-        # Identifier of the user.
-        # When specified as a parameter of a request, this identifier can be one of
-        # the following:
-        # * the numeric identifier for the user
-        # * the email address of the user
-        # * the string literal `"me"`, indicating the requesting user
-        # Corresponds to the JSON property `userId`
-        # @return [String]
-        attr_accessor :user_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @course_id = args[:course_id] if args.key?(:course_id)
-          @profile = args[:profile] if args.key?(:profile)
-          @user_id = args[:user_id] if args.key?(:user_id)
-        end
-      end
-      
-      # Request to reclaim a student submission.
-      class ReclaimStudentSubmissionRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Student work for an assignment.
-      class AssignmentSubmission
-        include Google::Apis::Core::Hashable
-      
-        # Attachments added by the student.
-        # Drive files that correspond to materials with a share mode of
-        # STUDENT_COPY may not exist yet if the student has not accessed the
-        # assignment in Classroom.
-        # Some attachment metadata is only populated if the requesting user has
-        # permission to access it. Identifier and alternate_link fields are always
-        # available, but others (e.g. title) may not be.
-        # Corresponds to the JSON property `attachments`
-        # @return [Array<Google::Apis::ClassroomV1::Attachment>]
-        attr_accessor :attachments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attachments = args[:attachments] if args.key?(:attachments)
-        end
-      end
-      
-      # Material attached to course work.
-      # When creating attachments, setting the `form` field is not supported.
-      class Material
-        include Google::Apis::Core::Hashable
-      
-        # Drive file that is used as material for course work.
-        # Corresponds to the JSON property `driveFile`
-        # @return [Google::Apis::ClassroomV1::SharedDriveFile]
-        attr_accessor :drive_file
-      
-        # Google Forms item.
-        # Corresponds to the JSON property `form`
-        # @return [Google::Apis::ClassroomV1::Form]
-        attr_accessor :form
-      
-        # URL item.
-        # Corresponds to the JSON property `link`
-        # @return [Google::Apis::ClassroomV1::Link]
-        attr_accessor :link
-      
-        # YouTube video item.
-        # Corresponds to the JSON property `youtubeVideo`
-        # @return [Google::Apis::ClassroomV1::YouTubeVideo]
-        attr_accessor :youtube_video
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @drive_file = args[:drive_file] if args.key?(:drive_file)
-          @form = args[:form] if args.key?(:form)
-          @link = args[:link] if args.key?(:link)
-          @youtube_video = args[:youtube_video] if args.key?(:youtube_video)
         end
       end
     end

@@ -172,13 +172,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateActiveBreakpointResponse
+      class GerritSourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GerritSourceContext
+      class UpdateActiveBreakpointResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -205,14 +205,6 @@ module Google
       class Breakpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
-      
-          property :final_time, as: 'finalTime'
-          collection :variable_table, as: 'variableTable', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
-          hash :labels, as: 'labels'
-          property :log_message_format, as: 'logMessageFormat'
-          property :create_time, as: 'createTime'
           collection :expressions, as: 'expressions'
           collection :evaluated_expressions, as: 'evaluatedExpressions', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
@@ -226,6 +218,14 @@ module Google
           property :action, as: 'action'
           property :log_level, as: 'logLevel'
           property :id, as: 'id'
+          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
+      
+          property :final_time, as: 'finalTime'
+          collection :variable_table, as: 'variableTable', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
+      
+          hash :labels, as: 'labels'
+          property :log_message_format, as: 'logMessageFormat'
+          property :create_time, as: 'createTime'
         end
       end
       
@@ -316,27 +316,27 @@ module Google
       class Variable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :members, as: 'members', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
           property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
       
           property :name, as: 'name'
           property :type, as: 'type'
           property :var_table_index, as: 'varTableIndex'
           property :value, as: 'value'
+          collection :members, as: 'members', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
+      
         end
       end
       
       class StackFrame
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
-      
-          property :function, as: 'function'
           collection :arguments, as: 'arguments', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
           collection :locals, as: 'locals', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
+          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
+      
+          property :function, as: 'function'
         end
       end
       
@@ -352,17 +352,17 @@ module Google
       class FormatMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :parameters, as: 'parameters'
           property :format, as: 'format'
+          collection :parameters, as: 'parameters'
         end
       end
       
       class ExtendedSourceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :context, as: 'context', class: Google::Apis::ClouddebuggerV2::SourceContext, decorator: Google::Apis::ClouddebuggerV2::SourceContext::Representation
       
-          hash :labels, as: 'labels'
         end
       end
       
@@ -391,27 +391,27 @@ module Google
       class SourceLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :path, as: 'path'
           property :line, as: 'line'
+          property :path, as: 'path'
         end
       end
       
       class Debuggee
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ext_source_contexts, as: 'extSourceContexts', class: Google::Apis::ClouddebuggerV2::ExtendedSourceContext, decorator: Google::Apis::ClouddebuggerV2::ExtendedSourceContext::Representation
+      
           hash :labels, as: 'labels'
           property :is_inactive, as: 'isInactive'
           property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
       
           property :project, as: 'project'
-          property :id, as: 'id'
-          property :agent_version, as: 'agentVersion'
           property :is_disabled, as: 'isDisabled'
-          property :uniquifier, as: 'uniquifier'
+          property :agent_version, as: 'agentVersion'
+          property :id, as: 'id'
           property :description, as: 'description'
+          property :uniquifier, as: 'uniquifier'
           collection :source_contexts, as: 'sourceContexts', class: Google::Apis::ClouddebuggerV2::SourceContext, decorator: Google::Apis::ClouddebuggerV2::SourceContext::Representation
-      
-          collection :ext_source_contexts, as: 'extSourceContexts', class: Google::Apis::ClouddebuggerV2::ExtendedSourceContext, decorator: Google::Apis::ClouddebuggerV2::ExtendedSourceContext::Representation
       
         end
       end
@@ -443,12 +443,6 @@ module Google
         end
       end
       
-      class UpdateActiveBreakpointResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class GerritSourceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -458,6 +452,12 @@ module Google
           property :gerrit_project, as: 'gerritProject'
           property :alias_context, as: 'aliasContext', class: Google::Apis::ClouddebuggerV2::AliasContext, decorator: Google::Apis::ClouddebuggerV2::AliasContext::Representation
       
+        end
+      end
+      
+      class UpdateActiveBreakpointResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

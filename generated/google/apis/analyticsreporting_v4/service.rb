@@ -33,14 +33,14 @@ module Google
       # @see https://developers.google.com/analytics/devguides/reporting/core/v4/
       class AnalyticsReportingService < Google::Apis::Core::BaseService
         # @return [String]
-        #  API key. Your API key identifies your project and provides you with API access,
-        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
-        attr_accessor :key
-
-        # @return [String]
         #  Available to use for quota purposes for server-side applications. Can be any
         #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
+
+        # @return [String]
+        #  API key. Your API key identifies your project and provides you with API access,
+        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
+        attr_accessor :key
 
         def initialize
           super('https://analyticsreporting.googleapis.com/', '')
@@ -66,7 +66,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_get_reports(get_reports_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def batch_report_get(get_reports_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v4/reports:batchGet', options)
           command.request_representation = Google::Apis::AnalyticsreportingV4::GetReportsRequest::Representation
           command.request_object = get_reports_request_object
@@ -80,8 +80,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['key'] = key unless key.nil?
         end
       end
     end

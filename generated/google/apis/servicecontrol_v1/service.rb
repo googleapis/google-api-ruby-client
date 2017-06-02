@@ -48,6 +48,63 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Unlike rate quota, allocation quota does not get refilled periodically.
+        # So, it is possible that the quota usage as seen by the service differs from
+        # what the One Platform considers the usage is. This is expected to happen
+        # only rarely, but over time this can accumulate. Services can invoke
+        # StartReconciliation and EndReconciliation to correct this usage drift, as
+        # described below:
+        # 1. Service sends StartReconciliation with a timestamp in future for each
+        # metric that needs to be reconciled. The timestamp being in future allows
+        # to account for in-flight AllocateQuota and ReleaseQuota requests for the
+        # same metric.
+        # 2. One Platform records this timestamp and starts tracking subsequent
+        # AllocateQuota and ReleaseQuota requests until EndReconciliation is
+        # called.
+        # 3. At or after the time specified in the StartReconciliation, service
+        # sends EndReconciliation with the usage that needs to be reconciled to.
+        # 4. One Platform adjusts its own record of usage for that metric to the
+        # value specified in EndReconciliation by taking in to account any
+        # allocation or release between StartReconciliation and EndReconciliation.
+        # Signals the quota controller that the service wants to perform a usage
+        # reconciliation as specified in the request.
+        # This method requires the `servicemanagement.services.quota`
+        # permission on the specified service. For more information, see
+        # [Google Cloud IAM](https://cloud.google.com/iam).
+        # @param [String] service_name
+        #   Name of the service as specified in the service configuration. For example,
+        #   `"pubsub.googleapis.com"`.
+        #   See google.api.Service for the definition of a service name.
+        # @param [Google::Apis::ServicecontrolV1::StartReconciliationRequest] start_reconciliation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicecontrolV1::StartReconciliationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicecontrolV1::StartReconciliationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_service_reconciliation(service_name, start_reconciliation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/services/{serviceName}:startReconciliation', options)
+          command.request_representation = Google::Apis::ServicecontrolV1::StartReconciliationRequest::Representation
+          command.request_object = start_reconciliation_request_object
+          command.response_representation = Google::Apis::ServicecontrolV1::StartReconciliationResponse::Representation
+          command.response_class = Google::Apis::ServicecontrolV1::StartReconciliationResponse
+          command.params['serviceName'] = service_name unless service_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks an operation with Google Service Control to decide whether
         # the given operation should proceed. It should be called before the
         # operation is executed.
@@ -263,63 +320,6 @@ module Google
           command.request_object = allocate_quota_request_object
           command.response_representation = Google::Apis::ServicecontrolV1::AllocateQuotaResponse::Representation
           command.response_class = Google::Apis::ServicecontrolV1::AllocateQuotaResponse
-          command.params['serviceName'] = service_name unless service_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Unlike rate quota, allocation quota does not get refilled periodically.
-        # So, it is possible that the quota usage as seen by the service differs from
-        # what the One Platform considers the usage is. This is expected to happen
-        # only rarely, but over time this can accumulate. Services can invoke
-        # StartReconciliation and EndReconciliation to correct this usage drift, as
-        # described below:
-        # 1. Service sends StartReconciliation with a timestamp in future for each
-        # metric that needs to be reconciled. The timestamp being in future allows
-        # to account for in-flight AllocateQuota and ReleaseQuota requests for the
-        # same metric.
-        # 2. One Platform records this timestamp and starts tracking subsequent
-        # AllocateQuota and ReleaseQuota requests until EndReconciliation is
-        # called.
-        # 3. At or after the time specified in the StartReconciliation, service
-        # sends EndReconciliation with the usage that needs to be reconciled to.
-        # 4. One Platform adjusts its own record of usage for that metric to the
-        # value specified in EndReconciliation by taking in to account any
-        # allocation or release between StartReconciliation and EndReconciliation.
-        # Signals the quota controller that the service wants to perform a usage
-        # reconciliation as specified in the request.
-        # This method requires the `servicemanagement.services.quota`
-        # permission on the specified service. For more information, see
-        # [Google Cloud IAM](https://cloud.google.com/iam).
-        # @param [String] service_name
-        #   Name of the service as specified in the service configuration. For example,
-        #   `"pubsub.googleapis.com"`.
-        #   See google.api.Service for the definition of a service name.
-        # @param [Google::Apis::ServicecontrolV1::StartReconciliationRequest] start_reconciliation_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServicecontrolV1::StartReconciliationResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServicecontrolV1::StartReconciliationResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_service_reconciliation(service_name, start_reconciliation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/services/{serviceName}:startReconciliation', options)
-          command.request_representation = Google::Apis::ServicecontrolV1::StartReconciliationRequest::Representation
-          command.request_object = start_reconciliation_request_object
-          command.response_representation = Google::Apis::ServicecontrolV1::StartReconciliationResponse::Representation
-          command.response_class = Google::Apis::ServicecontrolV1::StartReconciliationResponse
           command.params['serviceName'] = service_name unless service_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

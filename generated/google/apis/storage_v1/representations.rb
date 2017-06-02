@@ -31,7 +31,7 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
-        class CorsConfiguration
+        class Cor
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -227,7 +227,7 @@ module Google
       
           property :billing, as: 'billing', class: Google::Apis::StorageV1::Bucket::Billing, decorator: Google::Apis::StorageV1::Bucket::Billing::Representation
       
-          collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
+          collection :cors, as: 'cors', class: Google::Apis::StorageV1::Bucket::Cor, decorator: Google::Apis::StorageV1::Bucket::Cor::Representation
       
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
@@ -264,11 +264,11 @@ module Google
           end
         end
         
-        class CorsConfiguration
+        class Cor
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :max_age_seconds, as: 'maxAgeSeconds'
-            collection :http_method, as: 'method'
+            collection :method_prop, as: 'method'
             collection :origin, as: 'origin'
             collection :response_header, as: 'responseHeader'
           end
