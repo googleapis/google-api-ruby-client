@@ -54,7 +54,7 @@ module Google
         end
         
         # Creates the URI used by the IdP to authenticate the user.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyCreateAuthUriRequest] identitytoolkit_relyingparty_create_auth_uri_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest] create_auth_uri_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -76,10 +76,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_relyingparty_auth_uri(identitytoolkit_relyingparty_create_auth_uri_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_auth_uri(create_auth_uri_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'createAuthUri', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyCreateAuthUriRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_create_auth_uri_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::Representation
+          command.request_object = create_auth_uri_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::CreateAuthUriResponse
           command.query['fields'] = fields unless fields.nil?
@@ -89,7 +89,7 @@ module Google
         end
         
         # Delete user account.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyDeleteAccountRequest] identitytoolkit_relyingparty_delete_account_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::DeleteAccountRequest] delete_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -111,10 +111,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_relyingparty_account(identitytoolkit_relyingparty_delete_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account(delete_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'deleteAccount', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyDeleteAccountRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_delete_account_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountRequest::Representation
+          command.request_object = delete_account_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::DeleteAccountResponse
           command.query['fields'] = fields unless fields.nil?
@@ -124,7 +124,7 @@ module Google
         end
         
         # Batch download user accounts.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyDownloadAccountRequest] identitytoolkit_relyingparty_download_account_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::DownloadAccountRequest] download_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -146,10 +146,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_relyingparty_account(identitytoolkit_relyingparty_download_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def download_account(download_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'downloadAccount', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyDownloadAccountRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_download_account_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountRequest::Representation
+          command.request_object = download_account_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::DownloadAccountResponse
           command.query['fields'] = fields unless fields.nil?
@@ -159,7 +159,7 @@ module Google
         end
         
         # Returns the account info.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyGetAccountInfoRequest] identitytoolkit_relyingparty_get_account_info_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest] get_account_info_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,10 +181,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_relyingparty_account_info(identitytoolkit_relyingparty_get_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_info(get_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'getAccountInfo', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyGetAccountInfoRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_get_account_info_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest::Representation
+          command.request_object = get_account_info_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetAccountInfoResponse
           command.query['fields'] = fields unless fields.nil?
@@ -216,7 +216,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_relyingparty_oob_confirmation_code(relyingparty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_oob_confirmation_code(relyingparty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'getOobConfirmationCode', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::Relyingparty::Representation
           command.request_object = relyingparty_object
@@ -246,18 +246,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyGetProjectConfigResponse] parsed result object
+        # @yieldparam result [Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyGetProjectConfigResponse]
+        # @return [Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_relyingparty_project_config(delegated_project_number: nil, project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_project_config(delegated_project_number: nil, project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'getProjectConfig', options)
-          command.response_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyGetProjectConfigResponse::Representation
-          command.response_class = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyGetProjectConfigResponse
+          command.response_representation = Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse
           command.query['delegatedProjectNumber'] = delegated_project_number unless delegated_project_number.nil?
           command.query['projectNumber'] = project_number unless project_number.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -288,7 +288,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_relyingparty_public_keys(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_public_keys(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'publicKeys', options)
           command.response_representation = Hash<String,String>::Representation
           command.response_class = Hash<String,String>
@@ -320,7 +320,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_relyingparty_recaptcha_param(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_recaptcha_param(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'getRecaptchaParam', options)
           command.response_representation = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponse
@@ -331,7 +331,7 @@ module Google
         end
         
         # Reset password for a user.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyResetPasswordRequest] identitytoolkit_relyingparty_reset_password_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::ResetPasswordRequest] reset_password_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -353,10 +353,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_relyingparty_password(identitytoolkit_relyingparty_reset_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def reset_password(reset_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'resetPassword', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyResetPasswordRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_reset_password_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordRequest::Representation
+          command.request_object = reset_password_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::ResetPasswordResponse
           command.query['fields'] = fields unless fields.nil?
@@ -366,7 +366,7 @@ module Google
         end
         
         # Set account info for a user.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetAccountInfoRequest] identitytoolkit_relyingparty_set_account_info_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest] set_account_info_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -388,10 +388,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_relyingparty_account_info(identitytoolkit_relyingparty_set_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_account_info(set_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'setAccountInfo', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetAccountInfoRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_set_account_info_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest::Representation
+          command.request_object = set_account_info_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse
           command.query['fields'] = fields unless fields.nil?
@@ -401,7 +401,7 @@ module Google
         end
         
         # Set project configuration.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigRequest] identitytoolkit_relyingparty_set_project_config_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::SetProjectConfigRequest] set_project_config_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -423,10 +423,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_relyingparty_project_config(identitytoolkit_relyingparty_set_project_config_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_relyingparty_project_config(set_project_config_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'setProjectConfig', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_set_project_config_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::SetProjectConfigRequest::Representation
+          command.request_object = set_project_config_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySetProjectConfigResponse
           command.query['fields'] = fields unless fields.nil?
@@ -436,7 +436,7 @@ module Google
         end
         
         # Sign out user.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignOutUserRequest] identitytoolkit_relyingparty_sign_out_user_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::SignOutUserRequest] sign_out_user_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -450,20 +450,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignOutUserResponse] parsed result object
+        # @yieldparam result [Google::Apis::IdentitytoolkitV3::SignOutUserResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignOutUserResponse]
+        # @return [Google::Apis::IdentitytoolkitV3::SignOutUserResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sign_relyingparty_out_user(identitytoolkit_relyingparty_sign_out_user_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def sign_out_user(sign_out_user_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'signOutUser', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignOutUserRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_sign_out_user_request_object
-          command.response_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignOutUserResponse::Representation
-          command.response_class = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignOutUserResponse
+          command.request_representation = Google::Apis::IdentitytoolkitV3::SignOutUserRequest::Representation
+          command.request_object = sign_out_user_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::SignOutUserResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV3::SignOutUserResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -471,7 +471,7 @@ module Google
         end
         
         # Signup new user.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignupNewUserRequest] identitytoolkit_relyingparty_signup_new_user_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::SignupNewUserRequest] signup_new_user_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -493,10 +493,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def signup_relyingparty_new_user(identitytoolkit_relyingparty_signup_new_user_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def signup_new_user(signup_new_user_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'signupNewUser', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartySignupNewUserRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_signup_new_user_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::SignupNewUserRequest::Representation
+          command.request_object = signup_new_user_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::SignupNewUserResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::SignupNewUserResponse
           command.query['fields'] = fields unless fields.nil?
@@ -506,7 +506,7 @@ module Google
         end
         
         # Batch upload existing user accounts.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyUploadAccountRequest] identitytoolkit_relyingparty_upload_account_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::UploadAccountRequest] upload_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -528,10 +528,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_relyingparty_account(identitytoolkit_relyingparty_upload_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def upload_account(upload_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'uploadAccount', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyUploadAccountRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_upload_account_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::UploadAccountRequest::Representation
+          command.request_object = upload_account_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::UploadAccountResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::UploadAccountResponse
           command.query['fields'] = fields unless fields.nil?
@@ -541,7 +541,7 @@ module Google
         end
         
         # Verifies the assertion returned by the IdP.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyVerifyAssertionRequest] identitytoolkit_relyingparty_verify_assertion_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest] verify_assertion_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -563,10 +563,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_relyingparty_assertion(identitytoolkit_relyingparty_verify_assertion_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_assertion(verify_assertion_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'verifyAssertion', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyVerifyAssertionRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_verify_assertion_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest::Representation
+          command.request_object = verify_assertion_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::VerifyAssertionResponse
           command.query['fields'] = fields unless fields.nil?
@@ -576,7 +576,7 @@ module Google
         end
         
         # Verifies the developer asserted ID token.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyVerifyCustomTokenRequest] identitytoolkit_relyingparty_verify_custom_token_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::VerifyCustomTokenRequest] verify_custom_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -598,10 +598,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_relyingparty_custom_token(identitytoolkit_relyingparty_verify_custom_token_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_custom_token(verify_custom_token_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'verifyCustomToken', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyVerifyCustomTokenRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_verify_custom_token_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyCustomTokenRequest::Representation
+          command.request_object = verify_custom_token_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyCustomTokenResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::VerifyCustomTokenResponse
           command.query['fields'] = fields unless fields.nil?
@@ -611,7 +611,7 @@ module Google
         end
         
         # Verifies the user entered password.
-        # @param [Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyVerifyPasswordRequest] identitytoolkit_relyingparty_verify_password_request_object
+        # @param [Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest] verify_password_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -633,10 +633,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_relyingparty_password(identitytoolkit_relyingparty_verify_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_password(verify_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'verifyPassword', options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::IdentitytoolkitRelyingpartyVerifyPasswordRequest::Representation
-          command.request_object = identitytoolkit_relyingparty_verify_password_request_object
+          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest::Representation
+          command.request_object = verify_password_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::VerifyPasswordResponse
           command.query['fields'] = fields unless fields.nil?

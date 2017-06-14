@@ -181,7 +181,7 @@ module Google
       end
       
       # 
-      class InstanceGroupManagersAbandonInstancesRequest
+      class AbandonInstancesRequest
         include Google::Apis::Core::Hashable
       
         # The names of one or more instances to abandon. For example:
@@ -201,7 +201,7 @@ module Google
       end
       
       # 
-      class InstanceGroupManagersDeleteInstancesRequest
+      class DeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
         # Names of instances to delete.
@@ -221,7 +221,7 @@ module Google
       end
       
       # 
-      class InstanceGroupManagersRecreateInstancesRequest
+      class RecreateInstancesRequest
         include Google::Apis::Core::Hashable
       
         # The names of one or more instances to recreate. For example:
@@ -241,7 +241,7 @@ module Google
       end
       
       # 
-      class InstanceGroupManagersSetInstanceTemplateRequest
+      class SetInstanceTemplateRequest
         include Google::Apis::Core::Hashable
       
         # The full URL to an Instance Template from which all new instances will be
@@ -261,7 +261,7 @@ module Google
       end
       
       # 
-      class InstanceGroupManagersSetTargetPoolsRequest
+      class SetTargetPoolsRequest
         include Google::Apis::Core::Hashable
       
         # The current fingerprint of the Instance Group Manager resource. If this does

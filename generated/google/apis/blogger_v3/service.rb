@@ -214,7 +214,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_blog_by_user(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_blogs_by_user(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'users/{userId}/blogs', options)
           command.response_representation = Google::Apis::BloggerV3::BlogList::Representation
           command.response_class = Google::Apis::BloggerV3::BlogList
@@ -450,7 +450,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comment_by_blog(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_comments_by_blog(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'blogs/{blogId}/comments', options)
           command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
@@ -1021,7 +1021,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_post_user_infos(user_id, blog_id, end_date: nil, fetch_bodies: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_post_user_info(user_id, blog_id, end_date: nil, fetch_bodies: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts', options)
           command.response_representation = Google::Apis::BloggerV3::PostUserInfosList::Representation
           command.response_class = Google::Apis::BloggerV3::PostUserInfosList

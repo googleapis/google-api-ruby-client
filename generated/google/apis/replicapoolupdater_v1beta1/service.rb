@@ -265,7 +265,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_rolling_update_instance_updates(project, zone, rolling_update, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_updates(project, zone, rolling_update, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/instanceUpdates', options)
           command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateList::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateList

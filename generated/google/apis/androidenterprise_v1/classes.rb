@@ -452,7 +452,7 @@ module Google
       end
       
       # The device resources for the user.
-      class DevicesListResponse
+      class ListDevicesResponse
         include Google::Apis::Core::Hashable
       
         # A managed device.
@@ -561,7 +561,7 @@ module Google
       end
       
       # The matching enterprise resources.
-      class EnterprisesListResponse
+      class ListEnterprisesResponse
         include Google::Apis::Core::Hashable
       
         # An enterprise.
@@ -587,7 +587,7 @@ module Google
       end
       
       # 
-      class EnterprisesSendTestPushNotificationResponse
+      class SendTestPushNotificationResponse
         include Google::Apis::Core::Hashable
       
         # The message ID of the test push notification that was sent.
@@ -667,7 +667,7 @@ module Google
       end
       
       # The entitlement resources for the user.
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         include Google::Apis::Core::Hashable
       
         # An entitlement of a user to a product (e.g. an app). For example, a free app
@@ -786,7 +786,7 @@ module Google
       end
       
       # The user resources for the group license.
-      class GroupLicenseUsersListResponse
+      class ListGroupLicenseUsersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -812,7 +812,7 @@ module Google
       end
       
       # The grouplicense resources for the enterprise.
-      class GroupLicensesListResponse
+      class ListGroupLicensesResponse
         include Google::Apis::Core::Hashable
       
         # A group license for a product approved for use in the enterprise.
@@ -943,7 +943,7 @@ module Google
       end
       
       # The install resources for the device.
-      class InstallsListResponse
+      class ListInstallsResponse
         include Google::Apis::Core::Hashable
       
         # An installation of an app for a user on a specific device. The existence of an
@@ -1685,7 +1685,7 @@ module Google
       end
       
       # 
-      class ProductsApproveRequest
+      class ApproveProductRequest
         include Google::Apis::Core::Hashable
       
         # Information on an approval URL.
@@ -1715,7 +1715,7 @@ module Google
       end
       
       # 
-      class ProductsGenerateApprovalUrlResponse
+      class GenerateProductApprovalUrlResponse
         include Google::Apis::Core::Hashable
       
         # A URL that can be rendered in an iframe to display the permissions (if any) of
@@ -2242,7 +2242,7 @@ module Google
       end
       
       # The matching user resources.
-      class UsersListResponse
+      class ListUsersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "

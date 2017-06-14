@@ -160,7 +160,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_adclients(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_ad_clients(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdClients::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdClients
@@ -202,7 +202,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_adunit(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_ad_unit(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnit::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnit
@@ -243,7 +243,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_adunit_ad_code(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_ad_unit_ad_code(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
@@ -289,7 +289,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_adunits(account_id, ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_ad_units(account_id, ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
@@ -339,7 +339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_adunit_customchannels(account_id, ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_ad_unit_custom_channels(account_id, ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
@@ -460,7 +460,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_customchannel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_custom_channel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannel::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannel
@@ -506,7 +506,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_customchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_custom_channels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
@@ -555,7 +555,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_customchannel_adunits(account_id, ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_custom_channel_ad_units(account_id, ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
@@ -653,10 +653,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateReportResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateReportResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -668,8 +668,8 @@ module Google
             command = make_download_command(:get, 'accounts/{accountId}/reports', options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Representation
-          command.response_class = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateReportResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateReportResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['currency'] = currency unless currency.nil?
           command.query['dimension'] = dimension unless dimension.nil?
@@ -714,18 +714,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateReportResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateReportResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_account_report_saved(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_account_saved_report(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/reports/{savedReportId}', options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Representation
-          command.response_class = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateReportResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateReportResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['savedReportId'] = saved_report_id unless saved_report_id.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -768,7 +768,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_report_saveds(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_saved_reports(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/reports/saved', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedReports::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedReports
@@ -807,7 +807,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_savedadstyle(account_id, saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_saved_ad_style(account_id, saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/savedadstyles/{savedAdStyleId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyle
@@ -850,7 +850,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_savedadstyles(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_saved_ad_styles(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/savedadstyles', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyles::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyles
@@ -895,7 +895,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_urlchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_url_channels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/{accountId}/adclients/{adClientId}/urlchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::UrlChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::UrlChannels
@@ -937,7 +937,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_adclients(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_ad_clients(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdClients::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdClients
@@ -975,7 +975,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_adunit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_ad_unit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnit::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnit
@@ -1013,7 +1013,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_adunit_ad_code(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_ad_code_ad_unit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}/adcode', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
@@ -1056,7 +1056,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_adunits(ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_ad_units(ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
@@ -1103,7 +1103,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_adunit_customchannels(ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_ad_unit_custom_channels(ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/adunits/{adUnitId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
@@ -1213,7 +1213,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_customchannel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_custom_channel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/customchannels/{customChannelId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannel::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannel
@@ -1256,7 +1256,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customchannels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_custom_channels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/customchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
@@ -1302,7 +1302,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customchannel_adunits(ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_custom_channel_ad_units(ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/customchannels/{customChannelId}/adunits', options)
           command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
@@ -1339,7 +1339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_metadatum_dimensions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_metadata_dimensions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'metadata/dimensions', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Metadata::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Metadata
@@ -1371,7 +1371,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_metadatum_metrics(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_metadata_metrics(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'metadata/metrics', options)
           command.response_representation = Google::Apis::AdsenseV1_4::Metadata::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Metadata
@@ -1460,10 +1460,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateReportResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateReportResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1475,8 +1475,8 @@ module Google
             command = make_download_command(:get, 'reports', options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Representation
-          command.response_class = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateReportResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateReportResponse
           command.query['accountId'] = account_id unless account_id.nil?
           command.query['currency'] = currency unless currency.nil?
           command.query['dimension'] = dimension unless dimension.nil?
@@ -1519,18 +1519,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateReportResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateReportResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_report_saved(saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_saved_report(saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'reports/{savedReportId}', options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Representation
-          command.response_class = Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateReportResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateReportResponse
           command.params['savedReportId'] = saved_report_id unless saved_report_id.nil?
           command.query['locale'] = locale unless locale.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1570,7 +1570,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_report_saveds(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_saved_reports(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'reports/saved', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedReports::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedReports
@@ -1606,7 +1606,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_savedadstyle(saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_saved_ad_style(saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'savedadstyles/{savedAdStyleId}', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyle
@@ -1646,7 +1646,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_savedadstyles(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_saved_ad_styles(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'savedadstyles', options)
           command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyles::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyles
@@ -1688,7 +1688,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_urlchannels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_url_channels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'adclients/{adClientId}/urlchannels', options)
           command.response_representation = Google::Apis::AdsenseV1_4::UrlChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::UrlChannels

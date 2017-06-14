@@ -22,7 +22,37 @@ module Google
   module Apis
     module LanguageV1
       
-      class Features
+      class AnnotateTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeSentimentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DependencyEdge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Token
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -34,13 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Sentence
+      class Features
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class Document
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Sentence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,13 +118,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Entity
+      class AnalyzeSyntaxResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnalyzeSyntaxResponse
+      class Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,47 +137,64 @@ module Google
       end
       
       class AnnotateTextResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language, as: 'language'
+          collection :sentences, as: 'sentences', class: Google::Apis::LanguageV1::Sentence, decorator: Google::Apis::LanguageV1::Sentence::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          collection :tokens, as: 'tokens', class: Google::Apis::LanguageV1::Token, decorator: Google::Apis::LanguageV1::Token::Representation
+      
+          collection :entities, as: 'entities', class: Google::Apis::LanguageV1::Entity, decorator: Google::Apis::LanguageV1::Entity::Representation
+      
+          property :document_sentiment, as: 'documentSentiment', class: Google::Apis::LanguageV1::Sentiment, decorator: Google::Apis::LanguageV1::Sentiment::Representation
+      
+        end
       end
       
       class AnalyzeSentimentRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding_type, as: 'encodingType'
+          property :document, as: 'document', class: Google::Apis::LanguageV1::Document, decorator: Google::Apis::LanguageV1::Document::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class DependencyEdge
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Token
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :head_token_index, as: 'headTokenIndex'
+        end
       end
       
       class TextSpan
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :begin_offset, as: 'beginOffset'
+        end
+      end
       
-        include Google::Apis::Core::JsonObjectSupport
+      class Token
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text', class: Google::Apis::LanguageV1::TextSpan, decorator: Google::Apis::LanguageV1::TextSpan::Representation
+      
+          property :dependency_edge, as: 'dependencyEdge', class: Google::Apis::LanguageV1::DependencyEdge, decorator: Google::Apis::LanguageV1::DependencyEdge::Representation
+      
+          property :lemma, as: 'lemma'
+          property :part_of_speech, as: 'partOfSpeech', class: Google::Apis::LanguageV1::PartOfSpeech, decorator: Google::Apis::LanguageV1::PartOfSpeech::Representation
+      
+        end
       end
       
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Features
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :extract_entities, as: 'extractEntities'
-          property :extract_syntax, as: 'extractSyntax'
-          property :extract_document_sentiment, as: 'extractDocumentSentiment'
+          property :code, as: 'code'
+          property :message, as: 'message'
+          collection :details, as: 'details'
         end
       end
       
@@ -154,13 +207,12 @@ module Google
         end
       end
       
-      class Sentence
+      class Features
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :text, as: 'text', class: Google::Apis::LanguageV1::TextSpan, decorator: Google::Apis::LanguageV1::TextSpan::Representation
-      
-          property :sentiment, as: 'sentiment', class: Google::Apis::LanguageV1::Sentiment, decorator: Google::Apis::LanguageV1::Sentiment::Representation
-      
+          property :extract_entities, as: 'extractEntities'
+          property :extract_syntax, as: 'extractSyntax'
+          property :extract_document_sentiment, as: 'extractDocumentSentiment'
         end
       end
       
@@ -171,6 +223,16 @@ module Google
           property :type, as: 'type'
           property :content, as: 'content'
           property :gcs_content_uri, as: 'gcsContentUri'
+        end
+      end
+      
+      class Sentence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text', class: Google::Apis::LanguageV1::TextSpan, decorator: Google::Apis::LanguageV1::TextSpan::Representation
+      
+          property :sentiment, as: 'sentiment', class: Google::Apis::LanguageV1::Sentiment, decorator: Google::Apis::LanguageV1::Sentiment::Representation
+      
         end
       end
       
@@ -238,18 +300,6 @@ module Google
         end
       end
       
-      class Entity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :mentions, as: 'mentions', class: Google::Apis::LanguageV1::EntityMention, decorator: Google::Apis::LanguageV1::EntityMention::Representation
-      
-          property :name, as: 'name'
-          property :type, as: 'type'
-          hash :metadata, as: 'metadata'
-          property :salience, as: 'salience'
-        end
-      end
-      
       class AnalyzeSyntaxResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -261,76 +311,26 @@ module Google
         end
       end
       
+      class Entity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          hash :metadata, as: 'metadata'
+          property :salience, as: 'salience'
+          collection :mentions, as: 'mentions', class: Google::Apis::LanguageV1::EntityMention, decorator: Google::Apis::LanguageV1::EntityMention::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class AnnotateTextRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding_type, as: 'encodingType'
+          property :document, as: 'document', class: Google::Apis::LanguageV1::Document, decorator: Google::Apis::LanguageV1::Document::Representation
+      
           property :features, as: 'features', class: Google::Apis::LanguageV1::Features, decorator: Google::Apis::LanguageV1::Features::Representation
       
-          property :encoding_type, as: 'encodingType'
-          property :document, as: 'document', class: Google::Apis::LanguageV1::Document, decorator: Google::Apis::LanguageV1::Document::Representation
-      
-        end
-      end
-      
-      class AnnotateTextResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :tokens, as: 'tokens', class: Google::Apis::LanguageV1::Token, decorator: Google::Apis::LanguageV1::Token::Representation
-      
-          collection :entities, as: 'entities', class: Google::Apis::LanguageV1::Entity, decorator: Google::Apis::LanguageV1::Entity::Representation
-      
-          property :document_sentiment, as: 'documentSentiment', class: Google::Apis::LanguageV1::Sentiment, decorator: Google::Apis::LanguageV1::Sentiment::Representation
-      
-          property :language, as: 'language'
-          collection :sentences, as: 'sentences', class: Google::Apis::LanguageV1::Sentence, decorator: Google::Apis::LanguageV1::Sentence::Representation
-      
-        end
-      end
-      
-      class AnalyzeSentimentRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :encoding_type, as: 'encodingType'
-          property :document, as: 'document', class: Google::Apis::LanguageV1::Document, decorator: Google::Apis::LanguageV1::Document::Representation
-      
-        end
-      end
-      
-      class DependencyEdge
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :head_token_index, as: 'headTokenIndex'
-          property :label, as: 'label'
-        end
-      end
-      
-      class Token
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :text, as: 'text', class: Google::Apis::LanguageV1::TextSpan, decorator: Google::Apis::LanguageV1::TextSpan::Representation
-      
-          property :dependency_edge, as: 'dependencyEdge', class: Google::Apis::LanguageV1::DependencyEdge, decorator: Google::Apis::LanguageV1::DependencyEdge::Representation
-      
-          property :lemma, as: 'lemma'
-          property :part_of_speech, as: 'partOfSpeech', class: Google::Apis::LanguageV1::PartOfSpeech, decorator: Google::Apis::LanguageV1::PartOfSpeech::Representation
-      
-        end
-      end
-      
-      class TextSpan
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content, as: 'content'
-          property :begin_offset, as: 'beginOffset'
-        end
-      end
-      
-      class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          property :message, as: 'message'
-          collection :details, as: 'details'
         end
       end
     end

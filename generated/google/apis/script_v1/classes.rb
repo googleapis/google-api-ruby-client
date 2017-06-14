@@ -26,15 +26,15 @@ module Google
       class ScriptStackTraceElement
         include Google::Apis::Core::Hashable
       
-        # The name of the function that failed.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
         # The line number where the script failed.
         # Corresponds to the JSON property `lineNumber`
         # @return [Fixnum]
         attr_accessor :line_number
+      
+        # The name of the function that failed.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
       
         def initialize(**args)
            update!(**args)
@@ -42,8 +42,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @function = args[:function] if args.key?(:function)
           @line_number = args[:line_number] if args.key?(:line_number)
+          @function = args[:function] if args.key?(:function)
         end
       end
       
@@ -57,6 +57,12 @@ module Google
       class ExecutionError
         include Google::Apis::Core::Hashable
       
+        # An array of objects that provide a stack trace through the script to show
+        # where the execution failed, with the deepest call first.
+        # Corresponds to the JSON property `scriptStackTraceElements`
+        # @return [Array<Google::Apis::ScriptV1::ScriptStackTraceElement>]
+        attr_accessor :script_stack_trace_elements
+      
         # The error type, for example `TypeError` or `ReferenceError`. If the error
         # type is unavailable, this field is not included.
         # Corresponds to the JSON property `errorType`
@@ -69,21 +75,15 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # An array of objects that provide a stack trace through the script to show
-        # where the execution failed, with the deepest call first.
-        # Corresponds to the JSON property `scriptStackTraceElements`
-        # @return [Array<Google::Apis::ScriptV1::ScriptStackTraceElement>]
-        attr_accessor :script_stack_trace_elements
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
           @error_type = args[:error_type] if args.key?(:error_type)
           @error_message = args[:error_message] if args.key?(:error_message)
-          @script_stack_trace_elements = args[:script_stack_trace_elements] if args.key?(:script_stack_trace_elements)
         end
       end
       
@@ -185,12 +185,6 @@ module Google
       class JoinAsyncRequest
         include Google::Apis::Core::Hashable
       
-        # The script id which specifies the script which all processes in the names
-        # field must be from.
-        # Corresponds to the JSON property `scriptId`
-        # @return [String]
-        attr_accessor :script_id
-      
         # List of operation resource names that we want to join,
         # as returned from a call to RunAsync.
         # Corresponds to the JSON property `names`
@@ -202,15 +196,21 @@ module Google
         # @return [String]
         attr_accessor :timeout
       
+        # The script id which specifies the script which all processes in the names
+        # field must be from.
+        # Corresponds to the JSON property `scriptId`
+        # @return [String]
+        attr_accessor :script_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @script_id = args[:script_id] if args.key?(:script_id)
           @names = args[:names] if args.key?(:names)
           @timeout = args[:timeout] if args.key?(:timeout)
+          @script_id = args[:script_id] if args.key?(:script_id)
         end
       end
       
@@ -259,12 +259,6 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # This field is not used.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
         # If the script function returns successfully, this field will contain an `
         # ExecutionResponse` object with the function's return value as the object's `
         # result` field.
@@ -289,17 +283,23 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
+        # This field is not used.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
         end
       end
       

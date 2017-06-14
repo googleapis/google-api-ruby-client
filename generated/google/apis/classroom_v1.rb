@@ -25,7 +25,10 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20170601'
+      REVISION = '20170612'
+
+      # View the email addresses of people in your classes
+      AUTH_CLASSROOM_PROFILE_EMAILS = 'https://www.googleapis.com/auth/classroom.profile.emails'
 
       # Manage your course work and view your grades in Google Classroom
       AUTH_CLASSROOM_COURSEWORK_ME = 'https://www.googleapis.com/auth/classroom.coursework.me'
@@ -57,20 +60,17 @@ module Google
       # View your course work and grades in Google Classroom
       AUTH_CLASSROOM_STUDENT_SUBMISSIONS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.student-submissions.me.readonly'
 
-      # View your Google Classroom guardians
-      AUTH_CLASSROOM_GUARDIANLINKS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
-
       # Manage course work and grades for students in the Google Classroom classes you teach and view the course work and grades for classes you administer
       AUTH_CLASSROOM_COURSEWORK_STUDENTS = 'https://www.googleapis.com/auth/classroom.coursework.students'
+
+      # View your Google Classroom guardians
+      AUTH_CLASSROOM_GUARDIANLINKS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
 
       # View course work and grades for students in the Google Classroom classes you teach or administer
       AUTH_CLASSROOM_COURSEWORK_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.coursework.students.readonly'
 
       # View your course work and grades in Google Classroom
       AUTH_CLASSROOM_COURSEWORK_ME_READONLY = 'https://www.googleapis.com/auth/classroom.coursework.me.readonly'
-
-      # View the email addresses of people in your classes
-      AUTH_CLASSROOM_PROFILE_EMAILS = 'https://www.googleapis.com/auth/classroom.profile.emails'
     end
   end
 end

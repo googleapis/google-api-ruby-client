@@ -22,7 +22,7 @@ module Google
   module Apis
     module PagespeedonlineV2
       
-      class PagespeedApiFormatStringV2
+      class FormatString
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Arg
@@ -46,7 +46,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PagespeedApiImageV2
+      class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class PageRect
@@ -106,10 +106,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PagespeedApiFormatStringV2
+      class FormatString
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :args, as: 'args', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::Representation
+          collection :args, as: 'args', class: Google::Apis::PagespeedonlineV2::FormatString::Arg, decorator: Google::Apis::PagespeedonlineV2::FormatString::Arg::Representation
       
           property :format, as: 'format'
         end
@@ -118,9 +118,9 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :key, as: 'key'
-            collection :rects, as: 'rects', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::Rect, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::Rect::Representation
+            collection :rects, as: 'rects', class: Google::Apis::PagespeedonlineV2::FormatString::Arg::Rect, decorator: Google::Apis::PagespeedonlineV2::FormatString::Arg::Rect::Representation
         
-            collection :secondary_rects, as: 'secondary_rects', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::SecondaryRect, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Arg::SecondaryRect::Representation
+            collection :secondary_rects, as: 'secondary_rects', class: Google::Apis::PagespeedonlineV2::FormatString::Arg::SecondaryRect, decorator: Google::Apis::PagespeedonlineV2::FormatString::Arg::SecondaryRect::Representation
         
             property :type, as: 'type'
             property :value, as: 'value'
@@ -148,14 +148,14 @@ module Google
         end
       end
       
-      class PagespeedApiImageV2
+      class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
           property :height, as: 'height'
           property :key, as: 'key'
           property :mime_type, as: 'mime_type'
-          property :page_rect, as: 'page_rect', class: Google::Apis::PagespeedonlineV2::PagespeedApiImageV2::PageRect, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiImageV2::PageRect::Representation
+          property :page_rect, as: 'page_rect', class: Google::Apis::PagespeedonlineV2::Image::PageRect, decorator: Google::Apis::PagespeedonlineV2::Image::PageRect::Representation
       
           property :width, as: 'width'
         end
@@ -184,7 +184,7 @@ module Google
           property :response_code, as: 'responseCode'
           hash :rule_groups, as: 'ruleGroups', class: Google::Apis::PagespeedonlineV2::Result::RuleGroup, decorator: Google::Apis::PagespeedonlineV2::Result::RuleGroup::Representation
       
-          property :screenshot, as: 'screenshot', class: Google::Apis::PagespeedonlineV2::PagespeedApiImageV2, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiImageV2::Representation
+          property :screenshot, as: 'screenshot', class: Google::Apis::PagespeedonlineV2::Image, decorator: Google::Apis::PagespeedonlineV2::Image::Representation
       
           property :title, as: 'title'
           property :version, as: 'version', class: Google::Apis::PagespeedonlineV2::Result::Version, decorator: Google::Apis::PagespeedonlineV2::Result::Version::Representation
@@ -205,7 +205,7 @@ module Google
               collection :groups, as: 'groups'
               property :localized_rule_name, as: 'localizedRuleName'
               property :rule_impact, as: 'ruleImpact'
-              property :summary, as: 'summary', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Representation
+              property :summary, as: 'summary', class: Google::Apis::PagespeedonlineV2::FormatString, decorator: Google::Apis::PagespeedonlineV2::FormatString::Representation
           
               collection :url_blocks, as: 'urlBlocks', class: Google::Apis::PagespeedonlineV2::Result::FormattedResults::RuleResult::UrlBlock, decorator: Google::Apis::PagespeedonlineV2::Result::FormattedResults::RuleResult::UrlBlock::Representation
           
@@ -214,7 +214,7 @@ module Google
             class UrlBlock
               # @private
               class Representation < Google::Apis::Core::JsonRepresentation
-                property :header, as: 'header', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Representation
+                property :header, as: 'header', class: Google::Apis::PagespeedonlineV2::FormatString, decorator: Google::Apis::PagespeedonlineV2::FormatString::Representation
             
                 collection :urls, as: 'urls', class: Google::Apis::PagespeedonlineV2::Result::FormattedResults::RuleResult::UrlBlock::Url, decorator: Google::Apis::PagespeedonlineV2::Result::FormattedResults::RuleResult::UrlBlock::Url::Representation
             
@@ -223,9 +223,9 @@ module Google
               class Url
                 # @private
                 class Representation < Google::Apis::Core::JsonRepresentation
-                  collection :details, as: 'details', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Representation
+                  collection :details, as: 'details', class: Google::Apis::PagespeedonlineV2::FormatString, decorator: Google::Apis::PagespeedonlineV2::FormatString::Representation
               
-                  property :result, as: 'result', class: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2, decorator: Google::Apis::PagespeedonlineV2::PagespeedApiFormatStringV2::Representation
+                  property :result, as: 'result', class: Google::Apis::PagespeedonlineV2::FormatString, decorator: Google::Apis::PagespeedonlineV2::FormatString::Representation
               
                 end
               end

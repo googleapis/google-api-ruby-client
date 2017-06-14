@@ -154,13 +154,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TripsSearchRequest
+      class SearchTripsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TripsSearchResponse
+      class SearchTripsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -452,7 +452,7 @@ module Google
         end
       end
       
-      class TripsSearchRequest
+      class SearchTripsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request, as: 'request', class: Google::Apis::QpxExpressV1::TripOptionsRequest, decorator: Google::Apis::QpxExpressV1::TripOptionsRequest::Representation
@@ -460,7 +460,7 @@ module Google
         end
       end
       
-      class TripsSearchResponse
+      class SearchTripsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'

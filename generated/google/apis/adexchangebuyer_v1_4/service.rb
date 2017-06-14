@@ -897,7 +897,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def updateproposal_marketplaceprivateauction(private_auction_id, update_private_auction_proposal_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_marketplace_private_auction_proposal(private_auction_id, update_private_auction_proposal_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'privateauction/{privateAuctionId}/updateproposal', options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_4::UpdatePrivateAuctionProposalRequest::Representation
           command.request_object = update_private_auction_proposal_request_object
@@ -1434,7 +1434,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def setupcomplete_proposal(proposal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def proposal_setup_complete(proposal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'proposals/{proposalId}/setupcomplete', options)
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1515,7 +1515,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_pubprofiles(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_pub_profiles(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'publisher/{accountId}/profiles', options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_4::GetPublisherProfilesByAccountIdResponse

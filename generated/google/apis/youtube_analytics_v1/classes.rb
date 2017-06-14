@@ -185,7 +185,7 @@ module Google
       
       # A paginated list of grouList resources returned in response to a
       # youtubeAnalytics.groupApi.list request.
-      class GroupItemListResponse
+      class ListGroupItemResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -217,7 +217,7 @@ module Google
       
       # A paginated list of grouList resources returned in response to a
       # youtubeAnalytics.groupApi.list request.
-      class GroupListResponse
+      class ListGroupsResponse
         include Google::Apis::Core::Hashable
       
         # 

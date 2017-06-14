@@ -100,7 +100,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DevicesListResponse
+      class ListDevicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,13 +118,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EnterprisesListResponse
+      class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EnterprisesSendTestPushNotificationResponse
+      class SendTestPushNotificationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,7 +136,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,13 +148,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroupLicenseUsersListResponse
+      class ListGroupLicenseUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroupLicensesListResponse
+      class ListGroupLicensesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,7 +172,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstallsListResponse
+      class ListInstallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,13 +286,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ProductsApproveRequest
+      class ApproveProductRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ProductsGenerateApprovalUrlResponse
+      class GenerateProductApprovalUrlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,7 +376,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UsersListResponse
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -497,7 +497,7 @@ module Google
         end
       end
       
-      class DevicesListResponse
+      class ListDevicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device, as: 'device', class: Google::Apis::AndroidenterpriseV1::Device, decorator: Google::Apis::AndroidenterpriseV1::Device::Representation
@@ -526,7 +526,7 @@ module Google
         end
       end
       
-      class EnterprisesListResponse
+      class ListEnterprisesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enterprise, as: 'enterprise', class: Google::Apis::AndroidenterpriseV1::Enterprise, decorator: Google::Apis::AndroidenterpriseV1::Enterprise::Representation
@@ -535,7 +535,7 @@ module Google
         end
       end
       
-      class EnterprisesSendTestPushNotificationResponse
+      class SendTestPushNotificationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message_id, as: 'messageId'
@@ -552,7 +552,7 @@ module Google
         end
       end
       
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::Entitlement::Representation
@@ -574,7 +574,7 @@ module Google
         end
       end
       
-      class GroupLicenseUsersListResponse
+      class ListGroupLicenseUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
@@ -583,7 +583,7 @@ module Google
         end
       end
       
-      class GroupLicensesListResponse
+      class ListGroupLicensesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :group_license, as: 'groupLicense', class: Google::Apis::AndroidenterpriseV1::GroupLicense, decorator: Google::Apis::AndroidenterpriseV1::GroupLicense::Representation
@@ -613,7 +613,7 @@ module Google
         end
       end
       
-      class InstallsListResponse
+      class ListInstallsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :install, as: 'install', class: Google::Apis::AndroidenterpriseV1::Install, decorator: Google::Apis::AndroidenterpriseV1::Install::Representation
@@ -813,7 +813,7 @@ module Google
         end
       end
       
-      class ProductsApproveRequest
+      class ApproveProductRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approval_url_info, as: 'approvalUrlInfo', class: Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo, decorator: Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo::Representation
@@ -822,7 +822,7 @@ module Google
         end
       end
       
-      class ProductsGenerateApprovalUrlResponse
+      class GenerateProductApprovalUrlResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
@@ -960,7 +960,7 @@ module Google
         end
       end
       
-      class UsersListResponse
+      class ListUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'

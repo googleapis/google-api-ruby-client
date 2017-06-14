@@ -181,18 +181,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationListResponse]
+        # @return [Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_achievement_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'applications/{applicationId}/achievements', options)
-          command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationListResponse::Representation
-          command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationListResponse
+          command.response_representation = Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse::Representation
+          command.response_class = Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse
           command.params['applicationId'] = application_id unless application_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -455,18 +455,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationListResponse]
+        # @return [Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_leaderboard_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'applications/{applicationId}/leaderboards', options)
-          command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationListResponse::Representation
-          command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationListResponse
+          command.response_representation = Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse::Representation
+          command.response_class = Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse
           command.params['applicationId'] = application_id unless application_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

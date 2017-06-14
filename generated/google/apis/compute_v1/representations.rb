@@ -22,6 +22,48 @@ module Google
   module Apis
     module ComputeV1
       
+      class AcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,7 +304,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DiskMoveRequest
+      class MoveDiskRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,7 +682,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstanceMoveRequest
+      class MoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -695,6 +737,12 @@ module Google
       end
       
       class InstancesSetLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesSetMachineResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -821,6 +869,24 @@ module Google
       end
       
       class NetworkList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPeering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksAddPeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksRemovePeeringRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1324,25 +1390,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TargetPoolsAddHealthCheckRequest
+      class AddTargetPoolsHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TargetPoolsAddInstanceRequest
+      class AddTargetPoolsInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TargetPoolsRemoveHealthCheckRequest
+      class RemoveTargetPoolsHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TargetPoolsRemoveInstanceRequest
+      class RemoveTargetPoolsInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1498,13 +1564,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UrlMapsValidateRequest
+      class ValidateUrlMapsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UrlMapsValidateResponse
+      class ValidateUrlMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1582,6 +1648,82 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
+      class AcceleratorType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :maximum_cards_per_instance, as: 'maximumCardsPerInstance'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class AcceleratorTypeAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::AcceleratorTypesScopedList, decorator: Google::Apis::ComputeV1::AcceleratorTypesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AcceleratorTypeList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::AcceleratorType, decorator: Google::Apis::ComputeV1::AcceleratorType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AcceleratorTypesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_types, as: 'acceleratorTypes', class: Google::Apis::ComputeV1::AcceleratorType, decorator: Google::Apis::ComputeV1::AcceleratorType::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::AcceleratorTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::AcceleratorTypesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::AcceleratorTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::AcceleratorTypesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class AccessConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1599,6 +1741,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -2061,7 +2204,7 @@ module Google
         end
       end
       
-      class DiskMoveRequest
+      class MoveDiskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
@@ -2220,6 +2363,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
@@ -2508,6 +2652,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -2807,7 +2953,7 @@ module Google
         end
       end
       
-      class InstanceMoveRequest
+      class MoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
@@ -2821,6 +2967,8 @@ module Google
           property :can_ip_forward, as: 'canIpForward'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
@@ -2913,6 +3061,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+        end
+      end
+      
+      class InstancesSetMachineResourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
+      
         end
       end
       
@@ -3105,6 +3261,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :peerings, as: 'peerings', class: Google::Apis::ComputeV1::NetworkPeering, decorator: Google::Apis::ComputeV1::NetworkPeering::Representation
+      
           property :self_link, as: 'selfLink'
           collection :subnetworks, as: 'subnetworks'
         end
@@ -3132,6 +3290,33 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class NetworkPeering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create_routes, as: 'autoCreateRoutes'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class NetworksAddPeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create_routes, as: 'autoCreateRoutes'
+          property :name, as: 'name'
+          property :peer_network, as: 'peerNetwork'
+        end
+      end
+      
+      class NetworksRemovePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -3495,6 +3680,7 @@ module Google
           property :next_hop_instance, as: 'nextHopInstance'
           property :next_hop_ip, as: 'nextHopIp'
           property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
@@ -4061,7 +4247,7 @@ module Google
         end
       end
       
-      class TargetPoolsAddHealthCheckRequest
+      class AddTargetPoolsHealthCheckRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
@@ -4069,7 +4255,7 @@ module Google
         end
       end
       
-      class TargetPoolsAddInstanceRequest
+      class AddTargetPoolsInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
@@ -4077,7 +4263,7 @@ module Google
         end
       end
       
-      class TargetPoolsRemoveHealthCheckRequest
+      class RemoveTargetPoolsHealthCheckRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
@@ -4085,7 +4271,7 @@ module Google
         end
       end
       
-      class TargetPoolsRemoveInstanceRequest
+      class RemoveTargetPoolsInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
@@ -4355,7 +4541,7 @@ module Google
         end
       end
       
-      class UrlMapsValidateRequest
+      class ValidateUrlMapsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
@@ -4363,7 +4549,7 @@ module Google
         end
       end
       
-      class UrlMapsValidateResponse
+      class ValidateUrlMapsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeV1::UrlMapValidationResult, decorator: Google::Apis::ComputeV1::UrlMapValidationResult::Representation

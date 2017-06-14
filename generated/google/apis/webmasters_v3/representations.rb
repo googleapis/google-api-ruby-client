@@ -52,13 +52,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SitemapsListResponse
+      class ListSitemapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SitesListResponse
+      class ListSitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,7 +76,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UrlCrawlErrorsCountsQueryResponse
+      class QueryUrlCrawlErrorsCountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,7 +88,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UrlCrawlErrorsSamplesListResponse
+      class ListUrlCrawlErrorsSamplesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -171,7 +171,7 @@ module Google
         end
       end
       
-      class SitemapsListResponse
+      class ListSitemapsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sitemap, as: 'sitemap', class: Google::Apis::WebmastersV3::WmxSitemap, decorator: Google::Apis::WebmastersV3::WmxSitemap::Representation
@@ -179,7 +179,7 @@ module Google
         end
       end
       
-      class SitesListResponse
+      class ListSitesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :site_entry, as: 'siteEntry', class: Google::Apis::WebmastersV3::WmxSite, decorator: Google::Apis::WebmastersV3::WmxSite::Representation
@@ -206,7 +206,7 @@ module Google
         end
       end
       
-      class UrlCrawlErrorsCountsQueryResponse
+      class QueryUrlCrawlErrorsCountsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :count_per_types, as: 'countPerTypes', class: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType::Representation
@@ -228,7 +228,7 @@ module Google
         end
       end
       
-      class UrlCrawlErrorsSamplesListResponse
+      class ListUrlCrawlErrorsSamplesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :url_crawl_error_sample, as: 'urlCrawlErrorSample', class: Google::Apis::WebmastersV3::UrlCrawlErrorsSample, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorsSample::Representation

@@ -122,7 +122,7 @@ module Google
         end
         
         # Get a verification token for placing on a website or domain.
-        # @param [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenRequest] site_verification_web_resource_gettoken_request_object
+        # @param [Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest] get_web_resource_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -136,20 +136,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenResponse] parsed result object
+        # @yieldparam result [Google::Apis::SiteVerificationV1::GetWebResourceTokenResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenResponse]
+        # @return [Google::Apis::SiteVerificationV1::GetWebResourceTokenResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_web_resource_token(site_verification_web_resource_gettoken_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_web_resource_token(get_web_resource_token_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'token', options)
-          command.request_representation = Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenRequest::Representation
-          command.request_object = site_verification_web_resource_gettoken_request_object
-          command.response_representation = Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenResponse::Representation
-          command.response_class = Google::Apis::SiteVerificationV1::SiteVerificationWebResourceGettokenResponse
+          command.request_representation = Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Representation
+          command.request_object = get_web_resource_token_request_object
+          command.response_representation = Google::Apis::SiteVerificationV1::GetWebResourceTokenResponse::Representation
+          command.response_class = Google::Apis::SiteVerificationV1::GetWebResourceTokenResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -208,18 +208,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceListResponse] parsed result object
+        # @yieldparam result [Google::Apis::SiteVerificationV1::ListWebResourceResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceListResponse]
+        # @return [Google::Apis::SiteVerificationV1::ListWebResourceResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_web_resources(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'webResource', options)
-          command.response_representation = Google::Apis::SiteVerificationV1::SiteVerificationWebResourceListResponse::Representation
-          command.response_class = Google::Apis::SiteVerificationV1::SiteVerificationWebResourceListResponse
+          command.response_representation = Google::Apis::SiteVerificationV1::ListWebResourceResponse::Representation
+          command.response_class = Google::Apis::SiteVerificationV1::ListWebResourceResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

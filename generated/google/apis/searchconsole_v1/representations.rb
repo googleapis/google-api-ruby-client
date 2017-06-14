@@ -22,18 +22,6 @@ module Google
   module Apis
     module SearchconsoleV1
       
-      class RunMobileFriendlyTestRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Image
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MobileFriendlyIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,20 +52,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RunMobileFriendlyTestRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :url, as: 'url'
-          property :request_screenshot, as: 'requestScreenshot'
-        end
+      class Image
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Image
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :mime_type, as: 'mimeType'
-          property :data, :base64 => true, as: 'data'
-        end
+      class RunMobileFriendlyTestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class MobileFriendlyIssue
@@ -122,6 +106,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :status, as: 'status'
           property :details, as: 'details'
+        end
+      end
+      
+      class Image
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
+          property :data, :base64 => true, as: 'data'
+        end
+      end
+      
+      class RunMobileFriendlyTestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+          property :request_screenshot, as: 'requestScreenshot'
         end
       end
     end

@@ -160,7 +160,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :cr, as: 'cr'
-          property :cref, as: 'cref'
           property :cx, as: 'cx'
           property :date_restrict, as: 'dateRestrict'
           property :disable_cn_tw_translation, as: 'disableCnTwTranslation'

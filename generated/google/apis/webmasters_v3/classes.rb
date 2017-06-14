@@ -232,7 +232,7 @@ module Google
       end
       
       # List of sitemaps.
-      class SitemapsListResponse
+      class ListSitemapsResponse
         include Google::Apis::Core::Hashable
       
         # Contains detailed information about a specific URL submitted as a sitemap.
@@ -251,7 +251,7 @@ module Google
       end
       
       # List of sites with access level information.
-      class SitesListResponse
+      class ListSitesResponse
         include Google::Apis::Core::Hashable
       
         # Contains permission level information about a Search Console site. For more
@@ -330,7 +330,7 @@ module Google
       
       # A time series of the number of URL crawl errors per error category and
       # platform.
-      class UrlCrawlErrorsCountsQueryResponse
+      class QueryUrlCrawlErrorsCountsResponse
         include Google::Apis::Core::Hashable
       
         # The time series of the number of URL crawl errors per error category and
@@ -393,7 +393,7 @@ module Google
       end
       
       # List of crawl error samples.
-      class UrlCrawlErrorsSamplesListResponse
+      class ListUrlCrawlErrorsSamplesResponse
         include Google::Apis::Core::Hashable
       
         # Information about the sample URL and its crawl error.

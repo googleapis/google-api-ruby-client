@@ -34,15 +34,15 @@ module Google
       # @see https://code.google.com/apis/language/translate/v2/getting_started.html
       class TranslateService < Google::Apis::Core::BaseService
         # @return [String]
+        #  API key. Your API key identifies your project and provides you with API access,
+        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
+        attr_accessor :key
+
+        # @return [String]
         #  Available to use for quota purposes for server-side applications. Can be any
         #  arbitrary string assigned to a user, but should not exceed 40 characters.
         #  Overrides userIp if both are provided.
         attr_accessor :quota_user
-
-        # @return [String]
-        #  API key. Your API key identifies your project and provides you with API access,
-        #  quota, and reports. Required unless you provide an OAuth 2.0 token.
-        attr_accessor :key
 
         def initialize
           super('https://translation.googleapis.com/', 'language/translate/')
@@ -63,18 +63,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::DetectionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListDetectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::DetectionsListResponse]
+        # @return [Google::Apis::TranslateV2::ListDetectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_detections(q, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/detect', options)
-          command.response_representation = Google::Apis::TranslateV2::DetectionsListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::DetectionsListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListDetectionsResponse
           command.query['q'] = q unless q.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -93,10 +93,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::DetectionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListDetectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::DetectionsListResponse]
+        # @return [Google::Apis::TranslateV2::ListDetectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -105,19 +105,19 @@ module Google
           command =  make_simple_command(:post, 'v2/detect', options)
           command.request_representation = Google::Apis::TranslateV2::DetectLanguageRequest::Representation
           command.request_object = detect_language_request_object
-          command.response_representation = Google::Apis::TranslateV2::DetectionsListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::DetectionsListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListDetectionsResponse
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Returns a list of supported languages for translation.
+        # @param [String] model
+        #   The model type for which supported languages should be returned.
         # @param [String] target
         #   The language to use to return localized, human readable names of supported
         #   languages.
-        # @param [String] model
-        #   The model type for which supported languages should be returned.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -128,73 +128,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::LanguagesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListLanguagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::LanguagesListResponse]
+        # @return [Google::Apis::TranslateV2::ListLanguagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_languages(target: nil, model: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_languages(model: nil, target: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2/languages', options)
-          command.response_representation = Google::Apis::TranslateV2::LanguagesListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::LanguagesListResponse
-          command.query['target'] = target unless target.nil?
+          command.response_representation = Google::Apis::TranslateV2::ListLanguagesResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListLanguagesResponse
           command.query['model'] = model unless model.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Translates input text, returning translated text.
-        # @param [Array<String>, String] q
-        #   The input text to translate. Repeat this parameter to perform translation
-        #   operations on multiple text inputs.
-        # @param [String] target
-        #   The language to use for translation of the input text, set to one of the
-        #   language codes listed in Language Support.
-        # @param [Array<String>, String] cid
-        #   The customization id for translate
-        # @param [String] format
-        #   The format of the source text, in either HTML (default) or plain-text. A
-        #   value of "html" indicates HTML and a value of "text" indicates plain-text.
-        # @param [String] model
-        #   The `model` type requested for this translation. Valid values are
-        #   listed in public documentation.
-        # @param [String] source
-        #   The language of the source text, set to one of the language codes listed in
-        #   Language Support. If the source language is not specified, the API will
-        #   attempt to identify the source language automatically and return it within
-        #   the response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::TranslationsListResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::TranslateV2::TranslationsListResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_translations(q, target, cid: nil, format: nil, model: nil, source: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2', options)
-          command.response_representation = Google::Apis::TranslateV2::TranslationsListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::TranslationsListResponse
-          command.query['cid'] = cid unless cid.nil?
           command.query['target'] = target unless target.nil?
-          command.query['format'] = format unless format.nil?
-          command.query['model'] = model unless model.nil?
-          command.query['q'] = q unless q.nil?
-          command.query['source'] = source unless source.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -212,10 +159,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::TranslationsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListTranslationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::TranslationsListResponse]
+        # @return [Google::Apis::TranslateV2::ListTranslationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -224,8 +171,61 @@ module Google
           command =  make_simple_command(:post, 'v2', options)
           command.request_representation = Google::Apis::TranslateV2::TranslateTextRequest::Representation
           command.request_object = translate_text_request_object
-          command.response_representation = Google::Apis::TranslateV2::TranslationsListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::TranslationsListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListTranslationsResponse
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Translates input text, returning translated text.
+        # @param [Array<String>, String] q
+        #   The input text to translate. Repeat this parameter to perform translation
+        #   operations on multiple text inputs.
+        # @param [String] target
+        #   The language to use for translation of the input text, set to one of the
+        #   language codes listed in Language Support.
+        # @param [String] source
+        #   The language of the source text, set to one of the language codes listed in
+        #   Language Support. If the source language is not specified, the API will
+        #   attempt to identify the source language automatically and return it within
+        #   the response.
+        # @param [Array<String>, String] cid
+        #   The customization id for translate
+        # @param [String] format
+        #   The format of the source text, in either HTML (default) or plain-text. A
+        #   value of "html" indicates HTML and a value of "text" indicates plain-text.
+        # @param [String] model
+        #   The `model` type requested for this translation. Valid values are
+        #   listed in public documentation.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV2::ListTranslationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV2::ListTranslationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_translations(q, target, source: nil, cid: nil, format: nil, model: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2', options)
+          command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListTranslationsResponse
+          command.query['q'] = q unless q.nil?
+          command.query['source'] = source unless source.nil?
+          command.query['cid'] = cid unless cid.nil?
+          command.query['target'] = target unless target.nil?
+          command.query['format'] = format unless format.nil?
+          command.query['model'] = model unless model.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -234,8 +234,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

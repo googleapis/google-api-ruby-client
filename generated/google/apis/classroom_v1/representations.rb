@@ -22,192 +22,6 @@ module Google
   module Apis
     module ClassroomV1
       
-      class Teacher
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReclaimStudentSubmissionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AssignmentSubmission
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Material
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CourseWork
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Guardian
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UserProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListStudentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Student
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Invitation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DriveFolder
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ShortAnswerSubmission
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StudentSubmission
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TurnInStudentSubmissionRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListStudentSubmissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCourseWorkResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ModifyAttachmentsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class YouTubeVideo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListInvitationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Attachment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GuardianInvitation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CourseMaterialSet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TimeOfDay
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCoursesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Form
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListTeachersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Link
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGuardiansResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CourseAlias
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListCourseAliasesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGuardianInvitationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,13 +34,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Name
+      class CourseMaterial
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CourseMaterial
+      class Name
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -281,331 +95,189 @@ module Google
       end
       
       class Teacher
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :user_id, as: 'userId'
-          property :course_id, as: 'courseId'
-          property :profile, as: 'profile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ReclaimStudentSubmissionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AssignmentSubmission
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :attachments, as: 'attachments', class: Google::Apis::ClassroomV1::Attachment, decorator: Google::Apis::ClassroomV1::Attachment::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Material
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :youtube_video, as: 'youtubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
-      
-          property :drive_file, as: 'driveFile', class: Google::Apis::ClassroomV1::SharedDriveFile, decorator: Google::Apis::ClassroomV1::SharedDriveFile::Representation
-      
-          property :form, as: 'form', class: Google::Apis::ClassroomV1::Form, decorator: Google::Apis::ClassroomV1::Form::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CourseWork
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :assignment, as: 'assignment', class: Google::Apis::ClassroomV1::Assignment, decorator: Google::Apis::ClassroomV1::Assignment::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :work_type, as: 'workType'
-          property :multiple_choice_question, as: 'multipleChoiceQuestion', class: Google::Apis::ClassroomV1::MultipleChoiceQuestion, decorator: Google::Apis::ClassroomV1::MultipleChoiceQuestion::Representation
-      
-          property :description, as: 'description'
-          property :creation_time, as: 'creationTime'
-          property :due_date, as: 'dueDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
-      
-          property :state, as: 'state'
-          property :submission_modification_mode, as: 'submissionModificationMode'
-          property :course_id, as: 'courseId'
-          property :id, as: 'id'
-          property :due_time, as: 'dueTime', class: Google::Apis::ClassroomV1::TimeOfDay, decorator: Google::Apis::ClassroomV1::TimeOfDay::Representation
-      
-          property :title, as: 'title'
-          property :associated_with_developer, as: 'associatedWithDeveloper'
-          collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::Material, decorator: Google::Apis::ClassroomV1::Material::Representation
-      
-          property :update_time, as: 'updateTime'
-          property :alternate_link, as: 'alternateLink'
-          property :max_points, as: 'maxPoints'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Guardian
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :student_id, as: 'studentId'
-          property :guardian_id, as: 'guardianId'
-          property :invited_email_address, as: 'invitedEmailAddress'
-          property :guardian_profile, as: 'guardianProfile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class UserProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :email_address, as: 'emailAddress'
-          property :photo_url, as: 'photoUrl'
-          collection :permissions, as: 'permissions', class: Google::Apis::ClassroomV1::GlobalPermission, decorator: Google::Apis::ClassroomV1::GlobalPermission::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :name, as: 'name', class: Google::Apis::ClassroomV1::Name, decorator: Google::Apis::ClassroomV1::Name::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListStudentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :students, as: 'students', class: Google::Apis::ClassroomV1::Student, decorator: Google::Apis::ClassroomV1::Student::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :next_page_token, as: 'nextPageToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Student
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :profile, as: 'profile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :student_work_folder, as: 'studentWorkFolder', class: Google::Apis::ClassroomV1::DriveFolder, decorator: Google::Apis::ClassroomV1::DriveFolder::Representation
-      
-          property :user_id, as: 'userId'
-          property :course_id, as: 'courseId'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Invitation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :role, as: 'role'
-          property :user_id, as: 'userId'
-          property :course_id, as: 'courseId'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DriveFolder
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :title, as: 'title'
-          property :alternate_link, as: 'alternateLink'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ShortAnswerSubmission
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :answer, as: 'answer'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class StudentSubmission
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :multiple_choice_submission, as: 'multipleChoiceSubmission', class: Google::Apis::ClassroomV1::MultipleChoiceSubmission, decorator: Google::Apis::ClassroomV1::MultipleChoiceSubmission::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :assignment_submission, as: 'assignmentSubmission', class: Google::Apis::ClassroomV1::AssignmentSubmission, decorator: Google::Apis::ClassroomV1::AssignmentSubmission::Representation
-      
-          property :associated_with_developer, as: 'associatedWithDeveloper'
-          property :short_answer_submission, as: 'shortAnswerSubmission', class: Google::Apis::ClassroomV1::ShortAnswerSubmission, decorator: Google::Apis::ClassroomV1::ShortAnswerSubmission::Representation
-      
-          property :update_time, as: 'updateTime'
-          property :alternate_link, as: 'alternateLink'
-          property :draft_grade, as: 'draftGrade'
-          property :late, as: 'late'
-          property :course_work_type, as: 'courseWorkType'
-          property :creation_time, as: 'creationTime'
-          property :state, as: 'state'
-          property :user_id, as: 'userId'
-          property :course_work_id, as: 'courseWorkId'
-          property :course_id, as: 'courseId'
-          property :id, as: 'id'
-          property :assigned_grade, as: 'assignedGrade'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TurnInStudentSubmissionRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListStudentSubmissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :student_submissions, as: 'studentSubmissions', class: Google::Apis::ClassroomV1::StudentSubmission, decorator: Google::Apis::ClassroomV1::StudentSubmission::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
-      end
-      
-      class ListCourseWorkResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :course_work, as: 'courseWork', class: Google::Apis::ClassroomV1::CourseWork, decorator: Google::Apis::ClassroomV1::CourseWork::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ModifyAttachmentsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :add_attachments, as: 'addAttachments', class: Google::Apis::ClassroomV1::Attachment, decorator: Google::Apis::ClassroomV1::Attachment::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCourseWorkResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class YouTubeVideo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :title, as: 'title'
-          property :alternate_link, as: 'alternateLink'
-          property :thumbnail_url, as: 'thumbnailUrl'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListInvitationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :invitations, as: 'invitations', class: Google::Apis::ClassroomV1::Invitation, decorator: Google::Apis::ClassroomV1::Invitation::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Attachment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :drive_file, as: 'driveFile', class: Google::Apis::ClassroomV1::DriveFile, decorator: Google::Apis::ClassroomV1::DriveFile::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :you_tube_video, as: 'youTubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
-      
-          property :form, as: 'form', class: Google::Apis::ClassroomV1::Form, decorator: Google::Apis::ClassroomV1::Form::Representation
-      
-          property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GuardianInvitation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
-          property :invitation_id, as: 'invitationId'
-          property :student_id, as: 'studentId'
-          property :state, as: 'state'
-          property :invited_email_address, as: 'invitedEmailAddress'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CourseMaterialSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::CourseMaterial, decorator: Google::Apis::ClassroomV1::CourseMaterial::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TimeOfDay
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :hours, as: 'hours'
-          property :nanos, as: 'nanos'
-          property :seconds, as: 'seconds'
-          property :minutes, as: 'minutes'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListCoursesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :courses, as: 'courses', class: Google::Apis::ClassroomV1::Course, decorator: Google::Apis::ClassroomV1::Course::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Form
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :thumbnail_url, as: 'thumbnailUrl'
-          property :response_url, as: 'responseUrl'
-          property :form_url, as: 'formUrl'
-          property :title, as: 'title'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListTeachersResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :teachers, as: 'teachers', class: Google::Apis::ClassroomV1::Teacher, decorator: Google::Apis::ClassroomV1::Teacher::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Link
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :thumbnail_url, as: 'thumbnailUrl'
-          property :url, as: 'url'
-          property :title, as: 'title'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListGuardiansResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :guardians, as: 'guardians', class: Google::Apis::ClassroomV1::Guardian, decorator: Google::Apis::ClassroomV1::Guardian::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
-      end
-      
-      class CourseAlias
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alias, as: 'alias'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListCourseAliasesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :aliases, as: 'aliases', class: Google::Apis::ClassroomV1::CourseAlias, decorator: Google::Apis::ClassroomV1::CourseAlias::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :next_page_token, as: 'nextPageToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListGuardianInvitationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :guardian_invitations, as: 'guardianInvitations', class: Google::Apis::ClassroomV1::GuardianInvitation, decorator: Google::Apis::ClassroomV1::GuardianInvitation::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :next_page_token, as: 'nextPageToken'
-        end
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CourseAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Date
@@ -624,15 +296,6 @@ module Google
         end
       end
       
-      class Name
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :given_name, as: 'givenName'
-          property :family_name, as: 'familyName'
-          property :full_name, as: 'fullName'
-        end
-      end
-      
       class CourseMaterial
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -644,6 +307,15 @@ module Google
       
           property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
       
+        end
+      end
+      
+      class Name
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :given_name, as: 'givenName'
+          property :family_name, as: 'familyName'
+          property :full_name, as: 'fullName'
         end
       end
       
@@ -680,15 +352,18 @@ module Google
       class Course
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_id, as: 'calendarId'
+          property :update_time, as: 'updateTime'
+          property :alternate_link, as: 'alternateLink'
           property :guardians_enabled, as: 'guardiansEnabled'
           property :owner_id, as: 'ownerId'
           property :course_state, as: 'courseState'
           property :description, as: 'description'
           property :teacher_group_email, as: 'teacherGroupEmail'
           property :creation_time, as: 'creationTime'
-          property :name, as: 'name'
           property :teacher_folder, as: 'teacherFolder', class: Google::Apis::ClassroomV1::DriveFolder, decorator: Google::Apis::ClassroomV1::DriveFolder::Representation
       
+          property :name, as: 'name'
           property :section, as: 'section'
           property :id, as: 'id'
           property :room, as: 'room'
@@ -697,18 +372,16 @@ module Google
       
           property :enrollment_code, as: 'enrollmentCode'
           property :description_heading, as: 'descriptionHeading'
-          property :update_time, as: 'updateTime'
-          property :alternate_link, as: 'alternateLink'
         end
       end
       
       class DriveFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :alternate_link, as: 'alternateLink'
           property :thumbnail_url, as: 'thumbnailUrl'
           property :id, as: 'id'
           property :title, as: 'title'
+          property :alternate_link, as: 'alternateLink'
         end
       end
       
@@ -722,6 +395,336 @@ module Google
       class ReturnStudentSubmissionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Teacher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile, as: 'profile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+      
+          property :user_id, as: 'userId'
+          property :course_id, as: 'courseId'
+        end
+      end
+      
+      class ReclaimStudentSubmissionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AssignmentSubmission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachments, as: 'attachments', class: Google::Apis::ClassroomV1::Attachment, decorator: Google::Apis::ClassroomV1::Attachment::Representation
+      
+        end
+      end
+      
+      class Material
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :youtube_video, as: 'youtubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
+      
+          property :drive_file, as: 'driveFile', class: Google::Apis::ClassroomV1::SharedDriveFile, decorator: Google::Apis::ClassroomV1::SharedDriveFile::Representation
+      
+          property :form, as: 'form', class: Google::Apis::ClassroomV1::Form, decorator: Google::Apis::ClassroomV1::Form::Representation
+      
+          property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
+      
+        end
+      end
+      
+      class CourseWork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :id, as: 'id'
+          property :due_time, as: 'dueTime', class: Google::Apis::ClassroomV1::TimeOfDay, decorator: Google::Apis::ClassroomV1::TimeOfDay::Representation
+      
+          property :title, as: 'title'
+          collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::Material, decorator: Google::Apis::ClassroomV1::Material::Representation
+      
+          property :associated_with_developer, as: 'associatedWithDeveloper'
+          property :update_time, as: 'updateTime'
+          property :alternate_link, as: 'alternateLink'
+          property :max_points, as: 'maxPoints'
+          property :work_type, as: 'workType'
+          property :multiple_choice_question, as: 'multipleChoiceQuestion', class: Google::Apis::ClassroomV1::MultipleChoiceQuestion, decorator: Google::Apis::ClassroomV1::MultipleChoiceQuestion::Representation
+      
+          property :assignment, as: 'assignment', class: Google::Apis::ClassroomV1::Assignment, decorator: Google::Apis::ClassroomV1::Assignment::Representation
+      
+          property :description, as: 'description'
+          property :scheduled_time, as: 'scheduledTime'
+          property :creation_time, as: 'creationTime'
+          property :due_date, as: 'dueDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
+      
+          property :submission_modification_mode, as: 'submissionModificationMode'
+          property :state, as: 'state'
+        end
+      end
+      
+      class Guardian
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :student_id, as: 'studentId'
+          property :guardian_id, as: 'guardianId'
+          property :invited_email_address, as: 'invitedEmailAddress'
+          property :guardian_profile, as: 'guardianProfile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+      
+        end
+      end
+      
+      class UserProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+          property :photo_url, as: 'photoUrl'
+          collection :permissions, as: 'permissions', class: Google::Apis::ClassroomV1::GlobalPermission, decorator: Google::Apis::ClassroomV1::GlobalPermission::Representation
+      
+          property :name, as: 'name', class: Google::Apis::ClassroomV1::Name, decorator: Google::Apis::ClassroomV1::Name::Representation
+      
+          property :id, as: 'id'
+          property :verified_teacher, as: 'verifiedTeacher'
+        end
+      end
+      
+      class ListStudentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :students, as: 'students', class: Google::Apis::ClassroomV1::Student, decorator: Google::Apis::ClassroomV1::Student::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Student
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :profile, as: 'profile', class: Google::Apis::ClassroomV1::UserProfile, decorator: Google::Apis::ClassroomV1::UserProfile::Representation
+      
+          property :student_work_folder, as: 'studentWorkFolder', class: Google::Apis::ClassroomV1::DriveFolder, decorator: Google::Apis::ClassroomV1::DriveFolder::Representation
+      
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class Invitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_id, as: 'userId'
+          property :course_id, as: 'courseId'
+          property :id, as: 'id'
+          property :role, as: 'role'
+        end
+      end
+      
+      class DriveFolder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :title, as: 'title'
+          property :alternate_link, as: 'alternateLink'
+        end
+      end
+      
+      class ShortAnswerSubmission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer, as: 'answer'
+        end
+      end
+      
+      class StudentSubmission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :late, as: 'late'
+          property :draft_grade, as: 'draftGrade'
+          property :course_work_type, as: 'courseWorkType'
+          property :creation_time, as: 'creationTime'
+          property :state, as: 'state'
+          property :user_id, as: 'userId'
+          property :course_work_id, as: 'courseWorkId'
+          property :course_id, as: 'courseId'
+          property :id, as: 'id'
+          property :assigned_grade, as: 'assignedGrade'
+          property :multiple_choice_submission, as: 'multipleChoiceSubmission', class: Google::Apis::ClassroomV1::MultipleChoiceSubmission, decorator: Google::Apis::ClassroomV1::MultipleChoiceSubmission::Representation
+      
+          property :assignment_submission, as: 'assignmentSubmission', class: Google::Apis::ClassroomV1::AssignmentSubmission, decorator: Google::Apis::ClassroomV1::AssignmentSubmission::Representation
+      
+          property :associated_with_developer, as: 'associatedWithDeveloper'
+          property :short_answer_submission, as: 'shortAnswerSubmission', class: Google::Apis::ClassroomV1::ShortAnswerSubmission, decorator: Google::Apis::ClassroomV1::ShortAnswerSubmission::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :alternate_link, as: 'alternateLink'
+        end
+      end
+      
+      class TurnInStudentSubmissionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListStudentSubmissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :student_submissions, as: 'studentSubmissions', class: Google::Apis::ClassroomV1::StudentSubmission, decorator: Google::Apis::ClassroomV1::StudentSubmission::Representation
+      
+        end
+      end
+      
+      class ModifyAttachmentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_attachments, as: 'addAttachments', class: Google::Apis::ClassroomV1::Attachment, decorator: Google::Apis::ClassroomV1::Attachment::Representation
+      
+        end
+      end
+      
+      class ListCourseWorkResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :course_work, as: 'courseWork', class: Google::Apis::ClassroomV1::CourseWork, decorator: Google::Apis::ClassroomV1::CourseWork::Representation
+      
+        end
+      end
+      
+      class YouTubeVideo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :alternate_link, as: 'alternateLink'
+          property :thumbnail_url, as: 'thumbnailUrl'
+          property :id, as: 'id'
+        end
+      end
+      
+      class ListInvitationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :invitations, as: 'invitations', class: Google::Apis::ClassroomV1::Invitation, decorator: Google::Apis::ClassroomV1::Invitation::Representation
+      
+        end
+      end
+      
+      class Attachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :form, as: 'form', class: Google::Apis::ClassroomV1::Form, decorator: Google::Apis::ClassroomV1::Form::Representation
+      
+          property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
+      
+          property :drive_file, as: 'driveFile', class: Google::Apis::ClassroomV1::DriveFile, decorator: Google::Apis::ClassroomV1::DriveFile::Representation
+      
+          property :you_tube_video, as: 'youTubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
+      
+        end
+      end
+      
+      class GuardianInvitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :student_id, as: 'studentId'
+          property :state, as: 'state'
+          property :invited_email_address, as: 'invitedEmailAddress'
+          property :creation_time, as: 'creationTime'
+          property :invitation_id, as: 'invitationId'
+        end
+      end
+      
+      class CourseMaterialSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::CourseMaterial, decorator: Google::Apis::ClassroomV1::CourseMaterial::Representation
+      
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :minutes, as: 'minutes'
+        end
+      end
+      
+      class ListCoursesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :courses, as: 'courses', class: Google::Apis::ClassroomV1::Course, decorator: Google::Apis::ClassroomV1::Course::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Form
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail_url, as: 'thumbnailUrl'
+          property :response_url, as: 'responseUrl'
+          property :form_url, as: 'formUrl'
+          property :title, as: 'title'
+        end
+      end
+      
+      class ListTeachersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :teachers, as: 'teachers', class: Google::Apis::ClassroomV1::Teacher, decorator: Google::Apis::ClassroomV1::Teacher::Representation
+      
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :thumbnail_url, as: 'thumbnailUrl'
+          property :url, as: 'url'
+        end
+      end
+      
+      class ListGuardiansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guardians, as: 'guardians', class: Google::Apis::ClassroomV1::Guardian, decorator: Google::Apis::ClassroomV1::Guardian::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListCourseAliasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aliases, as: 'aliases', class: Google::Apis::ClassroomV1::CourseAlias, decorator: Google::Apis::ClassroomV1::CourseAlias::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGuardianInvitationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :guardian_invitations, as: 'guardianInvitations', class: Google::Apis::ClassroomV1::GuardianInvitation, decorator: Google::Apis::ClassroomV1::GuardianInvitation::Representation
+      
+        end
+      end
+      
+      class CourseAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
         end
       end
     end

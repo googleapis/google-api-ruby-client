@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20170531'
+      REVISION = '20170612'
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'
@@ -42,11 +42,11 @@ module Google
       # View your street addresses
       AUTH_USER_ADDRESSES_READ = 'https://www.googleapis.com/auth/user.addresses.read'
 
-      # View your phone numbers
-      AUTH_USER_PHONENUMBERS_READ = 'https://www.googleapis.com/auth/user.phonenumbers.read'
-
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+
+      # View your phone numbers
+      AUTH_USER_PHONENUMBERS_READ = 'https://www.googleapis.com/auth/user.phonenumbers.read'
 
       # View your contacts
       AUTH_CONTACTS_READONLY = 'https://www.googleapis.com/auth/contacts.readonly'

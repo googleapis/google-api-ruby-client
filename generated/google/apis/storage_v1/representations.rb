@@ -31,7 +31,13 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
-        class Cor
+        class CorsConfiguration
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class Encryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -227,9 +233,11 @@ module Google
       
           property :billing, as: 'billing', class: Google::Apis::StorageV1::Bucket::Billing, decorator: Google::Apis::StorageV1::Bucket::Billing::Representation
       
-          collection :cors, as: 'cors', class: Google::Apis::StorageV1::Bucket::Cor, decorator: Google::Apis::StorageV1::Bucket::Cor::Representation
+          collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
       
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
+      
+          property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
       
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -264,13 +272,20 @@ module Google
           end
         end
         
-        class Cor
+        class CorsConfiguration
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :max_age_seconds, as: 'maxAgeSeconds'
-            collection :method_prop, as: 'method'
+            collection :http_method, as: 'method'
             collection :origin, as: 'origin'
             collection :response_header, as: 'responseHeader'
+          end
+        end
+        
+        class Encryption
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :default_kms_key_name, as: 'defaultKmsKeyName'
           end
         end
         
@@ -476,6 +491,7 @@ module Google
           property :generation, :numeric_string => true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :kms_key_name, as: 'kmsKeyName'
           property :md5_hash, as: 'md5Hash'
           property :media_link, as: 'mediaLink'
           hash :metadata, as: 'metadata'

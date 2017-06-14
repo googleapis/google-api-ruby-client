@@ -64,21 +64,21 @@ module Google
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::RuntimeconfigV1::Operation, decorator: Google::Apis::RuntimeconfigV1::Operation::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
           hash :response, as: 'response'
           property :name, as: 'name'
           property :error, as: 'error', class: Google::Apis::RuntimeconfigV1::Status, decorator: Google::Apis::RuntimeconfigV1::Status::Representation
       
           hash :metadata, as: 'metadata'
-          property :done, as: 'done'
         end
       end
       

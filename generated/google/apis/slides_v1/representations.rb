@@ -22,6 +22,78 @@ module Google
   module Apis
     module SlidesV1
       
+      class ParagraphMarker
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertTableColumnsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Thumbnail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LayoutPlaceholderIdMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateShapePropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WordArt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Recolor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateShapeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RgbColor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateLineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateSlideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateShapeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,13 +292,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InsertTextRequest
+      class AffineTransform
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AffineTransform
+      class InsertTextRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,13 +316,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdatePageElementTransformRequest
+      class DeleteTextRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeleteTextRequest
+      class UpdatePageElementTransformRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,13 +370,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Presentation
+      class LineProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LineProperties
+      class Presentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,19 +616,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Outline
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RefreshSheetsChartRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TableColumnProperties
+      class Outline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotesProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,7 +640,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NotesProperties
+      class TableColumnProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -623,75 +695,112 @@ module Google
       end
       
       class ParagraphMarker
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :style, as: 'style', class: Google::Apis::SlidesV1::ParagraphStyle, decorator: Google::Apis::SlidesV1::ParagraphStyle::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
-      end
+          property :bullet, as: 'bullet', class: Google::Apis::SlidesV1::Bullet, decorator: Google::Apis::SlidesV1::Bullet::Representation
       
-      class Thumbnail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class InsertTableColumnsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :number, as: 'number'
+          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :insert_right, as: 'insertRight'
+          property :table_object_id, as: 'tableObjectId'
+        end
+      end
+      
+      class Thumbnail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_url, as: 'contentUrl'
+          property :width, as: 'width'
+          property :height, as: 'height'
+        end
       end
       
       class LayoutPlaceholderIdMapping
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layout_placeholder, as: 'layoutPlaceholder', class: Google::Apis::SlidesV1::Placeholder, decorator: Google::Apis::SlidesV1::Placeholder::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :layout_placeholder_object_id, as: 'layoutPlaceholderObjectId'
+          property :object_id_prop, as: 'objectId'
+        end
       end
       
       class UpdateShapePropertiesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          property :shape_properties, as: 'shapeProperties', class: Google::Apis::SlidesV1::ShapeProperties, decorator: Google::Apis::SlidesV1::ShapeProperties::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class WordArt
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rendered_text, as: 'renderedText'
+        end
       end
       
       class Recolor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recolor_stops, as: 'recolorStops', class: Google::Apis::SlidesV1::ColorStop, decorator: Google::Apis::SlidesV1::ColorStop::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :name, as: 'name'
+        end
       end
       
       class Link
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_object_id, as: 'pageObjectId'
+          property :url, as: 'url'
+          property :relative_link, as: 'relativeLink'
+          property :slide_index, as: 'slideIndex'
+        end
       end
       
       class CreateShapeResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+        end
       end
       
       class RgbColor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :red, as: 'red'
+          property :green, as: 'green'
+          property :blue, as: 'blue'
+        end
       end
       
       class CreateLineRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :element_properties, as: 'elementProperties', class: Google::Apis::SlidesV1::PageElementProperties, decorator: Google::Apis::SlidesV1::PageElementProperties::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          property :line_category, as: 'lineCategory'
+        end
       end
       
       class CreateSlideResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+        end
       end
       
       class CreateShapeRequest
@@ -707,20 +816,20 @@ module Google
       class Video
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :video_properties, as: 'videoProperties', class: Google::Apis::SlidesV1::VideoProperties, decorator: Google::Apis::SlidesV1::VideoProperties::Representation
+      
           property :source, as: 'source'
           property :url, as: 'url'
           property :id, as: 'id'
-          property :video_properties, as: 'videoProperties', class: Google::Apis::SlidesV1::VideoProperties, decorator: Google::Apis::SlidesV1::VideoProperties::Representation
-      
         end
       end
       
       class PageProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :color_scheme, as: 'colorScheme', class: Google::Apis::SlidesV1::ColorScheme, decorator: Google::Apis::SlidesV1::ColorScheme::Representation
-      
           property :page_background_fill, as: 'pageBackgroundFill', class: Google::Apis::SlidesV1::PageBackgroundFill, decorator: Google::Apis::SlidesV1::PageBackgroundFill::Representation
+      
+          property :color_scheme, as: 'colorScheme', class: Google::Apis::SlidesV1::ColorScheme, decorator: Google::Apis::SlidesV1::ColorScheme::Representation
       
         end
       end
@@ -736,41 +845,41 @@ module Google
       class TableCell
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text', class: Google::Apis::SlidesV1::TextContent, decorator: Google::Apis::SlidesV1::TextContent::Representation
+      
           property :table_cell_properties, as: 'tableCellProperties', class: Google::Apis::SlidesV1::TableCellProperties, decorator: Google::Apis::SlidesV1::TableCellProperties::Representation
       
           property :location, as: 'location', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
       
           property :row_span, as: 'rowSpan'
           property :column_span, as: 'columnSpan'
-          property :text, as: 'text', class: Google::Apis::SlidesV1::TextContent, decorator: Google::Apis::SlidesV1::TextContent::Representation
-      
         end
       end
       
       class UpdateLinePropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
           property :line_properties, as: 'lineProperties', class: Google::Apis::SlidesV1::LineProperties, decorator: Google::Apis::SlidesV1::LineProperties::Representation
       
           property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
         end
       end
       
       class TableCellBackgroundFill
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :property_state, as: 'propertyState'
           property :solid_fill, as: 'solidFill', class: Google::Apis::SlidesV1::SolidFill, decorator: Google::Apis::SlidesV1::SolidFill::Representation
       
-          property :property_state, as: 'propertyState'
         end
       end
       
       class UpdateSlidesPositionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :insertion_index, as: 'insertionIndex'
           collection :slide_object_ids, as: 'slideObjectIds'
+          property :insertion_index, as: 'insertionIndex'
         end
       end
       
@@ -795,9 +904,9 @@ module Google
       class Placeholder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent_object_id, as: 'parentObjectId'
           property :index, as: 'index'
           property :type, as: 'type'
-          property :parent_object_id, as: 'parentObjectId'
         end
       end
       
@@ -822,6 +931,8 @@ module Google
       class Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :revision_id, as: 'revisionId'
           property :layout_properties, as: 'layoutProperties', class: Google::Apis::SlidesV1::LayoutProperties, decorator: Google::Apis::SlidesV1::LayoutProperties::Representation
       
           property :notes_properties, as: 'notesProperties', class: Google::Apis::SlidesV1::NotesProperties, decorator: Google::Apis::SlidesV1::NotesProperties::Representation
@@ -833,17 +944,15 @@ module Google
       
           property :page_properties, as: 'pageProperties', class: Google::Apis::SlidesV1::PageProperties, decorator: Google::Apis::SlidesV1::PageProperties::Representation
       
-          property :object_id_prop, as: 'objectId'
-          property :revision_id, as: 'revisionId'
         end
       end
       
       class ShapeBackgroundFill
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :property_state, as: 'propertyState'
           property :solid_fill, as: 'solidFill', class: Google::Apis::SlidesV1::SolidFill, decorator: Google::Apis::SlidesV1::SolidFill::Representation
       
+          property :property_state, as: 'propertyState'
         end
       end
       
@@ -883,9 +992,9 @@ module Google
       class Range
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
           property :start_index, as: 'startIndex'
           property :end_index, as: 'endIndex'
-          property :type, as: 'type'
         end
       end
       
@@ -921,6 +1030,8 @@ module Google
       class Shadow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :blur_radius, as: 'blurRadius', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
+      
           property :type, as: 'type'
           property :transform, as: 'transform', class: Google::Apis::SlidesV1::AffineTransform, decorator: Google::Apis::SlidesV1::AffineTransform::Representation
       
@@ -930,8 +1041,6 @@ module Google
       
           property :rotate_with_shape, as: 'rotateWithShape'
           property :property_state, as: 'propertyState'
-          property :blur_radius, as: 'blurRadius', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
-      
         end
       end
       
@@ -947,11 +1056,11 @@ module Google
       class Bullet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bullet_style, as: 'bulletStyle', class: Google::Apis::SlidesV1::TextStyle, decorator: Google::Apis::SlidesV1::TextStyle::Representation
+      
           property :list_id, as: 'listId'
           property :glyph, as: 'glyph'
           property :nesting_level, as: 'nestingLevel'
-          property :bullet_style, as: 'bulletStyle', class: Google::Apis::SlidesV1::TextStyle, decorator: Google::Apis::SlidesV1::TextStyle::Representation
-      
         end
       end
       
@@ -988,14 +1097,14 @@ module Google
       class UpdateParagraphStyleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
-          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
-      
           property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
       
           property :style, as: 'style', class: Google::Apis::SlidesV1::ParagraphStyle, decorator: Google::Apis::SlidesV1::ParagraphStyle::Representation
       
           property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
+      
         end
       end
       
@@ -1023,33 +1132,33 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :content_url, as: 'contentUrl'
           property :image_properties, as: 'imageProperties', class: Google::Apis::SlidesV1::ImageProperties, decorator: Google::Apis::SlidesV1::ImageProperties::Representation
       
-        end
-      end
-      
-      class InsertTextRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :insertion_index, as: 'insertionIndex'
-          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
-      
-          property :object_id_prop, as: 'objectId'
-          property :text, as: 'text'
+          property :content_url, as: 'contentUrl'
         end
       end
       
       class AffineTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :translate_y, as: 'translateY'
+          property :translate_x, as: 'translateX'
+          property :shear_y, as: 'shearY'
           property :unit, as: 'unit'
           property :scale_x, as: 'scaleX'
           property :shear_x, as: 'shearX'
           property :scale_y, as: 'scaleY'
-          property :translate_y, as: 'translateY'
-          property :translate_x, as: 'translateX'
-          property :shear_y, as: 'shearY'
+        end
+      end
+      
+      class InsertTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :text, as: 'text'
+          property :insertion_index, as: 'insertionIndex'
+          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
+      
         end
       end
       
@@ -1070,6 +1179,17 @@ module Google
         end
       end
       
+      class DeleteTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
+      
+          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
+      
+        end
+      end
+      
       class UpdatePageElementTransformRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1077,17 +1197,6 @@ module Google
           property :transform, as: 'transform', class: Google::Apis::SlidesV1::AffineTransform, decorator: Google::Apis::SlidesV1::AffineTransform::Representation
       
           property :apply_mode, as: 'applyMode'
-        end
-      end
-      
-      class DeleteTextRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
-      
-          property :object_id_prop, as: 'objectId'
-          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
-      
         end
       end
       
@@ -1139,48 +1248,26 @@ module Google
       class InsertTableRowsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
+      
           property :table_object_id, as: 'tableObjectId'
           property :insert_below, as: 'insertBelow'
           property :number, as: 'number'
-          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
-      
         end
       end
       
       class LayoutProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :master_object_id, as: 'masterObjectId'
           property :name, as: 'name'
           property :display_name, as: 'displayName'
-        end
-      end
-      
-      class Presentation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :slides, as: 'slides', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
-      
-          property :revision_id, as: 'revisionId'
-          property :notes_master, as: 'notesMaster', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
-      
-          collection :layouts, as: 'layouts', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
-      
-          property :title, as: 'title'
-          property :locale, as: 'locale'
-          collection :masters, as: 'masters', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
-      
-          property :page_size, as: 'pageSize', class: Google::Apis::SlidesV1::Size, decorator: Google::Apis::SlidesV1::Size::Representation
-      
-          property :presentation_id, as: 'presentationId'
+          property :master_object_id, as: 'masterObjectId'
         end
       end
       
       class LineProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :line_fill, as: 'lineFill', class: Google::Apis::SlidesV1::LineFill, decorator: Google::Apis::SlidesV1::LineFill::Representation
-      
           property :dash_style, as: 'dashStyle'
           property :link, as: 'link', class: Google::Apis::SlidesV1::Link, decorator: Google::Apis::SlidesV1::Link::Representation
       
@@ -1188,6 +1275,28 @@ module Google
           property :end_arrow, as: 'endArrow'
           property :weight, as: 'weight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
+          property :line_fill, as: 'lineFill', class: Google::Apis::SlidesV1::LineFill, decorator: Google::Apis::SlidesV1::LineFill::Representation
+      
+        end
+      end
+      
+      class Presentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :notes_master, as: 'notesMaster', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
+      
+          collection :layouts, as: 'layouts', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
+      
+          property :title, as: 'title'
+          collection :masters, as: 'masters', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
+      
+          property :locale, as: 'locale'
+          property :page_size, as: 'pageSize', class: Google::Apis::SlidesV1::Size, decorator: Google::Apis::SlidesV1::Size::Representation
+      
+          property :presentation_id, as: 'presentationId'
+          collection :slides, as: 'slides', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
+      
+          property :revision_id, as: 'revisionId'
         end
       end
       
@@ -1203,19 +1312,19 @@ module Google
       class ImageProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :shadow, as: 'shadow', class: Google::Apis::SlidesV1::Shadow, decorator: Google::Apis::SlidesV1::Shadow::Representation
+      
           property :contrast, as: 'contrast'
           property :link, as: 'link', class: Google::Apis::SlidesV1::Link, decorator: Google::Apis::SlidesV1::Link::Representation
       
-          property :recolor, as: 'recolor', class: Google::Apis::SlidesV1::Recolor, decorator: Google::Apis::SlidesV1::Recolor::Representation
-      
           property :crop_properties, as: 'cropProperties', class: Google::Apis::SlidesV1::CropProperties, decorator: Google::Apis::SlidesV1::CropProperties::Representation
+      
+          property :recolor, as: 'recolor', class: Google::Apis::SlidesV1::Recolor, decorator: Google::Apis::SlidesV1::Recolor::Representation
       
           property :outline, as: 'outline', class: Google::Apis::SlidesV1::Outline, decorator: Google::Apis::SlidesV1::Outline::Representation
       
           property :brightness, as: 'brightness'
           property :transparency, as: 'transparency'
-          property :shadow, as: 'shadow', class: Google::Apis::SlidesV1::Shadow, decorator: Google::Apis::SlidesV1::Shadow::Representation
-      
         end
       end
       
@@ -1229,30 +1338,30 @@ module Google
       class Line
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :line_type, as: 'lineType'
           property :line_properties, as: 'lineProperties', class: Google::Apis::SlidesV1::LineProperties, decorator: Google::Apis::SlidesV1::LineProperties::Representation
       
+          property :line_type, as: 'lineType'
         end
       end
       
       class BatchUpdatePresentationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :presentation_id, as: 'presentationId'
           collection :replies, as: 'replies', class: Google::Apis::SlidesV1::Response, decorator: Google::Apis::SlidesV1::Response::Representation
       
+          property :presentation_id, as: 'presentationId'
         end
       end
       
       class CreateSheetsChartRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chart_id, as: 'chartId'
           property :object_id_prop, as: 'objectId'
           property :element_properties, as: 'elementProperties', class: Google::Apis::SlidesV1::PageElementProperties, decorator: Google::Apis::SlidesV1::PageElementProperties::Representation
       
           property :spreadsheet_id, as: 'spreadsheetId'
           property :linking_mode, as: 'linkingMode'
-          property :chart_id, as: 'chartId'
         end
       end
       
@@ -1266,18 +1375,16 @@ module Google
       class SlideProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :notes_page, as: 'notesPage', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
-      
           property :layout_object_id, as: 'layoutObjectId'
           property :master_object_id, as: 'masterObjectId'
+          property :notes_page, as: 'notesPage', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
+      
         end
       end
       
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_slide, as: 'createSlide', class: Google::Apis::SlidesV1::CreateSlideResponse, decorator: Google::Apis::SlidesV1::CreateSlideResponse::Representation
-      
           property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectResponse, decorator: Google::Apis::SlidesV1::DuplicateObjectResponse::Representation
       
           property :create_shape, as: 'createShape', class: Google::Apis::SlidesV1::CreateShapeResponse, decorator: Google::Apis::SlidesV1::CreateShapeResponse::Representation
@@ -1288,15 +1395,17 @@ module Google
       
           property :create_video, as: 'createVideo', class: Google::Apis::SlidesV1::CreateVideoResponse, decorator: Google::Apis::SlidesV1::CreateVideoResponse::Representation
       
-          property :create_sheets_chart, as: 'createSheetsChart', class: Google::Apis::SlidesV1::CreateSheetsChartResponse, decorator: Google::Apis::SlidesV1::CreateSheetsChartResponse::Representation
-      
           property :replace_all_shapes_with_sheets_chart, as: 'replaceAllShapesWithSheetsChart', class: Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartResponse, decorator: Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartResponse::Representation
+      
+          property :create_sheets_chart, as: 'createSheetsChart', class: Google::Apis::SlidesV1::CreateSheetsChartResponse, decorator: Google::Apis::SlidesV1::CreateSheetsChartResponse::Representation
       
           property :replace_all_shapes_with_image, as: 'replaceAllShapesWithImage', class: Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse, decorator: Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse::Representation
       
           property :create_table, as: 'createTable', class: Google::Apis::SlidesV1::CreateTableResponse, decorator: Google::Apis::SlidesV1::CreateTableResponse::Representation
       
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::SlidesV1::ReplaceAllTextResponse, decorator: Google::Apis::SlidesV1::ReplaceAllTextResponse::Representation
+      
+          property :create_slide, as: 'createSlide', class: Google::Apis::SlidesV1::CreateSlideResponse, decorator: Google::Apis::SlidesV1::CreateSlideResponse::Representation
       
         end
       end
@@ -1313,16 +1422,16 @@ module Google
       class LayoutReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :predefined_layout, as: 'predefinedLayout'
           property :layout_id, as: 'layoutId'
+          property :predefined_layout, as: 'predefinedLayout'
         end
       end
       
       class SubstringMatchCriteria
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :match_case, as: 'matchCase'
           property :text, as: 'text'
+          property :match_case, as: 'matchCase'
         end
       end
       
@@ -1346,23 +1455,23 @@ module Google
       class CreateTableRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :rows, as: 'rows'
           property :object_id_prop, as: 'objectId'
           property :columns, as: 'columns'
           property :element_properties, as: 'elementProperties', class: Google::Apis::SlidesV1::PageElementProperties, decorator: Google::Apis::SlidesV1::PageElementProperties::Representation
       
-          property :rows, as: 'rows'
         end
       end
       
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :table_columns, as: 'tableColumns', class: Google::Apis::SlidesV1::TableColumnProperties, decorator: Google::Apis::SlidesV1::TableColumnProperties::Representation
-      
           property :columns, as: 'columns'
           collection :table_rows, as: 'tableRows', class: Google::Apis::SlidesV1::TableRow, decorator: Google::Apis::SlidesV1::TableRow::Representation
       
           property :rows, as: 'rows'
+          collection :table_columns, as: 'tableColumns', class: Google::Apis::SlidesV1::TableColumnProperties, decorator: Google::Apis::SlidesV1::TableColumnProperties::Representation
+      
         end
       end
       
@@ -1391,18 +1500,18 @@ module Google
       class SolidFill
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :alpha, as: 'alpha'
           property :color, as: 'color', class: Google::Apis::SlidesV1::OpaqueColor, decorator: Google::Apis::SlidesV1::OpaqueColor::Representation
       
+          property :alpha, as: 'alpha'
         end
       end
       
       class ThemeColorPair
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
           property :color, as: 'color', class: Google::Apis::SlidesV1::RgbColor, decorator: Google::Apis::SlidesV1::RgbColor::Representation
       
-          property :type, as: 'type'
         end
       end
       
@@ -1436,9 +1545,9 @@ module Google
       class StretchedPictureFill
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_url, as: 'contentUrl'
           property :size, as: 'size', class: Google::Apis::SlidesV1::Size, decorator: Google::Apis::SlidesV1::Size::Representation
       
-          property :content_url, as: 'contentUrl'
         end
       end
       
@@ -1454,23 +1563,23 @@ module Google
       class UpdateTextStyleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
-          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
-      
           property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
       
           property :style, as: 'style', class: Google::Apis::SlidesV1::TextStyle, decorator: Google::Apis::SlidesV1::TextStyle::Representation
       
           property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
+      
         end
       end
       
       class List
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :list_id, as: 'listId'
           hash :nesting_level, as: 'nestingLevel', class: Google::Apis::SlidesV1::NestingLevel, decorator: Google::Apis::SlidesV1::NestingLevel::Representation
       
+          property :list_id, as: 'listId'
         end
       end
       
@@ -1485,29 +1594,29 @@ module Google
       class PageElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :video, as: 'video', class: Google::Apis::SlidesV1::Video, decorator: Google::Apis::SlidesV1::Video::Representation
-      
-          property :word_art, as: 'wordArt', class: Google::Apis::SlidesV1::WordArt, decorator: Google::Apis::SlidesV1::WordArt::Representation
-      
-          property :table, as: 'table', class: Google::Apis::SlidesV1::Table, decorator: Google::Apis::SlidesV1::Table::Representation
-      
-          property :object_id_prop, as: 'objectId'
-          property :transform, as: 'transform', class: Google::Apis::SlidesV1::AffineTransform, decorator: Google::Apis::SlidesV1::AffineTransform::Representation
-      
-          property :shape, as: 'shape', class: Google::Apis::SlidesV1::Shape, decorator: Google::Apis::SlidesV1::Shape::Representation
-      
-          property :line, as: 'line', class: Google::Apis::SlidesV1::Line, decorator: Google::Apis::SlidesV1::Line::Representation
-      
-          property :description, as: 'description'
           property :element_group, as: 'elementGroup', class: Google::Apis::SlidesV1::Group, decorator: Google::Apis::SlidesV1::Group::Representation
       
           property :image, as: 'image', class: Google::Apis::SlidesV1::Image, decorator: Google::Apis::SlidesV1::Image::Representation
       
           property :size, as: 'size', class: Google::Apis::SlidesV1::Size, decorator: Google::Apis::SlidesV1::Size::Representation
       
+          property :title, as: 'title'
           property :sheets_chart, as: 'sheetsChart', class: Google::Apis::SlidesV1::SheetsChart, decorator: Google::Apis::SlidesV1::SheetsChart::Representation
       
-          property :title, as: 'title'
+          property :video, as: 'video', class: Google::Apis::SlidesV1::Video, decorator: Google::Apis::SlidesV1::Video::Representation
+      
+          property :word_art, as: 'wordArt', class: Google::Apis::SlidesV1::WordArt, decorator: Google::Apis::SlidesV1::WordArt::Representation
+      
+          property :table, as: 'table', class: Google::Apis::SlidesV1::Table, decorator: Google::Apis::SlidesV1::Table::Representation
+      
+          property :transform, as: 'transform', class: Google::Apis::SlidesV1::AffineTransform, decorator: Google::Apis::SlidesV1::AffineTransform::Representation
+      
+          property :object_id_prop, as: 'objectId'
+          property :shape, as: 'shape', class: Google::Apis::SlidesV1::Shape, decorator: Google::Apis::SlidesV1::Shape::Representation
+      
+          property :line, as: 'line', class: Google::Apis::SlidesV1::Line, decorator: Google::Apis::SlidesV1::Line::Representation
+      
+          property :description, as: 'description'
         end
       end
       
@@ -1546,22 +1655,22 @@ module Google
       class TextStyle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :foreground_color, as: 'foregroundColor', class: Google::Apis::SlidesV1::OptionalColor, decorator: Google::Apis::SlidesV1::OptionalColor::Representation
-      
-          property :bold, as: 'bold'
-          property :font_family, as: 'fontFamily'
-          property :italic, as: 'italic'
-          property :strikethrough, as: 'strikethrough'
-          property :font_size, as: 'fontSize', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
-      
-          property :baseline_offset, as: 'baselineOffset'
-          property :weighted_font_family, as: 'weightedFontFamily', class: Google::Apis::SlidesV1::WeightedFontFamily, decorator: Google::Apis::SlidesV1::WeightedFontFamily::Representation
-      
           property :small_caps, as: 'smallCaps'
           property :background_color, as: 'backgroundColor', class: Google::Apis::SlidesV1::OptionalColor, decorator: Google::Apis::SlidesV1::OptionalColor::Representation
       
           property :underline, as: 'underline'
           property :link, as: 'link', class: Google::Apis::SlidesV1::Link, decorator: Google::Apis::SlidesV1::Link::Representation
+      
+          property :foreground_color, as: 'foregroundColor', class: Google::Apis::SlidesV1::OptionalColor, decorator: Google::Apis::SlidesV1::OptionalColor::Representation
+      
+          property :bold, as: 'bold'
+          property :font_family, as: 'fontFamily'
+          property :strikethrough, as: 'strikethrough'
+          property :italic, as: 'italic'
+          property :font_size, as: 'fontSize', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
+      
+          property :baseline_offset, as: 'baselineOffset'
+          property :weighted_font_family, as: 'weightedFontFamily', class: Google::Apis::SlidesV1::WeightedFontFamily, decorator: Google::Apis::SlidesV1::WeightedFontFamily::Representation
       
         end
       end
@@ -1579,6 +1688,44 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_table_row, as: 'deleteTableRow', class: Google::Apis::SlidesV1::DeleteTableRowRequest, decorator: Google::Apis::SlidesV1::DeleteTableRowRequest::Representation
+      
+          property :update_shape_properties, as: 'updateShapeProperties', class: Google::Apis::SlidesV1::UpdateShapePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateShapePropertiesRequest::Representation
+      
+          property :insert_text, as: 'insertText', class: Google::Apis::SlidesV1::InsertTextRequest, decorator: Google::Apis::SlidesV1::InsertTextRequest::Representation
+      
+          property :delete_text, as: 'deleteText', class: Google::Apis::SlidesV1::DeleteTextRequest, decorator: Google::Apis::SlidesV1::DeleteTextRequest::Representation
+      
+          property :update_page_properties, as: 'updatePageProperties', class: Google::Apis::SlidesV1::UpdatePagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdatePagePropertiesRequest::Representation
+      
+          property :delete_paragraph_bullets, as: 'deleteParagraphBullets', class: Google::Apis::SlidesV1::DeleteParagraphBulletsRequest, decorator: Google::Apis::SlidesV1::DeleteParagraphBulletsRequest::Representation
+      
+          property :create_shape, as: 'createShape', class: Google::Apis::SlidesV1::CreateShapeRequest, decorator: Google::Apis::SlidesV1::CreateShapeRequest::Representation
+      
+          property :insert_table_columns, as: 'insertTableColumns', class: Google::Apis::SlidesV1::InsertTableColumnsRequest, decorator: Google::Apis::SlidesV1::InsertTableColumnsRequest::Representation
+      
+          property :refresh_sheets_chart, as: 'refreshSheetsChart', class: Google::Apis::SlidesV1::RefreshSheetsChartRequest, decorator: Google::Apis::SlidesV1::RefreshSheetsChartRequest::Representation
+      
+          property :create_table, as: 'createTable', class: Google::Apis::SlidesV1::CreateTableRequest, decorator: Google::Apis::SlidesV1::CreateTableRequest::Representation
+      
+          property :update_table_cell_properties, as: 'updateTableCellProperties', class: Google::Apis::SlidesV1::UpdateTableCellPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableCellPropertiesRequest::Representation
+      
+          property :delete_object, as: 'deleteObject', class: Google::Apis::SlidesV1::DeleteObjectRequest, decorator: Google::Apis::SlidesV1::DeleteObjectRequest::Representation
+      
+          property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::SlidesV1::UpdateParagraphStyleRequest, decorator: Google::Apis::SlidesV1::UpdateParagraphStyleRequest::Representation
+      
+          property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectRequest, decorator: Google::Apis::SlidesV1::DuplicateObjectRequest::Representation
+      
+          property :delete_table_column, as: 'deleteTableColumn', class: Google::Apis::SlidesV1::DeleteTableColumnRequest, decorator: Google::Apis::SlidesV1::DeleteTableColumnRequest::Representation
+      
+          property :update_video_properties, as: 'updateVideoProperties', class: Google::Apis::SlidesV1::UpdateVideoPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateVideoPropertiesRequest::Representation
+      
+          property :create_line, as: 'createLine', class: Google::Apis::SlidesV1::CreateLineRequest, decorator: Google::Apis::SlidesV1::CreateLineRequest::Representation
+      
+          property :create_image, as: 'createImage', class: Google::Apis::SlidesV1::CreateImageRequest, decorator: Google::Apis::SlidesV1::CreateImageRequest::Representation
+      
+          property :create_paragraph_bullets, as: 'createParagraphBullets', class: Google::Apis::SlidesV1::CreateParagraphBulletsRequest, decorator: Google::Apis::SlidesV1::CreateParagraphBulletsRequest::Representation
+      
           property :create_video, as: 'createVideo', class: Google::Apis::SlidesV1::CreateVideoRequest, decorator: Google::Apis::SlidesV1::CreateVideoRequest::Representation
       
           property :create_sheets_chart, as: 'createSheetsChart', class: Google::Apis::SlidesV1::CreateSheetsChartRequest, decorator: Google::Apis::SlidesV1::CreateSheetsChartRequest::Representation
@@ -1595,51 +1742,13 @@ module Google
       
           property :update_image_properties, as: 'updateImageProperties', class: Google::Apis::SlidesV1::UpdateImagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateImagePropertiesRequest::Representation
       
-          property :insert_table_rows, as: 'insertTableRows', class: Google::Apis::SlidesV1::InsertTableRowsRequest, decorator: Google::Apis::SlidesV1::InsertTableRowsRequest::Representation
-      
           property :create_slide, as: 'createSlide', class: Google::Apis::SlidesV1::CreateSlideRequest, decorator: Google::Apis::SlidesV1::CreateSlideRequest::Representation
+      
+          property :insert_table_rows, as: 'insertTableRows', class: Google::Apis::SlidesV1::InsertTableRowsRequest, decorator: Google::Apis::SlidesV1::InsertTableRowsRequest::Representation
       
           property :update_line_properties, as: 'updateLineProperties', class: Google::Apis::SlidesV1::UpdateLinePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateLinePropertiesRequest::Representation
       
           property :update_slides_position, as: 'updateSlidesPosition', class: Google::Apis::SlidesV1::UpdateSlidesPositionRequest, decorator: Google::Apis::SlidesV1::UpdateSlidesPositionRequest::Representation
-      
-          property :delete_table_row, as: 'deleteTableRow', class: Google::Apis::SlidesV1::DeleteTableRowRequest, decorator: Google::Apis::SlidesV1::DeleteTableRowRequest::Representation
-      
-          property :update_shape_properties, as: 'updateShapeProperties', class: Google::Apis::SlidesV1::UpdateShapePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateShapePropertiesRequest::Representation
-      
-          property :insert_text, as: 'insertText', class: Google::Apis::SlidesV1::InsertTextRequest, decorator: Google::Apis::SlidesV1::InsertTextRequest::Representation
-      
-          property :delete_text, as: 'deleteText', class: Google::Apis::SlidesV1::DeleteTextRequest, decorator: Google::Apis::SlidesV1::DeleteTextRequest::Representation
-      
-          property :update_page_properties, as: 'updatePageProperties', class: Google::Apis::SlidesV1::UpdatePagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdatePagePropertiesRequest::Representation
-      
-          property :create_shape, as: 'createShape', class: Google::Apis::SlidesV1::CreateShapeRequest, decorator: Google::Apis::SlidesV1::CreateShapeRequest::Representation
-      
-          property :delete_paragraph_bullets, as: 'deleteParagraphBullets', class: Google::Apis::SlidesV1::DeleteParagraphBulletsRequest, decorator: Google::Apis::SlidesV1::DeleteParagraphBulletsRequest::Representation
-      
-          property :insert_table_columns, as: 'insertTableColumns', class: Google::Apis::SlidesV1::InsertTableColumnsRequest, decorator: Google::Apis::SlidesV1::InsertTableColumnsRequest::Representation
-      
-          property :refresh_sheets_chart, as: 'refreshSheetsChart', class: Google::Apis::SlidesV1::RefreshSheetsChartRequest, decorator: Google::Apis::SlidesV1::RefreshSheetsChartRequest::Representation
-      
-          property :update_table_cell_properties, as: 'updateTableCellProperties', class: Google::Apis::SlidesV1::UpdateTableCellPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableCellPropertiesRequest::Representation
-      
-          property :create_table, as: 'createTable', class: Google::Apis::SlidesV1::CreateTableRequest, decorator: Google::Apis::SlidesV1::CreateTableRequest::Representation
-      
-          property :delete_object, as: 'deleteObject', class: Google::Apis::SlidesV1::DeleteObjectRequest, decorator: Google::Apis::SlidesV1::DeleteObjectRequest::Representation
-      
-          property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::SlidesV1::UpdateParagraphStyleRequest, decorator: Google::Apis::SlidesV1::UpdateParagraphStyleRequest::Representation
-      
-          property :delete_table_column, as: 'deleteTableColumn', class: Google::Apis::SlidesV1::DeleteTableColumnRequest, decorator: Google::Apis::SlidesV1::DeleteTableColumnRequest::Representation
-      
-          property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectRequest, decorator: Google::Apis::SlidesV1::DuplicateObjectRequest::Representation
-      
-          property :update_video_properties, as: 'updateVideoProperties', class: Google::Apis::SlidesV1::UpdateVideoPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateVideoPropertiesRequest::Representation
-      
-          property :create_line, as: 'createLine', class: Google::Apis::SlidesV1::CreateLineRequest, decorator: Google::Apis::SlidesV1::CreateLineRequest::Representation
-      
-          property :create_image, as: 'createImage', class: Google::Apis::SlidesV1::CreateImageRequest, decorator: Google::Apis::SlidesV1::CreateImageRequest::Representation
-      
-          property :create_paragraph_bullets, as: 'createParagraphBullets', class: Google::Apis::SlidesV1::CreateParagraphBulletsRequest, decorator: Google::Apis::SlidesV1::CreateParagraphBulletsRequest::Representation
       
         end
       end
@@ -1660,17 +1769,17 @@ module Google
           property :space_below, as: 'spaceBelow', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
           property :direction, as: 'direction'
-          property :spacing_mode, as: 'spacingMode'
           property :indent_end, as: 'indentEnd', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
+          property :spacing_mode, as: 'spacingMode'
           property :indent_start, as: 'indentStart', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
           property :space_above, as: 'spaceAbove', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
-          property :alignment, as: 'alignment'
-          property :line_spacing, as: 'lineSpacing'
           property :indent_first_line, as: 'indentFirstLine', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
+          property :line_spacing, as: 'lineSpacing'
+          property :alignment, as: 'alignment'
         end
       end
       
@@ -1689,18 +1798,6 @@ module Google
         end
       end
       
-      class Outline
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :outline_fill, as: 'outlineFill', class: Google::Apis::SlidesV1::OutlineFill, decorator: Google::Apis::SlidesV1::OutlineFill::Representation
-      
-          property :weight, as: 'weight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
-      
-          property :dash_style, as: 'dashStyle'
-          property :property_state, as: 'propertyState'
-        end
-      end
-      
       class RefreshSheetsChartRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1708,11 +1805,22 @@ module Google
         end
       end
       
-      class TableColumnProperties
+      class Outline
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :column_width, as: 'columnWidth', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
+          property :dash_style, as: 'dashStyle'
+          property :property_state, as: 'propertyState'
+          property :outline_fill, as: 'outlineFill', class: Google::Apis::SlidesV1::OutlineFill, decorator: Google::Apis::SlidesV1::OutlineFill::Representation
       
+          property :weight, as: 'weight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
+      
+        end
+      end
+      
+      class NotesProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker_notes_object_id, as: 'speakerNotesObjectId'
         end
       end
       
@@ -1730,10 +1838,11 @@ module Google
         end
       end
       
-      class NotesProperties
+      class TableColumnProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :speaker_notes_object_id, as: 'speakerNotesObjectId'
+          property :column_width, as: 'columnWidth', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
+      
         end
       end
       
@@ -1750,33 +1859,33 @@ module Google
       class UpdateTableCellPropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
           property :object_id_prop, as: 'objectId'
           property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
       
           property :table_cell_properties, as: 'tableCellProperties', class: Google::Apis::SlidesV1::TableCellProperties, decorator: Google::Apis::SlidesV1::TableCellProperties::Representation
       
-          property :fields, as: 'fields'
         end
       end
       
       class CreateSlideRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :placeholder_id_mappings, as: 'placeholderIdMappings', class: Google::Apis::SlidesV1::LayoutPlaceholderIdMapping, decorator: Google::Apis::SlidesV1::LayoutPlaceholderIdMapping::Representation
-      
           property :slide_layout_reference, as: 'slideLayoutReference', class: Google::Apis::SlidesV1::LayoutReference, decorator: Google::Apis::SlidesV1::LayoutReference::Representation
       
           property :object_id_prop, as: 'objectId'
           property :insertion_index, as: 'insertionIndex'
+          collection :placeholder_id_mappings, as: 'placeholderIdMappings', class: Google::Apis::SlidesV1::LayoutPlaceholderIdMapping, decorator: Google::Apis::SlidesV1::LayoutPlaceholderIdMapping::Representation
+      
         end
       end
       
       class BatchUpdatePresentationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :write_control, as: 'writeControl', class: Google::Apis::SlidesV1::WriteControl, decorator: Google::Apis::SlidesV1::WriteControl::Representation
-      
           collection :requests, as: 'requests', class: Google::Apis::SlidesV1::Request, decorator: Google::Apis::SlidesV1::Request::Representation
+      
+          property :write_control, as: 'writeControl', class: Google::Apis::SlidesV1::WriteControl, decorator: Google::Apis::SlidesV1::WriteControl::Representation
       
         end
       end
@@ -1813,115 +1922,6 @@ module Google
           property :object_id_prop, as: 'objectId'
           property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
       
-        end
-      end
-      
-      class ParagraphMarker
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bullet, as: 'bullet', class: Google::Apis::SlidesV1::Bullet, decorator: Google::Apis::SlidesV1::Bullet::Representation
-      
-          property :style, as: 'style', class: Google::Apis::SlidesV1::ParagraphStyle, decorator: Google::Apis::SlidesV1::ParagraphStyle::Representation
-      
-        end
-      end
-      
-      class Thumbnail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :height, as: 'height'
-          property :content_url, as: 'contentUrl'
-          property :width, as: 'width'
-        end
-      end
-      
-      class InsertTableColumnsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :number, as: 'number'
-          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
-      
-          property :insert_right, as: 'insertRight'
-          property :table_object_id, as: 'tableObjectId'
-        end
-      end
-      
-      class LayoutPlaceholderIdMapping
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
-          property :layout_placeholder, as: 'layoutPlaceholder', class: Google::Apis::SlidesV1::Placeholder, decorator: Google::Apis::SlidesV1::Placeholder::Representation
-      
-          property :layout_placeholder_object_id, as: 'layoutPlaceholderObjectId'
-        end
-      end
-      
-      class UpdateShapePropertiesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :shape_properties, as: 'shapeProperties', class: Google::Apis::SlidesV1::ShapeProperties, decorator: Google::Apis::SlidesV1::ShapeProperties::Representation
-      
-          property :fields, as: 'fields'
-          property :object_id_prop, as: 'objectId'
-        end
-      end
-      
-      class WordArt
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rendered_text, as: 'renderedText'
-        end
-      end
-      
-      class Recolor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :recolor_stops, as: 'recolorStops', class: Google::Apis::SlidesV1::ColorStop, decorator: Google::Apis::SlidesV1::ColorStop::Representation
-      
-          property :name, as: 'name'
-        end
-      end
-      
-      class Link
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_object_id, as: 'pageObjectId'
-          property :url, as: 'url'
-          property :relative_link, as: 'relativeLink'
-          property :slide_index, as: 'slideIndex'
-        end
-      end
-      
-      class CreateShapeResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
-        end
-      end
-      
-      class RgbColor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :green, as: 'green'
-          property :blue, as: 'blue'
-          property :red, as: 'red'
-        end
-      end
-      
-      class CreateLineRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
-          property :element_properties, as: 'elementProperties', class: Google::Apis::SlidesV1::PageElementProperties, decorator: Google::Apis::SlidesV1::PageElementProperties::Representation
-      
-          property :line_category, as: 'lineCategory'
-        end
-      end
-      
-      class CreateSlideResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :object_id_prop, as: 'objectId'
         end
       end
     end

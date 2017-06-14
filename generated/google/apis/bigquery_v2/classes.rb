@@ -1020,7 +1020,7 @@ module Google
       end
       
       # 
-      class JobCancelResponse
+      class CancelJobResponse
         include Google::Apis::Core::Hashable
       
         # The final state of the job.
@@ -2607,7 +2607,7 @@ module Google
       end
       
       # 
-      class TableDataInsertAllRequest
+      class InsertAllTableDataRequest
         include Google::Apis::Core::Hashable
       
         # [Optional] Accept rows that contain values that do not match the schema. The
@@ -2625,7 +2625,7 @@ module Google
       
         # The rows to insert.
         # Corresponds to the JSON property `rows`
-        # @return [Array<Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row>]
+        # @return [Array<Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row>]
         attr_accessor :rows
       
         # [Optional] Insert all valid rows of a request, even if invalid rows exist. The
@@ -2687,12 +2687,12 @@ module Google
       end
       
       # 
-      class TableDataInsertAllResponse
+      class InsertAllTableDataResponse
         include Google::Apis::Core::Hashable
       
         # An array of errors for rows that were not inserted.
         # Corresponds to the JSON property `insertErrors`
-        # @return [Array<Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError>]
+        # @return [Array<Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError>]
         attr_accessor :insert_errors
       
         # The resource type of the response.

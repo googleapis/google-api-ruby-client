@@ -34,7 +34,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AttachmentsListResponse
+      class ListAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,7 +58,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContactsListResponse
+      class ListContactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,7 +70,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocationsListResponse
+      class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,7 +112,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SubscriptionsListResponse
+      class ListSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,7 +124,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TimelineListResponse
+      class ListTimelineResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -164,7 +164,7 @@ module Google
         end
       end
       
-      class AttachmentsListResponse
+      class ListAttachmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Attachment, decorator: Google::Apis::MirrorV1::Attachment::Representation
@@ -207,7 +207,7 @@ module Google
         end
       end
       
-      class ContactsListResponse
+      class ListContactsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Contact, decorator: Google::Apis::MirrorV1::Contact::Representation
@@ -231,7 +231,7 @@ module Google
         end
       end
       
-      class LocationsListResponse
+      class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Location, decorator: Google::Apis::MirrorV1::Location::Representation
@@ -310,7 +310,7 @@ module Google
         end
       end
       
-      class SubscriptionsListResponse
+      class ListSubscriptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Subscription, decorator: Google::Apis::MirrorV1::Subscription::Representation
@@ -360,7 +360,7 @@ module Google
         end
       end
       
-      class TimelineListResponse
+      class ListTimelineResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::TimelineItem, decorator: Google::Apis::MirrorV1::TimelineItem::Representation

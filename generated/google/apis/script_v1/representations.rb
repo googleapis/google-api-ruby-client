@@ -73,18 +73,18 @@ module Google
       class ScriptStackTraceElement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :function, as: 'function'
           property :line_number, as: 'lineNumber'
+          property :function, as: 'function'
         end
       end
       
       class ExecutionError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_type, as: 'errorType'
-          property :error_message, as: 'errorMessage'
           collection :script_stack_trace_elements, as: 'scriptStackTraceElements', class: Google::Apis::ScriptV1::ScriptStackTraceElement, decorator: Google::Apis::ScriptV1::ScriptStackTraceElement::Representation
       
+          property :error_type, as: 'errorType'
+          property :error_message, as: 'errorMessage'
         end
       end
       
@@ -110,9 +110,9 @@ module Google
       class JoinAsyncRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :script_id, as: 'scriptId'
           collection :names, as: 'names'
           property :timeout, as: 'timeout'
+          property :script_id, as: 'scriptId'
         end
       end
       
@@ -126,12 +126,12 @@ module Google
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
           hash :response, as: 'response'
           property :name, as: 'name'
           property :error, as: 'error', class: Google::Apis::ScriptV1::Status, decorator: Google::Apis::ScriptV1::Status::Representation
       
           hash :metadata, as: 'metadata'
+          property :done, as: 'done'
         end
       end
       

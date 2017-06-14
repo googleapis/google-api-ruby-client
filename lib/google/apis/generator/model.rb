@@ -94,7 +94,7 @@ module Google
 
         def all_methods
           m = []
-          m << methods_prop.values unless methods_prop.nil?
+          m << api_methods.values unless api_methods.nil?
           m << resources.map { |_k, r| r.all_methods } unless resources.nil?
           m.flatten
         end
@@ -127,7 +127,7 @@ module Google
 
         def all_methods
           m = []
-          m << methods_prop.values unless methods_prop.nil?
+          m << api_methods.values unless api_methods.nil?
           m << resources.map { |_k, r| r.all_methods } unless resources.nil?
           m.flatten
         end

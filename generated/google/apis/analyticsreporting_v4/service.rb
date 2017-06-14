@@ -66,7 +66,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_report_get(get_reports_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def batch_get_reports(get_reports_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v4/reports:batchGet', options)
           command.request_representation = Google::Apis::AnalyticsreportingV4::GetReportsRequest::Representation
           command.request_object = get_reports_request_object

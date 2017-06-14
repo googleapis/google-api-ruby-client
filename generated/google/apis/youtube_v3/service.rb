@@ -159,18 +159,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::ActivityListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListActivitiesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::ActivityListResponse]
+        # @return [Google::Apis::YoutubeV3::ListActivitiesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(part, channel_id: nil, home: nil, max_results: nil, mine: nil, page_token: nil, published_after: nil, published_before: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'activities', options)
-          command.response_representation = Google::Apis::YoutubeV3::ActivityListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::ActivityListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListActivitiesResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListActivitiesResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['home'] = home unless home.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -415,18 +415,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::CaptionListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListCaptionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::CaptionListResponse]
+        # @return [Google::Apis::YoutubeV3::ListCaptionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_captions(part, video_id, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'captions', options)
-          command.response_representation = Google::Apis::YoutubeV3::CaptionListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::CaptionListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListCaptionsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListCaptionsResponse
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -746,18 +746,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::ChannelSectionListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListChannelSectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::ChannelSectionListResponse]
+        # @return [Google::Apis::YoutubeV3::ListChannelSectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_channel_sections(part, channel_id: nil, hl: nil, id: nil, mine: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'channelSections', options)
-          command.response_representation = Google::Apis::YoutubeV3::ChannelSectionListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::ChannelSectionListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListChannelSectionsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListChannelSectionsResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
@@ -888,18 +888,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::ChannelListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListChannelsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::ChannelListResponse]
+        # @return [Google::Apis::YoutubeV3::ListChannelsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_channels(part, category_id: nil, for_username: nil, hl: nil, id: nil, managed_by_me: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'channels', options)
-          command.response_representation = Google::Apis::YoutubeV3::ChannelListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::ChannelListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListChannelsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListChannelsResponse
           command.query['categoryId'] = category_id unless category_id.nil?
           command.query['forUsername'] = for_username unless for_username.nil?
           command.query['hl'] = hl unless hl.nil?
@@ -1076,18 +1076,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::CommentThreadListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListCommentThreadsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::CommentThreadListResponse]
+        # @return [Google::Apis::YoutubeV3::ListCommentThreadsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comment_threads(part, all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'commentThreads', options)
-          command.response_representation = Google::Apis::YoutubeV3::CommentThreadListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::CommentThreadListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListCommentThreadsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListCommentThreadsResponse
           command.query['allThreadsRelatedToChannelId'] = all_threads_related_to_channel_id unless all_threads_related_to_channel_id.nil?
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['id'] = id unless id.nil?
@@ -1261,18 +1261,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::CommentListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListCommentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::CommentListResponse]
+        # @return [Google::Apis::YoutubeV3::ListCommentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comments(part, id: nil, max_results: nil, page_token: nil, parent_id: nil, text_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'comments', options)
-          command.response_representation = Google::Apis::YoutubeV3::CommentListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::CommentListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListCommentsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListCommentsResponse
           command.query['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1489,18 +1489,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::GuideCategoryListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListGuideCategoriesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::GuideCategoryListResponse]
+        # @return [Google::Apis::YoutubeV3::ListGuideCategoriesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_guide_categories(part, hl: nil, id: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'guideCategories', options)
-          command.response_representation = Google::Apis::YoutubeV3::GuideCategoryListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::GuideCategoryListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListGuideCategoriesResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListGuideCategoriesResponse
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
           command.query['part'] = part unless part.nil?
@@ -1531,18 +1531,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::I18nLanguageListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListI18nLanguagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::I18nLanguageListResponse]
+        # @return [Google::Apis::YoutubeV3::ListI18nLanguagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_i18n_languages(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'i18nLanguages', options)
-          command.response_representation = Google::Apis::YoutubeV3::I18nLanguageListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::I18nLanguageListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListI18nLanguagesResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListI18nLanguagesResponse
           command.query['hl'] = hl unless hl.nil?
           command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1571,18 +1571,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::I18nRegionListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListI18nRegionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::I18nRegionListResponse]
+        # @return [Google::Apis::YoutubeV3::ListI18nRegionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_i18n_regions(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'i18nRegions', options)
-          command.response_representation = Google::Apis::YoutubeV3::I18nRegionListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::I18nRegionListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListI18nRegionsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListI18nRegionsResponse
           command.query['hl'] = hl unless hl.nil?
           command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1959,18 +1959,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::LiveBroadcastListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListLiveBroadcastsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::LiveBroadcastListResponse]
+        # @return [Google::Apis::YoutubeV3::ListLiveBroadcastsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_live_broadcasts(part, broadcast_status: nil, broadcast_type: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'liveBroadcasts', options)
-          command.response_representation = Google::Apis::YoutubeV3::LiveBroadcastListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::LiveBroadcastListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse
           command.query['broadcastStatus'] = broadcast_status unless broadcast_status.nil?
           command.query['broadcastType'] = broadcast_type unless broadcast_type.nil?
           command.query['id'] = id unless id.nil?
@@ -2672,18 +2672,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::LiveStreamListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListLiveStreamsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::LiveStreamListResponse]
+        # @return [Google::Apis::YoutubeV3::ListLiveStreamsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_live_streams(part, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'liveStreams', options)
-          command.response_representation = Google::Apis::YoutubeV3::LiveStreamListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::LiveStreamListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListLiveStreamsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListLiveStreamsResponse
           command.query['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['mine'] = mine unless mine.nil?
@@ -2922,18 +2922,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::PlaylistItemListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListPlaylistItemsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::PlaylistItemListResponse]
+        # @return [Google::Apis::YoutubeV3::ListPlaylistItemsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_playlist_items(part, id: nil, max_results: nil, on_behalf_of_content_owner: nil, page_token: nil, playlist_id: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'playlistItems', options)
-          command.response_representation = Google::Apis::YoutubeV3::PlaylistItemListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::PlaylistItemListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListPlaylistItemsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListPlaylistItemsResponse
           command.query['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -3193,18 +3193,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::PlaylistListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListPlaylistResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::PlaylistListResponse]
+        # @return [Google::Apis::YoutubeV3::ListPlaylistResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_playlists(part, channel_id: nil, hl: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'playlists', options)
-          command.response_representation = Google::Apis::YoutubeV3::PlaylistListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::PlaylistListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListPlaylistResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListPlaylistResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
@@ -3448,18 +3448,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::SearchListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::SearchListsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::SearchListResponse]
+        # @return [Google::Apis::YoutubeV3::SearchListsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'search', options)
-          command.response_representation = Google::Apis::YoutubeV3::SearchListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::SearchListResponse
+          command.response_representation = Google::Apis::YoutubeV3::SearchListsResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::SearchListsResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['channelType'] = channel_type unless channel_type.nil?
           command.query['eventType'] = event_type unless event_type.nil?
@@ -3697,18 +3697,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::SubscriptionListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::SubscriptionListResponse]
+        # @return [Google::Apis::YoutubeV3::ListSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(part, channel_id: nil, for_channel_id: nil, id: nil, max_results: nil, mine: nil, my_recent_subscribers: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, order: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'subscriptions', options)
-          command.response_representation = Google::Apis::YoutubeV3::SubscriptionListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::SubscriptionListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListSubscriptionResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListSubscriptionResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['forChannelId'] = for_channel_id unless for_channel_id.nil?
           command.query['id'] = id unless id.nil?
@@ -3813,10 +3813,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::ThumbnailSetResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::SetThumbnailResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::ThumbnailSetResponse]
+        # @return [Google::Apis::YoutubeV3::SetThumbnailResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3829,8 +3829,8 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.response_representation = Google::Apis::YoutubeV3::ThumbnailSetResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::ThumbnailSetResponse
+          command.response_representation = Google::Apis::YoutubeV3::SetThumbnailResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::SetThumbnailResponse
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['videoId'] = video_id unless video_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3859,18 +3859,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse]
+        # @return [Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_video_abuse_report_reasons(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'videoAbuseReportReasons', options)
-          command.response_representation = Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse
           command.query['hl'] = hl unless hl.nil?
           command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3906,18 +3906,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::VideoCategoryListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListVideoCategoryResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::VideoCategoryListResponse]
+        # @return [Google::Apis::YoutubeV3::ListVideoCategoryResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_video_categories(part, hl: nil, id: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'videoCategories', options)
-          command.response_representation = Google::Apis::YoutubeV3::VideoCategoryListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::VideoCategoryListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListVideoCategoryResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListVideoCategoryResponse
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
           command.query['part'] = part unless part.nil?
@@ -4002,18 +4002,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::VideoGetRatingResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::GetVideoRatingResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::VideoGetRatingResponse]
+        # @return [Google::Apis::YoutubeV3::GetVideoRatingResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_video_rating(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'videos/getRating', options)
-          command.response_representation = Google::Apis::YoutubeV3::VideoGetRatingResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::VideoGetRatingResponse
+          command.response_representation = Google::Apis::YoutubeV3::GetVideoRatingResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::GetVideoRatingResponse
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4203,18 +4203,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::VideoListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ListVideosResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::VideoListResponse]
+        # @return [Google::Apis::YoutubeV3::ListVideosResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_videos(part, chart: nil, hl: nil, id: nil, locale: nil, max_height: nil, max_results: nil, max_width: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'videos', options)
-          command.response_representation = Google::Apis::YoutubeV3::VideoListResponse::Representation
-          command.response_class = Google::Apis::YoutubeV3::VideoListResponse
+          command.response_representation = Google::Apis::YoutubeV3::ListVideosResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ListVideosResponse
           command.query['chart'] = chart unless chart.nil?
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?

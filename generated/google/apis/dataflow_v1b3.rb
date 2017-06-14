@@ -25,16 +25,19 @@ module Google
     # @see https://cloud.google.com/dataflow
     module DataflowV1b3
       VERSION = 'V1b3'
-      REVISION = '20170525'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+      REVISION = '20170610'
 
       # View and manage your Google Compute Engine resources
       AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View your email address
+      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+
+      # View your Google Compute Engine resources
+      AUTH_COMPUTE_READONLY = 'https://www.googleapis.com/auth/compute.readonly'
     end
   end
 end

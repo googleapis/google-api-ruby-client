@@ -275,7 +275,7 @@ module Google
       end
       
       # Request to get the IDP authentication URL.
-      class IdentitytoolkitRelyingpartyCreateAuthUriRequest
+      class CreateAuthUriRequest
         include Google::Apis::Core::Hashable
       
         # The app ID of the mobile app, base64(CERT_SHA1):PACKAGE_NAME for Android,
@@ -381,7 +381,7 @@ module Google
       end
       
       # Request to delete account.
-      class IdentitytoolkitRelyingpartyDeleteAccountRequest
+      class DeleteAccountRequest
         include Google::Apis::Core::Hashable
       
         # GCP project number of the requesting delegated app. Currently only intended
@@ -413,7 +413,7 @@ module Google
       end
       
       # Request to download user account in batch.
-      class IdentitytoolkitRelyingpartyDownloadAccountRequest
+      class DownloadAccountRequest
         include Google::Apis::Core::Hashable
       
         # GCP project number of the requesting delegated app. Currently only intended
@@ -452,7 +452,7 @@ module Google
       end
       
       # Request to get the account information.
-      class IdentitytoolkitRelyingpartyGetAccountInfoRequest
+      class GetAccountInfoRequest
         include Google::Apis::Core::Hashable
       
         # GCP project number of the requesting delegated app. Currently only intended
@@ -490,7 +490,7 @@ module Google
       end
       
       # Response of getting the project configuration.
-      class IdentitytoolkitRelyingpartyGetProjectConfigResponse
+      class GetProjectConfigResponse
         include Google::Apis::Core::Hashable
       
         # Whether to allow password user sign in or sign up.
@@ -578,7 +578,7 @@ module Google
       end
       
       # Request to reset the password.
-      class IdentitytoolkitRelyingpartyResetPasswordRequest
+      class ResetPasswordRequest
         include Google::Apis::Core::Hashable
       
         # The email address of the user.
@@ -615,7 +615,7 @@ module Google
       end
       
       # Request to set the account information.
-      class IdentitytoolkitRelyingpartySetAccountInfoRequest
+      class SetAccountInfoRequest
         include Google::Apis::Core::Hashable
       
         # The captcha challenge.
@@ -759,7 +759,7 @@ module Google
       end
       
       # Request to set the project configuration.
-      class IdentitytoolkitRelyingpartySetProjectConfigRequest
+      class SetProjectConfigRequest
         include Google::Apis::Core::Hashable
       
         # Whether to allow password user sign in or sign up.
@@ -861,7 +861,7 @@ module Google
       end
       
       # Request to sign out user.
-      class IdentitytoolkitRelyingpartySignOutUserRequest
+      class SignOutUserRequest
         include Google::Apis::Core::Hashable
       
         # Instance id token of the app.
@@ -886,7 +886,7 @@ module Google
       end
       
       # Response of signing out user.
-      class IdentitytoolkitRelyingpartySignOutUserResponse
+      class SignOutUserResponse
         include Google::Apis::Core::Hashable
       
         # The local ID of the user.
@@ -905,7 +905,7 @@ module Google
       end
       
       # Request to signup new user, create anonymous user or anonymous user reauth.
-      class IdentitytoolkitRelyingpartySignupNewUserRequest
+      class SignupNewUserRequest
         include Google::Apis::Core::Hashable
       
         # The captcha challenge.
@@ -986,7 +986,7 @@ module Google
       end
       
       # Request to upload user account in batch.
-      class IdentitytoolkitRelyingpartyUploadAccountRequest
+      class UploadAccountRequest
         include Google::Apis::Core::Hashable
       
         # Whether allow overwrite existing account when user local_id exists.
@@ -1066,7 +1066,7 @@ module Google
       end
       
       # Request to verify the IDP assertion.
-      class IdentitytoolkitRelyingpartyVerifyAssertionRequest
+      class VerifyAssertionRequest
         include Google::Apis::Core::Hashable
       
         # When it's true, automatically creates a new account if the user doesn't exist.
@@ -1154,7 +1154,7 @@ module Google
       end
       
       # Request to verify a custom token
-      class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest
+      class VerifyCustomTokenRequest
         include Google::Apis::Core::Hashable
       
         # GCP project number of the requesting delegated app. Currently only intended
@@ -1193,7 +1193,7 @@ module Google
       end
       
       # Request to verify the password.
-      class IdentitytoolkitRelyingpartyVerifyPasswordRequest
+      class VerifyPasswordRequest
         include Google::Apis::Core::Hashable
       
         # The captcha challenge.

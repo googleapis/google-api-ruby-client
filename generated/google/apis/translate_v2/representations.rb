@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DetectionsListResponse
+      class ListDetectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LanguagesListResponse
+      class ListLanguagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,7 +58,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TranslationsListResponse
+      class ListTranslationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -85,10 +85,10 @@ module Google
         end
       end
       
-      class DetectionsListResponse
+      class ListDetectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::DetectionsListResponse }
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListDetectionsResponse }
           collection :detections, as: 'detections', :class => Array do
         include Representable::JSON::Collection
         items class: Google::Apis::TranslateV2::DetectionsResource, decorator: Google::Apis::TranslateV2::DetectionsResource::Representation
@@ -106,10 +106,10 @@ module Google
         end
       end
       
-      class LanguagesListResponse
+      class ListLanguagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::LanguagesListResponse }
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListLanguagesResponse }
           collection :languages, as: 'languages', class: Google::Apis::TranslateV2::LanguagesResource, decorator: Google::Apis::TranslateV2::LanguagesResource::Representation
       
         end
@@ -119,9 +119,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsResource }
+          property :detected_source_language, as: 'detectedSourceLanguage'
           property :model, as: 'model'
           property :translated_text, as: 'translatedText'
-          property :detected_source_language, as: 'detectedSourceLanguage'
         end
       end
       
@@ -135,10 +135,10 @@ module Google
         end
       end
       
-      class TranslationsListResponse
+      class ListTranslationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsListResponse }
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListTranslationsResponse }
           collection :translations, as: 'translations', class: Google::Apis::TranslateV2::TranslationsResource, decorator: Google::Apis::TranslateV2::TranslationsResource::Representation
       
         end

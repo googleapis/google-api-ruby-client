@@ -1,3 +1,10 @@
+# 0.13.0
+* Regenerate APIs
+* Revert api\_names.yaml to an earlier revision to restore some manual name
+  overrides that were lost in 0.12.0
+  * For example, in `compute:v1`, `aggregated_address_list` has been reverted
+    to `list_aggregated_instances`.
+
 # 0.12.0
 * *Breaking change* - Change behavior of `fetch_all` to collect Hash responses
   into a single collection.

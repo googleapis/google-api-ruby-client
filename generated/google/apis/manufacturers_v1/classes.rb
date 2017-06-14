@@ -26,6 +26,12 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
+        # The status of the image.
+        # @OutputOnly
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         # The type of the image, i.e., crawled or uploaded.
         # @OutputOnly
         # Corresponds to the JSON property `type`
@@ -39,21 +45,15 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # The status of the image.
-        # @OutputOnly
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
           @image_url = args[:image_url] if args.key?(:image_url)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -61,79 +61,6 @@ module Google
       # https://support.google.com/manufacturers/answer/6124116.
       class Attributes
         include Google::Apis::Core::Hashable
-      
-        # The flavor of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#flavor.
-        # Corresponds to the JSON property `flavor`
-        # @return [String]
-        attr_accessor :flavor
-      
-        # The details of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#productdetail.
-        # Corresponds to the JSON property `productDetail`
-        # @return [Array<Google::Apis::ManufacturersV1::ProductDetail>]
-        attr_accessor :product_detail
-      
-        # The target age group of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#agegroup.
-        # Corresponds to the JSON property `ageGroup`
-        # @return [String]
-        attr_accessor :age_group
-      
-        # The Manufacturer Part Number (MPN) of the product. For more information,
-        # see https://support.google.com/manufacturers/answer/6124116#mpn.
-        # Corresponds to the JSON property `mpn`
-        # @return [String]
-        attr_accessor :mpn
-      
-        # The URL of the detail page of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#productpage.
-        # Corresponds to the JSON property `productPageUrl`
-        # @return [String]
-        attr_accessor :product_page_url
-      
-        # The release date of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#release.
-        # Corresponds to the JSON property `releaseDate`
-        # @return [String]
-        attr_accessor :release_date
-      
-        # The item group id of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#itemgroupid.
-        # Corresponds to the JSON property `itemGroupId`
-        # @return [String]
-        attr_accessor :item_group_id
-      
-        # The Global Trade Item Number (GTIN) of the product. For more information,
-        # see https://support.google.com/manufacturers/answer/6124116#gtin.
-        # Corresponds to the JSON property `gtin`
-        # @return [Array<String>]
-        attr_accessor :gtin
-      
-        # The name of the group of products related to the product. For more
-        # information, see
-        # https://support.google.com/manufacturers/answer/6124116#productline.
-        # Corresponds to the JSON property `productLine`
-        # @return [String]
-        attr_accessor :product_line
-      
-        # The capacity of a product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#capacity.
-        # Corresponds to the JSON property `capacity`
-        # @return [Google::Apis::ManufacturersV1::Capacity]
-        attr_accessor :capacity
-      
-        # The description of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#description.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The target gender of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#gender.
-        # Corresponds to the JSON property `gender`
-        # @return [String]
-        attr_accessor :gender
       
         # The size system of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#sizesystem.
@@ -253,24 +180,85 @@ module Google
         # @return [String]
         attr_accessor :scent
       
+        # The target age group of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#agegroup.
+        # Corresponds to the JSON property `ageGroup`
+        # @return [String]
+        attr_accessor :age_group
+      
+        # The details of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#productdetail.
+        # Corresponds to the JSON property `productDetail`
+        # @return [Array<Google::Apis::ManufacturersV1::ProductDetail>]
+        attr_accessor :product_detail
+      
+        # The flavor of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#flavor.
+        # Corresponds to the JSON property `flavor`
+        # @return [String]
+        attr_accessor :flavor
+      
+        # The URL of the detail page of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#productpage.
+        # Corresponds to the JSON property `productPageUrl`
+        # @return [String]
+        attr_accessor :product_page_url
+      
+        # The Manufacturer Part Number (MPN) of the product. For more information,
+        # see https://support.google.com/manufacturers/answer/6124116#mpn.
+        # Corresponds to the JSON property `mpn`
+        # @return [String]
+        attr_accessor :mpn
+      
+        # The release date of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#release.
+        # Corresponds to the JSON property `releaseDate`
+        # @return [String]
+        attr_accessor :release_date
+      
+        # The Global Trade Item Number (GTIN) of the product. For more information,
+        # see https://support.google.com/manufacturers/answer/6124116#gtin.
+        # Corresponds to the JSON property `gtin`
+        # @return [Array<String>]
+        attr_accessor :gtin
+      
+        # The item group id of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#itemgroupid.
+        # Corresponds to the JSON property `itemGroupId`
+        # @return [String]
+        attr_accessor :item_group_id
+      
+        # The name of the group of products related to the product. For more
+        # information, see
+        # https://support.google.com/manufacturers/answer/6124116#productline.
+        # Corresponds to the JSON property `productLine`
+        # @return [String]
+        attr_accessor :product_line
+      
+        # The capacity of a product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#capacity.
+        # Corresponds to the JSON property `capacity`
+        # @return [Google::Apis::ManufacturersV1::Capacity]
+        attr_accessor :capacity
+      
+        # The description of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The target gender of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#gender.
+        # Corresponds to the JSON property `gender`
+        # @return [String]
+        attr_accessor :gender
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @flavor = args[:flavor] if args.key?(:flavor)
-          @product_detail = args[:product_detail] if args.key?(:product_detail)
-          @age_group = args[:age_group] if args.key?(:age_group)
-          @mpn = args[:mpn] if args.key?(:mpn)
-          @product_page_url = args[:product_page_url] if args.key?(:product_page_url)
-          @release_date = args[:release_date] if args.key?(:release_date)
-          @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
-          @gtin = args[:gtin] if args.key?(:gtin)
-          @product_line = args[:product_line] if args.key?(:product_line)
-          @capacity = args[:capacity] if args.key?(:capacity)
-          @description = args[:description] if args.key?(:description)
-          @gender = args[:gender] if args.key?(:gender)
           @size_system = args[:size_system] if args.key?(:size_system)
           @theme = args[:theme] if args.key?(:theme)
           @pattern = args[:pattern] if args.key?(:pattern)
@@ -291,6 +279,18 @@ module Google
           @material = args[:material] if args.key?(:material)
           @disclosure_date = args[:disclosure_date] if args.key?(:disclosure_date)
           @scent = args[:scent] if args.key?(:scent)
+          @age_group = args[:age_group] if args.key?(:age_group)
+          @product_detail = args[:product_detail] if args.key?(:product_detail)
+          @flavor = args[:flavor] if args.key?(:flavor)
+          @product_page_url = args[:product_page_url] if args.key?(:product_page_url)
+          @mpn = args[:mpn] if args.key?(:mpn)
+          @release_date = args[:release_date] if args.key?(:release_date)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
+          @product_line = args[:product_line] if args.key?(:product_line)
+          @capacity = args[:capacity] if args.key?(:capacity)
+          @description = args[:description] if args.key?(:description)
+          @gender = args[:gender] if args.key?(:gender)
         end
       end
       
@@ -471,11 +471,6 @@ module Google
       class ProductDetail
         include Google::Apis::Core::Hashable
       
-        # The name of the attribute.
-        # Corresponds to the JSON property `attributeName`
-        # @return [String]
-        attr_accessor :attribute_name
-      
         # The value of the attribute.
         # Corresponds to the JSON property `attributeValue`
         # @return [String]
@@ -486,47 +481,20 @@ module Google
         # @return [String]
         attr_accessor :section_name
       
+        # The name of the attribute.
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
           @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
           @section_name = args[:section_name] if args.key?(:section_name)
-        end
-      end
-      
-      # A feature description of the product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#featuredesc.
-      class FeatureDescription
-        include Google::Apis::Core::Hashable
-      
-        # An image.
-        # Corresponds to the JSON property `image`
-        # @return [Google::Apis::ManufacturersV1::Image]
-        attr_accessor :image
-      
-        # A short description of the feature.
-        # Corresponds to the JSON property `headline`
-        # @return [String]
-        attr_accessor :headline
-      
-        # A detailed description of the feature.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image = args[:image] if args.key?(:image)
-          @headline = args[:headline] if args.key?(:headline)
-          @text = args[:text] if args.key?(:text)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
         end
       end
       
@@ -573,6 +541,38 @@ module Google
           @attribute = args[:attribute] if args.key?(:attribute)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # A feature description of the product. For more information, see
+      # https://support.google.com/manufacturers/answer/6124116#featuredesc.
+      class FeatureDescription
+        include Google::Apis::Core::Hashable
+      
+        # A detailed description of the feature.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # An image.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ManufacturersV1::Image]
+        attr_accessor :image
+      
+        # A short description of the feature.
+        # Corresponds to the JSON property `headline`
+        # @return [String]
+        attr_accessor :headline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @image = args[:image] if args.key?(:image)
+          @headline = args[:headline] if args.key?(:headline)
         end
       end
       

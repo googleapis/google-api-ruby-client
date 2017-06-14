@@ -171,18 +171,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeAnalyticsV1::GroupItemListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeAnalyticsV1::GroupItemListResponse]
+        # @return [Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_group_items(group_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'groupItems', options)
-          command.response_representation = Google::Apis::YoutubeAnalyticsV1::GroupItemListResponse::Representation
-          command.response_class = Google::Apis::YoutubeAnalyticsV1::GroupItemListResponse
+          command.response_representation = Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse::Representation
+          command.response_class = Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse
           command.query['groupId'] = group_id unless group_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -319,18 +319,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeAnalyticsV1::GroupListResponse] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeAnalyticsV1::ListGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeAnalyticsV1::GroupListResponse]
+        # @return [Google::Apis::YoutubeAnalyticsV1::ListGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_groups(id: nil, mine: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'groups', options)
-          command.response_representation = Google::Apis::YoutubeAnalyticsV1::GroupListResponse::Representation
-          command.response_class = Google::Apis::YoutubeAnalyticsV1::GroupListResponse
+          command.response_representation = Google::Apis::YoutubeAnalyticsV1::ListGroupsResponse::Representation
+          command.response_class = Google::Apis::YoutubeAnalyticsV1::ListGroupsResponse
           command.query['id'] = id unless id.nil?
           command.query['mine'] = mine unless mine.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?

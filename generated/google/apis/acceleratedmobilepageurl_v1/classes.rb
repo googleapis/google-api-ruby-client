@@ -58,11 +58,6 @@ module Google
       class AmpUrlError
         include Google::Apis::Core::Hashable
       
-        # An optional descriptive error message.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
         # The error code of an API call.
         # Corresponds to the JSON property `errorCode`
         # @return [String]
@@ -73,21 +68,31 @@ module Google
         # @return [String]
         attr_accessor :original_url
       
+        # An optional descriptive error message.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @error_message = args[:error_message] if args.key?(:error_message)
           @error_code = args[:error_code] if args.key?(:error_code)
           @original_url = args[:original_url] if args.key?(:original_url)
+          @error_message = args[:error_message] if args.key?(:error_message)
         end
       end
       
       # AMP URL request for a batch of URLs.
       class BatchGetAmpUrlsRequest
         include Google::Apis::Core::Hashable
+      
+        # The lookup_strategy being requested.
+        # Corresponds to the JSON property `lookupStrategy`
+        # @return [String]
+        attr_accessor :lookup_strategy
       
         # List of URLs to look up for the paired AMP URLs.
         # The URLs are case-sensitive. Up to 50 URLs per lookup
@@ -96,19 +101,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :urls
       
-        # The lookup_strategy being requested.
-        # Corresponds to the JSON property `lookupStrategy`
-        # @return [String]
-        attr_accessor :lookup_strategy
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @urls = args[:urls] if args.key?(:urls)
           @lookup_strategy = args[:lookup_strategy] if args.key?(:lookup_strategy)
+          @urls = args[:urls] if args.key?(:urls)
         end
       end
       

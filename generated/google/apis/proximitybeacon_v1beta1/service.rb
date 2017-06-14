@@ -234,6 +234,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deactivates a beacon. Once deactivated, the API will not return
+        # information nor attachment data for the beacon when queried via
+        # `beaconinfo.getforobserved`. Calling this method on an already inactive
+        # beacon will do nothing (but will return a successful response code).
+        # Authenticate using an [OAuth access token](https://developers.google.com/
+        # identity/protocols/OAuth2)
+        # from a signed-in user with **Is owner** or **Can edit** permissions in the
+        # Google Developers Console project.
+        # @param [String] beacon_name
+        #   Beacon that should be deactivated. A beacon name has the format
+        #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
+        #   the beacon and N is a code for the beacon's type. Possible values are
+        #   `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`
+        #   for AltBeacon. For Eddystone-EID beacons, you may use either the
+        #   current EID or the beacon's "stable" UID.
+        #   Required.
+        # @param [String] project_id
+        #   The project id of the beacon to deactivate. If the project id is not
+        #   specified then the project making the request is used. The project id must
+        #   match the project that owns the beacon.
+        #   Optional.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProximitybeaconV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deactivate_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+beaconName}:deactivate', options)
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
+          command.params['beaconName'] = beacon_name unless beacon_name.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified beacon including all diagnostics data for the beacon
         # as well as any attachments on the beacon (including those belonging to
         # other projects). This operation cannot be undone.
@@ -281,26 +330,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deactivates a beacon. Once deactivated, the API will not return
-        # information nor attachment data for the beacon when queried via
-        # `beaconinfo.getforobserved`. Calling this method on an already inactive
-        # beacon will do nothing (but will return a successful response code).
+        # Registers a previously unregistered beacon given its `advertisedId`.
+        # These IDs are unique within the system. An ID can be registered only once.
         # Authenticate using an [OAuth access token](https://developers.google.com/
         # identity/protocols/OAuth2)
         # from a signed-in user with **Is owner** or **Can edit** permissions in the
         # Google Developers Console project.
-        # @param [String] beacon_name
-        #   Beacon that should be deactivated. A beacon name has the format
-        #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
-        #   the beacon and N is a code for the beacon's type. Possible values are
-        #   `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`
-        #   for AltBeacon. For Eddystone-EID beacons, you may use either the
-        #   current EID or the beacon's "stable" UID.
-        #   Required.
+        # @param [Google::Apis::ProximitybeaconV1beta1::Beacon] beacon_object
         # @param [String] project_id
-        #   The project id of the beacon to deactivate. If the project id is not
-        #   specified then the project making the request is used. The project id must
-        #   match the project that owns the beacon.
+        #   The project id of the project the beacon will be registered to. If
+        #   the project id is not specified then the project making the request
+        #   is used.
         #   Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -311,19 +351,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Beacon] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ProximitybeaconV1beta1::Empty]
+        # @return [Google::Apis::ProximitybeaconV1beta1::Beacon]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deactivate_beacon(beacon_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+beaconName}:deactivate', options)
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
-          command.params['beaconName'] = beacon_name unless beacon_name.nil?
+        def register_beacon(beacon_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/beacons:register', options)
+          command.request_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
+          command.request_object = beacon_object
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::Beacon
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -440,47 +481,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Registers a previously unregistered beacon given its `advertisedId`.
-        # These IDs are unique within the system. An ID can be registered only once.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
-        # @param [Google::Apis::ProximitybeaconV1beta1::Beacon] beacon_object
-        # @param [String] project_id
-        #   The project id of the project the beacon will be registered to. If
-        #   the project id is not specified then the project making the request
-        #   is used.
-        #   Optional.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Beacon] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProximitybeaconV1beta1::Beacon]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def register_beacon(beacon_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/beacons:register', options)
-          command.request_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
-          command.request_object = beacon_object
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Beacon::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::Beacon
-          command.query['projectId'] = project_id unless project_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Activates a beacon. A beacon that is active will return information
         # and attachment data when queried via `beaconinfo.getforobserved`.
         # Calling this method on an already active beacon will do nothing (but
@@ -530,28 +530,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the diagnostics for a single beacon. You can also list diagnostics for
-        # all the beacons owned by your Google Developers Console project by using
-        # the beacon name `beacons/-`.
+        # Deletes the specified attachment for the given beacon. Each attachment has
+        # a unique attachment name (`attachmentName`) which is returned when you
+        # fetch the attachment data via this API. You specify this with the delete
+        # request to control which attachment is removed. This operation cannot be
+        # undone.
         # Authenticate using an [OAuth access token](https://developers.google.com/
         # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
-        # @param [String] beacon_name
-        #   Beacon that the diagnostics are for.
-        # @param [String] page_token
-        #   Requests results that occur after the `page_token`, obtained from the
-        #   response to a previous request. Optional.
-        # @param [Fixnum] page_size
-        #   Specifies the maximum number of results to return. Defaults to
-        #   10. Maximum 1000. Optional.
-        # @param [String] alert_filter
-        #   Requests only beacons that have the given alert. For example, to find
-        #   beacons that have low batteries use `alert_filter=LOW_BATTERY`.
+        # from a signed-in user with **Is owner** or **Can edit** permissions in the
+        # Google Developers Console project.
+        # @param [String] attachment_name
+        #   The attachment name (`attachmentName`) of
+        #   the attachment to remove. For example:
+        #   `beacons/3!893737abc9/attachments/c5e937-af0-494-959-ec49d12738`. For
+        #   Eddystone-EID beacons, the beacon ID portion (`3!893737abc9`) may be the
+        #   beacon's current EID, or its "stable" Eddystone-UID.
+        #   Required.
         # @param [String] project_id
-        #   Requests only diagnostic records for the given project id. If not set,
-        #   then the project making the request will be used for looking up
-        #   diagnostic records. Optional.
+        #   The project id of the attachment to delete. If not provided, the project
+        #   that is making the request is used.
+        #   Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -561,22 +559,77 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse] parsed result object
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse]
+        # @return [Google::Apis::ProximitybeaconV1beta1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_beacon_diagnostics(beacon_name, page_token: nil, page_size: nil, alert_filter: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+beaconName}/diagnostics', options)
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse
+        def delete_beacon_attachment(attachment_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1beta1/{+attachmentName}', options)
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
+          command.params['attachmentName'] = attachment_name unless attachment_name.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the attachments for the specified beacon that match the specified
+        # namespaced-type pattern.
+        # To control which namespaced types are returned, you add the
+        # `namespacedType` query parameter to the request. You must either use
+        # `*/*`, to return all attachments, or the namespace must be one of
+        # the ones returned from the  `namespaces` endpoint.
+        # Authenticate using an [OAuth access token](https://developers.google.com/
+        # identity/protocols/OAuth2)
+        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
+        # permissions in the Google Developers Console project.
+        # @param [String] beacon_name
+        #   Beacon whose attachments should be fetched. A beacon name has the
+        #   format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
+        #   by the beacon and N is a code for the beacon's type. Possible values are
+        #   `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`
+        #   for AltBeacon. For Eddystone-EID beacons, you may use either the
+        #   current EID or the beacon's "stable" UID.
+        #   Required.
+        # @param [String] namespaced_type
+        #   Specifies the namespace and type of attachment to include in response in
+        #   <var>namespace/type</var> format. Accepts `*/*` to specify
+        #   "all types in all namespaces".
+        # @param [String] project_id
+        #   The project id to list beacon attachments under. This field can be
+        #   used when "*" is specified to mean all attachment namespaces. Projects
+        #   may have multiple attachments with multiple namespaces. If "*" is
+        #   specified and the projectId string is empty, then the project
+        #   making the request is used.
+        #   Optional.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_beacon_attachments(beacon_name, namespaced_type: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+beaconName}/attachments', options)
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['alertFilter'] = alert_filter unless alert_filter.nil?
+          command.query['namespacedType'] = namespaced_type unless namespaced_type.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -701,83 +754,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified attachment for the given beacon. Each attachment has
-        # a unique attachment name (`attachmentName`) which is returned when you
-        # fetch the attachment data via this API. You specify this with the delete
-        # request to control which attachment is removed. This operation cannot be
-        # undone.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
-        # @param [String] attachment_name
-        #   The attachment name (`attachmentName`) of
-        #   the attachment to remove. For example:
-        #   `beacons/3!893737abc9/attachments/c5e937-af0-494-959-ec49d12738`. For
-        #   Eddystone-EID beacons, the beacon ID portion (`3!893737abc9`) may be the
-        #   beacon's current EID, or its "stable" Eddystone-UID.
-        #   Required.
-        # @param [String] project_id
-        #   The project id of the attachment to delete. If not provided, the project
-        #   that is making the request is used.
-        #   Optional.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ProximitybeaconV1beta1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_beacon_attachment(attachment_name, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1beta1/{+attachmentName}', options)
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::Empty::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::Empty
-          command.params['attachmentName'] = attachment_name unless attachment_name.nil?
-          command.query['projectId'] = project_id unless project_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns the attachments for the specified beacon that match the specified
-        # namespaced-type pattern.
-        # To control which namespaced types are returned, you add the
-        # `namespacedType` query parameter to the request. You must either use
-        # `*/*`, to return all attachments, or the namespace must be one of
-        # the ones returned from the  `namespaces` endpoint.
+        # List the diagnostics for a single beacon. You can also list diagnostics for
+        # all the beacons owned by your Google Developers Console project by using
+        # the beacon name `beacons/-`.
         # Authenticate using an [OAuth access token](https://developers.google.com/
         # identity/protocols/OAuth2)
         # from a signed-in user with **viewer**, **Is owner** or **Can edit**
         # permissions in the Google Developers Console project.
         # @param [String] beacon_name
-        #   Beacon whose attachments should be fetched. A beacon name has the
-        #   format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
-        #   by the beacon and N is a code for the beacon's type. Possible values are
-        #   `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5`
-        #   for AltBeacon. For Eddystone-EID beacons, you may use either the
-        #   current EID or the beacon's "stable" UID.
-        #   Required.
+        #   Beacon that the diagnostics are for.
+        # @param [String] page_token
+        #   Requests results that occur after the `page_token`, obtained from the
+        #   response to a previous request. Optional.
+        # @param [Fixnum] page_size
+        #   Specifies the maximum number of results to return. Defaults to
+        #   10. Maximum 1000. Optional.
+        # @param [String] alert_filter
+        #   Requests only beacons that have the given alert. For example, to find
+        #   beacons that have low batteries use `alert_filter=LOW_BATTERY`.
         # @param [String] project_id
-        #   The project id to list beacon attachments under. This field can be
-        #   used when "*" is specified to mean all attachment namespaces. Projects
-        #   may have multiple attachments with multiple namespaces. If "*" is
-        #   specified and the projectId string is empty, then the project
-        #   making the request is used.
-        #   Optional.
-        # @param [String] namespaced_type
-        #   Specifies the namespace and type of attachment to include in response in
-        #   <var>namespace/type</var> format. Accepts `*/*` to specify
-        #   "all types in all namespaces".
+        #   Requests only diagnostic records for the given project id. If not set,
+        #   then the project making the request will be used for looking up
+        #   diagnostic records. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -787,21 +785,23 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse] parsed result object
+        # @yieldparam result [Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse]
+        # @return [Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_beacon_attachments(beacon_name, project_id: nil, namespaced_type: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+beaconName}/attachments', options)
-          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse::Representation
-          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListBeaconAttachmentsResponse
+        def list_beacon_diagnostics(beacon_name, page_token: nil, page_size: nil, alert_filter: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+beaconName}/diagnostics', options)
+          command.response_representation = Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse::Representation
+          command.response_class = Google::Apis::ProximitybeaconV1beta1::ListDiagnosticsResponse
           command.params['beaconName'] = beacon_name unless beacon_name.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['alertFilter'] = alert_filter unless alert_filter.nil?
           command.query['projectId'] = project_id unless project_id.nil?
-          command.query['namespacedType'] = namespaced_type unless namespaced_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

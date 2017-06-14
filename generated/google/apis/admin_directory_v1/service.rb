@@ -266,7 +266,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_chromeosdevice(customer_id, device_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_chrome_os_device(customer_id, device_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevice
@@ -317,7 +317,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_chromeosdevices(customer_id, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_chrome_os_devices(customer_id, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/devices/chromeos', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevices::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevices
@@ -363,7 +363,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_chromeosdevice(customer_id, device_id, chrome_os_device_object = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_chrome_os_device(customer_id, device_id, chrome_os_device_object = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
           command.request_object = chrome_os_device_object
@@ -407,7 +407,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_chromeosdevice(customer_id, device_id, chrome_os_device_object = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_chrome_os_device(customer_id, device_id, chrome_os_device_object = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'customer/{customerId}/devices/chromeos/{deviceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
           command.request_object = chrome_os_device_object
@@ -1064,7 +1064,7 @@ module Google
         # Remove a alias for the group
         # @param [String] group_key
         #   Email or immutable Id of the group
-        # @param [String] alias_
+        # @param [String] group_alias
         #   The alias to be removed
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1087,10 +1087,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_group_alias(group_key, alias_, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_group_alias(group_key, group_alias, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'groups/{groupKey}/aliases/{alias}', options)
           command.params['groupKey'] = group_key unless group_key.nil?
-          command.params['alias'] = alias_ unless alias_.nil?
+          command.params['alias'] = group_alias unless group_alias.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1440,7 +1440,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def action_mobiledevice(customer_id, resource_id, mobile_device_action_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def action_mobile_device(customer_id, resource_id, mobile_device_action_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'customer/{customerId}/devices/mobile/{resourceId}/action', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::MobileDeviceAction::Representation
           command.request_object = mobile_device_action_object
@@ -1478,7 +1478,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_mobiledevice(customer_id, resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_mobile_device(customer_id, resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'customer/{customerId}/devices/mobile/{resourceId}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['resourceId'] = resource_id unless resource_id.nil?
@@ -1516,7 +1516,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_mobiledevice(customer_id, resource_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_mobile_device(customer_id, resource_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/devices/mobile/{resourceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::MobileDevice::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::MobileDevice
@@ -1567,7 +1567,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_mobiledevices(customer_id, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_mobile_devices(customer_id, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/devices/mobile', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::MobileDevices::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::MobileDevices
@@ -1813,7 +1813,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_orgunit(customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_org_unit(customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
@@ -1849,7 +1849,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_orgunit(customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_org_unit(customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
@@ -1886,7 +1886,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_orgunit(customer_id, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_org_unit(customer_id, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'customer/{customerId}/orgunits', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
@@ -1927,7 +1927,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_orgunits(customer_id, org_unit_path: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_org_units(customer_id, org_unit_path: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/orgunits', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnits::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnits
@@ -1967,7 +1967,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_orgunit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_org_unit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
@@ -2008,7 +2008,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_orgunit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_org_unit(customer_id, org_unit_path, org_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'customer/{customerId}/orgunits{/orgUnitPath*}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnit::Representation
           command.request_object = org_unit_object
@@ -2084,7 +2084,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_resource_calendar(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_calendar_resource(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.params['customer'] = customer unless customer.nil?
           command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
@@ -2121,7 +2121,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_resource_calendar(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_calendar_resource(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
@@ -2159,7 +2159,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_resource_calendar(customer, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def calendar_resource(customer, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'customer/{customer}/resources/calendars', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
@@ -2201,7 +2201,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_calendars(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_calendar_resources(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/calendars', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResources::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResources
@@ -2242,7 +2242,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_resource_calendar(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_calendar_resource(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
@@ -2284,7 +2284,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_resource_calendar(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_calendar_resource(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
@@ -3448,7 +3448,7 @@ module Google
         # Remove a alias for the user
         # @param [String] user_key
         #   Email or immutable Id of the user
-        # @param [String] alias_
+        # @param [String] user_alias
         #   The alias to be removed
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3471,10 +3471,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user_alias(user_key, alias_, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_user_alias(user_key, user_alias, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'users/{userKey}/aliases/{alias}', options)
           command.params['userKey'] = user_key unless user_key.nil?
-          command.params['alias'] = alias_ unless alias_.nil?
+          command.params['alias'] = user_alias unless user_alias.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

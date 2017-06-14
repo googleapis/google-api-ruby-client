@@ -118,7 +118,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class JobCancelResponse
+      class CancelJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,7 +274,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TableDataInsertAllRequest
+      class InsertAllTableDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Row
@@ -286,7 +286,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TableDataInsertAllResponse
+      class InsertAllTableDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class InsertError
@@ -582,7 +582,7 @@ module Google
         end
       end
       
-      class JobCancelResponse
+      class CancelJobResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job, as: 'job', class: Google::Apis::BigqueryV2::Job, decorator: Google::Apis::BigqueryV2::Job::Representation
@@ -958,12 +958,12 @@ module Google
         end
       end
       
-      class TableDataInsertAllRequest
+      class InsertAllTableDataRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :kind, as: 'kind'
-          collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row, decorator: Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row::Representation
+          collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row, decorator: Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row::Representation
       
           property :skip_invalid_rows, as: 'skipInvalidRows'
           property :template_suffix, as: 'templateSuffix'
@@ -978,10 +978,10 @@ module Google
         end
       end
       
-      class TableDataInsertAllResponse
+      class InsertAllTableDataResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :insert_errors, as: 'insertErrors', class: Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError, decorator: Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError::Representation
+          collection :insert_errors, as: 'insertErrors', class: Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError, decorator: Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError::Representation
       
           property :kind, as: 'kind'
         end

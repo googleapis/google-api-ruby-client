@@ -64,49 +64,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyCreateAuthUriRequest
+      class CreateAuthUriRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyDeleteAccountRequest
+      class DeleteAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyDownloadAccountRequest
+      class DownloadAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyGetAccountInfoRequest
+      class GetAccountInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyGetProjectConfigResponse
+      class GetProjectConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyResetPasswordRequest
+      class ResetPasswordRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartySetAccountInfoRequest
+      class SetAccountInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartySetProjectConfigRequest
+      class SetProjectConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,43 +118,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartySignOutUserRequest
+      class SignOutUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartySignOutUserResponse
+      class SignOutUserResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartySignupNewUserRequest
+      class SignupNewUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyUploadAccountRequest
+      class UploadAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyVerifyAssertionRequest
+      class VerifyAssertionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest
+      class VerifyCustomTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentitytoolkitRelyingpartyVerifyPasswordRequest
+      class VerifyPasswordRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -308,7 +308,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyCreateAuthUriRequest
+      class CreateAuthUriRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_id, as: 'appId'
@@ -328,7 +328,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyDeleteAccountRequest
+      class DeleteAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
@@ -337,7 +337,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyDownloadAccountRequest
+      class DownloadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
@@ -347,7 +347,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyGetAccountInfoRequest
+      class GetAccountInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
@@ -357,7 +357,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyGetProjectConfigResponse
+      class GetProjectConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_password_user, as: 'allowPasswordUser'
@@ -380,7 +380,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyResetPasswordRequest
+      class ResetPasswordRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
@@ -390,7 +390,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartySetAccountInfoRequest
+      class SetAccountInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
@@ -417,7 +417,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartySetProjectConfigRequest
+      class SetProjectConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_password_user, as: 'allowPasswordUser'
@@ -446,7 +446,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartySignOutUserRequest
+      class SignOutUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_id, as: 'instanceId'
@@ -454,14 +454,14 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartySignOutUserResponse
+      class SignOutUserResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :local_id, as: 'localId'
         end
       end
       
-      class IdentitytoolkitRelyingpartySignupNewUserRequest
+      class SignupNewUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
@@ -478,7 +478,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyUploadAccountRequest
+      class UploadAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_overwrite, as: 'allowOverwrite'
@@ -495,7 +495,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyVerifyAssertionRequest
+      class VerifyAssertionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create, as: 'autoCreate'
@@ -512,7 +512,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest
+      class VerifyCustomTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
@@ -522,7 +522,7 @@ module Google
         end
       end
       
-      class IdentitytoolkitRelyingpartyVerifyPasswordRequest
+      class VerifyPasswordRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'

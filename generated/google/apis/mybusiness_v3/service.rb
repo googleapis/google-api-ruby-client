@@ -393,7 +393,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_location_google_updated(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_google_updated_account_location(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}:googleUpdated', options)
           command.response_representation = Google::Apis::MybusinessV3::GoogleUpdatedLocation::Representation
           command.response_class = Google::Apis::MybusinessV3::GoogleUpdatedLocation
@@ -797,7 +797,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_location_reviews(name, page_size: nil, page_token: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_reviews(name, page_size: nil, page_token: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}/reviews', options)
           command.response_representation = Google::Apis::MybusinessV3::ListReviewsResponse::Representation
           command.response_class = Google::Apis::MybusinessV3::ListReviewsResponse
@@ -832,7 +832,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_location_review(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_review(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+name}', options)
           command.response_representation = Google::Apis::MybusinessV3::Review::Representation
           command.response_class = Google::Apis::MybusinessV3::Review
@@ -865,7 +865,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reply_account_location_review(name, review_reply_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def reply_to_review(name, review_reply_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v3/{+name}/reply', options)
           command.request_representation = Google::Apis::MybusinessV3::ReviewReply::Representation
           command.request_object = review_reply_object
@@ -898,7 +898,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_location_review_reply(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_reply(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v3/{+name}/reply', options)
           command.response_representation = Google::Apis::MybusinessV3::Empty::Representation
           command.response_class = Google::Apis::MybusinessV3::Empty

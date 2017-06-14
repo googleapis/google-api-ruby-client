@@ -84,7 +84,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_searchanalytic(site_url, search_analytics_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_search_analytics(site_url, search_analytics_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'sites/{siteUrl}/searchAnalytics/query', options)
           command.request_representation = Google::Apis::WebmastersV3::SearchAnalyticsQueryRequest::Representation
           command.request_object = search_analytics_query_request_object
@@ -191,18 +191,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WebmastersV3::SitemapsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::WebmastersV3::ListSitemapsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::WebmastersV3::SitemapsListResponse]
+        # @return [Google::Apis::WebmastersV3::ListSitemapsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sitemaps(site_url, sitemap_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'sites/{siteUrl}/sitemaps', options)
-          command.response_representation = Google::Apis::WebmastersV3::SitemapsListResponse::Representation
-          command.response_class = Google::Apis::WebmastersV3::SitemapsListResponse
+          command.response_representation = Google::Apis::WebmastersV3::ListSitemapsResponse::Representation
+          command.response_class = Google::Apis::WebmastersV3::ListSitemapsResponse
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.query['sitemapIndex'] = sitemap_index unless sitemap_index.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -364,18 +364,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WebmastersV3::SitesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::WebmastersV3::ListSitesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::WebmastersV3::SitesListResponse]
+        # @return [Google::Apis::WebmastersV3::ListSitesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_sites(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'sites', options)
-          command.response_representation = Google::Apis::WebmastersV3::SitesListResponse::Representation
-          command.response_class = Google::Apis::WebmastersV3::SitesListResponse
+          command.response_representation = Google::Apis::WebmastersV3::ListSitesResponse::Representation
+          command.response_class = Google::Apis::WebmastersV3::ListSitesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -407,18 +407,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WebmastersV3::UrlCrawlErrorsCountsQueryResponse] parsed result object
+        # @yieldparam result [Google::Apis::WebmastersV3::QueryUrlCrawlErrorsCountsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::WebmastersV3::UrlCrawlErrorsCountsQueryResponse]
+        # @return [Google::Apis::WebmastersV3::QueryUrlCrawlErrorsCountsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_urlcrawlerrorscount(site_url, category: nil, latest_counts_only: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_errors_count(site_url, category: nil, latest_counts_only: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'sites/{siteUrl}/urlCrawlErrorsCounts/query', options)
-          command.response_representation = Google::Apis::WebmastersV3::UrlCrawlErrorsCountsQueryResponse::Representation
-          command.response_class = Google::Apis::WebmastersV3::UrlCrawlErrorsCountsQueryResponse
+          command.response_representation = Google::Apis::WebmastersV3::QueryUrlCrawlErrorsCountsResponse::Representation
+          command.response_class = Google::Apis::WebmastersV3::QueryUrlCrawlErrorsCountsResponse
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.query['category'] = category unless category.nil?
           command.query['latestCountsOnly'] = latest_counts_only unless latest_counts_only.nil?
@@ -461,7 +461,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_urlcrawlerrorssample(site_url, url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_errors_sample(site_url, url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'sites/{siteUrl}/urlCrawlErrorsSamples/{url}', options)
           command.response_representation = Google::Apis::WebmastersV3::UrlCrawlErrorsSample::Representation
           command.response_class = Google::Apis::WebmastersV3::UrlCrawlErrorsSample
@@ -495,18 +495,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::WebmastersV3::UrlCrawlErrorsSamplesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::WebmastersV3::ListUrlCrawlErrorsSamplesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::WebmastersV3::UrlCrawlErrorsSamplesListResponse]
+        # @return [Google::Apis::WebmastersV3::ListUrlCrawlErrorsSamplesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_urlcrawlerrorssamples(site_url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_errors_samples(site_url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'sites/{siteUrl}/urlCrawlErrorsSamples', options)
-          command.response_representation = Google::Apis::WebmastersV3::UrlCrawlErrorsSamplesListResponse::Representation
-          command.response_class = Google::Apis::WebmastersV3::UrlCrawlErrorsSamplesListResponse
+          command.response_representation = Google::Apis::WebmastersV3::ListUrlCrawlErrorsSamplesResponse::Representation
+          command.response_class = Google::Apis::WebmastersV3::ListUrlCrawlErrorsSamplesResponse
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.query['category'] = category unless category.nil?
           command.query['platform'] = platform unless platform.nil?
@@ -549,7 +549,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_urlcrawlerrorssample_as_fixed(site_url, url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def mark_as_fixed(site_url, url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'sites/{siteUrl}/urlCrawlErrorsSamples/{url}', options)
           command.params['siteUrl'] = site_url unless site_url.nil?
           command.params['url'] = url unless url.nil?

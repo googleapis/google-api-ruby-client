@@ -82,13 +82,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneViewsAddResourcesRequest
+      class AddResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneViewsGetServiceResponse
+      class GetServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,19 +100,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneViewsListResourcesResponse
+      class ListResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneViewsRemoveResourcesRequest
+      class RemoveResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ZoneViewsSetServiceRequest
+      class SetServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -243,14 +243,14 @@ module Google
         end
       end
       
-      class ZoneViewsAddResourcesRequest
+      class AddResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resources, as: 'resources'
         end
       end
       
-      class ZoneViewsGetServiceResponse
+      class GetServiceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation
@@ -270,7 +270,7 @@ module Google
         end
       end
       
-      class ZoneViewsListResourcesResponse
+      class ListResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem, decorator: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem::Representation
@@ -280,14 +280,14 @@ module Google
         end
       end
       
-      class ZoneViewsRemoveResourcesRequest
+      class RemoveResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resources, as: 'resources'
         end
       end
       
-      class ZoneViewsSetServiceRequest
+      class SetServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation

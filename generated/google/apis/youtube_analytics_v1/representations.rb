@@ -52,13 +52,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroupItemListResponse
+      class ListGroupItemResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GroupListResponse
+      class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -126,7 +126,7 @@ module Google
         end
       end
       
-      class GroupItemListResponse
+      class ListGroupItemResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -136,7 +136,7 @@ module Google
         end
       end
       
-      class GroupListResponse
+      class ListGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'

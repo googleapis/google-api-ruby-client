@@ -142,7 +142,7 @@ module Google
       end
       
       # This is a JSON template for a ListConfigurations response.
-      class AchievementConfigurationListResponse
+      class ListAchievementConfigurationResponse
         include Google::Apis::Core::Hashable
       
         # The achievement configurations.
@@ -413,7 +413,7 @@ module Google
       end
       
       # This is a JSON template for a ListConfigurations response.
-      class LeaderboardConfigurationListResponse
+      class ListLeaderboardConfigurationResponse
         include Google::Apis::Core::Hashable
       
         # The leaderboard configurations.

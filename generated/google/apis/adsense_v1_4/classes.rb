@@ -591,7 +591,7 @@ module Google
       end
       
       # 
-      class AdsenseReportsGenerateResponse
+      class GenerateReportResponse
         include Google::Apis::Core::Hashable
       
         # The averages of the report. This is the same length as any other row in the
@@ -609,7 +609,7 @@ module Google
         # of headers; one for each dimension in the request, followed by one for each
         # metric in the request.
         # Corresponds to the JSON property `headers`
-        # @return [Array<Google::Apis::AdsenseV1_4::AdsenseReportsGenerateResponse::Header>]
+        # @return [Array<Google::Apis::AdsenseV1_4::GenerateReportResponse::Header>]
         attr_accessor :headers
       
         # Kind this is, in this case adsense#report.

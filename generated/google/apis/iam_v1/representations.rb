@@ -22,55 +22,7 @@ module Google
   module Apis
     module IamV1
       
-      class ListServiceAccountsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CreateServiceAccountRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QueryGrantableRolesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Role
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SignBlobRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QueryGrantableRolesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,13 +34,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListServiceAccountKeysResponse
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryGrantableRolesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServiceAccountKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,7 +70,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SignJwtResponse
+      class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,19 +82,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SignJwtRequest
+      class SignJwtResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignJwtRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,54 +119,39 @@ module Google
       end
       
       class ListServiceAccountsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :accounts, as: 'accounts', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreateServiceAccountRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_id, as: 'accountId'
-          property :service_account, as: 'serviceAccount', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class QueryGrantableRolesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :roles, as: 'roles', class: Google::Apis::IamV1::Role, decorator: Google::Apis::IamV1::Role::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class Role
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :title, as: 'title'
-          property :name, as: 'name'
-          property :description, as: 'description'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SignBlobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bytes_to_sign, :base64 => true, as: 'bytesToSign'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::IamV1::Policy, decorator: Google::Apis::IamV1::Policy::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Binding
@@ -213,12 +162,16 @@ module Google
         end
       end
       
-      class QueryGrantableRolesRequest
+      class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_token, as: 'pageToken'
-          property :page_size, as: 'pageSize'
-          property :full_resource_name, as: 'fullResourceName'
+          property :oauth2_client_id, as: 'oauth2ClientId'
+          property :unique_id, as: 'uniqueId'
+          property :display_name, as: 'displayName'
+          property :etag, :base64 => true, as: 'etag'
+          property :name, as: 'name'
+          property :email, as: 'email'
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -228,16 +181,19 @@ module Google
         end
       end
       
-      class ServiceAccount
+      class QueryGrantableRolesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :project_id, as: 'projectId'
-          property :oauth2_client_id, as: 'oauth2ClientId'
-          property :unique_id, as: 'uniqueId'
-          property :display_name, as: 'displayName'
-          property :etag, :base64 => true, as: 'etag'
-          property :name, as: 'name'
-          property :email, as: 'email'
+          property :full_resource_name, as: 'fullResourceName'
+          property :page_token, as: 'pageToken'
+          property :page_size, as: 'pageSize'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
@@ -249,32 +205,40 @@ module Google
         end
       end
       
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
       class ServiceAccountKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :private_key_data, :base64 => true, as: 'privateKeyData'
           property :public_key_data, :base64 => true, as: 'publicKeyData'
           property :name, as: 'name'
           property :valid_before_time, as: 'validBeforeTime'
           property :key_algorithm, as: 'keyAlgorithm'
-          property :private_key_type, as: 'privateKeyType'
           property :valid_after_time, as: 'validAfterTime'
+          property :private_key_type, as: 'privateKeyType'
+          property :private_key_data, :base64 => true, as: 'privateKeyData'
         end
       end
       
       class CreateServiceAccountKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :key_algorithm, as: 'keyAlgorithm'
           property :private_key_type, as: 'privateKeyType'
           property :include_public_key_data, as: 'includePublicKeyData'
+          property :key_algorithm, as: 'keyAlgorithm'
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class SignBlobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
+          property :signature, :base64 => true, as: 'signature'
         end
       end
       
@@ -286,28 +250,6 @@ module Google
         end
       end
       
-      class SignBlobResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :signature, :base64 => true, as: 'signature'
-          property :key_id, as: 'keyId'
-        end
-      end
-      
-      class TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class SignJwtRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :payload, as: 'payload'
-        end
-      end
-      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -315,6 +257,13 @@ module Google
           property :version, as: 'version'
           collection :bindings, as: 'bindings', class: Google::Apis::IamV1::Binding, decorator: Google::Apis::IamV1::Binding::Representation
       
+        end
+      end
+      
+      class SignJwtRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, as: 'payload'
         end
       end
       
@@ -329,9 +278,9 @@ module Google
       class BindingDelta
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :role, as: 'role'
           property :action, as: 'action'
           property :member, as: 'member'
+          property :role, as: 'role'
         end
       end
       
@@ -339,6 +288,57 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :binding_deltas, as: 'bindingDeltas', class: Google::Apis::IamV1::BindingDelta, decorator: Google::Apis::IamV1::BindingDelta::Representation
+      
+        end
+      end
+      
+      class ListServiceAccountsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :accounts, as: 'accounts', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
+      
+        end
+      end
+      
+      class CreateServiceAccountRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
+      
+          property :account_id, as: 'accountId'
+        end
+      end
+      
+      class QueryGrantableRolesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :roles, as: 'roles', class: Google::Apis::IamV1::Role, decorator: Google::Apis::IamV1::Role::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SignBlobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_to_sign, :base64 => true, as: 'bytesToSign'
+        end
+      end
+      
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :description, as: 'description'
+          property :title, as: 'title'
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::IamV1::Policy, decorator: Google::Apis::IamV1::Policy::Representation
       
         end
       end

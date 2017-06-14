@@ -50,7 +50,7 @@ module Google
       end
       
       # 
-      class DetectionsListResponse
+      class ListDetectionsResponse
         include Google::Apis::Core::Hashable
       
         # A detections contains detection results of several text
@@ -89,7 +89,7 @@ module Google
       end
       
       # 
-      class LanguagesListResponse
+      class ListLanguagesResponse
         include Google::Apis::Core::Hashable
       
         # List of source/target languages supported by the translation API. If target
@@ -114,6 +114,14 @@ module Google
       class TranslationsResource
         include Google::Apis::Core::Hashable
       
+        # The source language of the initial request, detected automatically, if
+        # no source language was passed within the initial request. If the
+        # source language was passed, auto-detection of the language will not
+        # occur and this field will be empty.
+        # Corresponds to the JSON property `detectedSourceLanguage`
+        # @return [String]
+        attr_accessor :detected_source_language
+      
         # The `model` type used for this translation. Valid values are
         # listed in public documentation. Can be different from requested `model`.
         # Present only if specific model type was explicitly requested.
@@ -126,23 +134,15 @@ module Google
         # @return [String]
         attr_accessor :translated_text
       
-        # The source language of the initial request, detected automatically, if
-        # no source language was passed within the initial request. If the
-        # source language was passed, auto-detection of the language will not
-        # occur and this field will be empty.
-        # Corresponds to the JSON property `detectedSourceLanguage`
-        # @return [String]
-        attr_accessor :detected_source_language
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
           @model = args[:model] if args.key?(:model)
           @translated_text = args[:translated_text] if args.key?(:translated_text)
-          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
         end
       end
       
@@ -179,7 +179,7 @@ module Google
       end
       
       # The main language translation response message.
-      class TranslationsListResponse
+      class ListTranslationsResponse
         include Google::Apis::Core::Hashable
       
         # Translations contains list of translation results of given text

@@ -233,9 +233,9 @@ module Google
         def annotate_resource(name, resource, parent_resource = nil)
           @strip_prefixes << name
           resource.parent = parent_resource unless parent_resource.nil?
-          resource.methods_prop.each do |_k, v|
+          resource.api_methods.each do |_k, v|
             annotate_method(v, resource)
-          end unless resource.methods_prop.nil?
+          end unless resource.api_methods.nil?
 
           resource.resources.each do |k, v|
             annotate_resource(k, v, resource)

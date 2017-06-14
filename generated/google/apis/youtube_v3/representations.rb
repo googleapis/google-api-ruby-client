@@ -106,7 +106,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ActivityListResponse
+      class ListActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,7 +124,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CaptionListResponse
+      class ListCaptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,7 +196,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ChannelListResponse
+      class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,7 +226,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ChannelSectionListResponse
+      class ListChannelSectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,7 +286,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CommentListResponse
+      class ListCommentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,7 +304,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CommentThreadListResponse
+      class ListCommentThreadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,7 +358,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GuideCategoryListResponse
+      class ListGuideCategoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,7 +376,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class I18nLanguageListResponse
+      class ListI18nLanguagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,7 +394,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class I18nRegionListResponse
+      class ListI18nRegionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,7 +460,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LiveBroadcastListResponse
+      class ListLiveBroadcastsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,7 +646,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LiveStreamListResponse
+      class ListLiveStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,7 +712,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PlaylistItemListResponse
+      class ListPlaylistItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,7 +730,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PlaylistListResponse
+      class ListPlaylistResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -784,7 +784,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SearchListResponse
+      class SearchListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -832,7 +832,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SubscriptionListResponse
+      class ListSubscriptionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,7 +880,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ThumbnailSetResponse
+      class SetThumbnailResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -910,7 +910,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VideoAbuseReportReasonListResponse
+      class ListVideoAbuseReportReasonResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -940,7 +940,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VideoCategoryListResponse
+      class ListVideoCategoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,13 +982,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VideoGetRatingResponse
+      class GetVideoRatingResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VideoListResponse
+      class ListVideosResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1243,7 +1243,7 @@ module Google
         end
       end
       
-      class ActivityListResponse
+      class ListActivitiesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1288,7 +1288,7 @@ module Google
         end
       end
       
-      class CaptionListResponse
+      class ListCaptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1440,7 +1440,7 @@ module Google
         end
       end
       
-      class ChannelListResponse
+      class ListChannelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1501,7 +1501,7 @@ module Google
         end
       end
       
-      class ChannelSectionListResponse
+      class ListChannelSectionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1619,7 +1619,7 @@ module Google
         end
       end
       
-      class CommentListResponse
+      class ListCommentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1672,7 +1672,7 @@ module Google
         end
       end
       
-      class CommentThreadListResponse
+      class ListCommentThreadsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1847,7 +1847,7 @@ module Google
         end
       end
       
-      class GuideCategoryListResponse
+      class ListGuideCategoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1884,7 +1884,7 @@ module Google
         end
       end
       
-      class I18nLanguageListResponse
+      class ListI18nLanguagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -1915,7 +1915,7 @@ module Google
         end
       end
       
-      class I18nRegionListResponse
+      class ListI18nRegionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2066,7 +2066,7 @@ module Google
         end
       end
       
-      class LiveBroadcastListResponse
+      class ListLiveBroadcastsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2431,7 +2431,7 @@ module Google
         end
       end
       
-      class LiveStreamListResponse
+      class ListLiveStreamsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2559,7 +2559,7 @@ module Google
         end
       end
       
-      class PlaylistItemListResponse
+      class ListPlaylistItemsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2602,7 +2602,7 @@ module Google
         end
       end
       
-      class PlaylistListResponse
+      class ListPlaylistResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2700,7 +2700,7 @@ module Google
         end
       end
       
-      class SearchListResponse
+      class SearchListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2809,7 +2809,7 @@ module Google
         end
       end
       
-      class SubscriptionListResponse
+      class ListSubscriptionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -2923,7 +2923,7 @@ module Google
         end
       end
       
-      class ThumbnailSetResponse
+      class SetThumbnailResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -3002,7 +3002,7 @@ module Google
         end
       end
       
-      class VideoAbuseReportReasonListResponse
+      class ListVideoAbuseReportReasonResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -3051,7 +3051,7 @@ module Google
         end
       end
       
-      class VideoCategoryListResponse
+      class ListVideoCategoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -3146,7 +3146,7 @@ module Google
         end
       end
       
-      class VideoGetRatingResponse
+      class GetVideoRatingResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
@@ -3158,7 +3158,7 @@ module Google
         end
       end
       
-      class VideoListResponse
+      class ListVideosResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'

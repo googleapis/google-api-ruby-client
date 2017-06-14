@@ -22,122 +22,6 @@ module Google
   module Apis
     module SourcerepoV1
       
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Defines an Identity and Access Management (IAM) policy. It is used to
-      # specify access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-      # `members` to a `role`, where the members can be user accounts, Google groups,
-      # Google domains, and service accounts. A `role` is a named list of permissions
-      # defined by IAM.
-      # **Example**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/owner",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
-      # ]
-      # `,
-      # `
-      # "role": "roles/viewer",
-      # "members": ["user:sean@example.com"]
-      # `
-      # ]
-      # `
-      # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam).
-      class Policy
-        include Google::Apis::Core::Hashable
-      
-        # Version of the `Policy`. The default version is 0.
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        # Specifies cloud audit logging configuration for this policy.
-        # Corresponds to the JSON property `auditConfigs`
-        # @return [Array<Google::Apis::SourcerepoV1::AuditConfig>]
-        attr_accessor :audit_configs
-      
-        # Associates a list of `members` to a `role`.
-        # Multiple `bindings` must not be specified for the same `role`.
-        # `bindings` with no members will result in an error.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::SourcerepoV1::Binding>]
-        attr_accessor :bindings
-      
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # 
-        # Corresponds to the JSON property `iamOwned`
-        # @return [Boolean]
-        attr_accessor :iam_owned
-        alias_method :iam_owned?, :iam_owned
-      
-        # If more than one rule is specified, the rules are applied in the following
-        # manner:
-        # - All matching LOG rules are always applied.
-        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-        # granted.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if no rule applies, permission is denied.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::SourcerepoV1::Rule>]
-        attr_accessor :rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @version = args[:version] if args.key?(:version)
-          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
-        end
-      end
-      
       # Write a Data Access (Gin) log
       class DataAccessOptions
         include Google::Apis::Core::Hashable
@@ -344,6 +228,25 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configuration to automatically mirror a repository from another
       # hosting service, for example GitHub or BitBucket.
       class MirrorConfig
@@ -378,25 +281,6 @@ module Google
           @url = args[:url] if args.key?(:url)
           @webhook_id = args[:webhook_id] if args.key?(:webhook_id)
           @deploy_key_id = args[:deploy_key_id] if args.key?(:deploy_key_id)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -441,46 +325,9 @@ module Google
         end
       end
       
-      # Response for ListRepos.  The size is not set in the returned repositories.
-      class ListReposResponse
-        include Google::Apis::Core::Hashable
-      
-        # The listed repos.
-        # Corresponds to the JSON property `repos`
-        # @return [Array<Google::Apis::SourcerepoV1::Repo>]
-        attr_accessor :repos
-      
-        # If non-empty, additional repositories exist within the project. These
-        # can be retrieved by including this value in the next ListReposRequest's
-        # page_token field.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @repos = args[:repos] if args.key?(:repos)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # A condition to be met.
       class Condition
         include Google::Apis::Core::Hashable
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
       
         # DEPRECATED. Use 'values' instead.
         # Corresponds to the JSON property `value`
@@ -493,15 +340,25 @@ module Google
         # @return [String]
         attr_accessor :sys
       
+        # The objects of the condition. This is mutually exclusive with 'value'.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
         # Trusted attributes supplied by the IAM system.
         # Corresponds to the JSON property `iam`
         # @return [String]
         attr_accessor :iam
       
-        # The objects of the condition. This is mutually exclusive with 'value'.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
+        # An operator to apply the subject with.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # Trusted attributes discharged by the service.
+        # Corresponds to the JSON property `svc`
+        # @return [String]
+        attr_accessor :svc
       
         def initialize(**args)
            update!(**args)
@@ -509,12 +366,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @op = args[:op] if args.key?(:op)
-          @svc = args[:svc] if args.key?(:svc)
           @value = args[:value] if args.key?(:value)
           @sys = args[:sys] if args.key?(:sys)
-          @iam = args[:iam] if args.key?(:iam)
           @values = args[:values] if args.key?(:values)
+          @iam = args[:iam] if args.key?(:iam)
+          @op = args[:op] if args.key?(:op)
+          @svc = args[:svc] if args.key?(:svc)
+        end
+      end
+      
+      # Response for ListRepos.  The size is not set in the returned repositories.
+      class ListReposResponse
+        include Google::Apis::Core::Hashable
+      
+        # If non-empty, additional repositories exist within the project. These
+        # can be retrieved by including this value in the next ListReposRequest's
+        # page_token field.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The listed repos.
+        # Corresponds to the JSON property `repos`
+        # @return [Array<Google::Apis::SourcerepoV1::Repo>]
+        attr_accessor :repos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @repos = args[:repos] if args.key?(:repos)
         end
       end
       
@@ -610,24 +494,6 @@ module Google
       class Rule
         include Google::Apis::Core::Hashable
       
-        # If one or more 'not_in' clauses are specified, the rule matches
-        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-        # The format for in and not_in entries is the same as for members in a
-        # Binding (see google/iam/v1/policy.proto).
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Additional restrictions that must be met
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::SourcerepoV1::Condition>]
-        attr_accessor :conditions
-      
         # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
         # that match the LOG action.
         # Corresponds to the JSON property `logConfig`
@@ -652,25 +518,48 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # If one or more 'not_in' clauses are specified, the rule matches
+        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+        # The format for in and not_in entries is the same as for members in a
+        # Binding (see google/iam/v1/policy.proto).
+        # Corresponds to the JSON property `notIn`
+        # @return [Array<String>]
+        attr_accessor :not_in
+      
+        # Human-readable description of the rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Additional restrictions that must be met
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::SourcerepoV1::Condition>]
+        attr_accessor :conditions
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @not_in = args[:not_in] if args.key?(:not_in)
-          @description = args[:description] if args.key?(:description)
-          @conditions = args[:conditions] if args.key?(:conditions)
           @log_config = args[:log_config] if args.key?(:log_config)
           @in = args[:in] if args.key?(:in)
           @permissions = args[:permissions] if args.key?(:permissions)
           @action = args[:action] if args.key?(:action)
+          @not_in = args[:not_in] if args.key?(:not_in)
+          @description = args[:description] if args.key?(:description)
+          @conditions = args[:conditions] if args.key?(:conditions)
         end
       end
       
       # Specifies what kind of log the caller must write
       class LogConfig
         include Google::Apis::Core::Hashable
+      
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::SourcerepoV1::CloudAuditOptions]
+        attr_accessor :cloud_audit
       
         # Options for counters
         # Corresponds to the JSON property `counter`
@@ -682,10 +571,29 @@ module Google
         # @return [Google::Apis::SourcerepoV1::DataAccessOptions]
         attr_accessor :data_access
       
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::SourcerepoV1::CloudAuditOptions]
-        attr_accessor :cloud_audit
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
+          @counter = args[:counter] if args.key?(:counter)
+          @data_access = args[:data_access] if args.key?(:data_access)
+        end
+      end
+      
+      # Request message for `TestIamPermissions` method.
+      class TestIamPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the `resource`. Permissions with
+        # wildcards (such as '*' or 'storage.*') are not allowed. For more
+        # information see
+        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
       
         def initialize(**args)
            update!(**args)
@@ -693,9 +601,101 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Defines an Identity and Access Management (IAM) policy. It is used to
+      # specify access control policies for Cloud Platform resources.
+      # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+      # `members` to a `role`, where the members can be user accounts, Google groups,
+      # Google domains, and service accounts. A `role` is a named list of permissions
+      # defined by IAM.
+      # **Example**
+      # `
+      # "bindings": [
+      # `
+      # "role": "roles/owner",
+      # "members": [
+      # "user:mike@example.com",
+      # "group:admins@example.com",
+      # "domain:google.com",
+      # "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+      # ]
+      # `,
+      # `
+      # "role": "roles/viewer",
+      # "members": ["user:sean@example.com"]
+      # `
+      # ]
+      # `
+      # For a description of IAM and its features, see the
+      # [IAM developer's guide](https://cloud.google.com/iam).
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `iamOwned`
+        # @return [Boolean]
+        attr_accessor :iam_owned
+        alias_method :iam_owned?, :iam_owned
+      
+        # If more than one rule is specified, the rules are applied in the following
+        # manner:
+        # - All matching LOG rules are always applied.
+        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
+        # Logging will be applied if one or more matching rule requires logging.
+        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
+        # granted.
+        # Logging will be applied if one or more matching rule requires logging.
+        # - Otherwise, if no rule applies, permission is denied.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::SourcerepoV1::Rule>]
+        attr_accessor :rules
+      
+        # Version of the `Policy`. The default version is 0.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::SourcerepoV1::AuditConfig>]
+        attr_accessor :audit_configs
+      
+        # Associates a list of `members` to a `role`.
+        # Multiple `bindings` must not be specified for the same `role`.
+        # `bindings` with no members will result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::SourcerepoV1::Binding>]
+        attr_accessor :bindings
+      
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a policy from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform policy updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
+        # systems are expected to put that etag in the request to `setIamPolicy` to
+        # ensure that their change will be applied to the same version of the policy.
+        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
+        # policy is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
+          @rules = args[:rules] if args.key?(:rules)
+          @version = args[:version] if args.key?(:version)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
     end

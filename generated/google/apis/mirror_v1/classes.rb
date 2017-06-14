@@ -102,7 +102,7 @@ module Google
       
       # A list of Attachments. This is the response from the server to GET requests on
       # the attachments collection.
-      class AttachmentsListResponse
+      class ListAttachmentsResponse
         include Google::Apis::Core::Hashable
       
         # The list of attachments.
@@ -278,7 +278,7 @@ module Google
       
       # A list of Contacts representing contacts. This is the response from the server
       # to GET requests on the contacts collection.
-      class ContactsListResponse
+      class ListContactsResponse
         include Google::Apis::Core::Hashable
       
         # Contact list.
@@ -366,7 +366,7 @@ module Google
       
       # A list of Locations. This is the response from the server to GET requests on
       # the locations collection.
-      class LocationsListResponse
+      class ListLocationsResponse
         include Google::Apis::Core::Hashable
       
         # The list of locations.
@@ -715,7 +715,7 @@ module Google
       
       # A list of Subscriptions. This is the response from the server to GET requests
       # on the subscription collection.
-      class SubscriptionsListResponse
+      class ListSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
         # The list of subscriptions.
@@ -976,7 +976,7 @@ module Google
       
       # A list of timeline items. This is the response from the server to GET requests
       # on the timeline collection.
-      class TimelineListResponse
+      class ListTimelineResponse
         include Google::Apis::Core::Hashable
       
         # Items in the timeline.

@@ -330,18 +330,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigqueryV2::JobCancelResponse] parsed result object
+        # @yieldparam result [Google::Apis::BigqueryV2::CancelJobResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BigqueryV2::JobCancelResponse]
+        # @return [Google::Apis::BigqueryV2::CancelJobResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'projects/{projectId}/jobs/{jobId}/cancel', options)
-          command.response_representation = Google::Apis::BigqueryV2::JobCancelResponse::Representation
-          command.response_class = Google::Apis::BigqueryV2::JobCancelResponse
+          command.response_representation = Google::Apis::BigqueryV2::CancelJobResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::CancelJobResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -628,7 +628,7 @@ module Google
         #   Dataset ID of the destination table.
         # @param [String] table_id
         #   Table ID of the destination table.
-        # @param [Google::Apis::BigqueryV2::TableDataInsertAllRequest] table_data_insert_all_request_object
+        # @param [Google::Apis::BigqueryV2::InsertAllTableDataRequest] insert_all_table_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -642,20 +642,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigqueryV2::TableDataInsertAllResponse] parsed result object
+        # @yieldparam result [Google::Apis::BigqueryV2::InsertAllTableDataResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BigqueryV2::TableDataInsertAllResponse]
+        # @return [Google::Apis::BigqueryV2::InsertAllTableDataResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_tabledatum_all(project_id, dataset_id, table_id, table_data_insert_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_all_table_data(project_id, dataset_id, table_id, insert_all_table_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll', options)
-          command.request_representation = Google::Apis::BigqueryV2::TableDataInsertAllRequest::Representation
-          command.request_object = table_data_insert_all_request_object
-          command.response_representation = Google::Apis::BigqueryV2::TableDataInsertAllResponse::Representation
-          command.response_class = Google::Apis::BigqueryV2::TableDataInsertAllResponse
+          command.request_representation = Google::Apis::BigqueryV2::InsertAllTableDataRequest::Representation
+          command.request_object = insert_all_table_data_request_object
+          command.response_representation = Google::Apis::BigqueryV2::InsertAllTableDataResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::InsertAllTableDataResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
@@ -703,7 +703,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tabledata(project_id, dataset_id, table_id, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_table_data(project_id, dataset_id, table_id, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/data', options)
           command.response_representation = Google::Apis::BigqueryV2::TableDataList::Representation
           command.response_class = Google::Apis::BigqueryV2::TableDataList

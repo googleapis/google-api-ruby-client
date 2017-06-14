@@ -22,6 +22,220 @@ module Google
   module Apis
     module PubsubV1
       
+      # Response for the `ListTopicSubscriptions` method.
+      class ListTopicSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, indicates that there may be more subscriptions that match
+        # the request; this value should be passed in a new
+        # `ListTopicSubscriptionsRequest` to get more subscriptions.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The names of the subscriptions that match the request.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<String>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Response for the `Pull` method.
+      class PullResponse
+        include Google::Apis::Core::Hashable
+      
+        # Received Pub/Sub messages. The Pub/Sub system will return zero messages if
+        # there are no more available in the backlog. The Pub/Sub system may return
+        # fewer than the `maxMessages` requested even if there are more messages
+        # available in the backlog.
+        # Corresponds to the JSON property `receivedMessages`
+        # @return [Array<Google::Apis::PubsubV1::ReceivedMessage>]
+        attr_accessor :received_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @received_messages = args[:received_messages] if args.key?(:received_messages)
+        end
+      end
+      
+      # A message and its corresponding acknowledgment ID.
+      class ReceivedMessage
+        include Google::Apis::Core::Hashable
+      
+        # A message data and its attributes. The message payload must not be empty;
+        # it must contain either a non-empty data field, or at least one attribute.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::PubsubV1::Message]
+        attr_accessor :message
+      
+        # This ID can be used to acknowledge the received message.
+        # Corresponds to the JSON property `ackId`
+        # @return [String]
+        attr_accessor :ack_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @ack_id = args[:ack_id] if args.key?(:ack_id)
+        end
+      end
+      
+      # Configuration for a push delivery endpoint.
+      class PushConfig
+        include Google::Apis::Core::Hashable
+      
+        # A URL locating the endpoint to which messages should be pushed.
+        # For example, a Webhook endpoint might use "https://example.com/push".
+        # Corresponds to the JSON property `pushEndpoint`
+        # @return [String]
+        attr_accessor :push_endpoint
+      
+        # Endpoint configuration attributes.
+        # Every endpoint has a set of API supported attributes that can be used to
+        # control different aspects of the message delivery.
+        # The currently supported attribute is `x-goog-version`, which you can
+        # use to change the format of the pushed message. This attribute
+        # indicates the version of the data expected by the endpoint. This
+        # controls the shape of the pushed message (i.e., its fields and metadata).
+        # The endpoint version is based on the version of the Pub/Sub API.
+        # If not present during the `CreateSubscription` call, it will default to
+        # the version of the API used to make such call. If not present during a
+        # `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
+        # calls will always return a valid version, even if the subscription was
+        # created without this attribute.
+        # The possible values for this attribute are:
+        # * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
+        # * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @push_endpoint = args[:push_endpoint] if args.key?(:push_endpoint)
+          @attributes = args[:attributes] if args.key?(:attributes)
+        end
+      end
+      
+      # Response message for `TestIamPermissions` method.
+      class TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is
+        # allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request for the `Pull` method.
+      class PullRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this field set to true, the system will respond immediately even if
+        # it there are no messages available to return in the `Pull` response.
+        # Otherwise, the system may wait (for a bounded amount of time) until at
+        # least one message is available, rather than returning no messages. The
+        # client may cancel the request if it does not wish to wait any longer for
+        # the response.
+        # Corresponds to the JSON property `returnImmediately`
+        # @return [Boolean]
+        attr_accessor :return_immediately
+        alias_method :return_immediately?, :return_immediately
+      
+        # The maximum number of messages returned for this request. The Pub/Sub
+        # system may return fewer than the number specified.
+        # Corresponds to the JSON property `maxMessages`
+        # @return [Fixnum]
+        attr_accessor :max_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @return_immediately = args[:return_immediately] if args.key?(:return_immediately)
+          @max_messages = args[:max_messages] if args.key?(:max_messages)
+        end
+      end
+      
+      # Response for the `ListSubscriptions` method.
+      class ListSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, indicates that there may be more subscriptions that match
+        # the request; this value should be passed in a new
+        # `ListSubscriptionsRequest` to get more subscriptions.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The subscriptions that match the request.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::PubsubV1::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Request for the Publish method.
+      class PublishRequest
+        include Google::Apis::Core::Hashable
+      
+        # The messages to publish.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::PubsubV1::Message>]
+        attr_accessor :messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
       # Response for the `Publish` method.
       class PublishResponse
         include Google::Apis::Core::Hashable
@@ -46,14 +260,6 @@ module Google
       # A subscription resource.
       class Subscription
         include Google::Apis::Core::Hashable
-      
-        # The name of the topic from which this subscription is receiving messages.
-        # Format is `projects/`project`/topics/`topic``.
-        # The value of this field will be `_deleted-topic_` if the topic has been
-        # deleted.
-        # Corresponds to the JSON property `topic`
-        # @return [String]
-        attr_accessor :topic
       
         # Configuration for a push delivery endpoint.
         # Corresponds to the JSON property `pushConfig`
@@ -90,16 +296,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The name of the topic from which this subscription is receiving messages.
+        # Format is `projects/`project`/topics/`topic``.
+        # The value of this field will be `_deleted-topic_` if the topic has been
+        # deleted.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @topic = args[:topic] if args.key?(:topic)
           @push_config = args[:push_config] if args.key?(:push_config)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @name = args[:name] if args.key?(:name)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
@@ -312,8 +526,14 @@ module Google
       
       # A message data and its attributes. The message payload must not be empty;
       # it must contain either a non-empty data field, or at least one attribute.
-      class PubsubMessage
+      class Message
         include Google::Apis::Core::Hashable
+      
+        # The message payload.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
       
         # Optional attributes for this message.
         # Corresponds to the JSON property `attributes`
@@ -335,22 +555,16 @@ module Google
         # @return [String]
         attr_accessor :publish_time
       
-        # The message payload.
-        # Corresponds to the JSON property `data`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :data
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @data = args[:data] if args.key?(:data)
           @attributes = args[:attributes] if args.key?(:attributes)
           @message_id = args[:message_id] if args.key?(:message_id)
           @publish_time = args[:publish_time] if args.key?(:publish_time)
-          @data = args[:data] if args.key?(:data)
         end
       end
       
@@ -394,15 +608,20 @@ module Google
         end
       end
       
-      # Request for the Acknowledge method.
-      class AcknowledgeRequest
+      # Response for the `ListTopics` method.
+      class ListTopicsResponse
         include Google::Apis::Core::Hashable
       
-        # The acknowledgment ID for the messages being acknowledged that was returned
-        # by the Pub/Sub system in the `Pull` response. Must not be empty.
-        # Corresponds to the JSON property `ackIds`
-        # @return [Array<String>]
-        attr_accessor :ack_ids
+        # The resulting topics.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::PubsubV1::Topic>]
+        attr_accessor :topics
+      
+        # If not empty, indicates that there may be more topics that match the
+        # request; this value should be passed in a new `ListTopicsRequest`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
       
         def initialize(**args)
            update!(**args)
@@ -410,7 +629,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
+          @topics = args[:topics] if args.key?(:topics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -433,47 +653,15 @@ module Google
         end
       end
       
-      # Response for the `ListTopics` method.
-      class ListTopicsResponse
+      # Request for the Acknowledge method.
+      class AcknowledgeRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, indicates that there may be more topics that match the
-        # request; this value should be passed in a new `ListTopicsRequest`.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The resulting topics.
-        # Corresponds to the JSON property `topics`
-        # @return [Array<Google::Apis::PubsubV1::Topic>]
-        attr_accessor :topics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @topics = args[:topics] if args.key?(:topics)
-        end
-      end
-      
-      # Response for the `ListTopicSubscriptions` method.
-      class ListTopicSubscriptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # If not empty, indicates that there may be more subscriptions that match
-        # the request; this value should be passed in a new
-        # `ListTopicSubscriptionsRequest` to get more subscriptions.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The names of the subscriptions that match the request.
-        # Corresponds to the JSON property `subscriptions`
+        # The acknowledgment ID for the messages being acknowledged that was returned
+        # by the Pub/Sub system in the `Pull` response. Must not be empty.
+        # Corresponds to the JSON property `ackIds`
         # @return [Array<String>]
-        attr_accessor :subscriptions
+        attr_accessor :ack_ids
       
         def initialize(**args)
            update!(**args)
@@ -481,195 +669,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
-        end
-      end
-      
-      # Response for the `Pull` method.
-      class PullResponse
-        include Google::Apis::Core::Hashable
-      
-        # Received Pub/Sub messages. The Pub/Sub system will return zero messages if
-        # there are no more available in the backlog. The Pub/Sub system may return
-        # fewer than the `maxMessages` requested even if there are more messages
-        # available in the backlog.
-        # Corresponds to the JSON property `receivedMessages`
-        # @return [Array<Google::Apis::PubsubV1::ReceivedMessage>]
-        attr_accessor :received_messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @received_messages = args[:received_messages] if args.key?(:received_messages)
-        end
-      end
-      
-      # A message and its corresponding acknowledgment ID.
-      class ReceivedMessage
-        include Google::Apis::Core::Hashable
-      
-        # A message data and its attributes. The message payload must not be empty;
-        # it must contain either a non-empty data field, or at least one attribute.
-        # Corresponds to the JSON property `message`
-        # @return [Google::Apis::PubsubV1::PubsubMessage]
-        attr_accessor :message
-      
-        # This ID can be used to acknowledge the received message.
-        # Corresponds to the JSON property `ackId`
-        # @return [String]
-        attr_accessor :ack_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @ack_id = args[:ack_id] if args.key?(:ack_id)
-        end
-      end
-      
-      # Configuration for a push delivery endpoint.
-      class PushConfig
-        include Google::Apis::Core::Hashable
-      
-        # A URL locating the endpoint to which messages should be pushed.
-        # For example, a Webhook endpoint might use "https://example.com/push".
-        # Corresponds to the JSON property `pushEndpoint`
-        # @return [String]
-        attr_accessor :push_endpoint
-      
-        # Endpoint configuration attributes.
-        # Every endpoint has a set of API supported attributes that can be used to
-        # control different aspects of the message delivery.
-        # The currently supported attribute is `x-goog-version`, which you can
-        # use to change the format of the pushed message. This attribute
-        # indicates the version of the data expected by the endpoint. This
-        # controls the shape of the pushed message (i.e., its fields and metadata).
-        # The endpoint version is based on the version of the Pub/Sub API.
-        # If not present during the `CreateSubscription` call, it will default to
-        # the version of the API used to make such call. If not present during a
-        # `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
-        # calls will always return a valid version, even if the subscription was
-        # created without this attribute.
-        # The possible values for this attribute are:
-        # * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
-        # * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-        # Corresponds to the JSON property `attributes`
-        # @return [Hash<String,String>]
-        attr_accessor :attributes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @push_endpoint = args[:push_endpoint] if args.key?(:push_endpoint)
-          @attributes = args[:attributes] if args.key?(:attributes)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Request for the `Pull` method.
-      class PullRequest
-        include Google::Apis::Core::Hashable
-      
-        # If this field set to true, the system will respond immediately even if
-        # it there are no messages available to return in the `Pull` response.
-        # Otherwise, the system may wait (for a bounded amount of time) until at
-        # least one message is available, rather than returning no messages. The
-        # client may cancel the request if it does not wish to wait any longer for
-        # the response.
-        # Corresponds to the JSON property `returnImmediately`
-        # @return [Boolean]
-        attr_accessor :return_immediately
-        alias_method :return_immediately?, :return_immediately
-      
-        # The maximum number of messages returned for this request. The Pub/Sub
-        # system may return fewer than the number specified.
-        # Corresponds to the JSON property `maxMessages`
-        # @return [Fixnum]
-        attr_accessor :max_messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @return_immediately = args[:return_immediately] if args.key?(:return_immediately)
-          @max_messages = args[:max_messages] if args.key?(:max_messages)
-        end
-      end
-      
-      # Response for the `ListSubscriptions` method.
-      class ListSubscriptionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # If not empty, indicates that there may be more subscriptions that match
-        # the request; this value should be passed in a new
-        # `ListSubscriptionsRequest` to get more subscriptions.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The subscriptions that match the request.
-        # Corresponds to the JSON property `subscriptions`
-        # @return [Array<Google::Apis::PubsubV1::Subscription>]
-        attr_accessor :subscriptions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
-        end
-      end
-      
-      # Request for the Publish method.
-      class PublishRequest
-        include Google::Apis::Core::Hashable
-      
-        # The messages to publish.
-        # Corresponds to the JSON property `messages`
-        # @return [Array<Google::Apis::PubsubV1::PubsubMessage>]
-        attr_accessor :messages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @messages = args[:messages] if args.key?(:messages)
+          @ack_ids = args[:ack_ids] if args.key?(:ack_ids)
         end
       end
     end

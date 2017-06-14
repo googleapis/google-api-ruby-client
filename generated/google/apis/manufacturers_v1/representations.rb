@@ -64,13 +64,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FeatureDescription
+      class Issue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Issue
+      class FeatureDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -85,29 +85,15 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
           property :type, as: 'type'
           property :image_url, as: 'imageUrl'
-          property :status, as: 'status'
         end
       end
       
       class Attributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :flavor, as: 'flavor'
-          collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
-      
-          property :age_group, as: 'ageGroup'
-          property :mpn, as: 'mpn'
-          property :product_page_url, as: 'productPageUrl'
-          property :release_date, as: 'releaseDate'
-          property :item_group_id, as: 'itemGroupId'
-          collection :gtin, as: 'gtin'
-          property :product_line, as: 'productLine'
-          property :capacity, as: 'capacity', class: Google::Apis::ManufacturersV1::Capacity, decorator: Google::Apis::ManufacturersV1::Capacity::Representation
-      
-          property :description, as: 'description'
-          property :gender, as: 'gender'
           property :size_system, as: 'sizeSystem'
           property :theme, as: 'theme'
           property :pattern, as: 'pattern'
@@ -133,6 +119,20 @@ module Google
           property :material, as: 'material'
           property :disclosure_date, as: 'disclosureDate'
           property :scent, as: 'scent'
+          property :age_group, as: 'ageGroup'
+          collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
+      
+          property :flavor, as: 'flavor'
+          property :product_page_url, as: 'productPageUrl'
+          property :mpn, as: 'mpn'
+          property :release_date, as: 'releaseDate'
+          collection :gtin, as: 'gtin'
+          property :item_group_id, as: 'itemGroupId'
+          property :product_line, as: 'productLine'
+          property :capacity, as: 'capacity', class: Google::Apis::ManufacturersV1::Capacity, decorator: Google::Apis::ManufacturersV1::Capacity::Representation
+      
+          property :description, as: 'description'
+          property :gender, as: 'gender'
         end
       end
       
@@ -184,19 +184,9 @@ module Google
       class ProductDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :attribute_name, as: 'attributeName'
           property :attribute_value, as: 'attributeValue'
           property :section_name, as: 'sectionName'
-        end
-      end
-      
-      class FeatureDescription
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
-      
-          property :headline, as: 'headline'
-          property :text, as: 'text'
+          property :attribute_name, as: 'attributeName'
         end
       end
       
@@ -208,6 +198,16 @@ module Google
           property :attribute, as: 'attribute'
           property :timestamp, as: 'timestamp'
           property :severity, as: 'severity'
+        end
+      end
+      
+      class FeatureDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
+          property :headline, as: 'headline'
         end
       end
       

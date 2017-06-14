@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def authinfo_account(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_authinfo(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'accounts/authinfo', options)
           command.response_representation = Google::Apis::ContentV2::AccountsAuthInfoResponse::Representation
           command.response_class = Google::Apis::ContentV2::AccountsAuthInfoResponse
@@ -131,7 +131,7 @@ module Google
         
         # Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)
         # accounts in a single request.
-        # @param [Google::Apis::ContentV2::AccountsCustomBatchRequest] accounts_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchAccountsRequest] batch_accounts_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [String] fields
@@ -147,20 +147,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccountsCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchAccountsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::AccountsCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchAccountsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_account(accounts_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_account(batch_accounts_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounts/batch', options)
-          command.request_representation = Google::Apis::ContentV2::AccountsCustomBatchRequest::Representation
-          command.request_object = accounts_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::AccountsCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::AccountsCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchAccountsRequest::Representation
+          command.request_object = batch_accounts_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchAccountsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchAccountsResponse
           command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -311,18 +311,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccountsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListAccountsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::AccountsListResponse]
+        # @return [Google::Apis::ContentV2::ListAccountsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_accounts(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accounts', options)
-          command.response_representation = Google::Apis::ContentV2::AccountsListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::AccountsListResponse
+          command.response_representation = Google::Apis::ContentV2::ListAccountsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListAccountsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -426,7 +426,7 @@ module Google
         end
         
         # 
-        # @param [Google::Apis::ContentV2::AccountstatusesCustomBatchRequest] accountstatuses_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchAccountStatusesRequest] batch_account_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -440,20 +440,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccountstatusesCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchAccountStatusesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::AccountstatusesCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchAccountStatusesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_accountstatus(accountstatuses_custom_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_account_status(batch_account_statuses_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accountstatuses/batch', options)
-          command.request_representation = Google::Apis::ContentV2::AccountstatusesCustomBatchRequest::Representation
-          command.request_object = accountstatuses_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::AccountstatusesCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::AccountstatusesCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchAccountStatusesRequest::Representation
+          command.request_object = batch_account_statuses_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchAccountStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchAccountStatusesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -489,7 +489,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_accountstatus(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_status(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accountstatuses/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::AccountStatus::Representation
           command.response_class = Google::Apis::ContentV2::AccountStatus
@@ -523,18 +523,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccountstatusesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListAccountStatusesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::AccountstatusesListResponse]
+        # @return [Google::Apis::ContentV2::ListAccountStatusesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accountstatuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_statuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accountstatuses', options)
-          command.response_representation = Google::Apis::ContentV2::AccountstatusesListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::AccountstatusesListResponse
+          command.response_representation = Google::Apis::ContentV2::ListAccountStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListAccountStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -545,7 +545,7 @@ module Google
         end
         
         # Retrieves and updates tax settings of multiple accounts in a single request.
-        # @param [Google::Apis::ContentV2::AccounttaxCustomBatchRequest] accounttax_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchAccountTaxRequest] batch_account_tax_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [String] fields
@@ -561,20 +561,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccounttaxCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchAccountTaxResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::AccounttaxCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchAccountTaxResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_accounttax(accounttax_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_account_tax(batch_account_tax_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'accounttax/batch', options)
-          command.request_representation = Google::Apis::ContentV2::AccounttaxCustomBatchRequest::Representation
-          command.request_object = accounttax_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::AccounttaxCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::AccounttaxCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchAccountTaxRequest::Representation
+          command.request_object = batch_account_tax_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchAccountTaxResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchAccountTaxResponse
           command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -610,7 +610,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_accounttax(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_tax(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accounttax/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::AccountTax::Representation
           command.response_class = Google::Apis::ContentV2::AccountTax
@@ -643,18 +643,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccounttaxListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListAccountTaxResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::AccounttaxListResponse]
+        # @return [Google::Apis::ContentV2::ListAccountTaxResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accounttaxes(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_taxes(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accounttax', options)
-          command.response_representation = Google::Apis::ContentV2::AccounttaxListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::AccounttaxListResponse
+          command.response_representation = Google::Apis::ContentV2::ListAccountTaxResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListAccountTaxResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -696,7 +696,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_accounttax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account_tax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{merchantId}/accounttax/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::AccountTax::Representation
           command.request_object = account_tax_object
@@ -742,7 +742,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_accounttax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_tax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{merchantId}/accounttax/{accountId}', options)
           command.request_representation = Google::Apis::ContentV2::AccountTax::Representation
           command.request_object = account_tax_object
@@ -758,7 +758,7 @@ module Google
         end
         
         # 
-        # @param [Google::Apis::ContentV2::DatafeedsCustomBatchRequest] datafeeds_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchDatafeedsRequest] batch_datafeeds_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [String] fields
@@ -774,20 +774,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::DatafeedsCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchDatafeedsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::DatafeedsCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchDatafeedsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_datafeed(datafeeds_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_datafeed(batch_datafeeds_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'datafeeds/batch', options)
-          command.request_representation = Google::Apis::ContentV2::DatafeedsCustomBatchRequest::Representation
-          command.request_object = datafeeds_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::DatafeedsCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::DatafeedsCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchDatafeedsRequest::Representation
+          command.request_object = batch_datafeeds_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchDatafeedsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchDatafeedsResponse
           command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -795,8 +795,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a datafeed from your Merchant Center account. This method can only be
-        # called for non-multi-client accounts.
+        # Deletes a datafeed configuration from your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [Boolean] dry_run
@@ -833,8 +833,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a datafeed from your Merchant Center account. This method can only
-        # be called for non-multi-client accounts.
+        # Retrieves a datafeed configuration from your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [String] fields
@@ -870,8 +870,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Registers a datafeed with your Merchant Center account. This method can only
-        # be called for non-multi-client accounts.
+        # Registers a datafeed configuration with your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
         # @param [Boolean] dry_run
@@ -932,18 +932,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::DatafeedsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListDatafeedsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::DatafeedsListResponse]
+        # @return [Google::Apis::ContentV2::ListDatafeedsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_datafeeds(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/datafeeds', options)
-          command.response_representation = Google::Apis::ContentV2::DatafeedsListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::DatafeedsListResponse
+          command.response_representation = Google::Apis::ContentV2::ListDatafeedsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListDatafeedsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -953,8 +953,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed of your Merchant Center account. This method can only be
-        # called for non-multi-client accounts. This method supports patch semantics.
+        # Updates a datafeed configuration of your Merchant Center account. This method
+        # can only be called for non-multi-client accounts. This method supports patch
+        # semantics.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
@@ -996,8 +997,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed of your Merchant Center account. This method can only be
-        # called for non-multi-client accounts.
+        # Updates a datafeed configuration of your Merchant Center account. This method
+        # can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
@@ -1040,7 +1041,7 @@ module Google
         end
         
         # 
-        # @param [Google::Apis::ContentV2::DatafeedstatusesCustomBatchRequest] datafeedstatuses_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchDatafeedStatusesRequest] batch_datafeed_statuses_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1054,20 +1055,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchDatafeedStatusesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchDatafeedStatusesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_datafeedstatus(datafeedstatuses_custom_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_datafeed_status(batch_datafeed_statuses_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'datafeedstatuses/batch', options)
-          command.request_representation = Google::Apis::ContentV2::DatafeedstatusesCustomBatchRequest::Representation
-          command.request_object = datafeedstatuses_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchDatafeedStatusesRequest::Representation
+          command.request_object = batch_datafeed_statuses_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchDatafeedStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchDatafeedStatusesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1099,7 +1100,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_datafeedstatus(merchant_id, datafeed_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_datafeed_status(merchant_id, datafeed_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/datafeedstatuses/{datafeedId}', options)
           command.response_representation = Google::Apis::ContentV2::DatafeedStatus::Representation
           command.response_class = Google::Apis::ContentV2::DatafeedStatus
@@ -1132,18 +1133,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::DatafeedstatusesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListDatafeedStatusesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::DatafeedstatusesListResponse]
+        # @return [Google::Apis::ContentV2::ListDatafeedStatusesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_datafeedstatuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_datafeed_statuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/datafeedstatuses', options)
-          command.response_representation = Google::Apis::ContentV2::DatafeedstatusesListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::DatafeedstatusesListResponse
+          command.response_representation = Google::Apis::ContentV2::ListDatafeedStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListDatafeedStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1156,7 +1157,7 @@ module Google
         # Updates price and availability for multiple products or stores in a single
         # request. This operation does not update the expiration date of the products.
         # This method can only be called for non-multi-client accounts.
-        # @param [Google::Apis::ContentV2::InventoryCustomBatchRequest] inventory_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchInventoryRequest] batch_inventory_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [String] fields
@@ -1172,20 +1173,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::InventoryCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchInventoryResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::InventoryCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchInventoryResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_inventory(inventory_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_inventory(batch_inventory_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'inventory/batch', options)
-          command.request_representation = Google::Apis::ContentV2::InventoryCustomBatchRequest::Representation
-          command.request_object = inventory_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::InventoryCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::InventoryCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchInventoryRequest::Representation
+          command.request_object = batch_inventory_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchInventoryResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchInventoryResponse
           command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1203,7 +1204,7 @@ module Google
         #   to update price and availability of an online product.
         # @param [String] product_id
         #   The ID of the product for which to update price and availability.
-        # @param [Google::Apis::ContentV2::InventorySetRequest] inventory_set_request_object
+        # @param [Google::Apis::ContentV2::SetInventoryRequest] set_inventory_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [String] fields
@@ -1219,20 +1220,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::InventorySetResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::SetInventoryResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::InventorySetResponse]
+        # @return [Google::Apis::ContentV2::SetInventoryResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_inventory(merchant_id, store_code, product_id, inventory_set_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_inventory(merchant_id, store_code, product_id, set_inventory_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/inventory/{storeCode}/products/{productId}', options)
-          command.request_representation = Google::Apis::ContentV2::InventorySetRequest::Representation
-          command.request_object = inventory_set_request_object
-          command.response_representation = Google::Apis::ContentV2::InventorySetResponse::Representation
-          command.response_class = Google::Apis::ContentV2::InventorySetResponse
+          command.request_representation = Google::Apis::ContentV2::SetInventoryRequest::Representation
+          command.request_object = set_inventory_request_object
+          command.response_representation = Google::Apis::ContentV2::SetInventoryResponse::Representation
+          command.response_class = Google::Apis::ContentV2::SetInventoryResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['storeCode'] = store_code unless store_code.nil?
           command.params['productId'] = product_id unless product_id.nil?
@@ -1312,7 +1313,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def advancetestorder_order(merchant_id, order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def advance_test_order(merchant_id, order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/testorders/{orderId}/advance', options)
           command.response_representation = Google::Apis::ContentV2::OrdersAdvanceTestOrderResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersAdvanceTestOrderResponse
@@ -1394,7 +1395,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancellineitem_order(merchant_id, order_id, orders_cancel_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def cancel_order_line_item(merchant_id, order_id, orders_cancel_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/cancelLineItem', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCancelLineItemRequest::Representation
           command.request_object = orders_cancel_line_item_request_object
@@ -1434,7 +1435,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def createtestorder_order(merchant_id, orders_create_test_order_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_test_order(merchant_id, orders_create_test_order_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/testorders', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCreateTestOrderRequest::Representation
           command.request_object = orders_create_test_order_request_object
@@ -1471,7 +1472,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_order(orders_custom_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def custom_order_batch(orders_custom_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'orders/batch', options)
           command.request_representation = Google::Apis::ContentV2::OrdersCustomBatchRequest::Representation
           command.request_object = orders_custom_batch_request_object
@@ -1549,7 +1550,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def getbymerchantorderid_order(merchant_id, merchant_order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_order_by_merchant_order_id(merchant_id, merchant_order_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/ordersbymerchantid/{merchantOrderId}', options)
           command.response_representation = Google::Apis::ContentV2::OrdersGetByMerchantOrderIdResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersGetByMerchantOrderIdResponse
@@ -1589,7 +1590,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def gettestordertemplate_order(merchant_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_test_order_template(merchant_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/testordertemplates/{templateName}', options)
           command.response_representation = Google::Apis::ContentV2::OrdersGetTestOrderTemplateResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersGetTestOrderTemplateResponse
@@ -1745,7 +1746,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def returnlineitem_order(merchant_id, order_id, orders_return_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def return_order_line_item(merchant_id, order_id, orders_return_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/returnLineItem', options)
           command.request_representation = Google::Apis::ContentV2::OrdersReturnLineItemRequest::Representation
           command.request_object = orders_return_line_item_request_object
@@ -1829,7 +1830,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def updatemerchantorderid_order(merchant_id, order_id, orders_update_merchant_order_id_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_merchant_order_id(merchant_id, order_id, orders_update_merchant_order_id_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/updateMerchantOrderId', options)
           command.request_representation = Google::Apis::ContentV2::OrdersUpdateMerchantOrderIdRequest::Representation
           command.request_object = orders_update_merchant_order_id_request_object
@@ -1871,7 +1872,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def updateshipment_order(merchant_id, order_id, orders_update_shipment_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_order_shipment(merchant_id, order_id, orders_update_shipment_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/updateShipment', options)
           command.request_representation = Google::Apis::ContentV2::OrdersUpdateShipmentRequest::Representation
           command.request_object = orders_update_shipment_request_object
@@ -1887,7 +1888,7 @@ module Google
         
         # Retrieves, inserts, and deletes multiple products in a single request. This
         # method can only be called for non-multi-client accounts.
-        # @param [Google::Apis::ContentV2::ProductsCustomBatchRequest] products_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchProductsRequest] batch_products_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [String] fields
@@ -1903,20 +1904,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::ProductsCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchProductsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::ProductsCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchProductsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_product(products_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_product(batch_products_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'products/batch', options)
-          command.request_representation = Google::Apis::ContentV2::ProductsCustomBatchRequest::Representation
-          command.request_object = products_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::ProductsCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::ProductsCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchProductsRequest::Representation
+          command.request_object = batch_products_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchProductsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchProductsResponse
           command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2071,18 +2072,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::ProductsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListProductsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::ProductsListResponse]
+        # @return [Google::Apis::ContentV2::ListProductsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_products(merchant_id, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/products', options)
-          command.response_representation = Google::Apis::ContentV2::ProductsListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::ProductsListResponse
+          command.response_representation = Google::Apis::ContentV2::ListProductsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListProductsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['includeInvalidInsertedItems'] = include_invalid_inserted_items unless include_invalid_inserted_items.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -2095,7 +2096,7 @@ module Google
         
         # Gets the statuses of multiple products in a single request. This method can
         # only be called for non-multi-client accounts.
-        # @param [Google::Apis::ContentV2::ProductstatusesCustomBatchRequest] productstatuses_custom_batch_request_object
+        # @param [Google::Apis::ContentV2::BatchProductStatusesRequest] batch_product_statuses_request_object
         # @param [Boolean] include_attributes
         #   Flag to include full product data in the results of this request. The default
         #   value is false.
@@ -2112,20 +2113,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::ProductstatusesCustomBatchResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::BatchProductStatusesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::ProductstatusesCustomBatchResponse]
+        # @return [Google::Apis::ContentV2::BatchProductStatusesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_productstatus(productstatuses_custom_batch_request_object = nil, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_product_status(batch_product_statuses_request_object = nil, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'productstatuses/batch', options)
-          command.request_representation = Google::Apis::ContentV2::ProductstatusesCustomBatchRequest::Representation
-          command.request_object = productstatuses_custom_batch_request_object
-          command.response_representation = Google::Apis::ContentV2::ProductstatusesCustomBatchResponse::Representation
-          command.response_class = Google::Apis::ContentV2::ProductstatusesCustomBatchResponse
+          command.request_representation = Google::Apis::ContentV2::BatchProductStatusesRequest::Representation
+          command.request_object = batch_product_statuses_request_object
+          command.response_representation = Google::Apis::ContentV2::BatchProductStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2::BatchProductStatusesResponse
           command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2163,7 +2164,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_productstatus(merchant_id, product_id, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_product_status(merchant_id, product_id, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/productstatuses/{productId}', options)
           command.response_representation = Google::Apis::ContentV2::ProductStatus::Representation
           command.response_class = Google::Apis::ContentV2::ProductStatus
@@ -2204,18 +2205,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::ProductstatusesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ContentV2::ListProductStatusesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ContentV2::ProductstatusesListResponse]
+        # @return [Google::Apis::ContentV2::ListProductStatusesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_productstatuses(merchant_id, include_attributes: nil, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_product_statuses(merchant_id, include_attributes: nil, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/productstatuses', options)
-          command.response_representation = Google::Apis::ContentV2::ProductstatusesListResponse::Representation
-          command.response_class = Google::Apis::ContentV2::ProductstatusesListResponse
+          command.response_representation = Google::Apis::ContentV2::ListProductStatusesResponse::Representation
+          command.response_class = Google::Apis::ContentV2::ListProductStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['includeInvalidInsertedItems'] = include_invalid_inserted_items unless include_invalid_inserted_items.nil?
