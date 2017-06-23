@@ -89,7 +89,7 @@ module Google
               end
               # logger.debug { sprintf('Writing chunk (%d bytes, %d total)', chunk.length, bytes_read) }
               @download_io.write(chunk)
-              @offset += chunk.length
+              @offset += chunk.bytesize
             end
           end
 
