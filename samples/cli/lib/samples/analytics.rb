@@ -34,7 +34,7 @@ module Samples
   class Analytics < BaseCli
     Analytics = Google::Apis::AnalyticsV3
 
-    desc 'show_visits PROFILE_ID', 'Show visists for the given analytics profile ID'
+    desc 'show_visits PROFILE_ID', 'Show visits for the given analytics profile ID'
     method_option :start, type: :string, required: true
     method_option :end, type: :string, required: true
     def show_visits(profile_id)
@@ -58,7 +58,7 @@ module Samples
       print_table(data)
     end
 
-    desc 'show_realtime_visits PROFILE_ID', 'Show realtime visists for the given analytics profile ID'
+    desc 'show_realtime_visits PROFILE_ID', 'Show realtime visits for the given analytics profile ID'
     def show_realtime_visits(profile_id)
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
