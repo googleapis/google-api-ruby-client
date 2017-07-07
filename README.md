@@ -1,5 +1,9 @@
 # Google API Client
 
+## Library maintenance
+
+This client library is supported but in maintenance mode only.  We are fixing necessary bugs and adding essential features to ensure this library continues to meet your needs for accessing Google APIs.  Non-critical issues will be closed.  Any issue may be reopened if it is causing ongoing problems.
+
 ## Alpha
 
 This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible
