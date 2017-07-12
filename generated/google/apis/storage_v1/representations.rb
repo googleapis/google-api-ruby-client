@@ -37,6 +37,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class Encryption
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Lifecycle
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -231,6 +237,8 @@ module Google
       
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
+          property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
+      
           property :etag, as: 'etag'
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -271,6 +279,13 @@ module Google
             collection :http_method, as: 'method'
             collection :origin, as: 'origin'
             collection :response_header, as: 'responseHeader'
+          end
+        end
+        
+        class Encryption
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :default_kms_key_name, as: 'defaultKmsKeyName'
           end
         end
         
@@ -476,6 +491,7 @@ module Google
           property :generation, :numeric_string => true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :kms_key_name, as: 'kmsKeyName'
           property :md5_hash, as: 'md5Hash'
           property :media_link, as: 'mediaLink'
           hash :metadata, as: 'metadata'

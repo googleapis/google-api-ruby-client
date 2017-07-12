@@ -22,15 +22,26 @@ module Google
   module Apis
     module FirebaserulesV1
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
+      # Possible result values from the function mock invocation.
+      class Result
         include Google::Apis::Core::Hashable
+      
+        # The result is an actual value. The type of the value must match that
+        # of the type declared by the service.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        # A generic empty message that you can re-use to avoid defining duplicated
+        # empty messages in your APIs. A typical example is to use it as the request
+        # or the response type of an API method. For instance:
+        # service Foo `
+        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+        # `
+        # The JSON representation for `Empty` is empty JSON object ````.
+        # Corresponds to the JSON property `undefined`
+        # @return [Google::Apis::FirebaserulesV1::Empty]
+        attr_accessor :undefined
       
         def initialize(**args)
            update!(**args)
@@ -38,25 +49,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # `Source` is one or more `File` messages comprising a logical set of rules.
-      class Source
-        include Google::Apis::Core::Hashable
-      
-        # `File` set constituting the `Source` bundle.
-        # Corresponds to the JSON property `files`
-        # @return [Array<Google::Apis::FirebaserulesV1::File>]
-        attr_accessor :files
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @files = args[:files] if args.key?(:files)
+          @value = args[:value] if args.key?(:value)
+          @undefined = args[:undefined] if args.key?(:undefined)
         end
       end
       
@@ -64,6 +58,11 @@ module Google
       # index of the `File` in the `Source` message. Used for debug purposes.
       class SourcePosition
         include Google::Apis::Core::Hashable
+      
+        # Line number of the source fragment. 1-based.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
       
         # First column on the source line associated with the source fragment.
         # Corresponds to the JSON property `column`
@@ -75,31 +74,66 @@ module Google
         # @return [String]
         attr_accessor :file_name
       
-        # Line number of the source fragment. 1-based.
-        # Corresponds to the JSON property `line`
-        # @return [Fixnum]
-        attr_accessor :line
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @line = args[:line] if args.key?(:line)
           @column = args[:column] if args.key?(:column)
           @file_name = args[:file_name] if args.key?(:file_name)
-          @line = args[:line] if args.key?(:line)
         end
       end
       
-      # The request for FirebaseRulesService.TestRuleset.
-      class TestRulesetRequest
+      # `TestCase` messages provide the request context and an expectation as to
+      # whether the given context will be allowed or denied. Test cases may specify
+      # the `request`, `resource`, and `function_mocks` to mock a function call to
+      # a service-provided function.
+      # The `request` object represents context present at request-time.
+      # The `resource` is the value of the target resource as it appears in
+      # persistent storage before the request is executed.
+      class TestCase
         include Google::Apis::Core::Hashable
       
-        # `Source` is one or more `File` messages comprising a logical set of rules.
-        # Corresponds to the JSON property `source`
-        # @return [Google::Apis::FirebaserulesV1::Source]
-        attr_accessor :source
+        # Optional resource value as it appears in persistent storage before the
+        # request is fulfilled.
+        # The resource type depends on the `request.path` value.
+        # Corresponds to the JSON property `resource`
+        # @return [Object]
+        attr_accessor :resource
+      
+        # Optional function mocks for service-defined functions. If not set, any
+        # service defined function is expected to return an error, which may or may
+        # not influence the test outcome.
+        # Corresponds to the JSON property `functionMocks`
+        # @return [Array<Google::Apis::FirebaserulesV1::FunctionMock>]
+        attr_accessor :function_mocks
+      
+        # Test expectation.
+        # Corresponds to the JSON property `expectation`
+        # @return [String]
+        attr_accessor :expectation
+      
+        # Request context.
+        # The exact format of the request context is service-dependent. See the
+        # appropriate service documentation for information about the supported
+        # fields and types on the request. Minimally, all services support the
+        # following fields and types:
+        # Request field  | Type
+        # ---------------|-----------------
+        # auth.uid       | `string`
+        # auth.token     | `map<string, string>`
+        # headers        | `map<string, string>`
+        # method         | `string`
+        # params         | `map<string, string>`
+        # path           | `string`
+        # time           | `google.protobuf.Timestamp`
+        # If the request value is not well-formed for the service, the request will
+        # be rejected as an invalid argument.
+        # Corresponds to the JSON property `request`
+        # @return [Object]
+        attr_accessor :request
       
         def initialize(**args)
            update!(**args)
@@ -107,7 +141,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @source = args[:source] if args.key?(:source)
+          @resource = args[:resource] if args.key?(:resource)
+          @function_mocks = args[:function_mocks] if args.key?(:function_mocks)
+          @expectation = args[:expectation] if args.key?(:expectation)
+          @request = args[:request] if args.key?(:request)
         end
       end
       
@@ -115,6 +152,11 @@ module Google
       # and a creation time.
       class Ruleset
         include Google::Apis::Core::Hashable
+      
+        # `Source` is one or more `File` messages comprising a logical set of rules.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::FirebaserulesV1::Source]
+        attr_accessor :source
       
         # Time the `Ruleset` was created.
         # Output only.
@@ -129,10 +171,34 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The request for FirebaseRulesService.TestRuleset.
+      class TestRulesetRequest
+        include Google::Apis::Core::Hashable
+      
         # `Source` is one or more `File` messages comprising a logical set of rules.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::FirebaserulesV1::Source]
         attr_accessor :source
+      
+        # `TestSuite` is a collection of `TestCase` instances that validate the logical
+        # correctness of a `Ruleset`. The `TestSuite` may be referenced in-line within
+        # a `TestRuleset` invocation or as part of a `Release` object as a pre-release
+        # check.
+        # Corresponds to the JSON property `testSuite`
+        # @return [Google::Apis::FirebaserulesV1::TestSuite]
+        attr_accessor :test_suite
       
         def initialize(**args)
            update!(**args)
@@ -140,9 +206,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @name = args[:name] if args.key?(:name)
           @source = args[:source] if args.key?(:source)
+          @test_suite = args[:test_suite] if args.key?(:test_suite)
         end
       end
       
@@ -175,32 +240,6 @@ module Google
           @description = args[:description] if args.key?(:description)
           @source_position = args[:source_position] if args.key?(:source_position)
           @severity = args[:severity] if args.key?(:severity)
-        end
-      end
-      
-      # Represents a service-defined function call that was invoked during test
-      # execution.
-      class FunctionCall
-        include Google::Apis::Core::Hashable
-      
-        # The arguments that were provided to the function.
-        # Corresponds to the JSON property `args`
-        # @return [Array<Object>]
-        attr_accessor :args
-      
-        # Name of the function invoked.
-        # Corresponds to the JSON property `function`
-        # @return [String]
-        attr_accessor :function
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @args = args[:args] if args.key?(:args)
-          @function = args[:function] if args.key?(:function)
         end
       end
       
@@ -259,6 +298,32 @@ module Google
           @name = args[:name] if args.key?(:name)
           @content = args[:content] if args.key?(:content)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+        end
+      end
+      
+      # Represents a service-defined function call that was invoked during test
+      # execution.
+      class FunctionCall
+        include Google::Apis::Core::Hashable
+      
+        # The arguments that were provided to the function.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Object>]
+        attr_accessor :args
+      
+        # Name of the function invoked.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @function = args[:function] if args.key?(:function)
         end
       end
       
@@ -349,32 +414,6 @@ module Google
         end
       end
       
-      # The response for FirebaseRulesService.ListRulesets.
-      class ListRulesetsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The pagination token to retrieve the next page of results. If the value is
-        # empty, no further results remain.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # List of `Ruleset` instances.
-        # Corresponds to the JSON property `rulesets`
-        # @return [Array<Google::Apis::FirebaserulesV1::Ruleset>]
-        attr_accessor :rulesets
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @rulesets = args[:rulesets] if args.key?(:rulesets)
-        end
-      end
-      
       # Test result message containing the state of the test as well as a
       # description and source position for test failures.
       class TestResult
@@ -418,6 +457,164 @@ module Google
           @state = args[:state] if args.key?(:state)
           @debug_messages = args[:debug_messages] if args.key?(:debug_messages)
           @error_position = args[:error_position] if args.key?(:error_position)
+        end
+      end
+      
+      # The response for FirebaseRulesService.ListRulesets.
+      class ListRulesetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of `Ruleset` instances.
+        # Corresponds to the JSON property `rulesets`
+        # @return [Array<Google::Apis::FirebaserulesV1::Ruleset>]
+        attr_accessor :rulesets
+      
+        # The pagination token to retrieve the next page of results. If the value is
+        # empty, no further results remain.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rulesets = args[:rulesets] if args.key?(:rulesets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Arg matchers for the mock function.
+      class Arg
+        include Google::Apis::Core::Hashable
+      
+        # Argument exactly matches value provided.
+        # Corresponds to the JSON property `exactValue`
+        # @return [Object]
+        attr_accessor :exact_value
+      
+        # A generic empty message that you can re-use to avoid defining duplicated
+        # empty messages in your APIs. A typical example is to use it as the request
+        # or the response type of an API method. For instance:
+        # service Foo `
+        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+        # `
+        # The JSON representation for `Empty` is empty JSON object ````.
+        # Corresponds to the JSON property `anyValue`
+        # @return [Google::Apis::FirebaserulesV1::Empty]
+        attr_accessor :any_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_value = args[:exact_value] if args.key?(:exact_value)
+          @any_value = args[:any_value] if args.key?(:any_value)
+        end
+      end
+      
+      # `TestSuite` is a collection of `TestCase` instances that validate the logical
+      # correctness of a `Ruleset`. The `TestSuite` may be referenced in-line within
+      # a `TestRuleset` invocation or as part of a `Release` object as a pre-release
+      # check.
+      class TestSuite
+        include Google::Apis::Core::Hashable
+      
+        # Collection of test cases associated with the `TestSuite`.
+        # Corresponds to the JSON property `testCases`
+        # @return [Array<Google::Apis::FirebaserulesV1::TestCase>]
+        attr_accessor :test_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_cases = args[:test_cases] if args.key?(:test_cases)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Mock function definition.
+      # Mocks must refer to a function declared by the target service. The type of
+      # the function args and result will be inferred at test time. If either the
+      # arg or result values are not compatible with function type declaration, the
+      # request will be considered invalid.
+      # More than one `FunctionMock` may be provided for a given function name so
+      # long as the `Arg` matchers are distinct. There may be only one function
+      # for a given overload where all `Arg` values are `Arg.any_value`.
+      class FunctionMock
+        include Google::Apis::Core::Hashable
+      
+        # The name of the function.
+        # The function name must match one provided by a service declaration.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # Possible result values from the function mock invocation.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::FirebaserulesV1::Result]
+        attr_accessor :result
+      
+        # The list of `Arg` values to match. The order in which the arguments are
+        # provided is the order in which they must appear in the function
+        # invocation.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Google::Apis::FirebaserulesV1::Arg>]
+        attr_accessor :args
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function = args[:function] if args.key?(:function)
+          @result = args[:result] if args.key?(:result)
+          @args = args[:args] if args.key?(:args)
+        end
+      end
+      
+      # `Source` is one or more `File` messages comprising a logical set of rules.
+      class Source
+        include Google::Apis::Core::Hashable
+      
+        # `File` set constituting the `Source` bundle.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::FirebaserulesV1::File>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @files = args[:files] if args.key?(:files)
         end
       end
     end

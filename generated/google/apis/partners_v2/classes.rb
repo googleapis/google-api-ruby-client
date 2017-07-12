@@ -26,12 +26,6 @@ module Google
       class AnalyticsSummary
         include Google::Apis::Core::Hashable
       
-        # Aggregated number of times users saw the `Company`
-        # in Google Partners Search results for given date range.
-        # Corresponds to the JSON property `searchViewsCount`
-        # @return [Fixnum]
-        attr_accessor :search_views_count
-      
         # Aggregated number of times users contacted the `Company`
         # for given date range.
         # Corresponds to the JSON property `contactsCount`
@@ -43,15 +37,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :profile_views_count
       
+        # Aggregated number of times users saw the `Company`
+        # in Google Partners Search results for given date range.
+        # Corresponds to the JSON property `searchViewsCount`
+        # @return [Fixnum]
+        attr_accessor :search_views_count
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @search_views_count = args[:search_views_count] if args.key?(:search_views_count)
           @contacts_count = args[:contacts_count] if args.key?(:contacts_count)
           @profile_views_count = args[:profile_views_count] if args.key?(:profile_views_count)
+          @search_views_count = args[:search_views_count] if args.key?(:search_views_count)
         end
       end
       
@@ -59,16 +59,6 @@ module Google
       # LogClientMessage.
       class LogMessageRequest
         include Google::Apis::Core::Hashable
-      
-        # Message level of client message.
-        # Corresponds to the JSON property `level`
-        # @return [String]
-        attr_accessor :level
-      
-        # Details about the client message.
-        # Corresponds to the JSON property `details`
-        # @return [String]
-        attr_accessor :details
       
         # Map of client info, such as URL, browser navigator, browser platform, etc.
         # Corresponds to the JSON property `clientInfo`
@@ -80,123 +70,26 @@ module Google
         # @return [Google::Apis::PartnersV2::RequestMetadata]
         attr_accessor :request_metadata
       
+        # Message level of client message.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        # Details about the client message.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @level = args[:level] if args.key?(:level)
-          @details = args[:details] if args.key?(:details)
           @client_info = args[:client_info] if args.key?(:client_info)
           @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
-        end
-      end
-      
-      # A lead resource that represents an advertiser contact for a `Company`. These
-      # are usually generated via Google Partner Search (the advertiser portal).
-      class Lead
-        include Google::Apis::Core::Hashable
-      
-        # Whether or not the lead signed up for marketing emails
-        # Corresponds to the JSON property `marketingOptIn`
-        # @return [Boolean]
-        attr_accessor :marketing_opt_in
-        alias_method :marketing_opt_in?, :marketing_opt_in
-      
-        # Type of lead.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `minMonthlyBudget`
-        # @return [Google::Apis::PartnersV2::Money]
-        attr_accessor :min_monthly_budget
-      
-        # First name of lead source.
-        # Corresponds to the JSON property `givenName`
-        # @return [String]
-        attr_accessor :given_name
-      
-        # Website URL of lead source.
-        # Corresponds to the JSON property `websiteUrl`
-        # @return [String]
-        attr_accessor :website_url
-      
-        # Language code of the lead's language preference, as defined by
-        # <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
-        # (IETF BCP 47, "Tags for Identifying Languages").
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # The lead's state in relation to the company.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # List of reasons for using Google Partner Search and creating a lead.
-        # Corresponds to the JSON property `gpsMotivations`
-        # @return [Array<String>]
-        attr_accessor :gps_motivations
-      
-        # Email address of lead source.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # Last name of lead source.
-        # Corresponds to the JSON property `familyName`
-        # @return [String]
-        attr_accessor :family_name
-      
-        # Comments lead source gave.
-        # Corresponds to the JSON property `comments`
-        # @return [String]
-        attr_accessor :comments
-      
-        # ID of the lead.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Phone number of lead source.
-        # Corresponds to the JSON property `phoneNumber`
-        # @return [String]
-        attr_accessor :phone_number
-      
-        # The AdWords Customer ID of the lead.
-        # Corresponds to the JSON property `adwordsCustomerId`
-        # @return [Fixnum]
-        attr_accessor :adwords_customer_id
-      
-        # Timestamp of when this lead was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @marketing_opt_in = args[:marketing_opt_in] if args.key?(:marketing_opt_in)
-          @type = args[:type] if args.key?(:type)
-          @min_monthly_budget = args[:min_monthly_budget] if args.key?(:min_monthly_budget)
-          @given_name = args[:given_name] if args.key?(:given_name)
-          @website_url = args[:website_url] if args.key?(:website_url)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @state = args[:state] if args.key?(:state)
-          @gps_motivations = args[:gps_motivations] if args.key?(:gps_motivations)
-          @email = args[:email] if args.key?(:email)
-          @family_name = args[:family_name] if args.key?(:family_name)
-          @comments = args[:comments] if args.key?(:comments)
-          @id = args[:id] if args.key?(:id)
-          @phone_number = args[:phone_number] if args.key?(:phone_number)
-          @adwords_customer_id = args[:adwords_customer_id] if args.key?(:adwords_customer_id)
-          @create_time = args[:create_time] if args.key?(:create_time)
+          @level = args[:level] if args.key?(:level)
+          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -231,6 +124,113 @@ module Google
         end
       end
       
+      # A lead resource that represents an advertiser contact for a `Company`. These
+      # are usually generated via Google Partner Search (the advertiser portal).
+      class Lead
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not the lead signed up for marketing emails
+        # Corresponds to the JSON property `marketingOptIn`
+        # @return [Boolean]
+        attr_accessor :marketing_opt_in
+        alias_method :marketing_opt_in?, :marketing_opt_in
+      
+        # Type of lead.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # First name of lead source.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `minMonthlyBudget`
+        # @return [Google::Apis::PartnersV2::Money]
+        attr_accessor :min_monthly_budget
+      
+        # Language code of the lead's language preference, as defined by
+        # <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
+        # (IETF BCP 47, "Tags for Identifying Languages").
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Website URL of lead source.
+        # Corresponds to the JSON property `websiteUrl`
+        # @return [String]
+        attr_accessor :website_url
+      
+        # The lead's state in relation to the company.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # List of reasons for using Google Partner Search and creating a lead.
+        # Corresponds to the JSON property `gpsMotivations`
+        # @return [Array<String>]
+        attr_accessor :gps_motivations
+      
+        # Email address of lead source.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Last name of lead source.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # ID of the lead.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Comments lead source gave.
+        # Corresponds to the JSON property `comments`
+        # @return [String]
+        attr_accessor :comments
+      
+        # Phone number of lead source.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The AdWords Customer ID of the lead.
+        # Corresponds to the JSON property `adwordsCustomerId`
+        # @return [Fixnum]
+        attr_accessor :adwords_customer_id
+      
+        # Timestamp of when this lead was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @marketing_opt_in = args[:marketing_opt_in] if args.key?(:marketing_opt_in)
+          @type = args[:type] if args.key?(:type)
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @min_monthly_budget = args[:min_monthly_budget] if args.key?(:min_monthly_budget)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @website_url = args[:website_url] if args.key?(:website_url)
+          @state = args[:state] if args.key?(:state)
+          @gps_motivations = args[:gps_motivations] if args.key?(:gps_motivations)
+          @email = args[:email] if args.key?(:email)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @id = args[:id] if args.key?(:id)
+          @comments = args[:comments] if args.key?(:comments)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @adwords_customer_id = args[:adwords_customer_id] if args.key?(:adwords_customer_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # Response message for
       # ListUserStates.
       class ListUserStatesResponse
@@ -262,36 +262,16 @@ module Google
       class CompanyRelation
         include Google::Apis::Core::Hashable
       
-        # The segment the company is classified as.
-        # Corresponds to the JSON property `segment`
-        # @return [Array<String>]
-        attr_accessor :segment
-      
-        # The list of Google Partners specialization statuses for the company.
-        # Corresponds to the JSON property `specializationStatus`
-        # @return [Array<Google::Apis::PartnersV2::SpecializationStatus>]
-        attr_accessor :specialization_status
-      
-        # Whether the company is a Partner.
-        # Corresponds to the JSON property `badgeTier`
-        # @return [String]
-        attr_accessor :badge_tier
-      
-        # The phone number for the company's primary address.
-        # Corresponds to the JSON property `phoneNumber`
-        # @return [String]
-        attr_accessor :phone_number
-      
-        # The website URL for this company.
-        # Corresponds to the JSON property `website`
-        # @return [String]
-        attr_accessor :website
-      
         # The ID of the company. There may be no id if this is a
         # pending company.5
         # Corresponds to the JSON property `companyId`
         # @return [String]
         attr_accessor :company_id
+      
+        # The primary language code of the company.
+        # Corresponds to the JSON property `primaryLanguageCode`
+        # @return [String]
+        attr_accessor :primary_language_code
       
         # A URL to a profile photo, e.g. a G+ profile photo.
         # Corresponds to the JSON property `logoUrl`
@@ -332,15 +312,57 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The name (in the company's primary language) for the company.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
+        # A location with address and geographic coordinates. May optionally contain a
+        # detailed (multi-field) version of the address.
+        # Corresponds to the JSON property `primaryAddress`
+        # @return [Google::Apis::PartnersV2::Location]
+        attr_accessor :primary_address
       
         # The AdWords manager account # associated this company.
         # Corresponds to the JSON property `managerAccount`
         # @return [Fixnum]
         attr_accessor :manager_account
+      
+        # The name (in the company's primary language) for the company.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The segment the company is classified as.
+        # Corresponds to the JSON property `segment`
+        # @return [Array<String>]
+        attr_accessor :segment
+      
+        # The internal company ID.
+        # Only available for a whitelisted set of api clients.
+        # Corresponds to the JSON property `internalCompanyId`
+        # @return [String]
+        attr_accessor :internal_company_id
+      
+        # Whether the company is a Partner.
+        # Corresponds to the JSON property `badgeTier`
+        # @return [String]
+        attr_accessor :badge_tier
+      
+        # The list of Google Partners specialization statuses for the company.
+        # Corresponds to the JSON property `specializationStatus`
+        # @return [Array<Google::Apis::PartnersV2::SpecializationStatus>]
+        attr_accessor :specialization_status
+      
+        # The phone number for the company's primary address.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The website URL for this company.
+        # Corresponds to the JSON property `website`
+        # @return [String]
+        attr_accessor :website
+      
+        # The primary country code of the company.
+        # Corresponds to the JSON property `primaryCountryCode`
+        # @return [String]
+        attr_accessor :primary_country_code
       
         def initialize(**args)
            update!(**args)
@@ -348,12 +370,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @segment = args[:segment] if args.key?(:segment)
-          @specialization_status = args[:specialization_status] if args.key?(:specialization_status)
-          @badge_tier = args[:badge_tier] if args.key?(:badge_tier)
-          @phone_number = args[:phone_number] if args.key?(:phone_number)
-          @website = args[:website] if args.key?(:website)
           @company_id = args[:company_id] if args.key?(:company_id)
+          @primary_language_code = args[:primary_language_code] if args.key?(:primary_language_code)
           @logo_url = args[:logo_url] if args.key?(:logo_url)
           @resolved_timestamp = args[:resolved_timestamp] if args.key?(:resolved_timestamp)
           @company_admin = args[:company_admin] if args.key?(:company_admin)
@@ -361,8 +379,16 @@ module Google
           @is_pending = args[:is_pending] if args.key?(:is_pending)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @state = args[:state] if args.key?(:state)
-          @name = args[:name] if args.key?(:name)
+          @primary_address = args[:primary_address] if args.key?(:primary_address)
           @manager_account = args[:manager_account] if args.key?(:manager_account)
+          @name = args[:name] if args.key?(:name)
+          @segment = args[:segment] if args.key?(:segment)
+          @internal_company_id = args[:internal_company_id] if args.key?(:internal_company_id)
+          @badge_tier = args[:badge_tier] if args.key?(:badge_tier)
+          @specialization_status = args[:specialization_status] if args.key?(:specialization_status)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @website = args[:website] if args.key?(:website)
+          @primary_country_code = args[:primary_country_code] if args.key?(:primary_country_code)
         end
       end
       
@@ -453,9 +479,52 @@ module Google
         end
       end
       
+      # Request message for CreateLead.
+      class CreateLeadRequest
+        include Google::Apis::Core::Hashable
+      
+        # Common data that is in each API request.
+        # Corresponds to the JSON property `requestMetadata`
+        # @return [Google::Apis::PartnersV2::RequestMetadata]
+        attr_accessor :request_metadata
+      
+        # A lead resource that represents an advertiser contact for a `Company`. These
+        # are usually generated via Google Partner Search (the advertiser portal).
+        # Corresponds to the JSON property `lead`
+        # @return [Google::Apis::PartnersV2::Lead]
+        attr_accessor :lead
+      
+        # <a href="https://www.google.com/recaptcha/">reCaptcha</a> challenge info.
+        # Corresponds to the JSON property `recaptchaChallenge`
+        # @return [Google::Apis::PartnersV2::RecaptchaChallenge]
+        attr_accessor :recaptcha_challenge
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @lead = args[:lead] if args.key?(:lead)
+          @recaptcha_challenge = args[:recaptcha_challenge] if args.key?(:recaptcha_challenge)
+        end
+      end
+      
       # Common data that is in each API request.
       class RequestMetadata
         include Google::Apis::Core::Hashable
+      
+        # Values to use instead of the user's respective defaults. These are only
+        # honored by whitelisted products.
+        # Corresponds to the JSON property `userOverrides`
+        # @return [Google::Apis::PartnersV2::UserOverrides]
+        attr_accessor :user_overrides
+      
+        # Google Partners session ID.
+        # Corresponds to the JSON property `partnersSessionId`
+        # @return [String]
+        attr_accessor :partners_session_id
       
         # Experiment IDs the current request belongs to.
         # Corresponds to the JSON property `experimentIds`
@@ -472,60 +541,17 @@ module Google
         # @return [String]
         attr_accessor :locale
       
-        # Values to use instead of the user's respective defaults. These are only
-        # honored by whitelisted products.
-        # Corresponds to the JSON property `userOverrides`
-        # @return [Google::Apis::PartnersV2::UserOverrides]
-        attr_accessor :user_overrides
-      
-        # Google Partners session ID.
-        # Corresponds to the JSON property `partnersSessionId`
-        # @return [String]
-        attr_accessor :partners_session_id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @user_overrides = args[:user_overrides] if args.key?(:user_overrides)
+          @partners_session_id = args[:partners_session_id] if args.key?(:partners_session_id)
           @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
           @traffic_source = args[:traffic_source] if args.key?(:traffic_source)
           @locale = args[:locale] if args.key?(:locale)
-          @user_overrides = args[:user_overrides] if args.key?(:user_overrides)
-          @partners_session_id = args[:partners_session_id] if args.key?(:partners_session_id)
-        end
-      end
-      
-      # Request message for CreateLead.
-      class CreateLeadRequest
-        include Google::Apis::Core::Hashable
-      
-        # A lead resource that represents an advertiser contact for a `Company`. These
-        # are usually generated via Google Partner Search (the advertiser portal).
-        # Corresponds to the JSON property `lead`
-        # @return [Google::Apis::PartnersV2::Lead]
-        attr_accessor :lead
-      
-        # <a href="https://www.google.com/recaptcha/">reCaptcha</a> challenge info.
-        # Corresponds to the JSON property `recaptchaChallenge`
-        # @return [Google::Apis::PartnersV2::RecaptchaChallenge]
-        attr_accessor :recaptcha_challenge
-      
-        # Common data that is in each API request.
-        # Corresponds to the JSON property `requestMetadata`
-        # @return [Google::Apis::PartnersV2::RequestMetadata]
-        attr_accessor :request_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @lead = args[:lead] if args.key?(:lead)
-          @recaptcha_challenge = args[:recaptcha_challenge] if args.key?(:recaptcha_challenge)
-          @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
         end
       end
       
@@ -533,15 +559,15 @@ module Google
       class EventData
         include Google::Apis::Core::Hashable
       
-        # Data values.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
         # Data type.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
+      
+        # Data values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
       
         def initialize(**args)
            update!(**args)
@@ -549,8 +575,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @values = args[:values] if args.key?(:values)
           @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -558,16 +584,16 @@ module Google
       class ExamStatus
         include Google::Apis::Core::Hashable
       
+        # Date this exam is due to expire.
+        # Corresponds to the JSON property `expiration`
+        # @return [String]
+        attr_accessor :expiration
+      
         # Whether this exam is in the state of warning.
         # Corresponds to the JSON property `warning`
         # @return [Boolean]
         attr_accessor :warning
         alias_method :warning?, :warning
-      
-        # Date this exam is due to expire.
-        # Corresponds to the JSON property `expiration`
-        # @return [String]
-        attr_accessor :expiration
       
         # The date the user last passed this exam.
         # Corresponds to the JSON property `lastPassed`
@@ -596,8 +622,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @warning = args[:warning] if args.key?(:warning)
           @expiration = args[:expiration] if args.key?(:expiration)
+          @warning = args[:warning] if args.key?(:warning)
           @last_passed = args[:last_passed] if args.key?(:last_passed)
           @exam_type = args[:exam_type] if args.key?(:exam_type)
           @passed = args[:passed] if args.key?(:passed)
@@ -733,6 +759,16 @@ module Google
         # @return [String]
         attr_accessor :adwords_url
       
+        # Country code of the customer.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # External CID for the customer.
+        # Corresponds to the JSON property `externalCid`
+        # @return [Fixnum]
+        attr_accessor :external_cid
+      
         # Time the customer was created.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
@@ -748,16 +784,6 @@ module Google
         # @return [String]
         attr_accessor :offer_type
       
-        # External CID for the customer.
-        # Corresponds to the JSON property `externalCid`
-        # @return [Fixnum]
-        attr_accessor :external_cid
-      
-        # Country code of the customer.
-        # Corresponds to the JSON property `countryCode`
-        # @return [String]
-        attr_accessor :country_code
-      
         def initialize(**args)
            update!(**args)
         end
@@ -768,23 +794,17 @@ module Google
           @name = args[:name] if args.key?(:name)
           @spend_x_amount = args[:spend_x_amount] if args.key?(:spend_x_amount)
           @adwords_url = args[:adwords_url] if args.key?(:adwords_url)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @external_cid = args[:external_cid] if args.key?(:external_cid)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @eligibility_days_left = args[:eligibility_days_left] if args.key?(:eligibility_days_left)
           @offer_type = args[:offer_type] if args.key?(:offer_type)
-          @external_cid = args[:external_cid] if args.key?(:external_cid)
-          @country_code = args[:country_code] if args.key?(:country_code)
         end
       end
       
       # Google Partners certification status.
       class CertificationStatus
         include Google::Apis::Core::Hashable
-      
-        # Whether certification is passing.
-        # Corresponds to the JSON property `isCertified`
-        # @return [Boolean]
-        attr_accessor :is_certified
-        alias_method :is_certified?, :is_certified
       
         # List of certification exam statuses.
         # Corresponds to the JSON property `examStatuses`
@@ -801,16 +821,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :user_count
       
+        # Whether certification is passing.
+        # Corresponds to the JSON property `isCertified`
+        # @return [Boolean]
+        attr_accessor :is_certified
+        alias_method :is_certified?, :is_certified
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @is_certified = args[:is_certified] if args.key?(:is_certified)
           @exam_statuses = args[:exam_statuses] if args.key?(:exam_statuses)
           @type = args[:type] if args.key?(:type)
           @user_count = args[:user_count] if args.key?(:user_count)
+          @is_certified = args[:is_certified] if args.key?(:is_certified)
         end
       end
       
@@ -877,6 +903,12 @@ module Google
       class ListOffersHistoryResponse
         include Google::Apis::Core::Hashable
       
+        # True if the user has the option to show entire company history.
+        # Corresponds to the JSON property `canShowEntireCompany`
+        # @return [Boolean]
+        attr_accessor :can_show_entire_company
+        alias_method :can_show_entire_company?, :can_show_entire_company
+      
         # Number of results across all pages.
         # Corresponds to the JSON property `totalResults`
         # @return [Fixnum]
@@ -903,24 +935,18 @@ module Google
         # @return [Google::Apis::PartnersV2::ResponseMetadata]
         attr_accessor :response_metadata
       
-        # True if the user has the option to show entire company history.
-        # Corresponds to the JSON property `canShowEntireCompany`
-        # @return [Boolean]
-        attr_accessor :can_show_entire_company
-        alias_method :can_show_entire_company?, :can_show_entire_company
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @can_show_entire_company = args[:can_show_entire_company] if args.key?(:can_show_entire_company)
           @total_results = args[:total_results] if args.key?(:total_results)
           @showing_entire_company = args[:showing_entire_company] if args.key?(:showing_entire_company)
           @offers = args[:offers] if args.key?(:offers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
-          @can_show_entire_company = args[:can_show_entire_company] if args.key?(:can_show_entire_company)
         end
       end
       
@@ -973,6 +999,16 @@ module Google
       class Certification
         include Google::Apis::Core::Hashable
       
+        # The type of certification, the area of expertise.
+        # Corresponds to the JSON property `certificationType`
+        # @return [String]
+        attr_accessor :certification_type
+      
+        # The date the user last achieved certification.
+        # Corresponds to the JSON property `lastAchieved`
+        # @return [String]
+        attr_accessor :last_achieved
+      
         # Whether this certification has been achieved.
         # Corresponds to the JSON property `achieved`
         # @return [Boolean]
@@ -990,27 +1026,17 @@ module Google
         attr_accessor :warning
         alias_method :warning?, :warning
       
-        # The type of certification, the area of expertise.
-        # Corresponds to the JSON property `certificationType`
-        # @return [String]
-        attr_accessor :certification_type
-      
-        # The date the user last achieved certification.
-        # Corresponds to the JSON property `lastAchieved`
-        # @return [String]
-        attr_accessor :last_achieved
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @certification_type = args[:certification_type] if args.key?(:certification_type)
+          @last_achieved = args[:last_achieved] if args.key?(:last_achieved)
           @achieved = args[:achieved] if args.key?(:achieved)
           @expiration = args[:expiration] if args.key?(:expiration)
           @warning = args[:warning] if args.key?(:warning)
-          @certification_type = args[:certification_type] if args.key?(:certification_type)
-          @last_achieved = args[:last_achieved] if args.key?(:last_achieved)
         end
       end
       
@@ -1018,26 +1044,11 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
-        # The most recent time the user interacted with the Partners site.
-        # @OutputOnly
-        # Corresponds to the JSON property `lastAccessTime`
+        # The internal user ID.
+        # Only available for a whitelisted set of api clients.
+        # Corresponds to the JSON property `internalId`
         # @return [String]
-        attr_accessor :last_access_time
-      
-        # The list of emails the user has access to/can select as primary.
-        # @OutputOnly
-        # Corresponds to the JSON property `primaryEmails`
-        # @return [Array<String>]
-        attr_accessor :primary_emails
-      
-        # This is the list of AdWords Manager Accounts the user has edit access to.
-        # If the user has edit access to multiple accounts, the user can choose the
-        # preferred account and we use this when a personal account is needed. Can
-        # be empty meaning the user has access to no accounts.
-        # @OutputOnly
-        # Corresponds to the JSON property `availableAdwordsManagerAccounts`
-        # @return [Array<Google::Apis::PartnersV2::AdWordsManagerAccountInfo>]
-        attr_accessor :available_adwords_manager_accounts
+        attr_accessor :internal_id
       
         # The list of exams the user ever taken. For each type of exam, only one
         # entry is listed.
@@ -1055,6 +1066,12 @@ module Google
         # @return [Google::Apis::PartnersV2::PublicProfile]
         attr_accessor :public_profile
       
+        # The email address used by the user used for company verification.
+        # @OutputOnly
+        # Corresponds to the JSON property `companyVerificationEmail`
+        # @return [String]
+        attr_accessor :company_verification_email
+      
         # The list of achieved certifications. These are calculated based on exam
         # results and other requirements.
         # @OutputOnly
@@ -1062,11 +1079,10 @@ module Google
         # @return [Array<Google::Apis::PartnersV2::Certification>]
         attr_accessor :certification_status
       
-        # The email address used by the user used for company verification.
-        # @OutputOnly
-        # Corresponds to the JSON property `companyVerificationEmail`
-        # @return [String]
-        attr_accessor :company_verification_email
+        # The profile information of a Partners user.
+        # Corresponds to the JSON property `profile`
+        # @return [Google::Apis::PartnersV2::UserProfile]
+        attr_accessor :profile
       
         # A CompanyRelation resource representing information about a user's
         # affiliation and standing with a company in Partners.
@@ -1074,10 +1090,26 @@ module Google
         # @return [Google::Apis::PartnersV2::CompanyRelation]
         attr_accessor :company
       
-        # The profile information of a Partners user.
-        # Corresponds to the JSON property `profile`
-        # @return [Google::Apis::PartnersV2::UserProfile]
-        attr_accessor :profile
+        # The most recent time the user interacted with the Partners site.
+        # @OutputOnly
+        # Corresponds to the JSON property `lastAccessTime`
+        # @return [String]
+        attr_accessor :last_access_time
+      
+        # This is the list of AdWords Manager Accounts the user has edit access to.
+        # If the user has edit access to multiple accounts, the user can choose the
+        # preferred account and we use this when a personal account is needed. Can
+        # be empty meaning the user has access to no accounts.
+        # @OutputOnly
+        # Corresponds to the JSON property `availableAdwordsManagerAccounts`
+        # @return [Array<Google::Apis::PartnersV2::AdWordsManagerAccountInfo>]
+        attr_accessor :available_adwords_manager_accounts
+      
+        # The list of emails the user has access to/can select as primary.
+        # @OutputOnly
+        # Corresponds to the JSON property `primaryEmails`
+        # @return [Array<String>]
+        attr_accessor :primary_emails
       
         def initialize(**args)
            update!(**args)
@@ -1085,16 +1117,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @last_access_time = args[:last_access_time] if args.key?(:last_access_time)
-          @primary_emails = args[:primary_emails] if args.key?(:primary_emails)
-          @available_adwords_manager_accounts = args[:available_adwords_manager_accounts] if args.key?(:available_adwords_manager_accounts)
+          @internal_id = args[:internal_id] if args.key?(:internal_id)
           @exam_status = args[:exam_status] if args.key?(:exam_status)
           @id = args[:id] if args.key?(:id)
           @public_profile = args[:public_profile] if args.key?(:public_profile)
-          @certification_status = args[:certification_status] if args.key?(:certification_status)
           @company_verification_email = args[:company_verification_email] if args.key?(:company_verification_email)
-          @company = args[:company] if args.key?(:company)
+          @certification_status = args[:certification_status] if args.key?(:certification_status)
           @profile = args[:profile] if args.key?(:profile)
+          @company = args[:company] if args.key?(:company)
+          @last_access_time = args[:last_access_time] if args.key?(:last_access_time)
+          @available_adwords_manager_accounts = args[:available_adwords_manager_accounts] if args.key?(:available_adwords_manager_accounts)
+          @primary_emails = args[:primary_emails] if args.key?(:primary_emails)
         end
       end
       
@@ -1142,51 +1175,73 @@ module Google
         end
       end
       
-      # Response message for ListLeads.
-      class ListLeadsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token to retrieve next page of results.
-        # Pass this value in the `ListLeadsRequest.page_token` field in the
-        # subsequent call to
-        # ListLeads to retrieve the
-        # next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Common data that is in each API response.
-        # Corresponds to the JSON property `responseMetadata`
-        # @return [Google::Apis::PartnersV2::ResponseMetadata]
-        attr_accessor :response_metadata
-      
-        # The total count of leads for the given company.
-        # Corresponds to the JSON property `totalSize`
-        # @return [Fixnum]
-        attr_accessor :total_size
-      
-        # The list of leads.
-        # Corresponds to the JSON property `leads`
-        # @return [Array<Google::Apis::PartnersV2::Lead>]
-        attr_accessor :leads
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
-          @total_size = args[:total_size] if args.key?(:total_size)
-          @leads = args[:leads] if args.key?(:leads)
-        end
-      end
-      
       # A company resource in the Google Partners API. Once certified, it qualifies
       # for being searched by advertisers.
       class Company
         include Google::Apis::Core::Hashable
+      
+        # The list of localized info for the company.
+        # Corresponds to the JSON property `localizedInfos`
+        # @return [Array<Google::Apis::PartnersV2::LocalizedCompanyInfo>]
+        attr_accessor :localized_infos
+      
+        # The ID of the company.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The list of Google Partners certification statuses for the company.
+        # Corresponds to the JSON property `certificationStatuses`
+        # @return [Array<Google::Apis::PartnersV2::CertificationStatus>]
+        attr_accessor :certification_statuses
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `originalMinMonthlyBudget`
+        # @return [Google::Apis::PartnersV2::Money]
+        attr_accessor :original_min_monthly_budget
+      
+        # Services the company can help with.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        # A location with address and geographic coordinates. May optionally contain a
+        # detailed (multi-field) version of the address.
+        # Corresponds to the JSON property `primaryLocation`
+        # @return [Google::Apis::PartnersV2::Location]
+        attr_accessor :primary_location
+      
+        # Basic information from a public profile.
+        # Corresponds to the JSON property `publicProfile`
+        # @return [Google::Apis::PartnersV2::PublicProfile]
+        attr_accessor :public_profile
+      
+        # Information related to the ranking of the company within the list of
+        # companies.
+        # Corresponds to the JSON property `ranks`
+        # @return [Array<Google::Apis::PartnersV2::Rank>]
+        attr_accessor :ranks
+      
+        # The list of Google Partners specialization statuses for the company.
+        # Corresponds to the JSON property `specializationStatus`
+        # @return [Array<Google::Apis::PartnersV2::SpecializationStatus>]
+        attr_accessor :specialization_status
+      
+        # Partner badge tier
+        # Corresponds to the JSON property `badgeTier`
+        # @return [String]
+        attr_accessor :badge_tier
+      
+        # Email domains that allow users with a matching email address to get
+        # auto-approved for associating with this company.
+        # Corresponds to the JSON property `autoApprovalEmailDomains`
+        # @return [Array<String>]
+        attr_accessor :auto_approval_email_domains
+      
+        # Company type labels listed on the company's profile.
+        # Corresponds to the JSON property `companyTypes`
+        # @return [Array<String>]
+        attr_accessor :company_types
       
         # The public viewability status of the company's profile.
         # Corresponds to the JSON property `profileStatus`
@@ -1240,75 +1295,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The list of localized info for the company.
-        # Corresponds to the JSON property `localizedInfos`
-        # @return [Array<Google::Apis::PartnersV2::LocalizedCompanyInfo>]
-        attr_accessor :localized_infos
-      
-        # The list of Google Partners certification statuses for the company.
-        # Corresponds to the JSON property `certificationStatuses`
-        # @return [Array<Google::Apis::PartnersV2::CertificationStatus>]
-        attr_accessor :certification_statuses
-      
-        # The ID of the company.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `originalMinMonthlyBudget`
-        # @return [Google::Apis::PartnersV2::Money]
-        attr_accessor :original_min_monthly_budget
-      
-        # Basic information from a public profile.
-        # Corresponds to the JSON property `publicProfile`
-        # @return [Google::Apis::PartnersV2::PublicProfile]
-        attr_accessor :public_profile
-      
-        # A location with address and geographic coordinates. May optionally contain a
-        # detailed (multi-field) version of the address.
-        # Corresponds to the JSON property `primaryLocation`
-        # @return [Google::Apis::PartnersV2::Location]
-        attr_accessor :primary_location
-      
-        # Services the company can help with.
-        # Corresponds to the JSON property `services`
-        # @return [Array<String>]
-        attr_accessor :services
-      
-        # Information related to the ranking of the company within the list of
-        # companies.
-        # Corresponds to the JSON property `ranks`
-        # @return [Array<Google::Apis::PartnersV2::Rank>]
-        attr_accessor :ranks
-      
-        # The list of Google Partners specialization statuses for the company.
-        # Corresponds to the JSON property `specializationStatus`
-        # @return [Array<Google::Apis::PartnersV2::SpecializationStatus>]
-        attr_accessor :specialization_status
-      
-        # Partner badge tier
-        # Corresponds to the JSON property `badgeTier`
-        # @return [String]
-        attr_accessor :badge_tier
-      
-        # Email domains that allow users with a matching email address to get
-        # auto-approved for associating with this company.
-        # Corresponds to the JSON property `autoApprovalEmailDomains`
-        # @return [Array<String>]
-        attr_accessor :auto_approval_email_domains
-      
-        # Company type labels listed on the company's profile.
-        # Corresponds to the JSON property `companyTypes`
-        # @return [Array<String>]
-        attr_accessor :company_types
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @localized_infos = args[:localized_infos] if args.key?(:localized_infos)
+          @id = args[:id] if args.key?(:id)
+          @certification_statuses = args[:certification_statuses] if args.key?(:certification_statuses)
+          @original_min_monthly_budget = args[:original_min_monthly_budget] if args.key?(:original_min_monthly_budget)
+          @services = args[:services] if args.key?(:services)
+          @primary_location = args[:primary_location] if args.key?(:primary_location)
+          @public_profile = args[:public_profile] if args.key?(:public_profile)
+          @ranks = args[:ranks] if args.key?(:ranks)
+          @specialization_status = args[:specialization_status] if args.key?(:specialization_status)
+          @badge_tier = args[:badge_tier] if args.key?(:badge_tier)
+          @auto_approval_email_domains = args[:auto_approval_email_domains] if args.key?(:auto_approval_email_domains)
+          @company_types = args[:company_types] if args.key?(:company_types)
           @profile_status = args[:profile_status] if args.key?(:profile_status)
           @primary_language_code = args[:primary_language_code] if args.key?(:primary_language_code)
           @locations = args[:locations] if args.key?(:locations)
@@ -1318,29 +1322,53 @@ module Google
           @additional_websites = args[:additional_websites] if args.key?(:additional_websites)
           @primary_adwords_manager_account_id = args[:primary_adwords_manager_account_id] if args.key?(:primary_adwords_manager_account_id)
           @name = args[:name] if args.key?(:name)
-          @localized_infos = args[:localized_infos] if args.key?(:localized_infos)
-          @certification_statuses = args[:certification_statuses] if args.key?(:certification_statuses)
-          @id = args[:id] if args.key?(:id)
-          @original_min_monthly_budget = args[:original_min_monthly_budget] if args.key?(:original_min_monthly_budget)
-          @public_profile = args[:public_profile] if args.key?(:public_profile)
-          @primary_location = args[:primary_location] if args.key?(:primary_location)
-          @services = args[:services] if args.key?(:services)
-          @ranks = args[:ranks] if args.key?(:ranks)
-          @specialization_status = args[:specialization_status] if args.key?(:specialization_status)
-          @badge_tier = args[:badge_tier] if args.key?(:badge_tier)
-          @auto_approval_email_domains = args[:auto_approval_email_domains] if args.key?(:auto_approval_email_domains)
-          @company_types = args[:company_types] if args.key?(:company_types)
+        end
+      end
+      
+      # Response message for ListLeads.
+      class ListLeadsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve next page of results.
+        # Pass this value in the `ListLeadsRequest.page_token` field in the
+        # subsequent call to
+        # ListLeads to retrieve the
+        # next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Common data that is in each API response.
+        # Corresponds to the JSON property `responseMetadata`
+        # @return [Google::Apis::PartnersV2::ResponseMetadata]
+        attr_accessor :response_metadata
+      
+        # The total count of leads for the given company.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        # The list of leads.
+        # Corresponds to the JSON property `leads`
+        # @return [Array<Google::Apis::PartnersV2::Lead>]
+        attr_accessor :leads
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+          @total_size = args[:total_size] if args.key?(:total_size)
+          @leads = args[:leads] if args.key?(:leads)
         end
       end
       
       # Response message for CreateLead.
       class CreateLeadResponse
         include Google::Apis::Core::Hashable
-      
-        # Common data that is in each API response.
-        # Corresponds to the JSON property `responseMetadata`
-        # @return [Google::Apis::PartnersV2::ResponseMetadata]
-        attr_accessor :response_metadata
       
         # A lead resource that represents an advertiser contact for a `Company`. These
         # are usually generated via Google Partner Search (the advertiser portal).
@@ -1354,15 +1382,20 @@ module Google
         # @return [String]
         attr_accessor :recaptcha_status
       
+        # Common data that is in each API response.
+        # Corresponds to the JSON property `responseMetadata`
+        # @return [Google::Apis::PartnersV2::ResponseMetadata]
+        attr_accessor :response_metadata
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
           @lead = args[:lead] if args.key?(:lead)
           @recaptcha_status = args[:recaptcha_status] if args.key?(:recaptcha_status)
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
         end
       end
       
@@ -1397,37 +1430,21 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # Values are frequently alphanumeric.
-        # Corresponds to the JSON property `postalCode`
-        # @return [String]
-        attr_accessor :postal_code
-      
-        # Use of this code is very country-specific, but will refer to a secondary
-        # classification code for sorting mail.
-        # Corresponds to the JSON property `sortingCode`
-        # @return [String]
-        attr_accessor :sorting_code
-      
-        # Language code of the address. Should be in BCP 47 format.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
         # The following address lines represent the most specific part of any
         # address.
         # Corresponds to the JSON property `addressLine`
         # @return [Array<String>]
         attr_accessor :address_line
       
-        # Generally refers to the city/town portion of an address.
-        # Corresponds to the JSON property `locality`
-        # @return [String]
-        attr_accessor :locality
-      
         # Top-level administrative subdivision of this country.
         # Corresponds to the JSON property `administrativeArea`
         # @return [String]
         attr_accessor :administrative_area
+      
+        # Generally refers to the city/town portion of an address.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
@@ -1464,21 +1481,19 @@ module Google
         # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
         # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
         # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
-        # The code in logs/storage/validator/logs_validator_traits.cc treats this type
-        # as if it were annotated as ST_LOCATION.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::PartnersV2::LatLng]
         attr_accessor :lat_lng
-      
-        # The single string version of the address.
-        # Corresponds to the JSON property `address`
-        # @return [String]
-        attr_accessor :address
       
         # CLDR (Common Locale Data Repository) region code .
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
+      
+        # The single string version of the address.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
       
         # Dependent locality or sublocality. Used for UK dependent localities, or
         # neighborhoods or boroughs in other locations.
@@ -1486,22 +1501,38 @@ module Google
         # @return [String]
         attr_accessor :dependent_locality
       
+        # Values are frequently alphanumeric.
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Language code of the address. Should be in BCP 47 format.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Use of this code is very country-specific, but will refer to a secondary
+        # classification code for sorting mail.
+        # Corresponds to the JSON property `sortingCode`
+        # @return [String]
+        attr_accessor :sorting_code
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @postal_code = args[:postal_code] if args.key?(:postal_code)
-          @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
-          @language_code = args[:language_code] if args.key?(:language_code)
           @address_line = args[:address_line] if args.key?(:address_line)
-          @locality = args[:locality] if args.key?(:locality)
           @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @locality = args[:locality] if args.key?(:locality)
           @lat_lng = args[:lat_lng] if args.key?(:lat_lng)
-          @address = args[:address] if args.key?(:address)
           @region_code = args[:region_code] if args.key?(:region_code)
+          @address = args[:address] if args.key?(:address)
           @dependent_locality = args[:dependent_locality] if args.key?(:dependent_locality)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
         end
       end
       
@@ -1565,6 +1596,19 @@ module Google
       class OptIns
         include Google::Apis::Core::Hashable
       
+        # An opt-in about receiving email regarding new features and products.
+        # Corresponds to the JSON property `specialOffers`
+        # @return [Boolean]
+        attr_accessor :special_offers
+        alias_method :special_offers?, :special_offers
+      
+        # An opt-in about receiving email with customized AdWords campaign management
+        # tips.
+        # Corresponds to the JSON property `performanceSuggestions`
+        # @return [Boolean]
+        attr_accessor :performance_suggestions
+        alias_method :performance_suggestions?, :performance_suggestions
+      
         # An opt-in to receive special promotional gifts and material in the mail.
         # Corresponds to the JSON property `physicalMail`
         # @return [Boolean]
@@ -1584,30 +1628,17 @@ module Google
         attr_accessor :market_comm
         alias_method :market_comm?, :market_comm
       
-        # An opt-in about receiving email regarding new features and products.
-        # Corresponds to the JSON property `specialOffers`
-        # @return [Boolean]
-        attr_accessor :special_offers
-        alias_method :special_offers?, :special_offers
-      
-        # An opt-in about receiving email with customized AdWords campaign management
-        # tips.
-        # Corresponds to the JSON property `performanceSuggestions`
-        # @return [Boolean]
-        attr_accessor :performance_suggestions
-        alias_method :performance_suggestions?, :performance_suggestions
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @special_offers = args[:special_offers] if args.key?(:special_offers)
+          @performance_suggestions = args[:performance_suggestions] if args.key?(:performance_suggestions)
           @physical_mail = args[:physical_mail] if args.key?(:physical_mail)
           @phone_contact = args[:phone_contact] if args.key?(:phone_contact)
           @market_comm = args[:market_comm] if args.key?(:market_comm)
-          @special_offers = args[:special_offers] if args.key?(:special_offers)
-          @performance_suggestions = args[:performance_suggestions] if args.key?(:performance_suggestions)
         end
       end
       
@@ -1636,25 +1667,34 @@ module Google
         end
       end
       
+      # Response message for
+      # GetPartnersStatus.
+      class GetPartnersStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # Common data that is in each API response.
+        # Corresponds to the JSON property `responseMetadata`
+        # @return [Google::Apis::PartnersV2::ResponseMetadata]
+        attr_accessor :response_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+        end
+      end
+      
       # The profile information of a Partners user.
       class UserProfile
         include Google::Apis::Core::Hashable
       
-        # The user's given name.
-        # Corresponds to the JSON property `givenName`
+        # The user's family name.
+        # Corresponds to the JSON property `familyName`
         # @return [String]
-        attr_accessor :given_name
-      
-        # A location with address and geographic coordinates. May optionally contain a
-        # detailed (multi-field) version of the address.
-        # Corresponds to the JSON property `address`
-        # @return [Google::Apis::PartnersV2::Location]
-        attr_accessor :address
-      
-        # A list of ids representing which industries the user selected.
-        # Corresponds to the JSON property `industries`
-        # @return [Array<String>]
-        attr_accessor :industries
+        attr_accessor :family_name
       
         # The list of languages this user understands.
         # Corresponds to the JSON property `languages`
@@ -1665,11 +1705,6 @@ module Google
         # Corresponds to the JSON property `emailOptIns`
         # @return [Google::Apis::PartnersV2::OptIns]
         attr_accessor :email_opt_ins
-      
-        # The user's family name.
-        # Corresponds to the JSON property `familyName`
-        # @return [String]
-        attr_accessor :family_name
       
         # A list of ids representing which markets the user was interested in.
         # Corresponds to the JSON property `markets`
@@ -1698,103 +1733,64 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
-        # A list of ids representing which channels the user selected they were in.
-        # Corresponds to the JSON property `channels`
-        # @return [Array<String>]
-        attr_accessor :channels
-      
         # Whether the user's public profile is visible to anyone with the URL.
         # Corresponds to the JSON property `profilePublic`
         # @return [Boolean]
         attr_accessor :profile_public
         alias_method :profile_public?, :profile_public
       
+        # A list of ids representing which channels the user selected they were in.
+        # Corresponds to the JSON property `channels`
+        # @return [Array<String>]
+        attr_accessor :channels
+      
         # A list of ids represnting which job categories the user selected.
         # Corresponds to the JSON property `jobFunctions`
         # @return [Array<String>]
         attr_accessor :job_functions
       
+        # The user's given name.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
+      
+        # A location with address and geographic coordinates. May optionally contain a
+        # detailed (multi-field) version of the address.
+        # Corresponds to the JSON property `address`
+        # @return [Google::Apis::PartnersV2::Location]
+        attr_accessor :address
+      
+        # A list of ids representing which industries the user selected.
+        # Corresponds to the JSON property `industries`
+        # @return [Array<String>]
+        attr_accessor :industries
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @given_name = args[:given_name] if args.key?(:given_name)
-          @address = args[:address] if args.key?(:address)
-          @industries = args[:industries] if args.key?(:industries)
+          @family_name = args[:family_name] if args.key?(:family_name)
           @languages = args[:languages] if args.key?(:languages)
           @email_opt_ins = args[:email_opt_ins] if args.key?(:email_opt_ins)
-          @family_name = args[:family_name] if args.key?(:family_name)
           @markets = args[:markets] if args.key?(:markets)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @adwords_manager_account = args[:adwords_manager_account] if args.key?(:adwords_manager_account)
           @primary_country_code = args[:primary_country_code] if args.key?(:primary_country_code)
           @email_address = args[:email_address] if args.key?(:email_address)
-          @channels = args[:channels] if args.key?(:channels)
           @profile_public = args[:profile_public] if args.key?(:profile_public)
+          @channels = args[:channels] if args.key?(:channels)
           @job_functions = args[:job_functions] if args.key?(:job_functions)
-        end
-      end
-      
-      # Response message for
-      # GetPartnersStatus.
-      class GetPartnersStatusResponse
-        include Google::Apis::Core::Hashable
-      
-        # Common data that is in each API response.
-        # Corresponds to the JSON property `responseMetadata`
-        # @return [Google::Apis::PartnersV2::ResponseMetadata]
-        attr_accessor :response_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @response_metadata = args[:response_metadata] if args.key?(:response_metadata)
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @address = args[:address] if args.key?(:address)
+          @industries = args[:industries] if args.key?(:industries)
         end
       end
       
       # Historical information about a Google Partners Offer.
       class HistoricalOffer
         include Google::Apis::Core::Hashable
-      
-        # Time offer was first created.
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
-        # Status of the offer.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Email address for client.
-        # Corresponds to the JSON property `clientEmail`
-        # @return [String]
-        attr_accessor :client_email
-      
-        # ID of client.
-        # Corresponds to the JSON property `clientId`
-        # @return [Fixnum]
-        attr_accessor :client_id
-      
-        # Name of the client.
-        # Corresponds to the JSON property `clientName`
-        # @return [String]
-        attr_accessor :client_name
-      
-        # Time last action was taken.
-        # Corresponds to the JSON property `lastModifiedTime`
-        # @return [String]
-        attr_accessor :last_modified_time
-      
-        # Client's AdWords page URL.
-        # Corresponds to the JSON property `adwordsUrl`
-        # @return [String]
-        attr_accessor :adwords_url
       
         # Type of offer.
         # Corresponds to the JSON property `offerType`
@@ -1821,24 +1817,59 @@ module Google
         # @return [String]
         attr_accessor :offer_code
       
+        # Time offer was first created.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Email address for client.
+        # Corresponds to the JSON property `clientEmail`
+        # @return [String]
+        attr_accessor :client_email
+      
+        # Status of the offer.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # ID of client.
+        # Corresponds to the JSON property `clientId`
+        # @return [Fixnum]
+        attr_accessor :client_id
+      
+        # Name of the client.
+        # Corresponds to the JSON property `clientName`
+        # @return [String]
+        attr_accessor :client_name
+      
+        # Time last action was taken.
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
+      
+        # Client's AdWords page URL.
+        # Corresponds to the JSON property `adwordsUrl`
+        # @return [String]
+        attr_accessor :adwords_url
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
-          @status = args[:status] if args.key?(:status)
-          @client_email = args[:client_email] if args.key?(:client_email)
-          @client_id = args[:client_id] if args.key?(:client_id)
-          @client_name = args[:client_name] if args.key?(:client_name)
-          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
-          @adwords_url = args[:adwords_url] if args.key?(:adwords_url)
           @offer_type = args[:offer_type] if args.key?(:offer_type)
           @sender_name = args[:sender_name] if args.key?(:sender_name)
           @offer_country_code = args[:offer_country_code] if args.key?(:offer_country_code)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @offer_code = args[:offer_code] if args.key?(:offer_code)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @client_email = args[:client_email] if args.key?(:client_email)
+          @status = args[:status] if args.key?(:status)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_name = args[:client_name] if args.key?(:client_name)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @adwords_url = args[:adwords_url] if args.key?(:adwords_url)
         end
       end
       
@@ -1863,15 +1894,15 @@ module Google
         # @return [String]
         attr_accessor :event_action
       
-        # The URL where the event occurred.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
         # Common data that is in each API request.
         # Corresponds to the JSON property `requestMetadata`
         # @return [Google::Apis::PartnersV2::RequestMetadata]
         attr_accessor :request_metadata
+      
+        # The URL where the event occurred.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
       
         # List of event data for the event.
         # Corresponds to the JSON property `eventDatas`
@@ -1892,8 +1923,8 @@ module Google
           @event_category = args[:event_category] if args.key?(:event_category)
           @lead = args[:lead] if args.key?(:lead)
           @event_action = args[:event_action] if args.key?(:event_action)
-          @url = args[:url] if args.key?(:url)
           @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
+          @url = args[:url] if args.key?(:url)
           @event_datas = args[:event_datas] if args.key?(:event_datas)
           @event_scope = args[:event_scope] if args.key?(:event_scope)
         end
@@ -1929,16 +1960,16 @@ module Google
       class AnalyticsDataPoint
         include Google::Apis::Core::Hashable
       
-        # Location information of where these events occurred.
-        # Corresponds to the JSON property `eventLocations`
-        # @return [Array<Google::Apis::PartnersV2::LatLng>]
-        attr_accessor :event_locations
-      
         # Number of times the type of event occurred.
         # Meaning depends on context (e.g. profile views, contacts, etc.).
         # Corresponds to the JSON property `eventCount`
         # @return [Fixnum]
         attr_accessor :event_count
+      
+        # Location information of where these events occurred.
+        # Corresponds to the JSON property `eventLocations`
+        # @return [Array<Google::Apis::PartnersV2::LatLng>]
+        attr_accessor :event_locations
       
         def initialize(**args)
            update!(**args)
@@ -1946,19 +1977,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @event_locations = args[:event_locations] if args.key?(:event_locations)
           @event_count = args[:event_count] if args.key?(:event_count)
+          @event_locations = args[:event_locations] if args.key?(:event_locations)
         end
       end
       
       # Analytics data for a `Company` within a single day.
       class Analytics
         include Google::Apis::Core::Hashable
-      
-        # Details of the analytics events for a `Company` within a single day.
-        # Corresponds to the JSON property `contacts`
-        # @return [Google::Apis::PartnersV2::AnalyticsDataPoint]
-        attr_accessor :contacts
       
         # Represents a whole calendar date, e.g. date of birth. The time of day and
         # time zone are either specified elsewhere or are not significant. The date
@@ -1981,27 +2007,53 @@ module Google
         # @return [Google::Apis::PartnersV2::AnalyticsDataPoint]
         attr_accessor :search_views
       
+        # Details of the analytics events for a `Company` within a single day.
+        # Corresponds to the JSON property `contacts`
+        # @return [Google::Apis::PartnersV2::AnalyticsDataPoint]
+        attr_accessor :contacts
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @contacts = args[:contacts] if args.key?(:contacts)
           @event_date = args[:event_date] if args.key?(:event_date)
           @profile_views = args[:profile_views] if args.key?(:profile_views)
           @search_views = args[:search_views] if args.key?(:search_views)
+          @contacts = args[:contacts] if args.key?(:contacts)
+        end
+      end
+      
+      # Information about a particular AdWords Manager Account.
+      # Read more at https://support.google.com/adwords/answer/6139186
+      class AdWordsManagerAccountInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of the customer this account represents.
+        # Corresponds to the JSON property `customerName`
+        # @return [String]
+        attr_accessor :customer_name
+      
+        # The AdWords Manager Account id.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_name = args[:customer_name] if args.key?(:customer_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
       # Basic information from a public profile.
       class PublicProfile
         include Google::Apis::Core::Hashable
-      
-        # The URL to the main profile image of the public profile.
-        # Corresponds to the JSON property `profileImage`
-        # @return [String]
-        attr_accessor :profile_image
       
         # The display name of the public profile.
         # Corresponds to the JSON property `displayName`
@@ -2023,43 +2075,22 @@ module Google
         # @return [String]
         attr_accessor :url
       
+        # The URL to the main profile image of the public profile.
+        # Corresponds to the JSON property `profileImage`
+        # @return [String]
+        attr_accessor :profile_image
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @profile_image = args[:profile_image] if args.key?(:profile_image)
           @display_name = args[:display_name] if args.key?(:display_name)
           @display_image_url = args[:display_image_url] if args.key?(:display_image_url)
           @id = args[:id] if args.key?(:id)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Information about a particular AdWords Manager Account.
-      # Read more at https://support.google.com/adwords/answer/6139186
-      class AdWordsManagerAccountInfo
-        include Google::Apis::Core::Hashable
-      
-        # The AdWords Manager Account id.
-        # Corresponds to the JSON property `id`
-        # @return [Fixnum]
-        attr_accessor :id
-      
-        # Name of the customer this account represents.
-        # Corresponds to the JSON property `customerName`
-        # @return [String]
-        attr_accessor :customer_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @customer_name = args[:customer_name] if args.key?(:customer_name)
+          @profile_image = args[:profile_image] if args.key?(:profile_image)
         end
       end
       
@@ -2111,6 +2142,27 @@ module Google
       class AvailableOffer
         include Google::Apis::Core::Hashable
       
+        # Level of this offer.
+        # Corresponds to the JSON property `offerLevel`
+        # @return [String]
+        attr_accessor :offer_level
+      
+        # Name of the offer.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Whether or not the list of qualified customers is definitely complete.
+        # Corresponds to the JSON property `qualifiedCustomersComplete`
+        # @return [Boolean]
+        attr_accessor :qualified_customers_complete
+        alias_method :qualified_customers_complete?, :qualified_customers_complete
+      
+        # ID of this offer.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
         # Offer info by country.
         # Corresponds to the JSON property `countryOfferInfos`
         # @return [Array<Google::Apis::PartnersV2::CountryOfferInfo>]
@@ -2152,33 +2204,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Level of this offer.
-        # Corresponds to the JSON property `offerLevel`
-        # @return [String]
-        attr_accessor :offer_level
-      
-        # Name of the offer.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # ID of this offer.
-        # Corresponds to the JSON property `id`
-        # @return [Fixnum]
-        attr_accessor :id
-      
-        # Whether or not the list of qualified customers is definitely complete.
-        # Corresponds to the JSON property `qualifiedCustomersComplete`
-        # @return [Boolean]
-        attr_accessor :qualified_customers_complete
-        alias_method :qualified_customers_complete?, :qualified_customers_complete
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @offer_level = args[:offer_level] if args.key?(:offer_level)
+          @name = args[:name] if args.key?(:name)
+          @qualified_customers_complete = args[:qualified_customers_complete] if args.key?(:qualified_customers_complete)
+          @id = args[:id] if args.key?(:id)
           @country_offer_infos = args[:country_offer_infos] if args.key?(:country_offer_infos)
           @offer_type = args[:offer_type] if args.key?(:offer_type)
           @max_account_age = args[:max_account_age] if args.key?(:max_account_age)
@@ -2187,10 +2222,6 @@ module Google
           @show_special_offer_copy = args[:show_special_offer_copy] if args.key?(:show_special_offer_copy)
           @available = args[:available] if args.key?(:available)
           @description = args[:description] if args.key?(:description)
-          @offer_level = args[:offer_level] if args.key?(:offer_level)
-          @name = args[:name] if args.key?(:name)
-          @id = args[:id] if args.key?(:id)
-          @qualified_customers_complete = args[:qualified_customers_complete] if args.key?(:qualified_customers_complete)
         end
       end
       
@@ -2229,8 +2260,6 @@ module Google
       # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
       # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
       # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
-      # The code in logs/storage/validator/logs_validator_traits.cc treats this type
-      # as if it were annotated as ST_LOCATION.
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -2259,11 +2288,6 @@ module Google
       class Money
         include Google::Apis::Core::Hashable
       
-        # The 3-letter currency code defined in ISO 4217.
-        # Corresponds to the JSON property `currencyCode`
-        # @return [String]
-        attr_accessor :currency_code
-      
         # Number of nano (10^-9) units of the amount.
         # The value must be between -999,999,999 and +999,999,999 inclusive.
         # If `units` is positive, `nanos` must be positive or zero.
@@ -2280,15 +2304,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :units
       
+        # The 3-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
         end
       end
     end

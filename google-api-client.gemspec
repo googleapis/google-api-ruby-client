@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['sbazyl@google.com']
   spec.summary       = %q{Client for accessing Google APIs}
   spec.homepage      = 'https://github.com/google/google-api-ruby-client'
-  spec.license       = 'Apache 2.0'
+  spec.license       = 'Apache-2.0'
 
   spec.files         = `git ls-files -z`
                        .split("\x0")
@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'representable', '~> 3.0'
   spec.add_runtime_dependency 'retriable', '>= 2.0', '< 4.0'
-  spec.add_runtime_dependency 'addressable', '>= 2.5.1'
-  spec.add_runtime_dependency 'mime-types', '>= 3.0'
+  spec.add_runtime_dependency 'addressable', '~> 2.5', '>= 2.5.1'
+  spec.add_runtime_dependency 'mime-types', '~> 3.0'
   spec.add_runtime_dependency 'googleauth', '~> 0.5'
   spec.add_runtime_dependency 'httpclient', '>= 2.8.1', '< 3.0'
   spec.add_development_dependency 'thor', '~> 0.19'

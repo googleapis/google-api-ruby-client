@@ -22,18 +22,6 @@ module Google
   module Apis
     module DataprocV1
       
-      class SubmitJobRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class JobScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,13 +34,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NodeInitializationAction
+      class ListJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListJobsResponse
+      class NodeInitializationAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class JobPlacement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,13 +82,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PigJob
+      class ClusterStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClusterStatus
+      class PigJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,13 +100,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SparkJob
+      class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Job
+      class SparkJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,13 +166,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class HiveJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HiveJob
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,19 +220,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DiagnoseClusterOutputLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,20 +233,15 @@ module Google
       end
       
       class SubmitJobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :job, as: 'job', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          property :message, as: 'message'
-          collection :details, as: 'details'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class JobScheduling
@@ -292,22 +257,14 @@ module Google
           property :disk_config, as: 'diskConfig', class: Google::Apis::DataprocV1::DiskConfig, decorator: Google::Apis::DataprocV1::DiskConfig::Representation
       
           property :machine_type_uri, as: 'machineTypeUri'
+          property :image_uri, as: 'imageUri'
           property :managed_group_config, as: 'managedGroupConfig', class: Google::Apis::DataprocV1::ManagedGroupConfig, decorator: Google::Apis::DataprocV1::ManagedGroupConfig::Representation
       
           property :is_preemptible, as: 'isPreemptible'
-          property :image_uri, as: 'imageUri'
           collection :instance_names, as: 'instanceNames'
           collection :accelerators, as: 'accelerators', class: Google::Apis::DataprocV1::AcceleratorConfig, decorator: Google::Apis::DataprocV1::AcceleratorConfig::Representation
       
           property :num_instances, as: 'numInstances'
-        end
-      end
-      
-      class NodeInitializationAction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_timeout, as: 'executionTimeout'
-          property :executable_file, as: 'executableFile'
         end
       end
       
@@ -317,6 +274,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :jobs, as: 'jobs', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
       
+        end
+      end
+      
+      class NodeInitializationAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :executable_file, as: 'executableFile'
+          property :execution_timeout, as: 'executionTimeout'
         end
       end
       
@@ -344,9 +309,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
-          property :metrics, as: 'metrics', class: Google::Apis::DataprocV1::ClusterMetrics, decorator: Google::Apis::DataprocV1::ClusterMetrics::Representation
-      
           property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterStatus, decorator: Google::Apis::DataprocV1::ClusterStatus::Representation
+      
+          property :metrics, as: 'metrics', class: Google::Apis::DataprocV1::ClusterMetrics, decorator: Google::Apis::DataprocV1::ClusterMetrics::Representation
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterStatus, decorator: Google::Apis::DataprocV1::ClusterStatus::Representation
       
@@ -367,32 +332,11 @@ module Google
         end
       end
       
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :status, as: 'status', class: Google::Apis::DataprocV1::OperationStatus, decorator: Google::Apis::DataprocV1::OperationStatus::Representation
-      
-          property :details, as: 'details'
-          property :state, as: 'state'
-          property :cluster_name, as: 'clusterName'
-          property :cluster_uuid, as: 'clusterUuid'
-          property :inner_state, as: 'innerState'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-          collection :warnings, as: 'warnings'
-          property :insert_time, as: 'insertTime'
-          collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::OperationStatus, decorator: Google::Apis::DataprocV1::OperationStatus::Representation
-      
-          property :operation_type, as: 'operationType'
-        end
-      end
-      
       class JobPlacement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_name, as: 'clusterName'
           property :cluster_uuid, as: 'clusterUuid'
+          property :cluster_name, as: 'clusterName'
         end
       end
       
@@ -401,6 +345,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_version, as: 'imageVersion'
           hash :properties, as: 'properties'
+        end
+      end
+      
+      class ClusterStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :substate, as: 'substate'
+          property :state_start_time, as: 'stateStartTime'
+          property :detail, as: 'detail'
+          property :state, as: 'state'
         end
       end
       
@@ -419,46 +373,29 @@ module Google
         end
       end
       
-      class ClusterStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :detail, as: 'detail'
-          property :state, as: 'state'
-          property :state_start_time, as: 'stateStartTime'
-          property :substate, as: 'substate'
-        end
-      end
-      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :clusters, as: 'clusters', class: Google::Apis::DataprocV1::Cluster, decorator: Google::Apis::DataprocV1::Cluster::Representation
       
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class SparkJob
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
-      
-          hash :properties, as: 'properties'
-          collection :args, as: 'args'
-          collection :file_uris, as: 'fileUris'
-          property :main_class, as: 'mainClass'
-          collection :archive_uris, as: 'archiveUris'
-          property :main_jar_file_uri, as: 'mainJarFileUri'
-          collection :jar_file_uris, as: 'jarFileUris'
         end
       end
       
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status', class: Google::Apis::DataprocV1::JobStatus, decorator: Google::Apis::DataprocV1::JobStatus::Representation
+          collection :yarn_applications, as: 'yarnApplications', class: Google::Apis::DataprocV1::YarnApplication, decorator: Google::Apis::DataprocV1::YarnApplication::Representation
+      
+          property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1::PySparkJob, decorator: Google::Apis::DataprocV1::PySparkJob::Representation
+      
+          property :reference, as: 'reference', class: Google::Apis::DataprocV1::JobReference, decorator: Google::Apis::DataprocV1::JobReference::Representation
+      
+          property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1::HadoopJob, decorator: Google::Apis::DataprocV1::HadoopJob::Representation
       
           property :placement, as: 'placement', class: Google::Apis::DataprocV1::JobPlacement, decorator: Google::Apis::DataprocV1::JobPlacement::Representation
+      
+          property :status, as: 'status', class: Google::Apis::DataprocV1::JobStatus, decorator: Google::Apis::DataprocV1::JobStatus::Representation
       
           property :driver_control_files_uri, as: 'driverControlFilesUri'
           property :scheduling, as: 'scheduling', class: Google::Apis::DataprocV1::JobScheduling, decorator: Google::Apis::DataprocV1::JobScheduling::Representation
@@ -469,30 +406,37 @@ module Google
       
           hash :labels, as: 'labels'
           property :driver_output_resource_uri, as: 'driverOutputResourceUri'
+          property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1::SparkSqlJob, decorator: Google::Apis::DataprocV1::SparkSqlJob::Representation
+      
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::JobStatus, decorator: Google::Apis::DataprocV1::JobStatus::Representation
       
           property :spark_job, as: 'sparkJob', class: Google::Apis::DataprocV1::SparkJob, decorator: Google::Apis::DataprocV1::SparkJob::Representation
       
-          property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1::SparkSqlJob, decorator: Google::Apis::DataprocV1::SparkSqlJob::Representation
+        end
+      end
       
-          collection :yarn_applications, as: 'yarnApplications', class: Google::Apis::DataprocV1::YarnApplication, decorator: Google::Apis::DataprocV1::YarnApplication::Representation
+      class SparkJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :file_uris, as: 'fileUris'
+          property :main_class, as: 'mainClass'
+          collection :archive_uris, as: 'archiveUris'
+          property :main_jar_file_uri, as: 'mainJarFileUri'
+          collection :jar_file_uris, as: 'jarFileUris'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
       
-          property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1::PySparkJob, decorator: Google::Apis::DataprocV1::PySparkJob::Representation
-      
-          property :reference, as: 'reference', class: Google::Apis::DataprocV1::JobReference, decorator: Google::Apis::DataprocV1::JobReference::Representation
-      
-          property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1::HadoopJob, decorator: Google::Apis::DataprocV1::HadoopJob::Representation
-      
+          hash :properties, as: 'properties'
         end
       end
       
       class JobStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-          property :details, as: 'details'
-          property :state_start_time, as: 'stateStartTime'
           property :substate, as: 'substate'
+          property :state_start_time, as: 'stateStartTime'
+          property :details, as: 'details'
+          property :state, as: 'state'
         end
       end
       
@@ -507,10 +451,10 @@ module Google
       class ClusterOperationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :state, as: 'state'
           property :inner_state, as: 'innerState'
           property :state_start_time, as: 'stateStartTime'
-          property :state, as: 'state'
-          property :details, as: 'details'
         end
       end
       
@@ -539,10 +483,10 @@ module Google
       class YarnApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-          property :name, as: 'name'
           property :tracking_url, as: 'trackingUrl'
           property :progress, as: 'progress'
+          property :state, as: 'state'
+          property :name, as: 'name'
         end
       end
       
@@ -555,43 +499,43 @@ module Google
       class DiskConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :num_local_ssds, as: 'numLocalSsds'
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :num_local_ssds, as: 'numLocalSsds'
         end
       end
       
       class ClusterOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
       
-          property :cluster_uuid, as: 'clusterUuid'
           property :cluster_name, as: 'clusterName'
+          property :cluster_uuid, as: 'clusterUuid'
           property :operation_type, as: 'operationType'
           property :description, as: 'description'
           collection :warnings, as: 'warnings'
-          hash :labels, as: 'labels'
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
       class HiveJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :script_variables, as: 'scriptVariables'
+          collection :jar_file_uris, as: 'jarFileUris'
+          hash :properties, as: 'properties'
           property :continue_on_failure, as: 'continueOnFailure'
           property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
       
           property :query_file_uri, as: 'queryFileUri'
-          hash :script_variables, as: 'scriptVariables'
-          collection :jar_file_uris, as: 'jarFileUris'
-          hash :properties, as: 'properties'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -624,6 +568,7 @@ module Google
       class PySparkJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :jar_file_uris, as: 'jarFileUris'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
       
           hash :properties, as: 'properties'
@@ -632,21 +577,20 @@ module Google
           collection :python_file_uris, as: 'pythonFileUris'
           property :main_python_file_uri, as: 'mainPythonFileUri'
           collection :archive_uris, as: 'archiveUris'
-          collection :jar_file_uris, as: 'jarFileUris'
         end
       end
       
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_uri, as: 'networkUri'
-          property :zone_uri, as: 'zoneUri'
           hash :metadata, as: 'metadata'
           property :internal_ip_only, as: 'internalIpOnly'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           collection :tags, as: 'tags'
           property :service_account, as: 'serviceAccount'
           property :subnetwork_uri, as: 'subnetworkUri'
+          property :network_uri, as: 'networkUri'
+          property :zone_uri, as: 'zoneUri'
         end
       end
       
@@ -673,40 +617,40 @@ module Google
         end
       end
       
-      class DiagnoseClusterOutputLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :output_uri, as: 'outputUri'
-        end
-      end
-      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
           hash :response, as: 'response'
           property :name, as: 'name'
           property :error, as: 'error', class: Google::Apis::DataprocV1::Status, decorator: Google::Apis::DataprocV1::Status::Representation
       
           hash :metadata, as: 'metadata'
-          property :done, as: 'done'
-        end
-      end
-      
-      class OperationStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-          property :details, as: 'details'
-          property :inner_state, as: 'innerState'
-          property :state_start_time, as: 'stateStartTime'
         end
       end
       
       class JobReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :project_id, as: 'projectId'
           property :job_id, as: 'jobId'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class SubmitJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job', class: Google::Apis::DataprocV1::Job, decorator: Google::Apis::DataprocV1::Job::Representation
+      
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
+          property :code, as: 'code'
+          property :message, as: 'message'
         end
       end
     end

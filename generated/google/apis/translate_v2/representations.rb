@@ -46,13 +46,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DetectionsResource
+      class TranslationsResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TranslationsResource
+      class DetectionsResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -115,6 +115,16 @@ module Google
         end
       end
       
+      class TranslationsResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsResource }
+          property :detected_source_language, as: 'detectedSourceLanguage'
+          property :model, as: 'model'
+          property :translated_text, as: 'translatedText'
+        end
+      end
+      
       class DetectionsResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -122,16 +132,6 @@ module Google
           property :confidence, as: 'confidence'
           property :is_reliable, as: 'isReliable'
           property :language, as: 'language'
-        end
-      end
-      
-      class TranslationsResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsResource }
-          property :translated_text, as: 'translatedText'
-          property :detected_source_language, as: 'detectedSourceLanguage'
-          property :model, as: 'model'
         end
       end
       
@@ -148,11 +148,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslateTextRequest }
+          property :target, as: 'target'
           collection :q, as: 'q'
           property :format, as: 'format'
           property :source, as: 'source'
           property :model, as: 'model'
-          property :target, as: 'target'
         end
       end
       

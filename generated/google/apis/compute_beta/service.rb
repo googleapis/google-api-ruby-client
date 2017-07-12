@@ -57,9 +57,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -68,7 +67,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -178,9 +177,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -189,7 +187,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -256,9 +254,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -267,7 +264,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -336,6 +333,15 @@ module Google
         #   Name of the region for this request.
         # @param [String] address
         #   Name of the address resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -357,13 +363,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_address(project, region, address, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_address(project, region, address, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/addresses/{address}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['address'] = address unless address.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -418,6 +425,15 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::Address] address_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,7 +455,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_address(project, region, address_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_address(project, region, address_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/addresses', options)
           command.request_representation = Google::Apis::ComputeBeta::Address::Representation
           command.request_object = address_object
@@ -447,6 +463,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -459,9 +476,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -470,7 +486,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -533,6 +549,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on an Address. To learn more about labels, read the Labeling
+        # Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::RegionSetLabelsRequest] region_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_address_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/addresses/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionSetLabelsRequest::Representation
+          command.request_object = region_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -581,9 +652,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -592,7 +662,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -661,6 +731,15 @@ module Google
         #   Name of the zone for this request.
         # @param [String] autoscaler
         #   Name of the autoscaler to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -682,13 +761,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_autoscaler(project, zone, autoscaler, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -744,6 +824,15 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -765,7 +854,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_autoscaler(project, zone, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_autoscaler(project, zone, autoscaler_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -773,6 +862,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -785,9 +875,8 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -796,7 +885,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -868,6 +957,15 @@ module Google
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] autoscaler
         #   Name of the autoscaler to patch.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -889,7 +987,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -898,6 +996,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -957,6 +1056,15 @@ module Google
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] autoscaler
         #   Name of the autoscaler to update.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -978,7 +1086,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -987,6 +1095,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -998,6 +1107,15 @@ module Google
         #   Project ID for this request.
         # @param [String] backend_bucket
         #   Name of the BackendBucket resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1019,12 +1137,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_backend_bucket(project, backend_bucket, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_backend_bucket(project, backend_bucket, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/backendBuckets/{backendBucket}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendBucket'] = backend_bucket unless backend_bucket.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1075,6 +1194,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::BackendBucket] backend_bucket_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1096,13 +1224,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_backend_bucket(project, backend_bucket_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_backend_bucket(project, backend_bucket_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/backendBuckets', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendBucket::Representation
           command.request_object = backend_bucket_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1114,9 +1243,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1125,7 +1253,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1194,6 +1322,15 @@ module Google
         # @param [String] backend_bucket
         #   Name of the BackendBucket resource to patch.
         # @param [Google::Apis::ComputeBeta::BackendBucket] backend_bucket_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1215,7 +1352,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_backend_bucket(project, backend_bucket, backend_bucket_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_backend_bucket(project, backend_bucket, backend_bucket_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/backendBuckets/{backendBucket}', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendBucket::Representation
           command.request_object = backend_bucket_object
@@ -1223,6 +1360,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendBucket'] = backend_bucket unless backend_bucket.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1236,6 +1374,15 @@ module Google
         # @param [String] backend_bucket
         #   Name of the BackendBucket resource to update.
         # @param [Google::Apis::ComputeBeta::BackendBucket] backend_bucket_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1257,7 +1404,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_backend_bucket(project, backend_bucket, backend_bucket_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_backend_bucket(project, backend_bucket, backend_bucket_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/backendBuckets/{backendBucket}', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendBucket::Representation
           command.request_object = backend_bucket_object
@@ -1265,6 +1412,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendBucket'] = backend_bucket unless backend_bucket.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1276,9 +1424,8 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1287,7 +1434,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1354,6 +1501,15 @@ module Google
         #   Project ID for this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1375,12 +1531,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_backend_service(project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_backend_service(project, backend_service, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/backendServices/{backendService}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1473,6 +1630,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1494,13 +1660,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_backend_service(project, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_backend_service(project, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/backendServices', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendService::Representation
           command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1512,9 +1679,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1523,7 +1689,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1594,6 +1760,15 @@ module Google
         # @param [String] backend_service
         #   Name of the BackendService resource to patch.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1615,7 +1790,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_backend_service(project, backend_service, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_backend_service(project, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendService::Representation
           command.request_object = backend_service_object
@@ -1623,6 +1798,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1679,6 +1855,15 @@ module Google
         # @param [String] backend_service
         #   Name of the BackendService resource to update.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1700,7 +1885,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_backend_service(project, backend_service, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_backend_service(project, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendService::Representation
           command.request_object = backend_service_object
@@ -1708,6 +1893,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1718,9 +1904,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1729,7 +1914,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1839,9 +2024,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1850,7 +2034,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1917,9 +2101,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1928,7 +2111,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1999,6 +2182,15 @@ module Google
         #   Name of the persistent disk to snapshot.
         # @param [Google::Apis::ComputeBeta::Snapshot] snapshot_object
         # @param [Boolean] guest_flush
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2020,7 +2212,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_disk_snapshot(project, zone, disk, snapshot_object = nil, guest_flush: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_disk_snapshot(project, zone, disk, snapshot_object = nil, guest_flush: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/createSnapshot', options)
           command.request_representation = Google::Apis::ComputeBeta::Snapshot::Representation
           command.request_object = snapshot_object
@@ -2030,6 +2222,7 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['disk'] = disk unless disk.nil?
           command.query['guestFlush'] = guest_flush unless guest_flush.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2045,6 +2238,15 @@ module Google
         #   The name of the zone for this request.
         # @param [String] disk
         #   Name of the persistent disk to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2066,13 +2268,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_disk(project, zone, disk, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_disk(project, zone, disk, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/zones/{zone}/disks/{disk}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['disk'] = disk unless disk.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2130,6 +2333,15 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [Google::Apis::ComputeBeta::Disk] disk_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] source_image
         #   Optional. Source image to restore onto a disk.
         # @param [String] fields
@@ -2153,7 +2365,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_disk(project, zone, disk_object = nil, source_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_disk(project, zone, disk_object = nil, request_id: nil, source_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/disks', options)
           command.request_representation = Google::Apis::ComputeBeta::Disk::Representation
           command.request_object = disk_object
@@ -2161,6 +2373,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['sourceImage'] = source_image unless source_image.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2174,9 +2387,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2185,7 +2397,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2256,6 +2468,15 @@ module Google
         # @param [String] disk
         #   The name of the persistent disk.
         # @param [Google::Apis::ComputeBeta::DisksResizeRequest] disks_resize_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2277,7 +2498,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def resize_disk(project, zone, disk, disks_resize_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def resize_disk(project, zone, disk, disks_resize_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{disk}/resize', options)
           command.request_representation = Google::Apis::ComputeBeta::DisksResizeRequest::Representation
           command.request_object = disks_resize_request_object
@@ -2286,14 +2507,15 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['disk'] = disk unless disk.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the labels on a disk. To learn more about labels, read the Labeling or
-        # Tagging Resources documentation.
+        # Sets the labels on a disk. To learn more about labels, read the Labeling
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2301,6 +2523,15 @@ module Google
         # @param [String] resource
         #   Name of the resource for this request.
         # @param [Google::Apis::ComputeBeta::ZoneSetLabelsRequest] zone_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2322,7 +2553,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_disk_labels(project, zone, resource, zone_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_disk_labels(project, zone, resource, zone_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/disks/{resource}/setLabels', options)
           command.request_representation = Google::Apis::ComputeBeta::ZoneSetLabelsRequest::Representation
           command.request_object = zone_set_labels_request_object
@@ -2331,6 +2562,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2386,6 +2618,15 @@ module Google
         #   Project ID for this request.
         # @param [String] firewall
         #   Name of the firewall rule to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2407,12 +2648,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_firewall(project, firewall, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_firewall(project, firewall, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/firewalls/{firewall}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['firewall'] = firewall unless firewall.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2462,6 +2704,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2483,13 +2734,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_firewall(project, firewall_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_firewall(project, firewall_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/firewalls', options)
           command.request_representation = Google::Apis::ComputeBeta::Firewall::Representation
           command.request_object = firewall_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2500,9 +2752,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2511,7 +2762,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2580,6 +2831,15 @@ module Google
         # @param [String] firewall
         #   Name of the firewall rule to patch.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2601,7 +2861,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_firewall(project, firewall, firewall_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_firewall(project, firewall, firewall_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/firewalls/{firewall}', options)
           command.request_representation = Google::Apis::ComputeBeta::Firewall::Representation
           command.request_object = firewall_object
@@ -2609,6 +2869,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['firewall'] = firewall unless firewall.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2664,6 +2925,15 @@ module Google
         # @param [String] firewall
         #   Name of the firewall rule to update.
         # @param [Google::Apis::ComputeBeta::Firewall] firewall_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2685,7 +2955,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_firewall(project, firewall, firewall_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_firewall(project, firewall, firewall_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/firewalls/{firewall}', options)
           command.request_representation = Google::Apis::ComputeBeta::Firewall::Representation
           command.request_object = firewall_object
@@ -2693,6 +2963,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['firewall'] = firewall unless firewall.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2703,9 +2974,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2714,7 +2984,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2783,6 +3053,15 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2804,13 +3083,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_forwarding_rule(project, region, forwarding_rule, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_forwarding_rule(project, region, forwarding_rule, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/forwardingRules/{forwardingRule}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['forwardingRule'] = forwarding_rule unless forwarding_rule.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2865,6 +3145,15 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeBeta::ForwardingRule] forwarding_rule_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2886,7 +3175,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_forwarding_rule(project, region, forwarding_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_forwarding_rule(project, region, forwarding_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules', options)
           command.request_representation = Google::Apis::ComputeBeta::ForwardingRule::Representation
           command.request_object = forwarding_rule_object
@@ -2894,6 +3183,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2907,9 +3197,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2918,7 +3207,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2981,15 +3270,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes target URL for forwarding rule. The new target should be of the same
-        # type as the old target.
+        # Sets the labels on the specified resource. To learn more about labels, read
+        # the Labeling Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
-        #   Name of the region scoping this request.
-        # @param [String] forwarding_rule
-        #   Name of the ForwardingRule resource in which target is to be set.
-        # @param [Google::Apis::ComputeBeta::TargetReference] target_reference_object
+        #   The region for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::RegionSetLabelsRequest] region_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3011,7 +3309,62 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_forwarding_rule_target(project, region, forwarding_rule, target_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_forwarding_rule_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::RegionSetLabelsRequest::Representation
+          command.request_object = region_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes target URL for forwarding rule. The new target should be of the same
+        # type as the old target.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request.
+        # @param [String] forwarding_rule
+        #   Name of the ForwardingRule resource in which target is to be set.
+        # @param [Google::Apis::ComputeBeta::TargetReference] target_reference_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_forwarding_rule_target(project, region, forwarding_rule, target_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/forwardingRules/{forwardingRule}/setTarget', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetReference::Representation
           command.request_object = target_reference_object
@@ -3020,6 +3373,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['forwardingRule'] = forwarding_rule unless forwarding_rule.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3075,6 +3429,15 @@ module Google
         #   Project ID for this request.
         # @param [String] address
         #   Name of the address resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3096,12 +3459,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_global_address(project, address, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_global_address(project, address, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/addresses/{address}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['address'] = address unless address.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3152,6 +3516,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Address] address_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3173,13 +3546,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_global_address(project, address_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_global_address(project, address_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/addresses', options)
           command.request_representation = Google::Apis::ComputeBeta::Address::Representation
           command.request_object = address_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3190,9 +3564,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3201,7 +3574,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3263,6 +3636,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the labels on a GlobalAddress. To learn more about labels, read the
+        # Labeling Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::GlobalSetLabelsRequest] global_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_global_address_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/addresses/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -3309,6 +3724,15 @@ module Google
         #   Project ID for this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3330,12 +3754,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_global_forwarding_rule(project, forwarding_rule, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_global_forwarding_rule(project, forwarding_rule, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/forwardingRules/{forwardingRule}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['forwardingRule'] = forwarding_rule unless forwarding_rule.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3386,6 +3811,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ForwardingRule] forwarding_rule_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3407,13 +3841,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_global_forwarding_rule(project, forwarding_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_global_forwarding_rule(project, forwarding_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/forwardingRules', options)
           command.request_representation = Google::Apis::ComputeBeta::ForwardingRule::Representation
           command.request_object = forwarding_rule_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3425,9 +3860,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3436,7 +3870,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3498,13 +3932,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes target URL for the GlobalForwardingRule resource. The new target
-        # should be of the same type as the old target.
+        # Sets the labels on the specified resource. To learn more about labels, read
+        # the Labeling Resources documentation.
         # @param [String] project
         #   Project ID for this request.
-        # @param [String] forwarding_rule
-        #   Name of the ForwardingRule resource in which target is to be set.
-        # @param [Google::Apis::ComputeBeta::TargetReference] target_reference_object
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Google::Apis::ComputeBeta::GlobalSetLabelsRequest] global_set_labels_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3526,7 +3960,58 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_global_forwarding_rule_target(project, forwarding_rule, target_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_global_forwarding_rule_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/forwardingRules/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeBeta::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes target URL for the GlobalForwardingRule resource. The new target
+        # should be of the same type as the old target.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] forwarding_rule
+        #   Name of the ForwardingRule resource in which target is to be set.
+        # @param [Google::Apis::ComputeBeta::TargetReference] target_reference_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_global_forwarding_rule_target(project, forwarding_rule, target_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/forwardingRules/{forwardingRule}/setTarget', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetReference::Representation
           command.request_object = target_reference_object
@@ -3534,6 +4019,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['forwardingRule'] = forwarding_rule unless forwarding_rule.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3585,9 +4071,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3596,7 +4081,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3737,9 +4222,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3748,7 +4232,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3815,6 +4299,15 @@ module Google
         #   Project ID for this request.
         # @param [String] health_check
         #   Name of the HealthCheck resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3836,12 +4329,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_health_check(project, health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_health_check(project, health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/healthChecks/{healthCheck}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['healthCheck'] = health_check unless health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3892,6 +4386,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::HealthCheck] health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3913,13 +4416,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_health_check(project, health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_health_check(project, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/healthChecks', options)
           command.request_representation = Google::Apis::ComputeBeta::HealthCheck::Representation
           command.request_object = health_check_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3930,9 +4434,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3941,7 +4444,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -4010,6 +4513,15 @@ module Google
         # @param [String] health_check
         #   Name of the HealthCheck resource to patch.
         # @param [Google::Apis::ComputeBeta::HealthCheck] health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4031,7 +4543,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_health_check(project, health_check, health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_health_check(project, health_check, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/healthChecks/{healthCheck}', options)
           command.request_representation = Google::Apis::ComputeBeta::HealthCheck::Representation
           command.request_object = health_check_object
@@ -4039,6 +4551,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['healthCheck'] = health_check unless health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4093,6 +4606,15 @@ module Google
         # @param [String] health_check
         #   Name of the HealthCheck resource to update.
         # @param [Google::Apis::ComputeBeta::HealthCheck] health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4114,7 +4636,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_health_check(project, health_check, health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_health_check(project, health_check, health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/healthChecks/{healthCheck}', options)
           command.request_representation = Google::Apis::ComputeBeta::HealthCheck::Representation
           command.request_object = health_check_object
@@ -4122,6 +4644,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['healthCheck'] = health_check unless health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4133,6 +4656,15 @@ module Google
         #   Project ID for this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4154,12 +4686,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_http_health_check(project, http_health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_http_health_check(project, http_health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpHealthCheck'] = http_health_check unless http_health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4210,6 +4743,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::HttpHealthCheck] http_health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4231,13 +4773,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_http_health_check(project, http_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_http_health_check(project, http_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/httpHealthChecks', options)
           command.request_representation = Google::Apis::ComputeBeta::HttpHealthCheck::Representation
           command.request_object = http_health_check_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4249,9 +4792,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -4260,7 +4802,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -4329,6 +4871,15 @@ module Google
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to patch.
         # @param [Google::Apis::ComputeBeta::HttpHealthCheck] http_health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4350,7 +4901,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_http_health_check(project, http_health_check, http_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_http_health_check(project, http_health_check, http_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeBeta::HttpHealthCheck::Representation
           command.request_object = http_health_check_object
@@ -4358,6 +4909,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpHealthCheck'] = http_health_check unless http_health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4412,6 +4964,15 @@ module Google
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to update.
         # @param [Google::Apis::ComputeBeta::HttpHealthCheck] http_health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4433,7 +4994,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_http_health_check(project, http_health_check, http_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_http_health_check(project, http_health_check, http_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/httpHealthChecks/{httpHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeBeta::HttpHealthCheck::Representation
           command.request_object = http_health_check_object
@@ -4441,6 +5002,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpHealthCheck'] = http_health_check unless http_health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4452,6 +5014,15 @@ module Google
         #   Project ID for this request.
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4473,12 +5044,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_https_health_check(project, https_health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_https_health_check(project, https_health_check, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpsHealthCheck'] = https_health_check unless https_health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4529,6 +5101,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::HttpsHealthCheck] https_health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4550,13 +5131,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_https_health_check(project, https_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_https_health_check(project, https_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/httpsHealthChecks', options)
           command.request_representation = Google::Apis::ComputeBeta::HttpsHealthCheck::Representation
           command.request_object = https_health_check_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4568,9 +5150,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -4579,7 +5160,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -4648,6 +5229,15 @@ module Google
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to patch.
         # @param [Google::Apis::ComputeBeta::HttpsHealthCheck] https_health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4669,7 +5259,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_https_health_check(project, https_health_check, https_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_https_health_check(project, https_health_check, https_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeBeta::HttpsHealthCheck::Representation
           command.request_object = https_health_check_object
@@ -4677,6 +5267,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpsHealthCheck'] = https_health_check unless https_health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4731,6 +5322,15 @@ module Google
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to update.
         # @param [Google::Apis::ComputeBeta::HttpsHealthCheck] https_health_check_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4752,7 +5352,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_https_health_check(project, https_health_check, https_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_https_health_check(project, https_health_check, https_health_check_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/httpsHealthChecks/{httpsHealthCheck}', options)
           command.request_representation = Google::Apis::ComputeBeta::HttpsHealthCheck::Representation
           command.request_object = https_health_check_object
@@ -4760,6 +5360,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['httpsHealthCheck'] = https_health_check unless https_health_check.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4771,6 +5372,15 @@ module Google
         #   Project ID for this request.
         # @param [String] image
         #   Name of the image resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4792,12 +5402,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_image(project, image, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_image(project, image, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/images/{image}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['image'] = image unless image.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4811,6 +5422,15 @@ module Google
         # @param [String] image
         #   Image name.
         # @param [Google::Apis::ComputeBeta::DeprecationStatus] deprecation_status_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4832,7 +5452,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deprecate_image(project, image, deprecation_status_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def deprecate_image(project, image, deprecation_status_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/images/{image}/deprecate', options)
           command.request_representation = Google::Apis::ComputeBeta::DeprecationStatus::Representation
           command.request_object = deprecation_status_object
@@ -4840,6 +5460,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['image'] = image unless image.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4928,6 +5549,17 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Image] image_object
+        # @param [Boolean] force_create
+        #   Force image creation if true.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4949,13 +5581,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_image(project, image_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_image(project, image_object = nil, force_create: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/images', options)
           command.request_representation = Google::Apis::ComputeBeta::Image::Representation
           command.request_object = image_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['forceCreate'] = force_create unless force_create.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4971,9 +5605,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -4982,7 +5615,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5044,8 +5677,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the labels on an image. To learn more about labels, read the Labeling or
-        # Tagging Resources documentation.
+        # Sets the labels on an image. To learn more about labels, read the Labeling
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -5146,6 +5779,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersAbandonInstancesRequest] instance_group_managers_abandon_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5167,7 +5809,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def abandon_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_abandon_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def abandon_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_abandon_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersAbandonInstancesRequest::Representation
           command.request_object = instance_group_managers_abandon_instances_request_object
@@ -5176,6 +5818,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5186,9 +5829,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5197,7 +5839,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5268,6 +5910,15 @@ module Google
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
         #   The name of the managed instance group to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5289,13 +5940,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance_group_manager(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance_group_manager(project, zone, instance_group_manager, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5320,6 +5972,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersDeleteInstancesRequest] instance_group_managers_delete_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5341,7 +6002,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_delete_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_delete_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersDeleteInstancesRequest::Representation
           command.request_object = instance_group_managers_delete_instances_request_object
@@ -5350,6 +6011,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5411,6 +6073,15 @@ module Google
         # @param [String] zone
         #   The name of the zone where you want to create the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5432,7 +6103,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance_group_manager(project, zone, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance_group_manager(project, zone, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
@@ -5440,6 +6111,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5453,9 +6125,8 @@ module Google
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5464,7 +6135,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5592,6 +6263,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5613,7 +6293,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
@@ -5622,6 +6302,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5645,6 +6326,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersRecreateInstancesRequest] instance_group_managers_recreate_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5666,7 +6356,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def recreate_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_recreate_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def recreate_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_recreate_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersRecreateInstancesRequest::Representation
           command.request_object = instance_group_managers_recreate_instances_request_object
@@ -5675,6 +6365,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5700,6 +6391,15 @@ module Google
         #   The number of running instances that the managed instance group should
         #   maintain at any given time. The group automatically adds or removes instances
         #   to maintain the number of instances specified by this parameter.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5721,13 +6421,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def resize_instance_group_manager(project, zone, instance_group_manager, size, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def resize_instance_group_manager(project, zone, instance_group_manager, size, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['size'] = size unless size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5754,6 +6455,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersResizeAdvancedRequest] instance_group_managers_resize_advanced_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5775,7 +6485,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def resize_instance_group_manager_advanced(project, zone, instance_group_manager, instance_group_managers_resize_advanced_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def resize_instance_group_manager_advanced(project, zone, instance_group_manager, instance_group_managers_resize_advanced_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeAdvanced', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersResizeAdvancedRequest::Representation
           command.request_object = instance_group_managers_resize_advanced_request_object
@@ -5784,6 +6494,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5798,6 +6509,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersSetAutoHealingRequest] instance_group_managers_set_auto_healing_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5819,7 +6539,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_group_manager_auto_healing_policies(project, zone, instance_group_manager, instance_group_managers_set_auto_healing_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_group_manager_auto_healing_policies(project, zone, instance_group_manager, instance_group_managers_set_auto_healing_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersSetAutoHealingRequest::Representation
           command.request_object = instance_group_managers_set_auto_healing_request_object
@@ -5828,6 +6548,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5844,6 +6565,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersSetInstanceTemplateRequest] instance_group_managers_set_instance_template_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5865,7 +6595,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_group_manager_instance_template(project, zone, instance_group_manager, instance_group_managers_set_instance_template_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_group_manager_instance_template(project, zone, instance_group_manager, instance_group_managers_set_instance_template_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersSetInstanceTemplateRequest::Representation
           command.request_object = instance_group_managers_set_instance_template_request_object
@@ -5874,6 +6604,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5893,6 +6624,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManagersSetTargetPoolsRequest] instance_group_managers_set_target_pools_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5914,7 +6654,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_group_manager_target_pools(project, zone, instance_group_manager, instance_group_managers_set_target_pools_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_group_manager_target_pools(project, zone, instance_group_manager, instance_group_managers_set_target_pools_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManagersSetTargetPoolsRequest::Representation
           command.request_object = instance_group_managers_set_target_pools_request_object
@@ -5923,6 +6663,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -5985,6 +6726,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6006,7 +6756,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_instance_group_manager(project, zone, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
@@ -6015,6 +6765,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6031,6 +6782,15 @@ module Google
         # @param [String] instance_group
         #   The name of the instance group where you are adding instances.
         # @param [Google::Apis::ComputeBeta::InstanceGroupsAddInstancesRequest] instance_groups_add_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6052,7 +6812,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_group_instances(project, zone, instance_group, instance_groups_add_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_instance_group_instances(project, zone, instance_group, instance_groups_add_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupsAddInstancesRequest::Representation
           command.request_object = instance_groups_add_instances_request_object
@@ -6061,6 +6821,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6071,9 +6832,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6082,7 +6842,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6153,6 +6913,15 @@ module Google
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
         #   The name of the instance group to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6174,13 +6943,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance_group(project, zone, instance_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance_group(project, zone, instance_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/zones/{zone}/instanceGroups/{instanceGroup}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6236,6 +7006,15 @@ module Google
         # @param [String] zone
         #   The name of the zone where you want to create the instance group.
         # @param [Google::Apis::ComputeBeta::InstanceGroup] instance_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6257,7 +7036,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance_group(project, zone, instance_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance_group(project, zone, instance_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroup::Representation
           command.request_object = instance_group_object
@@ -6265,6 +7044,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6278,9 +7058,8 @@ module Google
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6289,7 +7068,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6362,9 +7141,8 @@ module Google
         #   included instances.
         # @param [Google::Apis::ComputeBeta::InstanceGroupsListInstancesRequest] instance_groups_list_instances_request_object
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6373,7 +7151,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6451,6 +7229,15 @@ module Google
         # @param [String] instance_group
         #   The name of the instance group where the specified instances will be removed.
         # @param [Google::Apis::ComputeBeta::InstanceGroupsRemoveInstancesRequest] instance_groups_remove_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6472,7 +7259,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_instance_group_instances(project, zone, instance_group, instance_groups_remove_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_instance_group_instances(project, zone, instance_group, instance_groups_remove_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupsRemoveInstancesRequest::Representation
           command.request_object = instance_groups_remove_instances_request_object
@@ -6481,6 +7268,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6495,6 +7283,15 @@ module Google
         # @param [String] instance_group
         #   The name of the instance group where the named ports are updated.
         # @param [Google::Apis::ComputeBeta::InstanceGroupsSetNamedPortsRequest] instance_groups_set_named_ports_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6516,7 +7313,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_group_named_ports(project, zone, instance_group, instance_groups_set_named_ports_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_group_named_ports(project, zone, instance_group, instance_groups_set_named_ports_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupsSetNamedPortsRequest::Representation
           command.request_object = instance_groups_set_named_ports_request_object
@@ -6525,6 +7322,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6583,6 +7381,15 @@ module Google
         #   Project ID for this request.
         # @param [String] instance_template
         #   The name of the instance template to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6604,12 +7411,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance_template(project, instance_template, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance_template(project, instance_template, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/instanceTemplates/{instanceTemplate}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['instanceTemplate'] = instance_template unless instance_template.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6662,6 +7470,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::InstanceTemplate] instance_template_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6683,13 +7500,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance_template(project, instance_template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance_template(project, instance_template_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/instanceTemplates', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceTemplate::Representation
           command.request_object = instance_template_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6701,9 +7519,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6712,7 +7529,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6825,6 +7642,15 @@ module Google
         # @param [String] network_interface
         #   The name of the network interface to add to this instance.
         # @param [Google::Apis::ComputeBeta::AccessConfig] access_config_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6846,7 +7672,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_access_config(project, zone, instance, network_interface, access_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_instance_access_config(project, zone, instance, network_interface, access_config_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addAccessConfig', options)
           command.request_representation = Google::Apis::ComputeBeta::AccessConfig::Representation
           command.request_object = access_config_object
@@ -6856,6 +7682,7 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['networkInterface'] = network_interface unless network_interface.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6866,9 +7693,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6877,7 +7703,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6950,6 +7776,15 @@ module Google
         # @param [String] instance
         #   The instance name for this request.
         # @param [Google::Apis::ComputeBeta::AttachedDisk] attached_disk_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6971,7 +7806,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def attach_disk(project, zone, instance, attached_disk_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def attach_disk(project, zone, instance, attached_disk_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/attachDisk', options)
           command.request_representation = Google::Apis::ComputeBeta::AttachedDisk::Representation
           command.request_object = attached_disk_object
@@ -6980,6 +7815,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6994,6 +7830,15 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7015,13 +7860,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/zones/{zone}/instances/{instance}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7039,6 +7885,15 @@ module Google
         #   The name of the access config to delete.
         # @param [String] network_interface
         #   The name of the network interface.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7060,7 +7915,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance_access_config(project, zone, instance, access_config, network_interface, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instance_access_config(project, zone, instance, access_config, network_interface, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/deleteAccessConfig', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
@@ -7069,6 +7924,7 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['accessConfig'] = access_config unless access_config.nil?
           command.query['networkInterface'] = network_interface unless network_interface.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7084,6 +7940,15 @@ module Google
         #   Instance name.
         # @param [String] device_name
         #   Disk device name to detach.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7105,7 +7970,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def detach_disk(project, zone, instance, device_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def detach_disk(project, zone, instance, device_name, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/detachDisk', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
@@ -7113,6 +7978,7 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['deviceName'] = device_name unless device_name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7218,6 +8084,15 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [Google::Apis::ComputeBeta::Instance] instance_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7239,7 +8114,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(project, zone, instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, zone, instance_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances', options)
           command.request_representation = Google::Apis::ComputeBeta::Instance::Representation
           command.request_object = instance_object
@@ -7247,6 +8122,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7259,9 +8135,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -7270,7 +8145,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -7343,9 +8218,8 @@ module Google
         #   Name of the target instance scoping this request, or '-' if the request should
         #   span over all instances in the container.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -7354,7 +8228,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -7426,6 +8300,15 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance scoping this request.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7447,13 +8330,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_instance(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def reset_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/reset', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7471,6 +8355,15 @@ module Google
         #   Whether to auto-delete the disk when the instance is deleted.
         # @param [String] device_name
         #   The device name of the disk to modify.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7492,7 +8385,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_disk_auto_delete(project, zone, instance, auto_delete, device_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_disk_auto_delete(project, zone, instance, auto_delete, device_name, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setDiskAutoDelete', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
@@ -7501,14 +8394,15 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['autoDelete'] = auto_delete unless auto_delete.nil?
           command.query['deviceName'] = device_name unless device_name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Sets labels on an instance. To learn more about labels, read the Labeling or
-        # Tagging Resources documentation.
+        # Sets labels on an instance. To learn more about labels, read the Labeling
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7516,6 +8410,15 @@ module Google
         # @param [String] instance
         #   Name of the instance scoping this request.
         # @param [Google::Apis::ComputeBeta::InstancesSetLabelsRequest] instances_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7537,7 +8440,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_labels(project, zone, instance, instances_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_labels(project, zone, instance, instances_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setLabels', options)
           command.request_representation = Google::Apis::ComputeBeta::InstancesSetLabelsRequest::Representation
           command.request_object = instances_set_labels_request_object
@@ -7546,6 +8449,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7561,6 +8465,15 @@ module Google
         # @param [String] instance
         #   Name of the instance scoping this request.
         # @param [Google::Apis::ComputeBeta::InstancesSetMachineResourcesRequest] instances_set_machine_resources_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7582,7 +8495,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_machine_resources(project, zone, instance, instances_set_machine_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_machine_resources(project, zone, instance, instances_set_machine_resources_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineResources', options)
           command.request_representation = Google::Apis::ComputeBeta::InstancesSetMachineResourcesRequest::Representation
           command.request_object = instances_set_machine_resources_request_object
@@ -7591,6 +8504,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7606,6 +8520,15 @@ module Google
         # @param [String] instance
         #   Name of the instance scoping this request.
         # @param [Google::Apis::ComputeBeta::InstancesSetMachineTypeRequest] instances_set_machine_type_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7627,7 +8550,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_machine_type(project, zone, instance, instances_set_machine_type_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_machine_type(project, zone, instance, instances_set_machine_type_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineType', options)
           command.request_representation = Google::Apis::ComputeBeta::InstancesSetMachineTypeRequest::Representation
           command.request_object = instances_set_machine_type_request_object
@@ -7636,6 +8559,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7650,6 +8574,15 @@ module Google
         # @param [String] instance
         #   Name of the instance scoping this request.
         # @param [Google::Apis::ComputeBeta::Metadata] metadata_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7671,7 +8604,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_metadata(project, zone, instance, metadata_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_metadata(project, zone, instance, metadata_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMetadata', options)
           command.request_representation = Google::Apis::ComputeBeta::Metadata::Representation
           command.request_object = metadata_object
@@ -7680,6 +8613,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7696,7 +8630,14 @@ module Google
         #   Name of the instance scoping this request.
         # @param [Google::Apis::ComputeBeta::InstancesSetMinCpuPlatformRequest] instances_set_min_cpu_platform_request_object
         # @param [String] request_id
-        #   begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7742,6 +8683,15 @@ module Google
         # @param [String] instance
         #   Instance name.
         # @param [Google::Apis::ComputeBeta::Scheduling] scheduling_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7763,7 +8713,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_scheduling(project, zone, instance, scheduling_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_scheduling(project, zone, instance, scheduling_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setScheduling', options)
           command.request_representation = Google::Apis::ComputeBeta::Scheduling::Representation
           command.request_object = scheduling_object
@@ -7772,6 +8722,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7787,6 +8738,15 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to start.
         # @param [Google::Apis::ComputeBeta::InstancesSetServiceAccountRequest] instances_set_service_account_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7808,7 +8768,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_service_account(project, zone, instance, instances_set_service_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_service_account(project, zone, instance, instances_set_service_account_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setServiceAccount', options)
           command.request_representation = Google::Apis::ComputeBeta::InstancesSetServiceAccountRequest::Representation
           command.request_object = instances_set_service_account_request_object
@@ -7817,6 +8777,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7831,6 +8792,15 @@ module Google
         # @param [String] instance
         #   Name of the instance scoping this request.
         # @param [Google::Apis::ComputeBeta::Tags] tags_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7852,7 +8822,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_tags(project, zone, instance, tags_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_tags(project, zone, instance, tags_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setTags', options)
           command.request_representation = Google::Apis::ComputeBeta::Tags::Representation
           command.request_object = tags_object
@@ -7861,6 +8831,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7875,6 +8846,15 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to start.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7896,13 +8876,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_instance(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/start', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7918,6 +8899,15 @@ module Google
         # @param [String] instance
         #   Name of the instance resource to start.
         # @param [Google::Apis::ComputeBeta::InstancesStartWithEncryptionKeyRequest] instances_start_with_encryption_key_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7939,7 +8929,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_instance_with_encryption_key(project, zone, instance, instances_start_with_encryption_key_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_instance_with_encryption_key(project, zone, instance, instances_start_with_encryption_key_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/startWithEncryptionKey', options)
           command.request_representation = Google::Apis::ComputeBeta::InstancesStartWithEncryptionKeyRequest::Representation
           command.request_object = instances_start_with_encryption_key_request_object
@@ -7948,6 +8938,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7966,6 +8957,15 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to stop.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7987,13 +8987,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_instance(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/stop', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8044,8 +9045,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified License resource. Get a list of available licenses by
-        # making a list() request.
+        # Returns the specified License resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -8087,9 +9087,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -8098,7 +9097,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -8208,9 +9207,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -8219,7 +9217,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -8288,6 +9286,15 @@ module Google
         # @param [String] network
         #   Name of the network resource to add peering to.
         # @param [Google::Apis::ComputeBeta::NetworksAddPeeringRequest] networks_add_peering_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8309,7 +9316,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_network_peering(project, network, networks_add_peering_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_network_peering(project, network, networks_add_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/networks/{network}/addPeering', options)
           command.request_representation = Google::Apis::ComputeBeta::NetworksAddPeeringRequest::Representation
           command.request_object = networks_add_peering_request_object
@@ -8317,6 +9324,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8328,6 +9336,15 @@ module Google
         #   Project ID for this request.
         # @param [String] network
         #   Name of the network to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8349,12 +9366,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_network(project, network, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_network(project, network, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/networks/{network}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8405,6 +9423,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Network] network_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8426,13 +9453,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_network(project, network_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_network(project, network_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/networks', options)
           command.request_representation = Google::Apis::ComputeBeta::Network::Representation
           command.request_object = network_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8443,9 +9471,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -8454,7 +9481,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -8522,6 +9549,15 @@ module Google
         # @param [String] network
         #   Name of the network resource to remove peering from.
         # @param [Google::Apis::ComputeBeta::NetworksRemovePeeringRequest] networks_remove_peering_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8543,7 +9579,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_network_peering(project, network, networks_remove_peering_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_network_peering(project, network, networks_remove_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/networks/{network}/removePeering', options)
           command.request_representation = Google::Apis::ComputeBeta::NetworksRemovePeeringRequest::Representation
           command.request_object = networks_remove_peering_request_object
@@ -8551,6 +9587,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8562,6 +9599,15 @@ module Google
         #   Project ID for this request.
         # @param [String] network
         #   Name of the network to be updated.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8583,12 +9629,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def switch_network_to_custom_mode(project, network, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def switch_network_to_custom_mode(project, network, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/networks/{network}/switchToCustomMode', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8639,6 +9686,15 @@ module Google
         # Disable this project as an XPN host project.
         # @param [String] project
         #   Project ID for this request.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8660,11 +9716,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def disable_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def disable_project_xpn_host(project, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/disableXpnHost', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8675,6 +9732,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ProjectsDisableXpnResourceRequest] projects_disable_xpn_resource_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8696,13 +9762,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def disable_project_xpn_resource(project, projects_disable_xpn_resource_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def disable_project_xpn_resource(project, projects_disable_xpn_resource_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/disableXpnResource', options)
           command.request_representation = Google::Apis::ComputeBeta::ProjectsDisableXpnResourceRequest::Representation
           command.request_object = projects_disable_xpn_resource_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8712,6 +9779,15 @@ module Google
         # Enable this project as an XPN host project.
         # @param [String] project
         #   Project ID for this request.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8733,11 +9809,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enable_project_xpn_host(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def enable_project_xpn_host(project, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/enableXpnHost', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8750,6 +9827,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::ProjectsEnableXpnResourceRequest] projects_enable_xpn_resource_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8771,13 +9857,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enable_project_xpn_resource(project, projects_enable_xpn_resource_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def enable_project_xpn_resource(project, projects_enable_xpn_resource_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/enableXpnResource', options)
           command.request_representation = Google::Apis::ComputeBeta::ProjectsEnableXpnResourceRequest::Representation
           command.request_object = projects_enable_xpn_resource_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8948,6 +10035,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::DiskMoveRequest] disk_move_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8969,13 +10065,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_disk(project, disk_move_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_disk(project, disk_move_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/moveDisk', options)
           command.request_representation = Google::Apis::ComputeBeta::DiskMoveRequest::Representation
           command.request_object = disk_move_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8986,6 +10083,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::MoveInstanceRequest] move_instance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9007,13 +10113,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_instance(project, move_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_instance(project, move_instance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/moveInstance', options)
           command.request_representation = Google::Apis::ComputeBeta::MoveInstanceRequest::Representation
           command.request_object = move_instance_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9025,6 +10132,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Metadata] metadata_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9046,13 +10162,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_common_instance_metadata(project, metadata_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_common_instance_metadata(project, metadata_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/setCommonInstanceMetadata', options)
           command.request_representation = Google::Apis::ComputeBeta::Metadata::Representation
           command.request_object = metadata_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9065,6 +10182,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::UsageExportLocation] usage_export_location_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9086,13 +10212,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_usage_export_bucket(project, usage_export_location_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_usage_export_bucket(project, usage_export_location_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/setUsageExportBucket', options)
           command.request_representation = Google::Apis::ComputeBeta::UsageExportLocation::Representation
           command.request_object = usage_export_location_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9106,6 +10233,15 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] autoscaler
         #   Name of the autoscaler to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9127,13 +10263,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_region_autoscaler(project, region, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_region_autoscaler(project, region, autoscaler, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9188,6 +10325,15 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9209,7 +10355,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_region_autoscaler(project, region, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_region_autoscaler(project, region, autoscaler_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -9217,6 +10363,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9229,9 +10376,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9240,7 +10386,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9312,6 +10458,15 @@ module Google
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] autoscaler
         #   Name of the autoscaler to patch.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9333,7 +10488,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -9342,6 +10497,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9401,6 +10557,15 @@ module Google
         # @param [Google::Apis::ComputeBeta::Autoscaler] autoscaler_object
         # @param [String] autoscaler
         #   Name of the autoscaler to update.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9422,7 +10587,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_region_autoscaler(project, region, autoscaler_object = nil, autoscaler: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/regions/{region}/autoscalers', options)
           command.request_representation = Google::Apis::ComputeBeta::Autoscaler::Representation
           command.request_object = autoscaler_object
@@ -9431,6 +10596,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9444,6 +10610,15 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9465,13 +10640,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_region_backend_service(project, region, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_region_backend_service(project, region, backend_service, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9571,6 +10747,15 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9592,7 +10777,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_region_backend_service(project, region, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_region_backend_service(project, region, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/backendServices', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendService::Representation
           command.request_object = backend_service_object
@@ -9600,6 +10785,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9613,9 +10799,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9624,7 +10809,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9698,6 +10883,15 @@ module Google
         # @param [String] backend_service
         #   Name of the BackendService resource to patch.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9719,7 +10913,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_backend_service(project, region, backend_service, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_backend_service(project, region, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendService::Representation
           command.request_object = backend_service_object
@@ -9728,6 +10922,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9789,6 +10984,15 @@ module Google
         # @param [String] backend_service
         #   Name of the BackendService resource to update.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9810,7 +11014,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_region_backend_service(project, region, backend_service, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_region_backend_service(project, region, backend_service, backend_service_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/regions/{region}/backendServices/{backendService}', options)
           command.request_representation = Google::Apis::ComputeBeta::BackendService::Representation
           command.request_object = backend_service_object
@@ -9819,6 +11023,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['backendService'] = backend_service unless backend_service.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9829,9 +11034,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9840,7 +11044,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9944,13 +11148,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an commitment in the specified project using the data included in the
+        # Creates a commitment in the specified project using the data included in the
         # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::Commitment] commitment_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9972,7 +11185,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_region_commitment(project, region, commitment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_region_commitment(project, region, commitment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/commitments', options)
           command.request_representation = Google::Apis::ComputeBeta::Commitment::Representation
           command.request_object = commitment_object
@@ -9980,6 +11193,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9992,9 +11206,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10003,7 +11216,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10085,6 +11298,15 @@ module Google
         # @param [String] instance_group_manager
         #   Name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersAbandonInstancesRequest] region_instance_group_managers_abandon_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10106,7 +11328,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def abandon_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_abandon_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def abandon_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_abandon_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersAbandonInstancesRequest::Representation
           command.request_object = region_instance_group_managers_abandon_instances_request_object
@@ -10115,6 +11337,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10129,6 +11352,15 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] instance_group_manager
         #   Name of the managed instance group to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10150,13 +11382,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_region_instance_group_manager(project, region, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_region_instance_group_manager(project, region, instance_group_manager, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10181,6 +11414,15 @@ module Google
         # @param [String] instance_group_manager
         #   Name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersDeleteInstancesRequest] region_instance_group_managers_delete_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10202,7 +11444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_delete_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_delete_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersDeleteInstancesRequest::Representation
           command.request_object = region_instance_group_managers_delete_instances_request_object
@@ -10211,6 +11453,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10270,6 +11513,15 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10291,7 +11543,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_region_instance_group_manager(project, region, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_region_instance_group_manager(project, region, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
@@ -10299,6 +11551,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10312,9 +11565,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10323,7 +11575,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10449,6 +11701,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10470,7 +11731,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
@@ -10479,6 +11740,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10502,6 +11764,15 @@ module Google
         # @param [String] instance_group_manager
         #   Name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersRecreateRequest] region_instance_group_managers_recreate_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10523,7 +11794,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def recreate_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_recreate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def recreate_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_recreate_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersRecreateRequest::Representation
           command.request_object = region_instance_group_managers_recreate_request_object
@@ -10532,6 +11803,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10556,6 +11828,15 @@ module Google
         #   Name of the managed instance group.
         # @param [Fixnum] size
         #   Number of instances that should exist in this instance group manager.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10577,13 +11858,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def resize_region_instance_group_manager(project, region, instance_group_manager, size, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def resize_region_instance_group_manager(project, region, instance_group_manager, size, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resize', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['size'] = size unless size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -10600,6 +11882,15 @@ module Google
         # @param [String] instance_group_manager
         #   Name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetAutoHealingRequest] region_instance_group_managers_set_auto_healing_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10621,7 +11912,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_region_instance_group_manager_auto_healing_policies(project, region, instance_group_manager, region_instance_group_managers_set_auto_healing_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_region_instance_group_manager_auto_healing_policies(project, region, instance_group_manager, region_instance_group_managers_set_auto_healing_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetAutoHealingRequest::Representation
           command.request_object = region_instance_group_managers_set_auto_healing_request_object
@@ -10630,6 +11921,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10645,6 +11937,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTemplateRequest] region_instance_group_managers_set_template_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10666,7 +11967,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_region_instance_group_manager_instance_template(project, region, instance_group_manager, region_instance_group_managers_set_template_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_region_instance_group_manager_instance_template(project, region, instance_group_manager, region_instance_group_managers_set_template_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTemplateRequest::Representation
           command.request_object = region_instance_group_managers_set_template_request_object
@@ -10675,6 +11976,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10690,6 +11992,15 @@ module Google
         # @param [String] instance_group_manager
         #   Name of the managed instance group.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTargetPoolsRequest] region_instance_group_managers_set_target_pools_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10711,7 +12022,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_region_instance_group_manager_target_pools(project, region, instance_group_manager, region_instance_group_managers_set_target_pools_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_region_instance_group_manager_target_pools(project, region, instance_group_manager, region_instance_group_managers_set_target_pools_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupManagersSetTargetPoolsRequest::Representation
           command.request_object = region_instance_group_managers_set_target_pools_request_object
@@ -10720,6 +12031,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10782,6 +12094,15 @@ module Google
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
         # @param [Google::Apis::ComputeBeta::InstanceGroupManager] instance_group_manager_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10803,7 +12124,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_region_instance_group_manager(project, region, instance_group_manager, instance_group_manager_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeBeta::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
@@ -10812,6 +12133,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -10866,9 +12188,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10877,7 +12198,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10951,9 +12272,8 @@ module Google
         #   Name of the regional instance group for which we want to list the instances.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupsListInstancesRequest] region_instance_groups_list_instances_request_object
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10962,7 +12282,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11036,6 +12356,15 @@ module Google
         # @param [String] instance_group
         #   The name of the regional instance group where the named ports are updated.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupsSetNamedPortsRequest] region_instance_groups_set_named_ports_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11057,7 +12386,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_region_instance_group_named_ports(project, region, instance_group, region_instance_groups_set_named_ports_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_region_instance_group_named_ports(project, region, instance_group, region_instance_groups_set_named_ports_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/instanceGroups/{instanceGroup}/setNamedPorts', options)
           command.request_representation = Google::Apis::ComputeBeta::RegionInstanceGroupsSetNamedPortsRequest::Representation
           command.request_object = region_instance_groups_set_named_ports_request_object
@@ -11066,6 +12395,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11202,9 +12532,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11213,7 +12542,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11319,9 +12648,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11330,7 +12658,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11396,9 +12724,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11407,7 +12734,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11476,6 +12803,15 @@ module Google
         #   Name of the region for this request.
         # @param [String] router
         #   Name of the Router resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11497,13 +12833,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_router(project, region, router, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_router(project, region, router, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/routers/{router}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['router'] = router unless router.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11600,6 +12937,15 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::Router] router_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11621,7 +12967,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_router(project, region, router_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_router(project, region, router_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/routers', options)
           command.request_representation = Google::Apis::ComputeBeta::Router::Representation
           command.request_object = router_object
@@ -11629,6 +12975,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11641,9 +12988,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11652,7 +12998,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11724,6 +13070,15 @@ module Google
         # @param [String] router
         #   Name of the Router resource to patch.
         # @param [Google::Apis::ComputeBeta::Router] router_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11745,7 +13100,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_router(project, region, router, router_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_router(project, region, router, router_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/regions/{region}/routers/{router}', options)
           command.request_representation = Google::Apis::ComputeBeta::Router::Representation
           command.request_object = router_object
@@ -11754,6 +13109,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['router'] = router unless router.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11857,6 +13213,15 @@ module Google
         # @param [String] router
         #   Name of the Router resource to update.
         # @param [Google::Apis::ComputeBeta::Router] router_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11878,7 +13243,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_router(project, region, router, router_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_router(project, region, router, router_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/regions/{region}/routers/{router}', options)
           command.request_representation = Google::Apis::ComputeBeta::Router::Representation
           command.request_object = router_object
@@ -11887,6 +13252,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['router'] = router unless router.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11898,6 +13264,15 @@ module Google
         #   Project ID for this request.
         # @param [String] route
         #   Name of the Route resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11919,12 +13294,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_route(project, route, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_route(project, route, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/routes/{route}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['route'] = route unless route.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11975,6 +13351,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::Route] route_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11996,13 +13381,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_route(project, route_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_route(project, route_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/routes', options)
           command.request_representation = Google::Apis::ComputeBeta::Route::Representation
           command.request_object = route_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12013,9 +13399,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12024,7 +13409,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12136,6 +13521,15 @@ module Google
         #   Project ID for this request.
         # @param [String] snapshot
         #   Name of the Snapshot resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12157,12 +13551,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_snapshot(project, snapshot, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_snapshot(project, snapshot, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/snapshots/{snapshot}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['snapshot'] = snapshot unless snapshot.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12213,9 +13608,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12224,7 +13618,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12287,7 +13681,7 @@ module Google
         end
         
         # Sets the labels on a snapshot. To learn more about labels, read the Labeling
-        # or Tagging Resources documentation.
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -12374,6 +13768,15 @@ module Google
         #   Project ID for this request.
         # @param [String] ssl_certificate
         #   Name of the SslCertificate resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12395,12 +13798,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_ssl_certificate(project, ssl_certificate, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_ssl_certificate(project, ssl_certificate, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/sslCertificates/{sslCertificate}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['sslCertificate'] = ssl_certificate unless ssl_certificate.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12451,6 +13855,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::SslCertificate] ssl_certificate_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12472,13 +13885,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_ssl_certificate(project, ssl_certificate_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_ssl_certificate(project, ssl_certificate_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/sslCertificates', options)
           command.request_representation = Google::Apis::ComputeBeta::SslCertificate::Representation
           command.request_object = ssl_certificate_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12490,9 +13904,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12501,7 +13914,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12608,9 +14021,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12619,7 +14031,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12688,6 +14100,15 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] subnetwork
         #   Name of the Subnetwork resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12709,13 +14130,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_subnetwork(project, region, subnetwork, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_subnetwork(project, region, subnetwork, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['subnetwork'] = subnetwork unless subnetwork.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12730,6 +14152,15 @@ module Google
         # @param [String] subnetwork
         #   Name of the Subnetwork resource to update.
         # @param [Google::Apis::ComputeBeta::SubnetworksExpandIpCidrRangeRequest] subnetworks_expand_ip_cidr_range_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12751,7 +14182,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def expand_subnetwork_ip_cidr_range(project, region, subnetwork, subnetworks_expand_ip_cidr_range_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def expand_subnetwork_ip_cidr_range(project, region, subnetwork, subnetworks_expand_ip_cidr_range_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange', options)
           command.request_representation = Google::Apis::ComputeBeta::SubnetworksExpandIpCidrRangeRequest::Representation
           command.request_object = subnetworks_expand_ip_cidr_range_request_object
@@ -12760,6 +14191,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['subnetwork'] = subnetwork unless subnetwork.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12857,6 +14289,15 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeBeta::Subnetwork] subnetwork_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12878,7 +14319,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subnetwork(project, region, subnetwork_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_subnetwork(project, region, subnetwork_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks', options)
           command.request_representation = Google::Apis::ComputeBeta::Subnetwork::Representation
           command.request_object = subnetwork_object
@@ -12886,6 +14327,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12898,9 +14340,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12909,7 +14350,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13026,6 +14467,15 @@ module Google
         # @param [String] subnetwork
         #   Name of the Subnetwork resource.
         # @param [Google::Apis::ComputeBeta::SubnetworksSetPrivateIpGoogleAccessRequest] subnetworks_set_private_ip_google_access_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13047,7 +14497,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_subnetwork_private_ip_google_access(project, region, subnetwork, subnetworks_set_private_ip_google_access_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_subnetwork_private_ip_google_access(project, region, subnetwork, subnetworks_set_private_ip_google_access_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess', options)
           command.request_representation = Google::Apis::ComputeBeta::SubnetworksSetPrivateIpGoogleAccessRequest::Representation
           command.request_object = subnetworks_set_private_ip_google_access_request_object
@@ -13056,6 +14506,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['subnetwork'] = subnetwork unless subnetwork.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13111,6 +14562,15 @@ module Google
         #   Project ID for this request.
         # @param [String] target_http_proxy
         #   Name of the TargetHttpProxy resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13132,12 +14592,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_http_proxy(project, target_http_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_http_proxy(project, target_http_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/targetHttpProxies/{targetHttpProxy}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetHttpProxy'] = target_http_proxy unless target_http_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13188,6 +14649,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::TargetHttpProxy] target_http_proxy_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13209,13 +14679,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_http_proxy(project, target_http_proxy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_http_proxy(project, target_http_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetHttpProxies', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetHttpProxy::Representation
           command.request_object = target_http_proxy_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13227,9 +14698,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13238,7 +14708,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13306,6 +14776,15 @@ module Google
         # @param [String] target_http_proxy
         #   Name of the TargetHttpProxy to set a URL map for.
         # @param [Google::Apis::ComputeBeta::UrlMapReference] url_map_reference_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13327,7 +14806,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_http_proxy_url_map(project, target_http_proxy, url_map_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_http_proxy_url_map(project, target_http_proxy, url_map_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap', options)
           command.request_representation = Google::Apis::ComputeBeta::UrlMapReference::Representation
           command.request_object = url_map_reference_object
@@ -13335,6 +14814,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetHttpProxy'] = target_http_proxy unless target_http_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13387,6 +14867,15 @@ module Google
         #   Project ID for this request.
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13408,12 +14897,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_https_proxy(project, target_https_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_https_proxy(project, target_https_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetHttpsProxy'] = target_https_proxy unless target_https_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13464,6 +14954,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::TargetHttpsProxy] target_https_proxy_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13485,13 +14984,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_https_proxy(project, target_https_proxy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_https_proxy(project, target_https_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetHttpsProxies', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetHttpsProxy::Representation
           command.request_object = target_https_proxy_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13503,9 +15003,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13514,7 +15013,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13582,6 +15081,15 @@ module Google
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource to set an SslCertificates resource for.
         # @param [Google::Apis::ComputeBeta::TargetHttpsProxiesSetSslCertificatesRequest] target_https_proxies_set_ssl_certificates_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13603,7 +15111,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_https_proxy_ssl_certificates(project, target_https_proxy, target_https_proxies_set_ssl_certificates_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_https_proxy_ssl_certificates(project, target_https_proxy, target_https_proxies_set_ssl_certificates_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/targetHttpsProxies/{targetHttpsProxy}/setSslCertificates', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetHttpsProxiesSetSslCertificatesRequest::Representation
           command.request_object = target_https_proxies_set_ssl_certificates_request_object
@@ -13611,6 +15119,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetHttpsProxy'] = target_https_proxy unless target_https_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13623,6 +15132,15 @@ module Google
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource whose URL map is to be set.
         # @param [Google::Apis::ComputeBeta::UrlMapReference] url_map_reference_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13644,7 +15162,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_https_proxy_url_map(project, target_https_proxy, url_map_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_https_proxy_url_map(project, target_https_proxy, url_map_reference_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/targetHttpsProxies/{targetHttpsProxy}/setUrlMap', options)
           command.request_representation = Google::Apis::ComputeBeta::UrlMapReference::Representation
           command.request_object = url_map_reference_object
@@ -13652,6 +15170,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetHttpsProxy'] = target_https_proxy unless target_https_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13703,9 +15222,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13714,7 +15232,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13783,6 +15301,15 @@ module Google
         #   Name of the zone scoping this request.
         # @param [String] target_instance
         #   Name of the TargetInstance resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13804,13 +15331,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_instance(project, zone, target_instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_instance(project, zone, target_instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/zones/{zone}/targetInstances/{targetInstance}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['targetInstance'] = target_instance unless target_instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13866,6 +15394,15 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [Google::Apis::ComputeBeta::TargetInstance] target_instance_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13887,7 +15424,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_instance(project, zone, target_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_instance(project, zone, target_instance_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/targetInstances', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetInstance::Representation
           command.request_object = target_instance_object
@@ -13895,6 +15432,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13908,9 +15446,8 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13919,7 +15456,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -14034,6 +15571,15 @@ module Google
         # @param [String] target_pool
         #   Name of the target pool to add a health check to.
         # @param [Google::Apis::ComputeBeta::AddTargetPoolsHealthCheckRequest] add_target_pools_health_check_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14055,7 +15601,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_target_pool_health_check(project, region, target_pool, add_target_pools_health_check_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_target_pool_health_check(project, region, target_pool, add_target_pools_health_check_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck', options)
           command.request_representation = Google::Apis::ComputeBeta::AddTargetPoolsHealthCheckRequest::Representation
           command.request_object = add_target_pools_health_check_request_object
@@ -14064,6 +15610,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['targetPool'] = target_pool unless target_pool.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14078,6 +15625,15 @@ module Google
         # @param [String] target_pool
         #   Name of the TargetPool resource to add instances to.
         # @param [Google::Apis::ComputeBeta::AddTargetPoolsInstanceRequest] add_target_pools_instance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14099,7 +15655,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_target_pool_instance(project, region, target_pool, add_target_pools_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_target_pool_instance(project, region, target_pool, add_target_pools_instance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/addInstance', options)
           command.request_representation = Google::Apis::ComputeBeta::AddTargetPoolsInstanceRequest::Representation
           command.request_object = add_target_pools_instance_request_object
@@ -14108,6 +15664,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['targetPool'] = target_pool unless target_pool.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14118,9 +15675,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -14129,7 +15685,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -14198,6 +15754,15 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14219,13 +15784,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_pool(project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_pool(project, region, target_pool, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/targetPools/{targetPool}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['targetPool'] = target_pool unless target_pool.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14326,6 +15892,15 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeBeta::TargetPool] target_pool_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14347,7 +15922,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_pool(project, region, target_pool_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_pool(project, region, target_pool_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetPools', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetPool::Representation
           command.request_object = target_pool_object
@@ -14355,6 +15930,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14367,9 +15943,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -14378,7 +15953,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -14449,6 +16024,15 @@ module Google
         # @param [String] target_pool
         #   Name of the target pool to remove health checks from.
         # @param [Google::Apis::ComputeBeta::RemoveTargetPoolsHealthCheckRequest] remove_target_pools_health_check_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14470,7 +16054,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_target_pool_health_check(project, region, target_pool, remove_target_pools_health_check_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_target_pool_health_check(project, region, target_pool, remove_target_pools_health_check_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck', options)
           command.request_representation = Google::Apis::ComputeBeta::RemoveTargetPoolsHealthCheckRequest::Representation
           command.request_object = remove_target_pools_health_check_request_object
@@ -14479,6 +16063,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['targetPool'] = target_pool unless target_pool.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14493,6 +16078,15 @@ module Google
         # @param [String] target_pool
         #   Name of the TargetPool resource to remove instances from.
         # @param [Google::Apis::ComputeBeta::RemoveTargetPoolsInstanceRequest] remove_target_pools_instance_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14514,7 +16108,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_target_pool_instance(project, region, target_pool, remove_target_pools_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_target_pool_instance(project, region, target_pool, remove_target_pools_instance_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/removeInstance', options)
           command.request_representation = Google::Apis::ComputeBeta::RemoveTargetPoolsInstanceRequest::Representation
           command.request_object = remove_target_pools_instance_request_object
@@ -14523,6 +16117,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['targetPool'] = target_pool unless target_pool.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14539,6 +16134,15 @@ module Google
         # @param [Google::Apis::ComputeBeta::TargetReference] target_reference_object
         # @param [Float] failover_ratio
         #   New failoverRatio value for the target pool.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14560,7 +16164,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_pool_backup(project, region, target_pool, target_reference_object = nil, failover_ratio: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_pool_backup(project, region, target_pool, target_reference_object = nil, failover_ratio: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetPools/{targetPool}/setBackup', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetReference::Representation
           command.request_object = target_reference_object
@@ -14570,6 +16174,7 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['targetPool'] = target_pool unless target_pool.nil?
           command.query['failoverRatio'] = failover_ratio unless failover_ratio.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14625,6 +16230,15 @@ module Google
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
         #   Name of the TargetSslProxy resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14646,12 +16260,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_ssl_proxy(project, target_ssl_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_ssl_proxy(project, target_ssl_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/targetSslProxies/{targetSslProxy}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetSslProxy'] = target_ssl_proxy unless target_ssl_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14702,6 +16317,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::TargetSslProxy] target_ssl_proxy_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14723,13 +16347,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_ssl_proxy(project, target_ssl_proxy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_ssl_proxy(project, target_ssl_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetSslProxies', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetSslProxy::Representation
           command.request_object = target_ssl_proxy_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14741,9 +16366,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -14752,7 +16376,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -14820,6 +16444,15 @@ module Google
         # @param [String] target_ssl_proxy
         #   Name of the TargetSslProxy resource whose BackendService resource is to be set.
         # @param [Google::Apis::ComputeBeta::TargetSslProxiesSetBackendServiceRequest] target_ssl_proxies_set_backend_service_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14841,7 +16474,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_ssl_proxy_backend_service(project, target_ssl_proxy, target_ssl_proxies_set_backend_service_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_ssl_proxy_backend_service(project, target_ssl_proxy, target_ssl_proxies_set_backend_service_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setBackendService', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetSslProxiesSetBackendServiceRequest::Representation
           command.request_object = target_ssl_proxies_set_backend_service_request_object
@@ -14849,6 +16482,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetSslProxy'] = target_ssl_proxy unless target_ssl_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14861,6 +16495,15 @@ module Google
         # @param [String] target_ssl_proxy
         #   Name of the TargetSslProxy resource whose ProxyHeader is to be set.
         # @param [Google::Apis::ComputeBeta::TargetSslProxiesSetProxyHeaderRequest] target_ssl_proxies_set_proxy_header_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14882,7 +16525,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_ssl_proxy_proxy_header(project, target_ssl_proxy, target_ssl_proxies_set_proxy_header_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_ssl_proxy_proxy_header(project, target_ssl_proxy, target_ssl_proxies_set_proxy_header_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setProxyHeader', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetSslProxiesSetProxyHeaderRequest::Representation
           command.request_object = target_ssl_proxies_set_proxy_header_request_object
@@ -14890,6 +16533,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetSslProxy'] = target_ssl_proxy unless target_ssl_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14902,6 +16546,15 @@ module Google
         # @param [String] target_ssl_proxy
         #   Name of the TargetSslProxy resource whose SslCertificate resource is to be set.
         # @param [Google::Apis::ComputeBeta::TargetSslProxiesSetSslCertificatesRequest] target_ssl_proxies_set_ssl_certificates_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14923,7 +16576,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_ssl_proxy_ssl_certificates(project, target_ssl_proxy, target_ssl_proxies_set_ssl_certificates_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_ssl_proxy_ssl_certificates(project, target_ssl_proxy, target_ssl_proxies_set_ssl_certificates_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetSslProxies/{targetSslProxy}/setSslCertificates', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetSslProxiesSetSslCertificatesRequest::Representation
           command.request_object = target_ssl_proxies_set_ssl_certificates_request_object
@@ -14931,6 +16584,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetSslProxy'] = target_ssl_proxy unless target_ssl_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14983,6 +16637,15 @@ module Google
         #   Project ID for this request.
         # @param [String] target_tcp_proxy
         #   Name of the TargetTcpProxy resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15004,12 +16667,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_tcp_proxy(project, target_tcp_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_tcp_proxy(project, target_tcp_proxy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15060,6 +16724,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::TargetTcpProxy] target_tcp_proxy_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15081,13 +16754,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_tcp_proxy(project, target_tcp_proxy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_tcp_proxy(project, target_tcp_proxy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetTcpProxies', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetTcpProxy::Representation
           command.request_object = target_tcp_proxy_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15099,9 +16773,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -15110,7 +16783,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -15178,6 +16851,15 @@ module Google
         # @param [String] target_tcp_proxy
         #   Name of the TargetTcpProxy resource whose BackendService resource is to be set.
         # @param [Google::Apis::ComputeBeta::TargetTcpProxiesSetBackendServiceRequest] target_tcp_proxies_set_backend_service_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15199,7 +16881,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_tcp_proxy_backend_service(project, target_tcp_proxy, target_tcp_proxies_set_backend_service_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_tcp_proxy_backend_service(project, target_tcp_proxy, target_tcp_proxies_set_backend_service_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetTcpProxiesSetBackendServiceRequest::Representation
           command.request_object = target_tcp_proxies_set_backend_service_request_object
@@ -15207,6 +16889,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15219,6 +16902,15 @@ module Google
         # @param [String] target_tcp_proxy
         #   Name of the TargetTcpProxy resource whose ProxyHeader is to be set.
         # @param [Google::Apis::ComputeBeta::TargetTcpProxiesSetProxyHeaderRequest] target_tcp_proxies_set_proxy_header_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15240,7 +16932,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_tcp_proxy_proxy_header(project, target_tcp_proxy, target_tcp_proxies_set_proxy_header_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_tcp_proxy_proxy_header(project, target_tcp_proxy, target_tcp_proxies_set_proxy_header_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetTcpProxiesSetProxyHeaderRequest::Representation
           command.request_object = target_tcp_proxies_set_proxy_header_request_object
@@ -15248,6 +16940,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15258,9 +16951,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -15269,7 +16961,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -15338,6 +17030,15 @@ module Google
         #   Name of the region for this request.
         # @param [String] target_vpn_gateway
         #   Name of the target VPN gateway to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15359,13 +17060,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_target_vpn_gateway(project, region, target_vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_target_vpn_gateway(project, region, target_vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/targetVpnGateways/{targetVpnGateway}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['targetVpnGateway'] = target_vpn_gateway unless target_vpn_gateway.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15421,6 +17123,15 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::TargetVpnGateway] target_vpn_gateway_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15442,7 +17153,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_vpn_gateway(project, region, target_vpn_gateway_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_vpn_gateway(project, region, target_vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/targetVpnGateways', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetVpnGateway::Representation
           command.request_object = target_vpn_gateway_object
@@ -15450,6 +17161,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15463,9 +17175,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -15474,7 +17185,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -15586,6 +17297,15 @@ module Google
         #   Project ID for this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15607,12 +17327,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_url_map(project, url_map, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_url_map(project, url_map, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/global/urlMaps/{urlMap}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15663,6 +17384,15 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::UrlMap] url_map_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15684,13 +17414,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_url_map(project, url_map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_url_map(project, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/urlMaps', options)
           command.request_representation = Google::Apis::ComputeBeta::UrlMap::Representation
           command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15704,6 +17435,15 @@ module Google
         # @param [String] url_map
         #   Name of the UrlMap scoping this request.
         # @param [Google::Apis::ComputeBeta::CacheInvalidationRule] cache_invalidation_rule_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15725,7 +17465,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def invalidate_url_map_cache(project, url_map, cache_invalidation_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def invalidate_url_map_cache(project, url_map, cache_invalidation_rule_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/urlMaps/{urlMap}/invalidateCache', options)
           command.request_representation = Google::Apis::ComputeBeta::CacheInvalidationRule::Representation
           command.request_object = cache_invalidation_rule_object
@@ -15733,6 +17473,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15743,9 +17484,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -15754,7 +17494,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -15823,6 +17563,15 @@ module Google
         # @param [String] url_map
         #   Name of the UrlMap resource to patch.
         # @param [Google::Apis::ComputeBeta::UrlMap] url_map_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15844,7 +17593,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_url_map(project, url_map, url_map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_url_map(project, url_map, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, '{project}/global/urlMaps/{urlMap}', options)
           command.request_representation = Google::Apis::ComputeBeta::UrlMap::Representation
           command.request_object = url_map_object
@@ -15852,6 +17601,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15905,6 +17655,15 @@ module Google
         # @param [String] url_map
         #   Name of the UrlMap resource to update.
         # @param [Google::Apis::ComputeBeta::UrlMap] url_map_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15926,7 +17685,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_url_map(project, url_map, url_map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_url_map(project, url_map, url_map_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, '{project}/global/urlMaps/{urlMap}', options)
           command.request_representation = Google::Apis::ComputeBeta::UrlMap::Representation
           command.request_object = url_map_object
@@ -15934,6 +17693,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15986,9 +17746,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -15997,7 +17756,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -16066,6 +17825,15 @@ module Google
         #   Name of the region for this request.
         # @param [String] vpn_tunnel
         #   Name of the VpnTunnel resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16087,13 +17855,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_vpn_tunnel(project, region, vpn_tunnel, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_vpn_tunnel(project, region, vpn_tunnel, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/regions/{region}/vpnTunnels/{vpnTunnel}', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['vpnTunnel'] = vpn_tunnel unless vpn_tunnel.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -16149,6 +17918,15 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [Google::Apis::ComputeBeta::VpnTunnel] vpn_tunnel_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and then
+        #   the request times out. If you make the request again with the same request ID,
+        #   the server can check if original operation with the same request ID was
+        #   received, and if so, will ignore the second request. This prevents clients
+        #   from accidentally creating duplicate commitments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16170,7 +17948,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_vpn_tunnel(project, region, vpn_tunnel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_vpn_tunnel(project, region, vpn_tunnel_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/regions/{region}/vpnTunnels', options)
           command.request_representation = Google::Apis::ComputeBeta::VpnTunnel::Representation
           command.request_object = vpn_tunnel_object
@@ -16178,6 +17956,7 @@ module Google
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -16191,9 +17970,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -16202,7 +17980,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -16395,9 +18173,8 @@ module Google
         # @param [String] zone
         #   Name of the zone for request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -16406,7 +18183,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -16512,9 +18289,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -16523,7 +18299,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results

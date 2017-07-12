@@ -22,6 +22,18 @@ module Google
   module Apis
     module ManufacturersV1
       
+      class Image
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Attributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Count
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,13 +64,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FeatureDescription
+      class Issue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Issue
+      class FeatureDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,15 +83,57 @@ module Google
       end
       
       class Image
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+          property :type, as: 'type'
+          property :image_url, as: 'imageUrl'
+        end
       end
       
       class Attributes
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_system, as: 'sizeSystem'
+          property :theme, as: 'theme'
+          property :pattern, as: 'pattern'
+          property :image_link, as: 'imageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+          collection :product_type, as: 'productType'
+          property :format, as: 'format'
+          collection :additional_image_link, as: 'additionalImageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
+          collection :video_link, as: 'videoLink'
+          property :color, as: 'color'
+          property :product_name, as: 'productName'
+          property :size_type, as: 'sizeType'
+          property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
+      
+          collection :feature_description, as: 'featureDescription', class: Google::Apis::ManufacturersV1::FeatureDescription, decorator: Google::Apis::ManufacturersV1::FeatureDescription::Representation
+      
+          property :size, as: 'size'
+          property :title, as: 'title'
+          property :count, as: 'count', class: Google::Apis::ManufacturersV1::Count, decorator: Google::Apis::ManufacturersV1::Count::Representation
+      
+          property :brand, as: 'brand'
+          property :material, as: 'material'
+          property :disclosure_date, as: 'disclosureDate'
+          property :scent, as: 'scent'
+          property :age_group, as: 'ageGroup'
+          collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
+      
+          property :flavor, as: 'flavor'
+          property :product_page_url, as: 'productPageUrl'
+          property :mpn, as: 'mpn'
+          property :release_date, as: 'releaseDate'
+          collection :gtin, as: 'gtin'
+          property :item_group_id, as: 'itemGroupId'
+          property :product_line, as: 'productLine'
+          property :capacity, as: 'capacity', class: Google::Apis::ManufacturersV1::Capacity, decorator: Google::Apis::ManufacturersV1::Capacity::Representation
+      
+          property :description, as: 'description'
+          property :gender, as: 'gender'
+        end
       end
       
       class Count
@@ -136,16 +190,6 @@ module Google
         end
       end
       
-      class FeatureDescription
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :text, as: 'text'
-          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
-      
-          property :headline, as: 'headline'
-        end
-      end
-      
       class Issue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -157,65 +201,21 @@ module Google
         end
       end
       
+      class FeatureDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+          property :image, as: 'image', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
+      
+          property :headline, as: 'headline'
+        end
+      end
+      
       class Price
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount'
           property :currency, as: 'currency'
-        end
-      end
-      
-      class Image
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status'
-          property :type, as: 'type'
-          property :image_url, as: 'imageUrl'
-        end
-      end
-      
-      class Attributes
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_link, as: 'imageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
-      
-          collection :product_type, as: 'productType'
-          property :format, as: 'format'
-          collection :additional_image_link, as: 'additionalImageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
-      
-          collection :video_link, as: 'videoLink'
-          property :color, as: 'color'
-          property :product_name, as: 'productName'
-          property :size_type, as: 'sizeType'
-          property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
-      
-          collection :feature_description, as: 'featureDescription', class: Google::Apis::ManufacturersV1::FeatureDescription, decorator: Google::Apis::ManufacturersV1::FeatureDescription::Representation
-      
-          property :size, as: 'size'
-          property :title, as: 'title'
-          property :count, as: 'count', class: Google::Apis::ManufacturersV1::Count, decorator: Google::Apis::ManufacturersV1::Count::Representation
-      
-          property :brand, as: 'brand'
-          property :disclosure_date, as: 'disclosureDate'
-          property :material, as: 'material'
-          property :scent, as: 'scent'
-          property :age_group, as: 'ageGroup'
-          collection :product_detail, as: 'productDetail', class: Google::Apis::ManufacturersV1::ProductDetail, decorator: Google::Apis::ManufacturersV1::ProductDetail::Representation
-      
-          property :flavor, as: 'flavor'
-          property :mpn, as: 'mpn'
-          property :product_page_url, as: 'productPageUrl'
-          property :release_date, as: 'releaseDate'
-          property :item_group_id, as: 'itemGroupId'
-          collection :gtin, as: 'gtin'
-          property :product_line, as: 'productLine'
-          property :capacity, as: 'capacity', class: Google::Apis::ManufacturersV1::Capacity, decorator: Google::Apis::ManufacturersV1::Capacity::Representation
-      
-          property :description, as: 'description'
-          property :gender, as: 'gender'
-          property :size_system, as: 'sizeSystem'
-          property :theme, as: 'theme'
-          property :pattern, as: 'pattern'
         end
       end
     end

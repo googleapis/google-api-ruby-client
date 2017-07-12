@@ -70,7 +70,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DivisionSearchResponse
+      class SearchDivisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -306,7 +306,7 @@ module Google
         end
       end
       
-      class DivisionSearchResponse
+      class SearchDivisionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'

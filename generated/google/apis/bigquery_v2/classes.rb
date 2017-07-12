@@ -1375,7 +1375,8 @@ module Google
         # [Optional] If true and query uses legacy SQL dialect, allows the query to
         # produce arbitrarily large result tables at a slight cost in performance.
         # Requires destinationTable to be set. For standard SQL queries, this flag is
-        # ignored and large results are always allowed.
+        # ignored and large results are always allowed. However, you must still set
+        # destinationTable when result size exceeds the allowed maximum response size.
         # Corresponds to the JSON property `allowLargeResults`
         # @return [Boolean]
         attr_accessor :allow_large_results
@@ -1398,7 +1399,8 @@ module Google
         attr_accessor :default_dataset
       
         # [Optional] Describes the table where the query results should be stored. If
-        # not present, a new table will be created to store the results.
+        # not present, a new table will be created to store the results. This property
+        # must be set for large results that exceed the maximum response size.
         # Corresponds to the JSON property `destinationTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :destination_table

@@ -22,6 +22,38 @@ module Google
   module Apis
     module AcceleratedmobilepageurlV1
       
+      # AMP URL response for a requested URL.
+      class AmpUrl
+        include Google::Apis::Core::Hashable
+      
+        # The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to
+        # the cached document in the Google AMP Cache.
+        # Corresponds to the JSON property `cdnAmpUrl`
+        # @return [String]
+        attr_accessor :cdn_amp_url
+      
+        # The original non-AMP URL.
+        # Corresponds to the JSON property `originalUrl`
+        # @return [String]
+        attr_accessor :original_url
+      
+        # The AMP URL pointing to the publisher's web server.
+        # Corresponds to the JSON property `ampUrl`
+        # @return [String]
+        attr_accessor :amp_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cdn_amp_url = args[:cdn_amp_url] if args.key?(:cdn_amp_url)
+          @original_url = args[:original_url] if args.key?(:original_url)
+          @amp_url = args[:amp_url] if args.key?(:amp_url)
+        end
+      end
+      
       # AMP URL Error resource for a requested URL that couldn't be found.
       class AmpUrlError
         include Google::Apis::Core::Hashable
@@ -105,38 +137,6 @@ module Google
         def update!(**args)
           @amp_urls = args[:amp_urls] if args.key?(:amp_urls)
           @url_errors = args[:url_errors] if args.key?(:url_errors)
-        end
-      end
-      
-      # AMP URL response for a requested URL.
-      class AmpUrl
-        include Google::Apis::Core::Hashable
-      
-        # The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to
-        # the cached document in the Google AMP Cache.
-        # Corresponds to the JSON property `cdnAmpUrl`
-        # @return [String]
-        attr_accessor :cdn_amp_url
-      
-        # The original non-AMP URL.
-        # Corresponds to the JSON property `originalUrl`
-        # @return [String]
-        attr_accessor :original_url
-      
-        # The AMP URL pointing to the publisher's web server.
-        # Corresponds to the JSON property `ampUrl`
-        # @return [String]
-        attr_accessor :amp_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cdn_amp_url = args[:cdn_amp_url] if args.key?(:cdn_amp_url)
-          @original_url = args[:original_url] if args.key?(:original_url)
-          @amp_url = args[:amp_url] if args.key?(:amp_url)
         end
       end
     end

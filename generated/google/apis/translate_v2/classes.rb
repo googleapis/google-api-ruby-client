@@ -111,6 +111,42 @@ module Google
       end
       
       # 
+      class TranslationsResource
+        include Google::Apis::Core::Hashable
+      
+        # The source language of the initial request, detected automatically, if
+        # no source language was passed within the initial request. If the
+        # source language was passed, auto-detection of the language will not
+        # occur and this field will be empty.
+        # Corresponds to the JSON property `detectedSourceLanguage`
+        # @return [String]
+        attr_accessor :detected_source_language
+      
+        # The `model` type used for this translation. Valid values are
+        # listed in public documentation. Can be different from requested `model`.
+        # Present only if specific model type was explicitly requested.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Text translated into the target language.
+        # Corresponds to the JSON property `translatedText`
+        # @return [String]
+        attr_accessor :translated_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
+          @model = args[:model] if args.key?(:model)
+          @translated_text = args[:translated_text] if args.key?(:translated_text)
+        end
+      end
+      
+      # 
       class DetectionsResource
         include Google::Apis::Core::Hashable
       
@@ -142,42 +178,6 @@ module Google
         end
       end
       
-      # 
-      class TranslationsResource
-        include Google::Apis::Core::Hashable
-      
-        # Text translated into the target language.
-        # Corresponds to the JSON property `translatedText`
-        # @return [String]
-        attr_accessor :translated_text
-      
-        # The source language of the initial request, detected automatically, if
-        # no source language was passed within the initial request. If the
-        # source language was passed, auto-detection of the language will not
-        # occur and this field will be empty.
-        # Corresponds to the JSON property `detectedSourceLanguage`
-        # @return [String]
-        attr_accessor :detected_source_language
-      
-        # The `model` type used for this translation. Valid values are
-        # listed in public documentation. Can be different from requested `model`.
-        # Present only if specific model type was explicitly requested.
-        # Corresponds to the JSON property `model`
-        # @return [String]
-        attr_accessor :model
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @translated_text = args[:translated_text] if args.key?(:translated_text)
-          @detected_source_language = args[:detected_source_language] if args.key?(:detected_source_language)
-          @model = args[:model] if args.key?(:model)
-        end
-      end
-      
       # The main language translation response message.
       class ListTranslationsResponse
         include Google::Apis::Core::Hashable
@@ -200,6 +200,12 @@ module Google
       # The main translation request message for the Cloud Translation API.
       class TranslateTextRequest
         include Google::Apis::Core::Hashable
+      
+        # The language to use for translation of the input text, set to one of the
+        # language codes listed in Language Support.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
       
         # The input text to translate. Repeat this parameter to perform translation
         # operations on multiple text inputs.
@@ -227,23 +233,17 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # The language to use for translation of the input text, set to one of the
-        # language codes listed in Language Support.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @target = args[:target] if args.key?(:target)
           @q = args[:q] if args.key?(:q)
           @format = args[:format] if args.key?(:format)
           @source = args[:source] if args.key?(:source)
           @model = args[:model] if args.key?(:model)
-          @target = args[:target] if args.key?(:target)
         end
       end
       

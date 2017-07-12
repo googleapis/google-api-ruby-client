@@ -22,25 +22,6 @@ module Google
   module Apis
     module CloudtraceV1
       
-      # List of new or updated traces.
-      class Traces
-        include Google::Apis::Core::Hashable
-      
-        # List of traces.
-        # Corresponds to the JSON property `traces`
-        # @return [Array<Google::Apis::CloudtraceV1::Trace>]
-        attr_accessor :traces
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @traces = args[:traces] if args.key?(:traces)
-        end
-      end
-      
       # A span represents a single timed event within a trace. Spans can be nested
       # and form a trace tree. Often, a trace contains a root span that describes the
       # end-to-end latency of an operation and, optionally, one or more subspans for
@@ -48,28 +29,6 @@ module Google
       # between spans in a trace.
       class TraceSpan
         include Google::Apis::Core::Hashable
-      
-        # Name of the span. Must be less than 128 bytes. The span name is sanitized
-        # and displayed in the Stackdriver Trace tool in the
-        # `% dynamic print site_values.console_name %`.
-        # The name may be a method name or some other per-call site name.
-        # For the same executable and the same call point, a best practice is
-        # to use a consistent name, which makes it easier to correlate
-        # cross-trace spans.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Identifier for the span. Must be a 64-bit integer other than 0 and
-        # unique within a trace.
-        # Corresponds to the JSON property `spanId`
-        # @return [Fixnum]
-        attr_accessor :span_id
-      
-        # ID of the parent span, if any. Optional.
-        # Corresponds to the JSON property `parentSpanId`
-        # @return [Fixnum]
-        attr_accessor :parent_span_id
       
         # End time of the span in nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `endTime`
@@ -121,19 +80,41 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Name of the span. Must be less than 128 bytes. The span name is sanitized
+        # and displayed in the Stackdriver Trace tool in the
+        # `% dynamic print site_values.console_name %`.
+        # The name may be a method name or some other per-call site name.
+        # For the same executable and the same call point, a best practice is
+        # to use a consistent name, which makes it easier to correlate
+        # cross-trace spans.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Identifier for the span. Must be a 64-bit integer other than 0 and
+        # unique within a trace.
+        # Corresponds to the JSON property `spanId`
+        # @return [Fixnum]
+        attr_accessor :span_id
+      
+        # ID of the parent span, if any. Optional.
+        # Corresponds to the JSON property `parentSpanId`
+        # @return [Fixnum]
+        attr_accessor :parent_span_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @span_id = args[:span_id] if args.key?(:span_id)
-          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @span_id = args[:span_id] if args.key?(:span_id)
+          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
         end
       end
       
@@ -214,6 +195,25 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @spans = args[:spans] if args.key?(:spans)
           @trace_id = args[:trace_id] if args.key?(:trace_id)
+        end
+      end
+      
+      # List of new or updated traces.
+      class Traces
+        include Google::Apis::Core::Hashable
+      
+        # List of traces.
+        # Corresponds to the JSON property `traces`
+        # @return [Array<Google::Apis::CloudtraceV1::Trace>]
+        attr_accessor :traces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @traces = args[:traces] if args.key?(:traces)
         end
       end
     end

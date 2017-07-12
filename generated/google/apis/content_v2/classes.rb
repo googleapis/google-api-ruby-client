@@ -1026,7 +1026,7 @@ module Google
         end
       end
       
-      # Datafeed data.
+      # Datafeed configuration data.
       class Datafeed
         include Google::Apis::Core::Hashable
       
@@ -1375,7 +1375,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # Datafeed data.
+        # Datafeed configuration data.
         # Corresponds to the JSON property `datafeed`
         # @return [Google::Apis::ContentV2::Datafeed]
         attr_accessor :datafeed
@@ -1444,7 +1444,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # Datafeed data.
+        # Datafeed configuration data.
         # Corresponds to the JSON property `datafeed`
         # @return [Google::Apis::ContentV2::Datafeed]
         attr_accessor :datafeed
@@ -4536,6 +4536,16 @@ module Google
         # @return [String]
         attr_accessor :material
       
+        # Maximal product handling time (in business days).
+        # Corresponds to the JSON property `maxHandlingTime`
+        # @return [Fixnum]
+        attr_accessor :max_handling_time
+      
+        # Minimal product handling time (in business days).
+        # Corresponds to the JSON property `minHandlingTime`
+        # @return [Fixnum]
+        attr_accessor :min_handling_time
+      
         # Link to a mobile-optimized version of the landing page.
         # Corresponds to the JSON property `mobileLink`
         # @return [String]
@@ -4731,6 +4741,8 @@ module Google
           @link = args[:link] if args.key?(:link)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @material = args[:material] if args.key?(:material)
+          @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
           @mpn = args[:mpn] if args.key?(:mpn)
           @multipack = args[:multipack] if args.key?(:multipack)

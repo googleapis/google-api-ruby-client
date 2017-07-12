@@ -2374,7 +2374,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_roles
       
-        # The authkey parameter required for this permission.
+        # Deprecated.
         # Corresponds to the JSON property `authKey`
         # @return [String]
         attr_accessor :auth_key

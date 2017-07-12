@@ -22,6 +22,33 @@ module Google
   module Apis
     module GenomicsV1
       
+      # The dataset list response.
+      class ListDatasetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching Datasets.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::GenomicsV1::Dataset>]
+        attr_accessor :datasets
+      
+        # The continuation token, which is used to page through large result sets.
+        # Provide this value in a subsequent request to return the next page of
+        # results. This field will be empty if there aren't any additional results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -50,16 +77,45 @@ module Google
         end
       end
       
+      # The read group set export request.
+      class ExportReadGroupSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Google Cloud project ID that owns this
+        # export. The caller must have WRITE access to this project.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Required. A Google Cloud Storage URI for the exported BAM file.
+        # The currently authenticated user must have write access to the new file.
+        # An error will be returned if the URI already contains data.
+        # Corresponds to the JSON property `exportUri`
+        # @return [String]
+        attr_accessor :export_uri
+      
+        # The reference names to export. If this is not specified, all reference
+        # sequences, including unmapped reads, are exported.
+        # Use `*` to export only unmapped reads.
+        # Corresponds to the JSON property `referenceNames`
+        # @return [Array<String>]
+        attr_accessor :reference_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @export_uri = args[:export_uri] if args.key?(:export_uri)
+          @reference_names = args[:reference_names] if args.key?(:reference_names)
+        end
+      end
+      
       # 
       class Exon
         include Google::Apis::Core::Hashable
-      
-        # The start position of the exon on this annotation's reference sequence,
-        # 0-based inclusive. Note that this is relative to the reference start, and
-        # **not** the containing annotation start.
-        # Corresponds to the JSON property `start`
-        # @return [Fixnum]
-        attr_accessor :start
       
         # The end position of the exon on this annotation's reference sequence,
         # 0-based exclusive. Note that this is relative to the reference start, and
@@ -84,51 +140,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :frame
       
+        # The start position of the exon on this annotation's reference sequence,
+        # 0-based inclusive. Note that this is relative to the reference start, and
+        # **not** the containing annotation start.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @start = args[:start] if args.key?(:start)
           @end = args[:end] if args.key?(:end)
           @frame = args[:frame] if args.key?(:frame)
-        end
-      end
-      
-      # The read group set export request.
-      class ExportReadGroupSetRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. A Google Cloud Storage URI for the exported BAM file.
-        # The currently authenticated user must have write access to the new file.
-        # An error will be returned if the URI already contains data.
-        # Corresponds to the JSON property `exportUri`
-        # @return [String]
-        attr_accessor :export_uri
-      
-        # The reference names to export. If this is not specified, all reference
-        # sequences, including unmapped reads, are exported.
-        # Use `*` to export only unmapped reads.
-        # Corresponds to the JSON property `referenceNames`
-        # @return [Array<String>]
-        attr_accessor :reference_names
-      
-        # Required. The Google Cloud project ID that owns this
-        # export. The caller must have WRITE access to this project.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @export_uri = args[:export_uri] if args.key?(:export_uri)
-          @reference_names = args[:reference_names] if args.key?(:reference_names)
-          @project_id = args[:project_id] if args.key?(:project_id)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -138,6 +165,21 @@ module Google
       # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class CallSet
         include Google::Apis::Core::Hashable
+      
+        # The date this call set was created in milliseconds from the epoch.
+        # Corresponds to the JSON property `created`
+        # @return [Fixnum]
+        attr_accessor :created
+      
+        # The sample ID this call set corresponds to.
+        # Corresponds to the JSON property `sampleId`
+        # @return [String]
+        attr_accessor :sample_id
+      
+        # The call set name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # A map of additional call set information. This must be of the form
         # map<string, string[]> (string key mapping to a list of string values).
@@ -160,33 +202,18 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The date this call set was created in milliseconds from the epoch.
-        # Corresponds to the JSON property `created`
-        # @return [Fixnum]
-        attr_accessor :created
-      
-        # The sample ID this call set corresponds to.
-        # Corresponds to the JSON property `sampleId`
-        # @return [String]
-        attr_accessor :sample_id
-      
-        # The call set name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @info = args[:info] if args.key?(:info)
-          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
-          @id = args[:id] if args.key?(:id)
           @created = args[:created] if args.key?(:created)
           @sample_id = args[:sample_id] if args.key?(:sample_id)
           @name = args[:name] if args.key?(:name)
+          @info = args[:info] if args.key?(:info)
+          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -221,6 +248,12 @@ module Google
       class ImportVariantsRequest
         include Google::Apis::Core::Hashable
       
+        # The format of the variant data being imported. If unspecified, defaults to
+        # to `VCF`.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
         # A mapping between info field keys and the InfoMergeOperations to
         # be performed on them. This is plumbed down to the MergeVariantRequests
         # generated by the resulting import job.
@@ -254,40 +287,23 @@ module Google
         attr_accessor :normalize_reference_names
         alias_method :normalize_reference_names?, :normalize_reference_names
       
-        # The format of the variant data being imported. If unspecified, defaults to
-        # to `VCF`.
-        # Corresponds to the JSON property `format`
-        # @return [String]
-        attr_accessor :format
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @format = args[:format] if args.key?(:format)
           @info_merge_config = args[:info_merge_config] if args.key?(:info_merge_config)
           @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
           @normalize_reference_names = args[:normalize_reference_names] if args.key?(:normalize_reference_names)
-          @format = args[:format] if args.key?(:format)
         end
       end
       
       # 
       class VariantAnnotation
         include Google::Apis::Core::Hashable
-      
-        # Effect of the variant on the coding sequence.
-        # Corresponds to the JSON property `effect`
-        # @return [String]
-        attr_accessor :effect
-      
-        # Google annotation IDs of the transcripts affected by this variant. These
-        # should be provided when the variant is created.
-        # Corresponds to the JSON property `transcriptIds`
-        # @return [Array<String>]
-        attr_accessor :transcript_ids
       
         # Type has been adapted from ClinVar's list of variant types.
         # Corresponds to the JSON property `type`
@@ -321,19 +337,30 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::ClinicalCondition>]
         attr_accessor :conditions
       
+        # Effect of the variant on the coding sequence.
+        # Corresponds to the JSON property `effect`
+        # @return [String]
+        attr_accessor :effect
+      
+        # Google annotation IDs of the transcripts affected by this variant. These
+        # should be provided when the variant is created.
+        # Corresponds to the JSON property `transcriptIds`
+        # @return [Array<String>]
+        attr_accessor :transcript_ids
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @effect = args[:effect] if args.key?(:effect)
-          @transcript_ids = args[:transcript_ids] if args.key?(:transcript_ids)
           @type = args[:type] if args.key?(:type)
           @alternate_bases = args[:alternate_bases] if args.key?(:alternate_bases)
           @gene_id = args[:gene_id] if args.key?(:gene_id)
           @clinical_significance = args[:clinical_significance] if args.key?(:clinical_significance)
           @conditions = args[:conditions] if args.key?(:conditions)
+          @effect = args[:effect] if args.key?(:effect)
+          @transcript_ids = args[:transcript_ids] if args.key?(:transcript_ids)
         end
       end
       
@@ -429,19 +456,6 @@ module Google
       class SearchAnnotationsRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the reference to query.
-        # Corresponds to the JSON property `referenceId`
-        # @return [String]
-        attr_accessor :reference_id
-      
-        # The end position of the range on the reference, 0-based exclusive. If
-        # referenceId or
-        # referenceName
-        # must be specified, Defaults to the length of the reference.
-        # Corresponds to the JSON property `end`
-        # @return [Fixnum]
-        attr_accessor :end
-      
         # The continuation token, which is used to page through large result sets.
         # To get the next page of results, set this parameter to the value of
         # `nextPageToken` from the previous response.
@@ -477,31 +491,38 @@ module Google
         # @return [String]
         attr_accessor :reference_name
       
+        # The ID of the reference to query.
+        # Corresponds to the JSON property `referenceId`
+        # @return [String]
+        attr_accessor :reference_id
+      
+        # The end position of the range on the reference, 0-based exclusive. If
+        # referenceId or
+        # referenceName
+        # must be specified, Defaults to the length of the reference.
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @reference_id = args[:reference_id] if args.key?(:reference_id)
-          @end = args[:end] if args.key?(:end)
           @page_token = args[:page_token] if args.key?(:page_token)
           @page_size = args[:page_size] if args.key?(:page_size)
           @start = args[:start] if args.key?(:start)
           @annotation_set_ids = args[:annotation_set_ids] if args.key?(:annotation_set_ids)
           @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @reference_id = args[:reference_id] if args.key?(:reference_id)
+          @end = args[:end] if args.key?(:end)
         end
       end
       
       # An event that occurred during an Operation.
       class OperationEvent
         include Google::Apis::Core::Hashable
-      
-        # Optional time of when event finished. An event can have a start time and no
-        # finish time. If an event has a finish time, there must be a start time.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
       
         # Optional time of when event started.
         # Corresponds to the JSON property `startTime`
@@ -513,15 +534,21 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional time of when event finished. An event can have a start time and no
+        # finish time. If an event has a finish time, there must be a start time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
         end
       end
       
@@ -554,39 +581,6 @@ module Google
         end
       end
       
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Request message for `GetIamPolicy` method.
-      class GetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # 
       class SearchReferencesResponse
         include Google::Apis::Core::Hashable
@@ -611,6 +605,39 @@ module Google
         def update!(**args)
           @references = args[:references] if args.key?(:references)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request message for `GetIamPolicy` method.
+      class GetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for `TestIamPermissions` method.
+      class TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is
+        # allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -792,11 +819,6 @@ module Google
       class Dataset
         include Google::Apis::Core::Hashable
       
-        # The server-generated dataset ID, unique across all datasets.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # The time this dataset was created, in seconds from the epoch.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -812,16 +834,21 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # The server-generated dataset ID, unique across all datasets.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] if args.key?(:id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -847,12 +874,6 @@ module Google
       # A read group is all the data that's processed the same way by the sequencer.
       class ReadGroup
         include Google::Apis::Core::Hashable
-      
-        # A map of additional read group information. This must be of the form
-        # map<string, string[]> (string key mapping to a list of string values).
-        # Corresponds to the JSON property `info`
-        # @return [Hash<String,Array<Object>>]
-        attr_accessor :info
       
         # The server-generated read group ID, unique for all read groups.
         # Note: This is different than the @RG ID field in the SAM spec. For that
@@ -905,13 +926,18 @@ module Google
         # @return [String]
         attr_accessor :reference_set_id
       
+        # A map of additional read group information. This must be of the form
+        # map<string, string[]> (string key mapping to a list of string values).
+        # Corresponds to the JSON property `info`
+        # @return [Hash<String,Array<Object>>]
+        attr_accessor :info
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @info = args[:info] if args.key?(:info)
           @id = args[:id] if args.key?(:id)
           @programs = args[:programs] if args.key?(:programs)
           @predicted_insert_size = args[:predicted_insert_size] if args.key?(:predicted_insert_size)
@@ -921,6 +947,7 @@ module Google
           @experiment = args[:experiment] if args.key?(:experiment)
           @name = args[:name] if args.key?(:name)
           @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
+          @info = args[:info] if args.key?(:info)
         end
       end
       
@@ -935,6 +962,11 @@ module Google
       # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class ReadGroupSet
         include Google::Apis::Core::Hashable
+      
+        # The dataset to which this read group set belongs.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
       
         # The filename of the original source file for this read group set, if any.
         # Corresponds to the JSON property `filename`
@@ -968,24 +1000,19 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The dataset to which this read group set belongs.
-        # Corresponds to the JSON property `datasetId`
-        # @return [String]
-        attr_accessor :dataset_id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @filename = args[:filename] if args.key?(:filename)
           @read_groups = args[:read_groups] if args.key?(:read_groups)
           @name = args[:name] if args.key?(:name)
           @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
           @info = args[:info] if args.key?(:info)
           @id = args[:id] if args.key?(:id)
-          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
         end
       end
       
@@ -1170,18 +1197,6 @@ module Google
       class SearchCallSetsRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of results to return in a single page. If unspecified,
-        # defaults to 1024.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        # Restrict the query to call sets within the given variant sets. At least one
-        # ID must be provided.
-        # Corresponds to the JSON property `variantSetIds`
-        # @return [Array<String>]
-        attr_accessor :variant_set_ids
-      
         # Only return call sets for which a substring of the name matches this
         # string.
         # Corresponds to the JSON property `name`
@@ -1195,22 +1210,40 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # The maximum number of results to return in a single page. If unspecified,
+        # defaults to 1024.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Restrict the query to call sets within the given variant sets. At least one
+        # ID must be provided.
+        # Corresponds to the JSON property `variantSetIds`
+        # @return [Array<String>]
+        attr_accessor :variant_set_ids
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @page_size = args[:page_size] if args.key?(:page_size)
-          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
           @name = args[:name] if args.key?(:name)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @variant_set_ids = args[:variant_set_ids] if args.key?(:variant_set_ids)
         end
       end
       
       # The read group set import request.
       class ImportReadGroupSetsRequest
         include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the dataset these read group sets will belong to. The
+        # caller must have WRITE permissions to this dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
       
         # A list of URIs pointing at [BAM
         # files](https://samtools.github.io/hts-specs/SAMv1.pdf)
@@ -1239,22 +1272,16 @@ module Google
         # @return [String]
         attr_accessor :partition_strategy
       
-        # Required. The ID of the dataset these read group sets will belong to. The
-        # caller must have WRITE permissions to this dataset.
-        # Corresponds to the JSON property `datasetId`
-        # @return [String]
-        attr_accessor :dataset_id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
           @reference_set_id = args[:reference_set_id] if args.key?(:reference_set_id)
           @partition_strategy = args[:partition_strategy] if args.key?(:partition_strategy)
-          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
         end
       end
       
@@ -1287,13 +1314,6 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`.
-        # Multiple `bindings` must not be specified for the same `role`.
-        # `bindings` with no members will result in an error.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::GenomicsV1::Binding>]
-        attr_accessor :bindings
-      
         # `etag` is used for optimistic concurrency control as a way to help
         # prevent simultaneous updates of a policy from overwriting each other.
         # It is strongly suggested that systems make use of the `etag` in the
@@ -1313,28 +1333,27 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
+        # Associates a list of `members` to a `role`.
+        # `bindings` with no members will result in an error.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::GenomicsV1::Binding>]
+        attr_accessor :bindings
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+          @bindings = args[:bindings] if args.key?(:bindings)
         end
       end
       
       # The read search request.
       class SearchReadsRequest
         include Google::Apis::Core::Hashable
-      
-        # The reference sequence name, for example `chr1`, `1`, or `chrX`. If set to
-        # `*`, only unmapped reads are returned. If unspecified, all reads (mapped
-        # and unmapped) are returned.
-        # Corresponds to the JSON property `referenceName`
-        # @return [String]
-        attr_accessor :reference_name
       
         # The IDs of the read groups sets within which to search for reads. All
         # specified read group sets must be aligned against a common set of reference
@@ -1376,19 +1395,26 @@ module Google
         # @return [Fixnum]
         attr_accessor :start
       
+        # The reference sequence name, for example `chr1`, `1`, or `chrX`. If set to
+        # `*`, only unmapped reads are returned. If unspecified, all reads (mapped
+        # and unmapped) are returned.
+        # Corresponds to the JSON property `referenceName`
+        # @return [String]
+        attr_accessor :reference_name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @reference_name = args[:reference_name] if args.key?(:reference_name)
           @read_group_set_ids = args[:read_group_set_ids] if args.key?(:read_group_set_ids)
           @read_group_ids = args[:read_group_ids] if args.key?(:read_group_ids)
           @end = args[:end] if args.key?(:end)
           @page_token = args[:page_token] if args.key?(:page_token)
           @page_size = args[:page_size] if args.key?(:page_size)
           @start = args[:start] if args.key?(:start)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
         end
       end
       
@@ -1413,11 +1439,6 @@ module Google
       # `VARIANT`.
       class Annotation
         include Google::Apis::Core::Hashable
-      
-        # The start position of the range on the reference, 0-based inclusive.
-        # Corresponds to the JSON property `start`
-        # @return [Fixnum]
-        attr_accessor :start
       
         # The annotation set to which this annotation belongs.
         # Corresponds to the JSON property `annotationSetId`
@@ -1484,13 +1505,17 @@ module Google
         # @return [Google::Apis::GenomicsV1::Transcript]
         attr_accessor :transcript
       
+        # The start position of the range on the reference, 0-based inclusive.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @start = args[:start] if args.key?(:start)
           @annotation_set_id = args[:annotation_set_id] if args.key?(:annotation_set_id)
           @name = args[:name] if args.key?(:name)
           @variant = args[:variant] if args.key?(:variant)
@@ -1502,6 +1527,7 @@ module Google
           @info = args[:info] if args.key?(:info)
           @end = args[:end] if args.key?(:end)
           @transcript = args[:transcript] if args.key?(:transcript)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -1531,6 +1557,19 @@ module Google
       # network API call.
       class Operation
         include Google::Apis::Core::Hashable
+      
+        # An OperationMetadata object. This will always be returned with the Operation.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
       
         # If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If
         # importing Variants, an ImportVariantsResponse is returned. For pipelines and
@@ -1589,30 +1628,17 @@ module Google
         # @return [Google::Apis::GenomicsV1::Status]
         attr_accessor :error
       
-        # An OperationMetadata object. This will always be returned with the Operation.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @done = args[:done] if args.key?(:done)
           @response = args[:response] if args.key?(:response)
           @name = args[:name] if args.key?(:name)
           @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @done = args[:done] if args.key?(:done)
         end
       end
       
@@ -1712,6 +1738,11 @@ module Google
       class SearchVariantsResponse
         include Google::Apis::Core::Hashable
       
+        # The list of matching Variants.
+        # Corresponds to the JSON property `variants`
+        # @return [Array<Google::Apis::GenomicsV1::Variant>]
+        attr_accessor :variants
+      
         # The continuation token, which is used to page through large result sets.
         # Provide this value in a subsequent request to return the next page of
         # results. This field will be empty if there aren't any additional results.
@@ -1719,25 +1750,25 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of matching Variants.
-        # Corresponds to the JSON property `variants`
-        # @return [Array<Google::Apis::GenomicsV1::Variant>]
-        attr_accessor :variants
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @variants = args[:variants] if args.key?(:variants)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
       # 
       class ListBasesResponse
         include Google::Apis::Core::Hashable
+      
+        # A substring of the bases that make up this reference.
+        # Corresponds to the JSON property `sequence`
+        # @return [String]
+        attr_accessor :sequence
       
         # The offset position (0-based) of the given `sequence` from the
         # start of this `Reference`. This value will differ for each page
@@ -1753,20 +1784,15 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A substring of the bases that make up this reference.
-        # Corresponds to the JSON property `sequence`
-        # @return [String]
-        attr_accessor :sequence
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @sequence = args[:sequence] if args.key?(:sequence)
           @offset = args[:offset] if args.key?(:offset)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @sequence = args[:sequence] if args.key?(:sequence)
         end
       end
       
@@ -1812,6 +1838,13 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
         # A list of messages that carry the error details.  There will be a
         # common set of message types for APIs to use.
         # Corresponds to the JSON property `details`
@@ -1823,35 +1856,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @message = args[:message] if args.key?(:message)
           @details = args[:details] if args.key?(:details)
           @code = args[:code] if args.key?(:code)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # 
-      class UndeleteDatasetRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -1895,14 +1908,22 @@ module Google
         end
       end
       
+      # 
+      class UndeleteDatasetRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A 0-based half-open genomic coordinate range for search requests.
       class Range
         include Google::Apis::Core::Hashable
-      
-        # The start position of the range on the reference, 0-based inclusive.
-        # Corresponds to the JSON property `start`
-        # @return [Fixnum]
-        attr_accessor :start
       
         # The end position of the range on the reference, 0-based exclusive.
         # Corresponds to the JSON property `end`
@@ -1915,15 +1936,20 @@ module Google
         # @return [String]
         attr_accessor :reference_name
       
+        # The start position of the range on the reference, 0-based inclusive.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @start = args[:start] if args.key?(:start)
           @end = args[:end] if args.key?(:end)
           @reference_name = args[:reference_name] if args.key?(:reference_name)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -1994,6 +2020,26 @@ module Google
         end
       end
       
+      # 
+      class BatchCreateAnnotationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting per-annotation entries, ordered consistently with the
+        # original request.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::GenomicsV1::Entry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
       # ReferenceBound records an upper bound for the starting coordinate of
       # variants in a particular reference.
       class ReferenceBound
@@ -2021,50 +2067,28 @@ module Google
         end
       end
       
-      # 
-      class BatchCreateAnnotationsResponse
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
         include Google::Apis::Core::Hashable
       
-        # The resulting per-annotation entries, ordered consistently with the
-        # original request.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::GenomicsV1::Entry>]
-        attr_accessor :entries
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::GenomicsV1::Operation>]
+        attr_accessor :operations
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-        end
-      end
-      
-      # The call set search response.
-      class SearchCallSetsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The continuation token, which is used to page through large result sets.
-        # Provide this value in a subsequent request to return the next page of
-        # results. This field will be empty if there aren't any additional results.
+        # The standard List next-page token.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of matching call sets.
-        # Corresponds to the JSON property `callSets`
-        # @return [Array<Google::Apis::GenomicsV1::CallSet>]
-        attr_accessor :call_sets
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @operations = args[:operations] if args.key?(:operations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @call_sets = args[:call_sets] if args.key?(:call_sets)
         end
       end
       
@@ -2080,6 +2104,17 @@ module Google
       # sample.
       class Variant
         include Google::Apis::Core::Hashable
+      
+        # The ID of the variant set this variant belongs to.
+        # Corresponds to the JSON property `variantSetId`
+        # @return [String]
+        attr_accessor :variant_set_id
+      
+        # The reference on which this variant occurs.
+        # (such as `chr20` or `X`)
+        # Corresponds to the JSON property `referenceName`
+        # @return [String]
+        attr_accessor :reference_name
       
         # A map of additional variant information. This must be of the form
         # map<string, string[]> (string key mapping to a list of string values).
@@ -2103,12 +2138,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :names
       
-        # A list of filters (normally quality filters) this variant has failed.
-        # `PASS` indicates this variant has passed all filters.
-        # Corresponds to the JSON property `filter`
-        # @return [Array<String>]
-        attr_accessor :filter
-      
         # The end position (0-based) of this variant. This corresponds to the first
         # base after the last base in the reference allele. So, the length of
         # the reference allele is (end - start). This is useful for variants
@@ -2116,6 +2145,12 @@ module Google
         # Corresponds to the JSON property `end`
         # @return [Fixnum]
         attr_accessor :end
+      
+        # A list of filters (normally quality filters) this variant has failed.
+        # `PASS` indicates this variant has passed all filters.
+        # Corresponds to the JSON property `filter`
+        # @return [Array<String>]
+        attr_accessor :filter
       
         # The variant calls for this particular variant. Each one represents the
         # determination of genotype with respect to this variant.
@@ -2145,52 +2180,43 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The ID of the variant set this variant belongs to.
-        # Corresponds to the JSON property `variantSetId`
-        # @return [String]
-        attr_accessor :variant_set_id
-      
-        # The reference on which this variant occurs.
-        # (such as `chr20` or `X`)
-        # Corresponds to the JSON property `referenceName`
-        # @return [String]
-        attr_accessor :reference_name
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
+          @reference_name = args[:reference_name] if args.key?(:reference_name)
           @info = args[:info] if args.key?(:info)
           @reference_bases = args[:reference_bases] if args.key?(:reference_bases)
           @alternate_bases = args[:alternate_bases] if args.key?(:alternate_bases)
           @names = args[:names] if args.key?(:names)
-          @filter = args[:filter] if args.key?(:filter)
           @end = args[:end] if args.key?(:end)
+          @filter = args[:filter] if args.key?(:filter)
           @calls = args[:calls] if args.key?(:calls)
           @created = args[:created] if args.key?(:created)
           @start = args[:start] if args.key?(:start)
           @quality = args[:quality] if args.key?(:quality)
           @id = args[:id] if args.key?(:id)
-          @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
-          @reference_name = args[:reference_name] if args.key?(:reference_name)
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
+      # The call set search response.
+      class SearchCallSetsResponse
         include Google::Apis::Core::Hashable
       
-        # The standard List next-page token.
+        # The continuation token, which is used to page through large result sets.
+        # Provide this value in a subsequent request to return the next page of
+        # results. This field will be empty if there aren't any additional results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::GenomicsV1::Operation>]
-        attr_accessor :operations
+        # The list of matching call sets.
+        # Corresponds to the JSON property `callSets`
+        # @return [Array<Google::Apis::GenomicsV1::CallSet>]
+        attr_accessor :call_sets
       
         def initialize(**args)
            update!(**args)
@@ -2199,80 +2225,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # Metadata describing an Operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The time at which the job was submitted to the Genomics service.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optionally provided by the caller when submitting the request that creates
-        # the operation.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The Google Cloud Project in which the job is scoped.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # This field is deprecated. Use `labels` instead. Optionally provided by the
-        # caller when submitting the request that creates the operation.
-        # Corresponds to the JSON property `clientId`
-        # @return [String]
-        attr_accessor :client_id
-      
-        # Optional event messages that were generated during the job's execution.
-        # This also contains any warnings that were generated during import
-        # or export.
-        # Corresponds to the JSON property `events`
-        # @return [Array<Google::Apis::GenomicsV1::OperationEvent>]
-        attr_accessor :events
-      
-        # The time at which the job stopped running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The time at which the job began to run.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # The original request that started the operation. Note that this will be in
-        # current version of the API. If the operation was started with v1beta2 API
-        # and a GetOperation is performed on v1 API, a v1 request will be returned.
-        # Corresponds to the JSON property `request`
-        # @return [Hash<String,Object>]
-        attr_accessor :request
-      
-        # Runtime metadata on this Operation.
-        # Corresponds to the JSON property `runtimeMetadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :runtime_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @labels = args[:labels] if args.key?(:labels)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @client_id = args[:client_id] if args.key?(:client_id)
-          @events = args[:events] if args.key?(:events)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @request = args[:request] if args.key?(:request)
-          @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
+          @call_sets = args[:call_sets] if args.key?(:call_sets)
         end
       end
       
@@ -2355,6 +2308,79 @@ module Google
         end
       end
       
+      # Metadata describing an Operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Runtime metadata on this Operation.
+        # Corresponds to the JSON property `runtimeMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :runtime_metadata
+      
+        # Optionally provided by the caller when submitting the request that creates
+        # the operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The time at which the job was submitted to the Genomics service.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The Google Cloud Project in which the job is scoped.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # This field is deprecated. Use `labels` instead. Optionally provided by the
+        # caller when submitting the request that creates the operation.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # The time at which the job stopped running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional event messages that were generated during the job's execution.
+        # This also contains any warnings that were generated during import
+        # or export.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::GenomicsV1::OperationEvent>]
+        attr_accessor :events
+      
+        # The time at which the job began to run.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The original request that started the operation. Note that this will be in
+        # current version of the API. If the operation was started with v1beta2 API
+        # and a GetOperation is performed on v1 API, a v1 request will be returned.
+        # Corresponds to the JSON property `request`
+        # @return [Hash<String,Object>]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
+          @labels = args[:labels] if args.key?(:labels)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @events = args[:events] if args.key?(:events)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
       # The read group set search request.
       class SearchReadGroupSetsRequest
         include Google::Apis::Core::Hashable
@@ -2424,20 +2450,39 @@ module Google
         end
       end
       
+      # The read search response.
+      class SearchReadsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The continuation token, which is used to page through large result sets.
+        # Provide this value in a subsequent request to return the next page of
+        # results. This field will be empty if there aren't any additional results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching alignments sorted by mapped genomic coordinate,
+        # if any, ascending in position within the same reference. Unmapped reads,
+        # which have no position, are returned contiguously and are sorted in
+        # ascending lexicographic order by fragment name.
+        # Corresponds to the JSON property `alignments`
+        # @return [Array<Google::Apis::GenomicsV1::Read>]
+        attr_accessor :alignments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @alignments = args[:alignments] if args.key?(:alignments)
+        end
+      end
+      
       # 
       class ClinicalCondition
         include Google::Apis::Core::Hashable
-      
-        # A set of names for the condition.
-        # Corresponds to the JSON property `names`
-        # @return [Array<String>]
-        attr_accessor :names
-      
-        # The OMIM id for this condition.
-        # Search for these IDs at http://omim.org/
-        # Corresponds to the JSON property `omimId`
-        # @return [String]
-        attr_accessor :omim_id
       
         # The set of external IDs for this condition.
         # Corresponds to the JSON property `externalIds`
@@ -2450,46 +2495,27 @@ module Google
         # @return [String]
         attr_accessor :concept_id
       
+        # A set of names for the condition.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        # The OMIM id for this condition.
+        # Search for these IDs at http://omim.org/
+        # Corresponds to the JSON property `omimId`
+        # @return [String]
+        attr_accessor :omim_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @names = args[:names] if args.key?(:names)
-          @omim_id = args[:omim_id] if args.key?(:omim_id)
           @external_ids = args[:external_ids] if args.key?(:external_ids)
           @concept_id = args[:concept_id] if args.key?(:concept_id)
-        end
-      end
-      
-      # The read search response.
-      class SearchReadsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of matching alignments sorted by mapped genomic coordinate,
-        # if any, ascending in position within the same reference. Unmapped reads,
-        # which have no position, are returned contiguously and are sorted in
-        # ascending lexicographic order by fragment name.
-        # Corresponds to the JSON property `alignments`
-        # @return [Array<Google::Apis::GenomicsV1::Read>]
-        attr_accessor :alignments
-      
-        # The continuation token, which is used to page through large result sets.
-        # Provide this value in a subsequent request to return the next page of
-        # results. This field will be empty if there aren't any additional results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alignments = args[:alignments] if args.key?(:alignments)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @names = args[:names] if args.key?(:names)
+          @omim_id = args[:omim_id] if args.key?(:omim_id)
         end
       end
       
@@ -2538,33 +2564,6 @@ module Google
         end
       end
       
-      # A bucket over which read coverage has been precomputed. A bucket corresponds
-      # to a specific range of the reference sequence.
-      class CoverageBucket
-        include Google::Apis::Core::Hashable
-      
-        # The average number of reads which are aligned to each individual
-        # reference base in this bucket.
-        # Corresponds to the JSON property `meanCoverage`
-        # @return [Float]
-        attr_accessor :mean_coverage
-      
-        # A 0-based half-open genomic coordinate range for search requests.
-        # Corresponds to the JSON property `range`
-        # @return [Google::Apis::GenomicsV1::Range]
-        attr_accessor :range
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @mean_coverage = args[:mean_coverage] if args.key?(:mean_coverage)
-          @range = args[:range] if args.key?(:range)
-        end
-      end
-      
       # Describes a Compute Engine resource that is being managed by a running
       # pipeline.
       class ComputeEngine
@@ -2603,19 +2602,21 @@ module Google
         end
       end
       
-      # 
-      class ExternalId
+      # A bucket over which read coverage has been precomputed. A bucket corresponds
+      # to a specific range of the reference sequence.
+      class CoverageBucket
         include Google::Apis::Core::Hashable
       
-        # The name of the source of this data.
-        # Corresponds to the JSON property `sourceName`
-        # @return [String]
-        attr_accessor :source_name
+        # The average number of reads which are aligned to each individual
+        # reference base in this bucket.
+        # Corresponds to the JSON property `meanCoverage`
+        # @return [Float]
+        attr_accessor :mean_coverage
       
-        # The id used by the source of this data.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
+        # A 0-based half-open genomic coordinate range for search requests.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::GenomicsV1::Range]
+        attr_accessor :range
       
         def initialize(**args)
            update!(**args)
@@ -2623,8 +2624,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @source_name = args[:source_name] if args.key?(:source_name)
+          @mean_coverage = args[:mean_coverage] if args.key?(:mean_coverage)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # 
+      class ExternalId
+        include Google::Apis::Core::Hashable
+      
+        # The id used by the source of this data.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The name of the source of this data.
+        # Corresponds to the JSON property `sourceName`
+        # @return [String]
+        attr_accessor :source_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @source_name = args[:source_name] if args.key?(:source_name)
         end
       end
       
@@ -2692,69 +2718,6 @@ module Google
         end
       end
       
-      # Metadata describes a single piece of variant call metadata.
-      # These data include a top level key and either a single value string (value)
-      # or a list of key-value pairs (info.)
-      # Value and info are mutually exclusive.
-      class VariantSetMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The top-level key.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # A textual description of this metadata.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Remaining structured metadata key-value pairs. This must be of the form
-        # map<string, string[]> (string key mapping to a list of string values).
-        # Corresponds to the JSON property `info`
-        # @return [Hash<String,Array<Object>>]
-        attr_accessor :info
-      
-        # The type of data. Possible types include: Integer, Float,
-        # Flag, Character, and String.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The value field for simple metadata
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # User-provided ID field, not enforced by this API.
-        # Two or more pieces of structured metadata with identical
-        # id and key fields are considered equivalent.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The number of values that can be included in a field described by this
-        # metadata.
-        # Corresponds to the JSON property `number`
-        # @return [String]
-        attr_accessor :number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @description = args[:description] if args.key?(:description)
-          @info = args[:info] if args.key?(:info)
-          @type = args[:type] if args.key?(:type)
-          @value = args[:value] if args.key?(:value)
-          @id = args[:id] if args.key?(:id)
-          @number = args[:number] if args.key?(:number)
-        end
-      end
-      
       # The search variant sets request.
       class SearchVariantSetsRequest
         include Google::Apis::Core::Hashable
@@ -2787,6 +2750,69 @@ module Google
           @page_token = args[:page_token] if args.key?(:page_token)
           @page_size = args[:page_size] if args.key?(:page_size)
           @dataset_ids = args[:dataset_ids] if args.key?(:dataset_ids)
+        end
+      end
+      
+      # Metadata describes a single piece of variant call metadata.
+      # These data include a top level key and either a single value string (value)
+      # or a list of key-value pairs (info.)
+      # Value and info are mutually exclusive.
+      class VariantSetMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The type of data. Possible types include: Integer, Float,
+        # Flag, Character, and String.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Remaining structured metadata key-value pairs. This must be of the form
+        # map<string, string[]> (string key mapping to a list of string values).
+        # Corresponds to the JSON property `info`
+        # @return [Hash<String,Array<Object>>]
+        attr_accessor :info
+      
+        # The value field for simple metadata
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        # User-provided ID field, not enforced by this API.
+        # Two or more pieces of structured metadata with identical
+        # id and key fields are considered equivalent.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The number of values that can be included in a field described by this
+        # metadata.
+        # Corresponds to the JSON property `number`
+        # @return [String]
+        attr_accessor :number
+      
+        # The top-level key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # A textual description of this metadata.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @info = args[:info] if args.key?(:info)
+          @value = args[:value] if args.key?(:value)
+          @id = args[:id] if args.key?(:id)
+          @number = args[:number] if args.key?(:number)
+          @key = args[:key] if args.key?(:key)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -2889,6 +2915,12 @@ module Google
       class MergeVariantsRequest
         include Google::Apis::Core::Hashable
       
+        # A mapping between info field keys and the InfoMergeOperations to
+        # be performed on them.
+        # Corresponds to the JSON property `infoMergeConfig`
+        # @return [Hash<String,String>]
+        attr_accessor :info_merge_config
+      
         # The destination variant set.
         # Corresponds to the JSON property `variantSetId`
         # @return [String]
@@ -2899,21 +2931,15 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::Variant>]
         attr_accessor :variants
       
-        # A mapping between info field keys and the InfoMergeOperations to
-        # be performed on them.
-        # Corresponds to the JSON property `infoMergeConfig`
-        # @return [Hash<String,String>]
-        attr_accessor :info_merge_config
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @info_merge_config = args[:info_merge_config] if args.key?(:info_merge_config)
           @variant_set_id = args[:variant_set_id] if args.key?(:variant_set_id)
           @variants = args[:variants] if args.key?(:variants)
-          @info_merge_config = args[:info_merge_config] if args.key?(:info_merge_config)
         end
       end
       
@@ -3152,12 +3178,6 @@ module Google
       class BatchCreateAnnotationsRequest
         include Google::Apis::Core::Hashable
       
-        # The annotations to be created. At most 4096 can be specified in a single
-        # request.
-        # Corresponds to the JSON property `annotations`
-        # @return [Array<Google::Apis::GenomicsV1::Annotation>]
-        attr_accessor :annotations
-      
         # A unique request ID which enables the server to detect duplicated requests.
         # If provided, duplicated requests will result in the same response; if not
         # provided, duplicated requests may result in duplicated data. For a given
@@ -3169,14 +3189,20 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # The annotations to be created. At most 4096 can be specified in a single
+        # request.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::GenomicsV1::Annotation>]
+        attr_accessor :annotations
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
           @request_id = args[:request_id] if args.key?(:request_id)
+          @annotations = args[:annotations] if args.key?(:annotations)
         end
       end
       
@@ -3235,6 +3261,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_accessions
       
+        # The URI from which the references were obtained.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [String]
+        attr_accessor :source_uri
+      
         # ID from http://www.ncbi.nlm.nih.gov/taxonomy (for example, 9606 for human)
         # indicating the species which this reference set is intended to model. Note
         # that contained references may specify a different `ncbiTaxonId`, as
@@ -3243,11 +3274,6 @@ module Google
         # Corresponds to the JSON property `ncbiTaxonId`
         # @return [Fixnum]
         attr_accessor :ncbi_taxon_id
-      
-        # The URI from which the references were obtained.
-        # Corresponds to the JSON property `sourceUri`
-        # @return [String]
-        attr_accessor :source_uri
       
         # The IDs of the reference objects that are part of this set.
         # `Reference.md5checksum` must be unique within this set.
@@ -3282,8 +3308,8 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @source_accessions = args[:source_accessions] if args.key?(:source_accessions)
-          @ncbi_taxon_id = args[:ncbi_taxon_id] if args.key?(:ncbi_taxon_id)
           @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @ncbi_taxon_id = args[:ncbi_taxon_id] if args.key?(:ncbi_taxon_id)
           @reference_ids = args[:reference_ids] if args.key?(:reference_ids)
           @assembly_id = args[:assembly_id] if args.key?(:assembly_id)
           @md5checksum = args[:md5checksum] if args.key?(:md5checksum)
@@ -3295,6 +3321,22 @@ module Google
       # reference genome may be transcribed as RNA.
       class Transcript
         include Google::Apis::Core::Hashable
+      
+        # The range of the coding sequence for this transcript, if any. To determine
+        # the exact ranges of coding sequence, intersect this range with those of the
+        # exons, if any. If there are any
+        # exons, the
+        # codingSequence must start
+        # and end within them.
+        # Note that in some cases, the reference genome will not exactly match the
+        # observed mRNA transcript e.g. due to variance in the source genome from
+        # reference. In these cases,
+        # exon.frame will not necessarily
+        # match the expected reference reading frame and coding exon reference bases
+        # cannot necessarily be concatenated to produce the original transcript mRNA.
+        # Corresponds to the JSON property `codingSequence`
+        # @return [Google::Apis::GenomicsV1::CodingSequence]
+        attr_accessor :coding_sequence
       
         # The annotation ID of the gene from which this transcript is transcribed.
         # Corresponds to the JSON property `geneId`
@@ -3316,31 +3358,15 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::Exon>]
         attr_accessor :exons
       
-        # The range of the coding sequence for this transcript, if any. To determine
-        # the exact ranges of coding sequence, intersect this range with those of the
-        # exons, if any. If there are any
-        # exons, the
-        # codingSequence must start
-        # and end within them.
-        # Note that in some cases, the reference genome will not exactly match the
-        # observed mRNA transcript e.g. due to variance in the source genome from
-        # reference. In these cases,
-        # exon.frame will not necessarily
-        # match the expected reference reading frame and coding exon reference bases
-        # cannot necessarily be concatenated to produce the original transcript mRNA.
-        # Corresponds to the JSON property `codingSequence`
-        # @return [Google::Apis::GenomicsV1::CodingSequence]
-        attr_accessor :coding_sequence
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @coding_sequence = args[:coding_sequence] if args.key?(:coding_sequence)
           @gene_id = args[:gene_id] if args.key?(:gene_id)
           @exons = args[:exons] if args.key?(:exons)
-          @coding_sequence = args[:coding_sequence] if args.key?(:coding_sequence)
         end
       end
       
@@ -3444,33 +3470,6 @@ module Google
           @platform_unit = args[:platform_unit] if args.key?(:platform_unit)
           @library_id = args[:library_id] if args.key?(:library_id)
           @instrument_model = args[:instrument_model] if args.key?(:instrument_model)
-        end
-      end
-      
-      # The dataset list response.
-      class ListDatasetsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of matching Datasets.
-        # Corresponds to the JSON property `datasets`
-        # @return [Array<Google::Apis::GenomicsV1::Dataset>]
-        attr_accessor :datasets
-      
-        # The continuation token, which is used to page through large result sets.
-        # Provide this value in a subsequent request to return the next page of
-        # results. This field will be empty if there aren't any additional results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @datasets = args[:datasets] if args.key?(:datasets)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
     end

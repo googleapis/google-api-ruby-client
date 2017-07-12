@@ -795,8 +795,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a datafeed from your Merchant Center account. This method can only be
-        # called for non-multi-client accounts.
+        # Deletes a datafeed configuration from your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [Boolean] dry_run
@@ -833,8 +833,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a datafeed from your Merchant Center account. This method can only
-        # be called for non-multi-client accounts.
+        # Retrieves a datafeed configuration from your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [String] fields
@@ -870,8 +870,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Registers a datafeed with your Merchant Center account. This method can only
-        # be called for non-multi-client accounts.
+        # Registers a datafeed configuration with your Merchant Center account. This
+        # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
         # @param [Boolean] dry_run
@@ -953,8 +953,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed of your Merchant Center account. This method can only be
-        # called for non-multi-client accounts. This method supports patch semantics.
+        # Updates a datafeed configuration of your Merchant Center account. This method
+        # can only be called for non-multi-client accounts. This method supports patch
+        # semantics.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
@@ -996,8 +997,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed of your Merchant Center account. This method can only be
-        # called for non-multi-client accounts.
+        # Updates a datafeed configuration of your Merchant Center account. This method
+        # can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
         # @param [Google::Apis::ContentV2::Datafeed] datafeed_object

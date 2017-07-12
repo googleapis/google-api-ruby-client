@@ -46,6 +46,12 @@ module Google
         # @return [Array<Google::Apis::StorageV1::ObjectAccessControl>]
         attr_accessor :default_object_acl
       
+        # Encryption configuration used by default for newly inserted objects, when no
+        # encryption config is specified.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::StorageV1::Bucket::Encryption]
+        attr_accessor :encryption
+      
         # HTTP 1.1 Entity tag for the bucket.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -152,6 +158,7 @@ module Google
           @billing = args[:billing] if args.key?(:billing)
           @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
+          @encryption = args[:encryption] if args.key?(:encryption)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -230,6 +237,26 @@ module Google
             @http_method = args[:http_method] if args.key?(:http_method)
             @origin = args[:origin] if args.key?(:origin)
             @response_header = args[:response_header] if args.key?(:response_header)
+          end
+        end
+        
+        # Encryption configuration used by default for newly inserted objects, when no
+        # encryption config is specified.
+        class Encryption
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `defaultKmsKeyName`
+          # @return [String]
+          attr_accessor :default_kms_key_name
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @default_kms_key_name = args[:default_kms_key_name] if args.key?(:default_kms_key_name)
           end
         end
         
@@ -976,6 +1003,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Cloud KMS Key used to encrypt this object, if the object is encrypted by such
+        # a key.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # MD5 hash of the data; encoded using base64. For more information about using
         # the MD5 hash, see Hashes and ETags: Best Practices.
         # Corresponds to the JSON property `md5Hash`
@@ -1067,6 +1100,7 @@ module Google
           @generation = args[:generation] if args.key?(:generation)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @md5_hash = args[:md5_hash] if args.key?(:md5_hash)
           @media_link = args[:media_link] if args.key?(:media_link)
           @metadata = args[:metadata] if args.key?(:metadata)

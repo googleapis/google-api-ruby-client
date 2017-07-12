@@ -2216,6 +2216,8 @@ module Google
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2::LoyaltyPoints, decorator: Google::Apis::ContentV2::LoyaltyPoints::Representation
       
           property :material, as: 'material'
+          property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
+          property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'
           property :mpn, as: 'mpn'
           property :multipack, :numeric_string => true, as: 'multipack'

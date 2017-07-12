@@ -22,14 +22,14 @@ module Google
   module Apis
     module Adexchangebuyer2V2beta1
       
-      # @OutputOnly The app type the restriction applies to for mobile device.
-      class AppContext
+      # @OutputOnly The auction type the restriction applies to.
+      class AuctionContext
         include Google::Apis::Core::Hashable
       
-        # The app types this restriction applies to.
-        # Corresponds to the JSON property `appTypes`
+        # The auction types this restriction applies to.
+        # Corresponds to the JSON property `auctionTypes`
         # @return [Array<String>]
-        attr_accessor :app_types
+        attr_accessor :auction_types
       
         def initialize(**args)
            update!(**args)
@@ -37,7 +37,469 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @app_types = args[:app_types] if args.key?(:app_types)
+          @auction_types = args[:auction_types] if args.key?(:auction_types)
+        end
+      end
+      
+      # Response message for listing the metrics that are measured in number of
+      # impressions.
+      class ListImpressionMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListImpressionMetricsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.impressionMetrics.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of rows, each containing a set of impression metrics.
+        # Corresponds to the JSON property `impressionMetricsRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ImpressionMetricsRow>]
+        attr_accessor :impression_metrics_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @impression_metrics_rows = args[:impression_metrics_rows] if args.key?(:impression_metrics_rows)
+        end
+      end
+      
+      # The number of impressions with the specified dimension values that were
+      # filtered due to the specified filtering status.
+      class ImpressionStatusRow
+        include Google::Apis::Core::Hashable
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `impressionCount`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :impression_count
+      
+        # The status for which impressions were filtered.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @impression_count = args[:impression_count] if args.key?(:impression_count)
+          @status = args[:status] if args.key?(:status)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+        end
+      end
+      
+      # The set of metrics that are measured in numbers of bids, representing how
+      # many bids with the specified dimension values were considered eligible at
+      # each stage of the bidding funnel;
+      class BidMetricsRow
+        include Google::Apis::Core::Hashable
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `billedImpressions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :billed_impressions
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `bidsInAuction`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :bids_in_auction
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `impressionsWon`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :impressions_won
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `viewableImpressions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :viewable_impressions
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `bids`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :bids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billed_impressions = args[:billed_impressions] if args.key?(:billed_impressions)
+          @bids_in_auction = args[:bids_in_auction] if args.key?(:bids_in_auction)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+          @impressions_won = args[:impressions_won] if args.key?(:impressions_won)
+          @viewable_impressions = args[:viewable_impressions] if args.key?(:viewable_impressions)
+          @bids = args[:bids] if args.key?(:bids)
+        end
+      end
+      
+      # Response message for listing all reasons that bid responses resulted in an
+      # error.
+      class ListBidResponseErrorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of rows, with counts of bid responses aggregated by callout status.
+        # Corresponds to the JSON property `calloutStatusRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CalloutStatusRow>]
+        attr_accessor :callout_status_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListBidResponseErrorsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.bidResponseErrors.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @callout_status_rows = args[:callout_status_rows] if args.key?(:callout_status_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The number of bids with the specified dimension values that did not win the
+      # auction (either were filtered pre-auction or lost the auction), as described
+      # by the specified creative status.
+      class CreativeStatusRow
+        include Google::Apis::Core::Hashable
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `bidCount`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :bid_count
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        # The ID of the creative status.
+        # See [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
+        # downloads/creative-status-codes).
+        # Corresponds to the JSON property `creativeStatusId`
+        # @return [Fixnum]
+        attr_accessor :creative_status_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bid_count = args[:bid_count] if args.key?(:bid_count)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+          @creative_status_id = args[:creative_status_id] if args.key?(:creative_status_id)
+        end
+      end
+      
+      # An open-ended realtime time range specified by the start timestamp.
+      # For filter sets that specify a realtime time range RTB metrics continue to
+      # be aggregated throughout the lifetime of the filter set.
+      class RealtimeTimeRange
+        include Google::Apis::Core::Hashable
+      
+        # The start timestamp of the real-time RTB metrics aggregation.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [String]
+        attr_accessor :start_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+        end
+      end
+      
+      # The number of filtered bids with the specified dimension values, among those
+      # filtered due to the requested filtering reason (i.e. creative status), that
+      # have the specified detail.
+      class FilteredBidDetailRow
+        include Google::Apis::Core::Hashable
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `bidCount`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :bid_count
+      
+        # The ID of the detail. The associated value can be looked up in the
+        # dictionary file corresponding to the DetailType in the response message.
+        # Corresponds to the JSON property `detailId`
+        # @return [Fixnum]
+        attr_accessor :detail_id
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bid_count = args[:bid_count] if args.key?(:bid_count)
+          @detail_id = args[:detail_id] if args.key?(:detail_id)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+        end
+      end
+      
+      # An absolute date range, specified by its start date and end date.
+      # The supported range of dates begins 30 days before today and ends today.
+      # Validity checked upon filter set creation. If a filter set with an absolute
+      # date range is run at a later date more than 30 days after start_date, it will
+      # fail.
+      class AbsoluteDateRange
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, e.g. date of birth. The time of day and
+        # time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+        # represent a year and month where the day is not significant, e.g. credit card
+        # expiration date. The year may be 0 to represent a month and day independent
+        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+        # and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Date]
+        attr_accessor :end_date
+      
+        # Represents a whole calendar date, e.g. date of birth. The time of day and
+        # time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+        # represent a year and month where the day is not significant, e.g. credit card
+        # expiration date. The year may be 0 to represent a month and day independent
+        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+        # and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Date]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # A request for associating a deal and a creative.
+      class AddDealAssociationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The association between a creative and a deal.
+        # Corresponds to the JSON property `association`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation]
+        attr_accessor :association
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @association = args[:association] if args.key?(:association)
+        end
+      end
+      
+      # A request for watching changes to creative Status.
+      class WatchCreativeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Pub/Sub topic to publish notifications to.
+        # This topic must already exist and must give permission to
+        # ad-exchange-buyside-reports@google.com to write to the topic.
+        # This should be the full resource name in
+        # "projects/`project_id`/topics/`topic_id`" format.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # An interval of time, with an absolute start and end.
+      # This is included in the response, for several reasons:
+      # 1) The request may have specified start or end times relative to the time the
+      # request was sent; the response indicates the corresponding absolute time
+      # interval.
+      # 2) The request may have specified an end time past the latest time for which
+      # data was available (e.g. if requesting data for the today); the response
+      # indicates the latest time for which data was actually returned.
+      # 3) The response data for a single request may be broken down into multiple
+      # time intervals, if a time series was requested.
+      class TimeInterval
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp marking the end of the range (exclusive) for which data is
+        # included.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The timestamp marking the start of the range (inclusive) for which data is
+        # included.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The number of filtered bids with the specified dimension values that have the
+      # specified creative.
+      class FilteredBidCreativeRow
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the creative.
+        # Corresponds to the JSON property `creativeId`
+        # @return [String]
+        attr_accessor :creative_id
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `bidCount`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :bid_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+          @bid_count = args[:bid_count] if args.key?(:bid_count)
+        end
+      end
+      
+      # A relative date range, specified by an offset and a duration.
+      # The supported range of dates begins 30 days before today and ends today.
+      # I.e. the limits for these values are:
+      # offset_days >= 0
+      # duration_days >= 1
+      # offset_days + duration_days <= 30
+      class RelativeDateRange
+        include Google::Apis::Core::Hashable
+      
+        # The end date of the filter set, specified as the number of days before
+        # today. E.g. for a range where the last date is today, 0.
+        # Corresponds to the JSON property `offsetDays`
+        # @return [Fixnum]
+        attr_accessor :offset_days
+      
+        # The number of days in the requested date range. E.g. for a range spanning
+        # today, 1. For a range spanning the last 7 days, 7.
+        # Corresponds to the JSON property `durationDays`
+        # @return [Fixnum]
+        attr_accessor :duration_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @offset_days = args[:offset_days] if args.key?(:offset_days)
+          @duration_days = args[:duration_days] if args.key?(:duration_days)
+        end
+      end
+      
+      # 
+      class ListClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListClientsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.clients.list method
+        # to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned list of clients.
+        # Corresponds to the JSON property `clients`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
+        attr_accessor :clients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @clients = args[:clients] if args.key?(:clients)
         end
       end
       
@@ -76,16 +538,16 @@ module Google
         # @return [String]
         attr_accessor :price_display_text
       
-        # The URL to use for click tracking.
-        # Corresponds to the JSON property `clickTrackingUrl`
-        # @return [String]
-        attr_accessor :click_tracking_url
-      
         # An image resource. You may provide a larger image than was requested,
         # so long as the aspect ratio is preserved.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::Image]
         attr_accessor :image
+      
+        # The URL to use for click tracking.
+        # Corresponds to the JSON property `clickTrackingUrl`
+        # @return [String]
+        attr_accessor :click_tracking_url
       
         # The name of the advertiser or sponsor, to be displayed in the ad creative.
         # Corresponds to the JSON property `advertiserName`
@@ -125,8 +587,8 @@ module Google
           @click_link_url = args[:click_link_url] if args.key?(:click_link_url)
           @logo = args[:logo] if args.key?(:logo)
           @price_display_text = args[:price_display_text] if args.key?(:price_display_text)
-          @click_tracking_url = args[:click_tracking_url] if args.key?(:click_tracking_url)
           @image = args[:image] if args.key?(:image)
+          @click_tracking_url = args[:click_tracking_url] if args.key?(:click_tracking_url)
           @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
           @store_url = args[:store_url] if args.key?(:store_url)
           @headline = args[:headline] if args.key?(:headline)
@@ -135,69 +597,23 @@ module Google
         end
       end
       
-      # 
-      class ListClientsResponse
+      # Response message for listing all reasons that bid responses were considered
+      # to have no applicable bids.
+      class ListBidResponsesWithoutBidsResponse
         include Google::Apis::Core::Hashable
+      
+        # List of rows, with counts of bid responses without bids aggregated by
+        # status.
+        # Corresponds to the JSON property `bidResponseWithoutBidsStatusRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::BidResponseWithoutBidsStatusRow>]
+        attr_accessor :bid_response_without_bids_status_rows
       
         # A token to retrieve the next page of results.
         # Pass this value in the
-        # ListClientsRequest.pageToken
+        # ListBidResponsesWithoutBidsRequest.pageToken
         # field in the subsequent call to the
-        # accounts.clients.list method
-        # to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The returned list of clients.
-        # Corresponds to the JSON property `clients`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Client>]
-        attr_accessor :clients
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @clients = args[:clients] if args.key?(:clients)
-        end
-      end
-      
-      # @OutputOnly A security context.
-      class SecurityContext
-        include Google::Apis::Core::Hashable
-      
-        # The security types in this context.
-        # Corresponds to the JSON property `securities`
-        # @return [Array<String>]
-        attr_accessor :securities
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @securities = args[:securities] if args.key?(:securities)
-        end
-      end
-      
-      # A response for listing creatives.
-      class ListCreativesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of creatives.
-        # Corresponds to the JSON property `creatives`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Creative>]
-        attr_accessor :creatives
-      
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # ListCreativesRequest.page_token
-        # field in the subsequent call to `ListCreatives` method to retrieve the next
-        # page of results.
+        # accounts.filterSets.bidResponsesWithoutBids.list
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -208,45 +624,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @creatives = args[:creatives] if args.key?(:creatives)
+          @bid_response_without_bids_status_rows = args[:bid_response_without_bids_status_rows] if args.key?(:bid_response_without_bids_status_rows)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # HTML content for a creative.
-      class HtmlContent
-        include Google::Apis::Core::Hashable
-      
-        # The width of the HTML snippet in pixels.
-        # Corresponds to the JSON property `width`
-        # @return [Fixnum]
-        attr_accessor :width
-      
-        # The HTML snippet that displays the ad when inserted in the web page.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        # The height of the HTML snippet in pixels.
-        # Corresponds to the JSON property `height`
-        # @return [Fixnum]
-        attr_accessor :height
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @width = args[:width] if args.key?(:width)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @height = args[:height] if args.key?(:height)
         end
       end
       
       # The serving context for this restriction.
       class ServingContext
         include Google::Apis::Core::Hashable
+      
+        # @OutputOnly The Geo criteria the restriction applies to.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::LocationContext]
+        attr_accessor :location
       
         # @OutputOnly The auction type the restriction applies to.
         # Corresponds to the JSON property `auctionType`
@@ -273,23 +663,18 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::PlatformContext]
         attr_accessor :platform
       
-        # @OutputOnly The Geo criteria the restriction applies to.
-        # Corresponds to the JSON property `location`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::LocationContext]
-        attr_accessor :location
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @auction_type = args[:auction_type] if args.key?(:auction_type)
           @all = args[:all] if args.key?(:all)
           @app_type = args[:app_type] if args.key?(:app_type)
           @security_type = args[:security_type] if args.key?(:security_type)
           @platform = args[:platform] if args.key?(:platform)
-          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -297,11 +682,6 @@ module Google
       # so long as the aspect ratio is preserved.
       class Image
         include Google::Apis::Core::Hashable
-      
-        # Image width in pixels.
-        # Corresponds to the JSON property `width`
-        # @return [Fixnum]
-        attr_accessor :width
       
         # The URL of the image.
         # Corresponds to the JSON property `url`
@@ -313,35 +693,75 @@ module Google
         # @return [Fixnum]
         attr_accessor :height
       
+        # Image width in pixels.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @width = args[:width] if args.key?(:width)
           @url = args[:url] if args.key?(:url)
           @height = args[:height] if args.key?(:height)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
-      # A specific filtering status and how many times it occurred.
-      class Reason
+      # Response message for listing filter sets.
+      class ListFilterSetsResponse
         include Google::Apis::Core::Hashable
       
-        # The filtering status code. Please refer to the
-        # [creative-status-codes.txt](https://storage.googleapis.com/adx-rtb-
-        # dictionaries/creative-status-codes.txt)
-        # file for different statuses.
+        # The filter sets belonging to the buyer.
+        # Corresponds to the JSON property `filterSets`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::FilterSet>]
+        attr_accessor :filter_sets
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListFilterSetsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_sets = args[:filter_sets] if args.key?(:filter_sets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The number of impressions with the specified dimension values that were
+      # considered to have no applicable bids, as described by the specified status.
+      class BidResponseWithoutBidsStatusRow
+        include Google::Apis::Core::Hashable
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `impressionCount`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :impression_count
+      
+        # The status that caused the bid response to be considered to have no
+        # applicable bids.
         # Corresponds to the JSON property `status`
-        # @return [Fixnum]
+        # @return [String]
         attr_accessor :status
       
-        # The number of times the creative was filtered for the status. The
-        # count is aggregated across all publishers on the exchange.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
       
         def initialize(**args)
            update!(**args)
@@ -349,27 +769,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @impression_count = args[:impression_count] if args.key?(:impression_count)
           @status = args[:status] if args.key?(:status)
-          @count = args[:count] if args.key?(:count)
-        end
-      end
-      
-      # Video content for a creative.
-      class VideoContent
-        include Google::Apis::Core::Hashable
-      
-        # The URL to fetch a video ad.
-        # Corresponds to the JSON property `videoUrl`
-        # @return [String]
-        attr_accessor :video_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @video_url = args[:video_url] if args.key?(:video_url)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
         end
       end
       
@@ -378,12 +780,6 @@ module Google
       # All fields are required unless otherwise specified.
       class ClientUserInvitation
         include Google::Apis::Core::Hashable
-      
-        # The unique numerical ID of the invitation that is sent to the user.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `invitationId`
-        # @return [Fixnum]
-        attr_accessor :invitation_id
       
         # The email address to which the invitation is sent. Email
         # addresses should be unique among all client users under each sponsor
@@ -399,34 +795,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :client_account_id
       
+        # The unique numerical ID of the invitation that is sent to the user.
+        # The value of this field is ignored in create operations.
+        # Corresponds to the JSON property `invitationId`
+        # @return [Fixnum]
+        attr_accessor :invitation_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
           @email = args[:email] if args.key?(:email)
           @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
-        end
-      end
-      
-      # @OutputOnly The auction type the restriction applies to.
-      class AuctionContext
-        include Google::Apis::Core::Hashable
-      
-        # The auction types this restriction applies to.
-        # Corresponds to the JSON property `auctionTypes`
-        # @return [Array<String>]
-        attr_accessor :auction_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auction_types = args[:auction_types] if args.key?(:auction_types)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
         end
       end
       
@@ -465,11 +848,6 @@ module Google
       class ListClientUsersResponse
         include Google::Apis::Core::Hashable
       
-        # The returned list of client users.
-        # Corresponds to the JSON property `users`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ClientUser>]
-        attr_accessor :users
-      
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListClientUsersRequest.pageToken
@@ -481,13 +859,56 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The returned list of client users.
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ClientUser>]
+        attr_accessor :users
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @users = args[:users] if args.key?(:users)
+        end
+      end
+      
+      # Response message for listing all details associated with a given filtered bid
+      # reason.
+      class ListCreativeStatusBreakdownByDetailResponse
+        include Google::Apis::Core::Hashable
+      
+        # The type of detail that the detail IDs represent.
+        # Corresponds to the JSON property `detailType`
+        # @return [String]
+        attr_accessor :detail_type
+      
+        # List of rows, with counts of bids with a given creative status aggregated
+        # by detail.
+        # Corresponds to the JSON property `filteredBidDetailRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::FilteredBidDetailRow>]
+        attr_accessor :filtered_bid_detail_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListCreativeStatusBreakdownByDetailRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.filteredBids.details.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail_type = args[:detail_type] if args.key?(:detail_type)
+          @filtered_bid_detail_rows = args[:filtered_bid_detail_rows] if args.key?(:filtered_bid_detail_rows)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -534,6 +955,38 @@ module Google
         end
       end
       
+      # A metric value, with an expected value and a variance; represents a count
+      # that may be either exact or estimated (i.e. when sampled).
+      class MetricValue
+        include Google::Apis::Core::Hashable
+      
+        # The variance (i.e. square of the standard deviation) of the metric value.
+        # If value is exact, variance is 0.
+        # Can be used to calculate margin of error as a percentage of value, using
+        # the following formula, where Z is the standard constant that depends on the
+        # desired size of the confidence interval (e.g. for 90% confidence interval,
+        # use Z = 1.645):
+        # marginOfError = 100 * Z * sqrt(variance) / value
+        # Corresponds to the JSON property `variance`
+        # @return [Fixnum]
+        attr_accessor :variance
+      
+        # The expected value of the metric.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variance = args[:variance] if args.key?(:variance)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A client user is created under a client buyer and has restricted access to
       # the Ad Exchange Marketplace and certain other sections
       # of the Ad Exchange Buyer UI based on the role
@@ -546,14 +999,6 @@ module Google
       # All fields are required unless otherwise specified.
       class ClientUser
         include Google::Apis::Core::Hashable
-      
-        # Numerical account ID of the client buyer
-        # with which the user is associated; the
-        # buyer must be a client of the current sponsor buyer.
-        # The value of this field is ignored in an update operation.
-        # Corresponds to the JSON property `clientAccountId`
-        # @return [Fixnum]
-        attr_accessor :client_account_id
       
         # The status of the client user.
         # Corresponds to the JSON property `status`
@@ -573,27 +1018,30 @@ module Google
         # @return [String]
         attr_accessor :email
       
+        # Numerical account ID of the client buyer
+        # with which the user is associated; the
+        # buyer must be a client of the current sponsor buyer.
+        # The value of this field is ignored in an update operation.
+        # Corresponds to the JSON property `clientAccountId`
+        # @return [Fixnum]
+        attr_accessor :client_account_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
           @status = args[:status] if args.key?(:status)
           @user_id = args[:user_id] if args.key?(:user_id)
           @email = args[:email] if args.key?(:email)
+          @client_account_id = args[:client_account_id] if args.key?(:client_account_id)
         end
       end
       
       # The association between a creative and a deal.
       class CreativeDealAssociation
         include Google::Apis::Core::Hashable
-      
-        # The account the creative belongs to.
-        # Corresponds to the JSON property `accountId`
-        # @return [String]
-        attr_accessor :account_id
       
         # The ID of the creative associated with the deal.
         # Corresponds to the JSON property `creativeId`
@@ -605,105 +1053,26 @@ module Google
         # @return [String]
         attr_accessor :deals_id
       
+        # The account the creative belongs to.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @account_id = args[:account_id] if args.key?(:account_id)
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deals_id = args[:deals_id] if args.key?(:deals_id)
-        end
-      end
-      
-      # @OutputOnly Filtering reasons for this creative during a period of a single
-      # day (from midnight to midnight Pacific).
-      class FilteringStats
-        include Google::Apis::Core::Hashable
-      
-        # The set of filtering reasons for this date.
-        # Corresponds to the JSON property `reasons`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Reason>]
-        attr_accessor :reasons
-      
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `date`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Date]
-        attr_accessor :date
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @reasons = args[:reasons] if args.key?(:reasons)
-          @date = args[:date] if args.key?(:date)
+          @account_id = args[:account_id] if args.key?(:account_id)
         end
       end
       
       # A creative and its classification data.
       class Creative
         include Google::Apis::Core::Hashable
-      
-        # HTML content for a creative.
-        # Corresponds to the JSON property `html`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::HtmlContent]
-        attr_accessor :html
-      
-        # @OutputOnly The top-level deals status of this creative.
-        # If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in
-        # serving_restrictions will also exist. Note
-        # that this may be nuanced with other contextual restrictions, in which case,
-        # it may be preferable to read from serving_restrictions directly.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `dealsStatus`
-        # @return [String]
-        attr_accessor :deals_status
-      
-        # @OutputOnly Detected product categories, if any.
-        # See the ad-product-categories.txt file in the technical documentation
-        # for a list of IDs.
-        # Corresponds to the JSON property `detectedProductCategories`
-        # @return [Array<Fixnum>]
-        attr_accessor :detected_product_categories
-      
-        # @OutputOnly The top-level open auction status of this creative.
-        # If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
-        # serving_restrictions will also exist. Note
-        # that this may be nuanced with other contextual restrictions, in which case,
-        # it may be preferable to read from serving_restrictions directly.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # Corresponds to the JSON property `openAuctionStatus`
-        # @return [String]
-        attr_accessor :open_auction_status
-      
-        # The name of the company being advertised in the creative.
-        # Corresponds to the JSON property `advertiserName`
-        # @return [String]
-        attr_accessor :advertiser_name
-      
-        # @OutputOnly Detected advertiser IDs, if any.
-        # Corresponds to the JSON property `detectedAdvertiserIds`
-        # @return [Array<Fixnum>]
-        attr_accessor :detected_advertiser_ids
-      
-        # @OutputOnly
-        # The detected domains for this creative.
-        # Corresponds to the JSON property `detectedDomains`
-        # @return [Array<String>]
-        attr_accessor :detected_domains
       
         # @OutputOnly Filtering reasons for this creative during a period of a single
         # day (from midnight to midnight Pacific).
@@ -816,19 +1185,64 @@ module Google
         # @return [Array<String>]
         attr_accessor :impression_tracking_urls
       
+        # HTML content for a creative.
+        # Corresponds to the JSON property `html`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::HtmlContent]
+        attr_accessor :html
+      
+        # @OutputOnly The top-level deals status of this creative.
+        # If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in
+        # serving_restrictions will also exist. Note
+        # that this may be nuanced with other contextual restrictions, in which case,
+        # it may be preferable to read from serving_restrictions directly.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `dealsStatus`
+        # @return [String]
+        attr_accessor :deals_status
+      
+        # @OutputOnly Detected product categories, if any.
+        # See the ad-product-categories.txt file in the technical documentation
+        # for a list of IDs.
+        # Corresponds to the JSON property `detectedProductCategories`
+        # @return [Array<Fixnum>]
+        attr_accessor :detected_product_categories
+      
+        # @OutputOnly The top-level open auction status of this creative.
+        # If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
+        # serving_restrictions will also exist. Note
+        # that this may be nuanced with other contextual restrictions, in which case,
+        # it may be preferable to read from serving_restrictions directly.
+        # Can be used to filter the response of the
+        # creatives.list
+        # method.
+        # Corresponds to the JSON property `openAuctionStatus`
+        # @return [String]
+        attr_accessor :open_auction_status
+      
+        # The name of the company being advertised in the creative.
+        # Corresponds to the JSON property `advertiserName`
+        # @return [String]
+        attr_accessor :advertiser_name
+      
+        # @OutputOnly Detected advertiser IDs, if any.
+        # Corresponds to the JSON property `detectedAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :detected_advertiser_ids
+      
+        # @OutputOnly
+        # The detected domains for this creative.
+        # Corresponds to the JSON property `detectedDomains`
+        # @return [Array<String>]
+        attr_accessor :detected_domains
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @html = args[:html] if args.key?(:html)
-          @deals_status = args[:deals_status] if args.key?(:deals_status)
-          @detected_product_categories = args[:detected_product_categories] if args.key?(:detected_product_categories)
-          @open_auction_status = args[:open_auction_status] if args.key?(:open_auction_status)
-          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
-          @detected_advertiser_ids = args[:detected_advertiser_ids] if args.key?(:detected_advertiser_ids)
-          @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
           @filtering_stats = args[:filtering_stats] if args.key?(:filtering_stats)
           @attributes = args[:attributes] if args.key?(:attributes)
           @api_update_time = args[:api_update_time] if args.key?(:api_update_time)
@@ -847,6 +1261,45 @@ module Google
           @version = args[:version] if args.key?(:version)
           @vendor_ids = args[:vendor_ids] if args.key?(:vendor_ids)
           @impression_tracking_urls = args[:impression_tracking_urls] if args.key?(:impression_tracking_urls)
+          @html = args[:html] if args.key?(:html)
+          @deals_status = args[:deals_status] if args.key?(:deals_status)
+          @detected_product_categories = args[:detected_product_categories] if args.key?(:detected_product_categories)
+          @open_auction_status = args[:open_auction_status] if args.key?(:open_auction_status)
+          @advertiser_name = args[:advertiser_name] if args.key?(:advertiser_name)
+          @detected_advertiser_ids = args[:detected_advertiser_ids] if args.key?(:detected_advertiser_ids)
+          @detected_domains = args[:detected_domains] if args.key?(:detected_domains)
+        end
+      end
+      
+      # @OutputOnly Filtering reasons for this creative during a period of a single
+      # day (from midnight to midnight Pacific).
+      class FilteringStats
+        include Google::Apis::Core::Hashable
+      
+        # The set of filtering reasons for this date.
+        # Corresponds to the JSON property `reasons`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Reason>]
+        attr_accessor :reasons
+      
+        # Represents a whole calendar date, e.g. date of birth. The time of day and
+        # time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+        # represent a year and month where the day is not significant, e.g. credit card
+        # expiration date. The year may be 0 to represent a month and day independent
+        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+        # and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Date]
+        attr_accessor :date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reasons = args[:reasons] if args.key?(:reasons)
+          @date = args[:date] if args.key?(:date)
         end
       end
       
@@ -866,6 +1319,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @association = args[:association] if args.key?(:association)
+        end
+      end
+      
+      # Response message for listing all reasons that impressions were filtered (i.e.
+      # not considered as an inventory match) for the buyer.
+      class ListFilteredImpressionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListFilteredImpressionsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.filteredImpressions.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of rows, with counts of filtered impressions aggregated by status.
+        # Corresponds to the JSON property `impressionsStatusRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ImpressionStatusRow>]
+        attr_accessor :impressions_status_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @impressions_status_rows = args[:impressions_status_rows] if args.key?(:impressions_status_rows)
+        end
+      end
+      
+      # Response message for listing all creatives associated with a given filtered
+      # bid reason.
+      class ListCreativeStatusBreakdownByCreativeResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListCreativeStatusBreakdownByCreativeRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.filteredBids.creatives.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of rows, with counts of bids with a given creative status aggregated
+        # by creative.
+        # Corresponds to the JSON property `filteredBidCreativeRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::FilteredBidCreativeRow>]
+        attr_accessor :filtered_bid_creative_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @filtered_bid_creative_rows = args[:filtered_bid_creative_rows] if args.key?(:filtered_bid_creative_rows)
         end
       end
       
@@ -990,14 +1506,102 @@ module Google
         end
       end
       
-      # A request for associating a deal and a creative.
-      class AddDealAssociationRequest
+      # A set of filters that is applied to a request for data.
+      # Within a filter set, an AND operation is performed across the filters
+      # represented by each field. An OR operation is performed across the filters
+      # represented by the multiple values of a repeated field. E.g.
+      # "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
+      # seller_network_id=56)"
+      class FilterSet
         include Google::Apis::Core::Hashable
       
-        # The association between a creative and a deal.
-        # Corresponds to the JSON property `association`
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation]
-        attr_accessor :association
+        # The list of IDs of the seller (publisher) networks on which to filter;
+        # may be empty. The filters represented by multiple seller network IDs are
+        # ORed together (i.e. if non-empty, results must match any one of the
+        # publisher networks).
+        # See [seller-network-ids](https://developers.google.com/ad-exchange/rtb/
+        # downloads/seller-network-ids)
+        # file for the set of existing seller network IDs.
+        # Corresponds to the JSON property `sellerNetworkIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :seller_network_ids
+      
+        # The account ID of the buyer who owns this filter set.
+        # The value of this field is ignored in create operations.
+        # Corresponds to the JSON property `ownerAccountId`
+        # @return [Fixnum]
+        attr_accessor :owner_account_id
+      
+        # An absolute date range, specified by its start date and end date.
+        # The supported range of dates begins 30 days before today and ends today.
+        # Validity checked upon filter set creation. If a filter set with an absolute
+        # date range is run at a later date more than 30 days after start_date, it will
+        # fail.
+        # Corresponds to the JSON property `absoluteDateRange`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange]
+        attr_accessor :absolute_date_range
+      
+        # The ID of the buyer account on which to filter; optional.
+        # Corresponds to the JSON property `buyerAccountId`
+        # @return [Fixnum]
+        attr_accessor :buyer_account_id
+      
+        # The environment on which to filter; optional.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The format on which to filter; optional.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # The ID of the deal on which to filter; optional.
+        # Corresponds to the JSON property `dealId`
+        # @return [Fixnum]
+        attr_accessor :deal_id
+      
+        # The granularity of time intervals if a time series breakdown is desired;
+        # optional.
+        # Corresponds to the JSON property `timeSeriesGranularity`
+        # @return [String]
+        attr_accessor :time_series_granularity
+      
+        # The ID of the filter set; unique within the account of the filter set
+        # owner.
+        # The value of this field is ignored in create operations.
+        # Corresponds to the JSON property `filterSetId`
+        # @return [Fixnum]
+        attr_accessor :filter_set_id
+      
+        # An open-ended realtime time range specified by the start timestamp.
+        # For filter sets that specify a realtime time range RTB metrics continue to
+        # be aggregated throughout the lifetime of the filter set.
+        # Corresponds to the JSON property `realtimeTimeRange`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange]
+        attr_accessor :realtime_time_range
+      
+        # The ID of the creative on which to filter; optional.
+        # Corresponds to the JSON property `creativeId`
+        # @return [String]
+        attr_accessor :creative_id
+      
+        # The list of platforms on which to filter; may be empty. The filters
+        # represented by multiple platforms are ORed together (i.e. if non-empty,
+        # results must match any one of the platforms).
+        # Corresponds to the JSON property `platforms`
+        # @return [Array<String>]
+        attr_accessor :platforms
+      
+        # A relative date range, specified by an offset and a duration.
+        # The supported range of dates begins 30 days before today and ends today.
+        # I.e. the limits for these values are:
+        # offset_days >= 0
+        # duration_days >= 1
+        # offset_days + duration_days <= 30
+        # Corresponds to the JSON property `relativeDateRange`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange]
+        attr_accessor :relative_date_range
       
         def initialize(**args)
            update!(**args)
@@ -1005,18 +1609,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @association = args[:association] if args.key?(:association)
+          @seller_network_ids = args[:seller_network_ids] if args.key?(:seller_network_ids)
+          @owner_account_id = args[:owner_account_id] if args.key?(:owner_account_id)
+          @absolute_date_range = args[:absolute_date_range] if args.key?(:absolute_date_range)
+          @buyer_account_id = args[:buyer_account_id] if args.key?(:buyer_account_id)
+          @environment = args[:environment] if args.key?(:environment)
+          @format = args[:format] if args.key?(:format)
+          @deal_id = args[:deal_id] if args.key?(:deal_id)
+          @time_series_granularity = args[:time_series_granularity] if args.key?(:time_series_granularity)
+          @filter_set_id = args[:filter_set_id] if args.key?(:filter_set_id)
+          @realtime_time_range = args[:realtime_time_range] if args.key?(:realtime_time_range)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
+          @platforms = args[:platforms] if args.key?(:platforms)
+          @relative_date_range = args[:relative_date_range] if args.key?(:relative_date_range)
+        end
+      end
+      
+      # The number of impressions with the specified dimension values where the
+      # corresponding bid request or bid response was not successful, as described by
+      # the specified callout status.
+      class CalloutStatusRow
+        include Google::Apis::Core::Hashable
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        # The ID of the callout status.
+        # See [callout-status-codes](https://developers.google.com/ad-exchange/rtb/
+        # downloads/callout-status-codes).
+        # Corresponds to the JSON property `calloutStatusId`
+        # @return [Fixnum]
+        attr_accessor :callout_status_id
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `impressionCount`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :impression_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+          @callout_status_id = args[:callout_status_id] if args.key?(:callout_status_id)
+          @impression_count = args[:impression_count] if args.key?(:impression_count)
         end
       end
       
       # A response for listing creative and deal associations
       class ListDealAssociationsResponse
         include Google::Apis::Core::Hashable
-      
-        # The list of associations.
-        # Corresponds to the JSON property `associations`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation>]
-        attr_accessor :associations
       
         # A token to retrieve the next page of results.
         # Pass this value in the
@@ -1027,14 +1675,32 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The list of associations.
+        # Corresponds to the JSON property `associations`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation>]
+        attr_accessor :associations
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @associations = args[:associations] if args.key?(:associations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @associations = args[:associations] if args.key?(:associations)
+        end
+      end
+      
+      # A request for stopping notifications for changes to creative Status.
+      class StopWatchingCreativeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1063,25 +1729,17 @@ module Google
         end
       end
       
-      # A request for stopping notifications for changes to creative Status.
-      class StopWatchingCreativeRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # @OutputOnly A representation of the status of an ad in a
       # specific context. A context here relates to where something ultimately serves
       # (for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,
       # or the type of auction).
       class ServingRestriction
         include Google::Apis::Core::Hashable
+      
+        # The contexts for the restriction.
+        # Corresponds to the JSON property `contexts`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingContext>]
+        attr_accessor :contexts
       
         # The status of the creative in this context (for example, it has been
         # explicitly disapproved or is pending review).
@@ -1098,20 +1756,15 @@ module Google
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Disapproval>]
         attr_accessor :disapproval_reasons
       
-        # The contexts for the restriction.
-        # Corresponds to the JSON property `contexts`
-        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingContext>]
-        attr_accessor :contexts
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @contexts = args[:contexts] if args.key?(:contexts)
           @status = args[:status] if args.key?(:status)
           @disapproval_reasons = args[:disapproval_reasons] if args.key?(:disapproval_reasons)
-          @contexts = args[:contexts] if args.key?(:contexts)
         end
       end
       
@@ -1125,11 +1778,6 @@ module Google
       class Date
         include Google::Apis::Core::Hashable
       
-        # Month of year. Must be from 1 to 12.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
         # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
         # a year.
         # Corresponds to the JSON property `year`
@@ -1142,15 +1790,49 @@ module Google
         # @return [Fixnum]
         attr_accessor :day
       
+        # Month of year. Must be from 1 to 12.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
           @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+        end
+      end
+      
+      # A response may include multiple rows, breaking down along various dimensions.
+      # Encapsulates the values of all dimensions for a given row.
+      class RowDimensions
+        include Google::Apis::Core::Hashable
+      
+        # An interval of time, with an absolute start and end.
+        # This is included in the response, for several reasons:
+        # 1) The request may have specified start or end times relative to the time the
+        # request was sent; the response indicates the corresponding absolute time
+        # interval.
+        # 2) The request may have specified an end time past the latest time for which
+        # data was available (e.g. if requesting data for the today); the response
+        # indicates the latest time for which data was actually returned.
+        # 3) The response data for a single request may be broken down into multiple
+        # time intervals, if a time series was requested.
+        # Corresponds to the JSON property `timeInterval`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::TimeInterval]
+        attr_accessor :time_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_interval = args[:time_interval] if args.key?(:time_interval)
         end
       end
       
@@ -1173,18 +1855,31 @@ module Google
         end
       end
       
-      # A request for watching changes to creative Status.
-      class WatchCreativeRequest
+      # Response message for listing all details associated with a given filtered bid
+      # reason and a given creative.
+      class ListCreativeStatusAndCreativeBreakdownByDetailResponse
         include Google::Apis::Core::Hashable
       
-        # The Pub/Sub topic to publish notifications to.
-        # This topic must already exist and must give permission to
-        # ad-exchange-buyside-reports@google.com to write to the topic.
-        # This should be the full resource name in
-        # "projects/`project_id`/topics/`topic_id`" format.
-        # Corresponds to the JSON property `topic`
+        # List of rows, with counts of bids with a given creative status and
+        # creative, aggregated by detail.
+        # Corresponds to the JSON property `filteredBidDetailRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::FilteredBidDetailRow>]
+        attr_accessor :filtered_bid_detail_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListCreativeStatusAndCreativeBreakdownByDetailRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.filteredBids.creatives.details.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
         # @return [String]
-        attr_accessor :topic
+        attr_accessor :next_page_token
+      
+        # The type of detail that the detail IDs represent.
+        # Corresponds to the JSON property `detailType`
+        # @return [String]
+        attr_accessor :detail_type
       
         def initialize(**args)
            update!(**args)
@@ -1192,7 +1887,337 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @topic = args[:topic] if args.key?(:topic)
+          @filtered_bid_detail_rows = args[:filtered_bid_detail_rows] if args.key?(:filtered_bid_detail_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @detail_type = args[:detail_type] if args.key?(:detail_type)
+        end
+      end
+      
+      # @OutputOnly The app type the restriction applies to for mobile device.
+      class AppContext
+        include Google::Apis::Core::Hashable
+      
+        # The app types this restriction applies to.
+        # Corresponds to the JSON property `appTypes`
+        # @return [Array<String>]
+        attr_accessor :app_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_types = args[:app_types] if args.key?(:app_types)
+        end
+      end
+      
+      # Response message for listing all reasons that bids were filtered from the
+      # auction.
+      class ListFilteredBidsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of rows, with counts of filtered bids aggregated by filtering reason
+        # (i.e. creative status).
+        # Corresponds to the JSON property `creativeStatusRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CreativeStatusRow>]
+        attr_accessor :creative_status_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListFilteredBidsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.filteredBids.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creative_status_rows = args[:creative_status_rows] if args.key?(:creative_status_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # @OutputOnly A security context.
+      class SecurityContext
+        include Google::Apis::Core::Hashable
+      
+        # The security types in this context.
+        # Corresponds to the JSON property `securities`
+        # @return [Array<String>]
+        attr_accessor :securities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @securities = args[:securities] if args.key?(:securities)
+        end
+      end
+      
+      # HTML content for a creative.
+      class HtmlContent
+        include Google::Apis::Core::Hashable
+      
+        # The height of the HTML snippet in pixels.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        # The width of the HTML snippet in pixels.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        # The HTML snippet that displays the ad when inserted in the web page.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @height = args[:height] if args.key?(:height)
+          @width = args[:width] if args.key?(:width)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # A response for listing creatives.
+      class ListCreativesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListCreativesRequest.page_token
+        # field in the subsequent call to `ListCreatives` method to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of creatives.
+        # Corresponds to the JSON property `creatives`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Creative>]
+        attr_accessor :creatives
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @creatives = args[:creatives] if args.key?(:creatives)
+        end
+      end
+      
+      # Response message for listing all reasons that bid requests were filtered and
+      # not sent to the buyer.
+      class ListFilteredBidRequestsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of rows, with counts of filtered bid requests aggregated by callout
+        # status.
+        # Corresponds to the JSON property `calloutStatusRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CalloutStatusRow>]
+        attr_accessor :callout_status_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListFilteredBidRequestsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.filteredBidRequests.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @callout_status_rows = args[:callout_status_rows] if args.key?(:callout_status_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for listing the metrics that are measured in number of bids.
+      class ListBidMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of rows, each containing a set of bid metrics.
+        # Corresponds to the JSON property `bidMetricsRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::BidMetricsRow>]
+        attr_accessor :bid_metrics_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListBidMetricsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.bidMetrics.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bid_metrics_rows = args[:bid_metrics_rows] if args.key?(:bid_metrics_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A specific filtering status and how many times it occurred.
+      class Reason
+        include Google::Apis::Core::Hashable
+      
+        # The filtering status code. Please refer to the
+        # [creative-status-codes.txt](https://storage.googleapis.com/adx-rtb-
+        # dictionaries/creative-status-codes.txt)
+        # file for different statuses.
+        # Corresponds to the JSON property `status`
+        # @return [Fixnum]
+        attr_accessor :status
+      
+        # The number of times the creative was filtered for the status. The
+        # count is aggregated across all publishers on the exchange.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
+      # Response message for listing all reasons that bids lost in the auction.
+      class ListLosingBidsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of rows, with counts of losing bids aggregated by loss reason (i.e.
+        # creative status).
+        # Corresponds to the JSON property `creativeStatusRows`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CreativeStatusRow>]
+        attr_accessor :creative_status_rows
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # ListLosingBidsRequest.pageToken
+        # field in the subsequent call to the
+        # accounts.filterSets.losingBids.list
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creative_status_rows = args[:creative_status_rows] if args.key?(:creative_status_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Video content for a creative.
+      class VideoContent
+        include Google::Apis::Core::Hashable
+      
+        # The URL to fetch a video ad.
+        # Corresponds to the JSON property `videoUrl`
+        # @return [String]
+        attr_accessor :video_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @video_url = args[:video_url] if args.key?(:video_url)
+        end
+      end
+      
+      # The set of metrics that are measured in numbers of impressions, representing
+      # how many impressions with the specified dimension values were considered
+      # eligible at each stage of the bidding funnel.
+      class ImpressionMetricsRow
+        include Google::Apis::Core::Hashable
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `availableImpressions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :available_impressions
+      
+        # A response may include multiple rows, breaking down along various dimensions.
+        # Encapsulates the values of all dimensions for a given row.
+        # Corresponds to the JSON property `rowDimensions`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::RowDimensions]
+        attr_accessor :row_dimensions
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `inventoryMatches`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :inventory_matches
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `bidRequests`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :bid_requests
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `responsesWithBids`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :responses_with_bids
+      
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `successfulResponses`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :successful_responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_impressions = args[:available_impressions] if args.key?(:available_impressions)
+          @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
+          @inventory_matches = args[:inventory_matches] if args.key?(:inventory_matches)
+          @bid_requests = args[:bid_requests] if args.key?(:bid_requests)
+          @responses_with_bids = args[:responses_with_bids] if args.key?(:responses_with_bids)
+          @successful_responses = args[:successful_responses] if args.key?(:successful_responses)
         end
       end
     end

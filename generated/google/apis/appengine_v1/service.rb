@@ -193,10 +193,14 @@ module Google
         
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding
-        # below allows API services to override the binding to use different resource
-        # name schemes, such as users/*/operations.
+        # allows API services to override the binding to use different resource name
+        # schemes, such as users/*/operations. To override the binding, API services can
+        # add a binding such as "/v1/`name=users/*`/operations" to their service
+        # configuration. For backwards compatibility, the default name includes the
+        # operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] apps_id
-        #   Part of `name`. The name of the operation collection.
+        #   Part of `name`. The name of the operation's parent resource.
         # @param [String] page_token
         #   The standard list page token.
         # @param [Fixnum] page_size
@@ -270,12 +274,12 @@ module Google
         # Lists information about the supported locations for this service.
         # @param [String] apps_id
         #   Part of `name`. The resource that owns the locations collection, if applicable.
-        # @param [String] filter
-        #   The standard list filter.
         # @param [String] page_token
         #   The standard list page token.
         # @param [Fixnum] page_size
         #   The standard list page size.
+        # @param [String] filter
+        #   The standard list filter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,14 +297,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_app_locations(apps_id, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_app_locations(apps_id, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/apps/{appsId}/locations', options)
           command.response_representation = Google::Apis::AppengineV1::ListLocationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1::ListLocationsResponse
           command.params['appsId'] = apps_id unless apps_id.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

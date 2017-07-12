@@ -33,14 +33,14 @@ module Google
       # @see https://cloud.google.com/container-builder/docs/
       class CloudBuildService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
 
         def initialize
           super('https://cloudbuild.googleapis.com/', '')
@@ -195,6 +195,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes an BuildTrigger by its project ID and trigger ID.
+        # This API is experimental.
+        # @param [String] project_id
+        #   ID of the project that owns the trigger.
+        # @param [String] trigger_id
+        #   ID of the BuildTrigger to delete.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_trigger(project_id, trigger_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/projects/{projectId}/triggers/{triggerId}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a BuildTrigger.
         # This API is experimental.
         # @param [String] project_id
@@ -331,40 +365,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an BuildTrigger by its project ID and trigger ID.
-        # This API is experimental.
-        # @param [String] project_id
-        #   ID of the project that owns the trigger.
-        # @param [String] trigger_id
-        #   ID of the BuildTrigger to delete.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_trigger(project_id, trigger_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/projects/{projectId}/triggers/{triggerId}', options)
-          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
-          command.response_class = Google::Apis::CloudbuildV1::Empty
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.params['triggerId'] = trigger_id unless trigger_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists operations that match the specified filter in the request. If the
         # server doesn't support this method, it returns `UNIMPLEMENTED`.
         # NOTE: the `name` binding allows API services to override the binding
@@ -489,8 +489,8 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

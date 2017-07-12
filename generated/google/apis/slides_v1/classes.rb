@@ -22,6 +22,1477 @@ module Google
   module Apis
     module SlidesV1
       
+      # A TextElement kind that represents the beginning of a new paragraph.
+      class ParagraphMarker
+        include Google::Apis::Core::Hashable
+      
+        # Styles that apply to a whole paragraph.
+        # If this text is contained in a shape with a parent placeholder, then these
+        # paragraph styles may be
+        # inherited from the parent. Which paragraph styles are inherited depend on the
+        # nesting level of lists:
+        # * A paragraph not in a list will inherit its paragraph style from the
+        # paragraph at the 0 nesting level of the list inside the parent placeholder.
+        # * A paragraph in a list will inherit its paragraph style from the paragraph
+        # at its corresponding nesting level of the list inside the parent
+        # placeholder.
+        # Inherited paragraph styles are represented as unset fields in this message.
+        # Corresponds to the JSON property `style`
+        # @return [Google::Apis::SlidesV1::ParagraphStyle]
+        attr_accessor :style
+      
+        # Describes the bullet of a paragraph.
+        # Corresponds to the JSON property `bullet`
+        # @return [Google::Apis::SlidesV1::Bullet]
+        attr_accessor :bullet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @style = args[:style] if args.key?(:style)
+          @bullet = args[:bullet] if args.key?(:bullet)
+        end
+      end
+      
+      # Inserts columns into a table.
+      # Other columns in the table will be resized to fit the new column.
+      class InsertTableColumnsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The number of columns to be inserted. Maximum 20 per request.
+        # Corresponds to the JSON property `number`
+        # @return [Fixnum]
+        attr_accessor :number
+      
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
+        # Whether to insert new columns to the right of the reference cell location.
+        # - `True`: insert to the right.
+        # - `False`: insert to the left.
+        # Corresponds to the JSON property `insertRight`
+        # @return [Boolean]
+        attr_accessor :insert_right
+        alias_method :insert_right?, :insert_right
+      
+        # The table to insert columns into.
+        # Corresponds to the JSON property `tableObjectId`
+        # @return [String]
+        attr_accessor :table_object_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @number = args[:number] if args.key?(:number)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
+          @insert_right = args[:insert_right] if args.key?(:insert_right)
+          @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
+        end
+      end
+      
+      # The thumbnail of a page.
+      class Thumbnail
+        include Google::Apis::Core::Hashable
+      
+        # The content URL of the thumbnail image.
+        # The URL to the image has a default lifetime of 30 minutes.
+        # This URL is tagged with the account of the requester. Anyone with the URL
+        # effectively accesses the image as the original requester. Access to the
+        # image may be lost if the presentation's sharing settings change.
+        # The mime type of the thumbnail image is the same as specified in the
+        # `GetPageThumbnailRequest`.
+        # Corresponds to the JSON property `contentUrl`
+        # @return [String]
+        attr_accessor :content_url
+      
+        # The positive width in pixels of the thumbnail image.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        # The positive height in pixels of the thumbnail image.
+        # Corresponds to the JSON property `height`
+        # @return [Fixnum]
+        attr_accessor :height
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_url = args[:content_url] if args.key?(:content_url)
+          @width = args[:width] if args.key?(:width)
+          @height = args[:height] if args.key?(:height)
+        end
+      end
+      
+      # The user-specified ID mapping for a placeholder that will be created on a
+      # slide from a specified layout.
+      class LayoutPlaceholderIdMapping
+        include Google::Apis::Core::Hashable
+      
+        # The placeholder information that uniquely identifies a placeholder shape.
+        # Corresponds to the JSON property `layoutPlaceholder`
+        # @return [Google::Apis::SlidesV1::Placeholder]
+        attr_accessor :layout_placeholder
+      
+        # The object ID of the placeholder on a layout that will be applied
+        # to a slide.
+        # Corresponds to the JSON property `layoutPlaceholderObjectId`
+        # @return [String]
+        attr_accessor :layout_placeholder_object_id
+      
+        # A user-supplied object ID for the placeholder identified above that to be
+        # created onto a slide.
+        # If you specify an ID, it must be unique among all pages and page elements
+        # in the presentation. The ID must start with an alphanumeric character or an
+        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        # may include those as well as a hyphen or colon (matches regex
+        # `[a-zA-Z0-9_-:]`).
+        # The length of the ID must not be less than 5 or greater than 50.
+        # If you don't specify an ID, a unique one is generated.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @layout_placeholder = args[:layout_placeholder] if args.key?(:layout_placeholder)
+          @layout_placeholder_object_id = args[:layout_placeholder_object_id] if args.key?(:layout_placeholder_object_id)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # Update the properties of a Shape.
+      class UpdateShapePropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `shapeProperties` is
+        # implied and should not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the shape background solid fill color, set `fields`
+        # to `"shapeBackgroundFill.solidFill.color"`.
+        # To reset a property to its default value, include its field name in the
+        # field mask but leave the field itself unset.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The object ID of the shape the updates are applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The properties of a Shape.
+        # If the shape is a placeholder shape as determined by the
+        # placeholder field, then these
+        # properties may be inherited from a parent placeholder shape.
+        # Determining the rendered value of the property depends on the corresponding
+        # property_state field value.
+        # Corresponds to the JSON property `shapeProperties`
+        # @return [Google::Apis::SlidesV1::ShapeProperties]
+        attr_accessor :shape_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @shape_properties = args[:shape_properties] if args.key?(:shape_properties)
+        end
+      end
+      
+      # A PageElement kind representing
+      # word art.
+      class WordArt
+        include Google::Apis::Core::Hashable
+      
+        # The text rendered as word art.
+        # Corresponds to the JSON property `renderedText`
+        # @return [String]
+        attr_accessor :rendered_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rendered_text = args[:rendered_text] if args.key?(:rendered_text)
+        end
+      end
+      
+      # A recolor effect applied on an image.
+      class Recolor
+        include Google::Apis::Core::Hashable
+      
+        # The recolor effect is represented by a gradient, which is a list of color
+        # stops.
+        # The colors in the gradient will replace the corresponding colors at
+        # the same position in the color palette and apply to the image. This
+        # property is read-only.
+        # Corresponds to the JSON property `recolorStops`
+        # @return [Array<Google::Apis::SlidesV1::ColorStop>]
+        attr_accessor :recolor_stops
+      
+        # The name of the recolor effect.
+        # The name is determined from the `recolor_stops` by matching the gradient
+        # against the colors in the page's current color scheme. This property is
+        # read-only.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recolor_stops = args[:recolor_stops] if args.key?(:recolor_stops)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A hypertext link.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # If set, indicates this is a link to the specific page in this
+        # presentation with this ID. A page with this ID may not exist.
+        # Corresponds to the JSON property `pageObjectId`
+        # @return [String]
+        attr_accessor :page_object_id
+      
+        # If set, indicates this is a link to the external web page at this URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # If set, indicates this is a link to a slide in this presentation,
+        # addressed by its position.
+        # Corresponds to the JSON property `relativeLink`
+        # @return [String]
+        attr_accessor :relative_link
+      
+        # If set, indicates this is a link to the slide at this zero-based index
+        # in the presentation. There may not be a slide at this index.
+        # Corresponds to the JSON property `slideIndex`
+        # @return [Fixnum]
+        attr_accessor :slide_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_object_id = args[:page_object_id] if args.key?(:page_object_id)
+          @url = args[:url] if args.key?(:url)
+          @relative_link = args[:relative_link] if args.key?(:relative_link)
+          @slide_index = args[:slide_index] if args.key?(:slide_index)
+        end
+      end
+      
+      # The result of creating a shape.
+      class CreateShapeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the created shape.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # An RGB color.
+      class RgbColor
+        include Google::Apis::Core::Hashable
+      
+        # The red component of the color, from 0.0 to 1.0.
+        # Corresponds to the JSON property `red`
+        # @return [Float]
+        attr_accessor :red
+      
+        # The green component of the color, from 0.0 to 1.0.
+        # Corresponds to the JSON property `green`
+        # @return [Float]
+        attr_accessor :green
+      
+        # The blue component of the color, from 0.0 to 1.0.
+        # Corresponds to the JSON property `blue`
+        # @return [Float]
+        attr_accessor :blue
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @red = args[:red] if args.key?(:red)
+          @green = args[:green] if args.key?(:green)
+          @blue = args[:blue] if args.key?(:blue)
+        end
+      end
+      
+      # Creates a line.
+      class CreateLineRequest
+        include Google::Apis::Core::Hashable
+      
+        # A user-supplied object ID.
+        # If you specify an ID, it must be unique among all pages and page elements
+        # in the presentation. The ID must start with an alphanumeric character or an
+        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        # may include those as well as a hyphen or colon (matches regex
+        # `[a-zA-Z0-9_-:]`).
+        # The length of the ID must not be less than 5 or greater than 50.
+        # If you don't specify an ID, a unique one is generated.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # Common properties for a page element.
+        # Note: When you initially create a
+        # PageElement, the API may modify
+        # the values of both `size` and `transform`, but the
+        # visual size will be unchanged.
+        # Corresponds to the JSON property `elementProperties`
+        # @return [Google::Apis::SlidesV1::PageElementProperties]
+        attr_accessor :element_properties
+      
+        # The category of line to be created.
+        # Corresponds to the JSON property `lineCategory`
+        # @return [String]
+        attr_accessor :line_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @element_properties = args[:element_properties] if args.key?(:element_properties)
+          @line_category = args[:line_category] if args.key?(:line_category)
+        end
+      end
+      
+      # The result of creating a slide.
+      class CreateSlideResponse
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the created slide.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # Creates a new shape.
+      class CreateShapeRequest
+        include Google::Apis::Core::Hashable
+      
+        # A user-supplied object ID.
+        # If you specify an ID, it must be unique among all pages and page elements
+        # in the presentation. The ID must start with an alphanumeric character or an
+        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        # may include those as well as a hyphen or colon (matches regex
+        # `[a-zA-Z0-9_-:]`).
+        # The length of the ID must not be less than 5 or greater than 50.
+        # If empty, a unique identifier will be generated.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The shape type.
+        # Corresponds to the JSON property `shapeType`
+        # @return [String]
+        attr_accessor :shape_type
+      
+        # Common properties for a page element.
+        # Note: When you initially create a
+        # PageElement, the API may modify
+        # the values of both `size` and `transform`, but the
+        # visual size will be unchanged.
+        # Corresponds to the JSON property `elementProperties`
+        # @return [Google::Apis::SlidesV1::PageElementProperties]
+        attr_accessor :element_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @shape_type = args[:shape_type] if args.key?(:shape_type)
+          @element_properties = args[:element_properties] if args.key?(:element_properties)
+        end
+      end
+      
+      # A PageElement kind representing a
+      # video.
+      class Video
+        include Google::Apis::Core::Hashable
+      
+        # The properties of the Video.
+        # Corresponds to the JSON property `videoProperties`
+        # @return [Google::Apis::SlidesV1::VideoProperties]
+        attr_accessor :video_properties
+      
+        # The video source.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # An URL to a video. The URL is valid as long as the source video
+        # exists and sharing settings do not change.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # The video source's unique identifier for this video.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @video_properties = args[:video_properties] if args.key?(:video_properties)
+          @source = args[:source] if args.key?(:source)
+          @url = args[:url] if args.key?(:url)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # The properties of the Page.
+      # The page will inherit properties from the parent page. Depending on the page
+      # type the hierarchy is defined in either
+      # SlideProperties or
+      # LayoutProperties.
+      class PageProperties
+        include Google::Apis::Core::Hashable
+      
+        # The page background fill.
+        # Corresponds to the JSON property `pageBackgroundFill`
+        # @return [Google::Apis::SlidesV1::PageBackgroundFill]
+        attr_accessor :page_background_fill
+      
+        # The palette of predefined colors for a page.
+        # Corresponds to the JSON property `colorScheme`
+        # @return [Google::Apis::SlidesV1::ColorScheme]
+        attr_accessor :color_scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_background_fill = args[:page_background_fill] if args.key?(:page_background_fill)
+          @color_scheme = args[:color_scheme] if args.key?(:color_scheme)
+        end
+      end
+      
+      # Contains properties describing the look and feel of a list bullet at a given
+      # level of nesting.
+      class NestingLevel
+        include Google::Apis::Core::Hashable
+      
+        # Represents the styling that can be applied to a TextRun.
+        # If this text is contained in a shape with a parent placeholder, then these
+        # text styles may be
+        # inherited from the parent. Which text styles are inherited depend on the
+        # nesting level of lists:
+        # * A text run in a paragraph that is not in a list will inherit its text style
+        # from the the newline character in the paragraph at the 0 nesting level of
+        # the list inside the parent placeholder.
+        # * A text run in a paragraph that is in a list will inherit its text style
+        # from the newline character in the paragraph at its corresponding nesting
+        # level of the list inside the parent placeholder.
+        # Inherited text styles are represented as unset fields in this message. If
+        # text is contained in a shape without a parent placeholder, unsetting these
+        # fields will revert the style to a value matching the defaults in the Slides
+        # editor.
+        # Corresponds to the JSON property `bulletStyle`
+        # @return [Google::Apis::SlidesV1::TextStyle]
+        attr_accessor :bullet_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bullet_style = args[:bullet_style] if args.key?(:bullet_style)
+        end
+      end
+      
+      # Properties and contents of each table cell.
+      class TableCell
+        include Google::Apis::Core::Hashable
+      
+        # The general text content. The text must reside in a compatible shape (e.g.
+        # text box or rectangle) or a table cell in a page.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::SlidesV1::TextContent]
+        attr_accessor :text
+      
+        # The properties of the TableCell.
+        # Corresponds to the JSON property `tableCellProperties`
+        # @return [Google::Apis::SlidesV1::TableCellProperties]
+        attr_accessor :table_cell_properties
+      
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :location
+      
+        # Row span of the cell.
+        # Corresponds to the JSON property `rowSpan`
+        # @return [Fixnum]
+        attr_accessor :row_span
+      
+        # Column span of the cell.
+        # Corresponds to the JSON property `columnSpan`
+        # @return [Fixnum]
+        attr_accessor :column_span
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @table_cell_properties = args[:table_cell_properties] if args.key?(:table_cell_properties)
+          @location = args[:location] if args.key?(:location)
+          @row_span = args[:row_span] if args.key?(:row_span)
+          @column_span = args[:column_span] if args.key?(:column_span)
+        end
+      end
+      
+      # Updates the properties of a Line.
+      class UpdateLinePropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The properties of the Line.
+        # When unset, these fields default to values that match the appearance of
+        # new lines created in the Slides editor.
+        # Corresponds to the JSON property `lineProperties`
+        # @return [Google::Apis::SlidesV1::LineProperties]
+        attr_accessor :line_properties
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `lineProperties` is
+        # implied and should not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the line solid fill color, set `fields` to
+        # `"lineFill.solidFill.color"`.
+        # To reset a property to its default value, include its field name in the
+        # field mask but leave the field itself unset.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The object ID of the line the update is applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_properties = args[:line_properties] if args.key?(:line_properties)
+          @fields = args[:fields] if args.key?(:fields)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # The table cell background fill.
+      class TableCellBackgroundFill
+        include Google::Apis::Core::Hashable
+      
+        # The background fill property state.
+        # Updating the the fill on a table cell will implicitly update this field
+        # to `RENDERED`, unless another value is specified in the same request. To
+        # have no fill on a table cell, set this field to `NOT_RENDERED`. In this
+        # case, any other fill fields set in the same request will be ignored.
+        # Corresponds to the JSON property `propertyState`
+        # @return [String]
+        attr_accessor :property_state
+      
+        # A solid color fill. The page or page element is filled entirely with the
+        # specified color value.
+        # If any field is unset, its value may be inherited from a parent placeholder
+        # if it exists.
+        # Corresponds to the JSON property `solidFill`
+        # @return [Google::Apis::SlidesV1::SolidFill]
+        attr_accessor :solid_fill
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @property_state = args[:property_state] if args.key?(:property_state)
+          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
+        end
+      end
+      
+      # Updates the position of slides in the presentation.
+      class UpdateSlidesPositionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The IDs of the slides in the presentation that should be moved.
+        # The slides in this list must be in existing presentation order, without
+        # duplicates.
+        # Corresponds to the JSON property `slideObjectIds`
+        # @return [Array<String>]
+        attr_accessor :slide_object_ids
+      
+        # The index where the slides should be inserted, based on the slide
+        # arrangement before the move takes place. Must be between zero and the
+        # number of slides in the presentation, inclusive.
+        # Corresponds to the JSON property `insertionIndex`
+        # @return [Fixnum]
+        attr_accessor :insertion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @slide_object_ids = args[:slide_object_ids] if args.key?(:slide_object_ids)
+          @insertion_index = args[:insertion_index] if args.key?(:insertion_index)
+        end
+      end
+      
+      # Updates the properties of a Page.
+      class UpdatePagePropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `pageProperties` is
+        # implied and should not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the page background solid fill color, set `fields`
+        # to `"pageBackgroundFill.solidFill.color"`.
+        # To reset a property to its default value, include its field name in the
+        # field mask but leave the field itself unset.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The object ID of the page the update is applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The properties of the Page.
+        # The page will inherit properties from the parent page. Depending on the page
+        # type the hierarchy is defined in either
+        # SlideProperties or
+        # LayoutProperties.
+        # Corresponds to the JSON property `pageProperties`
+        # @return [Google::Apis::SlidesV1::PageProperties]
+        attr_accessor :page_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @page_properties = args[:page_properties] if args.key?(:page_properties)
+        end
+      end
+      
+      # A PageElement kind representing a
+      # joined collection of PageElements.
+      class Group
+        include Google::Apis::Core::Hashable
+      
+        # The collection of elements in the group. The minimum size of a group is 2.
+        # Corresponds to the JSON property `children`
+        # @return [Array<Google::Apis::SlidesV1::PageElement>]
+        attr_accessor :children
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @children = args[:children] if args.key?(:children)
+        end
+      end
+      
+      # The placeholder information that uniquely identifies a placeholder shape.
+      class Placeholder
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of this shape's parent placeholder.
+        # If unset, the parent placeholder shape does not exist, so the shape does
+        # not inherit properties from any other shape.
+        # Corresponds to the JSON property `parentObjectId`
+        # @return [String]
+        attr_accessor :parent_object_id
+      
+        # The index of the placeholder. If the same placeholder types are present in
+        # the same page, they would have different index values.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # The type of the placeholder.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent_object_id = args[:parent_object_id] if args.key?(:parent_object_id)
+          @index = args[:index] if args.key?(:index)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Duplicates a slide or page element.
+      # When duplicating a slide, the duplicate slide will be created immediately
+      # following the specified slide. When duplicating a page element, the duplicate
+      # will be placed on the same page at the same position as the original.
+      class DuplicateObjectRequest
+        include Google::Apis::Core::Hashable
+      
+        # The object being duplicated may contain other objects, for example when
+        # duplicating a slide or a group page element. This map defines how the IDs
+        # of duplicated objects are generated: the keys are the IDs of the original
+        # objects and its values are the IDs that will be assigned to the
+        # corresponding duplicate object. The ID of the source object's duplicate
+        # may be specified in this map as well, using the same value of the
+        # `object_id` field as a key and the newly desired ID as the value.
+        # All keys must correspond to existing IDs in the presentation. All values
+        # must be unique in the presentation and must start with an alphanumeric
+        # character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining
+        # characters may include those as well as a hyphen or colon (matches regex
+        # `[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or
+        # greater than 50.
+        # If any IDs of source objects are omitted from the map, a new random ID will
+        # be assigned. If the map is empty or unset, all duplicate objects will
+        # receive a new random ID.
+        # Corresponds to the JSON property `objectIds`
+        # @return [Hash<String,String>]
+        attr_accessor :object_ids
+      
+        # The ID of the object to duplicate.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_ids = args[:object_ids] if args.key?(:object_ids)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # Replaces all instances of text matching a criteria with replace text.
+      class ReplaceAllTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # The text that will replace the matched text.
+        # Corresponds to the JSON property `replaceText`
+        # @return [String]
+        attr_accessor :replace_text
+      
+        # If non-empty, limits the matches to page elements only on the given pages.
+        # Returns a 400 bad request error if given the page object ID of a
+        # notes master,
+        # or if a page with that object ID doesn't exist in the presentation.
+        # Corresponds to the JSON property `pageObjectIds`
+        # @return [Array<String>]
+        attr_accessor :page_object_ids
+      
+        # A criteria that matches a specific string of text in a shape or table.
+        # Corresponds to the JSON property `containsText`
+        # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
+        attr_accessor :contains_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replace_text = args[:replace_text] if args.key?(:replace_text)
+          @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
+          @contains_text = args[:contains_text] if args.key?(:contains_text)
+        end
+      end
+      
+      # A page in a presentation.
+      class Page
+        include Google::Apis::Core::Hashable
+      
+        # The object ID for this page. Object IDs used by
+        # Page and
+        # PageElement share the same namespace.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The revision ID of the presentation containing this page. Can be used in
+        # update requests to assert that the presentation revision hasn't changed
+        # since the last read operation. Only populated if the user has edit access
+        # to the presentation.
+        # The format of the revision ID may change over time, so it should be treated
+        # opaquely. A returned revision ID is only guaranteed to be valid for 24
+        # hours after it has been returned and cannot be shared across users. If the
+        # revision ID is unchanged between calls, then the presentation has not
+        # changed. Conversely, a changed ID (for the same presentation and user)
+        # usually means the presentation has been updated; however, a changed ID can
+        # also be due to internal factors such as ID format changes.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # The properties of Page are only
+        # relevant for pages with page_type LAYOUT.
+        # Corresponds to the JSON property `layoutProperties`
+        # @return [Google::Apis::SlidesV1::LayoutProperties]
+        attr_accessor :layout_properties
+      
+        # The properties of Page that are only
+        # relevant for pages with page_type NOTES.
+        # Corresponds to the JSON property `notesProperties`
+        # @return [Google::Apis::SlidesV1::NotesProperties]
+        attr_accessor :notes_properties
+      
+        # The type of the page.
+        # Corresponds to the JSON property `pageType`
+        # @return [String]
+        attr_accessor :page_type
+      
+        # The page elements rendered on the page.
+        # Corresponds to the JSON property `pageElements`
+        # @return [Array<Google::Apis::SlidesV1::PageElement>]
+        attr_accessor :page_elements
+      
+        # The properties of Page that are only
+        # relevant for pages with page_type SLIDE.
+        # Corresponds to the JSON property `slideProperties`
+        # @return [Google::Apis::SlidesV1::SlideProperties]
+        attr_accessor :slide_properties
+      
+        # The properties of the Page.
+        # The page will inherit properties from the parent page. Depending on the page
+        # type the hierarchy is defined in either
+        # SlideProperties or
+        # LayoutProperties.
+        # Corresponds to the JSON property `pageProperties`
+        # @return [Google::Apis::SlidesV1::PageProperties]
+        attr_accessor :page_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @layout_properties = args[:layout_properties] if args.key?(:layout_properties)
+          @notes_properties = args[:notes_properties] if args.key?(:notes_properties)
+          @page_type = args[:page_type] if args.key?(:page_type)
+          @page_elements = args[:page_elements] if args.key?(:page_elements)
+          @slide_properties = args[:slide_properties] if args.key?(:slide_properties)
+          @page_properties = args[:page_properties] if args.key?(:page_properties)
+        end
+      end
+      
+      # The shape background fill.
+      class ShapeBackgroundFill
+        include Google::Apis::Core::Hashable
+      
+        # A solid color fill. The page or page element is filled entirely with the
+        # specified color value.
+        # If any field is unset, its value may be inherited from a parent placeholder
+        # if it exists.
+        # Corresponds to the JSON property `solidFill`
+        # @return [Google::Apis::SlidesV1::SolidFill]
+        attr_accessor :solid_fill
+      
+        # The background fill property state.
+        # Updating the the fill on a shape will implicitly update this field to
+        # `RENDERED`, unless another value is specified in the same request. To
+        # have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
+        # any other fill fields set in the same request will be ignored.
+        # Corresponds to the JSON property `propertyState`
+        # @return [String]
+        attr_accessor :property_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
+          @property_state = args[:property_state] if args.key?(:property_state)
+        end
+      end
+      
+      # The crop properties of an object enclosed in a container. For example, an
+      # Image.
+      # The crop properties is represented by the offsets of four edges which define
+      # a crop rectangle. The offsets are measured in percentage from the
+      # corresponding edges of the object's original bounding rectangle towards
+      # inside, relative to the object's original dimensions.
+      # - If the offset is in the interval (0, 1), the corresponding edge of crop
+      # rectangle is positioned inside of the object's original bounding rectangle.
+      # - If the offset is negative or greater than 1, the corresponding edge of crop
+      # rectangle is positioned outside of the object's original bounding rectangle.
+      # - If the left edge of the crop rectangle is on the right side of its right
+      # edge, the object will be flipped horizontally.
+      # - If the top edge of the crop rectangle is below its bottom edge, the object
+      # will be flipped vertically.
+      # - If all offsets and rotation angle is 0, the object is not cropped.
+      # After cropping, the content in the crop rectangle will be stretched to fit
+      # its container.
+      class CropProperties
+        include Google::Apis::Core::Hashable
+      
+        # The offset specifies the left edge of the crop rectangle that is located to
+        # the right of the original bounding rectangle left edge, relative to the
+        # object's original width.
+        # Corresponds to the JSON property `leftOffset`
+        # @return [Float]
+        attr_accessor :left_offset
+      
+        # The offset specifies the right edge of the crop rectangle that is located
+        # to the left of the original bounding rectangle right edge, relative to the
+        # object's original width.
+        # Corresponds to the JSON property `rightOffset`
+        # @return [Float]
+        attr_accessor :right_offset
+      
+        # The offset specifies the bottom edge of the crop rectangle that is located
+        # above the original bounding rectangle bottom edge, relative to the object's
+        # original height.
+        # Corresponds to the JSON property `bottomOffset`
+        # @return [Float]
+        attr_accessor :bottom_offset
+      
+        # The rotation angle of the crop window around its center, in radians.
+        # Rotation angle is applied after the offset.
+        # Corresponds to the JSON property `angle`
+        # @return [Float]
+        attr_accessor :angle
+      
+        # The offset specifies the top edge of the crop rectangle that is located
+        # below the original bounding rectangle top edge, relative to the object's
+        # original height.
+        # Corresponds to the JSON property `topOffset`
+        # @return [Float]
+        attr_accessor :top_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @left_offset = args[:left_offset] if args.key?(:left_offset)
+          @right_offset = args[:right_offset] if args.key?(:right_offset)
+          @bottom_offset = args[:bottom_offset] if args.key?(:bottom_offset)
+          @angle = args[:angle] if args.key?(:angle)
+          @top_offset = args[:top_offset] if args.key?(:top_offset)
+        end
+      end
+      
+      # Replaces all shapes that match the given criteria with the provided Google
+      # Sheets chart. The chart will be scaled and centered to fit within the bounds
+      # of the original shape.
+      # NOTE: Replacing shapes with a chart requires at least one of the
+      # spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth scopes.
+      class ReplaceAllShapesWithSheetsChartRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the Google Sheets spreadsheet that contains the chart.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The mode with which the chart is linked to the source spreadsheet. When
+        # not specified, the chart will be an image that is not linked.
+        # Corresponds to the JSON property `linkingMode`
+        # @return [String]
+        attr_accessor :linking_mode
+      
+        # A criteria that matches a specific string of text in a shape or table.
+        # Corresponds to the JSON property `containsText`
+        # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
+        attr_accessor :contains_text
+      
+        # The ID of the specific chart in the Google Sheets spreadsheet.
+        # Corresponds to the JSON property `chartId`
+        # @return [Fixnum]
+        attr_accessor :chart_id
+      
+        # If non-empty, limits the matches to page elements only on the given pages.
+        # Returns a 400 bad request error if given the page object ID of a
+        # notes page or a
+        # notes master, or if a
+        # page with that object ID doesn't exist in the presentation.
+        # Corresponds to the JSON property `pageObjectIds`
+        # @return [Array<String>]
+        attr_accessor :page_object_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @linking_mode = args[:linking_mode] if args.key?(:linking_mode)
+          @contains_text = args[:contains_text] if args.key?(:contains_text)
+          @chart_id = args[:chart_id] if args.key?(:chart_id)
+          @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
+        end
+      end
+      
+      # A color and position in a gradient band.
+      class ColorStop
+        include Google::Apis::Core::Hashable
+      
+        # The alpha value of this color in the gradient band. Defaults to 1.0,
+        # fully opaque.
+        # Corresponds to the JSON property `alpha`
+        # @return [Float]
+        attr_accessor :alpha
+      
+        # The relative position of the color stop in the gradient band measured
+        # in percentage. The value should be in the interval [0.0, 1.0].
+        # Corresponds to the JSON property `position`
+        # @return [Float]
+        attr_accessor :position
+      
+        # A themeable solid color value.
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SlidesV1::OpaqueColor]
+        attr_accessor :color
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alpha = args[:alpha] if args.key?(:alpha)
+          @position = args[:position] if args.key?(:position)
+          @color = args[:color] if args.key?(:color)
+        end
+      end
+      
+      # Specifies a contiguous range of an indexed collection, such as characters in
+      # text.
+      class Range
+        include Google::Apis::Core::Hashable
+      
+        # The type of range.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The optional zero-based index of the beginning of the collection.
+        # Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # The optional zero-based index of the end of the collection.
+        # Required for `FIXED_RANGE` ranges.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @end_index = args[:end_index] if args.key?(:end_index)
+        end
+      end
+      
+      # Creates a video.
+      class CreateVideoRequest
+        include Google::Apis::Core::Hashable
+      
+        # A user-supplied object ID.
+        # If you specify an ID, it must be unique among all pages and page elements
+        # in the presentation. The ID must start with an alphanumeric character or an
+        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        # may include those as well as a hyphen or colon (matches regex
+        # `[a-zA-Z0-9_-:]`).
+        # The length of the ID must not be less than 5 or greater than 50.
+        # If you don't specify an ID, a unique one is generated.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The video source.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Common properties for a page element.
+        # Note: When you initially create a
+        # PageElement, the API may modify
+        # the values of both `size` and `transform`, but the
+        # visual size will be unchanged.
+        # Corresponds to the JSON property `elementProperties`
+        # @return [Google::Apis::SlidesV1::PageElementProperties]
+        attr_accessor :element_properties
+      
+        # The video source's unique identifier for this video.
+        # e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,
+        # the ID is 7U3axjORYZ0.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @source = args[:source] if args.key?(:source)
+          @element_properties = args[:element_properties] if args.key?(:element_properties)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # The response of duplicating an object.
+      class DuplicateObjectResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the new duplicate object.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # Replaces all shapes that match the given criteria with the provided image.
+      class ReplaceAllShapesWithImageRequest
+        include Google::Apis::Core::Hashable
+      
+        # The image URL.
+        # The image is fetched once at insertion time and a copy is stored for
+        # display inside the presentation. Images must be less than 50MB in size,
+        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        # format.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # The replace method.
+        # Corresponds to the JSON property `replaceMethod`
+        # @return [String]
+        attr_accessor :replace_method
+      
+        # A criteria that matches a specific string of text in a shape or table.
+        # Corresponds to the JSON property `containsText`
+        # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
+        attr_accessor :contains_text
+      
+        # If non-empty, limits the matches to page elements only on the given pages.
+        # Returns a 400 bad request error if given the page object ID of a
+        # notes page or a
+        # notes master, or if a
+        # page with that object ID doesn't exist in the presentation.
+        # Corresponds to the JSON property `pageObjectIds`
+        # @return [Array<String>]
+        attr_accessor :page_object_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @replace_method = args[:replace_method] if args.key?(:replace_method)
+          @contains_text = args[:contains_text] if args.key?(:contains_text)
+          @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
+        end
+      end
+      
+      # The shadow properties of a page element.
+      # If these fields are unset, they may be inherited from a parent placeholder
+      # if it exists. If there is no parent, the fields will default to the value
+      # used for new page elements created in the Slides editor, which may depend on
+      # the page element kind.
+      class Shadow
+        include Google::Apis::Core::Hashable
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `blurRadius`
+        # @return [Google::Apis::SlidesV1::Dimension]
+        attr_accessor :blur_radius
+      
+        # The type of the shadow.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ]
+        # to transform source coordinates (x,y) into destination coordinates (x', y')
+        # according to:
+        # x'  x  =   shear_y  scale_y  translate_y
+        # 1  [ 1 ]
+        # After transformation,
+        # x' = scale_x * x + shear_x * y + translate_x;
+        # y' = scale_y * y + shear_y * x + translate_y;
+        # This message is therefore composed of these six matrix elements.
+        # Corresponds to the JSON property `transform`
+        # @return [Google::Apis::SlidesV1::AffineTransform]
+        attr_accessor :transform
+      
+        # The alignment point of the shadow, that sets the origin for translate,
+        # scale and skew of the shadow.
+        # Corresponds to the JSON property `alignment`
+        # @return [String]
+        attr_accessor :alignment
+      
+        # The alpha of the shadow's color, from 0.0 to 1.0.
+        # Corresponds to the JSON property `alpha`
+        # @return [Float]
+        attr_accessor :alpha
+      
+        # A themeable solid color value.
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SlidesV1::OpaqueColor]
+        attr_accessor :color
+      
+        # Whether the shadow should rotate with the shape.
+        # Corresponds to the JSON property `rotateWithShape`
+        # @return [Boolean]
+        attr_accessor :rotate_with_shape
+        alias_method :rotate_with_shape?, :rotate_with_shape
+      
+        # The shadow property state.
+        # Updating the the shadow on a page element will implicitly update this field
+        # to `RENDERED`, unless another value is specified in the same request. To
+        # have no shadow on a page element, set this field to `NOT_RENDERED`. In this
+        # case, any other shadow fields set in the same request will be ignored.
+        # Corresponds to the JSON property `propertyState`
+        # @return [String]
+        attr_accessor :property_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blur_radius = args[:blur_radius] if args.key?(:blur_radius)
+          @type = args[:type] if args.key?(:type)
+          @transform = args[:transform] if args.key?(:transform)
+          @alignment = args[:alignment] if args.key?(:alignment)
+          @alpha = args[:alpha] if args.key?(:alpha)
+          @color = args[:color] if args.key?(:color)
+          @rotate_with_shape = args[:rotate_with_shape] if args.key?(:rotate_with_shape)
+          @property_state = args[:property_state] if args.key?(:property_state)
+        end
+      end
+      
+      # Deletes a row from a table.
+      class DeleteTableRowRequest
+        include Google::Apis::Core::Hashable
+      
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
+        # The table to delete rows from.
+        # Corresponds to the JSON property `tableObjectId`
+        # @return [String]
+        attr_accessor :table_object_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
+          @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
+        end
+      end
+      
+      # Describes the bullet of a paragraph.
+      class Bullet
+        include Google::Apis::Core::Hashable
+      
+        # Represents the styling that can be applied to a TextRun.
+        # If this text is contained in a shape with a parent placeholder, then these
+        # text styles may be
+        # inherited from the parent. Which text styles are inherited depend on the
+        # nesting level of lists:
+        # * A text run in a paragraph that is not in a list will inherit its text style
+        # from the the newline character in the paragraph at the 0 nesting level of
+        # the list inside the parent placeholder.
+        # * A text run in a paragraph that is in a list will inherit its text style
+        # from the newline character in the paragraph at its corresponding nesting
+        # level of the list inside the parent placeholder.
+        # Inherited text styles are represented as unset fields in this message. If
+        # text is contained in a shape without a parent placeholder, unsetting these
+        # fields will revert the style to a value matching the defaults in the Slides
+        # editor.
+        # Corresponds to the JSON property `bulletStyle`
+        # @return [Google::Apis::SlidesV1::TextStyle]
+        attr_accessor :bullet_style
+      
+        # The ID of the list this paragraph belongs to.
+        # Corresponds to the JSON property `listId`
+        # @return [String]
+        attr_accessor :list_id
+      
+        # The rendered bullet glyph for this paragraph.
+        # Corresponds to the JSON property `glyph`
+        # @return [String]
+        attr_accessor :glyph
+      
+        # The nesting level of this paragraph in the list.
+        # Corresponds to the JSON property `nestingLevel`
+        # @return [Fixnum]
+        attr_accessor :nesting_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bullet_style = args[:bullet_style] if args.key?(:bullet_style)
+          @list_id = args[:list_id] if args.key?(:list_id)
+          @glyph = args[:glyph] if args.key?(:glyph)
+          @nesting_level = args[:nesting_level] if args.key?(:nesting_level)
+        end
+      end
+      
+      # The fill of the outline.
+      class OutlineFill
+        include Google::Apis::Core::Hashable
+      
+        # A solid color fill. The page or page element is filled entirely with the
+        # specified color value.
+        # If any field is unset, its value may be inherited from a parent placeholder
+        # if it exists.
+        # Corresponds to the JSON property `solidFill`
+        # @return [Google::Apis::SlidesV1::SolidFill]
+        attr_accessor :solid_fill
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
+        end
+      end
+      
+      # The result of creating a line.
+      class CreateLineResponse
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the created line.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
       # A location of a single table cell within a table.
       class TableCellLocation
         include Google::Apis::Core::Hashable
@@ -44,25 +1515,6 @@ module Google
         def update!(**args)
           @row_index = args[:row_index] if args.key?(:row_index)
           @column_index = args[:column_index] if args.key?(:column_index)
-        end
-      end
-      
-      # The result of creating a line.
-      class CreateLineResponse
-        include Google::Apis::Core::Hashable
-      
-        # The object ID of the created line.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
         end
       end
       
@@ -90,6 +1542,26 @@ module Google
       class UpdateParagraphStyleRequest
         include Google::Apis::Core::Hashable
       
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
+        # Styles that apply to a whole paragraph.
+        # If this text is contained in a shape with a parent placeholder, then these
+        # paragraph styles may be
+        # inherited from the parent. Which paragraph styles are inherited depend on the
+        # nesting level of lists:
+        # * A paragraph not in a list will inherit its paragraph style from the
+        # paragraph at the 0 nesting level of the list inside the parent placeholder.
+        # * A paragraph in a list will inherit its paragraph style from the paragraph
+        # at its corresponding nesting level of the list inside the parent
+        # placeholder.
+        # Inherited paragraph styles are represented as unset fields in this message.
+        # Corresponds to the JSON property `style`
+        # @return [Google::Apis::SlidesV1::ParagraphStyle]
+        attr_accessor :style
+      
         # The fields that should be updated.
         # At least one field must be specified. The root `style` is implied and
         # should not be specified. A single `"*"` can be used as short-hand for
@@ -113,37 +1585,17 @@ module Google
         # @return [Google::Apis::SlidesV1::Range]
         attr_accessor :text_range
       
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
-      
-        # Styles that apply to a whole paragraph.
-        # If this text is contained in a shape with a parent placeholder, then these
-        # paragraph styles may be
-        # inherited from the parent. Which paragraph styles are inherited depend on the
-        # nesting level of lists:
-        # * A paragraph not in a list will inherit its paragraph style from the
-        # paragraph at the 0 nesting level of the list inside the parent placeholder.
-        # * A paragraph in a list will inherit its paragraph style from the paragraph
-        # at its corresponding nesting level of the list inside the parent
-        # placeholder.
-        # Inherited paragraph styles are represented as unset fields in this message.
-        # Corresponds to the JSON property `style`
-        # @return [Google::Apis::SlidesV1::ParagraphStyle]
-        attr_accessor :style
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
+          @style = args[:style] if args.key?(:style)
           @fields = args[:fields] if args.key?(:fields)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @text_range = args[:text_range] if args.key?(:text_range)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
-          @style = args[:style] if args.key?(:style)
         end
       end
       
@@ -251,6 +1703,21 @@ module Google
       class AffineTransform
         include Google::Apis::Core::Hashable
       
+        # The Y coordinate translation element.
+        # Corresponds to the JSON property `translateY`
+        # @return [Float]
+        attr_accessor :translate_y
+      
+        # The X coordinate translation element.
+        # Corresponds to the JSON property `translateX`
+        # @return [Float]
+        attr_accessor :translate_x
+      
+        # The Y coordinate shearing element.
+        # Corresponds to the JSON property `shearY`
+        # @return [Float]
+        attr_accessor :shear_y
+      
         # The units for translate elements.
         # Corresponds to the JSON property `unit`
         # @return [String]
@@ -271,45 +1738,25 @@ module Google
         # @return [Float]
         attr_accessor :scale_y
       
-        # The Y coordinate translation element.
-        # Corresponds to the JSON property `translateY`
-        # @return [Float]
-        attr_accessor :translate_y
-      
-        # The X coordinate translation element.
-        # Corresponds to the JSON property `translateX`
-        # @return [Float]
-        attr_accessor :translate_x
-      
-        # The Y coordinate shearing element.
-        # Corresponds to the JSON property `shearY`
-        # @return [Float]
-        attr_accessor :shear_y
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @translate_y = args[:translate_y] if args.key?(:translate_y)
+          @translate_x = args[:translate_x] if args.key?(:translate_x)
+          @shear_y = args[:shear_y] if args.key?(:shear_y)
           @unit = args[:unit] if args.key?(:unit)
           @scale_x = args[:scale_x] if args.key?(:scale_x)
           @shear_x = args[:shear_x] if args.key?(:shear_x)
           @scale_y = args[:scale_y] if args.key?(:scale_y)
-          @translate_y = args[:translate_y] if args.key?(:translate_y)
-          @translate_x = args[:translate_x] if args.key?(:translate_x)
-          @shear_y = args[:shear_y] if args.key?(:shear_y)
         end
       end
       
       # Inserts text into a shape or a table cell.
       class InsertTextRequest
         include Google::Apis::Core::Hashable
-      
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
       
         # The object ID of the shape or table where the text will be inserted.
         # Corresponds to the JSON property `objectId`
@@ -342,16 +1789,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :insertion_index
       
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @text = args[:text] if args.key?(:text)
           @insertion_index = args[:insertion_index] if args.key?(:insertion_index)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
         end
       end
       
@@ -423,11 +1875,6 @@ module Google
       class DeleteTextRequest
         include Google::Apis::Core::Hashable
       
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
-      
         # The object ID of the shape or table from which the text will be deleted.
         # Corresponds to the JSON property `objectId`
         # @return [String]
@@ -439,15 +1886,20 @@ module Google
         # @return [Google::Apis::SlidesV1::Range]
         attr_accessor :text_range
       
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @text_range = args[:text_range] if args.key?(:text_range)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
         end
       end
       
@@ -635,11 +2087,6 @@ module Google
       class InsertTableRowsRequest
         include Google::Apis::Core::Hashable
       
-        # The number of rows to be inserted. Maximum 20 per request.
-        # Corresponds to the JSON property `number`
-        # @return [Fixnum]
-        attr_accessor :number
-      
         # A location of a single table cell within a table.
         # Corresponds to the JSON property `cellLocation`
         # @return [Google::Apis::SlidesV1::TableCellLocation]
@@ -658,16 +2105,21 @@ module Google
         attr_accessor :insert_below
         alias_method :insert_below?, :insert_below
       
+        # The number of rows to be inserted. Maximum 20 per request.
+        # Corresponds to the JSON property `number`
+        # @return [Fixnum]
+        attr_accessor :number
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @number = args[:number] if args.key?(:number)
           @cell_location = args[:cell_location] if args.key?(:cell_location)
           @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
           @insert_below = args[:insert_below] if args.key?(:insert_below)
+          @number = args[:number] if args.key?(:number)
         end
       end
       
@@ -676,20 +2128,20 @@ module Google
       class LayoutProperties
         include Google::Apis::Core::Hashable
       
-        # The object ID of the master that this layout is based on.
-        # Corresponds to the JSON property `masterObjectId`
-        # @return [String]
-        attr_accessor :master_object_id
-      
         # The name of the layout.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The human readable name of the layout in the presentation's locale.
+        # The human-readable name of the layout.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # The object ID of the master that this layout is based on.
+        # Corresponds to the JSON property `masterObjectId`
+        # @return [String]
+        attr_accessor :master_object_id
       
         def initialize(**args)
            update!(**args)
@@ -697,9 +2149,60 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @master_object_id = args[:master_object_id] if args.key?(:master_object_id)
           @name = args[:name] if args.key?(:name)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @master_object_id = args[:master_object_id] if args.key?(:master_object_id)
+        end
+      end
+      
+      # The properties of the Line.
+      # When unset, these fields default to values that match the appearance of
+      # new lines created in the Slides editor.
+      class LineProperties
+        include Google::Apis::Core::Hashable
+      
+        # The dash style of the line.
+        # Corresponds to the JSON property `dashStyle`
+        # @return [String]
+        attr_accessor :dash_style
+      
+        # A hypertext link.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SlidesV1::Link]
+        attr_accessor :link
+      
+        # The style of the arrow at the beginning of the line.
+        # Corresponds to the JSON property `startArrow`
+        # @return [String]
+        attr_accessor :start_arrow
+      
+        # The style of the arrow at the end of the line.
+        # Corresponds to the JSON property `endArrow`
+        # @return [String]
+        attr_accessor :end_arrow
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `weight`
+        # @return [Google::Apis::SlidesV1::Dimension]
+        attr_accessor :weight
+      
+        # The fill of the line.
+        # Corresponds to the JSON property `lineFill`
+        # @return [Google::Apis::SlidesV1::LineFill]
+        attr_accessor :line_fill
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dash_style = args[:dash_style] if args.key?(:dash_style)
+          @link = args[:link] if args.key?(:link)
+          @start_arrow = args[:start_arrow] if args.key?(:start_arrow)
+          @end_arrow = args[:end_arrow] if args.key?(:end_arrow)
+          @weight = args[:weight] if args.key?(:weight)
+          @line_fill = args[:line_fill] if args.key?(:line_fill)
         end
       end
       
@@ -707,10 +2210,10 @@ module Google
       class Presentation
         include Google::Apis::Core::Hashable
       
-        # The title of the presentation.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
+        # A page in a presentation.
+        # Corresponds to the JSON property `notesMaster`
+        # @return [Google::Apis::SlidesV1::Page]
+        attr_accessor :notes_master
       
         # The layouts in the presentation. A layout is a template that determines
         # how content is arranged and styled on the slides that inherit from that
@@ -718,6 +2221,11 @@ module Google
         # Corresponds to the JSON property `layouts`
         # @return [Array<Google::Apis::SlidesV1::Page>]
         attr_accessor :layouts
+      
+        # The title of the presentation.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
       
         # The slide masters in the presentation. A slide master contains all common
         # page elements and the common properties for a set of layouts. They serve
@@ -768,77 +2276,21 @@ module Google
         # @return [String]
         attr_accessor :revision_id
       
-        # A page in a presentation.
-        # Corresponds to the JSON property `notesMaster`
-        # @return [Google::Apis::SlidesV1::Page]
-        attr_accessor :notes_master
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @title = args[:title] if args.key?(:title)
+          @notes_master = args[:notes_master] if args.key?(:notes_master)
           @layouts = args[:layouts] if args.key?(:layouts)
+          @title = args[:title] if args.key?(:title)
           @masters = args[:masters] if args.key?(:masters)
           @locale = args[:locale] if args.key?(:locale)
           @page_size = args[:page_size] if args.key?(:page_size)
           @presentation_id = args[:presentation_id] if args.key?(:presentation_id)
           @slides = args[:slides] if args.key?(:slides)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
-          @notes_master = args[:notes_master] if args.key?(:notes_master)
-        end
-      end
-      
-      # The properties of the Line.
-      # When unset, these fields default to values that match the appearance of
-      # new lines created in the Slides editor.
-      class LineProperties
-        include Google::Apis::Core::Hashable
-      
-        # The style of the arrow at the beginning of the line.
-        # Corresponds to the JSON property `startArrow`
-        # @return [String]
-        attr_accessor :start_arrow
-      
-        # The style of the arrow at the end of the line.
-        # Corresponds to the JSON property `endArrow`
-        # @return [String]
-        attr_accessor :end_arrow
-      
-        # A magnitude in a single direction in the specified units.
-        # Corresponds to the JSON property `weight`
-        # @return [Google::Apis::SlidesV1::Dimension]
-        attr_accessor :weight
-      
-        # The fill of the line.
-        # Corresponds to the JSON property `lineFill`
-        # @return [Google::Apis::SlidesV1::LineFill]
-        attr_accessor :line_fill
-      
-        # A hypertext link.
-        # Corresponds to the JSON property `link`
-        # @return [Google::Apis::SlidesV1::Link]
-        attr_accessor :link
-      
-        # The dash style of the line.
-        # Corresponds to the JSON property `dashStyle`
-        # @return [String]
-        attr_accessor :dash_style
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @start_arrow = args[:start_arrow] if args.key?(:start_arrow)
-          @end_arrow = args[:end_arrow] if args.key?(:end_arrow)
-          @weight = args[:weight] if args.key?(:weight)
-          @line_fill = args[:line_fill] if args.key?(:line_fill)
-          @link = args[:link] if args.key?(:link)
-          @dash_style = args[:dash_style] if args.key?(:dash_style)
         end
       end
       
@@ -846,15 +2298,15 @@ module Google
       class OpaqueColor
         include Google::Apis::Core::Hashable
       
-        # An opaque theme color.
-        # Corresponds to the JSON property `themeColor`
-        # @return [String]
-        attr_accessor :theme_color
-      
         # An RGB color.
         # Corresponds to the JSON property `rgbColor`
         # @return [Google::Apis::SlidesV1::RgbColor]
         attr_accessor :rgb_color
+      
+        # An opaque theme color.
+        # Corresponds to the JSON property `themeColor`
+        # @return [String]
+        attr_accessor :theme_color
       
         def initialize(**args)
            update!(**args)
@@ -862,27 +2314,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @theme_color = args[:theme_color] if args.key?(:theme_color)
           @rgb_color = args[:rgb_color] if args.key?(:rgb_color)
+          @theme_color = args[:theme_color] if args.key?(:theme_color)
         end
       end
       
       # The properties of the Image.
       class ImageProperties
         include Google::Apis::Core::Hashable
-      
-        # The brightness effect of the image. The value should be in the interval
-        # [-1.0, 1.0], where 0 means no effect. This property is read-only.
-        # Corresponds to the JSON property `brightness`
-        # @return [Float]
-        attr_accessor :brightness
-      
-        # The transparency effect of the image. The value should be in the interval
-        # [0.0, 1.0], where 0 means no effect and 1 means completely transparent.
-        # This property is read-only.
-        # Corresponds to the JSON property `transparency`
-        # @return [Float]
-        attr_accessor :transparency
       
         # The shadow properties of a page element.
         # If these fields are unset, they may be inherited from a parent placeholder
@@ -893,21 +2332,16 @@ module Google
         # @return [Google::Apis::SlidesV1::Shadow]
         attr_accessor :shadow
       
-        # A hypertext link.
-        # Corresponds to the JSON property `link`
-        # @return [Google::Apis::SlidesV1::Link]
-        attr_accessor :link
-      
         # The contrast effect of the image. The value should be in the interval
         # [-1.0, 1.0], where 0 means no effect. This property is read-only.
         # Corresponds to the JSON property `contrast`
         # @return [Float]
         attr_accessor :contrast
       
-        # A recolor effect applied on an image.
-        # Corresponds to the JSON property `recolor`
-        # @return [Google::Apis::SlidesV1::Recolor]
-        attr_accessor :recolor
+        # A hypertext link.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SlidesV1::Link]
+        attr_accessor :link
       
         # The crop properties of an object enclosed in a container. For example, an
         # Image.
@@ -930,6 +2364,11 @@ module Google
         # @return [Google::Apis::SlidesV1::CropProperties]
         attr_accessor :crop_properties
       
+        # A recolor effect applied on an image.
+        # Corresponds to the JSON property `recolor`
+        # @return [Google::Apis::SlidesV1::Recolor]
+        attr_accessor :recolor
+      
         # The outline of a PageElement.
         # If these fields are unset, they may be inherited from a parent placeholder
         # if it exists. If there is no parent, the fields will default to the value
@@ -939,20 +2378,33 @@ module Google
         # @return [Google::Apis::SlidesV1::Outline]
         attr_accessor :outline
       
+        # The brightness effect of the image. The value should be in the interval
+        # [-1.0, 1.0], where 0 means no effect. This property is read-only.
+        # Corresponds to the JSON property `brightness`
+        # @return [Float]
+        attr_accessor :brightness
+      
+        # The transparency effect of the image. The value should be in the interval
+        # [0.0, 1.0], where 0 means no effect and 1 means completely transparent.
+        # This property is read-only.
+        # Corresponds to the JSON property `transparency`
+        # @return [Float]
+        attr_accessor :transparency
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @shadow = args[:shadow] if args.key?(:shadow)
+          @contrast = args[:contrast] if args.key?(:contrast)
+          @link = args[:link] if args.key?(:link)
+          @crop_properties = args[:crop_properties] if args.key?(:crop_properties)
+          @recolor = args[:recolor] if args.key?(:recolor)
+          @outline = args[:outline] if args.key?(:outline)
           @brightness = args[:brightness] if args.key?(:brightness)
           @transparency = args[:transparency] if args.key?(:transparency)
-          @shadow = args[:shadow] if args.key?(:shadow)
-          @link = args[:link] if args.key?(:link)
-          @contrast = args[:contrast] if args.key?(:contrast)
-          @recolor = args[:recolor] if args.key?(:recolor)
-          @crop_properties = args[:crop_properties] if args.key?(:crop_properties)
-          @outline = args[:outline] if args.key?(:outline)
         end
       end
       
@@ -1003,61 +2455,6 @@ module Google
         end
       end
       
-      # Creates an embedded Google Sheets chart.
-      # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
-      # spreadsheets, drive.readonly, or drive OAuth scopes.
-      class CreateSheetsChartRequest
-        include Google::Apis::Core::Hashable
-      
-        # Common properties for a page element.
-        # Note: When you initially create a
-        # PageElement, the API may modify
-        # the values of both `size` and `transform`, but the
-        # visual size will be unchanged.
-        # Corresponds to the JSON property `elementProperties`
-        # @return [Google::Apis::SlidesV1::PageElementProperties]
-        attr_accessor :element_properties
-      
-        # The ID of the Google Sheets spreadsheet that contains the chart.
-        # Corresponds to the JSON property `spreadsheetId`
-        # @return [String]
-        attr_accessor :spreadsheet_id
-      
-        # The mode with which the chart is linked to the source spreadsheet. When
-        # not specified, the chart will be an image that is not linked.
-        # Corresponds to the JSON property `linkingMode`
-        # @return [String]
-        attr_accessor :linking_mode
-      
-        # The ID of the specific chart in the Google Sheets spreadsheet.
-        # Corresponds to the JSON property `chartId`
-        # @return [Fixnum]
-        attr_accessor :chart_id
-      
-        # A user-supplied object ID.
-        # If specified, the ID must be unique among all pages and page elements in
-        # the presentation. The ID should start with a word character [a-zA-Z0-9_]
-        # and then followed by any number of the following characters [a-zA-Z0-9_-:].
-        # The length of the ID should not be less than 5 or greater than 50.
-        # If empty, a unique identifier will be generated.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @element_properties = args[:element_properties] if args.key?(:element_properties)
-          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
-          @linking_mode = args[:linking_mode] if args.key?(:linking_mode)
-          @chart_id = args[:chart_id] if args.key?(:chart_id)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-        end
-      end
-      
       # Response message from a batch update.
       class BatchUpdatePresentationResponse
         include Google::Apis::Core::Hashable
@@ -1081,6 +2478,61 @@ module Google
         def update!(**args)
           @replies = args[:replies] if args.key?(:replies)
           @presentation_id = args[:presentation_id] if args.key?(:presentation_id)
+        end
+      end
+      
+      # Creates an embedded Google Sheets chart.
+      # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
+      # spreadsheets, drive.readonly, or drive OAuth scopes.
+      class CreateSheetsChartRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the specific chart in the Google Sheets spreadsheet.
+        # Corresponds to the JSON property `chartId`
+        # @return [Fixnum]
+        attr_accessor :chart_id
+      
+        # A user-supplied object ID.
+        # If specified, the ID must be unique among all pages and page elements in
+        # the presentation. The ID should start with a word character [a-zA-Z0-9_]
+        # and then followed by any number of the following characters [a-zA-Z0-9_-:].
+        # The length of the ID should not be less than 5 or greater than 50.
+        # If empty, a unique identifier will be generated.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # Common properties for a page element.
+        # Note: When you initially create a
+        # PageElement, the API may modify
+        # the values of both `size` and `transform`, but the
+        # visual size will be unchanged.
+        # Corresponds to the JSON property `elementProperties`
+        # @return [Google::Apis::SlidesV1::PageElementProperties]
+        attr_accessor :element_properties
+      
+        # The ID of the Google Sheets spreadsheet that contains the chart.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The mode with which the chart is linked to the source spreadsheet. When
+        # not specified, the chart will be an image that is not linked.
+        # Corresponds to the JSON property `linkingMode`
+        # @return [String]
+        attr_accessor :linking_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chart_id = args[:chart_id] if args.key?(:chart_id)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @element_properties = args[:element_properties] if args.key?(:element_properties)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @linking_mode = args[:linking_mode] if args.key?(:linking_mode)
         end
       end
       
@@ -1139,6 +2591,21 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
+        # The response of duplicating an object.
+        # Corresponds to the JSON property `duplicateObject`
+        # @return [Google::Apis::SlidesV1::DuplicateObjectResponse]
+        attr_accessor :duplicate_object
+      
+        # The result of creating a shape.
+        # Corresponds to the JSON property `createShape`
+        # @return [Google::Apis::SlidesV1::CreateShapeResponse]
+        attr_accessor :create_shape
+      
+        # The result of creating a line.
+        # Corresponds to the JSON property `createLine`
+        # @return [Google::Apis::SlidesV1::CreateLineResponse]
+        attr_accessor :create_line
+      
         # The result of creating an image.
         # Corresponds to the JSON property `createImage`
         # @return [Google::Apis::SlidesV1::CreateImageResponse]
@@ -1179,27 +2646,15 @@ module Google
         # @return [Google::Apis::SlidesV1::CreateSlideResponse]
         attr_accessor :create_slide
       
-        # The result of creating a shape.
-        # Corresponds to the JSON property `createShape`
-        # @return [Google::Apis::SlidesV1::CreateShapeResponse]
-        attr_accessor :create_shape
-      
-        # The response of duplicating an object.
-        # Corresponds to the JSON property `duplicateObject`
-        # @return [Google::Apis::SlidesV1::DuplicateObjectResponse]
-        attr_accessor :duplicate_object
-      
-        # The result of creating a line.
-        # Corresponds to the JSON property `createLine`
-        # @return [Google::Apis::SlidesV1::CreateLineResponse]
-        attr_accessor :create_line
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @duplicate_object = args[:duplicate_object] if args.key?(:duplicate_object)
+          @create_shape = args[:create_shape] if args.key?(:create_shape)
+          @create_line = args[:create_line] if args.key?(:create_line)
           @create_image = args[:create_image] if args.key?(:create_image)
           @create_video = args[:create_video] if args.key?(:create_video)
           @replace_all_shapes_with_sheets_chart = args[:replace_all_shapes_with_sheets_chart] if args.key?(:replace_all_shapes_with_sheets_chart)
@@ -1208,28 +2663,37 @@ module Google
           @create_table = args[:create_table] if args.key?(:create_table)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @create_slide = args[:create_slide] if args.key?(:create_slide)
-          @create_shape = args[:create_shape] if args.key?(:create_shape)
-          @duplicate_object = args[:duplicate_object] if args.key?(:duplicate_object)
-          @create_line = args[:create_line] if args.key?(:create_line)
         end
       end
       
-      # A criteria that matches a specific string of text in a shape or table.
-      class SubstringMatchCriteria
+      # A TextElement kind that represents a run of text that all has the same
+      # styling.
+      class TextRun
         include Google::Apis::Core::Hashable
       
-        # The text to search for in the shape or table.
-        # Corresponds to the JSON property `text`
+        # The text of this run.
+        # Corresponds to the JSON property `content`
         # @return [String]
-        attr_accessor :text
+        attr_accessor :content
       
-        # Indicates whether the search should respect case:
-        # - `True`: the search is case sensitive.
-        # - `False`: the search is case insensitive.
-        # Corresponds to the JSON property `matchCase`
-        # @return [Boolean]
-        attr_accessor :match_case
-        alias_method :match_case?, :match_case
+        # Represents the styling that can be applied to a TextRun.
+        # If this text is contained in a shape with a parent placeholder, then these
+        # text styles may be
+        # inherited from the parent. Which text styles are inherited depend on the
+        # nesting level of lists:
+        # * A text run in a paragraph that is not in a list will inherit its text style
+        # from the the newline character in the paragraph at the 0 nesting level of
+        # the list inside the parent placeholder.
+        # * A text run in a paragraph that is in a list will inherit its text style
+        # from the newline character in the paragraph at its corresponding nesting
+        # level of the list inside the parent placeholder.
+        # Inherited text styles are represented as unset fields in this message. If
+        # text is contained in a shape without a parent placeholder, unsetting these
+        # fields will revert the style to a value matching the defaults in the Slides
+        # editor.
+        # Corresponds to the JSON property `style`
+        # @return [Google::Apis::SlidesV1::TextStyle]
+        attr_accessor :style
       
         def initialize(**args)
            update!(**args)
@@ -1237,8 +2701,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @text = args[:text] if args.key?(:text)
-          @match_case = args[:match_case] if args.key?(:match_case)
+          @content = args[:content] if args.key?(:content)
+          @style = args[:style] if args.key?(:style)
         end
       end
       
@@ -1269,34 +2733,22 @@ module Google
         end
       end
       
-      # A TextElement kind that represents a run of text that all has the same
-      # styling.
-      class TextRun
+      # A criteria that matches a specific string of text in a shape or table.
+      class SubstringMatchCriteria
         include Google::Apis::Core::Hashable
       
-        # Represents the styling that can be applied to a TextRun.
-        # If this text is contained in a shape with a parent placeholder, then these
-        # text styles may be
-        # inherited from the parent. Which text styles are inherited depend on the
-        # nesting level of lists:
-        # * A text run in a paragraph that is not in a list will inherit its text style
-        # from the the newline character in the paragraph at the 0 nesting level of
-        # the list inside the parent placeholder.
-        # * A text run in a paragraph that is in a list will inherit its text style
-        # from the newline character in the paragraph at its corresponding nesting
-        # level of the list inside the parent placeholder.
-        # Inherited text styles are represented as unset fields in this message. If
-        # text is contained in a shape without a parent placeholder, unsetting these
-        # fields will revert the style to a value matching the defaults in the Slides
-        # editor.
-        # Corresponds to the JSON property `style`
-        # @return [Google::Apis::SlidesV1::TextStyle]
-        attr_accessor :style
-      
-        # The text of this run.
-        # Corresponds to the JSON property `content`
+        # The text to search for in the shape or table.
+        # Corresponds to the JSON property `text`
         # @return [String]
-        attr_accessor :content
+        attr_accessor :text
+      
+        # Indicates whether the search should respect case:
+        # - `True`: the search is case sensitive.
+        # - `False`: the search is case insensitive.
+        # Corresponds to the JSON property `matchCase`
+        # @return [Boolean]
+        attr_accessor :match_case
+        alias_method :match_case?, :match_case
       
         def initialize(**args)
            update!(**args)
@@ -1304,8 +2756,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @style = args[:style] if args.key?(:style)
-          @content = args[:content] if args.key?(:content)
+          @text = args[:text] if args.key?(:text)
+          @match_case = args[:match_case] if args.key?(:match_case)
         end
       end
       
@@ -1422,16 +2874,6 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # Number of rows in the table.
-        # Corresponds to the JSON property `rows`
-        # @return [Fixnum]
-        attr_accessor :rows
-      
-        # Properties of each column.
-        # Corresponds to the JSON property `tableColumns`
-        # @return [Array<Google::Apis::SlidesV1::TableColumnProperties>]
-        attr_accessor :table_columns
-      
         # Number of columns in the table.
         # Corresponds to the JSON property `columns`
         # @return [Fixnum]
@@ -1445,22 +2887,40 @@ module Google
         # @return [Array<Google::Apis::SlidesV1::TableRow>]
         attr_accessor :table_rows
       
+        # Number of rows in the table.
+        # Corresponds to the JSON property `rows`
+        # @return [Fixnum]
+        attr_accessor :rows
+      
+        # Properties of each column.
+        # Corresponds to the JSON property `tableColumns`
+        # @return [Array<Google::Apis::SlidesV1::TableColumnProperties>]
+        attr_accessor :table_columns
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @rows = args[:rows] if args.key?(:rows)
-          @table_columns = args[:table_columns] if args.key?(:table_columns)
           @columns = args[:columns] if args.key?(:columns)
           @table_rows = args[:table_rows] if args.key?(:table_rows)
+          @rows = args[:rows] if args.key?(:rows)
+          @table_columns = args[:table_columns] if args.key?(:table_columns)
         end
       end
       
       # The page background fill.
       class PageBackgroundFill
         include Google::Apis::Core::Hashable
+      
+        # A solid color fill. The page or page element is filled entirely with the
+        # specified color value.
+        # If any field is unset, its value may be inherited from a parent placeholder
+        # if it exists.
+        # Corresponds to the JSON property `solidFill`
+        # @return [Google::Apis::SlidesV1::SolidFill]
+        attr_accessor :solid_fill
       
         # The background fill property state.
         # Updating the the fill on a page will implicitly update this field to
@@ -1477,23 +2937,15 @@ module Google
         # @return [Google::Apis::SlidesV1::StretchedPictureFill]
         attr_accessor :stretched_picture_fill
       
-        # A solid color fill. The page or page element is filled entirely with the
-        # specified color value.
-        # If any field is unset, its value may be inherited from a parent placeholder
-        # if it exists.
-        # Corresponds to the JSON property `solidFill`
-        # @return [Google::Apis::SlidesV1::SolidFill]
-        attr_accessor :solid_fill
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
           @property_state = args[:property_state] if args.key?(:property_state)
           @stretched_picture_fill = args[:stretched_picture_fill] if args.key?(:stretched_picture_fill)
-          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
         end
       end
       
@@ -1546,6 +2998,11 @@ module Google
       class SolidFill
         include Google::Apis::Core::Hashable
       
+        # A themeable solid color value.
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SlidesV1::OpaqueColor]
+        attr_accessor :color
+      
         # The fraction of this `color` that should be applied to the pixel.
         # That is, the final pixel color is defined by the equation:
         # pixel color = alpha * (color) + (1.0 - alpha) * (background color)
@@ -1555,19 +3012,14 @@ module Google
         # @return [Float]
         attr_accessor :alpha
       
-        # A themeable solid color value.
-        # Corresponds to the JSON property `color`
-        # @return [Google::Apis::SlidesV1::OpaqueColor]
-        attr_accessor :color
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @alpha = args[:alpha] if args.key?(:alpha)
           @color = args[:color] if args.key?(:color)
+          @alpha = args[:alpha] if args.key?(:alpha)
         end
       end
       
@@ -1623,6 +3075,11 @@ module Google
       class PageElementProperties
         include Google::Apis::Core::Hashable
       
+        # A width and height.
+        # Corresponds to the JSON property `size`
+        # @return [Google::Apis::SlidesV1::Size]
+        attr_accessor :size
+      
         # AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ]
         # to transform source coordinates (x,y) into destination coordinates (x', y')
         # according to:
@@ -1641,20 +3098,15 @@ module Google
         # @return [String]
         attr_accessor :page_object_id
       
-        # A width and height.
-        # Corresponds to the JSON property `size`
-        # @return [Google::Apis::SlidesV1::Size]
-        attr_accessor :size
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @size = args[:size] if args.key?(:size)
           @transform = args[:transform] if args.key?(:transform)
           @page_object_id = args[:page_object_id] if args.key?(:page_object_id)
-          @size = args[:size] if args.key?(:size)
         end
       end
       
@@ -1709,6 +3161,31 @@ module Google
         def update!(**args)
           @content_url = args[:content_url] if args.key?(:content_url)
           @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # Deletes a column from a table.
+      class DeleteTableColumnRequest
+        include Google::Apis::Core::Hashable
+      
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
+        # The table to delete columns from.
+        # Corresponds to the JSON property `tableObjectId`
+        # @return [String]
+        attr_accessor :table_object_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
+          @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
         end
       end
       
@@ -1774,31 +3251,6 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @text_range = args[:text_range] if args.key?(:text_range)
-        end
-      end
-      
-      # Deletes a column from a table.
-      class DeleteTableColumnRequest
-        include Google::Apis::Core::Hashable
-      
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
-      
-        # The table to delete columns from.
-        # Corresponds to the JSON property `tableObjectId`
-        # @return [String]
-        attr_accessor :table_object_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
-          @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
         end
       end
       
@@ -1870,22 +3322,34 @@ module Google
       class PageElement
         include Google::Apis::Core::Hashable
       
+        # A PageElement kind representing a
+        # joined collection of PageElements.
+        # Corresponds to the JSON property `elementGroup`
+        # @return [Google::Apis::SlidesV1::Group]
+        attr_accessor :element_group
+      
+        # A PageElement kind representing an
+        # image.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::SlidesV1::Image]
+        attr_accessor :image
+      
         # A width and height.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::SlidesV1::Size]
         attr_accessor :size
-      
-        # A PageElement kind representing
-        # a linked chart embedded from Google Sheets.
-        # Corresponds to the JSON property `sheetsChart`
-        # @return [Google::Apis::SlidesV1::SheetsChart]
-        attr_accessor :sheets_chart
       
         # The title of the page element. Combined with description to display alt
         # text.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
+      
+        # A PageElement kind representing
+        # a linked chart embedded from Google Sheets.
+        # Corresponds to the JSON property `sheetsChart`
+        # @return [Google::Apis::SlidesV1::SheetsChart]
+        attr_accessor :sheets_chart
       
         # A PageElement kind representing a
         # video.
@@ -1943,27 +3407,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # A PageElement kind representing a
-        # joined collection of PageElements.
-        # Corresponds to the JSON property `elementGroup`
-        # @return [Google::Apis::SlidesV1::Group]
-        attr_accessor :element_group
-      
-        # A PageElement kind representing an
-        # image.
-        # Corresponds to the JSON property `image`
-        # @return [Google::Apis::SlidesV1::Image]
-        attr_accessor :image
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @element_group = args[:element_group] if args.key?(:element_group)
+          @image = args[:image] if args.key?(:image)
           @size = args[:size] if args.key?(:size)
-          @sheets_chart = args[:sheets_chart] if args.key?(:sheets_chart)
           @title = args[:title] if args.key?(:title)
+          @sheets_chart = args[:sheets_chart] if args.key?(:sheets_chart)
           @video = args[:video] if args.key?(:video)
           @word_art = args[:word_art] if args.key?(:word_art)
           @table = args[:table] if args.key?(:table)
@@ -1972,8 +3426,6 @@ module Google
           @shape = args[:shape] if args.key?(:shape)
           @line = args[:line] if args.key?(:line)
           @description = args[:description] if args.key?(:description)
-          @element_group = args[:element_group] if args.key?(:element_group)
-          @image = args[:image] if args.key?(:image)
         end
       end
       
@@ -2075,14 +3527,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A magnitude in a single direction in the specified units.
-        # Corresponds to the JSON property `height`
-        # @return [Google::Apis::SlidesV1::Dimension]
-        attr_accessor :height
-      
-        # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `width`
         # @return [Google::Apis::SlidesV1::Dimension]
         attr_accessor :width
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `height`
+        # @return [Google::Apis::SlidesV1::Dimension]
+        attr_accessor :height
       
         def initialize(**args)
            update!(**args)
@@ -2090,8 +3542,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @height = args[:height] if args.key?(:height)
           @width = args[:width] if args.key?(:width)
+          @height = args[:height] if args.key?(:height)
         end
       end
       
@@ -2113,6 +3565,12 @@ module Google
       class TextStyle
         include Google::Apis::Core::Hashable
       
+        # Whether or not the text is in small capital letters.
+        # Corresponds to the JSON property `smallCaps`
+        # @return [Boolean]
+        attr_accessor :small_caps
+        alias_method :small_caps?, :small_caps
+      
         # A color that can either be fully opaque or fully transparent.
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::SlidesV1::OptionalColor]
@@ -2129,16 +3587,16 @@ module Google
         # @return [Google::Apis::SlidesV1::Link]
         attr_accessor :link
       
+        # A color that can either be fully opaque or fully transparent.
+        # Corresponds to the JSON property `foregroundColor`
+        # @return [Google::Apis::SlidesV1::OptionalColor]
+        attr_accessor :foreground_color
+      
         # Whether or not the text is rendered as bold.
         # Corresponds to the JSON property `bold`
         # @return [Boolean]
         attr_accessor :bold
         alias_method :bold?, :bold
-      
-        # A color that can either be fully opaque or fully transparent.
-        # Corresponds to the JSON property `foregroundColor`
-        # @return [Google::Apis::SlidesV1::OptionalColor]
-        attr_accessor :foreground_color
       
         # The font family of the text.
         # The font family can be any font from the Font menu in Slides or from
@@ -2151,17 +3609,17 @@ module Google
         # @return [String]
         attr_accessor :font_family
       
-        # Whether or not the text is italicized.
-        # Corresponds to the JSON property `italic`
-        # @return [Boolean]
-        attr_accessor :italic
-        alias_method :italic?, :italic
-      
         # Whether or not the text is struck through.
         # Corresponds to the JSON property `strikethrough`
         # @return [Boolean]
         attr_accessor :strikethrough
         alias_method :strikethrough?, :strikethrough
+      
+        # Whether or not the text is italicized.
+        # Corresponds to the JSON property `italic`
+        # @return [Boolean]
+        attr_accessor :italic
+        alias_method :italic?, :italic
       
         # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `fontSize`
@@ -2181,41 +3639,30 @@ module Google
         # @return [Google::Apis::SlidesV1::WeightedFontFamily]
         attr_accessor :weighted_font_family
       
-        # Whether or not the text is in small capital letters.
-        # Corresponds to the JSON property `smallCaps`
-        # @return [Boolean]
-        attr_accessor :small_caps
-        alias_method :small_caps?, :small_caps
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @small_caps = args[:small_caps] if args.key?(:small_caps)
           @background_color = args[:background_color] if args.key?(:background_color)
           @underline = args[:underline] if args.key?(:underline)
           @link = args[:link] if args.key?(:link)
-          @bold = args[:bold] if args.key?(:bold)
           @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
+          @bold = args[:bold] if args.key?(:bold)
           @font_family = args[:font_family] if args.key?(:font_family)
-          @italic = args[:italic] if args.key?(:italic)
           @strikethrough = args[:strikethrough] if args.key?(:strikethrough)
+          @italic = args[:italic] if args.key?(:italic)
           @font_size = args[:font_size] if args.key?(:font_size)
           @baseline_offset = args[:baseline_offset] if args.key?(:baseline_offset)
           @weighted_font_family = args[:weighted_font_family] if args.key?(:weighted_font_family)
-          @small_caps = args[:small_caps] if args.key?(:small_caps)
         end
       end
       
       # Update the properties of a Video.
       class UpdateVideoPropertiesRequest
         include Google::Apis::Core::Hashable
-      
-        # The object ID of the video the updates are applied to.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
       
         # The properties of the Video.
         # Corresponds to the JSON property `videoProperties`
@@ -2234,56 +3681,26 @@ module Google
         # @return [String]
         attr_accessor :fields
       
+        # The object ID of the video the updates are applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @video_properties = args[:video_properties] if args.key?(:video_properties)
           @fields = args[:fields] if args.key?(:fields)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
         end
       end
       
       # A single kind of update to apply to a presentation.
       class Request
         include Google::Apis::Core::Hashable
-      
-        # Replaces all shapes that match the given criteria with the provided image.
-        # Corresponds to the JSON property `replaceAllShapesWithImage`
-        # @return [Google::Apis::SlidesV1::ReplaceAllShapesWithImageRequest]
-        attr_accessor :replace_all_shapes_with_image
-      
-        # Replaces all instances of text matching a criteria with replace text.
-        # Corresponds to the JSON property `replaceAllText`
-        # @return [Google::Apis::SlidesV1::ReplaceAllTextRequest]
-        attr_accessor :replace_all_text
-      
-        # Update the properties of an Image.
-        # Corresponds to the JSON property `updateImageProperties`
-        # @return [Google::Apis::SlidesV1::UpdateImagePropertiesRequest]
-        attr_accessor :update_image_properties
-      
-        # Inserts rows into a table.
-        # Corresponds to the JSON property `insertTableRows`
-        # @return [Google::Apis::SlidesV1::InsertTableRowsRequest]
-        attr_accessor :insert_table_rows
-      
-        # Creates a new slide.
-        # Corresponds to the JSON property `createSlide`
-        # @return [Google::Apis::SlidesV1::CreateSlideRequest]
-        attr_accessor :create_slide
-      
-        # Updates the properties of a Line.
-        # Corresponds to the JSON property `updateLineProperties`
-        # @return [Google::Apis::SlidesV1::UpdateLinePropertiesRequest]
-        attr_accessor :update_line_properties
-      
-        # Updates the position of slides in the presentation.
-        # Corresponds to the JSON property `updateSlidesPosition`
-        # @return [Google::Apis::SlidesV1::UpdateSlidesPositionRequest]
-        attr_accessor :update_slides_position
       
         # Deletes a row from a table.
         # Corresponds to the JSON property `deleteTableRow`
@@ -2406,6 +3823,13 @@ module Google
         # @return [Google::Apis::SlidesV1::CreateVideoRequest]
         attr_accessor :create_video
       
+        # Creates an embedded Google Sheets chart.
+        # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
+        # spreadsheets, drive.readonly, or drive OAuth scopes.
+        # Corresponds to the JSON property `createSheetsChart`
+        # @return [Google::Apis::SlidesV1::CreateSheetsChartRequest]
+        attr_accessor :create_sheets_chart
+      
         # Replaces all shapes that match the given criteria with the provided Google
         # Sheets chart. The chart will be scaled and centered to fit within the bounds
         # of the original shape.
@@ -2414,13 +3838,6 @@ module Google
         # Corresponds to the JSON property `replaceAllShapesWithSheetsChart`
         # @return [Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartRequest]
         attr_accessor :replace_all_shapes_with_sheets_chart
-      
-        # Creates an embedded Google Sheets chart.
-        # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
-        # spreadsheets, drive.readonly, or drive OAuth scopes.
-        # Corresponds to the JSON property `createSheetsChart`
-        # @return [Google::Apis::SlidesV1::CreateSheetsChartRequest]
-        attr_accessor :create_sheets_chart
       
         # Updates the transform of a page element.
         # Corresponds to the JSON property `updatePageElementTransform`
@@ -2433,19 +3850,47 @@ module Google
         # @return [Google::Apis::SlidesV1::UpdateTextStyleRequest]
         attr_accessor :update_text_style
       
+        # Replaces all shapes that match the given criteria with the provided image.
+        # Corresponds to the JSON property `replaceAllShapesWithImage`
+        # @return [Google::Apis::SlidesV1::ReplaceAllShapesWithImageRequest]
+        attr_accessor :replace_all_shapes_with_image
+      
+        # Replaces all instances of text matching a criteria with replace text.
+        # Corresponds to the JSON property `replaceAllText`
+        # @return [Google::Apis::SlidesV1::ReplaceAllTextRequest]
+        attr_accessor :replace_all_text
+      
+        # Update the properties of an Image.
+        # Corresponds to the JSON property `updateImageProperties`
+        # @return [Google::Apis::SlidesV1::UpdateImagePropertiesRequest]
+        attr_accessor :update_image_properties
+      
+        # Creates a new slide.
+        # Corresponds to the JSON property `createSlide`
+        # @return [Google::Apis::SlidesV1::CreateSlideRequest]
+        attr_accessor :create_slide
+      
+        # Inserts rows into a table.
+        # Corresponds to the JSON property `insertTableRows`
+        # @return [Google::Apis::SlidesV1::InsertTableRowsRequest]
+        attr_accessor :insert_table_rows
+      
+        # Updates the properties of a Line.
+        # Corresponds to the JSON property `updateLineProperties`
+        # @return [Google::Apis::SlidesV1::UpdateLinePropertiesRequest]
+        attr_accessor :update_line_properties
+      
+        # Updates the position of slides in the presentation.
+        # Corresponds to the JSON property `updateSlidesPosition`
+        # @return [Google::Apis::SlidesV1::UpdateSlidesPositionRequest]
+        attr_accessor :update_slides_position
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @replace_all_shapes_with_image = args[:replace_all_shapes_with_image] if args.key?(:replace_all_shapes_with_image)
-          @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
-          @update_image_properties = args[:update_image_properties] if args.key?(:update_image_properties)
-          @insert_table_rows = args[:insert_table_rows] if args.key?(:insert_table_rows)
-          @create_slide = args[:create_slide] if args.key?(:create_slide)
-          @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
-          @update_slides_position = args[:update_slides_position] if args.key?(:update_slides_position)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
           @update_shape_properties = args[:update_shape_properties] if args.key?(:update_shape_properties)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
@@ -2466,10 +3911,17 @@ module Google
           @create_image = args[:create_image] if args.key?(:create_image)
           @create_paragraph_bullets = args[:create_paragraph_bullets] if args.key?(:create_paragraph_bullets)
           @create_video = args[:create_video] if args.key?(:create_video)
-          @replace_all_shapes_with_sheets_chart = args[:replace_all_shapes_with_sheets_chart] if args.key?(:replace_all_shapes_with_sheets_chart)
           @create_sheets_chart = args[:create_sheets_chart] if args.key?(:create_sheets_chart)
+          @replace_all_shapes_with_sheets_chart = args[:replace_all_shapes_with_sheets_chart] if args.key?(:replace_all_shapes_with_sheets_chart)
           @update_page_element_transform = args[:update_page_element_transform] if args.key?(:update_page_element_transform)
           @update_text_style = args[:update_text_style] if args.key?(:update_text_style)
+          @replace_all_shapes_with_image = args[:replace_all_shapes_with_image] if args.key?(:replace_all_shapes_with_image)
+          @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
+          @update_image_properties = args[:update_image_properties] if args.key?(:update_image_properties)
+          @create_slide = args[:create_slide] if args.key?(:create_slide)
+          @insert_table_rows = args[:insert_table_rows] if args.key?(:insert_table_rows)
+          @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
+          @update_slides_position = args[:update_slides_position] if args.key?(:update_slides_position)
         end
       end
       
@@ -2659,16 +4111,6 @@ module Google
       class Outline
         include Google::Apis::Core::Hashable
       
-        # The fill of the outline.
-        # Corresponds to the JSON property `outlineFill`
-        # @return [Google::Apis::SlidesV1::OutlineFill]
-        attr_accessor :outline_fill
-      
-        # A magnitude in a single direction in the specified units.
-        # Corresponds to the JSON property `weight`
-        # @return [Google::Apis::SlidesV1::Dimension]
-        attr_accessor :weight
-      
         # The dash style of the outline.
         # Corresponds to the JSON property `dashStyle`
         # @return [String]
@@ -2684,27 +4126,15 @@ module Google
         # @return [String]
         attr_accessor :property_state
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @outline_fill = args[:outline_fill] if args.key?(:outline_fill)
-          @weight = args[:weight] if args.key?(:weight)
-          @dash_style = args[:dash_style] if args.key?(:dash_style)
-          @property_state = args[:property_state] if args.key?(:property_state)
-        end
-      end
-      
-      # Properties of each column in a table.
-      class TableColumnProperties
-        include Google::Apis::Core::Hashable
+        # The fill of the outline.
+        # Corresponds to the JSON property `outlineFill`
+        # @return [Google::Apis::SlidesV1::OutlineFill]
+        attr_accessor :outline_fill
       
         # A magnitude in a single direction in the specified units.
-        # Corresponds to the JSON property `columnWidth`
+        # Corresponds to the JSON property `weight`
         # @return [Google::Apis::SlidesV1::Dimension]
-        attr_accessor :column_width
+        attr_accessor :weight
       
         def initialize(**args)
            update!(**args)
@@ -2712,57 +4142,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @column_width = args[:column_width] if args.key?(:column_width)
-        end
-      end
-      
-      # The properties of a Shape.
-      # If the shape is a placeholder shape as determined by the
-      # placeholder field, then these
-      # properties may be inherited from a parent placeholder shape.
-      # Determining the rendered value of the property depends on the corresponding
-      # property_state field value.
-      class ShapeProperties
-        include Google::Apis::Core::Hashable
-      
-        # The shape background fill.
-        # Corresponds to the JSON property `shapeBackgroundFill`
-        # @return [Google::Apis::SlidesV1::ShapeBackgroundFill]
-        attr_accessor :shape_background_fill
-      
-        # The shadow properties of a page element.
-        # If these fields are unset, they may be inherited from a parent placeholder
-        # if it exists. If there is no parent, the fields will default to the value
-        # used for new page elements created in the Slides editor, which may depend on
-        # the page element kind.
-        # Corresponds to the JSON property `shadow`
-        # @return [Google::Apis::SlidesV1::Shadow]
-        attr_accessor :shadow
-      
-        # A hypertext link.
-        # Corresponds to the JSON property `link`
-        # @return [Google::Apis::SlidesV1::Link]
-        attr_accessor :link
-      
-        # The outline of a PageElement.
-        # If these fields are unset, they may be inherited from a parent placeholder
-        # if it exists. If there is no parent, the fields will default to the value
-        # used for new page elements created in the Slides editor, which may depend on
-        # the page element kind.
-        # Corresponds to the JSON property `outline`
-        # @return [Google::Apis::SlidesV1::Outline]
-        attr_accessor :outline
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @shape_background_fill = args[:shape_background_fill] if args.key?(:shape_background_fill)
-          @shadow = args[:shadow] if args.key?(:shadow)
-          @link = args[:link] if args.key?(:link)
-          @outline = args[:outline] if args.key?(:outline)
+          @dash_style = args[:dash_style] if args.key?(:dash_style)
+          @property_state = args[:property_state] if args.key?(:property_state)
+          @outline_fill = args[:outline_fill] if args.key?(:outline_fill)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
       
@@ -2788,6 +4171,75 @@ module Google
         # Update properties of this object
         def update!(**args)
           @speaker_notes_object_id = args[:speaker_notes_object_id] if args.key?(:speaker_notes_object_id)
+        end
+      end
+      
+      # The properties of a Shape.
+      # If the shape is a placeholder shape as determined by the
+      # placeholder field, then these
+      # properties may be inherited from a parent placeholder shape.
+      # Determining the rendered value of the property depends on the corresponding
+      # property_state field value.
+      class ShapeProperties
+        include Google::Apis::Core::Hashable
+      
+        # The outline of a PageElement.
+        # If these fields are unset, they may be inherited from a parent placeholder
+        # if it exists. If there is no parent, the fields will default to the value
+        # used for new page elements created in the Slides editor, which may depend on
+        # the page element kind.
+        # Corresponds to the JSON property `outline`
+        # @return [Google::Apis::SlidesV1::Outline]
+        attr_accessor :outline
+      
+        # The shape background fill.
+        # Corresponds to the JSON property `shapeBackgroundFill`
+        # @return [Google::Apis::SlidesV1::ShapeBackgroundFill]
+        attr_accessor :shape_background_fill
+      
+        # The shadow properties of a page element.
+        # If these fields are unset, they may be inherited from a parent placeholder
+        # if it exists. If there is no parent, the fields will default to the value
+        # used for new page elements created in the Slides editor, which may depend on
+        # the page element kind.
+        # Corresponds to the JSON property `shadow`
+        # @return [Google::Apis::SlidesV1::Shadow]
+        attr_accessor :shadow
+      
+        # A hypertext link.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::SlidesV1::Link]
+        attr_accessor :link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outline = args[:outline] if args.key?(:outline)
+          @shape_background_fill = args[:shape_background_fill] if args.key?(:shape_background_fill)
+          @shadow = args[:shadow] if args.key?(:shadow)
+          @link = args[:link] if args.key?(:link)
+        end
+      end
+      
+      # Properties of each column in a table.
+      class TableColumnProperties
+        include Google::Apis::Core::Hashable
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `columnWidth`
+        # @return [Google::Apis::SlidesV1::Dimension]
+        attr_accessor :column_width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_width = args[:column_width] if args.key?(:column_width)
         end
       end
       
@@ -2878,14 +4330,6 @@ module Google
       class CreateSlideRequest
         include Google::Apis::Core::Hashable
       
-        # An optional list of object ID mappings from the placeholder(s) on the layout
-        # to the placeholder(s)
-        # that will be created on the new slide from that specified layout. Can only
-        # be used when `slide_layout_reference` is specified.
-        # Corresponds to the JSON property `placeholderIdMappings`
-        # @return [Array<Google::Apis::SlidesV1::LayoutPlaceholderIdMapping>]
-        attr_accessor :placeholder_id_mappings
-      
         # Slide layout reference. This may reference either:
         # - A predefined layout
         # - One of the layouts in the presentation.
@@ -2911,16 +4355,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :insertion_index
       
+        # An optional list of object ID mappings from the placeholder(s) on the layout
+        # to the placeholder(s)
+        # that will be created on the new slide from that specified layout. Can only
+        # be used when `slide_layout_reference` is specified.
+        # Corresponds to the JSON property `placeholderIdMappings`
+        # @return [Array<Google::Apis::SlidesV1::LayoutPlaceholderIdMapping>]
+        attr_accessor :placeholder_id_mappings
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @placeholder_id_mappings = args[:placeholder_id_mappings] if args.key?(:placeholder_id_mappings)
           @slide_layout_reference = args[:slide_layout_reference] if args.key?(:slide_layout_reference)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @insertion_index = args[:insertion_index] if args.key?(:insertion_index)
+          @placeholder_id_mappings = args[:placeholder_id_mappings] if args.key?(:placeholder_id_mappings)
         end
       end
       
@@ -2928,15 +4380,15 @@ module Google
       class BatchUpdatePresentationRequest
         include Google::Apis::Core::Hashable
       
-        # Provides control over how write requests are executed.
-        # Corresponds to the JSON property `writeControl`
-        # @return [Google::Apis::SlidesV1::WriteControl]
-        attr_accessor :write_control
-      
         # A list of updates to apply to the presentation.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::SlidesV1::Request>]
         attr_accessor :requests
+      
+        # Provides control over how write requests are executed.
+        # Corresponds to the JSON property `writeControl`
+        # @return [Google::Apis::SlidesV1::WriteControl]
+        attr_accessor :write_control
       
         def initialize(**args)
            update!(**args)
@@ -2944,8 +4396,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @write_control = args[:write_control] if args.key?(:write_control)
           @requests = args[:requests] if args.key?(:requests)
+          @write_control = args[:write_control] if args.key?(:write_control)
         end
       end
       
@@ -2954,16 +4406,16 @@ module Google
       class TextContent
         include Google::Apis::Core::Hashable
       
+        # The bulleted lists contained in this text, keyed by list ID.
+        # Corresponds to the JSON property `lists`
+        # @return [Hash<String,Google::Apis::SlidesV1::List>]
+        attr_accessor :lists
+      
         # The text contents broken down into its component parts, including styling
         # information. This property is read-only.
         # Corresponds to the JSON property `textElements`
         # @return [Array<Google::Apis::SlidesV1::TextElement>]
         attr_accessor :text_elements
-      
-        # The bulleted lists contained in this text, keyed by list ID.
-        # Corresponds to the JSON property `lists`
-        # @return [Hash<String,Google::Apis::SlidesV1::List>]
-        attr_accessor :lists
       
         def initialize(**args)
            update!(**args)
@@ -2971,8 +4423,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @text_elements = args[:text_elements] if args.key?(:text_elements)
           @lists = args[:lists] if args.key?(:lists)
+          @text_elements = args[:text_elements] if args.key?(:text_elements)
         end
       end
       
@@ -3024,6 +4476,11 @@ module Google
       class DeleteParagraphBulletsRequest
         include Google::Apis::Core::Hashable
       
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
         # The object ID of the shape or table containing the text to delete bullets
         # from.
         # Corresponds to the JSON property `objectId`
@@ -3036,1472 +4493,15 @@ module Google
         # @return [Google::Apis::SlidesV1::Range]
         attr_accessor :text_range
       
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @text_range = args[:text_range] if args.key?(:text_range)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
-        end
-      end
-      
-      # A TextElement kind that represents the beginning of a new paragraph.
-      class ParagraphMarker
-        include Google::Apis::Core::Hashable
-      
-        # Styles that apply to a whole paragraph.
-        # If this text is contained in a shape with a parent placeholder, then these
-        # paragraph styles may be
-        # inherited from the parent. Which paragraph styles are inherited depend on the
-        # nesting level of lists:
-        # * A paragraph not in a list will inherit its paragraph style from the
-        # paragraph at the 0 nesting level of the list inside the parent placeholder.
-        # * A paragraph in a list will inherit its paragraph style from the paragraph
-        # at its corresponding nesting level of the list inside the parent
-        # placeholder.
-        # Inherited paragraph styles are represented as unset fields in this message.
-        # Corresponds to the JSON property `style`
-        # @return [Google::Apis::SlidesV1::ParagraphStyle]
-        attr_accessor :style
-      
-        # Describes the bullet of a paragraph.
-        # Corresponds to the JSON property `bullet`
-        # @return [Google::Apis::SlidesV1::Bullet]
-        attr_accessor :bullet
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @style = args[:style] if args.key?(:style)
-          @bullet = args[:bullet] if args.key?(:bullet)
-        end
-      end
-      
-      # The thumbnail of a page.
-      class Thumbnail
-        include Google::Apis::Core::Hashable
-      
-        # The content URL of the thumbnail image.
-        # The URL to the image has a default lifetime of 30 minutes.
-        # This URL is tagged with the account of the requester. Anyone with the URL
-        # effectively accesses the image as the original requester. Access to the
-        # image may be lost if the presentation's sharing settings change.
-        # The mime type of the thumbnail image is the same as specified in the
-        # `GetPageThumbnailRequest`.
-        # Corresponds to the JSON property `contentUrl`
-        # @return [String]
-        attr_accessor :content_url
-      
-        # The positive width in pixels of the thumbnail image.
-        # Corresponds to the JSON property `width`
-        # @return [Fixnum]
-        attr_accessor :width
-      
-        # The positive height in pixels of the thumbnail image.
-        # Corresponds to the JSON property `height`
-        # @return [Fixnum]
-        attr_accessor :height
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @content_url = args[:content_url] if args.key?(:content_url)
-          @width = args[:width] if args.key?(:width)
-          @height = args[:height] if args.key?(:height)
-        end
-      end
-      
-      # Inserts columns into a table.
-      # Other columns in the table will be resized to fit the new column.
-      class InsertTableColumnsRequest
-        include Google::Apis::Core::Hashable
-      
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
-      
-        # Whether to insert new columns to the right of the reference cell location.
-        # - `True`: insert to the right.
-        # - `False`: insert to the left.
-        # Corresponds to the JSON property `insertRight`
-        # @return [Boolean]
-        attr_accessor :insert_right
-        alias_method :insert_right?, :insert_right
-      
-        # The table to insert columns into.
-        # Corresponds to the JSON property `tableObjectId`
-        # @return [String]
-        attr_accessor :table_object_id
-      
-        # The number of columns to be inserted. Maximum 20 per request.
-        # Corresponds to the JSON property `number`
-        # @return [Fixnum]
-        attr_accessor :number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
-          @insert_right = args[:insert_right] if args.key?(:insert_right)
-          @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
-          @number = args[:number] if args.key?(:number)
-        end
-      end
-      
-      # The user-specified ID mapping for a placeholder that will be created on a
-      # slide from a specified layout.
-      class LayoutPlaceholderIdMapping
-        include Google::Apis::Core::Hashable
-      
-        # A user-supplied object ID for the placeholder identified above that to be
-        # created onto a slide.
-        # If you specify an ID, it must be unique among all pages and page elements
-        # in the presentation. The ID must start with an alphanumeric character or an
-        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        # may include those as well as a hyphen or colon (matches regex
-        # `[a-zA-Z0-9_-:]`).
-        # The length of the ID must not be less than 5 or greater than 50.
-        # If you don't specify an ID, a unique one is generated.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The placeholder information that uniquely identifies a placeholder shape.
-        # Corresponds to the JSON property `layoutPlaceholder`
-        # @return [Google::Apis::SlidesV1::Placeholder]
-        attr_accessor :layout_placeholder
-      
-        # The object ID of the placeholder on a layout that will be applied
-        # to a slide.
-        # Corresponds to the JSON property `layoutPlaceholderObjectId`
-        # @return [String]
-        attr_accessor :layout_placeholder_object_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @layout_placeholder = args[:layout_placeholder] if args.key?(:layout_placeholder)
-          @layout_placeholder_object_id = args[:layout_placeholder_object_id] if args.key?(:layout_placeholder_object_id)
-        end
-      end
-      
-      # Update the properties of a Shape.
-      class UpdateShapePropertiesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The fields that should be updated.
-        # At least one field must be specified. The root `shapeProperties` is
-        # implied and should not be specified. A single `"*"` can be used as
-        # short-hand for listing every field.
-        # For example to update the shape background solid fill color, set `fields`
-        # to `"shapeBackgroundFill.solidFill.color"`.
-        # To reset a property to its default value, include its field name in the
-        # field mask but leave the field itself unset.
-        # Corresponds to the JSON property `fields`
-        # @return [String]
-        attr_accessor :fields
-      
-        # The object ID of the shape the updates are applied to.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The properties of a Shape.
-        # If the shape is a placeholder shape as determined by the
-        # placeholder field, then these
-        # properties may be inherited from a parent placeholder shape.
-        # Determining the rendered value of the property depends on the corresponding
-        # property_state field value.
-        # Corresponds to the JSON property `shapeProperties`
-        # @return [Google::Apis::SlidesV1::ShapeProperties]
-        attr_accessor :shape_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fields = args[:fields] if args.key?(:fields)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @shape_properties = args[:shape_properties] if args.key?(:shape_properties)
-        end
-      end
-      
-      # A PageElement kind representing
-      # word art.
-      class WordArt
-        include Google::Apis::Core::Hashable
-      
-        # The text rendered as word art.
-        # Corresponds to the JSON property `renderedText`
-        # @return [String]
-        attr_accessor :rendered_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rendered_text = args[:rendered_text] if args.key?(:rendered_text)
-        end
-      end
-      
-      # A recolor effect applied on an image.
-      class Recolor
-        include Google::Apis::Core::Hashable
-      
-        # The recolor effect is represented by a gradient, which is a list of color
-        # stops.
-        # The colors in the gradient will replace the corresponding colors at
-        # the same position in the color palette and apply to the image. This
-        # property is read-only.
-        # Corresponds to the JSON property `recolorStops`
-        # @return [Array<Google::Apis::SlidesV1::ColorStop>]
-        attr_accessor :recolor_stops
-      
-        # The name of the recolor effect.
-        # The name is determined from the `recolor_stops` by matching the gradient
-        # against the colors in the page's current color scheme. This property is
-        # read-only.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @recolor_stops = args[:recolor_stops] if args.key?(:recolor_stops)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # A hypertext link.
-      class Link
-        include Google::Apis::Core::Hashable
-      
-        # If set, indicates this is a link to the specific page in this
-        # presentation with this ID. A page with this ID may not exist.
-        # Corresponds to the JSON property `pageObjectId`
-        # @return [String]
-        attr_accessor :page_object_id
-      
-        # If set, indicates this is a link to the external web page at this URL.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        # If set, indicates this is a link to a slide in this presentation,
-        # addressed by its position.
-        # Corresponds to the JSON property `relativeLink`
-        # @return [String]
-        attr_accessor :relative_link
-      
-        # If set, indicates this is a link to the slide at this zero-based index
-        # in the presentation. There may not be a slide at this index.
-        # Corresponds to the JSON property `slideIndex`
-        # @return [Fixnum]
-        attr_accessor :slide_index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_object_id = args[:page_object_id] if args.key?(:page_object_id)
-          @url = args[:url] if args.key?(:url)
-          @relative_link = args[:relative_link] if args.key?(:relative_link)
-          @slide_index = args[:slide_index] if args.key?(:slide_index)
-        end
-      end
-      
-      # The result of creating a shape.
-      class CreateShapeResponse
-        include Google::Apis::Core::Hashable
-      
-        # The object ID of the created shape.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-        end
-      end
-      
-      # An RGB color.
-      class RgbColor
-        include Google::Apis::Core::Hashable
-      
-        # The green component of the color, from 0.0 to 1.0.
-        # Corresponds to the JSON property `green`
-        # @return [Float]
-        attr_accessor :green
-      
-        # The blue component of the color, from 0.0 to 1.0.
-        # Corresponds to the JSON property `blue`
-        # @return [Float]
-        attr_accessor :blue
-      
-        # The red component of the color, from 0.0 to 1.0.
-        # Corresponds to the JSON property `red`
-        # @return [Float]
-        attr_accessor :red
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @green = args[:green] if args.key?(:green)
-          @blue = args[:blue] if args.key?(:blue)
-          @red = args[:red] if args.key?(:red)
-        end
-      end
-      
-      # Creates a line.
-      class CreateLineRequest
-        include Google::Apis::Core::Hashable
-      
-        # A user-supplied object ID.
-        # If you specify an ID, it must be unique among all pages and page elements
-        # in the presentation. The ID must start with an alphanumeric character or an
-        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        # may include those as well as a hyphen or colon (matches regex
-        # `[a-zA-Z0-9_-:]`).
-        # The length of the ID must not be less than 5 or greater than 50.
-        # If you don't specify an ID, a unique one is generated.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # Common properties for a page element.
-        # Note: When you initially create a
-        # PageElement, the API may modify
-        # the values of both `size` and `transform`, but the
-        # visual size will be unchanged.
-        # Corresponds to the JSON property `elementProperties`
-        # @return [Google::Apis::SlidesV1::PageElementProperties]
-        attr_accessor :element_properties
-      
-        # The category of line to be created.
-        # Corresponds to the JSON property `lineCategory`
-        # @return [String]
-        attr_accessor :line_category
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @element_properties = args[:element_properties] if args.key?(:element_properties)
-          @line_category = args[:line_category] if args.key?(:line_category)
-        end
-      end
-      
-      # The result of creating a slide.
-      class CreateSlideResponse
-        include Google::Apis::Core::Hashable
-      
-        # The object ID of the created slide.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-        end
-      end
-      
-      # Creates a new shape.
-      class CreateShapeRequest
-        include Google::Apis::Core::Hashable
-      
-        # A user-supplied object ID.
-        # If you specify an ID, it must be unique among all pages and page elements
-        # in the presentation. The ID must start with an alphanumeric character or an
-        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        # may include those as well as a hyphen or colon (matches regex
-        # `[a-zA-Z0-9_-:]`).
-        # The length of the ID must not be less than 5 or greater than 50.
-        # If empty, a unique identifier will be generated.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The shape type.
-        # Corresponds to the JSON property `shapeType`
-        # @return [String]
-        attr_accessor :shape_type
-      
-        # Common properties for a page element.
-        # Note: When you initially create a
-        # PageElement, the API may modify
-        # the values of both `size` and `transform`, but the
-        # visual size will be unchanged.
-        # Corresponds to the JSON property `elementProperties`
-        # @return [Google::Apis::SlidesV1::PageElementProperties]
-        attr_accessor :element_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @shape_type = args[:shape_type] if args.key?(:shape_type)
-          @element_properties = args[:element_properties] if args.key?(:element_properties)
-        end
-      end
-      
-      # A PageElement kind representing a
-      # video.
-      class Video
-        include Google::Apis::Core::Hashable
-      
-        # The video source.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # An URL to a video. The URL is valid as long as the source video
-        # exists and sharing settings do not change.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        # The video source's unique identifier for this video.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The properties of the Video.
-        # Corresponds to the JSON property `videoProperties`
-        # @return [Google::Apis::SlidesV1::VideoProperties]
-        attr_accessor :video_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @source = args[:source] if args.key?(:source)
-          @url = args[:url] if args.key?(:url)
-          @id = args[:id] if args.key?(:id)
-          @video_properties = args[:video_properties] if args.key?(:video_properties)
-        end
-      end
-      
-      # The properties of the Page.
-      # The page will inherit properties from the parent page. Depending on the page
-      # type the hierarchy is defined in either
-      # SlideProperties or
-      # LayoutProperties.
-      class PageProperties
-        include Google::Apis::Core::Hashable
-      
-        # The page background fill.
-        # Corresponds to the JSON property `pageBackgroundFill`
-        # @return [Google::Apis::SlidesV1::PageBackgroundFill]
-        attr_accessor :page_background_fill
-      
-        # The palette of predefined colors for a page.
-        # Corresponds to the JSON property `colorScheme`
-        # @return [Google::Apis::SlidesV1::ColorScheme]
-        attr_accessor :color_scheme
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_background_fill = args[:page_background_fill] if args.key?(:page_background_fill)
-          @color_scheme = args[:color_scheme] if args.key?(:color_scheme)
-        end
-      end
-      
-      # Contains properties describing the look and feel of a list bullet at a given
-      # level of nesting.
-      class NestingLevel
-        include Google::Apis::Core::Hashable
-      
-        # Represents the styling that can be applied to a TextRun.
-        # If this text is contained in a shape with a parent placeholder, then these
-        # text styles may be
-        # inherited from the parent. Which text styles are inherited depend on the
-        # nesting level of lists:
-        # * A text run in a paragraph that is not in a list will inherit its text style
-        # from the the newline character in the paragraph at the 0 nesting level of
-        # the list inside the parent placeholder.
-        # * A text run in a paragraph that is in a list will inherit its text style
-        # from the newline character in the paragraph at its corresponding nesting
-        # level of the list inside the parent placeholder.
-        # Inherited text styles are represented as unset fields in this message. If
-        # text is contained in a shape without a parent placeholder, unsetting these
-        # fields will revert the style to a value matching the defaults in the Slides
-        # editor.
-        # Corresponds to the JSON property `bulletStyle`
-        # @return [Google::Apis::SlidesV1::TextStyle]
-        attr_accessor :bullet_style
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bullet_style = args[:bullet_style] if args.key?(:bullet_style)
-        end
-      end
-      
-      # Properties and contents of each table cell.
-      class TableCell
-        include Google::Apis::Core::Hashable
-      
-        # The properties of the TableCell.
-        # Corresponds to the JSON property `tableCellProperties`
-        # @return [Google::Apis::SlidesV1::TableCellProperties]
-        attr_accessor :table_cell_properties
-      
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `location`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :location
-      
-        # Row span of the cell.
-        # Corresponds to the JSON property `rowSpan`
-        # @return [Fixnum]
-        attr_accessor :row_span
-      
-        # Column span of the cell.
-        # Corresponds to the JSON property `columnSpan`
-        # @return [Fixnum]
-        attr_accessor :column_span
-      
-        # The general text content. The text must reside in a compatible shape (e.g.
-        # text box or rectangle) or a table cell in a page.
-        # Corresponds to the JSON property `text`
-        # @return [Google::Apis::SlidesV1::TextContent]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @table_cell_properties = args[:table_cell_properties] if args.key?(:table_cell_properties)
-          @location = args[:location] if args.key?(:location)
-          @row_span = args[:row_span] if args.key?(:row_span)
-          @column_span = args[:column_span] if args.key?(:column_span)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # Updates the properties of a Line.
-      class UpdateLinePropertiesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The fields that should be updated.
-        # At least one field must be specified. The root `lineProperties` is
-        # implied and should not be specified. A single `"*"` can be used as
-        # short-hand for listing every field.
-        # For example to update the line solid fill color, set `fields` to
-        # `"lineFill.solidFill.color"`.
-        # To reset a property to its default value, include its field name in the
-        # field mask but leave the field itself unset.
-        # Corresponds to the JSON property `fields`
-        # @return [String]
-        attr_accessor :fields
-      
-        # The object ID of the line the update is applied to.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The properties of the Line.
-        # When unset, these fields default to values that match the appearance of
-        # new lines created in the Slides editor.
-        # Corresponds to the JSON property `lineProperties`
-        # @return [Google::Apis::SlidesV1::LineProperties]
-        attr_accessor :line_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fields = args[:fields] if args.key?(:fields)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @line_properties = args[:line_properties] if args.key?(:line_properties)
-        end
-      end
-      
-      # The table cell background fill.
-      class TableCellBackgroundFill
-        include Google::Apis::Core::Hashable
-      
-        # A solid color fill. The page or page element is filled entirely with the
-        # specified color value.
-        # If any field is unset, its value may be inherited from a parent placeholder
-        # if it exists.
-        # Corresponds to the JSON property `solidFill`
-        # @return [Google::Apis::SlidesV1::SolidFill]
-        attr_accessor :solid_fill
-      
-        # The background fill property state.
-        # Updating the the fill on a table cell will implicitly update this field
-        # to `RENDERED`, unless another value is specified in the same request. To
-        # have no fill on a table cell, set this field to `NOT_RENDERED`. In this
-        # case, any other fill fields set in the same request will be ignored.
-        # Corresponds to the JSON property `propertyState`
-        # @return [String]
-        attr_accessor :property_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
-          @property_state = args[:property_state] if args.key?(:property_state)
-        end
-      end
-      
-      # Updates the position of slides in the presentation.
-      class UpdateSlidesPositionRequest
-        include Google::Apis::Core::Hashable
-      
-        # The index where the slides should be inserted, based on the slide
-        # arrangement before the move takes place. Must be between zero and the
-        # number of slides in the presentation, inclusive.
-        # Corresponds to the JSON property `insertionIndex`
-        # @return [Fixnum]
-        attr_accessor :insertion_index
-      
-        # The IDs of the slides in the presentation that should be moved.
-        # The slides in this list must be in existing presentation order, without
-        # duplicates.
-        # Corresponds to the JSON property `slideObjectIds`
-        # @return [Array<String>]
-        attr_accessor :slide_object_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @insertion_index = args[:insertion_index] if args.key?(:insertion_index)
-          @slide_object_ids = args[:slide_object_ids] if args.key?(:slide_object_ids)
-        end
-      end
-      
-      # Updates the properties of a Page.
-      class UpdatePagePropertiesRequest
-        include Google::Apis::Core::Hashable
-      
-        # The fields that should be updated.
-        # At least one field must be specified. The root `pageProperties` is
-        # implied and should not be specified. A single `"*"` can be used as
-        # short-hand for listing every field.
-        # For example to update the page background solid fill color, set `fields`
-        # to `"pageBackgroundFill.solidFill.color"`.
-        # To reset a property to its default value, include its field name in the
-        # field mask but leave the field itself unset.
-        # Corresponds to the JSON property `fields`
-        # @return [String]
-        attr_accessor :fields
-      
-        # The object ID of the page the update is applied to.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The properties of the Page.
-        # The page will inherit properties from the parent page. Depending on the page
-        # type the hierarchy is defined in either
-        # SlideProperties or
-        # LayoutProperties.
-        # Corresponds to the JSON property `pageProperties`
-        # @return [Google::Apis::SlidesV1::PageProperties]
-        attr_accessor :page_properties
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fields = args[:fields] if args.key?(:fields)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @page_properties = args[:page_properties] if args.key?(:page_properties)
-        end
-      end
-      
-      # A PageElement kind representing a
-      # joined collection of PageElements.
-      class Group
-        include Google::Apis::Core::Hashable
-      
-        # The collection of elements in the group. The minimum size of a group is 2.
-        # Corresponds to the JSON property `children`
-        # @return [Array<Google::Apis::SlidesV1::PageElement>]
-        attr_accessor :children
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @children = args[:children] if args.key?(:children)
-        end
-      end
-      
-      # The placeholder information that uniquely identifies a placeholder shape.
-      class Placeholder
-        include Google::Apis::Core::Hashable
-      
-        # The object ID of this shape's parent placeholder.
-        # If unset, the parent placeholder shape does not exist, so the shape does
-        # not inherit properties from any other shape.
-        # Corresponds to the JSON property `parentObjectId`
-        # @return [String]
-        attr_accessor :parent_object_id
-      
-        # The index of the placeholder. If the same placeholder types are present in
-        # the same page, they would have different index values.
-        # Corresponds to the JSON property `index`
-        # @return [Fixnum]
-        attr_accessor :index
-      
-        # The type of the placeholder.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @parent_object_id = args[:parent_object_id] if args.key?(:parent_object_id)
-          @index = args[:index] if args.key?(:index)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Duplicates a slide or page element.
-      # When duplicating a slide, the duplicate slide will be created immediately
-      # following the specified slide. When duplicating a page element, the duplicate
-      # will be placed on the same page at the same position as the original.
-      class DuplicateObjectRequest
-        include Google::Apis::Core::Hashable
-      
-        # The object being duplicated may contain other objects, for example when
-        # duplicating a slide or a group page element. This map defines how the IDs
-        # of duplicated objects are generated: the keys are the IDs of the original
-        # objects and its values are the IDs that will be assigned to the
-        # corresponding duplicate object. The ID of the source object's duplicate
-        # may be specified in this map as well, using the same value of the
-        # `object_id` field as a key and the newly desired ID as the value.
-        # All keys must correspond to existing IDs in the presentation. All values
-        # must be unique in the presentation and must start with an alphanumeric
-        # character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining
-        # characters may include those as well as a hyphen or colon (matches regex
-        # `[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or
-        # greater than 50.
-        # If any IDs of source objects are omitted from the map, a new random ID will
-        # be assigned. If the map is empty or unset, all duplicate objects will
-        # receive a new random ID.
-        # Corresponds to the JSON property `objectIds`
-        # @return [Hash<String,String>]
-        attr_accessor :object_ids
-      
-        # The ID of the object to duplicate.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_ids = args[:object_ids] if args.key?(:object_ids)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-        end
-      end
-      
-      # Replaces all instances of text matching a criteria with replace text.
-      class ReplaceAllTextRequest
-        include Google::Apis::Core::Hashable
-      
-        # The text that will replace the matched text.
-        # Corresponds to the JSON property `replaceText`
-        # @return [String]
-        attr_accessor :replace_text
-      
-        # If non-empty, limits the matches to page elements only on the given pages.
-        # Returns a 400 bad request error if given the page object ID of a
-        # notes master,
-        # or if a page with that object ID doesn't exist in the presentation.
-        # Corresponds to the JSON property `pageObjectIds`
-        # @return [Array<String>]
-        attr_accessor :page_object_ids
-      
-        # A criteria that matches a specific string of text in a shape or table.
-        # Corresponds to the JSON property `containsText`
-        # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
-        attr_accessor :contains_text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @replace_text = args[:replace_text] if args.key?(:replace_text)
-          @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
-          @contains_text = args[:contains_text] if args.key?(:contains_text)
-        end
-      end
-      
-      # A page in a presentation.
-      class Page
-        include Google::Apis::Core::Hashable
-      
-        # The properties of Page are only
-        # relevant for pages with page_type LAYOUT.
-        # Corresponds to the JSON property `layoutProperties`
-        # @return [Google::Apis::SlidesV1::LayoutProperties]
-        attr_accessor :layout_properties
-      
-        # The page elements rendered on the page.
-        # Corresponds to the JSON property `pageElements`
-        # @return [Array<Google::Apis::SlidesV1::PageElement>]
-        attr_accessor :page_elements
-      
-        # The properties of Page that are only
-        # relevant for pages with page_type NOTES.
-        # Corresponds to the JSON property `notesProperties`
-        # @return [Google::Apis::SlidesV1::NotesProperties]
-        attr_accessor :notes_properties
-      
-        # The type of the page.
-        # Corresponds to the JSON property `pageType`
-        # @return [String]
-        attr_accessor :page_type
-      
-        # The properties of Page that are only
-        # relevant for pages with page_type SLIDE.
-        # Corresponds to the JSON property `slideProperties`
-        # @return [Google::Apis::SlidesV1::SlideProperties]
-        attr_accessor :slide_properties
-      
-        # The properties of the Page.
-        # The page will inherit properties from the parent page. Depending on the page
-        # type the hierarchy is defined in either
-        # SlideProperties or
-        # LayoutProperties.
-        # Corresponds to the JSON property `pageProperties`
-        # @return [Google::Apis::SlidesV1::PageProperties]
-        attr_accessor :page_properties
-      
-        # The object ID for this page. Object IDs used by
-        # Page and
-        # PageElement share the same namespace.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The revision ID of the presentation containing this page. Can be used in
-        # update requests to assert that the presentation revision hasn't changed
-        # since the last read operation. Only populated if the user has edit access
-        # to the presentation.
-        # The format of the revision ID may change over time, so it should be treated
-        # opaquely. A returned revision ID is only guaranteed to be valid for 24
-        # hours after it has been returned and cannot be shared across users. If the
-        # revision ID is unchanged between calls, then the presentation has not
-        # changed. Conversely, a changed ID (for the same presentation and user)
-        # usually means the presentation has been updated; however, a changed ID can
-        # also be due to internal factors such as ID format changes.
-        # Corresponds to the JSON property `revisionId`
-        # @return [String]
-        attr_accessor :revision_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @layout_properties = args[:layout_properties] if args.key?(:layout_properties)
-          @page_elements = args[:page_elements] if args.key?(:page_elements)
-          @notes_properties = args[:notes_properties] if args.key?(:notes_properties)
-          @page_type = args[:page_type] if args.key?(:page_type)
-          @slide_properties = args[:slide_properties] if args.key?(:slide_properties)
-          @page_properties = args[:page_properties] if args.key?(:page_properties)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @revision_id = args[:revision_id] if args.key?(:revision_id)
-        end
-      end
-      
-      # The shape background fill.
-      class ShapeBackgroundFill
-        include Google::Apis::Core::Hashable
-      
-        # A solid color fill. The page or page element is filled entirely with the
-        # specified color value.
-        # If any field is unset, its value may be inherited from a parent placeholder
-        # if it exists.
-        # Corresponds to the JSON property `solidFill`
-        # @return [Google::Apis::SlidesV1::SolidFill]
-        attr_accessor :solid_fill
-      
-        # The background fill property state.
-        # Updating the the fill on a shape will implicitly update this field to
-        # `RENDERED`, unless another value is specified in the same request. To
-        # have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
-        # any other fill fields set in the same request will be ignored.
-        # Corresponds to the JSON property `propertyState`
-        # @return [String]
-        attr_accessor :property_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
-          @property_state = args[:property_state] if args.key?(:property_state)
-        end
-      end
-      
-      # The crop properties of an object enclosed in a container. For example, an
-      # Image.
-      # The crop properties is represented by the offsets of four edges which define
-      # a crop rectangle. The offsets are measured in percentage from the
-      # corresponding edges of the object's original bounding rectangle towards
-      # inside, relative to the object's original dimensions.
-      # - If the offset is in the interval (0, 1), the corresponding edge of crop
-      # rectangle is positioned inside of the object's original bounding rectangle.
-      # - If the offset is negative or greater than 1, the corresponding edge of crop
-      # rectangle is positioned outside of the object's original bounding rectangle.
-      # - If the left edge of the crop rectangle is on the right side of its right
-      # edge, the object will be flipped horizontally.
-      # - If the top edge of the crop rectangle is below its bottom edge, the object
-      # will be flipped vertically.
-      # - If all offsets and rotation angle is 0, the object is not cropped.
-      # After cropping, the content in the crop rectangle will be stretched to fit
-      # its container.
-      class CropProperties
-        include Google::Apis::Core::Hashable
-      
-        # The offset specifies the bottom edge of the crop rectangle that is located
-        # above the original bounding rectangle bottom edge, relative to the object's
-        # original height.
-        # Corresponds to the JSON property `bottomOffset`
-        # @return [Float]
-        attr_accessor :bottom_offset
-      
-        # The rotation angle of the crop window around its center, in radians.
-        # Rotation angle is applied after the offset.
-        # Corresponds to the JSON property `angle`
-        # @return [Float]
-        attr_accessor :angle
-      
-        # The offset specifies the top edge of the crop rectangle that is located
-        # below the original bounding rectangle top edge, relative to the object's
-        # original height.
-        # Corresponds to the JSON property `topOffset`
-        # @return [Float]
-        attr_accessor :top_offset
-      
-        # The offset specifies the left edge of the crop rectangle that is located to
-        # the right of the original bounding rectangle left edge, relative to the
-        # object's original width.
-        # Corresponds to the JSON property `leftOffset`
-        # @return [Float]
-        attr_accessor :left_offset
-      
-        # The offset specifies the right edge of the crop rectangle that is located
-        # to the left of the original bounding rectangle right edge, relative to the
-        # object's original width.
-        # Corresponds to the JSON property `rightOffset`
-        # @return [Float]
-        attr_accessor :right_offset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bottom_offset = args[:bottom_offset] if args.key?(:bottom_offset)
-          @angle = args[:angle] if args.key?(:angle)
-          @top_offset = args[:top_offset] if args.key?(:top_offset)
-          @left_offset = args[:left_offset] if args.key?(:left_offset)
-          @right_offset = args[:right_offset] if args.key?(:right_offset)
-        end
-      end
-      
-      # Replaces all shapes that match the given criteria with the provided Google
-      # Sheets chart. The chart will be scaled and centered to fit within the bounds
-      # of the original shape.
-      # NOTE: Replacing shapes with a chart requires at least one of the
-      # spreadsheets.readonly, spreadsheets, drive.readonly, or drive OAuth scopes.
-      class ReplaceAllShapesWithSheetsChartRequest
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the Google Sheets spreadsheet that contains the chart.
-        # Corresponds to the JSON property `spreadsheetId`
-        # @return [String]
-        attr_accessor :spreadsheet_id
-      
-        # The mode with which the chart is linked to the source spreadsheet. When
-        # not specified, the chart will be an image that is not linked.
-        # Corresponds to the JSON property `linkingMode`
-        # @return [String]
-        attr_accessor :linking_mode
-      
-        # A criteria that matches a specific string of text in a shape or table.
-        # Corresponds to the JSON property `containsText`
-        # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
-        attr_accessor :contains_text
-      
-        # The ID of the specific chart in the Google Sheets spreadsheet.
-        # Corresponds to the JSON property `chartId`
-        # @return [Fixnum]
-        attr_accessor :chart_id
-      
-        # If non-empty, limits the matches to page elements only on the given pages.
-        # Returns a 400 bad request error if given the page object ID of a
-        # notes page or a
-        # notes master, or if a
-        # page with that object ID doesn't exist in the presentation.
-        # Corresponds to the JSON property `pageObjectIds`
-        # @return [Array<String>]
-        attr_accessor :page_object_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
-          @linking_mode = args[:linking_mode] if args.key?(:linking_mode)
-          @contains_text = args[:contains_text] if args.key?(:contains_text)
-          @chart_id = args[:chart_id] if args.key?(:chart_id)
-          @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
-        end
-      end
-      
-      # Specifies a contiguous range of an indexed collection, such as characters in
-      # text.
-      class Range
-        include Google::Apis::Core::Hashable
-      
-        # The optional zero-based index of the beginning of the collection.
-        # Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges.
-        # Corresponds to the JSON property `startIndex`
-        # @return [Fixnum]
-        attr_accessor :start_index
-      
-        # The optional zero-based index of the end of the collection.
-        # Required for `FIXED_RANGE` ranges.
-        # Corresponds to the JSON property `endIndex`
-        # @return [Fixnum]
-        attr_accessor :end_index
-      
-        # The type of range.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @start_index = args[:start_index] if args.key?(:start_index)
-          @end_index = args[:end_index] if args.key?(:end_index)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # A color and position in a gradient band.
-      class ColorStop
-        include Google::Apis::Core::Hashable
-      
-        # The alpha value of this color in the gradient band. Defaults to 1.0,
-        # fully opaque.
-        # Corresponds to the JSON property `alpha`
-        # @return [Float]
-        attr_accessor :alpha
-      
-        # The relative position of the color stop in the gradient band measured
-        # in percentage. The value should be in the interval [0.0, 1.0].
-        # Corresponds to the JSON property `position`
-        # @return [Float]
-        attr_accessor :position
-      
-        # A themeable solid color value.
-        # Corresponds to the JSON property `color`
-        # @return [Google::Apis::SlidesV1::OpaqueColor]
-        attr_accessor :color
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alpha = args[:alpha] if args.key?(:alpha)
-          @position = args[:position] if args.key?(:position)
-          @color = args[:color] if args.key?(:color)
-        end
-      end
-      
-      # Creates a video.
-      class CreateVideoRequest
-        include Google::Apis::Core::Hashable
-      
-        # A user-supplied object ID.
-        # If you specify an ID, it must be unique among all pages and page elements
-        # in the presentation. The ID must start with an alphanumeric character or an
-        # underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
-        # may include those as well as a hyphen or colon (matches regex
-        # `[a-zA-Z0-9_-:]`).
-        # The length of the ID must not be less than 5 or greater than 50.
-        # If you don't specify an ID, a unique one is generated.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        # The video source.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Common properties for a page element.
-        # Note: When you initially create a
-        # PageElement, the API may modify
-        # the values of both `size` and `transform`, but the
-        # visual size will be unchanged.
-        # Corresponds to the JSON property `elementProperties`
-        # @return [Google::Apis::SlidesV1::PageElementProperties]
-        attr_accessor :element_properties
-      
-        # The video source's unique identifier for this video.
-        # e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,
-        # the ID is 7U3axjORYZ0.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-          @source = args[:source] if args.key?(:source)
-          @element_properties = args[:element_properties] if args.key?(:element_properties)
-          @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # The response of duplicating an object.
-      class DuplicateObjectResponse
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the new duplicate object.
-        # Corresponds to the JSON property `objectId`
-        # @return [String]
-        attr_accessor :object_id_prop
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
-        end
-      end
-      
-      # Replaces all shapes that match the given criteria with the provided image.
-      class ReplaceAllShapesWithImageRequest
-        include Google::Apis::Core::Hashable
-      
-        # A criteria that matches a specific string of text in a shape or table.
-        # Corresponds to the JSON property `containsText`
-        # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
-        attr_accessor :contains_text
-      
-        # If non-empty, limits the matches to page elements only on the given pages.
-        # Returns a 400 bad request error if given the page object ID of a
-        # notes page or a
-        # notes master, or if a
-        # page with that object ID doesn't exist in the presentation.
-        # Corresponds to the JSON property `pageObjectIds`
-        # @return [Array<String>]
-        attr_accessor :page_object_ids
-      
-        # The image URL.
-        # The image is fetched once at insertion time and a copy is stored for
-        # display inside the presentation. Images must be less than 50MB in size,
-        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
-        # format.
-        # Corresponds to the JSON property `imageUrl`
-        # @return [String]
-        attr_accessor :image_url
-      
-        # The replace method.
-        # Corresponds to the JSON property `replaceMethod`
-        # @return [String]
-        attr_accessor :replace_method
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contains_text = args[:contains_text] if args.key?(:contains_text)
-          @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
-          @image_url = args[:image_url] if args.key?(:image_url)
-          @replace_method = args[:replace_method] if args.key?(:replace_method)
-        end
-      end
-      
-      # The shadow properties of a page element.
-      # If these fields are unset, they may be inherited from a parent placeholder
-      # if it exists. If there is no parent, the fields will default to the value
-      # used for new page elements created in the Slides editor, which may depend on
-      # the page element kind.
-      class Shadow
-        include Google::Apis::Core::Hashable
-      
-        # The shadow property state.
-        # Updating the the shadow on a page element will implicitly update this field
-        # to `RENDERED`, unless another value is specified in the same request. To
-        # have no shadow on a page element, set this field to `NOT_RENDERED`. In this
-        # case, any other shadow fields set in the same request will be ignored.
-        # Corresponds to the JSON property `propertyState`
-        # @return [String]
-        attr_accessor :property_state
-      
-        # A magnitude in a single direction in the specified units.
-        # Corresponds to the JSON property `blurRadius`
-        # @return [Google::Apis::SlidesV1::Dimension]
-        attr_accessor :blur_radius
-      
-        # The type of the shadow.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ]
-        # to transform source coordinates (x,y) into destination coordinates (x', y')
-        # according to:
-        # x'  x  =   shear_y  scale_y  translate_y
-        # 1  [ 1 ]
-        # After transformation,
-        # x' = scale_x * x + shear_x * y + translate_x;
-        # y' = scale_y * y + shear_y * x + translate_y;
-        # This message is therefore composed of these six matrix elements.
-        # Corresponds to the JSON property `transform`
-        # @return [Google::Apis::SlidesV1::AffineTransform]
-        attr_accessor :transform
-      
-        # The alignment point of the shadow, that sets the origin for translate,
-        # scale and skew of the shadow.
-        # Corresponds to the JSON property `alignment`
-        # @return [String]
-        attr_accessor :alignment
-      
-        # The alpha of the shadow's color, from 0.0 to 1.0.
-        # Corresponds to the JSON property `alpha`
-        # @return [Float]
-        attr_accessor :alpha
-      
-        # A themeable solid color value.
-        # Corresponds to the JSON property `color`
-        # @return [Google::Apis::SlidesV1::OpaqueColor]
-        attr_accessor :color
-      
-        # Whether the shadow should rotate with the shape.
-        # Corresponds to the JSON property `rotateWithShape`
-        # @return [Boolean]
-        attr_accessor :rotate_with_shape
-        alias_method :rotate_with_shape?, :rotate_with_shape
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property_state = args[:property_state] if args.key?(:property_state)
-          @blur_radius = args[:blur_radius] if args.key?(:blur_radius)
-          @type = args[:type] if args.key?(:type)
-          @transform = args[:transform] if args.key?(:transform)
-          @alignment = args[:alignment] if args.key?(:alignment)
-          @alpha = args[:alpha] if args.key?(:alpha)
-          @color = args[:color] if args.key?(:color)
-          @rotate_with_shape = args[:rotate_with_shape] if args.key?(:rotate_with_shape)
-        end
-      end
-      
-      # Deletes a row from a table.
-      class DeleteTableRowRequest
-        include Google::Apis::Core::Hashable
-      
-        # A location of a single table cell within a table.
-        # Corresponds to the JSON property `cellLocation`
-        # @return [Google::Apis::SlidesV1::TableCellLocation]
-        attr_accessor :cell_location
-      
-        # The table to delete rows from.
-        # Corresponds to the JSON property `tableObjectId`
-        # @return [String]
-        attr_accessor :table_object_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cell_location = args[:cell_location] if args.key?(:cell_location)
-          @table_object_id = args[:table_object_id] if args.key?(:table_object_id)
-        end
-      end
-      
-      # Describes the bullet of a paragraph.
-      class Bullet
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the list this paragraph belongs to.
-        # Corresponds to the JSON property `listId`
-        # @return [String]
-        attr_accessor :list_id
-      
-        # The rendered bullet glyph for this paragraph.
-        # Corresponds to the JSON property `glyph`
-        # @return [String]
-        attr_accessor :glyph
-      
-        # The nesting level of this paragraph in the list.
-        # Corresponds to the JSON property `nestingLevel`
-        # @return [Fixnum]
-        attr_accessor :nesting_level
-      
-        # Represents the styling that can be applied to a TextRun.
-        # If this text is contained in a shape with a parent placeholder, then these
-        # text styles may be
-        # inherited from the parent. Which text styles are inherited depend on the
-        # nesting level of lists:
-        # * A text run in a paragraph that is not in a list will inherit its text style
-        # from the the newline character in the paragraph at the 0 nesting level of
-        # the list inside the parent placeholder.
-        # * A text run in a paragraph that is in a list will inherit its text style
-        # from the newline character in the paragraph at its corresponding nesting
-        # level of the list inside the parent placeholder.
-        # Inherited text styles are represented as unset fields in this message. If
-        # text is contained in a shape without a parent placeholder, unsetting these
-        # fields will revert the style to a value matching the defaults in the Slides
-        # editor.
-        # Corresponds to the JSON property `bulletStyle`
-        # @return [Google::Apis::SlidesV1::TextStyle]
-        attr_accessor :bullet_style
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @list_id = args[:list_id] if args.key?(:list_id)
-          @glyph = args[:glyph] if args.key?(:glyph)
-          @nesting_level = args[:nesting_level] if args.key?(:nesting_level)
-          @bullet_style = args[:bullet_style] if args.key?(:bullet_style)
-        end
-      end
-      
-      # The fill of the outline.
-      class OutlineFill
-        include Google::Apis::Core::Hashable
-      
-        # A solid color fill. The page or page element is filled entirely with the
-        # specified color value.
-        # If any field is unset, its value may be inherited from a parent placeholder
-        # if it exists.
-        # Corresponds to the JSON property `solidFill`
-        # @return [Google::Apis::SlidesV1::SolidFill]
-        attr_accessor :solid_fill
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @solid_fill = args[:solid_fill] if args.key?(:solid_fill)
         end
       end
     end

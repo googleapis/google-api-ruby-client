@@ -1668,11 +1668,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # User defined labels.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
         # Preferred location. This specifies where a Cloud SQL instance should
         # preferably be located, either in a specific Compute Engine zone, or co-located
         # with an App Engine application. Note that if the preferred location is not
@@ -1728,6 +1723,12 @@ module Google
         # @return [String]
         attr_accessor :tier
       
+        # User-provided labels, represented as a dictionary where each label is a single
+        # key value pair.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1745,7 +1746,6 @@ module Google
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kind = args[:kind] if args.key?(:kind)
-          @labels = args[:labels] if args.key?(:labels)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
@@ -1754,6 +1754,7 @@ module Google
           @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
           @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       

@@ -177,43 +177,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Copies a single sheet from a spreadsheet to another spreadsheet.
-        # Returns the properties of the newly created sheet.
-        # @param [String] spreadsheet_id
-        #   The ID of the spreadsheet containing the sheet to copy.
-        # @param [Fixnum] sheet_id
-        #   The ID of the sheet to copy.
-        # @param [Google::Apis::SheetsV4::CopySheetToAnotherSpreadsheetRequest] copy_sheet_to_another_spreadsheet_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SheetsV4::SheetProperties] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SheetsV4::SheetProperties]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_spreadsheet(spreadsheet_id, sheet_id, copy_sheet_to_another_spreadsheet_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', options)
-          command.request_representation = Google::Apis::SheetsV4::CopySheetToAnotherSpreadsheetRequest::Representation
-          command.request_object = copy_sheet_to_another_spreadsheet_request_object
-          command.response_representation = Google::Apis::SheetsV4::SheetProperties::Representation
-          command.response_class = Google::Apis::SheetsV4::SheetProperties
-          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
-          command.params['sheetId'] = sheet_id unless sheet_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Clears values from a spreadsheet.
         # The caller must specify the spreadsheet ID and range.
         # Only values are cleared -- all other properties of the cell (such as
@@ -553,6 +516,43 @@ module Google
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateValuesResponse::Representation
           command.response_class = Google::Apis::SheetsV4::BatchUpdateValuesResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Copies a single sheet from a spreadsheet to another spreadsheet.
+        # Returns the properties of the newly created sheet.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet containing the sheet to copy.
+        # @param [Fixnum] sheet_id
+        #   The ID of the sheet to copy.
+        # @param [Google::Apis::SheetsV4::CopySheetToAnotherSpreadsheetRequest] copy_sheet_to_another_spreadsheet_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::SheetProperties] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::SheetProperties]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def copy_spreadsheet(spreadsheet_id, sheet_id, copy_sheet_to_another_spreadsheet_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', options)
+          command.request_representation = Google::Apis::SheetsV4::CopySheetToAnotherSpreadsheetRequest::Representation
+          command.request_object = copy_sheet_to_another_spreadsheet_request_object
+          command.response_representation = Google::Apis::SheetsV4::SheetProperties::Representation
+          command.response_class = Google::Apis::SheetsV4::SheetProperties
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.params['sheetId'] = sheet_id unless sheet_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

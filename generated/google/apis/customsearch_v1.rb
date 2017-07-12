@@ -20,12 +20,12 @@ module Google
   module Apis
     # CustomSearch API
     #
-    # Lets you search over a website or collection of websites
+    # Searches over a website or collection of websites
     #
     # @see https://developers.google.com/custom-search/v1/using_rest
     module CustomsearchV1
       VERSION = 'V1'
-      REVISION = '20160411'
+      REVISION = '20170530'
     end
   end
 end

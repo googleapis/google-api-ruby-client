@@ -22,49 +22,13 @@ module Google
   module Apis
     module ContainerV1
       
-      class RollbackNodePoolUpgradeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateClusterRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Cluster
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CreateNodePoolRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServerConfig
+      class MasterAuth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class NodeConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MasterAuth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,13 +52,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SetMasterAuthRequest
+      class NodePoolAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NodePoolAutoscaling
+      class ClientCertificateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetMasterAuthRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,92 +167,65 @@ module Google
       end
       
       class RollbackNodePoolUpgradeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetNodePoolSizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class UpdateClusterRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :update, as: 'update', class: Google::Apis::ContainerV1::ClusterUpdate, decorator: Google::Apis::ContainerV1::ClusterUpdate::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Cluster
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_node_count, as: 'currentNodeCount'
-          property :monitoring_service, as: 'monitoringService'
-          property :network, as: 'network'
-          property :label_fingerprint, as: 'labelFingerprint'
-          property :zone, as: 'zone'
-          property :expire_time, as: 'expireTime'
-          property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
-          property :logging_service, as: 'loggingService'
-          property :status_message, as: 'statusMessage'
-          property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :current_master_version, as: 'currentMasterVersion'
-          property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
-      
-          property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
-      
-          property :status, as: 'status'
-          property :current_node_version, as: 'currentNodeVersion'
-          property :subnetwork, as: 'subnetwork'
-          hash :resource_labels, as: 'resourceLabels'
-          property :name, as: 'name'
-          property :initial_cluster_version, as: 'initialClusterVersion'
-          property :legacy_abac, as: 'legacyAbac', class: Google::Apis::ContainerV1::LegacyAbac, decorator: Google::Apis::ContainerV1::LegacyAbac::Representation
-      
-          property :endpoint, as: 'endpoint'
-          property :create_time, as: 'createTime'
-          property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
-          property :initial_node_count, as: 'initialNodeCount'
-          collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
-      
-          collection :locations, as: 'locations'
-          property :self_link, as: 'selfLink'
-          collection :instance_group_urls, as: 'instanceGroupUrls'
-          property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
-          property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
-          property :description, as: 'description'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :operations, as: 'operations', class: Google::Apis::ContainerV1::Operation, decorator: Google::Apis::ContainerV1::Operation::Representation
-      
-          collection :missing_zones, as: 'missingZones'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class CreateNodePoolRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :node_pool, as: 'nodePool', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MasterAuth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :valid_master_versions, as: 'validMasterVersions'
-          property :default_cluster_version, as: 'defaultClusterVersion'
-          property :default_image_type, as: 'defaultImageType'
-          collection :valid_node_versions, as: 'validNodeVersions'
-          collection :valid_image_types, as: 'validImageTypes'
+          property :password, as: 'password'
+          property :client_certificate_config, as: 'clientCertificateConfig', class: Google::Apis::ContainerV1::ClientCertificateConfig, decorator: Google::Apis::ContainerV1::ClientCertificateConfig::Representation
+      
+          property :client_key, as: 'clientKey'
+          property :cluster_ca_certificate, as: 'clusterCaCertificate'
+          property :client_certificate, as: 'clientCertificate'
+          property :username, as: 'username'
         end
       end
       
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :local_ssd_count, as: 'localSsdCount'
           hash :metadata, as: 'metadata'
           property :disk_size_gb, as: 'diskSizeGb'
           collection :tags, as: 'tags'
@@ -291,19 +234,6 @@ module Google
           property :image_type, as: 'imageType'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
-          hash :labels, as: 'labels'
-          property :local_ssd_count, as: 'localSsdCount'
-        end
-      end
-      
-      class MasterAuth
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :username, as: 'username'
-          property :client_key, as: 'clientKey'
-          property :cluster_ca_certificate, as: 'clusterCaCertificate'
-          property :password, as: 'password'
-          property :client_certificate, as: 'clientCertificate'
         end
       end
       
@@ -331,6 +261,22 @@ module Google
         end
       end
       
+      class NodePoolAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :max_node_count, as: 'maxNodeCount'
+          property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class ClientCertificateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_client_certificate, as: 'issueClientCertificate'
+        end
+      end
+      
       class SetMasterAuthRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -340,28 +286,19 @@ module Google
         end
       end
       
-      class NodePoolAutoscaling
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_node_count, as: 'maxNodeCount'
-          property :min_node_count, as: 'minNodeCount'
-          property :enabled, as: 'enabled'
-        end
-      end
-      
       class ClusterUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
-      
-          collection :desired_locations, as: 'desiredLocations'
-          property :desired_monitoring_service, as: 'desiredMonitoringService'
           property :desired_image_type, as: 'desiredImageType'
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_master_version, as: 'desiredMasterVersion'
+          property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
+      
+          collection :desired_locations, as: 'desiredLocations'
+          property :desired_monitoring_service, as: 'desiredMonitoringService'
         end
       end
       
@@ -435,13 +372,13 @@ module Google
           property :status, as: 'status'
           property :config, as: 'config', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
       
-          property :status_message, as: 'statusMessage'
           property :name, as: 'name'
+          property :status_message, as: 'statusMessage'
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
       
-          property :initial_node_count, as: 'initialNodeCount'
           property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
       
+          property :initial_node_count, as: 'initialNodeCount'
           property :self_link, as: 'selfLink'
           property :version, as: 'version'
           collection :instance_group_urls, as: 'instanceGroupUrls'
@@ -451,10 +388,10 @@ module Google
       class NodeManagement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :upgrade_options, as: 'upgradeOptions', class: Google::Apis::ContainerV1::AutoUpgradeOptions, decorator: Google::Apis::ContainerV1::AutoUpgradeOptions::Representation
-      
           property :auto_upgrade, as: 'autoUpgrade'
           property :auto_repair, as: 'autoRepair'
+          property :upgrade_options, as: 'upgradeOptions', class: Google::Apis::ContainerV1::AutoUpgradeOptions, decorator: Google::Apis::ContainerV1::AutoUpgradeOptions::Representation
+      
         end
       end
       
@@ -492,6 +429,97 @@ module Google
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
       
+        end
+      end
+      
+      class RollbackNodePoolUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SetNodePoolSizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_count, as: 'nodeCount'
+        end
+      end
+      
+      class UpdateClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update, as: 'update', class: Google::Apis::ContainerV1::ClusterUpdate, decorator: Google::Apis::ContainerV1::ClusterUpdate::Representation
+      
+        end
+      end
+      
+      class Cluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :label_fingerprint, as: 'labelFingerprint'
+          property :zone, as: 'zone'
+          property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
+          property :expire_time, as: 'expireTime'
+          property :logging_service, as: 'loggingService'
+          property :status_message, as: 'statusMessage'
+          property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
+      
+          property :current_master_version, as: 'currentMasterVersion'
+          property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
+      
+          property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
+      
+          property :status, as: 'status'
+          property :current_node_version, as: 'currentNodeVersion'
+          property :subnetwork, as: 'subnetwork'
+          hash :resource_labels, as: 'resourceLabels'
+          property :name, as: 'name'
+          property :initial_cluster_version, as: 'initialClusterVersion'
+          property :endpoint, as: 'endpoint'
+          property :legacy_abac, as: 'legacyAbac', class: Google::Apis::ContainerV1::LegacyAbac, decorator: Google::Apis::ContainerV1::LegacyAbac::Representation
+      
+          property :create_time, as: 'createTime'
+          property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
+          property :initial_node_count, as: 'initialNodeCount'
+          collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
+          collection :locations, as: 'locations'
+          property :self_link, as: 'selfLink'
+          collection :instance_group_urls, as: 'instanceGroupUrls'
+          property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
+          property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
+          property :description, as: 'description'
+          property :current_node_count, as: 'currentNodeCount'
+          property :monitoring_service, as: 'monitoringService'
+        end
+      end
+      
+      class CreateNodePoolRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_pool, as: 'nodePool', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
+      
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::ContainerV1::Operation, decorator: Google::Apis::ContainerV1::Operation::Representation
+      
+          collection :missing_zones, as: 'missingZones'
+        end
+      end
+      
+      class ServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :valid_master_versions, as: 'validMasterVersions'
+          property :default_cluster_version, as: 'defaultClusterVersion'
+          property :default_image_type, as: 'defaultImageType'
+          collection :valid_node_versions, as: 'validNodeVersions'
+          collection :valid_image_types, as: 'validImageTypes'
         end
       end
     end

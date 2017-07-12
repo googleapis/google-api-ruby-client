@@ -74,14 +74,14 @@ module Google
       class RunMobileFriendlyTestResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_issues, as: 'resourceIssues', class: Google::Apis::SearchconsoleV1::ResourceIssue, decorator: Google::Apis::SearchconsoleV1::ResourceIssue::Representation
+      
+          property :test_status, as: 'testStatus', class: Google::Apis::SearchconsoleV1::TestStatus, decorator: Google::Apis::SearchconsoleV1::TestStatus::Representation
+      
           property :mobile_friendliness, as: 'mobileFriendliness'
           collection :mobile_friendly_issues, as: 'mobileFriendlyIssues', class: Google::Apis::SearchconsoleV1::MobileFriendlyIssue, decorator: Google::Apis::SearchconsoleV1::MobileFriendlyIssue::Representation
       
           property :screenshot, as: 'screenshot', class: Google::Apis::SearchconsoleV1::Image, decorator: Google::Apis::SearchconsoleV1::Image::Representation
-      
-          collection :resource_issues, as: 'resourceIssues', class: Google::Apis::SearchconsoleV1::ResourceIssue, decorator: Google::Apis::SearchconsoleV1::ResourceIssue::Representation
-      
-          property :test_status, as: 'testStatus', class: Google::Apis::SearchconsoleV1::TestStatus, decorator: Google::Apis::SearchconsoleV1::TestStatus::Representation
       
         end
       end
@@ -112,8 +112,8 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, :base64 => true, as: 'data'
           property :mime_type, as: 'mimeType'
+          property :data, :base64 => true, as: 'data'
         end
       end
       

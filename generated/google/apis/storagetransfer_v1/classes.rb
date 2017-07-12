@@ -22,140 +22,6 @@ module Google
   module Apis
     module StoragetransferV1
       
-      # A summary of errors by error code, plus a count and sample error log
-      # entries.
-      class ErrorSummary
-        include Google::Apis::Core::Hashable
-      
-        # Count of this type of error.
-        # Required.
-        # Corresponds to the JSON property `errorCount`
-        # @return [Fixnum]
-        attr_accessor :error_count
-      
-        # Error samples.
-        # Corresponds to the JSON property `errorLogEntries`
-        # @return [Array<Google::Apis::StoragetransferV1::ErrorLogEntry>]
-        attr_accessor :error_log_entries
-      
-        # Required.
-        # Corresponds to the JSON property `errorCode`
-        # @return [String]
-        attr_accessor :error_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_count = args[:error_count] if args.key?(:error_count)
-          @error_log_entries = args[:error_log_entries] if args.key?(:error_log_entries)
-          @error_code = args[:error_code] if args.key?(:error_code)
-        end
-      end
-      
-      # An HttpData specifies a list of objects on the web to be transferred over
-      # HTTP.  The information of the objects to be transferred is contained in a
-      # file referenced by a URL. The first line in the file must be
-      # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
-      # specify the information of the list of objects, one object per list entry.
-      # Each entry has the following tab-delimited fields:
-      # * HTTP URL - The location of the object.
-      # * Length - The size of the object in bytes.
-      # * MD5 - The base64-encoded MD5 hash of the object.
-      # For an example of a valid TSV file, see
-      # [Transferring data from URLs](https://cloud.google.com/storage/transfer/#urls)
-      # When transferring data based on a URL list, keep the following in mind:
-      # * When an object located at `http(s)://hostname:port/<URL-path>` is
-      # transferred
-      # to a data sink, the name of the object at the data sink is
-      # `<hostname>/<URL-path>`.
-      # * If the specified size of an object does not match the actual size of the
-      # object fetched, the object will not be transferred.
-      # * If the specified MD5 does not match the MD5 computed from the transferred
-      # bytes, the object transfer will fail. For more information, see
-      # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
-      # * Ensure that each URL you specify is publicly accessible. For
-      # example, in Google Cloud Storage you can
-      # [share an object publicly]
-      # (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
-      # a link to it.
-      # * Storage Transfer Service obeys `robots.txt` rules and requires the source
-      # HTTP server to support `Range` requests and to return a `Content-Length`
-      # header in each response.
-      # * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
-      # to transfer.
-      class HttpData
-        include Google::Apis::Core::Hashable
-      
-        # The URL that points to the file that stores the object list entries.
-        # This file must allow public access.  Currently, only URLs with HTTP and
-        # HTTPS schemes are supported.
-        # Required.
-        # Corresponds to the JSON property `listUrl`
-        # @return [String]
-        attr_accessor :list_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @list_url = args[:list_url] if args.key?(:list_url)
-        end
-      end
-      
-      # In a GcsData, an object's name is the Google Cloud Storage object's name and
-      # its `lastModificationTime` refers to the object's updated time, which changes
-      # when the content or the metadata of the object is updated.
-      class GcsData
-        include Google::Apis::Core::Hashable
-      
-        # Google Cloud Storage bucket name (see
-        # [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#
-        # requirements)).
-        # Required.
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-        end
-      end
-      
-      # Response from ListTransferJobs.
-      class ListTransferJobsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of transfer jobs.
-        # Corresponds to the JSON property `transferJobs`
-        # @return [Array<Google::Apis::StoragetransferV1::TransferJob>]
-        attr_accessor :transfer_jobs
-      
-        # The list next page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @transfer_jobs = args[:transfer_jobs] if args.key?(:transfer_jobs)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # Request passed to UpdateTransferJob.
       class UpdateTransferJobRequest
         include Google::Apis::Core::Hashable
@@ -198,6 +64,24 @@ module Google
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
+        # If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
+        # and `maxTimeElapsedSinceLastModification` takes the maximum possible
+        # value of Duration. Objects that satisfy the object conditions
+        # must either have a `lastModificationTime` greater or equal to
+        # `NOW` - `maxTimeElapsedSinceLastModification` and less than
+        # `NOW` - `minTimeElapsedSinceLastModification`, or not have a
+        # `lastModificationTime`.
+        # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
+        # @return [String]
+        attr_accessor :min_time_elapsed_since_last_modification
+      
+        # `excludePrefixes` must follow the requirements described for
+        # `includePrefixes`.
+        # The max size of `excludePrefixes` is 1000.
+        # Corresponds to the JSON property `excludePrefixes`
+        # @return [Array<String>]
+        attr_accessor :exclude_prefixes
+      
         # `maxTimeElapsedSinceLastModification` is the complement to
         # `minTimeElapsedSinceLastModification`.
         # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
@@ -233,34 +117,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_prefixes
       
-        # If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
-        # and `maxTimeElapsedSinceLastModification` takes the maximum possible
-        # value of Duration. Objects that satisfy the object conditions
-        # must either have a `lastModificationTime` greater or equal to
-        # `NOW` - `maxTimeElapsedSinceLastModification` and less than
-        # `NOW` - `minTimeElapsedSinceLastModification`, or not have a
-        # `lastModificationTime`.
-        # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
-        # @return [String]
-        attr_accessor :min_time_elapsed_since_last_modification
-      
-        # `excludePrefixes` must follow the requirements described for
-        # `includePrefixes`.
-        # The max size of `excludePrefixes` is 1000.
-        # Corresponds to the JSON property `excludePrefixes`
-        # @return [Array<String>]
-        attr_accessor :exclude_prefixes
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
-          @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
           @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
           @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
+          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
+          @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
         end
       end
       
@@ -363,13 +229,6 @@ module Google
       class TransferOptions
         include Google::Apis::Core::Hashable
       
-        # Whether objects should be deleted from the source after they are
-        # transferred to the sink.
-        # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
-        # @return [Boolean]
-        attr_accessor :delete_objects_from_source_after_transfer
-        alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
-      
         # Whether objects that exist only in the sink should be deleted.
         # Corresponds to the JSON property `deleteObjectsUniqueInSink`
         # @return [Boolean]
@@ -382,21 +241,41 @@ module Google
         attr_accessor :overwrite_objects_already_existing_in_sink
         alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
       
+        # Whether objects should be deleted from the source after they are
+        # transferred to the sink.
+        # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
+        # @return [Boolean]
+        attr_accessor :delete_objects_from_source_after_transfer
+        alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
           @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
           @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
+          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
         end
       end
       
       # Configuration for running a transfer.
       class TransferSpec
         include Google::Apis::Core::Hashable
+      
+        # In a GcsData, an object's name is the Google Cloud Storage object's name and
+        # its `lastModificationTime` refers to the object's updated time, which changes
+        # when the content or the metadata of the object is updated.
+        # Corresponds to the JSON property `gcsDataSource`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_data_source
+      
+        # TransferOptions uses three boolean parameters to define the actions
+        # to be performed on objects in a transfer.
+        # Corresponds to the JSON property `transferOptions`
+        # @return [Google::Apis::StoragetransferV1::TransferOptions]
+        attr_accessor :transfer_options
       
         # An AwsS3Data can be a data source, but not a data sink.
         # In an AwsS3Data, an object's name is the S3 object's key name.
@@ -451,18 +330,24 @@ module Google
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_sink
       
-        # In a GcsData, an object's name is the Google Cloud Storage object's name and
-        # its `lastModificationTime` refers to the object's updated time, which changes
-        # when the content or the metadata of the object is updated.
-        # Corresponds to the JSON property `gcsDataSource`
-        # @return [Google::Apis::StoragetransferV1::GcsData]
-        attr_accessor :gcs_data_source
+        def initialize(**args)
+           update!(**args)
+        end
       
-        # TransferOptions uses three boolean parameters to define the actions
-        # to be performed on objects in a transfer.
-        # Corresponds to the JSON property `transferOptions`
-        # @return [Google::Apis::StoragetransferV1::TransferOptions]
-        attr_accessor :transfer_options
+        # Update properties of this object
+        def update!(**args)
+          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
+          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
+          @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
+          @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
+          @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
+          @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
+        end
+      end
+      
+      # Request passed to ResumeTransferOperation.
+      class ResumeTransferOperationRequest
+        include Google::Apis::Core::Hashable
       
         def initialize(**args)
            update!(**args)
@@ -470,12 +355,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
-          @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
-          @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
-          @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
-          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
-          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
       end
       
@@ -551,19 +430,6 @@ module Google
         end
       end
       
-      # Request passed to ResumeTransferOperation.
-      class ResumeTransferOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -614,17 +480,6 @@ module Google
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-        # to allow the value "24:00:00" for scenarios like business closing time.
-        # Corresponds to the JSON property `hours`
-        # @return [Fixnum]
-        attr_accessor :hours
-      
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
         # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
         # allow the value 60 if it allows leap-seconds.
         # Corresponds to the JSON property `seconds`
@@ -636,16 +491,27 @@ module Google
         # @return [Fixnum]
         attr_accessor :minutes
       
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+        # to allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @hours = args[:hours] if args.key?(:hours)
-          @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
           @minutes = args[:minutes] if args.key?(:minutes)
+          @hours = args[:hours] if args.key?(:hours)
+          @nanos = args[:nanos] if args.key?(:nanos)
         end
       end
       
@@ -681,6 +547,16 @@ module Google
       class TransferJob
         include Google::Apis::Core::Hashable
       
+        # This field cannot be changed by user requests.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Configuration for running a transfer.
+        # Corresponds to the JSON property `transferSpec`
+        # @return [Google::Apis::StoragetransferV1::TransferSpec]
+        attr_accessor :transfer_spec
+      
         # Status of the job. This value MUST be specified for
         # `CreateTransferJobRequests`.
         # NOTE: The effect of the new job status takes place during a subsequent job
@@ -696,11 +572,6 @@ module Google
         # @return [Google::Apis::StoragetransferV1::Schedule]
         attr_accessor :schedule
       
-        # This field cannot be changed by user requests.
-        # Corresponds to the JSON property `deletionTime`
-        # @return [String]
-        attr_accessor :deletion_time
-      
         # A globally unique name assigned by Storage Transfer Service when the
         # job is created. This field should be left empty in requests to create a new
         # transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`
@@ -708,6 +579,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # This field cannot be changed by user requests.
+        # Corresponds to the JSON property `deletionTime`
+        # @return [String]
+        attr_accessor :deletion_time
       
         # This field cannot be changed by user requests.
         # Corresponds to the JSON property `lastModificationTime`
@@ -726,31 +602,21 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Configuration for running a transfer.
-        # Corresponds to the JSON property `transferSpec`
-        # @return [Google::Apis::StoragetransferV1::TransferSpec]
-        attr_accessor :transfer_spec
-      
-        # This field cannot be changed by user requests.
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
           @status = args[:status] if args.key?(:status)
           @schedule = args[:schedule] if args.key?(:schedule)
-          @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
           @name = args[:name] if args.key?(:name)
+          @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
           @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
           @project_id = args[:project_id] if args.key?(:project_id)
           @description = args[:description] if args.key?(:description)
-          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
         end
       end
       
@@ -809,11 +675,6 @@ module Google
       class Date
         include Google::Apis::Core::Hashable
       
-        # Month of year. Must be from 1 to 12.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
         # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
         # a year.
         # Corresponds to the JSON property `year`
@@ -826,15 +687,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :day
       
+        # Month of year. Must be from 1 to 12.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
           @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
         end
       end
       
@@ -857,15 +723,15 @@ module Google
         # @return [Google::Apis::StoragetransferV1::TransferSpec]
         attr_accessor :transfer_spec
       
-        # Status of the transfer operation.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
         # A collection of counters that report the progress of a transfer operation.
         # Corresponds to the JSON property `counters`
         # @return [Google::Apis::StoragetransferV1::TransferCounters]
         attr_accessor :counters
+      
+        # Status of the transfer operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
       
         # Summarizes errors encountered with sample error log entries.
         # Corresponds to the JSON property `errorBreakdowns`
@@ -897,8 +763,8 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @transfer_job_name = args[:transfer_job_name] if args.key?(:transfer_job_name)
           @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
-          @status = args[:status] if args.key?(:status)
           @counters = args[:counters] if args.key?(:counters)
+          @status = args[:status] if args.key?(:status)
           @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
@@ -1002,6 +868,31 @@ module Google
       class TransferCounters
         include Google::Apis::Core::Hashable
       
+        # Bytes that are deleted from the data sink.
+        # Corresponds to the JSON property `bytesDeletedFromSink`
+        # @return [Fixnum]
+        attr_accessor :bytes_deleted_from_sink
+      
+        # Bytes that failed to be deleted from the data sink.
+        # Corresponds to the JSON property `bytesFailedToDeleteFromSink`
+        # @return [Fixnum]
+        attr_accessor :bytes_failed_to_delete_from_sink
+      
+        # Bytes in the data source that failed during the transfer.
+        # Corresponds to the JSON property `bytesFromSourceFailed`
+        # @return [Fixnum]
+        attr_accessor :bytes_from_source_failed
+      
+        # Objects that are copied to the data sink.
+        # Corresponds to the JSON property `objectsCopiedToSink`
+        # @return [Fixnum]
+        attr_accessor :objects_copied_to_sink
+      
+        # Objects in the data source that failed during the transfer.
+        # Corresponds to the JSON property `objectsFromSourceFailed`
+        # @return [Fixnum]
+        attr_accessor :objects_from_source_failed
+      
         # Bytes found only in the data sink that are scheduled to be deleted.
         # Corresponds to the JSON property `bytesFoundOnlyFromSink`
         # @return [Fixnum]
@@ -1030,6 +921,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :objects_from_source_skipped_by_sync
       
+        # Bytes that are deleted from the data source.
+        # Corresponds to the JSON property `bytesDeletedFromSource`
+        # @return [Fixnum]
+        attr_accessor :bytes_deleted_from_source
+      
         # Objects found in the data source that are scheduled to be transferred,
         # which will be copied, excluded based on conditions, or skipped due to
         # failures.
@@ -1037,25 +933,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :objects_found_from_source
       
-        # Bytes that are deleted from the data source.
-        # Corresponds to the JSON property `bytesDeletedFromSource`
-        # @return [Fixnum]
-        attr_accessor :bytes_deleted_from_source
-      
         # Objects that failed to be deleted from the data sink.
         # Corresponds to the JSON property `objectsFailedToDeleteFromSink`
         # @return [Fixnum]
         attr_accessor :objects_failed_to_delete_from_sink
       
-        # Objects that are deleted from the data sink.
-        # Corresponds to the JSON property `objectsDeletedFromSink`
-        # @return [Fixnum]
-        attr_accessor :objects_deleted_from_sink
-      
         # Objects found only in the data sink that are scheduled to be deleted.
         # Corresponds to the JSON property `objectsFoundOnlyFromSink`
         # @return [Fixnum]
         attr_accessor :objects_found_only_from_sink
+      
+        # Objects that are deleted from the data sink.
+        # Corresponds to the JSON property `objectsDeletedFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_deleted_from_sink
       
         # Bytes in the data source that are not transferred because they already
         # exist in the data sink.
@@ -1063,30 +954,51 @@ module Google
         # @return [Fixnum]
         attr_accessor :bytes_from_source_skipped_by_sync
       
-        # Bytes that failed to be deleted from the data sink.
-        # Corresponds to the JSON property `bytesFailedToDeleteFromSink`
-        # @return [Fixnum]
-        attr_accessor :bytes_failed_to_delete_from_sink
+        def initialize(**args)
+           update!(**args)
+        end
       
-        # Bytes that are deleted from the data sink.
-        # Corresponds to the JSON property `bytesDeletedFromSink`
-        # @return [Fixnum]
-        attr_accessor :bytes_deleted_from_sink
+        # Update properties of this object
+        def update!(**args)
+          @bytes_deleted_from_sink = args[:bytes_deleted_from_sink] if args.key?(:bytes_deleted_from_sink)
+          @bytes_failed_to_delete_from_sink = args[:bytes_failed_to_delete_from_sink] if args.key?(:bytes_failed_to_delete_from_sink)
+          @bytes_from_source_failed = args[:bytes_from_source_failed] if args.key?(:bytes_from_source_failed)
+          @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
+          @objects_from_source_failed = args[:objects_from_source_failed] if args.key?(:objects_from_source_failed)
+          @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] if args.key?(:bytes_found_only_from_sink)
+          @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
+          @bytes_copied_to_sink = args[:bytes_copied_to_sink] if args.key?(:bytes_copied_to_sink)
+          @bytes_found_from_source = args[:bytes_found_from_source] if args.key?(:bytes_found_from_source)
+          @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
+          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
+          @objects_found_from_source = args[:objects_found_from_source] if args.key?(:objects_found_from_source)
+          @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] if args.key?(:objects_failed_to_delete_from_sink)
+          @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
+          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
+          @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
+        end
+      end
       
-        # Bytes in the data source that failed during the transfer.
-        # Corresponds to the JSON property `bytesFromSourceFailed`
-        # @return [Fixnum]
-        attr_accessor :bytes_from_source_failed
+      # A summary of errors by error code, plus a count and sample error log
+      # entries.
+      class ErrorSummary
+        include Google::Apis::Core::Hashable
       
-        # Objects in the data source that failed during the transfer.
-        # Corresponds to the JSON property `objectsFromSourceFailed`
-        # @return [Fixnum]
-        attr_accessor :objects_from_source_failed
+        # Required.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
       
-        # Objects that are copied to the data sink.
-        # Corresponds to the JSON property `objectsCopiedToSink`
+        # Count of this type of error.
+        # Required.
+        # Corresponds to the JSON property `errorCount`
         # @return [Fixnum]
-        attr_accessor :objects_copied_to_sink
+        attr_accessor :error_count
+      
+        # Error samples.
+        # Corresponds to the JSON property `errorLogEntries`
+        # @return [Array<Google::Apis::StoragetransferV1::ErrorLogEntry>]
+        attr_accessor :error_log_entries
       
         def initialize(**args)
            update!(**args)
@@ -1094,22 +1006,110 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] if args.key?(:bytes_found_only_from_sink)
-          @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
-          @bytes_copied_to_sink = args[:bytes_copied_to_sink] if args.key?(:bytes_copied_to_sink)
-          @bytes_found_from_source = args[:bytes_found_from_source] if args.key?(:bytes_found_from_source)
-          @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
-          @objects_found_from_source = args[:objects_found_from_source] if args.key?(:objects_found_from_source)
-          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
-          @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] if args.key?(:objects_failed_to_delete_from_sink)
-          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
-          @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
-          @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
-          @bytes_failed_to_delete_from_sink = args[:bytes_failed_to_delete_from_sink] if args.key?(:bytes_failed_to_delete_from_sink)
-          @bytes_deleted_from_sink = args[:bytes_deleted_from_sink] if args.key?(:bytes_deleted_from_sink)
-          @bytes_from_source_failed = args[:bytes_from_source_failed] if args.key?(:bytes_from_source_failed)
-          @objects_from_source_failed = args[:objects_from_source_failed] if args.key?(:objects_from_source_failed)
-          @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @error_log_entries = args[:error_log_entries] if args.key?(:error_log_entries)
+        end
+      end
+      
+      # An HttpData specifies a list of objects on the web to be transferred over
+      # HTTP.  The information of the objects to be transferred is contained in a
+      # file referenced by a URL. The first line in the file must be
+      # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
+      # specify the information of the list of objects, one object per list entry.
+      # Each entry has the following tab-delimited fields:
+      # * HTTP URL - The location of the object.
+      # * Length - The size of the object in bytes.
+      # * MD5 - The base64-encoded MD5 hash of the object.
+      # For an example of a valid TSV file, see
+      # [Transferring data from URLs](https://cloud.google.com/storage/transfer/#urls)
+      # When transferring data based on a URL list, keep the following in mind:
+      # * When an object located at `http(s)://hostname:port/<URL-path>` is
+      # transferred
+      # to a data sink, the name of the object at the data sink is
+      # `<hostname>/<URL-path>`.
+      # * If the specified size of an object does not match the actual size of the
+      # object fetched, the object will not be transferred.
+      # * If the specified MD5 does not match the MD5 computed from the transferred
+      # bytes, the object transfer will fail. For more information, see
+      # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+      # * Ensure that each URL you specify is publicly accessible. For
+      # example, in Google Cloud Storage you can
+      # [share an object publicly]
+      # (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
+      # a link to it.
+      # * Storage Transfer Service obeys `robots.txt` rules and requires the source
+      # HTTP server to support `Range` requests and to return a `Content-Length`
+      # header in each response.
+      # * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
+      # to transfer.
+      class HttpData
+        include Google::Apis::Core::Hashable
+      
+        # The URL that points to the file that stores the object list entries.
+        # This file must allow public access.  Currently, only URLs with HTTP and
+        # HTTPS schemes are supported.
+        # Required.
+        # Corresponds to the JSON property `listUrl`
+        # @return [String]
+        attr_accessor :list_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list_url = args[:list_url] if args.key?(:list_url)
+        end
+      end
+      
+      # In a GcsData, an object's name is the Google Cloud Storage object's name and
+      # its `lastModificationTime` refers to the object's updated time, which changes
+      # when the content or the metadata of the object is updated.
+      class GcsData
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket name (see
+        # [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#
+        # requirements)).
+        # Required.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+        end
+      end
+      
+      # Response from ListTransferJobs.
+      class ListTransferJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of transfer jobs.
+        # Corresponds to the JSON property `transferJobs`
+        # @return [Array<Google::Apis::StoragetransferV1::TransferJob>]
+        attr_accessor :transfer_jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @transfer_jobs = args[:transfer_jobs] if args.key?(:transfer_jobs)
         end
       end
     end

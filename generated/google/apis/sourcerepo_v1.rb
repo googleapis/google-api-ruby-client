@@ -25,7 +25,13 @@ module Google
     # @see https://cloud.google.com/source-repositories/docs/apis
     module SourcerepoV1
       VERSION = 'V1'
-      REVISION = '20170502'
+      REVISION = '20170528'
+
+      # View the contents of your source code repositories
+      AUTH_SOURCE_READ_ONLY = 'https://www.googleapis.com/auth/source.read_only'
+
+      # Manage the contents of your source code repositories
+      AUTH_SOURCE_READ_WRITE = 'https://www.googleapis.com/auth/source.read_write'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudresourcemanagerV1beta1
       
+      class GetAncestryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,13 +40,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
+      class FolderOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FolderOperation
+      class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,13 +100,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Organization
+      class UndeleteProjectRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UndeleteProjectRequest
+      class Organization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,13 +118,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsResponse
+      class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetIamPolicyRequest
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,22 +142,22 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListProjectsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuditLogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetAncestryRequest
+      class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetAncestryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Project
@@ -175,6 +181,16 @@ module Google
         end
       end
       
+      class FolderOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_type, as: 'operationType'
+          property :display_name, as: 'displayName'
+          property :source_parent, as: 'sourceParent'
+          property :destination_parent, as: 'destinationParent'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -184,16 +200,6 @@ module Google
       
           collection :bindings, as: 'bindings', class: Google::Apis::CloudresourcemanagerV1beta1::Binding, decorator: Google::Apis::CloudresourcemanagerV1beta1::Binding::Representation
       
-        end
-      end
-      
-      class FolderOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_parent, as: 'destinationParent'
-          property :operation_type, as: 'operationType'
-          property :display_name, as: 'displayName'
-          property :source_parent, as: 'sourceParent'
         end
       end
       
@@ -207,8 +213,8 @@ module Google
       class ResourceId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
           property :type, as: 'type'
+          property :id, as: 'id'
         end
       end
       
@@ -241,9 +247,9 @@ module Google
       class ListOrganizationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :organizations, as: 'organizations', class: Google::Apis::CloudresourcemanagerV1beta1::Organization, decorator: Google::Apis::CloudresourcemanagerV1beta1::Organization::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -261,31 +267,37 @@ module Google
         end
       end
       
-      class Organization
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :organization_id, as: 'organizationId'
-          property :lifecycle_state, as: 'lifecycleState'
-          property :display_name, as: 'displayName'
-          property :creation_time, as: 'creationTime'
-          property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner::Representation
-      
-        end
-      end
-      
       class UndeleteProjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
+      class Organization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :owner, as: 'owner', class: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner, decorator: Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner::Representation
+      
+          property :name, as: 'name'
+          property :organization_id, as: 'organizationId'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :display_name, as: 'displayName'
+          property :creation_time, as: 'creationTime'
+        end
+      end
+      
       class ProjectCreationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :ready, as: 'ready'
           property :create_time, as: 'createTime'
           property :gettable, as: 'gettable'
+          property :ready, as: 'ready'
+        end
+      end
+      
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -293,12 +305,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class GetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -317,15 +323,6 @@ module Google
         end
       end
       
-      class ListProjectsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1beta1::Project, decorator: Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class AuditLogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -334,9 +331,12 @@ module Google
         end
       end
       
-      class GetAncestryRequest
+      class ListProjectsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1beta1::Project, decorator: Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
     end

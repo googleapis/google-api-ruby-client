@@ -53,13 +53,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Retrieves an aggregated list of addresses.
+        # Retrieves an aggregated list of accelerator types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -68,7 +67,204 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::AcceleratorTypeAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::AcceleratorTypeAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_accelerator_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/acceleratorTypes', options)
+          command.response_representation = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified accelerator type. Get a list of available accelerator
+        # types by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] accelerator_type
+        #   Name of the accelerator type to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::AcceleratorType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::AcceleratorType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_accelerator_type(project, zone, accelerator_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes/{acceleratorType}', options)
+          command.response_representation = Google::Apis::ComputeV1::AcceleratorType::Representation
+          command.response_class = Google::Apis::ComputeV1::AcceleratorType
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['acceleratorType'] = accelerator_type unless accelerator_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of accelerator types available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] filter
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::AcceleratorTypeList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::AcceleratorTypeList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_accelerator_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/acceleratorTypes', options)
+          command.response_representation = Google::Apis::ComputeV1::AcceleratorTypeList::Representation
+          command.response_class = Google::Apis::ComputeV1::AcceleratorTypeList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an aggregated list of addresses.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -260,9 +456,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -271,7 +466,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -338,9 +533,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -349,7 +543,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -542,9 +736,8 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -553,7 +746,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -827,9 +1020,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -838,7 +1030,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -989,9 +1181,8 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1000,7 +1191,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1225,9 +1416,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1236,7 +1426,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1390,9 +1580,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1401,7 +1590,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1511,9 +1700,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1522,7 +1710,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1589,9 +1777,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1600,7 +1787,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1846,9 +2033,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -1857,7 +2043,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -1964,8 +2150,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the labels on a disk. To learn more about labels, read the Labeling or
-        # Tagging Resources documentation.
+        # Sets the labels on a disk. To learn more about labels, read the Labeling
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2128,9 +2314,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2139,7 +2324,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2292,9 +2477,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2303,7 +2487,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2496,9 +2680,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2507,7 +2690,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2735,9 +2918,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2746,7 +2928,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -2929,9 +3111,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -2940,7 +3121,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3048,9 +3229,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3059,7 +3239,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3200,9 +3380,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3211,7 +3390,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3393,9 +3572,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3404,7 +3582,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3671,9 +3849,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3682,7 +3859,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -3949,9 +4126,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -3960,7 +4136,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -4268,6 +4444,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Image] image_object
+        # @param [Boolean] force_create
+        #   Force image creation if true.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4289,13 +4467,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_image(project, image_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_image(project, image_object = nil, force_create: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/images', options)
           command.request_representation = Google::Apis::ComputeV1::Image::Representation
           command.request_object = image_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
+          command.query['forceCreate'] = force_create unless force_create.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -4311,9 +4490,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -4322,7 +4500,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -4384,8 +4562,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the labels on an image. To learn more about labels, read the Labeling or
-        # Tagging Resources documentation.
+        # Sets the labels on an image. To learn more about labels, read the Labeling
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -4485,9 +4663,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -4496,7 +4673,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -4752,9 +4929,8 @@ module Google
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -4763,7 +4939,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5131,9 +5307,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5142,7 +5317,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5338,9 +5513,8 @@ module Google
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5349,7 +5523,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5422,9 +5596,8 @@ module Google
         #   included instances.
         # @param [Google::Apis::ComputeV1::InstanceGroupsListInstancesRequest] instance_groups_list_instances_request_object
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5433,7 +5606,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5717,9 +5890,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5728,7 +5900,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -5841,9 +6013,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -5852,7 +6023,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6234,9 +6405,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6245,7 +6415,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6397,8 +6567,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets labels on an instance. To learn more about labels, read the Labeling or
-        # Tagging Resources documentation.
+        # Sets labels on an instance. To learn more about labels, read the Labeling
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6431,6 +6601,51 @@ module Google
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setLabels', options)
           command.request_representation = Google::Apis::ComputeV1::InstancesSetLabelsRequest::Representation
           command.request_object = instances_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the number and/or type of accelerator for a stopped instance to the
+        # values specified in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeV1::InstancesSetMachineResourcesRequest] instances_set_machine_resources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_machine_resources(project, zone, instance, instances_set_machine_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/setMachineResources', options)
+          command.request_representation = Google::Apis::ComputeV1::InstancesSetMachineResourcesRequest::Representation
+          command.request_object = instances_set_machine_resources_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -6797,8 +7012,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified License resource. Get a list of available licenses by
-        # making a list() request.
+        # Returns the specified License resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -6840,9 +7054,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6851,7 +7064,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -6961,9 +7174,8 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -6972,7 +7184,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -7029,6 +7241,47 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a peering to the specified network.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource to add peering to.
+        # @param [Google::Apis::ComputeV1::NetworksAddPeeringRequest] networks_add_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_network_peering(project, network, networks_add_peering_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/networks/{network}/addPeering', options)
+          command.request_representation = Google::Apis::ComputeV1::NetworksAddPeeringRequest::Representation
+          command.request_object = networks_add_peering_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7155,9 +7408,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -7166,7 +7418,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -7222,6 +7474,47 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a peering from the specified network.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource to remove peering from.
+        # @param [Google::Apis::ComputeV1::NetworksRemovePeeringRequest] networks_remove_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_network_peering(project, network, networks_remove_peering_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/networks/{network}/removePeering', options)
+          command.request_representation = Google::Apis::ComputeV1::NetworksRemovePeeringRequest::Representation
+          command.request_object = networks_remove_peering_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -7859,9 +8152,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -7870,7 +8162,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -8199,9 +8491,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -8210,7 +8501,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -8613,9 +8904,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -8624,7 +8914,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -8982,9 +9272,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -8993,7 +9282,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9067,9 +9356,8 @@ module Google
         #   Name of the regional instance group for which we want to list the instances.
         # @param [Google::Apis::ComputeV1::RegionInstanceGroupsListInstancesRequest] region_instance_groups_list_instances_request_object
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9078,7 +9366,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9274,9 +9562,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9285,7 +9572,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9391,9 +9678,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9402,7 +9688,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9468,9 +9754,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9479,7 +9764,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -9713,9 +9998,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -9724,7 +10008,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10041,9 +10325,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10052,7 +10335,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10200,9 +10483,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10211,7 +10493,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10274,7 +10556,7 @@ module Google
         end
         
         # Sets the labels on a snapshot. To learn more about labels, read the Labeling
-        # or Tagging Resources documentation.
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10436,9 +10718,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10447,7 +10728,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10513,9 +10794,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10524,7 +10804,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -10761,9 +11041,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -10772,7 +11051,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11001,9 +11280,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11012,7 +11290,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11236,9 +11514,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11247,7 +11524,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11395,9 +11672,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11406,7 +11682,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11600,9 +11876,8 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11611,7 +11886,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -11766,9 +12041,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -11777,7 +12051,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12015,9 +12289,8 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12026,7 +12299,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12345,9 +12618,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12356,7 +12628,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12541,13 +12813,129 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target VPN gateways.
+        # Deletes the specified TargetTcpProxy resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_target_tcp_proxy(project, target_tcp_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified TargetTcpProxy resource. Get a list of available target
+        # TCP proxies by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TargetTcpProxy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TargetTcpProxy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_target_tcp_proxy(project, target_tcp_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/targetTcpProxies/{targetTcpProxy}', options)
+          command.response_representation = Google::Apis::ComputeV1::TargetTcpProxy::Representation
+          command.response_class = Google::Apis::ComputeV1::TargetTcpProxy
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a TargetTcpProxy resource in the specified project using the data
+        # included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::TargetTcpProxy] target_tcp_proxy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_target_tcp_proxy(project, target_tcp_proxy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetTcpProxies', options)
+          command.request_representation = Google::Apis::ComputeV1::TargetTcpProxy::Representation
+          command.request_object = target_tcp_proxy_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of TargetTcpProxy resources available to the specified
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12556,7 +12944,165 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
+        #   You can filter on nested fields. For example, you could filter on instances
+        #   that have set the scheduling.automaticRestart field to true. Use filtering on
+        #   nested fields to take advantage of labels to organize and search for results
+        #   based on label values.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
+        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
+        #   resources must match all expressions to pass the filters.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TargetTcpProxyList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TargetTcpProxyList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_target_tcp_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/global/targetTcpProxies', options)
+          command.response_representation = Google::Apis::ComputeV1::TargetTcpProxyList::Representation
+          command.response_class = Google::Apis::ComputeV1::TargetTcpProxyList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the BackendService for TargetTcpProxy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource whose BackendService resource is to be set.
+        # @param [Google::Apis::ComputeV1::TargetTcpProxiesSetBackendServiceRequest] target_tcp_proxies_set_backend_service_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_target_tcp_proxy_backend_service(project, target_tcp_proxy, target_tcp_proxies_set_backend_service_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService', options)
+          command.request_representation = Google::Apis::ComputeV1::TargetTcpProxiesSetBackendServiceRequest::Representation
+          command.request_object = target_tcp_proxies_set_backend_service_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the ProxyHeaderType for TargetTcpProxy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_tcp_proxy
+        #   Name of the TargetTcpProxy resource whose ProxyHeader is to be set.
+        # @param [Google::Apis::ComputeV1::TargetTcpProxiesSetProxyHeaderRequest] target_tcp_proxies_set_proxy_header_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_target_tcp_proxy_proxy_header(project, target_tcp_proxy, target_tcp_proxies_set_proxy_header_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader', options)
+          command.request_representation = Google::Apis::ComputeV1::TargetTcpProxiesSetProxyHeaderRequest::Representation
+          command.request_object = target_tcp_proxies_set_proxy_header_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetTcpProxy'] = target_tcp_proxy unless target_tcp_proxy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an aggregated list of target VPN gateways.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
+        #   For example, to filter for instances that do not have a name of example-
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12750,9 +13296,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12761,7 +13306,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -12986,9 +13531,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -12997,7 +13541,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13188,9 +13732,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13199,7 +13742,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13393,9 +13936,8 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13404,7 +13946,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13553,9 +14095,8 @@ module Google
         # @param [String] zone
         #   Name of the zone for request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13564,7 +14105,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results
@@ -13670,9 +14211,8 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: field_name
-        #   comparison_string literal_string.
+        #   Sets a filter `expression` for filtering listed resources. Your `expression`
+        #   must be in the format: field_name comparison_string literal_string.
         #   The field_name is the name of the field you want to compare. Only atomic field
         #   types are supported (string, number, boolean). The comparison_string must be
         #   either eq (equals) or ne (not equals). The literal_string is the string value
@@ -13681,7 +14221,7 @@ module Google
         #   is interpreted as a regular expression using RE2 syntax. The literal value
         #   must match the entire field.
         #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use filter=name ne example-instance.
+        #   instance, you would use name ne example-instance.
         #   You can filter on nested fields. For example, you could filter on instances
         #   that have set the scheduling.automaticRestart field to true. Use filtering on
         #   nested fields to take advantage of labels to organize and search for results

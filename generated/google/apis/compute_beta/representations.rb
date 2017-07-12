@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -886,6 +892,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogConfigCloudAuditOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfigCounterOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1217,6 +1229,12 @@ module Google
       end
       
       class RegionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionSetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1917,6 +1935,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -2308,6 +2328,8 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::ComputeBeta::Expr, decorator: Google::Apis::ComputeBeta::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -2622,6 +2644,16 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2684,6 +2716,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :ip_version, as: 'ipVersion'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -2941,6 +2975,10 @@ module Google
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :source_disk_id, as: 'sourceDiskId'
+          property :source_image, as: 'sourceImage'
+          property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_image_id, as: 'sourceImageId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
         end
@@ -2994,6 +3032,7 @@ module Google
           property :self_link, as: 'selfLink'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeBeta::ServiceAccount, decorator: Google::Apis::ComputeBeta::ServiceAccount::Representation
       
+          property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :tags, as: 'tags', class: Google::Apis::ComputeBeta::Tags, decorator: Google::Apis::ComputeBeta::Tags::Representation
@@ -3480,8 +3519,17 @@ module Google
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::ComputeBeta::LogConfigCloudAuditOptions, decorator: Google::Apis::ComputeBeta::LogConfigCloudAuditOptions::Representation
+      
           property :counter, as: 'counter', class: Google::Apis::ComputeBeta::LogConfigCounterOptions, decorator: Google::Apis::ComputeBeta::LogConfigCounterOptions::Representation
       
+        end
+      end
+      
+      class LogConfigCloudAuditOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_name, as: 'logName'
         end
       end
       
@@ -4080,6 +4128,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class RegionSetLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
         end
       end
       
