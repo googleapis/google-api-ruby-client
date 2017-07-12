@@ -993,7 +993,7 @@ module Google
         end
         
         # Exports a Google Doc to the requested MIME type and returns the exported
-        # content.
+        # content. Please note that the exported content is limited to 10MB.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] mime_type

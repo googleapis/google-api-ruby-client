@@ -476,6 +476,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :local_id
       
+        # Privileged caller can query users by specified phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [Array<String>]
+        attr_accessor :phone_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -486,6 +491,7 @@ module Google
           @email = args[:email] if args.key?(:email)
           @id_token = args[:id_token] if args.key?(:id_token)
           @local_id = args[:local_id] if args.key?(:local_id)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
@@ -701,6 +707,11 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Privileged caller can update user with specified phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
         # The photo url of the user.
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
@@ -750,6 +761,7 @@ module Google
           @local_id = args[:local_id] if args.key?(:local_id)
           @oob_code = args[:oob_code] if args.key?(:oob_code)
           @password = args[:password] if args.key?(:password)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
           @provider = args[:provider] if args.key?(:provider)
           @return_secure_token = args[:return_secure_token] if args.key?(:return_secure_token)
@@ -960,6 +972,11 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Privileged caller can create user with specified phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
         # The photo url of the user.
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
@@ -981,6 +998,7 @@ module Google
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @local_id = args[:local_id] if args.key?(:local_id)
           @password = args[:password] if args.key?(:password)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
           @photo_url = args[:photo_url] if args.key?(:photo_url)
         end
       end

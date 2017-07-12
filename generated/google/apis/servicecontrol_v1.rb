@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/service-control/
     module ServicecontrolV1
       VERSION = 'V1'
-      REVISION = '20170605'
+      REVISION = '20170626'
 
       # Manage your Google Service Control data
       AUTH_SERVICECONTROL = 'https://www.googleapis.com/auth/servicecontrol'

@@ -105,6 +105,13 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence" description: "Determines whether the request
+        # has a user account" expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::DeploymentmanagerV2::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource. `
         # members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is on the
@@ -135,6 +142,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -476,6 +484,50 @@ module Google
         end
       end
       
+      # Represents an expression text. Example:
+      # title: "User account presence" description: "Determines whether the request
+      # has a user account" expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # The application context of the containing message determines which well-known
+        # feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing its
+        # purpose. This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # 
       class ImportFile
         include Google::Apis::Core::Hashable
@@ -505,6 +557,11 @@ module Google
       class LogConfig
         include Google::Apis::Core::Hashable
       
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::DeploymentmanagerV2::LogConfigCloudAuditOptions]
+        attr_accessor :cloud_audit
+      
         # Options for counters
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions]
@@ -516,7 +573,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
           @counter = args[:counter] if args.key?(:counter)
+        end
+      end
+      
+      # Write a Cloud Audit log
+      class LogConfigCloudAuditOptions
+        include Google::Apis::Core::Hashable
+      
+        # The log_name to populate in the Cloud Audit Record.
+        # Corresponds to the JSON property `logName`
+        # @return [String]
+        attr_accessor :log_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_name = args[:log_name] if args.key?(:log_name)
         end
       end
       
@@ -969,9 +1046,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Multiple `bindings` must not be
-        # specified for the same `role`. `bindings` with no members will result in an
-        # error.
+        # Associates a list of `members` to a `role`. `bindings` with no members will
+        # result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Binding>]
         attr_accessor :bindings

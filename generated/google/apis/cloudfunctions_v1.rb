@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/functions
     module CloudfunctionsV1
       VERSION = 'V1'
-      REVISION = '20170529'
+      REVISION = '20170711'
     end
   end
 end

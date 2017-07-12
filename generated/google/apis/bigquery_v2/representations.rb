@@ -1040,6 +1040,8 @@ module Google
             hash :labels, as: 'labels'
             property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
         
+            property :time_partitioning, as: 'timePartitioning', class: Google::Apis::BigqueryV2::TimePartitioning, decorator: Google::Apis::BigqueryV2::TimePartitioning::Representation
+        
             property :type, as: 'type'
             property :view, as: 'view', class: Google::Apis::BigqueryV2::TableList::Table::View, decorator: Google::Apis::BigqueryV2::TableList::Table::View::Representation
         

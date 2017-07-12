@@ -25,13 +25,13 @@ module Google
     # @see https://cloud.google.com/pubsub/docs
     module PubsubV1
       VERSION = 'V1'
-      REVISION = '20170502'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      REVISION = '20170622'
 
       # View and manage Pub/Sub topics and subscriptions
       AUTH_PUBSUB = 'https://www.googleapis.com/auth/pubsub'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

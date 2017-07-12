@@ -47,6 +47,92 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Deletes the product from a Manufacturer Center account.
+        # @param [String] parent
+        #   Parent ID in the format `accounts/`account_id``.
+        #   `account_id` - The ID of the Manufacturer Center account.
+        # @param [String] name
+        #   Name in the format ``target_country`:`content_language`:`product_id``.
+        #   `target_country`   - The target country of the product as a CLDR territory
+        #   code (for example, US).
+        #   `content_language` - The content language of the product as a two-letter
+        #   ISO 639-1 language code (for example, en).
+        #   `product_id`     -   The ID of the product. For more information, see
+        #   https://support.google.com/manufacturers/answer/6124116#
+        #   id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManufacturersV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManufacturersV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_product(parent, name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+parent}/products/{+name}', options)
+          command.response_representation = Google::Apis::ManufacturersV1::Empty::Representation
+          command.response_class = Google::Apis::ManufacturersV1::Empty
+          command.params['parent'] = parent unless parent.nil?
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the product from a Manufacturer Center account, including product
+        # issues.
+        # A recently updated product takes some time to be processed before any
+        # changes are visible. While some issues may be available once the product
+        # has been processed, other issues may take days to appear.
+        # @param [String] parent
+        #   Parent ID in the format `accounts/`account_id``.
+        #   `account_id` - The ID of the Manufacturer Center account.
+        # @param [String] name
+        #   Name in the format ``target_country`:`content_language`:`product_id``.
+        #   `target_country`   - The target country of the product as a CLDR territory
+        #   code (for example, US).
+        #   `content_language` - The content language of the product as a two-letter
+        #   ISO 639-1 language code (for example, en).
+        #   `product_id`     -   The ID of the product. For more information, see
+        #   https://support.google.com/manufacturers/answer/6124116#
+        #   id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManufacturersV1::Product] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManufacturersV1::Product]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_product(parent, name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
+          command.response_representation = Google::Apis::ManufacturersV1::Product::Representation
+          command.response_class = Google::Apis::ManufacturersV1::Product
+          command.params['parent'] = parent unless parent.nil?
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all the products in a Manufacturer Center account.
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
@@ -85,8 +171,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the product from a Manufacturer Center account, including product
-        # issues.
+        # Inserts or updates the product in a Manufacturer Center account.
+        # The checks at upload time are minimal. All required attributes need to be
+        # present for a product to be valid. Issues may show up later
+        # after the API has accepted an update for a product and it is possible to
+        # overwrite an existing valid product with an invalid product. To detect
+        # this, you should retrieve the product and check it for issues once the
+        # updated version is available.
+        # Inserted or updated products first need to be processed before they can be
+        # retrieved. Until then, new products will be unavailable, and retrieval
+        # of updated products will return the original state of the product.
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
         #   `account_id` - The ID of the Manufacturer Center account.
@@ -99,6 +193,7 @@ module Google
         #   `product_id`     -   The ID of the product. For more information, see
         #   https://support.google.com/manufacturers/answer/6124116#
         #   id.
+        # @param [Google::Apis::ManufacturersV1::Product] product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -116,8 +211,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_product(parent, name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
+        def update_account_product(parent, name, product_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1/{+parent}/products/{+name}', options)
+          command.request_representation = Google::Apis::ManufacturersV1::Product::Representation
+          command.request_object = product_object
           command.response_representation = Google::Apis::ManufacturersV1::Product::Representation
           command.response_class = Google::Apis::ManufacturersV1::Product
           command.params['parent'] = parent unless parent.nil?

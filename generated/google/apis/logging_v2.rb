@@ -25,19 +25,19 @@ module Google
     # @see https://cloud.google.com/logging/docs/
     module LoggingV2
       VERSION = 'V2'
-      REVISION = '20170605'
+      REVISION = '20170710'
 
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
-
-      # Administrate log data for your projects
-      AUTH_LOGGING_ADMIN = 'https://www.googleapis.com/auth/logging.admin'
+      # Submit log data for your projects
+      AUTH_LOGGING_WRITE = 'https://www.googleapis.com/auth/logging.write'
 
       # View log data for your projects
       AUTH_LOGGING_READ = 'https://www.googleapis.com/auth/logging.read'
 
-      # Submit log data for your projects
-      AUTH_LOGGING_WRITE = 'https://www.googleapis.com/auth/logging.write'
+      # Administrate log data for your projects
+      AUTH_LOGGING_ADMIN = 'https://www.googleapis.com/auth/logging.admin'
+
+      # View your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

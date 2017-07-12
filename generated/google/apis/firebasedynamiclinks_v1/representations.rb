@@ -22,6 +22,12 @@ module Google
   module Apis
     module FirebasedynamiclinksV1
       
+      class CreateShortDynamicLinkResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Suffix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,13 +58,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DynamicLinkWarning
+      class DynamicLinkStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DynamicLinkStats
+      class DynamicLinkWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,9 +107,13 @@ module Google
       end
       
       class CreateShortDynamicLinkResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :short_link, as: 'shortLink'
+          property :preview_link, as: 'previewLink'
+          collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
       
-        include Google::Apis::Core::JsonObjectSupport
+        end
       end
       
       class Suffix
@@ -128,6 +138,11 @@ module Google
       class DynamicLinkInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :link, as: 'link'
+          property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
+      
+          property :social_meta_tag_info, as: 'socialMetaTagInfo', class: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo, decorator: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo::Representation
+      
           property :android_info, as: 'androidInfo', class: Google::Apis::FirebasedynamiclinksV1::AndroidInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AndroidInfo::Representation
       
           property :navigation_info, as: 'navigationInfo', class: Google::Apis::FirebasedynamiclinksV1::NavigationInfo, decorator: Google::Apis::FirebasedynamiclinksV1::NavigationInfo::Representation
@@ -135,11 +150,6 @@ module Google
           property :analytics_info, as: 'analyticsInfo', class: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo::Representation
       
           property :dynamic_link_domain, as: 'dynamicLinkDomain'
-          property :link, as: 'link'
-          property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
-      
-          property :social_meta_tag_info, as: 'socialMetaTagInfo', class: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo, decorator: Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo::Representation
-      
         end
       end
       
@@ -162,14 +172,6 @@ module Google
         end
       end
       
-      class DynamicLinkWarning
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :warning_code, as: 'warningCode'
-          property :warning_message, as: 'warningMessage'
-        end
-      end
-      
       class DynamicLinkStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -178,13 +180,21 @@ module Google
         end
       end
       
+      class DynamicLinkWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :warning_message, as: 'warningMessage'
+          property :warning_code, as: 'warningCode'
+        end
+      end
+      
       class AndroidInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_fallback_link, as: 'androidFallbackLink'
           property :android_package_name, as: 'androidPackageName'
           property :android_min_package_version_code, as: 'androidMinPackageVersionCode'
           property :android_link, as: 'androidLink'
-          property :android_fallback_link, as: 'androidFallbackLink'
         end
       end
       
@@ -231,19 +241,9 @@ module Google
       class DynamicLinkEventStat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :platform, as: 'platform'
           property :count, :numeric_string => true, as: 'count'
           property :event, as: 'event'
-          property :platform, as: 'platform'
-        end
-      end
-      
-      class CreateShortDynamicLinkResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :short_link, as: 'shortLink'
-          property :preview_link, as: 'previewLink'
-          collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
-      
         end
       end
     end

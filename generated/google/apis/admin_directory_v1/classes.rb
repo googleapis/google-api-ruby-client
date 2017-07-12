@@ -2423,6 +2423,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # 
+        # Corresponds to the JSON property `languages`
+        # @return [Object]
+        attr_accessor :languages
+      
         # User's last login time. (Read-only)
         # Corresponds to the JSON property `lastLoginTime`
         # @return [DateTime]
@@ -2542,6 +2547,7 @@ module Google
           @is_enrolled_in2_sv = args[:is_enrolled_in2_sv] if args.key?(:is_enrolled_in2_sv)
           @is_mailbox_setup = args[:is_mailbox_setup] if args.key?(:is_mailbox_setup)
           @kind = args[:kind] if args.key?(:kind)
+          @languages = args[:languages] if args.key?(:languages)
           @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
           @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
@@ -2814,13 +2820,41 @@ module Google
         end
       end
       
+      # JSON template for a language entry.
+      class UserLanguage
+        include Google::Apis::Core::Hashable
+      
+        # Other language. User can provide own language name if there is no
+        # corresponding Google III language code. If this is set LanguageCode can't be
+        # set
+        # Corresponds to the JSON property `customLanguage`
+        # @return [String]
+        attr_accessor :custom_language
+      
+        # Language Code. Should be used for storing Google III LanguageCode string
+        # representation for language. Illegal values cause SchemaException.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_language = args[:custom_language] if args.key?(:custom_language)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # JSON template for a location entry.
       class UserLocation
         include Google::Apis::Core::Hashable
       
         # Textual location. This is most useful for display purposes to concisely
-        # describe the location. E.g. "Mountain View, CA", "Near Seattle", "US-NYC-9TH
-        # 9A209A".
+        # describe the location. For example, "Mountain View, CA", "Near Seattle", "US-
+        # NYC-9TH 9A209A".
         # Corresponds to the JSON property `area`
         # @return [String]
         attr_accessor :area
@@ -2845,9 +2879,9 @@ module Google
         # @return [String]
         attr_accessor :floor_name
       
-        # Floor Section. More specific location within the floor. E.g. if a floor is
-        # divided into sections "A", "B", and "C", this field would identify one of
-        # those values.
+        # Floor section. More specific location within the floor. For example, if a
+        # floor is divided into sections "A", "B", and "C", this field would identify
+        # one of those values.
         # Corresponds to the JSON property `floorSection`
         # @return [String]
         attr_accessor :floor_section
@@ -2957,6 +2991,11 @@ module Google
         # @return [String]
         attr_accessor :domain
       
+        # The full-time equivalent percent within the organization (100000 = 100%).
+        # Corresponds to the JSON property `fullTimeEquivalent`
+        # @return [Fixnum]
+        attr_accessor :full_time_equivalent
+      
         # Location of the organization. This need not be fully qualified address.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -3002,6 +3041,7 @@ module Google
           @department = args[:department] if args.key?(:department)
           @description = args[:description] if args.key?(:description)
           @domain = args[:domain] if args.key?(:domain)
+          @full_time_equivalent = args[:full_time_equivalent] if args.key?(:full_time_equivalent)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @primary = args[:primary] if args.key?(:primary)

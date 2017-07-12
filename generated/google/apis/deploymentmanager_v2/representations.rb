@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class LogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigCloudAuditOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -283,6 +295,8 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::DeploymentmanagerV2::Expr, decorator: Google::Apis::DeploymentmanagerV2::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -377,6 +391,16 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class ImportFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -388,8 +412,17 @@ module Google
       class LogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::DeploymentmanagerV2::LogConfigCloudAuditOptions, decorator: Google::Apis::DeploymentmanagerV2::LogConfigCloudAuditOptions::Representation
+      
           property :counter, as: 'counter', class: Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions, decorator: Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions::Representation
       
+        end
+      end
+      
+      class LogConfigCloudAuditOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_name, as: 'logName'
         end
       end
       

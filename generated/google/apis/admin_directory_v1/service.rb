@@ -286,6 +286,8 @@ module Google
         #   Maximum number of results to return. Default is 100
         # @param [String] order_by
         #   Column to use for sorting results
+        # @param [String] org_unit_path
+        #   Full path of the organization unit or its Id
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] projection
@@ -317,13 +319,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_chrome_os_devices(customer_id, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_chrome_os_devices(customer_id, max_results: nil, order_by: nil, org_unit_path: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customerId}/devices/chromeos', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevices::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevices
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['query'] = query unless query.nil?

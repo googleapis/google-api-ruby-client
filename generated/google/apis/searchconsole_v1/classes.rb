@@ -179,16 +179,16 @@ module Google
       class RunMobileFriendlyTestRequest
         include Google::Apis::Core::Hashable
       
-        # URL for inspection.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
         # Whether or not screenshot is requested. Default is false.
         # Corresponds to the JSON property `requestScreenshot`
         # @return [Boolean]
         attr_accessor :request_screenshot
         alias_method :request_screenshot?, :request_screenshot
+      
+        # URL for inspection.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
       
         def initialize(**args)
            update!(**args)
@@ -196,8 +196,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] if args.key?(:url)
           @request_screenshot = args[:request_screenshot] if args.key?(:request_screenshot)
+          @url = args[:url] if args.key?(:url)
         end
       end
     end

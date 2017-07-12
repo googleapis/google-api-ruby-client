@@ -2903,6 +2903,11 @@ module Google
           # @return [Google::Apis::BigqueryV2::TableReference]
           attr_accessor :table_reference
         
+          # [Experimental] The time-based partitioning for this table.
+          # Corresponds to the JSON property `timePartitioning`
+          # @return [Google::Apis::BigqueryV2::TimePartitioning]
+          attr_accessor :time_partitioning
+        
           # The type of table. Possible values are: TABLE, VIEW.
           # Corresponds to the JSON property `type`
           # @return [String]
@@ -2924,6 +2929,7 @@ module Google
             @kind = args[:kind] if args.key?(:kind)
             @labels = args[:labels] if args.key?(:labels)
             @table_reference = args[:table_reference] if args.key?(:table_reference)
+            @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
             @type = args[:type] if args.key?(:type)
             @view = args[:view] if args.key?(:view)
           end

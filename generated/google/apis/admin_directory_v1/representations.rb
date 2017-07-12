@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserLanguage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -993,6 +999,7 @@ module Google
           property :is_enrolled_in2_sv, as: 'isEnrolledIn2Sv'
           property :is_mailbox_setup, as: 'isMailboxSetup'
           property :kind, as: 'kind'
+          property :languages, as: 'languages'
           property :last_login_time, as: 'lastLoginTime', type: DateTime
       
           property :locations, as: 'locations'
@@ -1074,6 +1081,14 @@ module Google
         end
       end
       
+      class UserLanguage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_language, as: 'customLanguage'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
       class UserLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1111,6 +1126,7 @@ module Google
           property :department, as: 'department'
           property :description, as: 'description'
           property :domain, as: 'domain'
+          property :full_time_equivalent, as: 'fullTimeEquivalent'
           property :location, as: 'location'
           property :name, as: 'name'
           property :primary, as: 'primary'

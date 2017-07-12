@@ -22,6 +22,59 @@ module Google
   module Apis
     module CloudtraceV1
       
+      # A trace describes how long it takes for an application to perform an
+      # operation. It consists of a set of spans, each of which represent a single
+      # timed event within the operation.
+      class Trace
+        include Google::Apis::Core::Hashable
+      
+        # Collection of spans in the trace.
+        # Corresponds to the JSON property `spans`
+        # @return [Array<Google::Apis::CloudtraceV1::TraceSpan>]
+        attr_accessor :spans
+      
+        # Project ID of the Cloud project where the trace data is stored.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Globally unique identifier for the trace. This identifier is a 128-bit
+        # numeric value formatted as a 32-byte hex string.
+        # Corresponds to the JSON property `traceId`
+        # @return [String]
+        attr_accessor :trace_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spans = args[:spans] if args.key?(:spans)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @trace_id = args[:trace_id] if args.key?(:trace_id)
+        end
+      end
+      
+      # List of new or updated traces.
+      class Traces
+        include Google::Apis::Core::Hashable
+      
+        # List of traces.
+        # Corresponds to the JSON property `traces`
+        # @return [Array<Google::Apis::CloudtraceV1::Trace>]
+        attr_accessor :traces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @traces = args[:traces] if args.key?(:traces)
+        end
+      end
+      
       # A span represents a single timed event within a trace. Spans can be nested
       # and form a trace tree. Often, a trace contains a root span that describes the
       # end-to-end latency of an operation and, optionally, one or more subspans for
@@ -29,6 +82,11 @@ module Google
       # between spans in a trace.
       class TraceSpan
         include Google::Apis::Core::Hashable
+      
+        # ID of the parent span, if any. Optional.
+        # Corresponds to the JSON property `parentSpanId`
+        # @return [Fixnum]
+        attr_accessor :parent_span_id
       
         # End time of the span in nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `endTime`
@@ -97,51 +155,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :span_id
       
-        # ID of the parent span, if any. Optional.
-        # Corresponds to the JSON property `parentSpanId`
-        # @return [Fixnum]
-        attr_accessor :parent_span_id
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @span_id = args[:span_id] if args.key?(:span_id)
-          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
-        end
-      end
-      
-      # The response message for the `ListTraces` method.
-      class ListTracesResponse
-        include Google::Apis::Core::Hashable
-      
-        # List of trace records returned.
-        # Corresponds to the JSON property `traces`
-        # @return [Array<Google::Apis::CloudtraceV1::Trace>]
-        attr_accessor :traces
-      
-        # If defined, indicates that there are more traces that match the request
-        # and that this value should be passed to the next request to continue
-        # retrieving additional traces.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @traces = args[:traces] if args.key?(:traces)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -164,45 +190,18 @@ module Google
         end
       end
       
-      # A trace describes how long it takes for an application to perform an
-      # operation. It consists of a set of spans, each of which represent a single
-      # timed event within the operation.
-      class Trace
+      # The response message for the `ListTraces` method.
+      class ListTracesResponse
         include Google::Apis::Core::Hashable
       
-        # Project ID of the Cloud project where the trace data is stored.
-        # Corresponds to the JSON property `projectId`
+        # If defined, indicates that there are more traces that match the request
+        # and that this value should be passed to the next request to continue
+        # retrieving additional traces.
+        # Corresponds to the JSON property `nextPageToken`
         # @return [String]
-        attr_accessor :project_id
+        attr_accessor :next_page_token
       
-        # Collection of spans in the trace.
-        # Corresponds to the JSON property `spans`
-        # @return [Array<Google::Apis::CloudtraceV1::TraceSpan>]
-        attr_accessor :spans
-      
-        # Globally unique identifier for the trace. This identifier is a 128-bit
-        # numeric value formatted as a 32-byte hex string.
-        # Corresponds to the JSON property `traceId`
-        # @return [String]
-        attr_accessor :trace_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @spans = args[:spans] if args.key?(:spans)
-          @trace_id = args[:trace_id] if args.key?(:trace_id)
-        end
-      end
-      
-      # List of new or updated traces.
-      class Traces
-        include Google::Apis::Core::Hashable
-      
-        # List of traces.
+        # List of trace records returned.
         # Corresponds to the JSON property `traces`
         # @return [Array<Google::Apis::CloudtraceV1::Trace>]
         attr_accessor :traces
@@ -213,6 +212,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @traces = args[:traces] if args.key?(:traces)
         end
       end

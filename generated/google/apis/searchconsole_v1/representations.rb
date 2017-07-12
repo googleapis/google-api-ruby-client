@@ -120,8 +120,8 @@ module Google
       class RunMobileFriendlyTestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :url, as: 'url'
           property :request_screenshot, as: 'requestScreenshot'
+          property :url, as: 'url'
         end
       end
     end

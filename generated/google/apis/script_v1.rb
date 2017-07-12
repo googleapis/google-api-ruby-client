@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20170612'
+      REVISION = '20170705'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
@@ -42,6 +42,9 @@ module Google
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
+      # View and manage the provisioning of users on your domain
+      AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
+
       # View and manage the provisioning of groups on your domain
       AUTH_ADMIN_DIRECTORY_GROUP = 'https://www.googleapis.com/auth/admin.directory.group'
 
@@ -50,9 +53,6 @@ module Google
 
       # View and manage your spreadsheets in Google Drive
       AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
-
-      # View and manage the provisioning of users on your domain
-      AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'
 
       # View and manage your forms in Google Drive
       AUTH_FORMS = 'https://www.googleapis.com/auth/forms'

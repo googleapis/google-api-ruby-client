@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImpressionStatusRow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BidMetricsRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +53,12 @@ module Google
       end
       
       class RealtimeTimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonBillableWinningBidStatusRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,12 +220,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListFilteredImpressionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListCreativeStatusBreakdownByCreativeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,25 +244,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CalloutStatusRow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListDealAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class StopWatchingCreativeRequest
+      class CalloutStatusRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class Disapproval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopWatchingCreativeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,12 +292,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListCreativeStatusAndCreativeBreakdownByDetailResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,7 +310,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HtmlContent
+      class ListFilteredBidRequestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,7 +322,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListFilteredBidRequestsResponse
+      class HtmlContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,13 +340,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLosingBidsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VideoContent
+      class ListNonBillableWinningBidsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -386,31 +380,22 @@ module Google
         end
       end
       
-      class ImpressionStatusRow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :impression_count, as: 'impressionCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
-      
-          property :status, as: 'status'
-          property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
-      
-        end
-      end
-      
       class BidMetricsRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :impressions_won, as: 'impressionsWon', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
+          property :viewable_impressions, as: 'viewableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
+          property :measurable_impressions, as: 'measurableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
+          property :bids, as: 'bids', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
           property :billed_impressions, as: 'billedImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
           property :bids_in_auction, as: 'bidsInAuction', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
-      
-          property :impressions_won, as: 'impressionsWon', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
-      
-          property :viewable_impressions, as: 'viewableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
-      
-          property :bids, as: 'bids', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
         end
       end
@@ -442,13 +427,24 @@ module Google
         end
       end
       
+      class NonBillableWinningBidStatusRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
+      
+          property :bid_count, as: 'bidCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
       class FilteredBidDetailRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bid_count, as: 'bidCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+          property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
       
           property :detail_id, as: 'detailId'
-          property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
+          property :bid_count, as: 'bidCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
         end
       end
@@ -456,9 +452,9 @@ module Google
       class AbsoluteDateRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_date, as: 'endDate', class: Google::Apis::Adexchangebuyer2V2beta1::Date, decorator: Google::Apis::Adexchangebuyer2V2beta1::Date::Representation
-      
           property :start_date, as: 'startDate', class: Google::Apis::Adexchangebuyer2V2beta1::Date, decorator: Google::Apis::Adexchangebuyer2V2beta1::Date::Representation
+      
+          property :end_date, as: 'endDate', class: Google::Apis::Adexchangebuyer2V2beta1::Date, decorator: Google::Apis::Adexchangebuyer2V2beta1::Date::Representation
       
         end
       end
@@ -489,10 +485,10 @@ module Google
       class FilteredBidCreativeRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bid_count, as: 'bidCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
           property :creative_id, as: 'creativeId'
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
-      
-          property :bid_count, as: 'bidCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
         end
       end
@@ -500,8 +496,8 @@ module Google
       class RelativeDateRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :offset_days, as: 'offsetDays'
           property :duration_days, as: 'durationDays'
+          property :offset_days, as: 'offsetDays'
         end
       end
       
@@ -517,47 +513,47 @@ module Google
       class NativeContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_to_action, as: 'callToAction'
           property :body, as: 'body'
           property :star_rating, as: 'starRating'
           property :video_url, as: 'videoUrl'
-          property :click_link_url, as: 'clickLinkUrl'
           property :logo, as: 'logo', class: Google::Apis::Adexchangebuyer2V2beta1::Image, decorator: Google::Apis::Adexchangebuyer2V2beta1::Image::Representation
       
+          property :click_link_url, as: 'clickLinkUrl'
           property :price_display_text, as: 'priceDisplayText'
+          property :click_tracking_url, as: 'clickTrackingUrl'
           property :image, as: 'image', class: Google::Apis::Adexchangebuyer2V2beta1::Image, decorator: Google::Apis::Adexchangebuyer2V2beta1::Image::Representation
       
-          property :click_tracking_url, as: 'clickTrackingUrl'
           property :advertiser_name, as: 'advertiserName'
           property :store_url, as: 'storeUrl'
           property :headline, as: 'headline'
           property :app_icon, as: 'appIcon', class: Google::Apis::Adexchangebuyer2V2beta1::Image, decorator: Google::Apis::Adexchangebuyer2V2beta1::Image::Representation
       
-          property :call_to_action, as: 'callToAction'
         end
       end
       
       class ListBidResponsesWithoutBidsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :bid_response_without_bids_status_rows, as: 'bidResponseWithoutBidsStatusRows', class: Google::Apis::Adexchangebuyer2V2beta1::BidResponseWithoutBidsStatusRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::BidResponseWithoutBidsStatusRow::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class ServingContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_type, as: 'securityType', class: Google::Apis::Adexchangebuyer2V2beta1::SecurityContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::SecurityContext::Representation
+      
+          property :platform, as: 'platform', class: Google::Apis::Adexchangebuyer2V2beta1::PlatformContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::PlatformContext::Representation
+      
           property :location, as: 'location', class: Google::Apis::Adexchangebuyer2V2beta1::LocationContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::LocationContext::Representation
       
           property :auction_type, as: 'auctionType', class: Google::Apis::Adexchangebuyer2V2beta1::AuctionContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::AuctionContext::Representation
       
           property :all, as: 'all'
           property :app_type, as: 'appType', class: Google::Apis::Adexchangebuyer2V2beta1::AppContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::AppContext::Representation
-      
-          property :security_type, as: 'securityType', class: Google::Apis::Adexchangebuyer2V2beta1::SecurityContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::SecurityContext::Representation
-      
-          property :platform, as: 'platform', class: Google::Apis::Adexchangebuyer2V2beta1::PlatformContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::PlatformContext::Representation
       
         end
       end
@@ -594,9 +590,9 @@ module Google
       class ClientUserInvitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :email, as: 'email'
           property :client_account_id, :numeric_string => true, as: 'clientAccountId'
           property :invitation_id, :numeric_string => true, as: 'invitationId'
+          property :email, as: 'email'
         end
       end
       
@@ -612,19 +608,19 @@ module Google
       class ListClientUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :users, as: 'users', class: Google::Apis::Adexchangebuyer2V2beta1::ClientUser, decorator: Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
       class ListCreativeStatusBreakdownByDetailResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :detail_type, as: 'detailType'
+          property :next_page_token, as: 'nextPageToken'
           collection :filtered_bid_detail_rows, as: 'filteredBidDetailRows', class: Google::Apis::Adexchangebuyer2V2beta1::FilteredBidDetailRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteredBidDetailRow::Representation
       
-          property :next_page_token, as: 'nextPageToken'
+          property :detail_type, as: 'detailType'
         end
       end
       
@@ -654,8 +650,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :status, as: 'status'
-          property :user_id, :numeric_string => true, as: 'userId'
           property :email, as: 'email'
+          property :user_id, :numeric_string => true, as: 'userId'
           property :client_account_id, :numeric_string => true, as: 'clientAccountId'
         end
       end
@@ -663,20 +659,15 @@ module Google
       class CreativeDealAssociation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :creative_id, as: 'creativeId'
           property :deals_id, as: 'dealsId'
-          property :account_id, as: 'accountId'
         end
       end
       
       class Creative
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :filtering_stats, as: 'filteringStats', class: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats::Representation
-      
-          collection :attributes, as: 'attributes'
-          property :api_update_time, as: 'apiUpdateTime'
-          collection :detected_languages, as: 'detectedLanguages'
           property :creative_id, as: 'creativeId'
           property :account_id, as: 'accountId'
           property :native, as: 'native', class: Google::Apis::Adexchangebuyer2V2beta1::NativeContent, decorator: Google::Apis::Adexchangebuyer2V2beta1::NativeContent::Representation
@@ -703,15 +694,20 @@ module Google
           property :advertiser_name, as: 'advertiserName'
           collection :detected_advertiser_ids, as: 'detectedAdvertiserIds'
           collection :detected_domains, as: 'detectedDomains'
+          property :filtering_stats, as: 'filteringStats', class: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteringStats::Representation
+      
+          collection :attributes, as: 'attributes'
+          property :api_update_time, as: 'apiUpdateTime'
+          collection :detected_languages, as: 'detectedLanguages'
         end
       end
       
       class FilteringStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :reasons, as: 'reasons', class: Google::Apis::Adexchangebuyer2V2beta1::Reason, decorator: Google::Apis::Adexchangebuyer2V2beta1::Reason::Representation
-      
           property :date, as: 'date', class: Google::Apis::Adexchangebuyer2V2beta1::Date, decorator: Google::Apis::Adexchangebuyer2V2beta1::Date::Representation
+      
+          collection :reasons, as: 'reasons', class: Google::Apis::Adexchangebuyer2V2beta1::Reason, decorator: Google::Apis::Adexchangebuyer2V2beta1::Reason::Representation
       
         end
       end
@@ -720,15 +716,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :association, as: 'association', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation::Representation
-      
-        end
-      end
-      
-      class ListFilteredImpressionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :impressions_status_rows, as: 'impressionsStatusRows', class: Google::Apis::Adexchangebuyer2V2beta1::ImpressionStatusRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::ImpressionStatusRow::Representation
       
         end
       end
@@ -745,24 +732,24 @@ module Google
       class Client
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :entity_type, as: 'entityType'
-          property :client_name, as: 'clientName'
-          property :role, as: 'role'
           property :visible_to_seller, as: 'visibleToSeller'
           property :entity_id, :numeric_string => true, as: 'entityId'
           property :client_account_id, :numeric_string => true, as: 'clientAccountId'
           property :entity_name, as: 'entityName'
           property :status, as: 'status'
+          property :entity_type, as: 'entityType'
+          property :client_name, as: 'clientName'
+          property :role, as: 'role'
         end
       end
       
       class Correction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :details, as: 'details'
           property :type, as: 'type'
           collection :contexts, as: 'contexts', class: Google::Apis::Adexchangebuyer2V2beta1::ServingContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::ServingContext::Representation
       
+          collection :details, as: 'details'
         end
       end
       
@@ -775,8 +762,8 @@ module Google
       
           property :buyer_account_id, :numeric_string => true, as: 'buyerAccountId'
           property :environment, as: 'environment'
-          property :format, as: 'format'
           property :deal_id, :numeric_string => true, as: 'dealId'
+          property :format, as: 'format'
           property :time_series_granularity, as: 'timeSeriesGranularity'
           property :filter_set_id, :numeric_string => true, as: 'filterSetId'
           property :realtime_time_range, as: 'realtimeTimeRange', class: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange::Representation
@@ -784,17 +771,6 @@ module Google
           property :creative_id, as: 'creativeId'
           collection :platforms, as: 'platforms'
           property :relative_date_range, as: 'relativeDateRange', class: Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange::Representation
-      
-        end
-      end
-      
-      class CalloutStatusRow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
-      
-          property :callout_status_id, as: 'calloutStatusId'
-          property :impression_count, as: 'impressionCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
         end
       end
@@ -808,9 +784,14 @@ module Google
         end
       end
       
-      class StopWatchingCreativeRequest
+      class CalloutStatusRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :impression_count, as: 'impressionCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
+          property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
+      
+          property :callout_status_id, as: 'calloutStatusId'
         end
       end
       
@@ -822,22 +803,28 @@ module Google
         end
       end
       
+      class StopWatchingCreativeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ServingRestriction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disapproval_reasons, as: 'disapprovalReasons', class: Google::Apis::Adexchangebuyer2V2beta1::Disapproval, decorator: Google::Apis::Adexchangebuyer2V2beta1::Disapproval::Representation
+      
           collection :contexts, as: 'contexts', class: Google::Apis::Adexchangebuyer2V2beta1::ServingContext, decorator: Google::Apis::Adexchangebuyer2V2beta1::ServingContext::Representation
       
           property :status, as: 'status'
-          collection :disapproval_reasons, as: 'disapprovalReasons', class: Google::Apis::Adexchangebuyer2V2beta1::Disapproval, decorator: Google::Apis::Adexchangebuyer2V2beta1::Disapproval::Representation
-      
         end
       end
       
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :year, as: 'year'
           property :day, as: 'day'
+          property :year, as: 'year'
           property :month, as: 'month'
         end
       end
@@ -856,16 +843,6 @@ module Google
         end
       end
       
-      class ListCreativeStatusAndCreativeBreakdownByDetailResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :filtered_bid_detail_rows, as: 'filteredBidDetailRows', class: Google::Apis::Adexchangebuyer2V2beta1::FilteredBidDetailRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::FilteredBidDetailRow::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          property :detail_type, as: 'detailType'
-        end
-      end
-      
       class AppContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -876,9 +853,9 @@ module Google
       class ListFilteredBidsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :creative_status_rows, as: 'creativeStatusRows', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeStatusRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeStatusRow::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -886,24 +863,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :securities, as: 'securities'
-        end
-      end
-      
-      class HtmlContent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :height, as: 'height'
-          property :width, as: 'width'
-          property :snippet, as: 'snippet'
-        end
-      end
-      
-      class ListCreativesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :creatives, as: 'creatives', class: Google::Apis::Adexchangebuyer2V2beta1::Creative, decorator: Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
-      
         end
       end
       
@@ -916,12 +875,30 @@ module Google
         end
       end
       
+      class ListCreativesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :creatives, as: 'creatives', class: Google::Apis::Adexchangebuyer2V2beta1::Creative, decorator: Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class HtmlContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
+          property :width, as: 'width'
+          property :snippet, as: 'snippet'
+        end
+      end
+      
       class ListBidMetricsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :bid_metrics_rows, as: 'bidMetricsRows', class: Google::Apis::Adexchangebuyer2V2beta1::BidMetricsRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::BidMetricsRow::Representation
       
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -930,6 +907,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :status, as: 'status'
           property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
+      class VideoContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :video_url, as: 'videoUrl'
         end
       end
       
@@ -942,19 +926,21 @@ module Google
         end
       end
       
-      class VideoContent
+      class ListNonBillableWinningBidsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :video_url, as: 'videoUrl'
+          property :next_page_token, as: 'nextPageToken'
+          collection :non_billable_winning_bid_status_rows, as: 'nonBillableWinningBidStatusRows', class: Google::Apis::Adexchangebuyer2V2beta1::NonBillableWinningBidStatusRow, decorator: Google::Apis::Adexchangebuyer2V2beta1::NonBillableWinningBidStatusRow::Representation
+      
         end
       end
       
       class ImpressionMetricsRow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :available_impressions, as: 'availableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
-      
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
+      
+          property :available_impressions, as: 'availableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
           property :inventory_matches, as: 'inventoryMatches', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       

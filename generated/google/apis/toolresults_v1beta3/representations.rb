@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppStartTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicPerfSampleSeries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -294,6 +300,16 @@ module Google
         end
       end
       
+      class AppStartTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fully_drawn_time, as: 'fullyDrawnTime', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
+          property :initial_display_time, as: 'initialDisplayTime', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
+        end
+      end
+      
       class BasicPerfSampleSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -488,6 +504,8 @@ module Google
       class PerfMetricsSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_start_time, as: 'appStartTime', class: Google::Apis::ToolresultsV1beta3::AppStartTime, decorator: Google::Apis::ToolresultsV1beta3::AppStartTime::Representation
+      
           property :execution_id, as: 'executionId'
           property :history_id, as: 'historyId'
           property :perf_environment, as: 'perfEnvironment', class: Google::Apis::ToolresultsV1beta3::PerfEnvironment, decorator: Google::Apis::ToolresultsV1beta3::PerfEnvironment::Representation

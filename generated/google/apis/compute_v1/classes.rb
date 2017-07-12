@@ -871,6 +871,18 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The status of the autoscaler configuration.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] Human-readable details about the current state of the autoscaler.
+        # Read the documentation for Commonly returned status messages for examples of
+        # status messages you might encounter.
+        # Corresponds to the JSON property `statusDetails`
+        # @return [Array<Google::Apis::ComputeV1::AutoscalerStatusDetails>]
+        attr_accessor :status_details
+      
         # URL of the managed instance group that this autoscaler will scale.
         # Corresponds to the JSON property `target`
         # @return [String]
@@ -896,6 +908,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @status_details = args[:status_details] if args.key?(:status_details)
           @target = args[:target] if args.key?(:target)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -996,6 +1010,31 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class AutoscalerStatusDetails
+        include Google::Apis::Core::Hashable
+      
+        # The status message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The type of error returned.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1507,7 +1546,8 @@ module Google
       
         # The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
         # health checking this BackendService. Currently at most one health check can be
-        # specified, and a health check is required.
+        # specified, and a health check is required for GCE backend services. A health
+        # check must not be specified for GAE app backend and Cloud Function backend.
         # For internal load balancing, a URL to a HealthCheck resource must be specified
         # instead.
         # Corresponds to the JSON property `healthChecks`
@@ -1971,6 +2011,306 @@ module Google
           @include_query_string = args[:include_query_string] if args.key?(:include_query_string)
           @query_string_blacklist = args[:query_string_blacklist] if args.key?(:query_string_blacklist)
           @query_string_whitelist = args[:query_string_whitelist] if args.key?(:query_string_whitelist)
+        end
+      end
+      
+      # Represents a Commitment resource. Creating a Commitment resource means that
+      # you are purchasing a committed use contract with an explicit start and end
+      # time. You can create commitments based on vCPUs and memory usage and receive
+      # discounted rates. For full details, read Signing Up for Committed Use
+      # Discounts.
+      # Committed use discounts are subject to Google Cloud Platform's Service
+      # Specific Terms. By purchasing a committed use discount, you agree to these
+      # terms. Committed use discounts will not renew, so you must purchase a new
+      # commitment to continue receiving discounts.
+      class Commitment
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Commitment end time in RFC3339 text format.
+        # Corresponds to the JSON property `endTimestamp`
+        # @return [String]
+        attr_accessor :end_timestamp
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#commitment for commitments.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
+        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The plan for this commitment, which determines duration and discount rate. The
+        # currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3
+        # years).
+        # Corresponds to the JSON property `plan`
+        # @return [String]
+        attr_accessor :plan
+      
+        # [Output Only] URL of the region where this commitment may be used.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # List of commitment amounts for particular resources. Note that VCPU and MEMORY
+        # resource commitments must occur together.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ComputeV1::ResourceCommitment>]
+        attr_accessor :resources
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Commitment start time in RFC3339 text format.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [String]
+        attr_accessor :start_timestamp
+      
+        # [Output Only] Status of the commitment with regards to eventual expiration (
+        # each commitment has an end date defined). One of the following values:
+        # NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # [Output Only] An optional, human-readable explanation of the status.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @plan = args[:plan] if args.key?(:plan)
+          @region = args[:region] if args.key?(:region)
+          @resources = args[:resources] if args.key?(:resources)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @status = args[:status] if args.key?(:status)
+          @status_message = args[:status_message] if args.key?(:status_message)
+        end
+      end
+      
+      # 
+      class CommitmentAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Commitments by scope.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::CommitmentsScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#commitmentAggregatedList for
+        # aggregated lists of commitments.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Contains a list of Commitment resources.
+      class CommitmentList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of Commitment resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::Commitment>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#commitmentList for lists of
+        # commitments.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class CommitmentsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] List of commitments contained in this scope.
+        # Corresponds to the JSON property `commitments`
+        # @return [Array<Google::Apis::ComputeV1::Commitment>]
+        attr_accessor :commitments
+      
+        # [Output Only] Informational warning which replaces the list of commitments
+        # when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::CommitmentsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commitments = args[:commitments] if args.key?(:commitments)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of commitments
+        # when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::CommitmentsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -8275,6 +8615,36 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Commitment for a particular resource (a Commitment is composed of one or more
+      # of these).
+      class ResourceCommitment
+        include Google::Apis::Core::Hashable
+      
+        # The amount of the resource purchased (in a type-dependent unit, such as bytes).
+        # For vCPUs, this can just be an integer. For memory, this must be provided in
+        # MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every
+        # vCPU.
+        # Corresponds to the JSON property `amount`
+        # @return [Fixnum]
+        attr_accessor :amount
+      
+        # Type of resource for which this commitment applies. Possible values are VCPU
+        # and MEMORY
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

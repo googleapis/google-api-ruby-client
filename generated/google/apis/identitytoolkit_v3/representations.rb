@@ -354,6 +354,7 @@ module Google
           collection :email, as: 'email'
           property :id_token, as: 'idToken'
           collection :local_id, as: 'localId'
+          collection :phone_number, as: 'phoneNumber'
         end
       end
       
@@ -409,6 +410,7 @@ module Google
           property :local_id, as: 'localId'
           property :oob_code, as: 'oobCode'
           property :password, as: 'password'
+          property :phone_number, as: 'phoneNumber'
           property :photo_url, as: 'photoUrl'
           collection :provider, as: 'provider'
           property :return_secure_token, as: 'returnSecureToken'
@@ -474,6 +476,7 @@ module Google
           property :instance_id, as: 'instanceId'
           property :local_id, as: 'localId'
           property :password, as: 'password'
+          property :phone_number, as: 'phoneNumber'
           property :photo_url, as: 'photoUrl'
         end
       end

@@ -47,91 +47,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists the logs in projects, organizations, folders, or billing accounts. Only
-        # logs that have entries are listed.
-        # @param [String] parent
-        #   Required. The resource name that owns the logs:
-        #   "projects/[PROJECT_ID]"
-        #   "organizations/[ORGANIZATION_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
-        #   "folders/[FOLDER_ID]"
-        # @param [String] page_token
-        #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call to this method. pageToken must be the value of nextPageToken
-        #   from the previous response. The values of other method parameters should be
-        #   identical to those in the previous call.
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
-        #   positive values are ignored. The presence of nextPageToken in the response
-        #   indicates that more results might be available.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::ListLogsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2beta1::ListLogsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/{+parent}/logs', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::ListLogsResponse::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::ListLogsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes all the log entries in a log. The log reappears if it receives new
-        # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
-        # @param [String] log_name
-        #   Required. The resource name of the log to delete:
-        #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
-        #   "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-        #   "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        #   [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog"
-        #   , "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%
-        #   2Factivity". For more information about log names, see LogEntry.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2beta1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_billing_account_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta1/{+logName}', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::Empty
-          command.params['logName'] = log_name unless log_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists the descriptors for monitored resource types used by Stackdriver Logging.
         # @param [String] page_token
         #   Optional. If present, then retrieve the next batch of results from the
@@ -165,52 +80,6 @@ module Google
           command.response_class = Google::Apis::LoggingV2beta1::ListMonitoredResourceDescriptorsResponse
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists the logs in projects, organizations, folders, or billing accounts. Only
-        # logs that have entries are listed.
-        # @param [String] parent
-        #   Required. The resource name that owns the logs:
-        #   "projects/[PROJECT_ID]"
-        #   "organizations/[ORGANIZATION_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
-        #   "folders/[FOLDER_ID]"
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
-        #   positive values are ignored. The presence of nextPageToken in the response
-        #   indicates that more results might be available.
-        # @param [String] page_token
-        #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call to this method. pageToken must be the value of nextPageToken
-        #   from the previous response. The values of other method parameters should be
-        #   identical to those in the previous call.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::ListLogsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2beta1::ListLogsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/{+parent}/logs', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::ListLogsResponse::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::ListLogsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -250,6 +119,52 @@ module Google
           command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
           command.response_class = Google::Apis::LoggingV2beta1::Empty
           command.params['logName'] = log_name unless log_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the logs in projects, organizations, folders, or billing accounts. Only
+        # logs that have entries are listed.
+        # @param [String] parent
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2beta1::ListLogsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2beta1::ListLogsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+parent}/logs', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::ListLogsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::ListLogsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -316,18 +231,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes all the log entries in a log. The log reappears if it receives new
-        # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
-        # @param [String] log_name
-        #   Required. The resource name of the log to delete:
-        #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
-        #   "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-        #   "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        #   [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog"
-        #   , "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%
-        #   2Factivity". For more information about log names, see LogEntry.
+        # Deletes a sink. If the sink has a unique writer_identity, then that service
+        # account is also deleted.
+        # @param [String] sink_name
+        #   Required. The full resource name of the sink to delete, including the parent
+        #   resource and the sink identifier:
+        #   "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+        #   "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+        #   "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+        #   Example: "projects/my-project-id/sinks/my-sink-id".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -345,33 +258,24 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta1/{+logName}', options)
+        def delete_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+sinkName}', options)
           command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
           command.response_class = Google::Apis::LoggingV2beta1::Empty
-          command.params['logName'] = log_name unless log_name.nil?
+          command.params['sinkName'] = sink_name unless sink_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the logs in projects, organizations, folders, or billing accounts. Only
-        # logs that have entries are listed.
-        # @param [String] parent
-        #   Required. The resource name that owns the logs:
-        #   "projects/[PROJECT_ID]"
-        #   "organizations/[ORGANIZATION_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
-        #   "folders/[FOLDER_ID]"
-        # @param [String] page_token
-        #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call to this method. pageToken must be the value of nextPageToken
-        #   from the previous response. The values of other method parameters should be
-        #   identical to those in the previous call.
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
-        #   positive values are ignored. The presence of nextPageToken in the response
-        #   indicates that more results might be available.
+        # Gets a sink.
+        # @param [String] sink_name
+        #   Required. The resource name of the sink:
+        #   "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+        #   "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+        #   "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+        #   Example: "projects/my-project-id/sinks/my-sink-id".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -381,21 +285,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::ListLogsResponse] parsed result object
+        # @yieldparam result [Google::Apis::LoggingV2beta1::LogSink] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::LoggingV2beta1::ListLogsResponse]
+        # @return [Google::Apis::LoggingV2beta1::LogSink]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/{+parent}/logs', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::ListLogsResponse::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::ListLogsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
+        def get_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+sinkName}', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::LogSink::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::LogSink
+          command.params['sinkName'] = sink_name unless sink_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -441,41 +343,6 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a sink.
-        # @param [String] sink_name
-        #   Required. The resource name of the sink:
-        #   "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-        #   "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-        #   "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::LogSink] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2beta1::LogSink]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/{+sinkName}', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::LogSink::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::LogSink
-          command.params['sinkName'] = sink_name unless sink_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -589,16 +456,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a sink. If the sink has a unique writer_identity, then that service
-        # account is also deleted.
-        # @param [String] sink_name
-        #   Required. The full resource name of the sink to delete, including the parent
-        #   resource and the sink identifier:
-        #   "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-        #   "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-        #   "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-        #   "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        # Deletes all the log entries in a log. The log reappears if it receives new
+        # entries. Log entries written shortly before the delete operation might not be
+        # deleted.
+        # @param [String] log_name
+        #   Required. The resource name of the log to delete:
+        #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
+        #   "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+        #   "folders/[FOLDER_ID]/logs/[LOG_ID]"
+        #   [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog"
+        #   , "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%
+        #   2Factivity". For more information about log names, see LogEntry.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -616,19 +485,65 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_sink(sink_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta1/{+sinkName}', options)
+        def delete_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+logName}', options)
           command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
           command.response_class = Google::Apis::LoggingV2beta1::Empty
-          command.params['sinkName'] = sink_name unless sink_name.nil?
+          command.params['logName'] = log_name unless log_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a logs-based metric.
+        # Lists the logs in projects, organizations, folders, or billing accounts. Only
+        # logs that have entries are listed.
+        # @param [String] parent
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2beta1::ListLogsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2beta1::ListLogsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+parent}/logs', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::ListLogsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::ListLogsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a logs-based metric.
         # @param [String] metric_name
-        #   The resource name of the metric to delete:
+        #   The resource name of the desired metric:
         #   "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -639,18 +554,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::LoggingV2beta1::LogMetric] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::LoggingV2beta1::Empty]
+        # @return [Google::Apis::LoggingV2beta1::LogMetric]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v2beta1/{+metricName}', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::Empty
+        def get_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+metricName}', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::LogMetric::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::LogMetric
           command.params['metricName'] = metric_name unless metric_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -694,37 +609,6 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a logs-based metric.
-        # @param [String] metric_name
-        #   The resource name of the desired metric:
-        #   "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2beta1::LogMetric] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2beta1::LogMetric]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/{+metricName}', options)
-          command.response_representation = Google::Apis::LoggingV2beta1::LogMetric::Representation
-          command.response_class = Google::Apis::LoggingV2beta1::LogMetric
-          command.params['metricName'] = metric_name unless metric_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -797,6 +681,122 @@ module Google
           command.response_representation = Google::Apis::LoggingV2beta1::LogMetric::Representation
           command.response_class = Google::Apis::LoggingV2beta1::LogMetric
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a logs-based metric.
+        # @param [String] metric_name
+        #   The resource name of the metric to delete:
+        #   "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_metric(metric_name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+metricName}', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::Empty
+          command.params['metricName'] = metric_name unless metric_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes all the log entries in a log. The log reappears if it receives new
+        # entries. Log entries written shortly before the delete operation might not be
+        # deleted.
+        # @param [String] log_name
+        #   Required. The resource name of the log to delete:
+        #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
+        #   "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+        #   "folders/[FOLDER_ID]/logs/[LOG_ID]"
+        #   [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog"
+        #   , "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%
+        #   2Factivity". For more information about log names, see LogEntry.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_billing_account_log(log_name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+logName}', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::Empty
+          command.params['logName'] = log_name unless log_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the logs in projects, organizations, folders, or billing accounts. Only
+        # logs that have entries are listed.
+        # @param [String] parent
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2beta1::ListLogsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2beta1::ListLogsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_logs(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+parent}/logs', options)
+          command.response_representation = Google::Apis::LoggingV2beta1::ListLogsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2beta1::ListLogsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

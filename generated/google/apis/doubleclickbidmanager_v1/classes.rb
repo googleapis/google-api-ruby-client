@@ -65,8 +65,8 @@ module Google
       class DownloadLineItemsResponse
         include Google::Apis::Core::Hashable
       
-        # Retrieved line items in CSV format. Refer to  Entity Write File Format or
-        # Structured Data File Format for more information on file formats.
+        # Retrieved line items in CSV format. For more information about file formats,
+        # see  Entity Write File Format.
         # Corresponds to the JSON property `lineItems`
         # @return [String]
         attr_accessor :line_items

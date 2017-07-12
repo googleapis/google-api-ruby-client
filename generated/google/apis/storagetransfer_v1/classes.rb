@@ -22,851 +22,42 @@ module Google
   module Apis
     module StoragetransferV1
       
-      # Request passed to UpdateTransferJob.
-      class UpdateTransferJobRequest
-        include Google::Apis::Core::Hashable
-      
-        # This resource represents the configuration of a transfer job that runs
-        # periodically.
-        # Corresponds to the JSON property `transferJob`
-        # @return [Google::Apis::StoragetransferV1::TransferJob]
-        attr_accessor :transfer_job
-      
-        # The ID of the Google Cloud Platform Console project that owns the job.
-        # Required.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # The field mask of the fields in `transferJob` that are to be updated in
-        # this request.  Fields in `transferJob` that can be updated are:
-        # `description`, `transferSpec`, and `status`.  To update the `transferSpec`
-        # of the job, a complete transfer specification has to be provided. An
-        # incomplete specification which misses any required fields will be rejected
-        # with the error `INVALID_ARGUMENT`.
-        # Corresponds to the JSON property `updateTransferJobFieldMask`
-        # @return [String]
-        attr_accessor :update_transfer_job_field_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @transfer_job = args[:transfer_job] if args.key?(:transfer_job)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @update_transfer_job_field_mask = args[:update_transfer_job_field_mask] if args.key?(:update_transfer_job_field_mask)
-        end
-      end
-      
-      # Conditions that determine which objects will be transferred.
-      class ObjectConditions
-        include Google::Apis::Core::Hashable
-      
-        # If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
-        # and `maxTimeElapsedSinceLastModification` takes the maximum possible
-        # value of Duration. Objects that satisfy the object conditions
-        # must either have a `lastModificationTime` greater or equal to
-        # `NOW` - `maxTimeElapsedSinceLastModification` and less than
-        # `NOW` - `minTimeElapsedSinceLastModification`, or not have a
-        # `lastModificationTime`.
-        # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
-        # @return [String]
-        attr_accessor :min_time_elapsed_since_last_modification
-      
-        # `excludePrefixes` must follow the requirements described for
-        # `includePrefixes`.
-        # The max size of `excludePrefixes` is 1000.
-        # Corresponds to the JSON property `excludePrefixes`
-        # @return [Array<String>]
-        attr_accessor :exclude_prefixes
-      
-        # `maxTimeElapsedSinceLastModification` is the complement to
-        # `minTimeElapsedSinceLastModification`.
-        # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
-        # @return [String]
-        attr_accessor :max_time_elapsed_since_last_modification
-      
-        # If `includePrefixes` is specified, objects that satisfy the object
-        # conditions must have names that start with one of the `includePrefixes`
-        # and that do not start with any of the `excludePrefixes`. If `includePrefixes`
-        # is not specified, all objects except those that have names starting with
-        # one of the `excludePrefixes` must satisfy the object conditions.
-        # Requirements:
-        # * Each include-prefix and exclude-prefix can contain any sequence of
-        # Unicode characters, of max length 1024 bytes when UTF8-encoded, and
-        # must not contain Carriage Return or Line Feed characters.  Wildcard
-        # matching and regular expression matching are not supported.
-        # * Each include-prefix and exclude-prefix must omit the leading slash.
-        # For example, to include the `requests.gz` object in a transfer from
-        # `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include
-        # prefix as `logs/y=2015/requests.gz`.
-        # * None of the include-prefix or the exclude-prefix values can be empty,
-        # if specified.
-        # * Each include-prefix must include a distinct portion of the object
-        # namespace, i.e., no include-prefix may be a prefix of another
-        # include-prefix.
-        # * Each exclude-prefix must exclude a distinct portion of the object
-        # namespace, i.e., no exclude-prefix may be a prefix of another
-        # exclude-prefix.
-        # * If `includePrefixes` is specified, then each exclude-prefix must start
-        # with the value of a path explicitly included by `includePrefixes`.
-        # The max size of `includePrefixes` is 1000.
-        # Corresponds to the JSON property `includePrefixes`
-        # @return [Array<String>]
-        attr_accessor :include_prefixes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
-          @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
-          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
-          @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
-        end
-      end
-      
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # have the format of `transferOperations/some/unique/name`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by
-        # [gRPC](https://github.com/grpc). The error model is designed to be:
-        # - Simple to use and understand for most users
-        # - Flexible enough to meet unexpected needs
-        # # Overview
-        # The `Status` message contains three pieces of data: error code, error message,
-        # and error details. The error code should be an enum value of
-        # google.rpc.Code, but it may accept additional error codes if needed.  The
-        # error message should be a developer-facing English message that helps
-        # developers *understand* and *resolve* the error. If a localized user-facing
-        # error message is needed, put the localized message in the error details or
-        # localize it in the client. The optional error details may contain arbitrary
-        # information about the error. There is a predefined set of error detail types
-        # in the package `google.rpc` that can be used for common error conditions.
-        # # Language mapping
-        # The `Status` message is the logical representation of the error model, but it
-        # is not necessarily the actual wire format. When the `Status` message is
-        # exposed in different client libraries and different wire protocols, it can be
-        # mapped differently. For example, it will likely be mapped to some exceptions
-        # in Java, but more likely mapped to some error codes in C.
-        # # Other uses
-        # The error model and the `Status` message can be used in a variety of
-        # environments, either with or without APIs, to provide a
-        # consistent developer experience across different environments.
-        # Example uses of this error model include:
-        # - Partial errors. If a service needs to return partial errors to the client,
-        # it may embed the `Status` in the normal response to indicate the partial
-        # errors.
-        # - Workflow errors. A typical workflow has multiple steps. Each step may
-        # have a `Status` message for error reporting.
-        # - Batch operations. If a client uses batch request and batch response, the
-        # `Status` message should be used directly inside batch response, one for
-        # each error sub-response.
-        # - Asynchronous operations. If an API call embeds asynchronous operation
-        # results in its response, the status of those operations should be
-        # represented directly using the `Status` message.
-        # - Logging. If some API errors are stored in logs, the message `Status` could
-        # be used directly after any stripping needed for security/privacy reasons.
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::StoragetransferV1::Status]
-        attr_accessor :error
-      
-        # Represents the transfer operation object.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @response = args[:response] if args.key?(:response)
-          @name = args[:name] if args.key?(:name)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
-      # TransferOptions uses three boolean parameters to define the actions
-      # to be performed on objects in a transfer.
-      class TransferOptions
-        include Google::Apis::Core::Hashable
-      
-        # Whether objects that exist only in the sink should be deleted.
-        # Corresponds to the JSON property `deleteObjectsUniqueInSink`
-        # @return [Boolean]
-        attr_accessor :delete_objects_unique_in_sink
-        alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
-      
-        # Whether overwriting objects that already exist in the sink is allowed.
-        # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`
-        # @return [Boolean]
-        attr_accessor :overwrite_objects_already_existing_in_sink
-        alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
-      
-        # Whether objects should be deleted from the source after they are
-        # transferred to the sink.
-        # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
-        # @return [Boolean]
-        attr_accessor :delete_objects_from_source_after_transfer
-        alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
-          @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
-          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
-        end
-      end
-      
-      # Configuration for running a transfer.
-      class TransferSpec
-        include Google::Apis::Core::Hashable
-      
-        # In a GcsData, an object's name is the Google Cloud Storage object's name and
-        # its `lastModificationTime` refers to the object's updated time, which changes
-        # when the content or the metadata of the object is updated.
-        # Corresponds to the JSON property `gcsDataSource`
-        # @return [Google::Apis::StoragetransferV1::GcsData]
-        attr_accessor :gcs_data_source
-      
-        # TransferOptions uses three boolean parameters to define the actions
-        # to be performed on objects in a transfer.
-        # Corresponds to the JSON property `transferOptions`
-        # @return [Google::Apis::StoragetransferV1::TransferOptions]
-        attr_accessor :transfer_options
-      
-        # An AwsS3Data can be a data source, but not a data sink.
-        # In an AwsS3Data, an object's name is the S3 object's key name.
-        # Corresponds to the JSON property `awsS3DataSource`
-        # @return [Google::Apis::StoragetransferV1::AwsS3Data]
-        attr_accessor :aws_s3_data_source
-      
-        # An HttpData specifies a list of objects on the web to be transferred over
-        # HTTP.  The information of the objects to be transferred is contained in a
-        # file referenced by a URL. The first line in the file must be
-        # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
-        # specify the information of the list of objects, one object per list entry.
-        # Each entry has the following tab-delimited fields:
-        # * HTTP URL - The location of the object.
-        # * Length - The size of the object in bytes.
-        # * MD5 - The base64-encoded MD5 hash of the object.
-        # For an example of a valid TSV file, see
-        # [Transferring data from URLs](https://cloud.google.com/storage/transfer/#urls)
-        # When transferring data based on a URL list, keep the following in mind:
-        # * When an object located at `http(s)://hostname:port/<URL-path>` is
-        # transferred
-        # to a data sink, the name of the object at the data sink is
-        # `<hostname>/<URL-path>`.
-        # * If the specified size of an object does not match the actual size of the
-        # object fetched, the object will not be transferred.
-        # * If the specified MD5 does not match the MD5 computed from the transferred
-        # bytes, the object transfer will fail. For more information, see
-        # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
-        # * Ensure that each URL you specify is publicly accessible. For
-        # example, in Google Cloud Storage you can
-        # [share an object publicly]
-        # (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
-        # a link to it.
-        # * Storage Transfer Service obeys `robots.txt` rules and requires the source
-        # HTTP server to support `Range` requests and to return a `Content-Length`
-        # header in each response.
-        # * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
-        # to transfer.
-        # Corresponds to the JSON property `httpDataSource`
-        # @return [Google::Apis::StoragetransferV1::HttpData]
-        attr_accessor :http_data_source
-      
-        # Conditions that determine which objects will be transferred.
-        # Corresponds to the JSON property `objectConditions`
-        # @return [Google::Apis::StoragetransferV1::ObjectConditions]
-        attr_accessor :object_conditions
-      
-        # In a GcsData, an object's name is the Google Cloud Storage object's name and
-        # its `lastModificationTime` refers to the object's updated time, which changes
-        # when the content or the metadata of the object is updated.
-        # Corresponds to the JSON property `gcsDataSink`
-        # @return [Google::Apis::StoragetransferV1::GcsData]
-        attr_accessor :gcs_data_sink
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
-          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
-          @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
-          @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
-          @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
-          @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
-        end
-      end
-      
-      # Request passed to ResumeTransferOperation.
-      class ResumeTransferOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by
-      # [gRPC](https://github.com/grpc). The error model is designed to be:
-      # - Simple to use and understand for most users
-      # - Flexible enough to meet unexpected needs
-      # # Overview
-      # The `Status` message contains three pieces of data: error code, error message,
-      # and error details. The error code should be an enum value of
-      # google.rpc.Code, but it may accept additional error codes if needed.  The
-      # error message should be a developer-facing English message that helps
-      # developers *understand* and *resolve* the error. If a localized user-facing
-      # error message is needed, put the localized message in the error details or
-      # localize it in the client. The optional error details may contain arbitrary
-      # information about the error. There is a predefined set of error detail types
-      # in the package `google.rpc` that can be used for common error conditions.
-      # # Language mapping
-      # The `Status` message is the logical representation of the error model, but it
-      # is not necessarily the actual wire format. When the `Status` message is
-      # exposed in different client libraries and different wire protocols, it can be
-      # mapped differently. For example, it will likely be mapped to some exceptions
-      # in Java, but more likely mapped to some error codes in C.
-      # # Other uses
-      # The error model and the `Status` message can be used in a variety of
-      # environments, either with or without APIs, to provide a
-      # consistent developer experience across different environments.
-      # Example uses of this error model include:
-      # - Partial errors. If a service needs to return partial errors to the client,
-      # it may embed the `Status` in the normal response to indicate the partial
-      # errors.
-      # - Workflow errors. A typical workflow has multiple steps. Each step may
-      # have a `Status` message for error reporting.
-      # - Batch operations. If a client uses batch request and batch response, the
-      # `Status` message should be used directly inside batch response, one for
-      # each error sub-response.
-      # - Asynchronous operations. If an API call embeds asynchronous operation
-      # results in its response, the status of those operations should be
-      # represented directly using the `Status` message.
-      # - Logging. If some API errors are stored in logs, the message `Status` could
-      # be used directly after any stripping needed for security/privacy reasons.
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # A list of messages that carry the error details.  There will be a
-        # common set of message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @details = args[:details] if args.key?(:details)
-          @code = args[:code] if args.key?(:code)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::StoragetransferV1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # Google service account
-      class GoogleServiceAccount
-        include Google::Apis::Core::Hashable
-      
-        # Required.
-        # Corresponds to the JSON property `accountEmail`
-        # @return [String]
-        attr_accessor :account_email
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @account_email = args[:account_email] if args.key?(:account_email)
-        end
-      end
-      
-      # Represents a time of day. The date and time zone are either not significant
-      # or are specified elsewhere. An API may choose to allow leap seconds. Related
-      # types are google.type.Date and `google.protobuf.Timestamp`.
-      class TimeOfDay
-        include Google::Apis::Core::Hashable
-      
-        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-        # allow the value 60 if it allows leap-seconds.
-        # Corresponds to the JSON property `seconds`
-        # @return [Fixnum]
-        attr_accessor :seconds
-      
-        # Minutes of hour of day. Must be from 0 to 59.
-        # Corresponds to the JSON property `minutes`
-        # @return [Fixnum]
-        attr_accessor :minutes
-      
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-        # to allow the value "24:00:00" for scenarios like business closing time.
-        # Corresponds to the JSON property `hours`
-        # @return [Fixnum]
-        attr_accessor :hours
-      
-        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        # Corresponds to the JSON property `nanos`
-        # @return [Fixnum]
-        attr_accessor :nanos
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @seconds = args[:seconds] if args.key?(:seconds)
-          @minutes = args[:minutes] if args.key?(:minutes)
-          @hours = args[:hours] if args.key?(:hours)
-          @nanos = args[:nanos] if args.key?(:nanos)
-        end
-      end
-      
-      # An entry describing an error that has occurred.
-      class ErrorLogEntry
-        include Google::Apis::Core::Hashable
-      
-        # A URL that refers to the target (a data source, a data sink,
-        # or an object) with which the error is associated.
-        # Required.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        # A list of messages that carry the error details.
-        # Corresponds to the JSON property `errorDetails`
-        # @return [Array<String>]
-        attr_accessor :error_details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @url = args[:url] if args.key?(:url)
-          @error_details = args[:error_details] if args.key?(:error_details)
-        end
-      end
-      
-      # This resource represents the configuration of a transfer job that runs
-      # periodically.
-      class TransferJob
-        include Google::Apis::Core::Hashable
-      
-        # This field cannot be changed by user requests.
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
-        # Configuration for running a transfer.
-        # Corresponds to the JSON property `transferSpec`
-        # @return [Google::Apis::StoragetransferV1::TransferSpec]
-        attr_accessor :transfer_spec
-      
-        # Status of the job. This value MUST be specified for
-        # `CreateTransferJobRequests`.
-        # NOTE: The effect of the new job status takes place during a subsequent job
-        # run. For example, if you change the job status from `ENABLED` to
-        # `DISABLED`, and an operation spawned by the transfer is running, the status
-        # change would not affect the current operation.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Transfers can be scheduled to recur or to run just once.
-        # Corresponds to the JSON property `schedule`
-        # @return [Google::Apis::StoragetransferV1::Schedule]
-        attr_accessor :schedule
-      
-        # A globally unique name assigned by Storage Transfer Service when the
-        # job is created. This field should be left empty in requests to create a new
-        # transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`
-        # error.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # This field cannot be changed by user requests.
-        # Corresponds to the JSON property `deletionTime`
-        # @return [String]
-        attr_accessor :deletion_time
-      
-        # This field cannot be changed by user requests.
-        # Corresponds to the JSON property `lastModificationTime`
-        # @return [String]
-        attr_accessor :last_modification_time
-      
-        # The ID of the Google Cloud Platform Console project that owns the job.
-        # Required.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # A description provided by the user for the job. Its max length is 1024
-        # bytes when Unicode-encoded.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
-          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
-          @status = args[:status] if args.key?(:status)
-          @schedule = args[:schedule] if args.key?(:schedule)
-          @name = args[:name] if args.key?(:name)
-          @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
-          @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @description = args[:description] if args.key?(:description)
-        end
-      end
-      
-      # Transfers can be scheduled to recur or to run just once.
-      class Schedule
-        include Google::Apis::Core::Hashable
-      
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `scheduleEndDate`
-        # @return [Google::Apis::StoragetransferV1::Date]
-        attr_accessor :schedule_end_date
-      
-        # Represents a time of day. The date and time zone are either not significant
-        # or are specified elsewhere. An API may choose to allow leap seconds. Related
-        # types are google.type.Date and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `startTimeOfDay`
-        # @return [Google::Apis::StoragetransferV1::TimeOfDay]
-        attr_accessor :start_time_of_day
-      
-        # Represents a whole calendar date, e.g. date of birth. The time of day and
-        # time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-        # represent a year and month where the day is not significant, e.g. credit card
-        # expiration date. The year may be 0 to represent a month and day independent
-        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-        # and `google.protobuf.Timestamp`.
-        # Corresponds to the JSON property `scheduleStartDate`
-        # @return [Google::Apis::StoragetransferV1::Date]
-        attr_accessor :schedule_start_date
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @schedule_end_date = args[:schedule_end_date] if args.key?(:schedule_end_date)
-          @start_time_of_day = args[:start_time_of_day] if args.key?(:start_time_of_day)
-          @schedule_start_date = args[:schedule_start_date] if args.key?(:schedule_start_date)
-        end
-      end
-      
-      # Represents a whole calendar date, e.g. date of birth. The time of day and
-      # time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-      # represent a year and month where the day is not significant, e.g. credit card
-      # expiration date. The year may be 0 to represent a month and day independent
-      # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-      # and `google.protobuf.Timestamp`.
-      class Date
-        include Google::Apis::Core::Hashable
-      
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
-        # Corresponds to the JSON property `year`
-        # @return [Fixnum]
-        attr_accessor :year
-      
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year/month where the day is not significant.
-        # Corresponds to the JSON property `day`
-        # @return [Fixnum]
-        attr_accessor :day
-      
-        # Month of year. Must be from 1 to 12.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @year = args[:year] if args.key?(:year)
-          @day = args[:day] if args.key?(:day)
-          @month = args[:month] if args.key?(:month)
-        end
-      end
-      
-      # A description of the execution of a transfer.
-      class TransferOperation
-        include Google::Apis::Core::Hashable
-      
-        # Start time of this transfer execution.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # The name of the transfer job that triggers this transfer operation.
-        # Corresponds to the JSON property `transferJobName`
-        # @return [String]
-        attr_accessor :transfer_job_name
-      
-        # Configuration for running a transfer.
-        # Corresponds to the JSON property `transferSpec`
-        # @return [Google::Apis::StoragetransferV1::TransferSpec]
-        attr_accessor :transfer_spec
-      
-        # A collection of counters that report the progress of a transfer operation.
-        # Corresponds to the JSON property `counters`
-        # @return [Google::Apis::StoragetransferV1::TransferCounters]
-        attr_accessor :counters
-      
-        # Status of the transfer operation.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Summarizes errors encountered with sample error log entries.
-        # Corresponds to the JSON property `errorBreakdowns`
-        # @return [Array<Google::Apis::StoragetransferV1::ErrorSummary>]
-        attr_accessor :error_breakdowns
-      
-        # A globally unique ID assigned by the system.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The ID of the Google Cloud Platform Console project that owns the operation.
-        # Required.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # End time of this transfer execution.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @transfer_job_name = args[:transfer_job_name] if args.key?(:transfer_job_name)
-          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
-          @counters = args[:counters] if args.key?(:counters)
-          @status = args[:status] if args.key?(:status)
-          @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
-          @name = args[:name] if args.key?(:name)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @end_time = args[:end_time] if args.key?(:end_time)
-        end
-      end
-      
-      # An AwsS3Data can be a data source, but not a data sink.
-      # In an AwsS3Data, an object's name is the S3 object's key name.
-      class AwsS3Data
-        include Google::Apis::Core::Hashable
-      
-        # AWS access key (see
-        # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
-        # security-credentials.html)).
-        # Corresponds to the JSON property `awsAccessKey`
-        # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
-        attr_accessor :aws_access_key
-      
-        # S3 Bucket name (see
-        # [Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-
-        # bucket-get-location-example.html)).
-        # Required.
-        # Corresponds to the JSON property `bucketName`
-        # @return [String]
-        attr_accessor :bucket_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
-          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
-        end
-      end
-      
-      # AWS access key (see
-      # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
-      # security-credentials.html)).
-      class AwsAccessKey
-        include Google::Apis::Core::Hashable
-      
-        # AWS secret access key. This field is not returned in RPC responses.
-        # Required.
-        # Corresponds to the JSON property `secretAccessKey`
-        # @return [String]
-        attr_accessor :secret_access_key
-      
-        # AWS access key ID.
-        # Required.
-        # Corresponds to the JSON property `accessKeyId`
-        # @return [String]
-        attr_accessor :access_key_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
-          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request passed to PauseTransferOperation.
-      class PauseTransferOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # A collection of counters that report the progress of a transfer operation.
       class TransferCounters
         include Google::Apis::Core::Hashable
+      
+        # Bytes that are deleted from the data source.
+        # Corresponds to the JSON property `bytesDeletedFromSource`
+        # @return [Fixnum]
+        attr_accessor :bytes_deleted_from_source
+      
+        # Objects found in the data source that are scheduled to be transferred,
+        # which will be copied, excluded based on conditions, or skipped due to
+        # failures.
+        # Corresponds to the JSON property `objectsFoundFromSource`
+        # @return [Fixnum]
+        attr_accessor :objects_found_from_source
+      
+        # Objects that failed to be deleted from the data sink.
+        # Corresponds to the JSON property `objectsFailedToDeleteFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_failed_to_delete_from_sink
+      
+        # Objects that are deleted from the data sink.
+        # Corresponds to the JSON property `objectsDeletedFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_deleted_from_sink
+      
+        # Objects found only in the data sink that are scheduled to be deleted.
+        # Corresponds to the JSON property `objectsFoundOnlyFromSink`
+        # @return [Fixnum]
+        attr_accessor :objects_found_only_from_sink
+      
+        # Bytes in the data source that are not transferred because they already
+        # exist in the data sink.
+        # Corresponds to the JSON property `bytesFromSourceSkippedBySync`
+        # @return [Fixnum]
+        attr_accessor :bytes_from_source_skipped_by_sync
       
         # Bytes that are deleted from the data sink.
         # Corresponds to the JSON property `bytesDeletedFromSink`
@@ -883,15 +74,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :bytes_from_source_failed
       
-        # Objects that are copied to the data sink.
-        # Corresponds to the JSON property `objectsCopiedToSink`
-        # @return [Fixnum]
-        attr_accessor :objects_copied_to_sink
-      
         # Objects in the data source that failed during the transfer.
         # Corresponds to the JSON property `objectsFromSourceFailed`
         # @return [Fixnum]
         attr_accessor :objects_from_source_failed
+      
+        # Objects that are copied to the data sink.
+        # Corresponds to the JSON property `objectsCopiedToSink`
+        # @return [Fixnum]
+        attr_accessor :objects_copied_to_sink
       
         # Bytes found only in the data sink that are scheduled to be deleted.
         # Corresponds to the JSON property `bytesFoundOnlyFromSink`
@@ -921,61 +112,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :objects_from_source_skipped_by_sync
       
-        # Bytes that are deleted from the data source.
-        # Corresponds to the JSON property `bytesDeletedFromSource`
-        # @return [Fixnum]
-        attr_accessor :bytes_deleted_from_source
-      
-        # Objects found in the data source that are scheduled to be transferred,
-        # which will be copied, excluded based on conditions, or skipped due to
-        # failures.
-        # Corresponds to the JSON property `objectsFoundFromSource`
-        # @return [Fixnum]
-        attr_accessor :objects_found_from_source
-      
-        # Objects that failed to be deleted from the data sink.
-        # Corresponds to the JSON property `objectsFailedToDeleteFromSink`
-        # @return [Fixnum]
-        attr_accessor :objects_failed_to_delete_from_sink
-      
-        # Objects found only in the data sink that are scheduled to be deleted.
-        # Corresponds to the JSON property `objectsFoundOnlyFromSink`
-        # @return [Fixnum]
-        attr_accessor :objects_found_only_from_sink
-      
-        # Objects that are deleted from the data sink.
-        # Corresponds to the JSON property `objectsDeletedFromSink`
-        # @return [Fixnum]
-        attr_accessor :objects_deleted_from_sink
-      
-        # Bytes in the data source that are not transferred because they already
-        # exist in the data sink.
-        # Corresponds to the JSON property `bytesFromSourceSkippedBySync`
-        # @return [Fixnum]
-        attr_accessor :bytes_from_source_skipped_by_sync
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
+          @objects_found_from_source = args[:objects_found_from_source] if args.key?(:objects_found_from_source)
+          @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] if args.key?(:objects_failed_to_delete_from_sink)
+          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
+          @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
+          @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
           @bytes_deleted_from_sink = args[:bytes_deleted_from_sink] if args.key?(:bytes_deleted_from_sink)
           @bytes_failed_to_delete_from_sink = args[:bytes_failed_to_delete_from_sink] if args.key?(:bytes_failed_to_delete_from_sink)
           @bytes_from_source_failed = args[:bytes_from_source_failed] if args.key?(:bytes_from_source_failed)
-          @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
           @objects_from_source_failed = args[:objects_from_source_failed] if args.key?(:objects_from_source_failed)
+          @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
           @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] if args.key?(:bytes_found_only_from_sink)
           @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
           @bytes_copied_to_sink = args[:bytes_copied_to_sink] if args.key?(:bytes_copied_to_sink)
           @bytes_found_from_source = args[:bytes_found_from_source] if args.key?(:bytes_found_from_source)
           @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
-          @bytes_deleted_from_source = args[:bytes_deleted_from_source] if args.key?(:bytes_deleted_from_source)
-          @objects_found_from_source = args[:objects_found_from_source] if args.key?(:objects_found_from_source)
-          @objects_failed_to_delete_from_sink = args[:objects_failed_to_delete_from_sink] if args.key?(:objects_failed_to_delete_from_sink)
-          @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
-          @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
-          @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
         end
       end
       
@@ -1110,6 +268,851 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @transfer_jobs = args[:transfer_jobs] if args.key?(:transfer_jobs)
+        end
+      end
+      
+      # Request passed to UpdateTransferJob.
+      class UpdateTransferJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the Google Cloud Platform Console project that owns the job.
+        # Required.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The field mask of the fields in `transferJob` that are to be updated in
+        # this request.  Fields in `transferJob` that can be updated are:
+        # `description`, `transferSpec`, and `status`.  To update the `transferSpec`
+        # of the job, a complete transfer specification has to be provided. An
+        # incomplete specification which misses any required fields will be rejected
+        # with the error `INVALID_ARGUMENT`.
+        # Corresponds to the JSON property `updateTransferJobFieldMask`
+        # @return [String]
+        attr_accessor :update_transfer_job_field_mask
+      
+        # This resource represents the configuration of a transfer job that runs
+        # periodically.
+        # Corresponds to the JSON property `transferJob`
+        # @return [Google::Apis::StoragetransferV1::TransferJob]
+        attr_accessor :transfer_job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @update_transfer_job_field_mask = args[:update_transfer_job_field_mask] if args.key?(:update_transfer_job_field_mask)
+          @transfer_job = args[:transfer_job] if args.key?(:transfer_job)
+        end
+      end
+      
+      # Conditions that determine which objects will be transferred.
+      class ObjectConditions
+        include Google::Apis::Core::Hashable
+      
+        # `excludePrefixes` must follow the requirements described for
+        # `includePrefixes`.
+        # The max size of `excludePrefixes` is 1000.
+        # Corresponds to the JSON property `excludePrefixes`
+        # @return [Array<String>]
+        attr_accessor :exclude_prefixes
+      
+        # If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
+        # and `maxTimeElapsedSinceLastModification` takes the maximum possible
+        # value of Duration. Objects that satisfy the object conditions
+        # must either have a `lastModificationTime` greater or equal to
+        # `NOW` - `maxTimeElapsedSinceLastModification` and less than
+        # `NOW` - `minTimeElapsedSinceLastModification`, or not have a
+        # `lastModificationTime`.
+        # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
+        # @return [String]
+        attr_accessor :min_time_elapsed_since_last_modification
+      
+        # `maxTimeElapsedSinceLastModification` is the complement to
+        # `minTimeElapsedSinceLastModification`.
+        # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
+        # @return [String]
+        attr_accessor :max_time_elapsed_since_last_modification
+      
+        # If `includePrefixes` is specified, objects that satisfy the object
+        # conditions must have names that start with one of the `includePrefixes`
+        # and that do not start with any of the `excludePrefixes`. If `includePrefixes`
+        # is not specified, all objects except those that have names starting with
+        # one of the `excludePrefixes` must satisfy the object conditions.
+        # Requirements:
+        # * Each include-prefix and exclude-prefix can contain any sequence of
+        # Unicode characters, of max length 1024 bytes when UTF8-encoded, and
+        # must not contain Carriage Return or Line Feed characters.  Wildcard
+        # matching and regular expression matching are not supported.
+        # * Each include-prefix and exclude-prefix must omit the leading slash.
+        # For example, to include the `requests.gz` object in a transfer from
+        # `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include
+        # prefix as `logs/y=2015/requests.gz`.
+        # * None of the include-prefix or the exclude-prefix values can be empty,
+        # if specified.
+        # * Each include-prefix must include a distinct portion of the object
+        # namespace, i.e., no include-prefix may be a prefix of another
+        # include-prefix.
+        # * Each exclude-prefix must exclude a distinct portion of the object
+        # namespace, i.e., no exclude-prefix may be a prefix of another
+        # exclude-prefix.
+        # * If `includePrefixes` is specified, then each exclude-prefix must start
+        # with the value of a path explicitly included by `includePrefixes`.
+        # The max size of `includePrefixes` is 1000.
+        # Corresponds to the JSON property `includePrefixes`
+        # @return [Array<String>]
+        attr_accessor :include_prefixes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
+          @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
+          @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
+          @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If true, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # have the format of `transferOperations/some/unique/name`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::StoragetransferV1::Status]
+        attr_accessor :error
+      
+        # Represents the transfer operation object.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @response = args[:response] if args.key?(:response)
+          @name = args[:name] if args.key?(:name)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # TransferOptions uses three boolean parameters to define the actions
+      # to be performed on objects in a transfer.
+      class TransferOptions
+        include Google::Apis::Core::Hashable
+      
+        # Whether objects that exist only in the sink should be deleted.  Note that
+        # this option and `deleteObjectsFromSourceAfterTransfer` are mutually
+        # exclusive.
+        # Corresponds to the JSON property `deleteObjectsUniqueInSink`
+        # @return [Boolean]
+        attr_accessor :delete_objects_unique_in_sink
+        alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
+      
+        # Whether overwriting objects that already exist in the sink is allowed.
+        # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`
+        # @return [Boolean]
+        attr_accessor :overwrite_objects_already_existing_in_sink
+        alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
+      
+        # Whether objects should be deleted from the source after they are
+        # transferred to the sink.  Note that this option and
+        # `deleteObjectsUniqueInSink` are mutually exclusive.
+        # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
+        # @return [Boolean]
+        attr_accessor :delete_objects_from_source_after_transfer
+        alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
+          @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
+          @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
+        end
+      end
+      
+      # Configuration for running a transfer.
+      class TransferSpec
+        include Google::Apis::Core::Hashable
+      
+        # TransferOptions uses three boolean parameters to define the actions
+        # to be performed on objects in a transfer.
+        # Corresponds to the JSON property `transferOptions`
+        # @return [Google::Apis::StoragetransferV1::TransferOptions]
+        attr_accessor :transfer_options
+      
+        # An AwsS3Data can be a data source, but not a data sink.
+        # In an AwsS3Data, an object's name is the S3 object's key name.
+        # Corresponds to the JSON property `awsS3DataSource`
+        # @return [Google::Apis::StoragetransferV1::AwsS3Data]
+        attr_accessor :aws_s3_data_source
+      
+        # An HttpData specifies a list of objects on the web to be transferred over
+        # HTTP.  The information of the objects to be transferred is contained in a
+        # file referenced by a URL. The first line in the file must be
+        # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
+        # specify the information of the list of objects, one object per list entry.
+        # Each entry has the following tab-delimited fields:
+        # * HTTP URL - The location of the object.
+        # * Length - The size of the object in bytes.
+        # * MD5 - The base64-encoded MD5 hash of the object.
+        # For an example of a valid TSV file, see
+        # [Transferring data from URLs](https://cloud.google.com/storage/transfer/#urls)
+        # When transferring data based on a URL list, keep the following in mind:
+        # * When an object located at `http(s)://hostname:port/<URL-path>` is
+        # transferred
+        # to a data sink, the name of the object at the data sink is
+        # `<hostname>/<URL-path>`.
+        # * If the specified size of an object does not match the actual size of the
+        # object fetched, the object will not be transferred.
+        # * If the specified MD5 does not match the MD5 computed from the transferred
+        # bytes, the object transfer will fail. For more information, see
+        # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+        # * Ensure that each URL you specify is publicly accessible. For
+        # example, in Google Cloud Storage you can
+        # [share an object publicly]
+        # (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
+        # a link to it.
+        # * Storage Transfer Service obeys `robots.txt` rules and requires the source
+        # HTTP server to support `Range` requests and to return a `Content-Length`
+        # header in each response.
+        # * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
+        # to transfer.
+        # Corresponds to the JSON property `httpDataSource`
+        # @return [Google::Apis::StoragetransferV1::HttpData]
+        attr_accessor :http_data_source
+      
+        # Conditions that determine which objects will be transferred.
+        # Corresponds to the JSON property `objectConditions`
+        # @return [Google::Apis::StoragetransferV1::ObjectConditions]
+        attr_accessor :object_conditions
+      
+        # In a GcsData, an object's name is the Google Cloud Storage object's name and
+        # its `lastModificationTime` refers to the object's updated time, which changes
+        # when the content or the metadata of the object is updated.
+        # Corresponds to the JSON property `gcsDataSink`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_data_sink
+      
+        # In a GcsData, an object's name is the Google Cloud Storage object's name and
+        # its `lastModificationTime` refers to the object's updated time, which changes
+        # when the content or the metadata of the object is updated.
+        # Corresponds to the JSON property `gcsDataSource`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
+          @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
+          @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
+          @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
+          @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
+          @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
+        end
+      end
+      
+      # Request passed to ResumeTransferOperation.
+      class ResumeTransferOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by
+      # [gRPC](https://github.com/grpc). The error model is designed to be:
+      # - Simple to use and understand for most users
+      # - Flexible enough to meet unexpected needs
+      # # Overview
+      # The `Status` message contains three pieces of data: error code, error message,
+      # and error details. The error code should be an enum value of
+      # google.rpc.Code, but it may accept additional error codes if needed.  The
+      # error message should be a developer-facing English message that helps
+      # developers *understand* and *resolve* the error. If a localized user-facing
+      # error message is needed, put the localized message in the error details or
+      # localize it in the client. The optional error details may contain arbitrary
+      # information about the error. There is a predefined set of error detail types
+      # in the package `google.rpc` that can be used for common error conditions.
+      # # Language mapping
+      # The `Status` message is the logical representation of the error model, but it
+      # is not necessarily the actual wire format. When the `Status` message is
+      # exposed in different client libraries and different wire protocols, it can be
+      # mapped differently. For example, it will likely be mapped to some exceptions
+      # in Java, but more likely mapped to some error codes in C.
+      # # Other uses
+      # The error model and the `Status` message can be used in a variety of
+      # environments, either with or without APIs, to provide a
+      # consistent developer experience across different environments.
+      # Example uses of this error model include:
+      # - Partial errors. If a service needs to return partial errors to the client,
+      # it may embed the `Status` in the normal response to indicate the partial
+      # errors.
+      # - Workflow errors. A typical workflow has multiple steps. Each step may
+      # have a `Status` message for error reporting.
+      # - Batch operations. If a client uses batch request and batch response, the
+      # `Status` message should be used directly inside batch response, one for
+      # each error sub-response.
+      # - Asynchronous operations. If an API call embeds asynchronous operation
+      # results in its response, the status of those operations should be
+      # represented directly using the `Status` message.
+      # - Logging. If some API errors are stored in logs, the message `Status` could
+      # be used directly after any stripping needed for security/privacy reasons.
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # A list of messages that carry the error details.  There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::StoragetransferV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Google service account
+      class GoogleServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Required.
+        # Corresponds to the JSON property `accountEmail`
+        # @return [String]
+        attr_accessor :account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_email = args[:account_email] if args.key?(:account_email)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant
+      # or are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+        # to allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @minutes = args[:minutes] if args.key?(:minutes)
+        end
+      end
+      
+      # An entry describing an error that has occurred.
+      class ErrorLogEntry
+        include Google::Apis::Core::Hashable
+      
+        # A list of messages that carry the error details.
+        # Corresponds to the JSON property `errorDetails`
+        # @return [Array<String>]
+        attr_accessor :error_details
+      
+        # A URL that refers to the target (a data source, a data sink,
+        # or an object) with which the error is associated.
+        # Required.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_details = args[:error_details] if args.key?(:error_details)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # This resource represents the configuration of a transfer job that runs
+      # periodically.
+      class TransferJob
+        include Google::Apis::Core::Hashable
+      
+        # A description provided by the user for the job. Its max length is 1024
+        # bytes when Unicode-encoded.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # This field cannot be changed by user requests.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Configuration for running a transfer.
+        # Corresponds to the JSON property `transferSpec`
+        # @return [Google::Apis::StoragetransferV1::TransferSpec]
+        attr_accessor :transfer_spec
+      
+        # Status of the job. This value MUST be specified for
+        # `CreateTransferJobRequests`.
+        # NOTE: The effect of the new job status takes place during a subsequent job
+        # run. For example, if you change the job status from `ENABLED` to
+        # `DISABLED`, and an operation spawned by the transfer is running, the status
+        # change would not affect the current operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Transfers can be scheduled to recur or to run just once.
+        # Corresponds to the JSON property `schedule`
+        # @return [Google::Apis::StoragetransferV1::Schedule]
+        attr_accessor :schedule
+      
+        # This field cannot be changed by user requests.
+        # Corresponds to the JSON property `deletionTime`
+        # @return [String]
+        attr_accessor :deletion_time
+      
+        # A globally unique name assigned by Storage Transfer Service when the
+        # job is created. This field should be left empty in requests to create a new
+        # transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`
+        # error.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ID of the Google Cloud Platform Console project that owns the job.
+        # Required.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # This field cannot be changed by user requests.
+        # Corresponds to the JSON property `lastModificationTime`
+        # @return [String]
+        attr_accessor :last_modification_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
+          @status = args[:status] if args.key?(:status)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
+        end
+      end
+      
+      # Transfers can be scheduled to recur or to run just once.
+      class Schedule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, e.g. date of birth. The time of day and
+        # time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+        # represent a year and month where the day is not significant, e.g. credit card
+        # expiration date. The year may be 0 to represent a month and day independent
+        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+        # and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `scheduleEndDate`
+        # @return [Google::Apis::StoragetransferV1::Date]
+        attr_accessor :schedule_end_date
+      
+        # Represents a time of day. The date and time zone are either not significant
+        # or are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTimeOfDay`
+        # @return [Google::Apis::StoragetransferV1::TimeOfDay]
+        attr_accessor :start_time_of_day
+      
+        # Represents a whole calendar date, e.g. date of birth. The time of day and
+        # time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+        # represent a year and month where the day is not significant, e.g. credit card
+        # expiration date. The year may be 0 to represent a month and day independent
+        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+        # and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `scheduleStartDate`
+        # @return [Google::Apis::StoragetransferV1::Date]
+        attr_accessor :schedule_start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule_end_date = args[:schedule_end_date] if args.key?(:schedule_end_date)
+          @start_time_of_day = args[:start_time_of_day] if args.key?(:start_time_of_day)
+          @schedule_start_date = args[:schedule_start_date] if args.key?(:schedule_start_date)
+        end
+      end
+      
+      # Represents a whole calendar date, e.g. date of birth. The time of day and
+      # time zone are either specified elsewhere or are not significant. The date
+      # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+      # represent a year and month where the day is not significant, e.g. credit card
+      # expiration date. The year may be 0 to represent a month and day independent
+      # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+      # and `google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+        # if specifying a year/month where the day is not significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+        # a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        # Month of year. Must be from 1 to 12.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @year = args[:year] if args.key?(:year)
+          @month = args[:month] if args.key?(:month)
+        end
+      end
+      
+      # A description of the execution of a transfer.
+      class TransferOperation
+        include Google::Apis::Core::Hashable
+      
+        # End time of this transfer execution.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start time of this transfer execution.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The name of the transfer job that triggers this transfer operation.
+        # Corresponds to the JSON property `transferJobName`
+        # @return [String]
+        attr_accessor :transfer_job_name
+      
+        # Configuration for running a transfer.
+        # Corresponds to the JSON property `transferSpec`
+        # @return [Google::Apis::StoragetransferV1::TransferSpec]
+        attr_accessor :transfer_spec
+      
+        # A collection of counters that report the progress of a transfer operation.
+        # Corresponds to the JSON property `counters`
+        # @return [Google::Apis::StoragetransferV1::TransferCounters]
+        attr_accessor :counters
+      
+        # Status of the transfer operation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Summarizes errors encountered with sample error log entries.
+        # Corresponds to the JSON property `errorBreakdowns`
+        # @return [Array<Google::Apis::StoragetransferV1::ErrorSummary>]
+        attr_accessor :error_breakdowns
+      
+        # A globally unique ID assigned by the system.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ID of the Google Cloud Platform Console project that owns the operation.
+        # Required.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @transfer_job_name = args[:transfer_job_name] if args.key?(:transfer_job_name)
+          @transfer_spec = args[:transfer_spec] if args.key?(:transfer_spec)
+          @counters = args[:counters] if args.key?(:counters)
+          @status = args[:status] if args.key?(:status)
+          @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # An AwsS3Data can be a data source, but not a data sink.
+      # In an AwsS3Data, an object's name is the S3 object's key name.
+      class AwsS3Data
+        include Google::Apis::Core::Hashable
+      
+        # AWS access key (see
+        # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
+        # security-credentials.html)).
+        # Corresponds to the JSON property `awsAccessKey`
+        # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
+        attr_accessor :aws_access_key
+      
+        # S3 Bucket name (see
+        # [Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-
+        # bucket-get-location-example.html)).
+        # Required.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # AWS access key (see
+      # [AWS Security Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-
+      # security-credentials.html)).
+      class AwsAccessKey
+        include Google::Apis::Core::Hashable
+      
+        # AWS secret access key. This field is not returned in RPC responses.
+        # Required.
+        # Corresponds to the JSON property `secretAccessKey`
+        # @return [String]
+        attr_accessor :secret_access_key
+      
+        # AWS access key ID.
+        # Required.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+        end
+      end
+      
+      # Request passed to PauseTransferOperation.
+      class PauseTransferOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

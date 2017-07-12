@@ -48,18 +48,18 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Updates a creative.
-        # @param [String] account_id
-        #   The account that this creative belongs to.
-        #   Can be used to filter the response of the
-        #   creatives.list
-        #   method.
-        # @param [String] creative_id
-        #   The buyer-defined creative ID of this creative.
-        #   Can be used to filter the response of the
-        #   creatives.list
-        #   method.
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::Creative] creative_object
+        # Lists all the clients for the current sponsor buyer.
+        # @param [Fixnum] account_id
+        #   Unique numerical account ID of the sponsor buyer to list the clients for.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer clients than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListClientsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.clients.list method.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -69,57 +69,31 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Creative] parsed result object
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Creative]
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_creative(account_id, creative_id, creative_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/creatives/{creativeId}', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
-          command.request_object = creative_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Creative
+        def list_account_clients(account_id, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse
           command.params['accountId'] = account_id unless account_id.nil?
-          command.params['creativeId'] = creative_id unless creative_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Lists creatives.
-        # @param [String] account_id
-        #   The account to list the creatives from.
-        #   Specify "-" to list all creatives the current user has access to.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativesResponse.next_page_token
-        #   returned from the previous call to 'ListCreatives' method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer creatives than requested
-        #   (due to timeout constraint) even if more are available via another call.
-        #   If unspecified, server will pick an appropriate default.
-        #   Acceptable values are 1 to 1000, inclusive.
-        # @param [String] query
-        #   An optional query string to filter creatives. If no filter is specified,
-        #   all active creatives will be returned.
-        #   Supported queries are:
-        #   <ul>
-        #   <li>accountId=<i>account_id_string</i>
-        #   <li>creativeId=<i>creative_id_string</i>
-        #   <li>dealsStatus: `approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   <li>openAuctionStatus: `approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   <li>attribute: `a numeric attribute from the list of attributes`
-        #   <li>disapprovalReason: `a reason from DisapprovalReason
-        #   </ul>
-        #   Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:
-        #   unacceptable_content) OR attribute:47'
+        # Gets a client buyer with a given client account ID.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [Fixnum] client_account_id
+        #   Numerical account ID of the client buyer to retrieve. (required)
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -129,22 +103,345 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse] parsed result object
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Client] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse]
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Client]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_creatives(account_id, page_token: nil, page_size: nil, query: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/creatives', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse
+        def get_account_client(account_id, client_account_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Client
           command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing client buyer.
+        # @param [Fixnum] account_id
+        #   Unique numerical account ID for the buyer of which the client buyer
+        #   is a customer; the sponsor buyer to update a client for. (required)
+        # @param [Fixnum] client_account_id
+        #   Unique numerical account ID of the client to update. (required)
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::Client] client_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Client] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Client]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_client(account_id, client_account_id, client_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+          command.request_object = client_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Client
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new client buyer.
+        # @param [Fixnum] account_id
+        #   Unique numerical account ID for the buyer of which the client buyer
+        #   is a customer; the sponsor buyer to create a client for. (required)
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::Client] client_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Client] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Client]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_client(account_id, client_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/clients', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+          command.request_object = client_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Client
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the client users invitations for a client
+        # with a given account ID.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [String] client_account_id
+        #   Numerical account ID of the client buyer to list invitations for.
+        #   (required)
+        #   You must either specify a string representation of a
+        #   numerical account identifier or the `-` character
+        #   to list all the invitations for all the clients
+        #   of a given sponsor buyer.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListClientUserInvitationsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   clients.invitations.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. Server may return fewer clients than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_client_invitations(account_id, client_account_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['query'] = query unless query.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an existing client user invitation.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [Fixnum] client_account_id
+        #   Numerical account ID of the client buyer that the user invitation
+        #   to be retrieved is associated with. (required)
+        # @param [Fixnum] invitation_id
+        #   Numerical identifier of the user invitation to retrieve. (required)
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_client_invitation(account_id, client_account_id, invitation_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.params['invitationId'] = invitation_id unless invitation_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates and sends out an email invitation to access
+        # an Ad Exchange client buyer account.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [Fixnum] client_account_id
+        #   Numerical account ID of the client buyer that the user
+        #   should be associated with. (required)
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] client_user_invitation_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_client_invitation(account_id, client_account_id, client_user_invitation_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
+          command.request_object = client_user_invitation_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an existing client user.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [Fixnum] client_account_id
+        #   Numerical account ID of the client buyer
+        #   that the user to be retrieved is associated with. (required)
+        # @param [Fixnum] user_id
+        #   Numerical identifier of the user to retrieve. (required)
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUser]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_client_user(account_id, client_account_id, user_id, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the known client users for a specified
+        # sponsor buyer account ID.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the sponsor buyer of the client to list users for.
+        #   (required)
+        # @param [String] client_account_id
+        #   The account ID of the client buyer to list users for. (required)
+        #   You must specify either a string representation of a
+        #   numerical account identifier or the `-` character
+        #   to list all the client users for all the clients
+        #   of a given sponsor buyer.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListClientUsersResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.clients.users.list method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer clients than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_client_users(account_id, client_account_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing client user.
+        # Only the user status can be changed on update.
+        # @param [Fixnum] account_id
+        #   Numerical account ID of the client's sponsor buyer. (required)
+        # @param [Fixnum] client_account_id
+        #   Numerical account ID of the client buyer that the user to be retrieved
+        #   is associated with. (required)
+        # @param [Fixnum] user_id
+        #   Numerical identifier of the user to retrieve. (required)
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] client_user_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUser]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_client_user(account_id, client_account_id, user_id, client_user_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
+          command.request_object = client_user_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -302,6 +599,108 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a creative.
+        # @param [String] account_id
+        #   The account that this creative belongs to.
+        #   Can be used to filter the response of the
+        #   creatives.list
+        #   method.
+        # @param [String] creative_id
+        #   The buyer-defined creative ID of this creative.
+        #   Can be used to filter the response of the
+        #   creatives.list
+        #   method.
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::Creative] creative_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Creative] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Creative]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_creative(account_id, creative_id, creative_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/creatives/{creativeId}', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
+          command.request_object = creative_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Creative
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['creativeId'] = creative_id unless creative_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists creatives.
+        # @param [String] account_id
+        #   The account to list the creatives from.
+        #   Specify "-" to list all creatives the current user has access to.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListCreativesResponse.next_page_token
+        #   returned from the previous call to 'ListCreatives' method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer creatives than requested
+        #   (due to timeout constraint) even if more are available via another call.
+        #   If unspecified, server will pick an appropriate default.
+        #   Acceptable values are 1 to 1000, inclusive.
+        # @param [String] query
+        #   An optional query string to filter creatives. If no filter is specified,
+        #   all active creatives will be returned.
+        #   Supported queries are:
+        #   <ul>
+        #   <li>accountId=<i>account_id_string</i>
+        #   <li>creativeId=<i>creative_id_string</i>
+        #   <li>dealsStatus: `approved, conditionally_approved, disapproved,
+        #   not_checked`
+        #   <li>openAuctionStatus: `approved, conditionally_approved, disapproved,
+        #   not_checked`
+        #   <li>attribute: `a numeric attribute from the list of attributes`
+        #   <li>disapprovalReason: `a reason from DisapprovalReason
+        #   </ul>
+        #   Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:
+        #   unacceptable_content) OR attribute:47'
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_creatives(account_id, page_token: nil, page_size: nil, query: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/creatives', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativesResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all creative-deal associations.
         # @param [String] account_id
         #   The account to list the associations from.
@@ -362,42 +761,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Associate an existing deal with a creative.
-        # @param [String] account_id
-        #   The account the creative belongs to.
-        # @param [String] creative_id
-        #   The ID of the creative associated with the deal.
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::AddDealAssociationRequest] add_deal_association_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_deal_association(account_id, creative_id, add_deal_association_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::AddDealAssociationRequest::Representation
-          command.request_object = add_deal_association_request_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Empty::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['creativeId'] = creative_id unless creative_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Remove the association between a deal and a creative.
         # @param [String] account_id
         #   The account the creative belongs to.
@@ -425,6 +788,42 @@ module Google
           command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove', options)
           command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::RemoveDealAssociationRequest::Representation
           command.request_object = remove_deal_association_request_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Empty::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['creativeId'] = creative_id unless creative_id.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Associate an existing deal with a creative.
+        # @param [String] account_id
+        #   The account the creative belongs to.
+        # @param [String] creative_id
+        #   The ID of the creative associated with the deal.
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::AddDealAssociationRequest] add_deal_association_request_object
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_deal_association(account_id, creative_id, add_deal_association_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::AddDealAssociationRequest::Representation
+          command.request_object = add_deal_association_request_object
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Empty::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
           command.params['accountId'] = account_id unless account_id.nil?
@@ -468,6 +867,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all filter sets for the account with the given account ID.
+        # @param [Fixnum] account_id
+        #   Account ID of the buyer.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListFilterSetsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.filterSets.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_filter_sets(account_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the requested filter set for the account with the given account
         # ID.
         # @param [Fixnum] account_id
@@ -497,48 +938,6 @@ module Google
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all filter sets for the account with the given account ID.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilterSetsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.rtbBreakout.filterSets.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_sets(account_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
@@ -582,6 +981,234 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all metrics that are measured in terms of number of bids.
+        # @param [Fixnum] account_id
+        #   Account ID of the buyer.
+        # @param [Fixnum] filter_set_id
+        #   The ID of the filter set to apply.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListBidMetricsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.filterSets.bidMetrics.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_filter_set_bid_metrics(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidMetrics', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all metrics that are measured in terms of number of impressions.
+        # @param [Fixnum] account_id
+        #   Account ID of the buyer.
+        # @param [Fixnum] filter_set_id
+        #   The ID of the filter set to apply.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListImpressionMetricsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.filterSets.impressionMetrics.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_filter_set_impression_metrics(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/impressionMetrics', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all errors that occurred in bid responses, with the number of bid
+        # responses affected for each reason.
+        # @param [Fixnum] account_id
+        #   Account ID of the buyer.
+        # @param [Fixnum] filter_set_id
+        #   The ID of the filter set to apply.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListBidResponseErrorsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.filterSets.bidResponseErrors.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_filter_set_bid_response_errors(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidResponseErrors', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all reasons for which bid responses were considered to have no
+        # applicable bids, with the number of bid responses affected for each reason.
+        # @param [Fixnum] account_id
+        #   Account ID of the buyer.
+        # @param [Fixnum] filter_set_id
+        #   The ID of the filter set to apply.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListBidResponsesWithoutBidsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.filterSets.bidResponsesWithoutBids.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_filter_set_bid_responses_without_bids(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidResponsesWithoutBids', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all reasons that caused a bid request not to be sent for an
+        # impression, with the number of bid requests not sent for each reason.
+        # @param [Fixnum] account_id
+        #   Account ID of the buyer.
+        # @param [Fixnum] filter_set_id
+        #   The ID of the filter set to apply.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   ListFilteredBidRequestsResponse.nextPageToken
+        #   returned from the previous call to the
+        #   accounts.filterSets.filteredBidRequests.list
+        #   method.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_filter_set_filtered_bid_requests(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBidRequests', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['fields'] = fields unless fields.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all reasons for which bids were filtered, with the number of bids
         # filtered for each reason.
         # @param [Fixnum] account_id
@@ -596,7 +1223,7 @@ module Google
         #   accounts.filterSets.filteredBids.list
         #   method.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
+        #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -648,7 +1275,7 @@ module Google
         #   accounts.filterSets.filteredBids.creatives.list
         #   method.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
+        #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -682,62 +1309,6 @@ module Google
         end
         
         # List all details associated with a specific reason for which bids were
-        # filtered and a specific creative that was filtered for that reason, with
-        # the number of bids filtered for each detail.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
-        # @param [Fixnum] creative_status_id
-        #   The ID of the creative status for which to retrieve a breakdown by detail.
-        #   See
-        #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
-        #   downloads/creative-status-codes).
-        # @param [String] creative_id
-        #   The creative ID for which to retrieve a breakdown by detail.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativeStatusAndCreativeBreakdownByDetailResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.filteredBids.creatives.details.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusAndCreativeBreakdownByDetailResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusAndCreativeBreakdownByDetailResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_filtered_bid_creative_details(account_id, filter_set_id, creative_status_id, creative_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives/{creativeId}/details', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusAndCreativeBreakdownByDetailResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusAndCreativeBreakdownByDetailResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.params['creativeStatusId'] = creative_status_id unless creative_status_id.nil?
-          command.params['creativeId'] = creative_id unless creative_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all details associated with a specific reason for which bids were
         # filtered, with the number of bids filtered for each detail.
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
@@ -748,6 +1319,7 @@ module Google
         #   See
         #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
         #   downloads/creative-status-codes).
+        #   Details are only available for statuses 14, 15, 17, 18, 19, 86, and 87.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         #   Typically, this is the value of
@@ -756,7 +1328,7 @@ module Google
         #   accounts.filterSets.filteredBids.details.list
         #   method.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
+        #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -789,9 +1361,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons that caused an impression to be filtered (i.e. not
-        # considered as an inventory match), with the number of impressions that were
-        # filtered for each reason.
+        # List all reasons for which winning bids were not billable, with the number
+        # of bids not billed for each reason.
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -799,12 +1370,12 @@ module Google
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         #   Typically, this is the value of
-        #   ListFilteredImpressionsResponse.nextPageToken
+        #   ListNonBillableWinningBidsResponse.nextPageToken
         #   returned from the previous call to the
-        #   accounts.filterSets.filteredImpressions.list
+        #   accounts.filterSets.nonBillableWinningBids.list
         #   method.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
+        #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
@@ -815,18 +1386,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListFilteredImpressionsResponse] parsed result object
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListFilteredImpressionsResponse]
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_filtered_impressions(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredImpressions', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredImpressionsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredImpressionsResponse
+        def list_account_filter_set_non_billable_winning_bids(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/nonBillableWinningBids', options)
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -842,6 +1413,9 @@ module Google
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
         #   The ID of the filter set to apply.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested.
+        #   If unspecified, the server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         #   Typically, this is the value of
@@ -849,9 +1423,6 @@ module Google
         #   returned from the previous call to the
         #   accounts.filterSets.losingBids.list
         #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -869,641 +1440,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_losing_bids(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_account_filter_set_losing_bids(account_id, filter_set_id, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/losingBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListLosingBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListLosingBidsResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all metrics that are measured in terms of number of impressions.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListImpressionMetricsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.impressionMetrics.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_impression_metrics(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/impressionMetrics', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all metrics that are measured in terms of number of bids.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidMetricsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.bidMetrics.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_bid_metrics(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidMetrics', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all errors that occurred in bid responses, with the number of bid
-        # responses affected for each reason.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidResponseErrorsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.bidResponseErrors.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_bid_response_errors(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidResponseErrors', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all reasons for which bid responses were considered to have no
-        # applicable bids, with the number of bid responses affected for each reason.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidResponsesWithoutBidsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.bidResponsesWithoutBids.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_bid_responses_without_bids(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidResponsesWithoutBids', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all reasons that caused a bid request not to be sent for an
-        # impression, with the number of bid requests not sent for each reason.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilteredBidRequestsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.filteredBidRequests.list
-        #   method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_filter_set_filtered_bid_requests(account_id, filter_set_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBidRequests', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['filterSetId'] = filter_set_id unless filter_set_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a client buyer with a given client account ID.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer to retrieve. (required)
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Client] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Client]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_client(account_id, client_account_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Client
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all the clients for the current sponsor buyer.
-        # @param [Fixnum] account_id
-        #   Unique numerical account ID of the sponsor buyer to list the clients for.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListClientsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.clients.list method.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer clients than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_clients(account_id, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListClientsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing client buyer.
-        # @param [Fixnum] account_id
-        #   Unique numerical account ID for the buyer of which the client buyer
-        #   is a customer; the sponsor buyer to update a client for. (required)
-        # @param [Fixnum] client_account_id
-        #   Unique numerical account ID of the client to update. (required)
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::Client] client_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Client] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Client]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_client(account_id, client_account_id, client_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-          command.request_object = client_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Client
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new client buyer.
-        # @param [Fixnum] account_id
-        #   Unique numerical account ID for the buyer of which the client buyer
-        #   is a customer; the sponsor buyer to create a client for. (required)
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::Client] client_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Client] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::Client]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_client(account_id, client_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/clients', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-          command.request_object = client_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Client::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Client
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves an existing client user invitation.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer that the user invitation
-        #   to be retrieved is associated with. (required)
-        # @param [Fixnum] invitation_id
-        #   Numerical identifier of the user invitation to retrieve. (required)
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_client_invitation(account_id, client_account_id, invitation_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.params['invitationId'] = invitation_id unless invitation_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all the client users invitations for a client
-        # with a given account ID.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [String] client_account_id
-        #   Numerical account ID of the client buyer to list invitations for.
-        #   (required)
-        #   You must either specify a string representation of a
-        #   numerical account identifier or the `-` character
-        #   to list all the invitations for all the clients
-        #   of a given sponsor buyer.
-        # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer clients than requested.
-        #   If unspecified, server will pick an appropriate default.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListClientUserInvitationsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   clients.invitations.list
-        #   method.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_client_invitations(account_id, client_account_id, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListClientUserInvitationsResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates and sends out an email invitation to access
-        # an Ad Exchange client buyer account.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer that the user
-        #   should be associated with. (required)
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] client_user_invitation_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_client_invitation(account_id, client_account_id, client_user_invitation_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
-          command.request_object = client_user_invitation_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists all the known client users for a specified
-        # sponsor buyer account ID.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the sponsor buyer of the client to list users for.
-        #   (required)
-        # @param [String] client_account_id
-        #   The account ID of the client buyer to list users for. (required)
-        #   You must specify either a string representation of a
-        #   numerical account identifier or the `-` character
-        #   to list all the client users for all the clients
-        #   of a given sponsor buyer.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer clients than requested.
-        #   If unspecified, the server will pick an appropriate default.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListClientUsersResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.clients.users.list method.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_client_users(account_id, client_account_id, page_size: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListClientUsersResponse
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves an existing client user.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer
-        #   that the user to be retrieved is associated with. (required)
-        # @param [Fixnum] user_id
-        #   Numerical identifier of the user to retrieve. (required)
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUser]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_client_user(account_id, client_account_id, user_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing client user.
-        # Only the user status can be changed on update.
-        # @param [Fixnum] account_id
-        #   Numerical account ID of the client's sponsor buyer. (required)
-        # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer that the user to be retrieved
-        #   is associated with. (required)
-        # @param [Fixnum] user_id
-        #   Numerical identifier of the user to retrieve. (required)
-        # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] client_user_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::Adexchangebuyer2V2beta1::ClientUser]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_client_user(account_id, client_account_id, user_id, client_user_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', options)
-          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
-          command.request_object = client_user_object
-          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ClientUser::Representation
-          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ClientUser
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.params['clientAccountId'] = client_account_id unless client_account_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)

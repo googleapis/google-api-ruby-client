@@ -22,19 +22,6 @@ module Google
   module Apis
     module SourcerepoV1
       
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -85,13 +72,6 @@ module Google
       class AuditConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies a service that will be enabled for audit logging.
-        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-        # `allServices` is a special value that covers all services.
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
         # The configuration for logging of each type of permission.
         # Next ID: 4
         # Corresponds to the JSON property `auditLogConfigs`
@@ -103,15 +83,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @service = args[:service] if args.key?(:service)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -228,25 +215,6 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Configuration to automatically mirror a repository from another
       # hosting service, for example GitHub or BitBucket.
       class MirrorConfig
@@ -284,20 +252,28 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A repository (or repo) is a Git repository storing versioned source content.
       class Repo
         include Google::Apis::Core::Hashable
-      
-        # URL to clone the repository from Google Cloud Source Repositories.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        # The disk usage of the repo, in bytes.
-        # Only returned by GetRepo.
-        # Corresponds to the JSON property `size`
-        # @return [Fixnum]
-        attr_accessor :size
       
         # Resource name of the repository, of the form
         # `projects/<project>/repos/<repo>`.  The repo name may contain slashes.
@@ -312,16 +288,74 @@ module Google
         # @return [Google::Apis::SourcerepoV1::MirrorConfig]
         attr_accessor :mirror_config
       
+        # URL to clone the repository from Google Cloud Source Repositories.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # The disk usage of the repo, in bytes.
+        # Only returned by GetRepo.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @url = args[:url] if args.key?(:url)
-          @size = args[:size] if args.key?(:size)
           @name = args[:name] if args.key?(:name)
           @mirror_config = args[:mirror_config] if args.key?(:mirror_config)
+          @url = args[:url] if args.key?(:url)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # Response for ListRepos.  The size is not set in the returned repositories.
+      class ListReposResponse
+        include Google::Apis::Core::Hashable
+      
+        # The listed repos.
+        # Corresponds to the JSON property `repos`
+        # @return [Array<Google::Apis::SourcerepoV1::Repo>]
+        attr_accessor :repos
+      
+        # If non-empty, additional repositories exist within the project. These
+        # can be retrieved by including this value in the next ListReposRequest's
+        # page_token field.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repos = args[:repos] if args.key?(:repos)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for `TestIamPermissions` method.
+      class TestIamPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is
+        # allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       
@@ -329,16 +363,16 @@ module Google
       class Condition
         include Google::Apis::Core::Hashable
       
-        # DEPRECATED. Use 'values' instead.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
         # Trusted attributes supplied by any service that owns resources and uses
         # the IAM system for access control.
         # Corresponds to the JSON property `sys`
         # @return [String]
         attr_accessor :sys
+      
+        # DEPRECATED. Use 'values' instead.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
       
         # The objects of the condition. This is mutually exclusive with 'value'.
         # Corresponds to the JSON property `values`
@@ -366,8 +400,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @value = args[:value] if args.key?(:value)
           @sys = args[:sys] if args.key?(:sys)
+          @value = args[:value] if args.key?(:value)
           @values = args[:values] if args.key?(:values)
           @iam = args[:iam] if args.key?(:iam)
           @op = args[:op] if args.key?(:op)
@@ -375,75 +409,28 @@ module Google
         end
       end
       
-      # Response for ListRepos.  The size is not set in the returned repositories.
-      class ListReposResponse
-        include Google::Apis::Core::Hashable
-      
-        # If non-empty, additional repositories exist within the project. These
-        # can be retrieved by including this value in the next ListReposRequest's
-        # page_token field.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The listed repos.
-        # Corresponds to the JSON property `repos`
-        # @return [Array<Google::Apis::SourcerepoV1::Repo>]
-        attr_accessor :repos
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @repos = args[:repos] if args.key?(:repos)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
       # Options for counters
       class CounterOptions
         include Google::Apis::Core::Hashable
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
       
         # The field value to attribute.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
       
+        # The metric to update.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @metric = args[:metric] if args.key?(:metric)
           @field = args[:field] if args.key?(:field)
+          @metric = args[:metric] if args.key?(:metric)
         end
       end
       
@@ -467,11 +454,6 @@ module Google
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
-        # The log type that this config enables.
-        # Corresponds to the JSON property `logType`
-        # @return [String]
-        attr_accessor :log_type
-      
         # Specifies the identities that do not cause logging for this type of
         # permission.
         # Follows the same format of Binding.members.
@@ -479,14 +461,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @log_type = args[:log_type] if args.key?(:log_type)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
       
@@ -556,11 +543,6 @@ module Google
       class LogConfig
         include Google::Apis::Core::Hashable
       
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::SourcerepoV1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
         # Options for counters
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::SourcerepoV1::CounterOptions]
@@ -571,15 +553,20 @@ module Google
         # @return [Google::Apis::SourcerepoV1::DataAccessOptions]
         attr_accessor :data_access
       
+        # Write a Cloud Audit log
+        # Corresponds to the JSON property `cloudAudit`
+        # @return [Google::Apis::SourcerepoV1::CloudAuditOptions]
+        attr_accessor :cloud_audit
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
           @counter = args[:counter] if args.key?(:counter)
           @data_access = args[:data_access] if args.key?(:data_access)
+          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
         end
       end
       
@@ -634,6 +621,20 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a policy from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform policy updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
+        # systems are expected to put that etag in the request to `setIamPolicy` to
+        # ensure that their change will be applied to the same version of the policy.
+        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
+        # policy is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
         # 
         # Corresponds to the JSON property `iamOwned`
         # @return [Boolean]
@@ -670,19 +671,24 @@ module Google
         # @return [Array<Google::Apis::SourcerepoV1::Binding>]
         attr_accessor :bindings
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
+          @rules = args[:rules] if args.key?(:rules)
+          @version = args[:version] if args.key?(:version)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
+          @bindings = args[:bindings] if args.key?(:bindings)
+        end
+      end
+      
+      # Write a Data Access (Gin) log
+      class DataAccessOptions
+        include Google::Apis::Core::Hashable
       
         def initialize(**args)
            update!(**args)
@@ -690,12 +696,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
-          @version = args[:version] if args.key?(:version)
-          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
         end
       end
     end

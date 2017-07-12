@@ -47,6 +47,43 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a cluster in a project.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project that the cluster belongs
+        #   to.
+        # @param [String] region
+        #   Required. The Cloud Dataproc region in which to handle the request.
+        # @param [Google::Apis::DataprocV1::Cluster] cluster_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_cluster(project_id, region, cluster_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters', options)
+          command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
+          command.request_object = cluster_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the resource representation for a cluster in a project.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
@@ -55,11 +92,11 @@ module Google
         #   Required. The Cloud Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -72,15 +109,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_cluster(project_id, region, cluster_name, quota_user: nil, fields: nil, options: nil, &block)
+        def get_cluster(project_id, region, cluster_name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1::Cluster::Representation
           command.response_class = Google::Apis::DataprocV1::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -121,11 +158,11 @@ module Google
         #   num_instances</em></strong></td>  <td>Resize primary worker group</td>  </tr>
         #   <tr>  <td><strong><em>config.secondary_worker_config.num_instances</em></
         #   strong></td>  <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -138,7 +175,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_cluster(project_id, region, cluster_name, cluster_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def patch_cluster(project_id, region, cluster_name, cluster_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
           command.request_object = cluster_object
@@ -148,8 +185,8 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -163,11 +200,11 @@ module Google
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::DiagnoseClusterRequest] diagnose_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -180,7 +217,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def diagnose_cluster(project_id, region, cluster_name, diagnose_cluster_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def diagnose_cluster(project_id, region, cluster_name, diagnose_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', options)
           command.request_representation = Google::Apis::DataprocV1::DiagnoseClusterRequest::Representation
           command.request_object = diagnose_cluster_request_object
@@ -189,8 +226,8 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -202,11 +239,11 @@ module Google
         #   Required. The Cloud Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -219,15 +256,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_cluster(project_id, region, cluster_name, quota_user: nil, fields: nil, options: nil, &block)
+        def delete_cluster(project_id, region, cluster_name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1::Operation::Representation
           command.response_class = Google::Apis::DataprocV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -237,6 +274,8 @@ module Google
         #   to.
         # @param [String] region
         #   Required. The Cloud Dataproc region in which to handle the request.
+        # @param [String] page_token
+        #   Optional. The standard List page token.
         # @param [Fixnum] page_size
         #   Optional. The standard List page size.
         # @param [String] filter
@@ -251,13 +290,11 @@ module Google
         #   separated items are treated as having an implicit AND operator.Example filter:
         #   status.state = ACTIVE AND clusterName = mycluster AND labels.env = staging AND
         #   labels.starred = *
-        # @param [String] page_token
-        #   Optional. The standard List page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -270,124 +307,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_clusters(project_id, region, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_clusters(project_id, region, page_token: nil, page_size: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/clusters', options)
           command.response_representation = Google::Apis::DataprocV1::ListClustersResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a cluster in a project.
-        # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform project that the cluster belongs
-        #   to.
-        # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
-        # @param [Google::Apis::DataprocV1::Cluster] cluster_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_cluster(project_id, region, cluster_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters', options)
-          command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
-          command.request_object = cluster_object
-          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
-          command.response_class = Google::Apis::DataprocV1::Operation
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.params['region'] = region unless region.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. If the
-        # server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.
-        # Clients can use Operations.GetOperation or other methods to check whether the
-        # cancellation succeeded or whether the operation completed despite cancellation.
-        # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to Code.CANCELLED.
-        # @param [String] name
-        #   The name of the operation resource to be cancelled.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
-          command.response_class = Google::Apis::DataprocV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a long-running operation. This method indicates that the client is no
-        # longer interested in the operation result. It does not cancel the operation.
-        # If the server doesn't support this method, it returns google.rpc.Code.
-        # UNIMPLEMENTED.
-        # @param [String] name
-        #   The name of the operation resource to be deleted.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_operation(name, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
-          command.response_class = Google::Apis::DataprocV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -395,11 +325,11 @@ module Google
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -412,13 +342,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(name, quota_user: nil, fields: nil, options: nil, &block)
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1::Operation::Representation
           command.response_class = Google::Apis::DataprocV1::Operation
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -438,11 +368,11 @@ module Google
         #   The standard list page token.
         # @param [Fixnum] page_size
         #   The standard list page size.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -455,7 +385,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, filter: nil, page_token: nil, page_size: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_operations(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListOperationsResponse
@@ -463,142 +393,26 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a job in a project.
-        # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
-        # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
-        # @param [String] job_id
-        #   Required. The job ID.
-        # @param [Google::Apis::DataprocV1::Job] job_object
-        # @param [String] update_mask
-        #   Required. Specifies the path, relative to <code>Job</code>, of the field to
-        #   update. For example, to update the labels of a Job the <code>update_mask</code>
-        #   parameter would be specified as <code>labels</code>, and the PATCH request
-        #   body would specify the new value. <strong>Note:</strong> Currently, <code>
-        #   labels</code> is the only field that can be updated.
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to Code.CANCELLED.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Job] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Job]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_region_job(project_id, region, job_id, job_object = nil, update_mask: nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'v1/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
-          command.request_representation = Google::Apis::DataprocV1::Job::Representation
-          command.request_object = job_object
-          command.response_representation = Google::Apis::DataprocV1::Job::Representation
-          command.response_class = Google::Apis::DataprocV1::Job
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['jobId'] = job_id unless job_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the resource representation for a job in a project.
-        # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
-        # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
-        # @param [String] job_id
-        #   Required. The job ID.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Job] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Job]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_job(project_id, region, job_id, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
-          command.response_representation = Google::Apis::DataprocV1::Job::Representation
-          command.response_class = Google::Apis::DataprocV1::Job
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['jobId'] = job_id unless job_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Submits a job to a cluster.
-        # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
-        # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
-        # @param [Google::Apis::DataprocV1::SubmitJobRequest] submit_job_request_object
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DataprocV1::Job] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DataprocV1::Job]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_job(project_id, region, submit_job_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/jobs:submit', options)
-          command.request_representation = Google::Apis::DataprocV1::SubmitJobRequest::Representation
-          command.request_object = submit_job_request_object
-          command.response_representation = Google::Apis::DataprocV1::Job::Representation
-          command.response_class = Google::Apis::DataprocV1::Job
-          command.params['projectId'] = project_id unless project_id.nil?
-          command.params['region'] = region unless region.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['fields'] = fields unless fields.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes the job from the project. If the job is active, the delete fails, and
-        # the response returns FAILED_PRECONDITION.
-        # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
-        # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
-        # @param [String] job_id
-        #   Required. The job ID.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -611,15 +425,119 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_job(project_id, region, job_id, quota_user: nil, fields: nil, options: nil, &block)
+        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns google.rpc.Code.
+        # UNIMPLEMENTED.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submits a job to a cluster.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # @param [String] region
+        #   Required. The Cloud Dataproc region in which to handle the request.
+        # @param [Google::Apis::DataprocV1::SubmitJobRequest] submit_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Job] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Job]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def submit_job(project_id, region, submit_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/jobs:submit', options)
+          command.request_representation = Google::Apis::DataprocV1::SubmitJobRequest::Representation
+          command.request_object = submit_job_request_object
+          command.response_representation = Google::Apis::DataprocV1::Job::Representation
+          command.response_class = Google::Apis::DataprocV1::Job
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the job from the project. If the job is active, the delete fails, and
+        # the response returns FAILED_PRECONDITION.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # @param [String] region
+        #   Required. The Cloud Dataproc region in which to handle the request.
+        # @param [String] job_id
+        #   Required. The job ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataprocV1::Empty::Representation
           command.response_class = Google::Apis::DataprocV1::Empty
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['jobId'] = job_id unless job_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -647,11 +565,11 @@ module Google
         # @param [String] cluster_name
         #   Optional. If set, the returned jobs list includes only jobs that were
         #   submitted to the named cluster.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -664,7 +582,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(project_id, region, filter: nil, job_state_matcher: nil, page_token: nil, page_size: nil, cluster_name: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_jobs(project_id, region, filter: nil, job_state_matcher: nil, page_token: nil, page_size: nil, cluster_name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/jobs', options)
           command.response_representation = Google::Apis::DataprocV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListJobsResponse
@@ -675,8 +593,8 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['clusterName'] = cluster_name unless cluster_name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -689,11 +607,11 @@ module Google
         # @param [String] job_id
         #   Required. The job ID.
         # @param [Google::Apis::DataprocV1::CancelJobRequest] cancel_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -706,7 +624,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_job(project_id, region, job_id, cancel_job_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def cancel_job(project_id, region, job_id, cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel', options)
           command.request_representation = Google::Apis::DataprocV1::CancelJobRequest::Representation
           command.request_object = cancel_job_request_object
@@ -715,8 +633,90 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['jobId'] = job_id unless job_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the resource representation for a job in a project.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # @param [String] region
+        #   Required. The Cloud Dataproc region in which to handle the request.
+        # @param [String] job_id
+        #   Required. The job ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Job] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Job]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command.response_representation = Google::Apis::DataprocV1::Job::Representation
+          command.response_class = Google::Apis::DataprocV1::Job
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a job in a project.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # @param [String] region
+        #   Required. The Cloud Dataproc region in which to handle the request.
+        # @param [String] job_id
+        #   Required. The job ID.
+        # @param [Google::Apis::DataprocV1::Job] job_object
+        # @param [String] update_mask
+        #   Required. Specifies the path, relative to <code>Job</code>, of the field to
+        #   update. For example, to update the labels of a Job the <code>update_mask</code>
+        #   parameter would be specified as <code>labels</code>, and the PATCH request
+        #   body would specify the new value. <strong>Note:</strong> Currently, <code>
+        #   labels</code> is the only field that can be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Job] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Job]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_region_job(project_id, region, job_id, job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command.request_representation = Google::Apis::DataprocV1::Job::Representation
+          command.request_object = job_object
+          command.response_representation = Google::Apis::DataprocV1::Job::Representation
+          command.response_class = Google::Apis::DataprocV1::Job
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
 

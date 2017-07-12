@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalerStatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoscalersScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -258,6 +264,42 @@ module Google
       
       class CacheKeyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Commitment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitmentsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1084,6 +1126,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceCommitment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceGroupReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1847,6 +1895,9 @@ module Google
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          collection :status_details, as: 'statusDetails', class: Google::Apis::ComputeV1::AutoscalerStatusDetails, decorator: Google::Apis::ComputeV1::AutoscalerStatusDetails::Representation
+      
           property :target, as: 'target'
           property :zone, as: 'zone'
         end
@@ -1873,6 +1924,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AutoscalerStatusDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :type, as: 'type'
         end
       end
       
@@ -2109,6 +2168,78 @@ module Google
           property :include_query_string, as: 'includeQueryString'
           collection :query_string_blacklist, as: 'queryStringBlacklist'
           collection :query_string_whitelist, as: 'queryStringWhitelist'
+        end
+      end
+      
+      class Commitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :end_timestamp, as: 'endTimestamp'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :plan, as: 'plan'
+          property :region, as: 'region'
+          collection :resources, as: 'resources', class: Google::Apis::ComputeV1::ResourceCommitment, decorator: Google::Apis::ComputeV1::ResourceCommitment::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :start_timestamp, as: 'startTimestamp'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class CommitmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::CommitmentsScopedList, decorator: Google::Apis::ComputeV1::CommitmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class CommitmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Commitment, decorator: Google::Apis::ComputeV1::Commitment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class CommitmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commitments, as: 'commitments', class: Google::Apis::ComputeV1::Commitment, decorator: Google::Apis::ComputeV1::Commitment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::CommitmentsScopedList::Warning, decorator: Google::Apis::ComputeV1::CommitmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::CommitmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::CommitmentsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -3656,6 +3787,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ResourceCommitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, :numeric_string => true, as: 'amount'
+          property :type, as: 'type'
         end
       end
       

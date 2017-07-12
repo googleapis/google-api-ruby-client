@@ -1356,6 +1356,35 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
       
+        # A filter string, compatible with a Stackdriver Monitoring filter string for
+        # TimeSeries.list API call. This filter is used to select a specific TimeSeries
+        # for the purpose of autoscaling and to determine whether the metric is
+        # exporting per-instance or global data.
+        # For the filter to be valid for autoscaling purposes, the following rules apply:
+        # 
+        # - You can only use the AND operator for joining selectors.
+        # - You can only use direct equality comparison operator (=) without any
+        # functions for each selector.
+        # - You can specify the metric in both the filter string and in the metric field.
+        # However, if specified in both places, the metric must be identical.
+        # - The monitored resource type determines what kind of values are expected for
+        # the metric. If it is a gce_instance, the autoscaler expects the metric to
+        # include a separate TimeSeries for each instance in a group. In such a case,
+        # you cannot filter on resource labels.
+        # If the resource type is any other value, the autoscaler expects this metric to
+        # contain values that apply to the entire autoscaled instance group and resource
+        # label filtering can be performed to point autoscaler at the correct TimeSeries
+        # to scale upon. This is / called a global metric for the purpose of autoscaling.
+        # If not specified, the type defaults to gce_instance.
+        # You should provide a filter that is selective enough to pick just one
+        # TimeSeries for the autoscaled group or for each of the instances (if you are
+        # using gce_instance resource type). If multiple TimeSeries are returned upon
+        # the query execution, the autoscaler will sum their respective values to obtain
+        # its scaling value.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # The identifier (type) of the Stackdriver Monitoring metric. The metric cannot
         # have negative values and should be a utilization metric, which means that the
         # number of virtual machines handling requests should increase or decrease
@@ -1364,6 +1393,21 @@ module Google
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
+      
+        # If scaling is based on a global metric value that represents the total amount
+        # of work to be done or resource usage, set this value to an amount assigned for
+        # a single instance of the scaled group. Autoscaler will keep the number of
+        # instances proportional to the value of this metric, the metric itself should
+        # not change value due to group resizing.
+        # A good metric to use with the target is for example pubsub.googleapis.com/
+        # subscription/num_undelivered_messages or a custom metric exporting the total
+        # number of requests coming to your instances.
+        # A bad example would be a metric exporting an average or median latency, since
+        # this value can't include a chunk assignable to a single instance, it could be
+        # better used with utilization_target instead.
+        # Corresponds to the JSON property `singleInstanceAssignment`
+        # @return [Float]
+        attr_accessor :single_instance_assignment
       
         # The target value of the metric that autoscaler should maintain. This must be a
         # positive value.
@@ -1387,7 +1431,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @metric = args[:metric] if args.key?(:metric)
+          @single_instance_assignment = args[:single_instance_assignment] if args.key?(:single_instance_assignment)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
           @utilization_target_type = args[:utilization_target_type] if args.key?(:utilization_target_type)
         end
@@ -1682,7 +1728,8 @@ module Google
       
         # The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
         # health checking this BackendService. Currently at most one health check can be
-        # specified, and a health check is required.
+        # specified, and a health check is required for GCE backend services. A health
+        # check must not be specified for GAE app backend and Cloud Function backend.
         # For internal load balancing, a URL to a HealthCheck resource must be specified
         # instead.
         # Corresponds to the JSON property `healthChecks`
@@ -3413,8 +3460,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in [Common Expression Language](http://
-        # go/api-expr) syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # The application context of the containing message determines which well-known
         # feature set of CEL is supported.
         # Corresponds to the JSON property `expression`
@@ -3546,6 +3592,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_ranges
       
+        # If source service accounts are specified, the firewall will apply only to
+        # traffic originating from an instance with a service account in this list.
+        # Source service accounts cannot be used to control traffic to an instance's
+        # external IP address because service accounts are associated with an instance,
+        # not an IP address. sourceRanges can be set at the same time as
+        # sourceServiceAccounts. If both are set, the firewall will apply to traffic
+        # that has source IP address within sourceRanges OR the source IP belongs to an
+        # instance with service account listed in sourceServiceAccount. The connection
+        # does not need to match both properties for the firewall to apply.
+        # sourceServiceAccounts cannot be used at the same time as sourceTags or
+        # targetTags.
+        # Corresponds to the JSON property `sourceServiceAccounts`
+        # @return [Array<String>]
+        attr_accessor :source_service_accounts
+      
         # If source tags are specified, the firewall will apply only to traffic with
         # source IP that belongs to a tag listed in source tags. Source tags cannot be
         # used to control traffic to an instance's external IP address. Because tags are
@@ -3557,6 +3618,15 @@ module Google
         # Corresponds to the JSON property `sourceTags`
         # @return [Array<String>]
         attr_accessor :source_tags
+      
+        # A list of service accounts indicating sets of instances located in the network
+        # that may make network connections as specified in allowed[].
+        # targetServiceAccounts cannot be used at the same time as targetTags or
+        # sourceTags. If neither targetServiceAccounts nor targetTags are specified, the
+        # firewall rule applies to all instances on the specified network.
+        # Corresponds to the JSON property `targetServiceAccounts`
+        # @return [Array<String>]
+        attr_accessor :target_service_accounts
       
         # A list of instance tags indicating sets of instances located in the network
         # that may make network connections as specified in allowed[]. If no targetTags
@@ -3585,7 +3655,9 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
+          @source_service_accounts = args[:source_service_accounts] if args.key?(:source_service_accounts)
           @source_tags = args[:source_tags] if args.key?(:source_tags)
+          @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
           @target_tags = args[:target_tags] if args.key?(:target_tags)
         end
         
@@ -5206,8 +5278,9 @@ module Google
         # @return [Google::Apis::ComputeBeta::Metadata]
         attr_accessor :metadata
       
-        # Minimum cpu/platform to be used by this instance. We may schedule on the
-        # specified or later cpu/platform.
+        # Specifies a minimum CPU platform for the VM instance. Applicable values are
+        # the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell"
+        # or minCpuPlatform: "Intel Sandy Bridge".
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -6633,7 +6706,10 @@ module Google
         attr_accessor :metadata
       
         # Minimum cpu/platform to be used by this instance. The instance may be
-        # scheduled on the specified or later cpu/platform.
+        # scheduled on the specified or newer cpu/platform. Applicable values are the
+        # friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or
+        # minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a
+        # Minimum CPU Platform.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform

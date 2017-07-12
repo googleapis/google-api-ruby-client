@@ -2161,7 +2161,9 @@ module Google
       class AutoscalingPolicyCustomMetricUtilization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :metric, as: 'metric'
+          property :single_instance_assignment, as: 'singleInstanceAssignment'
           property :utilization_target, as: 'utilizationTarget'
           property :utilization_target_type, as: 'utilizationTargetType'
         end
@@ -2672,7 +2674,9 @@ module Google
           property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
           collection :source_ranges, as: 'sourceRanges'
+          collection :source_service_accounts, as: 'sourceServiceAccounts'
           collection :source_tags, as: 'sourceTags'
+          collection :target_service_accounts, as: 'targetServiceAccounts'
           collection :target_tags, as: 'targetTags'
         end
         

@@ -22,6 +22,34 @@ module Google
   module Apis
     module AcceleratedmobilepageurlV1
       
+      # Batch AMP URL response.
+      class BatchGetAmpUrlsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The errors for requested URLs that have no AMP URL.
+        # Corresponds to the JSON property `urlErrors`
+        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError>]
+        attr_accessor :url_errors
+      
+        # For each URL in BatchAmpUrlsRequest, the URL response. The response might
+        # not be in the same order as URLs in the batch request.
+        # If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
+        # only once.
+        # Corresponds to the JSON property `ampUrls`
+        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrl>]
+        attr_accessor :amp_urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url_errors = args[:url_errors] if args.key?(:url_errors)
+          @amp_urls = args[:amp_urls] if args.key?(:amp_urls)
+        end
+      end
+      
       # AMP URL response for a requested URL.
       class AmpUrl
         include Google::Apis::Core::Hashable
@@ -32,15 +60,15 @@ module Google
         # @return [String]
         attr_accessor :cdn_amp_url
       
-        # The original non-AMP URL.
-        # Corresponds to the JSON property `originalUrl`
-        # @return [String]
-        attr_accessor :original_url
-      
         # The AMP URL pointing to the publisher's web server.
         # Corresponds to the JSON property `ampUrl`
         # @return [String]
         attr_accessor :amp_url
+      
+        # The original non-AMP URL.
+        # Corresponds to the JSON property `originalUrl`
+        # @return [String]
+        attr_accessor :original_url
       
         def initialize(**args)
            update!(**args)
@@ -49,14 +77,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cdn_amp_url = args[:cdn_amp_url] if args.key?(:cdn_amp_url)
-          @original_url = args[:original_url] if args.key?(:original_url)
           @amp_url = args[:amp_url] if args.key?(:amp_url)
+          @original_url = args[:original_url] if args.key?(:original_url)
         end
       end
       
       # AMP URL Error resource for a requested URL that couldn't be found.
       class AmpUrlError
         include Google::Apis::Core::Hashable
+      
+        # An optional descriptive error message.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
       
         # The error code of an API call.
         # Corresponds to the JSON property `errorCode`
@@ -68,31 +101,21 @@ module Google
         # @return [String]
         attr_accessor :original_url
       
-        # An optional descriptive error message.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @error_code = args[:error_code] if args.key?(:error_code)
           @original_url = args[:original_url] if args.key?(:original_url)
-          @error_message = args[:error_message] if args.key?(:error_message)
         end
       end
       
       # AMP URL request for a batch of URLs.
       class BatchGetAmpUrlsRequest
         include Google::Apis::Core::Hashable
-      
-        # The lookup_strategy being requested.
-        # Corresponds to the JSON property `lookupStrategy`
-        # @return [String]
-        attr_accessor :lookup_strategy
       
         # List of URLs to look up for the paired AMP URLs.
         # The URLs are case-sensitive. Up to 50 URLs per lookup
@@ -101,42 +124,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :urls
       
+        # The lookup_strategy being requested.
+        # Corresponds to the JSON property `lookupStrategy`
+        # @return [String]
+        attr_accessor :lookup_strategy
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @lookup_strategy = args[:lookup_strategy] if args.key?(:lookup_strategy)
           @urls = args[:urls] if args.key?(:urls)
-        end
-      end
-      
-      # Batch AMP URL response.
-      class BatchGetAmpUrlsResponse
-        include Google::Apis::Core::Hashable
-      
-        # For each URL in BatchAmpUrlsRequest, the URL response. The response might
-        # not be in the same order as URLs in the batch request.
-        # If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
-        # only once.
-        # Corresponds to the JSON property `ampUrls`
-        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrl>]
-        attr_accessor :amp_urls
-      
-        # The errors for requested URLs that have no AMP URL.
-        # Corresponds to the JSON property `urlErrors`
-        # @return [Array<Google::Apis::AcceleratedmobilepageurlV1::AmpUrlError>]
-        attr_accessor :url_errors
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @amp_urls = args[:amp_urls] if args.key?(:amp_urls)
-          @url_errors = args[:url_errors] if args.key?(:url_errors)
+          @lookup_strategy = args[:lookup_strategy] if args.key?(:lookup_strategy)
         end
       end
     end

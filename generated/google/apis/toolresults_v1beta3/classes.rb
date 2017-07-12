@@ -91,6 +91,89 @@ module Google
         end
       end
       
+      # 
+      class AppStartTime
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a signed, fixed-length span of time represented as a
+        # count of seconds and fractions of seconds at nanosecond resolution. It is
+        # independent of any calendar and concepts like "day" or "month". It is related
+        # to Timestamp in that the difference between two Timestamp values is a Duration
+        # and it can be added or subtracted from a Timestamp. Range is approximately +-
+        # 10,000 years.
+        # # Examples
+        # Example 1: Compute Duration from two Timestamps in pseudo code.
+        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
+        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
+        # start.nanos;
+        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
+        # ` else if (durations.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
+        # 1; duration.nanos += 1000000000; `
+        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
+        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
+        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
+        # duration.nanos;
+        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
+        # Example 3: Compute Duration from datetime.timedelta in Python.
+        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
+        # FromTimedelta(td)
+        # # JSON Mapping
+        # In JSON format, the Duration type is encoded as a string rather than an object,
+        # where the string ends in the suffix "s" (indicating seconds) and is preceded
+        # by the number of seconds, with nanoseconds expressed as fractional seconds.
+        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
+        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
+        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
+        # format as "3.000001s".
+        # Corresponds to the JSON property `fullyDrawnTime`
+        # @return [Google::Apis::ToolresultsV1beta3::Duration]
+        attr_accessor :fully_drawn_time
+      
+        # A Duration represents a signed, fixed-length span of time represented as a
+        # count of seconds and fractions of seconds at nanosecond resolution. It is
+        # independent of any calendar and concepts like "day" or "month". It is related
+        # to Timestamp in that the difference between two Timestamp values is a Duration
+        # and it can be added or subtracted from a Timestamp. Range is approximately +-
+        # 10,000 years.
+        # # Examples
+        # Example 1: Compute Duration from two Timestamps in pseudo code.
+        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
+        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
+        # start.nanos;
+        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
+        # ` else if (durations.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
+        # 1; duration.nanos += 1000000000; `
+        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
+        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
+        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
+        # duration.nanos;
+        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
+        # Example 3: Compute Duration from datetime.timedelta in Python.
+        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
+        # FromTimedelta(td)
+        # # JSON Mapping
+        # In JSON format, the Duration type is encoded as a string rather than an object,
+        # where the string ends in the suffix "s" (indicating seconds) and is preceded
+        # by the number of seconds, with nanoseconds expressed as fractional seconds.
+        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
+        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
+        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
+        # format as "3.000001s".
+        # Corresponds to the JSON property `initialDisplayTime`
+        # @return [Google::Apis::ToolresultsV1beta3::Duration]
+        attr_accessor :initial_display_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fully_drawn_time = args[:fully_drawn_time] if args.key?(:fully_drawn_time)
+          @initial_display_time = args[:initial_display_time] if args.key?(:initial_display_time)
+        end
+      end
+      
       # Encapsulates the metadata for basic sample series represented by a line chart
       class BasicPerfSampleSeries
         include Google::Apis::Core::Hashable
@@ -909,6 +992,11 @@ module Google
       class PerfMetricsSummary
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `appStartTime`
+        # @return [Google::Apis::ToolresultsV1beta3::AppStartTime]
+        attr_accessor :app_start_time
+      
         # A tool results execution ID.
         # Corresponds to the JSON property `executionId`
         # @return [String]
@@ -945,6 +1033,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_start_time = args[:app_start_time] if args.key?(:app_start_time)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
           @history_id = args[:history_id] if args.key?(:history_id)
           @perf_environment = args[:perf_environment] if args.key?(:perf_environment)
@@ -1228,7 +1317,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details. There will be a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Google::Apis::ToolresultsV1beta3::Any>]

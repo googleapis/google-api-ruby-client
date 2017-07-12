@@ -22,19 +22,25 @@ module Google
   module Apis
     module RuntimeconfigV1
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Operation
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -47,17 +53,29 @@ module Google
       end
       
       class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
           collection :details, as: 'details'
           property :code, as: 'code'
-          property :message, as: 'message'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+          property :done, as: 'done'
+          hash :response, as: 'response'
+          property :name, as: 'name'
+          property :error, as: 'error', class: Google::Apis::RuntimeconfigV1::Status, decorator: Google::Apis::RuntimeconfigV1::Status::Representation
+      
         end
       end
       
@@ -70,25 +88,7 @@ module Google
         end
       end
       
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          hash :response, as: 'response'
-          property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::RuntimeconfigV1::Status, decorator: Google::Apis::RuntimeconfigV1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-        end
-      end
-      
       class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

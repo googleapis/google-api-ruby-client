@@ -22,120 +22,6 @@ module Google
   module Apis
     module StoragetransferV1
       
-      class UpdateTransferJobRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ObjectConditions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TransferOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TransferSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResumeTransferOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleServiceAccount
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TimeOfDay
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ErrorLogEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TransferJob
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Schedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Date
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TransferOperation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AwsS3Data
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AwsAccessKey
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PauseTransferOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TransferCounters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,217 +53,138 @@ module Google
       end
       
       class UpdateTransferJobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :transfer_job, as: 'transferJob', class: Google::Apis::StoragetransferV1::TransferJob, decorator: Google::Apis::StoragetransferV1::TransferJob::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :project_id, as: 'projectId'
-          property :update_transfer_job_field_mask, as: 'updateTransferJobFieldMask'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ObjectConditions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :min_time_elapsed_since_last_modification, as: 'minTimeElapsedSinceLastModification'
-          collection :exclude_prefixes, as: 'excludePrefixes'
-          property :max_time_elapsed_since_last_modification, as: 'maxTimeElapsedSinceLastModification'
-          collection :include_prefixes, as: 'includePrefixes'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          hash :response, as: 'response'
-          property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::StoragetransferV1::Status, decorator: Google::Apis::StoragetransferV1::Status::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          hash :metadata, as: 'metadata'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TransferOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :delete_objects_unique_in_sink, as: 'deleteObjectsUniqueInSink'
-          property :overwrite_objects_already_existing_in_sink, as: 'overwriteObjectsAlreadyExistingInSink'
-          property :delete_objects_from_source_after_transfer, as: 'deleteObjectsFromSourceAfterTransfer'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TransferSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gcs_data_source, as: 'gcsDataSource', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
-      
-          property :aws_s3_data_source, as: 'awsS3DataSource', class: Google::Apis::StoragetransferV1::AwsS3Data, decorator: Google::Apis::StoragetransferV1::AwsS3Data::Representation
-      
-          property :http_data_source, as: 'httpDataSource', class: Google::Apis::StoragetransferV1::HttpData, decorator: Google::Apis::StoragetransferV1::HttpData::Representation
-      
-          property :object_conditions, as: 'objectConditions', class: Google::Apis::StoragetransferV1::ObjectConditions, decorator: Google::Apis::StoragetransferV1::ObjectConditions::Representation
-      
-          property :gcs_data_sink, as: 'gcsDataSink', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ResumeTransferOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          collection :details, as: 'details'
-          property :code, as: 'code'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::StoragetransferV1::Operation, decorator: Google::Apis::StoragetransferV1::Operation::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class GoogleServiceAccount
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :account_email, as: 'accountEmail'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TimeOfDay
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :seconds, as: 'seconds'
-          property :minutes, as: 'minutes'
-          property :hours, as: 'hours'
-          property :nanos, as: 'nanos'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class ErrorLogEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :url, as: 'url'
-          collection :error_details, as: 'errorDetails'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TransferJob
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
-          property :transfer_spec, as: 'transferSpec', class: Google::Apis::StoragetransferV1::TransferSpec, decorator: Google::Apis::StoragetransferV1::TransferSpec::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :status, as: 'status'
-          property :schedule, as: 'schedule', class: Google::Apis::StoragetransferV1::Schedule, decorator: Google::Apis::StoragetransferV1::Schedule::Representation
-      
-          property :name, as: 'name'
-          property :deletion_time, as: 'deletionTime'
-          property :last_modification_time, as: 'lastModificationTime'
-          property :project_id, as: 'projectId'
-          property :description, as: 'description'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Schedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :schedule_end_date, as: 'scheduleEndDate', class: Google::Apis::StoragetransferV1::Date, decorator: Google::Apis::StoragetransferV1::Date::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :start_time_of_day, as: 'startTimeOfDay', class: Google::Apis::StoragetransferV1::TimeOfDay, decorator: Google::Apis::StoragetransferV1::TimeOfDay::Representation
-      
-          property :schedule_start_date, as: 'scheduleStartDate', class: Google::Apis::StoragetransferV1::Date, decorator: Google::Apis::StoragetransferV1::Date::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Date
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :year, as: 'year'
-          property :day, as: 'day'
-          property :month, as: 'month'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TransferOperation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :start_time, as: 'startTime'
-          property :transfer_job_name, as: 'transferJobName'
-          property :transfer_spec, as: 'transferSpec', class: Google::Apis::StoragetransferV1::TransferSpec, decorator: Google::Apis::StoragetransferV1::TransferSpec::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :counters, as: 'counters', class: Google::Apis::StoragetransferV1::TransferCounters, decorator: Google::Apis::StoragetransferV1::TransferCounters::Representation
-      
-          property :status, as: 'status'
-          collection :error_breakdowns, as: 'errorBreakdowns', class: Google::Apis::StoragetransferV1::ErrorSummary, decorator: Google::Apis::StoragetransferV1::ErrorSummary::Representation
-      
-          property :name, as: 'name'
-          property :project_id, as: 'projectId'
-          property :end_time, as: 'endTime'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class AwsS3Data
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :aws_access_key, as: 'awsAccessKey', class: Google::Apis::StoragetransferV1::AwsAccessKey, decorator: Google::Apis::StoragetransferV1::AwsAccessKey::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-          property :bucket_name, as: 'bucketName'
-        end
-      end
-      
-      class AwsAccessKey
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :secret_access_key, as: 'secretAccessKey'
-          property :access_key_id, as: 'accessKeyId'
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsAccessKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class PauseTransferOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TransferCounters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_deleted_from_source, :numeric_string => true, as: 'bytesDeletedFromSource'
+          property :objects_found_from_source, :numeric_string => true, as: 'objectsFoundFromSource'
+          property :objects_failed_to_delete_from_sink, :numeric_string => true, as: 'objectsFailedToDeleteFromSink'
+          property :objects_deleted_from_sink, :numeric_string => true, as: 'objectsDeletedFromSink'
+          property :objects_found_only_from_sink, :numeric_string => true, as: 'objectsFoundOnlyFromSink'
+          property :bytes_from_source_skipped_by_sync, :numeric_string => true, as: 'bytesFromSourceSkippedBySync'
           property :bytes_deleted_from_sink, :numeric_string => true, as: 'bytesDeletedFromSink'
           property :bytes_failed_to_delete_from_sink, :numeric_string => true, as: 'bytesFailedToDeleteFromSink'
           property :bytes_from_source_failed, :numeric_string => true, as: 'bytesFromSourceFailed'
-          property :objects_copied_to_sink, :numeric_string => true, as: 'objectsCopiedToSink'
           property :objects_from_source_failed, :numeric_string => true, as: 'objectsFromSourceFailed'
+          property :objects_copied_to_sink, :numeric_string => true, as: 'objectsCopiedToSink'
           property :bytes_found_only_from_sink, :numeric_string => true, as: 'bytesFoundOnlyFromSink'
           property :objects_deleted_from_source, :numeric_string => true, as: 'objectsDeletedFromSource'
           property :bytes_copied_to_sink, :numeric_string => true, as: 'bytesCopiedToSink'
           property :bytes_found_from_source, :numeric_string => true, as: 'bytesFoundFromSource'
           property :objects_from_source_skipped_by_sync, :numeric_string => true, as: 'objectsFromSourceSkippedBySync'
-          property :bytes_deleted_from_source, :numeric_string => true, as: 'bytesDeletedFromSource'
-          property :objects_found_from_source, :numeric_string => true, as: 'objectsFoundFromSource'
-          property :objects_failed_to_delete_from_sink, :numeric_string => true, as: 'objectsFailedToDeleteFromSink'
-          property :objects_found_only_from_sink, :numeric_string => true, as: 'objectsFoundOnlyFromSink'
-          property :objects_deleted_from_sink, :numeric_string => true, as: 'objectsDeletedFromSink'
-          property :bytes_from_source_skipped_by_sync, :numeric_string => true, as: 'bytesFromSourceSkippedBySync'
         end
       end
       
@@ -411,6 +218,199 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :transfer_jobs, as: 'transferJobs', class: Google::Apis::StoragetransferV1::TransferJob, decorator: Google::Apis::StoragetransferV1::TransferJob::Representation
       
+        end
+      end
+      
+      class UpdateTransferJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :update_transfer_job_field_mask, as: 'updateTransferJobFieldMask'
+          property :transfer_job, as: 'transferJob', class: Google::Apis::StoragetransferV1::TransferJob, decorator: Google::Apis::StoragetransferV1::TransferJob::Representation
+      
+        end
+      end
+      
+      class ObjectConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_prefixes, as: 'excludePrefixes'
+          property :min_time_elapsed_since_last_modification, as: 'minTimeElapsedSinceLastModification'
+          property :max_time_elapsed_since_last_modification, as: 'maxTimeElapsedSinceLastModification'
+          collection :include_prefixes, as: 'includePrefixes'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          hash :response, as: 'response'
+          property :name, as: 'name'
+          property :error, as: 'error', class: Google::Apis::StoragetransferV1::Status, decorator: Google::Apis::StoragetransferV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class TransferOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_objects_unique_in_sink, as: 'deleteObjectsUniqueInSink'
+          property :overwrite_objects_already_existing_in_sink, as: 'overwriteObjectsAlreadyExistingInSink'
+          property :delete_objects_from_source_after_transfer, as: 'deleteObjectsFromSourceAfterTransfer'
+        end
+      end
+      
+      class TransferSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
+      
+          property :aws_s3_data_source, as: 'awsS3DataSource', class: Google::Apis::StoragetransferV1::AwsS3Data, decorator: Google::Apis::StoragetransferV1::AwsS3Data::Representation
+      
+          property :http_data_source, as: 'httpDataSource', class: Google::Apis::StoragetransferV1::HttpData, decorator: Google::Apis::StoragetransferV1::HttpData::Representation
+      
+          property :object_conditions, as: 'objectConditions', class: Google::Apis::StoragetransferV1::ObjectConditions, decorator: Google::Apis::StoragetransferV1::ObjectConditions::Representation
+      
+          property :gcs_data_sink, as: 'gcsDataSink', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+      
+          property :gcs_data_source, as: 'gcsDataSource', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+      
+        end
+      end
+      
+      class ResumeTransferOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details'
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::StoragetransferV1::Operation, decorator: Google::Apis::StoragetransferV1::Operation::Representation
+      
+        end
+      end
+      
+      class GoogleServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_email, as: 'accountEmail'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :minutes, as: 'minutes'
+        end
+      end
+      
+      class ErrorLogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_details, as: 'errorDetails'
+          property :url, as: 'url'
+        end
+      end
+      
+      class TransferJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :creation_time, as: 'creationTime'
+          property :transfer_spec, as: 'transferSpec', class: Google::Apis::StoragetransferV1::TransferSpec, decorator: Google::Apis::StoragetransferV1::TransferSpec::Representation
+      
+          property :status, as: 'status'
+          property :schedule, as: 'schedule', class: Google::Apis::StoragetransferV1::Schedule, decorator: Google::Apis::StoragetransferV1::Schedule::Representation
+      
+          property :deletion_time, as: 'deletionTime'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :last_modification_time, as: 'lastModificationTime'
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schedule_end_date, as: 'scheduleEndDate', class: Google::Apis::StoragetransferV1::Date, decorator: Google::Apis::StoragetransferV1::Date::Representation
+      
+          property :start_time_of_day, as: 'startTimeOfDay', class: Google::Apis::StoragetransferV1::TimeOfDay, decorator: Google::Apis::StoragetransferV1::TimeOfDay::Representation
+      
+          property :schedule_start_date, as: 'scheduleStartDate', class: Google::Apis::StoragetransferV1::Date, decorator: Google::Apis::StoragetransferV1::Date::Representation
+      
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :year, as: 'year'
+          property :month, as: 'month'
+        end
+      end
+      
+      class TransferOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :transfer_job_name, as: 'transferJobName'
+          property :transfer_spec, as: 'transferSpec', class: Google::Apis::StoragetransferV1::TransferSpec, decorator: Google::Apis::StoragetransferV1::TransferSpec::Representation
+      
+          property :counters, as: 'counters', class: Google::Apis::StoragetransferV1::TransferCounters, decorator: Google::Apis::StoragetransferV1::TransferCounters::Representation
+      
+          property :status, as: 'status'
+          collection :error_breakdowns, as: 'errorBreakdowns', class: Google::Apis::StoragetransferV1::ErrorSummary, decorator: Google::Apis::StoragetransferV1::ErrorSummary::Representation
+      
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class AwsS3Data
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_access_key, as: 'awsAccessKey', class: Google::Apis::StoragetransferV1::AwsAccessKey, decorator: Google::Apis::StoragetransferV1::AwsAccessKey::Representation
+      
+          property :bucket_name, as: 'bucketName'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AwsAccessKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret_access_key, as: 'secretAccessKey'
+          property :access_key_id, as: 'accessKeyId'
+        end
+      end
+      
+      class PauseTransferOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

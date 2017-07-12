@@ -1,3 +1,6 @@
+# 0.13.1
+* Regenerate APIs
+
 # 0.13.0
 * Regenerate APIs
 * Revert api\_names.yaml to an earlier revision to restore some manual name

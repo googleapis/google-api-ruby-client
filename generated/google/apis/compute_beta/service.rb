@@ -337,11 +337,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -429,11 +431,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -562,11 +566,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -735,11 +741,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -828,11 +836,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -949,7 +959,8 @@ module Google
         end
         
         # Updates an autoscaler in the specified project using the data included in the
-        # request. This method supports patch semantics.
+        # request. This method supports PATCH semantics and uses the JSON merge patch
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -961,11 +972,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1060,11 +1073,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1111,11 +1126,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1198,11 +1215,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1316,7 +1335,8 @@ module Google
         end
         
         # Updates the specified BackendBucket resource with the data included in the
-        # request. This method supports patch semantics.
+        # request. This method supports PATCH semantics and uses the JSON merge patch
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1326,11 +1346,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1378,11 +1400,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1505,11 +1529,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1634,11 +1660,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1754,7 +1782,8 @@ module Google
         # Patches the specified BackendService resource with the data included in the
         # request. There are several restrictions and guidelines to keep in mind when
         # updating a backend service. Read  Restrictions and Guidelines for more
-        # information. This method supports patch semantics.
+        # information. This method supports PATCH semantics and uses the JSON merge
+        # patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1764,11 +1793,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1859,11 +1890,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2186,11 +2219,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2242,11 +2277,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2337,11 +2374,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] source_image
         #   Optional. Source image to restore onto a disk.
         # @param [String] fields
@@ -2472,11 +2511,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2527,11 +2568,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2622,11 +2665,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2708,11 +2753,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2825,7 +2872,8 @@ module Google
         end
         
         # Updates the specified firewall rule with the data included in the request.
-        # This method supports patch semantics.
+        # This method supports PATCH semantics and uses the JSON merge patch format and
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -2835,11 +2883,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2929,11 +2979,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3057,11 +3109,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3149,11 +3203,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3283,11 +3339,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3338,11 +3396,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3433,11 +3493,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3520,11 +3582,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3728,11 +3792,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3815,11 +3881,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3985,11 +4053,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4303,11 +4373,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4390,11 +4462,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4507,7 +4581,8 @@ module Google
         end
         
         # Updates a HealthCheck resource in the specified project using the data
-        # included in the request. This method supports patch semantics.
+        # included in the request. This method supports PATCH semantics and uses the
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
@@ -4517,11 +4592,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4610,11 +4687,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4660,11 +4739,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4747,11 +4828,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4865,7 +4948,8 @@ module Google
         end
         
         # Updates a HttpHealthCheck resource in the specified project using the data
-        # included in the request. This method supports patch semantics.
+        # included in the request. This method supports PATCH semantics and uses the
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -4875,11 +4959,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4968,11 +5054,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5018,11 +5106,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5105,11 +5195,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5223,7 +5315,8 @@ module Google
         end
         
         # Updates a HttpsHealthCheck resource in the specified project using the data
-        # included in the request. This method supports patch semantics.
+        # included in the request. This method supports PATCH semantics and uses the
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -5233,11 +5326,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5326,11 +5421,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5376,11 +5473,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5555,11 +5654,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5783,11 +5884,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5914,11 +6017,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5976,11 +6081,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6077,11 +6184,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6255,7 +6364,8 @@ module Google
         # request. This operation is marked as DONE when the group is patched even if
         # the instances in the group are still in the process of being patched. You must
         # separately verify the status of the individual instances with the
-        # listManagedInstances method. This method supports patch semantics.
+        # listManagedInstances method. This method supports PATCH semantics and uses the
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6267,11 +6377,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6330,11 +6442,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6395,11 +6509,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6459,11 +6575,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6513,11 +6631,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6569,11 +6689,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6628,11 +6750,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6730,11 +6854,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6786,11 +6912,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6917,11 +7045,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7010,11 +7140,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7233,11 +7365,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7287,11 +7421,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7385,11 +7521,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7474,11 +7612,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7646,11 +7786,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7780,11 +7922,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7834,11 +7978,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7889,11 +8035,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7944,11 +8092,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8088,11 +8238,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8304,11 +8456,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8359,11 +8513,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8414,11 +8570,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8469,11 +8627,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8524,11 +8684,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8578,11 +8740,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8620,8 +8784,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the minimum cpu/platform that this instance should be started as. This
-        # is called on a stopped instance.
+        # Changes the minimum CPU platform that this instance should use. This method
+        # can only be called on a stopped instance. For more information, read
+        # Specifying a Minimum CPU Platform.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8633,11 +8798,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8687,11 +8854,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8742,11 +8911,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8796,11 +8967,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8850,11 +9023,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8903,11 +9078,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8961,11 +9138,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9290,11 +9469,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9340,11 +9521,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9427,11 +9610,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9553,11 +9738,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9603,11 +9790,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9690,11 +9879,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9736,11 +9927,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9783,11 +9976,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9831,11 +10026,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10039,11 +10236,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10087,11 +10286,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10136,11 +10337,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10186,11 +10389,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10237,11 +10442,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10329,11 +10536,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10450,7 +10659,8 @@ module Google
         end
         
         # Updates an autoscaler in the specified project using the data included in the
-        # request. This method supports patch semantics.
+        # request. This method supports PATCH semantics and uses the JSON merge patch
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10467,6 +10677,8 @@ module Google
         #   the server can check if original operation with the same request ID was
         #   received, and if so, will ignore the second request. This prevents clients
         #   from accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10614,11 +10826,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10751,11 +10965,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10875,7 +11091,8 @@ module Google
         # Updates the specified regional BackendService resource with the data included
         # in the request. There are several restrictions and guidelines to keep in mind
         # when updating a backend service. Read  Restrictions and Guidelines for more
-        # information. This method supports patch semantics.
+        # information. This method supports PATCH semantics and uses the JSON merge
+        # patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -10887,11 +11104,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10988,11 +11207,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11159,11 +11380,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11302,11 +11525,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11356,11 +11581,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11418,11 +11645,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11517,11 +11746,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11693,7 +11924,8 @@ module Google
         # request. This operation is marked as DONE when the group is patched even if
         # the instances in the group are still in the process of being patched. You must
         # separately verify the status of the individual instances with the
-        # listmanagedinstances method. This method supports patch semantics.
+        # listmanagedinstances method. This method supports PATCH semantics and uses the
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -11705,11 +11937,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11768,11 +12002,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11832,11 +12068,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11886,11 +12124,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11941,11 +12181,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11996,11 +12238,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12098,11 +12342,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12360,11 +12606,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12807,11 +13055,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12941,11 +13191,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13074,11 +13326,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13217,11 +13471,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13268,11 +13524,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13355,11 +13613,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13525,11 +13785,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13772,11 +14034,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13859,11 +14123,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14104,11 +14370,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14156,11 +14424,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14293,11 +14563,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14471,11 +14743,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14566,11 +14840,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14653,11 +14929,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14780,11 +15058,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14871,11 +15151,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14958,11 +15240,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15085,11 +15369,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15136,11 +15422,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15305,11 +15593,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15398,11 +15688,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15575,11 +15867,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15629,11 +15923,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15758,11 +16054,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15896,11 +16194,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16028,11 +16328,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16082,11 +16384,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16138,11 +16442,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16234,11 +16540,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16321,11 +16629,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16448,11 +16758,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16499,11 +16811,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16550,11 +16864,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16641,11 +16957,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16728,11 +17046,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16855,11 +17175,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16906,11 +17228,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17034,11 +17358,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17127,11 +17453,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17301,11 +17629,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17388,11 +17718,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17439,11 +17771,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17557,7 +17891,8 @@ module Google
         end
         
         # Patches the specified UrlMap resource with the data included in the request.
-        # This method supports patch semantics.
+        # This method supports PATCH semantics and uses the JSON merge patch format and
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -17567,11 +17902,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17659,11 +17996,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17829,11 +18168,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17922,11 +18263,13 @@ module Google
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
         #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and then
-        #   the request times out. If you make the request again with the same request ID,
-        #   the server can check if original operation with the same request ID was
-        #   received, and if so, will ignore the second request. This prevents clients
-        #   from accidentally creating duplicate commitments.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

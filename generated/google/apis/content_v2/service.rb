@@ -87,7 +87,9 @@ module Google
         end
         
         # Claims the website of a Merchant Center sub-account. This method can only be
-        # called for multi-client accounts.
+        # called for accounts to which the managing account has access: either the
+        # managing account itself or sub-accounts if the managing account is a multi-
+        # client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
