@@ -90,7 +90,7 @@ module Google
         end
 
         def dump
-          YAML.dump(@names)
+          YAML.dump(Hash[@names.sort])
         end
 
         def key
@@ -161,10 +161,6 @@ module Google
         include NameHelpers
         include Google::Apis::Core::Logging
 
-        # Don't expose these in the API directly.
-        PARAMETER_BLACKLIST = %w(alt access_token bearer_token oauth_token pp prettyPrint
-                                 $.xgafv callback upload_protocol uploadType)
-
         # Prepare the API for the templates.
         # @param [Google::Apis::DiscoveryV1::RestDescription] description
         #  API Description
@@ -196,7 +192,6 @@ module Google
               end
             end
             @rest_description.force_alt_json = @names.option('force_alt_json')
-            @rest_description.parameters.reject! { |k, _v| PARAMETER_BLACKLIST.include?(k) }
             annotate_parameters(@rest_description.parameters)
             annotate_resource(@rest_description.name, @rest_description)
             @rest_description.schemas.each do |k, v|
