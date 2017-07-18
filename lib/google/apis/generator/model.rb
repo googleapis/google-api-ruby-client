@@ -96,10 +96,18 @@ module Google
       class RestResource
         attr_accessor :parent
 
+        def api_methods
+          Hash[(@api_methods || {}).sort]
+        end
+
+        def resources
+          Hash[(@resources || {}).sort]
+        end
+
         def all_methods
           m = []
-          m << api_methods.values.sort_by { |v| v.id } unless api_methods.nil?
-          m << Hash[resources.sort].map { |_k, r| r.all_methods } unless resources.nil?
+          m << api_methods.values unless api_methods.nil?
+          m << resources.map { |_k, r| r.all_methods } unless resources.nil?
           m.flatten
         end
       end
@@ -133,10 +141,18 @@ module Google
           ActiveSupport::Inflector.camelize(sprintf('%sService', class_name))
         end
 
+        def api_methods
+          Hash[(@api_methods || {}).sort]
+        end
+
+        def resources
+          Hash[(@resources || {}).sort]
+        end
+
         def all_methods
           m = []
-          m << api_methods.values.sort_by { |v| v.id } unless api_methods.nil?
-          m << Hash[resources.sort].map { |_k, r| r.all_methods } unless resources.nil?
+          m << api_methods.values unless api_methods.nil?
+          m << resources.map { |_k, r| r.all_methods } unless resources.nil?
           m.flatten
         end
 
