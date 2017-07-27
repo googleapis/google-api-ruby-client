@@ -78,6 +78,10 @@ module Google
           preferred_name
         end
 
+        def [](key)
+          @names[key]
+        end
+
         def []=(key, value)
           @names[key] = value
         end
@@ -182,7 +186,13 @@ module Google
 
         def collect_method_names_for_rpc(resource, method_names_for_rpc)
           resource.api_methods.each do |_k, v|
-            method_name_for_rpc = @names.infer_method_name_for_rpc(v, false)
+            # First look for the method name in the `@names` hash. If there's
+            # no override set, generate it without inserting the generated name
+            # into the `@names` hash.
+            method_name_for_rpc = @names[@names.key]
+            if method_name_for_rpc.nil?
+              method_name_for_rpc = @names.infer_method_name_for_rpc(v, false)
+            end
             method_names_for_rpc << method_name_for_rpc if method_name_for_rpc
           end unless resource.api_methods.nil?
 
