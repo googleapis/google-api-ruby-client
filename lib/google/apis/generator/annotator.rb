@@ -41,12 +41,16 @@ module Google
         include Google::Apis::Core::Logging
         include NameHelpers
 
-        def initialize(file_path = nil)
-          if file_path
-            logger.info { sprintf('Loading API names from %s', file_path) }
-            @names = YAML.load(File.read(file_path)) || {}
+        def initialize(names_out_file_path = nil, names_file_path = nil)
+          if names_out_file_path
+            logger.info { sprintf('Loading API names from %s', names_out_file_path) }
+            @names = YAML.load(File.read(names_out_file_path)) || {}
           else
             @names = {}
+          end
+          if names_file_path
+            logger.info { sprintf('Loading API names from %s', names_file_path) }
+            @names = @names.merge(YAML.load(File.read(names_file_path)) || {})
           end
           @path = []
         end
