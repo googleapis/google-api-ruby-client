@@ -55,8 +55,14 @@ module Google
             return 'Fixnum' if format == 'uint64'
             return TYPE_MAP[type]
           when 'array'
+            if items == self
+              return sprintf('Array<%s>', qualified_name)
+            end
             return sprintf('Array<%s>', items.generated_type)
           when 'hash'
+            if additional_properties == self
+              return sprintf('Hash<String,%s>', qualified_name)
+            end
             return sprintf('Hash<String,%s>', additional_properties.generated_type)
           when 'object'
             return qualified_name
