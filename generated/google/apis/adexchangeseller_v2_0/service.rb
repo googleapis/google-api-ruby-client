@@ -481,6 +481,8 @@ module Google
         #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
+        # @param [String] currency
+        #   The currency to use on the report
         #
         # @yield [result, err] Result & error if block supplied
         # @yieldparam result [Google::Apis::AdexchangesellerV2_0::Report] parsed result object
@@ -491,7 +493,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_account_report(account_id, start_date, end_date, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def generate_account_report(account_id, start_date, end_date, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, currency: nil, &block)
           if download_dest.nil?
             command =  make_simple_command(:get, 'accounts/{accountId}/reports', options)
           else
@@ -513,6 +515,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.query['currency'] = currency unless currency.nil?
           execute_or_queue_command(command, &block)
         end
         
