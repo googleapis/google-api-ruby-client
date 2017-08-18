@@ -27,8 +27,9 @@ module Google
       Discovery = Google::Apis::DiscoveryV1
 
       # Load templates
-      def initialize(api_names: nil)
-        @names = Google::Apis::Generator::Names.new(api_names || File.join(Google::Apis::ROOT, 'api_names.yaml'))
+      def initialize(api_names: nil, api_names_out: nil)
+        @names = Google::Apis::Generator::Names.new(api_names_out || File.join(Google::Apis::ROOT, 'api_names_out.yaml'),
+                                                    api_names || File.join(Google::Apis::ROOT, 'api_names.yaml'))
         @module_template = Template.load('module.rb')
         @service_template = Template.load('service.rb')
         @classes_template = Template.load('classes.rb')

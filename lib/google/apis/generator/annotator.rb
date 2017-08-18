@@ -41,12 +41,16 @@ module Google
         include Google::Apis::Core::Logging
         include NameHelpers
 
-        def initialize(file_path = nil)
-          if file_path
-            logger.info { sprintf('Loading API names from %s', file_path) }
-            @names = YAML.load(File.read(file_path)) || {}
+        def initialize(names_out_file_path = nil, names_file_path = nil)
+          if names_out_file_path
+            logger.info { sprintf('Loading API names from %s', names_out_file_path) }
+            @names = YAML.load(File.read(names_out_file_path)) || {}
           else
             @names = {}
+          end
+          if names_file_path
+            logger.info { sprintf('Loading API names from %s', names_file_path) }
+            @names = @names.merge(YAML.load(File.read(names_file_path)) || {})
           end
           @path = []
         end
@@ -64,13 +68,6 @@ module Google
           pick_name(normalize_param_name(@path.last))
         end
 
-        # Determine the ruby method name to generate for a given method in discovery.
-        # @param [Google::Apis::DiscoveryV1::RestMethod] method
-        #  Fragment of the discovery doc describing the method
-        def infer_method_name(method)
-          pick_name(infer_method_name_for_rpc(method) || infer_method_name_from_id(method))
-        end
-
         def infer_property_name
           pick_name(normalize_property_name(@path.last))
         end
@@ -83,6 +80,10 @@ module Google
             preferred_name = @names[key] = alt_name
           end
           preferred_name
+        end
+
+        def [](key)
+          @names[key]
         end
 
         def []=(key, value)
@@ -101,12 +102,11 @@ module Google
           @names[sprintf('%s?%s', key, opt_name)]
         end
 
-        private
-
         # For RPC style methods, pick a name based off the request objects.
         # @param [Google::Apis::DiscoveryV1::RestMethod] method
+        # @param [Boolean] pick_name
         #  Fragment of the discovery doc describing the method
-        def infer_method_name_for_rpc(method)
+        def infer_method_name_for_rpc(method, pick_name = true)
           return nil if method.request.nil?
           parts = method.id.split('.')
           parts.shift
@@ -122,7 +122,11 @@ module Google
               name = name.split('_').insert(1, resource_name).join('_')
             end
           end
-          name
+          if pick_name
+            pick_name(name)
+          else
+            name
+          end
         end
 
         # For REST style methods, build a method name from the verb/resource(s) in the method
@@ -149,7 +153,7 @@ module Google
             end.join('_') + '_' + resource_name
           end
           method_name = verb.split('_').insert(1, resource_path.split('_')).join('_')
-          method_name
+          pick_name(method_name)
         end
       end
 
@@ -180,7 +184,31 @@ module Google
           @deferred_types = []
           @strip_prefixes = []
           @all_methods = {}
+          @dup_method_names_for_rpc = collect_dup_method_names_for_rpc
           @path = []
+        end
+
+        def collect_method_names_for_rpc(resource, method_names_for_rpc)
+          resource.api_methods.each do |_k, v|
+            # First look for the method name in the `@names` hash. If there's
+            # no override set, generate it without inserting the generated name
+            # into the `@names` hash.
+            method_name_for_rpc = @names[@names.key]
+            if method_name_for_rpc.nil?
+              method_name_for_rpc = @names.infer_method_name_for_rpc(v, false)
+            end
+            method_names_for_rpc << method_name_for_rpc if method_name_for_rpc
+          end unless resource.api_methods.nil?
+
+          resource.resources.each do |_k, v|
+            collect_method_names_for_rpc(v, method_names_for_rpc)
+          end unless resource.resources.nil?
+        end
+
+        def collect_dup_method_names_for_rpc
+          method_names_for_rpc = []
+          collect_method_names_for_rpc(@rest_description, method_names_for_rpc)
+          method_names_for_rpc.group_by{ |e| e }.select { |k, v| v.size > 1 }.map(&:first)
         end
 
         def annotate_api
@@ -240,7 +268,20 @@ module Google
         def annotate_method(method, parent_resource = nil)
           @names.with_path(method.id) do
             method.parent = parent_resource
-            method.generated_name = @names.infer_method_name(method)
+	    # Grab the method name generated from the request object without
+	    # inserting into, or querying, the names hash.
+            method_name_for_rpc = @names.infer_method_name_for_rpc(method, false)
+	    # If `method_name_for_rpc` is a duplicate (more than one method in
+	    # the API will generate this name), generate the method name from
+	    # the method ID instead.
+            if @dup_method_names_for_rpc.include?(method_name_for_rpc)
+              method.generated_name = @names.infer_method_name_from_id(method)
+            # Otherwise, proceed as normal.
+            elsif method_name_for_rpc
+              method.generated_name = @names.infer_method_name_for_rpc(method)
+            else
+              method.generated_name = @names.infer_method_name_from_id(method)
+            end
             check_duplicate_method(method)
             annotate_parameters(method.parameters)
           end
