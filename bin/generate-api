@@ -26,9 +26,8 @@ module Google
     Discovery = Google::Apis::DiscoveryV1
 
     desc 'gen OUTDIR', 'Generate ruby API from an API description'
-    method_options url: :array, file: :array, from_discovery: :boolean, id: :array,
-                   preferred_only: :boolean, verbose: :boolean, names: :string,
-                   names_out: :string
+    method_options url: :array, file: :array, from_discovery: :boolean, preferred_only: :boolean,
+                   verbose: :boolean, names: :string, names_out: :string
     method_option :preferred_only, default: true
     def gen(dir)
       ensure_active_support
@@ -38,7 +37,7 @@ module Google
       Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
       generate_from_url(options[:url]) if options[:url]
       generate_from_file(options[:file]) if options[:file]
-      generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] ) if options[:id] || options[:from_discovery]
+      generate_from_discovery(preferred_only: options[:preferred_only]) if options[:from_discovery]
       create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
     end
 
@@ -69,16 +68,22 @@ module Google
         end
       end
 
-      def generate_from_discovery(preferred_only: false, id: nil)
+      def generate_from_discovery(preferred_only: false)
         say 'Fetching API list'
-        id = Array(id)
         apis = discovery.list_apis
         apis.items.each do |api|
-          if (id.empty? && preferred_only && api.preferred?) || id.include?(api.id)
-            say sprintf('Loading %s, version %s from %s', api.name, api.version, api.discovery_rest_url)
-            generate_from_url(api.discovery_rest_url)
-          else
+          if (preferred_only && !api.preferred?)
             say sprintf('Ignoring disoverable API %s', api.id)
+          else
+	    # The Discovery service may returned cached versions of a Discovery document that are
+	    # not the most recent revision. That means that subsequent requests to the same
+	    # Discovery document URL can return different documents. The
+	    # `discovery-artifact-manager` repo always holds the most recent revision, so it's
+	    # easier to use that document than to force revision checking against the URL returned
+	    # by the Discovery index.
+            discovery_rest_url = "https://raw.githubusercontent.com/googleapis/discovery-artifact-manager/master/discoveries/#{api.name}.#{api.version}.json"
+            say sprintf('Loading %s, version %s from %s', api.name, api.version, discovery_rest_url)
+            generate_from_url(discovery_rest_url)
           end
         end
       end
