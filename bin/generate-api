@@ -28,7 +28,6 @@ module Google
     desc 'gen OUTDIR', 'Generate ruby API from an API description'
     method_options url: :array, file: :array, from_discovery: :boolean, preferred_only: :boolean,
                    verbose: :boolean, names: :string, names_out: :string
-    method_option :preferred_only, default: true
     def gen(dir)
       ensure_active_support
       require 'google/apis/generator'
@@ -55,7 +54,12 @@ module Google
     no_commands do
       def generate_from_url(urls)
         Array(urls).each do |url|
-          json = discovery.http(:get, url)
+          begin
+            json = discovery.http(:get, url)
+          rescue Google::Apis::ClientError
+            warn sprintf('Failed request, skipping %s', url)
+            next
+          end
           generate_api(json)
         end
       end
