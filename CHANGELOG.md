@@ -1,3 +1,7 @@
+# 0.13.2
+* Light generator refactoring
+* Recover from non-Ranged responses without rewinding (#593)
+
 # 0.13.1
 * Regenerate APIs
 
