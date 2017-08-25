@@ -22,49 +22,19 @@ module Google
   module Apis
     module TranslateV2
       
-      class ListLanguagesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DetectionsResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TranslationsResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListTranslationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TranslateTextRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DetectLanguageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LanguagesResource
+      class ListDetectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListDetectionsResponse
+      class DetectionsResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -77,53 +47,33 @@ module Google
       end
       
       class ListLanguagesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListLanguagesResponse }
-          collection :languages, as: 'languages', class: Google::Apis::TranslateV2::LanguagesResource, decorator: Google::Apis::TranslateV2::LanguagesResource::Representation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DetectionsResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::DetectionsResource }
-          property :confidence, as: 'confidence'
-          property :language, as: 'language'
-          property :is_reliable, as: 'isReliable'
-        end
-      end
+      class LanguagesResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
-      class TranslationsResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsResource }
-          property :model, as: 'model'
-          property :translated_text, as: 'translatedText'
-          property :detected_source_language, as: 'detectedSourceLanguage'
-        end
-      end
-      
-      class ListTranslationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListTranslationsResponse }
-          collection :translations, as: 'translations', class: Google::Apis::TranslateV2::TranslationsResource, decorator: Google::Apis::TranslateV2::TranslationsResource::Representation
-      
-        end
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class TranslateTextRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslateTextRequest }
-          property :target, as: 'target'
-          property :format, as: 'format'
-          collection :q, as: 'q'
-          property :source, as: 'source'
-          property :model, as: 'model'
-        end
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTranslationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TranslationsResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
       end
       
       class DetectLanguageRequest
@@ -131,15 +81,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::DetectLanguageRequest }
           collection :q, as: 'q'
-        end
-      end
-      
-      class LanguagesResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::LanguagesResource }
-          property :name, as: 'name'
-          property :language, as: 'language'
         end
       end
       
@@ -156,11 +97,70 @@ module Google
         end
       end
       
+      class DetectionsResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::DetectionsResource }
+          property :confidence, as: 'confidence'
+          property :is_reliable, as: 'isReliable'
+          property :language, as: 'language'
+        end
+      end
+      
       class GetSupportedLanguagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::GetSupportedLanguagesRequest }
           property :target, as: 'target'
+        end
+      end
+      
+      class ListLanguagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListLanguagesResponse }
+          collection :languages, as: 'languages', class: Google::Apis::TranslateV2::LanguagesResource, decorator: Google::Apis::TranslateV2::LanguagesResource::Representation
+      
+        end
+      end
+      
+      class LanguagesResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::LanguagesResource }
+          property :language, as: 'language'
+          property :name, as: 'name'
+        end
+      end
+      
+      class TranslateTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslateTextRequest }
+          property :format, as: 'format'
+          property :model, as: 'model'
+          collection :q, as: 'q'
+          property :source, as: 'source'
+          property :target, as: 'target'
+        end
+      end
+      
+      class ListTranslationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::ListTranslationsResponse }
+          collection :translations, as: 'translations', class: Google::Apis::TranslateV2::TranslationsResource, decorator: Google::Apis::TranslateV2::TranslationsResource::Representation
+      
+        end
+      end
+      
+      class TranslationsResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsResource }
+          property :detected_source_language, as: 'detectedSourceLanguage'
+          property :model, as: 'model'
+          property :translated_text, as: 'translatedText'
         end
       end
     end

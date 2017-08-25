@@ -427,6 +427,7 @@ module Google
           property :etag, as: 'etag'
           property :failover_replica, as: 'failoverReplica', class: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica::Representation
       
+          property :gce_zone, as: 'gceZone'
           property :instance_type, as: 'instanceType'
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
       

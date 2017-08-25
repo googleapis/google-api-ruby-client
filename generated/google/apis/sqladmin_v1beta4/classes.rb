@@ -403,9 +403,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_disk_size
       
-        # The database engine type and version. The databaseVersion can not be changed
-        # after instance creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7. Defaults to
-        # MYSQL_5_6. MYSQL_5_7 is applicable only to Second Generation instances.
+        # The database engine type and version. The databaseVersion field can not be
+        # changed after instance creation. MySQL Second Generation instances: MYSQL_5_7 (
+        # default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 MySQL First
+        # Generation instances: MYSQL_5_6 (default) or MYSQL_5_5
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -420,6 +421,13 @@ module Google
         # Corresponds to the JSON property `failoverReplica`
         # @return [Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica]
         attr_accessor :failover_replica
+      
+        # The GCE zone that the instance is serving from. In case when the instance is
+        # failed over to standby zone, this value may be different with what user
+        # specified in the settings.
+        # Corresponds to the JSON property `gceZone`
+        # @return [String]
+        attr_accessor :gce_zone
       
         # The instance type. This can be one of the following.
         # CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a master.
@@ -540,6 +548,7 @@ module Google
           @database_version = args[:database_version] if args.key?(:database_version)
           @etag = args[:etag] if args.key?(:etag)
           @failover_replica = args[:failover_replica] if args.key?(:failover_replica)
+          @gce_zone = args[:gce_zone] if args.key?(:gce_zone)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
@@ -862,8 +871,8 @@ module Google
         # @return [String]
         attr_accessor :file_type
       
-        # The PostgreSQL user to use for this import operation. Defaults to
-        # cloudsqlsuperuser. Does not apply to MySQL instances.
+        # The PostgreSQL user for this import operation. Defaults to cloudsqlsuperuser.
+        # Used only for PostgreSQL instances.
         # Corresponds to the JSON property `importUser`
         # @return [String]
         attr_accessor :import_user
@@ -1084,8 +1093,7 @@ module Google
         attr_accessor :ipv4_enabled
         alias_method :ipv4_enabled?, :ipv4_enabled
       
-        # Whether the mysqld should default to 'REQUIRE X509' for users connecting over
-        # IP.
+        # Whether SSL connections over IP should be enforced or not.
         # Corresponds to the JSON property `requireSsl`
         # @return [Boolean]
         attr_accessor :require_ssl

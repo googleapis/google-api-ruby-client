@@ -2619,9 +2619,9 @@ module Google
         attr_accessor :content
       
         # The list of customer IDs.
-        # Corresponds to the JSON property `custom_id`
+        # Corresponds to the JSON property `customIds`
         # @return [Array<String>]
-        attr_accessor :custom_id
+        attr_accessor :custom_ids
       
         # An ID that YouTube assigns and uses to uniquely identify the package.
         # Corresponds to the JSON property `id`
@@ -2674,7 +2674,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
-          @custom_id = args[:custom_id] if args.key?(:custom_id)
+          @custom_ids = args[:custom_ids] if args.key?(:custom_ids)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @locale = args[:locale] if args.key?(:locale)

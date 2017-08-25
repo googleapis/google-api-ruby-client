@@ -589,6 +589,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :profiles_linked
       
+        # Collection of schema headers of the custom data source.
+        # Corresponds to the JSON property `schema`
+        # @return [Array<String>]
+        attr_accessor :schema
+      
         # Link for this Analytics custom data source.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -604,7 +609,7 @@ module Google
         # @return [DateTime]
         attr_accessor :updated
       
-        # 
+        # Upload type of the custom data source.
         # Corresponds to the JSON property `uploadType`
         # @return [String]
         attr_accessor :upload_type
@@ -631,6 +636,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parent_link = args[:parent_link] if args.key?(:parent_link)
           @profiles_linked = args[:profiles_linked] if args.key?(:profiles_linked)
+          @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
           @type = args[:type] if args.key?(:type)
           @updated = args[:updated] if args.key?(:updated)
@@ -3288,7 +3294,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The type of the foreign account. For example `ADWORDS_LINKS`.
+        # The type of the foreign account. For example, `ADWORDS_LINKS`, `DBM_LINKS`, `
+        # MCC_LINKS` or `OPTIMIZE`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5053,6 +5060,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Time this file is uploaded.
+        # Corresponds to the JSON property `uploadTime`
+        # @return [DateTime]
+        attr_accessor :upload_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5065,6 +5077,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @status = args[:status] if args.key?(:status)
+          @upload_time = args[:upload_time] if args.key?(:upload_time)
         end
       end
       

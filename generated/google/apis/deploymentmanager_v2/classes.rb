@@ -101,6 +101,25 @@ module Google
         end
       end
       
+      # Authorization-related information used by Cloud Audit Logging.
+      class AuthorizationLoggingOptions
+        include Google::Apis::Core::Hashable
+      
+        # The type of the permission that was checked.
+        # Corresponds to the JSON property `permissionType`
+        # @return [String]
+        attr_accessor :permission_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permission_type = args[:permission_type] if args.key?(:permission_type)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -562,10 +581,29 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::LogConfigCloudAuditOptions]
         attr_accessor :cloud_audit
       
-        # Options for counters
+        # Increment a streamz counter with the specified metric and field names.
+        # Metric names should start with a '/', generally be lowercase-only, and end in "
+        # _count". Field names should not contain an initial slash. The actual exported
+        # metric names will have "/iam/policy" prepended.
+        # Field names correspond to IAM request parameters and field values are their
+        # respective values.
+        # At present the only supported field names are - "iam_principal", corresponding
+        # to IAMContext.principal; - "" (empty string), resulting in one aggretated
+        # counter with no field.
+        # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
+        # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
+        # of IAMContext.principal]`
+        # At this time we do not support: * multiple field names (though this may be
+        # supported in the future) * decrementing the counter * incrementing it by
+        # anything other than 1
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions]
         attr_accessor :counter
+      
+        # Write a Data Access (Gin) log
+        # Corresponds to the JSON property `dataAccess`
+        # @return [Google::Apis::DeploymentmanagerV2::LogConfigDataAccessOptions]
+        attr_accessor :data_access
       
         def initialize(**args)
            update!(**args)
@@ -575,12 +613,18 @@ module Google
         def update!(**args)
           @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
           @counter = args[:counter] if args.key?(:counter)
+          @data_access = args[:data_access] if args.key?(:data_access)
         end
       end
       
       # Write a Cloud Audit log
       class LogConfigCloudAuditOptions
         include Google::Apis::Core::Hashable
+      
+        # Authorization-related information used by Cloud Audit Logging.
+        # Corresponds to the JSON property `authorizationLoggingOptions`
+        # @return [Google::Apis::DeploymentmanagerV2::AuthorizationLoggingOptions]
+        attr_accessor :authorization_logging_options
       
         # The log_name to populate in the Cloud Audit Record.
         # Corresponds to the JSON property `logName`
@@ -593,11 +637,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @authorization_logging_options = args[:authorization_logging_options] if args.key?(:authorization_logging_options)
           @log_name = args[:log_name] if args.key?(:log_name)
         end
       end
       
-      # Options for counters
+      # Increment a streamz counter with the specified metric and field names.
+      # Metric names should start with a '/', generally be lowercase-only, and end in "
+      # _count". Field names should not contain an initial slash. The actual exported
+      # metric names will have "/iam/policy" prepended.
+      # Field names correspond to IAM request parameters and field values are their
+      # respective values.
+      # At present the only supported field names are - "iam_principal", corresponding
+      # to IAMContext.principal; - "" (empty string), resulting in one aggretated
+      # counter with no field.
+      # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
+      # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
+      # of IAMContext.principal]`
+      # At this time we do not support: * multiple field names (though this may be
+      # supported in the future) * decrementing the counter * incrementing it by
+      # anything other than 1
       class LogConfigCounterOptions
         include Google::Apis::Core::Hashable
       
@@ -619,6 +678,26 @@ module Google
         def update!(**args)
           @field = args[:field] if args.key?(:field)
           @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # Write a Data Access (Gin) log
+      class LogConfigDataAccessOptions
+        include Google::Apis::Core::Hashable
+      
+        # Whether Gin logging should happen in a fail-closed manner at the caller. This
+        # is relevant only in the LocalIAM implementation, for now.
+        # Corresponds to the JSON property `logMode`
+        # @return [String]
+        attr_accessor :log_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_mode = args[:log_mode] if args.key?(:log_mode)
         end
       end
       

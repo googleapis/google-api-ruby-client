@@ -102,60 +102,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a `Release`.
-        # Only updates to the `ruleset_name` and `test_suite_name` fields will be
-        # honored. `Release` rename is not supported. To create a `Release` use the
-        # CreateRelease method.
-        # @param [String] name
-        #   Resource name for the `Release`.
-        #   `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`
-        #   which affords developers a great deal of flexibility in mapping the name
-        #   to the style that best fits their existing development practices. For
-        #   example, a name could refer to an environment, an app, a version, or some
-        #   combination of three.
-        #   In the table below, for the project name `projects/foo`, the following
-        #   relative release paths show how flat and structured names might be chosen
-        #   to match a desired development / deployment strategy.
-        #   Use Case     | Flat Name           | Structured Name
-        #   -------------|---------------------|----------------
-        #   Environments | releases/qa         | releases/qa
-        #   Apps         | releases/app1_qa    | releases/app1/qa
-        #   Versions     | releases/app1_v2_qa | releases/app1/v2/qa
-        #   The delimiter between the release name path elements can be almost anything
-        #   and it should work equally well with the release name list filter, but in
-        #   many ways the structured paths provide a clearer picture of the
-        #   relationship between `Release` instances.
-        #   Format: `projects/`project_id`/releases/`release_id``
-        # @param [Google::Apis::FirebaserulesV1::Release] release_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaserulesV1::Release] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaserulesV1::Release]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
-          command.request_object = release_object
-          command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
-          command.response_class = Google::Apis::FirebaserulesV1::Release
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Create a `Release`.
         # Release names should reflect the developer's deployment practices. For
         # example, the release name may include the environment name, application
@@ -295,14 +241,14 @@ module Google
         #   In the examples, the filter parameters refer to the search filters are
         #   relative to the project. Fully qualified prefixed may also be used. e.g.
         #   `test_suite_name=projects/foo/testsuites/uuid1`
-        # @param [String] page_token
-        #   Next page token for the next batch of `Release` instances.
         # @param [Fixnum] page_size
         #   Page size to load. Maximum of 100. Defaults to 10.
         #   Note: `page_size` is just a hint and the service may choose to load fewer
         #   than `page_size` results due to the size of the output. To traverse all of
         #   the releases, the caller should iterate until the `page_token` on the
         #   response is empty.
+        # @param [String] page_token
+        #   Next page token for the next batch of `Release` instances.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -320,23 +266,44 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_releases(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_releases(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}/releases', options)
           command.response_representation = Google::Apis::FirebaserulesV1::ListReleasesResponse::Representation
           command.response_class = Google::Apis::FirebaserulesV1::ListReleasesResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Get a `Ruleset` by name including the full `Source` contents.
+        # Update a `Release`.
+        # Only updates to the `ruleset_name` and `test_suite_name` fields will be
+        # honored. `Release` rename is not supported. To create a `Release` use the
+        # CreateRelease method.
         # @param [String] name
-        #   Resource name for the ruleset to get.
-        #   Format: `projects/`project_id`/rulesets/`ruleset_id``
+        #   Resource name for the `Release`.
+        #   `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`
+        #   which affords developers a great deal of flexibility in mapping the name
+        #   to the style that best fits their existing development practices. For
+        #   example, a name could refer to an environment, an app, a version, or some
+        #   combination of three.
+        #   In the table below, for the project name `projects/foo`, the following
+        #   relative release paths show how flat and structured names might be chosen
+        #   to match a desired development / deployment strategy.
+        #   Use Case     | Flat Name           | Structured Name
+        #   -------------|---------------------|----------------
+        #   Environments | releases/qa         | releases/qa
+        #   Apps         | releases/app1_qa    | releases/app1/qa
+        #   Versions     | releases/app1_v2_qa | releases/app1/v2/qa
+        #   The delimiter between the release name path elements can be almost anything
+        #   and it should work equally well with the release name list filter, but in
+        #   many ways the structured paths provide a clearer picture of the
+        #   relationship between `Release` instances.
+        #   Format: `projects/`project_id`/releases/`release_id``
+        # @param [Google::Apis::FirebaserulesV1::Release] release_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -346,69 +313,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaserulesV1::Ruleset] parsed result object
+        # @yieldparam result [Google::Apis::FirebaserulesV1::Release] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FirebaserulesV1::Ruleset]
+        # @return [Google::Apis::FirebaserulesV1::Release]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_ruleset(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
-          command.response_class = Google::Apis::FirebaserulesV1::Ruleset
+        def update_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
+          command.request_object = release_object
+          command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
+          command.response_class = Google::Apis::FirebaserulesV1::Release
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List `Ruleset` metadata only and optionally filter the results by `Ruleset`
-        # name.
-        # The full `Source` contents of a `Ruleset` may be retrieved with
-        # GetRuleset.
-        # @param [String] name
-        #   Resource name for the project.
-        #   Format: `projects/`project_id``
-        # @param [String] filter
-        #   `Ruleset` filter. The list method supports filters with restrictions on
-        #   `Ruleset.name`.
-        #   Filters on `Ruleset.create_time` should use the `date` function which
-        #   parses strings that conform to the RFC 3339 date/time specifications.
-        #   Example: `create_time > date("2017-01-01") AND name=UUID-*`
-        # @param [String] page_token
-        #   Next page token for loading the next batch of `Ruleset` instances.
-        # @param [Fixnum] page_size
-        #   Page size to load. Maximum of 100. Defaults to 10.
-        #   Note: `page_size` is just a hint and the service may choose to load less
-        #   than `page_size` due to the size of the output. To traverse all of the
-        #   releases, caller should iterate until the `page_token` is empty.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaserulesV1::ListRulesetsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaserulesV1::ListRulesetsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_rulesets(name, filter: nil, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}/rulesets', options)
-          command.response_representation = Google::Apis::FirebaserulesV1::ListRulesetsResponse::Representation
-          command.response_class = Google::Apis::FirebaserulesV1::ListRulesetsResponse
-          command.params['name'] = name unless name.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -479,6 +398,87 @@ module Google
           command.response_representation = Google::Apis::FirebaserulesV1::Empty::Representation
           command.response_class = Google::Apis::FirebaserulesV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a `Ruleset` by name including the full `Source` contents.
+        # @param [String] name
+        #   Resource name for the ruleset to get.
+        #   Format: `projects/`project_id`/rulesets/`ruleset_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaserulesV1::Ruleset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaserulesV1::Ruleset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_ruleset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirebaserulesV1::Ruleset::Representation
+          command.response_class = Google::Apis::FirebaserulesV1::Ruleset
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List `Ruleset` metadata only and optionally filter the results by `Ruleset`
+        # name.
+        # The full `Source` contents of a `Ruleset` may be retrieved with
+        # GetRuleset.
+        # @param [String] name
+        #   Resource name for the project.
+        #   Format: `projects/`project_id``
+        # @param [String] filter
+        #   `Ruleset` filter. The list method supports filters with restrictions on
+        #   `Ruleset.name`.
+        #   Filters on `Ruleset.create_time` should use the `date` function which
+        #   parses strings that conform to the RFC 3339 date/time specifications.
+        #   Example: `create_time > date("2017-01-01") AND name=UUID-*`
+        # @param [Fixnum] page_size
+        #   Page size to load. Maximum of 100. Defaults to 10.
+        #   Note: `page_size` is just a hint and the service may choose to load less
+        #   than `page_size` due to the size of the output. To traverse all of the
+        #   releases, caller should iterate until the `page_token` is empty.
+        # @param [String] page_token
+        #   Next page token for loading the next batch of `Ruleset` instances.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaserulesV1::ListRulesetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaserulesV1::ListRulesetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_rulesets(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}/rulesets', options)
+          command.response_representation = Google::Apis::FirebaserulesV1::ListRulesetsResponse::Representation
+          command.response_class = Google::Apis::FirebaserulesV1::ListRulesetsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

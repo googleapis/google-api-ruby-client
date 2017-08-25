@@ -22,7 +22,7 @@ module Google
     module ScriptV1
       # Google Apps Script Execution API
       #
-      # Executes Google Apps Script projects.
+      # Executes functions in Google Apps Script projects.
       #
       # @example
       #    require 'google/apis/script_v1'
@@ -33,14 +33,14 @@ module Google
       # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
       class ScriptService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
 
         def initialize
           super('https://script.googleapis.com/', '')
@@ -56,14 +56,14 @@ module Google
         # authentication token, open the project in the script editor, then select
         # **File > Project properties** and click the **Scopes** tab.
         # @param [String] script_id
-        #   The project key of the script to be executed. To find the project key, open
+        #   The script ID of the script to be executed. To find the script ID, open
         #   the project in the script editor and select **File > Project properties**.
         # @param [Google::Apis::ScriptV1::ExecutionRequest] execution_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -76,23 +76,23 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_script(script_id, execution_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def run_script(script_id, execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/scripts/{scriptId}:run', options)
           command.request_representation = Google::Apis::ScriptV1::ExecutionRequest::Representation
           command.request_object = execution_request_object
           command.response_representation = Google::Apis::ScriptV1::Operation::Representation
           command.response_class = Google::Apis::ScriptV1::Operation
           command.params['scriptId'] = script_id unless script_id.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
 
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

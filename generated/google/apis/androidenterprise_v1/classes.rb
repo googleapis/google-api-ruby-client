@@ -106,6 +106,34 @@ module Google
         end
       end
       
+      # The Android Device Policy configuration of an enterprise.
+      class AndroidDevicePolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#androidDevicePolicyConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The state of Android Device Policy. "enabled" indicates that Android Device
+        # Policy is enabled for the enterprise and the EMM is allowed to manage devices
+        # with Android Device Policy, while "disabled" means that it cannot.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Represents the list of app restrictions available to be pre-configured for the
       # product.
       class AppRestrictionsSchema
@@ -1668,6 +1696,9 @@ module Google
         # access all products that are approved for the enterprise. If the value is "
         # allApproved" or "includeAll", the productId field is ignored. If no value is
         # provided, it is interpreted as "whitelist" for backwards compatibility.
+        # Further "allApproved" or "includeAll" does not enable automatic visibility of "
+        # alpha" or "beta" tracks for Android app. Use ProductVisibility to enable "
+        # alpha" or "beta" tracks per user.
         # Corresponds to the JSON property `productSetBehavior`
         # @return [String]
         attr_accessor :product_set_behavior

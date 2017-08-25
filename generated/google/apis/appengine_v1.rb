@@ -26,16 +26,16 @@ module Google
     # @see https://cloud.google.com/appengine/docs/admin-api/
     module AppengineV1
       VERSION = 'V1'
-      REVISION = '20170626'
+      REVISION = '20170818'
 
       # View and manage your applications deployed on Google App Engine
       AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'
 
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
-
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
     end
   end
 end

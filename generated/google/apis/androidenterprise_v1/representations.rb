@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidDevicePolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppRestrictionsSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -403,6 +409,14 @@ module Google
           property :kind, as: 'kind'
           property :parent, as: 'parent'
           collection :permission, as: 'permission'
+        end
+      end
+      
+      class AndroidDevicePolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :state, as: 'state'
         end
       end
       

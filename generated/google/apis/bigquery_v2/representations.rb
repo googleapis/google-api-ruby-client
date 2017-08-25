@@ -488,19 +488,29 @@ module Google
       class ExplainQueryStage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_ms_avg, :numeric_string => true, as: 'computeMsAvg'
+          property :compute_ms_max, :numeric_string => true, as: 'computeMsMax'
           property :compute_ratio_avg, as: 'computeRatioAvg'
           property :compute_ratio_max, as: 'computeRatioMax'
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
+          property :read_ms_avg, :numeric_string => true, as: 'readMsAvg'
+          property :read_ms_max, :numeric_string => true, as: 'readMsMax'
           property :read_ratio_avg, as: 'readRatioAvg'
           property :read_ratio_max, as: 'readRatioMax'
           property :records_read, :numeric_string => true, as: 'recordsRead'
           property :records_written, :numeric_string => true, as: 'recordsWritten'
+          property :shuffle_output_bytes, :numeric_string => true, as: 'shuffleOutputBytes'
+          property :shuffle_output_bytes_spilled, :numeric_string => true, as: 'shuffleOutputBytesSpilled'
           property :status, as: 'status'
           collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
       
+          property :wait_ms_avg, :numeric_string => true, as: 'waitMsAvg'
+          property :wait_ms_max, :numeric_string => true, as: 'waitMsMax'
           property :wait_ratio_avg, as: 'waitRatioAvg'
           property :wait_ratio_max, as: 'waitRatioMax'
+          property :write_ms_avg, :numeric_string => true, as: 'writeMsAvg'
+          property :write_ms_max, :numeric_string => true, as: 'writeMsMax'
           property :write_ratio_avg, as: 'writeRatioAvg'
           property :write_ratio_max, as: 'writeRatioMax'
         end
@@ -645,6 +655,8 @@ module Google
           property :skip_leading_rows, as: 'skipLeadingRows'
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
+          property :time_partitioning, as: 'timePartitioning', class: Google::Apis::BigqueryV2::TimePartitioning, decorator: Google::Apis::BigqueryV2::TimePartitioning::Representation
+      
           property :write_disposition, as: 'writeDisposition'
         end
       end
@@ -669,6 +681,8 @@ module Google
       
           collection :schema_update_options, as: 'schemaUpdateOptions'
           hash :table_definitions, as: 'tableDefinitions', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
+      
+          property :time_partitioning, as: 'timePartitioning', class: Google::Apis::BigqueryV2::TimePartitioning, decorator: Google::Apis::BigqueryV2::TimePartitioning::Representation
       
           property :use_legacy_sql, as: 'useLegacySql'
           property :use_query_cache, as: 'useQueryCache'
@@ -770,6 +784,7 @@ module Google
       class JobStatistics3
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bad_records, :numeric_string => true, as: 'badRecords'
           property :input_file_bytes, :numeric_string => true, as: 'inputFileBytes'
           property :input_files, :numeric_string => true, as: 'inputFiles'
           property :output_bytes, :numeric_string => true, as: 'outputBytes'

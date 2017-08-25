@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AliasIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -416,6 +422,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Allowed
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class Denied
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -1306,6 +1318,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworkSecondaryRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworksExpandIpCidrRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1848,6 +1866,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class AliasIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :subnetwork_range_name, as: 'subnetworkRangeName'
         end
       end
       
@@ -2453,11 +2479,16 @@ module Google
           collection :allowed, as: 'allowed', class: Google::Apis::ComputeV1::Firewall::Allowed, decorator: Google::Apis::ComputeV1::Firewall::Allowed::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :denied, as: 'denied', class: Google::Apis::ComputeV1::Firewall::Denied, decorator: Google::Apis::ComputeV1::Firewall::Denied::Representation
+      
           property :description, as: 'description'
+          collection :destination_ranges, as: 'destinationRanges'
+          property :direction, as: 'direction'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :priority, as: 'priority'
           property :self_link, as: 'selfLink'
           collection :source_ranges, as: 'sourceRanges'
           collection :source_tags, as: 'sourceTags'
@@ -2465,6 +2496,14 @@ module Google
         end
         
         class Allowed
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :ip_protocol, as: 'IPProtocol'
+            collection :ports, as: 'ports'
+          end
+        end
+        
+        class Denied
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :ip_protocol, as: 'IPProtocol'
@@ -3404,6 +3443,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_configs, as: 'accessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfig::Representation
       
+          collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -4121,6 +4162,8 @@ module Google
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :region, as: 'region'
+          collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeV1::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeV1::SubnetworkSecondaryRange::Representation
+      
           property :self_link, as: 'selfLink'
         end
       end
@@ -4146,6 +4189,14 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SubnetworkSecondaryRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :range_name, as: 'rangeName'
         end
       end
       

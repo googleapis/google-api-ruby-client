@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountStatusAccountLevelIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountStatusDataQualityIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -983,10 +989,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          collection :account_level_issues, as: 'accountLevelIssues', class: Google::Apis::ContentV2::AccountStatusAccountLevelIssue, decorator: Google::Apis::ContentV2::AccountStatusAccountLevelIssue::Representation
+      
           collection :data_quality_issues, as: 'dataQualityIssues', class: Google::Apis::ContentV2::AccountStatusDataQualityIssue, decorator: Google::Apis::ContentV2::AccountStatusDataQualityIssue::Representation
       
           property :kind, as: 'kind'
           property :website_claimed, as: 'websiteClaimed'
+        end
+      end
+      
+      class AccountStatusAccountLevelIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :detail, as: 'detail'
+          property :id, as: 'id'
+          property :severity, as: 'severity'
+          property :title, as: 'title'
         end
       end
       
@@ -1263,6 +1282,7 @@ module Google
           property :hour, as: 'hour'
           property :minute_of_hour, as: 'minuteOfHour'
           property :password, as: 'password'
+          property :paused, as: 'paused'
           property :time_zone, as: 'timeZone'
           property :username, as: 'username'
           property :weekday, as: 'weekday'
@@ -2338,6 +2358,8 @@ module Google
           property :kind, as: 'kind'
           property :last_update_date, as: 'lastUpdateDate'
           property :link, as: 'link'
+          property :product, as: 'product', class: Google::Apis::ContentV2::Product, decorator: Google::Apis::ContentV2::Product::Representation
+      
           property :product_id, as: 'productId'
           property :title, as: 'title'
         end
@@ -2457,6 +2479,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
+          property :include_attributes, as: 'includeAttributes'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
           property :product_id, as: 'productId'

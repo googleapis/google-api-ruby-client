@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizationLoggingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Autoscaler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FixedOrPercent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ForwardingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -659,6 +671,24 @@ module Google
       end
       
       class InstanceGroupManagerList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerPendingActionsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +910,90 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Interconnect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentPrivateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectCircuitInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectLocationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectLocationRegionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectOutageNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class License
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -899,6 +1013,12 @@ module Google
       end
       
       class LogConfigCounterOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigDataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1007,6 +1127,12 @@ module Google
       end
       
       class NetworkPeering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1367,6 +1493,36 @@ module Google
       end
       
       class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPoliciesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1930,6 +2086,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
+          property :address_type, as: 'addressType'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -1941,6 +2098,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :subnetwork, as: 'subnetwork'
           collection :users, as: 'users'
         end
       end
@@ -2053,6 +2211,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AuthorizationLoggingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission_type, as: 'permissionType'
         end
       end
       
@@ -2242,6 +2407,7 @@ module Google
           property :port_name, as: 'portName'
           property :protocol, as: 'protocol'
           property :region, as: 'region'
+          property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
@@ -2709,6 +2875,15 @@ module Google
         end
       end
       
+      class FixedOrPercent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calculated, as: 'calculated'
+          property :fixed, as: 'fixed'
+          property :percent, as: 'percent'
+        end
+      end
+      
       class ForwardingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3120,11 +3295,17 @@ module Google
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
+          property :pending_actions, as: 'pendingActions', class: Google::Apis::ComputeBeta::InstanceGroupManagerPendingActionsSummary, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerPendingActionsSummary::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
+          property :update_policy, as: 'updatePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy::Representation
+      
+          collection :versions, as: 'versions', class: Google::Apis::ComputeBeta::InstanceGroupManagerVersion, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerVersion::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -3140,6 +3321,7 @@ module Google
           property :recreating, as: 'recreating'
           property :refreshing, as: 'refreshing'
           property :restarting, as: 'restarting'
+          property :verifying, as: 'verifying'
         end
       end
       
@@ -3172,6 +3354,39 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceGroupManagerPendingActionsSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creating, as: 'creating'
+          property :deleting, as: 'deleting'
+          property :recreating, as: 'recreating'
+          property :restarting, as: 'restarting'
+        end
+      end
+      
+      class InstanceGroupManagerUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_surge, as: 'maxSurge', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
+      
+          property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
+      
+          property :min_ready_sec, as: 'minReadySec'
+          property :minimal_action, as: 'minimalAction'
+          property :type, as: 'type'
+        end
+      end
+      
+      class InstanceGroupManagerVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_template, as: 'instanceTemplate'
+          property :name, as: 'name'
+          property :target_size, as: 'targetSize', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
+      
         end
       end
       
@@ -3510,6 +3725,194 @@ module Google
         end
       end
       
+      class Interconnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          collection :circuit_infos, as: 'circuitInfos', class: Google::Apis::ComputeBeta::InterconnectCircuitInfo, decorator: Google::Apis::ComputeBeta::InterconnectCircuitInfo::Representation
+      
+          property :connection_authorization, as: 'connectionAuthorization'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :customer_name, as: 'customerName'
+          property :description, as: 'description'
+          collection :expected_outages, as: 'expectedOutages', class: Google::Apis::ComputeBeta::InterconnectOutageNotification, decorator: Google::Apis::ComputeBeta::InterconnectOutageNotification::Representation
+      
+          property :google_ip_address, as: 'googleIpAddress'
+          property :google_reference_id, as: 'googleReferenceId'
+          property :id, :numeric_string => true, as: 'id'
+          collection :interconnect_attachments, as: 'interconnectAttachments'
+          property :interconnect_type, as: 'interconnectType'
+          property :kind, as: 'kind'
+          property :link_type, as: 'linkType'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :noc_contact_email, as: 'nocContactEmail'
+          property :operational_status, as: 'operationalStatus'
+          property :peer_ip_address, as: 'peerIpAddress'
+          property :provisioned_link_count, as: 'provisionedLinkCount'
+          property :requested_link_count, as: 'requestedLinkCount'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :customer_router_ip_address, as: 'customerRouterIpAddress'
+          property :description, as: 'description'
+          property :google_reference_id, as: 'googleReferenceId'
+          property :id, :numeric_string => true, as: 'id'
+          property :interconnect, as: 'interconnect'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :operational_status, as: 'operationalStatus'
+          property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo::Representation
+      
+          property :region, as: 'region'
+          property :router, as: 'router'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectAttachmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::InterconnectAttachmentsScopedList, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectAttachmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InterconnectAttachment, decorator: Google::Apis::ComputeBeta::InterconnectAttachment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectAttachmentPrivateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag8021q, as: 'tag8021q'
+        end
+      end
+      
+      class InterconnectAttachmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :interconnect_attachments, as: 'interconnectAttachments', class: Google::Apis::ComputeBeta::InterconnectAttachment, decorator: Google::Apis::ComputeBeta::InterconnectAttachment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InterconnectAttachmentsScopedList::Warning, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InterconnectAttachmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InterconnectCircuitInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_demarc_id, as: 'customerDemarcId'
+          property :google_circuit_id, as: 'googleCircuitId'
+          property :google_demarc_id, as: 'googleDemarcId'
+        end
+      end
+      
+      class InterconnectList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::Interconnect, decorator: Google::Apis::ComputeBeta::Interconnect::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :availability_zone, as: 'availabilityZone'
+          property :city, as: 'city'
+          property :continent, as: 'continent'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :facility_provider, as: 'facilityProvider'
+          property :facility_provider_facility_id, as: 'facilityProviderFacilityId'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :peeringdb_facility_id, as: 'peeringdbFacilityId'
+          collection :region_infos, as: 'regionInfos', class: Google::Apis::ComputeBeta::InterconnectLocationRegionInfo, decorator: Google::Apis::ComputeBeta::InterconnectLocationRegionInfo::Representation
+      
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectLocationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InterconnectLocation, decorator: Google::Apis::ComputeBeta::InterconnectLocation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InterconnectLocationRegionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
+          property :location_presence, as: 'locationPresence'
+          property :region, as: 'region'
+          property :region_key, as: 'regionKey'
+        end
+      end
+      
+      class InterconnectOutageNotification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :affected_circuits, as: 'affectedCircuits'
+          property :description, as: 'description'
+          property :end_time, :numeric_string => true, as: 'endTime'
+          property :issue_type, as: 'issueType'
+          property :name, as: 'name'
+          property :source, as: 'source'
+          property :start_time, :numeric_string => true, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class License
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3527,12 +3930,16 @@ module Google
       
           property :counter, as: 'counter', class: Google::Apis::ComputeBeta::LogConfigCounterOptions, decorator: Google::Apis::ComputeBeta::LogConfigCounterOptions::Representation
       
+          property :data_access, as: 'dataAccess', class: Google::Apis::ComputeBeta::LogConfigDataAccessOptions, decorator: Google::Apis::ComputeBeta::LogConfigDataAccessOptions::Representation
+      
         end
       end
       
       class LogConfigCloudAuditOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::ComputeBeta::AuthorizationLoggingOptions, decorator: Google::Apis::ComputeBeta::AuthorizationLoggingOptions::Representation
+      
           property :log_name, as: 'logName'
         end
       end
@@ -3542,6 +3949,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigDataAccessOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_mode, as: 'logMode'
         end
       end
       
@@ -3703,6 +4117,8 @@ module Google
           property :name, as: 'name'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeBeta::NetworkPeering, decorator: Google::Apis::ComputeBeta::NetworkPeering::Representation
       
+          property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeBeta::NetworkRoutingConfig, decorator: Google::Apis::ComputeBeta::NetworkRoutingConfig::Representation
+      
           property :self_link, as: 'selfLink'
           collection :subnetworks, as: 'subnetworks'
         end
@@ -3743,6 +4159,13 @@ module Google
           property :network, as: 'network'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class NetworkRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :routing_mode, as: 'routingMode'
         end
       end
       
@@ -4267,6 +4690,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_range, as: 'ipRange'
+          property :linked_interconnect_attachment, as: 'linkedInterconnectAttachment'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :name, as: 'name'
         end
@@ -4391,6 +4815,59 @@ module Google
           property :automatic_restart, as: 'automaticRestart'
           property :on_host_maintenance, as: 'onHostMaintenance'
           property :preemptible, as: 'preemptible'
+        end
+      end
+      
+      class SecurityPoliciesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::SecurityPolicy, decorator: Google::Apis::ComputeBeta::SecurityPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SecurityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
+      
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SecurityPolicyReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_policy, as: 'securityPolicy'
+        end
+      end
+      
+      class SecurityPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :description, as: 'description'
+          property :kind, as: 'kind'
+          property :match, as: 'match', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher::Representation
+      
+          property :preview, as: 'preview'
+          property :priority, as: 'priority'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :src_ip_ranges, as: 'srcIpRanges'
         end
       end
       

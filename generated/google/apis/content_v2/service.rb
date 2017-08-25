@@ -88,8 +88,8 @@ module Google
         
         # Claims the website of a Merchant Center sub-account. This method can only be
         # called for accounts to which the managing account has access: either the
-        # managing account itself or sub-accounts if the managing account is a multi-
-        # client account.
+        # managing account itself for any Merchant Center account, or any sub-account
+        # when the managing account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -212,7 +212,8 @@ module Google
         
         # Retrieves a Merchant Center account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
-        # itself or sub-accounts if the managing account is a multi-client account.
+        # itself for any Merchant Center account, or any sub-account when the managing
+        # account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -336,8 +337,8 @@ module Google
         
         # Updates a Merchant Center account. This method can only be called for accounts
         # to which the managing account has access: either the managing account itself
-        # or sub-accounts if the managing account is a multi-client account. This method
-        # supports patch semantics.
+        # for any Merchant Center account, or any sub-account when the managing account
+        # is a multi-client account. This method supports patch semantics.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -383,7 +384,8 @@ module Google
         
         # Updates a Merchant Center account. This method can only be called for accounts
         # to which the managing account has access: either the managing account itself
-        # or sub-accounts if the managing account is a multi-client account.
+        # for any Merchant Center account, or any sub-account when the managing account
+        # is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -464,8 +466,8 @@ module Google
         
         # Retrieves the status of a Merchant Center account. This method can only be
         # called for accounts to which the managing account has access: either the
-        # managing account itself or sub-accounts if the managing account is a multi-
-        # client account.
+        # managing account itself for any Merchant Center account, or any sub-account
+        # when the managing account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -586,7 +588,8 @@ module Google
         
         # Retrieves the tax settings of the account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
-        # itself or sub-accounts if the managing account is a multi-client account.
+        # itself for any Merchant Center account, or any sub-account when the managing
+        # account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -668,8 +671,8 @@ module Google
         
         # Updates the tax settings of the account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
-        # itself or sub-accounts if the managing account is a multi-client account. This
-        # method supports patch semantics.
+        # itself for any Merchant Center account, or any sub-account when the managing
+        # account is a multi-client account. This method supports patch semantics.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -715,7 +718,8 @@ module Google
         
         # Updates the tax settings of the account. This method can only be called for
         # accounts to which the managing account has access: either the managing account
-        # itself or sub-accounts if the managing account is a multi-client account.
+        # itself for any Merchant Center account, or any sub-account when the managing
+        # account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -2271,8 +2275,8 @@ module Google
         
         # Retrieves the shipping settings of the account. This method can only be called
         # for accounts to which the managing account has access: either the managing
-        # account itself or sub-accounts if the managing account is a multi-client
-        # account.
+        # account itself for any Merchant Center account, or any sub-account when the
+        # managing account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -2390,8 +2394,9 @@ module Google
         
         # Updates the shipping settings of the account. This method can only be called
         # for accounts to which the managing account has access: either the managing
-        # account itself or sub-accounts if the managing account is a multi-client
-        # account. This method supports patch semantics.
+        # account itself for any Merchant Center account, or any sub-account when the
+        # managing account is a multi-client account. This method supports patch
+        # semantics.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id
@@ -2437,8 +2442,8 @@ module Google
         
         # Updates the shipping settings of the account. This method can only be called
         # for accounts to which the managing account has access: either the managing
-        # account itself or sub-accounts if the managing account is a multi-client
-        # account.
+        # account itself for any Merchant Center account, or any sub-account when the
+        # managing account is a multi-client account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account.
         # @param [Fixnum] account_id

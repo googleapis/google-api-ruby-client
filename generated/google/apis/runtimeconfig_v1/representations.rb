@@ -28,13 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -46,7 +40,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,24 +58,9 @@ module Google
         end
       end
       
-      class Status
+      class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          collection :details, as: 'details'
-          property :code, as: 'code'
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :metadata, as: 'metadata'
-          property :done, as: 'done'
-          hash :response, as: 'response'
-          property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::RuntimeconfigV1::Status, decorator: Google::Apis::RuntimeconfigV1::Status::Representation
-      
         end
       end
       
@@ -88,9 +73,24 @@ module Google
         end
       end
       
-      class Empty
+      class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::RuntimeconfigV1::Status, decorator: Google::Apis::RuntimeconfigV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
     end

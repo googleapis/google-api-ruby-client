@@ -22,13 +22,7 @@ module Google
   module Apis
     module ClouddebuggerV2
       
-      class CloudWorkspaceId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListBreakpointsResponse
+      class AliasContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +34,103 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateActiveBreakpointRequest
+      class CloudRepoSourceContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudWorkspaceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudWorkspaceSourceContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Debuggee
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtendedSourceContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FormatMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GerritSourceContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetBreakpointResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitSourceContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListActiveBreakpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBreakpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDebuggeesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectRepoId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegisterDebuggeeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegisterDebuggeeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepoId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,43 +148,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudRepoSourceContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegisterDebuggeeResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegisterDebuggeeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GetBreakpointResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StatusMessage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitSourceContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Variable
+      class SourceLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,67 +160,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RepoId
+      class StatusMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FormatMessage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ExtendedSourceContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListDebuggeesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AliasContext
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SourceLocation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Debuggee
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ProjectRepoId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListActiveBreakpointsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudWorkspaceSourceContext
+      class UpdateActiveBreakpointRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,18 +178,155 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GerritSourceContext
+      class Variable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AliasContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      class Breakpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :condition, as: 'condition'
+          property :create_time, as: 'createTime'
+          collection :evaluated_expressions, as: 'evaluatedExpressions', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
+      
+          collection :expressions, as: 'expressions'
+          property :final_time, as: 'finalTime'
+          property :id, as: 'id'
+          property :is_final_state, as: 'isFinalState'
+          hash :labels, as: 'labels'
+          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
+      
+          property :log_level, as: 'logLevel'
+          property :log_message_format, as: 'logMessageFormat'
+          collection :stack_frames, as: 'stackFrames', class: Google::Apis::ClouddebuggerV2::StackFrame, decorator: Google::Apis::ClouddebuggerV2::StackFrame::Representation
+      
+          property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
+      
+          property :user_email, as: 'userEmail'
+          collection :variable_table, as: 'variableTable', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
+      
+        end
+      end
+      
+      class CloudRepoSourceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias_context, as: 'aliasContext', class: Google::Apis::ClouddebuggerV2::AliasContext, decorator: Google::Apis::ClouddebuggerV2::AliasContext::Representation
+      
+          property :alias_name, as: 'aliasName'
+          property :repo_id, as: 'repoId', class: Google::Apis::ClouddebuggerV2::RepoId, decorator: Google::Apis::ClouddebuggerV2::RepoId::Representation
+      
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
       class CloudWorkspaceId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :repo_id, as: 'repoId', class: Google::Apis::ClouddebuggerV2::RepoId, decorator: Google::Apis::ClouddebuggerV2::RepoId::Representation
       
-          property :name, as: 'name'
+        end
+      end
+      
+      class CloudWorkspaceSourceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_id, as: 'snapshotId'
+          property :workspace_id, as: 'workspaceId', class: Google::Apis::ClouddebuggerV2::CloudWorkspaceId, decorator: Google::Apis::ClouddebuggerV2::CloudWorkspaceId::Representation
+      
+        end
+      end
+      
+      class Debuggee
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_version, as: 'agentVersion'
+          property :description, as: 'description'
+          collection :ext_source_contexts, as: 'extSourceContexts', class: Google::Apis::ClouddebuggerV2::ExtendedSourceContext, decorator: Google::Apis::ClouddebuggerV2::ExtendedSourceContext::Representation
+      
+          property :id, as: 'id'
+          property :is_disabled, as: 'isDisabled'
+          property :is_inactive, as: 'isInactive'
+          hash :labels, as: 'labels'
+          property :project, as: 'project'
+          collection :source_contexts, as: 'sourceContexts', class: Google::Apis::ClouddebuggerV2::SourceContext, decorator: Google::Apis::ClouddebuggerV2::SourceContext::Representation
+      
+          property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
+      
+          property :uniquifier, as: 'uniquifier'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExtendedSourceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context', class: Google::Apis::ClouddebuggerV2::SourceContext, decorator: Google::Apis::ClouddebuggerV2::SourceContext::Representation
+      
+          hash :labels, as: 'labels'
+        end
+      end
+      
+      class FormatMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          collection :parameters, as: 'parameters'
+        end
+      end
+      
+      class GerritSourceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias_context, as: 'aliasContext', class: Google::Apis::ClouddebuggerV2::AliasContext, decorator: Google::Apis::ClouddebuggerV2::AliasContext::Representation
+      
+          property :alias_name, as: 'aliasName'
+          property :gerrit_project, as: 'gerritProject'
+          property :host_uri, as: 'hostUri'
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class GetBreakpointResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :breakpoint, as: 'breakpoint', class: Google::Apis::ClouddebuggerV2::Breakpoint, decorator: Google::Apis::ClouddebuggerV2::Breakpoint::Representation
+      
+        end
+      end
+      
+      class GitSourceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revision_id, as: 'revisionId'
+          property :url, as: 'url'
+        end
+      end
+      
+      class ListActiveBreakpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :breakpoints, as: 'breakpoints', class: Google::Apis::ClouddebuggerV2::Breakpoint, decorator: Google::Apis::ClouddebuggerV2::Breakpoint::Representation
+      
+          property :next_wait_token, as: 'nextWaitToken'
+          property :wait_expired, as: 'waitExpired'
         end
       end
       
@@ -202,38 +339,44 @@ module Google
         end
       end
       
-      class Breakpoint
+      class ListDebuggeesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :user_email, as: 'userEmail'
-          property :action, as: 'action'
-          property :log_level, as: 'logLevel'
-          property :id, as: 'id'
-          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
-      
-          property :final_time, as: 'finalTime'
-          collection :variable_table, as: 'variableTable', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
-          hash :labels, as: 'labels'
-          property :log_message_format, as: 'logMessageFormat'
-          property :create_time, as: 'createTime'
-          collection :expressions, as: 'expressions'
-          collection :evaluated_expressions, as: 'evaluatedExpressions', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
-          property :is_final_state, as: 'isFinalState'
-          collection :stack_frames, as: 'stackFrames', class: Google::Apis::ClouddebuggerV2::StackFrame, decorator: Google::Apis::ClouddebuggerV2::StackFrame::Representation
-      
-          property :condition, as: 'condition'
-          property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
+          collection :debuggees, as: 'debuggees', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
       
         end
       end
       
-      class UpdateActiveBreakpointRequest
+      class ProjectRepoId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :breakpoint, as: 'breakpoint', class: Google::Apis::ClouddebuggerV2::Breakpoint, decorator: Google::Apis::ClouddebuggerV2::Breakpoint::Representation
+          property :project_id, as: 'projectId'
+          property :repo_name, as: 'repoName'
+        end
+      end
       
+      class RegisterDebuggeeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :debuggee, as: 'debuggee', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
+      
+        end
+      end
+      
+      class RegisterDebuggeeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :debuggee, as: 'debuggee', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
+      
+        end
+      end
+      
+      class RepoId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_repo_id, as: 'projectRepoId', class: Google::Apis::ClouddebuggerV2::ProjectRepoId, decorator: Google::Apis::ClouddebuggerV2::ProjectRepoId::Representation
+      
+          property :uid, as: 'uid'
         end
       end
       
@@ -248,49 +391,34 @@ module Google
       class SourceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :gerrit, as: 'gerrit', class: Google::Apis::ClouddebuggerV2::GerritSourceContext, decorator: Google::Apis::ClouddebuggerV2::GerritSourceContext::Representation
+          property :cloud_repo, as: 'cloudRepo', class: Google::Apis::ClouddebuggerV2::CloudRepoSourceContext, decorator: Google::Apis::ClouddebuggerV2::CloudRepoSourceContext::Representation
       
           property :cloud_workspace, as: 'cloudWorkspace', class: Google::Apis::ClouddebuggerV2::CloudWorkspaceSourceContext, decorator: Google::Apis::ClouddebuggerV2::CloudWorkspaceSourceContext::Representation
       
-          property :cloud_repo, as: 'cloudRepo', class: Google::Apis::ClouddebuggerV2::CloudRepoSourceContext, decorator: Google::Apis::ClouddebuggerV2::CloudRepoSourceContext::Representation
+          property :gerrit, as: 'gerrit', class: Google::Apis::ClouddebuggerV2::GerritSourceContext, decorator: Google::Apis::ClouddebuggerV2::GerritSourceContext::Representation
       
           property :git, as: 'git', class: Google::Apis::ClouddebuggerV2::GitSourceContext, decorator: Google::Apis::ClouddebuggerV2::GitSourceContext::Representation
       
         end
       end
       
-      class CloudRepoSourceContext
+      class SourceLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :repo_id, as: 'repoId', class: Google::Apis::ClouddebuggerV2::RepoId, decorator: Google::Apis::ClouddebuggerV2::RepoId::Representation
-      
-          property :alias_context, as: 'aliasContext', class: Google::Apis::ClouddebuggerV2::AliasContext, decorator: Google::Apis::ClouddebuggerV2::AliasContext::Representation
-      
-          property :revision_id, as: 'revisionId'
-          property :alias_name, as: 'aliasName'
+          property :line, as: 'line'
+          property :path, as: 'path'
         end
       end
       
-      class RegisterDebuggeeResponse
+      class StackFrame
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :debuggee, as: 'debuggee', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
+          collection :arguments, as: 'arguments', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
-        end
-      end
+          property :function, as: 'function'
+          collection :locals, as: 'locals', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
-      class RegisterDebuggeeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :debuggee, as: 'debuggee', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
-      
-        end
-      end
-      
-      class GetBreakpointResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :breakpoint, as: 'breakpoint', class: Google::Apis::ClouddebuggerV2::Breakpoint, decorator: Google::Apis::ClouddebuggerV2::Breakpoint::Representation
+          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
       
         end
       end
@@ -305,140 +433,10 @@ module Google
         end
       end
       
-      class GitSourceContext
+      class UpdateActiveBreakpointRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :revision_id, as: 'revisionId'
-          property :url, as: 'url'
-        end
-      end
-      
-      class Variable
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :members, as: 'members', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
-          property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
-      
-          property :name, as: 'name'
-          property :type, as: 'type'
-          property :var_table_index, as: 'varTableIndex'
-          property :value, as: 'value'
-        end
-      end
-      
-      class StackFrame
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :function, as: 'function'
-          collection :arguments, as: 'arguments', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
-          collection :locals, as: 'locals', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
-      
-          property :location, as: 'location', class: Google::Apis::ClouddebuggerV2::SourceLocation, decorator: Google::Apis::ClouddebuggerV2::SourceLocation::Representation
-      
-        end
-      end
-      
-      class RepoId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uid, as: 'uid'
-          property :project_repo_id, as: 'projectRepoId', class: Google::Apis::ClouddebuggerV2::ProjectRepoId, decorator: Google::Apis::ClouddebuggerV2::ProjectRepoId::Representation
-      
-        end
-      end
-      
-      class FormatMessage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :parameters, as: 'parameters'
-          property :format, as: 'format'
-        end
-      end
-      
-      class ExtendedSourceContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context', class: Google::Apis::ClouddebuggerV2::SourceContext, decorator: Google::Apis::ClouddebuggerV2::SourceContext::Representation
-      
-          hash :labels, as: 'labels'
-        end
-      end
-      
-      class ListDebuggeesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :debuggees, as: 'debuggees', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
-      
-        end
-      end
-      
-      class AliasContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class SourceLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :path, as: 'path'
-          property :line, as: 'line'
-        end
-      end
-      
-      class Debuggee
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :uniquifier, as: 'uniquifier'
-          collection :source_contexts, as: 'sourceContexts', class: Google::Apis::ClouddebuggerV2::SourceContext, decorator: Google::Apis::ClouddebuggerV2::SourceContext::Representation
-      
-          collection :ext_source_contexts, as: 'extSourceContexts', class: Google::Apis::ClouddebuggerV2::ExtendedSourceContext, decorator: Google::Apis::ClouddebuggerV2::ExtendedSourceContext::Representation
-      
-          hash :labels, as: 'labels'
-          property :is_inactive, as: 'isInactive'
-          property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
-      
-          property :project, as: 'project'
-          property :is_disabled, as: 'isDisabled'
-          property :agent_version, as: 'agentVersion'
-          property :id, as: 'id'
-        end
-      end
-      
-      class ProjectRepoId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :repo_name, as: 'repoName'
-          property :project_id, as: 'projectId'
-        end
-      end
-      
-      class ListActiveBreakpointsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :wait_expired, as: 'waitExpired'
-          property :next_wait_token, as: 'nextWaitToken'
-          collection :breakpoints, as: 'breakpoints', class: Google::Apis::ClouddebuggerV2::Breakpoint, decorator: Google::Apis::ClouddebuggerV2::Breakpoint::Representation
-      
-        end
-      end
-      
-      class CloudWorkspaceSourceContext
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :snapshot_id, as: 'snapshotId'
-          property :workspace_id, as: 'workspaceId', class: Google::Apis::ClouddebuggerV2::CloudWorkspaceId, decorator: Google::Apis::ClouddebuggerV2::CloudWorkspaceId::Representation
+          property :breakpoint, as: 'breakpoint', class: Google::Apis::ClouddebuggerV2::Breakpoint, decorator: Google::Apis::ClouddebuggerV2::Breakpoint::Representation
       
         end
       end
@@ -449,15 +447,17 @@ module Google
         end
       end
       
-      class GerritSourceContext
+      class Variable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :revision_id, as: 'revisionId'
-          property :host_uri, as: 'hostUri'
-          property :alias_name, as: 'aliasName'
-          property :alias_context, as: 'aliasContext', class: Google::Apis::ClouddebuggerV2::AliasContext, decorator: Google::Apis::ClouddebuggerV2::AliasContext::Representation
+          collection :members, as: 'members', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
       
-          property :gerrit_project, as: 'gerritProject'
+          property :name, as: 'name'
+          property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
+          property :var_table_index, as: 'varTableIndex'
         end
       end
     end

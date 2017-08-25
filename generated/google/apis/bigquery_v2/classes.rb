@@ -598,6 +598,16 @@ module Google
       class ExplainQueryStage
         include Google::Apis::Core::Hashable
       
+        # Milliseconds the average shard spent on CPU-bound tasks.
+        # Corresponds to the JSON property `computeMsAvg`
+        # @return [Fixnum]
+        attr_accessor :compute_ms_avg
+      
+        # Milliseconds the slowest shard spent on CPU-bound tasks.
+        # Corresponds to the JSON property `computeMsMax`
+        # @return [Fixnum]
+        attr_accessor :compute_ms_max
+      
         # Relative amount of time the average shard spent on CPU-bound tasks.
         # Corresponds to the JSON property `computeRatioAvg`
         # @return [Float]
@@ -617,6 +627,16 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Milliseconds the average shard spent reading input.
+        # Corresponds to the JSON property `readMsAvg`
+        # @return [Fixnum]
+        attr_accessor :read_ms_avg
+      
+        # Milliseconds the slowest shard spent reading input.
+        # Corresponds to the JSON property `readMsMax`
+        # @return [Fixnum]
+        attr_accessor :read_ms_max
       
         # Relative amount of time the average shard spent reading input.
         # Corresponds to the JSON property `readRatioAvg`
@@ -638,6 +658,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :records_written
       
+        # Total number of bytes written to shuffle.
+        # Corresponds to the JSON property `shuffleOutputBytes`
+        # @return [Fixnum]
+        attr_accessor :shuffle_output_bytes
+      
+        # Total number of bytes written to shuffle and spilled to disk.
+        # Corresponds to the JSON property `shuffleOutputBytesSpilled`
+        # @return [Fixnum]
+        attr_accessor :shuffle_output_bytes_spilled
+      
         # Current status for the stage.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -649,6 +679,16 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStep>]
         attr_accessor :steps
       
+        # Milliseconds the average shard spent waiting to be scheduled.
+        # Corresponds to the JSON property `waitMsAvg`
+        # @return [Fixnum]
+        attr_accessor :wait_ms_avg
+      
+        # Milliseconds the slowest shard spent waiting to be scheduled.
+        # Corresponds to the JSON property `waitMsMax`
+        # @return [Fixnum]
+        attr_accessor :wait_ms_max
+      
         # Relative amount of time the average shard spent waiting to be scheduled.
         # Corresponds to the JSON property `waitRatioAvg`
         # @return [Float]
@@ -658,6 +698,16 @@ module Google
         # Corresponds to the JSON property `waitRatioMax`
         # @return [Float]
         attr_accessor :wait_ratio_max
+      
+        # Milliseconds the average shard spent on writing output.
+        # Corresponds to the JSON property `writeMsAvg`
+        # @return [Fixnum]
+        attr_accessor :write_ms_avg
+      
+        # Milliseconds the slowest shard spent on writing output.
+        # Corresponds to the JSON property `writeMsMax`
+        # @return [Fixnum]
+        attr_accessor :write_ms_max
       
         # Relative amount of time the average shard spent on writing output.
         # Corresponds to the JSON property `writeRatioAvg`
@@ -675,18 +725,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compute_ms_avg = args[:compute_ms_avg] if args.key?(:compute_ms_avg)
+          @compute_ms_max = args[:compute_ms_max] if args.key?(:compute_ms_max)
           @compute_ratio_avg = args[:compute_ratio_avg] if args.key?(:compute_ratio_avg)
           @compute_ratio_max = args[:compute_ratio_max] if args.key?(:compute_ratio_max)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @read_ms_avg = args[:read_ms_avg] if args.key?(:read_ms_avg)
+          @read_ms_max = args[:read_ms_max] if args.key?(:read_ms_max)
           @read_ratio_avg = args[:read_ratio_avg] if args.key?(:read_ratio_avg)
           @read_ratio_max = args[:read_ratio_max] if args.key?(:read_ratio_max)
           @records_read = args[:records_read] if args.key?(:records_read)
           @records_written = args[:records_written] if args.key?(:records_written)
+          @shuffle_output_bytes = args[:shuffle_output_bytes] if args.key?(:shuffle_output_bytes)
+          @shuffle_output_bytes_spilled = args[:shuffle_output_bytes_spilled] if args.key?(:shuffle_output_bytes_spilled)
           @status = args[:status] if args.key?(:status)
           @steps = args[:steps] if args.key?(:steps)
+          @wait_ms_avg = args[:wait_ms_avg] if args.key?(:wait_ms_avg)
+          @wait_ms_max = args[:wait_ms_max] if args.key?(:wait_ms_max)
           @wait_ratio_avg = args[:wait_ratio_avg] if args.key?(:wait_ratio_avg)
           @wait_ratio_max = args[:wait_ratio_max] if args.key?(:wait_ratio_max)
+          @write_ms_avg = args[:write_ms_avg] if args.key?(:write_ms_avg)
+          @write_ms_max = args[:write_ms_max] if args.key?(:write_ms_max)
           @write_ratio_avg = args[:write_ratio_avg] if args.key?(:write_ratio_avg)
           @write_ratio_max = args[:write_ratio_max] if args.key?(:write_ratio_max)
         end
@@ -795,8 +855,7 @@ module Google
         # apply to external data sources. For Google Cloud Bigtable URIs: Exactly one
         # URI can be specified and it has be a fully specified and valid HTTPS URL for a
         # Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one
-        # URI can be specified, and it must end with '.backup_info'. Also, the '*'
-        # wildcard character is not allowed.
+        # URI can be specified. Also, the '*' wildcard character is not allowed.
         # Corresponds to the JSON property `sourceUris`
         # @return [Array<String>]
         attr_accessor :source_uris
@@ -1294,9 +1353,10 @@ module Google
         attr_accessor :schema_inline_format
       
         # [Experimental] Allows the schema of the desitination table to be updated as a
-        # side effect of the load job. Schema update options are supported in two cases:
-        # when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
-        # and the destination table is a partition of a table, specified by partition
+        # side effect of the load job if a schema is autodetected or supplied in the job
+        # configuration. Schema update options are supported in two cases: when
+        # writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
+        # the destination table is a partition of a table, specified by partition
         # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
         # One or more of the following values are specified: ALLOW_FIELD_ADDITION:
         # allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
@@ -1320,12 +1380,22 @@ module Google
         # @return [String]
         attr_accessor :source_format
       
-        # [Required] The fully-qualified URIs that point to your data in Google Cloud
-        # Storage. Each URI can contain one '*' wildcard character and it must come
-        # after the 'bucket' name.
+        # [Required] The fully-qualified URIs that point to your data in Google Cloud.
+        # For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+        # and it must come after the 'bucket' name. Size limits related to load jobs
+        # apply to external data sources. For Google Cloud Bigtable URIs: Exactly one
+        # URI can be specified and it has be a fully specified and valid HTTPS URL for a
+        # Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one
+        # URI can be specified. Also, the '*' wildcard character is not allowed.
         # Corresponds to the JSON property `sourceUris`
         # @return [Array<String>]
         attr_accessor :source_uris
+      
+        # [Experimental] If specified, configures time-based partitioning for the
+        # destination table.
+        # Corresponds to the JSON property `timePartitioning`
+        # @return [Google::Apis::BigqueryV2::TimePartitioning]
+        attr_accessor :time_partitioning
       
         # [Optional] Specifies the action that occurs if the destination table already
         # exists. The following values are supported: WRITE_TRUNCATE: If the table
@@ -1364,6 +1434,7 @@ module Google
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
+          @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
@@ -1478,11 +1549,17 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
+        # [Experimental] If specified, configures time-based partitioning for the
+        # destination table.
+        # Corresponds to the JSON property `timePartitioning`
+        # @return [Google::Apis::BigqueryV2::TimePartitioning]
+        attr_accessor :time_partitioning
+      
         # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
         # default value is true. If set to false, the query will use BigQuery's standard
         # SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set
-        # to false, the values of allowLargeResults and flattenResults are ignored;
-        # query will be run as if allowLargeResults is true and flattenResults is false.
+        # to false, the value of flattenResults is ignored; query will be run as if
+        # flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql
@@ -1504,12 +1581,13 @@ module Google
       
         # [Optional] Specifies the action that occurs if the destination table already
         # exists. The following values are supported: WRITE_TRUNCATE: If the table
-        # already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
-        # already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the
-        # table already exists and contains data, a 'duplicate' error is returned in the
-        # job result. The default value is WRITE_EMPTY. Each action is atomic and only
-        # occurs if BigQuery is able to complete the job successfully. Creation,
-        # truncation and append actions occur as one atomic update upon job completion.
+        # already exists, BigQuery overwrites the table data and uses the schema from
+        # the query result. WRITE_APPEND: If the table already exists, BigQuery appends
+        # the data to the table. WRITE_EMPTY: If the table already exists and contains
+        # data, a 'duplicate' error is returned in the job result. The default value is
+        # WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to
+        # complete the job successfully. Creation, truncation and append actions occur
+        # as one atomic update upon job completion.
         # Corresponds to the JSON property `writeDisposition`
         # @return [String]
         attr_accessor :write_disposition
@@ -1534,6 +1612,7 @@ module Google
           @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
           @schema_update_options = args[:schema_update_options] if args.key?(:schema_update_options)
           @table_definitions = args[:table_definitions] if args.key?(:table_definitions)
+          @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)
           @user_defined_function_resources = args[:user_defined_function_resources] if args.key?(:user_defined_function_resources)
@@ -1871,6 +1950,14 @@ module Google
       class JobStatistics3
         include Google::Apis::Core::Hashable
       
+        # [Output-only] The number of bad records encountered. Note that if the job has
+        # failed because of more bad records encountered than the maximum allowed in the
+        # load job configuration, then this number can be less than the total number of
+        # bad records present in the input data.
+        # Corresponds to the JSON property `badRecords`
+        # @return [Fixnum]
+        attr_accessor :bad_records
+      
         # [Output-only] Number of bytes of source data in a load job.
         # Corresponds to the JSON property `inputFileBytes`
         # @return [Fixnum]
@@ -1899,6 +1986,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bad_records = args[:bad_records] if args.key?(:bad_records)
           @input_file_bytes = args[:input_file_bytes] if args.key?(:input_file_bytes)
           @input_files = args[:input_files] if args.key?(:input_files)
           @output_bytes = args[:output_bytes] if args.key?(:output_bytes)
@@ -2265,8 +2353,8 @@ module Google
         # Specifies whether to use BigQuery's legacy SQL dialect for this query. The
         # default value is true. If set to false, the query will use BigQuery's standard
         # SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set
-        # to false, the values of allowLargeResults and flattenResults are ignored;
-        # query will be run as if allowLargeResults is true and flattenResults is false.
+        # to false, the value of flattenResults is ignored; query will be run as if
+        # flattenResults is false.
         # Corresponds to the JSON property `useLegacySql`
         # @return [Boolean]
         attr_accessor :use_legacy_sql

@@ -22,31 +22,7 @@ module Google
   module Apis
     module SearchconsoleV1
       
-      class MobileFriendlyIssue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RunMobileFriendlyTestResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourceIssue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BlockedResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,31 +34,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MobileFriendlyIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunMobileFriendlyTestRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunMobileFriendlyTestResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BlockedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+        end
+      end
+      
+      class Image
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class MobileFriendlyIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rule, as: 'rule'
-        end
-      end
-      
-      class RunMobileFriendlyTestResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :resource_issues, as: 'resourceIssues', class: Google::Apis::SearchconsoleV1::ResourceIssue, decorator: Google::Apis::SearchconsoleV1::ResourceIssue::Representation
-      
-          property :test_status, as: 'testStatus', class: Google::Apis::SearchconsoleV1::TestStatus, decorator: Google::Apis::SearchconsoleV1::TestStatus::Representation
-      
-          property :mobile_friendliness, as: 'mobileFriendliness'
-          collection :mobile_friendly_issues, as: 'mobileFriendlyIssues', class: Google::Apis::SearchconsoleV1::MobileFriendlyIssue, decorator: Google::Apis::SearchconsoleV1::MobileFriendlyIssue::Representation
-      
-          property :screenshot, as: 'screenshot', class: Google::Apis::SearchconsoleV1::Image, decorator: Google::Apis::SearchconsoleV1::Image::Representation
-      
         end
       end
       
@@ -94,34 +94,34 @@ module Google
         end
       end
       
-      class BlockedResource
+      class RunMobileFriendlyTestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_screenshot, as: 'requestScreenshot'
           property :url, as: 'url'
+        end
+      end
+      
+      class RunMobileFriendlyTestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mobile_friendliness, as: 'mobileFriendliness'
+          collection :mobile_friendly_issues, as: 'mobileFriendlyIssues', class: Google::Apis::SearchconsoleV1::MobileFriendlyIssue, decorator: Google::Apis::SearchconsoleV1::MobileFriendlyIssue::Representation
+      
+          collection :resource_issues, as: 'resourceIssues', class: Google::Apis::SearchconsoleV1::ResourceIssue, decorator: Google::Apis::SearchconsoleV1::ResourceIssue::Representation
+      
+          property :screenshot, as: 'screenshot', class: Google::Apis::SearchconsoleV1::Image, decorator: Google::Apis::SearchconsoleV1::Image::Representation
+      
+          property :test_status, as: 'testStatus', class: Google::Apis::SearchconsoleV1::TestStatus, decorator: Google::Apis::SearchconsoleV1::TestStatus::Representation
+      
         end
       end
       
       class TestStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status'
           property :details, as: 'details'
-        end
-      end
-      
-      class Image
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :mime_type, as: 'mimeType'
-          property :data, :base64 => true, as: 'data'
-        end
-      end
-      
-      class RunMobileFriendlyTestRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_screenshot, as: 'requestScreenshot'
-          property :url, as: 'url'
+          property :status, as: 'status'
         end
       end
     end

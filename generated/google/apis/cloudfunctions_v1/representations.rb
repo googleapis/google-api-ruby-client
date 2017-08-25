@@ -22,18 +22,97 @@ module Google
   module Apis
     module CloudfunctionsV1
       
-      class OperationMetadataV1Beta2
+      class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class OperationMetadataV1Beta2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :target, as: 'target'
+          collection :locations, as: 'locations', class: Google::Apis::CloudfunctionsV1::Location, decorator: Google::Apis::CloudfunctionsV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::CloudfunctionsV1::Operation, decorator: Google::Apis::CloudfunctionsV1::Operation::Representation
+      
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudfunctionsV1::Status, decorator: Google::Apis::CloudfunctionsV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadataV1Beta2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           hash :request, as: 'request'
+          property :target, as: 'target'
           property :type, as: 'type'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
     end

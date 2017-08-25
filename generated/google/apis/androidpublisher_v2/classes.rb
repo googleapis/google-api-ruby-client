@@ -57,6 +57,12 @@ module Google
         # @return [String]
         attr_accessor :sha1
       
+        # A sha256 hash of the APK payload, encoded as a hex string and matching the
+        # output of the sha256sum command.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
         def initialize(**args)
            update!(**args)
         end
@@ -64,6 +70,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sha1 = args[:sha1] if args.key?(:sha1)
+          @sha256 = args[:sha256] if args.key?(:sha256)
         end
       end
       
@@ -1271,6 +1278,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The order id associated with the purchase of the inapp product.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
         # The purchase state of the order. Possible values are:
         # - Purchased
         # - Cancelled
@@ -1293,6 +1305,7 @@ module Google
           @consumption_state = args[:consumption_state] if args.key?(:consumption_state)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @kind = args[:kind] if args.key?(:kind)
+          @order_id = args[:order_id] if args.key?(:order_id)
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
         end
@@ -1558,9 +1571,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The order id of the latest recurring order associated with the purchase of the
+        # subscription.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
         # The payment state of the subscription. Possible values are:
         # - Payment pending
         # - Payment received
+        # - Free trial
         # Corresponds to the JSON property `paymentState`
         # @return [Fixnum]
         attr_accessor :payment_state
@@ -1601,6 +1621,7 @@ module Google
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
           @kind = args[:kind] if args.key?(:kind)
+          @order_id = args[:order_id] if args.key?(:order_id)
           @payment_state = args[:payment_state] if args.key?(:payment_state)
           @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)

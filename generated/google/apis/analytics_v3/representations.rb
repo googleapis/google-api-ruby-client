@@ -782,6 +782,7 @@ module Google
           property :parent_link, as: 'parentLink', class: Google::Apis::AnalyticsV3::CustomDataSource::ParentLink, decorator: Google::Apis::AnalyticsV3::CustomDataSource::ParentLink::Representation
       
           collection :profiles_linked, as: 'profilesLinked'
+          collection :schema, as: 'schema'
           property :self_link, as: 'selfLink'
           property :type, as: 'type'
           property :updated, as: 'updated', type: DateTime
@@ -1869,6 +1870,8 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :status, as: 'status'
+          property :upload_time, as: 'uploadTime', type: DateTime
+      
         end
       end
       

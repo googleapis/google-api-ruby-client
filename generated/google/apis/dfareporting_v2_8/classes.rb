@@ -2342,9 +2342,9 @@ module Google
         attr_accessor :custom_variables
       
         # The alphanumeric encrypted user ID. When set, encryptionInfo should also be
-        # specified. This field is mutually exclusive with encryptedUserIdCandidates[]
-        # and mobileDeviceId. This or encryptedUserIdCandidates[] or mobileDeviceId is a
-        # required field.
+        # specified. This field is mutually exclusive with encryptedUserIdCandidates[],
+        # mobileDeviceId and gclid. This or encryptedUserIdCandidates[] or
+        # mobileDeviceId or gclid is a required field.
         # Corresponds to the JSON property `encryptedUserId`
         # @return [String]
         attr_accessor :encrypted_user_id
@@ -2354,8 +2354,9 @@ module Google
         # such user ID is found then the conversion will be rejected with
         # NO_COOKIE_MATCH_FOUND error. When set, encryptionInfo should also be specified.
         # This field may only be used when calling batchinsert; it is not supported by
-        # batchupdate. This field is mutually exclusive with encryptedUserId and
-        # mobileDeviceId. This or encryptedUserId or mobileDeviceId is a required field.
+        # batchupdate. This field is mutually exclusive with encryptedUserId,
+        # mobileDeviceId and gclid. This or encryptedUserId or mobileDeviceId or gclid
+        # is a required field.
         # Corresponds to the JSON property `encryptedUserIdCandidates`
         # @return [Array<String>]
         attr_accessor :encrypted_user_id_candidates
@@ -2370,6 +2371,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
       
+        # The Google click ID. This field is mutually exclusive with encryptedUserId,
+        # encryptedUserIdCandidates[] and mobileDeviceId. This or encryptedUserId or
+        # encryptedUserIdCandidates[] or mobileDeviceId is a required field.
+        # Corresponds to the JSON property `gclid`
+        # @return [String]
+        attr_accessor :gclid
+      
         # Identifies what kind of resource this is. Value: the fixed string "
         # dfareporting#conversion".
         # Corresponds to the JSON property `kind`
@@ -2383,9 +2391,9 @@ module Google
         attr_accessor :limit_ad_tracking
         alias_method :limit_ad_tracking?, :limit_ad_tracking
       
-        # The mobile device ID. This field is mutually exclusive with encryptedUserId
-        # and encryptedUserIdCandidates[]. This or encryptedUserId or
-        # encryptedUserIdCandidates[] is a required field.
+        # The mobile device ID. This field is mutually exclusive with encryptedUserId,
+        # encryptedUserIdCandidates[] and gclid. This or encryptedUserId or
+        # encryptedUserIdCandidates[] or gclid is a required field.
         # Corresponds to the JSON property `mobileDeviceId`
         # @return [String]
         attr_accessor :mobile_device_id
@@ -2423,6 +2431,7 @@ module Google
           @encrypted_user_id_candidates = args[:encrypted_user_id_candidates] if args.key?(:encrypted_user_id_candidates)
           @floodlight_activity_id = args[:floodlight_activity_id] if args.key?(:floodlight_activity_id)
           @floodlight_configuration_id = args[:floodlight_configuration_id] if args.key?(:floodlight_configuration_id)
+          @gclid = args[:gclid] if args.key?(:gclid)
           @kind = args[:kind] if args.key?(:kind)
           @limit_ad_tracking = args[:limit_ad_tracking] if args.key?(:limit_ad_tracking)
           @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
@@ -2937,7 +2946,7 @@ module Google
         attr_accessor :fs_command
       
         # HTML code for the creative. This is a required field when applicable. This
-        # field is ignored if htmlCodeLocked is false. Applicable to the following
+        # field is ignored if htmlCodeLocked is true. Applicable to the following
         # creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA.
         # Corresponds to the JSON property `htmlCode`
         # @return [String]
@@ -5223,7 +5232,7 @@ module Google
         alias_method :verification_tag_opt_out?, :verification_tag_opt_out
       
         # Whether this directory site has disabled active view for in-stream video
-        # creatives.
+        # creatives. This is a read-only field.
         # Corresponds to the JSON property `videoActiveViewOptOut`
         # @return [Boolean]
         attr_accessor :video_active_view_opt_out
@@ -5985,28 +5994,8 @@ module Google
         attr_accessor :tag_string
       
         # List of the user-defined variables used by this conversion tag. These map to
-        # the "u[1-20]=" in the tags. Each of these can have a user defined type.
-        # Acceptable values are:
-        # - "U1"
-        # - "U2"
-        # - "U3"
-        # - "U4"
-        # - "U5"
-        # - "U6"
-        # - "U7"
-        # - "U8"
-        # - "U9"
-        # - "U10"
-        # - "U11"
-        # - "U12"
-        # - "U13"
-        # - "U14"
-        # - "U15"
-        # - "U16"
-        # - "U17"
-        # - "U18"
-        # - "U19"
-        # - "U20"
+        # the "u[1-100]=" in the tags. Each of these can have a user defined type.
+        # Acceptable values are U1 to U100, inclusive.
         # Corresponds to the JSON property `userDefinedVariableTypes`
         # @return [Array<String>]
         attr_accessor :user_defined_variable_types
@@ -8260,6 +8249,8 @@ module Google
         # VPAID adapter setting for this placement. Controls which VPAID format the
         # measurement adapter will use for in-stream video creatives assigned to this
         # placement.
+        # Note: Flash is no longer supported. This field now defaults to HTML5 when the
+        # following values are provided: FLASH, BOTH.
         # Corresponds to the JSON property `vpaidAdapterChoice`
         # @return [String]
         attr_accessor :vpaid_adapter_choice
@@ -10701,8 +10692,9 @@ module Google
         # measurement adapter will use for in-stream video creatives assigned to the
         # placement. The publisher's specifications will typically determine this
         # setting. For VPAID creatives, the adapter format will match the VPAID format (
-        # HTML5 VPAID creatives use the HTML5 adapter, and Flash VPAID creatives use the
-        # Flash adapter).
+        # HTML5 VPAID creatives use the HTML5 adapter).
+        # Note: Flash is no longer supported. This field now defaults to HTML5 when the
+        # following values are provided: FLASH, BOTH.
         # Corresponds to the JSON property `vpaidAdapterChoiceTemplate`
         # @return [String]
         attr_accessor :vpaid_adapter_choice_template

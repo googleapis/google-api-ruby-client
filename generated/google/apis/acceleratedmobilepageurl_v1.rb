@@ -20,13 +20,13 @@ module Google
   module Apis
     # Accelerated Mobile Pages (AMP) URL API
     #
-    # Retrieves the list of AMP URL (and equivalent AMP Cache URL) for a given list
-    # of public URL(s).
+    # Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given
+    # list of public URL(s).
     #
     # @see https://developers.google.com/amp/cache/
     module AcceleratedmobilepageurlV1
       VERSION = 'V1'
-      REVISION = '20170504'
+      REVISION = '20170718'
     end
   end
 end

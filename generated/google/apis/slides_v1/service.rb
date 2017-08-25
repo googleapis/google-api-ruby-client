@@ -47,36 +47,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the latest version of the specified presentation.
-        # @param [String] presentation_id
-        #   The ID of the presentation to retrieve.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SlidesV1::Presentation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::SlidesV1::Presentation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_presentation(presentation_id, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
-          command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
-          command.response_class = Google::Apis::SlidesV1::Presentation
-          command.params['presentationId'] = presentation_id unless presentation_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Applies one or more updates to the presentation.
         # Each request is validated before
         # being applied. If any request is not valid, then the entire request will
@@ -158,6 +128,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the latest version of the specified presentation.
+        # @param [String] presentation_id
+        #   The ID of the presentation to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SlidesV1::Presentation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SlidesV1::Presentation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_presentation(presentation_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
+          command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
+          command.response_class = Google::Apis::SlidesV1::Presentation
+          command.params['presentationId'] = presentation_id unless presentation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest version of the specified page in the presentation.
         # @param [String] presentation_id
         #   The ID of the presentation to retrieve.
@@ -197,13 +197,13 @@ module Google
         #   The ID of the presentation to retrieve.
         # @param [String] page_object_id
         #   The object ID of the page whose thumbnail to retrieve.
+        # @param [String] thumbnail_properties_mime_type
+        #   The optional mime type of the thumbnail image.
+        #   If you don't specify the mime type, the default mime type will be PNG.
         # @param [String] thumbnail_properties_thumbnail_size
         #   The optional thumbnail image size.
         #   If you don't specify the size, the server chooses a default size of the
         #   image.
-        # @param [String] thumbnail_properties_mime_type
-        #   The optional mime type of the thumbnail image.
-        #   If you don't specify the mime type, the default mime type will be PNG.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -221,14 +221,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_presentation_page_thumbnail(presentation_id, page_object_id, thumbnail_properties_thumbnail_size: nil, thumbnail_properties_mime_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_presentation_page_thumbnail(presentation_id, page_object_id, thumbnail_properties_mime_type: nil, thumbnail_properties_thumbnail_size: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', options)
           command.response_representation = Google::Apis::SlidesV1::Thumbnail::Representation
           command.response_class = Google::Apis::SlidesV1::Thumbnail
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
           command.params['pageObjectId'] = page_object_id unless page_object_id.nil?
-          command.query['thumbnailProperties.thumbnailSize'] = thumbnail_properties_thumbnail_size unless thumbnail_properties_thumbnail_size.nil?
           command.query['thumbnailProperties.mimeType'] = thumbnail_properties_mime_type unless thumbnail_properties_mime_type.nil?
+          command.query['thumbnailProperties.thumbnailSize'] = thumbnail_properties_thumbnail_size unless thumbnail_properties_thumbnail_size.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

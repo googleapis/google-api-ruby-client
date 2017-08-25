@@ -26,7 +26,10 @@ module Google
     # @see https://cloud.google.com/functions
     module CloudfunctionsV1
       VERSION = 'V1'
-      REVISION = '20170711'
+      REVISION = '20170822'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

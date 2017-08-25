@@ -25,19 +25,7 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20170710'
-
-      # Manage your course work and view your grades in Google Classroom
-      AUTH_CLASSROOM_COURSEWORK_ME = 'https://www.googleapis.com/auth/classroom.coursework.me'
-
-      # Manage your Google Classroom class rosters
-      AUTH_CLASSROOM_ROSTERS = 'https://www.googleapis.com/auth/classroom.rosters'
-
-      # View course work and grades for students in the Google Classroom classes you teach or administer
-      AUTH_CLASSROOM_STUDENT_SUBMISSIONS_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.student-submissions.students.readonly'
-
-      # View guardians for students in your Google Classroom classes
-      AUTH_CLASSROOM_GUARDIANLINKS_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.students.readonly'
+      REVISION = '20170803'
 
       # Manage your Google Classroom classes
       AUTH_CLASSROOM_COURSES = 'https://www.googleapis.com/auth/classroom.courses'
@@ -45,32 +33,44 @@ module Google
       # View your Google Classroom classes
       AUTH_CLASSROOM_COURSES_READONLY = 'https://www.googleapis.com/auth/classroom.courses.readonly'
 
-      # View your Google Classroom class rosters
-      AUTH_CLASSROOM_ROSTERS_READONLY = 'https://www.googleapis.com/auth/classroom.rosters.readonly'
-
-      # View the profile photos of people in your classes
-      AUTH_CLASSROOM_PROFILE_PHOTOS = 'https://www.googleapis.com/auth/classroom.profile.photos'
-
-      # View and manage guardians for students in your Google Classroom classes
-      AUTH_CLASSROOM_GUARDIANLINKS_STUDENTS = 'https://www.googleapis.com/auth/classroom.guardianlinks.students'
-
-      # View your course work and grades in Google Classroom
-      AUTH_CLASSROOM_STUDENT_SUBMISSIONS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.student-submissions.me.readonly'
-
-      # View your Google Classroom guardians
-      AUTH_CLASSROOM_GUARDIANLINKS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
-
-      # View course work and grades for students in the Google Classroom classes you teach or administer
-      AUTH_CLASSROOM_COURSEWORK_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.coursework.students.readonly'
-
-      # Manage course work and grades for students in the Google Classroom classes you teach and view the course work and grades for classes you administer
-      AUTH_CLASSROOM_COURSEWORK_STUDENTS = 'https://www.googleapis.com/auth/classroom.coursework.students'
+      # Manage your course work and view your grades in Google Classroom
+      AUTH_CLASSROOM_COURSEWORK_ME = 'https://www.googleapis.com/auth/classroom.coursework.me'
 
       # View your course work and grades in Google Classroom
       AUTH_CLASSROOM_COURSEWORK_ME_READONLY = 'https://www.googleapis.com/auth/classroom.coursework.me.readonly'
 
+      # Manage course work and grades for students in the Google Classroom classes you teach and view the course work and grades for classes you administer
+      AUTH_CLASSROOM_COURSEWORK_STUDENTS = 'https://www.googleapis.com/auth/classroom.coursework.students'
+
+      # View course work and grades for students in the Google Classroom classes you teach or administer
+      AUTH_CLASSROOM_COURSEWORK_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.coursework.students.readonly'
+
+      # View your Google Classroom guardians
+      AUTH_CLASSROOM_GUARDIANLINKS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'
+
+      # View and manage guardians for students in your Google Classroom classes
+      AUTH_CLASSROOM_GUARDIANLINKS_STUDENTS = 'https://www.googleapis.com/auth/classroom.guardianlinks.students'
+
+      # View guardians for students in your Google Classroom classes
+      AUTH_CLASSROOM_GUARDIANLINKS_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.students.readonly'
+
       # View the email addresses of people in your classes
       AUTH_CLASSROOM_PROFILE_EMAILS = 'https://www.googleapis.com/auth/classroom.profile.emails'
+
+      # View the profile photos of people in your classes
+      AUTH_CLASSROOM_PROFILE_PHOTOS = 'https://www.googleapis.com/auth/classroom.profile.photos'
+
+      # Manage your Google Classroom class rosters
+      AUTH_CLASSROOM_ROSTERS = 'https://www.googleapis.com/auth/classroom.rosters'
+
+      # View your Google Classroom class rosters
+      AUTH_CLASSROOM_ROSTERS_READONLY = 'https://www.googleapis.com/auth/classroom.rosters.readonly'
+
+      # View your course work and grades in Google Classroom
+      AUTH_CLASSROOM_STUDENT_SUBMISSIONS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.student-submissions.me.readonly'
+
+      # View course work and grades for students in the Google Classroom classes you teach or administer
+      AUTH_CLASSROOM_STUDENT_SUBMISSIONS_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.student-submissions.students.readonly'
     end
   end
 end

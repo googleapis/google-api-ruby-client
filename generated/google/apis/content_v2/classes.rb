@@ -165,6 +165,11 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
+        # A list of account level issues.
+        # Corresponds to the JSON property `accountLevelIssues`
+        # @return [Array<Google::Apis::ContentV2::AccountStatusAccountLevelIssue>]
+        attr_accessor :account_level_issues
+      
         # A list of data quality issues.
         # Corresponds to the JSON property `dataQualityIssues`
         # @return [Array<Google::Apis::ContentV2::AccountStatusDataQualityIssue>]
@@ -189,9 +194,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @account_level_issues = args[:account_level_issues] if args.key?(:account_level_issues)
           @data_quality_issues = args[:data_quality_issues] if args.key?(:data_quality_issues)
           @kind = args[:kind] if args.key?(:kind)
           @website_claimed = args[:website_claimed] if args.key?(:website_claimed)
+        end
+      end
+      
+      # 
+      class AccountStatusAccountLevelIssue
+        include Google::Apis::Core::Hashable
+      
+        # Country for which this issue is reported.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Additional details about the issue.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Issue identifier.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Short description of the issue.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @detail = args[:detail] if args.key?(:detail)
+          @id = args[:id] if args.key?(:id)
+          @severity = args[:severity] if args.key?(:severity)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -1149,6 +1198,12 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Whether the scheduled fetch is paused or not.
+        # Corresponds to the JSON property `paused`
+        # @return [Boolean]
+        attr_accessor :paused
+        alias_method :paused?, :paused
+      
         # Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -1175,6 +1230,7 @@ module Google
           @hour = args[:hour] if args.key?(:hour)
           @minute_of_hour = args[:minute_of_hour] if args.key?(:minute_of_hour)
           @password = args[:password] if args.key?(:password)
+          @paused = args[:paused] if args.key?(:paused)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @username = args[:username] if args.key?(:username)
           @weekday = args[:weekday] if args.key?(:weekday)
@@ -2269,7 +2325,7 @@ module Google
         attr_accessor :placed_date
       
         # The details of the merchant provided promotions applied to the order. More
-        # details about the program are  here.
+        # details about the program are here.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderPromotion>]
         attr_accessor :promotions
@@ -4927,7 +4983,7 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price
       
-        # The geographic region to which a shipping rate applies (e.g. zip code).
+        # The geographic region to which a shipping rate applies.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -5047,6 +5103,11 @@ module Google
         # @return [String]
         attr_accessor :link
       
+        # Product data.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::ContentV2::Product]
+        attr_accessor :product
+      
         # The id of the product for which status is reported.
         # Corresponds to the JSON property `productId`
         # @return [String]
@@ -5070,6 +5131,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @last_update_date = args[:last_update_date] if args.key?(:last_update_date)
           @link = args[:link] if args.key?(:link)
+          @product = args[:product] if args.key?(:product)
           @product_id = args[:product_id] if args.key?(:product_id)
           @title = args[:title] if args.key?(:title)
         end
@@ -5458,6 +5520,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
+        # 
+        # Corresponds to the JSON property `includeAttributes`
+        # @return [Boolean]
+        attr_accessor :include_attributes
+        alias_method :include_attributes?, :include_attributes
+      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -5480,6 +5548,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @include_attributes = args[:include_attributes] if args.key?(:include_attributes)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
           @product_id = args[:product_id] if args.key?(:product_id)
@@ -5995,7 +6064,7 @@ module Google
         attr_accessor :predefined_delivery_address
       
         # The details of the merchant provided promotions applied to the order. More
-        # details about the program are  here.
+        # details about the program are here.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderPromotion>]
         attr_accessor :promotions

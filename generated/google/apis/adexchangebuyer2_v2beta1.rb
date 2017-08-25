@@ -23,10 +23,10 @@ module Google
     # Accesses the latest features for managing Ad Exchange accounts, Real-Time
     # Bidding configurations and auction metrics, and Marketplace programmatic deals.
     #
-    # @see https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
+    # @see https://developers.google.com/ad-exchange/buyer-rest/reference/rest/
     module Adexchangebuyer2V2beta1
       VERSION = 'V2beta1'
-      REVISION = '20170710'
+      REVISION = '20170809'
 
       # Manage your Ad Exchange buyer account configuration
       AUTH_ADEXCHANGE_BUYER = 'https://www.googleapis.com/auth/adexchange.buyer'

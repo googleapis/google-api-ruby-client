@@ -123,13 +123,12 @@ module Google
       class AcceleratorTypeAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped accelerator type lists.
+        # A list of AcceleratorTypesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::AcceleratorTypesScopedList>]
         attr_accessor :items
@@ -188,7 +187,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -448,7 +451,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped address lists.
+        # A list of AddressesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::AddressesScopedList>]
         attr_accessor :items
@@ -491,13 +494,12 @@ module Google
       class AddressList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of addresses.
+        # A list of Address resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Address>]
         attr_accessor :items
@@ -517,7 +519,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -624,6 +626,37 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # An alias IP range attached to an instance's network interface.
+      class AliasIpRange
+        include Google::Apis::Core::Hashable
+      
+        # The IP CIDR range represented by this alias IP range. This IP CIDR range must
+        # belong to the specified subnetwork and cannot contain IP addresses reserved by
+        # system or used by other network interfaces. This range may be a single IP
+        # address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g. 10.
+        # 1.2.0/24).
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Optional subnetwork secondary range name specifying the secondary range from
+        # which to allocate the IP CIDR range for this alias IP range. If left
+        # unspecified, the primary range of the subnetwork will be used.
+        # Corresponds to the JSON property `subnetworkRangeName`
+        # @return [String]
+        attr_accessor :subnetwork_range_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @subnetwork_range_name = args[:subnetwork_range_name] if args.key?(:subnetwork_range_name)
         end
       end
       
@@ -919,13 +952,12 @@ module Google
       class AutoscalerAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped autoscaler lists.
+        # A list of AutoscalersScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::AutoscalersScopedList>]
         attr_accessor :items
@@ -968,8 +1000,7 @@ module Google
       class AutoscalerList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1285,7 +1316,7 @@ module Google
         # Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL
         # load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE
         # (for HTTP(S)) and CONNECTION (for TCP/SSL).
-        # This cannot be used for internal load balancing.
+        # For Internal Load Balancing, the default and only supported mode is CONNECTION.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -1306,15 +1337,15 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The fully-qualified URL of a zonal Instance Group resource. This instance
-        # group defines the list of instances that serve traffic. Member virtual machine
+        # The fully-qualified URL of a Instance Group resource. This instance group
+        # defines the list of instances that serve traffic. Member virtual machine
         # instances from each instance group must live in the same zone as the instance
         # group itself. No two backends in a backend service are allowed to use same
         # Instance Group resource.
         # Note that you must specify an Instance Group resource using the fully-
         # qualified URL, rather than a partial URL.
         # When the BackendService has load balancing scheme INTERNAL, the instance group
-        # must be in a zone within the same region as the BackendService.
+        # must be within the same region as the BackendService.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -1465,7 +1496,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1546,8 +1581,9 @@ module Google
       
         # The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
         # health checking this BackendService. Currently at most one health check can be
-        # specified, and a health check is required for GCE backend services. A health
-        # check must not be specified for GAE app backend and Cloud Function backend.
+        # specified, and a health check is required for Compute Engine backend services.
+        # A health check must not be specified for App Engine backend and Cloud Function
+        # backend.
         # For internal load balancing, a URL to a HealthCheck resource must be specified
         # instead.
         # Corresponds to the JSON property `healthChecks`
@@ -1571,7 +1607,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Indicates whether the backend service will be used with internal or external
+        # load balancing. A backend service created for one type of load balancing
+        # cannot be used with the other. Possible values are INTERNAL and EXTERNAL.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -1675,7 +1713,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped BackendService lists.
+        # A list of BackendServicesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::BackendServicesScopedList>]
         attr_accessor :items
@@ -1685,7 +1723,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2129,13 +2171,12 @@ module Google
       class CommitmentAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Commitments by scope.
+        # A list of CommitmentsScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::CommitmentsScopedList>]
         attr_accessor :items
@@ -2178,8 +2219,7 @@ module Google
       class CommitmentList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2530,7 +2570,7 @@ module Google
         # or specify it alone to create an empty persistent disk.
         # If you specify this field along with sourceImage or sourceSnapshot, the value
         # of sizeGb must not be less than the size of the sourceImage or the size of the
-        # snapshot.
+        # snapshot. Acceptable values are 1 to 65536, inclusive.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -2652,13 +2692,12 @@ module Google
       class DiskAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped disk lists.
+        # A list of DisksScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::DisksScopedList>]
         attr_accessor :items
@@ -2673,8 +2712,7 @@ module Google
         # requests. If the number of results is larger than maxResults, use the
         # nextPageToken as a value for the query parameter pageToken in the next list
         # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results. Acceptable values are 0 to 500, inclusive.
-        # (Default: 500)
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2717,11 +2755,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # This token allows you to get the next page of results for list requests. If
-        # the number of results is larger than maxResults, use the nextPageToken as a
-        # value for the query parameter pageToken in the next list request. Subsequent
-        # list requests will have their own nextPageToken to continue paging through the
-        # results.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2857,13 +2895,12 @@ module Google
       class DiskTypeAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped disk type lists.
+        # A list of DiskTypesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::DiskTypesScopedList>]
         attr_accessor :items
@@ -2905,13 +2942,12 @@ module Google
       class DiskTypeList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Disk Type resources.
+        # A list of DiskType resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::DiskType>]
         attr_accessor :items
@@ -3165,11 +3201,31 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # The list of DENY rules specified by this firewall. Each rule specifies a
+        # protocol and port-range tuple that describes a permitted connection.
+        # Corresponds to the JSON property `denied`
+        # @return [Array<Google::Apis::ComputeV1::Firewall::Denied>]
+        attr_accessor :denied
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # If destination ranges are specified, the firewall will apply only to traffic
+        # that has destination IP address in these ranges. These ranges must be
+        # expressed in CIDR format. Only IPv4 is supported.
+        # Corresponds to the JSON property `destinationRanges`
+        # @return [Array<String>]
+        attr_accessor :destination_ranges
+      
+        # Direction of traffic to which this firewall applies; default is INGRESS. Note:
+        # For INGRESS traffic, it is NOT supported to specify destinationRanges; For
+        # EGRESS traffic, it is NOT supported to specify sourceRanges OR sourceTags.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -3205,6 +3261,15 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Priority for this rule. This is an integer between 0 and 65535, both inclusive.
+        # When not specified, the value assumed is 1000. Relative priorities determine
+        # precedence of conflicting rules. Lower value of priority implies higher
+        # precedence (eg, a rule with priority 0 has higher precedence than a rule with
+        # priority 1). DENY rules take precedence over ALLOW rules having equal priority.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -3221,14 +3286,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_ranges
       
-        # If source tags are specified, the firewall will apply only to traffic with
-        # source IP that belongs to a tag listed in source tags. Source tags cannot be
-        # used to control traffic to an instance's external IP address. Because tags are
-        # associated with an instance, not an IP address. One or both of sourceRanges
-        # and sourceTags may be set. If both properties are set, the firewall will apply
-        # to traffic that has source IP address within sourceRanges OR the source IP
-        # that belongs to a tag listed in the sourceTags property. The connection does
-        # not need to match both properties for the firewall to apply.
+        # If source tags are specified, the firewall rule applies only to traffic with
+        # source IPs that match the primary network interfaces of VM instances that have
+        # the tag and are in the same VPC network. Source tags cannot be used to control
+        # traffic to an instance's external IP address, it only applies to traffic
+        # between instances in the same virtual network. Because tags are associated
+        # with instances, not IP addresses. One or both of sourceRanges and sourceTags
+        # may be set. If both properties are set, the firewall will apply to traffic
+        # that has source IP address within sourceRanges OR the source IP that belongs
+        # to a tag listed in the sourceTags property. The connection does not need to
+        # match both properties for the firewall to apply.
         # Corresponds to the JSON property `sourceTags`
         # @return [Array<String>]
         attr_accessor :source_tags
@@ -3249,11 +3316,15 @@ module Google
         def update!(**args)
           @allowed = args[:allowed] if args.key?(:allowed)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @denied = args[:denied] if args.key?(:denied)
           @description = args[:description] if args.key?(:description)
+          @destination_ranges = args[:destination_ranges] if args.key?(:destination_ranges)
+          @direction = args[:direction] if args.key?(:direction)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @priority = args[:priority] if args.key?(:priority)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_ranges = args[:source_ranges] if args.key?(:source_ranges)
           @source_tags = args[:source_tags] if args.key?(:source_tags)
@@ -3266,8 +3337,39 @@ module Google
         
           # The IP protocol to which this rule applies. The protocol type is required when
           # creating a firewall rule. This value can either be one of the following well
-          # known protocol strings (tcp, udp, icmp, esp, ah, sctp), or the IP protocol
-          # number.
+          # known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP
+          # protocol number.
+          # Corresponds to the JSON property `IPProtocol`
+          # @return [String]
+          attr_accessor :ip_protocol
+        
+          # An optional list of ports to which this rule applies. This field is only
+          # applicable for UDP or TCP protocol. Each entry must be either an integer or a
+          # range. If not specified, this rule applies to connections through any port.
+          # Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+          # Corresponds to the JSON property `ports`
+          # @return [Array<String>]
+          attr_accessor :ports
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+            @ports = args[:ports] if args.key?(:ports)
+          end
+        end
+        
+        # 
+        class Denied
+          include Google::Apis::Core::Hashable
+        
+          # The IP protocol to which this rule applies. The protocol type is required when
+          # creating a firewall rule. This value can either be one of the following well
+          # known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP
+          # protocol number.
           # Corresponds to the JSON property `IPProtocol`
           # @return [String]
           attr_accessor :ip_protocol
@@ -3296,13 +3398,12 @@ module Google
       class FirewallList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Firewall resources.
+        # A list of Firewall resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Firewall>]
         attr_accessor :items
@@ -3441,8 +3542,10 @@ module Google
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
-        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995
-        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995
+        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
+        # 5222
+        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
+        # 5222
         # - TargetVpnGateway: 500, 4500
         # -
         # Corresponds to the JSON property `portRange`
@@ -3520,13 +3623,12 @@ module Google
       class ForwardingRuleAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped forwarding rule lists.
+        # A list of ForwardingRulesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::ForwardingRulesScopedList>]
         attr_accessor :items
@@ -3569,7 +3671,7 @@ module Google
       class ForwardingRuleList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Set by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3979,8 +4081,7 @@ module Google
       class HealthCheckList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4230,7 +4331,7 @@ module Google
       class HttpHealthCheckList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4641,13 +4742,12 @@ module Google
       class ImageList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Image resources.
+        # A list of Image resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Image>]
         attr_accessor :items
@@ -4784,9 +4884,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An array of configurations for this interface. This specifies how this
-        # interface is configured to interact with other network services, such as
-        # connecting to the internet. Only one interface is supported per instance.
+        # An array of network configurations for this instance. These specify how
+        # interfaces are configured to interact with other network services, such as
+        # connecting to the internet. Multiple interfaces are supported per instance.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
@@ -4818,7 +4918,7 @@ module Google
         alias_method :start_restricted?, :start_restricted
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
+        # PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and
         # TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -4874,13 +4974,12 @@ module Google
       class InstanceAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped instance lists.
+        # A list of InstancesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::InstancesScopedList>]
         attr_accessor :items
@@ -5028,13 +5127,12 @@ module Google
       class InstanceGroupAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this aggregated list of instance groups.
-        # The server generates this identifier.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped instance group lists.
+        # A list of InstanceGroupsScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::InstanceGroupsScopedList>]
         attr_accessor :items
@@ -5054,7 +5152,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this resource type. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -5077,13 +5175,12 @@ module Google
       class InstanceGroupList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this list of instance groups. The server
-        # generates this identifier.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A list of instance groups.
+        # A list of InstanceGroup resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceGroup>]
         attr_accessor :items
@@ -5103,7 +5200,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this resource type. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -5335,13 +5432,12 @@ module Google
       class InstanceGroupManagerAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this aggregated list of managed instance
-        # groups. The server generates this identifier.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of filtered managed instance group lists.
+        # A list of InstanceGroupManagersScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::InstanceGroupManagersScopedList>]
         attr_accessor :items
@@ -5362,7 +5458,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this resource type. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -5385,13 +5481,12 @@ module Google
       class InstanceGroupManagerList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this resource type. The server generates
-        # this identifier.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of managed instance groups.
+        # A list of InstanceGroupManager resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceGroupManager>]
         attr_accessor :items
@@ -5678,14 +5773,12 @@ module Google
       class InstanceGroupsListInstances
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this list of instances in the specified
-        # instance group. The server generates this identifier.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of instances and any named ports that are assigned to
-        # those instances.
+        # A list of InstanceWithNamedPorts resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceWithNamedPorts>]
         attr_accessor :items
@@ -5706,8 +5799,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this list of instances in the specified instance
-        # groups. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -5892,13 +5984,12 @@ module Google
       class InstanceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of instances.
+        # A list of Instance resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Instance>]
         attr_accessor :items
@@ -6148,13 +6239,12 @@ module Google
       class InstanceTemplateList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A unique identifier for this instance template. The server
-        # defines this identifier.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] list of InstanceTemplate resources.
+        # A list of InstanceTemplate resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceTemplate>]
         attr_accessor :items
@@ -6174,8 +6264,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this instance template list. The server defines this
-        # URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -6606,13 +6695,12 @@ module Google
       class MachineTypeAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped machine type lists.
+        # A list of MachineTypesScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::MachineTypesScopedList>]
         attr_accessor :items
@@ -6655,13 +6743,12 @@ module Google
       class MachineTypeList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Machine Type resources.
+        # A list of MachineType resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::MachineType>]
         attr_accessor :items
@@ -6978,7 +7065,7 @@ module Google
           # Value for the metadata entry. These are free-form strings, and only have
           # meaning as interpreted by the image running in the instance. The only
           # restriction placed on values is that their size must be less than or equal to
-          # 32768 bytes.
+          # 262144 bytes (256 KiB).
           # Corresponds to the JSON property `value`
           # @return [String]
           attr_accessor :value
@@ -7128,6 +7215,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AccessConfig>]
         attr_accessor :access_configs
       
+        # An array of alias IP ranges for this network interface. Can only be specified
+        # for network interfaces on subnet-mode networks.
+        # Corresponds to the JSON property `aliasIpRanges`
+        # @return [Array<Google::Apis::ComputeV1::AliasIpRange>]
+        attr_accessor :alias_ip_ranges
+      
         # [Output Only] Type of the resource. Always compute#networkInterface for
         # network interfaces.
         # Corresponds to the JSON property `kind`
@@ -7183,6 +7276,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
+          @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -7195,13 +7289,12 @@ module Google
       class NetworkList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Network resources.
+        # A list of Network resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Network>]
         attr_accessor :items
@@ -7969,8 +8062,8 @@ module Google
         # @return [Google::Apis::ComputeV1::UsageExportLocation]
         attr_accessor :usage_export_location
       
-        # [Output Only] The role this project has in a Cross Project Network (XPN)
-        # configuration. Currently only HOST projects are differentiated.
+        # [Output Only] The role this project has in a shared VPC configuration.
+        # Currently only HOST projects are differentiated.
         # Corresponds to the JSON property `xpnProjectStatus`
         # @return [String]
         attr_accessor :xpn_project_status
@@ -8000,7 +8093,7 @@ module Google
       class ProjectsDisableXpnResourceRequest
         include Google::Apis::Core::Hashable
       
-        # XpnResourceId
+        # Service resource (a.k.a service project) ID.
         # Corresponds to the JSON property `xpnResource`
         # @return [Google::Apis::ComputeV1::XpnResourceId]
         attr_accessor :xpn_resource
@@ -8019,7 +8112,7 @@ module Google
       class ProjectsEnableXpnResourceRequest
         include Google::Apis::Core::Hashable
       
-        # XpnResourceId
+        # Service resource (a.k.a service project) ID.
         # Corresponds to the JSON property `xpnResource`
         # @return [Google::Apis::ComputeV1::XpnResourceId]
         attr_accessor :xpn_resource
@@ -8039,7 +8132,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output Only] Type of resource. Always compute#projectsGetXpnResources for
-        # lists of XPN resources.
+        # lists of service resources (a.k.a service projects)
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8053,7 +8146,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # XPN resources attached to this project as their XPN host.
+        # Serive resources (a.k.a service projects) attached to this project as their
+        # shared VPC host.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeV1::XpnResourceId>]
         attr_accessor :resources
@@ -8075,8 +8169,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional organization ID managed by Cloud Resource Manager, for which to list
-        # XPN host projects. If not specified, the organization will be inferred from
-        # the project.
+        # shared VPC host projects. If not specified, the organization will be inferred
+        # from the project.
         # Corresponds to the JSON property `organization`
         # @return [String]
         attr_accessor :organization
@@ -8201,13 +8295,12 @@ module Google
       class RegionAutoscalerList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A list of autoscalers.
+        # A list of Autoscaler resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Autoscaler>]
         attr_accessor :items
@@ -8217,7 +8310,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -8245,8 +8342,7 @@ module Google
       class RegionInstanceGroupList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -8270,7 +8366,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] The URL for this resource type. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -8293,13 +8389,12 @@ module Google
       class RegionInstanceGroupManagerList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A list of managed instance groups.
+        # A list of InstanceGroupManager resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceGroupManager>]
         attr_accessor :items
@@ -8311,12 +8406,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output only] The URL for this resource type. The server generates this URL.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -8468,12 +8567,12 @@ module Google
       class RegionInstanceGroupsListInstances
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A list of instances and any named ports that are assigned to those instances.
+        # A list of InstanceWithNamedPorts resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceWithNamedPorts>]
         attr_accessor :items
@@ -8492,7 +8591,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Server-defined URL for the resource.
+        # [Output Only] Server-defined URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -8574,13 +8673,12 @@ module Google
       class RegionList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Region resources.
+        # A list of Region resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Region>]
         attr_accessor :items
@@ -8881,12 +8979,12 @@ module Google
       class RouteList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Route resources.
+        # A list of Route resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Route>]
         attr_accessor :items
@@ -9017,13 +9115,12 @@ module Google
       class RouterAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped router lists.
+        # A list of Router resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::RoutersScopedList>]
         attr_accessor :items
@@ -9177,8 +9274,7 @@ module Google
       class RouterList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -9778,13 +9874,12 @@ module Google
       class SnapshotList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Snapshot resources.
+        # A list of Snapshot resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Snapshot>]
         attr_accessor :items
@@ -9900,7 +9995,7 @@ module Google
       class SslCertificateList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -10017,6 +10112,14 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # An array of configurations for secondary IP ranges for VM instances contained
+        # in this subnetwork. The primary IP of such VM must belong to the primary
+        # ipCidrRange of the subnetwork. The alias IPs may belong to either primary or
+        # secondary ranges.
+        # Corresponds to the JSON property `secondaryIpRanges`
+        # @return [Array<Google::Apis::ComputeV1::SubnetworkSecondaryRange>]
+        attr_accessor :secondary_ip_ranges
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -10038,6 +10141,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
           @region = args[:region] if args.key?(:region)
+          @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
           @self_link = args[:self_link] if args.key?(:self_link)
         end
       end
@@ -10046,13 +10150,12 @@ module Google
       class SubnetworkAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output] A map of scoped Subnetwork lists.
+        # A list of SubnetworksScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::SubnetworksScopedList>]
         attr_accessor :items
@@ -10095,13 +10198,12 @@ module Google
       class SubnetworkList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The Subnetwork resources.
+        # A list of Subnetwork resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Subnetwork>]
         attr_accessor :items
@@ -10137,6 +10239,36 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Represents a secondary IP range of a subnetwork.
+      class SubnetworkSecondaryRange
+        include Google::Apis::Core::Hashable
+      
+        # The range of IP addresses belonging to this subnetwork secondary range.
+        # Provide this property when you create the subnetwork. Ranges must be unique
+        # and non-overlapping with all primary and secondary IP ranges within a network.
+        # Only IPv4 is supported.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # The name associated with this subnetwork secondary range, used when adding an
+        # alias IP range to a VM instance. The name must be 1-63 characters long, and
+        # comply with RFC1035. The name must be unique within the subnetwork.
+        # Corresponds to the JSON property `rangeName`
+        # @return [String]
+        attr_accessor :range_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @range_name = args[:range_name] if args.key?(:range_name)
         end
       end
       
@@ -10422,8 +10554,7 @@ module Google
       class TargetHttpProxyList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -10567,8 +10698,7 @@ module Google
       class TargetHttpsProxyList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -10705,7 +10835,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped target instance lists.
+        # A list of TargetInstance resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::TargetInstancesScopedList>]
         attr_accessor :items
@@ -10747,8 +10877,7 @@ module Google
       class TargetInstanceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -11009,12 +11138,12 @@ module Google
       class TargetPoolAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped target pool lists.
+        # A list of TargetPool resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::TargetPoolsScopedList>]
         attr_accessor :items
@@ -11083,7 +11212,7 @@ module Google
       class TargetPoolList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -11463,8 +11592,7 @@ module Google
       class TargetSslProxyList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -11620,8 +11748,7 @@ module Google
       class TargetTcpProxyList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -11759,13 +11886,12 @@ module Google
       class TargetVpnGatewayAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # A map of scoped target vpn gateway lists.
+        # A list of TargetVpnGateway resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::TargetVpnGatewaysScopedList>]
         attr_accessor :items
@@ -11808,13 +11934,12 @@ module Google
       class TargetVpnGatewayList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of TargetVpnGateway resources.
+        # A list of TargetVpnGateway resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::TargetVpnGateway>]
         attr_accessor :items
@@ -12078,7 +12203,7 @@ module Google
       class UrlMapList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Set by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -12425,13 +12550,12 @@ module Google
       class VpnTunnelAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A map of scoped vpn tunnel lists.
+        # A list of VpnTunnelsScopedList resources.
         # Corresponds to the JSON property `items`
         # @return [Hash<String,Google::Apis::ComputeV1::VpnTunnelsScopedList>]
         attr_accessor :items
@@ -12473,13 +12597,12 @@ module Google
       class VpnTunnelList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of VpnTunnel resources.
+        # A list of VpnTunnel resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::VpnTunnel>]
         attr_accessor :items
@@ -12612,19 +12735,18 @@ module Google
       class XpnHostList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
+        # [Output Only] Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of XPN host project URLs.
+        # [Output Only] A list of shared VPC host project URLs.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Project>]
         attr_accessor :items
       
-        # [Output Only] Type of resource. Always compute#xpnHostList for lists of XPN
-        # hosts.
+        # [Output Only] Type of resource. Always compute#xpnHostList for lists of shared
+        # VPC hosts.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -12657,17 +12779,17 @@ module Google
         end
       end
       
-      # XpnResourceId
+      # Service resource (a.k.a service project) ID.
       class XpnResourceId
         include Google::Apis::Core::Hashable
       
-        # The ID of the XPN resource. In the case of projects, this field matches the
-        # project's name, not the canonical ID.
+        # The ID of the service resource. In the case of projects, this field matches
+        # the project ID (e.g., my-project), not the project number (e.g., 12345678).
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The type of the XPN resource.
+        # The type of the service resource.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -12760,7 +12882,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] A list of Zone resources.
+        # A list of Zone resources.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::Zone>]
         attr_accessor :items

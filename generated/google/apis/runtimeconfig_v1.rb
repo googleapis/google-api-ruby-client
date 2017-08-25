@@ -28,13 +28,13 @@ module Google
     # @see https://cloud.google.com/deployment-manager/runtime-configurator/
     module RuntimeconfigV1
       VERSION = 'V1'
-      REVISION = '20170620'
-
-      # Manage your Google Cloud Platform services' runtime configuration
-      AUTH_CLOUDRUNTIMECONFIG = 'https://www.googleapis.com/auth/cloudruntimeconfig'
+      REVISION = '20170808'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Manage your Google Cloud Platform services' runtime configuration
+      AUTH_CLOUDRUNTIMECONFIG = 'https://www.googleapis.com/auth/cloudruntimeconfig'
     end
   end
 end

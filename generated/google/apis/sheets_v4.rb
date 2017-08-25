@@ -25,22 +25,22 @@ module Google
     # @see https://developers.google.com/sheets/
     module SheetsV4
       VERSION = 'V4'
-      REVISION = '20170707'
-
-      # View and manage Google Drive files and folders that you have opened or created with this app
-      AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
-
-      # View your Google Spreadsheets
-      AUTH_SPREADSHEETS_READONLY = 'https://www.googleapis.com/auth/spreadsheets.readonly'
-
-      # View the files in your Google Drive
-      AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
+      REVISION = '20170817'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
 
+      # View and manage Google Drive files and folders that you have opened or created with this app
+      AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
+
+      # View the files in your Google Drive
+      AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
+
       # View and manage your spreadsheets in Google Drive
       AUTH_SPREADSHEETS = 'https://www.googleapis.com/auth/spreadsheets'
+
+      # View your Google Spreadsheets
+      AUTH_SPREADSHEETS_READONLY = 'https://www.googleapis.com/auth/spreadsheets.readonly'
     end
   end
 end

@@ -1217,7 +1217,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
-          collection :custom_id, as: 'custom_id'
+          collection :custom_ids, as: 'customIds'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :locale, as: 'locale'

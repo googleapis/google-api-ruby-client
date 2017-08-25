@@ -22,6 +22,30 @@ module Google
   module Apis
     module ToolresultsV1beta3
       
+      class AndroidAppInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidInstrumentationTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidRoboTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Any
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListScreenshotClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListStepThumbnailsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,7 +214,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Screen
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScreenshotCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SkippedDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Specification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +340,51 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidAppInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          property :version_code, as: 'versionCode'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
+      class AndroidInstrumentationTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :test_package_id, as: 'testPackageId'
+          property :test_runner_class, as: 'testRunnerClass'
+          collection :test_targets, as: 'testTargets'
+          property :use_orchestrator, as: 'useOrchestrator'
+        end
+      end
+      
+      class AndroidRoboTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_initial_activity, as: 'appInitialActivity'
+          property :bootstrap_package_id, as: 'bootstrapPackageId'
+          property :bootstrap_runner_class, as: 'bootstrapRunnerClass'
+          property :max_depth, as: 'maxDepth'
+          property :max_steps, as: 'maxSteps'
+        end
+      end
+      
+      class AndroidTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_app_info, as: 'androidAppInfo', class: Google::Apis::ToolresultsV1beta3::AndroidAppInfo, decorator: Google::Apis::ToolresultsV1beta3::AndroidAppInfo::Representation
+      
+          property :android_instrumentation_test, as: 'androidInstrumentationTest', class: Google::Apis::ToolresultsV1beta3::AndroidInstrumentationTest, decorator: Google::Apis::ToolresultsV1beta3::AndroidInstrumentationTest::Representation
+      
+          property :android_robo_test, as: 'androidRoboTest', class: Google::Apis::ToolresultsV1beta3::AndroidRoboTest, decorator: Google::Apis::ToolresultsV1beta3::AndroidRoboTest::Representation
+      
+          property :test_timeout, as: 'testTimeout', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
+        end
+      end
+      
       class Any
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -361,6 +454,8 @@ module Google
       
           property :execution_id, as: 'executionId'
           property :outcome, as: 'outcome', class: Google::Apis::ToolresultsV1beta3::Outcome, decorator: Google::Apis::ToolresultsV1beta3::Outcome::Representation
+      
+          property :specification, as: 'specification', class: Google::Apis::ToolresultsV1beta3::Specification, decorator: Google::Apis::ToolresultsV1beta3::Specification::Representation
       
           property :state, as: 'state'
           property :test_execution_matrix_id, as: 'testExecutionMatrixId'
@@ -446,6 +541,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :perf_samples, as: 'perfSamples', class: Google::Apis::ToolresultsV1beta3::PerfSample, decorator: Google::Apis::ToolresultsV1beta3::PerfSample::Representation
+      
+        end
+      end
+      
+      class ListScreenshotClustersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clusters, as: 'clusters', class: Google::Apis::ToolresultsV1beta3::ScreenshotCluster, decorator: Google::Apis::ToolresultsV1beta3::ScreenshotCluster::Representation
       
         end
       end
@@ -554,6 +657,28 @@ module Google
         end
       end
       
+      class Screen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_reference, as: 'fileReference'
+          property :locale, as: 'locale'
+          property :model, as: 'model'
+          property :version, as: 'version'
+        end
+      end
+      
+      class ScreenshotCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity, as: 'activity'
+          property :cluster_id, as: 'clusterId'
+          property :key_screen, as: 'keyScreen', class: Google::Apis::ToolresultsV1beta3::Screen, decorator: Google::Apis::ToolresultsV1beta3::Screen::Representation
+      
+          collection :screens, as: 'screens', class: Google::Apis::ToolresultsV1beta3::Screen, decorator: Google::Apis::ToolresultsV1beta3::Screen::Representation
+      
+        end
+      end
+      
       class SkippedDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -563,10 +688,20 @@ module Google
         end
       end
       
+      class Specification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_test, as: 'androidTest', class: Google::Apis::ToolresultsV1beta3::AndroidTest, decorator: Google::Apis::ToolresultsV1beta3::AndroidTest::Representation
+      
+        end
+      end
+      
       class StackTrace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :exception, as: 'exception'
+          property :report_id, as: 'reportId'
         end
       end
       
@@ -659,7 +794,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
+          property :severity, as: 'severity'
           property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
+      
+          property :type, as: 'type'
+          property :warning, as: 'warning', class: Google::Apis::ToolresultsV1beta3::Any, decorator: Google::Apis::ToolresultsV1beta3::Any::Representation
       
         end
       end

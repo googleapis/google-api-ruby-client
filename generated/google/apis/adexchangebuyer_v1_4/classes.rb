@@ -3153,7 +3153,7 @@ module Google
       class PublisherProfileApiProto
         include Google::Apis::Core::Hashable
       
-        # The account id of the seller.
+        # Deprecated: use the seller.account_id. The account id of the seller.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id

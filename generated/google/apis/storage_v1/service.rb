@@ -1153,7 +1153,7 @@ module Google
         
         # Retrieves a list of notification subscriptions for a given bucket.
         # @param [String] bucket
-        #   Name of a GCS bucket.
+        #   Name of a Google Cloud Storage bucket.
         # @param [String] user_project
         #   The project to be billed for this request, for Requester Pays buckets.
         # @param [String] fields
@@ -1501,7 +1501,8 @@ module Google
         #   Apply a predefined set of access controls to the destination object.
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
-        #   matches the given value.
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
@@ -1576,10 +1577,13 @@ module Google
         #   Apply a predefined set of access controls to the destination object.
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the destination object's current
-        #   generation matches the given value.
+        #   generation matches the given value. Setting to 0 makes the operation succeed
+        #   only if there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the destination object's current
-        #   generation does not match the given value.
+        #   generation does not match the given value. If no live object exists, the
+        #   precondition fails. Setting to 0 makes the operation succeed only if there is
+        #   a live version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration matches the given value.
@@ -1587,11 +1591,11 @@ module Google
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration does not match the given value.
         # @param [Fixnum] if_source_generation_match
-        #   Makes the operation conditional on whether the source object's generation
-        #   matches the given value.
+        #   Makes the operation conditional on whether the source object's current
+        #   generation matches the given value.
         # @param [Fixnum] if_source_generation_not_match
-        #   Makes the operation conditional on whether the source object's generation does
-        #   not match the given value.
+        #   Makes the operation conditional on whether the source object's current
+        #   generation does not match the given value.
         # @param [Fixnum] if_source_metageneration_match
         #   Makes the operation conditional on whether the source object's current
         #   metageneration matches the given value.
@@ -1674,10 +1678,13 @@ module Google
         #   to the latest version, the default).
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
-        #   matches the given value.
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
-        #   does not match the given value.
+        #   does not match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
@@ -1733,11 +1740,14 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [Fixnum] if_generation_match
-        #   Makes the operation conditional on whether the object's generation matches the
-        #   given value.
+        #   Makes the operation conditional on whether the object's current generation
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
-        #   Makes the operation conditional on whether the object's generation does not
-        #   match the given value.
+        #   Makes the operation conditional on whether the object's current generation
+        #   does not match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
@@ -1853,10 +1863,13 @@ module Google
         #   indicate the encoding of the content being uploaded.
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
-        #   matches the given value.
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
-        #   does not match the given value.
+        #   does not match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
@@ -2010,10 +2023,13 @@ module Google
         #   latest version, the default).
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
-        #   matches the given value.
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
-        #   does not match the given value.
+        #   does not match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
@@ -2092,11 +2108,14 @@ module Google
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [Fixnum] if_generation_match
-        #   Makes the operation conditional on whether the destination object's current
-        #   generation matches the given value.
+        #   Makes the operation conditional on whether the object's current generation
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
-        #   Makes the operation conditional on whether the destination object's current
-        #   generation does not match the given value.
+        #   Makes the operation conditional on whether the object's current generation
+        #   does not match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration matches the given value.
@@ -2104,11 +2123,11 @@ module Google
         #   Makes the operation conditional on whether the destination object's current
         #   metageneration does not match the given value.
         # @param [Fixnum] if_source_generation_match
-        #   Makes the operation conditional on whether the source object's generation
-        #   matches the given value.
+        #   Makes the operation conditional on whether the source object's current
+        #   generation matches the given value.
         # @param [Fixnum] if_source_generation_not_match
-        #   Makes the operation conditional on whether the source object's generation does
-        #   not match the given value.
+        #   Makes the operation conditional on whether the source object's current
+        #   generation does not match the given value.
         # @param [Fixnum] if_source_metageneration_match
         #   Makes the operation conditional on whether the source object's current
         #   metageneration matches the given value.
@@ -2299,10 +2318,13 @@ module Google
         #   latest version, the default).
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
-        #   matches the given value.
+        #   matches the given value. Setting to 0 makes the operation succeed only if
+        #   there are no live versions of the object.
         # @param [Fixnum] if_generation_not_match
         #   Makes the operation conditional on whether the object's current generation
-        #   does not match the given value.
+        #   does not match the given value. If no live object exists, the precondition
+        #   fails. Setting to 0 makes the operation succeed only if there is a live
+        #   version of the object.
         # @param [Fixnum] if_metageneration_match
         #   Makes the operation conditional on whether the object's current metageneration
         #   matches the given value.
@@ -2433,7 +2455,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the email address of this project's GCS service account.
+        # Get the email address of this project's Google Cloud Storage service account.
         # @param [String] project_id
         #   Project ID
         # @param [String] fields

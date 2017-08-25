@@ -36,14 +36,14 @@ module Google
       # @see https://cloud.google.com/deployment-manager/runtime-configurator/
       class CloudRuntimeConfigService < Google::Apis::Core::BaseService
         # @return [String]
-        #  Available to use for quota purposes for server-side applications. Can be any
-        #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        attr_accessor :quota_user
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
+
+        # @return [String]
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
+        attr_accessor :quota_user
 
         def initialize
           super('https://runtimeconfig.googleapis.com/', '')
@@ -63,11 +63,11 @@ module Google
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::RuntimeconfigV1::CancelOperationRequest] cancel_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -80,15 +80,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, cancel_operation_request_object = nil, quota_user: nil, fields: nil, options: nil, &block)
+        def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.request_representation = Google::Apis::RuntimeconfigV1::CancelOperationRequest::Representation
           command.request_object = cancel_operation_request_object
           command.response_representation = Google::Apis::RuntimeconfigV1::Empty::Representation
           command.response_class = Google::Apis::RuntimeconfigV1::Empty
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -98,11 +98,11 @@ module Google
         # `google.rpc.Code.UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -115,13 +115,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_operation(name, quota_user: nil, fields: nil, options: nil, &block)
+        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1::Empty::Representation
           command.response_class = Google::Apis::RuntimeconfigV1::Empty
           command.params['name'] = name unless name.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -136,17 +136,17 @@ module Google
         # is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
         # @param [String] filter
         #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -159,24 +159,24 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, page_size: nil, filter: nil, page_token: nil, quota_user: nil, fields: nil, options: nil, &block)
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::RuntimeconfigV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::RuntimeconfigV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
 
         protected
 
         def apply_command_defaults(command)
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['key'] = key unless key.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end
     end

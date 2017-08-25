@@ -2389,14 +2389,18 @@ module Google
         #   The time, in milliseconds since the Epoch, of the newest voided in-app product
         #   purchase that you want to see in the response. The value of this parameter
         #   cannot be greater than the current time and is ignored if a pagination token
-        #   is set. Default value is current time.
+        #   is set. Default value is current time. Note: This filter is applied on the
+        #   time at which the record is seen as voided by our systems and not the actual
+        #   voided time returned in the response.
         # @param [Fixnum] max_results
         # @param [Fixnum] start_index
         # @param [Fixnum] start_time
         #   The time, in milliseconds since the Epoch, of the oldest voided in-app product
         #   purchase that you want to see in the response. The value of this parameter
         #   cannot be older than 30 days and is ignored if a pagination token is set.
-        #   Default value is current time minus 30 days.
+        #   Default value is current time minus 30 days. Note: This filter is applied on
+        #   the time at which the record is seen as voided by our systems and not the
+        #   actual voided time returned in the response.
         # @param [String] token
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

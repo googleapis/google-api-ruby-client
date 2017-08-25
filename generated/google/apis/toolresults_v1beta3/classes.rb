@@ -22,6 +22,204 @@ module Google
   module Apis
     module ToolresultsV1beta3
       
+      # Android app information.
+      class AndroidAppInfo
+        include Google::Apis::Core::Hashable
+      
+        # The name of the app. Optional
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The package name of the app. Required.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # The internal version code of the app. Optional.
+        # Corresponds to the JSON property `versionCode`
+        # @return [String]
+        attr_accessor :version_code
+      
+        # The version name of the app. Optional.
+        # Corresponds to the JSON property `versionName`
+        # @return [String]
+        attr_accessor :version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @version_code = args[:version_code] if args.key?(:version_code)
+          @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # A test of an Android application that can control an Android component
+      # independently of its normal lifecycle.
+      # See  for more information on types of Android tests.
+      class AndroidInstrumentationTest
+        include Google::Apis::Core::Hashable
+      
+        # The java package for the test to be executed. Required
+        # Corresponds to the JSON property `testPackageId`
+        # @return [String]
+        attr_accessor :test_package_id
+      
+        # The InstrumentationTestRunner class. Required
+        # Corresponds to the JSON property `testRunnerClass`
+        # @return [String]
+        attr_accessor :test_runner_class
+      
+        # Each target must be fully qualified with the package name or class name, in
+        # one of these formats: - "package package_name" - "class package_name.
+        # class_name" - "class package_name.class_name#method_name"
+        # If empty, all targets in the module will be run.
+        # Corresponds to the JSON property `testTargets`
+        # @return [Array<String>]
+        attr_accessor :test_targets
+      
+        # The flag indicates whether Android Test Orchestrator will be used to run test
+        # or not. Test orchestrator is used if either: - orchestrator_option field is
+        # USE_ORCHESTRATOR, and test runner is compatible with orchestrator. Or -
+        # orchestrator_option field is unspecified or ORCHESTRATOR_OPTION_UNSPECIFIED,
+        # and test runner is compatible with orchestrator.
+        # Corresponds to the JSON property `useOrchestrator`
+        # @return [Boolean]
+        attr_accessor :use_orchestrator
+        alias_method :use_orchestrator?, :use_orchestrator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_package_id = args[:test_package_id] if args.key?(:test_package_id)
+          @test_runner_class = args[:test_runner_class] if args.key?(:test_runner_class)
+          @test_targets = args[:test_targets] if args.key?(:test_targets)
+          @use_orchestrator = args[:use_orchestrator] if args.key?(:use_orchestrator)
+        end
+      end
+      
+      # A test of an android application that explores the application on a virtual or
+      # physical Android device, finding culprits and crashes as it goes.
+      class AndroidRoboTest
+        include Google::Apis::Core::Hashable
+      
+        # The initial activity that should be used to start the app. Optional
+        # Corresponds to the JSON property `appInitialActivity`
+        # @return [String]
+        attr_accessor :app_initial_activity
+      
+        # The java package for the bootstrap. Optional
+        # Corresponds to the JSON property `bootstrapPackageId`
+        # @return [String]
+        attr_accessor :bootstrap_package_id
+      
+        # The runner class for the bootstrap. Optional
+        # Corresponds to the JSON property `bootstrapRunnerClass`
+        # @return [String]
+        attr_accessor :bootstrap_runner_class
+      
+        # The max depth of the traversal stack Robo can explore. Optional
+        # Corresponds to the JSON property `maxDepth`
+        # @return [Fixnum]
+        attr_accessor :max_depth
+      
+        # The max number of steps/actions Robo can execute. Default is no limit (0).
+        # Optional
+        # Corresponds to the JSON property `maxSteps`
+        # @return [Fixnum]
+        attr_accessor :max_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_initial_activity = args[:app_initial_activity] if args.key?(:app_initial_activity)
+          @bootstrap_package_id = args[:bootstrap_package_id] if args.key?(:bootstrap_package_id)
+          @bootstrap_runner_class = args[:bootstrap_runner_class] if args.key?(:bootstrap_runner_class)
+          @max_depth = args[:max_depth] if args.key?(:max_depth)
+          @max_steps = args[:max_steps] if args.key?(:max_steps)
+        end
+      end
+      
+      # An Android mobile test specification.
+      class AndroidTest
+        include Google::Apis::Core::Hashable
+      
+        # Android app information.
+        # Corresponds to the JSON property `androidAppInfo`
+        # @return [Google::Apis::ToolresultsV1beta3::AndroidAppInfo]
+        attr_accessor :android_app_info
+      
+        # A test of an Android application that can control an Android component
+        # independently of its normal lifecycle.
+        # See  for more information on types of Android tests.
+        # Corresponds to the JSON property `androidInstrumentationTest`
+        # @return [Google::Apis::ToolresultsV1beta3::AndroidInstrumentationTest]
+        attr_accessor :android_instrumentation_test
+      
+        # A test of an android application that explores the application on a virtual or
+        # physical Android device, finding culprits and crashes as it goes.
+        # Corresponds to the JSON property `androidRoboTest`
+        # @return [Google::Apis::ToolresultsV1beta3::AndroidRoboTest]
+        attr_accessor :android_robo_test
+      
+        # A Duration represents a signed, fixed-length span of time represented as a
+        # count of seconds and fractions of seconds at nanosecond resolution. It is
+        # independent of any calendar and concepts like "day" or "month". It is related
+        # to Timestamp in that the difference between two Timestamp values is a Duration
+        # and it can be added or subtracted from a Timestamp. Range is approximately +-
+        # 10,000 years.
+        # # Examples
+        # Example 1: Compute Duration from two Timestamps in pseudo code.
+        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
+        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
+        # start.nanos;
+        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
+        # ` else if (durations.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
+        # 1; duration.nanos += 1000000000; `
+        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
+        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
+        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
+        # duration.nanos;
+        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
+        # Example 3: Compute Duration from datetime.timedelta in Python.
+        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
+        # FromTimedelta(td)
+        # # JSON Mapping
+        # In JSON format, the Duration type is encoded as a string rather than an object,
+        # where the string ends in the suffix "s" (indicating seconds) and is preceded
+        # by the number of seconds, with nanoseconds expressed as fractional seconds.
+        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
+        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
+        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
+        # format as "3.000001s".
+        # Corresponds to the JSON property `testTimeout`
+        # @return [Google::Apis::ToolresultsV1beta3::Duration]
+        attr_accessor :test_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @android_app_info = args[:android_app_info] if args.key?(:android_app_info)
+          @android_instrumentation_test = args[:android_instrumentation_test] if args.key?(:android_instrumentation_test)
+          @android_robo_test = args[:android_robo_test] if args.key?(:android_robo_test)
+          @test_timeout = args[:test_timeout] if args.key?(:test_timeout)
+        end
+      end
+      
       # `Any` contains an arbitrary serialized protocol buffer message along with a
       # URL that describes the type of the serialized message.
       # Protobuf library provides support to pack/unpack Any values in the form of
@@ -464,6 +662,11 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::Outcome]
         attr_accessor :outcome
       
+        # The details about how to run the execution.
+        # Corresponds to the JSON property `specification`
+        # @return [Google::Apis::ToolresultsV1beta3::Specification]
+        attr_accessor :specification
+      
         # The initial state is IN_PROGRESS.
         # The only legal state transitions is from IN_PROGRESS to COMPLETE.
         # A PRECONDITION_FAILED will be returned if an invalid transition is requested.
@@ -477,7 +680,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # TestExecution Matrix ID that the Test Service uses.
+        # TestExecution Matrix ID that the TestExecutionService uses.
         # - In response: present if set by create - In create: optional - In update:
         # never set
         # Corresponds to the JSON property `testExecutionMatrixId`
@@ -494,6 +697,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
           @outcome = args[:outcome] if args.key?(:outcome)
+          @specification = args[:specification] if args.key?(:specification)
           @state = args[:state] if args.key?(:state)
           @test_execution_matrix_id = args[:test_execution_matrix_id] if args.key?(:test_execution_matrix_id)
         end
@@ -822,6 +1026,25 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @perf_samples = args[:perf_samples] if args.key?(:perf_samples)
+        end
+      end
+      
+      # 
+      class ListScreenshotClustersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The set of clustres associated with an execution Always set
+        # Corresponds to the JSON property `clusters`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::ScreenshotCluster>]
+        attr_accessor :clusters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clusters = args[:clusters] if args.key?(:clusters)
         end
       end
       
@@ -1217,6 +1440,83 @@ module Google
       end
       
       # 
+      class Screen
+        include Google::Apis::Core::Hashable
+      
+        # File reference of the png file. Required.
+        # Corresponds to the JSON property `fileReference`
+        # @return [String]
+        attr_accessor :file_reference
+      
+        # Locale of the device that the screenshot was taken on. Required.
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # Model of the device that the screenshot was taken on. Required.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # OS version of the device that the screenshot was taken on. Required.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_reference = args[:file_reference] if args.key?(:file_reference)
+          @locale = args[:locale] if args.key?(:locale)
+          @model = args[:model] if args.key?(:model)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class ScreenshotCluster
+        include Google::Apis::Core::Hashable
+      
+        # A string that describes the activity of every screen in the cluster.
+        # Corresponds to the JSON property `activity`
+        # @return [String]
+        attr_accessor :activity
+      
+        # A unique identifier for the cluster.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # A singular screen that represents the cluster as a whole. This screen will act
+        # as the "cover" of the entire cluster. When users look at the clusters, only
+        # the key screen from each cluster will be shown. Which screen is the key screen
+        # is determined by the ClusteringAlgorithm
+        # Corresponds to the JSON property `keyScreen`
+        # @return [Google::Apis::ToolresultsV1beta3::Screen]
+        attr_accessor :key_screen
+      
+        # Full list of screens.
+        # Corresponds to the JSON property `screens`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::Screen>]
+        attr_accessor :screens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity = args[:activity] if args.key?(:activity)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @key_screen = args[:key_screen] if args.key?(:key_screen)
+          @screens = args[:screens] if args.key?(:screens)
+        end
+      end
+      
+      # 
       class SkippedDetail
         include Google::Apis::Core::Hashable
       
@@ -1250,15 +1550,14 @@ module Google
         end
       end
       
-      # A stacktrace.
-      class StackTrace
+      # The details about how to run the execution.
+      class Specification
         include Google::Apis::Core::Hashable
       
-        # The stack trace message.
-        # Required
-        # Corresponds to the JSON property `exception`
-        # @return [String]
-        attr_accessor :exception
+        # An Android mobile test specification.
+        # Corresponds to the JSON property `androidTest`
+        # @return [Google::Apis::ToolresultsV1beta3::AndroidTest]
+        attr_accessor :android_test
       
         def initialize(**args)
            update!(**args)
@@ -1266,7 +1565,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @android_test = args[:android_test] if args.key?(:android_test)
+        end
+      end
+      
+      # A stacktrace.
+      class StackTrace
+        include Google::Apis::Core::Hashable
+      
+        # Exception cluster ID
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # The stack trace message.
+        # Required
+        # Corresponds to the JSON property `exception`
+        # @return [String]
+        attr_accessor :exception
+      
+        # Exception report ID
+        # Corresponds to the JSON property `reportId`
+        # @return [String]
+        attr_accessor :report_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @exception = args[:exception] if args.key?(:exception)
+          @report_id = args[:report_id] if args.key?(:report_id)
         end
       end
       
@@ -1818,20 +2149,64 @@ module Google
         end
       end
       
-      # An abnormal event observed during the test execution.
+      # An issue detected occurring during a test execution.
       class TestIssue
         include Google::Apis::Core::Hashable
       
-        # A brief human-readable message describing the abnormal event.
-        # Required.
+        # A brief human-readable message describing the issue. Required.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
+      
+        # Severity of issue. Required.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
       
         # A stacktrace.
         # Corresponds to the JSON property `stackTrace`
         # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
         attr_accessor :stack_trace
+      
+        # Type of issue. Required.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # `Any` contains an arbitrary serialized protocol buffer message along with a
+        # URL that describes the type of the serialized message.
+        # Protobuf library provides support to pack/unpack Any values in the form of
+        # utility functions or additional generated methods of the Any type.
+        # Example 1: Pack and unpack a message in C++.
+        # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
+        # Example 2: Pack and unpack a message in Java.
+        # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
+        # unpack(Foo.class); `
+        # Example 3: Pack and unpack a message in Python.
+        # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
+        # Unpack(foo) ...
+        # Example 4: Pack and unpack a message in Go
+        # foo := &pb.Foo`...` any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo`` if
+        # err := ptypes.UnmarshalAny(any, foo); err != nil ` ... `
+        # The pack methods provided by protobuf library will by default use 'type.
+        # googleapis.com/full.type.name' as the type URL and the unpack methods only use
+        # the fully qualified type name after the last '/' in the type URL, for example "
+        # foo.bar.com/x/y.z" will yield type name "y.z".
+        # JSON ==== The JSON representation of an `Any` value uses the regular
+        # representation of the deserialized, embedded message, with an additional field
+        # `@type` which contains the type URL. Example:
+        # package google.profile; message Person ` string first_name = 1; string
+        # last_name = 2; `
+        # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
+        # lastName":  `
+        # If the embedded message type is well-known and has a custom JSON
+        # representation, that representation will be embedded adding a field `value`
+        # which holds the custom JSON in addition to the `@type` field. Example (for
+        # message [google.protobuf.Duration][]):
+        # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ToolresultsV1beta3::Any]
+        attr_accessor :warning
       
         def initialize(**args)
            update!(**args)
@@ -1840,7 +2215,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error_message = args[:error_message] if args.key?(:error_message)
+          @severity = args[:severity] if args.key?(:severity)
           @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
+          @type = args[:type] if args.key?(:type)
+          @warning = args[:warning] if args.key?(:warning)
         end
       end
       

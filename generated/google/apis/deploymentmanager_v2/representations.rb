@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizationLoggingOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class LogConfigCounterOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigDataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +304,13 @@ module Google
         end
       end
       
+      class AuthorizationLoggingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission_type, as: 'permissionType'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -416,12 +435,16 @@ module Google
       
           property :counter, as: 'counter', class: Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions, decorator: Google::Apis::DeploymentmanagerV2::LogConfigCounterOptions::Representation
       
+          property :data_access, as: 'dataAccess', class: Google::Apis::DeploymentmanagerV2::LogConfigDataAccessOptions, decorator: Google::Apis::DeploymentmanagerV2::LogConfigDataAccessOptions::Representation
+      
         end
       end
       
       class LogConfigCloudAuditOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::DeploymentmanagerV2::AuthorizationLoggingOptions, decorator: Google::Apis::DeploymentmanagerV2::AuthorizationLoggingOptions::Representation
+      
           property :log_name, as: 'logName'
         end
       end
@@ -431,6 +454,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigDataAccessOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_mode, as: 'logMode'
         end
       end
       

@@ -22,49 +22,19 @@ module Google
   module Apis
     module CloudbuildV1
       
+      class Build
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SourceProvenance
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListBuildTriggersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BuiltImage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HashProp
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepoSource
+      class BuildOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,19 +46,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FileHashes
+      class BuildTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Secret
+      class BuiltImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Status
+      class CancelBuildRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,19 +76,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BuildTrigger
+      class FileHashes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Build
+      class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelBuildRequest
+      class ListBuildTriggersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,19 +106,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Source
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BuildOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StorageSource
+      class RepoSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +124,74 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Build
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_trigger_id, as: 'buildTriggerId'
+          property :create_time, as: 'createTime'
+          property :finish_time, as: 'finishTime'
+          property :id, as: 'id'
+          collection :images, as: 'images'
+          property :log_url, as: 'logUrl'
+          property :logs_bucket, as: 'logsBucket'
+          property :options, as: 'options', class: Google::Apis::CloudbuildV1::BuildOptions, decorator: Google::Apis::CloudbuildV1::BuildOptions::Representation
+      
+          property :project_id, as: 'projectId'
+          property :results, as: 'results', class: Google::Apis::CloudbuildV1::Results, decorator: Google::Apis::CloudbuildV1::Results::Representation
+      
+          collection :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::Secret, decorator: Google::Apis::CloudbuildV1::Secret::Representation
+      
+          property :source, as: 'source', class: Google::Apis::CloudbuildV1::Source, decorator: Google::Apis::CloudbuildV1::Source::Representation
+      
+          property :source_provenance, as: 'sourceProvenance', class: Google::Apis::CloudbuildV1::SourceProvenance, decorator: Google::Apis::CloudbuildV1::SourceProvenance::Representation
+      
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+          property :status_detail, as: 'statusDetail'
+          collection :steps, as: 'steps', class: Google::Apis::CloudbuildV1::BuildStep, decorator: Google::Apis::CloudbuildV1::BuildStep::Representation
+      
+          hash :substitutions, as: 'substitutions'
+          collection :tags, as: 'tags'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
       class BuildOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -162,15 +200,58 @@ module Google
         end
       end
       
-      class SourceProvenance
+      class BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
+          property :requested_verify_option, as: 'requestedVerifyOption'
+          collection :source_provenance_hash, as: 'sourceProvenanceHash'
+          property :substitution_option, as: 'substitutionOption'
+        end
+      end
       
-          hash :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      class BuildStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          property :dir, as: 'dir'
+          property :entrypoint, as: 'entrypoint'
+          collection :env, as: 'env'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          collection :secret_env, as: 'secretEnv'
+          collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
       
-          property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+          collection :wait_for, as: 'waitFor'
+        end
+      end
       
+      class BuildTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :filename, as: 'filename'
+          property :id, as: 'id'
+          hash :substitutions, as: 'substitutions'
+          property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+        end
+      end
+      
+      class BuiltImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digest, as: 'digest'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CancelBuildRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -180,64 +261,9 @@ module Google
         end
       end
       
-      class ListBuildTriggersResponse
+      class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :triggers, as: 'triggers', class: Google::Apis::CloudbuildV1::BuildTrigger, decorator: Google::Apis::CloudbuildV1::BuildTrigger::Representation
-      
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :response, as: 'response'
-          property :name, as: 'name'
-          property :error, as: 'error', class: Google::Apis::CloudbuildV1::Status, decorator: Google::Apis::CloudbuildV1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :done, as: 'done'
-        end
-      end
-      
-      class BuiltImage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :digest, as: 'digest'
-        end
-      end
-      
-      class HashProp
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :value, :base64 => true, as: 'value'
-          property :type, as: 'type'
-        end
-      end
-      
-      class RepoSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :commit_sha, as: 'commitSha'
-          property :tag_name, as: 'tagName'
-          property :branch_name, as: 'branchName'
-          property :repo_name, as: 'repoName'
-          property :project_id, as: 'projectId'
-        end
-      end
-      
-      class BuildStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dir, as: 'dir'
-          collection :env, as: 'env'
-          collection :wait_for, as: 'waitFor'
-          collection :args, as: 'args'
-          property :name, as: 'name'
-          property :entrypoint, as: 'entrypoint'
-          property :id, as: 'id'
-          collection :secret_env, as: 'secretEnv'
         end
       end
       
@@ -249,89 +275,28 @@ module Google
         end
       end
       
-      class Secret
+      class HashProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :secret_env, as: 'secretEnv'
-          property :kms_key_name, as: 'kmsKeyName'
+          property :type, as: 'type'
+          property :value, :base64 => true, as: 'value'
         end
       end
       
-      class Status
+      class ListBuildTriggersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message'
-          collection :details, as: 'details'
-          property :code, as: 'code'
-        end
-      end
+          collection :triggers, as: 'triggers', class: Google::Apis::CloudbuildV1::BuildTrigger, decorator: Google::Apis::CloudbuildV1::BuildTrigger::Representation
       
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class BuildTrigger
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :disabled, as: 'disabled'
-          property :filename, as: 'filename'
-          property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
-      
-          property :id, as: 'id'
-          property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
-      
-          hash :substitutions, as: 'substitutions'
-          property :description, as: 'description'
-        end
-      end
-      
-      class Build
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :substitutions, as: 'substitutions'
-          property :start_time, as: 'startTime'
-          property :source_provenance, as: 'sourceProvenance', class: Google::Apis::CloudbuildV1::SourceProvenance, decorator: Google::Apis::CloudbuildV1::SourceProvenance::Representation
-      
-          property :create_time, as: 'createTime'
-          collection :images, as: 'images'
-          property :project_id, as: 'projectId'
-          property :finish_time, as: 'finishTime'
-          property :log_url, as: 'logUrl'
-          property :source, as: 'source', class: Google::Apis::CloudbuildV1::Source, decorator: Google::Apis::CloudbuildV1::Source::Representation
-      
-          property :options, as: 'options', class: Google::Apis::CloudbuildV1::BuildOptions, decorator: Google::Apis::CloudbuildV1::BuildOptions::Representation
-      
-          property :timeout, as: 'timeout'
-          property :status, as: 'status'
-          property :status_detail, as: 'statusDetail'
-          collection :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::Secret, decorator: Google::Apis::CloudbuildV1::Secret::Representation
-      
-          property :results, as: 'results', class: Google::Apis::CloudbuildV1::Results, decorator: Google::Apis::CloudbuildV1::Results::Representation
-      
-          property :logs_bucket, as: 'logsBucket'
-          collection :steps, as: 'steps', class: Google::Apis::CloudbuildV1::BuildStep, decorator: Google::Apis::CloudbuildV1::BuildStep::Representation
-      
-          property :build_trigger_id, as: 'buildTriggerId'
-          property :id, as: 'id'
-          collection :tags, as: 'tags'
-        end
-      end
-      
-      class CancelBuildRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
       class ListBuildsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
           collection :builds, as: 'builds', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -344,31 +309,26 @@ module Google
         end
       end
       
-      class Source
+      class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :storage_source, as: 'storageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudbuildV1::Status, decorator: Google::Apis::CloudbuildV1::Status::Representation
       
-          property :repo_source, as: 'repoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
-      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
-      class BuildOptions
+      class RepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :source_provenance_hash, as: 'sourceProvenanceHash'
-          property :substitution_option, as: 'substitutionOption'
-          property :requested_verify_option, as: 'requestedVerifyOption'
-        end
-      end
-      
-      class StorageSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :generation, :numeric_string => true, as: 'generation'
-          property :bucket, as: 'bucket'
-          property :object, as: 'object'
+          property :branch_name, as: 'branchName'
+          property :commit_sha, as: 'commitSha'
+          property :project_id, as: 'projectId'
+          property :repo_name, as: 'repoName'
+          property :tag_name, as: 'tagName'
         end
       end
       
@@ -378,6 +338,62 @@ module Google
           collection :build_step_images, as: 'buildStepImages'
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
       
+        end
+      end
+      
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          hash :secret_env, as: 'secretEnv'
+        end
+      end
+      
+      class Source
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repo_source, as: 'repoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+          property :storage_source, as: 'storageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
+      
+        end
+      end
+      
+      class SourceProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+          property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudbuildV1::StorageSource, decorator: Google::Apis::CloudbuildV1::StorageSource::Representation
+      
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
+      class StorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
         end
       end
     end

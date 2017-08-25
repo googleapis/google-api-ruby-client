@@ -90,9 +90,10 @@ module Google
         
         # Gets the product from a Manufacturer Center account, including product
         # issues.
-        # A recently updated product takes some time to be processed before any
-        # changes are visible. While some issues may be available once the product
-        # has been processed, other issues may take days to appear.
+        # A recently updated product takes around 15 minutes to process. Changes are
+        # only visible after it has been processed. While some issues may be
+        # available once the product has been processed, other issues may take days
+        # to appear.
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
         #   `account_id` - The ID of the Manufacturer Center account.
@@ -137,11 +138,11 @@ module Google
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
         #   `account_id` - The ID of the Manufacturer Center account.
-        # @param [String] page_token
-        #   The token returned by the previous request.
         # @param [Fixnum] page_size
         #   Maximum number of product statuses to return in the response, used for
         #   paging.
+        # @param [String] page_token
+        #   The token returned by the previous request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -159,13 +160,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_products(parent, page_token: nil, page_size: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_products(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/products', options)
           command.response_representation = Google::Apis::ManufacturersV1::ListProductsResponse::Representation
           command.response_class = Google::Apis::ManufacturersV1::ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

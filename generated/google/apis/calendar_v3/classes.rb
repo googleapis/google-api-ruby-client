@@ -600,74 +600,6 @@ module Google
       end
       
       # 
-      class DeepLinkData
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `links`
-        # @return [Array<Google::Apis::CalendarV3::Link>]
-        attr_accessor :links
-      
-        # 
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @links = args[:links] if args.key?(:links)
-          @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # 
-      class DisplayInfo
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `appIconUrl`
-        # @return [String]
-        attr_accessor :app_icon_url
-      
-        # 
-        # Corresponds to the JSON property `appShortTitle`
-        # @return [String]
-        attr_accessor :app_short_title
-      
-        # 
-        # Corresponds to the JSON property `appTitle`
-        # @return [String]
-        attr_accessor :app_title
-      
-        # 
-        # Corresponds to the JSON property `linkShortTitle`
-        # @return [String]
-        attr_accessor :link_short_title
-      
-        # 
-        # Corresponds to the JSON property `linkTitle`
-        # @return [String]
-        attr_accessor :link_title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_icon_url = args[:app_icon_url] if args.key?(:app_icon_url)
-          @app_short_title = args[:app_short_title] if args.key?(:app_short_title)
-          @app_title = args[:app_title] if args.key?(:app_title)
-          @link_short_title = args[:link_short_title] if args.key?(:link_short_title)
-          @link_title = args[:link_title] if args.key?(:link_title)
-        end
-      end
-      
-      # 
       class Error
         include Google::Apis::Core::Hashable
       
@@ -937,8 +869,10 @@ module Google
         attr_accessor :summary
       
         # Whether the event blocks time on the calendar. Optional. Possible values are:
-        # - "opaque" - The event blocks time on the calendar. This is the default value.
-        # - "transparent" - The event does not block time on the calendar.
+        # - "opaque" - Default value. The event does block time on the calendar. This is
+        # equivalent to setting Show me as to Busy in the Calendar UI.
+        # - "transparent" - The event does not block time on the calendar. This is
+        # equivalent to setting Show me as to Available in the Calendar UI.
         # Corresponds to the JSON property `transparency`
         # @return [String]
         attr_accessor :transparency
@@ -1408,31 +1342,6 @@ module Google
       end
       
       # 
-      class EventHabitInstance
-        include Google::Apis::Core::Hashable
-      
-        # Metadata specific to this instance.
-        # Corresponds to the JSON property `data`
-        # @return [Google::Apis::CalendarV3::HabitInstanceData]
-        attr_accessor :data
-      
-        # Id of the habit this instance belongs to.
-        # Corresponds to the JSON property `parentId`
-        # @return [String]
-        attr_accessor :parent_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data = args[:data] if args.key?(:data)
-          @parent_id = args[:parent_id] if args.key?(:parent_id)
-        end
-      end
-      
-      # 
       class EventReminder
         include Google::Apis::Core::Hashable
       
@@ -1717,118 +1626,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @time_max = args[:time_max] if args.key?(:time_max)
           @time_min = args[:time_min] if args.key?(:time_min)
-        end
-      end
-      
-      # 
-      class HabitInstanceData
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # 
-        # Corresponds to the JSON property `statusInferred`
-        # @return [Boolean]
-        attr_accessor :status_inferred
-        alias_method :status_inferred?, :status_inferred
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @status = args[:status] if args.key?(:status)
-          @status_inferred = args[:status_inferred] if args.key?(:status_inferred)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class LaunchInfo
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `appId`
-        # @return [String]
-        attr_accessor :app_id
-      
-        # 
-        # Corresponds to the JSON property `installUrl`
-        # @return [String]
-        attr_accessor :install_url
-      
-        # 
-        # Corresponds to the JSON property `intentAction`
-        # @return [String]
-        attr_accessor :intent_action
-      
-        # 
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_id = args[:app_id] if args.key?(:app_id)
-          @install_url = args[:install_url] if args.key?(:install_url)
-          @intent_action = args[:intent_action] if args.key?(:intent_action)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # 
-      class Link
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `applinkingSource`
-        # @return [String]
-        attr_accessor :applinking_source
-      
-        # 
-        # Corresponds to the JSON property `displayInfo`
-        # @return [Google::Apis::CalendarV3::DisplayInfo]
-        attr_accessor :display_info
-      
-        # 
-        # Corresponds to the JSON property `launchInfo`
-        # @return [Google::Apis::CalendarV3::LaunchInfo]
-        attr_accessor :launch_info
-      
-        # 
-        # Corresponds to the JSON property `platform`
-        # @return [String]
-        attr_accessor :platform
-      
-        # 
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @applinking_source = args[:applinking_source] if args.key?(:applinking_source)
-          @display_info = args[:display_info] if args.key?(:display_info)
-          @launch_info = args[:launch_info] if args.key?(:launch_info)
-          @platform = args[:platform] if args.key?(:platform)
-          @url = args[:url] if args.key?(:url)
         end
       end
       

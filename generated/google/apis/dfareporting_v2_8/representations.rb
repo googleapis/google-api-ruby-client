@@ -1911,6 +1911,7 @@ module Google
           collection :encrypted_user_id_candidates, as: 'encryptedUserIdCandidates'
           property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'
           property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
+          property :gclid, as: 'gclid'
           property :kind, as: 'kind'
           property :limit_ad_tracking, as: 'limitAdTracking'
           property :mobile_device_id, as: 'mobileDeviceId'

@@ -88,18 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeepLinkData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DisplayInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,12 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EventHabitInstance
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EventReminder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,24 +191,6 @@ module Google
       end
       
       class FreeBusyResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HabitInstanceData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LaunchInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -383,26 +347,6 @@ module Google
           property :kind, as: 'kind'
           property :updated, as: 'updated', type: DateTime
       
-        end
-      end
-      
-      class DeepLinkData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :links, as: 'links', class: Google::Apis::CalendarV3::Link, decorator: Google::Apis::CalendarV3::Link::Representation
-      
-          property :url, as: 'url'
-        end
-      end
-      
-      class DisplayInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_icon_url, as: 'appIconUrl'
-          property :app_short_title, as: 'appShortTitle'
-          property :app_title, as: 'appTitle'
-          property :link_short_title, as: 'linkShortTitle'
-          property :link_title, as: 'linkTitle'
         end
       end
       
@@ -567,15 +511,6 @@ module Google
         end
       end
       
-      class EventHabitInstance
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, as: 'data', class: Google::Apis::CalendarV3::HabitInstanceData, decorator: Google::Apis::CalendarV3::HabitInstanceData::Representation
-      
-          property :parent_id, as: 'parentId'
-        end
-      end
-      
       class EventReminder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -657,38 +592,6 @@ module Google
       
           property :time_min, as: 'timeMin', type: DateTime
       
-        end
-      end
-      
-      class HabitInstanceData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :status, as: 'status'
-          property :status_inferred, as: 'statusInferred'
-          property :type, as: 'type'
-        end
-      end
-      
-      class LaunchInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_id, as: 'appId'
-          property :install_url, as: 'installUrl'
-          property :intent_action, as: 'intentAction'
-          property :uri, as: 'uri'
-        end
-      end
-      
-      class Link
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :applinking_source, as: 'applinkingSource'
-          property :display_info, as: 'displayInfo', class: Google::Apis::CalendarV3::DisplayInfo, decorator: Google::Apis::CalendarV3::DisplayInfo::Representation
-      
-          property :launch_info, as: 'launchInfo', class: Google::Apis::CalendarV3::LaunchInfo, decorator: Google::Apis::CalendarV3::LaunchInfo::Representation
-      
-          property :platform, as: 'platform'
-          property :url, as: 'url'
         end
       end
       

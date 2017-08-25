@@ -963,8 +963,8 @@ module Google
         # @return [String]
         attr_accessor :content_language
       
-        # Content-Type of the object data. If contentType is not specified, object
-        # downloads will be served as application/octet-stream.
+        # Content-Type of the object data. If an object is stored without a Content-Type,
+        # it is served as application/octet-stream.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -1385,10 +1385,11 @@ module Google
         attr_accessor :kind
       
         # The ID of the resource to which this policy belongs. Will be of the form
-        # buckets/bucket for buckets, and buckets/bucket/objects/object for objects. A
-        # specific generation may be specified by appending #generationNumber to the end
-        # of the object name, e.g. buckets/my-bucket/objects/data.txt#17. The current
-        # generation can be denoted with #0. This field is ignored on input.
+        # projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/
+        # object for objects. A specific generation may be specified by appending #
+        # generationNumber to the end of the object name, e.g. projects/_/buckets/my-
+        # bucket/objects/data.txt#17. The current generation can be denoted with #0.
+        # This field is ignored on input.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id

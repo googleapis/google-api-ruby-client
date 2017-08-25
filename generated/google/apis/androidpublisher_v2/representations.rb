@@ -395,6 +395,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sha1, as: 'sha1'
+          property :sha256, as: 'sha256'
         end
       end
       
@@ -775,6 +776,7 @@ module Google
           property :consumption_state, as: 'consumptionState'
           property :developer_payload, as: 'developerPayload'
           property :kind, as: 'kind'
+          property :order_id, as: 'orderId'
           property :purchase_state, as: 'purchaseState'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
         end
@@ -865,6 +867,7 @@ module Google
           property :developer_payload, as: 'developerPayload'
           property :expiry_time_millis, :numeric_string => true, as: 'expiryTimeMillis'
           property :kind, as: 'kind'
+          property :order_id, as: 'orderId'
           property :payment_state, as: 'paymentState'
           property :price_amount_micros, :numeric_string => true, as: 'priceAmountMicros'
           property :price_currency_code, as: 'priceCurrencyCode'

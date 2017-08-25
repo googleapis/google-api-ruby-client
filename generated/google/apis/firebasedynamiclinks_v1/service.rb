@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://firebasedynamiclinks.googleapis.com/', '')
+          super('https://firebasedynamiclinks-ipv6.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
