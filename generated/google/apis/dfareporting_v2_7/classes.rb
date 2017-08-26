@@ -2818,7 +2818,7 @@ module Google
         attr_accessor :fs_command
       
         # HTML code for the creative. This is a required field when applicable. This
-        # field is ignored if htmlCodeLocked is false. Applicable to the following
+        # field is ignored if htmlCodeLocked is true. Applicable to the following
         # creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA.
         # Corresponds to the JSON property `htmlCode`
         # @return [String]
@@ -5097,7 +5097,7 @@ module Google
         alias_method :verification_tag_opt_out?, :verification_tag_opt_out
       
         # Whether this directory site has disabled active view for in-stream video
-        # creatives.
+        # creatives. This is a read-only field.
         # Corresponds to the JSON property `videoActiveViewOptOut`
         # @return [Boolean]
         attr_accessor :video_active_view_opt_out
@@ -5859,28 +5859,8 @@ module Google
         attr_accessor :tag_string
       
         # List of the user-defined variables used by this conversion tag. These map to
-        # the "u[1-20]=" in the tags. Each of these can have a user defined type.
-        # Acceptable values are:
-        # - "U1"
-        # - "U2"
-        # - "U3"
-        # - "U4"
-        # - "U5"
-        # - "U6"
-        # - "U7"
-        # - "U8"
-        # - "U9"
-        # - "U10"
-        # - "U11"
-        # - "U12"
-        # - "U13"
-        # - "U14"
-        # - "U15"
-        # - "U16"
-        # - "U17"
-        # - "U18"
-        # - "U19"
-        # - "U20"
+        # the "u[1-100]=" in the tags. Each of these can have a user defined type.
+        # Acceptable values are U1 to U100, inclusive.
         # Corresponds to the JSON property `userDefinedVariableTypes`
         # @return [Array<String>]
         attr_accessor :user_defined_variable_types
@@ -8135,6 +8115,8 @@ module Google
         # VPAID adapter setting for this placement. Controls which VPAID format the
         # measurement adapter will use for in-stream video creatives assigned to this
         # placement.
+        # Note: Flash is no longer supported. This field now defaults to HTML5 when the
+        # following values are provided: FLASH, BOTH.
         # Corresponds to the JSON property `vpaidAdapterChoice`
         # @return [String]
         attr_accessor :vpaid_adapter_choice
@@ -10573,8 +10555,9 @@ module Google
         # measurement adapter will use for in-stream video creatives assigned to the
         # placement. The publisher's specifications will typically determine this
         # setting. For VPAID creatives, the adapter format will match the VPAID format (
-        # HTML5 VPAID creatives use the HTML5 adapter, and Flash VPAID creatives use the
-        # Flash adapter).
+        # HTML5 VPAID creatives use the HTML5 adapter).
+        # Note: Flash is no longer supported. This field now defaults to HTML5 when the
+        # following values are provided: FLASH, BOTH.
         # Corresponds to the JSON property `vpaidAdapterChoiceTemplate`
         # @return [String]
         attr_accessor :vpaid_adapter_choice_template

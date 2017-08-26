@@ -27,7 +27,10 @@ module Google
     # @see https://cloud.google.com/natural-language/
     module LanguageV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20170619'
+      REVISION = '20170809'
+
+      # Apply machine learning models to reveal the structure and meaning of text
+      AUTH_CLOUD_LANGUAGE = 'https://www.googleapis.com/auth/cloud-language'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

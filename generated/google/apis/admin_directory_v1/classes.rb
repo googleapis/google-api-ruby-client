@@ -637,6 +637,26 @@ module Google
         end
       end
       
+      # JSON request template for moving ChromeOs Device to given OU in Directory
+      # Devices API.
+      class ChromeOsMoveDevicesToOu
+        include Google::Apis::Core::Hashable
+      
+        # ChromeOs Devices to be moved to OU
+        # Corresponds to the JSON property `deviceIds`
+        # @return [Array<String>]
+        attr_accessor :device_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_ids = args[:device_ids] if args.key?(:device_ids)
+        end
+      end
+      
       # JSON template for Customer Resource object in Directory API.
       class Customer
         include Google::Apis::Core::Hashable
@@ -2418,6 +2438,11 @@ module Google
         attr_accessor :is_mailbox_setup
         alias_method :is_mailbox_setup?, :is_mailbox_setup
       
+        # 
+        # Corresponds to the JSON property `keywords`
+        # @return [Object]
+        attr_accessor :keywords
+      
         # Kind of resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -2546,6 +2571,7 @@ module Google
           @is_enforced_in2_sv = args[:is_enforced_in2_sv] if args.key?(:is_enforced_in2_sv)
           @is_enrolled_in2_sv = args[:is_enrolled_in2_sv] if args.key?(:is_enrolled_in2_sv)
           @is_mailbox_setup = args[:is_mailbox_setup] if args.key?(:is_mailbox_setup)
+          @keywords = args[:keywords] if args.key?(:keywords)
           @kind = args[:kind] if args.key?(:kind)
           @languages = args[:languages] if args.key?(:languages)
           @last_login_time = args[:last_login_time] if args.key?(:last_login_time)
@@ -2817,6 +2843,40 @@ module Google
           @primary = args[:primary] if args.key?(:primary)
           @protocol = args[:protocol] if args.key?(:protocol)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # JSON template for a keyword entry.
+      class UserKeyword
+        include Google::Apis::Core::Hashable
+      
+        # Custom Type.
+        # Corresponds to the JSON property `customType`
+        # @return [String]
+        attr_accessor :custom_type
+      
+        # Each entry can have a type which indicates standard type of that entry. For
+        # example, keyword could be of type occupation or outlook. In addition to the
+        # standard type, an entry can have a custom type and can give it any name. Such
+        # types should have the CUSTOM value as type and also have a customType value.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Keyword.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_type = args[:custom_type] if args.key?(:custom_type)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

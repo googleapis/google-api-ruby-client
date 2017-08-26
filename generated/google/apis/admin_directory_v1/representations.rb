@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChromeOsMoveDevicesToOu
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Customer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,12 @@ module Google
       end
       
       class UserIm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserKeyword
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -558,6 +570,13 @@ module Google
           property :etag, as: 'etag'
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ChromeOsMoveDevicesToOu
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_ids, as: 'deviceIds'
         end
       end
       
@@ -998,6 +1017,7 @@ module Google
           property :is_enforced_in2_sv, as: 'isEnforcedIn2Sv'
           property :is_enrolled_in2_sv, as: 'isEnrolledIn2Sv'
           property :is_mailbox_setup, as: 'isMailboxSetup'
+          property :keywords, as: 'keywords'
           property :kind, as: 'kind'
           property :languages, as: 'languages'
           property :last_login_time, as: 'lastLoginTime', type: DateTime
@@ -1078,6 +1098,15 @@ module Google
           property :primary, as: 'primary'
           property :protocol, as: 'protocol'
           property :type, as: 'type'
+        end
+      end
+      
+      class UserKeyword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_type, as: 'customType'
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       

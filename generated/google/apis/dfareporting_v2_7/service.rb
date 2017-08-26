@@ -6296,6 +6296,7 @@ module Google
         #   Generate tags for these placements.
         # @param [Array<String>, String] tag_formats
         #   Tag formats to generate for these placements.
+        #   Note: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
