@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentitytoolkitRelyingpartySendVerificationCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentitytoolkitRelyingpartySendVerificationCodeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetAccountInfoRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +167,18 @@ module Google
       end
       
       class VerifyPasswordRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -391,12 +415,30 @@ module Google
         end
       end
       
+      class IdentitytoolkitRelyingpartySendVerificationCodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ios_receipt, as: 'iosReceipt'
+          property :ios_secret, as: 'iosSecret'
+          property :phone_number, as: 'phoneNumber'
+          property :recaptcha_token, as: 'recaptchaToken'
+        end
+      end
+      
+      class IdentitytoolkitRelyingpartySendVerificationCodeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_info, as: 'sessionInfo'
+        end
+      end
+      
       class SetAccountInfoRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
           property :created_at, :numeric_string => true, as: 'createdAt'
+          property :custom_attributes, as: 'customAttributes'
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
           collection :delete_attribute, as: 'deleteAttribute'
           collection :delete_provider, as: 'deleteProvider'
@@ -540,6 +582,35 @@ module Google
         end
       end
       
+      class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :id_token, as: 'idToken'
+          property :operation, as: 'operation'
+          property :phone_number, as: 'phoneNumber'
+          property :session_info, as: 'sessionInfo'
+          property :temporary_proof, as: 'temporaryProof'
+          property :verification_proof, as: 'verificationProof'
+        end
+      end
+      
+      class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
+          property :id_token, as: 'idToken'
+          property :is_new_user, as: 'isNewUser'
+          property :local_id, as: 'localId'
+          property :phone_number, as: 'phoneNumber'
+          property :refresh_token, as: 'refreshToken'
+          property :temporary_proof, as: 'temporaryProof'
+          property :temporary_proof_expires_in, :numeric_string => true, as: 'temporaryProofExpiresIn'
+          property :verification_proof, as: 'verificationProof'
+          property :verification_proof_expires_in, :numeric_string => true, as: 'verificationProofExpiresIn'
+        end
+      end
+      
       class IdpConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -646,6 +717,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created_at, :numeric_string => true, as: 'createdAt'
+          property :custom_attributes, as: 'customAttributes'
           property :custom_auth, as: 'customAuth'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
@@ -731,6 +803,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expires_in, :numeric_string => true, as: 'expiresIn'
           property :id_token, as: 'idToken'
+          property :is_new_user, as: 'isNewUser'
           property :kind, as: 'kind'
           property :refresh_token, as: 'refreshToken'
         end

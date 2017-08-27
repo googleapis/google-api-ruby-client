@@ -620,6 +620,62 @@ module Google
         end
       end
       
+      # Request for Identitytoolkit-SendVerificationCode
+      class IdentitytoolkitRelyingpartySendVerificationCodeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Receipt of successful app token validation with APNS.
+        # Corresponds to the JSON property `iosReceipt`
+        # @return [String]
+        attr_accessor :ios_receipt
+      
+        # Secret delivered to iOS app via APNS.
+        # Corresponds to the JSON property `iosSecret`
+        # @return [String]
+        attr_accessor :ios_secret
+      
+        # The phone number to send the verification code to in E.164 format.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Recaptcha solution.
+        # Corresponds to the JSON property `recaptchaToken`
+        # @return [String]
+        attr_accessor :recaptcha_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ios_receipt = args[:ios_receipt] if args.key?(:ios_receipt)
+          @ios_secret = args[:ios_secret] if args.key?(:ios_secret)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @recaptcha_token = args[:recaptcha_token] if args.key?(:recaptcha_token)
+        end
+      end
+      
+      # Response for Identitytoolkit-SendVerificationCode
+      class IdentitytoolkitRelyingpartySendVerificationCodeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Encrypted session information
+        # Corresponds to the JSON property `sessionInfo`
+        # @return [String]
+        attr_accessor :session_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_info = args[:session_info] if args.key?(:session_info)
+        end
+      end
+      
       # Request to set the account information.
       class SetAccountInfoRequest
         include Google::Apis::Core::Hashable
@@ -638,6 +694,11 @@ module Google
         # Corresponds to the JSON property `createdAt`
         # @return [Fixnum]
         attr_accessor :created_at
+      
+        # The custom attributes to be set in the user's id token.
+        # Corresponds to the JSON property `customAttributes`
+        # @return [String]
+        attr_accessor :custom_attributes
       
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
@@ -748,6 +809,7 @@ module Google
           @captcha_challenge = args[:captcha_challenge] if args.key?(:captcha_challenge)
           @captcha_response = args[:captcha_response] if args.key?(:captcha_response)
           @created_at = args[:created_at] if args.key?(:created_at)
+          @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
           @delete_attribute = args[:delete_attribute] if args.key?(:delete_attribute)
           @delete_provider = args[:delete_provider] if args.key?(:delete_provider)
@@ -1279,6 +1341,135 @@ module Google
         end
       end
       
+      # Request for Identitytoolkit-VerifyPhoneNumber
+      class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # 
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # 
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # 
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The session info previously returned by IdentityToolkit-SendVerificationCode.
+        # Corresponds to the JSON property `sessionInfo`
+        # @return [String]
+        attr_accessor :session_info
+      
+        # 
+        # Corresponds to the JSON property `temporaryProof`
+        # @return [String]
+        attr_accessor :temporary_proof
+      
+        # 
+        # Corresponds to the JSON property `verificationProof`
+        # @return [String]
+        attr_accessor :verification_proof
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @operation = args[:operation] if args.key?(:operation)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @session_info = args[:session_info] if args.key?(:session_info)
+          @temporary_proof = args[:temporary_proof] if args.key?(:temporary_proof)
+          @verification_proof = args[:verification_proof] if args.key?(:verification_proof)
+        end
+      end
+      
+      # Response for Identitytoolkit-VerifyPhoneNumber
+      class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `expiresIn`
+        # @return [Fixnum]
+        attr_accessor :expires_in
+      
+        # 
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # 
+        # Corresponds to the JSON property `isNewUser`
+        # @return [Boolean]
+        attr_accessor :is_new_user
+        alias_method :is_new_user?, :is_new_user
+      
+        # 
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        # 
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # 
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        # 
+        # Corresponds to the JSON property `temporaryProof`
+        # @return [String]
+        attr_accessor :temporary_proof
+      
+        # 
+        # Corresponds to the JSON property `temporaryProofExpiresIn`
+        # @return [Fixnum]
+        attr_accessor :temporary_proof_expires_in
+      
+        # 
+        # Corresponds to the JSON property `verificationProof`
+        # @return [String]
+        attr_accessor :verification_proof
+      
+        # 
+        # Corresponds to the JSON property `verificationProofExpiresIn`
+        # @return [Fixnum]
+        attr_accessor :verification_proof_expires_in
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @is_new_user = args[:is_new_user] if args.key?(:is_new_user)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+          @temporary_proof = args[:temporary_proof] if args.key?(:temporary_proof)
+          @temporary_proof_expires_in = args[:temporary_proof_expires_in] if args.key?(:temporary_proof_expires_in)
+          @verification_proof = args[:verification_proof] if args.key?(:verification_proof)
+          @verification_proof_expires_in = args[:verification_proof_expires_in] if args.key?(:verification_proof_expires_in)
+        end
+      end
+      
       # Template for a single idp configuration.
       class IdpConfig
         include Google::Apis::Core::Hashable
@@ -1717,6 +1908,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :created_at
       
+        # The custom attributes to be set in the user's id token.
+        # Corresponds to the JSON property `customAttributes`
+        # @return [String]
+        attr_accessor :custom_attributes
+      
         # Whether the user is authenticated by the developer.
         # Corresponds to the JSON property `customAuth`
         # @return [Boolean]
@@ -1814,6 +2010,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @created_at = args[:created_at] if args.key?(:created_at)
+          @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
           @custom_auth = args[:custom_auth] if args.key?(:custom_auth)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2176,6 +2373,12 @@ module Google
         # @return [String]
         attr_accessor :id_token
       
+        # True if it's a new user sign-in, false if it's a returning user.
+        # Corresponds to the JSON property `isNewUser`
+        # @return [Boolean]
+        attr_accessor :is_new_user
+        alias_method :is_new_user?, :is_new_user
+      
         # The fixed string "identitytoolkit#VerifyCustomTokenResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -2194,6 +2397,7 @@ module Google
         def update!(**args)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @id_token = args[:id_token] if args.key?(:id_token)
+          @is_new_user = args[:is_new_user] if args.key?(:is_new_user)
           @kind = args[:kind] if args.key?(:kind)
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
