@@ -1,3 +1,12 @@
+# 0.13.4
+* Backwards compatible changes:
+  * Updated `compute_alpha`
+  * Updated `content_v2`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `identitytoolkit_v3`
+  * Updated `youtube_partner_v1`
+
 # 0.13.3
 * Backwards compatible changes:
   * Added `adexchangebuyer_v1_2`
