@@ -442,6 +442,11 @@ module Google
         # @return [String]
         attr_accessor :origin_namespace
       
+        # The GroupByKey step name from the original graph.
+        # Corresponds to the JSON property `originalShuffleStepName`
+        # @return [String]
+        attr_accessor :original_shuffle_step_name
+      
         # System generated name of the original step in the user's graph, before
         # optimization.
         # Corresponds to the JSON property `originalStepName`
@@ -452,6 +457,11 @@ module Google
         # Corresponds to the JSON property `portion`
         # @return [String]
         attr_accessor :portion
+      
+        # Uniquely identifies a side input.
+        # Corresponds to the JSON property `sideInput`
+        # @return [Google::Apis::DataflowV1b3::SideInputId]
+        attr_accessor :side_input
       
         # ID of a particular worker.
         # Corresponds to the JSON property `workerId`
@@ -469,8 +479,10 @@ module Google
           @name = args[:name] if args.key?(:name)
           @origin = args[:origin] if args.key?(:origin)
           @origin_namespace = args[:origin_namespace] if args.key?(:origin_namespace)
+          @original_shuffle_step_name = args[:original_shuffle_step_name] if args.key?(:original_shuffle_step_name)
           @original_step_name = args[:original_step_name] if args.key?(:original_step_name)
           @portion = args[:portion] if args.key?(:portion)
+          @side_input = args[:side_input] if args.key?(:side_input)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
       end
@@ -3159,6 +3171,31 @@ module Google
         end
       end
       
+      # Uniquely identifies a side input.
+      class SideInputId
+        include Google::Apis::Core::Hashable
+      
+        # The step that receives and usually consumes this side input.
+        # Corresponds to the JSON property `declaringStepName`
+        # @return [String]
+        attr_accessor :declaring_step_name
+      
+        # The index of the side input, from the list of non_parallel_inputs.
+        # Corresponds to the JSON property `inputIndex`
+        # @return [Fixnum]
+        attr_accessor :input_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @declaring_step_name = args[:declaring_step_name] if args.key?(:declaring_step_name)
+          @input_index = args[:input_index] if args.key?(:input_index)
+        end
+      end
+      
       # Information about a side input of a DoFn or an input of a SeqDoFn.
       class SideInputInfo
         include Google::Apis::Core::Hashable
@@ -4805,6 +4842,13 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ResourceUtilizationReport]
         attr_accessor :worker_metrics
       
+        # Shutdown notification from workers. This is to be sent by the shutdown
+        # script of the worker VM so that the backend knows that the VM is being
+        # shut down.
+        # Corresponds to the JSON property `workerShutdownNotice`
+        # @return [Google::Apis::DataflowV1b3::WorkerShutdownNotice]
+        attr_accessor :worker_shutdown_notice
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4816,6 +4860,7 @@ module Google
           @worker_health_report = args[:worker_health_report] if args.key?(:worker_health_report)
           @worker_message_code = args[:worker_message_code] if args.key?(:worker_message_code)
           @worker_metrics = args[:worker_metrics] if args.key?(:worker_metrics)
+          @worker_shutdown_notice = args[:worker_shutdown_notice] if args.key?(:worker_shutdown_notice)
         end
       end
       
@@ -4890,6 +4935,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse]
         attr_accessor :worker_metrics_response
       
+        # Service-side response to WorkerMessage issuing shutdown notice.
+        # Corresponds to the JSON property `workerShutdownNoticeResponse`
+        # @return [Google::Apis::DataflowV1b3::WorkerShutdownNoticeResponse]
+        attr_accessor :worker_shutdown_notice_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4898,6 +4948,7 @@ module Google
         def update!(**args)
           @worker_health_report_response = args[:worker_health_report_response] if args.key?(:worker_health_report_response)
           @worker_metrics_response = args[:worker_metrics_response] if args.key?(:worker_metrics_response)
+          @worker_shutdown_notice_response = args[:worker_shutdown_notice_response] if args.key?(:worker_shutdown_notice_response)
         end
       end
       
@@ -5132,6 +5183,42 @@ module Google
           @shuffle_service_path = args[:shuffle_service_path] if args.key?(:shuffle_service_path)
           @temp_storage_prefix = args[:temp_storage_prefix] if args.key?(:temp_storage_prefix)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
+        end
+      end
+      
+      # Shutdown notification from workers. This is to be sent by the shutdown
+      # script of the worker VM so that the backend knows that the VM is being
+      # shut down.
+      class WorkerShutdownNotice
+        include Google::Apis::Core::Hashable
+      
+        # Optional reason to be attached for the shutdown notice.
+        # For example: "PREEMPTION" would indicate the VM is being shut down because
+        # of preemption. Other possible reasons may be added in the future.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Service-side response to WorkerMessage issuing shutdown notice.
+      class WorkerShutdownNoticeResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

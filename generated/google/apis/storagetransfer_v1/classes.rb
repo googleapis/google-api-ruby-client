@@ -253,7 +253,8 @@ module Google
       # * Length - The size of the object in bytes.
       # * MD5 - The base64-encoded MD5 hash of the object.
       # For an example of a valid TSV file, see
-      # [Transferring data from URLs](https://cloud.google.com/storage/transfer/#urls)
+      # [Transferring data from URLs](https://cloud.google.com/storage/transfer/create-
+      # url-list).
       # When transferring data based on a URL list, keep the following in mind:
       # * When an object located at `http(s)://hostname:port/<URL-path>` is
       # transferred
@@ -421,7 +422,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
+        # If `true`, the operation is completed, and either `error` or `response` is
         # available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
@@ -1027,7 +1028,8 @@ module Google
         # * Length - The size of the object in bytes.
         # * MD5 - The base64-encoded MD5 hash of the object.
         # For an example of a valid TSV file, see
-        # [Transferring data from URLs](https://cloud.google.com/storage/transfer/#urls)
+        # [Transferring data from URLs](https://cloud.google.com/storage/transfer/create-
+        # url-list).
         # When transferring data based on a URL list, keep the following in mind:
         # * When an object located at `http(s)://hostname:port/<URL-path>` is
         # transferred

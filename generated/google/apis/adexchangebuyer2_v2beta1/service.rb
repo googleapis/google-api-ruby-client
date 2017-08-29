@@ -546,10 +546,11 @@ module Google
         #   <li>openAuctionStatus: `approved, conditionally_approved, disapproved,
         #   not_checked`
         #   <li>attribute: `a numeric attribute from the list of attributes`
-        #   <li>disapprovalReason: `a reason from DisapprovalReason
+        #   <li>disapprovalReason: `a reason from
+        #   DisapprovalReason
         #   </ul>
-        #   Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:
-        #   unacceptable_content) OR attribute:47'
+        #   Example: 'accountId=12345 AND (dealsStatus:disapproved AND
+        #   disapprovalReason:unacceptable_content) OR attribute:47'
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

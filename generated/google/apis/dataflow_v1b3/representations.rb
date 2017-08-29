@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SideInputId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SideInputInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -754,6 +760,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkerShutdownNotice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerShutdownNoticeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteInstruction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -882,8 +900,11 @@ module Google
           property :name, as: 'name'
           property :origin, as: 'origin'
           property :origin_namespace, as: 'originNamespace'
+          property :original_shuffle_step_name, as: 'originalShuffleStepName'
           property :original_step_name, as: 'originalStepName'
           property :portion, as: 'portion'
+          property :side_input, as: 'sideInput', class: Google::Apis::DataflowV1b3::SideInputId, decorator: Google::Apis::DataflowV1b3::SideInputId::Representation
+      
           property :worker_id, as: 'workerId'
         end
       end
@@ -1613,6 +1634,14 @@ module Google
         end
       end
       
+      class SideInputId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :declaring_step_name, as: 'declaringStepName'
+          property :input_index, as: 'inputIndex'
+        end
+      end
+      
       class SideInputInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2048,6 +2077,8 @@ module Google
       
           property :worker_metrics, as: 'workerMetrics', class: Google::Apis::DataflowV1b3::ResourceUtilizationReport, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReport::Representation
       
+          property :worker_shutdown_notice, as: 'workerShutdownNotice', class: Google::Apis::DataflowV1b3::WorkerShutdownNotice, decorator: Google::Apis::DataflowV1b3::WorkerShutdownNotice::Representation
+      
         end
       end
       
@@ -2065,6 +2096,8 @@ module Google
           property :worker_health_report_response, as: 'workerHealthReportResponse', class: Google::Apis::DataflowV1b3::WorkerHealthReportResponse, decorator: Google::Apis::DataflowV1b3::WorkerHealthReportResponse::Representation
       
           property :worker_metrics_response, as: 'workerMetricsResponse', class: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse::Representation
+      
+          property :worker_shutdown_notice_response, as: 'workerShutdownNoticeResponse', class: Google::Apis::DataflowV1b3::WorkerShutdownNoticeResponse, decorator: Google::Apis::DataflowV1b3::WorkerShutdownNoticeResponse::Representation
       
         end
       end
@@ -2109,6 +2142,19 @@ module Google
           property :shuffle_service_path, as: 'shuffleServicePath'
           property :temp_storage_prefix, as: 'tempStoragePrefix'
           property :worker_id, as: 'workerId'
+        end
+      end
+      
+      class WorkerShutdownNotice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class WorkerShutdownNoticeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -314,6 +314,7 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         # format.
+        # The provided URL can be at maximum 2K bytes large.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -1920,7 +1921,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The background fill property state.
-        # Updating the the fill on a page will implicitly update this field to
+        # Updating the fill on a page will implicitly update this field to
         # `RENDERED`, unless another value is specified in the same request. To
         # have no fill on a page, set this field to `NOT_RENDERED`. In this case,
         # any other fill fields set in the same request will be ignored.
@@ -2476,6 +2477,7 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         # format.
+        # The provided URL can be at maximum 2K bytes large.
         # Corresponds to the JSON property `imageUrl`
         # @return [String]
         attr_accessor :image_url
@@ -2796,6 +2798,9 @@ module Google
         attr_accessor :update_line_properties
       
         # Updates the transform of a page element.
+        # Updating the transform of a group will change the absolute transform of the
+        # page elements in that group, which can change their visual appearance. See
+        # the documentation for PageElement.transform for more details.
         # Corresponds to the JSON property `updatePageElementTransform`
         # @return [Google::Apis::SlidesV1::UpdatePageElementTransformRequest]
         attr_accessor :update_page_element_transform
@@ -3357,6 +3362,7 @@ module Google
         # display inside the presentation. Pictures must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         # format.
+        # The provided URL can be at maximum 2K bytes large.
         # Corresponds to the JSON property `contentUrl`
         # @return [String]
         attr_accessor :content_url
@@ -4022,6 +4028,9 @@ module Google
       end
       
       # Updates the transform of a page element.
+      # Updating the transform of a group will change the absolute transform of the
+      # page elements in that group, which can change their visual appearance. See
+      # the documentation for PageElement.transform for more details.
       class UpdatePageElementTransformRequest
         include Google::Apis::Core::Hashable
       

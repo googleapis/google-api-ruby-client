@@ -28236,8 +28236,10 @@
 "/dataflow:v1b3/CounterStructuredName/name": name
 "/dataflow:v1b3/CounterStructuredName/origin": origin
 "/dataflow:v1b3/CounterStructuredName/originNamespace": origin_namespace
+"/dataflow:v1b3/CounterStructuredName/originalShuffleStepName": original_shuffle_step_name
 "/dataflow:v1b3/CounterStructuredName/originalStepName": original_step_name
 "/dataflow:v1b3/CounterStructuredName/portion": portion
+"/dataflow:v1b3/CounterStructuredName/sideInput": side_input
 "/dataflow:v1b3/CounterStructuredName/workerId": worker_id
 "/dataflow:v1b3/CounterStructuredNameAndMetadata": counter_structured_name_and_metadata
 "/dataflow:v1b3/CounterStructuredNameAndMetadata/metadata": metadata
@@ -28606,6 +28608,9 @@
 "/dataflow:v1b3/ShellTask": shell_task
 "/dataflow:v1b3/ShellTask/command": command
 "/dataflow:v1b3/ShellTask/exitCode": exit_code
+"/dataflow:v1b3/SideInputId": side_input_id
+"/dataflow:v1b3/SideInputId/declaringStepName": declaring_step_name
+"/dataflow:v1b3/SideInputId/inputIndex": input_index
 "/dataflow:v1b3/SideInputInfo": side_input_info
 "/dataflow:v1b3/SideInputInfo/kind": kind
 "/dataflow:v1b3/SideInputInfo/kind/kind": kind
@@ -28835,6 +28840,7 @@
 "/dataflow:v1b3/WorkerMessage/workerHealthReport": worker_health_report
 "/dataflow:v1b3/WorkerMessage/workerMessageCode": worker_message_code
 "/dataflow:v1b3/WorkerMessage/workerMetrics": worker_metrics
+"/dataflow:v1b3/WorkerMessage/workerShutdownNotice": worker_shutdown_notice
 "/dataflow:v1b3/WorkerMessageCode": worker_message_code
 "/dataflow:v1b3/WorkerMessageCode/code": code
 "/dataflow:v1b3/WorkerMessageCode/parameters": parameters
@@ -28842,6 +28848,7 @@
 "/dataflow:v1b3/WorkerMessageResponse": worker_message_response
 "/dataflow:v1b3/WorkerMessageResponse/workerHealthReportResponse": worker_health_report_response
 "/dataflow:v1b3/WorkerMessageResponse/workerMetricsResponse": worker_metrics_response
+"/dataflow:v1b3/WorkerMessageResponse/workerShutdownNoticeResponse": worker_shutdown_notice_response
 "/dataflow:v1b3/WorkerPool": worker_pool
 "/dataflow:v1b3/WorkerPool/autoscalingSettings": autoscaling_settings
 "/dataflow:v1b3/WorkerPool/dataDisks": data_disks
@@ -28875,6 +28882,9 @@
 "/dataflow:v1b3/WorkerSettings/shuffleServicePath": shuffle_service_path
 "/dataflow:v1b3/WorkerSettings/tempStoragePrefix": temp_storage_prefix
 "/dataflow:v1b3/WorkerSettings/workerId": worker_id
+"/dataflow:v1b3/WorkerShutdownNotice": worker_shutdown_notice
+"/dataflow:v1b3/WorkerShutdownNotice/reason": reason
+"/dataflow:v1b3/WorkerShutdownNoticeResponse": worker_shutdown_notice_response
 "/dataflow:v1b3/WriteInstruction": write_instruction
 "/dataflow:v1b3/WriteInstruction/input": input
 "/dataflow:v1b3/WriteInstruction/sink": sink
