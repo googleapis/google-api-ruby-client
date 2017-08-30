@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'drive/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/drive/v2'
         end
         
         # Gets the information about the current user along with Drive API settings

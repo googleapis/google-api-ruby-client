@@ -163,7 +163,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Writes log entries to Stackdriver Logging.
+        # Log entry resourcesWrites log entries to Stackdriver Logging. This API method
+        # is the only way to send log entries to Stackdriver Logging. This method is
+        # used, directly or indirectly, by the Stackdriver Logging agent (fluentd) and
+        # all logging libraries configured to use Stackdriver Logging.
         # @param [Google::Apis::LoggingV2beta1::WriteLogEntriesRequest] write_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

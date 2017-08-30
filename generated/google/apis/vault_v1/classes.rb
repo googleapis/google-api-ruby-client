@@ -149,8 +149,8 @@ module Google
       class HeldAccount
         include Google::Apis::Core::Hashable
       
-        # The account's ID as provided by the <a
-        # href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
+        # The account's ID as provided by the
+        # <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id

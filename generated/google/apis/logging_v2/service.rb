@@ -47,6 +47,207 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a new exclusion in a specified parent resource. Only log entries
+        # belonging to that resource can be excluded. You can have up to 10 exclusions
+        # in a resource.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the exclusion:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        #   Examples: "projects/my-logging-project", "organizations/123456789".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion to delete:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_billing_account_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the description of an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the exclusions in a parent resource.
+        # @param [String] parent
+        #   Required. The parent resource whose exclusions are to be listed.
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListExclusionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListExclusionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_billing_account_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes one or more properties of an existing exclusion.
+        # @param [String] name
+        #   Required. The resource name of the exclusion to update:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] update_mask
+        #   Required. A nonempty list of fields to change in the existing exclusion. New
+        #   values for the fields are taken from the corresponding fields in the
+        #   LogExclusion included in this request. Fields not mentioned in update_mask are
+        #   not changed and are ignored in the request.For example, to change the filter
+        #   and description of an exclusion, specify an update_mask of "filter,description"
+        #   .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_billing_account_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted.
@@ -439,7 +640,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Writes log entries to Stackdriver Logging.
+        # Log entry resourcesWrites log entries to Stackdriver Logging. This API method
+        # is the only way to send log entries to Stackdriver Logging. This method is
+        # used, directly or indirectly, by the Stackdriver Logging agent (fluentd) and
+        # all logging libraries configured to use Stackdriver Logging.
         # @param [Google::Apis::LoggingV2::WriteLogEntriesRequest] write_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -464,6 +668,207 @@ module Google
           command.request_object = write_log_entries_request_object
           command.response_representation = Google::Apis::LoggingV2::WriteLogEntriesResponse::Representation
           command.response_class = Google::Apis::LoggingV2::WriteLogEntriesResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new exclusion in a specified parent resource. Only log entries
+        # belonging to that resource can be excluded. You can have up to 10 exclusions
+        # in a resource.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the exclusion:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        #   Examples: "projects/my-logging-project", "organizations/123456789".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion to delete:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the description of an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the exclusions in a parent resource.
+        # @param [String] parent
+        #   Required. The parent resource whose exclusions are to be listed.
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListExclusionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListExclusionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes one or more properties of an existing exclusion.
+        # @param [String] name
+        #   Required. The resource name of the exclusion to update:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] update_mask
+        #   Required. A nonempty list of fields to change in the existing exclusion. New
+        #   values for the fields are taken from the corresponding fields in the
+        #   LogExclusion included in this request. Fields not mentioned in update_mask are
+        #   not changed and are ignored in the request.For example, to change the filter
+        #   and description of an exclusion, specify an update_mask of "filter,description"
+        #   .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -868,6 +1273,207 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new exclusion in a specified parent resource. Only log entries
+        # belonging to that resource can be excluded. You can have up to 10 exclusions
+        # in a resource.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the exclusion:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        #   Examples: "projects/my-logging-project", "organizations/123456789".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion to delete:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the description of an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the exclusions in a parent resource.
+        # @param [String] parent
+        #   Required. The parent resource whose exclusions are to be listed.
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListExclusionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListExclusionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes one or more properties of an existing exclusion.
+        # @param [String] name
+        #   Required. The resource name of the exclusion to update:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] update_mask
+        #   Required. A nonempty list of fields to change in the existing exclusion. New
+        #   values for the fields are taken from the corresponding fields in the
+        #   LogExclusion included in this request. Fields not mentioned in update_mask are
+        #   not changed and are ignored in the request.For example, to change the filter
+        #   and description of an exclusion, specify an update_mask of "filter,description"
+        #   .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
         # deleted.
@@ -1224,6 +1830,207 @@ module Google
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new exclusion in a specified parent resource. Only log entries
+        # belonging to that resource can be excluded. You can have up to 10 exclusions
+        # in a resource.
+        # @param [String] parent
+        #   Required. The parent resource in which to create the exclusion:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        #   Examples: "projects/my-logging-project", "organizations/123456789".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_exclusion(parent, log_exclusion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2/{+parent}/exclusions', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion to delete:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Empty::Representation
+          command.response_class = Google::Apis::LoggingV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the description of an exclusion.
+        # @param [String] name
+        #   Required. The resource name of an existing exclusion:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_exclusion(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the exclusions in a parent resource.
+        # @param [String] parent
+        #   Required. The parent resource whose exclusions are to be listed.
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of nextPageToken in the response
+        #   indicates that more results might be available.
+        # @param [String] page_token
+        #   Optional. If present, then retrieve the next batch of results from the
+        #   preceding call to this method. pageToken must be the value of nextPageToken
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::ListExclusionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::ListExclusionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_exclusions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2/{+parent}/exclusions', options)
+          command.response_representation = Google::Apis::LoggingV2::ListExclusionsResponse::Representation
+          command.response_class = Google::Apis::LoggingV2::ListExclusionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes one or more properties of an existing exclusion.
+        # @param [String] name
+        #   Required. The resource name of the exclusion to update:
+        #   "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+        #   Example: "projects/my-project-id/exclusions/my-exclusion-id".
+        # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
+        # @param [String] update_mask
+        #   Required. A nonempty list of fields to change in the existing exclusion. New
+        #   values for the fields are taken from the corresponding fields in the
+        #   LogExclusion included in this request. Fields not mentioned in update_mask are
+        #   not changed and are ignored in the request.For example, to change the filter
+        #   and description of an exclusion, specify an update_mask of "filter,description"
+        #   .
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogExclusion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogExclusion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_exclusion(name, log_exclusion_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.request_object = log_exclusion_object
+          command.response_representation = Google::Apis::LoggingV2::LogExclusion::Representation
+          command.response_class = Google::Apis::LoggingV2::LogExclusion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

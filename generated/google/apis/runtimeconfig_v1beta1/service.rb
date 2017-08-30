@@ -419,7 +419,7 @@ module Google
         # documentation.
         # @param [String] parent
         #   The path to the RutimeConfig resource that this variable should belong to.
-        #   The configuration must exist beforehand; the path must by in the format:
+        #   The configuration must exist beforehand; the path must be in the format:
         #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [Google::Apis::RuntimeconfigV1beta1::Variable] variable_object
         # @param [String] request_id
@@ -537,7 +537,7 @@ module Google
         # will be returned.
         # @param [String] parent
         #   The path to the RuntimeConfig resource for which you want to list variables.
-        #   The configuration must exist beforehand; the path must by in the format:
+        #   The configuration must exist beforehand; the path must be in the format:
         #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [String] filter
         #   Filters variables by matching the specified filter. For example:
@@ -707,7 +707,7 @@ module Google
         # still exist and must be deleted prior to subsequent creation attempts.
         # @param [String] parent
         #   The path to the configuration that will own the waiter.
-        #   The configuration must exist beforehand; the path must by in the format:
+        #   The configuration must exist beforehand; the path must be in the format:
         #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.
         # @param [Google::Apis::RuntimeconfigV1beta1::Waiter] waiter_object
         # @param [String] request_id
@@ -815,7 +815,7 @@ module Google
         # List waiters within the given configuration.
         # @param [String] parent
         #   The path to the configuration for which you want to get a list of waiters.
-        #   The configuration must exist beforehand; the path must by in the format:
+        #   The configuration must exist beforehand; the path must be in the format:
         #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [Fixnum] page_size
         #   Specifies the number of results to return per page. If there are fewer

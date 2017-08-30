@@ -630,8 +630,8 @@ module Google
         end
         
         # Lists HeldAccounts for a hold. This will only list individually specified
-        # held accounts. If the hold is on an OU, then use the <ahref="https://
-        # developers.google.com/admin-sdk/">Admin SDK</a>
+        # held accounts. If the hold is on an OU, then use
+        # <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>
         # to enumerate its members.
         # @param [String] matter_id
         #   The matter ID.

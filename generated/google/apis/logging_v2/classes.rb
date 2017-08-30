@@ -22,6 +22,64 @@ module Google
   module Apis
     module LoggingV2
       
+      # BucketOptions describes the bucket boundaries used to create a histogram for
+      # the distribution. The buckets can be in a linear sequence, an exponential
+      # sequence, or each bucket can be specified explicitly. BucketOptions does not
+      # include the number of values in each bucket.A bucket has an inclusive lower
+      # bound and exclusive upper bound for the values that are counted for that
+      # bucket. The upper bound of a bucket must be strictly greater than the lower
+      # bound. The sequence of N buckets for a distribution consists of an underflow
+      # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+      # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+      # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+      # span the whole range of finite values: lower bound of the underflow bucket is -
+      # infinity and the upper bound of the overflow bucket is +infinity. The finite
+      # buckets are so-called because both bounds are finite.
+      class BucketOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
+        # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
+        # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+        # least one element. If bounds has only one element, then there are no finite
+        # buckets, and that single element is the common boundary of the overflow and
+        # underflow buckets.
+        # Corresponds to the JSON property `explicitBuckets`
+        # @return [Google::Apis::LoggingV2::Explicit]
+        attr_accessor :explicit_buckets
+      
+        # Specifies an exponential sequence of buckets that have a width that is
+        # proportional to the value of the lower bound. Each bucket represents a
+        # constant relative uncertainty on a specific value in the bucket.There are
+        # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+        # N): scale * (growth_factor ^ (i - 1)).
+        # Corresponds to the JSON property `exponentialBuckets`
+        # @return [Google::Apis::LoggingV2::Exponential]
+        attr_accessor :exponential_buckets
+      
+        # Specifies a linear sequence of buckets that all have the same width (except
+        # overflow and underflow). Each bucket represents a constant absolute
+        # uncertainty on the specific value in the bucket.There are num_finite_buckets +
+        # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
+        # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
+        # .
+        # Corresponds to the JSON property `linearBuckets`
+        # @return [Google::Apis::LoggingV2::Linear]
+        attr_accessor :linear_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
+          @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
+          @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance:
@@ -38,6 +96,66 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
+      # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
+      # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+      # least one element. If bounds has only one element, then there are no finite
+      # buckets, and that single element is the common boundary of the overflow and
+      # underflow buckets.
+      class Explicit
+        include Google::Apis::Core::Hashable
+      
+        # The values must be monotonically increasing.
+        # Corresponds to the JSON property `bounds`
+        # @return [Array<Float>]
+        attr_accessor :bounds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounds = args[:bounds] if args.key?(:bounds)
+        end
+      end
+      
+      # Specifies an exponential sequence of buckets that have a width that is
+      # proportional to the value of the lower bound. Each bucket represents a
+      # constant relative uncertainty on a specific value in the bucket.There are
+      # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+      # N): scale * (growth_factor ^ (i - 1)).
+      class Exponential
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 1.
+        # Corresponds to the JSON property `growthFactor`
+        # @return [Float]
+        attr_accessor :growth_factor
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `scale`
+        # @return [Float]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @growth_factor = args[:growth_factor] if args.key?(:growth_factor)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
+          @scale = args[:scale] if args.key?(:scale)
         end
       end
       
@@ -187,6 +305,69 @@ module Google
           @description = args[:description] if args.key?(:description)
           @key = args[:key] if args.key?(:key)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # Specifies a linear sequence of buckets that all have the same width (except
+      # overflow and underflow). Each bucket represents a constant absolute
+      # uncertainty on the specific value in the bucket.There are num_finite_buckets +
+      # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
+      # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
+      # .
+      class Linear
+        include Google::Apis::Core::Hashable
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `numFiniteBuckets`
+        # @return [Fixnum]
+        attr_accessor :num_finite_buckets
+      
+        # Lower bound of the first bucket.
+        # Corresponds to the JSON property `offset`
+        # @return [Float]
+        attr_accessor :offset
+      
+        # Must be greater than 0.
+        # Corresponds to the JSON property `width`
+        # @return [Float]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_finite_buckets = args[:num_finite_buckets] if args.key?(:num_finite_buckets)
+          @offset = args[:offset] if args.key?(:offset)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Result returned from ListExclusions.
+      class ListExclusionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of exclusions.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::LoggingV2::LogExclusion>]
+        attr_accessor :exclusions
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -420,8 +601,8 @@ module Google
         # Optional. A unique identifier for the log entry. If you provide a value, then
         # Stackdriver Logging considers other log entries in the same project, with the
         # same timestamp, and with the same insert_id to be duplicates which can be
-        # removed. If omitted in new log entries, then Stackdriver Logging will insert
-        # its own unique identifier. The insert_id is used to order log entries that
+        # removed. If omitted in new log entries, then Stackdriver Logging assigns its
+        # own unique identifier. The insert_id is also used to order log entries that
         # have the same timestamp value.
         # Corresponds to the JSON property `insertId`
         # @return [String]
@@ -507,11 +688,12 @@ module Google
         # @return [String]
         attr_accessor :text_payload
       
-        # Optional. The time the event described by the log entry occurred. If omitted
-        # in a new log entry, Stackdriver Logging will insert the time the log entry is
-        # received. Stackdriver Logging might reject log entries whose time stamps are
-        # more than a couple of hours in the future. Log entries with time stamps in the
-        # past are accepted.
+        # Optional. The time the event described by the log entry occurred. This time is
+        # used to compute the log entry's age and to enforce the logs retention period.
+        # If this field is omitted in a new log entry, then Stackdriver Logging assigns
+        # it the current time.Incoming log entries should have timestamps that are no
+        # more than the logs retention period in the past, and no more than 24 hours in
+        # the future. See the entries.write API method for more information.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -628,6 +810,56 @@ module Google
         end
       end
       
+      # Specifies a set of log entries that are not to be stored in Stackdriver
+      # Logging. If your project receives a large volume of logs, you might be able to
+      # use exclusions to reduce your chargeable logs. Exclusions are processed after
+      # log sinks, so you can export log entries before they are excluded. Audit log
+      # entries and log entries from Amazon Web Services are never excluded.
+      class LogExclusion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A description of this exclusion.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. If set to True, then this exclusion is disabled and it does not
+        # exclude any log entries. You can use exclusions.patch to change the value of
+        # this field.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Required. An advanced logs filter that matches the log entries to be excluded.
+        # By using the sample function, you can exclude less than 100% of the matching
+        # log entries. For example, the following filter matches 99% of low-severity log
+        # entries from load balancers:
+        # "resource.type=http_load_balancer severity<ERROR sample(insertId, 0.99)"
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. A client-assigned identifier, such as "load-balancer-exclusion".
+        # Identifiers are limited to 100 characters and can include only letters, digits,
+        # underscores, hyphens, and periods.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @filter = args[:filter] if args.key?(:filter)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Application log line emitted while processing a request.
       class LogLine
         include Google::Apis::Core::Hashable
@@ -666,9 +898,30 @@ module Google
       end
       
       # Describes a logs-based metric. The value of the metric is the number of log
-      # entries that match a logs filter in a given time interval.
+      # entries that match a logs filter in a given time interval.Logs-based metric
+      # can also be used to extract values from logs and create a a distribution of
+      # the values. The distribution records the statistics of the extracted values
+      # along with an optional histogram of the values as specified by the bucket
+      # options.
       class LogMetric
         include Google::Apis::Core::Hashable
+      
+        # BucketOptions describes the bucket boundaries used to create a histogram for
+        # the distribution. The buckets can be in a linear sequence, an exponential
+        # sequence, or each bucket can be specified explicitly. BucketOptions does not
+        # include the number of values in each bucket.A bucket has an inclusive lower
+        # bound and exclusive upper bound for the values that are counted for that
+        # bucket. The upper bound of a bucket must be strictly greater than the lower
+        # bound. The sequence of N buckets for a distribution consists of an underflow
+        # bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an
+        # overflow bucket (number N - 1). The buckets are contiguous: the lower bound of
+        # bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets
+        # span the whole range of finite values: lower bound of the underflow bucket is -
+        # infinity and the upper bound of the overflow bucket is +infinity. The finite
+        # buckets are so-called because both bounds are finite.
+        # Corresponds to the JSON property `bucketOptions`
+        # @return [Google::Apis::LoggingV2::BucketOptions]
+        attr_accessor :bucket_options
       
         # Optional. A description of this metric, which is used in documentation.
         # Corresponds to the JSON property `description`
@@ -681,6 +934,27 @@ module Google
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
+      
+        # Optional. A map from a label key string to an extractor expression which is
+        # used to extract data from a log entry field and assign as the label value.
+        # Each label key specified in the LabelDescriptor must have an associated
+        # extractor expression in this map. The syntax of the extractor expression is
+        # the same as for the value_extractor field.The extracted value is converted to
+        # the type defined in the label descriptor. If the either the extraction or the
+        # type conversion fails, the label will have a default value. The default value
+        # for a string label is an empty string, for an integer label its 0, and for a
+        # boolean label its false.Note that there are upper bounds on the maximum number
+        # of labels and the number of active time series that are allowed in a project.
+        # Corresponds to the JSON property `labelExtractors`
+        # @return [Hash<String,String>]
+        attr_accessor :label_extractors
+      
+        # Defines a metric type and its schema. Once a metric descriptor is created,
+        # deleting or altering it stops data collection and makes the metric type's
+        # existing data unusable.
+        # Corresponds to the JSON property `metricDescriptor`
+        # @return [Google::Apis::LoggingV2::MetricDescriptor]
+        attr_accessor :metric_descriptor
       
         # Required. The client-assigned metric identifier. Examples: "error_count", "
         # nginx/requests".Metric identifiers are limited to 100 characters and can
@@ -695,6 +969,23 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. A value_extractor is required when using a distribution logs-based
+        # metric to extract the values to record from a log entry. Two functions are
+        # supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex).
+        # The argument are:  1. field: The name of the log entry field from which the
+        # value is to be  extracted.  2. regex: A regular expression using the Google
+        # RE2 syntax  (https://github.com/google/re2/wiki/Syntax) with a single capture
+        # group to extract data from the specified log entry field. The value  of the
+        # field is converted to a string before applying the regex.  It is an error to
+        # specify a regex that does not include exactly one  capture group.The result of
+        # the extraction must be convertible to a double type, as the distribution
+        # always records double values. If either the extraction or the conversion to
+        # double fails, then those values are not recorded in the distribution.Example:
+        # REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")
+        # Corresponds to the JSON property `valueExtractor`
+        # @return [String]
+        attr_accessor :value_extractor
+      
         # Deprecated. The API version that created or updated this metric. The v2 format
         # is used by default and cannot be changed.
         # Corresponds to the JSON property `version`
@@ -707,9 +998,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
           @description = args[:description] if args.key?(:description)
           @filter = args[:filter] if args.key?(:filter)
+          @label_extractors = args[:label_extractors] if args.key?(:label_extractors)
+          @metric_descriptor = args[:metric_descriptor] if args.key?(:metric_descriptor)
           @name = args[:name] if args.key?(:name)
+          @value_extractor = args[:value_extractor] if args.key?(:value_extractor)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -815,6 +1110,132 @@ module Google
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
           @start_time = args[:start_time] if args.key?(:start_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
+        end
+      end
+      
+      # Defines a metric type and its schema. Once a metric descriptor is created,
+      # deleting or altering it stops data collection and makes the metric type's
+      # existing data unusable.
+      class MetricDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # A detailed description of the metric, which can be used in documentation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A concise name for the metric, which can be displayed in user interfaces. Use
+        # sentence case without an ending period, for example "Request count".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The set of labels that can be used to describe a specific instance of this
+        # metric type. For example, the appengine.googleapis.com/http/server/
+        # response_latencies metric type has a label for the HTTP response code,
+        # response_code, so you can look at latencies for successful responses or just
+        # for responses that failed.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::LoggingV2::LabelDescriptor>]
+        attr_accessor :labels
+      
+        # Whether the metric records instantaneous values, changes to a value, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
+        # Corresponds to the JSON property `metricKind`
+        # @return [String]
+        attr_accessor :metric_kind
+      
+        # The resource name of the metric descriptor. Depending on the implementation,
+        # the name typically includes: (1) the parent resource name that defines the
+        # scope of the metric type or of its data; and (2) the metric's URL-encoded type,
+        # which also appears in the type field of this descriptor. For example,
+        # following is the resource name of a custom metric within the GCP project my-
+        # project-id:
+        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
+        # 2Fpaid%2Famount"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The metric type, including its DNS name prefix. The type is not URL-encoded.
+        # All user-defined custom metric types have the DNS name custom.googleapis.com.
+        # Metric types should use a natural hierarchical grouping. For example:
+        # "custom.googleapis.com/invoice/paid/amount"
+        # "appengine.googleapis.com/http/server/response_latencies"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The unit in which the metric value is reported. It is only applicable if the
+        # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
+        # of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)
+        # standard:Basic units (UNIT)
+        # bit bit
+        # By byte
+        # s second
+        # min minute
+        # h hour
+        # d dayPrefixes (PREFIX)
+        # k kilo (10**3)
+        # M mega (10**6)
+        # G giga (10**9)
+        # T tera (10**12)
+        # P peta (10**15)
+        # E exa (10**18)
+        # Z zetta (10**21)
+        # Y yotta (10**24)
+        # m milli (10**-3)
+        # u micro (10**-6)
+        # n nano (10**-9)
+        # p pico (10**-12)
+        # f femto (10**-15)
+        # a atto (10**-18)
+        # z zepto (10**-21)
+        # y yocto (10**-24)
+        # Ki kibi (2**10)
+        # Mi mebi (2**20)
+        # Gi gibi (2**30)
+        # Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/
+        # s.The grammar also includes these connectors:
+        # / division (as an infix operator, e.g. 1/s).
+        # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
+        # as follows:
+        # Expression = Component ` "." Component ` ` "/" Component ` ;
+        # Component = [ PREFIX ] UNIT [ Annotation ]
+        # | Annotation
+        # | "1"
+        # ;
+        # Annotation = "`" NAME "`" ;
+        # Notes:
+        # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
+        # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
+        # s.
+        # NAME is a sequence of non-blank printable ASCII characters not  containing '`'
+        # or '`'.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # Whether the measurement is an integer, a floating-point number, etc. Some
+        # combinations of metric_kind and value_type might not be supported.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @unit = args[:unit] if args.key?(:unit)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       
@@ -1210,16 +1631,21 @@ module Google
       class WriteLogEntriesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The log entries to write. Values supplied for the fields log_name,
-        # resource, and labels in this entries.write request are inserted into those log
-        # entries in this list that do not provide their own values.Stackdriver Logging
-        # also creates and inserts values for timestamp and insert_id if the entries do
-        # not provide them. The created insert_id for the N'th entry in this list will
-        # be greater than earlier entries and less than later entries. Otherwise, the
-        # order of log entries in this list does not matter.To improve throughput and to
-        # avoid exceeding the quota limit for calls to entries.write, you should write
-        # multiple log entries at once rather than calling this method for each
-        # individual log entry.
+        # Required. The log entries to send to Stackdriver Logging. The order of log
+        # entries in this list does not matter. Values supplied in this method's
+        # log_name, resource, and labels fields are copied into those log entries in
+        # this list that do not include values for their corresponding fields. For more
+        # information, see the LogEntry type.If the timestamp or insert_id fields are
+        # missing in log entries, then this method supplies the current time or a unique
+        # identifier, respectively. The supplied values are chosen so that, among the
+        # log entries that did not supply their own values, the entries earlier in the
+        # list will sort before the entries later in the list. See entries.list.Log
+        # entries with timestamps that are more than the logs retention period in the
+        # past or more than 24 hours in the future might be discarded. Discarding does
+        # not return an error.To improve throughput and to avoid exceeding the quota
+        # limit for calls to entries.write, you should try to include several log
+        # entries in this list, rather than calling this method for each individual log
+        # entry.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::LoggingV2::LogEntry>]
         attr_accessor :entries

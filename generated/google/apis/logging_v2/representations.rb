@@ -22,7 +22,25 @@ module Google
   module Apis
     module LoggingV2
       
+      class BucketOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Explicit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Exponential
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -35,6 +53,18 @@ module Google
       end
       
       class LabelDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Linear
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExclusionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogExclusion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogLine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +143,12 @@ module Google
       end
       
       class LogSink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,9 +196,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BucketOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explicit_buckets, as: 'explicitBuckets', class: Google::Apis::LoggingV2::Explicit, decorator: Google::Apis::LoggingV2::Explicit::Representation
+      
+          property :exponential_buckets, as: 'exponentialBuckets', class: Google::Apis::LoggingV2::Exponential, decorator: Google::Apis::LoggingV2::Exponential::Representation
+      
+          property :linear_buckets, as: 'linearBuckets', class: Google::Apis::LoggingV2::Linear, decorator: Google::Apis::LoggingV2::Linear::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Explicit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bounds, as: 'bounds'
+        end
+      end
+      
+      class Exponential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :growth_factor, as: 'growthFactor'
+          property :num_finite_buckets, as: 'numFiniteBuckets'
+          property :scale, as: 'scale'
         end
       end
       
@@ -187,6 +257,24 @@ module Google
           property :description, as: 'description'
           property :key, as: 'key'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class Linear
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_finite_buckets, as: 'numFiniteBuckets'
+          property :offset, as: 'offset'
+          property :width, as: 'width'
+        end
+      end
+      
+      class ListExclusionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::LoggingV2::LogExclusion, decorator: Google::Apis::LoggingV2::LogExclusion::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -289,6 +377,16 @@ module Google
         end
       end
       
+      class LogExclusion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :filter, as: 'filter'
+          property :name, as: 'name'
+        end
+      end
+      
       class LogLine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -303,9 +401,15 @@ module Google
       class LogMetric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_options, as: 'bucketOptions', class: Google::Apis::LoggingV2::BucketOptions, decorator: Google::Apis::LoggingV2::BucketOptions::Representation
+      
           property :description, as: 'description'
           property :filter, as: 'filter'
+          hash :label_extractors, as: 'labelExtractors'
+          property :metric_descriptor, as: 'metricDescriptor', class: Google::Apis::LoggingV2::MetricDescriptor, decorator: Google::Apis::LoggingV2::MetricDescriptor::Representation
+      
           property :name, as: 'name'
+          property :value_extractor, as: 'valueExtractor'
           property :version, as: 'version'
         end
       end
@@ -321,6 +425,21 @@ module Google
           property :output_version_format, as: 'outputVersionFormat'
           property :start_time, as: 'startTime'
           property :writer_identity, as: 'writerIdentity'
+        end
+      end
+      
+      class MetricDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :labels, as: 'labels', class: Google::Apis::LoggingV2::LabelDescriptor, decorator: Google::Apis::LoggingV2::LabelDescriptor::Representation
+      
+          property :metric_kind, as: 'metricKind'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :unit, as: 'unit'
+          property :value_type, as: 'valueType'
         end
       end
       

@@ -25,7 +25,7 @@ module Google
     # @see https://apps.google.com/products/vault/
     module VaultV1
       VERSION = 'V1'
-      REVISION = '20170720'
+      REVISION = '20170828'
     end
   end
 end

@@ -154,24 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleIamV1LogConfigCloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1LogConfigCounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1LogConfigDataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleIamV1AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,25 +172,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleIamV1Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleIamV1Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -507,28 +471,6 @@ module Google
         end
       end
       
-      class GoogleIamV1LogConfigCloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_name, as: 'logName'
-        end
-      end
-      
-      class GoogleIamV1LogConfigCounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :field, as: 'field'
-          property :metric, as: 'metric'
-        end
-      end
-      
-      class GoogleIamV1LogConfigDataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_mode, as: 'logMode'
-        end
-      end
-      
       class GoogleIamV1AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -557,30 +499,6 @@ module Google
         end
       end
       
-      class GoogleIamV1Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          property :value, as: 'value'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class GoogleIamV1LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::MlV1::GoogleIamV1LogConfigCloudAuditOptions, decorator: Google::Apis::MlV1::GoogleIamV1LogConfigCloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::MlV1::GoogleIamV1LogConfigCounterOptions, decorator: Google::Apis::MlV1::GoogleIamV1LogConfigCounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::MlV1::GoogleIamV1LogConfigDataAccessOptions, decorator: Google::Apis::MlV1::GoogleIamV1LogConfigDataAccessOptions::Representation
-      
-        end
-      end
-      
       class GoogleIamV1Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -590,24 +508,7 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::MlV1::GoogleIamV1Rule, decorator: Google::Apis::MlV1::GoogleIamV1Rule::Representation
-      
           property :version, as: 'version'
-        end
-      end
-      
-      class GoogleIamV1Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::MlV1::GoogleIamV1Condition, decorator: Google::Apis::MlV1::GoogleIamV1Condition::Representation
-      
-          property :description, as: 'description'
-          collection :in, as: 'in'
-          collection :log_config, as: 'logConfig', class: Google::Apis::MlV1::GoogleIamV1LogConfig, decorator: Google::Apis::MlV1::GoogleIamV1LogConfig::Representation
-      
-          collection :not_in, as: 'notIn'
-          collection :permissions, as: 'permissions'
         end
       end
       

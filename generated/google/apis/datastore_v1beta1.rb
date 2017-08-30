@@ -12,29 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/runtimeconfig_v1beta1/service.rb'
-require 'google/apis/runtimeconfig_v1beta1/classes.rb'
-require 'google/apis/runtimeconfig_v1beta1/representations.rb'
+require 'google/apis/datastore_v1beta1/service.rb'
+require 'google/apis/datastore_v1beta1/classes.rb'
+require 'google/apis/datastore_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Runtime Configuration API
+    # Google Cloud Datastore API
     #
-    # The Runtime Configurator allows you to dynamically configure and expose
-    # variables through Google Cloud Platform. In addition, you can also set
-    # Watchers and Waiters that will watch for changes to your data and return based
-    # on certain conditions.
+    # Accesses the schemaless NoSQL database to provide fully managed, robust,
+    # scalable storage for your application.
     #
-    # @see https://cloud.google.com/deployment-manager/runtime-configurator/
-    module RuntimeconfigV1beta1
+    # @see https://cloud.google.com/datastore/
+    module DatastoreV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20170829'
+      REVISION = '20170821'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # Manage your Google Cloud Platform services' runtime configuration
-      AUTH_CLOUDRUNTIMECONFIG = 'https://www.googleapis.com/auth/cloudruntimeconfig'
+      # View and manage your Google Cloud Datastore data
+      AUTH_DATASTORE = 'https://www.googleapis.com/auth/datastore'
     end
   end
 end
