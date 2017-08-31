@@ -1520,6 +1520,11 @@ module Google
         attr_accessor :requires_container_app
         alias_method :requires_container_app?, :requires_container_app
       
+        # The certificate used to sign this product.
+        # Corresponds to the JSON property `signingCertificate`
+        # @return [Google::Apis::AndroidenterpriseV1::ProductSigningCertificate]
+        attr_accessor :signing_certificate
+      
         # A link to a smaller image that can be used as an icon for the product. This
         # image is suitable for use at up to 128px x 128px.
         # Corresponds to the JSON property `smallIconUrl`
@@ -1552,6 +1557,7 @@ module Google
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_pricing = args[:product_pricing] if args.key?(:product_pricing)
           @requires_container_app = args[:requires_container_app] if args.key?(:requires_container_app)
+          @signing_certificate = args[:signing_certificate] if args.key?(:signing_certificate)
           @small_icon_url = args[:small_icon_url] if args.key?(:small_icon_url)
           @title = args[:title] if args.key?(:title)
           @work_details_url = args[:work_details_url] if args.key?(:work_details_url)
@@ -1712,6 +1718,33 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_set_behavior = args[:product_set_behavior] if args.key?(:product_set_behavior)
+        end
+      end
+      
+      # 
+      class ProductSigningCertificate
+        include Google::Apis::Core::Hashable
+      
+        # The base64 urlsafe encoded SHA1 hash of the certificate. (This field is
+        # deprecated in favor of SHA2-256. It should not be used and may be removed at
+        # any time.)
+        # Corresponds to the JSON property `certificateHashSha1`
+        # @return [String]
+        attr_accessor :certificate_hash_sha1
+      
+        # The base64 urlsafe encoded SHA2-256 hash of the certificate.
+        # Corresponds to the JSON property `certificateHashSha256`
+        # @return [String]
+        attr_accessor :certificate_hash_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_hash_sha1 = args[:certificate_hash_sha1] if args.key?(:certificate_hash_sha1)
+          @certificate_hash_sha256 = args[:certificate_hash_sha256] if args.key?(:certificate_hash_sha256)
         end
       end
       

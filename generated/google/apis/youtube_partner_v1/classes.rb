@@ -3659,6 +3659,70 @@ module Google
       end
       
       # 
+      class ValidateAsyncRequest
+        include Google::Apis::Core::Hashable
+      
+        # The metadata file contents.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateAsyncRequest.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The uploader name.
+        # Corresponds to the JSON property `uploaderName`
+        # @return [String]
+        attr_accessor :uploader_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @kind = args[:kind] if args.key?(:kind)
+          @uploader_name = args[:uploader_name] if args.key?(:uploader_name)
+        end
+      end
+      
+      # 
+      class ValidateAsyncResponse
+        include Google::Apis::Core::Hashable
+      
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateAsyncResponse.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The validation status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The validation ID.
+        # Corresponds to the JSON property `validationId`
+        # @return [String]
+        attr_accessor :validation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @status = args[:status] if args.key?(:status)
+          @validation_id = args[:validation_id] if args.key?(:validation_id)
+        end
+      end
+      
+      # 
       class ValidateError
         include Google::Apis::Core::Hashable
       
@@ -3774,6 +3838,79 @@ module Google
         # Update properties of this object
         def update!(**args)
           @errors = args[:errors] if args.key?(:errors)
+          @kind = args[:kind] if args.key?(:kind)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class ValidateStatusRequest
+        include Google::Apis::Core::Hashable
+      
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateStatusRequest.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The desired locale of the error messages as defined in BCP 47 (http://tools.
+        # ietf.org/html/bcp47). For example, "en-US" or "de". If not specified we will
+        # return the error messages in English ("en").
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # The validation ID.
+        # Corresponds to the JSON property `validationId`
+        # @return [String]
+        attr_accessor :validation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @locale = args[:locale] if args.key?(:locale)
+          @validation_id = args[:validation_id] if args.key?(:validation_id)
+        end
+      end
+      
+      # 
+      class ValidateStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of errors and/or warnings.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::YoutubePartnerV1::ValidateError>]
+        attr_accessor :errors
+      
+        # If this is a metadata-only package.
+        # Corresponds to the JSON property `isMetadataOnly`
+        # @return [Boolean]
+        attr_accessor :is_metadata_only
+        alias_method :is_metadata_only?, :is_metadata_only
+      
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateStatusResponse.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The validation status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @is_metadata_only = args[:is_metadata_only] if args.key?(:is_metadata_only)
           @kind = args[:kind] if args.key?(:kind)
           @status = args[:status] if args.key?(:status)
         end

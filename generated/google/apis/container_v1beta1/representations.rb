@@ -411,9 +411,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
+          property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
+          property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
           property :create_subnetwork, as: 'createSubnetwork'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
+          property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
+          property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
+          property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
           property :subnetwork_name, as: 'subnetworkName'
           property :use_ip_aliases, as: 'useIpAliases'
         end

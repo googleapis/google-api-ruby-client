@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20170823'
+      REVISION = '20170829'
 
       # Manage your contacts
       AUTH_CONTACTS = 'https://www.googleapis.com/auth/contacts'

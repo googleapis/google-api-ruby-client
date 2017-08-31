@@ -378,6 +378,7 @@ module Google
           collection :owners, as: 'owners', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
           collection :parents, as: 'parents'
+          collection :permission_ids, as: 'permissionIds'
           collection :permissions, as: 'permissions', class: Google::Apis::DriveV3::Permission, decorator: Google::Apis::DriveV3::Permission::Representation
       
           hash :properties, as: 'properties'

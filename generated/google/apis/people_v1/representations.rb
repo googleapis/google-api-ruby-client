@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserDefined
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Address
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -713,6 +719,8 @@ module Google
       
           collection :urls, as: 'urls', class: Google::Apis::PeopleV1::Url, decorator: Google::Apis::PeopleV1::Url::Representation
       
+          collection :user_defined, as: 'userDefined', class: Google::Apis::PeopleV1::UserDefined, decorator: Google::Apis::PeopleV1::UserDefined::Representation
+      
         end
       end
       
@@ -864,6 +872,16 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
           property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
+      class UserDefined
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
           property :value, as: 'value'
         end
       end

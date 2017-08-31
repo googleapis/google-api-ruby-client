@@ -1533,6 +1533,11 @@ module Google
         # @return [Array<Google::Apis::DriveV2::ParentReference>]
         attr_accessor :parents
       
+        # List of permission IDs for users with access to this file.
+        # Corresponds to the JSON property `permissionIds`
+        # @return [Array<String>]
+        attr_accessor :permission_ids
+      
         # The list of permissions for users with access to this file. Not populated for
         # Team Drive files.
         # Corresponds to the JSON property `permissions`
@@ -1709,6 +1714,7 @@ module Google
           @owner_names = args[:owner_names] if args.key?(:owner_names)
           @owners = args[:owners] if args.key?(:owners)
           @parents = args[:parents] if args.key?(:parents)
+          @permission_ids = args[:permission_ids] if args.key?(:permission_ids)
           @permissions = args[:permissions] if args.key?(:permissions)
           @properties = args[:properties] if args.key?(:properties)
           @quota_bytes_used = args[:quota_bytes_used] if args.key?(:quota_bytes_used)

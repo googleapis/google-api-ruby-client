@@ -490,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateAsyncRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateAsyncResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +515,18 @@ module Google
       end
       
       class ValidateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateStatusRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1492,6 +1516,24 @@ module Google
         end
       end
       
+      class ValidateAsyncRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :kind, as: 'kind'
+          property :uploader_name, as: 'uploaderName'
+        end
+      end
+      
+      class ValidateAsyncResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :status, as: 'status'
+          property :validation_id, as: 'validationId'
+        end
+      end
+      
       class ValidateError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1519,6 +1561,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors', class: Google::Apis::YoutubePartnerV1::ValidateError, decorator: Google::Apis::YoutubePartnerV1::ValidateError::Representation
       
+          property :kind, as: 'kind'
+          property :status, as: 'status'
+        end
+      end
+      
+      class ValidateStatusRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :locale, as: 'locale'
+          property :validation_id, as: 'validationId'
+        end
+      end
+      
+      class ValidateStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::YoutubePartnerV1::ValidateError, decorator: Google::Apis::YoutubePartnerV1::ValidateError::Representation
+      
+          property :is_metadata_only, as: 'isMetadataOnly'
           property :kind, as: 'kind'
           property :status, as: 'status'
         end

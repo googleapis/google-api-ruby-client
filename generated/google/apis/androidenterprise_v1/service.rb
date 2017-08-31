@@ -743,7 +743,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends a test push notification to validate the EMM integration with the Google
+        # Sends a test notification to validate the EMM integration with the Google
         # Cloud Pub/Sub service for this enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.

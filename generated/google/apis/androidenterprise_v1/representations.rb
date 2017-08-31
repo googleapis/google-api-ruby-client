@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductSigningCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApproveProductRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -778,6 +784,8 @@ module Google
           property :product_id, as: 'productId'
           property :product_pricing, as: 'productPricing'
           property :requires_container_app, as: 'requiresContainerApp'
+          property :signing_certificate, as: 'signingCertificate', class: Google::Apis::AndroidenterpriseV1::ProductSigningCertificate, decorator: Google::Apis::AndroidenterpriseV1::ProductSigningCertificate::Representation
+      
           property :small_icon_url, as: 'smallIconUrl'
           property :title, as: 'title'
           property :work_details_url, as: 'workDetailsUrl'
@@ -824,6 +832,14 @@ module Google
           property :kind, as: 'kind'
           collection :product_id, as: 'productId'
           property :product_set_behavior, as: 'productSetBehavior'
+        end
+      end
+      
+      class ProductSigningCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_hash_sha1, as: 'certificateHashSha1'
+          property :certificate_hash_sha256, as: 'certificateHashSha256'
         end
       end
       

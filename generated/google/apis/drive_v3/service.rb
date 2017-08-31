@@ -840,11 +840,11 @@ module Google
         #   Whether Team Drive items should be included in results.
         # @param [String] order_by
         #   A comma-separated list of sort keys. Valid keys are 'createdTime', 'folder', '
-        #   modifiedByMeTime', 'modifiedTime', 'name', 'quotaBytesUsed', 'recency', '
-        #   sharedWithMeTime', 'starred', and 'viewedByMeTime'. Each key sorts ascending
-        #   by default, but may be reversed with the 'desc' modifier. Example usage: ?
-        #   orderBy=folder,modifiedTime desc,name. Please note that there is a current
-        #   limitation for users with approximately one million files in which the
+        #   modifiedByMeTime', 'modifiedTime', 'name', 'name_natural', 'quotaBytesUsed', '
+        #   recency', 'sharedWithMeTime', 'starred', and 'viewedByMeTime'. Each key sorts
+        #   ascending by default, but may be reversed with the 'desc' modifier. Example
+        #   usage: ?orderBy=folder,modifiedTime desc,name. Please note that there is a
+        #   current limitation for users with approximately one million files in which the
         #   requested sort order is ignored.
         # @param [Fixnum] page_size
         #   The maximum number of files to return per page. Partial or empty result pages

@@ -673,19 +673,35 @@ module Google
       class IpAllocationPolicy
         include Google::Apis::Core::Hashable
       
-        # The IP address range for the cluster pod IPs. If this field is set, then
-        # `cluster.cluster_ipv4_cidr` must be left blank.
-        # This field is only applicable when `use_ip_aliases` is true.
-        # Set to blank to have a range will be chosen with the default size.
-        # Set to /netmask (e.g. `/14`) to have a range be chosen with a specific
-        # netmask.
-        # Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
-        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
-        # to use.
+        # This field is deprecated, use cluster_ipv4_cidr_block.
         # Corresponds to the JSON property `clusterIpv4Cidr`
         # @return [String]
         attr_accessor :cluster_ipv4_cidr
+      
+        # The IP address range for the cluster pod IPs. If this field is set, then
+        # `cluster.cluster_ipv4_cidr` must be left blank.
+        # This field is only applicable when `use_ip_aliases` is true.
+        # Set to blank to have a range chosen with the default size.
+        # Set to /netmask (e.g. `/14`) to have a range chosen with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Corresponds to the JSON property `clusterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :cluster_ipv4_cidr_block
+      
+        # The name of the secondary range to be used for the cluster CIDR
+        # block.  The secondary range will be used for pod IP
+        # addresses. This must be an existing secondary range associated
+        # with the cluster subnetwork.
+        # This field is only applicable with use_ip_aliases is true and
+        # create_subnetwork is false.
+        # Corresponds to the JSON property `clusterSecondaryRangeName`
+        # @return [String]
+        attr_accessor :cluster_secondary_range_name
       
         # Whether a new subnetwork will be created automatically for the cluster.
         # This field is only applicable when `use_ip_aliases` is true.
@@ -694,32 +710,54 @@ module Google
         attr_accessor :create_subnetwork
         alias_method :create_subnetwork?, :create_subnetwork
       
-        # The IP address range of the instance IPs in this cluster.
-        # This is applicable only if `create_subnetwork` is true.
-        # Set to blank to have a range will be chosen with the default size.
-        # Set to /netmask (e.g. `/14`) to have a range be chosen with a specific
-        # netmask.
-        # Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
-        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
-        # to use.
+        # This field is deprecated, use node_ipv4_cidr_block.
         # Corresponds to the JSON property `nodeIpv4Cidr`
         # @return [String]
         attr_accessor :node_ipv4_cidr
       
-        # The IP address range of the services IPs in this cluster. If blank, a range
-        # will be automatically chosen with the default size.
-        # This field is only applicable when `use_ip_aliases` is true.
-        # Set to blank to have a range will be chosen with the default size.
-        # Set to /netmask (e.g. `/14`) to have a range be chosen with a specific
+        # The IP address range of the instance IPs in this cluster.
+        # This is applicable only if `create_subnetwork` is true.
+        # Set to blank to have a range chosen with the default size.
+        # Set to /netmask (e.g. `/14`) to have a range chosen with a specific
         # netmask.
-        # Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
         # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
         # to use.
+        # Corresponds to the JSON property `nodeIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :node_ipv4_cidr_block
+      
+        # This field is deprecated, use services_ipv4_cidr_block.
         # Corresponds to the JSON property `servicesIpv4Cidr`
         # @return [String]
         attr_accessor :services_ipv4_cidr
+      
+        # The IP address range of the services IPs in this cluster. If blank, a range
+        # will be automatically chosen with the default size.
+        # This field is only applicable when `use_ip_aliases` is true.
+        # Set to blank to have a range chosen with the default size.
+        # Set to /netmask (e.g. `/14`) to have a range chosen with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Corresponds to the JSON property `servicesIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :services_ipv4_cidr_block
+      
+        # The name of the secondary range to be used as for the services
+        # CIDR block.  The secondary range will be used for service
+        # ClusterIPs. This must be an existing secondary range associated
+        # with the cluster subnetwork.
+        # This field is only applicable with use_ip_aliases is true and
+        # create_subnetwork is false.
+        # Corresponds to the JSON property `servicesSecondaryRangeName`
+        # @return [String]
+        attr_accessor :services_secondary_range_name
       
         # A custom subnetwork name to be used if `create_subnetwork` is true.  If
         # this field is empty, then an automatic name will be chosen for the new
@@ -741,9 +779,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
+          @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
+          @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
           @create_subnetwork = args[:create_subnetwork] if args.key?(:create_subnetwork)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
+          @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
+          @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
+          @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
         end
@@ -1278,6 +1321,12 @@ module Google
         # @return [String]
         attr_accessor :detail
       
+        # [Output only] The time the operation completed, in
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The server-assigned ID for the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1292,6 +1341,12 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # [Output only] The time the operation started, in
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         # The current status of the operation.
         # Corresponds to the JSON property `status`
@@ -1322,9 +1377,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @detail = args[:detail] if args.key?(:detail)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target_link = args[:target_link] if args.key?(:target_link)

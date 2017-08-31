@@ -1479,6 +1479,11 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Url>]
         attr_accessor :urls
       
+        # The person's user defined data.
+        # Corresponds to the JSON property `userDefined`
+        # @return [Array<Google::Apis::PeopleV1::UserDefined>]
+        attr_accessor :user_defined
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1515,6 +1520,7 @@ module Google
           @skills = args[:skills] if args.key?(:skills)
           @taglines = args[:taglines] if args.key?(:taglines)
           @urls = args[:urls] if args.key?(:urls)
+          @user_defined = args[:user_defined] if args.key?(:user_defined)
         end
       end
       
@@ -2168,6 +2174,37 @@ module Google
           @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Arbitrary user data that is populated by the end users.
+      class UserDefined
+        include Google::Apis::Core::Hashable
+      
+        # The end user specified key of the user defined data.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The end user specified value of the user defined data.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @value = args[:value] if args.key?(:value)
         end
       end

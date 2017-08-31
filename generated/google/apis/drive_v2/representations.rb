@@ -680,6 +680,7 @@ module Google
       
           collection :parents, as: 'parents', class: Google::Apis::DriveV2::ParentReference, decorator: Google::Apis::DriveV2::ParentReference::Representation
       
+          collection :permission_ids, as: 'permissionIds'
           collection :permissions, as: 'permissions', class: Google::Apis::DriveV2::Permission, decorator: Google::Apis::DriveV2::Permission::Representation
       
           collection :properties, as: 'properties', class: Google::Apis::DriveV2::Property, decorator: Google::Apis::DriveV2::Property::Representation

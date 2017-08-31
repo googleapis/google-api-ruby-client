@@ -1227,11 +1227,11 @@ module Google
         # @param [String] order_by
         #   A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', '
         #   lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', '
-        #   recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending
-        #   by default, but may be reversed with the 'desc' modifier. Example usage: ?
-        #   orderBy=folder,modifiedDate desc,title. Please note that there is a current
-        #   limitation for users with approximately one million files in which the
-        #   requested sort order is ignored.
+        #   recency', 'sharedWithMeDate', 'starred', 'title', and 'title_natural'. Each
+        #   key sorts ascending by default, but may be reversed with the 'desc' modifier.
+        #   Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there
+        #   is a current limitation for users with approximately one million files in
+        #   which the requested sort order is ignored.
         # @param [String] page_token
         #   Page token for files.
         # @param [String] projection
