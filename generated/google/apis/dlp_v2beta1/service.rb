@@ -280,16 +280,16 @@ module Google
         # Returns list of results for given inspect operation result set id.
         # @param [String] name
         #   Identifier of the results set returned as metadata of
-        #   the longrunning operation created by a call to CreateInspectOperation.
+        #   the longrunning operation created by a call to InspectDataSource.
         #   Should be in the format of `inspect/results/`id``.
         # @param [String] filter
         #   Restricts findings to items that match. Supports info_type and likelihood.
-        #   <p>Examples:<br/>
-        #   <li>info_type=EMAIL_ADDRESS
-        #   <li>info_type=PHONE_NUMBER,EMAIL_ADDRESS
-        #   <li>likelihood=VERY_LIKELY
-        #   <li>likelihood=VERY_LIKELY,LIKELY
-        #   <li>info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
+        #   Examples:
+        #   - info_type=EMAIL_ADDRESS
+        #   - info_type=PHONE_NUMBER,EMAIL_ADDRESS
+        #   - likelihood=VERY_LIKELY
+        #   - likelihood=VERY_LIKELY,LIKELY
+        #   - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
         # @param [Fixnum] page_size
         #   Maximum number of results to return.
         #   If 0, the implementation selects a reasonable value.

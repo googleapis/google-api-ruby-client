@@ -236,10 +236,11 @@ module Google
       class NetworkEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compressed_message_size, :numeric_string => true, as: 'compressedMessageSize'
           property :message_id, :numeric_string => true, as: 'messageId'
-          property :message_size, :numeric_string => true, as: 'messageSize'
           property :time, as: 'time'
           property :type, as: 'type'
+          property :uncompressed_message_size, :numeric_string => true, as: 'uncompressedMessageSize'
         end
       end
       

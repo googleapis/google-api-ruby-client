@@ -13037,10 +13037,12 @@
 "/cloudtrace:v2/Module/buildId": build_id
 "/cloudtrace:v2/Module/module": module
 "/cloudtrace:v2/NetworkEvent": network_event
+"/cloudtrace:v2/NetworkEvent/compressedMessageSize": compressed_message_size
 "/cloudtrace:v2/NetworkEvent/messageId": message_id
 "/cloudtrace:v2/NetworkEvent/messageSize": message_size
 "/cloudtrace:v2/NetworkEvent/time": time
 "/cloudtrace:v2/NetworkEvent/type": type
+"/cloudtrace:v2/NetworkEvent/uncompressedMessageSize": uncompressed_message_size
 "/cloudtrace:v2/Span": span
 "/cloudtrace:v2/Span/attributes": attributes
 "/cloudtrace:v2/Span/childSpanCount": child_span_count
@@ -26596,6 +26598,7 @@
 "/content:v2/AccountsCustomBatchRequestEntry/account": account
 "/content:v2/AccountsCustomBatchRequestEntry/accountId": account_id
 "/content:v2/AccountsCustomBatchRequestEntry/batchId": batch_id
+"/content:v2/AccountsCustomBatchRequestEntry/force": force
 "/content:v2/AccountsCustomBatchRequestEntry/merchantId": merchant_id
 "/content:v2/AccountsCustomBatchRequestEntry/method": request_method
 "/content:v2/AccountsCustomBatchRequestEntry/overwrite": overwrite
@@ -27358,6 +27361,7 @@
 "/content:v2/Service/currency": currency
 "/content:v2/Service/deliveryCountry": delivery_country
 "/content:v2/Service/deliveryTime": delivery_time
+"/content:v2/Service/minimumOrderValue": minimum_order_value
 "/content:v2/Service/name": name
 "/content:v2/Service/rateGroups": rate_groups
 "/content:v2/Service/rateGroups/rate_group": rate_group

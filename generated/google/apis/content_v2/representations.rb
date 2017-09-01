@@ -1097,6 +1097,7 @@ module Google
       
           property :account_id, :numeric_string => true, as: 'accountId'
           property :batch_id, as: 'batchId'
+          property :force, as: 'force'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
           property :overwrite, as: 'overwrite'
@@ -2547,6 +2548,8 @@ module Google
           property :currency, as: 'currency'
           property :delivery_country, as: 'deliveryCountry'
           property :delivery_time, as: 'deliveryTime', class: Google::Apis::ContentV2::DeliveryTime, decorator: Google::Apis::ContentV2::DeliveryTime::Representation
+      
+          property :minimum_order_value, as: 'minimumOrderValue', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :name, as: 'name'
           collection :rate_groups, as: 'rateGroups', class: Google::Apis::ContentV2::RateGroup, decorator: Google::Apis::ContentV2::RateGroup::Representation

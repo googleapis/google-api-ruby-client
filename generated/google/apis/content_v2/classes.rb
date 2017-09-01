@@ -556,6 +556,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
+        # Whether the account should be deleted if the account has offers. Only
+        # applicable if the method is delete.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -582,6 +589,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @account_id = args[:account_id] if args.key?(:account_id)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @force = args[:force] if args.key?(:force)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
           @overwrite = args[:overwrite] if args.key?(:overwrite)
@@ -5750,6 +5758,13 @@ module Google
         # @return [Google::Apis::ContentV2::DeliveryTime]
         attr_accessor :delivery_time
       
+        # Minimum order value for this service. If set, indicates that customers will
+        # have to spend at least this amount. All prices within a service must have the
+        # same currency.
+        # Corresponds to the JSON property `minimumOrderValue`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :minimum_order_value
+      
         # Free-form name of the service. Must be unique within target account. Required.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5772,6 +5787,7 @@ module Google
           @currency = args[:currency] if args.key?(:currency)
           @delivery_country = args[:delivery_country] if args.key?(:delivery_country)
           @delivery_time = args[:delivery_time] if args.key?(:delivery_time)
+          @minimum_order_value = args[:minimum_order_value] if args.key?(:minimum_order_value)
           @name = args[:name] if args.key?(:name)
           @rate_groups = args[:rate_groups] if args.key?(:rate_groups)
         end

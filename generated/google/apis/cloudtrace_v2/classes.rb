@@ -300,15 +300,15 @@ module Google
       class NetworkEvent
         include Google::Apis::Core::Hashable
       
+        # The number of compressed bytes sent or received.
+        # Corresponds to the JSON property `compressedMessageSize`
+        # @return [Fixnum]
+        attr_accessor :compressed_message_size
+      
         # An identifier for the message, which must be unique in this span.
         # Corresponds to the JSON property `messageId`
         # @return [Fixnum]
         attr_accessor :message_id
-      
-        # The number of bytes sent or received.
-        # Corresponds to the JSON property `messageSize`
-        # @return [Fixnum]
-        attr_accessor :message_size
       
         # For sent messages, this is the time at which the first bit was sent.
         # For received messages, this is the time at which the last bit was
@@ -323,16 +323,22 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The number of uncompressed bytes sent or received.
+        # Corresponds to the JSON property `uncompressedMessageSize`
+        # @return [Fixnum]
+        attr_accessor :uncompressed_message_size
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @compressed_message_size = args[:compressed_message_size] if args.key?(:compressed_message_size)
           @message_id = args[:message_id] if args.key?(:message_id)
-          @message_size = args[:message_size] if args.key?(:message_size)
           @time = args[:time] if args.key?(:time)
           @type = args[:type] if args.key?(:type)
+          @uncompressed_message_size = args[:uncompressed_message_size] if args.key?(:uncompressed_message_size)
         end
       end
       
