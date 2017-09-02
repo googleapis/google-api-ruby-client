@@ -257,12 +257,21 @@ module Google
         # @return [String]
         attr_accessor :authority_selector
       
-        # The email address of the authenticated user making the request.
-        # For privacy reasons, the principal email address is redacted for all
-        # read-only operations that fail with a "permission denied" error.
+        # The email address of the authenticated user (or service account on behalf
+        # of third party principal) making the request. For privacy reasons, the
+        # principal email address is redacted for all read-only operations that fail
+        # with a "permission denied" error.
         # Corresponds to the JSON property `principalEmail`
         # @return [String]
         attr_accessor :principal_email
+      
+        # The third party identification (if any) of the authenticated user making
+        # the request.
+        # When the JSON object represented here has a proto equivalent, the proto
+        # name will be indicated in the `@type` property.
+        # Corresponds to the JSON property `thirdPartyPrincipal`
+        # @return [Hash<String,Object>]
+        attr_accessor :third_party_principal
       
         def initialize(**args)
            update!(**args)
@@ -272,6 +281,7 @@ module Google
         def update!(**args)
           @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)
         end
       end
       

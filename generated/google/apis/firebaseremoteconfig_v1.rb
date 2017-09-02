@@ -12,24 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudkms_v1/service.rb'
-require 'google/apis/cloudkms_v1/classes.rb'
-require 'google/apis/cloudkms_v1/representations.rb'
+require 'google/apis/firebaseremoteconfig_v1/service.rb'
+require 'google/apis/firebaseremoteconfig_v1/classes.rb'
+require 'google/apis/firebaseremoteconfig_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Key Management Service (KMS) API
+    # Firebase Remote Config API
     #
-    # Manages encryption for your cloud services the same way you do on-premises.
-    # You can generate, use, rotate, and destroy AES256 encryption keys.
+    # Firebase Remote Config API allows the 3P clients to manage Remote Config
+    # conditions and parameters for Firebase applications.
     #
-    # @see https://cloud.google.com/kms/
-    module CloudkmsV1
+    # @see https://firebase.google.com/docs/remote-config/
+    module FirebaseremoteconfigV1
       VERSION = 'V1'
-      REVISION = '20170829'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      REVISION = '20170830'
     end
   end
 end

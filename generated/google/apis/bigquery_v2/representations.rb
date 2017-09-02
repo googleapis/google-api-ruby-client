@@ -1100,6 +1100,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expiration_ms, :numeric_string => true, as: 'expirationMs'
+          property :field, as: 'field'
           property :type, as: 'type'
         end
       end

@@ -3124,8 +3124,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :expiration_ms
       
+        # [Experimental] [Optional] If not set, the table is partitioned by pseudo
+        # column '_PARTITIONTIME'; if set, the table is partitioned by this field. The
+        # field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE
+        # or REQUIRED.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
         # [Required] The only type supported is DAY, which will generate one partition
-        # per day based on data loading time.
+        # per day.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3137,6 +3145,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
+          @field = args[:field] if args.key?(:field)
           @type = args[:type] if args.key?(:type)
         end
       end

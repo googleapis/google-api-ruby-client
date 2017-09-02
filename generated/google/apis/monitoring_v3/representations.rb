@@ -34,13 +34,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CollectdPayloadError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CollectdValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CollectdValueError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateCollectdTimeSeriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateCollectdTimeSeriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeInterval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -230,6 +254,17 @@ module Google
         end
       end
       
+      class CollectdPayloadError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
+          property :index, as: 'index'
+          collection :value_errors, as: 'valueErrors', class: Google::Apis::MonitoringV3::CollectdValueError, decorator: Google::Apis::MonitoringV3::CollectdValueError::Representation
+      
+        end
+      end
+      
       class CollectdValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -240,6 +275,15 @@ module Google
         end
       end
       
+      class CollectdValueError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
+          property :index, as: 'index'
+        end
+      end
+      
       class CreateCollectdTimeSeriesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -247,6 +291,14 @@ module Google
       
           property :collectd_version, as: 'collectdVersion'
           property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
+      
+        end
+      end
+      
+      class CreateCollectdTimeSeriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :payload_errors, as: 'payloadErrors', class: Google::Apis::MonitoringV3::CollectdPayloadError, decorator: Google::Apis::MonitoringV3::CollectdPayloadError::Representation
       
         end
       end
@@ -460,6 +512,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_name, as: 'fileName'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

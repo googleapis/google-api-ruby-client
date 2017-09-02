@@ -65,10 +65,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam result [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MonitoringV3::Empty]
+        # @return [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -77,8 +77,8 @@ module Google
           command =  make_simple_command(:post, 'v3/{+name}/collectdTimeSeries', options)
           command.request_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest::Representation
           command.request_object = create_collectd_time_series_request_object
-          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
-          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.response_representation = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::CreateCollectdTimeSeriesResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

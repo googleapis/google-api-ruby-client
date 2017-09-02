@@ -194,116 +194,6 @@ module Google
         end
       end
       
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        # The log_name to populate in the Cloud Audit Record.
-        # Corresponds to the JSON property `logName`
-        # @return [String]
-        attr_accessor :log_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_name = args[:log_name] if args.key?(:log_name)
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # Trusted attributes supplied by any service that owns resources and uses
-        # the IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # DEPRECATED. Use 'values' instead.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] if args.key?(:iam)
-          @op = args[:op] if args.key?(:op)
-          @svc = args[:svc] if args.key?(:svc)
-          @sys = args[:sys] if args.key?(:sys)
-          @value = args[:value] if args.key?(:value)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
-      # Increment a streamz counter with the specified metric and field names.
-      # Metric names should start with a '/', generally be lowercase-only,
-      # and end in "_count". Field names should not contain an initial slash.
-      # The actual exported metric names will have "/iam/policy" prepended.
-      # Field names correspond to IAM request parameters and field values are
-      # their respective values.
-      # At present the only supported field names are
-      # - "iam_principal", corresponding to IAMContext.principal;
-      # - "" (empty string), resulting in one aggretated counter with no field.
-      # Examples:
-      # counter ` metric: "/debug_access_count"  field: "iam_principal" `
-      # ==> increment counter /iam/policy/backend_debug_access_count
-      # `iam_principal=[value of IAMContext.principal]`
-      # At this time we do not support:
-      # * multiple field names (though this may be supported in the future)
-      # * decrementing the counter
-      # * incrementing it by anything other than 1
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field = args[:field] if args.key?(:field)
-          @metric = args[:metric] if args.key?(:metric)
-        end
-      end
-      
       # A CryptoKey represents a logical key that can be used for cryptographic
       # operations.
       # A CryptoKey is made up of one or more versions, which
@@ -315,6 +205,11 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Labels with user defined metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Output only. The resource name for this CryptoKey in the format
         # `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -366,6 +261,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
           @primary = args[:primary] if args.key?(:primary)
@@ -427,26 +323,6 @@ module Google
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        # Whether Gin logging should happen in a fail-closed manner at the caller.
-        # This is relevant only in the LocalIAM implementation, for now.
-        # Corresponds to the JSON property `logMode`
-        # @return [String]
-        attr_accessor :log_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_mode = args[:log_mode] if args.key?(:log_mode)
         end
       end
       
@@ -803,53 +679,6 @@ module Google
         end
       end
       
-      # Specifies what kind of log the caller must write
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::CloudkmsV1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        # Increment a streamz counter with the specified metric and field names.
-        # Metric names should start with a '/', generally be lowercase-only,
-        # and end in "_count". Field names should not contain an initial slash.
-        # The actual exported metric names will have "/iam/policy" prepended.
-        # Field names correspond to IAM request parameters and field values are
-        # their respective values.
-        # At present the only supported field names are
-        # - "iam_principal", corresponding to IAMContext.principal;
-        # - "" (empty string), resulting in one aggretated counter with no field.
-        # Examples:
-        # counter ` metric: "/debug_access_count"  field: "iam_principal" `
-        # ==> increment counter /iam/policy/backend_debug_access_count
-        # `iam_principal=[value of IAMContext.principal]`
-        # At this time we do not support:
-        # * multiple field names (though this may be supported in the future)
-        # * decrementing the counter
-        # * incrementing it by anything other than 1
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::CloudkmsV1::CounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::CloudkmsV1::DataAccessOptions]
-        attr_accessor :data_access
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
-        end
-      end
-      
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
       # A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
@@ -910,19 +739,6 @@ module Google
         attr_accessor :iam_owned
         alias_method :iam_owned?, :iam_owned
       
-        # If more than one rule is specified, the rules are applied in the following
-        # manner:
-        # - All matching LOG rules are always applied.
-        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-        # granted.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if no rule applies, permission is denied.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::CloudkmsV1::Rule>]
-        attr_accessor :rules
-      
         # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -938,7 +754,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -953,68 +768,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Additional restrictions that must be met
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::CloudkmsV1::Condition>]
-        attr_accessor :conditions
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If one or more 'in' clauses are specified, the rule matches if
-        # the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-        # Corresponds to the JSON property `in`
-        # @return [Array<String>]
-        attr_accessor :in
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Array<Google::Apis::CloudkmsV1::LogConfig>]
-        attr_accessor :log_config
-      
-        # If one or more 'not_in' clauses are specified, the rule matches
-        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-        # The format for in and not_in entries is the same as for members in a
-        # Binding (see google/iam/v1/policy.proto).
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # A permission is a string of form '<service>.<resource type>.<verb>'
-        # (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-        # and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @description = args[:description] if args.key?(:description)
-          @in = args[:in] if args.key?(:in)
-          @log_config = args[:log_config] if args.key?(:log_config)
-          @not_in = args[:not_in] if args.key?(:not_in)
-          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       

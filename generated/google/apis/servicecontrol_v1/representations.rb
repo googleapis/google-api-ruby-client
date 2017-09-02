@@ -280,6 +280,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority_selector, as: 'authoritySelector'
           property :principal_email, as: 'principalEmail'
+          hash :third_party_principal, as: 'thirdPartyPrincipal'
         end
       end
       
