@@ -1,3 +1,46 @@
+# 0.13.5
+* Backwards compatible changes:
+  * Added `datastore_v1beta1`
+  * Added `firebaseremoteconfig_v1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `admin_directory_v1`
+  * Updated `adsensehost_v4_1`
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidpublisher_v1_1`
+  * Updated `androidpublisher_v2`
+  * Updated `bigquery_v2`
+  * Updated `cloudkms_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudtrace_v2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `dataflow_v1b3`
+  * Updated `dlp_v2beta1`
+  * Updated `dns_v2beta1`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `games_management_v1management`
+  * Updated `gmail_v1`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `people_v1`
+  * Updated `runtimeconfig_v1`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `servicecontrol_v1`
+  * Updated `slides_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1beta1`
+  * Updated `storagetransfer_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `toolresults_v1beta3firstparty`
+  * Updated `vault_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.13.4
 * Backwards compatible changes:
   * Updated `compute_alpha`
