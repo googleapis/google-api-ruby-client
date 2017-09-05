@@ -31,12 +31,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_id
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Section to claim
+        # The section to claim.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -57,13 +57,13 @@ module Google
       class ClaimDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # the device id of the claimed device.
+        # The device ID of the claimed device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # the resource name of the device in
-        # 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.
+        # The resource name of the device in the format
+        # `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
         attr_accessor :device_name
@@ -83,7 +83,7 @@ module Google
       class ClaimDevicesRequest
         include Google::Apis::Core::Hashable
       
-        # list of claims.
+        # List of claims.
         # Corresponds to the JSON property `claims`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::PartnerClaim>]
         attr_accessor :claims
@@ -102,31 +102,32 @@ module Google
       class Company
         include Google::Apis::Core::Hashable
       
-        # Admin email.
-        # Admins will be able to operate on the portal.
-        # This field is a WRITE-only field at creation time.
+        # Admin emails.
+        # Admins are able to operate on the portal.
+        # This field is a write-only field at creation time.
         # Corresponds to the JSON property `adminEmails`
         # @return [Array<String>]
         attr_accessor :admin_emails
       
-        # company id
+        # Company ID.
         # Corresponds to the JSON property `companyId`
         # @return [Fixnum]
         attr_accessor :company_id
       
-        # company name
+        # Company name.
         # Corresponds to the JSON property `companyName`
         # @return [String]
         attr_accessor :company_name
       
-        # REST Resource name.
+        # The API resource name of the company in the format
+        # `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Owner email.
-        # Owner is able to operate on the portal, and modify admins and other owners.
-        # This field is a WRITE-only field at creation time.
+        # Owner emails.
+        # Owners are able to operate on the portal, and modify admins or other
+        # owners. This field is a write-only field at creation time.
         # Corresponds to the JSON property `ownerEmails`
         # @return [Array<String>]
         attr_accessor :owner_emails
@@ -145,11 +146,30 @@ module Google
         end
       end
       
-      # Device
+      # Request message to create a customer.
+      class CreateCustomerRequest
+        include Google::Apis::Core::Hashable
+      
+        # Company
+        # Corresponds to the JSON property `customer`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Company]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
+      # An Android device.
       class Device
         include Google::Apis::Core::Hashable
       
-        # claims
+        # Claims.
         # Corresponds to the JSON property `claims`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::DeviceClaim>]
         attr_accessor :claims
@@ -160,22 +180,22 @@ module Google
         # @return [String]
         attr_accessor :configuration
       
-        # Device id
+        # Device ID.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # A key value pair of the device metadata.
+        # A key-value pair of the device metadata.
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
       
-        # Resource name in 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.
+        # Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -195,16 +215,16 @@ module Google
         end
       end
       
-      # containing the necessary info about a claim for a partner.
+      # Information about a device claimed for a partner.
       class DeviceClaim
         include Google::Apis::Core::Hashable
       
-        # owner id
+        # Owner ID.
         # Corresponds to the JSON property `ownerCompanyId`
         # @return [Fixnum]
         attr_accessor :owner_company_id
       
-        # section type.
+        # Section type of the device claim.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -220,11 +240,11 @@ module Google
         end
       end
       
-      # DeviceIdentifiers identifies an unique device.
+      # Identifies a unique device.
       class DeviceIdentifier
         include Google::Apis::Core::Hashable
       
-        # IMEI
+        # IMEI number.
         # Corresponds to the JSON property `imei`
         # @return [String]
         attr_accessor :imei
@@ -236,12 +256,12 @@ module Google
         # @return [String]
         attr_accessor :manufacturer
       
-        # MEID
+        # MEID number.
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
       
-        # Serial number (optional)
+        # Serial number (optional).
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
@@ -259,7 +279,7 @@ module Google
         end
       end
       
-      # A key value pair of the device metadata.
+      # A key-value pair of the device metadata.
       class DeviceMetadata
         include Google::Apis::Core::Hashable
       
@@ -313,8 +333,8 @@ module Google
       class DevicesLongRunningOperationResponse
         include Google::Apis::Core::Hashable
       
-        # processing status for each device.
-        # One PerDeviceStatus per device. The order is the same as in your requests.
+        # Processing status for each device.
+        # One `PerDeviceStatus` per device. The order is the same as in your requests.
         # Corresponds to the JSON property `perDeviceStatus`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::OperationPerDevice>]
         attr_accessor :per_device_status
@@ -358,7 +378,7 @@ module Google
       class FindDevicesByDeviceIdentifierRequest
         include Google::Apis::Core::Hashable
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -368,7 +388,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Page token
+        # Page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -394,7 +414,7 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # Page token of next page
+        # Page token of the next page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -414,7 +434,7 @@ module Google
       class FindDevicesByOwnerRequest
         include Google::Apis::Core::Hashable
       
-        # List of customer ids to search for.
+        # List of customer IDs to search for.
         # Corresponds to the JSON property `customerId`
         # @return [Array<Fixnum>]
         attr_accessor :customer_id
@@ -424,7 +444,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Page token
+        # Page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -456,7 +476,7 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # Page token of next page
+        # Page token of the next page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -621,22 +641,22 @@ module Google
       class PartnerClaim
         include Google::Apis::Core::Hashable
       
-        # customer id to claim for.
+        # Customer ID to claim for.
         # Corresponds to the JSON property `customerId`
         # @return [Fixnum]
         attr_accessor :customer_id
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # A key value pair of the device metadata.
+        # A key-value pair of the device metadata.
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
       
-        # section type to claim.
+        # Section type to claim.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -658,17 +678,17 @@ module Google
       class PartnerUnclaim
         include Google::Apis::Core::Hashable
       
-        # device id of the device.
+        # Device ID of the device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # section type to unclaim.
+        # Section type to unclaim.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -689,7 +709,7 @@ module Google
       class PerDeviceStatusInBatch
         include Google::Apis::Core::Hashable
       
-        # device id of the device if process succeeds.
+        # Device ID of the device if process succeeds.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
@@ -699,7 +719,7 @@ module Google
         # @return [String]
         attr_accessor :error_identifier
       
-        # Error message
+        # Error message.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
@@ -798,12 +818,12 @@ module Google
       class UnclaimDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # The device id returned by ClaimDevice.
+        # The device ID returned by `ClaimDevice`.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -829,7 +849,7 @@ module Google
       class UnclaimDevicesRequest
         include Google::Apis::Core::Hashable
       
-        # list of unclaims.
+        # List of devices to unclaim.
         # Corresponds to the JSON property `unclaims`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::PartnerUnclaim>]
         attr_accessor :unclaims
@@ -848,7 +868,7 @@ module Google
       class UpdateDeviceMetadataInBatchRequest
         include Google::Apis::Core::Hashable
       
-        # list of metadata updates.
+        # List of metadata updates.
         # Corresponds to the JSON property `updates`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::UpdateMetadataArguments>]
         attr_accessor :updates
@@ -867,7 +887,7 @@ module Google
       class UpdateDeviceMetadataRequest
         include Google::Apis::Core::Hashable
       
-        # A key value pair of the device metadata.
+        # A key-value pair of the device metadata.
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -886,17 +906,17 @@ module Google
       class UpdateMetadataArguments
         include Google::Apis::Core::Hashable
       
-        # device id of the device.
+        # Device ID of the device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # DeviceIdentifiers identifies an unique device.
+        # Identifies a unique device.
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # A key value pair of the device metadata.
+        # A key-value pair of the device metadata.
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata

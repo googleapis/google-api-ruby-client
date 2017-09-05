@@ -4868,6 +4868,8 @@
 "/androiddeviceprovisioning:v1/Company/name": name
 "/androiddeviceprovisioning:v1/Company/ownerEmails": owner_emails
 "/androiddeviceprovisioning:v1/Company/ownerEmails/owner_email": owner_email
+"/androiddeviceprovisioning:v1/CreateCustomerRequest": create_customer_request
+"/androiddeviceprovisioning:v1/CreateCustomerRequest/customer": customer
 "/androiddeviceprovisioning:v1/Device": device
 "/androiddeviceprovisioning:v1/Device/claims": claims
 "/androiddeviceprovisioning:v1/Device/claims/claim": claim
@@ -4968,6 +4970,8 @@
 "/androiddeviceprovisioning:v1/UpdateMetadataArguments/deviceMetadata": device_metadata
 "/androiddeviceprovisioning:v1/androiddeviceprovisioning.operations.get": get_operation
 "/androiddeviceprovisioning:v1/androiddeviceprovisioning.operations.get/name": name
+"/androiddeviceprovisioning:v1/androiddeviceprovisioning.partners.customers.create": create_customer
+"/androiddeviceprovisioning:v1/androiddeviceprovisioning.partners.customers.create/parent": parent
 "/androiddeviceprovisioning:v1/androiddeviceprovisioning.partners.customers.list": list_partner_customers
 "/androiddeviceprovisioning:v1/androiddeviceprovisioning.partners.customers.list/partnerId": partner_id
 "/androiddeviceprovisioning:v1/androiddeviceprovisioning.partners.devices.claim": claim_device

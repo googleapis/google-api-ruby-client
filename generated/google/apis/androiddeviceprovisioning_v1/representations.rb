@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Device
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -218,6 +224,14 @@ module Google
           property :company_name, as: 'companyName'
           property :name, as: 'name'
           collection :owner_emails, as: 'ownerEmails'
+        end
+      end
+      
+      class CreateCustomerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
+      
         end
       end
       

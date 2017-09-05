@@ -80,9 +80,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all the customers that has delegates some role to this customer.
+        # A customer for Zero Touch Provisioning will be created.
+        # After a Customer is created, their admins and owners will be able to manage
+        # devices on partner.android.com/zerotouch or via their API.
+        # @param [String] parent
+        #   The parent resource in format `partners/[PARTNER_ID]'.
+        # @param [Google::Apis::AndroiddeviceprovisioningV1::CreateCustomerRequest] create_customer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Company] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Company]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer(parent, create_customer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/customers', options)
+          command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CreateCustomerRequest::Representation
+          command.request_object = create_customer_request_object
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Company
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the customers that are enrolled to the reseller identified by the
+        # `partnerId` argument. This list includes customers that the reseller
+        # created and customers that enrolled themselves using the portal.
         # @param [Fixnum] partner_id
-        #   the id of the partner.
+        #   The ID of the partner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -112,7 +149,7 @@ module Google
         
         # Claim the device identified by device identifier.
         # @param [Fixnum] partner_id
-        #   Id of the partner.
+        #   ID of the partner.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::ClaimDeviceRequest] claim_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -143,9 +180,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Claim devices asynchronously
+        # Claim devices asynchronously.
         # @param [Fixnum] partner_id
-        #   partner id.
+        #   Partner ID.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::ClaimDevicesRequest] claim_devices_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -178,7 +215,7 @@ module Google
         
         # Find devices by device identifier.
         # @param [Fixnum] partner_id
-        #   id of the partner.
+        #   ID of the partner.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::FindDevicesByDeviceIdentifierRequest] find_devices_by_device_identifier_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -211,7 +248,7 @@ module Google
         
         # Find devices by ownership.
         # @param [Fixnum] partner_id
-        #   id of the partner.
+        #   ID of the partner.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::FindDevicesByOwnerRequest] find_devices_by_owner_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -242,9 +279,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a device
+        # Get a device.
         # @param [String] name
-        #   resource name in 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.
+        #   Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -272,11 +309,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the metadata
+        # Update the metadata.
         # @param [Fixnum] metadata_owner_id
-        #   The owner of the newly set metadata. Should be partner id itself.
+        #   The owner of the newly set metadata. Set this to the partner ID.
         # @param [Fixnum] device_id
-        #   id of the partner.
+        #   ID of the partner.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::UpdateDeviceMetadataRequest] update_device_metadata_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -308,9 +345,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unclaim the device identified by device_id or identifier.
+        # Unclaim the device identified by the `device_id` or the `deviceIdentifier`.
         # @param [Fixnum] partner_id
-        #   Id of the partner.
+        #   ID of the partner.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::UnclaimDeviceRequest] unclaim_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -341,9 +378,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unclaim devices asynchronously
+        # Unclaim devices asynchronously.
         # @param [Fixnum] partner_id
-        #   partner id.
+        #   Partner ID.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::UnclaimDevicesRequest] unclaim_devices_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -376,7 +413,7 @@ module Google
         
         # Set metadata in batch asynchronously.
         # @param [Fixnum] partner_id
-        #   partner id.
+        #   Partner ID.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::UpdateDeviceMetadataInBatchRequest] update_device_metadata_in_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

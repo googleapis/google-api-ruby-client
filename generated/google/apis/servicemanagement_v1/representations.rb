@@ -100,18 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConfigChange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CustomAuthRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,12 +161,6 @@ module Google
       end
       
       class CustomHttpPattern
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,12 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LogDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,12 +431,6 @@ module Google
       end
       
       class Rollout
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -720,25 +684,6 @@ module Google
         end
       end
       
-      class CloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_name, as: 'logName'
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          property :value, as: 'value'
-          collection :values, as: 'values'
-        end
-      end
-      
       class ConfigChange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -800,14 +745,6 @@ module Google
         end
       end
       
-      class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :field, as: 'field'
-          property :metric, as: 'metric'
-        end
-      end
-      
       class CustomAuthRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -837,13 +774,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :path, as: 'path'
-        end
-      end
-      
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_mode, as: 'logMode'
         end
       end
       
@@ -1082,18 +1012,6 @@ module Google
         end
       end
       
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::ServicemanagementV1::CloudAuditOptions, decorator: Google::Apis::ServicemanagementV1::CloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::ServicemanagementV1::CounterOptions, decorator: Google::Apis::ServicemanagementV1::CounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::ServicemanagementV1::DataAccessOptions, decorator: Google::Apis::ServicemanagementV1::DataAccessOptions::Representation
-      
-        end
-      end
-      
       class LogDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1289,8 +1207,6 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::Rule, decorator: Google::Apis::ServicemanagementV1::Rule::Representation
-      
           property :version, as: 'version'
         end
       end
@@ -1333,21 +1249,6 @@ module Google
           property :status, as: 'status'
           property :traffic_percent_strategy, as: 'trafficPercentStrategy', class: Google::Apis::ServicemanagementV1::TrafficPercentStrategy, decorator: Google::Apis::ServicemanagementV1::TrafficPercentStrategy::Representation
       
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::ServicemanagementV1::Condition, decorator: Google::Apis::ServicemanagementV1::Condition::Representation
-      
-          property :description, as: 'description'
-          collection :in, as: 'in'
-          collection :log_config, as: 'logConfig', class: Google::Apis::ServicemanagementV1::LogConfig, decorator: Google::Apis::ServicemanagementV1::LogConfig::Representation
-      
-          collection :not_in, as: 'notIn'
-          collection :permissions, as: 'permissions'
         end
       end
       

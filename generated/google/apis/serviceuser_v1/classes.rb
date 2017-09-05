@@ -423,8 +423,9 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # The number of seconds to wait for a response from a request.  The
-        # default depends on the deployment context.
+        # The number of seconds to wait for a response from a request.  The default
+        # deadline for gRPC and HTTP requests is 5 seconds. For Stubby requests,
+        # the default is no deadline.
         # Corresponds to the JSON property `deadline`
         # @return [Float]
         attr_accessor :deadline
@@ -2267,7 +2268,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
+        # If `true`, the operation is completed, and either `error` or `response` is
         # available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
