@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/accounts/docs/OAuth2
     module Oauth2V1
       VERSION = 'V1'
-      REVISION = '20161103'
+      REVISION = '20170807'
 
       # Know the list of people in your circles, your age range, and language
       AUTH_PLUS_LOGIN = 'https://www.googleapis.com/auth/plus.login'

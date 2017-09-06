@@ -162,14 +162,15 @@ module Google
           property :display_name, as: 'displayName'
           property :help_url, as: 'helpUrl'
           property :manual_runs_disabled, as: 'manualRunsDisabled'
+          property :minimum_schedule_interval, as: 'minimumScheduleInterval'
           property :name, as: 'name'
           collection :parameters, as: 'parameters', class: Google::Apis::BigquerydatatransferV1::DataSourceParameter, decorator: Google::Apis::BigquerydatatransferV1::DataSourceParameter::Representation
       
           collection :scopes, as: 'scopes'
-          property :status_update_deadline_seconds, as: 'statusUpdateDeadlineSeconds'
           property :supports_custom_schedule, as: 'supportsCustomSchedule'
           property :supports_multiple_transfers, as: 'supportsMultipleTransfers'
           property :transfer_type, as: 'transferType'
+          property :update_deadline_seconds, as: 'updateDeadlineSeconds'
         end
       end
       
@@ -305,7 +306,7 @@ module Google
           property :next_run_time, as: 'nextRunTime'
           hash :params, as: 'params'
           property :schedule, as: 'schedule'
-          property :status, as: 'status'
+          property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_id, :numeric_string => true, as: 'userId'
         end
@@ -333,7 +334,7 @@ module Google
           property :schedule, as: 'schedule'
           property :schedule_time, as: 'scheduleTime'
           property :start_time, as: 'startTime'
-          property :status, as: 'status'
+          property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_id, :numeric_string => true, as: 'userId'
         end

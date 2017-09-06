@@ -325,7 +325,6 @@ module Google
       
           collection :hardware_status_samples, as: 'hardwareStatusSamples', class: Google::Apis::AndroidmanagementV1::HardwareStatus, decorator: Google::Apis::AndroidmanagementV1::HardwareStatus::Representation
       
-          property :last_offline_state_change_time, as: 'lastOfflineStateChangeTime'
           property :last_policy_compliance_report_time, as: 'lastPolicyComplianceReportTime'
           property :last_policy_sync_time, as: 'lastPolicySyncTime'
           property :last_status_report_time, as: 'lastStatusReportTime'
@@ -618,6 +617,8 @@ module Google
       
           property :unmute_microphone_disabled, as: 'unmuteMicrophoneDisabled'
           property :version, :numeric_string => true, as: 'version'
+          property :wifi_config_disabled, as: 'wifiConfigDisabled'
+          property :wifi_configs_lockdown_enabled, as: 'wifiConfigsLockdownEnabled'
         end
       end
       

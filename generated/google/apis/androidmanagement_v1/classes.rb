@@ -338,12 +338,6 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::HardwareStatus>]
         attr_accessor :hardware_status_samples
       
-        # The last time the device went offline or came online. This field is only set
-        # when offline device monitoring is enabled in the device's policy.
-        # Corresponds to the JSON property `lastOfflineStateChangeTime`
-        # @return [String]
-        attr_accessor :last_offline_state_change_time
-      
         # The last time the device sent a policy compliance report.
         # Corresponds to the JSON property `lastPolicyComplianceReportTime`
         # @return [String]
@@ -455,7 +449,6 @@ module Google
           @enrollment_token_name = args[:enrollment_token_name] if args.key?(:enrollment_token_name)
           @hardware_info = args[:hardware_info] if args.key?(:hardware_info)
           @hardware_status_samples = args[:hardware_status_samples] if args.key?(:hardware_status_samples)
-          @last_offline_state_change_time = args[:last_offline_state_change_time] if args.key?(:last_offline_state_change_time)
           @last_policy_compliance_report_time = args[:last_policy_compliance_report_time] if args.key?(:last_policy_compliance_report_time)
           @last_policy_sync_time = args[:last_policy_sync_time] if args.key?(:last_policy_sync_time)
           @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
@@ -1658,6 +1651,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
+        # Whether configuring WiFi access points is disabled.
+        # Corresponds to the JSON property `wifiConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :wifi_config_disabled
+        alias_method :wifi_config_disabled?, :wifi_config_disabled
+      
+        # Whether WiFi networks defined in Open Network Configuration are locked so they
+        # cannot be edited by the user.
+        # Corresponds to the JSON property `wifiConfigsLockdownEnabled`
+        # @return [Boolean]
+        attr_accessor :wifi_configs_lockdown_enabled
+        alias_method :wifi_configs_lockdown_enabled?, :wifi_configs_lockdown_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1693,6 +1699,8 @@ module Google
           @system_update = args[:system_update] if args.key?(:system_update)
           @unmute_microphone_disabled = args[:unmute_microphone_disabled] if args.key?(:unmute_microphone_disabled)
           @version = args[:version] if args.key?(:version)
+          @wifi_config_disabled = args[:wifi_config_disabled] if args.key?(:wifi_config_disabled)
+          @wifi_configs_lockdown_enabled = args[:wifi_configs_lockdown_enabled] if args.key?(:wifi_configs_lockdown_enabled)
         end
       end
       

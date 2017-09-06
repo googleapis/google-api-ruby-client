@@ -813,8 +813,8 @@ module Google
         #   `page_token` value to request the next page of list results.
         # @param [String] run_attempt
         #   Indicates how run attempts are to be pulled.
-        # @param [Array<String>, String] statuses
-        #   When specified, only transfer runs with requested statuses are returned.
+        # @param [Array<String>, String] states
+        #   When specified, only transfer runs with requested states are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -832,7 +832,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_transfer_config_runs(parent, page_size: nil, page_token: nil, run_attempt: nil, statuses: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_transfer_config_runs(parent, page_size: nil, page_token: nil, run_attempt: nil, states: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/runs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse
@@ -840,7 +840,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['runAttempt'] = run_attempt unless run_attempt.nil?
-          command.query['statuses'] = statuses unless statuses.nil?
+          command.query['states'] = states unless states.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1227,8 +1227,8 @@ module Google
         #   `page_token` value to request the next page of list results.
         # @param [String] run_attempt
         #   Indicates how run attempts are to be pulled.
-        # @param [Array<String>, String] statuses
-        #   When specified, only transfer runs with requested statuses are returned.
+        # @param [Array<String>, String] states
+        #   When specified, only transfer runs with requested states are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1246,7 +1246,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_transfer_config_runs(parent, page_size: nil, page_token: nil, run_attempt: nil, statuses: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_transfer_config_runs(parent, page_size: nil, page_token: nil, run_attempt: nil, states: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/runs', options)
           command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse::Representation
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferRunsResponse
@@ -1254,7 +1254,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['runAttempt'] = run_attempt unless run_attempt.nil?
-          command.query['statuses'] = statuses unless statuses.nil?
+          command.query['states'] = states unless states.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

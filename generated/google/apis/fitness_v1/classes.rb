@@ -717,6 +717,45 @@ module Google
       end
       
       # 
+      class ListDataPointChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The data stream ID of the data source with data point changes.
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # Data points that have been removed and will not be included in any other
+        # request for dataset contents.
+        # Corresponds to the JSON property `deletedDataPoint`
+        # @return [Array<Google::Apis::FitnessV1::DataPoint>]
+        attr_accessor :deleted_data_point
+      
+        # Data points listed.
+        # Corresponds to the JSON property `insertedDataPoint`
+        # @return [Array<Google::Apis::FitnessV1::DataPoint>]
+        attr_accessor :inserted_data_point
+      
+        # The continuation token, which is used to page through large result sets.
+        # Provide this value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
+          @deleted_data_point = args[:deleted_data_point] if args.key?(:deleted_data_point)
+          @inserted_data_point = args[:inserted_data_point] if args.key?(:inserted_data_point)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class ListDataSourcesResponse
         include Google::Apis::Core::Hashable
       

@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'siteVerification/v1/')
-          @batch_path = 'batch/siteVerification/v1'
+          @batch_path = 'batch'
         end
         
         # Relinquish ownership of a website or domain.

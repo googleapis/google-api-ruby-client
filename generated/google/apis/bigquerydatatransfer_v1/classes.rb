@@ -126,6 +126,11 @@ module Google
         attr_accessor :manual_runs_disabled
         alias_method :manual_runs_disabled?, :manual_runs_disabled
       
+        # The minimum interval between two consecutive scheduled runs.
+        # Corresponds to the JSON property `minimumScheduleInterval`
+        # @return [String]
+        attr_accessor :minimum_schedule_interval
+      
         # Data source resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -143,12 +148,6 @@ module Google
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
-      
-        # The number of seconds to wait for a status update from the data source
-        # before BigQuery marks the transfer as failed.
-        # Corresponds to the JSON property `statusUpdateDeadlineSeconds`
-        # @return [Fixnum]
-        attr_accessor :status_update_deadline_seconds
       
         # Specifies whether the data source supports a user defined schedule, or
         # operates on the default schedule.
@@ -172,6 +171,12 @@ module Google
         # @return [String]
         attr_accessor :transfer_type
       
+        # The number of seconds to wait for an update from the data source
+        # before BigQuery marks the transfer as failed.
+        # Corresponds to the JSON property `updateDeadlineSeconds`
+        # @return [Fixnum]
+        attr_accessor :update_deadline_seconds
+      
         def initialize(**args)
            update!(**args)
         end
@@ -188,13 +193,14 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @help_url = args[:help_url] if args.key?(:help_url)
           @manual_runs_disabled = args[:manual_runs_disabled] if args.key?(:manual_runs_disabled)
+          @minimum_schedule_interval = args[:minimum_schedule_interval] if args.key?(:minimum_schedule_interval)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
           @scopes = args[:scopes] if args.key?(:scopes)
-          @status_update_deadline_seconds = args[:status_update_deadline_seconds] if args.key?(:status_update_deadline_seconds)
           @supports_custom_schedule = args[:supports_custom_schedule] if args.key?(:supports_custom_schedule)
           @supports_multiple_transfers = args[:supports_multiple_transfers] if args.key?(:supports_multiple_transfers)
           @transfer_type = args[:transfer_type] if args.key?(:transfer_type)
+          @update_deadline_seconds = args[:update_deadline_seconds] if args.key?(:update_deadline_seconds)
         end
       end
       
@@ -426,13 +432,13 @@ module Google
         # this token can be used as the
         # `ListTransferConfigsRequest.page_token`
         # to request the next page of list results.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
         # The stored pipeline transfer configurations.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `transferConfigs`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferConfig>]
         attr_accessor :transfer_configs
@@ -456,13 +462,13 @@ module Google
         # this token can be used as the
         # `GetTransferRunLogRequest.page_token`
         # to request the next page of list results.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
         # The stored pipeline transfer messages.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `transferMessages`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferMessage>]
         attr_accessor :transfer_messages
@@ -486,13 +492,13 @@ module Google
         # this token can be used as the
         # `ListTransferRunsRequest.page_token`
         # to request the next page of list results.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
         # The stored pipeline transfer runs.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `transferRuns`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferRun>]
         attr_accessor :transfer_runs
@@ -638,7 +644,7 @@ module Google
       
         # Region in which BigQuery dataset is located. Currently possible values are:
         # "US" and "EU".
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `datasetRegion`
         # @return [String]
         attr_accessor :dataset_region
@@ -669,9 +675,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Next time when data transfer will run. Output only. Applicable
-        # only for batch data transfers.
-        # @OutputOnly
+        # Next time when data transfer will run.
+        # Output only.
         # Corresponds to the JSON property `nextRunTime`
         # @return [String]
         attr_accessor :next_run_time
@@ -698,14 +703,14 @@ module Google
         # @return [String]
         attr_accessor :schedule
       
-        # Status of the most recently updated transfer run.
-        # @OutputOnly
-        # Corresponds to the JSON property `status`
+        # State of the most recently updated transfer run.
+        # Output only.
+        # Corresponds to the JSON property `state`
         # @return [String]
-        attr_accessor :status
+        attr_accessor :state
       
         # Data transfer modification time. Ignored by server on input.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -713,7 +718,7 @@ module Google
         # GaiaID of the user on whose behalf transfer is done. Applicable only
         # to data sources that do not support service accounts. When set to 0,
         # the data source service account credentials are used.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id
@@ -734,7 +739,7 @@ module Google
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @params = args[:params] if args.key?(:params)
           @schedule = args[:schedule] if args.key?(:schedule)
-          @status = args[:status] if args.key?(:status)
+          @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -776,14 +781,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Data source id.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
       
         # Region in which BigQuery dataset is located. Currently possible values are:
         # "US" and "EU".
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `datasetRegion`
         # @return [String]
         attr_accessor :dataset_region
@@ -795,7 +800,7 @@ module Google
       
         # Time when transfer run ended. Parameter ignored by server for input
         # requests.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -825,7 +830,7 @@ module Google
         # this is empty.
         # NOTE: the system might choose to delay the schedule depending on the
         # current load, so `schedule_time` doesn't always matches this.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -837,25 +842,25 @@ module Google
       
         # Time when transfer run was started. Parameter ignored by server for input
         # requests.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Data transfer run status. Ignored for input requests.
-        # @OutputOnly
-        # Corresponds to the JSON property `status`
+        # Data transfer run state. Ignored for input requests.
+        # Output only.
+        # Corresponds to the JSON property `state`
         # @return [String]
-        attr_accessor :status
+        attr_accessor :state
       
-        # Last time the data transfer run status was updated.
-        # @OutputOnly
+        # Last time the data transfer run state was updated.
+        # Output only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
         # The user id for this transfer run.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id
@@ -876,7 +881,7 @@ module Google
           @schedule = args[:schedule] if args.key?(:schedule)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @start_time = args[:start_time] if args.key?(:start_time)
-          @status = args[:status] if args.key?(:status)
+          @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_id = args[:user_id] if args.key?(:user_id)
         end

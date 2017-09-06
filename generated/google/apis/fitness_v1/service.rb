@@ -311,6 +311,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # results ordered by descending end_time
+        # @param [String] user_id
+        #   List data points for the person identified. Use "me" to indicate the
+        #   authenticated user. Only "me" is supported at this time.
+        # @param [String] data_source_id
+        #   The data stream ID of the data source that created the dataset.
+        # @param [Fixnum] limit
+        #   If specified, no more than this many data point changes will be included in
+        #   the response. The default is 500 data point changes.
+        # @param [String] page_token
+        #   The continuation token, which is used to page through large result sets. To
+        #   get the next page of results, set this parameter to the value of nextPageToken
+        #   from the previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FitnessV1::ListDataPointChangesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FitnessV1::ListDataPointChangesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_data_source_data_point_changes(user_id, data_source_id, limit: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{userId}/dataSources/{dataSourceId}/dataPointChanges', options)
+          command.response_representation = Google::Apis::FitnessV1::ListDataPointChangesResponse::Representation
+          command.response_class = Google::Apis::FitnessV1::ListDataPointChangesResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['dataSourceId'] = data_source_id unless data_source_id.nil?
+          command.query['limit'] = limit unless limit.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Performs an inclusive delete of all data points whose start and end times have
         # any overlap with the time range specified by the dataset ID. For most data
         # types, the entire data point will be deleted. For data types where the time

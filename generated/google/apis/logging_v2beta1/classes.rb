@@ -951,18 +951,14 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Optional. The time at which this sink will stop exporting log entries. Log
-        # entries are exported only if their timestamp is earlier than the end time. If
-        # this field is not supplied, there is no end time. If both a start time and an
-        # end time are provided, then the end time must be later than the start time.
+        # Deprecated. This field is ignored when creating or updating sinks.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
         # Optional. An advanced logs filter. The only exported log entries are those
-        # that are in the resource owning the sink and that match the filter. The filter
-        # must use the log entry format specified by the output_version_format parameter.
-        # For example, in the v2 format:
+        # that are in the resource owning the sink and that match the filter. For
+        # example:
         # logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -999,10 +995,7 @@ module Google
         # @return [String]
         attr_accessor :output_version_format
       
-        # Optional. The time at which this sink will begin exporting log entries. Log
-        # entries are exported only if their timestamp is not earlier than the start
-        # time. The default value of this field is the time the sink is created or
-        # updated.
+        # Deprecated. This field is ignored when creating or updating sinks.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1562,13 +1555,13 @@ module Google
         # missing in log entries, then this method supplies the current time or a unique
         # identifier, respectively. The supplied values are chosen so that, among the
         # log entries that did not supply their own values, the entries earlier in the
-        # list will sort before the entries later in the list. See entries.list.Log
-        # entries with timestamps that are more than the logs retention period in the
-        # past or more than 24 hours in the future might be discarded. Discarding does
-        # not return an error.To improve throughput and to avoid exceeding the quota
-        # limit for calls to entries.write, you should try to include several log
-        # entries in this list, rather than calling this method for each individual log
-        # entry.
+        # list will sort before the entries later in the list. See the entries.list
+        # method.Log entries with timestamps that are more than the logs retention
+        # period in the past or more than 24 hours in the future might be discarded.
+        # Discarding does not return an error.To improve throughput and to avoid
+        # exceeding the quota limit for calls to entries.write, you should try to
+        # include several log entries in this list, rather than calling this method for
+        # each individual log entry.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::LoggingV2beta1::LogEntry>]
         attr_accessor :entries

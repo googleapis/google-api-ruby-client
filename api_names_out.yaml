@@ -5801,6 +5801,8 @@
 "/androidmanagement:v1/Policy/systemUpdate": system_update
 "/androidmanagement:v1/Policy/unmuteMicrophoneDisabled": unmute_microphone_disabled
 "/androidmanagement:v1/Policy/version": version
+"/androidmanagement:v1/Policy/wifiConfigDisabled": wifi_config_disabled
+"/androidmanagement:v1/Policy/wifiConfigsLockdownEnabled": wifi_configs_lockdown_enabled
 "/androidmanagement:v1/PowerManagementEvent": power_management_event
 "/androidmanagement:v1/PowerManagementEvent/batteryLevel": battery_level
 "/androidmanagement:v1/PowerManagementEvent/createTime": create_time
@@ -8978,6 +8980,7 @@
 "/bigquerydatatransfer:v1/DataSource/displayName": display_name
 "/bigquerydatatransfer:v1/DataSource/helpUrl": help_url
 "/bigquerydatatransfer:v1/DataSource/manualRunsDisabled": manual_runs_disabled
+"/bigquerydatatransfer:v1/DataSource/minimumScheduleInterval": minimum_schedule_interval
 "/bigquerydatatransfer:v1/DataSource/name": name
 "/bigquerydatatransfer:v1/DataSource/parameters": parameters
 "/bigquerydatatransfer:v1/DataSource/parameters/parameter": parameter
@@ -8987,6 +8990,7 @@
 "/bigquerydatatransfer:v1/DataSource/supportsCustomSchedule": supports_custom_schedule
 "/bigquerydatatransfer:v1/DataSource/supportsMultipleTransfers": supports_multiple_transfers
 "/bigquerydatatransfer:v1/DataSource/transferType": transfer_type
+"/bigquerydatatransfer:v1/DataSource/updateDeadlineSeconds": update_deadline_seconds
 "/bigquerydatatransfer:v1/DataSourceParameter": data_source_parameter
 "/bigquerydatatransfer:v1/DataSourceParameter/allowedValues": allowed_values
 "/bigquerydatatransfer:v1/DataSourceParameter/allowedValues/allowed_value": allowed_value
@@ -9056,6 +9060,7 @@
 "/bigquerydatatransfer:v1/TransferConfig/params": params
 "/bigquerydatatransfer:v1/TransferConfig/params/param": param
 "/bigquerydatatransfer:v1/TransferConfig/schedule": schedule
+"/bigquerydatatransfer:v1/TransferConfig/state": state
 "/bigquerydatatransfer:v1/TransferConfig/status": status
 "/bigquerydatatransfer:v1/TransferConfig/updateTime": update_time
 "/bigquerydatatransfer:v1/TransferConfig/userId": user_id
@@ -9075,6 +9080,7 @@
 "/bigquerydatatransfer:v1/TransferRun/schedule": schedule
 "/bigquerydatatransfer:v1/TransferRun/scheduleTime": schedule_time
 "/bigquerydatatransfer:v1/TransferRun/startTime": start_time
+"/bigquerydatatransfer:v1/TransferRun/state": state
 "/bigquerydatatransfer:v1/TransferRun/status": status
 "/bigquerydatatransfer:v1/TransferRun/updateTime": update_time
 "/bigquerydatatransfer:v1/TransferRun/userId": user_id
@@ -9132,6 +9138,7 @@
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.list/pageToken": page_token
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.list/parent": parent
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.list/runAttempt": run_attempt
+"/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.list/states": states
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.list/statuses": statuses
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.transferLogs.list": list_project_location_transfer_config_run_transfer_logs
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.locations.transferConfigs.runs.transferLogs.list/messageTypes": message_types
@@ -9167,6 +9174,7 @@
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.list/pageToken": page_token
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.list/parent": parent
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.list/runAttempt": run_attempt
+"/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.list/states": states
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.list/statuses": statuses
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.transferLogs.list": list_project_transfer_config_run_transfer_logs
 "/bigquerydatatransfer:v1/bigquerydatatransfer.projects.transferConfigs.runs.transferLogs.list/messageTypes": message_types
@@ -39048,6 +39056,13 @@
 "/fitness:v1/Device/type": type
 "/fitness:v1/Device/uid": uid
 "/fitness:v1/Device/version": version
+"/fitness:v1/ListDataPointChangesResponse": list_data_point_changes_response
+"/fitness:v1/ListDataPointChangesResponse/dataSourceId": data_source_id
+"/fitness:v1/ListDataPointChangesResponse/deletedDataPoint": deleted_data_point
+"/fitness:v1/ListDataPointChangesResponse/deletedDataPoint/deleted_data_point": deleted_data_point
+"/fitness:v1/ListDataPointChangesResponse/insertedDataPoint": inserted_data_point
+"/fitness:v1/ListDataPointChangesResponse/insertedDataPoint/inserted_data_point": inserted_data_point
+"/fitness:v1/ListDataPointChangesResponse/nextPageToken": next_page_token
 "/fitness:v1/ListDataSourcesResponse": list_data_sources_response
 "/fitness:v1/ListDataSourcesResponse/dataSource": data_source
 "/fitness:v1/ListDataSourcesResponse/dataSource/data_source": data_source
@@ -39082,6 +39097,11 @@
 "/fitness:v1/fields": fields
 "/fitness:v1/fitness.users.dataSources.create": create_user_data_source
 "/fitness:v1/fitness.users.dataSources.create/userId": user_id
+"/fitness:v1/fitness.users.dataSources.dataPointChanges.list": list_user_data_source_data_point_changes
+"/fitness:v1/fitness.users.dataSources.dataPointChanges.list/dataSourceId": data_source_id
+"/fitness:v1/fitness.users.dataSources.dataPointChanges.list/limit": limit
+"/fitness:v1/fitness.users.dataSources.dataPointChanges.list/pageToken": page_token
+"/fitness:v1/fitness.users.dataSources.dataPointChanges.list/userId": user_id
 "/fitness:v1/fitness.users.dataSources.datasets.delete": delete_user_data_source_dataset
 "/fitness:v1/fitness.users.dataSources.datasets.delete/currentTimeMillis": current_time_millis
 "/fitness:v1/fitness.users.dataSources.datasets.delete/dataSourceId": data_source_id
@@ -43162,9 +43182,11 @@
 "/logging:v2/logging.billingAccounts.sinks.patch": patch_billing_account_sink
 "/logging:v2/logging.billingAccounts.sinks.patch/sinkName": sink_name
 "/logging:v2/logging.billingAccounts.sinks.patch/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.billingAccounts.sinks.patch/updateMask": update_mask
 "/logging:v2/logging.billingAccounts.sinks.update": update_billing_account_sink
 "/logging:v2/logging.billingAccounts.sinks.update/sinkName": sink_name
 "/logging:v2/logging.billingAccounts.sinks.update/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.billingAccounts.sinks.update/updateMask": update_mask
 "/logging:v2/logging.entries.list": list_entry_log_entries
 "/logging:v2/logging.entries.write": write_entry_log_entries
 "/logging:v2/logging.folders.exclusions.create": create_folder_exclusion
@@ -43200,9 +43222,11 @@
 "/logging:v2/logging.folders.sinks.patch": patch_folder_sink
 "/logging:v2/logging.folders.sinks.patch/sinkName": sink_name
 "/logging:v2/logging.folders.sinks.patch/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.folders.sinks.patch/updateMask": update_mask
 "/logging:v2/logging.folders.sinks.update": update_folder_sink
 "/logging:v2/logging.folders.sinks.update/sinkName": sink_name
 "/logging:v2/logging.folders.sinks.update/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.folders.sinks.update/updateMask": update_mask
 "/logging:v2/logging.monitoredResourceDescriptors.list": list_monitored_resource_descriptors
 "/logging:v2/logging.monitoredResourceDescriptors.list/pageSize": page_size
 "/logging:v2/logging.monitoredResourceDescriptors.list/pageToken": page_token
@@ -43239,9 +43263,11 @@
 "/logging:v2/logging.organizations.sinks.patch": patch_organization_sink
 "/logging:v2/logging.organizations.sinks.patch/sinkName": sink_name
 "/logging:v2/logging.organizations.sinks.patch/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.organizations.sinks.patch/updateMask": update_mask
 "/logging:v2/logging.organizations.sinks.update": update_organization_sink
 "/logging:v2/logging.organizations.sinks.update/sinkName": sink_name
 "/logging:v2/logging.organizations.sinks.update/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.organizations.sinks.update/updateMask": update_mask
 "/logging:v2/logging.projects.exclusions.create": create_project_exclusion
 "/logging:v2/logging.projects.exclusions.create/parent": parent
 "/logging:v2/logging.projects.exclusions.delete": delete_project_exclusion
@@ -43287,9 +43313,11 @@
 "/logging:v2/logging.projects.sinks.patch": patch_project_sink
 "/logging:v2/logging.projects.sinks.patch/sinkName": sink_name
 "/logging:v2/logging.projects.sinks.patch/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.projects.sinks.patch/updateMask": update_mask
 "/logging:v2/logging.projects.sinks.update": update_project_sink
 "/logging:v2/logging.projects.sinks.update/sinkName": sink_name
 "/logging:v2/logging.projects.sinks.update/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2/logging.projects.sinks.update/updateMask": update_mask
 "/logging:v2/quotaUser": quota_user
 "/logging:v2beta1/BucketOptions": bucket_options
 "/logging:v2beta1/BucketOptions/explicitBuckets": explicit_buckets
@@ -43543,6 +43571,7 @@
 "/logging:v2beta1/logging.projects.sinks.update": update_project_sink
 "/logging:v2beta1/logging.projects.sinks.update/sinkName": sink_name
 "/logging:v2beta1/logging.projects.sinks.update/uniqueWriterIdentity": unique_writer_identity
+"/logging:v2beta1/logging.projects.sinks.update/updateMask": update_mask
 "/logging:v2beta1/quotaUser": quota_user
 "/manager:v1beta2/DeploymentsListResponse": list_deployments_response
 "/manager:v1beta2/TemplatesListResponse": list_templates_response

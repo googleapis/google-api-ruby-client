@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDataPointChangesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +316,18 @@ module Google
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :version, as: 'version'
+        end
+      end
+      
+      class ListDataPointChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, as: 'dataSourceId'
+          collection :deleted_data_point, as: 'deletedDataPoint', class: Google::Apis::FitnessV1::DataPoint, decorator: Google::Apis::FitnessV1::DataPoint::Representation
+      
+          collection :inserted_data_point, as: 'insertedDataPoint', class: Google::Apis::FitnessV1::DataPoint, decorator: Google::Apis::FitnessV1::DataPoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
