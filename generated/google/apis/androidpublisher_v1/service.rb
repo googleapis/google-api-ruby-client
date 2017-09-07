@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'androidpublisher/v1/applications/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/androidpublisher/v1'
         end
         
         # Cancels a user's subscription purchase. The subscription remains valid until

@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'fusiontables/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/fusiontables/v1'
         end
         
         # Deletes the column.

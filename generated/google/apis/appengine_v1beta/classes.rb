@@ -236,6 +236,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # A certificate managed by App Engine.
+        # Corresponds to the JSON property `managedCertificate`
+        # @return [Google::Apis::AppengineV1beta::ManagedCertificate]
+        attr_accessor :managed_certificate
+      
         # Full path to the AuthorizedCertificate resource in the API. Example: apps/
         # myapp/authorizedCertificates/12345.@OutputOnly
         # Corresponds to the JSON property `name`
@@ -265,6 +270,7 @@ module Google
           @domain_names = args[:domain_names] if args.key?(:domain_names)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
+          @managed_certificate = args[:managed_certificate] if args.key?(:managed_certificate)
           @name = args[:name] if args.key?(:name)
           @visible_domain_mappings = args[:visible_domain_mappings] if args.key?(:visible_domain_mappings)
         end
@@ -1488,6 +1494,34 @@ module Google
         end
       end
       
+      # A certificate managed by App Engine.
+      class ManagedCertificate
+        include Google::Apis::Core::Hashable
+      
+        # Time at which the certificate was last renewed. The renewal process is fully
+        # managed. Certificate renewal will automatically occur before the certificate
+        # expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+        # Corresponds to the JSON property `lastRenewalTime`
+        # @return [String]
+        attr_accessor :last_renewal_time
+      
+        # Status of certificate management. Refers to the most recent certificate
+        # acquisition or renewal attempt.@OutputOnly
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_renewal_time = args[:last_renewal_time] if args.key?(:last_renewal_time)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # A service with manual scaling runs continuously, allowing you to perform
       # complex initialization and rely on the state of its memory over time.
       class ManualScaling
@@ -2239,10 +2273,32 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ID of the AuthorizedCertificate resource configuring SSL for the application.
-        # Clearing this field will remove SSL support. Example: 12345.
+        # Clearing this field will remove SSL support.By default, a managed certificate
+        # is automatically created for every domain mapping. To omit SSL support or to
+        # configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE
+        # request. You must be authorized to administer the AuthorizedCertificate
+        # resource to manually map it to a DomainMapping resource. Example: 12345.
         # Corresponds to the JSON property `certificateId`
         # @return [String]
         attr_accessor :certificate_id
+      
+        # ID of the managed AuthorizedCertificate resource currently being provisioned,
+        # if applicable. Until the new managed certificate has been successfully
+        # provisioned, the previous SSL state will be preserved. Once the provisioning
+        # process completes, the certificate_id field will reflect the new managed
+        # certificate and this field will be left empty. To remove SSL support while
+        # there is still a pending managed certificate, clear the certificate_id field
+        # with an UpdateDomainMappingRequest.@OutputOnly
+        # Corresponds to the JSON property `pendingManagedCertificateId`
+        # @return [String]
+        attr_accessor :pending_managed_certificate_id
+      
+        # SSL management type for this domain. If AUTOMATIC, a managed certificate is
+        # automatically provisioned. If MANUAL, certificate_id must be manually
+        # specified in order to configure SSL for this domain.
+        # Corresponds to the JSON property `sslManagementType`
+        # @return [String]
+        attr_accessor :ssl_management_type
       
         def initialize(**args)
            update!(**args)
@@ -2251,6 +2307,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate_id = args[:certificate_id] if args.key?(:certificate_id)
+          @pending_managed_certificate_id = args[:pending_managed_certificate_id] if args.key?(:pending_managed_certificate_id)
+          @ssl_management_type = args[:ssl_management_type] if args.key?(:ssl_management_type)
         end
       end
       

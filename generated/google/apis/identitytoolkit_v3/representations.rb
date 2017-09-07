@@ -527,9 +527,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_overwrite, as: 'allowOverwrite'
+          property :block_size, as: 'blockSize'
+          property :cpu_mem_cost, as: 'cpuMemCost'
           property :delegated_project_number, :numeric_string => true, as: 'delegatedProjectNumber'
+          property :dk_len, as: 'dkLen'
           property :hash_algorithm, as: 'hashAlgorithm'
           property :memory_cost, as: 'memoryCost'
+          property :parallelization, as: 'parallelization'
           property :rounds, as: 'rounds'
           property :salt_separator, :base64 => true, as: 'saltSeparator'
           property :sanity_check, as: 'sanityCheck'

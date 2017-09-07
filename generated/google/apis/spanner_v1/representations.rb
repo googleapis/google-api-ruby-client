@@ -22,24 +22,6 @@ module Google
   module Apis
     module SpannerV1
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuthorizationLoggingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BeginTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CommitRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,18 +47,6 @@ module Google
       end
       
       class CommitResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CounterOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,12 +95,6 @@ module Google
       end
       
       class ExecuteSqlRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,12 +161,6 @@ module Google
       end
       
       class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -293,12 +239,6 @@ module Google
       end
       
       class RollbackRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,31 +340,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::SpannerV1::AuditLogConfig, decorator: Google::Apis::SpannerV1::AuditLogConfig::Representation
-      
-          collection :exempted_members, as: 'exemptedMembers'
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
-      class AuthorizationLoggingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permission_type, as: 'permissionType'
-        end
-      end
-      
       class BeginTransactionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -436,8 +351,6 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::SpannerV1::Expr, decorator: Google::Apis::SpannerV1::Expr::Representation
-      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -449,15 +362,6 @@ module Google
           property :child_index, as: 'childIndex'
           property :type, as: 'type'
           property :variable, as: 'variable'
-        end
-      end
-      
-      class CloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::SpannerV1::AuthorizationLoggingOptions, decorator: Google::Apis::SpannerV1::AuthorizationLoggingOptions::Representation
-      
-          property :log_name, as: 'logName'
         end
       end
       
@@ -476,26 +380,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commit_timestamp, as: 'commitTimestamp'
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          property :value, as: 'value'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :field, as: 'field'
-          property :metric, as: 'metric'
         end
       end
       
@@ -534,12 +418,6 @@ module Google
         end
       end
       
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -574,16 +452,6 @@ module Google
           property :sql, as: 'sql'
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
       
-        end
-      end
-      
-      class Expr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
         end
       end
       
@@ -689,18 +557,6 @@ module Google
         end
       end
       
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::SpannerV1::CloudAuditOptions, decorator: Google::Apis::SpannerV1::CloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::SpannerV1::CounterOptions, decorator: Google::Apis::SpannerV1::CounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::SpannerV1::DataAccessOptions, decorator: Google::Apis::SpannerV1::DataAccessOptions::Representation
-      
-        end
-      end
-      
       class Mutation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -760,14 +616,9 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::SpannerV1::AuditConfig, decorator: Google::Apis::SpannerV1::AuditConfig::Representation
-      
           collection :bindings, as: 'bindings', class: Google::Apis::SpannerV1::Binding, decorator: Google::Apis::SpannerV1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::SpannerV1::Rule, decorator: Google::Apis::SpannerV1::Rule::Representation
-      
           property :version, as: 'version'
         end
       end
@@ -854,21 +705,6 @@ module Google
         end
       end
       
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::SpannerV1::Condition, decorator: Google::Apis::SpannerV1::Condition::Representation
-      
-          property :description, as: 'description'
-          collection :in, as: 'in'
-          collection :log_config, as: 'logConfig', class: Google::Apis::SpannerV1::LogConfig, decorator: Google::Apis::SpannerV1::LogConfig::Representation
-      
-          collection :not_in, as: 'notIn'
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
       class Session
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -881,7 +717,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::SpannerV1::Policy, decorator: Google::Apis::SpannerV1::Policy::Representation
       
-          property :update_mask, as: 'updateMask'
         end
       end
       

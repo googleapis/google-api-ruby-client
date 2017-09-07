@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'doubleclicksearch/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/doubleclicksearch/v2'
         end
         
         # Retrieves a list of conversions from a DoubleClick Search engine account.

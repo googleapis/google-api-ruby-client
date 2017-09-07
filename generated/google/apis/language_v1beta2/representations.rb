@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClassificationCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClassifyTextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClassifyTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DependencyEdge
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +256,8 @@ module Google
       class AnnotateTextResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::LanguageV1beta2::ClassificationCategory, decorator: Google::Apis::LanguageV1beta2::ClassificationCategory::Representation
+      
           property :document_sentiment, as: 'documentSentiment', class: Google::Apis::LanguageV1beta2::Sentiment, decorator: Google::Apis::LanguageV1beta2::Sentiment::Representation
       
           collection :entities, as: 'entities', class: Google::Apis::LanguageV1beta2::Entity, decorator: Google::Apis::LanguageV1beta2::Entity::Representation
@@ -246,6 +266,30 @@ module Google
           collection :sentences, as: 'sentences', class: Google::Apis::LanguageV1beta2::Sentence, decorator: Google::Apis::LanguageV1beta2::Sentence::Representation
       
           collection :tokens, as: 'tokens', class: Google::Apis::LanguageV1beta2::Token, decorator: Google::Apis::LanguageV1beta2::Token::Representation
+      
+        end
+      end
+      
+      class ClassificationCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ClassifyTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document', class: Google::Apis::LanguageV1beta2::Document, decorator: Google::Apis::LanguageV1beta2::Document::Representation
+      
+        end
+      end
+      
+      class ClassifyTextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::LanguageV1beta2::ClassificationCategory, decorator: Google::Apis::LanguageV1beta2::ClassificationCategory::Representation
       
         end
       end
@@ -296,6 +340,7 @@ module Google
       class Features
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :classify_text, as: 'classifyText'
           property :extract_document_sentiment, as: 'extractDocumentSentiment'
           property :extract_entities, as: 'extractEntities'
           property :extract_entity_sentiment, as: 'extractEntitySentiment'

@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManualScaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -468,6 +474,8 @@ module Google
           collection :domain_names, as: 'domainNames'
           property :expire_time, as: 'expireTime'
           property :id, as: 'id'
+          property :managed_certificate, as: 'managedCertificate', class: Google::Apis::AppengineV1beta::ManagedCertificate, decorator: Google::Apis::AppengineV1beta::ManagedCertificate::Representation
+      
           property :name, as: 'name'
           collection :visible_domain_mappings, as: 'visibleDomainMappings'
         end
@@ -816,6 +824,14 @@ module Google
         end
       end
       
+      class ManagedCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_renewal_time, as: 'lastRenewalTime'
+          property :status, as: 'status'
+        end
+      end
+      
       class ManualScaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -996,6 +1012,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_id, as: 'certificateId'
+          property :pending_managed_certificate_id, as: 'pendingManagedCertificateId'
+          property :ssl_management_type, as: 'sslManagementType'
         end
       end
       

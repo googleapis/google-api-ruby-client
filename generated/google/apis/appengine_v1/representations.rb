@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizedCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthorizedDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomaticScaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +59,12 @@ module Google
       end
       
       class BasicScaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateRawData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -77,6 +95,18 @@ module Google
       end
       
       class DiskUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +155,24 @@ module Google
       end
       
       class Library
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAuthorizedCertificatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAuthorizedDomainsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDomainMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +323,12 @@ module Google
       end
       
       class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -362,6 +422,29 @@ module Google
         end
       end
       
+      class AuthorizedCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_raw_data, as: 'certificateRawData', class: Google::Apis::AppengineV1::CertificateRawData, decorator: Google::Apis::AppengineV1::CertificateRawData::Representation
+      
+          property :display_name, as: 'displayName'
+          property :domain_mappings_count, as: 'domainMappingsCount'
+          collection :domain_names, as: 'domainNames'
+          property :expire_time, as: 'expireTime'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          collection :visible_domain_mappings, as: 'visibleDomainMappings'
+        end
+      end
+      
+      class AuthorizedDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
       class AutomaticScaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -389,6 +472,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :idle_timeout, as: 'idleTimeout'
           property :max_instances, as: 'maxInstances'
+        end
+      end
+      
+      class CertificateRawData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_key, as: 'privateKey'
+          property :public_certificate, as: 'publicCertificate'
         end
       end
       
@@ -433,6 +524,24 @@ module Google
           property :target_read_ops_per_second, as: 'targetReadOpsPerSecond'
           property :target_write_bytes_per_second, as: 'targetWriteBytesPerSecond'
           property :target_write_ops_per_second, as: 'targetWriteOpsPerSecond'
+        end
+      end
+      
+      class DomainMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+          collection :resource_records, as: 'resourceRecords', class: Google::Apis::AppengineV1::ResourceRecord, decorator: Google::Apis::AppengineV1::ResourceRecord::Representation
+      
+          property :ssl_settings, as: 'sslSettings', class: Google::Apis::AppengineV1::SslSettings, decorator: Google::Apis::AppengineV1::SslSettings::Representation
+      
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -519,6 +628,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :version, as: 'version'
+        end
+      end
+      
+      class ListAuthorizedCertificatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificates, as: 'certificates', class: Google::Apis::AppengineV1::AuthorizedCertificate, decorator: Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAuthorizedDomainsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains', class: Google::Apis::AppengineV1::AuthorizedDomain, decorator: Google::Apis::AppengineV1::AuthorizedDomain::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDomainMappingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domain_mappings, as: 'domainMappings', class: Google::Apis::AppengineV1::DomainMapping, decorator: Google::Apis::AppengineV1::DomainMapping::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -737,6 +873,15 @@ module Google
         end
       end
       
+      class ResourceRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :rrdata, as: 'rrdata'
+          property :type, as: 'type'
+        end
+      end
+      
       class Resources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -762,6 +907,13 @@ module Google
           property :name, as: 'name'
           property :split, as: 'split', class: Google::Apis::AppengineV1::TrafficSplit, decorator: Google::Apis::AppengineV1::TrafficSplit::Representation
       
+        end
+      end
+      
+      class SslSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_id, as: 'certificateId'
         end
       end
       

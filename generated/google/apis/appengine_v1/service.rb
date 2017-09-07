@@ -191,6 +191,412 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads the specified SSL certificate.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [Google::Apis::AppengineV1::AuthorizedCertificate] authorized_certificate_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_app_authorized_certificate(apps_id, authorized_certificate_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/apps/{appsId}/authorizedCertificates', options)
+          command.request_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.request_object = authorized_certificate_object
+          command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SSL certificate.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_app_authorized_certificate(apps_id, authorized_certificates_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.response_representation = Google::Apis::AppengineV1::Empty::Representation
+          command.response_class = Google::Apis::AppengineV1::Empty
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified SSL certificate.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] view
+        #   Controls the set of fields returned in the GET response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_app_authorized_certificate(apps_id, authorized_certificates_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all SSL certificates the user is authorized to administer.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] view
+        #   Controls the set of fields returned in the LIST response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_app_authorized_certificates(apps_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/authorizedCertificates', options)
+          command.response_representation = Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListAuthorizedCertificatesResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified SSL certificate. To renew a certificate and maintain its
+        # existing domain mappings, update certificate_data with a new certificate. The
+        # new certificate must be applicable to the same domains as the original
+        # certificate. The certificate display_name may also be updated.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [Google::Apis::AppengineV1::AuthorizedCertificate] authorized_certificate_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated. Updates are only
+        #   supported on the certificate_raw_data and display_name fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_app_authorized_certificate(apps_id, authorized_certificates_id, authorized_certificate_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.request_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.request_object = authorized_certificate_object
+          command.response_representation = Google::Apis::AppengineV1::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1::AuthorizedCertificate
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all domains the user is authorized to administer.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListAuthorizedDomainsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListAuthorizedDomainsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_app_authorized_domains(apps_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/authorizedDomains', options)
+          command.response_representation = Google::Apis::AppengineV1::ListAuthorizedDomainsResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListAuthorizedDomainsResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Maps a domain to an application. A user must be authorized to administer a
+        # domain in order to map it to an application. For a list of available
+        # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [Google::Apis::AppengineV1::DomainMapping] domain_mapping_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_app_domain_mapping(apps_id, domain_mapping_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/apps/{appsId}/domainMappings', options)
+          command.request_representation = Google::Apis::AppengineV1::DomainMapping::Representation
+          command.request_object = domain_mapping_object
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified domain mapping. A user must be authorized to administer
+        # the associated domain in order to delete a DomainMapping resource.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   domainMappings/example.com.
+        # @param [String] domain_mappings_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_app_domain_mapping(apps_id, domain_mappings_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified domain mapping.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   domainMappings/example.com.
+        # @param [String] domain_mappings_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::DomainMapping] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::DomainMapping]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_app_domain_mapping(apps_id, domain_mappings_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
+          command.response_representation = Google::Apis::AppengineV1::DomainMapping::Representation
+          command.response_class = Google::Apis::AppengineV1::DomainMapping
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the domain mappings on an application.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListDomainMappingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListDomainMappingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_app_domain_mappings(apps_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/domainMappings', options)
+          command.response_representation = Google::Apis::AppengineV1::ListDomainMappingsResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListDomainMappingsResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified domain mapping. To map an SSL certificate to a domain
+        # mapping, update certificate_id to point to an AuthorizedCertificate resource.
+        # A user must be authorized to administer the associated domain in order to
+        # update a DomainMapping resource.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   domainMappings/example.com.
+        # @param [String] domain_mappings_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [Google::Apis::AppengineV1::DomainMapping] domain_mapping_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_app_domain_mapping(apps_id, domain_mappings_id, domain_mapping_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/apps/{appsId}/domainMappings/{domainMappingsId}', options)
+          command.request_representation = Google::Apis::AppengineV1::DomainMapping::Representation
+          command.request_object = domain_mapping_object
+          command.response_representation = Google::Apis::AppengineV1::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1::Operation
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get information about a location.
         # @param [String] apps_id
         #   Part of `name`. Resource name for the location.

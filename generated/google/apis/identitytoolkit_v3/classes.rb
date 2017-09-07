@@ -1075,11 +1075,26 @@ module Google
         attr_accessor :allow_overwrite
         alias_method :allow_overwrite?, :allow_overwrite
       
+        # 
+        # Corresponds to the JSON property `blockSize`
+        # @return [Fixnum]
+        attr_accessor :block_size
+      
+        # The following 4 fields are for standard scrypt algorithm.
+        # Corresponds to the JSON property `cpuMemCost`
+        # @return [Fixnum]
+        attr_accessor :cpu_mem_cost
+      
         # GCP project number of the requesting delegated app. Currently only intended
         # for Firebase V1 migration.
         # Corresponds to the JSON property `delegatedProjectNumber`
         # @return [Fixnum]
         attr_accessor :delegated_project_number
+      
+        # 
+        # Corresponds to the JSON property `dkLen`
+        # @return [Fixnum]
+        attr_accessor :dk_len
       
         # The password hash algorithm.
         # Corresponds to the JSON property `hashAlgorithm`
@@ -1090,6 +1105,11 @@ module Google
         # Corresponds to the JSON property `memoryCost`
         # @return [Fixnum]
         attr_accessor :memory_cost
+      
+        # 
+        # Corresponds to the JSON property `parallelization`
+        # @return [Fixnum]
+        attr_accessor :parallelization
       
         # Rounds for hash calculation. Used by scrypt and similar algorithms.
         # Corresponds to the JSON property `rounds`
@@ -1133,9 +1153,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_overwrite = args[:allow_overwrite] if args.key?(:allow_overwrite)
+          @block_size = args[:block_size] if args.key?(:block_size)
+          @cpu_mem_cost = args[:cpu_mem_cost] if args.key?(:cpu_mem_cost)
           @delegated_project_number = args[:delegated_project_number] if args.key?(:delegated_project_number)
+          @dk_len = args[:dk_len] if args.key?(:dk_len)
           @hash_algorithm = args[:hash_algorithm] if args.key?(:hash_algorithm)
           @memory_cost = args[:memory_cost] if args.key?(:memory_cost)
+          @parallelization = args[:parallelization] if args.key?(:parallelization)
           @rounds = args[:rounds] if args.key?(:rounds)
           @salt_separator = args[:salt_separator] if args.key?(:salt_separator)
           @sanity_check = args[:sanity_check] if args.key?(:sanity_check)

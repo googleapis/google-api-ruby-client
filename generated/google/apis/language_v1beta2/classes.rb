@@ -286,6 +286,11 @@ module Google
       class AnnotateTextResponse
         include Google::Apis::Core::Hashable
       
+        # Categories identified in the input document.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<Google::Apis::LanguageV1beta2::ClassificationCategory>]
+        attr_accessor :categories
+      
         # Represents the feeling associated with the entire text or entities in
         # the text.
         # Corresponds to the JSON property `documentSentiment`
@@ -325,11 +330,77 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
           @document_sentiment = args[:document_sentiment] if args.key?(:document_sentiment)
           @entities = args[:entities] if args.key?(:entities)
           @language = args[:language] if args.key?(:language)
           @sentences = args[:sentences] if args.key?(:sentences)
           @tokens = args[:tokens] if args.key?(:tokens)
+        end
+      end
+      
+      # Represents a category returned from the text classifier.
+      class ClassificationCategory
+        include Google::Apis::Core::Hashable
+      
+        # The classifier's confidence of the category. Number represents how certain
+        # the classifier is that this category represents the given text.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The name of the category representing the document.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The document classification request message.
+      class ClassifyTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # ################################################################ #
+        # Represents the input to API methods.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::LanguageV1beta2::Document]
+        attr_accessor :document
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+        end
+      end
+      
+      # The document classification response message.
+      class ClassifyTextResponse
+        include Google::Apis::Core::Hashable
+      
+        # Categories representing the input document.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<Google::Apis::LanguageV1beta2::ClassificationCategory>]
+        attr_accessor :categories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
         end
       end
       
@@ -508,6 +579,12 @@ module Google
       class Features
         include Google::Apis::Core::Hashable
       
+        # Classify the full document into categories.
+        # Corresponds to the JSON property `classifyText`
+        # @return [Boolean]
+        attr_accessor :classify_text
+        alias_method :classify_text?, :classify_text
+      
         # Extract document-level sentiment.
         # Corresponds to the JSON property `extractDocumentSentiment`
         # @return [Boolean]
@@ -538,6 +615,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classify_text = args[:classify_text] if args.key?(:classify_text)
           @extract_document_sentiment = args[:extract_document_sentiment] if args.key?(:extract_document_sentiment)
           @extract_entities = args[:extract_entities] if args.key?(:extract_entities)
           @extract_entity_sentiment = args[:extract_entity_sentiment] if args.key?(:extract_entity_sentiment)
