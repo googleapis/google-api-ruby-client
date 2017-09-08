@@ -1056,7 +1056,7 @@ module Google
         # the Kubernetes version -- it's best to assume the behavior is undefined
         # and conflicts should be avoided.
         # For more information, including usage and the valid values, see:
-        # http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

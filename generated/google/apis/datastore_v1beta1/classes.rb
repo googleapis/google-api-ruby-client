@@ -32,12 +32,12 @@ module Google
         attr_accessor :end_time
       
         # The client-assigned labels which were provided when the operation was
-        # created.  May also include additional labels.
+        # created. May also include additional labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The type of the operation.  Can be used as a filter in
+        # The type of the operation. Can be used as a filter in
         # ListOperationsRequest.
         # Corresponds to the JSON property `operationType`
         # @return [String]
@@ -67,8 +67,8 @@ module Google
         end
       end
       
-      # Identifies a subset of entities in a project.  This is specified as
-      # combinations of kind + namespace (either or both of which may be all, as
+      # Identifies a subset of entities in a project. This is specified as
+      # combinations of kinds and namespaces (either or both of which may be all, as
       # described in the following examples).
       # Example usage:
       # Entire project:
@@ -89,9 +89,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :kinds
       
-        # An empty list represents all namespaces.  This is the preferred
+        # An empty list represents all namespaces. This is the preferred
         # usage for projects that don't use namespaces.
-        # An empty string element represents the default namespace.  This should be
+        # An empty string element represents the default namespace. This should be
         # used if the project has data in non-default namespaces, but doesn't want to
         # include them.
         # Each namespace in this list must be unique.
@@ -119,8 +119,8 @@ module Google
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1CommonMetadata]
         attr_accessor :common
       
-        # Identifies a subset of entities in a project.  This is specified as
-        # combinations of kind + namespace (either or both of which may be all, as
+        # Identifies a subset of entities in a project. This is specified as
+        # combinations of kinds and namespaces (either or both of which may be all, as
         # described in the following examples).
         # Example usage:
         # Entire project:
@@ -175,8 +175,8 @@ module Google
       class GoogleDatastoreAdminV1beta1ExportEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # Identifies a subset of entities in a project.  This is specified as
-        # combinations of kind + namespace (either or both of which may be all, as
+        # Identifies a subset of entities in a project. This is specified as
+        # combinations of kinds and namespaces (either or both of which may be all, as
         # described in the following examples).
         # Example usage:
         # Entire project:
@@ -262,8 +262,8 @@ module Google
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1CommonMetadata]
         attr_accessor :common
       
-        # Identifies a subset of entities in a project.  This is specified as
-        # combinations of kind + namespace (either or both of which may be all, as
+        # Identifies a subset of entities in a project. This is specified as
+        # combinations of kinds and namespaces (either or both of which may be all, as
         # described in the following examples).
         # Example usage:
         # Entire project:
@@ -316,8 +316,8 @@ module Google
       class GoogleDatastoreAdminV1beta1ImportEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # Identifies a subset of entities in a project.  This is specified as
-        # combinations of kind + namespace (either or both of which may be all, as
+        # Identifies a subset of entities in a project. This is specified as
+        # combinations of kinds and namespaces (either or both of which may be all, as
         # described in the following examples).
         # Example usage:
         # Entire project:
@@ -334,7 +334,7 @@ module Google
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
       
-        # The full resource URL of the external storage location.  Currently, only
+        # The full resource URL of the external storage location. Currently, only
         # Google Cloud Storage is supported. So input_url should be of the form:
         # `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
         # `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is
@@ -372,12 +372,13 @@ module Google
       class GoogleDatastoreAdminV1beta1Progress
         include Google::Apis::Core::Hashable
       
-        # Note that this may be greater than work_estimated.
+        # The amount of work that has been completed. Note that this may be greater
+        # than work_estimated.
         # Corresponds to the JSON property `workCompleted`
         # @return [Fixnum]
         attr_accessor :work_completed
       
-        # An estimate of how much work needs to be performed.  May be zero if the
+        # An estimate of how much work needs to be performed. May be zero if the
         # work estimate is unavailable.
         # Corresponds to the JSON property `workEstimated`
         # @return [Fixnum]
@@ -400,7 +401,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
+        # If `true`, the operation is completed, and either `error` or `response` is
         # available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]

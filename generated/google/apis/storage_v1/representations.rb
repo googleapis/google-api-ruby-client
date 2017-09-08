@@ -590,6 +590,7 @@ module Google
         class Binding
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :condition, as: 'condition'
             collection :members, as: 'members'
             property :role, as: 'role'
           end

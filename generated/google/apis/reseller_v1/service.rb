@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'apps/reseller/v1/')
-          @batch_path = 'batch/reseller/v1'
+          @batch_path = 'batch'
         end
         
         # Get a customer account.

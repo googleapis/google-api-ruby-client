@@ -1410,6 +1410,11 @@ module Google
         class Binding
           include Google::Apis::Core::Hashable
         
+          # 
+          # Corresponds to the JSON property `condition`
+          # @return [Object]
+          attr_accessor :condition
+        
           # A collection of identifiers for members who may assume the provided role.
           # Recognized identifiers are as follows:
           # - allUsers — A special identifier that represents anyone on the internet; with
@@ -1468,6 +1473,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @condition = args[:condition] if args.key?(:condition)
             @members = args[:members] if args.key?(:members)
             @role = args[:role] if args.key?(:role)
           end

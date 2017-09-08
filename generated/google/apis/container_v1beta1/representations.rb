@@ -547,10 +547,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detail, as: 'detail'
+          property :end_time, as: 'endTime'
           property :location, as: 'location'
           property :name, as: 'name'
           property :operation_type, as: 'operationType'
           property :self_link, as: 'selfLink'
+          property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :target_link, as: 'targetLink'

@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'sql/v1beta3/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/sqladmin/v1beta3'
         end
         
         # Retrieves information about a specified backup run for a Cloud SQL instance.

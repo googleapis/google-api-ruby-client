@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'storage/v1beta2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/storage/v1beta2'
         end
         
         # Permanently deletes the ACL entry for the specified entity on the specified

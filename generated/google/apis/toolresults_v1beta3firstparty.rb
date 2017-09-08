@@ -25,7 +25,7 @@ module Google
     # @see https://firebase.google.com/docs/test-lab/
     module ToolresultsV1beta3firstparty
       VERSION = 'V1beta3firstparty'
-      REVISION = '20170831'
+      REVISION = '20170906'
     end
   end
 end

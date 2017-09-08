@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'groups/v1/groups/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/groupsmigration/v1'
         end
         
         # Inserts a new mail into the archive of the Google group.

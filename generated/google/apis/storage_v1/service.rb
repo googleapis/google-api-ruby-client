@@ -2011,7 +2011,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an object's metadata. This method supports patch semantics.
+        # Patches an object's metadata.
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
         # @param [String] object
@@ -2051,6 +2051,8 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2063,8 +2065,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:patch, 'b/{bucket}/o/{object}', options)
+        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command =  make_simple_command(:patch, 'b/{bucket}/o/{object}', options)
+          else
+            command = make_download_command(:patch, 'b/{bucket}/o/{object}', options)
+            command.download_dest = download_dest
+          end
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
           command.response_representation = Google::Apis::StorageV1::Object::Representation

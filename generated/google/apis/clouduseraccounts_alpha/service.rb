@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'clouduseraccounts/alpha/projects/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/clouduseraccounts/alpha'
         end
         
         # Deletes the specified operation resource.

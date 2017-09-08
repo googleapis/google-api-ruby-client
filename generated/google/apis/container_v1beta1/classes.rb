@@ -1136,7 +1136,7 @@ module Google
         # the Kubernetes version -- it's best to assume the behavior is undefined
         # and conflicts should be avoided.
         # For more information, including usage and the valid values, see:
-        # http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1396,6 +1396,12 @@ module Google
         # @return [String]
         attr_accessor :detail
       
+        # [Output only] The time the operation completed, in
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/regions-zones/regions-zones#available) or
         # [region](/compute/docs/regions-zones/regions-zones#available) in which
@@ -1418,6 +1424,12 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # [Output only] The time the operation started, in
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
       
         # The current status of the operation.
         # Corresponds to the JSON property `status`
@@ -1449,10 +1461,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @detail = args[:detail] if args.key?(:detail)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target_link = args[:target_link] if args.key?(:target_link)

@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'prediction/v1.2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/prediction/v1.2'
         end
         
         # Submit data and request a prediction

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/webmaster-tools/
     module WebmastersV3
       VERSION = 'V3'
-      REVISION = '20170322'
+      REVISION = '20170528'
 
       # View and manage Search Console data for your verified sites
       AUTH_WEBMASTERS = 'https://www.googleapis.com/auth/webmasters'

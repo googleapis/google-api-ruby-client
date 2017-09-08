@@ -941,10 +941,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a PerfMetricsSummary resource.
-        # May return any of the following error code(s): - ALREADY_EXISTS - A
-        # PerfMetricSummary already exists for the given Step - NOT_FOUND - The
-        # containing Step does not exist
+        # Creates a PerfMetricsSummary resource. Returns the existing one if it has
+        # already been created.
+        # May return any of the following error code(s): - NOT_FOUND - The containing
+        # Step does not exist
         # @param [String] project_id
         #   The cloud project
         # @param [String] history_id

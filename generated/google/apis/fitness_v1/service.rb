@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'fitness/v1/users/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/fitness/v1'
         end
         
         # Creates a new data source that is unique across all data sources belonging to

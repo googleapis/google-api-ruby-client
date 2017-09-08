@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DynamicLinkEventStat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,18 @@ module Google
       end
       
       class DynamicLinkWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIosPostInstallAttributionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetIosPostInstallAttributionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -147,6 +165,17 @@ module Google
         end
       end
       
+      class DeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_model_name, as: 'deviceModelName'
+          property :language_code, as: 'languageCode'
+          property :screen_resolution_height, :numeric_string => true, as: 'screenResolutionHeight'
+          property :screen_resolution_width, :numeric_string => true, as: 'screenResolutionWidth'
+          property :timezone, as: 'timezone'
+        end
+      end
+      
       class DynamicLinkEventStat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -188,6 +217,40 @@ module Google
           property :warning_code, as: 'warningCode'
           property :warning_document_link, as: 'warningDocumentLink'
           property :warning_message, as: 'warningMessage'
+        end
+      end
+      
+      class GetIosPostInstallAttributionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_installation_time, :numeric_string => true, as: 'appInstallationTime'
+          property :bundle_id, as: 'bundleId'
+          property :device, as: 'device', class: Google::Apis::FirebasedynamiclinksV1::DeviceInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DeviceInfo::Representation
+      
+          property :ios_version, as: 'iosVersion'
+          property :retrieval_method, as: 'retrievalMethod'
+          property :sdk_version, as: 'sdkVersion'
+          property :unique_match_link_to_check, as: 'uniqueMatchLinkToCheck'
+          property :visual_style, as: 'visualStyle'
+        end
+      end
+      
+      class GetIosPostInstallAttributionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_minimum_version, as: 'appMinimumVersion'
+          property :attribution_confidence, as: 'attributionConfidence'
+          property :deep_link, as: 'deepLink'
+          property :external_browser_destination_link, as: 'externalBrowserDestinationLink'
+          property :fallback_link, as: 'fallbackLink'
+          property :invitation_id, as: 'invitationId'
+          property :is_strong_match_executable, as: 'isStrongMatchExecutable'
+          property :match_message, as: 'matchMessage'
+          property :requested_link, as: 'requestedLink'
+          property :resolved_link, as: 'resolvedLink'
+          property :utm_campaign, as: 'utmCampaign'
+          property :utm_medium, as: 'utmMedium'
+          property :utm_source, as: 'utmSource'
         end
       end
       

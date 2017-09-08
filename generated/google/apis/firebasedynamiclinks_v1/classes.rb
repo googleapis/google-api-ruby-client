@@ -153,6 +153,49 @@ module Google
         end
       end
       
+      # Signals associated with the device making the request.
+      class DeviceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Device model name.
+        # Corresponds to the JSON property `deviceModelName`
+        # @return [String]
+        attr_accessor :device_model_name
+      
+        # Device language code setting.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Device display resolution height.
+        # Corresponds to the JSON property `screenResolutionHeight`
+        # @return [Fixnum]
+        attr_accessor :screen_resolution_height
+      
+        # Device display resolution width.
+        # Corresponds to the JSON property `screenResolutionWidth`
+        # @return [Fixnum]
+        attr_accessor :screen_resolution_width
+      
+        # Device timezone setting.
+        # Corresponds to the JSON property `timezone`
+        # @return [String]
+        attr_accessor :timezone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_model_name = args[:device_model_name] if args.key?(:device_model_name)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @screen_resolution_height = args[:screen_resolution_height] if args.key?(:screen_resolution_height)
+          @screen_resolution_width = args[:screen_resolution_width] if args.key?(:screen_resolution_width)
+          @timezone = args[:timezone] if args.key?(:timezone)
+        end
+      end
+      
       # Dynamic Link event stat.
       class DynamicLinkEventStat
         include Google::Apis::Core::Hashable
@@ -295,6 +338,187 @@ module Google
           @warning_code = args[:warning_code] if args.key?(:warning_code)
           @warning_document_link = args[:warning_document_link] if args.key?(:warning_document_link)
           @warning_message = args[:warning_message] if args.key?(:warning_message)
+        end
+      end
+      
+      # Request for iSDK to execute strong match flow for post-install attribution.
+      # This is meant for iOS requests only. Requests from other platforms will
+      # not be honored.
+      class GetIosPostInstallAttributionRequest
+        include Google::Apis::Core::Hashable
+      
+        # App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).
+        # This is a client signal for a more accurate weak match.
+        # Corresponds to the JSON property `appInstallationTime`
+        # @return [Fixnum]
+        attr_accessor :app_installation_time
+      
+        # APP bundle ID.
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        # Signals associated with the device making the request.
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::FirebasedynamiclinksV1::DeviceInfo]
+        attr_accessor :device
+      
+        # iOS version, ie: 9.3.5.
+        # Consider adding "build".
+        # Corresponds to the JSON property `iosVersion`
+        # @return [String]
+        attr_accessor :ios_version
+      
+        # App post install attribution retrieval information. Disambiguates
+        # mechanism (iSDK or developer invoked) to retrieve payload from
+        # clicked link.
+        # Corresponds to the JSON property `retrievalMethod`
+        # @return [String]
+        attr_accessor :retrieval_method
+      
+        # Google SDK version.
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [String]
+        attr_accessor :sdk_version
+      
+        # Possible unique matched link that server need to check before performing
+        # fingerprint match. If passed link is short server need to expand the link.
+        # If link is long server need to vslidate the link.
+        # Corresponds to the JSON property `uniqueMatchLinkToCheck`
+        # @return [String]
+        attr_accessor :unique_match_link_to_check
+      
+        # Strong match page information. Disambiguates between default UI and
+        # custom page to present when strong match succeeds/fails to find cookie.
+        # Corresponds to the JSON property `visualStyle`
+        # @return [String]
+        attr_accessor :visual_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_installation_time = args[:app_installation_time] if args.key?(:app_installation_time)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+          @device = args[:device] if args.key?(:device)
+          @ios_version = args[:ios_version] if args.key?(:ios_version)
+          @retrieval_method = args[:retrieval_method] if args.key?(:retrieval_method)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
+          @unique_match_link_to_check = args[:unique_match_link_to_check] if args.key?(:unique_match_link_to_check)
+          @visual_style = args[:visual_style] if args.key?(:visual_style)
+        end
+      end
+      
+      # Response for iSDK to execute strong match flow for post-install attribution.
+      class GetIosPostInstallAttributionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The minimum version for app, specified by dev through ?imv= parameter.
+        # Return to iSDK to allow app to evaluate if current version meets this.
+        # Corresponds to the JSON property `appMinimumVersion`
+        # @return [String]
+        attr_accessor :app_minimum_version
+      
+        # The confidence of the returned attribution.
+        # Corresponds to the JSON property `attributionConfidence`
+        # @return [String]
+        attr_accessor :attribution_confidence
+      
+        # The deep-link attributed post-install via one of several techniques
+        # (fingerprint, copy unique).
+        # Corresponds to the JSON property `deepLink`
+        # @return [String]
+        attr_accessor :deep_link
+      
+        # User-agent specific custom-scheme URIs for iSDK to open. This will be set
+        # according to the user-agent tha the click was originally made in. There is
+        # no Safari-equivalent custom-scheme open URLs.
+        # ie: googlechrome://www.example.com
+        # ie: firefox://open-url?url=http://www.example.com
+        # ie: opera-http://example.com
+        # Corresponds to the JSON property `externalBrowserDestinationLink`
+        # @return [String]
+        attr_accessor :external_browser_destination_link
+      
+        # The link to navigate to update the app if min version is not met.
+        # This is either (in order): 1) fallback link (from ?ifl= parameter, if
+        # specified by developer) or 2) AppStore URL (from ?isi= parameter, if
+        # specified), or 3) the payload link (from required link= parameter).
+        # Corresponds to the JSON property `fallbackLink`
+        # @return [String]
+        attr_accessor :fallback_link
+      
+        # Invitation ID attributed post-install via one of several techniques
+        # (fingerprint, copy unique).
+        # Corresponds to the JSON property `invitationId`
+        # @return [String]
+        attr_accessor :invitation_id
+      
+        # Instruction for iSDK to attemmpt to perform strong match. For instance,
+        # if browser does not support/allow cookie or outside of support browsers,
+        # this will be false.
+        # Corresponds to the JSON property `isStrongMatchExecutable`
+        # @return [Boolean]
+        attr_accessor :is_strong_match_executable
+        alias_method :is_strong_match_executable?, :is_strong_match_executable
+      
+        # Describes why match failed, ie: "discarded due to low confidence".
+        # This message will be publicly visible.
+        # Corresponds to the JSON property `matchMessage`
+        # @return [String]
+        attr_accessor :match_message
+      
+        # Entire FDL (short or long) attributed post-install via one of several
+        # techniques (fingerprint, copy unique).
+        # Corresponds to the JSON property `requestedLink`
+        # @return [String]
+        attr_accessor :requested_link
+      
+        # The entire FDL, expanded from a short link. It is the same as the
+        # requested_link, if it is long. Parameters from this should not be
+        # used directly (ie: server can default utm_[campaign|medium|source]
+        # to a value when requested_link lack them, server determine the best
+        # fallback_link when requested_link specifies >1 fallback links).
+        # Corresponds to the JSON property `resolvedLink`
+        # @return [String]
+        attr_accessor :resolved_link
+      
+        # Scion campaign value to be propagated by iSDK to Scion at post-install.
+        # Corresponds to the JSON property `utmCampaign`
+        # @return [String]
+        attr_accessor :utm_campaign
+      
+        # Scion medium value to be propagated by iSDK to Scion at post-install.
+        # Corresponds to the JSON property `utmMedium`
+        # @return [String]
+        attr_accessor :utm_medium
+      
+        # Scion source value to be propagated by iSDK to Scion at post-install.
+        # Corresponds to the JSON property `utmSource`
+        # @return [String]
+        attr_accessor :utm_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_minimum_version = args[:app_minimum_version] if args.key?(:app_minimum_version)
+          @attribution_confidence = args[:attribution_confidence] if args.key?(:attribution_confidence)
+          @deep_link = args[:deep_link] if args.key?(:deep_link)
+          @external_browser_destination_link = args[:external_browser_destination_link] if args.key?(:external_browser_destination_link)
+          @fallback_link = args[:fallback_link] if args.key?(:fallback_link)
+          @invitation_id = args[:invitation_id] if args.key?(:invitation_id)
+          @is_strong_match_executable = args[:is_strong_match_executable] if args.key?(:is_strong_match_executable)
+          @match_message = args[:match_message] if args.key?(:match_message)
+          @requested_link = args[:requested_link] if args.key?(:requested_link)
+          @resolved_link = args[:resolved_link] if args.key?(:resolved_link)
+          @utm_campaign = args[:utm_campaign] if args.key?(:utm_campaign)
+          @utm_medium = args[:utm_medium] if args.key?(:utm_medium)
+          @utm_source = args[:utm_source] if args.key?(:utm_source)
         end
       end
       

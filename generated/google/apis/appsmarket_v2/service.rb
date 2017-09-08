@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'appsmarket/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/appsmarket/v2'
         end
         
         # 
