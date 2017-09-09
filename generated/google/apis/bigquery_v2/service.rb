@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'bigquery/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/bigquery/v2'
         end
         
         # Deletes the dataset specified by the datasetId value. Before you can delete a
@@ -575,6 +575,42 @@ module Google
           command.request_object = query_request_object
           command.response_representation = Google::Apis::BigqueryV2::QueryResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::QueryResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the email address of the service account for your project used for
+        # interactions with Google Cloud KMS.
+        # @param [String] project_id
+        #   Project ID for which the service account is requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::GetServiceAccountResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::GetServiceAccountResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_service_account(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'projects/{projectId}/serviceAccount', options)
+          command.response_representation = Google::Apis::BigqueryV2::GetServiceAccountResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::GetServiceAccountResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

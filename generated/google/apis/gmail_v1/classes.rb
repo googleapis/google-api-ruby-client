@@ -485,6 +485,13 @@ module Google
       class Label
         include Google::Apis::Core::Hashable
       
+        # Color to assign to the label. This field is hidden behind an API server mendel
+        # experiment and only available for user-defined labels. Will be unset if the
+        # label doesn't have a color configured.
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::GmailV1::LabelColor]
+        attr_accessor :color
+      
         # The immutable ID of the label.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -543,6 +550,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @color = args[:color] if args.key?(:color)
           @id = args[:id] if args.key?(:id)
           @label_list_visibility = args[:label_list_visibility] if args.key?(:label_list_visibility)
           @message_list_visibility = args[:message_list_visibility] if args.key?(:message_list_visibility)
@@ -552,6 +560,34 @@ module Google
           @threads_total = args[:threads_total] if args.key?(:threads_total)
           @threads_unread = args[:threads_unread] if args.key?(:threads_unread)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class LabelColor
+        include Google::Apis::Core::Hashable
+      
+        # Background color represented as hex string #RRGGBB (ex #000000). Only a
+        # restricted predefined set of color values are allowed. See (go/gmail-api-label-
+        # colors).
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [String]
+        attr_accessor :background_color
+      
+        # Text color represented as hex string #RRGGBB (ex #000000). Only a restricted
+        # predefined set of color values are allowed. See (go/gmail-api-label-colors).
+        # Corresponds to the JSON property `textColor`
+        # @return [String]
+        attr_accessor :text_color
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @text_color = args[:text_color] if args.key?(:text_color)
         end
       end
       

@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'appstate/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/appstate/v1'
         end
         
         # Clears (sets to empty) the data for the passed key if and only if the passed

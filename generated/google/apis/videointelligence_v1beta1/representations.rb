@@ -130,6 +130,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2Entity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LabelAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LabelFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LabelSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2VideoSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +389,115 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time_offset, :numeric_string => true, as: 'endTimeOffset'
           property :start_time_offset, :numeric_string => true, as: 'startTimeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotation_progress, as: 'annotationProgress', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotation_results, as: 'annotationResults', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoAnnotationResults, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoAnnotationResults::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2Entity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :entity_id, as: 'entityId'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentFrame::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pornography_likelihood, as: 'pornographyLikelihood'
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LabelAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category_entities, as: 'categoryEntities', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2Entity, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2Entity::Representation
+      
+          property :entity, as: 'entity', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2Entity, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2Entity::Representation
+      
+          collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelFrame, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelFrame::Representation
+      
+          collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LabelFrame
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LabelSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_uri, as: 'inputUri'
+          property :progress_percent, as: 'progressPercent'
+          property :start_time, as: 'startTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VideointelligenceV1beta1::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta1::GoogleRpcStatus::Representation
+      
+          property :explicit_annotation, as: 'explicitAnnotation', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation::Representation
+      
+          collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
+      
+          property :input_uri, as: 'inputUri'
+          collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
+      
+          collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
+      
+          collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2VideoSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_offset, as: 'endTimeOffset'
+          property :start_time_offset, as: 'startTimeOffset'
         end
       end
       

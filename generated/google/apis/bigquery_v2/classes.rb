@@ -557,6 +557,27 @@ module Google
       end
       
       # 
+      class EncryptionConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] Describes the Cloud KMS encryption key that will be used to protect
+        # destination BigQuery table. The BigQuery Service Account associated with your
+        # project requires access to this encryption key.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # 
       class ErrorProto
         include Google::Apis::Core::Hashable
       
@@ -981,6 +1002,31 @@ module Google
       end
       
       # 
+      class GetServiceAccountResponse
+        include Google::Apis::Core::Hashable
+      
+        # The service account email address.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The resource type of the response.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class GoogleSheetsOptions
         include Google::Apis::Core::Hashable
       
@@ -1261,6 +1307,11 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
+        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Corresponds to the JSON property `destinationEncryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :destination_encryption_configuration
+      
         # [Required] The destination table to load the data into.
         # Corresponds to the JSON property `destinationTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
@@ -1419,6 +1470,7 @@ module Google
           @allow_quoted_newlines = args[:allow_quoted_newlines] if args.key?(:allow_quoted_newlines)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
+          @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
@@ -1468,6 +1520,11 @@ module Google
         # Corresponds to the JSON property `defaultDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
+      
+        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Corresponds to the JSON property `destinationEncryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :destination_encryption_configuration
       
         # [Optional] Describes the table where the query results should be stored. If
         # not present, a new table will be created to store the results. This property
@@ -1601,6 +1658,7 @@ module Google
           @allow_large_results = args[:allow_large_results] if args.key?(:allow_large_results)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
+          @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
           @flatten_results = args[:flatten_results] if args.key?(:flatten_results)
           @maximum_billing_tier = args[:maximum_billing_tier] if args.key?(:maximum_billing_tier)
@@ -1633,6 +1691,11 @@ module Google
         # Corresponds to the JSON property `createDisposition`
         # @return [String]
         attr_accessor :create_disposition
+      
+        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Corresponds to the JSON property `destinationEncryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :destination_encryption_configuration
       
         # [Required] The destination table
         # Corresponds to the JSON property `destinationTable`
@@ -1668,6 +1731,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
+          @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
           @source_table = args[:source_table] if args.key?(:source_table)
           @source_tables = args[:source_tables] if args.key?(:source_tables)
@@ -2531,6 +2595,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Corresponds to the JSON property `encryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :encryption_configuration
+      
         # [Output-only] A hash of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -2653,6 +2722,7 @@ module Google
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
+          @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @etag = args[:etag] if args.key?(:etag)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @external_data_configuration = args[:external_data_configuration] if args.key?(:external_data_configuration)

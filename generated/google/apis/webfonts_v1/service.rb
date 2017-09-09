@@ -52,7 +52,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'webfonts/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/webfonts/v1'
         end
         
         # Retrieves the list of fonts currently served by the Google Fonts Developer API

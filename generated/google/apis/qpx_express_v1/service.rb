@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'qpxExpress/v1/trips/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/qpxExpress/v1'
         end
         
         # Returns a list of flights.
