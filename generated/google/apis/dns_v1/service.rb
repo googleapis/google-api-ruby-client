@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'dns/v1/projects/')
-          @batch_path = 'batch/dns/v1'
+          @batch_path = 'batch'
         end
         
         # Atomically update the ResourceRecordSet collection.

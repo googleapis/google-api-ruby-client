@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/oauth2/v2'
+          @batch_path = 'batch'
         end
         
         # 

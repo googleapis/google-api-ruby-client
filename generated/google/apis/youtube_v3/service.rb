@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'youtube/v3/')
-          @batch_path = 'batch/youtube/v3'
+          @batch_path = 'batch'
         end
         
         # Posts a bulletin for a specific channel. (The user submitting the request must
