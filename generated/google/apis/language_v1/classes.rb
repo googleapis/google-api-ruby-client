@@ -75,6 +75,59 @@ module Google
         end
       end
       
+      # The entity-level sentiment analysis request message.
+      class AnalyzeEntitySentimentRequest
+        include Google::Apis::Core::Hashable
+      
+        # ################################################################ #
+        # Represents the input to API methods.
+        # Corresponds to the JSON property `document`
+        # @return [Google::Apis::LanguageV1::Document]
+        attr_accessor :document
+      
+        # The encoding type used by the API to calculate offsets.
+        # Corresponds to the JSON property `encodingType`
+        # @return [String]
+        attr_accessor :encoding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @encoding_type = args[:encoding_type] if args.key?(:encoding_type)
+        end
+      end
+      
+      # The entity-level sentiment analysis response message.
+      class AnalyzeEntitySentimentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The recognized entities in the input document with associated sentiments.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::LanguageV1::Entity>]
+        attr_accessor :entities
+      
+        # The language of the text, which will be the same as the language specified
+        # in the request or, if not specified, the automatically-detected language.
+        # See Document.language field for more details.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @language = args[:language] if args.key?(:language)
+        end
+      end
+      
       # The sentiment analysis request message.
       class AnalyzeSentimentRequest
         include Google::Apis::Core::Hashable
@@ -392,6 +445,12 @@ module Google
         # @return [Float]
         attr_accessor :salience
       
+        # Represents the feeling associated with the entire text or entities in
+        # the text.
+        # Corresponds to the JSON property `sentiment`
+        # @return [Google::Apis::LanguageV1::Sentiment]
+        attr_accessor :sentiment
+      
         # The entity type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -407,6 +466,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @salience = args[:salience] if args.key?(:salience)
+          @sentiment = args[:sentiment] if args.key?(:sentiment)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -415,6 +475,12 @@ module Google
       # mentions are supported.
       class EntityMention
         include Google::Apis::Core::Hashable
+      
+        # Represents the feeling associated with the entire text or entities in
+        # the text.
+        # Corresponds to the JSON property `sentiment`
+        # @return [Google::Apis::LanguageV1::Sentiment]
+        attr_accessor :sentiment
       
         # Represents an output piece of text.
         # Corresponds to the JSON property `text`
@@ -432,6 +498,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
           @type = args[:type] if args.key?(:type)
         end
@@ -454,6 +521,12 @@ module Google
         attr_accessor :extract_entities
         alias_method :extract_entities?, :extract_entities
       
+        # Extract entities and their associated sentiment.
+        # Corresponds to the JSON property `extractEntitySentiment`
+        # @return [Boolean]
+        attr_accessor :extract_entity_sentiment
+        alias_method :extract_entity_sentiment?, :extract_entity_sentiment
+      
         # Extract syntax information.
         # Corresponds to the JSON property `extractSyntax`
         # @return [Boolean]
@@ -468,6 +541,7 @@ module Google
         def update!(**args)
           @extract_document_sentiment = args[:extract_document_sentiment] if args.key?(:extract_document_sentiment)
           @extract_entities = args[:extract_entities] if args.key?(:extract_entities)
+          @extract_entity_sentiment = args[:extract_entity_sentiment] if args.key?(:extract_entity_sentiment)
           @extract_syntax = args[:extract_syntax] if args.key?(:extract_syntax)
         end
       end

@@ -1484,6 +1484,13 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
         attr_accessor :applications
       
+        # Whether auto time is required, which prevents the user from manually setting
+        # the date and time.
+        # Corresponds to the JSON property `autoTimeRequired`
+        # @return [Boolean]
+        attr_accessor :auto_time_required
+        alias_method :auto_time_required?, :auto_time_required
+      
         # Whether applications other than the ones configured in applications are
         # blocked from being installed. When set, applications that were installed under
         # a previous policy but no longer appear in the policy are automatically
@@ -1673,6 +1680,7 @@ module Google
           @add_user_disabled = args[:add_user_disabled] if args.key?(:add_user_disabled)
           @adjust_volume_disabled = args[:adjust_volume_disabled] if args.key?(:adjust_volume_disabled)
           @applications = args[:applications] if args.key?(:applications)
+          @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
           @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
           @compliance_rules = args[:compliance_rules] if args.key?(:compliance_rules)

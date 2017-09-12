@@ -586,6 +586,7 @@ module Google
           property :adjust_volume_disabled, as: 'adjustVolumeDisabled'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
+          property :auto_time_required, as: 'autoTimeRequired'
           property :block_applications_enabled, as: 'blockApplicationsEnabled'
           property :camera_disabled, as: 'cameraDisabled'
           collection :compliance_rules, as: 'complianceRules', class: Google::Apis::AndroidmanagementV1::ComplianceRule, decorator: Google::Apis::AndroidmanagementV1::ComplianceRule::Representation

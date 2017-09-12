@@ -763,6 +763,7 @@ module Google
       class Photo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default, as: 'default'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
           property :url, as: 'url'

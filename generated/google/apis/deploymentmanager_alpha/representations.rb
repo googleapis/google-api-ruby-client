@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeploymentOutputsEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeploymentUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,12 @@ module Google
       end
       
       class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -518,6 +530,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basic_auth, as: 'basicAuth', class: Google::Apis::DeploymentmanagerAlpha::BasicAuth, decorator: Google::Apis::DeploymentmanagerAlpha::BasicAuth::Representation
       
+          property :service_account, as: 'serviceAccount', class: Google::Apis::DeploymentmanagerAlpha::ServiceAccount, decorator: Google::Apis::DeploymentmanagerAlpha::ServiceAccount::Representation
+      
+          property :use_project_default, as: 'useProjectDefault'
         end
       end
       
@@ -534,6 +549,8 @@ module Google
           property :name, as: 'name'
           property :operation, as: 'operation', class: Google::Apis::DeploymentmanagerAlpha::Operation, decorator: Google::Apis::DeploymentmanagerAlpha::Operation::Representation
       
+          collection :outputs, as: 'outputs', class: Google::Apis::DeploymentmanagerAlpha::DeploymentOutputsEntry, decorator: Google::Apis::DeploymentmanagerAlpha::DeploymentOutputsEntry::Representation
+      
           property :self_link, as: 'selfLink'
           property :target, as: 'target', class: Google::Apis::DeploymentmanagerAlpha::TargetConfiguration, decorator: Google::Apis::DeploymentmanagerAlpha::TargetConfiguration::Representation
       
@@ -543,6 +560,14 @@ module Google
       end
       
       class DeploymentLabelEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class DeploymentOutputsEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
@@ -900,6 +925,13 @@ module Google
       
           collection :not_ins, as: 'notIns'
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class ServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
         end
       end
       

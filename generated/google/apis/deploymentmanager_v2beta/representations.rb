@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -518,6 +524,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basic_auth, as: 'basicAuth', class: Google::Apis::DeploymentmanagerV2beta::BasicAuth, decorator: Google::Apis::DeploymentmanagerV2beta::BasicAuth::Representation
       
+          property :service_account, as: 'serviceAccount', class: Google::Apis::DeploymentmanagerV2beta::ServiceAccount, decorator: Google::Apis::DeploymentmanagerV2beta::ServiceAccount::Representation
+      
+          property :use_project_default, as: 'useProjectDefault'
         end
       end
       
@@ -900,6 +909,13 @@ module Google
       
           collection :not_ins, as: 'notIns'
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class ServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
         end
       end
       

@@ -420,7 +420,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::CollectionOverride>]
         attr_accessor :collection_overrides
       
-        # Credential used by ConfigurableResourceTypes.
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
         # Corresponds to the JSON property `credential`
         # @return [Google::Apis::DeploymentmanagerAlpha::Credential]
         attr_accessor :credential
@@ -448,7 +449,8 @@ module Google
         end
       end
       
-      # Credential used by ConfigurableResourceTypes.
+      # The credential used by Deployment Manager and TypeProvider. Only one of the
+      # options is permitted.
       class Credential
         include Google::Apis::Core::Hashable
       
@@ -457,6 +459,17 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::BasicAuth]
         attr_accessor :basic_auth
       
+        # Service Account used as a credential.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::DeploymentmanagerAlpha::ServiceAccount]
+        attr_accessor :service_account
+      
+        # Specify to use the project default credential, only supported by Deployment.
+        # Corresponds to the JSON property `useProjectDefault`
+        # @return [Boolean]
+        attr_accessor :use_project_default
+        alias_method :use_project_default?, :use_project_default
+      
         def initialize(**args)
            update!(**args)
         end
@@ -464,6 +477,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basic_auth = args[:basic_auth] if args.key?(:basic_auth)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @use_project_default = args[:use_project_default] if args.key?(:use_project_default)
         end
       end
       
@@ -530,6 +545,12 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation
       
+        # api-linter: output-only-format=disabled [Output Only] Map of outputs from the
+        # last manifest that deployed successfully.
+        # Corresponds to the JSON property `outputs`
+        # @return [Array<Google::Apis::DeploymentmanagerAlpha::DeploymentOutputsEntry>]
+        attr_accessor :outputs
+      
         # [Output Only] Self link for the deployment.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -559,6 +580,7 @@ module Google
           @manifest = args[:manifest] if args.key?(:manifest)
           @name = args[:name] if args.key?(:name)
           @operation = args[:operation] if args.key?(:operation)
+          @outputs = args[:outputs] if args.key?(:outputs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @target = args[:target] if args.key?(:target)
           @update = args[:update] if args.key?(:update)
@@ -567,6 +589,31 @@ module Google
       
       # 
       class DeploymentLabelEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class DeploymentOutputsEntry
         include Google::Apis::Core::Hashable
       
         # 
@@ -1926,6 +1973,26 @@ module Google
         end
       end
       
+      # Service Account used as a credential.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # The IAM service account email address like test@myproject.iam.gserviceaccount.
+        # com
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
       # 
       class TargetConfiguration
         include Google::Apis::Core::Hashable
@@ -2215,7 +2282,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::CollectionOverride>]
         attr_accessor :collection_overrides
       
-        # Credential used by ConfigurableResourceTypes.
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
         # Corresponds to the JSON property `credential`
         # @return [Google::Apis::DeploymentmanagerAlpha::Credential]
         attr_accessor :credential

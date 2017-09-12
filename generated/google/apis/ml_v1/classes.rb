@@ -466,6 +466,7 @@ module Google
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
         # Next ID: 18
+        # LINT.IfChange
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -558,6 +559,7 @@ module Google
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
         # Next ID: 18
+        # LINT.IfChange
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -1214,6 +1216,7 @@ module Google
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
       # Next ID: 18
+      # LINT.IfChange
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       

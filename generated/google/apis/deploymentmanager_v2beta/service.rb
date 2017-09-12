@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'deploymentmanager/v2beta/projects/')
-          @batch_path = 'batch/deploymentmanager/v2beta'
+          @batch_path = 'batch'
         end
         
         # Deletes a composite type.

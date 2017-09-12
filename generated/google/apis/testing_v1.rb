@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/toolresults_v1beta3/service.rb'
-require 'google/apis/toolresults_v1beta3/classes.rb'
-require 'google/apis/toolresults_v1beta3/representations.rb'
+require 'google/apis/testing_v1/service.rb'
+require 'google/apis/testing_v1/classes.rb'
+require 'google/apis/testing_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Tool Results API
+    # Google Cloud Testing API
     #
-    # Reads and publishes results from Firebase Test Lab.
+    # Allows developers to run automated tests for their mobile applications on
+    # Google infrastructure.
     #
-    # @see https://firebase.google.com/docs/test-lab/
-    module ToolresultsV1beta3
-      VERSION = 'V1beta3'
-      REVISION = '20170911'
+    # @see https://developers.google.com/cloud-test-lab/
+    module TestingV1
+      VERSION = 'V1'
+      REVISION = '20170905'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
     end
   end
 end

@@ -1726,6 +1726,13 @@ module Google
       class Photo
         include Google::Apis::Core::Hashable
       
+        # True if the photo is a default photo;
+        # false if the photo is a user-provided photo.
+        # Corresponds to the JSON property `default`
+        # @return [Boolean]
+        attr_accessor :default
+        alias_method :default?, :default
+      
         # Metadata about a field.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::PeopleV1::FieldMetadata]
@@ -1745,6 +1752,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default = args[:default] if args.key?(:default)
           @metadata = args[:metadata] if args.key?(:metadata)
           @url = args[:url] if args.key?(:url)
         end

@@ -129,7 +129,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2beta::CollectionOverride>]
         attr_accessor :collection_overrides
       
-        # Credential used by ConfigurableResourceTypes.
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
         # Corresponds to the JSON property `credential`
         # @return [Google::Apis::DeploymentmanagerV2beta::Credential]
         attr_accessor :credential
@@ -448,7 +449,8 @@ module Google
         end
       end
       
-      # Credential used by ConfigurableResourceTypes.
+      # The credential used by Deployment Manager and TypeProvider. Only one of the
+      # options is permitted.
       class Credential
         include Google::Apis::Core::Hashable
       
@@ -457,6 +459,17 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2beta::BasicAuth]
         attr_accessor :basic_auth
       
+        # Service Account used as a credential.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::DeploymentmanagerV2beta::ServiceAccount]
+        attr_accessor :service_account
+      
+        # Specify to use the project default credential, only supported by Deployment.
+        # Corresponds to the JSON property `useProjectDefault`
+        # @return [Boolean]
+        attr_accessor :use_project_default
+        alias_method :use_project_default?, :use_project_default
+      
         def initialize(**args)
            update!(**args)
         end
@@ -464,6 +477,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basic_auth = args[:basic_auth] if args.key?(:basic_auth)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @use_project_default = args[:use_project_default] if args.key?(:use_project_default)
         end
       end
       
@@ -1930,6 +1945,26 @@ module Google
         end
       end
       
+      # Service Account used as a credential.
+      class ServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # The IAM service account email address like test@myproject.iam.gserviceaccount.
+        # com
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
       # 
       class TargetConfiguration
         include Google::Apis::Core::Hashable
@@ -2219,7 +2254,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2beta::CollectionOverride>]
         attr_accessor :collection_overrides
       
-        # Credential used by ConfigurableResourceTypes.
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
         # Corresponds to the JSON property `credential`
         # @return [Google::Apis::DeploymentmanagerV2beta::Credential]
         attr_accessor :credential
