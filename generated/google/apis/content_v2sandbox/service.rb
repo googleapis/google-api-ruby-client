@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'content/v2sandbox/')
-          @batch_path = 'batch/content/v2sandbox'
+          @batch_path = 'batch'
         end
         
         # Marks an order as acknowledged. This method can only be called for non-multi-

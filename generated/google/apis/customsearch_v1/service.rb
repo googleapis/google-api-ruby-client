@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'customsearch/')
-          @batch_path = 'batch/customsearch/v1'
+          @batch_path = 'batch'
         end
         
         # Returns metadata about the search performed, metadata about the custom search

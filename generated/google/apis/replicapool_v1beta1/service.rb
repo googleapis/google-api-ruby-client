@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'replicapool/v1beta1/projects/')
-          @batch_path = 'batch/replicapool/v1beta1'
+          @batch_path = 'batch'
         end
         
         # Deletes a replica pool.

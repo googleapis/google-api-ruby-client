@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'identitytoolkit/v3/relyingparty/')
-          @batch_path = 'batch/identitytoolkit/v3'
+          @batch_path = 'batch'
         end
         
         # Creates the URI used by the IdP to authenticate the user.

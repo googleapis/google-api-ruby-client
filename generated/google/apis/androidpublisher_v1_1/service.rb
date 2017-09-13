@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'androidpublisher/v1.1/applications/')
-          @batch_path = 'batch/androidpublisher/v1.1'
+          @batch_path = 'batch'
         end
         
         # Checks the purchase and consumption status of an inapp item.

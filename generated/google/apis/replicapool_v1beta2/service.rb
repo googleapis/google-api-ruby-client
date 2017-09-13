@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'replicapool/v1beta2/projects/')
-          @batch_path = 'batch/replicapool/v1beta2'
+          @batch_path = 'batch'
         end
         
         # Removes the specified instances from the managed instance group, and from any

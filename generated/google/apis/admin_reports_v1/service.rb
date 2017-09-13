@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'admin/reports/v1/')
-          @batch_path = 'batch/admin/reports_v1'
+          @batch_path = 'batch'
         end
         
         # Retrieves a list of activities for a specific customer and application.

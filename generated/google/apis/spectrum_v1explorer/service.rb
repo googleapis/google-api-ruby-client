@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'spectrum/v1explorer/paws/')
-          @batch_path = 'batch/spectrum/v1explorer'
+          @batch_path = 'batch'
         end
         
         # Requests information about the available spectrum for a device at a location.

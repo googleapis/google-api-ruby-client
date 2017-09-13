@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'calendar/v3/')
-          @batch_path = 'batch/calendar/v3'
+          @batch_path = 'batch'
         end
         
         # Deletes an access control rule.

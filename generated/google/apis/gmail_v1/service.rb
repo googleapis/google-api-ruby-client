@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'gmail/v1/users/')
-          @batch_path = 'batch/gmail/v1'
+          @batch_path = 'batch'
         end
         
         # Gets the current user's Gmail profile.

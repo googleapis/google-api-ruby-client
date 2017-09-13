@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'blogger/v3/')
-          @batch_path = 'batch/blogger/v3'
+          @batch_path = 'batch'
         end
         
         # Gets one blog and user info pair by blogId and userId.

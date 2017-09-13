@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'adexchangeseller/v1/')
-          @batch_path = 'batch/adexchangeseller/v1'
+          @batch_path = 'batch'
         end
         
         # List all ad clients in this Ad Exchange account.

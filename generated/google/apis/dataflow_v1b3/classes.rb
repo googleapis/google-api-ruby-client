@@ -894,12 +894,6 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :count
       
-        # (Optional) Logarithmic histogram of values.
-        # Each log may be in no more than one bucket. Order does not matter.
-        # Corresponds to the JSON property `logBuckets`
-        # @return [Array<Google::Apis::DataflowV1b3::LogBucket>]
-        attr_accessor :log_buckets
-      
         # A representation of an int64, n, that is immune to precision loss when
         # encoded in JSON.
         # Corresponds to the JSON property `max`
@@ -930,7 +924,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
-          @log_buckets = args[:log_buckets] if args.key?(:log_buckets)
           @max = args[:max] if args.key?(:max)
           @min = args[:min] if args.key?(:min)
           @sum = args[:sum] if args.key?(:sum)
@@ -2041,38 +2034,6 @@ module Google
           @failed_location = args[:failed_location] if args.key?(:failed_location)
           @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Bucket of values for Distribution's logarithmic histogram.
-      class LogBucket
-        include Google::Apis::Core::Hashable
-      
-        # Number of values in this bucket.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # floor(log2(value)); defined to be zero for nonpositive values.
-        # log(-1) = 0
-        # log(0) = 0
-        # log(1) = 0
-        # log(2) = 1
-        # log(3) = 1
-        # log(4) = 2
-        # log(5) = 2
-        # Corresponds to the JSON property `log`
-        # @return [Fixnum]
-        attr_accessor :log
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @log = args[:log] if args.key?(:log)
         end
       end
       
@@ -4698,6 +4659,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :stop_position
       
+        # Total time the worker spent being throttled by external systems.
+        # Corresponds to the JSON property `totalThrottlerWaitTimeSeconds`
+        # @return [Float]
+        attr_accessor :total_throttler_wait_time_seconds
+      
         # Identifies the WorkItem.
         # Corresponds to the JSON property `workItemId`
         # @return [String]
@@ -4721,6 +4687,7 @@ module Google
           @source_fork = args[:source_fork] if args.key?(:source_fork)
           @source_operation_response = args[:source_operation_response] if args.key?(:source_operation_response)
           @stop_position = args[:stop_position] if args.key?(:stop_position)
+          @total_throttler_wait_time_seconds = args[:total_throttler_wait_time_seconds] if args.key?(:total_throttler_wait_time_seconds)
           @work_item_id = args[:work_item_id] if args.key?(:work_item_id)
         end
       end

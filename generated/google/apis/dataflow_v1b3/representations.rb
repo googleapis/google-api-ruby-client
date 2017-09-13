@@ -316,12 +316,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogBucket
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MapTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1016,8 +1010,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
       
-          collection :log_buckets, as: 'logBuckets', class: Google::Apis::DataflowV1b3::LogBucket, decorator: Google::Apis::DataflowV1b3::LogBucket::Representation
-      
           property :max, as: 'max', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
       
           property :min, as: 'min', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
@@ -1318,14 +1310,6 @@ module Google
           collection :jobs, as: 'jobs', class: Google::Apis::DataflowV1b3::Job, decorator: Google::Apis::DataflowV1b3::Job::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class LogBucket
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, :numeric_string => true, as: 'count'
-          property :log, as: 'log'
         end
       end
       
@@ -2045,6 +2029,7 @@ module Google
       
           property :stop_position, as: 'stopPosition', class: Google::Apis::DataflowV1b3::Position, decorator: Google::Apis::DataflowV1b3::Position::Representation
       
+          property :total_throttler_wait_time_seconds, as: 'totalThrottlerWaitTimeSeconds'
           property :work_item_id, as: 'workItemId'
         end
       end

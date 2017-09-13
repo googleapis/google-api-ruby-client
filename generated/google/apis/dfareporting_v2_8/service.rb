@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'dfareporting/v2.8/')
-          @batch_path = 'batch/dfareporting/v2.8'
+          @batch_path = 'batch'
         end
         
         # Gets the account's active ad summary by account ID.

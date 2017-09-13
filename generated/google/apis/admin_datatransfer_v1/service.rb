@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'admin/datatransfer/v1/')
-          @batch_path = 'batch/admin/datatransfer_v1'
+          @batch_path = 'batch'
         end
         
         # Retrieves information about an application for the given application ID.

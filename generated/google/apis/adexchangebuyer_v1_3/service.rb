@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'adexchangebuyer/v1.3/')
-          @batch_path = 'batch/adexchangebuyer/v1.3'
+          @batch_path = 'batch'
         end
         
         # Gets one account by ID.

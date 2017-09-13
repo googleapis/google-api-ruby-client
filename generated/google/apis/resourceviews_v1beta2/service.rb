@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'resourceviews/v1beta2/projects/')
-          @batch_path = 'batch/resourceviews/v1beta2'
+          @batch_path = 'batch'
         end
         
         # Retrieves the specified zone-specific operation resource.

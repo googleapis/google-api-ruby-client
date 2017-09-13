@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'androidenterprise/v1/')
-          @batch_path = 'batch/androidenterprise/v1'
+          @batch_path = 'batch'
         end
         
         # Retrieves the details of a device.

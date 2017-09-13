@@ -28958,6 +28958,7 @@
 "/dataflow:v1b3/WorkItemStatus/sourceFork": source_fork
 "/dataflow:v1b3/WorkItemStatus/sourceOperationResponse": source_operation_response
 "/dataflow:v1b3/WorkItemStatus/stopPosition": stop_position
+"/dataflow:v1b3/WorkItemStatus/totalThrottlerWaitTimeSeconds": total_throttler_wait_time_seconds
 "/dataflow:v1b3/WorkItemStatus/workItemId": work_item_id
 "/dataflow:v1b3/WorkerHealthReport": worker_health_report
 "/dataflow:v1b3/WorkerHealthReport/pods": pods
