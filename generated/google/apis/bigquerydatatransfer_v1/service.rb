@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BigquerydatatransferV1
-      # BigQuery Data Transfer Service API
+      # BigQuery Data Transfer API
       #
       # Transfers data from partner SaaS applications to Google BigQuery on a
       #  scheduled, managed basis.
@@ -48,79 +48,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns true if data transfer is enabled for a project.
-        # @param [String] name
-        #   The name of the project resource in the form:
-        #   `projects/`project_id``
-        # @param [Google::Apis::BigquerydatatransferV1::IsEnabledRequest] is_enabled_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigquerydatatransferV1::IsEnabledResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigquerydatatransferV1::IsEnabledResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def is_project_enabled(name, is_enabled_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:isEnabled', options)
-          command.request_representation = Google::Apis::BigquerydatatransferV1::IsEnabledRequest::Representation
-          command.request_object = is_enabled_request_object
-          command.response_representation = Google::Apis::BigquerydatatransferV1::IsEnabledResponse::Representation
-          command.response_class = Google::Apis::BigquerydatatransferV1::IsEnabledResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Enables or disables data transfer for a project. This
-        # method requires the additional scope of
-        # 'https://www.googleapis.com/auth/cloudplatformprojects'
-        # to manage the cloud project permissions.
-        # @param [String] name
-        #   The name of the project resource in the form:
-        #   `projects/`project_id``
-        # @param [Google::Apis::BigquerydatatransferV1::SetEnabledRequest] set_enabled_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigquerydatatransferV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigquerydatatransferV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_project_enabled(name, set_enabled_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setEnabled', options)
-          command.request_representation = Google::Apis::BigquerydatatransferV1::SetEnabledRequest::Representation
-          command.request_object = set_enabled_request_object
-          command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
-          command.response_class = Google::Apis::BigquerydatatransferV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns true if valid credentials exist for the given data source and
         # requesting user.
+        # Some data sources doesn't support service account, so we need to talk to
+        # them on behalf of the end user. This API just checks whether we have OAuth
+        # token for the particular user, which is a pre-requisite before user can
+        # create a transfer config.
         # @param [String] name
         #   The data source in the form:
         #   `projects/`project_id`/dataSources/`data_source_id``
@@ -258,40 +191,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns true if data transfer is enabled for a project.
-        # @param [String] name
-        #   The name of the project resource in the form:
-        #   `projects/`project_id``
-        # @param [Google::Apis::BigquerydatatransferV1::IsEnabledRequest] is_enabled_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigquerydatatransferV1::IsEnabledResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigquerydatatransferV1::IsEnabledResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def is_location_enabled(name, is_enabled_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:isEnabled', options)
-          command.request_representation = Google::Apis::BigquerydatatransferV1::IsEnabledRequest::Representation
-          command.request_object = is_enabled_request_object
-          command.response_representation = Google::Apis::BigquerydatatransferV1::IsEnabledResponse::Representation
-          command.response_class = Google::Apis::BigquerydatatransferV1::IsEnabledResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
@@ -331,45 +230,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enables or disables data transfer for a project. This
-        # method requires the additional scope of
-        # 'https://www.googleapis.com/auth/cloudplatformprojects'
-        # to manage the cloud project permissions.
-        # @param [String] name
-        #   The name of the project resource in the form:
-        #   `projects/`project_id``
-        # @param [Google::Apis::BigquerydatatransferV1::SetEnabledRequest] set_enabled_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigquerydatatransferV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigquerydatatransferV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_location_enabled(name, set_enabled_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:setEnabled', options)
-          command.request_representation = Google::Apis::BigquerydatatransferV1::SetEnabledRequest::Representation
-          command.request_object = set_enabled_request_object
-          command.response_representation = Google::Apis::BigquerydatatransferV1::Empty::Representation
-          command.response_class = Google::Apis::BigquerydatatransferV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns true if valid credentials exist for the given data source and
         # requesting user.
+        # Some data sources doesn't support service account, so we need to talk to
+        # them on behalf of the end user. This API just checks whether we have OAuth
+        # token for the particular user, which is a pre-requisite before user can
+        # create a transfer config.
         # @param [String] name
         #   The data source in the form:
         #   `projects/`project_id`/dataSources/`data_source_id``
@@ -643,11 +509,12 @@ module Google
         # Updates a data transfer configuration.
         # All fields must be set, even if they are not updated.
         # @param [String] name
-        #   The resource name of the transfer run.
-        #   Transfer run names have the form
+        #   The resource name of the transfer config.
+        #   Transfer config names have the form
         #   `projects/`project_id`/transferConfigs/`config_id``.
         #   Where `config_id` is usually a uuid, even though it is not
-        #   guaranteed or required. The name is ignored when creating a transfer run.
+        #   guaranteed or required. The name is ignored when creating a transfer
+        #   config.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
@@ -1057,11 +924,12 @@ module Google
         # Updates a data transfer configuration.
         # All fields must be set, even if they are not updated.
         # @param [String] name
-        #   The resource name of the transfer run.
-        #   Transfer run names have the form
+        #   The resource name of the transfer config.
+        #   Transfer config names have the form
         #   `projects/`project_id`/transferConfigs/`config_id``.
         #   Where `config_id` is usually a uuid, even though it is not
-        #   guaranteed or required. The name is ignored when creating a transfer run.
+        #   guaranteed or required. The name is ignored when creating a transfer
+        #   config.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.

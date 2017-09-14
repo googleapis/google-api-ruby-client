@@ -484,24 +484,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LiveBroadcastTopic
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LiveBroadcastTopicDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LiveBroadcastTopicSnippet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LiveChatBan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1759,10 +1741,12 @@ module Google
           property :mda_rating, as: 'mdaRating'
           property :medietilsynet_rating, as: 'medietilsynetRating'
           property :meku_rating, as: 'mekuRating'
+          property :mena_mpaa_rating, as: 'menaMpaaRating'
           property :mibac_rating, as: 'mibacRating'
           property :moc_rating, as: 'mocRating'
           property :moctw_rating, as: 'moctwRating'
           property :mpaa_rating, as: 'mpaaRating'
+          property :mpaat_rating, as: 'mpaatRating'
           property :mtrcb_rating, as: 'mtrcbRating'
           property :nbc_rating, as: 'nbcRating'
           property :nbcpl_rating, as: 'nbcplRating'
@@ -2041,8 +2025,6 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::YoutubeV3::LiveBroadcastStatus, decorator: Google::Apis::YoutubeV3::LiveBroadcastStatus::Representation
       
-          property :topic_details, as: 'topicDetails', class: Google::Apis::YoutubeV3::LiveBroadcastTopicDetails, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopicDetails::Representation
-      
         end
       end
       
@@ -2058,6 +2040,7 @@ module Google
           property :enable_dvr, as: 'enableDvr'
           property :enable_embed, as: 'enableEmbed'
           property :enable_low_latency, as: 'enableLowLatency'
+          property :mesh, :base64 => true, as: 'mesh'
           property :monitor_stream, as: 'monitorStream', class: Google::Apis::YoutubeV3::MonitorStreamInfo, decorator: Google::Apis::YoutubeV3::MonitorStreamInfo::Representation
       
           property :projection, as: 'projection'
@@ -2122,32 +2105,6 @@ module Google
           property :live_broadcast_priority, as: 'liveBroadcastPriority'
           property :privacy_status, as: 'privacyStatus'
           property :recording_status, as: 'recordingStatus'
-        end
-      end
-      
-      class LiveBroadcastTopic
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet::Representation
-      
-          property :type, as: 'type'
-          property :unmatched, as: 'unmatched'
-        end
-      end
-      
-      class LiveBroadcastTopicDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :topics, as: 'topics', class: Google::Apis::YoutubeV3::LiveBroadcastTopic, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopic::Representation
-      
-        end
-      end
-      
-      class LiveBroadcastTopicSnippet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :release_date, as: 'releaseDate'
         end
       end
       

@@ -2289,7 +2289,7 @@ module Google
       end
       
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-      # NEXT_ID: 69
+      # NEXT_ID: 71
       class ContentRating
         include Google::Apis::Core::Hashable
       
@@ -2547,6 +2547,11 @@ module Google
         # @return [String]
         attr_accessor :meku_rating
       
+        # The rating system for MENA countries, a clone of MPAA. It is needed to
+        # Corresponds to the JSON property `menaMpaaRating`
+        # @return [String]
+        attr_accessor :mena_mpaa_rating
+      
         # The video's rating from the Ministero dei Beni e delle Attività Culturali e
         # del Turismo (Italy).
         # Corresponds to the JSON property `mibacRating`
@@ -2567,6 +2572,12 @@ module Google
         # Corresponds to the JSON property `mpaaRating`
         # @return [String]
         attr_accessor :mpaa_rating
+      
+        # The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/
+        # md/ratings/v2.3/html/US_MPAAT_Ratings.html.
+        # Corresponds to the JSON property `mpaatRating`
+        # @return [String]
+        attr_accessor :mpaat_rating
       
         # The video's rating from the Movie and Television Review and Classification
         # Board (Philippines).
@@ -2716,10 +2727,12 @@ module Google
           @mda_rating = args[:mda_rating] if args.key?(:mda_rating)
           @medietilsynet_rating = args[:medietilsynet_rating] if args.key?(:medietilsynet_rating)
           @meku_rating = args[:meku_rating] if args.key?(:meku_rating)
+          @mena_mpaa_rating = args[:mena_mpaa_rating] if args.key?(:mena_mpaa_rating)
           @mibac_rating = args[:mibac_rating] if args.key?(:mibac_rating)
           @moc_rating = args[:moc_rating] if args.key?(:moc_rating)
           @moctw_rating = args[:moctw_rating] if args.key?(:moctw_rating)
           @mpaa_rating = args[:mpaa_rating] if args.key?(:mpaa_rating)
+          @mpaat_rating = args[:mpaat_rating] if args.key?(:mpaat_rating)
           @mtrcb_rating = args[:mtrcb_rating] if args.key?(:mtrcb_rating)
           @nbc_rating = args[:nbc_rating] if args.key?(:nbc_rating)
           @nbcpl_rating = args[:nbcpl_rating] if args.key?(:nbcpl_rating)
@@ -3698,11 +3711,6 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveBroadcastStatus]
         attr_accessor :status
       
-        # 
-        # Corresponds to the JSON property `topicDetails`
-        # @return [Google::Apis::YoutubeV3::LiveBroadcastTopicDetails]
-        attr_accessor :topic_details
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3716,7 +3724,6 @@ module Google
           @snippet = args[:snippet] if args.key?(:snippet)
           @statistics = args[:statistics] if args.key?(:statistics)
           @status = args[:status] if args.key?(:status)
-          @topic_details = args[:topic_details] if args.key?(:topic_details)
         end
       end
       
@@ -3783,6 +3790,12 @@ module Google
         attr_accessor :enable_low_latency
         alias_method :enable_low_latency?, :enable_low_latency
       
+        # 
+        # Corresponds to the JSON property `mesh`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :mesh
+      
         # Settings and Info of the monitor stream
         # Corresponds to the JSON property `monitorStream`
         # @return [Google::Apis::YoutubeV3::MonitorStreamInfo]
@@ -3829,6 +3842,7 @@ module Google
           @enable_dvr = args[:enable_dvr] if args.key?(:enable_dvr)
           @enable_embed = args[:enable_embed] if args.key?(:enable_embed)
           @enable_low_latency = args[:enable_low_latency] if args.key?(:enable_low_latency)
+          @mesh = args[:mesh] if args.key?(:mesh)
           @monitor_stream = args[:monitor_stream] if args.key?(:monitor_stream)
           @projection = args[:projection] if args.key?(:projection)
           @record_from_start = args[:record_from_start] if args.key?(:record_from_start)
@@ -4074,83 +4088,6 @@ module Google
           @live_broadcast_priority = args[:live_broadcast_priority] if args.key?(:live_broadcast_priority)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
           @recording_status = args[:recording_status] if args.key?(:recording_status)
-        end
-      end
-      
-      # 
-      class LiveBroadcastTopic
-        include Google::Apis::Core::Hashable
-      
-        # Information about the topic matched.
-        # Corresponds to the JSON property `snippet`
-        # @return [Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet]
-        attr_accessor :snippet
-      
-        # The type of the topic.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # If this flag is set it means that we have not been able to match the topic
-        # title and type provided to a known entity.
-        # Corresponds to the JSON property `unmatched`
-        # @return [Boolean]
-        attr_accessor :unmatched
-        alias_method :unmatched?, :unmatched
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @type = args[:type] if args.key?(:type)
-          @unmatched = args[:unmatched] if args.key?(:unmatched)
-        end
-      end
-      
-      # 
-      class LiveBroadcastTopicDetails
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `topics`
-        # @return [Array<Google::Apis::YoutubeV3::LiveBroadcastTopic>]
-        attr_accessor :topics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @topics = args[:topics] if args.key?(:topics)
-        end
-      end
-      
-      # 
-      class LiveBroadcastTopicSnippet
-        include Google::Apis::Core::Hashable
-      
-        # The name of the topic.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The date at which the topic was released. Filled for types: videoGame
-        # Corresponds to the JSON property `releaseDate`
-        # @return [String]
-        attr_accessor :release_date
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @release_date = args[:release_date] if args.key?(:release_date)
         end
       end
       
@@ -7507,7 +7444,7 @@ module Google
         attr_accessor :caption
       
         # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-        # NEXT_ID: 69
+        # NEXT_ID: 71
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating

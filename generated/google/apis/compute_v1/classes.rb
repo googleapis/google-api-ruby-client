@@ -694,10 +694,9 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
-        # Assigns a zero-based index to this disk, where 0 is reserved for the boot disk.
-        # For example, if you have many disks attached to an instance, each disk would
-        # have a unique index number. If not specified, the server will choose an
-        # appropriate value.
+        # [Output Only] A zero-based index to this disk, where 0 is reserved for the
+        # boot disk. If you have many disks attached to an instance, each disk would
+        # have a unique index number.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -8146,7 +8145,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Serive resources (a.k.a service projects) attached to this project as their
+        # Service resources (a.k.a service projects) attached to this project as their
         # shared VPC host.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeV1::XpnResourceId>]

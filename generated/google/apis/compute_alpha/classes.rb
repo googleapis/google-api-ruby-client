@@ -1063,10 +1063,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Assigns a zero-based index to this disk, where 0 is reserved for the boot disk.
-        # For example, if you have many disks attached to an instance, each disk would
-        # have a unique index number. If not specified, the server will choose an
-        # appropriate value.
+        # [Output Only] A zero-based index to this disk, where 0 is reserved for the
+        # boot disk. If you have many disks attached to an instance, each disk would
+        # have a unique index number.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -2105,6 +2104,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_connections
       
+        # The max number of simultaneous connections that a single backend network
+        # endpoint can handle. This is used to calculate the capacity of the group. Can
+        # be used in either CONNECTION or UTILIZATION balancing modes. For CONNECTION
+        # mode, either maxConnections or maxConnectionsPerEndpoint must be set.
+        # This cannot be used for internal load balancing.
+        # Corresponds to the JSON property `maxConnectionsPerEndpoint`
+        # @return [Fixnum]
+        attr_accessor :max_connections_per_endpoint
+      
         # The max number of simultaneous connections that a single backend instance can
         # handle. This is used to calculate the capacity of the group. Can be used in
         # either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either
@@ -2121,6 +2129,15 @@ module Google
         # Corresponds to the JSON property `maxRate`
         # @return [Fixnum]
         attr_accessor :max_rate
+      
+        # The max requests per second (RPS) that a single backend network endpoint can
+        # handle. This is used to calculate the capacity of the group. Can be used in
+        # either balancing mode. For RATE mode, either maxRate or maxRatePerEndpoint
+        # must be set.
+        # This cannot be used for internal load balancing.
+        # Corresponds to the JSON property `maxRatePerEndpoint`
+        # @return [Float]
+        attr_accessor :max_rate_per_endpoint
       
         # The max requests per second (RPS) that a single backend instance can handle.
         # This is used to calculate the capacity of the group. Can be used in either
@@ -2150,8 +2167,10 @@ module Google
           @failover = args[:failover] if args.key?(:failover)
           @group = args[:group] if args.key?(:group)
           @max_connections = args[:max_connections] if args.key?(:max_connections)
+          @max_connections_per_endpoint = args[:max_connections_per_endpoint] if args.key?(:max_connections_per_endpoint)
           @max_connections_per_instance = args[:max_connections_per_instance] if args.key?(:max_connections_per_instance)
           @max_rate = args[:max_rate] if args.key?(:max_rate)
+          @max_rate_per_endpoint = args[:max_rate_per_endpoint] if args.key?(:max_rate_per_endpoint)
           @max_rate_per_instance = args[:max_rate_per_instance] if args.key?(:max_rate_per_instance)
           @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
         end
@@ -2430,19 +2449,10 @@ module Google
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
-        # The value of the field must be in [0, 1]. If set, 'backends[].failover' must
-        # be set. They together define the fallback behavior of the primary backend: if
-        # the ratio of the healthy VMs in the primary backend is at or below this number,
-        # traffic arriving at the load-balanced IP will be directed to the failover
-        # backend.
-        # In case where 'failoverRatio' is not set or all the VMs in the backup backend
-        # are unhealthy, the traffic will be directed back to the primary backend in the
-        # "force" mode, where traffic will be spread to the healthy VMs with the best
-        # effort, or to all VMs when no VM is healthy.
-        # This field is only used with l4 load balancing.
-        # Corresponds to the JSON property `failoverRatio`
-        # @return [Float]
-        attr_accessor :failover_ratio
+        # 
+        # Corresponds to the JSON property `failoverPolicy`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy]
+        attr_accessor :failover_policy
       
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
@@ -2568,7 +2578,7 @@ module Google
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
-          @failover_ratio = args[:failover_ratio] if args.key?(:failover_ratio)
+          @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @iap = args[:iap] if args.key?(:iap)
@@ -2739,6 +2749,55 @@ module Google
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # 
+      class BackendServiceFailoverPolicy
+        include Google::Apis::Core::Hashable
+      
+        # On failover or failback, this field indicates whether connection drain will be
+        # honored. Setting this to true has the following effect: connections to the old
+        # active pool are not drained. Connections to the new active pool use the
+        # timeout of 10 min (currently fixed). Setting to false has the following effect:
+        # both old and new connections will have a drain timeout of 10 min.
+        # This can be set to true only if the protocol is TCP.
+        # The default is false.
+        # Corresponds to the JSON property `disableConnectionDrainOnFailover`
+        # @return [Boolean]
+        attr_accessor :disable_connection_drain_on_failover
+        alias_method :disable_connection_drain_on_failover?, :disable_connection_drain_on_failover
+      
+        # This option is used only when no healthy VMs are detected in the primary and
+        # backup instance groups. When set to true, traffic is dropped. When set to
+        # false, new connections are sent across all VMs in the primary group.
+        # The default is false.
+        # Corresponds to the JSON property `dropTrafficIfUnhealthy`
+        # @return [Boolean]
+        attr_accessor :drop_traffic_if_unhealthy
+        alias_method :drop_traffic_if_unhealthy?, :drop_traffic_if_unhealthy
+      
+        # The value of the field must be in [0, 1]. If the ratio of the healthy VMs in
+        # the primary backend is at or below this number, traffic arriving at the load-
+        # balanced IP will be directed to the failover backend.
+        # In case where 'failoverRatio' is not set or all the VMs in the backup backend
+        # are unhealthy, the traffic will be directed back to the primary backend in the
+        # "force" mode, where traffic will be spread to the healthy VMs with the best
+        # effort, or to all VMs when no VM is healthy.
+        # This field is only used with l4 load balancing.
+        # Corresponds to the JSON property `failoverRatio`
+        # @return [Float]
+        attr_accessor :failover_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_connection_drain_on_failover = args[:disable_connection_drain_on_failover] if args.key?(:disable_connection_drain_on_failover)
+          @drop_traffic_if_unhealthy = args[:drop_traffic_if_unhealthy] if args.key?(:drop_traffic_if_unhealthy)
+          @failover_ratio = args[:failover_ratio] if args.key?(:failover_ratio)
         end
       end
       
@@ -5342,6 +5401,18 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a ForwardingRule. Include the fingerprint in patch request to ensure
+        # that you do not overwrite changes that were applied from another concurrent
+        # request.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # ForwardingRule.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -5506,6 +5577,7 @@ module Google
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @kind = args[:kind] if args.key?(:kind)
@@ -5990,6 +6062,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, HTTP2 health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -6017,6 +6109,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
@@ -6046,6 +6139,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, HTTP health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -6073,6 +6186,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
@@ -6102,6 +6216,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, HTTPS health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -6129,6 +6263,7 @@ module Google
           @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
           @response = args[:response] if args.key?(:response)
@@ -8201,6 +8336,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Whether the resource should be protected against deletion.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -8364,6 +8505,7 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
@@ -11416,7 +11558,7 @@ module Google
       end
       
       # Protocol definitions for Mixer API to support InterconnectAttachment. Next
-      # available tag: 14
+      # available tag: 18
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -15688,6 +15830,13 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # This signifies the default network tier used for configuring resources of the
+        # project and can only take the following values: PREMIUM, STANDARD. Initially
+        # the default network tier is PREMIUM.
+        # Corresponds to the JSON property `defaultNetworkTier`
+        # @return [String]
+        attr_accessor :default_network_tier
+      
         # [Output Only] Default service account used by VMs running in this project.
         # Corresponds to the JSON property `defaultServiceAccount`
         # @return [String]
@@ -15751,6 +15900,7 @@ module Google
         def update!(**args)
           @common_instance_metadata = args[:common_instance_metadata] if args.key?(:common_instance_metadata)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_network_tier = args[:default_network_tier] if args.key?(:default_network_tier)
           @default_service_account = args[:default_service_account] if args.key?(:default_service_account)
           @description = args[:description] if args.key?(:description)
           @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
@@ -15821,7 +15971,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Serive resources (a.k.a service projects) attached to this project as their
+        # Service resources (a.k.a service projects) attached to this project as their
         # shared VPC host.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeAlpha::XpnResourceId>]
@@ -15857,6 +16007,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
+        end
+      end
+      
+      # 
+      class ProjectsSetDefaultNetworkTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Default network tier to be set.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
         end
       end
       
@@ -18548,6 +18717,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, SSL health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -18577,6 +18766,7 @@ module Google
         def update!(**args)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request = args[:request] if args.key?(:request)
           @response = args[:response] if args.key?(:response)
@@ -18623,118 +18813,6 @@ module Google
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
-        end
-      end
-      
-      # 
-      class SecurityPoliciesList
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] Unique identifier for the resource; defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # A list of SecurityPolicy resources.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicy>]
-        attr_accessor :items
-      
-        # [Output Only] Type of resource. Always compute#securityPoliciesList for
-        # listsof securityPolicies
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # [Output Only] Informational warning message.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeAlpha::SecurityPoliciesList::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # [Output Only] Informational warning message.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example:
-          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeAlpha::SecurityPoliciesList::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
         end
       end
       
@@ -18813,6 +18891,118 @@ module Google
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class SecurityPolicyList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SecurityPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#securityPolicyList for listsof
+        # securityPolicies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -19512,6 +19702,333 @@ module Google
         end
       end
       
+      # 
+      class SslPoliciesList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SslPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::SslPolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#sslPoliciesList for lists
+        # of sslPolicies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::SslPoliciesList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::SslPoliciesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SslPoliciesListAvailableFeaturesResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+        end
+      end
+      
+      # A SSL policy specifies the server-side support for SSL features. This can be
+      # attached to a TargetHttpsProxy or a TargetSslProxy. This affects connections
+      # between clients and the HTTPS or SSL proxy load balancer. They do not affect
+      # the connection between the load balancers and the backends.
+      class SslPolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # List of features enabled when the selected profile is CUSTOM. The
+        # - method returns the set of features that can be specified in this list. This
+        # field must be empty if the profile is not CUSTOM.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Array<String>]
+        attr_accessor :custom_features
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The list of features enabled in the SSL policy.
+        # Corresponds to the JSON property `enabledFeatures`
+        # @return [Array<String>]
+        attr_accessor :enabled_features
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a SslPolicy. An up-to-date fingerprint must be provided in order to
+        # update the SslPolicy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The minimum version of SSL protocol that can be used by the clients to
+        # establish a connection with the load balancer. This can be one of TLS_1_0,
+        # TLS_1_1, TLS_1_2, TLS_1_3.
+        # Corresponds to the JSON property `minTlsVersion`
+        # @return [String]
+        attr_accessor :min_tls_version
+      
+        # Name of the resource. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        # must be a lowercase letter, and all following characters must be a dash,
+        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Profile specifies the set of SSL features that can be used by the load
+        # balancer when negotiating SSL with clients. This can be one of COMPATIBLE,
+        # MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to
+        # enable must be specified in the customFeatures field.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] If potential misconfigurations are detected for this SSL policy,
+        # this field will be populated with warning messages.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ComputeAlpha::SslPolicy::Warning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @description = args[:description] if args.key?(:description)
+          @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
+          @name = args[:name] if args.key?(:name)
+          @profile = args[:profile] if args.key?(:profile)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+        
+        # 
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::SslPolicy::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SslPolicyReference
+        include Google::Apis::Core::Hashable
+      
+        # URL of the SSL policy resource. Set this to empty string to clear any existing
+        # SSL policy associated with the target proxy resource.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+        end
+      end
+      
       # A Subnetwork resource.
       class Subnetwork
         include Google::Apis::Core::Hashable
@@ -20060,6 +20577,26 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in
+        # port
+        # is used for health checking.
+        # USE_NAMED_PORT: The
+        # portName
+        # is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, TCP health check follows behavior specified in
+        # port
+        # and
+        # portName
+        # fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
         # Specifies the type of proxy header to append before sending data to the
         # backend, either NONE or PROXY_V1. The default is NONE.
         # Corresponds to the JSON property `proxyHeader`
@@ -20089,6 +20626,7 @@ module Google
         def update!(**args)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request = args[:request] if args.key?(:request)
           @response = args[:response] if args.key?(:response)
@@ -20414,6 +20952,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ssl_certificates
       
+        # URL of SslPolicy resource that will be associated with the TargetHttpsProxy
+        # resource. If not set, the TargetHttpsProxy resource will not have any SSL
+        # policy configured.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
         # A fully-qualified or valid partial URL to the UrlMap resource that defines the
         # mapping from URL to the BackendService. For example, the following are all
         # valid URLs for specifying a URL map:
@@ -20439,6 +20984,7 @@ module Google
           @quic_override = args[:quic_override] if args.key?(:quic_override)
           @self_link = args[:self_link] if args.key?(:self_link)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
           @url_map = args[:url_map] if args.key?(:url_map)
         end
       end
@@ -21675,6 +22221,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ssl_certificates
       
+        # URL of SslPolicy resource that will be associated with the TargetSslProxy
+        # resource. If not set, the TargetSslProxy resource will not have any SSL policy
+        # configured.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21691,6 +22244,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
         end
       end
       
@@ -22071,6 +22625,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this TargetVpnGateway, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # TargetVpnGateway.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this TargetVpnGateway resource. These can be later modified
+        # by the setLabels method. Each label key/value must comply with RFC1035. Label
+        # values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
@@ -22119,6 +22692,8 @@ module Google
           @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @region = args[:region] if args.key?(:region)
@@ -22916,6 +23491,144 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Subnetwork which the current user has compute.subnetworks.use permission on.
+      class UsableSubnetwork
+        include Google::Apis::Core::Hashable
+      
+        # Subnetwork URL.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # 
+      class UsableSubnetworksAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output] A list of usable subnetwork URLs.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::UsableSubnetwork>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#usableSubnetworksAggregatedList
+        # for aggregated lists of usable subnetworks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       

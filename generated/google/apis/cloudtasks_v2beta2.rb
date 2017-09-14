@@ -12,27 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/testing_v1/service.rb'
-require 'google/apis/testing_v1/classes.rb'
-require 'google/apis/testing_v1/representations.rb'
+require 'google/apis/cloudtasks_v2beta2/service.rb'
+require 'google/apis/cloudtasks_v2beta2/classes.rb'
+require 'google/apis/cloudtasks_v2beta2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Testing API
+    # Cloud Tasks API
     #
-    # Allows developers to run automated tests for their mobile applications on
-    # Google infrastructure.
+    # Cloud Tasks enables developers to manage the execution of large numbers of
+    # distributed requests. Cloud Tasks is in Alpha.
     #
-    # @see https://developers.google.com/cloud-test-lab/
-    module TestingV1
-      VERSION = 'V1'
-      REVISION = '20170905'
+    # @see https://cloud.google.com/cloud-tasks/
+    module CloudtasksV2beta2
+      VERSION = 'V2beta2'
+      REVISION = '20170912'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
     end
   end
 end

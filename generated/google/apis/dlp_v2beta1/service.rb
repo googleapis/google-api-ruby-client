@@ -49,6 +49,37 @@ module Google
           @batch_path = 'batch'
         end
         
+        # De-identifies potentially sensitive info from a list of strings.
+        # This method has limits on input size and output size.
+        # @param [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyContentRequest] google_privacy_dlp_v2beta1_deidentify_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deidentify_content(google_privacy_dlp_v2beta1_deidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/content:deidentify', options)
+          command.request_representation = Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyContentRequest::Representation
+          command.request_object = google_privacy_dlp_v2beta1_deidentify_content_request_object
+          command.response_representation = Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyContentResponse::Representation
+          command.response_class = Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyContentResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Finds potentially sensitive info in a list of strings.
         # This method has limits on input size, processing time, and output size.
         # @param [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InspectContentRequest] google_privacy_dlp_v2beta1_inspect_content_request_object
@@ -106,6 +137,37 @@ module Google
           command.request_object = google_privacy_dlp_v2beta1_redact_content_request_object
           command.response_representation = Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RedactContentResponse::Representation
           command.response_class = Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RedactContentResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Schedules a job to compute risk analysis metrics over content in a Google
+        # Cloud Platform repository.
+        # @param [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest] google_privacy_dlp_v2beta1_analyze_data_source_risk_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_data_source(google_privacy_dlp_v2beta1_analyze_data_source_risk_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/dataSource:analyze', options)
+          command.request_representation = Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest::Representation
+          command.request_object = google_privacy_dlp_v2beta1_analyze_data_source_risk_request_object
+          command.response_representation = Google::Apis::DlpV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DlpV2beta1::GoogleLongrunningOperation
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

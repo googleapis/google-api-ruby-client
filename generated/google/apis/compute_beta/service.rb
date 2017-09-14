@@ -14853,18 +14853,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeBeta::SecurityPoliciesList] parsed result object
+        # @yieldparam result [Google::Apis::ComputeBeta::SecurityPolicyList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ComputeBeta::SecurityPoliciesList]
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_security_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/global/securityPolicies', options)
-          command.response_representation = Google::Apis::ComputeBeta::SecurityPoliciesList::Representation
-          command.response_class = Google::Apis::ComputeBeta::SecurityPoliciesList
+          command.response_representation = Google::Apis::ComputeBeta::SecurityPolicyList::Representation
+          command.response_class = Google::Apis::ComputeBeta::SecurityPolicyList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

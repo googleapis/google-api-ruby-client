@@ -1544,6 +1544,7 @@ module Google
         # - User cancelled the subscription
         # - Subscription was cancelled by the system, for example because of a billing
         # problem
+        # - Subscription was replaced with a new subscription
         # Corresponds to the JSON property `cancelReason`
         # @return [Fixnum]
         attr_accessor :cancel_reason

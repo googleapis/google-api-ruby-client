@@ -337,39 +337,6 @@ module Google
         end
       end
       
-      # A request to determine whether data transfer is enabled for the project.
-      class IsEnabledRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A response to indicate whether data transfer is enabled for the project.
-      class IsEnabledResponse
-        include Google::Apis::Core::Hashable
-      
-        # Indicates whether the project is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
-        end
-      end
-      
       # Returns list of supported data sources and their metadata.
       class ListDataSourcesResponse
         include Google::Apis::Core::Hashable
@@ -383,7 +350,7 @@ module Google
         # this token can be used as the
         # `ListDataSourcesRequest.page_token`
         # to request the next page of list results.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -559,14 +526,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # End time of the range of transfer runs.
-        # Corresponds to the JSON property `rangeEndTime`
+        # Corresponds to the JSON property `endTime`
         # @return [String]
-        attr_accessor :range_end_time
+        attr_accessor :end_time
       
         # Start time of the range of transfer runs.
-        # Corresponds to the JSON property `rangeStartTime`
+        # Corresponds to the JSON property `startTime`
         # @return [String]
-        attr_accessor :range_start_time
+        attr_accessor :start_time
       
         def initialize(**args)
            update!(**args)
@@ -574,8 +541,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @range_end_time = args[:range_end_time] if args.key?(:range_end_time)
-          @range_start_time = args[:range_start_time] if args.key?(:range_start_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -583,10 +550,10 @@ module Google
       class ScheduleTransferRunsResponse
         include Google::Apis::Core::Hashable
       
-        # The transfer runs that were created.
-        # Corresponds to the JSON property `createdRuns`
+        # The transfer runs that were scheduled.
+        # Corresponds to the JSON property `runs`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferRun>]
-        attr_accessor :created_runs
+        attr_accessor :runs
       
         def initialize(**args)
            update!(**args)
@@ -594,27 +561,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @created_runs = args[:created_runs] if args.key?(:created_runs)
-        end
-      end
-      
-      # A request to set whether data transfer is enabled or disabled for a project.
-      class SetEnabledRequest
-        include Google::Apis::Core::Hashable
-      
-        # Whether data transfer should be enabled or disabled for the project.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
+          @runs = args[:runs] if args.key?(:runs)
         end
       end
       
@@ -666,11 +613,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the transfer run.
-        # Transfer run names have the form
+        # The resource name of the transfer config.
+        # Transfer config names have the form
         # `projects/`project_id`/transferConfigs/`config_id``.
         # Where `config_id` is usually a uuid, even though it is not
-        # guaranteed or required. The name is ignored when creating a transfer run.
+        # guaranteed or required. The name is ignored when creating a transfer
+        # config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -715,7 +663,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # GaiaID of the user on whose behalf transfer is done. Applicable only
+        # Unique ID of the user on whose behalf transfer is done. Applicable only
         # to data sources that do not support service accounts. When set to 0,
         # the data source service account credentials are used.
         # Output only.
@@ -859,7 +807,9 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # The user id for this transfer run.
+        # Unique ID of the user on whose behalf transfer is done. Applicable only
+        # to data sources that do not support service accounts. When set to 0,
+        # the data source service account credentials are used.
         # Output only.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]

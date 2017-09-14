@@ -18,7 +18,7 @@ require 'google/apis/bigquerydatatransfer_v1/representations.rb'
 
 module Google
   module Apis
-    # BigQuery Data Transfer Service API
+    # BigQuery Data Transfer API
     #
     # Transfers data from partner SaaS applications to Google BigQuery on a
     # scheduled, managed basis.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/bigquery/
     module BigquerydatatransferV1
       VERSION = 'V1'
-      REVISION = '20170904'
+      REVISION = '20170912'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

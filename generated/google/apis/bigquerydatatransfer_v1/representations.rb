@@ -52,18 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IsEnabledRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IsEnabledResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListDataSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,12 +95,6 @@ module Google
       end
       
       class ScheduleTransferRunsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetEnabledRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,19 +184,6 @@ module Google
         end
       end
       
-      class IsEnabledRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class IsEnabledResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
-        end
-      end
-      
       class ListDataSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -273,23 +242,16 @@ module Google
       class ScheduleTransferRunsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :range_end_time, as: 'rangeEndTime'
-          property :range_start_time, as: 'rangeStartTime'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
       class ScheduleTransferRunsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :created_runs, as: 'createdRuns', class: Google::Apis::BigquerydatatransferV1::TransferRun, decorator: Google::Apis::BigquerydatatransferV1::TransferRun::Representation
+          collection :runs, as: 'runs', class: Google::Apis::BigquerydatatransferV1::TransferRun, decorator: Google::Apis::BigquerydatatransferV1::TransferRun::Representation
       
-        end
-      end
-      
-      class SetEnabledRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
         end
       end
       

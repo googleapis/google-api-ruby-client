@@ -22,8 +22,8 @@ module Google
     module AndroiddeviceprovisioningV1
       # Android Device Provisioning Partner API
       #
-      # Automates reseller integration into Zero Touch Provisioning by assigning
-      #  devices to customers and creating device reports.
+      # Automates reseller integration into zero-touch enrollment by assigning devices
+      #  to customers and creating device reports.
       #
       # @example
       #    require 'google/apis/androiddeviceprovisioning_v1'
@@ -80,7 +80,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # A customer for Zero Touch Provisioning will be created.
+        # A customer for zero-touch enrollment will be created.
         # After a Customer is created, their admins and owners will be able to manage
         # devices on partner.android.com/zerotouch or via their API.
         # @param [String] parent

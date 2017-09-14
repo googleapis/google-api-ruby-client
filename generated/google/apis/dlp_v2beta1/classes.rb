@@ -147,6 +147,35 @@ module Google
         end
       end
       
+      # Request for creating a risk analysis operation.
+      class GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest
+        include Google::Apis::Core::Hashable
+      
+        # Privacy metric to compute for reidentification risk analysis.
+        # Corresponds to the JSON property `privacyMetric`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrivacyMetric]
+        attr_accessor :privacy_metric
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `sourceTable`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable]
+        attr_accessor :source_table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @privacy_metric = args[:privacy_metric] if args.key?(:privacy_metric)
+          @source_table = args[:source_table] if args.key?(:source_table)
+        end
+      end
+      
       # Options defining BigQuery table and row identifiers.
       class GooglePrivacyDlpV2beta1BigQueryOptions
         include Google::Apis::Core::Hashable
@@ -213,6 +242,141 @@ module Google
         end
       end
       
+      # Buckets represented as ranges, along with replacement values. Ranges must
+      # be non-overlapping.
+      class GooglePrivacyDlpV2beta1Bucket
+        include Google::Apis::Core::Hashable
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `max`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :max
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `min`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :min
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `replacementValue`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :replacement_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+          @replacement_value = args[:replacement_value] if args.key?(:replacement_value)
+        end
+      end
+      
+      # Generalization function that buckets values based on ranges. The ranges and
+      # replacement values are dynamically provided by the user for custom behavior,
+      # such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH
+      # This can be used on
+      # data of type: number, long, string, timestamp.
+      # If the bound `Value` type differs from the type of data being transformed, we
+      # will first attempt converting the type of the data to be transformed to match
+      # the type of the bound before comparing.
+      class GooglePrivacyDlpV2beta1BucketingConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Bucket>]
+        attr_accessor :buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+        end
+      end
+      
+      # Compute numerical stats over an individual column, including
+      # number of distinct values and value count distribution.
+      class GooglePrivacyDlpV2beta1CategoricalStatsConfig
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # 
+      class GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket
+        include Google::Apis::Core::Hashable
+      
+        # Total number of records in this bucket.
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Fixnum]
+        attr_accessor :bucket_size
+      
+        # Sample of value frequencies in this bucket. The total number of
+        # values returned per bucket is capped at 20.
+        # Corresponds to the JSON property `bucketValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ValueFrequency>]
+        attr_accessor :bucket_values
+      
+        # Lower bound on the value frequency of the values in this bucket.
+        # Corresponds to the JSON property `valueFrequencyLowerBound`
+        # @return [Fixnum]
+        attr_accessor :value_frequency_lower_bound
+      
+        # Upper bound on the value frequency of the values in this bucket.
+        # Corresponds to the JSON property `valueFrequencyUpperBound`
+        # @return [Fixnum]
+        attr_accessor :value_frequency_upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
+          @value_frequency_lower_bound = args[:value_frequency_lower_bound] if args.key?(:value_frequency_lower_bound)
+          @value_frequency_upper_bound = args[:value_frequency_upper_bound] if args.key?(:value_frequency_upper_bound)
+        end
+      end
+      
+      # Result of the categorical stats computation.
+      class GooglePrivacyDlpV2beta1CategoricalStatsResult
+        include Google::Apis::Core::Hashable
+      
+        # Histogram of value frequencies in the column.
+        # Corresponds to the JSON property `valueFrequencyHistogramBuckets`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket>]
+        attr_accessor :value_frequency_histogram_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value_frequency_histogram_buckets = args[:value_frequency_histogram_buckets] if args.key?(:value_frequency_histogram_buckets)
+        end
+      end
+      
       # Info Type Category description.
       class GooglePrivacyDlpV2beta1CategoryDescription
         include Google::Apis::Core::Hashable
@@ -235,6 +399,85 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Partially mask a string by replacing a given number of characters with a
+      # fixed character. Masking can start from the beginning or end of the string.
+      # This can be used on data of any type (numbers, longs, and so on) and when
+      # de-identifying structured data we'll attempt to preserve the original data's
+      # type. (This allows you to take a long like 123 and modify it to a string like
+      # **3.
+      class GooglePrivacyDlpV2beta1CharacterMaskConfig
+        include Google::Apis::Core::Hashable
+      
+        # When masking a string, items in this list will be skipped when replacing.
+        # For example, if your string is 555-555-5555 and you ask us to skip `-` and
+        # mask 5 chars with * we would produce ***-*55-5555.
+        # Corresponds to the JSON property `charactersToIgnore`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CharsToIgnore>]
+        attr_accessor :characters_to_ignore
+      
+        # Character to mask the sensitive values&mdash;for example, "*" for an
+        # alphabetic string such as name, or "0" for a numeric string such as ZIP
+        # code or credit card number. String must have length 1. If not supplied, we
+        # will default to "*" for strings, 0 for digits.
+        # Corresponds to the JSON property `maskingCharacter`
+        # @return [String]
+        attr_accessor :masking_character
+      
+        # Number of characters to mask. If not set, all matching chars will be
+        # masked. Skipped characters do not count towards this tally.
+        # Corresponds to the JSON property `numberToMask`
+        # @return [Fixnum]
+        attr_accessor :number_to_mask
+      
+        # Mask characters in reverse order. For example, if `masking_character` is
+        # '0', number_to_mask is 14, and `reverse_order` is false, then
+        # 1234-5678-9012-3456 -> 00000000000000-3456
+        # If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`
+        # is true, then 12345 -> 12***
+        # Corresponds to the JSON property `reverseOrder`
+        # @return [Boolean]
+        attr_accessor :reverse_order
+        alias_method :reverse_order?, :reverse_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @characters_to_ignore = args[:characters_to_ignore] if args.key?(:characters_to_ignore)
+          @masking_character = args[:masking_character] if args.key?(:masking_character)
+          @number_to_mask = args[:number_to_mask] if args.key?(:number_to_mask)
+          @reverse_order = args[:reverse_order] if args.key?(:reverse_order)
+        end
+      end
+      
+      # Characters to skip when doing deidentification of a value. These will be left
+      # alone and skipped.
+      class GooglePrivacyDlpV2beta1CharsToIgnore
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `charactersToSkip`
+        # @return [String]
+        attr_accessor :characters_to_skip
+      
+        # 
+        # Corresponds to the JSON property `commonCharactersToIgnore`
+        # @return [String]
+        attr_accessor :common_characters_to_ignore
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @characters_to_skip = args[:characters_to_skip] if args.key?(:characters_to_skip)
+          @common_characters_to_ignore = args[:common_characters_to_ignore] if args.key?(:common_characters_to_ignore)
         end
       end
       
@@ -333,6 +576,70 @@ module Google
         end
       end
       
+      # The field type of `value` and `field` do not need to match to be
+      # considered equal, but not all comparisons are possible.
+      # A `value` of type:
+      # - `string` can be compared against all other types
+      # - `boolean` can only be compared against other booleans
+      # - `integer` can be compared against doubles or a string if the string value
+      # can be parsed as an integer.
+      # - `double` can be compared against integers or a string if the string can
+      # be parsed as a double.
+      # - `Timestamp` can be compared against strings in RFC 3339 date string
+      # format.
+      # - `TimeOfDay` can be compared against timestamps and strings in the format
+      # of 'HH:mm:ss'.
+      # If we fail to compare do to type mismatch, a warning will be given and
+      # the condition will evaluate to false.
+      class GooglePrivacyDlpV2beta1Condition
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        # Operator used to compare the field or info type to the value. [required]
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @operator = args[:operator] if args.key?(:operator)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class GooglePrivacyDlpV2beta1Conditions
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Condition>]
+        attr_accessor :conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+        end
+      end
+      
       # Container structure for the content to inspect.
       class GooglePrivacyDlpV2beta1ContentItem
         include Google::Apis::Core::Hashable
@@ -413,6 +720,133 @@ module Google
         end
       end
       
+      # Pseudonymization method that generates surrogates via cryptographic hashing.
+      # Uses SHA-256.
+      # The key size must be either 32 or 64 bytes.
+      # Outputs a 32 byte digest as an uppercase hex string
+      # (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).
+      # Currently, only string and integer values can be hashed.
+      class GooglePrivacyDlpV2beta1CryptoHashConfig
+        include Google::Apis::Core::Hashable
+      
+        # This is a data encryption key (DEK) (as opposed to
+        # a key encryption key (KEK) stored by KMS).
+        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
+        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # unwrap the data crypto key.
+        # Corresponds to the JSON property `cryptoKey`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoKey]
+        attr_accessor :crypto_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+        end
+      end
+      
+      # This is a data encryption key (DEK) (as opposed to
+      # a key encryption key (KEK) stored by KMS).
+      # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
+      # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+      # unwrap the data crypto key.
+      class GooglePrivacyDlpV2beta1CryptoKey
+        include Google::Apis::Core::Hashable
+      
+        # Include to use an existing data crypto key wrapped by KMS.
+        # Authorization requires the following IAM permissions when sending a request
+        # to perform a crypto transformation using a kms-wrapped crypto key:
+        # dlp.kms.encrypt
+        # Corresponds to the JSON property `kmsWrapped`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KmsWrappedCryptoKey]
+        attr_accessor :kms_wrapped
+      
+        # Use this to have a random data crypto key generated.
+        # It will be discarded after the operation/request finishes.
+        # Corresponds to the JSON property `transient`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TransientCryptoKey]
+        attr_accessor :transient
+      
+        # Using raw keys is prone to security risks due to accidentally
+        # leaking the key. Choose another type of key if possible.
+        # Corresponds to the JSON property `unwrapped`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1UnwrappedCryptoKey]
+        attr_accessor :unwrapped
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_wrapped = args[:kms_wrapped] if args.key?(:kms_wrapped)
+          @transient = args[:transient] if args.key?(:transient)
+          @unwrapped = args[:unwrapped] if args.key?(:unwrapped)
+        end
+      end
+      
+      # Replaces an identifier with an surrogate using FPE with the FFX
+      # mode of operation.
+      # The identifier must be encoded as ASCII.
+      # For a given crypto key and context, the same identifier will be
+      # replaced with the same surrogate.
+      # Note that a given identifier must be either the empty string or be at
+      # least two characters long.
+      class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `commonAlphabet`
+        # @return [String]
+        attr_accessor :common_alphabet
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :context
+      
+        # This is a data encryption key (DEK) (as opposed to
+        # a key encryption key (KEK) stored by KMS).
+        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
+        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # unwrap the data crypto key.
+        # Corresponds to the JSON property `cryptoKey`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoKey]
+        attr_accessor :crypto_key
+      
+        # This is supported by mapping these to the alphanumeric characters
+        # that the FFX mode natively supports. This happens before/after
+        # encryption/decryption.
+        # Each character listed must appear only once.
+        # Number of characters must be in the range [2, 62].
+        # This must be encoded as ASCII.
+        # The order of characters does not matter.
+        # Corresponds to the JSON property `customAlphabet`
+        # @return [String]
+        attr_accessor :custom_alphabet
+      
+        # The native way to select the alphabet. Must be in the range [2, 62].
+        # Corresponds to the JSON property `radix`
+        # @return [Fixnum]
+        attr_accessor :radix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_alphabet = args[:common_alphabet] if args.key?(:common_alphabet)
+          @context = args[:context] if args.key?(:context)
+          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @custom_alphabet = args[:custom_alphabet] if args.key?(:custom_alphabet)
+          @radix = args[:radix] if args.key?(:radix)
+        end
+      end
+      
       # Record key for a finding in Cloud Datastore.
       class GooglePrivacyDlpV2beta1DatastoreKey
         include Google::Apis::Core::Hashable
@@ -471,6 +905,168 @@ module Google
         end
       end
       
+      # High level summary of deidentification.
+      class GooglePrivacyDlpV2beta1DeidentificationSummary
+        include Google::Apis::Core::Hashable
+      
+        # Transformations applied to the dataset.
+        # Corresponds to the JSON property `transformationSummaries`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TransformationSummary>]
+        attr_accessor :transformation_summaries
+      
+        # Total size in bytes that were transformed in some way.
+        # Corresponds to the JSON property `transformedBytes`
+        # @return [Fixnum]
+        attr_accessor :transformed_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transformation_summaries = args[:transformation_summaries] if args.key?(:transformation_summaries)
+          @transformed_bytes = args[:transformed_bytes] if args.key?(:transformed_bytes)
+        end
+      end
+      
+      # The configuration that controls how the data will change.
+      class GooglePrivacyDlpV2beta1DeidentifyConfig
+        include Google::Apis::Core::Hashable
+      
+        # A type of transformation that will scan unstructured text and
+        # apply various `PrimitiveTransformation`s to each finding, where the
+        # transformation is applied to only values that were identified as a specific
+        # info_type.
+        # Corresponds to the JSON property `infoTypeTransformations`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeTransformations]
+        attr_accessor :info_type_transformations
+      
+        # A type of transformation that is applied over structured data such as a
+        # table.
+        # Corresponds to the JSON property `recordTransformations`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordTransformations]
+        attr_accessor :record_transformations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_type_transformations = args[:info_type_transformations] if args.key?(:info_type_transformations)
+          @record_transformations = args[:record_transformations] if args.key?(:record_transformations)
+        end
+      end
+      
+      # Request to de-identify a list of items.
+      class GooglePrivacyDlpV2beta1DeidentifyContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The configuration that controls how the data will change.
+        # Corresponds to the JSON property `deidentifyConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentifyConfig]
+        attr_accessor :deidentify_config
+      
+        # Configuration description of the scanning process.
+        # When used with redactContent only info_types and min_likelihood are currently
+        # used.
+        # Corresponds to the JSON property `inspectConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InspectConfig]
+        attr_accessor :inspect_config
+      
+        # The list of items to inspect. Up to 100 are allowed per request.
+        # All items will be treated as text/*.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ContentItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deidentify_config = args[:deidentify_config] if args.key?(:deidentify_config)
+          @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # Results of de-identifying a list of items.
+      class GooglePrivacyDlpV2beta1DeidentifyContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ContentItem>]
+        attr_accessor :items
+      
+        # A review of the transformations that took place for each item.
+        # Corresponds to the JSON property `summaries`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentificationSummary>]
+        attr_accessor :summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @summaries = args[:summaries] if args.key?(:summaries)
+        end
+      end
+      
+      # An entity in a dataset is a field or set of fields that correspond to a
+      # single person. For example, in medical records the `EntityId` might be
+      # a patient identifier, or for financial records it might be an account
+      # identifier. This message is used when generalizations or analysis must be
+      # consistent across multiple rows pertaining to the same entity.
+      class GooglePrivacyDlpV2beta1EntityId
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # A collection of expressions
+      class GooglePrivacyDlpV2beta1Expressions
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `conditions`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Conditions]
+        attr_accessor :conditions
+      
+        # The operator to apply to the result of conditions. Default and currently
+        # only supported value is `AND`.
+        # Corresponds to the JSON property `logicalOperator`
+        # @return [String]
+        attr_accessor :logical_operator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @logical_operator = args[:logical_operator] if args.key?(:logical_operator)
+        end
+      end
+      
       # General identifier of a data field in a storage service.
       class GooglePrivacyDlpV2beta1FieldId
         include Google::Apis::Core::Hashable
@@ -487,6 +1083,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column_name = args[:column_name] if args.key?(:column_name)
+        end
+      end
+      
+      # The transformation to apply to the field.
+      class GooglePrivacyDlpV2beta1FieldTransformation
+        include Google::Apis::Core::Hashable
+      
+        # A condition for determing whether a transformation should be applied to
+        # a field.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordCondition]
+        attr_accessor :condition
+      
+        # Input field(s) to apply the transformation to. [required]
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId>]
+        attr_accessor :fields
+      
+        # A type of transformation that will scan unstructured text and
+        # apply various `PrimitiveTransformation`s to each finding, where the
+        # transformation is applied to only values that were identified as a specific
+        # info_type.
+        # Corresponds to the JSON property `infoTypeTransformations`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeTransformations]
+        attr_accessor :info_type_transformations
+      
+        # A rule for transforming a value.
+        # Corresponds to the JSON property `primitiveTransformation`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrimitiveTransformation]
+        attr_accessor :primitive_transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @fields = args[:fields] if args.key?(:fields)
+          @info_type_transformations = args[:info_type_transformations] if args.key?(:info_type_transformations)
+          @primitive_transformation = args[:primitive_transformation] if args.key?(:primitive_transformation)
         end
       end
       
@@ -550,6 +1187,49 @@ module Google
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @location = args[:location] if args.key?(:location)
           @quote = args[:quote] if args.key?(:quote)
+        end
+      end
+      
+      # Buckets values based on fixed size ranges. The
+      # Bucketing transformation can provide all of this functionality,
+      # but requires more configuration. This message is provided as a convenience to
+      # the user for simple bucketing strategies.
+      # The resulting value will be a hyphenated string of
+      # lower_bound-upper_bound.
+      # This can be used on data of type: double, long.
+      # If the bound Value type differs from the type of data
+      # being transformed, we will first attempt converting the type of the data to
+      # be transformed to match the type of the bound before comparing.
+      class GooglePrivacyDlpV2beta1FixedSizeBucketingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Size of each bucket (except for minimum and maximum buckets). So if
+        # `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
+        # following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
+        # 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Float]
+        attr_accessor :bucket_size
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `lowerBound`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :lower_bound
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `upperBound`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
+          @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
         end
       end
       
@@ -721,6 +1401,56 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @info_type = args[:info_type] if args.key?(:info_type)
+        end
+      end
+      
+      # A transformation to apply to text that is identified as a specific
+      # info_type.
+      class GooglePrivacyDlpV2beta1InfoTypeTransformation
+        include Google::Apis::Core::Hashable
+      
+        # Info types to apply the transformation to. Empty list will match all
+        # available info types for this transformation.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType>]
+        attr_accessor :info_types
+      
+        # A rule for transforming a value.
+        # Corresponds to the JSON property `primitiveTransformation`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrimitiveTransformation]
+        attr_accessor :primitive_transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_types = args[:info_types] if args.key?(:info_types)
+          @primitive_transformation = args[:primitive_transformation] if args.key?(:primitive_transformation)
+        end
+      end
+      
+      # A type of transformation that will scan unstructured text and
+      # apply various `PrimitiveTransformation`s to each finding, where the
+      # transformation is applied to only values that were identified as a specific
+      # info_type.
+      class GooglePrivacyDlpV2beta1InfoTypeTransformations
+        include Google::Apis::Core::Hashable
+      
+        # Transformation for each info type. Cannot specify more than one
+        # for a given info type. [required]
+        # Corresponds to the JSON property `transformations`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeTransformation>]
+        attr_accessor :transformations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transformations = args[:transformations] if args.key?(:transformations)
         end
       end
       
@@ -938,6 +1668,124 @@ module Google
         end
       end
       
+      # k-anonymity metric, used for analysis of reidentification risk.
+      class GooglePrivacyDlpV2beta1KAnonymityConfig
+        include Google::Apis::Core::Hashable
+      
+        # An entity in a dataset is a field or set of fields that correspond to a
+        # single person. For example, in medical records the `EntityId` might be
+        # a patient identifier, or for financial records it might be an account
+        # identifier. This message is used when generalizations or analysis must be
+        # consistent across multiple rows pertaining to the same entity.
+        # Corresponds to the JSON property `entityId`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1EntityId]
+        attr_accessor :entity_id
+      
+        # Set of fields to compute k-anonymity over. When multiple fields are
+        # specified, they are considered a single composite key. Structs and
+        # repeated data types are not supported; however, nested fields are
+        # supported so long as they are not structs themselves or nested within
+        # a repeated field.
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId>]
+        attr_accessor :quasi_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+        end
+      end
+      
+      # The set of columns' values that share the same ldiversity value
+      class GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass
+        include Google::Apis::Core::Hashable
+      
+        # Size of the equivalence class, for example number of rows with the
+        # above set of values.
+        # Corresponds to the JSON property `equivalenceClassSize`
+        # @return [Fixnum]
+        attr_accessor :equivalence_class_size
+      
+        # Set of values defining the equivalence class. One value per
+        # quasi-identifier column in the original KAnonymity metric message.
+        # The order is always the same as the original request.
+        # Corresponds to the JSON property `quasiIdsValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value>]
+        attr_accessor :quasi_ids_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @equivalence_class_size = args[:equivalence_class_size] if args.key?(:equivalence_class_size)
+          @quasi_ids_values = args[:quasi_ids_values] if args.key?(:quasi_ids_values)
+        end
+      end
+      
+      # 
+      class GooglePrivacyDlpV2beta1KAnonymityHistogramBucket
+        include Google::Apis::Core::Hashable
+      
+        # Total number of records in this bucket.
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Fixnum]
+        attr_accessor :bucket_size
+      
+        # Sample of equivalence classes in this bucket. The total number of
+        # classes returned per bucket is capped at 20.
+        # Corresponds to the JSON property `bucketValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass>]
+        attr_accessor :bucket_values
+      
+        # Lower bound on the size of the equivalence classes in this bucket.
+        # Corresponds to the JSON property `equivalenceClassSizeLowerBound`
+        # @return [Fixnum]
+        attr_accessor :equivalence_class_size_lower_bound
+      
+        # Upper bound on the size of the equivalence classes in this bucket.
+        # Corresponds to the JSON property `equivalenceClassSizeUpperBound`
+        # @return [Fixnum]
+        attr_accessor :equivalence_class_size_upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
+          @equivalence_class_size_lower_bound = args[:equivalence_class_size_lower_bound] if args.key?(:equivalence_class_size_lower_bound)
+          @equivalence_class_size_upper_bound = args[:equivalence_class_size_upper_bound] if args.key?(:equivalence_class_size_upper_bound)
+        end
+      end
+      
+      # Result of the k-anonymity computation.
+      class GooglePrivacyDlpV2beta1KAnonymityResult
+        include Google::Apis::Core::Hashable
+      
+        # Histogram of k-anonymity equivalence classes.
+        # Corresponds to the JSON property `equivalenceClassHistogramBuckets`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityHistogramBucket>]
+        attr_accessor :equivalence_class_histogram_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @equivalence_class_histogram_buckets = args[:equivalence_class_histogram_buckets] if args.key?(:equivalence_class_histogram_buckets)
+        end
+      end
+      
       # A unique identifier for a Datastore entity.
       # If a key's partition ID or any of its path kinds or names are
       # reserved/read-only, the key is reserved/read-only.
@@ -993,6 +1841,159 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Include to use an existing data crypto key wrapped by KMS.
+      # Authorization requires the following IAM permissions when sending a request
+      # to perform a crypto transformation using a kms-wrapped crypto key:
+      # dlp.kms.encrypt
+      class GooglePrivacyDlpV2beta1KmsWrappedCryptoKey
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the KMS CryptoKey to use for unwrapping. [required]
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # The wrapped data crypto key. [required]
+        # Corresponds to the JSON property `wrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
+        end
+      end
+      
+      # l-diversity metric, used for analysis of reidentification risk.
+      class GooglePrivacyDlpV2beta1LDiversityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Set of quasi-identifiers indicating how equivalence classes are
+        # defined for the l-diversity computation. When multiple fields are
+        # specified, they are considered a single composite key.
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId>]
+        attr_accessor :quasi_ids
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `sensitiveAttribute`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :sensitive_attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @sensitive_attribute = args[:sensitive_attribute] if args.key?(:sensitive_attribute)
+        end
+      end
+      
+      # The set of columns' values that share the same ldiversity value.
+      class GooglePrivacyDlpV2beta1LDiversityEquivalenceClass
+        include Google::Apis::Core::Hashable
+      
+        # Size of the k-anonymity equivalence class.
+        # Corresponds to the JSON property `equivalenceClassSize`
+        # @return [Fixnum]
+        attr_accessor :equivalence_class_size
+      
+        # Number of distinct sensitive values in this equivalence class.
+        # Corresponds to the JSON property `numDistinctSensitiveValues`
+        # @return [Fixnum]
+        attr_accessor :num_distinct_sensitive_values
+      
+        # Quasi-identifier values defining the k-anonymity equivalence
+        # class. The order is always the same as the original request.
+        # Corresponds to the JSON property `quasiIdsValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value>]
+        attr_accessor :quasi_ids_values
+      
+        # Estimated frequencies of top sensitive values.
+        # Corresponds to the JSON property `topSensitiveValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ValueFrequency>]
+        attr_accessor :top_sensitive_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @equivalence_class_size = args[:equivalence_class_size] if args.key?(:equivalence_class_size)
+          @num_distinct_sensitive_values = args[:num_distinct_sensitive_values] if args.key?(:num_distinct_sensitive_values)
+          @quasi_ids_values = args[:quasi_ids_values] if args.key?(:quasi_ids_values)
+          @top_sensitive_values = args[:top_sensitive_values] if args.key?(:top_sensitive_values)
+        end
+      end
+      
+      # 
+      class GooglePrivacyDlpV2beta1LDiversityHistogramBucket
+        include Google::Apis::Core::Hashable
+      
+        # Total number of records in this bucket.
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Fixnum]
+        attr_accessor :bucket_size
+      
+        # Sample of equivalence classes in this bucket. The total number of
+        # classes returned per bucket is capped at 20.
+        # Corresponds to the JSON property `bucketValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityEquivalenceClass>]
+        attr_accessor :bucket_values
+      
+        # Lower bound on the sensitive value frequencies of the equivalence
+        # classes in this bucket.
+        # Corresponds to the JSON property `sensitiveValueFrequencyLowerBound`
+        # @return [Fixnum]
+        attr_accessor :sensitive_value_frequency_lower_bound
+      
+        # Upper bound on the sensitive value frequencies of the equivalence
+        # classes in this bucket.
+        # Corresponds to the JSON property `sensitiveValueFrequencyUpperBound`
+        # @return [Fixnum]
+        attr_accessor :sensitive_value_frequency_upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
+          @sensitive_value_frequency_lower_bound = args[:sensitive_value_frequency_lower_bound] if args.key?(:sensitive_value_frequency_lower_bound)
+          @sensitive_value_frequency_upper_bound = args[:sensitive_value_frequency_upper_bound] if args.key?(:sensitive_value_frequency_upper_bound)
+        end
+      end
+      
+      # Result of the l-diversity computation.
+      class GooglePrivacyDlpV2beta1LDiversityResult
+        include Google::Apis::Core::Hashable
+      
+        # Histogram of l-diversity equivalence class sensitive value frequencies.
+        # Corresponds to the JSON property `sensitiveValueFrequencyHistogramBuckets`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityHistogramBucket>]
+        attr_accessor :sensitive_value_frequency_histogram_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sensitive_value_frequency_histogram_buckets = args[:sensitive_value_frequency_histogram_buckets] if args.key?(:sensitive_value_frequency_histogram_buckets)
         end
       end
       
@@ -1106,6 +2107,58 @@ module Google
           @image_boxes = args[:image_boxes] if args.key?(:image_boxes)
           @record_key = args[:record_key] if args.key?(:record_key)
           @table_location = args[:table_location] if args.key?(:table_location)
+        end
+      end
+      
+      # Compute numerical stats over an individual column, including
+      # min, max, and quantiles.
+      class GooglePrivacyDlpV2beta1NumericalStatsConfig
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Result of the numerical stats computation.
+      class GooglePrivacyDlpV2beta1NumericalStatsResult
+        include Google::Apis::Core::Hashable
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :max_value
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `minValue`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :min_value
+      
+        # List of 99 values that partition the set of field values into 100 equal
+        # sized buckets.
+        # Corresponds to the JSON property `quantileValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value>]
+        attr_accessor :quantile_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @quantile_values = args[:quantile_values] if args.key?(:quantile_values)
         end
       end
       
@@ -1227,6 +2280,147 @@ module Google
         end
       end
       
+      # A rule for transforming a value.
+      class GooglePrivacyDlpV2beta1PrimitiveTransformation
+        include Google::Apis::Core::Hashable
+      
+        # Generalization function that buckets values based on ranges. The ranges and
+        # replacement values are dynamically provided by the user for custom behavior,
+        # such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH
+        # This can be used on
+        # data of type: number, long, string, timestamp.
+        # If the bound `Value` type differs from the type of data being transformed, we
+        # will first attempt converting the type of the data to be transformed to match
+        # the type of the bound before comparing.
+        # Corresponds to the JSON property `bucketingConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BucketingConfig]
+        attr_accessor :bucketing_config
+      
+        # Partially mask a string by replacing a given number of characters with a
+        # fixed character. Masking can start from the beginning or end of the string.
+        # This can be used on data of any type (numbers, longs, and so on) and when
+        # de-identifying structured data we'll attempt to preserve the original data's
+        # type. (This allows you to take a long like 123 and modify it to a string like
+        # **3.
+        # Corresponds to the JSON property `characterMaskConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CharacterMaskConfig]
+        attr_accessor :character_mask_config
+      
+        # Pseudonymization method that generates surrogates via cryptographic hashing.
+        # Uses SHA-256.
+        # The key size must be either 32 or 64 bytes.
+        # Outputs a 32 byte digest as an uppercase hex string
+        # (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).
+        # Currently, only string and integer values can be hashed.
+        # Corresponds to the JSON property `cryptoHashConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoHashConfig]
+        attr_accessor :crypto_hash_config
+      
+        # Replaces an identifier with an surrogate using FPE with the FFX
+        # mode of operation.
+        # The identifier must be encoded as ASCII.
+        # For a given crypto key and context, the same identifier will be
+        # replaced with the same surrogate.
+        # Note that a given identifier must be either the empty string or be at
+        # least two characters long.
+        # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig]
+        attr_accessor :crypto_replace_ffx_fpe_config
+      
+        # Buckets values based on fixed size ranges. The
+        # Bucketing transformation can provide all of this functionality,
+        # but requires more configuration. This message is provided as a convenience to
+        # the user for simple bucketing strategies.
+        # The resulting value will be a hyphenated string of
+        # lower_bound-upper_bound.
+        # This can be used on data of type: double, long.
+        # If the bound Value type differs from the type of data
+        # being transformed, we will first attempt converting the type of the data to
+        # be transformed to match the type of the bound before comparing.
+        # Corresponds to the JSON property `fixedSizeBucketingConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FixedSizeBucketingConfig]
+        attr_accessor :fixed_size_bucketing_config
+      
+        # Redact a given value. For example, if used with an `InfoTypeTransformation`
+        # transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the
+        # output would be 'My phone number is '.
+        # Corresponds to the JSON property `redactConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RedactConfig]
+        attr_accessor :redact_config
+      
+        # Replace each input value with a given `Value`.
+        # Corresponds to the JSON property `replaceConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ReplaceValueConfig]
+        attr_accessor :replace_config
+      
+        # Replace each matching finding with the name of the info_type.
+        # Corresponds to the JSON property `replaceWithInfoTypeConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig]
+        attr_accessor :replace_with_info_type_config
+      
+        # For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
+        # portion of the value.
+        # Corresponds to the JSON property `timePartConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TimePartConfig]
+        attr_accessor :time_part_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucketing_config = args[:bucketing_config] if args.key?(:bucketing_config)
+          @character_mask_config = args[:character_mask_config] if args.key?(:character_mask_config)
+          @crypto_hash_config = args[:crypto_hash_config] if args.key?(:crypto_hash_config)
+          @crypto_replace_ffx_fpe_config = args[:crypto_replace_ffx_fpe_config] if args.key?(:crypto_replace_ffx_fpe_config)
+          @fixed_size_bucketing_config = args[:fixed_size_bucketing_config] if args.key?(:fixed_size_bucketing_config)
+          @redact_config = args[:redact_config] if args.key?(:redact_config)
+          @replace_config = args[:replace_config] if args.key?(:replace_config)
+          @replace_with_info_type_config = args[:replace_with_info_type_config] if args.key?(:replace_with_info_type_config)
+          @time_part_config = args[:time_part_config] if args.key?(:time_part_config)
+        end
+      end
+      
+      # Privacy metric to compute for reidentification risk analysis.
+      class GooglePrivacyDlpV2beta1PrivacyMetric
+        include Google::Apis::Core::Hashable
+      
+        # Compute numerical stats over an individual column, including
+        # number of distinct values and value count distribution.
+        # Corresponds to the JSON property `categoricalStatsConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CategoricalStatsConfig]
+        attr_accessor :categorical_stats_config
+      
+        # k-anonymity metric, used for analysis of reidentification risk.
+        # Corresponds to the JSON property `kAnonymityConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityConfig]
+        attr_accessor :k_anonymity_config
+      
+        # l-diversity metric, used for analysis of reidentification risk.
+        # Corresponds to the JSON property `lDiversityConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityConfig]
+        attr_accessor :l_diversity_config
+      
+        # Compute numerical stats over an individual column, including
+        # min, max, and quantiles.
+        # Corresponds to the JSON property `numericalStatsConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1NumericalStatsConfig]
+        attr_accessor :numerical_stats_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categorical_stats_config = args[:categorical_stats_config] if args.key?(:categorical_stats_config)
+          @k_anonymity_config = args[:k_anonymity_config] if args.key?(:k_anonymity_config)
+          @l_diversity_config = args[:l_diversity_config] if args.key?(:l_diversity_config)
+          @numerical_stats_config = args[:numerical_stats_config] if args.key?(:numerical_stats_config)
+        end
+      end
+      
       # A representation of a Datastore property in a projection.
       class GooglePrivacyDlpV2beta1Projection
         include Google::Apis::Core::Hashable
@@ -1291,6 +2485,26 @@ module Google
         end
       end
       
+      # A condition for determing whether a transformation should be applied to
+      # a field.
+      class GooglePrivacyDlpV2beta1RecordCondition
+        include Google::Apis::Core::Hashable
+      
+        # A collection of expressions
+        # Corresponds to the JSON property `expressions`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Expressions]
+        attr_accessor :expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions = args[:expressions] if args.key?(:expressions)
+        end
+      end
+      
       # Message for a unique key indicating a record that contains a finding.
       class GooglePrivacyDlpV2beta1RecordKey
         include Google::Apis::Core::Hashable
@@ -1313,6 +2527,69 @@ module Google
         def update!(**args)
           @cloud_storage_key = args[:cloud_storage_key] if args.key?(:cloud_storage_key)
           @datastore_key = args[:datastore_key] if args.key?(:datastore_key)
+        end
+      end
+      
+      # Configuration to suppress records whose suppression conditions evaluate to
+      # true.
+      class GooglePrivacyDlpV2beta1RecordSuppression
+        include Google::Apis::Core::Hashable
+      
+        # A condition for determing whether a transformation should be applied to
+        # a field.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordCondition]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # A type of transformation that is applied over structured data such as a
+      # table.
+      class GooglePrivacyDlpV2beta1RecordTransformations
+        include Google::Apis::Core::Hashable
+      
+        # Transform the record by applying various field transformations.
+        # Corresponds to the JSON property `fieldTransformations`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldTransformation>]
+        attr_accessor :field_transformations
+      
+        # Configuration defining which records get suppressed entirely. Records that
+        # match any suppression rule are omitted from the output [optional].
+        # Corresponds to the JSON property `recordSuppressions`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordSuppression>]
+        attr_accessor :record_suppressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_transformations = args[:field_transformations] if args.key?(:field_transformations)
+          @record_suppressions = args[:record_suppressions] if args.key?(:record_suppressions)
+        end
+      end
+      
+      # Redact a given value. For example, if used with an `InfoTypeTransformation`
+      # transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the
+      # output would be 'My phone number is '.
+      class GooglePrivacyDlpV2beta1RedactConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1401,6 +2678,110 @@ module Google
         end
       end
       
+      # Replace each input value with a given `Value`.
+      class GooglePrivacyDlpV2beta1ReplaceValueConfig
+        include Google::Apis::Core::Hashable
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `newValue`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :new_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_value = args[:new_value] if args.key?(:new_value)
+        end
+      end
+      
+      # Replace each matching finding with the name of the info_type.
+      class GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata returned within GetOperation for risk analysis.
+      class GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time which this request was started.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Privacy metric to compute for reidentification risk analysis.
+        # Corresponds to the JSON property `requestedPrivacyMetric`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrivacyMetric]
+        attr_accessor :requested_privacy_metric
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `requestedSourceTable`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable]
+        attr_accessor :requested_source_table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @requested_privacy_metric = args[:requested_privacy_metric] if args.key?(:requested_privacy_metric)
+          @requested_source_table = args[:requested_source_table] if args.key?(:requested_source_table)
+        end
+      end
+      
+      # Result of a risk analysis operation request.
+      class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult
+        include Google::Apis::Core::Hashable
+      
+        # Result of the categorical stats computation.
+        # Corresponds to the JSON property `categoricalStatsResult`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CategoricalStatsResult]
+        attr_accessor :categorical_stats_result
+      
+        # Result of the k-anonymity computation.
+        # Corresponds to the JSON property `kAnonymityResult`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityResult]
+        attr_accessor :k_anonymity_result
+      
+        # Result of the l-diversity computation.
+        # Corresponds to the JSON property `lDiversityResult`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityResult]
+        attr_accessor :l_diversity_result
+      
+        # Result of the numerical stats computation.
+        # Corresponds to the JSON property `numericalStatsResult`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1NumericalStatsResult]
+        attr_accessor :numerical_stats_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categorical_stats_result = args[:categorical_stats_result] if args.key?(:categorical_stats_result)
+          @k_anonymity_result = args[:k_anonymity_result] if args.key?(:k_anonymity_result)
+          @l_diversity_result = args[:l_diversity_result] if args.key?(:l_diversity_result)
+          @numerical_stats_result = args[:numerical_stats_result] if args.key?(:numerical_stats_result)
+        end
+      end
+      
       # 
       class GooglePrivacyDlpV2beta1Row
         include Google::Apis::Core::Hashable
@@ -1452,6 +2833,39 @@ module Google
         end
       end
       
+      # A collection that informs the user the number of times a particular
+      # `TransformationResultCode` and error details occurred.
+      class GooglePrivacyDlpV2beta1SummaryResult
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # 
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # A place for warnings or errors to show up if a transformation didn't
+        # work as expected.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @count = args[:count] if args.key?(:count)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
       # Structured content to inspect. Up to 50,000 `Value`s per request allowed.
       class GooglePrivacyDlpV2beta1Table
         include Google::Apis::Core::Hashable
@@ -1493,6 +2907,123 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_index = args[:row_index] if args.key?(:row_index)
+        end
+      end
+      
+      # For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
+      # portion of the value.
+      class GooglePrivacyDlpV2beta1TimePartConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `partToExtract`
+        # @return [String]
+        attr_accessor :part_to_extract
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @part_to_extract = args[:part_to_extract] if args.key?(:part_to_extract)
+        end
+      end
+      
+      # Summary of a single tranformation.
+      class GooglePrivacyDlpV2beta1TransformationSummary
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        # The field transformation that was applied. This list will contain
+        # multiple only in the case of errors.
+        # Corresponds to the JSON property `fieldTransformations`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldTransformation>]
+        attr_accessor :field_transformations
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
+        attr_accessor :info_type
+      
+        # Configuration to suppress records whose suppression conditions evaluate to
+        # true.
+        # Corresponds to the JSON property `recordSuppress`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordSuppression]
+        attr_accessor :record_suppress
+      
+        # 
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1SummaryResult>]
+        attr_accessor :results
+      
+        # A rule for transforming a value.
+        # Corresponds to the JSON property `transformation`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrimitiveTransformation]
+        attr_accessor :transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @field_transformations = args[:field_transformations] if args.key?(:field_transformations)
+          @info_type = args[:info_type] if args.key?(:info_type)
+          @record_suppress = args[:record_suppress] if args.key?(:record_suppress)
+          @results = args[:results] if args.key?(:results)
+          @transformation = args[:transformation] if args.key?(:transformation)
+        end
+      end
+      
+      # Use this to have a random data crypto key generated.
+      # It will be discarded after the operation/request finishes.
+      class GooglePrivacyDlpV2beta1TransientCryptoKey
+        include Google::Apis::Core::Hashable
+      
+        # Name of the key. [required]
+        # This is an arbitrary string used to differentiate different keys.
+        # A unique key is generated per name: two separate `TransientCryptoKey`
+        # protos share the same generated key if their names are the same.
+        # When the data crypto key is generated, this name is not used in any way
+        # (repeating the api call will result in a different key being generated).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Using raw keys is prone to security risks due to accidentally
+      # leaking the key. Choose another type of key if possible.
+      class GooglePrivacyDlpV2beta1UnwrappedCryptoKey
+        include Google::Apis::Core::Hashable
+      
+        # The AES 128/192/256 bit key. [required]
+        # Corresponds to the JSON property `key`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -1557,6 +3088,31 @@ module Google
           @string_value = args[:string_value] if args.key?(:string_value)
           @time_value = args[:time_value] if args.key?(:time_value)
           @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+        end
+      end
+      
+      # A value of a field, including its frequency.
+      class GooglePrivacyDlpV2beta1ValueFrequency
+        include Google::Apis::Core::Hashable
+      
+        # How many times the value is contained in the field.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Set of primitive values supported by the system.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
