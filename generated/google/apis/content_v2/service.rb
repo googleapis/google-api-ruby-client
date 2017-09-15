@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'content/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/content/v2'
         end
         
         # Returns information about the authenticated user.

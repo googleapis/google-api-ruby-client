@@ -525,7 +525,7 @@ module Google
         attr_accessor :address
       
         # The number of seconds to wait for a response from a request.  The default
-        # deadline for gRPC and HTTP requests is 5 seconds.
+        # deadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds.
         # Corresponds to the JSON property `deadline`
         # @return [Float]
         attr_accessor :deadline

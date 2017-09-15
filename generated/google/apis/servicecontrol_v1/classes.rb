@@ -1064,11 +1064,10 @@ module Google
         # @return [String]
         attr_accessor :resource_container
       
-        # DO NOT USE.
-        # This field is not ready for use yet.
-        # Corresponds to the JSON property `resourceContainers`
-        # @return [Array<String>]
-        attr_accessor :resource_containers
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ServicecontrolV1::ResourceInfo>]
+        attr_accessor :resources
       
         # Required. Start time of the operation.
         # Corresponds to the JSON property `startTime`
@@ -1097,7 +1096,7 @@ module Google
           @operation_name = args[:operation_name] if args.key?(:operation_name)
           @quota_properties = args[:quota_properties] if args.key?(:quota_properties)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
-          @resource_containers = args[:resource_containers] if args.key?(:resource_containers)
+          @resources = args[:resources] if args.key?(:resources)
           @start_time = args[:start_time] if args.key?(:start_time)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
@@ -1579,6 +1578,36 @@ module Google
         def update!(**args)
           @caller_ip = args[:caller_ip] if args.key?(:caller_ip)
           @caller_supplied_user_agent = args[:caller_supplied_user_agent] if args.key?(:caller_supplied_user_agent)
+        end
+      end
+      
+      # DO NOT USE.
+      # This definition is not ready for use yet.
+      class ResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the parent of this resource instance.
+        # Must be in one of the following formats:
+        # - “projects/<project-id or project-number>”
+        # - “folders/<folder-id>”
+        # - “organizations/<organization-id>”
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # Name of the resource. This is used for auditing purposes.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       

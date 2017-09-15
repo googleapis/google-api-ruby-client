@@ -106,6 +106,11 @@ module Google
         # @return [Google::Apis::CloudfunctionsV1beta2::HttpsTrigger]
         attr_accessor :https_trigger
       
+        # Labels associated with this Cloud Function.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Output only. Name of the most recent operation modifying the function. If
         # the function status is `DEPLOYING` or `DELETING`, then it points to the
         # active operation.
@@ -169,6 +174,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only.
+        # The version identifier of the Cloud Function. Each deployment attempt
+        # results in a new version of a function being created.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -179,6 +191,7 @@ module Google
           @entry_point = args[:entry_point] if args.key?(:entry_point)
           @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
           @https_trigger = args[:https_trigger] if args.key?(:https_trigger)
+          @labels = args[:labels] if args.key?(:labels)
           @latest_operation = args[:latest_operation] if args.key?(:latest_operation)
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -188,6 +201,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @timeout = args[:timeout] if args.key?(:timeout)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
@@ -223,6 +237,14 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # The hostname of the service that should be observed.
+        # If no string is provided, the default service implementing the API will
+        # be used. For example, `storage.googleapis.com` is the default for all
+        # event types in the 'google.storage` namespace.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
         def initialize(**args)
            update!(**args)
         end
@@ -232,6 +254,7 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
           @resource = args[:resource] if args.key?(:resource)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -513,6 +536,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Version id of the function created or updated by an API call.
+        # This field is only pupulated for Create and Update operations.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -522,6 +551,7 @@ module Google
           @request = args[:request] if args.key?(:request)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       

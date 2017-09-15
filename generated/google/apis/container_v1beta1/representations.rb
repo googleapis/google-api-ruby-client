@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeTaint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -498,10 +504,13 @@ module Google
           property :local_ssd_count, as: 'localSsdCount'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
           property :service_account, as: 'serviceAccount'
           collection :tags, as: 'tags'
+          collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
+      
         end
       end
       
@@ -540,6 +549,15 @@ module Google
           property :enabled, as: 'enabled'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class NodeTaint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effect, as: 'effect'
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       

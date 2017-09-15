@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'tasks/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/tasks/v1'
         end
         
         # Deletes the authenticated user's specified task list.

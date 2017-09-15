@@ -547,6 +547,7 @@ module Google
           property :local_ssd_count, as: 'localSsdCount'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
           property :service_account, as: 'serviceAccount'

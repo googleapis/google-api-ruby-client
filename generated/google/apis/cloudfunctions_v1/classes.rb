@@ -229,6 +229,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Version id of the function created or updated by an API call.
+        # This field is only pupulated for Create and Update operations.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -238,6 +244,7 @@ module Google
           @request = args[:request] if args.key?(:request)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       

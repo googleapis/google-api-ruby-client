@@ -12179,6 +12179,7 @@
 "/cloudfunctions:v1/OperationMetadataV1Beta2/request/request": request
 "/cloudfunctions:v1/OperationMetadataV1Beta2/target": target
 "/cloudfunctions:v1/OperationMetadataV1Beta2/type": type
+"/cloudfunctions:v1/OperationMetadataV1Beta2/versionId": version_id
 "/cloudfunctions:v1/Status": status
 "/cloudfunctions:v1/Status/code": code
 "/cloudfunctions:v1/Status/details": details
@@ -12211,6 +12212,8 @@
 "/cloudfunctions:v1beta2/CloudFunction/entryPoint": entry_point
 "/cloudfunctions:v1beta2/CloudFunction/eventTrigger": event_trigger
 "/cloudfunctions:v1beta2/CloudFunction/httpsTrigger": https_trigger
+"/cloudfunctions:v1beta2/CloudFunction/labels": labels
+"/cloudfunctions:v1beta2/CloudFunction/labels/label": label
 "/cloudfunctions:v1beta2/CloudFunction/latestOperation": latest_operation
 "/cloudfunctions:v1beta2/CloudFunction/name": name
 "/cloudfunctions:v1beta2/CloudFunction/serviceAccount": service_account
@@ -12220,10 +12223,12 @@
 "/cloudfunctions:v1beta2/CloudFunction/status": status
 "/cloudfunctions:v1beta2/CloudFunction/timeout": timeout
 "/cloudfunctions:v1beta2/CloudFunction/updateTime": update_time
+"/cloudfunctions:v1beta2/CloudFunction/versionId": version_id
 "/cloudfunctions:v1beta2/EventTrigger": event_trigger
 "/cloudfunctions:v1beta2/EventTrigger/eventType": event_type
 "/cloudfunctions:v1beta2/EventTrigger/failurePolicy": failure_policy
 "/cloudfunctions:v1beta2/EventTrigger/resource": resource
+"/cloudfunctions:v1beta2/EventTrigger/service": service
 "/cloudfunctions:v1beta2/FailurePolicy": failure_policy
 "/cloudfunctions:v1beta2/FailurePolicy/retry": retry
 "/cloudfunctions:v1beta2/HTTPSTrigger": https_trigger
@@ -12260,6 +12265,7 @@
 "/cloudfunctions:v1beta2/OperationMetadataV1Beta2/request/request": request
 "/cloudfunctions:v1beta2/OperationMetadataV1Beta2/target": target
 "/cloudfunctions:v1beta2/OperationMetadataV1Beta2/type": type
+"/cloudfunctions:v1beta2/OperationMetadataV1Beta2/versionId": version_id
 "/cloudfunctions:v1beta2/Retry": retry
 "/cloudfunctions:v1beta2/SourceRepository": source_repository
 "/cloudfunctions:v1beta2/SourceRepository/branch": branch
@@ -26843,6 +26849,7 @@
 "/container:v1/NodeConfig/machineType": machine_type
 "/container:v1/NodeConfig/metadata": metadata
 "/container:v1/NodeConfig/metadata/metadatum": metadatum
+"/container:v1/NodeConfig/minCpuPlatform": min_cpu_platform
 "/container:v1/NodeConfig/oauthScopes": oauth_scopes
 "/container:v1/NodeConfig/oauthScopes/oauth_scope": oauth_scope
 "/container:v1/NodeConfig/preemptible": preemptible
@@ -27189,12 +27196,15 @@
 "/container:v1beta1/NodeConfig/machineType": machine_type
 "/container:v1beta1/NodeConfig/metadata": metadata
 "/container:v1beta1/NodeConfig/metadata/metadatum": metadatum
+"/container:v1beta1/NodeConfig/minCpuPlatform": min_cpu_platform
 "/container:v1beta1/NodeConfig/oauthScopes": oauth_scopes
 "/container:v1beta1/NodeConfig/oauthScopes/oauth_scope": oauth_scope
 "/container:v1beta1/NodeConfig/preemptible": preemptible
 "/container:v1beta1/NodeConfig/serviceAccount": service_account
 "/container:v1beta1/NodeConfig/tags": tags
 "/container:v1beta1/NodeConfig/tags/tag": tag
+"/container:v1beta1/NodeConfig/taints": taints
+"/container:v1beta1/NodeConfig/taints/taint": taint_prop
 "/container:v1beta1/NodeManagement": node_management
 "/container:v1beta1/NodeManagement/autoRepair": auto_repair
 "/container:v1beta1/NodeManagement/autoUpgrade": auto_upgrade
@@ -27215,6 +27225,10 @@
 "/container:v1beta1/NodePoolAutoscaling/enabled": enabled
 "/container:v1beta1/NodePoolAutoscaling/maxNodeCount": max_node_count
 "/container:v1beta1/NodePoolAutoscaling/minNodeCount": min_node_count
+"/container:v1beta1/NodeTaint": node_taint
+"/container:v1beta1/NodeTaint/effect": effect
+"/container:v1beta1/NodeTaint/key": key
+"/container:v1beta1/NodeTaint/value": value
 "/container:v1beta1/Operation": operation
 "/container:v1beta1/Operation/detail": detail
 "/container:v1beta1/Operation/endTime": end_time
@@ -50517,6 +50531,8 @@
 "/servicecontrol:v1/Operation/resourceContainer": resource_container
 "/servicecontrol:v1/Operation/resourceContainers": resource_containers
 "/servicecontrol:v1/Operation/resourceContainers/resource_container": resource_container
+"/servicecontrol:v1/Operation/resources": resources
+"/servicecontrol:v1/Operation/resources/resource": resource
 "/servicecontrol:v1/Operation/startTime": start_time
 "/servicecontrol:v1/Operation/userLabels": user_labels
 "/servicecontrol:v1/Operation/userLabels/user_label": user_label
@@ -50573,6 +50589,9 @@
 "/servicecontrol:v1/RequestMetadata": request_metadata
 "/servicecontrol:v1/RequestMetadata/callerIp": caller_ip
 "/servicecontrol:v1/RequestMetadata/callerSuppliedUserAgent": caller_supplied_user_agent
+"/servicecontrol:v1/ResourceInfo": resource_info
+"/servicecontrol:v1/ResourceInfo/resourceContainer": resource_container
+"/servicecontrol:v1/ResourceInfo/resourceName": resource_name
 "/servicecontrol:v1/StartReconciliationRequest": start_reconciliation_request
 "/servicecontrol:v1/StartReconciliationRequest/reconciliationOperation": reconciliation_operation
 "/servicecontrol:v1/StartReconciliationRequest/serviceConfigId": service_config_id

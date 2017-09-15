@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'civicinfo/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/civicinfo/v2'
         end
         
         # Searches for political divisions by their natural name or OCD ID.

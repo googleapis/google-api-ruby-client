@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartReconciliationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -471,7 +477,8 @@ module Google
           property :quota_properties, as: 'quotaProperties', class: Google::Apis::ServicecontrolV1::QuotaProperties, decorator: Google::Apis::ServicecontrolV1::QuotaProperties::Representation
       
           property :resource_container, as: 'resourceContainer'
-          collection :resource_containers, as: 'resourceContainers'
+          collection :resources, as: 'resources', class: Google::Apis::ServicecontrolV1::ResourceInfo, decorator: Google::Apis::ServicecontrolV1::ResourceInfo::Representation
+      
           property :start_time, as: 'startTime'
           hash :user_labels, as: 'userLabels'
         end
@@ -581,6 +588,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :caller_ip, as: 'callerIp'
           property :caller_supplied_user_agent, as: 'callerSuppliedUserAgent'
+        end
+      end
+      
+      class ResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_container, as: 'resourceContainer'
+          property :resource_name, as: 'resourceName'
         end
       end
       

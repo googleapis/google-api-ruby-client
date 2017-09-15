@@ -1173,6 +1173,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Minimum cpu/platform to be used by this instance. The instance may be
+        # scheduled on the specified or newer cpu/platform. Applicable values are the
+        # friendly names of CPU platforms, such as
+        # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
+        # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
+        # information, read <a href="/compute/docs/instances/specify-min-cpu-platform">
+        # Specifying a Minimum CPU Platform</a>.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # The set of Google API scopes to be made available on all of the
         # node VMs under the "default" service account.
         # The following scopes are recommended, but not required, and by default are
@@ -1210,6 +1221,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # List of kubernetes taints to be applied to each node.
+        # For more information, including usage and the valid values, see:
+        # https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+        # Corresponds to the JSON property `taints`
+        # @return [Array<Google::Apis::ContainerV1beta1::NodeTaint>]
+        attr_accessor :taints
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1223,10 +1241,12 @@ module Google
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @service_account = args[:service_account] if args.key?(:service_account)
           @tags = args[:tags] if args.key?(:tags)
+          @taints = args[:taints] if args.key?(:taints)
         end
       end
       
@@ -1383,6 +1403,40 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # Kubernetes taint is comprised of three fields: key, value, and effect. Effect
+      # can only be one of three types:  NoSchedule, PreferNoSchedule or NoExecute.
+      # For more information, including usage and the valid values, see:
+      # https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+      class NodeTaint
+        include Google::Apis::Core::Hashable
+      
+        # Effect for taint.
+        # Corresponds to the JSON property `effect`
+        # @return [String]
+        attr_accessor :effect
+      
+        # Key for taint.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value for taint.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effect = args[:effect] if args.key?(:effect)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

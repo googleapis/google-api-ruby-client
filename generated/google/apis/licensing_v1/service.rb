@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'apps/licensing/v1/product/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/licensing/v1'
         end
         
         # Revoke License.

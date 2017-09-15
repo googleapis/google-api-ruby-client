@@ -104,6 +104,7 @@ module Google
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'
+          property :version_id, :numeric_string => true, as: 'versionId'
         end
       end
       

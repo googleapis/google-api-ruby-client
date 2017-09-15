@@ -217,60 +217,6 @@ module Google
         end
       end
       
-      # The response message for the `ListSpans` method.
-      class ListSpansResponse
-        include Google::Apis::Core::Hashable
-      
-        # If defined, indicates that there might be more spans that match the
-        # request. Pass this as the value of `pageToken` in a subsequent request to
-        # retrieve additional spans.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The requested spans, if there are any in the specified trace.
-        # Corresponds to the JSON property `spans`
-        # @return [Array<Google::Apis::CloudtraceV2::Span>]
-        attr_accessor :spans
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @spans = args[:spans] if args.key?(:spans)
-        end
-      end
-      
-      # The response message for the `ListTraces` method.
-      class ListTracesResponse
-        include Google::Apis::Core::Hashable
-      
-        # If there might be more results than those appearing in this response, then
-        # `next_page_token` is included.  To get the next set of results, call this
-        # method again using the value of `next_page_token` as `page_token`.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # List of trace records returned.
-        # Corresponds to the JSON property `traces`
-        # @return [Array<Google::Apis::CloudtraceV2::Trace>]
-        attr_accessor :traces
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @traces = args[:traces] if args.key?(:traces)
-        end
-      end
-      
       # Binary module.
       class Module
         include Google::Apis::Core::Hashable
@@ -741,30 +687,6 @@ module Google
           @dropped_annotations_count = args[:dropped_annotations_count] if args.key?(:dropped_annotations_count)
           @dropped_network_events_count = args[:dropped_network_events_count] if args.key?(:dropped_network_events_count)
           @time_event = args[:time_event] if args.key?(:time_event)
-        end
-      end
-      
-      # A trace describes how long it takes for an application to perform some
-      # operations. It consists of a set of spans, each representing
-      # an operation and including time information and operation details.
-      class Trace
-        include Google::Apis::Core::Hashable
-      
-        # The resource name of the trace in the following format:
-        # projects/[PROJECT_ID]/traces/TRACE_ID is a unique identifier for a trace
-        # within a project.
-        # The ID is assigned when the trace is created.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
         end
       end
       

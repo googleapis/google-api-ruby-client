@@ -137,6 +137,7 @@ module Google
       
           property :https_trigger, as: 'httpsTrigger', class: Google::Apis::CloudfunctionsV1beta2::HttpsTrigger, decorator: Google::Apis::CloudfunctionsV1beta2::HttpsTrigger::Representation
       
+          hash :labels, as: 'labels'
           property :latest_operation, as: 'latestOperation'
           property :name, as: 'name'
           property :service_account, as: 'serviceAccount'
@@ -147,6 +148,7 @@ module Google
           property :status, as: 'status'
           property :timeout, as: 'timeout'
           property :update_time, as: 'updateTime'
+          property :version_id, :numeric_string => true, as: 'versionId'
         end
       end
       
@@ -157,6 +159,7 @@ module Google
           property :failure_policy, as: 'failurePolicy', class: Google::Apis::CloudfunctionsV1beta2::FailurePolicy, decorator: Google::Apis::CloudfunctionsV1beta2::FailurePolicy::Representation
       
           property :resource, as: 'resource'
+          property :service, as: 'service'
         end
       end
       
@@ -230,6 +233,7 @@ module Google
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'
+          property :version_id, :numeric_string => true, as: 'versionId'
         end
       end
       

@@ -64,18 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListSpansResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListTracesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Module
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,12 +113,6 @@ module Google
       end
       
       class TimeEvents
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Trace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -201,24 +183,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dropped_links_count, as: 'droppedLinksCount'
           collection :link, as: 'link', class: Google::Apis::CloudtraceV2::Link, decorator: Google::Apis::CloudtraceV2::Link::Representation
-      
-        end
-      end
-      
-      class ListSpansResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :spans, as: 'spans', class: Google::Apis::CloudtraceV2::Span, decorator: Google::Apis::CloudtraceV2::Span::Representation
-      
-        end
-      end
-      
-      class ListTracesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :traces, as: 'traces', class: Google::Apis::CloudtraceV2::Trace, decorator: Google::Apis::CloudtraceV2::Trace::Representation
       
         end
       end
@@ -332,13 +296,6 @@ module Google
           property :dropped_network_events_count, as: 'droppedNetworkEventsCount'
           collection :time_event, as: 'timeEvent', class: Google::Apis::CloudtraceV2::TimeEvent, decorator: Google::Apis::CloudtraceV2::TimeEvent::Representation
       
-        end
-      end
-      
-      class Trace
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
         end
       end
       

@@ -1093,6 +1093,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Minimum cpu/platform to be used by this instance. The instance may be
+        # scheduled on the specified or newer cpu/platform. Applicable values are the
+        # friendly names of CPU platforms, such as
+        # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
+        # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
+        # information, read <a href="/compute/docs/instances/specify-min-cpu-platform">
+        # Specifying a Minimum CPU Platform</a>.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # The set of Google API scopes to be made available on all of the
         # node VMs under the "default" service account.
         # The following scopes are recommended, but not required, and by default are
@@ -1143,6 +1154,7 @@ module Google
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @service_account = args[:service_account] if args.key?(:service_account)
