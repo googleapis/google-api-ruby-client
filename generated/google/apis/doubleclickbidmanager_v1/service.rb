@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'doubleclickbidmanager/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/doubleclickbidmanager/v1'
         end
         
         # Retrieves line items in CSV format.

@@ -1985,6 +1985,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
+        # [Output-only] Slot-milliseconds for the job.
+        # Corresponds to the JSON property `totalSlotMs`
+        # @return [Fixnum]
+        attr_accessor :total_slot_ms
+      
         # [Output-only, Experimental] Standard SQL only: list of undeclared query
         # parameters detected during a dry run validation.
         # Corresponds to the JSON property `undeclaredQueryParameters`
@@ -2006,6 +2011,7 @@ module Google
           @statement_type = args[:statement_type] if args.key?(:statement_type)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
+          @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
         end
       end

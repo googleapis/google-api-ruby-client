@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'consumersurveys/v2/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/consumersurveys/v2'
         end
         
         # Retrieves a MobileAppPanel that is available to the authenticated user.

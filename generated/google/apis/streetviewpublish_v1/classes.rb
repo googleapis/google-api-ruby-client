@@ -645,9 +645,11 @@ module Google
         attr_accessor :photo
       
         # Mask that identifies fields on the photo metadata to update.
-        # If not present, the old Photo metadata will be entirely replaced with the
-        # new Photo metadata in this request. The update fails if invalid fields are
-        # specified. Multiple fields can be specified in a comma-delimited list.
+        # If not present, the old Photo
+        # metadata will be entirely replaced with the
+        # new Photo metadata in this request.
+        # The update fails if invalid fields are specified. Multiple fields can be
+        # specified in a comma-delimited list.
         # The following fields are valid:
         # * `pose.heading`
         # * `pose.latLngPair`

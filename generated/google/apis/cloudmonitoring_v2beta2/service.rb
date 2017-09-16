@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'cloudmonitoring/v2beta2/projects/')
-          @batch_path = 'batch/cloudmonitoring/v2beta2'
+          @batch_path = 'batch'
         end
         
         # Create a new metric.

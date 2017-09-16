@@ -8796,6 +8796,7 @@
 "/bigquery:v2/JobStatistics2/statementType": statement_type
 "/bigquery:v2/JobStatistics2/totalBytesBilled": total_bytes_billed
 "/bigquery:v2/JobStatistics2/totalBytesProcessed": total_bytes_processed
+"/bigquery:v2/JobStatistics2/totalSlotMs": total_slot_ms
 "/bigquery:v2/JobStatistics2/undeclaredQueryParameters": undeclared_query_parameters
 "/bigquery:v2/JobStatistics2/undeclaredQueryParameters/undeclared_query_parameter": undeclared_query_parameter
 "/bigquery:v2/JobStatistics3": job_statistics3
@@ -13127,6 +13128,10 @@
 "/cloudtasks:v2beta2/CreateTaskRequest/task": task
 "/cloudtasks:v2beta2/Empty": empty
 "/cloudtasks:v2beta2/GetIamPolicyRequest": get_iam_policy_request
+"/cloudtasks:v2beta2/ListLocationsResponse": list_locations_response
+"/cloudtasks:v2beta2/ListLocationsResponse/locations": locations
+"/cloudtasks:v2beta2/ListLocationsResponse/locations/location": location
+"/cloudtasks:v2beta2/ListLocationsResponse/nextPageToken": next_page_token
 "/cloudtasks:v2beta2/ListQueuesResponse": list_queues_response
 "/cloudtasks:v2beta2/ListQueuesResponse/nextPageToken": next_page_token
 "/cloudtasks:v2beta2/ListQueuesResponse/queues": queues
@@ -13135,6 +13140,13 @@
 "/cloudtasks:v2beta2/ListTasksResponse/nextPageToken": next_page_token
 "/cloudtasks:v2beta2/ListTasksResponse/tasks": tasks
 "/cloudtasks:v2beta2/ListTasksResponse/tasks/task": task
+"/cloudtasks:v2beta2/Location": location
+"/cloudtasks:v2beta2/Location/labels": labels
+"/cloudtasks:v2beta2/Location/labels/label": label
+"/cloudtasks:v2beta2/Location/locationId": location_id
+"/cloudtasks:v2beta2/Location/metadata": metadata
+"/cloudtasks:v2beta2/Location/metadata/metadatum": metadatum
+"/cloudtasks:v2beta2/Location/name": name
 "/cloudtasks:v2beta2/PauseQueueRequest": pause_queue_request
 "/cloudtasks:v2beta2/Policy": policy
 "/cloudtasks:v2beta2/Policy/bindings": bindings
@@ -13215,6 +13227,13 @@
 "/cloudtasks:v2beta2/ThrottleConfig/maxBurstSize": max_burst_size
 "/cloudtasks:v2beta2/ThrottleConfig/maxOutstandingTasks": max_outstanding_tasks
 "/cloudtasks:v2beta2/ThrottleConfig/maxTasksDispatchedPerSecond": max_tasks_dispatched_per_second
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.get": get_project_location
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.get/name": name
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.list": list_project_locations
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.list/filter": filter
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.list/name": name
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.list/pageSize": page_size
+"/cloudtasks:v2beta2/cloudtasks.projects.locations.list/pageToken": page_token
 "/cloudtasks:v2beta2/cloudtasks.projects.locations.queues.create": create_project_location_queue
 "/cloudtasks:v2beta2/cloudtasks.projects.locations.queues.create/parent": parent
 "/cloudtasks:v2beta2/cloudtasks.projects.locations.queues.delete": delete_project_location_queue
@@ -52886,6 +52905,7 @@
 "/sourcerepo:v1/AuditLogConfig/exemptedMembers/exempted_member": exempted_member
 "/sourcerepo:v1/AuditLogConfig/logType": log_type
 "/sourcerepo:v1/Binding": binding
+"/sourcerepo:v1/Binding/condition": condition
 "/sourcerepo:v1/Binding/members": members
 "/sourcerepo:v1/Binding/members/member": member
 "/sourcerepo:v1/Binding/role": role
@@ -52904,6 +52924,11 @@
 "/sourcerepo:v1/CounterOptions/metric": metric
 "/sourcerepo:v1/DataAccessOptions": data_access_options
 "/sourcerepo:v1/Empty": empty
+"/sourcerepo:v1/Expr": expr
+"/sourcerepo:v1/Expr/description": description
+"/sourcerepo:v1/Expr/expression": expression
+"/sourcerepo:v1/Expr/location": location
+"/sourcerepo:v1/Expr/title": title
 "/sourcerepo:v1/ListReposResponse": list_repos_response
 "/sourcerepo:v1/ListReposResponse/nextPageToken": next_page_token
 "/sourcerepo:v1/ListReposResponse/repos": repos

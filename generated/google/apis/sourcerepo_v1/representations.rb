@@ -40,43 +40,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListReposResponse
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogConfig
+      class ListReposResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,12 +71,6 @@ module Google
       end
       
       class Repo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -145,41 +115,10 @@ module Google
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::SourcerepoV1::Expr, decorator: Google::Apis::SourcerepoV1::Expr::Representation
+      
           collection :members, as: 'members'
           property :role, as: 'role'
-        end
-      end
-      
-      class CloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_name, as: 'logName'
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          property :value, as: 'value'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :field, as: 'field'
-          property :metric, as: 'metric'
-        end
-      end
-      
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -189,23 +128,21 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class ListReposResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :repos, as: 'repos', class: Google::Apis::SourcerepoV1::Repo, decorator: Google::Apis::SourcerepoV1::Repo::Representation
-      
-        end
-      end
-      
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::SourcerepoV1::CloudAuditOptions, decorator: Google::Apis::SourcerepoV1::CloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::SourcerepoV1::CounterOptions, decorator: Google::Apis::SourcerepoV1::CounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::SourcerepoV1::DataAccessOptions, decorator: Google::Apis::SourcerepoV1::DataAccessOptions::Representation
       
         end
       end
@@ -228,8 +165,6 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::SourcerepoV1::Rule, decorator: Google::Apis::SourcerepoV1::Rule::Representation
-      
           property :version, as: 'version'
         end
       end
@@ -242,21 +177,6 @@ module Google
           property :name, as: 'name'
           property :size, :numeric_string => true, as: 'size'
           property :url, as: 'url'
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::SourcerepoV1::Condition, decorator: Google::Apis::SourcerepoV1::Condition::Representation
-      
-          property :description, as: 'description'
-          collection :in, as: 'in'
-          collection :log_config, as: 'logConfig', class: Google::Apis::SourcerepoV1::LogConfig, decorator: Google::Apis::SourcerepoV1::LogConfig::Representation
-      
-          collection :not_in, as: 'notIn'
-          collection :permissions, as: 'permissions'
         end
       end
       

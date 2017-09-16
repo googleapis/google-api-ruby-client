@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'pagespeedonline/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/pagespeedonline/v1'
         end
         
         # Runs PageSpeed analysis on the page at the specified URL, and returns a

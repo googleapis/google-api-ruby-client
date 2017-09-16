@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListQueuesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class ListTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -337,6 +349,15 @@ module Google
         end
       end
       
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::CloudtasksV2beta2::Location, decorator: Google::Apis::CloudtasksV2beta2::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListQueuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -352,6 +373,16 @@ module Google
           property :next_page_token, :base64 => true, as: 'nextPageToken'
           collection :tasks, as: 'tasks', class: Google::Apis::CloudtasksV2beta2::Task, decorator: Google::Apis::CloudtasksV2beta2::Task::Representation
       
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
         end
       end
       

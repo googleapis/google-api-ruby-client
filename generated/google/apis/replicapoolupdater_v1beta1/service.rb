@@ -52,7 +52,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'replicapoolupdater/v1beta1/projects/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/replicapoolupdater/v1beta1'
         end
         
         # Cancels an update. The update must be PAUSED before it can be cancelled. This

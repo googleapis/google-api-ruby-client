@@ -149,6 +149,14 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::SourcerepoV1::Expr]
+        attr_accessor :condition
+      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -180,115 +188,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        # The log_name to populate in the Cloud Audit Record.
-        # Corresponds to the JSON property `logName`
-        # @return [String]
-        attr_accessor :log_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_name = args[:log_name] if args.key?(:log_name)
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # Trusted attributes supplied by any service that owns resources and uses
-        # the IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # DEPRECATED. Use 'values' instead.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] if args.key?(:iam)
-          @op = args[:op] if args.key?(:op)
-          @svc = args[:svc] if args.key?(:svc)
-          @sys = args[:sys] if args.key?(:sys)
-          @value = args[:value] if args.key?(:value)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
-      # Options for counters
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field = args[:field] if args.key?(:field)
-          @metric = args[:metric] if args.key?(:metric)
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -308,6 +210,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -335,37 +284,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @repos = args[:repos] if args.key?(:repos)
-        end
-      end
-      
-      # Specifies what kind of log the caller must write
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::SourcerepoV1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        # Options for counters
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::SourcerepoV1::CounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::SourcerepoV1::DataAccessOptions]
-        attr_accessor :data_access
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
         end
       end
       
@@ -441,7 +359,6 @@ module Google
         attr_accessor :audit_configs
       
         # Associates a list of `members` to a `role`.
-        # Multiple `bindings` must not be specified for the same `role`.
         # `bindings` with no members will result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::SourcerepoV1::Binding>]
@@ -467,19 +384,6 @@ module Google
         attr_accessor :iam_owned
         alias_method :iam_owned?, :iam_owned
       
-        # If more than one rule is specified, the rules are applied in the following
-        # manner:
-        # - All matching LOG rules are always applied.
-        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-        # granted.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if no rule applies, permission is denied.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::SourcerepoV1::Rule>]
-        attr_accessor :rules
-      
         # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -495,7 +399,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -538,68 +441,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @size = args[:size] if args.key?(:size)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Additional restrictions that must be met
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::SourcerepoV1::Condition>]
-        attr_accessor :conditions
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If one or more 'in' clauses are specified, the rule matches if
-        # the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-        # Corresponds to the JSON property `in`
-        # @return [Array<String>]
-        attr_accessor :in
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Array<Google::Apis::SourcerepoV1::LogConfig>]
-        attr_accessor :log_config
-      
-        # If one or more 'not_in' clauses are specified, the rule matches
-        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-        # The format for in and not_in entries is the same as for members in a
-        # Binding (see google/iam/v1/policy.proto).
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # A permission is a string of form '<service>.<resource type>.<verb>'
-        # (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-        # and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @description = args[:description] if args.key?(:description)
-          @in = args[:in] if args.key?(:in)
-          @log_config = args[:log_config] if args.key?(:log_config)
-          @not_in = args[:not_in] if args.key?(:not_in)
-          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       

@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'admin/directory/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/admin/directory_v1'
         end
         
         # Delete an ASP issued by a user.

@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'games/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/games/v1'
         end
         
         # Lists all the achievement definitions for your application.

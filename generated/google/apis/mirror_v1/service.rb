@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'mirror/v1/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/mirror/v1'
         end
         
         # Inserts a new account for a user

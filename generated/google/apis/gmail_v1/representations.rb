@@ -112,12 +112,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LabelColor
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListDraftsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -403,8 +397,6 @@ module Google
       class Label
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :color, as: 'color', class: Google::Apis::GmailV1::LabelColor, decorator: Google::Apis::GmailV1::LabelColor::Representation
-      
           property :id, as: 'id'
           property :label_list_visibility, as: 'labelListVisibility'
           property :message_list_visibility, as: 'messageListVisibility'
@@ -414,14 +406,6 @@ module Google
           property :threads_total, as: 'threadsTotal'
           property :threads_unread, as: 'threadsUnread'
           property :type, as: 'type'
-        end
-      end
-      
-      class LabelColor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :background_color, as: 'backgroundColor'
-          property :text_color, as: 'textColor'
         end
       end
       

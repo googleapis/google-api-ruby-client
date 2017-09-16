@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'compute/beta/projects/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/compute/beta'
         end
         
         # Retrieves an aggregated list of accelerator types.

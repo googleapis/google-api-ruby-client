@@ -354,38 +354,7 @@ module Google
         end
       end
       
-      # App Engine task target.
-      # An App Engine task is a task that has AppEngineTaskTarget set.
-      # This proto can only be used for tasks in a queue which has
-      # Queue.app_engine_queue_config set.
-      # Using this type of task target requires
-      # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
-      # Google IAM permission for the project
-      # and the following scope:
-      # `https://www.googleapis.com/auth/cloud-platform`
-      # The task will be delivered to the URL specified by the
-      # AppEngineQueueConfig and AppEngineTaskTarget in the App Engine app
-      # which belongs to the same project as the queue. For more information, see
-      # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
-      # routed)
-      # and how routing is affected by
-      # [dispatch files](/appengine/docs/python/config/dispatchref).
-      # The AppEngineRouting used to construct the URL can be set at
-      # the queue-level or task-level:
-      # *  If set, AppEngineQueueConfig.app_engine_routing_override is used for
-      # all tasks in the queue, no matter what the setting is for the
-      # task-level app_engine_routing.
-      # The `url` that the task will be sent to is:
-      # * `url =` AppEngineRouting.host `+` AppEngineTaskTarget.relative_url
-      # The task will be sent to a task handler by an HTTP
-      # request using the specified AppEngineTaskTarget.http_method (for example
-      # POST, HTTP GET, etc). The task attempt has succeeded if the task handler
-      # returns an HTTP response code in the range [200 - 299]. Error 503 is
-      # considered an App Engine system error instead of an application error.
-      # Requests returning error 503 will be retried regardless of retry
-      # configuration and not counted against retry counts.
-      # Any other response code or a failure to receive a response before the
-      # deadline is a failed attempt.
+      # Deprecated. Use AppEngineHttpRequest.
       class AppEngineTaskTarget
         include Google::Apis::Core::Hashable
       
@@ -402,69 +371,23 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineRouting]
         attr_accessor :app_engine_routing
       
-        # HTTP request headers.
-        # This map contains the header field names and values.
-        # Headers can be set when the
-        # [task is created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask).
-        # Repeated headers are not supported but a header value can contain commas.
-        # Cloud Tasks sets some headers to default values:
-        # * `User-Agent`: By default, this header is
-        # `"AppEngine-Google; (+http://code.google.com/appengine)"`.
-        # This header can be modified, but Cloud Tasks will append
-        # `"AppEngine-Google; (+http://code.google.com/appengine)"` to the
-        # modified `User-Agent`.
-        # If the task has an AppEngineTaskTarget.payload, Cloud Tasks sets the
-        # following headers:
-        # * `Content-Type`: By default, the `Content-Type` header is set to
-        # `"application/octet-stream"`. The default can be overridden by explictly
-        # setting `Content-Type` to a particular media type when the
-        # [task is created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask).
-        # For example, `Content-Type` can be set to `"application/json"`.
-        # * `Content-Length`: This is computed by Cloud Tasks. This value is
-        # output only. It cannot be changed.
-        # The headers below cannot be set or overridden:
-        # * `Host`
-        # * `X-Google-*`
-        # * `X-AppEngine-*`
-        # In addition, some App Engine headers, which contain
-        # task-specific information, are also be sent to the task handler; see
-        # [request headers](/appengine/docs/python/taskqueue/push/creating-handlers#
-        # reading_request_headers).
+        # Deprecated. Use AppEngineHttpRequest.headers.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
       
-        # The HTTP method to use for the request. The default is POST.
-        # The app's request handler for the task's target URL must be able to handle
-        # HTTP requests with this http_method, otherwise the task attempt will fail
-        # with error code 405 "Method Not Allowed" because "the method specified in
-        # the Request-Line is not allowed for the resource identified by the
-        # Request-URI". See
-        # [Writing a push task request handler](/appengine/docs/java/taskqueue/push/
-        # creating-handlers#writing_a_push_task_request_handler)
-        # and the documentation for the request handlers in the language your app is
-        # written in e.g.
-        # [python RequestHandler](/appengine/docs/python/tools/webapp/
-        # requesthandlerclass).
+        # Deprecated. Use AppEngineHttpRequest.http_method.
         # Corresponds to the JSON property `httpMethod`
         # @return [String]
         attr_accessor :http_method
       
-        # Payload.
-        # The payload will be sent as the HTTP message body. A message
-        # body, and thus a payload, is allowed only if the HTTP method is
-        # POST or PUT. It is an error to set a data payload on a task with
-        # an incompatible HttpMethod.
+        # Deprecated. Use AppEngineHttpRequest.payload.
         # Corresponds to the JSON property `payload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :payload
       
-        # The relative URL.
-        # The relative URL must begin with "/" and must be a valid HTTP relative URL.
-        # It can contain a path, query string arguments, and `#` fragments.
-        # If the relative URL is empty, then the root path "/" will be used.
-        # No spaces are allowed, and the maximum length allowed is 2083 characters.
+        # Deprecated. Use AppEngineHttpRequest.relative_url.
         # Corresponds to the JSON property `relativeUrl`
         # @return [String]
         attr_accessor :relative_url
@@ -709,6 +632,31 @@ module Google
         end
       end
       
+      # The response message for Locations.ListLocations.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::CloudtasksV2beta2::Location>]
+        attr_accessor :locations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for CloudTasks.ListQueues.
       class ListQueuesResponse
         include Google::Apis::Core::Hashable
@@ -767,6 +715,46 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # A resource that represents Google Cloud Platform location.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # Cross-service attributes for the location. For example
+        # `"cloud.googleapis.com/region": "us-east1"`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Service-specific metadata. For example the available capacity at the given
+        # location.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Resource name for the location, which may vary between implementations.
+        # For example: `"projects/example-project/locations/us-east1"`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -908,23 +896,17 @@ module Google
         end
       end
       
-      # Pull task target.
-      # A pull task is a task that has PullTaskTarget set.
-      # This proto can only be used for tasks in a queue which has
-      # Queue.pull_queue_config set.
+      # Deprecated. Use PullMessage.
       class PullTaskTarget
         include Google::Apis::Core::Hashable
       
-        # A data payload consumed by the task worker to execute the task.
+        # Deprecated. Use PullMessage.payload.
         # Corresponds to the JSON property `payload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :payload
       
-        # A meta-data tag for this task.
-        # This value is used by CloudTasks.PullTasks calls when
-        # PullTasksRequest.filter is `tag=<tag>`.
-        # The tag must be less than 500 bytes.
+        # Deprecated. Use PullMessage.tag.
         # Corresponds to the JSON property `tag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -948,7 +930,7 @@ module Google
         # `filter` can be used to specify a subset of tasks to lease.
         # When `filter` is set to `tag=<my-tag>` then the
         # PullTasksResponse will contain only tasks whose
-        # PullTaskTarget.tag is equal to `<my-tag>`. `<my-tag>` can be
+        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` can be
         # a bytes encoded as a string and must be less than 500 bytes.
         # If `<my-tag>` includes whitespace or special characters (characters which
         # aren't letters, numbers, or underscores), then it must be double-quoted.
@@ -1489,38 +1471,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineHttpRequest]
         attr_accessor :app_engine_http_request
       
-        # App Engine task target.
-        # An App Engine task is a task that has AppEngineTaskTarget set.
-        # This proto can only be used for tasks in a queue which has
-        # Queue.app_engine_queue_config set.
-        # Using this type of task target requires
-        # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
-        # Google IAM permission for the project
-        # and the following scope:
-        # `https://www.googleapis.com/auth/cloud-platform`
-        # The task will be delivered to the URL specified by the
-        # AppEngineQueueConfig and AppEngineTaskTarget in the App Engine app
-        # which belongs to the same project as the queue. For more information, see
-        # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
-        # routed)
-        # and how routing is affected by
-        # [dispatch files](/appengine/docs/python/config/dispatchref).
-        # The AppEngineRouting used to construct the URL can be set at
-        # the queue-level or task-level:
-        # *  If set, AppEngineQueueConfig.app_engine_routing_override is used for
-        # all tasks in the queue, no matter what the setting is for the
-        # task-level app_engine_routing.
-        # The `url` that the task will be sent to is:
-        # * `url =` AppEngineRouting.host `+` AppEngineTaskTarget.relative_url
-        # The task will be sent to a task handler by an HTTP
-        # request using the specified AppEngineTaskTarget.http_method (for example
-        # POST, HTTP GET, etc). The task attempt has succeeded if the task handler
-        # returns an HTTP response code in the range [200 - 299]. Error 503 is
-        # considered an App Engine system error instead of an application error.
-        # Requests returning error 503 will be retried regardless of retry
-        # configuration and not counted against retry counts.
-        # Any other response code or a failure to receive a response before the
-        # deadline is a failed attempt.
+        # Deprecated. Use AppEngineHttpRequest.
         # Corresponds to the JSON property `appEngineTaskTarget`
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineTaskTarget]
         attr_accessor :app_engine_task_target
@@ -1559,10 +1510,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::PullMessage]
         attr_accessor :pull_message
       
-        # Pull task target.
-        # A pull task is a task that has PullTaskTarget set.
-        # This proto can only be used for tasks in a queue which has
-        # Queue.pull_queue_config set.
+        # Deprecated. Use PullMessage.
         # Corresponds to the JSON property `pullTaskTarget`
         # @return [Google::Apis::CloudtasksV2beta2::PullTaskTarget]
         attr_accessor :pull_task_target
@@ -1716,7 +1664,7 @@ module Google
         # [bucket_size in queue.yaml](/appengine/docs/standard/python/config/queueref#
         # bucket_size).
         # Corresponds to the JSON property `maxBurstSize`
-        # @return [Float]
+        # @return [Fixnum]
         attr_accessor :max_burst_size
       
         # The maximum number of outstanding tasks that Cloud Tasks allows

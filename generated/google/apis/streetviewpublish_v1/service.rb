@@ -210,7 +210,7 @@ module Google
         # Updates the metadata of a Photo, such
         # as pose, place association, connections, etc. Changing the pixels of a
         # photo is not supported.
-        # Only the fields specified in
+        # Only the fields specified in the
         # updateMask
         # field are used. If `updateMask` is not present, the update applies to all
         # fields.
@@ -228,9 +228,11 @@ module Google
         # @param [Google::Apis::StreetviewpublishV1::Photo] photo_object
         # @param [String] update_mask
         #   Mask that identifies fields on the photo metadata to update.
-        #   If not present, the old Photo metadata will be entirely replaced with the
-        #   new Photo metadata in this request. The update fails if invalid fields are
-        #   specified. Multiple fields can be specified in a comma-delimited list.
+        #   If not present, the old Photo
+        #   metadata will be entirely replaced with the
+        #   new Photo metadata in this request.
+        #   The update fails if invalid fields are specified. Multiple fields can be
+        #   specified in a comma-delimited list.
         #   The following fields are valid:
         #   * `pose.heading`
         #   * `pose.latLngPair`

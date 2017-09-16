@@ -809,6 +809,7 @@ module Google
           property :statement_type, as: 'statementType'
           property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
+          property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
         end

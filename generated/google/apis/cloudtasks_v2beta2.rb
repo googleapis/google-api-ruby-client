@@ -20,13 +20,13 @@ module Google
   module Apis
     # Cloud Tasks API
     #
-    # Cloud Tasks enables developers to manage the execution of large numbers of
-    # distributed requests. Cloud Tasks is in Alpha.
+    # Manages the execution of large numbers of distributed requests. Cloud Tasks is
+    # in Alpha.
     #
     # @see https://cloud.google.com/cloud-tasks/
     module CloudtasksV2beta2
       VERSION = 'V2beta2'
-      REVISION = '20170912'
+      REVISION = '20170915'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
