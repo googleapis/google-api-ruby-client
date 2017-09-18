@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'resourceviews/v1beta1/projects/')
-          @batch_path = 'batch/resourceviews/v1beta1'
+          @batch_path = 'batch'
         end
         
         # Add resources to the view.
