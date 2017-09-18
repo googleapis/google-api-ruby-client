@@ -1,3 +1,6 @@
+# 0.14.1
+* Retry on `Signet::AuthorizationError`. 
+
 # 0.14.0
 * Breaking changes:
   * Deleted `toolresults_v1beta3firstparty`
