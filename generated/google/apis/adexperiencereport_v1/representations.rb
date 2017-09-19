@@ -43,7 +43,6 @@ module Google
       class PlatformSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :abusive_status, as: 'abusiveStatus'
           property :better_ads_status, as: 'betterAdsStatus'
           property :enforcement_time, as: 'enforcementTime'
           property :filter_status, as: 'filterStatus'

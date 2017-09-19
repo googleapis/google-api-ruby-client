@@ -54673,12 +54673,14 @@
 "/storage:v1/storage.buckets.insert/predefinedDefaultObjectAcl": predefined_default_object_acl
 "/storage:v1/storage.buckets.insert/project": project
 "/storage:v1/storage.buckets.insert/projection": projection
+"/storage:v1/storage.buckets.insert/userProject": user_project
 "/storage:v1/storage.buckets.list": list_buckets
 "/storage:v1/storage.buckets.list/maxResults": max_results
 "/storage:v1/storage.buckets.list/pageToken": page_token
 "/storage:v1/storage.buckets.list/prefix": prefix
 "/storage:v1/storage.buckets.list/project": project
 "/storage:v1/storage.buckets.list/projection": projection
+"/storage:v1/storage.buckets.list/userProject": user_project
 "/storage:v1/storage.buckets.patch": patch_bucket
 "/storage:v1/storage.buckets.patch/bucket": bucket
 "/storage:v1/storage.buckets.patch/ifMetagenerationMatch": if_metageneration_match
@@ -54909,6 +54911,7 @@
 "/storage:v1/storage.objects.watchAll/versions": versions
 "/storage:v1/storage.projects.serviceAccount.get": get_project_service_account
 "/storage:v1/storage.projects.serviceAccount.get/projectId": project_id
+"/storage:v1/storage.projects.serviceAccount.get/userProject": user_project
 "/storage:v1/userIp": user_ip
 "/storage:v1beta1/Bucket": bucket
 "/storage:v1beta1/Bucket/acl": acl

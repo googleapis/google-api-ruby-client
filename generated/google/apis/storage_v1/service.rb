@@ -447,6 +447,8 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl, unless the bucket resource
         #   specifies acl or defaultObjectAcl properties, when it defaults to full.
+        # @param [String] user_project
+        #   The project to be billed for this request, for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -468,7 +470,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket(project, bucket_object = nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket(project, bucket_object = nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'b', options)
           command.request_representation = Google::Apis::StorageV1::Bucket::Representation
           command.request_object = bucket_object
@@ -478,6 +480,7 @@ module Google
           command.query['predefinedDefaultObjectAcl'] = predefined_default_object_acl unless predefined_default_object_acl.nil?
           command.query['project'] = project unless project.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -497,6 +500,8 @@ module Google
         #   Filter results to buckets whose names begin with this prefix.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [String] user_project
+        #   The project to be billed for this request, for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -518,7 +523,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'b', options)
           command.response_representation = Google::Apis::StorageV1::Buckets::Representation
           command.response_class = Google::Apis::StorageV1::Buckets
@@ -527,6 +532,7 @@ module Google
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['project'] = project unless project.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2011,7 +2017,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches an object's metadata.
+        # Updates an object's metadata. This method supports patch semantics.
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
         # @param [String] object
@@ -2051,8 +2057,6 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [IO, String] download_dest
-        #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2065,13 +2069,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
-          if download_dest.nil?
-            command =  make_simple_command(:patch, 'b/{bucket}/o/{object}', options)
-          else
-            command = make_download_command(:patch, 'b/{bucket}/o/{object}', options)
-            command.download_dest = download_dest
-          end
+        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'b/{bucket}/o/{object}', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
           command.response_representation = Google::Apis::StorageV1::Object::Representation
@@ -2465,6 +2464,8 @@ module Google
         # Get the email address of this project's Google Cloud Storage service account.
         # @param [String] project_id
         #   Project ID
+        # @param [String] user_project
+        #   The project to be billed for this request, for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2486,11 +2487,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_service_account(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_project_service_account(project_id, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/serviceAccount', options)
           command.response_representation = Google::Apis::StorageV1::ServiceAccount::Representation
           command.response_class = Google::Apis::StorageV1::ServiceAccount
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

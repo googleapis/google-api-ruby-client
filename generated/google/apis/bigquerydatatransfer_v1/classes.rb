@@ -525,12 +525,14 @@ module Google
       class ScheduleTransferRunsRequest
         include Google::Apis::Core::Hashable
       
-        # End time of the range of transfer runs.
+        # End time of the range of transfer runs. For example,
+        # `"2017-05-30T00:00:00+00:00"`.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Start time of the range of transfer runs.
+        # Start time of the range of transfer runs. For example,
+        # `"2017-05-25T00:00:00+00:00"`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

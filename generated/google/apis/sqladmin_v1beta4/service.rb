@@ -51,7 +51,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'sql/v1beta4/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/sqladmin/v1beta4'
         end
         
         # Deletes the backup taken by a backup run.

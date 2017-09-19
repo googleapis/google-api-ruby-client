@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'androidpublisher/v2/applications/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/androidpublisher/v2'
         end
         
         # Commits/applies the changes made in this edit back to the app.

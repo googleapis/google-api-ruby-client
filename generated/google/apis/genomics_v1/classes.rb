@@ -1262,7 +1262,7 @@ module Google
       
         # If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If
         # importing Variants, an ImportVariantsResponse is returned. For pipelines and
-        # exports, an empty response is returned.
+        # exports, an Empty response is returned.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response

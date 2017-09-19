@@ -50,7 +50,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', 'deploymentmanager/v2/projects/')
-          @batch_path = 'batch'
+          @batch_path = 'batch/deploymentmanager/v2'
         end
         
         # Cancels and removes the preview currently associated with the deployment.

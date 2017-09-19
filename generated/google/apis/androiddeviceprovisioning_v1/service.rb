@@ -80,11 +80,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # A customer for zero-touch enrollment will be created.
-        # After a Customer is created, their admins and owners will be able to manage
-        # devices on partner.android.com/zerotouch or via their API.
+        # Creates a customer for zero-touch enrollment. After the method returns
+        # successfully, admin and owner roles can manage devices and EMM configs
+        # by calling API methods or using their zero-touch enrollment portal. The API
+        # doesn't notify the customer that they have access.
         # @param [String] parent
-        #   The parent resource in format `partners/[PARTNER_ID]'.
+        #   Required. The parent resource ID in format `partners/[PARTNER_ID]` that
+        #   identifies the reseller.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::CreateCustomerRequest] create_customer_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -115,7 +117,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the customers that are enrolled to the reseller identified by the
+        # Lists the customers that are enrolled to the reseller identified by the
         # `partnerId` argument. This list includes customers that the reseller
         # created and customers that enrolled themselves using the portal.
         # @param [Fixnum] partner_id

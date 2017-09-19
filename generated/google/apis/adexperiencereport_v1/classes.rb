@@ -26,11 +26,6 @@ module Google
       class PlatformSummary
         include Google::Apis::Core::Hashable
       
-        # The status of the site reviewed for abusive ads.
-        # Corresponds to the JSON property `abusiveStatus`
-        # @return [String]
-        attr_accessor :abusive_status
-      
         # The status of the site reviewed for the Better Ads Standards.
         # Corresponds to the JSON property `betterAdsStatus`
         # @return [String]
@@ -73,7 +68,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @abusive_status = args[:abusive_status] if args.key?(:abusive_status)
           @better_ads_status = args[:better_ads_status] if args.key?(:better_ads_status)
           @enforcement_time = args[:enforcement_time] if args.key?(:enforcement_time)
           @filter_status = args[:filter_status] if args.key?(:filter_status)
