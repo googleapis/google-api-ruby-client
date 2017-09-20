@@ -365,6 +365,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV2::Variable>]
         attr_accessor :variable
       
+        # The zones in the container that this version was taken from.
+        # Corresponds to the JSON property `zone`
+        # @return [Array<Google::Apis::TagmanagerV2::Zone>]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -386,6 +391,7 @@ module Google
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
           @trigger = args[:trigger] if args.key?(:trigger)
           @variable = args[:variable] if args.key?(:variable)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -444,6 +450,11 @@ module Google
         # @return [String]
         attr_accessor :num_variables
       
+        # Number of zones in the container version.
+        # Corresponds to the JSON property `numZones`
+        # @return [String]
+        attr_accessor :num_zones
+      
         # GTM Container Versions's API relative path.
         # Corresponds to the JSON property `path`
         # @return [String]
@@ -465,6 +476,7 @@ module Google
           @num_tags = args[:num_tags] if args.key?(:num_tags)
           @num_triggers = args[:num_triggers] if args.key?(:num_triggers)
           @num_variables = args[:num_variables] if args.key?(:num_variables)
+          @num_zones = args[:num_zones] if args.key?(:num_zones)
           @path = args[:path] if args.key?(:path)
         end
       end
@@ -1847,6 +1859,11 @@ module Google
         # @return [String]
         attr_accessor :notes
       
+        # Additional parameters.
+        # Corresponds to the JSON property `parameter`
+        # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
+        attr_accessor :parameter
+      
         # Parent folder id.
         # Corresponds to the JSON property `parentFolderId`
         # @return [String]
@@ -1944,6 +1961,7 @@ module Google
           @max_timer_length_seconds = args[:max_timer_length_seconds] if args.key?(:max_timer_length_seconds)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
+          @parameter = args[:parameter] if args.key?(:parameter)
           @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
           @path = args[:path] if args.key?(:path)
           @selector = args[:selector] if args.key?(:selector)
@@ -2428,6 +2446,169 @@ module Google
         def update!(**args)
           @gaia_id = args[:gaia_id] if args.key?(:gaia_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a Google Tag Manager Zone's contents.
+      class Zone
+        include Google::Apis::Core::Hashable
+      
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Represents a Zone's boundaries.
+        # Corresponds to the JSON property `boundary`
+        # @return [Google::Apis::TagmanagerV2::ZoneBoundary]
+        attr_accessor :boundary
+      
+        # Containers that are children of this Zone.
+        # Corresponds to the JSON property `childContainer`
+        # @return [Array<Google::Apis::TagmanagerV2::ZoneChildContainer>]
+        attr_accessor :child_container
+      
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # The fingerprint of the GTM Zone as computed at storage time. This value is
+        # recomputed whenever the zone is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Zone display name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # User notes on how to apply this zone in the container.
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
+        # GTM Zone's API relative path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Auto generated link to the tag manager UI
+        # Corresponds to the JSON property `tagManagerUrl`
+        # @return [String]
+        attr_accessor :tag_manager_url
+      
+        # Represents a Zone's type restrictions.
+        # Corresponds to the JSON property `typeRestriction`
+        # @return [Google::Apis::TagmanagerV2::ZoneTypeRestriction]
+        attr_accessor :type_restriction
+      
+        # GTM Workspace ID.
+        # Corresponds to the JSON property `workspaceId`
+        # @return [String]
+        attr_accessor :workspace_id
+      
+        # The Zone ID uniquely identifies the GTM Zone.
+        # Corresponds to the JSON property `zoneId`
+        # @return [String]
+        attr_accessor :zone_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @boundary = args[:boundary] if args.key?(:boundary)
+          @child_container = args[:child_container] if args.key?(:child_container)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
+          @path = args[:path] if args.key?(:path)
+          @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @type_restriction = args[:type_restriction] if args.key?(:type_restriction)
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+          @zone_id = args[:zone_id] if args.key?(:zone_id)
+        end
+      end
+      
+      # Represents a Zone's boundaries.
+      class ZoneBoundary
+        include Google::Apis::Core::Hashable
+      
+        # The conditions that, when conjoined, make up the boundary.
+        # Corresponds to the JSON property `condition`
+        # @return [Array<Google::Apis::TagmanagerV2::Condition>]
+        attr_accessor :condition
+      
+        # Custom evaluation trigger IDs. A zone will evaluate its boundary conditions
+        # when any of the listed triggers are true.
+        # Corresponds to the JSON property `customEvaluationTriggerId`
+        # @return [Array<String>]
+        attr_accessor :custom_evaluation_trigger_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @custom_evaluation_trigger_id = args[:custom_evaluation_trigger_id] if args.key?(:custom_evaluation_trigger_id)
+        end
+      end
+      
+      # Represents a child container of a Zone.
+      class ZoneChildContainer
+        include Google::Apis::Core::Hashable
+      
+        # The zone's nickname for the child container.
+        # Corresponds to the JSON property `nickname`
+        # @return [String]
+        attr_accessor :nickname
+      
+        # The child container's public id.
+        # Corresponds to the JSON property `publicId`
+        # @return [String]
+        attr_accessor :public_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nickname = args[:nickname] if args.key?(:nickname)
+          @public_id = args[:public_id] if args.key?(:public_id)
+        end
+      end
+      
+      # Represents a Zone's type restrictions.
+      class ZoneTypeRestriction
+        include Google::Apis::Core::Hashable
+      
+        # True if type restrictions have been enabled for this Zone.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # List of type public ids that have been whitelisted for use in this Zone.
+        # Corresponds to the JSON property `whitelistedTypeId`
+        # @return [Array<String>]
+        attr_accessor :whitelisted_type_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @whitelisted_type_id = args[:whitelisted_type_id] if args.key?(:whitelisted_type_id)
         end
       end
     end

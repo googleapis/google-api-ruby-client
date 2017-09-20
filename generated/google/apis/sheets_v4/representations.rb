@@ -172,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchClearValuesByDataFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchClearValuesByDataFilterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchClearValuesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +191,18 @@ module Google
       end
       
       class BatchClearValuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetValuesByDataFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetValuesByDataFilterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +221,18 @@ module Google
       end
       
       class BatchUpdateSpreadsheetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateValuesByDataFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateValuesByDataFilterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,7 +382,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateDeveloperMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateDeveloperMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CutPasteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataFilterValueRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +431,18 @@ module Google
       end
       
       class DeleteConditionalFormatRuleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteDeveloperMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteDeveloperMetadataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +485,24 @@ module Google
       end
       
       class DeleteSheetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeveloperMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeveloperMetadataLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeveloperMetadataLookup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetSpreadsheetByDataFilterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GradientRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +665,18 @@ module Google
       end
       
       class IterativeCalculationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MatchedDeveloperMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MatchedValueRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -700,6 +808,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchDeveloperMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchDeveloperMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetBasicFilterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -820,6 +940,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDeveloperMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDeveloperMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateDimensionPropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +995,12 @@ module Google
       end
       
       class UpdateSpreadsheetPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateValuesByDataFilterResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1120,6 +1258,22 @@ module Google
         end
       end
       
+      class BatchClearValuesByDataFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+        end
+      end
+      
+      class BatchClearValuesByDataFilterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cleared_ranges, as: 'clearedRanges'
+          property :spreadsheet_id, as: 'spreadsheetId'
+        end
+      end
+      
       class BatchClearValuesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1132,6 +1286,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cleared_ranges, as: 'clearedRanges'
           property :spreadsheet_id, as: 'spreadsheetId'
+        end
+      end
+      
+      class BatchGetValuesByDataFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :date_time_render_option, as: 'dateTimeRenderOption'
+          property :major_dimension, as: 'majorDimension'
+          property :value_render_option, as: 'valueRenderOption'
+        end
+      end
+      
+      class BatchGetValuesByDataFilterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spreadsheet_id, as: 'spreadsheetId'
+          collection :value_ranges, as: 'valueRanges', class: Google::Apis::SheetsV4::MatchedValueRange, decorator: Google::Apis::SheetsV4::MatchedValueRange::Representation
+      
         end
       end
       
@@ -1163,6 +1337,31 @@ module Google
           property :spreadsheet_id, as: 'spreadsheetId'
           property :updated_spreadsheet, as: 'updatedSpreadsheet', class: Google::Apis::SheetsV4::Spreadsheet, decorator: Google::Apis::SheetsV4::Spreadsheet::Representation
       
+        end
+      end
+      
+      class BatchUpdateValuesByDataFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data, as: 'data', class: Google::Apis::SheetsV4::DataFilterValueRange, decorator: Google::Apis::SheetsV4::DataFilterValueRange::Representation
+      
+          property :include_values_in_response, as: 'includeValuesInResponse'
+          property :response_date_time_render_option, as: 'responseDateTimeRenderOption'
+          property :response_value_render_option, as: 'responseValueRenderOption'
+          property :value_input_option, as: 'valueInputOption'
+        end
+      end
+      
+      class BatchUpdateValuesByDataFilterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :responses, as: 'responses', class: Google::Apis::SheetsV4::UpdateValuesByDataFilterResponse, decorator: Google::Apis::SheetsV4::UpdateValuesByDataFilterResponse::Representation
+      
+          property :spreadsheet_id, as: 'spreadsheetId'
+          property :total_updated_cells, as: 'totalUpdatedCells'
+          property :total_updated_columns, as: 'totalUpdatedColumns'
+          property :total_updated_rows, as: 'totalUpdatedRows'
+          property :total_updated_sheets, as: 'totalUpdatedSheets'
         end
       end
       
@@ -1458,6 +1657,22 @@ module Google
         end
       end
       
+      class CreateDeveloperMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
+        end
+      end
+      
+      class CreateDeveloperMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
+        end
+      end
+      
       class CutPasteRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1465,6 +1680,31 @@ module Google
       
           property :paste_type, as: 'pasteType'
           property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class DataFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :a1_range, as: 'a1Range'
+          property :developer_metadata_lookup, as: 'developerMetadataLookup', class: Google::Apis::SheetsV4::DeveloperMetadataLookup, decorator: Google::Apis::SheetsV4::DeveloperMetadataLookup::Representation
+      
+          property :grid_range, as: 'gridRange', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class DataFilterValueRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_filter, as: 'dataFilter', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :major_dimension, as: 'majorDimension'
+          collection :values, as: 'values', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
       
         end
       end
@@ -1499,6 +1739,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rule, as: 'rule', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
+      
+        end
+      end
+      
+      class DeleteDeveloperMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_filter, as: 'dataFilter', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+        end
+      end
+      
+      class DeleteDeveloperMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deleted_developer_metadata, as: 'deletedDeveloperMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
       
         end
       end
@@ -1555,9 +1811,48 @@ module Google
         end
       end
       
+      class DeveloperMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location', class: Google::Apis::SheetsV4::DeveloperMetadataLocation, decorator: Google::Apis::SheetsV4::DeveloperMetadataLocation::Representation
+      
+          property :metadata_id, as: 'metadataId'
+          property :metadata_key, as: 'metadataKey'
+          property :metadata_value, as: 'metadataValue'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
+      class DeveloperMetadataLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_range, as: 'dimensionRange', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
+          property :location_type, as: 'locationType'
+          property :sheet_id, as: 'sheetId'
+          property :spreadsheet, as: 'spreadsheet'
+        end
+      end
+      
+      class DeveloperMetadataLookup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_matching_strategy, as: 'locationMatchingStrategy'
+          property :location_type, as: 'locationType'
+          property :metadata_id, as: 'metadataId'
+          property :metadata_key, as: 'metadataKey'
+          property :metadata_location, as: 'metadataLocation', class: Google::Apis::SheetsV4::DeveloperMetadataLocation, decorator: Google::Apis::SheetsV4::DeveloperMetadataLocation::Representation
+      
+          property :metadata_value, as: 'metadataValue'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
       class DimensionProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
           property :hidden_by_filter, as: 'hiddenByFilter'
           property :hidden_by_user, as: 'hiddenByUser'
           property :pixel_size, as: 'pixelSize'
@@ -1708,6 +2003,15 @@ module Google
         end
       end
       
+      class GetSpreadsheetByDataFilterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :include_grid_data, as: 'includeGridData'
+        end
+      end
+      
       class GradientRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1820,6 +2124,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :convergence_threshold, as: 'convergenceThreshold'
           property :max_iterations, as: 'maxIterations'
+        end
+      end
+      
+      class MatchedDeveloperMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
+        end
+      end
+      
+      class MatchedValueRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :value_range, as: 'valueRange', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
+      
         end
       end
       
@@ -2053,11 +2377,15 @@ module Google
       
           property :copy_paste, as: 'copyPaste', class: Google::Apis::SheetsV4::CopyPasteRequest, decorator: Google::Apis::SheetsV4::CopyPasteRequest::Representation
       
+          property :create_developer_metadata, as: 'createDeveloperMetadata', class: Google::Apis::SheetsV4::CreateDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::CreateDeveloperMetadataRequest::Representation
+      
           property :cut_paste, as: 'cutPaste', class: Google::Apis::SheetsV4::CutPasteRequest, decorator: Google::Apis::SheetsV4::CutPasteRequest::Representation
       
           property :delete_banding, as: 'deleteBanding', class: Google::Apis::SheetsV4::DeleteBandingRequest, decorator: Google::Apis::SheetsV4::DeleteBandingRequest::Representation
       
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest::Representation
+      
+          property :delete_developer_metadata, as: 'deleteDeveloperMetadata', class: Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest::Representation
       
           property :delete_dimension, as: 'deleteDimension', class: Google::Apis::SheetsV4::DeleteDimensionRequest, decorator: Google::Apis::SheetsV4::DeleteDimensionRequest::Representation
       
@@ -2113,6 +2441,8 @@ module Google
       
           property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest::Representation
       
+          property :update_developer_metadata, as: 'updateDeveloperMetadata', class: Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest, decorator: Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest::Representation
+      
           property :update_dimension_properties, as: 'updateDimensionProperties', class: Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest, decorator: Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest::Representation
       
           property :update_embedded_object_position, as: 'updateEmbeddedObjectPosition', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest::Representation
@@ -2145,7 +2475,11 @@ module Google
       
           property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetResponse, decorator: Google::Apis::SheetsV4::AddSheetResponse::Representation
       
+          property :create_developer_metadata, as: 'createDeveloperMetadata', class: Google::Apis::SheetsV4::CreateDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::CreateDeveloperMetadataResponse::Representation
+      
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse::Representation
+      
+          property :delete_developer_metadata, as: 'deleteDeveloperMetadata', class: Google::Apis::SheetsV4::DeleteDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::DeleteDeveloperMetadataResponse::Representation
       
           property :duplicate_filter_view, as: 'duplicateFilterView', class: Google::Apis::SheetsV4::DuplicateFilterViewResponse, decorator: Google::Apis::SheetsV4::DuplicateFilterViewResponse::Representation
       
@@ -2154,6 +2488,8 @@ module Google
           property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceResponse, decorator: Google::Apis::SheetsV4::FindReplaceResponse::Representation
       
           property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse::Representation
+      
+          property :update_developer_metadata, as: 'updateDeveloperMetadata', class: Google::Apis::SheetsV4::UpdateDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::UpdateDeveloperMetadataResponse::Representation
       
           property :update_embedded_object_position, as: 'updateEmbeddedObjectPosition', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionResponse, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionResponse::Representation
       
@@ -2164,6 +2500,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values', class: Google::Apis::SheetsV4::CellData, decorator: Google::Apis::SheetsV4::CellData::Representation
+      
+        end
+      end
+      
+      class SearchDeveloperMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+        end
+      end
+      
+      class SearchDeveloperMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matched_developer_metadata, as: 'matchedDeveloperMetadata', class: Google::Apis::SheetsV4::MatchedDeveloperMetadata, decorator: Google::Apis::SheetsV4::MatchedDeveloperMetadata::Representation
       
         end
       end
@@ -2198,6 +2550,8 @@ module Google
           collection :conditional_formats, as: 'conditionalFormats', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
           collection :data, as: 'data', class: Google::Apis::SheetsV4::GridData, decorator: Google::Apis::SheetsV4::GridData::Representation
+      
+          collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
       
           collection :filter_views, as: 'filterViews', class: Google::Apis::SheetsV4::FilterView, decorator: Google::Apis::SheetsV4::FilterView::Representation
       
@@ -2257,6 +2611,8 @@ module Google
       class Spreadsheet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
           collection :named_ranges, as: 'namedRanges', class: Google::Apis::SheetsV4::NamedRange, decorator: Google::Apis::SheetsV4::NamedRange::Representation
       
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SpreadsheetProperties, decorator: Google::Apis::SheetsV4::SpreadsheetProperties::Representation
@@ -2405,6 +2761,25 @@ module Google
         end
       end
       
+      class UpdateDeveloperMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
+          property :fields, as: 'fields'
+        end
+      end
+      
+      class UpdateDeveloperMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :developer_metadata, as: 'developerMetadata', class: Google::Apis::SheetsV4::DeveloperMetadata, decorator: Google::Apis::SheetsV4::DeveloperMetadata::Representation
+      
+        end
+      end
+      
       class UpdateDimensionPropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2476,6 +2851,20 @@ module Google
           property :fields, as: 'fields'
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SpreadsheetProperties, decorator: Google::Apis::SheetsV4::SpreadsheetProperties::Representation
       
+        end
+      end
+      
+      class UpdateValuesByDataFilterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_filter, as: 'dataFilter', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
+      
+          property :updated_cells, as: 'updatedCells'
+          property :updated_columns, as: 'updatedColumns'
+          property :updated_data, as: 'updatedData', class: Google::Apis::SheetsV4::ValueRange, decorator: Google::Apis::SheetsV4::ValueRange::Representation
+      
+          property :updated_range, as: 'updatedRange'
+          property :updated_rows, as: 'updatedRows'
         end
       end
       

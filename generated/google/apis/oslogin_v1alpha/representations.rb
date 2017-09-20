@@ -82,12 +82,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gecos, as: 'gecos'
-          property :gid, as: 'gid'
+          property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'
           property :primary, as: 'primary'
           property :shell, as: 'shell'
           property :system_id, as: 'systemId'
-          property :uid, as: 'uid'
+          property :uid, :numeric_string => true, as: 'uid'
           property :username, as: 'username'
         end
       end

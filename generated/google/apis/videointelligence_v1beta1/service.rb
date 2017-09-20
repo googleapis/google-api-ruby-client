@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VideointelligenceV1beta1
-      # Google Cloud Video Intelligence API
+      # Cloud Video Intelligence API
       #
-      # Google Cloud Video Intelligence API.
+      # Cloud Video Intelligence API.
       #
       # @example
       #    require 'google/apis/videointelligence_v1beta1'

@@ -172,7 +172,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :expiration_time_usec
       
-        # [Output Only] The SHA-256 fingerprint of the SSH public key.
+        # The SHA-256 fingerprint of the SSH public key.
+        # Output only.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint

@@ -177,6 +177,127 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the spreadsheet at the given ID.
+        # The caller must specify the spreadsheet ID.
+        # This method differs from GetSpreadsheet in that it allows selecting
+        # which subsets of spreadsheet data to return by specifying a
+        # dataFilters parameter.
+        # Multiple DataFilters can be specified.  Specifying one or
+        # more data filters will return the portions of the spreadsheet that
+        # intersect ranges matched by any of the filters.
+        # By default, data within grids will not be returned.
+        # You can include grid data one of two ways:
+        # * Specify a field mask listing your desired fields using the `fields` URL
+        # parameter in HTTP
+        # * Set the includeGridData
+        # parameter to true.  If a field mask is set, the `includeGridData`
+        # parameter is ignored
+        # For large spreadsheets, it is recommended to retrieve only the specific
+        # fields of the spreadsheet that you want.
+        # @param [String] spreadsheet_id
+        #   The spreadsheet to request.
+        # @param [Google::Apis::SheetsV4::GetSpreadsheetByDataFilterRequest] get_spreadsheet_by_data_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::Spreadsheet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::Spreadsheet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_spreadsheet_by_data_filter(spreadsheet_id, get_spreadsheet_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}:getByDataFilter', options)
+          command.request_representation = Google::Apis::SheetsV4::GetSpreadsheetByDataFilterRequest::Representation
+          command.request_object = get_spreadsheet_by_data_filter_request_object
+          command.response_representation = Google::Apis::SheetsV4::Spreadsheet::Representation
+          command.response_class = Google::Apis::SheetsV4::Spreadsheet
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the developer metadata with the specified id.
+        # The caller must specify the spreadsheet ID and the developer metadata's
+        # unique metadataId.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to retrieve metadata from.
+        # @param [Fixnum] metadata_id
+        #   The ID of the developer metadata to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::DeveloperMetadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::DeveloperMetadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_spreadsheet_developer_metadatum(spreadsheet_id, metadata_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}', options)
+          command.response_representation = Google::Apis::SheetsV4::DeveloperMetadata::Representation
+          command.response_class = Google::Apis::SheetsV4::DeveloperMetadata
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.params['metadataId'] = metadata_id unless metadata_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all developer metadata matching the specified DataFilter.
+        # If the provided DataFilter represents a DeveloperMetadataLookup object,
+        # this will return all DeveloperMetadata entries selected by it. If the
+        # DataFilter represents a location in a spreadsheet, this will return all
+        # developer metadata associated with locations intersecting that region.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to retrieve metadata from.
+        # @param [Google::Apis::SheetsV4::SearchDeveloperMetadataRequest] search_developer_metadata_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::SearchDeveloperMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::SearchDeveloperMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_developer_metadatum_developer_metadata(spreadsheet_id, search_developer_metadata_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/developerMetadata:search', options)
+          command.request_representation = Google::Apis::SheetsV4::SearchDeveloperMetadataRequest::Representation
+          command.request_object = search_developer_metadata_request_object
+          command.response_representation = Google::Apis::SheetsV4::SearchDeveloperMetadataResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::SearchDeveloperMetadataResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Copies a single sheet from a spreadsheet to another spreadsheet.
         # Returns the properties of the newly created sheet.
         # @param [String] spreadsheet_id
@@ -320,6 +441,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Clears one or more ranges of values from a spreadsheet.
+        # The caller must specify the spreadsheet ID and one or more
+        # DataFilters. Ranges matching any of the specified data
+        # filters will be cleared.  Only values are cleared -- all other properties
+        # of the cell (such as formatting, data validation, etc..) are kept.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to update.
+        # @param [Google::Apis::SheetsV4::BatchClearValuesByDataFilterRequest] batch_clear_values_by_data_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::BatchClearValuesByDataFilterResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::BatchClearValuesByDataFilterResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_spreadsheet_value_clear_by_data_filter(spreadsheet_id, batch_clear_values_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', options)
+          command.request_representation = Google::Apis::SheetsV4::BatchClearValuesByDataFilterRequest::Representation
+          command.request_object = batch_clear_values_by_data_filter_request_object
+          command.response_representation = Google::Apis::SheetsV4::BatchClearValuesByDataFilterResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::BatchClearValuesByDataFilterResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns one or more ranges of values from a spreadsheet.
         # The caller must specify the spreadsheet ID and one or more ranges.
         # @param [String] spreadsheet_id
@@ -372,6 +530,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns one or more ranges of values from a spreadsheet that match the
+        # specified data filters.  The caller must specify the spreadsheet ID and
+        # one or more DataFilters.  Ranges that match any of the data
+        # filters in the request will be returned.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to retrieve data from.
+        # @param [Google::Apis::SheetsV4::BatchGetValuesByDataFilterRequest] batch_get_values_by_data_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::BatchGetValuesByDataFilterResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::BatchGetValuesByDataFilterResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_spreadsheet_value_get_by_data_filter(spreadsheet_id, batch_get_values_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', options)
+          command.request_representation = Google::Apis::SheetsV4::BatchGetValuesByDataFilterRequest::Representation
+          command.request_object = batch_get_values_by_data_filter_request_object
+          command.response_representation = Google::Apis::SheetsV4::BatchGetValuesByDataFilterResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::BatchGetValuesByDataFilterResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets values in one or more ranges of a spreadsheet.
         # The caller must specify the spreadsheet ID,
         # a valueInputOption, and one or more
@@ -402,6 +596,42 @@ module Google
           command.request_object = batch_update_values_request_object
           command.response_representation = Google::Apis::SheetsV4::BatchUpdateValuesResponse::Representation
           command.response_class = Google::Apis::SheetsV4::BatchUpdateValuesResponse
+          command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets values in one or more ranges of a spreadsheet.
+        # The caller must specify the spreadsheet ID,
+        # a valueInputOption, and one or more
+        # DataFilterValueRanges.
+        # @param [String] spreadsheet_id
+        #   The ID of the spreadsheet to update.
+        # @param [Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterRequest] batch_update_values_by_data_filter_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_spreadsheet_value_update_by_data_filter(spreadsheet_id, batch_update_values_by_data_filter_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', options)
+          command.request_representation = Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterRequest::Representation
+          command.request_object = batch_update_values_by_data_filter_request_object
+          command.response_representation = Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterResponse::Representation
+          command.response_class = Google::Apis::SheetsV4::BatchUpdateValuesByDataFilterResponse
           command.params['spreadsheetId'] = spreadsheet_id unless spreadsheet_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DailyMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,18 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +245,12 @@ module Google
       end
       
       class SetLoggingServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetMaintenancePolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +389,8 @@ module Google
       
           collection :locations, as: 'locations'
           property :logging_service, as: 'loggingService'
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
+      
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
       
           property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
@@ -426,6 +452,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_pool, as: 'nodePool', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
       
+        end
+      end
+      
+      class DailyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -502,6 +536,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :missing_zones, as: 'missingZones'
           collection :operations, as: 'operations', class: Google::Apis::ContainerV1::Operation, decorator: Google::Apis::ContainerV1::Operation::Representation
+      
+        end
+      end
+      
+      class MaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :window, as: 'window', class: Google::Apis::ContainerV1::MaintenanceWindow, decorator: Google::Apis::ContainerV1::MaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_maintenance_window, as: 'dailyMaintenanceWindow', class: Google::Apis::ContainerV1::DailyMaintenanceWindow, decorator: Google::Apis::ContainerV1::DailyMaintenanceWindow::Representation
       
         end
       end
@@ -660,6 +710,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :logging_service, as: 'loggingService'
+        end
+      end
+      
+      class SetMaintenancePolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
+      
         end
       end
       

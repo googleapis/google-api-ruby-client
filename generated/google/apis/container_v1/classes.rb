@@ -301,6 +301,11 @@ module Google
         # @return [String]
         attr_accessor :logging_service
       
+        # MaintenancePolicy defines the maintenance policy to be used for the cluster.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::ContainerV1::MaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
         # The authentication information for accessing the master endpoint.
         # Authentication can be done using HTTP basic auth or using client
         # certificates.
@@ -437,6 +442,7 @@ module Google
           @legacy_abac = args[:legacy_abac] if args.key?(:legacy_abac)
           @locations = args[:locations] if args.key?(:locations)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
@@ -600,6 +606,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_pool = args[:node_pool] if args.key?(:node_pool)
+        end
+      end
+      
+      # Time window specified for daily maintenance operations.
+      class DailyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Duration of the time window, automatically chosen to be
+        # smallest possible in the given scenario.
+        # Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        # format "PTnHnMnS".
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Time within the maintenance window to start the maintenance operations.
+        # Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        # format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -905,6 +941,44 @@ module Google
         def update!(**args)
           @missing_zones = args[:missing_zones] if args.key?(:missing_zones)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # MaintenancePolicy defines the maintenance policy to be used for the cluster.
+      class MaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # MaintenanceWindow defines the maintenance window to be used for the cluster.
+        # Corresponds to the JSON property `window`
+        # @return [Google::Apis::ContainerV1::MaintenanceWindow]
+        attr_accessor :window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @window = args[:window] if args.key?(:window)
+        end
+      end
+      
+      # MaintenanceWindow defines the maintenance window to be used for the cluster.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Time window specified for daily maintenance operations.
+        # Corresponds to the JSON property `dailyMaintenanceWindow`
+        # @return [Google::Apis::ContainerV1::DailyMaintenanceWindow]
+        attr_accessor :daily_maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_maintenance_window = args[:daily_maintenance_window] if args.key?(:daily_maintenance_window)
         end
       end
       
@@ -1575,6 +1649,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
+        end
+      end
+      
+      # SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
+      class SetMaintenancePolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # MaintenancePolicy defines the maintenance policy to be used for the cluster.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::ContainerV1::MaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
         end
       end
       

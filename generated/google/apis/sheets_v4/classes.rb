@@ -1224,6 +1224,55 @@ module Google
         end
       end
       
+      # The request for clearing more than one range selected by a
+      # DataFilter in a spreadsheet.
+      class BatchClearValuesByDataFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The DataFilters used to determine which ranges to clear.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+        end
+      end
+      
+      # The response when clearing a range of values selected with
+      # DataFilters in a spreadsheet.
+      class BatchClearValuesByDataFilterResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ranges that were cleared, in A1 notation.
+        # (If the requests were for an unbounded range or a ranger larger
+        # than the bounds of the sheet, this will be the actual ranges
+        # that were cleared, bounded to the sheet's limits.)
+        # Corresponds to the JSON property `clearedRanges`
+        # @return [Array<String>]
+        attr_accessor :cleared_ranges
+      
+        # The spreadsheet the updates were applied to.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cleared_ranges = args[:cleared_ranges] if args.key?(:cleared_ranges)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+        end
+      end
+      
       # The request for clearing more than one range of values in a spreadsheet.
       class BatchClearValuesRequest
         include Google::Apis::Core::Hashable
@@ -1268,6 +1317,81 @@ module Google
         def update!(**args)
           @cleared_ranges = args[:cleared_ranges] if args.key?(:cleared_ranges)
           @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+        end
+      end
+      
+      # The request for retrieving a range of values in a spreadsheet selected by a
+      # set of DataFilters.
+      class BatchGetValuesByDataFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The data filters used to match the ranges of values to retrieve.  Ranges
+        # that match any of the specified data filters will be included in the
+        # response.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        # How dates, times, and durations should be represented in the output.
+        # This is ignored if value_render_option is
+        # FORMATTED_VALUE.
+        # The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # Corresponds to the JSON property `dateTimeRenderOption`
+        # @return [String]
+        attr_accessor :date_time_render_option
+      
+        # The major dimension that results should use.
+        # For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+        # then a request that selects that range and sets `majorDimension=ROWS` will
+        # return `[[1,2],[3,4]]`,
+        # whereas a request that sets `majorDimension=COLUMNS` will return
+        # `[[1,3],[2,4]]`.
+        # Corresponds to the JSON property `majorDimension`
+        # @return [String]
+        attr_accessor :major_dimension
+      
+        # How values should be represented in the output.
+        # The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # Corresponds to the JSON property `valueRenderOption`
+        # @return [String]
+        attr_accessor :value_render_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+          @date_time_render_option = args[:date_time_render_option] if args.key?(:date_time_render_option)
+          @major_dimension = args[:major_dimension] if args.key?(:major_dimension)
+          @value_render_option = args[:value_render_option] if args.key?(:value_render_option)
+        end
+      end
+      
+      # The response when retrieving more than one range of values in a spreadsheet
+      # selected by DataFilters.
+      class BatchGetValuesByDataFilterResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the spreadsheet the data was retrieved from.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The requested values with the list of data filters that matched them.
+        # Corresponds to the JSON property `valueRanges`
+        # @return [Array<Google::Apis::SheetsV4::MatchedValueRange>]
+        attr_accessor :value_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @value_ranges = args[:value_ranges] if args.key?(:value_ranges)
         end
       end
       
@@ -1371,6 +1495,114 @@ module Google
           @replies = args[:replies] if args.key?(:replies)
           @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
           @updated_spreadsheet = args[:updated_spreadsheet] if args.key?(:updated_spreadsheet)
+        end
+      end
+      
+      # The request for updating more than one range of values in a spreadsheet.
+      class BatchUpdateValuesByDataFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The new values to apply to the spreadsheet.  If more than one range is
+        # matched by the specified DataFilter the specified values will be
+        # applied to all of of those ranges.
+        # Corresponds to the JSON property `data`
+        # @return [Array<Google::Apis::SheetsV4::DataFilterValueRange>]
+        attr_accessor :data
+      
+        # Determines if the update response should include the values
+        # of the cells that were updated. By default, responses
+        # do not include the updated values. The `updatedData` field within
+        # each of the BatchUpdateValuesResponse.responses will contain
+        # the updated values. If the range to write was larger than than the range
+        # actually written, the response will include all values in the requested
+        # range (excluding trailing empty rows and columns).
+        # Corresponds to the JSON property `includeValuesInResponse`
+        # @return [Boolean]
+        attr_accessor :include_values_in_response
+        alias_method :include_values_in_response?, :include_values_in_response
+      
+        # Determines how dates, times, and durations in the response should be
+        # rendered. This is ignored if response_value_render_option is
+        # FORMATTED_VALUE.
+        # The default dateTime render option is
+        # DateTimeRenderOption.SERIAL_NUMBER.
+        # Corresponds to the JSON property `responseDateTimeRenderOption`
+        # @return [String]
+        attr_accessor :response_date_time_render_option
+      
+        # Determines how values in the response should be rendered.
+        # The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # Corresponds to the JSON property `responseValueRenderOption`
+        # @return [String]
+        attr_accessor :response_value_render_option
+      
+        # How the input data should be interpreted.
+        # Corresponds to the JSON property `valueInputOption`
+        # @return [String]
+        attr_accessor :value_input_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @include_values_in_response = args[:include_values_in_response] if args.key?(:include_values_in_response)
+          @response_date_time_render_option = args[:response_date_time_render_option] if args.key?(:response_date_time_render_option)
+          @response_value_render_option = args[:response_value_render_option] if args.key?(:response_value_render_option)
+          @value_input_option = args[:value_input_option] if args.key?(:value_input_option)
+        end
+      end
+      
+      # The response when updating a range of values in a spreadsheet.
+      class BatchUpdateValuesByDataFilterResponse
+        include Google::Apis::Core::Hashable
+      
+        # The response for each range updated.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::SheetsV4::UpdateValuesByDataFilterResponse>]
+        attr_accessor :responses
+      
+        # The spreadsheet the updates were applied to.
+        # Corresponds to the JSON property `spreadsheetId`
+        # @return [String]
+        attr_accessor :spreadsheet_id
+      
+        # The total number of cells updated.
+        # Corresponds to the JSON property `totalUpdatedCells`
+        # @return [Fixnum]
+        attr_accessor :total_updated_cells
+      
+        # The total number of columns where at least one cell in the column was
+        # updated.
+        # Corresponds to the JSON property `totalUpdatedColumns`
+        # @return [Fixnum]
+        attr_accessor :total_updated_columns
+      
+        # The total number of rows where at least one cell in the row was updated.
+        # Corresponds to the JSON property `totalUpdatedRows`
+        # @return [Fixnum]
+        attr_accessor :total_updated_rows
+      
+        # The total number of sheets where at least one cell in the sheet was
+        # updated.
+        # Corresponds to the JSON property `totalUpdatedSheets`
+        # @return [Fixnum]
+        attr_accessor :total_updated_sheets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
+          @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
+          @total_updated_cells = args[:total_updated_cells] if args.key?(:total_updated_cells)
+          @total_updated_columns = args[:total_updated_columns] if args.key?(:total_updated_columns)
+          @total_updated_rows = args[:total_updated_rows] if args.key?(:total_updated_rows)
+          @total_updated_sheets = args[:total_updated_sheets] if args.key?(:total_updated_sheets)
         end
       end
       
@@ -2894,6 +3126,58 @@ module Google
         end
       end
       
+      # A request to create developer metadata.
+      class CreateDeveloperMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Developer metadata associated with a location or object in a spreadsheet.
+        # Developer metadata may be used to associate arbitrary data with various
+        # parts of a spreadsheet and will remain associated at those locations as they
+        # move around and the spreadsheet is edited.  For example, if developer
+        # metadata is associated with row 5 and another row is then subsequently
+        # inserted above row 5, that original metadata will still be associated with
+        # the row it was first associated with (what is now row 6). If the associated
+        # object is deleted its metadata will be deleted too.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadata]
+        attr_accessor :developer_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
+        end
+      end
+      
+      # The response from creating developer metadata.
+      class CreateDeveloperMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # Developer metadata associated with a location or object in a spreadsheet.
+        # Developer metadata may be used to associate arbitrary data with various
+        # parts of a spreadsheet and will remain associated at those locations as they
+        # move around and the spreadsheet is edited.  For example, if developer
+        # metadata is associated with row 5 and another row is then subsequently
+        # inserted above row 5, that original metadata will still be associated with
+        # the row it was first associated with (what is now row 6). If the associated
+        # object is deleted its metadata will be deleted too.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadata]
+        attr_accessor :developer_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
+        end
+      end
+      
       # Moves data from the source to the destination.
       class CutPasteRequest
         include Google::Apis::Core::Hashable
@@ -2945,6 +3229,102 @@ module Google
           @destination = args[:destination] if args.key?(:destination)
           @paste_type = args[:paste_type] if args.key?(:paste_type)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Filter that describes what data should be selected or returned from a
+      # request.
+      class DataFilter
+        include Google::Apis::Core::Hashable
+      
+        # Selects data that matches the specified A1 range.
+        # Corresponds to the JSON property `a1Range`
+        # @return [String]
+        attr_accessor :a1_range
+      
+        # Selects DeveloperMetadata that matches all of the specified fields.  For
+        # example, if only a metadata ID is specified this will consider the
+        # DeveloperMetadata with that particular unique ID. If a metadata key is
+        # specified, all developer metadata with that key will be considered.  If a
+        # key, visibility, and location type are all specified, then all
+        # developer metadata with that key, visibility, and associated with a
+        # location of that type will be considered.  In general, this
+        # selects all DeveloperMetadata that matches the intersection of all the
+        # specified fields; any field or combination of fields may be specified.
+        # Corresponds to the JSON property `developerMetadataLookup`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadataLookup]
+        attr_accessor :developer_metadata_lookup
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `gridRange`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :grid_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @a1_range = args[:a1_range] if args.key?(:a1_range)
+          @developer_metadata_lookup = args[:developer_metadata_lookup] if args.key?(:developer_metadata_lookup)
+          @grid_range = args[:grid_range] if args.key?(:grid_range)
+        end
+      end
+      
+      # A range of values whose location is specified by a DataFilter.
+      class DataFilterValueRange
+        include Google::Apis::Core::Hashable
+      
+        # Filter that describes what data should be selected or returned from a
+        # request.
+        # Corresponds to the JSON property `dataFilter`
+        # @return [Google::Apis::SheetsV4::DataFilter]
+        attr_accessor :data_filter
+      
+        # The major dimension of the values.
+        # Corresponds to the JSON property `majorDimension`
+        # @return [String]
+        attr_accessor :major_dimension
+      
+        # The data to be written.  If the provided values exceed any of the ranges
+        # matched by the data filter then the request will fail.  If the provided
+        # values are less than the matched ranges only the specified values will be
+        # written, existing values in the matched ranges will remain unaffected.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Array<Object>>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filter = args[:data_filter] if args.key?(:data_filter)
+          @major_dimension = args[:major_dimension] if args.key?(:major_dimension)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -3051,6 +3431,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rule = args[:rule] if args.key?(:rule)
+        end
+      end
+      
+      # A request to delete developer metadata.
+      class DeleteDeveloperMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Filter that describes what data should be selected or returned from a
+        # request.
+        # Corresponds to the JSON property `dataFilter`
+        # @return [Google::Apis::SheetsV4::DataFilter]
+        attr_accessor :data_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filter = args[:data_filter] if args.key?(:data_filter)
+        end
+      end
+      
+      # The response from deleting developer metadata.
+      class DeleteDeveloperMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The metadata that was deleted.
+        # Corresponds to the JSON property `deletedDeveloperMetadata`
+        # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
+        attr_accessor :deleted_developer_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted_developer_metadata = args[:deleted_developer_metadata] if args.key?(:deleted_developer_metadata)
         end
       end
       
@@ -3221,9 +3640,199 @@ module Google
         end
       end
       
+      # Developer metadata associated with a location or object in a spreadsheet.
+      # Developer metadata may be used to associate arbitrary data with various
+      # parts of a spreadsheet and will remain associated at those locations as they
+      # move around and the spreadsheet is edited.  For example, if developer
+      # metadata is associated with row 5 and another row is then subsequently
+      # inserted above row 5, that original metadata will still be associated with
+      # the row it was first associated with (what is now row 6). If the associated
+      # object is deleted its metadata will be deleted too.
+      class DeveloperMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A location where metadata may be associated in a spreadsheet.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadataLocation]
+        attr_accessor :location
+      
+        # The spreadsheet-scoped unique ID that identifies the metadata. IDs may be
+        # specified when metadata is created, otherwise one will be randomly
+        # generated and assigned. Must be positive.
+        # Corresponds to the JSON property `metadataId`
+        # @return [Fixnum]
+        attr_accessor :metadata_id
+      
+        # The metadata key. There may be multiple metadata in a spreadsheet with the
+        # same key.  Developer metadata must always have a key specified.
+        # Corresponds to the JSON property `metadataKey`
+        # @return [String]
+        attr_accessor :metadata_key
+      
+        # Data associated with the metadata's key.
+        # Corresponds to the JSON property `metadataValue`
+        # @return [String]
+        attr_accessor :metadata_value
+      
+        # The metadata visibility.  Developer metadata must always have a visibility
+        # specified.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @metadata_id = args[:metadata_id] if args.key?(:metadata_id)
+          @metadata_key = args[:metadata_key] if args.key?(:metadata_key)
+          @metadata_value = args[:metadata_value] if args.key?(:metadata_value)
+          @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
+      # A location where metadata may be associated in a spreadsheet.
+      class DeveloperMetadataLocation
+        include Google::Apis::Core::Hashable
+      
+        # A range along a single dimension on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive
+        # and the end index is exclusive.
+        # Missing indexes indicate the range is unbounded on that side.
+        # Corresponds to the JSON property `dimensionRange`
+        # @return [Google::Apis::SheetsV4::DimensionRange]
+        attr_accessor :dimension_range
+      
+        # The type of location this object represents.  This field is read-only.
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
+        # The ID of the sheet when metadata is associated with an entire sheet.
+        # Corresponds to the JSON property `sheetId`
+        # @return [Fixnum]
+        attr_accessor :sheet_id
+      
+        # True when metadata is associated with an entire spreadsheet.
+        # Corresponds to the JSON property `spreadsheet`
+        # @return [Boolean]
+        attr_accessor :spreadsheet
+        alias_method :spreadsheet?, :spreadsheet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_range = args[:dimension_range] if args.key?(:dimension_range)
+          @location_type = args[:location_type] if args.key?(:location_type)
+          @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
+          @spreadsheet = args[:spreadsheet] if args.key?(:spreadsheet)
+        end
+      end
+      
+      # Selects DeveloperMetadata that matches all of the specified fields.  For
+      # example, if only a metadata ID is specified this will consider the
+      # DeveloperMetadata with that particular unique ID. If a metadata key is
+      # specified, all developer metadata with that key will be considered.  If a
+      # key, visibility, and location type are all specified, then all
+      # developer metadata with that key, visibility, and associated with a
+      # location of that type will be considered.  In general, this
+      # selects all DeveloperMetadata that matches the intersection of all the
+      # specified fields; any field or combination of fields may be specified.
+      class DeveloperMetadataLookup
+        include Google::Apis::Core::Hashable
+      
+        # Determines how this lookup matches the location.  If this field is
+        # specified as EXACT, only developer metadata associated on the exact
+        # location specified will be matched.  If this field is specified to
+        # INTERSECTING,
+        # developer metadata associated on intersecting locations will also be
+        # matched.  If left unspecified, this field will assume a default value of
+        # INTERSECTING.
+        # If this field is specified, a metadataLocation
+        # must also be specified.
+        # Corresponds to the JSON property `locationMatchingStrategy`
+        # @return [String]
+        attr_accessor :location_matching_strategy
+      
+        # Limits the selected developer metadata to those entries which are
+        # associated with locations of the specified type.  For example, specifying
+        # this as ROW will only consider
+        # developer metadata associated on rows.  If left unspecified, all location
+        # types will be considered.  This field cannot be specified as
+        # SPREADSHEET when the
+        # locationMatchingStrategy is
+        # specified as INTERSECTING or when the
+        # metadataLocation is specified as a
+        # non-spreadsheet location: spreadsheet metadata cannot intersect any other
+        # developer metadata location.  This field also must be left unspecified when
+        # the
+        # locationMatchingStrategy is
+        # specified as EXACT.
+        # Corresponds to the JSON property `locationType`
+        # @return [String]
+        attr_accessor :location_type
+      
+        # Limits the selected developer metadata to that which has a matching
+        # DeveloperMetadata.metadata_id.
+        # Corresponds to the JSON property `metadataId`
+        # @return [Fixnum]
+        attr_accessor :metadata_id
+      
+        # Limits the selected developer metadata to that which has a matching
+        # DeveloperMetadata.metadata_key.
+        # Corresponds to the JSON property `metadataKey`
+        # @return [String]
+        attr_accessor :metadata_key
+      
+        # A location where metadata may be associated in a spreadsheet.
+        # Corresponds to the JSON property `metadataLocation`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadataLocation]
+        attr_accessor :metadata_location
+      
+        # Limits the selected developer metadata to that which has a matching
+        # DeveloperMetadata.metadata_value.
+        # Corresponds to the JSON property `metadataValue`
+        # @return [String]
+        attr_accessor :metadata_value
+      
+        # Limits the selected developer metadata to that which has a matching
+        # DeveloperMetadata.visibility.  If left unspecified, all developer
+        # metadata visibile to the requesting project will be considered.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_matching_strategy = args[:location_matching_strategy] if args.key?(:location_matching_strategy)
+          @location_type = args[:location_type] if args.key?(:location_type)
+          @metadata_id = args[:metadata_id] if args.key?(:metadata_id)
+          @metadata_key = args[:metadata_key] if args.key?(:metadata_key)
+          @metadata_location = args[:metadata_location] if args.key?(:metadata_location)
+          @metadata_value = args[:metadata_value] if args.key?(:metadata_value)
+          @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
       # Properties about a dimension.
       class DimensionProperties
         include Google::Apis::Core::Hashable
+      
+        # The developer metadata associated with a single row or column.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
+        attr_accessor :developer_metadata
       
         # True if this dimension is being filtered.
         # This field is read-only.
@@ -3249,6 +3858,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
           @hidden_by_filter = args[:hidden_by_filter] if args.key?(:hidden_by_filter)
           @hidden_by_user = args[:hidden_by_user] if args.key?(:hidden_by_user)
           @pixel_size = args[:pixel_size] if args.key?(:pixel_size)
@@ -3811,6 +4421,34 @@ module Google
           @rows_changed = args[:rows_changed] if args.key?(:rows_changed)
           @sheets_changed = args[:sheets_changed] if args.key?(:sheets_changed)
           @values_changed = args[:values_changed] if args.key?(:values_changed)
+        end
+      end
+      
+      # The request for retrieving a Spreadsheet.
+      class GetSpreadsheetByDataFilterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The DataFilters used to select which ranges to retrieve from
+        # the spreadsheet.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        # True if grid data should be returned.
+        # This parameter is ignored if a field mask was set in the request.
+        # Corresponds to the JSON property `includeGridData`
+        # @return [Boolean]
+        attr_accessor :include_grid_data
+        alias_method :include_grid_data?, :include_grid_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+          @include_grid_data = args[:include_grid_data] if args.key?(:include_grid_data)
         end
       end
       
@@ -4472,6 +5110,65 @@ module Google
         def update!(**args)
           @convergence_threshold = args[:convergence_threshold] if args.key?(:convergence_threshold)
           @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
+        end
+      end
+      
+      # A developer metadata entry and the data filters specified in the original
+      # request that matched it.
+      class MatchedDeveloperMetadata
+        include Google::Apis::Core::Hashable
+      
+        # All filters matching the returned developer metadata.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        # Developer metadata associated with a location or object in a spreadsheet.
+        # Developer metadata may be used to associate arbitrary data with various
+        # parts of a spreadsheet and will remain associated at those locations as they
+        # move around and the spreadsheet is edited.  For example, if developer
+        # metadata is associated with row 5 and another row is then subsequently
+        # inserted above row 5, that original metadata will still be associated with
+        # the row it was first associated with (what is now row 6). If the associated
+        # object is deleted its metadata will be deleted too.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadata]
+        attr_accessor :developer_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
+        end
+      end
+      
+      # A value range that was matched by one or more data filers.
+      class MatchedValueRange
+        include Google::Apis::Core::Hashable
+      
+        # The DataFilters from the request that matched the range of
+        # values.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        # Data within a range of the spreadsheet.
+        # Corresponds to the JSON property `valueRange`
+        # @return [Google::Apis::SheetsV4::ValueRange]
+        attr_accessor :value_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+          @value_range = args[:value_range] if args.key?(:value_range)
         end
       end
       
@@ -5594,6 +6291,11 @@ module Google
         # @return [Google::Apis::SheetsV4::CopyPasteRequest]
         attr_accessor :copy_paste
       
+        # A request to create developer metadata.
+        # Corresponds to the JSON property `createDeveloperMetadata`
+        # @return [Google::Apis::SheetsV4::CreateDeveloperMetadataRequest]
+        attr_accessor :create_developer_metadata
+      
         # Moves data from the source to the destination.
         # Corresponds to the JSON property `cutPaste`
         # @return [Google::Apis::SheetsV4::CutPasteRequest]
@@ -5609,6 +6311,11 @@ module Google
         # Corresponds to the JSON property `deleteConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest]
         attr_accessor :delete_conditional_format_rule
+      
+        # A request to delete developer metadata.
+        # Corresponds to the JSON property `deleteDeveloperMetadata`
+        # @return [Google::Apis::SheetsV4::DeleteDeveloperMetadataRequest]
+        attr_accessor :delete_developer_metadata
       
         # Deletes the dimensions from the sheet.
         # Corresponds to the JSON property `deleteDimension`
@@ -5768,6 +6475,16 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest]
         attr_accessor :update_conditional_format_rule
       
+        # A request to update properties of developer metadata.
+        # Updates the properties of the developer metadata selected by the filters to
+        # the values provided in the DeveloperMetadata resource.  Callers must
+        # specify the properties they wish to update in the fields parameter, as well
+        # as specify at least one DataFilter matching the metadata they wish to
+        # update.
+        # Corresponds to the JSON property `updateDeveloperMetadata`
+        # @return [Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest]
+        attr_accessor :update_developer_metadata
+      
         # Updates properties of dimensions within the specified range.
         # Corresponds to the JSON property `updateDimensionProperties`
         # @return [Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest]
@@ -5826,9 +6543,11 @@ module Google
           @auto_resize_dimensions = args[:auto_resize_dimensions] if args.key?(:auto_resize_dimensions)
           @clear_basic_filter = args[:clear_basic_filter] if args.key?(:clear_basic_filter)
           @copy_paste = args[:copy_paste] if args.key?(:copy_paste)
+          @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @cut_paste = args[:cut_paste] if args.key?(:cut_paste)
           @delete_banding = args[:delete_banding] if args.key?(:delete_banding)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
+          @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
           @delete_dimension = args[:delete_dimension] if args.key?(:delete_dimension)
           @delete_embedded_object = args[:delete_embedded_object] if args.key?(:delete_embedded_object)
           @delete_filter_view = args[:delete_filter_view] if args.key?(:delete_filter_view)
@@ -5856,6 +6575,7 @@ module Google
           @update_cells = args[:update_cells] if args.key?(:update_cells)
           @update_chart_spec = args[:update_chart_spec] if args.key?(:update_chart_spec)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
+          @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_dimension_properties = args[:update_dimension_properties] if args.key?(:update_dimension_properties)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
           @update_filter_view = args[:update_filter_view] if args.key?(:update_filter_view)
@@ -5900,10 +6620,20 @@ module Google
         # @return [Google::Apis::SheetsV4::AddSheetResponse]
         attr_accessor :add_sheet
       
+        # The response from creating developer metadata.
+        # Corresponds to the JSON property `createDeveloperMetadata`
+        # @return [Google::Apis::SheetsV4::CreateDeveloperMetadataResponse]
+        attr_accessor :create_developer_metadata
+      
         # The result of deleting a conditional format rule.
         # Corresponds to the JSON property `deleteConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::DeleteConditionalFormatRuleResponse]
         attr_accessor :delete_conditional_format_rule
+      
+        # The response from deleting developer metadata.
+        # Corresponds to the JSON property `deleteDeveloperMetadata`
+        # @return [Google::Apis::SheetsV4::DeleteDeveloperMetadataResponse]
+        attr_accessor :delete_developer_metadata
       
         # The result of a filter view being duplicated.
         # Corresponds to the JSON property `duplicateFilterView`
@@ -5925,6 +6655,11 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse]
         attr_accessor :update_conditional_format_rule
       
+        # The response from updating developer metadata.
+        # Corresponds to the JSON property `updateDeveloperMetadata`
+        # @return [Google::Apis::SheetsV4::UpdateDeveloperMetadataResponse]
+        attr_accessor :update_developer_metadata
+      
         # The result of updating an embedded object's position.
         # Corresponds to the JSON property `updateEmbeddedObjectPosition`
         # @return [Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionResponse]
@@ -5942,11 +6677,14 @@ module Google
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
           @add_sheet = args[:add_sheet] if args.key?(:add_sheet)
+          @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
+          @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
+          @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
         end
       end
@@ -5967,6 +6705,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A request to retrieve all developer metadata matching the set of specified
+      # criteria.
+      class SearchDeveloperMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # The data filters describing the criteria used to determine which
+        # DeveloperMetadata entries to return.  DeveloperMetadata matching any of the
+        # specified filters will be included in the response.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+        end
+      end
+      
+      # A reply to a developer metadata search request.
+      class SearchDeveloperMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The metadata matching the criteria of the search request.
+        # Corresponds to the JSON property `matchedDeveloperMetadata`
+        # @return [Array<Google::Apis::SheetsV4::MatchedDeveloperMetadata>]
+        attr_accessor :matched_developer_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matched_developer_metadata = args[:matched_developer_metadata] if args.key?(:matched_developer_metadata)
         end
       end
       
@@ -6072,6 +6851,11 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::GridData>]
         attr_accessor :data
       
+        # The developer metadata associated with a sheet.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
+        attr_accessor :developer_metadata
+      
         # The filter views in this sheet.
         # Corresponds to the JSON property `filterViews`
         # @return [Array<Google::Apis::SheetsV4::FilterView>]
@@ -6103,6 +6887,7 @@ module Google
           @charts = args[:charts] if args.key?(:charts)
           @conditional_formats = args[:conditional_formats] if args.key?(:conditional_formats)
           @data = args[:data] if args.key?(:data)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
           @filter_views = args[:filter_views] if args.key?(:filter_views)
           @merges = args[:merges] if args.key?(:merges)
           @properties = args[:properties] if args.key?(:properties)
@@ -6413,6 +7198,11 @@ module Google
       class Spreadsheet
         include Google::Apis::Core::Hashable
       
+        # The developer metadata associated with a spreadsheet.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
+        attr_accessor :developer_metadata
+      
         # The named ranges defined in a spreadsheet.
         # Corresponds to the JSON property `namedRanges`
         # @return [Array<Google::Apis::SheetsV4::NamedRange>]
@@ -6446,6 +7236,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
           @named_ranges = args[:named_ranges] if args.key?(:named_ranges)
           @properties = args[:properties] if args.key?(:properties)
           @sheets = args[:sheets] if args.key?(:sheets)
@@ -7107,6 +7898,70 @@ module Google
         end
       end
       
+      # A request to update properties of developer metadata.
+      # Updates the properties of the developer metadata selected by the filters to
+      # the values provided in the DeveloperMetadata resource.  Callers must
+      # specify the properties they wish to update in the fields parameter, as well
+      # as specify at least one DataFilter matching the metadata they wish to
+      # update.
+      class UpdateDeveloperMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # The filters matching the developer metadata entries to update.
+        # Corresponds to the JSON property `dataFilters`
+        # @return [Array<Google::Apis::SheetsV4::DataFilter>]
+        attr_accessor :data_filters
+      
+        # Developer metadata associated with a location or object in a spreadsheet.
+        # Developer metadata may be used to associate arbitrary data with various
+        # parts of a spreadsheet and will remain associated at those locations as they
+        # move around and the spreadsheet is edited.  For example, if developer
+        # metadata is associated with row 5 and another row is then subsequently
+        # inserted above row 5, that original metadata will still be associated with
+        # the row it was first associated with (what is now row 6). If the associated
+        # object is deleted its metadata will be deleted too.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Google::Apis::SheetsV4::DeveloperMetadata]
+        attr_accessor :developer_metadata
+      
+        # The fields that should be updated.  At least one field must be specified.
+        # The root `developerMetadata` is implied and should not be specified.
+        # A single `"*"` can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filters = args[:data_filters] if args.key?(:data_filters)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # The response from updating developer metadata.
+      class UpdateDeveloperMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated developer metadata.
+        # Corresponds to the JSON property `developerMetadata`
+        # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
+        attr_accessor :developer_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
+        end
+      end
+      
       # Updates properties of dimensions within the specified range.
       class UpdateDimensionPropertiesRequest
         include Google::Apis::Core::Hashable
@@ -7336,6 +8191,57 @@ module Google
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # The response when updating a range of values by a data filter in a
+      # spreadsheet.
+      class UpdateValuesByDataFilterResponse
+        include Google::Apis::Core::Hashable
+      
+        # Filter that describes what data should be selected or returned from a
+        # request.
+        # Corresponds to the JSON property `dataFilter`
+        # @return [Google::Apis::SheetsV4::DataFilter]
+        attr_accessor :data_filter
+      
+        # The number of cells updated.
+        # Corresponds to the JSON property `updatedCells`
+        # @return [Fixnum]
+        attr_accessor :updated_cells
+      
+        # The number of columns where at least one cell in the column was updated.
+        # Corresponds to the JSON property `updatedColumns`
+        # @return [Fixnum]
+        attr_accessor :updated_columns
+      
+        # Data within a range of the spreadsheet.
+        # Corresponds to the JSON property `updatedData`
+        # @return [Google::Apis::SheetsV4::ValueRange]
+        attr_accessor :updated_data
+      
+        # The range (in A1 notation) that updates were applied to.
+        # Corresponds to the JSON property `updatedRange`
+        # @return [String]
+        attr_accessor :updated_range
+      
+        # The number of rows where at least one cell in the row was updated.
+        # Corresponds to the JSON property `updatedRows`
+        # @return [Fixnum]
+        attr_accessor :updated_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_filter = args[:data_filter] if args.key?(:data_filter)
+          @updated_cells = args[:updated_cells] if args.key?(:updated_cells)
+          @updated_columns = args[:updated_columns] if args.key?(:updated_columns)
+          @updated_data = args[:updated_data] if args.key?(:updated_data)
+          @updated_range = args[:updated_range] if args.key?(:updated_range)
+          @updated_rows = args[:updated_rows] if args.key?(:updated_rows)
         end
       end
       

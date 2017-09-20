@@ -340,6 +340,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Zone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneChildContainer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneTypeRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -428,6 +452,8 @@ module Google
       
           collection :variable, as: 'variable', class: Google::Apis::TagmanagerV2::Variable, decorator: Google::Apis::TagmanagerV2::Variable::Representation
       
+          collection :zone, as: 'zone', class: Google::Apis::TagmanagerV2::Zone, decorator: Google::Apis::TagmanagerV2::Zone::Representation
+      
         end
       end
       
@@ -444,6 +470,7 @@ module Google
           property :num_tags, as: 'numTags'
           property :num_triggers, as: 'numTriggers'
           property :num_variables, as: 'numVariables'
+          property :num_zones, as: 'numZones'
           property :path, as: 'path'
         end
       end
@@ -847,6 +874,8 @@ module Google
       
           property :name, as: 'name'
           property :notes, as: 'notes'
+          collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
           property :parent_folder_id, as: 'parentFolderId'
           property :path, as: 'path'
           property :selector, as: 'selector', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
@@ -986,6 +1015,52 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gaia_id, :numeric_string => true, as: 'gaiaId'
           property :type, as: 'type'
+        end
+      end
+      
+      class Zone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :boundary, as: 'boundary', class: Google::Apis::TagmanagerV2::ZoneBoundary, decorator: Google::Apis::TagmanagerV2::ZoneBoundary::Representation
+      
+          collection :child_container, as: 'childContainer', class: Google::Apis::TagmanagerV2::ZoneChildContainer, decorator: Google::Apis::TagmanagerV2::ZoneChildContainer::Representation
+      
+          property :container_id, as: 'containerId'
+          property :fingerprint, as: 'fingerprint'
+          property :name, as: 'name'
+          property :notes, as: 'notes'
+          property :path, as: 'path'
+          property :tag_manager_url, as: 'tagManagerUrl'
+          property :type_restriction, as: 'typeRestriction', class: Google::Apis::TagmanagerV2::ZoneTypeRestriction, decorator: Google::Apis::TagmanagerV2::ZoneTypeRestriction::Representation
+      
+          property :workspace_id, as: 'workspaceId'
+          property :zone_id, as: 'zoneId'
+        end
+      end
+      
+      class ZoneBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :condition, as: 'condition', class: Google::Apis::TagmanagerV2::Condition, decorator: Google::Apis::TagmanagerV2::Condition::Representation
+      
+          collection :custom_evaluation_trigger_id, as: 'customEvaluationTriggerId'
+        end
+      end
+      
+      class ZoneChildContainer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nickname, as: 'nickname'
+          property :public_id, as: 'publicId'
+        end
+      end
+      
+      class ZoneTypeRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          collection :whitelisted_type_id, as: 'whitelistedTypeId'
         end
       end
     end
