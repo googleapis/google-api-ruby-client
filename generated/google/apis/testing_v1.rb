@@ -12,33 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/deploymentmanager_v2beta/service.rb'
-require 'google/apis/deploymentmanager_v2beta/classes.rb'
-require 'google/apis/deploymentmanager_v2beta/representations.rb'
+require 'google/apis/testing_v1/service.rb'
+require 'google/apis/testing_v1/classes.rb'
+require 'google/apis/testing_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Deployment Manager API V2Beta Methods
+    # Google Cloud Testing API
     #
-    # The Deployment Manager API allows users to declaratively configure, deploy and
-    # run complex solutions on the Google Cloud Platform.
+    # Allows developers to run automated tests for their mobile applications on
+    # Google infrastructure.
     #
-    # @see https://developers.google.com/deployment-manager/
-    module DeploymentmanagerV2beta
-      VERSION = 'V2beta'
-      REVISION = '20170914'
+    # @see https://developers.google.com/cloud-test-lab/
+    module TestingV1
+      VERSION = 'V1'
+      REVISION = '20170905'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
-
-      # View and manage your Google Cloud Platform management resources and deployment status information
-      AUTH_NDEV_CLOUDMAN = 'https://www.googleapis.com/auth/ndev.cloudman'
-
-      # View your Google Cloud Platform management resources and deployment status information
-      AUTH_NDEV_CLOUDMAN_READONLY = 'https://www.googleapis.com/auth/ndev.cloudman.readonly'
     end
   end
 end

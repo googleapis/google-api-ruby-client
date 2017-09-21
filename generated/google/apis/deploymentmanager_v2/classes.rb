@@ -258,13 +258,13 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Output only. Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] Timestamp when the deployment was created, in RFC3339 text
-        # format .
+        # Output only. Timestamp when the deployment was created, in RFC3339 text format
+        # .
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -278,7 +278,7 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentLabelEntry>]
         attr_accessor :labels
       
-        # [Output Only] URL of the manifest representing the last manifest that was
+        # Output only. URL of the manifest representing the last manifest that was
         # successfully deployed.
         # Corresponds to the JSON property `manifest`
         # @return [String]
@@ -299,7 +299,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
       
-        # [Output Only] Self link for the deployment.
+        # Output only. Self link for the deployment.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -363,13 +363,13 @@ module Google
       class DeploymentUpdate
         include Google::Apis::Core::Hashable
       
-        # [Output Only] An optional user-provided description of the deployment after
-        # the current update has been applied.
+        # Output only. An optional user-provided description of the deployment after the
+        # current update has been applied.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Map of labels; provided by the client when the resource is
+        # Output only. Map of labels; provided by the client when the resource is
         # created or updated. Specifically: Label keys must be between 1 and 63
         # characters long and must conform to the following regular expression: [a-z]([-
         # a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and
@@ -378,8 +378,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2::DeploymentUpdateLabelEntry>]
         attr_accessor :labels
       
-        # [Output Only] URL of the manifest representing the update configuration of
-        # this deployment.
+        # Output only. URL of the manifest representing the update configuration of this
+        # deployment.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
@@ -454,12 +454,12 @@ module Google
       class ListDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The deployments contained in this response.
+        # Output only. The deployments contained in this response.
         # Corresponds to the JSON property `deployments`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Deployment>]
         attr_accessor :deployments
       
-        # [Output Only] A token used to continue a truncated list request.
+        # Output only. A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -710,38 +710,39 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::ConfigFile]
         attr_accessor :config
       
-        # [Output Only] The fully-expanded configuration file, including any templates
+        # Output only. The fully-expanded configuration file, including any templates
         # and references.
         # Corresponds to the JSON property `expandedConfig`
         # @return [String]
         attr_accessor :expanded_config
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Output only. Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] The imported files for this manifest.
+        # Output only. The imported files for this manifest.
         # Corresponds to the JSON property `imports`
         # @return [Array<Google::Apis::DeploymentmanagerV2::ImportFile>]
         attr_accessor :imports
       
-        # [Output Only] Timestamp when the manifest was created, in RFC3339 text format.
+        # Output only. Timestamp when the manifest was created, in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] The YAML layout for this manifest.
+        # Output only. The YAML layout for this manifest.
         # Corresponds to the JSON property `layout`
         # @return [String]
         attr_accessor :layout
       
-        # [Output Only] The name of the manifest.
+        # Output only.
+        # The name of the manifest.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Self link for the manifest.
+        # Output only. Self link for the manifest.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -768,12 +769,12 @@ module Google
       class ListManifestsResponse
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Manifests contained in this list response.
+        # Output only. Manifests contained in this list response.
         # Corresponds to the JSON property `manifests`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Manifest>]
         attr_accessor :manifests
       
-        # [Output Only] A token used to continue a truncated list request.
+        # Output only. A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1083,12 +1084,12 @@ module Google
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
       
-        # [Output Only] A token used to continue a truncated list request.
+        # Output only. A token used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] Operations contained in this list response.
+        # Output only. Operations contained in this list response.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Operation>]
         attr_accessor :operations
@@ -1191,41 +1192,41 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::ResourceAccessControl]
         attr_accessor :access_control
       
-        # [Output Only] The evaluated properties of the resource with references
-        # expanded. Returned as serialized YAML.
+        # Output only. The evaluated properties of the resource with references expanded.
+        # Returned as serialized YAML.
         # Corresponds to the JSON property `finalProperties`
         # @return [String]
         attr_accessor :final_properties
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Output only. Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] Timestamp when the resource was created or acquired, in RFC3339
+        # Output only. Timestamp when the resource was created or acquired, in RFC3339
         # text format .
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] URL of the manifest representing the current configuration of
+        # Output only. URL of the manifest representing the current configuration of
         # this resource.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
       
-        # [Output Only] The name of the resource as it appears in the YAML config.
+        # Output only. The name of the resource as it appears in the YAML config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] The current properties of the resource before any references
-        # have been filled in. Returned as serialized YAML.
+        # Output only. The current properties of the resource before any references have
+        # been filled in. Returned as serialized YAML.
         # Corresponds to the JSON property `properties`
         # @return [String]
         attr_accessor :properties
       
-        # [Output Only] The type of the resource, for example compute.v1.instance, or
+        # Output only. The type of the resource, for example compute.v1.instance, or
         # cloudfunctions.v1beta1.function.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1236,17 +1237,17 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::ResourceUpdate]
         attr_accessor :update
       
-        # [Output Only] Timestamp when the resource was updated, in RFC3339 text format .
+        # Output only. Timestamp when the resource was updated, in RFC3339 text format .
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # [Output Only] The URL of the actual resource.
+        # Output only. The URL of the actual resource.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
       
-        # [Output Only] If warning messages are generated during processing of this
+        # Output only. If warning messages are generated during processing of this
         # resource, this field will be populated.
         # Corresponds to the JSON property `warnings`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Resource::Warning>]
@@ -1365,41 +1366,41 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::ResourceAccessControl]
         attr_accessor :access_control
       
-        # [Output Only] If errors are generated during update of the resource, this
-        # field will be populated.
+        # Output only. If errors are generated during update of the resource, this field
+        # will be populated.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DeploymentmanagerV2::ResourceUpdate::Error]
         attr_accessor :error
       
-        # [Output Only] The expanded properties of the resource with reference values
+        # Output only. The expanded properties of the resource with reference values
         # expanded. Returned as serialized YAML.
         # Corresponds to the JSON property `finalProperties`
         # @return [String]
         attr_accessor :final_properties
       
-        # [Output Only] The intent of the resource: PREVIEW, UPDATE, or CANCEL.
+        # Output only. The intent of the resource: PREVIEW, UPDATE, or CANCEL.
         # Corresponds to the JSON property `intent`
         # @return [String]
         attr_accessor :intent
       
-        # [Output Only] URL of the manifest representing the update configuration of
-        # this resource.
+        # Output only. URL of the manifest representing the update configuration of this
+        # resource.
         # Corresponds to the JSON property `manifest`
         # @return [String]
         attr_accessor :manifest
       
-        # [Output Only] The set of updated properties for this resource, before
+        # Output only. The set of updated properties for this resource, before
         # references are expanded. Returned as serialized YAML.
         # Corresponds to the JSON property `properties`
         # @return [String]
         attr_accessor :properties
       
-        # [Output Only] The state of the resource.
+        # Output only. The state of the resource.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # [Output Only] If warning messages are generated during processing of this
+        # Output only. If warning messages are generated during processing of this
         # resource, this field will be populated.
         # Corresponds to the JSON property `warnings`
         # @return [Array<Google::Apis::DeploymentmanagerV2::ResourceUpdate::Warning>]
@@ -1421,8 +1422,8 @@ module Google
           @warnings = args[:warnings] if args.key?(:warnings)
         end
         
-        # [Output Only] If errors are generated during update of the resource, this
-        # field will be populated.
+        # Output only. If errors are generated during update of the resource, this field
+        # will be populated.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -1694,12 +1695,12 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Output only. Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] Timestamp when the type was created, in RFC3339 text format.
+        # Output only. Timestamp when the type was created, in RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -1714,7 +1715,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
       
-        # [Output Only] Self link for the type.
+        # Output only. Self link for the type.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -1742,7 +1743,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # [Output Only] A list of resource types supported by Deployment Manager.
+        # Output only. A list of resource types supported by Deployment Manager.
         # Corresponds to the JSON property `types`
         # @return [Array<Google::Apis::DeploymentmanagerV2::Type>]
         attr_accessor :types

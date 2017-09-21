@@ -116,19 +116,22 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GoogleRpcStatus]
         attr_accessor :error
       
-        # This field will contain an InspectOperationMetadata object. This will always
-        # be returned with the Operation.
+        # This field will contain an InspectOperationMetadata object for `inspect.
+        # operations.create` or a RiskAnalysisOperationMetadata object for `dataSource.
+        # analyze`.  This will always be returned with the Operation.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # The server-assigned name, The `name` should have the format of `inspect/
+        # The server-assigned name. The `name` should have the format of `inspect/
         # operations/<identifier>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # This field will contain an InspectOperationResult object.
+        # This field will contain an InspectOperationResult object for `inspect.
+        # operations.create` or a RiskAnalysisOperationResult object for `dataSource.
+        # analyze`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -320,7 +323,7 @@ module Google
         end
       end
       
-      # 
+      # Histogram bucket of value frequencies in the column.
       class GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -722,7 +725,6 @@ module Google
       
       # Pseudonymization method that generates surrogates via cryptographic hashing.
       # Uses SHA-256.
-      # The key size must be either 32 or 64 bytes.
       # Outputs a 32 byte digest as an uppercase hex string
       # (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).
       # Currently, only string and integer values can be hashed.
@@ -1322,21 +1324,21 @@ module Google
         end
       end
       
-      # Info type description.
+      # Description of the information type (infoType).
       class GooglePrivacyDlpV2beta1InfoTypeDescription
         include Google::Apis::Core::Hashable
       
-        # List of categories this info type belongs to.
+        # List of categories this infoType belongs to.
         # Corresponds to the JSON property `categories`
         # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CategoryDescription>]
         attr_accessor :categories
       
-        # Human readable form of the info type name.
+        # Human readable form of the infoType name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Internal name of the info type.
+        # Internal name of the infoType.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1701,7 +1703,7 @@ module Google
         end
       end
       
-      # The set of columns' values that share the same ldiversity value
+      # The set of columns' values that share the same k-anonymity value.
       class GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass
         include Google::Apis::Core::Hashable
       
@@ -1729,7 +1731,7 @@ module Google
         end
       end
       
-      # 
+      # Histogram bucket of equivalence class sizes in the table.
       class GooglePrivacyDlpV2beta1KAnonymityHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -1900,7 +1902,7 @@ module Google
         end
       end
       
-      # The set of columns' values that share the same ldiversity value.
+      # The set of columns' values that share the same l-diversity value.
       class GooglePrivacyDlpV2beta1LDiversityEquivalenceClass
         include Google::Apis::Core::Hashable
       
@@ -1938,7 +1940,7 @@ module Google
         end
       end
       
-      # 
+      # Histogram bucket of sensitive value frequencies in the table.
       class GooglePrivacyDlpV2beta1LDiversityHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -2308,7 +2310,6 @@ module Google
       
         # Pseudonymization method that generates surrogates via cryptographic hashing.
         # Uses SHA-256.
-        # The key size must be either 32 or 64 bytes.
         # Outputs a 32 byte digest as an uppercase hex string
         # (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).
         # Currently, only string and integer values can be hashed.
@@ -2710,7 +2711,10 @@ module Google
         end
       end
       
-      # Metadata returned within GetOperation for risk analysis.
+      # Metadata returned within the
+      # [`riskAnalysis.operations.get`](/dlp/docs/reference/rest/v2beta1/riskAnalysis.
+      # operations/get)
+      # for risk analysis.
       class GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -2745,7 +2749,9 @@ module Google
         end
       end
       
-      # Result of a risk analysis operation request.
+      # Result of a risk analysis
+      # [`Operation`](/dlp/docs/reference/rest/v2beta1/inspect.operations)
+      # request.
       class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult
         include Google::Apis::Core::Hashable
       

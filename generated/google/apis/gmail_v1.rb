@@ -45,7 +45,7 @@ module Google
       # View and modify but not delete your email
       AUTH_GMAIL_MODIFY = 'https://www.googleapis.com/auth/gmail.modify'
 
-      # View your emails messages and settings
+      # View your email messages and settings
       AUTH_GMAIL_READONLY = 'https://www.googleapis.com/auth/gmail.readonly'
 
       # Send email on your behalf

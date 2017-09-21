@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/deployment-manager/
     module DeploymentmanagerV2
       VERSION = 'V2'
-      REVISION = '20170907'
+      REVISION = '20170914'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -173,8 +173,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels an operation. Use the get method to check whether the cancellation
-        # succeeded or whether the operation completed despite cancellation.
+        # Cancels an operation. Use the `inspect.operations.get` to check whether the
+        # cancellation succeeded or the operation completed despite cancellation.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DlpV2beta1::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
@@ -300,13 +300,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the list of long running operations.
+        # Fetches the list of long running operations.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
-        #   This parameter supports filtering by done, ie done=true or done=false.
+        #   Filters by `done`. That is, `done=true` or `done=false`.
         # @param [Fixnum] page_size
-        #   The list page size. The max allowed value is 256 and default is 100.
+        #   The list page size. The maximum allowed value is 256 and the default is 100.
         # @param [String] page_token
         #   The standard list page token.
         # @param [String] fields
@@ -389,8 +389,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels an operation. Use the get method to check whether the cancellation
-        # succeeded or whether the operation completed despite cancellation.
+        # Cancels an operation. Use the `inspect.operations.get` to check whether the
+        # cancellation succeeded or the operation completed despite cancellation.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::DlpV2beta1::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
@@ -485,13 +485,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetch the list of long running operations.
+        # Fetches the list of long running operations.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
-        #   This parameter supports filtering by done, ie done=true or done=false.
+        #   Filters by `done`. That is, `done=true` or `done=false`.
         # @param [Fixnum] page_size
-        #   The list page size. The max allowed value is 256 and default is 100.
+        #   The list page size. The maximum allowed value is 256 and the default is 100.
         # @param [String] page_token
         #   The standard list page token.
         # @param [String] fields

@@ -844,7 +844,6 @@ module Google
         attr_accessor :name
       
         # The ID of the Google Cloud Platform Console project that owns the job.
-        # Required.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id

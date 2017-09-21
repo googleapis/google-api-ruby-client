@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateSessionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSessionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +430,14 @@ module Google
         end
       end
       
+      class CreateSessionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session, as: 'session', class: Google::Apis::SpannerV1::Session, decorator: Google::Apis::SpannerV1::Session::Representation
+      
+        end
+      end
+      
       class Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -553,6 +573,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sessions, as: 'sessions', class: Google::Apis::SpannerV1::Session, decorator: Google::Apis::SpannerV1::Session::Representation
       
         end
       end
@@ -708,6 +737,9 @@ module Google
       class Session
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approximate_last_use_time, as: 'approximateLastUseTime'
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
         end
       end

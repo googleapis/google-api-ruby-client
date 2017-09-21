@@ -35,6 +35,7 @@ module Google
       # - $TAG_NAME: the tag name specified by RepoSource.
       # - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
       # resolved from the specified branch or tag.
+      # - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
       class Build
         include Google::Apis::Core::Hashable
       
@@ -210,6 +211,7 @@ module Google
         # - $TAG_NAME: the tag name specified by RepoSource.
         # - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
         # resolved from the specified branch or tag.
+        # - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
         # Corresponds to the JSON property `build`
         # @return [Google::Apis::CloudbuildV1::Build]
         attr_accessor :build
@@ -372,6 +374,7 @@ module Google
         # - $TAG_NAME: the tag name specified by RepoSource.
         # - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
         # resolved from the specified branch or tag.
+        # - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
         # Corresponds to the JSON property `build`
         # @return [Google::Apis::CloudbuildV1::Build]
         attr_accessor :build

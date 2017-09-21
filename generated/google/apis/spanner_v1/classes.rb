@@ -631,6 +631,25 @@ module Google
         end
       end
       
+      # The request for CreateSession.
+      class CreateSessionRequest
+        include Google::Apis::Core::Hashable
+      
+        # A session in the Cloud Spanner API.
+        # Corresponds to the JSON property `session`
+        # @return [Google::Apis::SpannerV1::Session]
+        attr_accessor :session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session = args[:session] if args.key?(:session)
+        end
+      end
+      
       # A Cloud Spanner database.
       class Database
         include Google::Apis::Core::Hashable
@@ -1215,6 +1234,33 @@ module Google
         end
       end
       
+      # The response for ListSessions.
+      class ListSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # `next_page_token` can be sent in a subsequent
+        # ListSessions call to fetch more of the matching
+        # sessions.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of requested sessions.
+        # Corresponds to the JSON property `sessions`
+        # @return [Array<Google::Apis::SpannerV1::Session>]
+        attr_accessor :sessions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sessions = args[:sessions] if args.key?(:sessions)
+        end
+      end
+      
       # A modification to one or more Cloud Spanner rows.  Mutations can be
       # applied to a Cloud Spanner database by sending them in a
       # Commit call.
@@ -1270,7 +1316,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If the value is `false`, it means the operation is still in progress.
-        # If true, the operation is completed, and either `error` or `response` is
+        # If `true`, the operation is completed, and either `error` or `response` is
         # available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
@@ -1740,6 +1786,7 @@ module Google
       
         # If greater than zero, only the first `limit` rows are yielded. If `limit`
         # is zero, the default is no limit.
+        # A limit cannot be specified if partition_token is set.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1916,7 +1963,28 @@ module Google
       class Session
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the session.
+        # Output only. The approximate timestamp when the session is last used. It is
+        # typically earlier than the actual last use time.
+        # Corresponds to the JSON property `approximateLastUseTime`
+        # @return [String]
+        attr_accessor :approximate_last_use_time
+      
+        # Output only. The timestamp when the session is created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The labels for the session.
+        # * Label keys must be between 1 and 63 characters long and must conform to
+        # the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+        # * Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        # * No more than 20 labels can be associated with a given session.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The name of the session.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1927,6 +1995,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approximate_last_use_time = args[:approximate_last_use_time] if args.key?(:approximate_last_use_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
         end
       end

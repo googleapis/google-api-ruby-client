@@ -343,6 +343,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets the maintenance policy for a cluster.
+        # @param [String] name
+        #   The name (project, location, cluster id) of the cluster to set maintenance
+        #   policy.
+        #   Specified in the format 'projects/*/locations/*/clusters/*'.
+        # @param [Google::Apis::ContainerV1beta1::SetMaintenancePolicyRequest] set_maintenance_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_cluster_maintenance_policy(name, set_maintenance_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+name}:setMaintenancePolicy', options)
+          command.request_representation = Google::Apis::ContainerV1beta1::SetMaintenancePolicyRequest::Representation
+          command.request_object = set_maintenance_policy_request_object
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ContainerV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Used to set master auth materials. Currently supports :-
         # Changing the admin password of a specific cluster.
         # This can be either via password generation or explicitly set.
@@ -1248,6 +1283,48 @@ module Google
           command =  make_simple_command(:post, 'v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', options)
           command.request_representation = Google::Apis::ContainerV1beta1::SetLabelsRequest::Representation
           command.request_object = set_labels_request_object
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ContainerV1beta1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the maintenance policy for a cluster.
+        # @param [String] project_id
+        #   The Google Developers Console [project ID or project
+        #   number](https://support.google.com/cloud/answer/6158840).
+        # @param [String] zone
+        #   The name of the Google Compute Engine
+        #   [zone](/compute/docs/zones#available) in which the cluster
+        #   resides.
+        # @param [String] cluster_id
+        #   The name of the cluster to update.
+        # @param [Google::Apis::ContainerV1beta1::SetMaintenancePolicyRequest] set_maintenance_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContainerV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContainerV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_zone_cluster_maintenance_policy(project_id, zone, cluster_id, set_maintenance_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy', options)
+          command.request_representation = Google::Apis::ContainerV1beta1::SetMaintenancePolicyRequest::Representation
+          command.request_object = set_maintenance_policy_request_object
           command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
