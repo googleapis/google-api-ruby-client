@@ -2036,6 +2036,7 @@
 "/admin:directory_v1/Asps/kind": kind
 "/admin:directory_v1/CalendarResource": calendar_resource
 "/admin:directory_v1/CalendarResource/etags": etags
+"/admin:directory_v1/CalendarResource/generatedResourceName": generated_resource_name
 "/admin:directory_v1/CalendarResource/kind": kind
 "/admin:directory_v1/CalendarResource/resourceDescription": resource_description
 "/admin:directory_v1/CalendarResource/resourceEmail": resource_email
@@ -2372,6 +2373,7 @@
 "/admin:directory_v1/User/emails": emails
 "/admin:directory_v1/User/etag": etag
 "/admin:directory_v1/User/externalIds": external_ids
+"/admin:directory_v1/User/gender": gender
 "/admin:directory_v1/User/hashFunction": hash_function
 "/admin:directory_v1/User/id": id
 "/admin:directory_v1/User/ims": ims
@@ -2432,6 +2434,10 @@
 "/admin:directory_v1/UserExternalId/customType": custom_type
 "/admin:directory_v1/UserExternalId/type": type
 "/admin:directory_v1/UserExternalId/value": value
+"/admin:directory_v1/UserGender": user_gender
+"/admin:directory_v1/UserGender/addressMeAs": address_me_as
+"/admin:directory_v1/UserGender/customGender": custom_gender
+"/admin:directory_v1/UserGender/type": type
 "/admin:directory_v1/UserIm": user_im
 "/admin:directory_v1/UserIm/customProtocol": custom_protocol
 "/admin:directory_v1/UserIm/customType": custom_type
@@ -30354,6 +30360,10 @@
 "/dataproc:v1beta2/AcceleratorConfig": accelerator_config
 "/dataproc:v1beta2/AcceleratorConfig/acceleratorCount": accelerator_count
 "/dataproc:v1beta2/AcceleratorConfig/acceleratorTypeUri": accelerator_type_uri
+"/dataproc:v1beta2/Binding": binding
+"/dataproc:v1beta2/Binding/members": members
+"/dataproc:v1beta2/Binding/members/member": member
+"/dataproc:v1beta2/Binding/role": role
 "/dataproc:v1beta2/CancelJobRequest": cancel_job_request
 "/dataproc:v1beta2/Cluster": cluster
 "/dataproc:v1beta2/Cluster/clusterName": cluster_name
@@ -30533,6 +30543,11 @@
 "/dataproc:v1beta2/PigJob/queryList": query_list
 "/dataproc:v1beta2/PigJob/scriptVariables": script_variables
 "/dataproc:v1beta2/PigJob/scriptVariables/script_variable": script_variable
+"/dataproc:v1beta2/Policy": policy
+"/dataproc:v1beta2/Policy/bindings": bindings
+"/dataproc:v1beta2/Policy/bindings/binding": binding
+"/dataproc:v1beta2/Policy/etag": etag
+"/dataproc:v1beta2/Policy/version": version
 "/dataproc:v1beta2/PySparkJob": py_spark_job
 "/dataproc:v1beta2/PySparkJob/archiveUris": archive_uris
 "/dataproc:v1beta2/PySparkJob/archiveUris/archive_uri": archive_uri
@@ -30551,6 +30566,8 @@
 "/dataproc:v1beta2/QueryList": query_list
 "/dataproc:v1beta2/QueryList/queries": queries
 "/dataproc:v1beta2/QueryList/queries/query": query
+"/dataproc:v1beta2/SetIamPolicyRequest": set_iam_policy_request
+"/dataproc:v1beta2/SetIamPolicyRequest/policy": policy
 "/dataproc:v1beta2/SoftwareConfig": software_config
 "/dataproc:v1beta2/SoftwareConfig/imageVersion": image_version
 "/dataproc:v1beta2/SoftwareConfig/properties": properties
@@ -30587,6 +30604,12 @@
 "/dataproc:v1beta2/Status/message": message
 "/dataproc:v1beta2/SubmitJobRequest": submit_job_request
 "/dataproc:v1beta2/SubmitJobRequest/job": job
+"/dataproc:v1beta2/TestIamPermissionsRequest": test_iam_permissions_request
+"/dataproc:v1beta2/TestIamPermissionsRequest/permissions": permissions
+"/dataproc:v1beta2/TestIamPermissionsRequest/permissions/permission": permission
+"/dataproc:v1beta2/TestIamPermissionsResponse": test_iam_permissions_response
+"/dataproc:v1beta2/TestIamPermissionsResponse/permissions": permissions
+"/dataproc:v1beta2/TestIamPermissionsResponse/permissions/permission": permission
 "/dataproc:v1beta2/YarnApplication": yarn_application
 "/dataproc:v1beta2/YarnApplication/name": name
 "/dataproc:v1beta2/YarnApplication/progress": progress
@@ -30607,6 +30630,8 @@
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.get/clusterName": cluster_name
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.get/projectId": project_id
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.get/region": region
+"/dataproc:v1beta2/dataproc.projects.regions.clusters.getIamPolicy": get_project_region_cluster_iam_policy
+"/dataproc:v1beta2/dataproc.projects.regions.clusters.getIamPolicy/resource": resource
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.list": list_project_region_clusters
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.list/filter": filter
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.list/pageSize": page_size
@@ -30619,6 +30644,10 @@
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.patch/projectId": project_id
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.patch/region": region
 "/dataproc:v1beta2/dataproc.projects.regions.clusters.patch/updateMask": update_mask
+"/dataproc:v1beta2/dataproc.projects.regions.clusters.setIamPolicy": set_cluster_iam_policy
+"/dataproc:v1beta2/dataproc.projects.regions.clusters.setIamPolicy/resource": resource
+"/dataproc:v1beta2/dataproc.projects.regions.clusters.testIamPermissions": test_cluster_iam_permissions
+"/dataproc:v1beta2/dataproc.projects.regions.clusters.testIamPermissions/resource": resource
 "/dataproc:v1beta2/dataproc.projects.regions.jobs.cancel": cancel_job
 "/dataproc:v1beta2/dataproc.projects.regions.jobs.cancel/jobId": job_id
 "/dataproc:v1beta2/dataproc.projects.regions.jobs.cancel/projectId": project_id
@@ -59381,6 +59410,7 @@
 "/youtube:v3/LiveBroadcastContentDetails/enableDvr": enable_dvr
 "/youtube:v3/LiveBroadcastContentDetails/enableEmbed": enable_embed
 "/youtube:v3/LiveBroadcastContentDetails/enableLowLatency": enable_low_latency
+"/youtube:v3/LiveBroadcastContentDetails/latencyPreference": latency_preference
 "/youtube:v3/LiveBroadcastContentDetails/mesh": mesh
 "/youtube:v3/LiveBroadcastContentDetails/monitorStream": monitor_stream
 "/youtube:v3/LiveBroadcastContentDetails/projection": projection

@@ -2040,6 +2040,7 @@ module Google
           property :enable_dvr, as: 'enableDvr'
           property :enable_embed, as: 'enableEmbed'
           property :enable_low_latency, as: 'enableLowLatency'
+          property :latency_preference, as: 'latencyPreference'
           property :mesh, :base64 => true, as: 'mesh'
           property :monitor_stream, as: 'monitorStream', class: Google::Apis::YoutubeV3::MonitorStreamInfo, decorator: Google::Apis::YoutubeV3::MonitorStreamInfo::Representation
       

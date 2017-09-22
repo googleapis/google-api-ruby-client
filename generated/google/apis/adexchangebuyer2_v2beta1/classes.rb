@@ -1969,15 +1969,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An interval of time, with an absolute start and end.
-        # This is included in the response, for several reasons:
-        # 1) The request may have specified start or end times relative to the time the
-        # request was sent; the response indicates the corresponding absolute time
-        # interval.
-        # 2) The request may have specified an end time past the latest time for which
-        # data was available (e.g. if requesting data for the today); the response
-        # indicates the latest time for which data was actually returned.
-        # 3) The response data for a single request may be broken down into multiple
-        # time intervals, if a time series was requested.
         # Corresponds to the JSON property `timeInterval`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::TimeInterval]
         attr_accessor :time_interval
@@ -2113,15 +2104,6 @@ module Google
       end
       
       # An interval of time, with an absolute start and end.
-      # This is included in the response, for several reasons:
-      # 1) The request may have specified start or end times relative to the time the
-      # request was sent; the response indicates the corresponding absolute time
-      # interval.
-      # 2) The request may have specified an end time past the latest time for which
-      # data was available (e.g. if requesting data for the today); the response
-      # indicates the latest time for which data was actually returned.
-      # 3) The response data for a single request may be broken down into multiple
-      # time intervals, if a time series was requested.
       class TimeInterval
         include Google::Apis::Core::Hashable
       

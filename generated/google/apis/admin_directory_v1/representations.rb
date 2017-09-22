@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserGender
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserIm
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -465,6 +471,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etags, as: 'etags'
+          property :generated_resource_name, as: 'generatedResourceName'
           property :kind, as: 'kind'
           property :resource_description, as: 'resourceDescription'
           property :resource_email, as: 'resourceEmail'
@@ -1007,6 +1014,7 @@ module Google
           property :emails, as: 'emails'
           property :etag, as: 'etag'
           property :external_ids, as: 'externalIds'
+          property :gender, as: 'gender'
           property :hash_function, as: 'hashFunction'
           property :id, as: 'id'
           property :ims, as: 'ims'
@@ -1086,6 +1094,15 @@ module Google
           property :custom_type, as: 'customType'
           property :type, as: 'type'
           property :value, as: 'value'
+        end
+      end
+      
+      class UserGender
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address_me_as, as: 'addressMeAs'
+          property :custom_gender, as: 'customGender'
+          property :type, as: 'type'
         end
       end
       
@@ -1193,12 +1210,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gecos, as: 'gecos'
-          property :gid, as: 'gid'
+          property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'
           property :primary, as: 'primary'
           property :shell, as: 'shell'
           property :system_id, as: 'systemId'
-          property :uid, as: 'uid'
+          property :uid, :numeric_string => true, as: 'uid'
           property :username, as: 'username'
         end
       end

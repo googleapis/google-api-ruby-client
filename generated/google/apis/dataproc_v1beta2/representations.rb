@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PySparkJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +221,12 @@ module Google
       end
       
       class QueryList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YarnApplication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -255,6 +285,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type_uri, as: 'acceleratorTypeUri'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members'
+          property :role, as: 'role'
         end
       end
       
@@ -585,6 +623,16 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bindings, as: 'bindings', class: Google::Apis::DataprocV1beta2::Binding, decorator: Google::Apis::DataprocV1beta2::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
       class PySparkJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -604,6 +652,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :queries, as: 'queries'
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::DataprocV1beta2::Policy, decorator: Google::Apis::DataprocV1beta2::Policy::Representation
+      
         end
       end
       
@@ -658,6 +714,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job, as: 'job', class: Google::Apis::DataprocV1beta2::Job, decorator: Google::Apis::DataprocV1beta2::Job::Representation
       
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       

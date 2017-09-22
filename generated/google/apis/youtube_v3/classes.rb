@@ -3790,6 +3790,14 @@ module Google
         attr_accessor :enable_low_latency
         alias_method :enable_low_latency?, :enable_low_latency
       
+        # If both this and enable_low_latency are set, they must match. LATENCY_NORMAL
+        # should match enable_low_latency=false LATENCY_LOW should match
+        # enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency
+        # omitted.
+        # Corresponds to the JSON property `latencyPreference`
+        # @return [String]
+        attr_accessor :latency_preference
+      
         # 
         # Corresponds to the JSON property `mesh`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -3842,6 +3850,7 @@ module Google
           @enable_dvr = args[:enable_dvr] if args.key?(:enable_dvr)
           @enable_embed = args[:enable_embed] if args.key?(:enable_embed)
           @enable_low_latency = args[:enable_low_latency] if args.key?(:enable_low_latency)
+          @latency_preference = args[:latency_preference] if args.key?(:latency_preference)
           @mesh = args[:mesh] if args.key?(:mesh)
           @monitor_stream = args[:monitor_stream] if args.key?(:monitor_stream)
           @projection = args[:projection] if args.key?(:projection)

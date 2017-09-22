@@ -454,7 +454,7 @@ module Google
       class Place
         include Google::Apis::Core::Hashable
       
-        # Required. Place identifier, as described in
+        # Place identifier, as described in
         # https://developers.google.com/places/place-id.
         # Corresponds to the JSON property `placeId`
         # @return [String]

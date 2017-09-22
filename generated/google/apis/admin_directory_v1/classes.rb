@@ -192,6 +192,13 @@ module Google
         # @return [String]
         attr_accessor :etags
       
+        # The auto-generated name of the calendar resource which includes metadata about
+        # the resource such as building name, floor, capacity, etc. For example, NYC-2-
+        # Training Room 1A (16)
+        # Corresponds to the JSON property `generatedResourceName`
+        # @return [String]
+        attr_accessor :generated_resource_name
+      
         # The type of the resource. For calendar resources, the value is admin#directory#
         # resources#calendars#CalendarResource.
         # Corresponds to the JSON property `kind`
@@ -232,6 +239,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etags = args[:etags] if args.key?(:etags)
+          @generated_resource_name = args[:generated_resource_name] if args.key?(:generated_resource_name)
           @kind = args[:kind] if args.key?(:kind)
           @resource_description = args[:resource_description] if args.key?(:resource_description)
           @resource_email = args[:resource_email] if args.key?(:resource_email)
@@ -2381,6 +2389,11 @@ module Google
         # @return [Object]
         attr_accessor :external_ids
       
+        # 
+        # Corresponds to the JSON property `gender`
+        # @return [Object]
+        attr_accessor :gender
+      
         # Hash function name for password. Supported are MD5, SHA-1 and crypt
         # Corresponds to the JSON property `hashFunction`
         # @return [String]
@@ -2561,6 +2574,7 @@ module Google
           @emails = args[:emails] if args.key?(:emails)
           @etag = args[:etag] if args.key?(:etag)
           @external_ids = args[:external_ids] if args.key?(:external_ids)
+          @gender = args[:gender] if args.key?(:gender)
           @hash_function = args[:hash_function] if args.key?(:hash_function)
           @id = args[:id] if args.key?(:id)
           @ims = args[:ims] if args.key?(:ims)
@@ -2788,6 +2802,38 @@ module Google
           @custom_type = args[:custom_type] if args.key?(:custom_type)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class UserGender
+        include Google::Apis::Core::Hashable
+      
+        # AddressMeAs. A human-readable string containing the proper way to refer to the
+        # profile owner by humans, for example "he/him/his" or "they/them/their".
+        # Corresponds to the JSON property `addressMeAs`
+        # @return [String]
+        attr_accessor :address_me_as
+      
+        # Custom gender.
+        # Corresponds to the JSON property `customGender`
+        # @return [String]
+        attr_accessor :custom_gender
+      
+        # Gender.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_me_as = args[:address_me_as] if args.key?(:address_me_as)
+          @custom_gender = args[:custom_gender] if args.key?(:custom_gender)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
