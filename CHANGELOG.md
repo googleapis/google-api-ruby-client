@@ -1,3 +1,36 @@
+# 0.14.2
+* Backwards compatible changes:
+  * Added `oslogin_v1beta`
+  * Added `testing_v1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `adexperiencereport_v1`
+  * Updated `admin_directory_v1`
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `androidmanagement_v1`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudtrace_v2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataproc_v1beta2`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dlp_v2beta1`
+  * Updated `genomics_v1`
+  * Updated `genomics_v1alpha2`
+  * Updated `gmail_v1`
+  * Updated `oslogin_v1alpha`
+  * Updated `sheets_v4`
+  * Updated `spanner_v1`
+  * Updated `storage_v1`
+  * Updated `storagetransfer_v1`
+  * Updated `streetviewpublish_v1`
+  * Updated `tagmanager_v2`
+  * Updated `videointelligence_v1beta1`
+  * Updated `youtube_partner_v1`
+  * Updated `youtube_v3`
+
 # 0.14.1
 * Retry on `Signet::AuthorizationError`. 
 
