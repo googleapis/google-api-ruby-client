@@ -2788,6 +2788,10 @@ module Google
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :source_disk_id, as: 'sourceDiskId'
+          property :source_image, as: 'sourceImage'
+          property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          property :source_image_id, as: 'sourceImageId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
         end

@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountYouTubeChannelLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountsAuthInfoResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class DatafeedStatusExample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatafeedTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -966,6 +978,8 @@ module Google
           collection :users, as: 'users', class: Google::Apis::ContentV2::AccountUser, decorator: Google::Apis::ContentV2::AccountUser::Representation
       
           property :website_url, as: 'websiteUrl'
+          collection :youtube_channel_links, as: 'youtubeChannelLinks', class: Google::Apis::ContentV2::AccountYouTubeChannelLink, decorator: Google::Apis::ContentV2::AccountYouTubeChannelLink::Representation
+      
         end
       end
       
@@ -1063,6 +1077,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin, as: 'admin'
           property :email_address, as: 'emailAddress'
+        end
+      end
+      
+      class AccountYouTubeChannelLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_id, as: 'channelId'
+          property :status, as: 'status'
         end
       end
       
@@ -1272,6 +1294,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :target_country, as: 'targetCountry'
+          collection :targets, as: 'targets', class: Google::Apis::ContentV2::DatafeedTarget, decorator: Google::Apis::ContentV2::DatafeedTarget::Representation
+      
         end
       end
       
@@ -1302,12 +1326,14 @@ module Google
       class DatafeedStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
           property :datafeed_id, :numeric_string => true, as: 'datafeedId'
           collection :errors, as: 'errors', class: Google::Apis::ContentV2::DatafeedStatusError, decorator: Google::Apis::ContentV2::DatafeedStatusError::Representation
       
           property :items_total, :numeric_string => true, as: 'itemsTotal'
           property :items_valid, :numeric_string => true, as: 'itemsValid'
           property :kind, as: 'kind'
+          property :language, as: 'language'
           property :last_upload_date, as: 'lastUploadDate'
           property :processing_status, as: 'processingStatus'
           collection :warnings, as: 'warnings', class: Google::Apis::ContentV2::DatafeedStatusError, decorator: Google::Apis::ContentV2::DatafeedStatusError::Representation
@@ -1332,6 +1358,16 @@ module Google
           property :item_id, as: 'itemId'
           property :line_number, :numeric_string => true, as: 'lineNumber'
           property :value, as: 'value'
+        end
+      end
+      
+      class DatafeedTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          collection :excluded_destinations, as: 'excludedDestinations'
+          collection :included_destinations, as: 'includedDestinations'
+          property :language, as: 'language'
         end
       end
       
@@ -1397,7 +1433,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
+          property :country, as: 'country'
           property :datafeed_id, :numeric_string => true, as: 'datafeedId'
+          property :language, as: 'language'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
         end

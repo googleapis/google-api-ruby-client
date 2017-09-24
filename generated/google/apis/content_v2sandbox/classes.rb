@@ -753,7 +753,15 @@ module Google
         # @return [String]
         attr_accessor :phone_number
       
-        # The type of instrument (VISA, Mastercard, etc).
+        # The type of instrument.
+        # Acceptable values are:
+        # - "AMEX"
+        # - "DISCOVER"
+        # - "JCB"
+        # - "MASTERCARD"
+        # - "UNIONPAY"
+        # - "VISA"
+        # - ""
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

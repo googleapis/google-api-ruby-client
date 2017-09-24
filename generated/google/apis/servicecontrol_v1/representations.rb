@@ -22,6 +22,12 @@ module Google
   module Apis
     module ServicecontrolV1
       
+      class AllocateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocateQuotaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,12 +244,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :unused_arguments, as: 'unusedArguments'
+        end
+      end
+      
       class AllocateQuotaRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allocate_operation, as: 'allocateOperation', class: Google::Apis::ServicecontrolV1::QuotaOperation, decorator: Google::Apis::ServicecontrolV1::QuotaOperation::Representation
       
-          property :allocation_mode, as: 'allocationMode'
           property :service_config_id, as: 'serviceConfigId'
         end
       end
@@ -252,6 +264,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allocate_errors, as: 'allocateErrors', class: Google::Apis::ServicecontrolV1::QuotaError, decorator: Google::Apis::ServicecontrolV1::QuotaError::Representation
+      
+          property :allocate_info, as: 'allocateInfo', class: Google::Apis::ServicecontrolV1::AllocateInfo, decorator: Google::Apis::ServicecontrolV1::AllocateInfo::Representation
       
           property :operation_id, as: 'operationId'
           collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
@@ -267,6 +281,7 @@ module Google
       
           collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV1::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV1::AuthorizationInfo::Representation
       
+          collection :metadata, as: 'metadata'
           property :method_name, as: 'methodName'
           property :num_response_items, :numeric_string => true, as: 'numResponseItems'
           hash :request, as: 'request'

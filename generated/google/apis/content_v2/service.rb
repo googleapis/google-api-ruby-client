@@ -1090,6 +1090,16 @@ module Google
         # method can only be called for non-multi-client accounts.
         # @param [Fixnum] merchant_id
         # @param [Fixnum] datafeed_id
+        # @param [String] country
+        #   The country for which to get the datafeed status. If this parameter is
+        #   provided then language must also be provided. Note that this parameter is
+        #   required for feeds targeting multiple countries and languages, since a feed
+        #   may have a different status for each target.
+        # @param [String] language
+        #   The language for which to get the datafeed status. If this parameter is
+        #   provided then country must also be provided. Note that this parameter is
+        #   required for feeds targeting multiple countries and languages, since a feed
+        #   may have a different status for each target.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1111,12 +1121,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_datafeed_status(merchant_id, datafeed_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_datafeed_status(merchant_id, datafeed_id, country: nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/datafeedstatuses/{datafeedId}', options)
           command.response_representation = Google::Apis::ContentV2::DatafeedStatus::Representation
           command.response_class = Google::Apis::ContentV2::DatafeedStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['datafeedId'] = datafeed_id unless datafeed_id.nil?
+          command.query['country'] = country unless country.nil?
+          command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

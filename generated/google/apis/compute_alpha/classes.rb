@@ -536,7 +536,7 @@ module Google
       class Address
         include Google::Apis::Core::Hashable
       
-        # The static external IP address represented by this resource.
+        # The static IP address represented by this resource.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -2411,6 +2411,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
       
+        # Configuration of a App Engine backend.
+        # Corresponds to the JSON property `appEngineBackend`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceAppEngineBackend]
+        attr_accessor :app_engine_backend
+      
         # The list of backends that serve this BackendService.
         # Corresponds to the JSON property `backends`
         # @return [Array<Google::Apis::ComputeAlpha::Backend>]
@@ -2420,6 +2425,11 @@ module Google
         # Corresponds to the JSON property `cdnPolicy`
         # @return [Google::Apis::ComputeAlpha::BackendServiceCdnPolicy]
         attr_accessor :cdn_policy
+      
+        # Configuration of a Cloud Function backend.
+        # Corresponds to the JSON property `cloudFunctionBackend`
+        # @return [Google::Apis::ComputeAlpha::BackendServiceCloudFunctionBackend]
+        attr_accessor :cloud_function_backend
       
         # Message containing connection draining configuration.
         # Corresponds to the JSON property `connectionDraining`
@@ -2571,8 +2581,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @affinity_cookie_ttl_sec = args[:affinity_cookie_ttl_sec] if args.key?(:affinity_cookie_ttl_sec)
+          @app_engine_backend = args[:app_engine_backend] if args.key?(:app_engine_backend)
           @backends = args[:backends] if args.key?(:backends)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
+          @cloud_function_backend = args[:cloud_function_backend] if args.key?(:cloud_function_backend)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
@@ -2714,6 +2726,39 @@ module Google
         end
       end
       
+      # Configuration of a App Engine backend.
+      class BackendServiceAppEngineBackend
+        include Google::Apis::Core::Hashable
+      
+        # Optional. App Engine app service name.
+        # Corresponds to the JSON property `appEngineService`
+        # @return [String]
+        attr_accessor :app_engine_service
+      
+        # Required. Project ID of the project hosting the app. This is the project ID of
+        # this project. Reference to another project is not allowed.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        # Optional. Version of App Engine app service. When empty, App Engine will do
+        # its normal traffic split.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_engine_service = args[:app_engine_service] if args.key?(:app_engine_service)
+          @target_project = args[:target_project] if args.key?(:target_project)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Message containing Cloud CDN configuration for a backend service.
       class BackendServiceCdnPolicy
         include Google::Apis::Core::Hashable
@@ -2749,6 +2794,32 @@ module Google
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Configuration of a Cloud Function backend.
+      class BackendServiceCloudFunctionBackend
+        include Google::Apis::Core::Hashable
+      
+        # Required. A cloud function name. Special value ?*? represents all cloud
+        # functions in the project.
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        # Required. Project ID of the project hosting the cloud function.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function_name = args[:function_name] if args.key?(:function_name)
+          @target_project = args[:target_project] if args.key?(:target_project)
         end
       end
       
@@ -6023,8 +6094,7 @@ module Google
       
         # The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
         # supported. For newer Windows images, the server might also populate this
-        # property with the value WINDOWS to indicate that this is a Windows image. This
-        # value is purely informational and does not enable or disable any features.
+        # property with the value WINDOWS to indicate that this is a Windows image.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -8000,9 +8070,8 @@ module Google
         # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
         # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
         # VIRTIO_SCSI_MULTIQUEUE.
-        # For new Windows images, the server might also populate this field with the
-        # value WINDOWS, to indicate that this is a Windows image. This value is purely
-        # informational and does not enable or disable any features.
+        # For newer Windows images, the server might also populate this property with
+        # the value WINDOWS to indicate that this is a Windows image.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -19352,9 +19421,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] A size of the the storage used by the snapshot. As snapshots
-        # share storage, this number is expected to change with snapshot creation/
-        # deletion.
+        # [Output Only] A size of the storage used by the snapshot. As snapshots share
+        # storage, this number is expected to change with snapshot creation/deletion.
         # Corresponds to the JSON property `storageBytes`
         # @return [Fixnum]
         attr_accessor :storage_bytes

@@ -2946,6 +2946,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
+          property :public_ptr_domain_name, as: 'publicPtrDomainName'
+          property :set_public_ptr, as: 'setPublicPtr'
           property :type, as: 'type'
         end
       end
@@ -5716,6 +5718,7 @@ module Google
       
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeBeta::AliasIpRange, decorator: Google::Apis::ComputeBeta::AliasIpRange::Representation
       
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -6821,8 +6824,10 @@ module Google
       class Subnetwork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_subnet_cidr_routes_overlap, as: 'allowSubnetCidrRoutesOverlap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'

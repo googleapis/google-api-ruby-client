@@ -78,6 +78,15 @@ module Google
         # @return [String]
         attr_accessor :website_url
       
+        # List of linked YouTube channels that are active or pending approval. To create
+        # a new link request, add a new link with status active to the list. It will
+        # remain in a pending state until approved or rejected in the YT Creator Studio
+        # interface. To delete an active link, or to cancel a link request, remove it
+        # from the list.
+        # Corresponds to the JSON property `youtubeChannelLinks`
+        # @return [Array<Google::Apis::ContentV2::AccountYouTubeChannelLink>]
+        attr_accessor :youtube_channel_links
+      
         def initialize(**args)
            update!(**args)
         end
@@ -93,6 +102,7 @@ module Google
           @seller_id = args[:seller_id] if args.key?(:seller_id)
           @users = args[:users] if args.key?(:users)
           @website_url = args[:website_url] if args.key?(:website_url)
+          @youtube_channel_links = args[:youtube_channel_links] if args.key?(:youtube_channel_links)
         end
       end
       
@@ -464,6 +474,39 @@ module Google
         def update!(**args)
           @admin = args[:admin] if args.key?(:admin)
           @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
+      # 
+      class AccountYouTubeChannelLink
+        include Google::Apis::Core::Hashable
+      
+        # Channel ID.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # Status of the link between this Merchant Center account and the YouTube
+        # channel. Upon retrieval, it represents the actual status of the link and can
+        # be either active if it was approved in YT Creator Studio or pending if it's
+        # pending approval. Upon insertion, it represents the intended status of the
+        # link. Re-uploading a link with status active when it's still pending or with
+        # status pending when it's already active will have no effect: the status will
+        # remain unchanged. Re-uploading a link with deprecated status inactive is
+        # equivalent to not submitting the link at all and will delete the link if it
+        # was active or cancel the link request if it was pending.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1093,8 +1136,8 @@ module Google
         # @return [String]
         attr_accessor :attribute_language
       
-        # The two-letter ISO 639-1 language of the items in the feed. Must be a valid
-        # language for targetCountry.
+        # [DEPRECATED] Please use target.language instead. The two-letter ISO 639-1
+        # language of the items in the feed. Must be a valid language for targetCountry.
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
@@ -1128,8 +1171,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The list of intended destinations (corresponds to checked check boxes in
-        # Merchant Center).
+        # [DEPRECATED] Please use target.includedDestination instead. The list of
+        # intended destinations (corresponds to checked check boxes in Merchant Center).
         # Corresponds to the JSON property `intendedDestinations`
         # @return [Array<String>]
         attr_accessor :intended_destinations
@@ -1145,11 +1188,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The country where the items in the feed will be included in the search index,
-        # represented as a CLDR territory code.
+        # [DEPRECATED] Please use target.country instead. The country where the items in
+        # the feed will be included in the search index, represented as a CLDR territory
+        # code.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
+      
+        # The targets this feed should apply to (country, language, destinations).
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::ContentV2::DatafeedTarget>]
+        attr_accessor :targets
       
         def initialize(**args)
            update!(**args)
@@ -1168,6 +1217,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @target_country = args[:target_country] if args.key?(:target_country)
+          @targets = args[:targets] if args.key?(:targets)
         end
       end
       
@@ -1285,6 +1335,12 @@ module Google
       class DatafeedStatus
         include Google::Apis::Core::Hashable
       
+        # The country for which the status is reported, represented as a  CLDR territory
+        # code.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
         # The ID of the feed for which the status is reported.
         # Corresponds to the JSON property `datafeedId`
         # @return [Fixnum]
@@ -1311,6 +1367,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The two-letter ISO 639-1 language for which the status is reported.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
         # The last date at which the feed was uploaded.
         # Corresponds to the JSON property `lastUploadDate`
         # @return [String]
@@ -1332,11 +1393,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @country = args[:country] if args.key?(:country)
           @datafeed_id = args[:datafeed_id] if args.key?(:datafeed_id)
           @errors = args[:errors] if args.key?(:errors)
           @items_total = args[:items_total] if args.key?(:items_total)
           @items_valid = args[:items_valid] if args.key?(:items_valid)
           @kind = args[:kind] if args.key?(:kind)
+          @language = args[:language] if args.key?(:language)
           @last_upload_date = args[:last_upload_date] if args.key?(:last_upload_date)
           @processing_status = args[:processing_status] if args.key?(:processing_status)
           @warnings = args[:warnings] if args.key?(:warnings)
@@ -1408,6 +1471,48 @@ module Google
           @item_id = args[:item_id] if args.key?(:item_id)
           @line_number = args[:line_number] if args.key?(:line_number)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class DatafeedTarget
+        include Google::Apis::Core::Hashable
+      
+        # The country where the items in the feed will be included in the search index,
+        # represented as a  CLDR territory code.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The list of destinations to exclude for this target (corresponds to unchecked
+        # check boxes in Merchant Center).
+        # Corresponds to the JSON property `excludedDestinations`
+        # @return [Array<String>]
+        attr_accessor :excluded_destinations
+      
+        # The list of destinations to include for this target (corresponds to checked
+        # check boxes in Merchant Center). Default destinations are always included
+        # unless provided in the excluded_destination field.
+        # Corresponds to the JSON property `includedDestinations`
+        # @return [Array<String>]
+        attr_accessor :included_destinations
+      
+        # The two-letter ISO 639-1 language of the items in the feed. Must be a valid
+        # language for targetCountryLanguage.country.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @excluded_destinations = args[:excluded_destinations] if args.key?(:excluded_destinations)
+          @included_destinations = args[:included_destinations] if args.key?(:included_destinations)
+          @language = args[:language] if args.key?(:language)
         end
       end
       
@@ -1590,10 +1695,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The ID of the data feed to get or delete.
+        # The country for which to get the datafeed status. If this parameter is
+        # provided then language must also be provided. Note that for multi-target
+        # datafeeds this parameter is required.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The ID of the data feed to get.
         # Corresponds to the JSON property `datafeedId`
         # @return [Fixnum]
         attr_accessor :datafeed_id
+      
+        # The language for which to get the datafeed status. If this parameter is
+        # provided then country must also be provided. Note that for multi-target
+        # datafeeds this parameter is required.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
       
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
@@ -1612,7 +1731,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @country = args[:country] if args.key?(:country)
           @datafeed_id = args[:datafeed_id] if args.key?(:datafeed_id)
+          @language = args[:language] if args.key?(:language)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
         end
@@ -2928,7 +3049,15 @@ module Google
         # @return [String]
         attr_accessor :phone_number
       
-        # The type of instrument (VISA, Mastercard, etc).
+        # The type of instrument.
+        # Acceptable values are:
+        # - "AMEX"
+        # - "DISCOVER"
+        # - "JCB"
+        # - "MASTERCARD"
+        # - "UNIONPAY"
+        # - "VISA"
+        # - ""
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

@@ -352,7 +352,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceAppEngineBackend
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCloudFunctionBackend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4001,9 +4013,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :affinity_cookie_ttl_sec, as: 'affinityCookieTtlSec'
+          property :app_engine_backend, as: 'appEngineBackend', class: Google::Apis::ComputeAlpha::BackendServiceAppEngineBackend, decorator: Google::Apis::ComputeAlpha::BackendServiceAppEngineBackend::Representation
+      
           collection :backends, as: 'backends', class: Google::Apis::ComputeAlpha::Backend, decorator: Google::Apis::ComputeAlpha::Backend::Representation
       
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeAlpha::BackendServiceCdnPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceCdnPolicy::Representation
+      
+          property :cloud_function_backend, as: 'cloudFunctionBackend', class: Google::Apis::ComputeAlpha::BackendServiceCloudFunctionBackend, decorator: Google::Apis::ComputeAlpha::BackendServiceCloudFunctionBackend::Representation
       
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeAlpha::ConnectionDraining, decorator: Google::Apis::ComputeAlpha::ConnectionDraining::Representation
       
@@ -4064,6 +4080,15 @@ module Google
         end
       end
       
+      class BackendServiceAppEngineBackend
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_engine_service, as: 'appEngineService'
+          property :target_project, as: 'targetProject'
+          property :version, as: 'version'
+        end
+      end
+      
       class BackendServiceCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4071,6 +4096,14 @@ module Google
       
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceCloudFunctionBackend
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :function_name, as: 'functionName'
+          property :target_project, as: 'targetProject'
         end
       end
       

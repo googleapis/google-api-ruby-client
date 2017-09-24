@@ -22,6 +22,28 @@ module Google
   module Apis
     module ServicecontrolV1
       
+      # 
+      class AllocateInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of label keys that were unused by the server in processing the
+        # request. Thus, for similar requests repeated in a certain future time
+        # window, the caller can choose to ignore these labels in the requests
+        # to achieve better client-side cache hits and quota aggregation.
+        # Corresponds to the JSON property `unusedArguments`
+        # @return [Array<String>]
+        attr_accessor :unused_arguments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unused_arguments = args[:unused_arguments] if args.key?(:unused_arguments)
+        end
+      end
+      
       # Request message for the AllocateQuota method.
       class AllocateQuotaRequest
         include Google::Apis::Core::Hashable
@@ -30,12 +52,6 @@ module Google
         # Corresponds to the JSON property `allocateOperation`
         # @return [Google::Apis::ServicecontrolV1::QuotaOperation]
         attr_accessor :allocate_operation
-      
-        # Allocation mode for this operation.
-        # Deprecated: use QuotaMode inside the QuotaOperation.
-        # Corresponds to the JSON property `allocationMode`
-        # @return [String]
-        attr_accessor :allocation_mode
       
         # Specifies which version of service configuration should be used to process
         # the request. If unspecified or no matching version can be found, the latest
@@ -51,7 +67,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allocate_operation = args[:allocate_operation] if args.key?(:allocate_operation)
-          @allocation_mode = args[:allocation_mode] if args.key?(:allocation_mode)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
         end
       end
@@ -64,6 +79,11 @@ module Google
         # Corresponds to the JSON property `allocateErrors`
         # @return [Array<Google::Apis::ServicecontrolV1::QuotaError>]
         attr_accessor :allocate_errors
+      
+        # WARNING: DO NOT use this field until this warning message is removed.
+        # Corresponds to the JSON property `allocateInfo`
+        # @return [Google::Apis::ServicecontrolV1::AllocateInfo]
+        attr_accessor :allocate_info
       
         # The same operation_id value used in the AllocateQuotaRequest. Used for
         # logging and diagnostics purposes.
@@ -101,6 +121,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allocate_errors = args[:allocate_errors] if args.key?(:allocate_errors)
+          @allocate_info = args[:allocate_info] if args.key?(:allocate_info)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @quota_metrics = args[:quota_metrics] if args.key?(:quota_metrics)
           @service_config_id = args[:service_config_id] if args.key?(:service_config_id)
@@ -122,6 +143,12 @@ module Google
         # Corresponds to the JSON property `authorizationInfo`
         # @return [Array<Google::Apis::ServicecontrolV1::AuthorizationInfo>]
         attr_accessor :authorization_info
+      
+        # Other service-specific data about the request, response, and other
+        # information associated with the current audited event.
+        # Corresponds to the JSON property `metadata`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :metadata
       
         # The name of the service method or operation.
         # For API calls, this should be the name of the API method.
@@ -172,6 +199,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :response
       
+        # Deprecated, use `metadata` field instead.
         # Other service-specific data about the request, response, and other
         # activities.
         # Corresponds to the JSON property `serviceData`
@@ -235,6 +263,7 @@ module Google
         def update!(**args)
           @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
           @authorization_info = args[:authorization_info] if args.key?(:authorization_info)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @method_name = args[:method_name] if args.key?(:method_name)
           @num_response_items = args[:num_response_items] if args.key?(:num_response_items)
           @request = args[:request] if args.key?(:request)
@@ -345,7 +374,7 @@ module Google
         end
       end
       
-      # 
+      # Contains additional information about the check operation.
       class CheckInfo
         include Google::Apis::Core::Hashable
       
@@ -427,7 +456,7 @@ module Google
         # @return [Array<Google::Apis::ServicecontrolV1::CheckError>]
         attr_accessor :check_errors
       
-        # Feedback data returned from the server during processing a Check request.
+        # Contains additional information about the check operation.
         # Corresponds to the JSON property `checkInfo`
         # @return [Google::Apis::ServicecontrolV1::CheckInfo]
         attr_accessor :check_info
@@ -567,7 +596,7 @@ module Google
         end
       end
       
-      # 
+      # Request message for QuotaController.EndReconciliation.
       class EndReconciliationRequest
         include Google::Apis::Core::Hashable
       
@@ -594,7 +623,7 @@ module Google
         end
       end
       
-      # 
+      # Response message for QuotaController.EndReconciliation.
       class EndReconciliationResponse
         include Google::Apis::Core::Hashable
       
@@ -1064,7 +1093,7 @@ module Google
         # @return [String]
         attr_accessor :resource_container
       
-        # 
+        # The resources that are involved in the operation.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ServicecontrolV1::ResourceInfo>]
         attr_accessor :resources
@@ -1075,7 +1104,8 @@ module Google
         attr_accessor :start_time
       
         # User defined labels for the resource that this operation is associated
-        # with.
+        # with. Only a combination of 1000 user labels per consumer project are
+        # allowed.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
         attr_accessor :user_labels
@@ -1102,7 +1132,7 @@ module Google
         end
       end
       
-      # 
+      # Represents error information for QuotaOperation.
       class QuotaError
         include Google::Apis::Core::Hashable
       
@@ -1431,7 +1461,7 @@ module Google
         end
       end
       
-      # 
+      # Contains additional info about the report operation.
       class ReportInfo
         include Google::Apis::Core::Hashable
       
@@ -1611,7 +1641,7 @@ module Google
         end
       end
       
-      # 
+      # Request message for QuotaController.StartReconciliation.
       class StartReconciliationRequest
         include Google::Apis::Core::Hashable
       
@@ -1638,7 +1668,7 @@ module Google
         end
       end
       
-      # 
+      # Response message for QuotaController.StartReconciliation.
       class StartReconciliationResponse
         include Google::Apis::Core::Hashable
       

@@ -473,6 +473,19 @@ module Google
         # @return [String]
         attr_accessor :nat_ip
       
+        # The DNS domain name for the public PTR record. This field can only be set when
+        # the set_public_ptr field is enabled.
+        # Corresponds to the JSON property `publicPtrDomainName`
+        # @return [String]
+        attr_accessor :public_ptr_domain_name
+      
+        # Specifies whether a public DNS ?PTR? record should be created to map the
+        # external IP address of the instance to a DNS domain name.
+        # Corresponds to the JSON property `setPublicPtr`
+        # @return [Boolean]
+        attr_accessor :set_public_ptr
+        alias_method :set_public_ptr?, :set_public_ptr
+      
         # The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -487,6 +500,8 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @public_ptr_domain_name = args[:public_ptr_domain_name] if args.key?(:public_ptr_domain_name)
+          @set_public_ptr = args[:set_public_ptr] if args.key?(:set_public_ptr)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -495,7 +510,7 @@ module Google
       class Address
         include Google::Apis::Core::Hashable
       
-        # The static external IP address represented by this resource.
+        # The static IP address represented by this resource.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -5597,8 +5612,7 @@ module Google
       
         # The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
         # supported. For newer Windows images, the server might also populate this
-        # property with the value WINDOWS to indicate that this is a Windows image. This
-        # value is purely informational and does not enable or disable any features.
+        # property with the value WINDOWS to indicate that this is a Windows image.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6537,9 +6551,8 @@ module Google
         # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
         # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
         # VIRTIO_SCSI_MULTIQUEUE.
-        # For new Windows images, the server might also populate this field with the
-        # value WINDOWS, to indicate that this is a Windows image. This value is purely
-        # informational and does not enable or disable any features.
+        # For newer Windows images, the server might also populate this property with
+        # the value WINDOWS to indicate that this is a Windows image.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -11677,6 +11690,14 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AliasIpRange>]
         attr_accessor :alias_ip_ranges
       
+        # Fingerprint hash of contents stored in this network interface. This field will
+        # be ignored when inserting an Instance or adding a NetworkInterface. An up-to-
+        # date fingerprint must be provided in order to update the NetworkInterface.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # [Output Only] Type of the resource. Always compute#networkInterface for
         # network interfaces.
         # Corresponds to the JSON property `kind`
@@ -11733,6 +11754,7 @@ module Google
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -15610,9 +15632,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] A size of the the storage used by the snapshot. As snapshots
-        # share storage, this number is expected to change with snapshot creation/
-        # deletion.
+        # [Output Only] A size of the storage used by the snapshot. As snapshots share
+        # storage, this number is expected to change with snapshot creation/deletion.
         # Corresponds to the JSON property `storageBytes`
         # @return [Fixnum]
         attr_accessor :storage_bytes
@@ -15963,6 +15984,22 @@ module Google
       class Subnetwork
         include Google::Apis::Core::Hashable
       
+        # Whether this subnetwork can conflict with static routes. Setting this to true
+        # allows this subnetwork's primary and secondary ranges to conflict with routes
+        # that have already been configured on the corresponding network. Static routes
+        # will take precedence over the subnetwork route if the route prefix length is
+        # at least as large as the subnetwork prefix length.
+        # Also, packets destined to IPs within subnetwork may contain private/sensitive
+        # data and are prevented from leaving the virtual network. Setting this field to
+        # true will disable this feature.
+        # The default value is false and applies to all existing subnetworks and
+        # automatically created subnetworks.
+        # This field cannot be set to true at resource creation time.
+        # Corresponds to the JSON property `allowSubnetCidrRoutesOverlap`
+        # @return [Boolean]
+        attr_accessor :allow_subnet_cidr_routes_overlap
+        alias_method :allow_subnet_cidr_routes_overlap?, :allow_subnet_cidr_routes_overlap
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -15973,6 +16010,15 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
+        # update the Subnetwork.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
       
         # [Output Only] The gateway address for default routes to reach destination
         # addresses outside this subnetwork. This field can be set only at resource
@@ -16052,8 +16098,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_subnet_cidr_routes_overlap = args[:allow_subnet_cidr_routes_overlap] if args.key?(:allow_subnet_cidr_routes_overlap)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)

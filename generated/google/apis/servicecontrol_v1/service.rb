@@ -52,15 +52,11 @@ module Google
         # before the operation is executed.
         # This method requires the `servicemanagement.services.quota`
         # permission on the specified service. For more information, see
-        # [Google Cloud IAM](https://cloud.google.com/iam).
-        # **NOTE:** the client code **must** fail-open if the server returns one
-        # of the following quota errors:
-        # -   `PROJECT_STATUS_UNAVAILABLE`
-        # -   `SERVICE_STATUS_UNAVAILABLE`
-        # -   `BILLING_STATUS_UNAVAILABLE`
-        # -   `QUOTA_SYSTEM_UNAVAILABLE`
-        # The server may inject above errors to prohibit any hard dependency
-        # on the quota system.
+        # [Cloud IAM](https://cloud.google.com/iam).
+        # **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
+        # `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+        # reliability, the server may inject these errors to prohibit any hard
+        # dependency on the quota functionality.
         # @param [String] service_name
         #   Name of the service as specified in the service configuration. For example,
         #   `"pubsub.googleapis.com"`.
@@ -184,15 +180,11 @@ module Google
         # Releases previously allocated quota done through AllocateQuota method.
         # This method requires the `servicemanagement.services.quota`
         # permission on the specified service. For more information, see
-        # [Google Cloud IAM](https://cloud.google.com/iam).
-        # **NOTE:** the client code **must** fail-open if the server returns one
-        # of the following quota errors:
-        # -   `PROJECT_STATUS_UNAVAILABLE`
-        # -   `SERVICE_STATUS_UNAVAILABLE`
-        # -   `BILLING_STATUS_UNAVAILABLE`
-        # -   `QUOTA_SYSTEM_UNAVAILABLE`
-        # The server may inject above errors to prohibit any hard dependency
-        # on the quota system.
+        # [Cloud IAM](https://cloud.google.com/iam).
+        # **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
+        # `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+        # reliability, the server may inject these errors to prohibit any hard
+        # dependency on the quota functionality.
         # @param [String] service_name
         #   Name of the service as specified in the service configuration. For example,
         #   `"pubsub.googleapis.com"`.

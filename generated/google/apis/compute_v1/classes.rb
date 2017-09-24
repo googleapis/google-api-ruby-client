@@ -355,7 +355,7 @@ module Google
       class Address
         include Google::Apis::Core::Hashable
       
-        # The static external IP address represented by this resource.
+        # The static IP address represented by this resource.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -3846,8 +3846,7 @@ module Google
       
         # The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
         # supported. For newer Windows images, the server might also populate this
-        # property with the value WINDOWS to indicate that this is a Windows image. This
-        # value is purely informational and does not enable or disable any features.
+        # property with the value WINDOWS to indicate that this is a Windows image.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4570,9 +4569,8 @@ module Google
         # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
         # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
         # VIRTIO_SCSI_MULTIQUEUE.
-        # For new Windows images, the server might also populate this field with the
-        # value WINDOWS, to indicate that this is a Windows image. This value is purely
-        # informational and does not enable or disable any features.
+        # For newer Windows images, the server might also populate this property with
+        # the value WINDOWS to indicate that this is a Windows image.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeV1::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -4658,6 +4656,27 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
+        # URL of the source image used to create this image. This can be a full or valid
+        # partial URL. You must provide exactly one of:
+        # - this property, or
+        # - the rawDisk.source property, or
+        # - the sourceDisk property   in order to create an image.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `sourceImageEncryptionKey`
+        # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
+        attr_accessor :source_image_encryption_key
+      
+        # [Output Only] The ID value of the image used to create this image. This value
+        # may be used to determine whether the image was taken from the current or a
+        # previous instance of a given image name.
+        # Corresponds to the JSON property `sourceImageId`
+        # @return [String]
+        attr_accessor :source_image_id
+      
         # The type of the image used to create this disk. The default and only value is
         # RAW
         # Corresponds to the JSON property `sourceType`
@@ -4697,6 +4716,9 @@ module Google
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @source_image = args[:source_image] if args.key?(:source_image)
+          @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
+          @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
           @source_type = args[:source_type] if args.key?(:source_type)
           @status = args[:status] if args.key?(:status)
         end
@@ -9828,9 +9850,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # [Output Only] A size of the the storage used by the snapshot. As snapshots
-        # share storage, this number is expected to change with snapshot creation/
-        # deletion.
+        # [Output Only] A size of the storage used by the snapshot. As snapshots share
+        # storage, this number is expected to change with snapshot creation/deletion.
         # Corresponds to the JSON property `storageBytes`
         # @return [Fixnum]
         attr_accessor :storage_bytes
