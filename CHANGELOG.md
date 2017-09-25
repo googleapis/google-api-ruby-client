@@ -1,3 +1,13 @@
+# 0.14.4
+* Backwards compatible changes:
+  * Updated `acceleratedmobilepageurl_v1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `servicecontrol_v1`
+
 # 0.14.3
 
 # 0.14.2
