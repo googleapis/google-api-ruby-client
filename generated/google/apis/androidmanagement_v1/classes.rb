@@ -1140,8 +1140,8 @@ module Google
         # @return [String]
         attr_accessor :field_path
       
-        # If package_name is set and the non-compliance reason is APP_NOT_INSTALLED, the
-        # detailed reason the app cannot be installed.
+        # If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or
+        # APP_NOT_UPDATED, the detailed reason the app cannot be installed or updated.
         # Corresponds to the JSON property `installationFailureReason`
         # @return [String]
         attr_accessor :installation_failure_reason
