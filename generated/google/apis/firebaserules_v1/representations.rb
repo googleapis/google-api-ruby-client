@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetReleaseExecutableResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Issue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -170,6 +176,17 @@ module Google
           property :function, as: 'function'
           property :result, as: 'result', class: Google::Apis::FirebaserulesV1::Result, decorator: Google::Apis::FirebaserulesV1::Result::Representation
       
+        end
+      end
+      
+      class GetReleaseExecutableResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :executable, :base64 => true, as: 'executable'
+          property :executable_version, as: 'executableVersion'
+          property :language, as: 'language'
+          property :ruleset_name, as: 'rulesetName'
+          property :update_time, as: 'updateTime'
         end
       end
       

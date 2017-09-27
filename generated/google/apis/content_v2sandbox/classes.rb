@@ -691,7 +691,8 @@ module Google
       class OrderLineItemShippingDetailsMethod
         include Google::Apis::Core::Hashable
       
-        # The carrier for the shipping. Optional.
+        # The carrier for the shipping. Optional. See shipments[].carrier for a list of
+        # acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -980,6 +981,29 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The carrier handling the shipment.
+        # Acceptable values are:
+        # - "gsx"
+        # - "ups"
+        # - "united parcel service"
+        # - "usps"
+        # - "united states postal service"
+        # - "fedex"
+        # - "dhl"
+        # - "ecourier"
+        # - "cxt"
+        # - "google"
+        # - "on trac"
+        # - "ontrac"
+        # - "on-trac"
+        # - "on_trac"
+        # - "delvic"
+        # - "dynamex"
+        # - "lasership"
+        # - "smartpost"
+        # - "fedex smartpost"
+        # - "mpx"
+        # - "uds"
+        # - "united delivery service"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -1556,7 +1580,9 @@ module Google
       class OrdersCustomBatchRequestEntryShipLineItems
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment.
+        # Deprecated. Please use shipmentInfo instead. The carrier handling the shipment.
+        # See shipments[].carrier in the  Orders resource representation for a list of
+        # acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -1565,6 +1591,46 @@ module Google
         # Corresponds to the JSON property `lineItems`
         # @return [Array<Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment>]
         attr_accessor :line_items
+      
+        # Deprecated. Please use shipmentInfo instead. The ID of the shipment.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # Shipment information. This field is repeated because a single line item can be
+        # shipped in several packages (and have several tracking IDs).
+        # Corresponds to the JSON property `shipmentInfos`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>]
+        attr_accessor :shipment_infos
+      
+        # Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] if args.key?(:carrier)
+          @line_items = args[:line_items] if args.key?(:line_items)
+          @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
+          @shipment_infos = args[:shipment_infos] if args.key?(:shipment_infos)
+          @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # The carrier handling the shipment. See shipments[].carrier in the  Orders
+        # resource representation for a list of acceptable values.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
       
         # The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
@@ -1583,7 +1649,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
-          @line_items = args[:line_items] if args.key?(:line_items)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
         end
@@ -1593,7 +1658,8 @@ module Google
       class OrdersCustomBatchRequestEntryUpdateShipment
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment. Not updated if missing.
+        # The carrier handling the shipment. Not updated if missing. See shipments[].
+        # carrier in the  Orders resource representation for a list of acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -1918,7 +1984,9 @@ module Google
       class OrdersShipLineItemsRequest
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment.
+        # Deprecated. Please use shipmentInfo instead. The carrier handling the shipment.
+        # See shipments[].carrier in the  Orders resource representation for a list of
+        # acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -1933,12 +2001,18 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # The ID of the shipment.
+        # Deprecated. Please use shipmentInfo instead. The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
         attr_accessor :shipment_id
       
-        # The tracking id for the shipment.
+        # Shipment information. This field is repeated because a single line item can be
+        # shipped in several packages (and have several tracking IDs).
+        # Corresponds to the JSON property `shipmentInfos`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>]
+        attr_accessor :shipment_infos
+      
+        # Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.
         # Corresponds to the JSON property `trackingId`
         # @return [String]
         attr_accessor :tracking_id
@@ -1953,6 +2027,7 @@ module Google
           @line_items = args[:line_items] if args.key?(:line_items)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
+          @shipment_infos = args[:shipment_infos] if args.key?(:shipment_infos)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
         end
       end
@@ -2038,7 +2113,8 @@ module Google
       class OrdersUpdateShipmentRequest
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment. Not updated if missing.
+        # The carrier handling the shipment. Not updated if missing. See shipments[].
+        # carrier in the  Orders resource representation for a list of acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier

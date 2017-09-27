@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Histogram
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstructionInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1010,6 +1016,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
       
+          property :histogram, as: 'histogram', class: Google::Apis::DataflowV1b3::Histogram, decorator: Google::Apis::DataflowV1b3::Histogram::Representation
+      
           property :max, as: 'max', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
       
           property :min, as: 'min', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
@@ -1127,6 +1135,14 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::DataflowV1b3::Status, decorator: Google::Apis::DataflowV1b3::Status::Representation
       
+        end
+      end
+      
+      class Histogram
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket_counts, as: 'bucketCounts'
+          property :first_bucket_offset, as: 'firstBucketOffset'
         end
       end
       

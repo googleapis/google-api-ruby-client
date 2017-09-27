@@ -539,6 +539,8 @@ module Google
       class Deployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential, as: 'credential', class: Google::Apis::DeploymentmanagerAlpha::Credential, decorator: Google::Apis::DeploymentmanagerAlpha::Credential::Representation
+      
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
@@ -578,6 +580,8 @@ module Google
       class DeploymentUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential, as: 'credential', class: Google::Apis::DeploymentmanagerAlpha::Credential, decorator: Google::Apis::DeploymentmanagerAlpha::Credential::Representation
+      
           property :description, as: 'description'
           collection :labels, as: 'labels', class: Google::Apis::DeploymentmanagerAlpha::DeploymentUpdateLabelEntry, decorator: Google::Apis::DeploymentmanagerAlpha::DeploymentUpdateLabelEntry::Representation
       
@@ -814,6 +818,8 @@ module Google
           property :final_properties, as: 'finalProperties'
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
+          property :last_used_credential, as: 'lastUsedCredential', class: Google::Apis::DeploymentmanagerAlpha::Credential, decorator: Google::Apis::DeploymentmanagerAlpha::Credential::Representation
+      
           property :manifest, as: 'manifest'
           property :name, as: 'name'
           property :properties, as: 'properties'
@@ -856,6 +862,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_control, as: 'accessControl', class: Google::Apis::DeploymentmanagerAlpha::ResourceAccessControl, decorator: Google::Apis::DeploymentmanagerAlpha::ResourceAccessControl::Representation
+      
+          property :credential, as: 'credential', class: Google::Apis::DeploymentmanagerAlpha::Credential, decorator: Google::Apis::DeploymentmanagerAlpha::Credential::Representation
       
           property :error, as: 'error', class: Google::Apis::DeploymentmanagerAlpha::ResourceUpdate::Error, decorator: Google::Apis::DeploymentmanagerAlpha::ResourceUpdate::Error::Representation
       

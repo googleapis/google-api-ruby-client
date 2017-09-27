@@ -171,6 +171,50 @@ module Google
         end
       end
       
+      # The response for FirebaseRulesService.GetReleaseExecutable
+      class GetReleaseExecutableResponse
+        include Google::Apis::Core::Hashable
+      
+        # Executable view of the `Ruleset` referenced by the `Release`.
+        # Corresponds to the JSON property `executable`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :executable
+      
+        # The Rules runtime version of the executable.
+        # Corresponds to the JSON property `executableVersion`
+        # @return [String]
+        attr_accessor :executable_version
+      
+        # `Language` used to generate the executable bytes.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # `Ruleset` name associated with the `Release` executable.
+        # Corresponds to the JSON property `rulesetName`
+        # @return [String]
+        attr_accessor :ruleset_name
+      
+        # Timestamp for the most recent `Release.update_time`.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @executable = args[:executable] if args.key?(:executable)
+          @executable_version = args[:executable_version] if args.key?(:executable_version)
+          @language = args[:language] if args.key?(:language)
+          @ruleset_name = args[:ruleset_name] if args.key?(:ruleset_name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Issues include warnings, errors, and deprecation notices.
       class Issue
         include Google::Apis::Core::Hashable

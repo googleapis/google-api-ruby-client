@@ -707,7 +707,7 @@ module Google
       class FailureDetail
         include Google::Apis::Core::Hashable
       
-        # If the failure was severe because the system under test crashed.
+        # If the failure was severe because the system (app) under test crashed.
         # Corresponds to the JSON property `crashed`
         # @return [Boolean]
         attr_accessor :crashed
@@ -720,7 +720,7 @@ module Google
         attr_accessor :not_installed
         alias_method :not_installed?, :not_installed
       
-        # If a native process other than the app crashed.
+        # If a native process (including any other than the app) crashed.
         # Corresponds to the JSON property `otherNativeCrash`
         # @return [Boolean]
         attr_accessor :other_native_crash

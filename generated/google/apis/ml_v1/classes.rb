@@ -186,7 +186,8 @@ module Google
       class GoogleCloudMlV1HyperparameterOutput
         include Google::Apis::Core::Hashable
       
-        # All recorded object metrics for this trial.
+        # All recorded object metrics for this trial. This field is not currently
+        # populated.
         # Corresponds to the JSON property `allMetrics`
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>]
         attr_accessor :all_metrics
@@ -465,7 +466,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 18
+        # Next ID: 19
         # LINT.IfChange
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
@@ -558,7 +559,7 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 18
+        # Next ID: 19
         # LINT.IfChange
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
@@ -1215,7 +1216,7 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # Next ID: 18
+      # Next ID: 19
       # LINT.IfChange
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable

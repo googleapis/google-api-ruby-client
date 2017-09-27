@@ -22,6 +22,104 @@ module Google
   module Apis
     module ClassroomV1
       
+      # Announcement created by a teacher for students of the course
+      class Announcement
+        include Google::Apis::Core::Hashable
+      
+        # Absolute link to this announcement in the Classroom web UI.
+        # This is only populated if `state` is `PUBLISHED`.
+        # Read-only.
+        # Corresponds to the JSON property `alternateLink`
+        # @return [String]
+        attr_accessor :alternate_link
+      
+        # Assignee mode of the announcement.
+        # If unspecified, the default value is `ALL_STUDENTS`.
+        # Corresponds to the JSON property `assigneeMode`
+        # @return [String]
+        attr_accessor :assignee_mode
+      
+        # Identifier of the course.
+        # Read-only.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # Timestamp when this announcement was created.
+        # Read-only.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Identifier for the user that created the announcement.
+        # Read-only.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [String]
+        attr_accessor :creator_user_id
+      
+        # Classroom-assigned identifier of this announcement, unique per course.
+        # Read-only.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Assignee details about a coursework/announcement.
+        # This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+        # Corresponds to the JSON property `individualStudentsOptions`
+        # @return [Google::Apis::ClassroomV1::IndividualStudentsOptions]
+        attr_accessor :individual_students_options
+      
+        # Additional materials.
+        # Announcements must have no more than 20 material items.
+        # Corresponds to the JSON property `materials`
+        # @return [Array<Google::Apis::ClassroomV1::Material>]
+        attr_accessor :materials
+      
+        # Optional timestamp when this announcement is scheduled to be published.
+        # Corresponds to the JSON property `scheduledTime`
+        # @return [String]
+        attr_accessor :scheduled_time
+      
+        # Status of this announcement.
+        # If unspecified, the default state is `DRAFT`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Description of this announcement.
+        # The text must be a valid UTF-8 string containing no more
+        # than 30,000 characters.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Timestamp of the most recent change to this announcement.
+        # Read-only.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
+          @assignee_mode = args[:assignee_mode] if args.key?(:assignee_mode)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @id = args[:id] if args.key?(:id)
+          @individual_students_options = args[:individual_students_options] if args.key?(:individual_students_options)
+          @materials = args[:materials] if args.key?(:materials)
+          @scheduled_time = args[:scheduled_time] if args.key?(:scheduled_time)
+          @state = args[:state] if args.key?(:state)
+          @text = args[:text] if args.key?(:text)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Additional details for assignments.
       class Assignment
         include Google::Apis::Core::Hashable
@@ -101,6 +199,30 @@ module Google
           @form = args[:form] if args.key?(:form)
           @link = args[:link] if args.key?(:link)
           @you_tube_video = args[:you_tube_video] if args.key?(:you_tube_video)
+        end
+      end
+      
+      # A reference to a Cloud Pub/Sub topic.
+      # To register for notifications, the owner of the topic must grant
+      # `classroom-notifications@system.gserviceaccount.com` the
+      # `projects.topics.publish` permission.
+      class CloudPubsubTopic
+        include Google::Apis::Core::Hashable
+      
+        # The `name` field of a Cloud Pub/Sub
+        # [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#
+        # Topic).
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
         end
       end
       
@@ -375,6 +497,25 @@ module Google
         end
       end
       
+      # Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
+      class CourseRosterChangesInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `course_id` of the course to subscribe to roster changes for.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_id = args[:course_id] if args.key?(:course_id)
+        end
+      end
+      
       # Course work created by a teacher for students of the course.
       class CourseWork
         include Google::Apis::Core::Hashable
@@ -385,6 +526,12 @@ module Google
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
+      
+        # Assignee mode of the coursework.
+        # If unspecified, the default value is `ALL_STUDENTS`.
+        # Corresponds to the JSON property `assigneeMode`
+        # @return [String]
+        attr_accessor :assignee_mode
       
         # Additional details for assignments.
         # Corresponds to the JSON property `assignment`
@@ -412,6 +559,12 @@ module Google
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
+      
+        # Identifier for the user that created the coursework.
+        # Read-only.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [String]
+        attr_accessor :creator_user_id
       
         # Optional description of this course work.
         # If set, the description must be a valid UTF-8 string containing no more
@@ -443,6 +596,12 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Assignee details about a coursework/announcement.
+        # This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+        # Corresponds to the JSON property `individualStudentsOptions`
+        # @return [Google::Apis::ClassroomV1::IndividualStudentsOptions]
+        attr_accessor :individual_students_options
       
         # Additional materials.
         # CourseWork must have no more than 20 material items.
@@ -505,14 +664,17 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternate_link = args[:alternate_link] if args.key?(:alternate_link)
+          @assignee_mode = args[:assignee_mode] if args.key?(:assignee_mode)
           @assignment = args[:assignment] if args.key?(:assignment)
           @associated_with_developer = args[:associated_with_developer] if args.key?(:associated_with_developer)
           @course_id = args[:course_id] if args.key?(:course_id)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
           @description = args[:description] if args.key?(:description)
           @due_date = args[:due_date] if args.key?(:due_date)
           @due_time = args[:due_time] if args.key?(:due_time)
           @id = args[:id] if args.key?(:id)
+          @individual_students_options = args[:individual_students_options] if args.key?(:individual_students_options)
           @materials = args[:materials] if args.key?(:materials)
           @max_points = args[:max_points] if args.key?(:max_points)
           @multiple_choice_question = args[:multiple_choice_question] if args.key?(:multiple_choice_question)
@@ -653,6 +815,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A class of notifications that an application can register to receive.
+      # For example: "all roster changes for a domain".
+      class Feed
+        include Google::Apis::Core::Hashable
+      
+        # Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
+        # Corresponds to the JSON property `courseRosterChangesInfo`
+        # @return [Google::Apis::ClassroomV1::CourseRosterChangesInfo]
+        attr_accessor :course_roster_changes_info
+      
+        # The type of feed.
+        # Corresponds to the JSON property `feedType`
+        # @return [String]
+        attr_accessor :feed_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_roster_changes_info = args[:course_roster_changes_info] if args.key?(:course_roster_changes_info)
+          @feed_type = args[:feed_type] if args.key?(:feed_type)
         end
       end
       
@@ -847,6 +1035,27 @@ module Google
         end
       end
       
+      # Assignee details about a coursework/announcement.
+      # This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+      class IndividualStudentsOptions
+        include Google::Apis::Core::Hashable
+      
+        # Identifiers for the students that have access to the
+        # coursework/announcement.
+        # Corresponds to the JSON property `studentIds`
+        # @return [Array<String>]
+        attr_accessor :student_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @student_ids = args[:student_ids] if args.key?(:student_ids)
+        end
+      end
+      
       # An invitation to join a course.
       class Invitation
         include Google::Apis::Core::Hashable
@@ -922,6 +1131,32 @@ module Google
           @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @title = args[:title] if args.key?(:title)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Response when listing course work.
+      class ListAnnouncementsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Announcement items that match the request.
+        # Corresponds to the JSON property `announcements`
+        # @return [Array<Google::Apis::ClassroomV1::Announcement>]
+        attr_accessor :announcements
+      
+        # Token identifying the next page of results to return. If empty, no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @announcements = args[:announcements] if args.key?(:announcements)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1198,6 +1433,33 @@ module Google
         end
       end
       
+      # Request to modify assignee mode and options of an announcement.
+      class ModifyAnnouncementAssigneesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Mode of the announcement describing whether it will be accessible by all
+        # students or specified individual students.
+        # Corresponds to the JSON property `assigneeMode`
+        # @return [String]
+        attr_accessor :assignee_mode
+      
+        # Contains fields to add or remove students from a course work or announcement
+        # where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`.
+        # Corresponds to the JSON property `modifyIndividualStudentsOptions`
+        # @return [Google::Apis::ClassroomV1::ModifyIndividualStudentsOptions]
+        attr_accessor :modify_individual_students_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_mode = args[:assignee_mode] if args.key?(:assignee_mode)
+          @modify_individual_students_options = args[:modify_individual_students_options] if args.key?(:modify_individual_students_options)
+        end
+      end
+      
       # Request to modify the attachments of a student submission.
       class ModifyAttachmentsRequest
         include Google::Apis::Core::Hashable
@@ -1216,6 +1478,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @add_attachments = args[:add_attachments] if args.key?(:add_attachments)
+        end
+      end
+      
+      # Request to modify assignee mode and options of a coursework.
+      class ModifyCourseWorkAssigneesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Mode of the coursework describing whether it will be assigned to all
+        # students or specified individual students.
+        # Corresponds to the JSON property `assigneeMode`
+        # @return [String]
+        attr_accessor :assignee_mode
+      
+        # Contains fields to add or remove students from a course work or announcement
+        # where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`.
+        # Corresponds to the JSON property `modifyIndividualStudentsOptions`
+        # @return [Google::Apis::ClassroomV1::ModifyIndividualStudentsOptions]
+        attr_accessor :modify_individual_students_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_mode = args[:assignee_mode] if args.key?(:assignee_mode)
+          @modify_individual_students_options = args[:modify_individual_students_options] if args.key?(:modify_individual_students_options)
+        end
+      end
+      
+      # Contains fields to add or remove students from a course work or announcement
+      # where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`.
+      class ModifyIndividualStudentsOptions
+        include Google::Apis::Core::Hashable
+      
+        # Ids of students to be added as having access to this
+        # coursework/announcement.
+        # Corresponds to the JSON property `addStudentIds`
+        # @return [Array<String>]
+        attr_accessor :add_student_ids
+      
+        # Ids of students to be removed from having access to this
+        # coursework/announcement.
+        # Corresponds to the JSON property `removeStudentIds`
+        # @return [Array<String>]
+        attr_accessor :remove_student_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_student_ids = args[:add_student_ids] if args.key?(:add_student_ids)
+          @remove_student_ids = args[:remove_student_ids] if args.key?(:remove_student_ids)
         end
       end
       
@@ -1302,6 +1619,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # An instruction to Classroom to send notifications from the `feed` to the
+      # provided `destination`.
+      class Registration
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a Cloud Pub/Sub topic.
+        # To register for notifications, the owner of the topic must grant
+        # `classroom-notifications@system.gserviceaccount.com` the
+        # `projects.topics.publish` permission.
+        # Corresponds to the JSON property `cloudPubsubTopic`
+        # @return [Google::Apis::ClassroomV1::CloudPubsubTopic]
+        attr_accessor :cloud_pubsub_topic
+      
+        # The time until which the `Registration` is effective.
+        # This is a read-only field assigned by the server.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
+        # A class of notifications that an application can register to receive.
+        # For example: "all roster changes for a domain".
+        # Corresponds to the JSON property `feed`
+        # @return [Google::Apis::ClassroomV1::Feed]
+        attr_accessor :feed
+      
+        # A server-generated unique identifier for this `Registration`.
+        # Read-only.
+        # Corresponds to the JSON property `registrationId`
+        # @return [String]
+        attr_accessor :registration_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_pubsub_topic = args[:cloud_pubsub_topic] if args.key?(:cloud_pubsub_topic)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @feed = args[:feed] if args.key?(:feed)
+          @registration_id = args[:registration_id] if args.key?(:registration_id)
         end
       end
       

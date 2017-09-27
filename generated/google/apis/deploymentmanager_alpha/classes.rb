@@ -486,6 +486,12 @@ module Google
       class Deployment
         include Google::Apis::Core::Hashable
       
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
+        # Corresponds to the JSON property `credential`
+        # @return [Google::Apis::DeploymentmanagerAlpha::Credential]
+        attr_accessor :credential
+      
         # An optional user-provided description of the deployment.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -571,6 +577,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @credential = args[:credential] if args.key?(:credential)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
@@ -640,6 +647,12 @@ module Google
       class DeploymentUpdate
         include Google::Apis::Core::Hashable
       
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
+        # Corresponds to the JSON property `credential`
+        # @return [Google::Apis::DeploymentmanagerAlpha::Credential]
+        attr_accessor :credential
+      
         # Output only. An optional user-provided description of the deployment after the
         # current update has been applied.
         # Corresponds to the JSON property `description`
@@ -667,6 +680,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @credential = args[:credential] if args.key?(:credential)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @manifest = args[:manifest] if args.key?(:manifest)
@@ -1557,6 +1571,12 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
+        # Corresponds to the JSON property `lastUsedCredential`
+        # @return [Google::Apis::DeploymentmanagerAlpha::Credential]
+        attr_accessor :last_used_credential
+      
         # Output only. URL of the manifest representing the current configuration of
         # this resource.
         # Corresponds to the JSON property `manifest`
@@ -1611,6 +1631,7 @@ module Google
           @final_properties = args[:final_properties] if args.key?(:final_properties)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
+          @last_used_credential = args[:last_used_credential] if args.key?(:last_used_credential)
           @manifest = args[:manifest] if args.key?(:manifest)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
@@ -1714,6 +1735,12 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::ResourceAccessControl]
         attr_accessor :access_control
       
+        # The credential used by Deployment Manager and TypeProvider. Only one of the
+        # options is permitted.
+        # Corresponds to the JSON property `credential`
+        # @return [Google::Apis::DeploymentmanagerAlpha::Credential]
+        attr_accessor :credential
+      
         # Output only. If errors are generated during update of the resource, this field
         # will be populated.
         # Corresponds to the JSON property `error`
@@ -1761,6 +1788,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_control = args[:access_control] if args.key?(:access_control)
+          @credential = args[:credential] if args.key?(:credential)
           @error = args[:error] if args.key?(:error)
           @final_properties = args[:final_properties] if args.key?(:final_properties)
           @intent = args[:intent] if args.key?(:intent)
@@ -1922,7 +1950,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Additional restrictions that must be met
+        # Additional restrictions that must be met. All conditions must pass for the
+        # rule to match.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::Condition>]
         attr_accessor :conditions

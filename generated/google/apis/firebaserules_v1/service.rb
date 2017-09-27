@@ -215,6 +215,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the `Release` executable to use when enforcing rules.
+        # @param [String] name
+        #   Resource name of the `Release`.
+        #   Format: `projects/`project_id`/releases/`release_id``
+        # @param [String] executable_version
+        #   The requested runtime executable version.
+        #   Defaults to FIREBASE_RULES_EXECUTABLE_V1
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaserulesV1::GetReleaseExecutableResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaserulesV1::GetReleaseExecutableResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_release_executable(name, executable_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}:getExecutable', options)
+          command.response_representation = Google::Apis::FirebaserulesV1::GetReleaseExecutableResponse::Representation
+          command.response_class = Google::Apis::FirebaserulesV1::GetReleaseExecutableResponse
+          command.params['name'] = name unless name.nil?
+          command.query['executableVersion'] = executable_version unless executable_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List the `Release` values for a project. This list may optionally be
         # filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any
         # combination thereof.

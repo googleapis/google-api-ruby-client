@@ -25,7 +25,13 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20170803'
+      REVISION = '20170926'
+
+      # View and manage announcements in Google Classroom
+      AUTH_CLASSROOM_ANNOUNCEMENTS = 'https://www.googleapis.com/auth/classroom.announcements'
+
+      # View announcements in Google Classroom
+      AUTH_CLASSROOM_ANNOUNCEMENTS_READONLY = 'https://www.googleapis.com/auth/classroom.announcements.readonly'
 
       # Manage your Google Classroom classes
       AUTH_CLASSROOM_COURSES = 'https://www.googleapis.com/auth/classroom.courses'

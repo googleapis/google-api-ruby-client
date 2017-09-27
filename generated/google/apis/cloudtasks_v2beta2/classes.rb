@@ -51,7 +51,7 @@ module Google
       # the task is dispatched.
       # This proto can only be used for tasks in a queue which has
       # Queue.app_engine_http_target set.
-      # Using this type of target requires
+      # Using AppEngineHttpRequest requires
       # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
       # Google IAM permission for the project
       # and the following scope:
@@ -180,7 +180,7 @@ module Google
       # specified by its AppEngineHttpTarget and AppEngineHttpRequest.
       # The documentation for AppEngineHttpRequest explains how the
       # task's host URL is constructed.
-      # Using this type of queue configuration requires
+      # Using AppEngineHttpTarget requires
       # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
       # Google IAM permission for the project
       # and the following scope:
@@ -1045,7 +1045,7 @@ module Google
         # specified by its AppEngineHttpTarget and AppEngineHttpRequest.
         # The documentation for AppEngineHttpRequest explains how the
         # task's host URL is constructed.
-        # Using this type of queue configuration requires
+        # Using AppEngineHttpTarget requires
         # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
         # Google IAM permission for the project
         # and the following scope:
@@ -1440,7 +1440,7 @@ module Google
         # the task is dispatched.
         # This proto can only be used for tasks in a queue which has
         # Queue.app_engine_http_target set.
-        # Using this type of target requires
+        # Using AppEngineHttpRequest requires
         # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
         # Google IAM permission for the project
         # and the following scope:

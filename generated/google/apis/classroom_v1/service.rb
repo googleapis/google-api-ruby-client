@@ -460,6 +460,301 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an announcement.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course, create announcements in the requested course, share a
+        # Drive attachment, or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course does not exist.
+        # * `FAILED_PRECONDITION` for the following request error:
+        # * AttachmentNotVisible
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [Google::Apis::ClassroomV1::Announcement] announcement_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Announcement] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Announcement]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_announcement(course_id, announcement_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/courses/{courseId}/announcements', options)
+          command.request_representation = Google::Apis::ClassroomV1::Announcement::Representation
+          command.request_object = announcement_object
+          command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
+          command.response_class = Google::Apis::ClassroomV1::Announcement
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an announcement.
+        # This request must be made by the Developer Console project of the
+        # [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+        # create the corresponding announcement item.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project did not create
+        # the corresponding announcement, if the requesting user is not permitted
+        # to delete the requested course or for access errors.
+        # * `FAILED_PRECONDITION` if the requested announcement has already been
+        # deleted.
+        # * `NOT_FOUND` if no course exists with the requested ID.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the announcement to delete.
+        #   This identifier is a Classroom-assigned identifier.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_announcement(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/courses/{courseId}/announcements/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns an announcement.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course or announcement, or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course or announcement does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the announcement.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Announcement] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Announcement]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_announcement(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/courses/{courseId}/announcements/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
+          command.response_class = Google::Apis::ClassroomV1::Announcement
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of announcements that the requester is permitted to view.
+        # Course students may only view `PUBLISHED` announcements. Course teachers
+        # and domain administrators may view all announcements.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access
+        # the requested course or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [Array<String>, String] announcement_states
+        #   Restriction on the `state` of announcements returned.
+        #   If this argument is left unspecified, the default value is `PUBLISHED`.
+        # @param [String] order_by
+        #   Optional sort ordering for results. A comma-separated list of fields with
+        #   an optional sort direction keyword. Supported field is `updateTime`.
+        #   Supported direction keywords are `asc` and `desc`.
+        #   If not specified, `updateTime desc` is the default behavior.
+        #   Examples: `updateTime asc`, `updateTime`
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return. Zero or unspecified indicates that the
+        #   server may assign a maximum.
+        #   The server may return fewer than the specified number of results.
+        # @param [String] page_token
+        #   nextPageToken
+        #   value returned from a previous
+        #   list call,
+        #   indicating that the subsequent page of results should be returned.
+        #   The list request
+        #   must be otherwise identical to the one that resulted in this token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListAnnouncementsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListAnnouncementsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_announcements(course_id, announcement_states: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/courses/{courseId}/announcements', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListAnnouncementsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListAnnouncementsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['announcementStates'] = announcement_states unless announcement_states.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies assignee mode and options of an announcement.
+        # Only a teacher of the course that contains the announcement may
+        # call this method.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course or course work or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course or course work does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the announcement.
+        # @param [Google::Apis::ClassroomV1::ModifyAnnouncementAssigneesRequest] modify_announcement_assignees_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Announcement] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Announcement]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_course_announcement_assignees(course_id, id, modify_announcement_assignees_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/courses/{courseId}/announcements/{id}:modifyAssignees', options)
+          command.request_representation = Google::Apis::ClassroomV1::ModifyAnnouncementAssigneesRequest::Representation
+          command.request_object = modify_announcement_assignees_request_object
+          command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
+          command.response_class = Google::Apis::ClassroomV1::Announcement
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates one or more fields of an announcement.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project did not create
+        # the corresponding announcement or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `FAILED_PRECONDITION` if the requested announcement has already been
+        # deleted.
+        # * `NOT_FOUND` if the requested course or announcement does not exist
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the announcement.
+        # @param [Google::Apis::ClassroomV1::Announcement] announcement_object
+        # @param [String] update_mask
+        #   Mask that identifies which fields on the announcement to update.
+        #   This field is required to do an update. The update fails if invalid
+        #   fields are specified. If a field supports empty values, it can be cleared
+        #   by specifying it in the update mask and not in the Announcement object. If
+        #   a field that does not support empty values is included in the update mask
+        #   and not set in the Announcement object, an `INVALID_ARGUMENT` error will be
+        #   returned.
+        #   The following fields may be specified by teachers:
+        #   * `text`
+        #   * `state`
+        #   * `scheduled_time`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Announcement] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Announcement]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_announcement(course_id, id, announcement_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/courses/{courseId}/announcements/{id}', options)
+          command.request_representation = Google::Apis::ClassroomV1::Announcement::Representation
+          command.request_object = announcement_object
+          command.response_representation = Google::Apis::ClassroomV1::Announcement::Representation
+          command.response_class = Google::Apis::ClassroomV1::Announcement
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates course work.
         # The resulting course work (and corresponding student submissions) are
         # associated with the Developer Console project of the
@@ -654,6 +949,51 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies assignee mode and options of a coursework.
+        # Only a teacher of the course that contains the coursework may
+        # call this method.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course or course work or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course or course work does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the coursework.
+        # @param [Google::Apis::ClassroomV1::ModifyCourseWorkAssigneesRequest] modify_course_work_assignees_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::CourseWork] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::CourseWork]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_course_course_work_assignees(course_id, id, modify_course_work_assignees_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/courses/{courseId}/courseWork/{id}:modifyAssignees', options)
+          command.request_representation = Google::Apis::ClassroomV1::ModifyCourseWorkAssigneesRequest::Representation
+          command.request_object = modify_course_work_assignees_request_object
+          command.response_representation = Google::Apis::ClassroomV1::CourseWork::Representation
+          command.response_class = Google::Apis::ClassroomV1::CourseWork
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1706,6 +2046,92 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a `Registration`, causing Classroom to start sending notifications
+        # from the provided `feed` to the provided `destination`.
+        # Returns the created `Registration`. Currently, this will be the same as
+        # the argument, but with server-assigned fields such as `expiry_time` and
+        # `id` filled in.
+        # Note that any value specified for the `expiry_time` or `id` fields will be
+        # ignored.
+        # While Classroom may validate the `destination` and return errors on a best
+        # effort basis, it is the caller's responsibility to ensure that it exists
+        # and that Classroom has permission to publish to it.
+        # This method may return the following error codes:
+        # * `PERMISSION_DENIED` if:
+        # * the authenticated user does not have permission to receive
+        # notifications from the requested field; or
+        # * the credential provided does not include the appropriate scope for the
+        # requested feed.
+        # * another access error is encountered.
+        # * `INVALID_ARGUMENT` if:
+        # * no `destination` is specified, or the specified `destination` is not
+        # valid; or
+        # * no `feed` is specified, or the specified `feed` is not valid.
+        # * `NOT_FOUND` if:
+        # * the specified `feed` cannot be located, or the requesting user does not
+        # have permission to determine whether or not it exists; or
+        # * the specified `destination` cannot be located, or Classroom has not
+        # been granted permission to publish to it.
+        # @param [Google::Apis::ClassroomV1::Registration] registration_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Registration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Registration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_registration(registration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/registrations', options)
+          command.request_representation = Google::Apis::ClassroomV1::Registration::Representation
+          command.request_object = registration_object
+          command.response_representation = Google::Apis::ClassroomV1::Registration::Representation
+          command.response_class = Google::Apis::ClassroomV1::Registration
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a `Registration`, causing Classroom to stop sending notifications
+        # for that `Registration`.
+        # @param [String] registration_id
+        #   The `registration_id` of the `Registration` to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_registration(registration_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/registrations/{registrationId}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['registrationId'] = registration_id unless registration_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

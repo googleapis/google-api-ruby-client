@@ -22,6 +22,12 @@ module Google
   module Apis
     module ClassroomV1
       
+      class Announcement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Assignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class Attachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudPubsubTopic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -59,6 +71,12 @@ module Google
       end
       
       class CourseMaterialSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CourseRosterChangesInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Feed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Form
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IndividualStudentsOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Invitation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +161,12 @@ module Google
       end
       
       class Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAnnouncementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,7 +232,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyAnnouncementAssigneesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ModifyAttachmentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyCourseWorkAssigneesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyIndividualStudentsOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,6 +275,12 @@ module Google
       end
       
       class ReclaimStudentSubmissionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Registration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +358,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Announcement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate_link, as: 'alternateLink'
+          property :assignee_mode, as: 'assigneeMode'
+          property :course_id, as: 'courseId'
+          property :creation_time, as: 'creationTime'
+          property :creator_user_id, as: 'creatorUserId'
+          property :id, as: 'id'
+          property :individual_students_options, as: 'individualStudentsOptions', class: Google::Apis::ClassroomV1::IndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::IndividualStudentsOptions::Representation
+      
+          collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::Material, decorator: Google::Apis::ClassroomV1::Material::Representation
+      
+          property :scheduled_time, as: 'scheduledTime'
+          property :state, as: 'state'
+          property :text, as: 'text'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Assignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -325,6 +405,13 @@ module Google
       
           property :you_tube_video, as: 'youTubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
       
+        end
+      end
+      
+      class CloudPubsubTopic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic_name, as: 'topicName'
         end
       end
       
@@ -384,21 +471,32 @@ module Google
         end
       end
       
+      class CourseRosterChangesInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+        end
+      end
+      
       class CourseWork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternate_link, as: 'alternateLink'
+          property :assignee_mode, as: 'assigneeMode'
           property :assignment, as: 'assignment', class: Google::Apis::ClassroomV1::Assignment, decorator: Google::Apis::ClassroomV1::Assignment::Representation
       
           property :associated_with_developer, as: 'associatedWithDeveloper'
           property :course_id, as: 'courseId'
           property :creation_time, as: 'creationTime'
+          property :creator_user_id, as: 'creatorUserId'
           property :description, as: 'description'
           property :due_date, as: 'dueDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
       
           property :due_time, as: 'dueTime', class: Google::Apis::ClassroomV1::TimeOfDay, decorator: Google::Apis::ClassroomV1::TimeOfDay::Representation
       
           property :id, as: 'id'
+          property :individual_students_options, as: 'individualStudentsOptions', class: Google::Apis::ClassroomV1::IndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::IndividualStudentsOptions::Representation
+      
           collection :materials, as: 'materials', class: Google::Apis::ClassroomV1::Material, decorator: Google::Apis::ClassroomV1::Material::Representation
       
           property :max_points, as: 'maxPoints'
@@ -444,6 +542,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Feed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_roster_changes_info, as: 'courseRosterChangesInfo', class: Google::Apis::ClassroomV1::CourseRosterChangesInfo, decorator: Google::Apis::ClassroomV1::CourseRosterChangesInfo::Representation
+      
+          property :feed_type, as: 'feedType'
         end
       end
       
@@ -497,6 +604,13 @@ module Google
         end
       end
       
+      class IndividualStudentsOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :student_ids, as: 'studentIds'
+        end
+      end
+      
       class Invitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -513,6 +627,15 @@ module Google
           property :thumbnail_url, as: 'thumbnailUrl'
           property :title, as: 'title'
           property :url, as: 'url'
+        end
+      end
+      
+      class ListAnnouncementsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :announcements, as: 'announcements', class: Google::Apis::ClassroomV1::Announcement, decorator: Google::Apis::ClassroomV1::Announcement::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -611,11 +734,37 @@ module Google
         end
       end
       
+      class ModifyAnnouncementAssigneesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_mode, as: 'assigneeMode'
+          property :modify_individual_students_options, as: 'modifyIndividualStudentsOptions', class: Google::Apis::ClassroomV1::ModifyIndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::ModifyIndividualStudentsOptions::Representation
+      
+        end
+      end
+      
       class ModifyAttachmentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :add_attachments, as: 'addAttachments', class: Google::Apis::ClassroomV1::Attachment, decorator: Google::Apis::ClassroomV1::Attachment::Representation
       
+        end
+      end
+      
+      class ModifyCourseWorkAssigneesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_mode, as: 'assigneeMode'
+          property :modify_individual_students_options, as: 'modifyIndividualStudentsOptions', class: Google::Apis::ClassroomV1::ModifyIndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::ModifyIndividualStudentsOptions::Representation
+      
+        end
+      end
+      
+      class ModifyIndividualStudentsOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_student_ids, as: 'addStudentIds'
+          collection :remove_student_ids, as: 'removeStudentIds'
         end
       end
       
@@ -645,6 +794,18 @@ module Google
       class ReclaimStudentSubmissionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Registration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_pubsub_topic, as: 'cloudPubsubTopic', class: Google::Apis::ClassroomV1::CloudPubsubTopic, decorator: Google::Apis::ClassroomV1::CloudPubsubTopic::Representation
+      
+          property :expiry_time, as: 'expiryTime'
+          property :feed, as: 'feed', class: Google::Apis::ClassroomV1::Feed, decorator: Google::Apis::ClassroomV1::Feed::Representation
+      
+          property :registration_id, as: 'registrationId'
         end
       end
       

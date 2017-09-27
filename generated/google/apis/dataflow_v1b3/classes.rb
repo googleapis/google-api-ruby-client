@@ -894,6 +894,16 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :count
       
+        # Histogram of value counts for a distribution.
+        # Buckets have an inclusive lower bound and exclusive upper bound and use
+        # "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
+        # bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
+        # boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ...
+        # Negative values are not supported.
+        # Corresponds to the JSON property `histogram`
+        # @return [Google::Apis::DataflowV1b3::Histogram]
+        attr_accessor :histogram
+      
         # A representation of an int64, n, that is immune to precision loss when
         # encoded in JSON.
         # Corresponds to the JSON property `max`
@@ -924,6 +934,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @histogram = args[:histogram] if args.key?(:histogram)
           @max = args[:max] if args.key?(:max)
           @min = args[:min] if args.key?(:min)
           @sum = args[:sum] if args.key?(:sum)
@@ -1341,6 +1352,41 @@ module Google
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Histogram of value counts for a distribution.
+      # Buckets have an inclusive lower bound and exclusive upper bound and use
+      # "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
+      # bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
+      # boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ...
+      # Negative values are not supported.
+      class Histogram
+        include Google::Apis::Core::Hashable
+      
+        # Counts of values in each bucket. For efficiency, prefix and trailing
+        # buckets with count = 0 are elided. Buckets can store the full range of
+        # values of an unsigned long, with ULLONG_MAX falling into the 59th bucket
+        # with range [1e19, 2e19).
+        # Corresponds to the JSON property `bucketCounts`
+        # @return [Array<Fixnum>]
+        attr_accessor :bucket_counts
+      
+        # Starting index of first stored bucket. The non-inclusive upper-bound of
+        # the ith bucket is given by:
+        # pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]
+        # Corresponds to the JSON property `firstBucketOffset`
+        # @return [Fixnum]
+        attr_accessor :first_bucket_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_counts = args[:bucket_counts] if args.key?(:bucket_counts)
+          @first_bucket_offset = args[:first_bucket_offset] if args.key?(:first_bucket_offset)
         end
       end
       
@@ -5159,9 +5205,13 @@ module Google
       class WorkerShutdownNotice
         include Google::Apis::Core::Hashable
       
-        # Optional reason to be attached for the shutdown notice.
-        # For example: "PREEMPTION" would indicate the VM is being shut down because
-        # of preemption. Other possible reasons may be added in the future.
+        # The reason for the worker shutdown.
+        # Current possible values are:
+        # "UNKNOWN": shutdown reason is unknown.
+        # "PREEMPTION": shutdown reason is preemption.
+        # Other possible reasons may be added in the future.
+        # Note that this must match the names of the enum specified in
+        # google3/cloud/dataflow/router/protos/cloud_worker_messages_service.proto.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason

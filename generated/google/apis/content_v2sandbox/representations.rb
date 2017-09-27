@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCustomBatchRequestEntryUpdateShipment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -796,6 +802,17 @@ module Google
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment, decorator: Google::Apis::ContentV2sandbox::OrderShipmentLineItemShipment::Representation
       
           property :shipment_id, as: 'shipmentId'
+          collection :shipment_infos, as: 'shipmentInfos', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo::Representation
+      
+          property :tracking_id, as: 'trackingId'
+        end
+      end
+      
+      class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier, as: 'carrier'
+          property :shipment_id, as: 'shipmentId'
           property :tracking_id, as: 'trackingId'
         end
       end
@@ -906,6 +923,8 @@ module Google
       
           property :operation_id, as: 'operationId'
           property :shipment_id, as: 'shipmentId'
+          collection :shipment_infos, as: 'shipmentInfos', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo::Representation
+      
           property :tracking_id, as: 'trackingId'
         end
       end

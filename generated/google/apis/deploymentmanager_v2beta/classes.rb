@@ -1895,7 +1895,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Additional restrictions that must be met
+        # Additional restrictions that must be met. All conditions must pass for the
+        # rule to match.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::DeploymentmanagerV2beta::Condition>]
         attr_accessor :conditions
