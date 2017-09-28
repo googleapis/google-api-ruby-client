@@ -12,30 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appengine_v1/service.rb'
-require 'google/apis/appengine_v1/classes.rb'
-require 'google/apis/appengine_v1/representations.rb'
+require 'google/apis/cloudiot_v1beta1/service.rb'
+require 'google/apis/cloudiot_v1beta1/classes.rb'
+require 'google/apis/cloudiot_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google App Engine Admin API
+    # Google Cloud IoT API
     #
-    # The App Engine Admin API enables developers to provision and manage their App
-    # Engine applications.
+    # Registers and manages IoT (Internet of Things) devices that connect to the
+    # Google Cloud Platform.
     #
-    # @see https://cloud.google.com/appengine/docs/admin-api/
-    module AppengineV1
-      VERSION = 'V1'
-      REVISION = '20170926'
-
-      # View and manage your applications deployed on Google App Engine
-      AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'
+    # @see https://cloud.google.com/iot
+    module CloudiotV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20170922'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
+      # Register and manage devices in the Google Cloud IoT service
+      AUTH_CLOUDIOT = 'https://www.googleapis.com/auth/cloudiot'
     end
   end
 end

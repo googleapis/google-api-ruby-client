@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchUpdateIngressRulesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateIngressRulesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertificateRawData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +191,12 @@ module Google
       end
       
       class ListDomainMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListIngressRulesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -475,6 +499,22 @@ module Google
         end
       end
       
+      class BatchUpdateIngressRulesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ingress_rules, as: 'ingressRules', class: Google::Apis::AppengineV1::FirewallRule, decorator: Google::Apis::AppengineV1::FirewallRule::Representation
+      
+        end
+      end
+      
+      class BatchUpdateIngressRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ingress_rules, as: 'ingressRules', class: Google::Apis::AppengineV1::FirewallRule, decorator: Google::Apis::AppengineV1::FirewallRule::Representation
+      
+        end
+      end
+      
       class CertificateRawData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -578,6 +618,16 @@ module Google
         end
       end
       
+      class FirewallRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :description, as: 'description'
+          property :priority, as: 'priority'
+          property :source_range, as: 'sourceRange'
+        end
+      end
+      
       class HealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -653,6 +703,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domain_mappings, as: 'domainMappings', class: Google::Apis::AppengineV1::DomainMapping, decorator: Google::Apis::AppengineV1::DomainMapping::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListIngressRulesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ingress_rules, as: 'ingressRules', class: Google::Apis::AppengineV1::FirewallRule, decorator: Google::Apis::AppengineV1::FirewallRule::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

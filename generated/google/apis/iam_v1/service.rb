@@ -574,9 +574,9 @@ module Google
         # Deletes a ServiceAccount.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -608,9 +608,9 @@ module Google
         # Gets a ServiceAccount.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -750,9 +750,9 @@ module Google
         # Signs a blob using a service account's system-managed private key.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [Google::Apis::IamV1::SignBlobRequest] sign_blob_request_object
         # @param [String] fields
@@ -790,9 +790,9 @@ module Google
         # more than one hour, the request will fail.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [Google::Apis::IamV1::SignJwtRequest] sign_jwt_request_object
         # @param [String] fields
@@ -865,12 +865,12 @@ module Google
         # The `etag` is mandatory.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Requests using `-` as a wildcard for the project will infer the project
-        #   from the `account` and the `account` value can be the `email` address or
-        #   the `unique_id` of the service account.
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Requests using `-` as a wildcard for the `PROJECT_ID` will infer the
+        #   project from the `account` and the `ACCOUNT` value can be the `email`
+        #   address or the `unique_id` of the service account.
         #   In responses the resource name will always be in the format
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         # @param [Google::Apis::IamV1::ServiceAccount] service_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -905,9 +905,9 @@ module Google
         # and returns it.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [Google::Apis::IamV1::CreateServiceAccountKeyRequest] create_service_account_key_request_object
         # @param [String] fields
@@ -942,9 +942,9 @@ module Google
         # Deletes a ServiceAccountKey.
         # @param [String] name
         #   The resource name of the service account key in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL`/keys/`key``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -977,9 +977,9 @@ module Google
         # by key id.
         # @param [String] name
         #   The resource name of the service account key in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL`/keys/`key``.
-        #   Using `-` as a wildcard for the project will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [String] public_key_type
         #   The output format of the public key requested.
@@ -1015,9 +1015,9 @@ module Google
         # Lists ServiceAccountKeys.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`SERVICE_ACCOUNT_EMAIL``.
-        #   Using `-` as a wildcard for the project, will infer the project from
-        #   the account. The `account` value can be the `email` address or the
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID`, will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
         #   `unique_id` of the service account.
         # @param [Array<String>, String] key_types
         #   Filters the types of keys the user wants to include in the list

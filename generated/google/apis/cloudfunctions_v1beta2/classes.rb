@@ -146,11 +146,11 @@ module Google
         # To refer to a specific commit:
         # `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
         # To refer to a moveable alias (branch):
-        # `https://source.developers.google.com/projects/*/repos/*/aliases/movable/*/
+        # `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/
         # paths/*`
         # In particular, to refer to HEAD use `master` moveable alias.
         # To refer to a specific fixed alias (tag):
-        # `https://source.developers.google.com/projects/*/repos/*/aliases/fixed/*/paths/
+        # `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/
         # *`
         # You may omit `paths/*` if you want to use the main directory.
         # Corresponds to the JSON property `sourceRepositoryUrl`
@@ -217,7 +217,7 @@ module Google
         # Handle an object changing in Google Cloud Storage
         # `providers/cloud.storage/eventTypes/object.change`
         # Handle a write to the Firebase Realtime Database
-        # `providers/firebase.database/eventTypes/data.write`
+        # `providers/google.firebase.database/eventTypes/ref.write`
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type

@@ -71,6 +71,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::KubernetesDashboard]
         attr_accessor :kubernetes_dashboard
       
+        # Configuration for NetworkPolicy. This only tracks whether the addon
+        # is enabled or not on the Master, it does not track whether network policy
+        # is enabled for the nodes.
+        # Corresponds to the JSON property `networkPolicyConfig`
+        # @return [Google::Apis::ContainerV1beta1::NetworkPolicyConfig]
+        attr_accessor :network_policy_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -80,6 +87,7 @@ module Google
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
+          @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
         end
       end
       
@@ -1176,6 +1184,28 @@ module Google
         end
       end
       
+      # Configuration for NetworkPolicy. This only tracks whether the addon
+      # is enabled or not on the Master, it does not track whether network policy
+      # is enabled for the nodes.
+      class NetworkPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether NetworkPolicy is enabled for this cluster.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
       # Parameters that describe the nodes in a cluster.
       class NodeConfig
         include Google::Apis::Core::Hashable
@@ -1244,13 +1274,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Minimum cpu/platform to be used by this instance. The instance may be
-        # scheduled on the specified or newer cpu/platform. Applicable values are the
+        # Minimum CPU platform to be used by this instance. The instance may be
+        # scheduled on the specified or newer CPU platform. Applicable values are the
         # friendly names of CPU platforms, such as
         # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
         # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
-        # information, read <a href="/compute/docs/instances/specify-min-cpu-platform">
-        # Specifying a Minimum CPU Platform</a>.
+        # information, read [how to specify min CPU platform](https://cloud.google.com/
+        # compute/docs/instances/specify-min-cpu-platform)
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform

@@ -597,6 +597,226 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Replaces the entire firewall ruleset in one bulk operation. This overrides and
+        # replaces the rules of an existing firewall with the new rules.If the final
+        # rule does not match traffic with the '*' wildcard IP range, then an "allow all"
+        # rule is explicitly added to the end of the list.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/
+        #   firewall/ingressRules.
+        # @param [Google::Apis::AppengineV1::BatchUpdateIngressRulesRequest] batch_update_ingress_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::BatchUpdateIngressRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::BatchUpdateIngressRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_update_ingress_rules(apps_id, batch_update_ingress_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/apps/{appsId}/firewall/ingressRules:batchUpdate', options)
+          command.request_representation = Google::Apis::AppengineV1::BatchUpdateIngressRulesRequest::Representation
+          command.request_object = batch_update_ingress_rules_request_object
+          command.response_representation = Google::Apis::AppengineV1::BatchUpdateIngressRulesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::BatchUpdateIngressRulesResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a firewall rule for the application.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the parent Firewall collection in which to create a
+        #   new rule. Example: apps/myapp/firewall/ingressRules.
+        # @param [Google::Apis::AppengineV1::FirewallRule] firewall_rule_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::FirewallRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::FirewallRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_app_firewall_ingress_rule(apps_id, firewall_rule_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/apps/{appsId}/firewall/ingressRules', options)
+          command.request_representation = Google::Apis::AppengineV1::FirewallRule::Representation
+          command.request_object = firewall_rule_object
+          command.response_representation = Google::Apis::AppengineV1::FirewallRule::Representation
+          command.response_class = Google::Apis::AppengineV1::FirewallRule
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified firewall rule.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/
+        #   firewall/ingressRules/100.
+        # @param [String] ingress_rules_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_app_firewall_ingress_rule(apps_id, ingress_rules_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
+          command.response_representation = Google::Apis::AppengineV1::Empty::Representation
+          command.response_class = Google::Apis::AppengineV1::Empty
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['ingressRulesId'] = ingress_rules_id unless ingress_rules_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified firewall rule.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/
+        #   firewall/ingressRules/100.
+        # @param [String] ingress_rules_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::FirewallRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::FirewallRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_app_firewall_ingress_rule(apps_id, ingress_rules_id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
+          command.response_representation = Google::Apis::AppengineV1::FirewallRule::Representation
+          command.response_class = Google::Apis::AppengineV1::FirewallRule
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['ingressRulesId'] = ingress_rules_id unless ingress_rules_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the firewall rules of an application.
+        # @param [String] apps_id
+        #   Part of `parent`. Name of the Firewall collection to retrieve. Example: apps/
+        #   myapp/firewall/ingressRules.
+        # @param [String] matching_address
+        #   A valid IP Address. If set, only rules matching this address will be returned.
+        #   The first returned rule will be the rule that fires on requests from this IP.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::ListIngressRulesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::ListIngressRulesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_app_firewall_ingress_rules(apps_id, matching_address: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/apps/{appsId}/firewall/ingressRules', options)
+          command.response_representation = Google::Apis::AppengineV1::ListIngressRulesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1::ListIngressRulesResponse
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['matchingAddress'] = matching_address unless matching_address.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified firewall rule.
+        # @param [String] apps_id
+        #   Part of `name`. Name of the Firewall resource to update. Example: apps/myapp/
+        #   firewall/ingressRules/100.
+        # @param [String] ingress_rules_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [Google::Apis::AppengineV1::FirewallRule] firewall_rule_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1::FirewallRule] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1::FirewallRule]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_app_firewall_ingress_rule(apps_id, ingress_rules_id, firewall_rule_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', options)
+          command.request_representation = Google::Apis::AppengineV1::FirewallRule::Representation
+          command.request_object = firewall_rule_object
+          command.response_representation = Google::Apis::AppengineV1::FirewallRule::Representation
+          command.response_class = Google::Apis::AppengineV1::FirewallRule
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['ingressRulesId'] = ingress_rules_id unless ingress_rules_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get information about a location.
         # @param [String] apps_id
         #   Part of `name`. Resource name for the location.
