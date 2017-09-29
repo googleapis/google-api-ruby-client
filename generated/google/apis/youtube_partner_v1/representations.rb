@@ -490,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Uploader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploaderListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateAsyncRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1513,6 +1525,23 @@ module Google
           property :ratio, as: 'ratio'
           collection :territories, as: 'territories'
           property :type, as: 'type'
+        end
+      end
+      
+      class Uploader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :uploader_name, as: 'uploaderName'
+        end
+      end
+      
+      class UploaderListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::Uploader, decorator: Google::Apis::YoutubePartnerV1::Uploader::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       

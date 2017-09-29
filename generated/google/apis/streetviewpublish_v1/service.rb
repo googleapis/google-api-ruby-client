@@ -54,6 +54,12 @@ module Google
         # CreatePhoto
         # publishes the uploaded Photo to
         # Street View on Google Maps.
+        # Currently, the only way to set heading, pitch, and roll in CreatePhoto is
+        # through the [Photo Sphere XMP
+        # metadata](https://developers.google.com/streetview/spherical-metadata) in
+        # the photo bytes. The `pose.heading`, `pose.pitch`, `pose.roll`,
+        # `pose.altitude`, and `pose.level` fields in Pose are ignored for
+        # CreatePhoto.
         # This method returns the following error codes:
         # * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
         # * google.rpc.Code.NOT_FOUND if the upload reference does not exist.
@@ -430,6 +436,7 @@ module Google
         # the user.
         # @param [String] filter
         #   The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+        #   The only filter supported at the moment is `placeId`.
         # @param [Fixnum] page_size
         #   The maximum number of photos to return.
         #   `pageSize` must be non-negative. If `pageSize` is zero or is not provided,

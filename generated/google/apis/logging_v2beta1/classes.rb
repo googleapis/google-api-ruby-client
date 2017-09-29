@@ -598,15 +598,17 @@ module Google
         # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
         # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
         # "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        # [LOG_ID] must be URL-encoded within log_name. Example: "organizations/
-        # 1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must
-        # be less than 512 characters long and can only include the following characters:
-        # upper and lower case alphanumeric characters, forward-slash, underscore,
-        # hyphen, and period.For backward compatibility, if log_name begins with a
-        # forward-slash, such as /projects/..., then the log entry is ingested as usual
-        # but the forward-slash is removed. Listing the log entry will not show the
-        # leading slash and filtering for a log name with a leading slash will never
-        # return any results.
+        # A project number may optionally be used in place of PROJECT_ID. The  project
+        # number is translated to its corresponding PROJECT_ID internally  and the
+        # log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be
+        # URL-encoded within log_name. Example: "organizations/1234567890/logs/
+        # cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
+        # 512 characters long and can only include the following characters: upper and
+        # lower case alphanumeric characters, forward-slash, underscore, hyphen, and
+        # period.For backward compatibility, if log_name begins with a forward-slash,
+        # such as /projects/..., then the log entry is ingested as usual but the forward-
+        # slash is removed. Listing the log entry will not show the leading slash and
+        # filtering for a log name with a leading slash will never return any results.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name

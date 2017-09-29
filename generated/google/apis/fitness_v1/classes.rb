@@ -725,13 +725,13 @@ module Google
         # @return [String]
         attr_accessor :data_source_id
       
-        # Data points that have been removed and will not be included in any other
-        # request for dataset contents.
+        # Deleted data points for the user. Note, for modifications this should be
+        # parsed before handling insertions.
         # Corresponds to the JSON property `deletedDataPoint`
         # @return [Array<Google::Apis::FitnessV1::DataPoint>]
         attr_accessor :deleted_data_point
       
-        # Data points listed.
+        # Inserted data points for the user.
         # Corresponds to the JSON property `insertedDataPoint`
         # @return [Array<Google::Apis::FitnessV1::DataPoint>]
         attr_accessor :inserted_data_point

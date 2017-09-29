@@ -3659,6 +3659,59 @@ module Google
       end
       
       # 
+      class Uploader
+        include Google::Apis::Core::Hashable
+      
+        # The type of the API resource. For uploader resources, the value is
+        # youtubePartner#uploader.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The uploader name.
+        # Corresponds to the JSON property `uploaderName`
+        # @return [String]
+        attr_accessor :uploader_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @uploader_name = args[:uploader_name] if args.key?(:uploader_name)
+        end
+      end
+      
+      # 
+      class UploaderListResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of uploader (youtubePartner#uploader) resources that match the request
+        # criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubePartnerV1::Uploader>]
+        attr_accessor :items
+      
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # uploaderList.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class ValidateAsyncRequest
         include Google::Apis::Core::Hashable
       

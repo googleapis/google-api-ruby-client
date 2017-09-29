@@ -311,15 +311,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # results ordered by descending end_time
+        # Queries for user's data point changes for a particular data source.
         # @param [String] user_id
-        #   List data points for the person identified. Use "me" to indicate the
-        #   authenticated user. Only "me" is supported at this time.
+        #   List data points for the person identified. Use me to indicate the
+        #   authenticated user. Only me is supported at this time.
         # @param [String] data_source_id
         #   The data stream ID of the data source that created the dataset.
         # @param [Fixnum] limit
         #   If specified, no more than this many data point changes will be included in
-        #   the response. The default is 500 data point changes.
+        #   the response.
         # @param [String] page_token
         #   The continuation token, which is used to page through large result sets. To
         #   get the next page of results, set this parameter to the value of nextPageToken

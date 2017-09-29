@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClusterOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,12 @@ module Google
       end
       
       class ClusterOperationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantiateWorkflowTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,7 +196,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkflowTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +227,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderedJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -269,6 +305,36 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowGraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkflowTemplatePlacement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -349,6 +415,15 @@ module Google
         end
       end
       
+      class ClusterOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error'
+          property :operation_id, as: 'operationId'
+        end
+      end
+      
       class ClusterOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -372,6 +447,14 @@ module Google
           property :inner_state, as: 'innerState'
           property :state, as: 'state'
           property :state_start_time, as: 'stateStartTime'
+        end
+      end
+      
+      class ClusterSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :cluster_labels, as: 'clusterLabels'
+          property :zone, as: 'zone'
         end
       end
       
@@ -468,6 +551,14 @@ module Google
           property :managed_group_config, as: 'managedGroupConfig', class: Google::Apis::DataprocV1beta2::ManagedGroupConfig, decorator: Google::Apis::DataprocV1beta2::ManagedGroupConfig::Representation
       
           property :num_instances, as: 'numInstances'
+        end
+      end
+      
+      class InstantiateWorkflowTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :version, as: 'version'
         end
       end
       
@@ -573,10 +664,29 @@ module Google
         end
       end
       
+      class ListWorkflowTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :templates, as: 'templates', class: Google::Apis::DataprocV1beta2::WorkflowTemplate, decorator: Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
+      
+        end
+      end
+      
       class LoggingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :driver_log_levels, as: 'driverLogLevels'
+        end
+      end
+      
+      class ManagedCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :config, as: 'config', class: Google::Apis::DataprocV1beta2::ClusterConfig, decorator: Google::Apis::DataprocV1beta2::ClusterConfig::Representation
+      
+          hash :labels, as: 'labels'
         end
       end
       
@@ -605,6 +715,29 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OrderedJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1beta2::HadoopJob, decorator: Google::Apis::DataprocV1beta2::HadoopJob::Representation
+      
+          property :hive_job, as: 'hiveJob', class: Google::Apis::DataprocV1beta2::HiveJob, decorator: Google::Apis::DataprocV1beta2::HiveJob::Representation
+      
+          hash :labels, as: 'labels'
+          property :pig_job, as: 'pigJob', class: Google::Apis::DataprocV1beta2::PigJob, decorator: Google::Apis::DataprocV1beta2::PigJob::Representation
+      
+          collection :prerequisite_step_ids, as: 'prerequisiteStepIds'
+          property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1beta2::PySparkJob, decorator: Google::Apis::DataprocV1beta2::PySparkJob::Representation
+      
+          property :scheduling, as: 'scheduling', class: Google::Apis::DataprocV1beta2::JobScheduling, decorator: Google::Apis::DataprocV1beta2::JobScheduling::Representation
+      
+          property :spark_job, as: 'sparkJob', class: Google::Apis::DataprocV1beta2::SparkJob, decorator: Google::Apis::DataprocV1beta2::SparkJob::Representation
+      
+          property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1beta2::SparkSqlJob, decorator: Google::Apis::DataprocV1beta2::SparkSqlJob::Representation
+      
+          property :step_id, as: 'stepId'
         end
       end
       
@@ -728,6 +861,67 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class WorkflowGraph
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes', class: Google::Apis::DataprocV1beta2::WorkflowNode, decorator: Google::Apis::DataprocV1beta2::WorkflowNode::Representation
+      
+        end
+      end
+      
+      class WorkflowMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :create_cluster, as: 'createCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
+      
+          property :delete_cluster, as: 'deleteCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
+      
+          property :graph, as: 'graph', class: Google::Apis::DataprocV1beta2::WorkflowGraph, decorator: Google::Apis::DataprocV1beta2::WorkflowGraph::Representation
+      
+          property :state, as: 'state'
+          property :template, as: 'template'
+          property :version, as: 'version'
+        end
+      end
+      
+      class WorkflowNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :job_id, as: 'jobId'
+          collection :prerequisite_step_ids, as: 'prerequisiteStepIds'
+          property :state, as: 'state'
+          property :step_id, as: 'stepId'
+        end
+      end
+      
+      class WorkflowTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+          collection :jobs, as: 'jobs', class: Google::Apis::DataprocV1beta2::OrderedJob, decorator: Google::Apis::DataprocV1beta2::OrderedJob::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :placement, as: 'placement', class: Google::Apis::DataprocV1beta2::WorkflowTemplatePlacement, decorator: Google::Apis::DataprocV1beta2::WorkflowTemplatePlacement::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
+        end
+      end
+      
+      class WorkflowTemplatePlacement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_selector, as: 'clusterSelector', class: Google::Apis::DataprocV1beta2::ClusterSelector, decorator: Google::Apis::DataprocV1beta2::ClusterSelector::Representation
+      
+          property :managed_cluster, as: 'managedCluster', class: Google::Apis::DataprocV1beta2::ManagedCluster, decorator: Google::Apis::DataprocV1beta2::ManagedCluster::Representation
+      
         end
       end
       

@@ -282,6 +282,38 @@ module Google
         end
       end
       
+      # 
+      class ClusterOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output-only Indicates the operation is done.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # Output-only Error, if operation failed.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output-only The id of the cluster operation.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
       # Metadata describing the operation.
       class ClusterOperationMetadata
         include Google::Apis::Core::Hashable
@@ -377,6 +409,31 @@ module Google
           @inner_state = args[:inner_state] if args.key?(:inner_state)
           @state = args[:state] if args.key?(:state)
           @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
+        end
+      end
+      
+      # A selector that chooses target cluster for jobs based on metadata.
+      class ClusterSelector
+        include Google::Apis::Core::Hashable
+      
+        # Required The cluster labels. Cluster must have all labels to match.
+        # Corresponds to the JSON property `clusterLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :cluster_labels
+      
+        # Required The cluster target zone.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_labels = args[:cluster_labels] if args.key?(:cluster_labels)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -816,6 +873,39 @@ module Google
         end
       end
       
+      # A request to instantiate a workflow template.
+      class InstantiateWorkflowTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional A tag that prevents multiple concurrent workflow instances with the
+        # same tag from running. This mitigates risk of concurrent instances started due
+        # to retries.It is recommended to always set this value to a UUID (https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        # maximum length is 40 characters.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Optional The version of workflow template to instantiate. If specified, the
+        # workflow will be instantiated only if the current version of the workflow
+        # template has the supplied version.This option cannot be used to instantiate a
+        # previous version of workflow template.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # A Cloud Dataproc job resource.
       class Job
         include Google::Apis::Core::Hashable
@@ -1166,6 +1256,33 @@ module Google
         end
       end
       
+      # A response to a request to list workflow templates in a project.
+      class ListWorkflowTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output-only This token is included in the response if there are more results
+        # to fetch. To fetch additional results, provide this value as the page_token in
+        # a subsequent <code>ListWorkflowTemplatesRequest</code>.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output-only WorkflowTemplates list.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::DataprocV1beta2::WorkflowTemplate>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @templates = args[:templates] if args.key?(:templates)
+        end
+      end
+      
       # The runtime logging config of the job.
       class LoggingConfig
         include Google::Apis::Core::Hashable
@@ -1184,6 +1301,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @driver_log_levels = args[:driver_log_levels] if args.key?(:driver_log_levels)
+        end
+      end
+      
+      # Cluster that is managed by the workflow.
+      class ManagedCluster
+        include Google::Apis::Core::Hashable
+      
+        # Required The cluster name. Cluster names within a project must be unique.
+        # Names from deleted clusters can be reused.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The cluster config.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DataprocV1beta2::ClusterConfig]
+        attr_accessor :config
+      
+        # Optional The labels to associate with this cluster.Label keys must be between
+        # 1 and 63 characters long, and must conform to the following PCRE regular
+        # expression: \p`Ll`\p`Lo``0,62`Label values must be between 1 and 63 characters
+        # long, and must conform to the following PCRE regular expression: \p`Ll`\p`Lo`\
+        # p`N`_-`0,63`No more than 64 labels can be associated with a given cluster.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @config = args[:config] if args.key?(:config)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -1329,6 +1482,95 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # 
+      class OrderedJob
+        include Google::Apis::Core::Hashable
+      
+        # A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.
+        # apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
+        # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
+        # docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
+        # Corresponds to the JSON property `hadoopJob`
+        # @return [Google::Apis::DataprocV1beta2::HadoopJob]
+        attr_accessor :hadoop_job
+      
+        # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
+        # queries on YARN.
+        # Corresponds to the JSON property `hiveJob`
+        # @return [Google::Apis::DataprocV1beta2::HiveJob]
+        attr_accessor :hive_job
+      
+        # Optional The labels to associate with this job.Label keys must be between 1
+        # and 63 characters long, and must conform to the following regular expression: \
+        # p`Ll`\p`Lo``0,62`Label values must be between 1 and 63 characters long, and
+        # must conform to the following regular expression: \p`Ll`\p`Lo`\p`N`_-`0,63`No
+        # more than 64 labels can be associated with a given job.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
+        # on YARN.
+        # Corresponds to the JSON property `pigJob`
+        # @return [Google::Apis::DataprocV1beta2::PigJob]
+        attr_accessor :pig_job
+      
+        # Optional The optional list of prerequisite job step_ids. If not specified, the
+        # job will start at the beginning of workflow.
+        # Corresponds to the JSON property `prerequisiteStepIds`
+        # @return [Array<String>]
+        attr_accessor :prerequisite_step_ids
+      
+        # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
+        # 0.9.0/python-programming-guide.html) applications on YARN.
+        # Corresponds to the JSON property `pysparkJob`
+        # @return [Google::Apis::DataprocV1beta2::PySparkJob]
+        attr_accessor :pyspark_job
+      
+        # Job scheduling options.Beta Feature: These options are available for testing
+        # purposes only. They may be changed before final release.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::DataprocV1beta2::JobScheduling]
+        attr_accessor :scheduling
+      
+        # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
+        # applications on YARN.
+        # Corresponds to the JSON property `sparkJob`
+        # @return [Google::Apis::DataprocV1beta2::SparkJob]
+        attr_accessor :spark_job
+      
+        # A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/
+        # ) queries.
+        # Corresponds to the JSON property `sparkSqlJob`
+        # @return [Google::Apis::DataprocV1beta2::SparkSqlJob]
+        attr_accessor :spark_sql_job
+      
+        # Required The step id. The id must be unique among all jobs within the template.
+        # The step id is used as prefix for job id, as job workflow-step-id label, and
+        # in prerequisite_step_ids field from other steps.
+        # Corresponds to the JSON property `stepId`
+        # @return [String]
+        attr_accessor :step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
+          @hive_job = args[:hive_job] if args.key?(:hive_job)
+          @labels = args[:labels] if args.key?(:labels)
+          @pig_job = args[:pig_job] if args.key?(:pig_job)
+          @prerequisite_step_ids = args[:prerequisite_step_ids] if args.key?(:prerequisite_step_ids)
+          @pyspark_job = args[:pyspark_job] if args.key?(:pyspark_job)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @spark_job = args[:spark_job] if args.key?(:spark_job)
+          @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
+          @step_id = args[:step_id] if args.key?(:step_id)
         end
       end
       
@@ -1890,6 +2132,225 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # The workflow graph.
+      class WorkflowGraph
+        include Google::Apis::Core::Hashable
+      
+        # Output-only The workflow nodes.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::DataprocV1beta2::WorkflowNode>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # A Cloud Dataproc workflow template resource.
+      class WorkflowMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output-only The name of the managed cluster.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # Output-only The create cluster operation metadata.
+        # Corresponds to the JSON property `createCluster`
+        # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
+        attr_accessor :create_cluster
+      
+        # Output-only The delete cluster operation metadata.
+        # Corresponds to the JSON property `deleteCluster`
+        # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
+        attr_accessor :delete_cluster
+      
+        # The workflow graph.
+        # Corresponds to the JSON property `graph`
+        # @return [Google::Apis::DataprocV1beta2::WorkflowGraph]
+        attr_accessor :graph
+      
+        # Output-only The workflow state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output-only The "resource name" of the template.
+        # Corresponds to the JSON property `template`
+        # @return [String]
+        attr_accessor :template
+      
+        # Output-only The version of template at the time of workflow instantiation.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
+          @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
+          @graph = args[:graph] if args.key?(:graph)
+          @state = args[:state] if args.key?(:state)
+          @template = args[:template] if args.key?(:template)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The workflow node.
+      class WorkflowNode
+        include Google::Apis::Core::Hashable
+      
+        # Output-only The error detail.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output-only The job id; populated after the node enters RUNNING state.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Output-only Node's prerequisite nodes.
+        # Corresponds to the JSON property `prerequisiteStepIds`
+        # @return [Array<String>]
+        attr_accessor :prerequisite_step_ids
+      
+        # Output-only The node state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output-only The name of the node.
+        # Corresponds to the JSON property `stepId`
+        # @return [String]
+        attr_accessor :step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @prerequisite_step_ids = args[:prerequisite_step_ids] if args.key?(:prerequisite_step_ids)
+          @state = args[:state] if args.key?(:state)
+          @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
+      # A Cloud Dataproc workflow template resource.
+      class WorkflowTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output-only The time template was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required The template id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required The Directed Acyclic Graph of Jobs to submit.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::DataprocV1beta2::OrderedJob>]
+        attr_accessor :jobs
+      
+        # Optional The labels to associate with this template. These labels will be
+        # propagated to all jobs and clusters created by the workflow instance.Label
+        # keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://
+        # www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must
+        # contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/
+        # rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output-only The "resource name" of the template, as described in https://cloud.
+        # google.com/apis/design/resource_names of the form projects/`project_id`/
+        # regions/`region`/workflowTemplates/`template_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies workflow execution target.Either managed_cluster or cluster_selector
+        # is required.
+        # Corresponds to the JSON property `placement`
+        # @return [Google::Apis::DataprocV1beta2::WorkflowTemplatePlacement]
+        attr_accessor :placement
+      
+        # Output-only The time template was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional Used to perform a consistent read-modify-write.This field should be
+        # left blank for a CreateWorkflowTemplate request. It is required for an
+        # UpdateWorkflowTemplate request, and must match the current server version. A
+        # typical update template flow would fetch the current template with a
+        # GetWorkflowTemplate request, which will return the current template with the
+        # version field filled in with the current server version. The user updates
+        # other fields in the template, then returns it as part of the
+        # UpdateWorkflowTemplate request.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @placement = args[:placement] if args.key?(:placement)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Specifies workflow execution target.Either managed_cluster or cluster_selector
+      # is required.
+      class WorkflowTemplatePlacement
+        include Google::Apis::Core::Hashable
+      
+        # A selector that chooses target cluster for jobs based on metadata.
+        # Corresponds to the JSON property `clusterSelector`
+        # @return [Google::Apis::DataprocV1beta2::ClusterSelector]
+        attr_accessor :cluster_selector
+      
+        # Cluster that is managed by the workflow.
+        # Corresponds to the JSON property `managedCluster`
+        # @return [Google::Apis::DataprocV1beta2::ManagedCluster]
+        attr_accessor :managed_cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_selector = args[:cluster_selector] if args.key?(:cluster_selector)
+          @managed_cluster = args[:managed_cluster] if args.key?(:managed_cluster)
         end
       end
       

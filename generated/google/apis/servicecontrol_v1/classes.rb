@@ -1084,6 +1084,7 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::QuotaProperties]
         attr_accessor :quota_properties
       
+        # DO NOT USE. This field is deprecated, use "resources" field instead.
         # The resource name of the parent of a resource in the resource hierarchy.
         # This can be in one of the following formats:
         # - “projects/<project-id or project-number>”
@@ -1292,21 +1293,6 @@ module Google
       class QuotaProperties
         include Google::Apis::Core::Hashable
       
-        # LimitType IDs that should be used for checking quota. Key in this map
-        # should be a valid LimitType string, and the value is the ID to be used. For
-        # example, an entry <USER, 123> will cause all user quota limits to use 123
-        # as the user ID. See google/api/quota.proto for the definition of LimitType.
-        # CLIENT_PROJECT: Not supported.
-        # USER: Value of this entry will be used for enforcing user-level quota
-        # limits. If none specified, caller IP passed in the
-        # servicecontrol.googleapis.com/caller_ip label will be used instead.
-        # If the server cannot resolve a value for this LimitType, an error
-        # will be thrown. No validation will be performed on this ID.
-        # Deprecated: use servicecontrol.googleapis.com/user label to send user ID.
-        # Corresponds to the JSON property `limitByIds`
-        # @return [Hash<String,String>]
-        attr_accessor :limit_by_ids
-      
         # Quota mode for this operation.
         # Corresponds to the JSON property `quotaMode`
         # @return [String]
@@ -1318,7 +1304,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @limit_by_ids = args[:limit_by_ids] if args.key?(:limit_by_ids)
           @quota_mode = args[:quota_mode] if args.key?(:quota_mode)
         end
       end
@@ -1575,15 +1560,26 @@ module Google
       
         # The IP address of the caller.
         # For caller from internet, this will be public IPv4 or IPv6 address.
-        # For caller from GCE VM with external IP address, this will be the VM's
-        # external IP address. For caller from GCE VM without external IP address, if
-        # the VM is in the same GCP organization (or project) as the accessed
-        # resource, `caller_ip` will be the GCE VM's internal IPv4 address, otherwise
-        # it will be redacted to "gce-internal-ip".
+        # For caller from a Compute Engine VM with external IP address, this
+        # will be the VM's external IP address. For caller from a Compute
+        # Engine VM without external IP address, if the VM is in the same
+        # organization (or project) as the accessed resource, `caller_ip` will
+        # be the VM's internal IPv4 address, otherwise the `caller_ip` will be
+        # redacted to "gce-internal-ip".
         # See https://cloud.google.com/compute/docs/vpc/ for more information.
         # Corresponds to the JSON property `callerIp`
         # @return [String]
         attr_accessor :caller_ip
+      
+        # The network of the caller.
+        # Set only if the network host project is part of the same GCP organization
+        # (or project) as the accessed resource.
+        # See https://cloud.google.com/compute/docs/vpc/ for more information.
+        # This is a scheme-less URI full resource name. For example:
+        # "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"
+        # Corresponds to the JSON property `callerNetwork`
+        # @return [String]
+        attr_accessor :caller_network
       
         # The user agent of the caller.
         # This information is not authenticated and should be treated accordingly.
@@ -1607,12 +1603,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @caller_ip = args[:caller_ip] if args.key?(:caller_ip)
+          @caller_network = args[:caller_network] if args.key?(:caller_network)
           @caller_supplied_user_agent = args[:caller_supplied_user_agent] if args.key?(:caller_supplied_user_agent)
         end
       end
       
-      # DO NOT USE.
-      # This definition is not ready for use yet.
+      # Describes a resource associated with this operation.
       class ResourceInfo
         include Google::Apis::Core::Hashable
       

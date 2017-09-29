@@ -91,7 +91,7 @@ module Google
         # Creates a new Span.
         # @param [String] name
         #   The resource name of the span in the following format:
-        #   projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique
+        #   projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
         #   identifier for a trace within a project.
         #   [SPAN_ID] is a unique identifier for a span within a trace,
         #   assigned when the span is created.

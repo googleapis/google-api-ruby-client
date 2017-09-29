@@ -534,7 +534,6 @@ module Google
       class QuotaProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :limit_by_ids, as: 'limitByIds'
           property :quota_mode, as: 'quotaMode'
         end
       end
@@ -602,6 +601,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :caller_ip, as: 'callerIp'
+          property :caller_network, as: 'callerNetwork'
           property :caller_supplied_user_agent, as: 'callerSuppliedUserAgent'
         end
       end
