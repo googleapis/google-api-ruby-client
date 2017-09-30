@@ -172,12 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GooglePrivacyDlpV2beta1DatastoreKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -897,17 +891,6 @@ module Google
         end
       end
       
-      class GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId::Representation
-      
-          property :crypto_key, as: 'cryptoKey', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoKey, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoKey::Representation
-      
-          property :regex, as: 'regex'
-        end
-      end
-      
       class GooglePrivacyDlpV2beta1DatastoreKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1388,8 +1371,6 @@ module Google
           property :crypto_hash_config, as: 'cryptoHashConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoHashConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoHashConfig::Representation
       
           property :crypto_replace_ffx_fpe_config, as: 'cryptoReplaceFfxFpeConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig::Representation
-      
-          property :crypto_replace_regex_fpe_config, as: 'cryptoReplaceRegexFpeConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig::Representation
       
           property :fixed_size_bucketing_config, as: 'fixedSizeBucketingConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FixedSizeBucketingConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FixedSizeBucketingConfig::Representation
       

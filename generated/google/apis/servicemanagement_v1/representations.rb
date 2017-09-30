@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Billing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BillingDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -666,6 +678,22 @@ module Google
         end
       end
       
+      class Billing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_destinations, as: 'consumerDestinations', class: Google::Apis::ServicemanagementV1::BillingDestination, decorator: Google::Apis::ServicemanagementV1::BillingDestination::Representation
+      
+        end
+      end
+      
+      class BillingDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics'
+          property :monitored_resource, as: 'monitoredResource'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -905,8 +933,10 @@ module Google
           property :cancel_state, as: 'cancelState'
           property :deadline, as: 'deadline'
           property :flow_name, as: 'flowName'
+          property :operation_type, as: 'operationType'
           collection :resource_names, as: 'resourceNames'
           property :start_time, as: 'startTime'
+          property :surface, as: 'surface'
         end
       end
       
@@ -1260,6 +1290,8 @@ module Google
           property :authentication, as: 'authentication', class: Google::Apis::ServicemanagementV1::Authentication, decorator: Google::Apis::ServicemanagementV1::Authentication::Representation
       
           property :backend, as: 'backend', class: Google::Apis::ServicemanagementV1::Backend, decorator: Google::Apis::ServicemanagementV1::Backend::Representation
+      
+          property :billing, as: 'billing', class: Google::Apis::ServicemanagementV1::Billing, decorator: Google::Apis::ServicemanagementV1::Billing::Representation
       
           property :config_version, as: 'configVersion'
           property :context, as: 'context', class: Google::Apis::ServicemanagementV1::Context, decorator: Google::Apis::ServicemanagementV1::Context::Representation

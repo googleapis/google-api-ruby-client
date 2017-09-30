@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +65,18 @@ module Google
       end
       
       class BackendRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Billing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BillingDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -467,14 +473,6 @@ module Google
         end
       end
       
-      class AuthorizationRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permissions, as: 'permissions'
-          property :selector, as: 'selector'
-        end
-      end
-      
       class Backend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -490,6 +488,22 @@ module Google
           property :deadline, as: 'deadline'
           property :min_deadline, as: 'minDeadline'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class Billing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_destinations, as: 'consumerDestinations', class: Google::Apis::ServiceuserV1::BillingDestination, decorator: Google::Apis::ServiceuserV1::BillingDestination::Representation
+      
+        end
+      end
+      
+      class BillingDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics'
+          property :monitored_resource, as: 'monitoredResource'
         end
       end
       
@@ -658,8 +672,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_bindings, as: 'additionalBindings', class: Google::Apis::ServiceuserV1::HttpRule, decorator: Google::Apis::ServiceuserV1::HttpRule::Representation
       
-          collection :authorizations, as: 'authorizations', class: Google::Apis::ServiceuserV1::AuthorizationRule, decorator: Google::Apis::ServiceuserV1::AuthorizationRule::Representation
-      
           property :body, as: 'body'
           property :custom, as: 'custom', class: Google::Apis::ServiceuserV1::CustomHttpPattern, decorator: Google::Apis::ServiceuserV1::CustomHttpPattern::Representation
       
@@ -673,8 +685,6 @@ module Google
           property :post, as: 'post'
           property :put, as: 'put'
           property :response_body, as: 'responseBody'
-          property :rest_collection, as: 'restCollection'
-          property :rest_method_name, as: 'restMethodName'
           property :selector, as: 'selector'
         end
       end
@@ -927,6 +937,8 @@ module Google
           property :authentication, as: 'authentication', class: Google::Apis::ServiceuserV1::Authentication, decorator: Google::Apis::ServiceuserV1::Authentication::Representation
       
           property :backend, as: 'backend', class: Google::Apis::ServiceuserV1::Backend, decorator: Google::Apis::ServiceuserV1::Backend::Representation
+      
+          property :billing, as: 'billing', class: Google::Apis::ServiceuserV1::Billing, decorator: Google::Apis::ServiceuserV1::Billing::Representation
       
           property :config_version, as: 'configVersion'
           property :context, as: 'context', class: Google::Apis::ServiceuserV1::Context, decorator: Google::Apis::ServiceuserV1::Context::Representation

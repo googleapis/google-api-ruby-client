@@ -28404,6 +28404,7 @@
 "/content:v2/OrderLineItem": order_line_item
 "/content:v2/OrderLineItem/cancellations": cancellations
 "/content:v2/OrderLineItem/cancellations/cancellation": cancellation
+"/content:v2/OrderLineItem/channelType": channel_type
 "/content:v2/OrderLineItem/id": id
 "/content:v2/OrderLineItem/price": price
 "/content:v2/OrderLineItem/product": product
@@ -29233,6 +29234,7 @@
 "/content:v2sandbox/OrderLineItem": order_line_item
 "/content:v2sandbox/OrderLineItem/cancellations": cancellations
 "/content:v2sandbox/OrderLineItem/cancellations/cancellation": cancellation
+"/content:v2sandbox/OrderLineItem/channelType": channel_type
 "/content:v2sandbox/OrderLineItem/id": id
 "/content:v2sandbox/OrderLineItem/price": price
 "/content:v2sandbox/OrderLineItem/product": product
@@ -51443,6 +51445,13 @@
 "/servicemanagement:v1/BackendRule/deadline": deadline
 "/servicemanagement:v1/BackendRule/minDeadline": min_deadline
 "/servicemanagement:v1/BackendRule/selector": selector
+"/servicemanagement:v1/Billing": billing
+"/servicemanagement:v1/Billing/consumerDestinations": consumer_destinations
+"/servicemanagement:v1/Billing/consumerDestinations/consumer_destination": consumer_destination
+"/servicemanagement:v1/BillingDestination": billing_destination
+"/servicemanagement:v1/BillingDestination/metrics": metrics
+"/servicemanagement:v1/BillingDestination/metrics/metric": metric
+"/servicemanagement:v1/BillingDestination/monitoredResource": monitored_resource
 "/servicemanagement:v1/Binding": binding
 "/servicemanagement:v1/Binding/condition": condition
 "/servicemanagement:v1/Binding/members": members
@@ -51575,9 +51584,11 @@
 "/servicemanagement:v1/FlowOperationMetadata/cancelState": cancel_state
 "/servicemanagement:v1/FlowOperationMetadata/deadline": deadline
 "/servicemanagement:v1/FlowOperationMetadata/flowName": flow_name
+"/servicemanagement:v1/FlowOperationMetadata/operationType": operation_type
 "/servicemanagement:v1/FlowOperationMetadata/resourceNames": resource_names
 "/servicemanagement:v1/FlowOperationMetadata/resourceNames/resource_name": resource_name
 "/servicemanagement:v1/FlowOperationMetadata/startTime": start_time
+"/servicemanagement:v1/FlowOperationMetadata/surface": surface
 "/servicemanagement:v1/GenerateConfigReportRequest": generate_config_report_request
 "/servicemanagement:v1/GenerateConfigReportRequest/newConfig": new_config
 "/servicemanagement:v1/GenerateConfigReportRequest/newConfig/new_config": new_config
@@ -51791,6 +51802,7 @@
 "/servicemanagement:v1/Service/apis/api": api
 "/servicemanagement:v1/Service/authentication": authentication
 "/servicemanagement:v1/Service/backend": backend
+"/servicemanagement:v1/Service/billing": billing
 "/servicemanagement:v1/Service/configVersion": config_version
 "/servicemanagement:v1/Service/context": context
 "/servicemanagement:v1/Service/control": control
@@ -52004,6 +52016,13 @@
 "/serviceuser:v1/BackendRule/deadline": deadline
 "/serviceuser:v1/BackendRule/minDeadline": min_deadline
 "/serviceuser:v1/BackendRule/selector": selector
+"/serviceuser:v1/Billing": billing
+"/serviceuser:v1/Billing/consumerDestinations": consumer_destinations
+"/serviceuser:v1/Billing/consumerDestinations/consumer_destination": consumer_destination
+"/serviceuser:v1/BillingDestination": billing_destination
+"/serviceuser:v1/BillingDestination/metrics": metrics
+"/serviceuser:v1/BillingDestination/metrics/metric": metric
+"/serviceuser:v1/BillingDestination/monitoredResource": monitored_resource
 "/serviceuser:v1/Context": context
 "/serviceuser:v1/Context/rules": rules
 "/serviceuser:v1/Context/rules/rule": rule
@@ -52238,6 +52257,7 @@
 "/serviceuser:v1/Service/apis/api": api
 "/serviceuser:v1/Service/authentication": authentication
 "/serviceuser:v1/Service/backend": backend
+"/serviceuser:v1/Service/billing": billing
 "/serviceuser:v1/Service/configVersion": config_version
 "/serviceuser:v1/Service/context": context
 "/serviceuser:v1/Service/control": control

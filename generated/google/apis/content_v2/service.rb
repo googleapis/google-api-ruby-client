@@ -180,8 +180,7 @@ module Google
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
         # @param [Boolean] force
-        #   Flag to delete sub-accounts with products. The default value of false will
-        #   become active on September 28, 2017.
+        #   Flag to delete sub-accounts with products. The default value is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

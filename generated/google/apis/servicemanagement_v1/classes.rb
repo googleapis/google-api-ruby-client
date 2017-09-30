@@ -555,6 +555,74 @@ module Google
         end
       end
       
+      # Billing related configuration of the service.
+      # The following example shows how to configure monitored resources and metrics
+      # for billing:
+      # monitored_resources:
+      # - type: library.googleapis.com/branch
+      # labels:
+      # - key: /city
+      # description: The city where the library branch is located in.
+      # - key: /name
+      # description: The name of the branch.
+      # metrics:
+      # - name: library.googleapis.com/book/borrowed_count
+      # metric_kind: DELTA
+      # value_type: INT64
+      # billing:
+      # consumer_destinations:
+      # - monitored_resource: library.googleapis.com/branch
+      # metrics:
+      # - library.googleapis.com/book/borrowed_count
+      class Billing
+        include Google::Apis::Core::Hashable
+      
+        # Billing configurations for sending metrics to the consumer project.
+        # There can be multiple consumer destinations per service, each one must have
+        # a different monitored resource type. A metric can be used in at most
+        # one consumer destination.
+        # Corresponds to the JSON property `consumerDestinations`
+        # @return [Array<Google::Apis::ServicemanagementV1::BillingDestination>]
+        attr_accessor :consumer_destinations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_destinations = args[:consumer_destinations] if args.key?(:consumer_destinations)
+        end
+      end
+      
+      # Configuration of a specific billing destination (Currently only support
+      # bill against consumer project).
+      class BillingDestination
+        include Google::Apis::Core::Hashable
+      
+        # Names of the metrics to report to this billing destination.
+        # Each name must be defined in Service.metrics section.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<String>]
+        attr_accessor :metrics
+      
+        # The monitored resource type. The type must be defined in
+        # Service.monitored_resources section.
+        # Corresponds to the JSON property `monitoredResource`
+        # @return [String]
+        attr_accessor :monitored_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1531,6 +1599,13 @@ module Google
         # @return [String]
         attr_accessor :flow_name
       
+        # Operation type which is a flow type and subtype info as that is missing in
+        # our datastore otherwise. This maps to the ordinal value of the enum:
+        # jcg/api/tenant/operations/OperationNamespace.java
+        # Corresponds to the JSON property `operationType`
+        # @return [Fixnum]
+        attr_accessor :operation_type
+      
         # The full name of the resources that this flow is directly associated with.
         # Corresponds to the JSON property `resourceNames`
         # @return [Array<String>]
@@ -1541,6 +1616,11 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # 
+        # Corresponds to the JSON property `surface`
+        # @return [String]
+        attr_accessor :surface
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1550,8 +1630,10 @@ module Google
           @cancel_state = args[:cancel_state] if args.key?(:cancel_state)
           @deadline = args[:deadline] if args.key?(:deadline)
           @flow_name = args[:flow_name] if args.key?(:flow_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @resource_names = args[:resource_names] if args.key?(:resource_names)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @surface = args[:surface] if args.key?(:surface)
         end
       end
       
@@ -3514,6 +3596,29 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::Backend]
         attr_accessor :backend
       
+        # Billing related configuration of the service.
+        # The following example shows how to configure monitored resources and metrics
+        # for billing:
+        # monitored_resources:
+        # - type: library.googleapis.com/branch
+        # labels:
+        # - key: /city
+        # description: The city where the library branch is located in.
+        # - key: /name
+        # description: The name of the branch.
+        # metrics:
+        # - name: library.googleapis.com/book/borrowed_count
+        # metric_kind: DELTA
+        # value_type: INT64
+        # billing:
+        # consumer_destinations:
+        # - monitored_resource: library.googleapis.com/branch
+        # metrics:
+        # - library.googleapis.com/book/borrowed_count
+        # Corresponds to the JSON property `billing`
+        # @return [Google::Apis::ServicemanagementV1::Billing]
+        attr_accessor :billing
+      
         # The semantic version of the service configuration. The config version
         # affects the interpretation of the service configuration. For example,
         # certain features are enabled by default for certain config versions.
@@ -3866,6 +3971,7 @@ module Google
           @apis = args[:apis] if args.key?(:apis)
           @authentication = args[:authentication] if args.key?(:authentication)
           @backend = args[:backend] if args.key?(:backend)
+          @billing = args[:billing] if args.key?(:billing)
           @config_version = args[:config_version] if args.key?(:config_version)
           @context = args[:context] if args.key?(:context)
           @control = args[:control] if args.key?(:control)

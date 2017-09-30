@@ -849,55 +849,6 @@ module Google
         end
       end
       
-      # Replaces an identifier with a surrogate using FPE based
-      # on a regular expression.
-      # The identifier must be representable by the ISO LATIN-1 character set.
-      # For a given crypto key and context, the same identifier will be
-      # replaced with the same surrogate.
-      class GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig
-        include Google::Apis::Core::Hashable
-      
-        # General identifier of a data field in a storage service.
-        # Corresponds to the JSON property `context`
-        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
-        attr_accessor :context
-      
-        # This is a data encryption key (DEK) (as opposed to
-        # a key encryption key (KEK) stored by KMS).
-        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
-        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
-        # unwrap the data crypto key.
-        # Corresponds to the JSON property `cryptoKey`
-        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoKey]
-        attr_accessor :crypto_key
-      
-        # The regular expression to match the identifier/surrogate values.
-        # There are several restrictions on the regular expression:
-        # - It must match at least two distinct strings
-        # (for example, 'a' is invalid but '[ab]' is valid).
-        # - Both the regular expression itself and the strings it matches must be
-        # representable by the ISO LATIN-1 character set.
-        # - Its [syntax](https://github.com/google/re2/wiki/Syntax) can be found
-        # under the google/re2 repository on GitHub.
-        # - It is advisable to anchor the regex (with '^' and '$'); otherwise
-        # implicit '.*'s are assumed.
-        # - It must be 1000 characters at most.
-        # Corresponds to the JSON property `regex`
-        # @return [String]
-        attr_accessor :regex
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context = args[:context] if args.key?(:context)
-          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
-          @regex = args[:regex] if args.key?(:regex)
-        end
-      end
-      
       # Record key for a finding in Cloud Datastore.
       class GooglePrivacyDlpV2beta1DatastoreKey
         include Google::Apis::Core::Hashable
@@ -2377,15 +2328,6 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
       
-        # Replaces an identifier with a surrogate using FPE based
-        # on a regular expression.
-        # The identifier must be representable by the ISO LATIN-1 character set.
-        # For a given crypto key and context, the same identifier will be
-        # replaced with the same surrogate.
-        # Corresponds to the JSON property `cryptoReplaceRegexFpeConfig`
-        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig]
-        attr_accessor :crypto_replace_regex_fpe_config
-      
         # Buckets values based on fixed size ranges. The
         # Bucketing transformation can provide all of this functionality,
         # but requires more configuration. This message is provided as a convenience to
@@ -2433,7 +2375,6 @@ module Google
           @character_mask_config = args[:character_mask_config] if args.key?(:character_mask_config)
           @crypto_hash_config = args[:crypto_hash_config] if args.key?(:crypto_hash_config)
           @crypto_replace_ffx_fpe_config = args[:crypto_replace_ffx_fpe_config] if args.key?(:crypto_replace_ffx_fpe_config)
-          @crypto_replace_regex_fpe_config = args[:crypto_replace_regex_fpe_config] if args.key?(:crypto_replace_regex_fpe_config)
           @fixed_size_bucketing_config = args[:fixed_size_bucketing_config] if args.key?(:fixed_size_bucketing_config)
           @redact_config = args[:redact_config] if args.key?(:redact_config)
           @replace_config = args[:replace_config] if args.key?(:replace_config)

@@ -351,49 +351,6 @@ module Google
         end
       end
       
-      # Authorization rule for API services.
-      # It specifies the permission(s) required for an API element for the overall
-      # API request to succeed. It is typically used to mark request message fields
-      # that contain the name of the resource and indicates the permissions that
-      # will be checked on that resource.
-      # For example:
-      # package google.storage.v1;
-      # message CopyObjectRequest `
-      # string source = 1 [
-      # (google.api.authz).permissions = "storage.objects.get"];
-      # string destination = 2 [
-      # (google.api.authz).permissions =
-      # "storage.objects.create,storage.objects.update"];
-      # `
-      class AuthorizationRule
-        include Google::Apis::Core::Hashable
-      
-        # The required permissions. The acceptable values vary depend on the
-        # authorization system used. For Google APIs, it should be a comma-separated
-        # Google IAM permission values. When multiple permissions are listed, the
-        # semantics is not defined by the system. Additional documentation must
-        # be provided manually.
-        # Corresponds to the JSON property `permissions`
-        # @return [String]
-        attr_accessor :permissions
-      
-        # Selects the API elements to which this rule applies.
-        # Refer to selector for syntax details.
-        # Corresponds to the JSON property `selector`
-        # @return [String]
-        attr_accessor :selector
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-          @selector = args[:selector] if args.key?(:selector)
-        end
-      end
-      
       # `Backend` defines the backend configuration for a service.
       class Backend
         include Google::Apis::Core::Hashable
@@ -451,6 +408,74 @@ module Google
           @deadline = args[:deadline] if args.key?(:deadline)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
           @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
+      # Billing related configuration of the service.
+      # The following example shows how to configure monitored resources and metrics
+      # for billing:
+      # monitored_resources:
+      # - type: library.googleapis.com/branch
+      # labels:
+      # - key: /city
+      # description: The city where the library branch is located in.
+      # - key: /name
+      # description: The name of the branch.
+      # metrics:
+      # - name: library.googleapis.com/book/borrowed_count
+      # metric_kind: DELTA
+      # value_type: INT64
+      # billing:
+      # consumer_destinations:
+      # - monitored_resource: library.googleapis.com/branch
+      # metrics:
+      # - library.googleapis.com/book/borrowed_count
+      class Billing
+        include Google::Apis::Core::Hashable
+      
+        # Billing configurations for sending metrics to the consumer project.
+        # There can be multiple consumer destinations per service, each one must have
+        # a different monitored resource type. A metric can be used in at most
+        # one consumer destination.
+        # Corresponds to the JSON property `consumerDestinations`
+        # @return [Array<Google::Apis::ServiceuserV1::BillingDestination>]
+        attr_accessor :consumer_destinations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_destinations = args[:consumer_destinations] if args.key?(:consumer_destinations)
+        end
+      end
+      
+      # Configuration of a specific billing destination (Currently only support
+      # bill against consumer project).
+      class BillingDestination
+        include Google::Apis::Core::Hashable
+      
+        # Names of the metrics to report to this billing destination.
+        # Each name must be defined in Service.metrics section.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<String>]
+        attr_accessor :metrics
+      
+        # The monitored resource type. The type must be defined in
+        # Service.monitored_resources section.
+        # Corresponds to the JSON property `monitoredResource`
+        # @return [String]
+        attr_accessor :monitored_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
         end
       end
       
@@ -1297,14 +1322,6 @@ module Google
         # @return [Array<Google::Apis::ServiceuserV1::HttpRule>]
         attr_accessor :additional_bindings
       
-        # Specifies the permission(s) required for an API element for the overall
-        # API request to succeed. It is typically used to mark request message fields
-        # that contain the name of the resource and indicates the permissions that
-        # will be checked on that resource.
-        # Corresponds to the JSON property `authorizations`
-        # @return [Array<Google::Apis::ServiceuserV1::AuthorizationRule>]
-        attr_accessor :authorizations
-      
         # The name of the request field whose value is mapped to the HTTP body, or
         # `*` for mapping all fields not captured by the path pattern to the HTTP
         # body. NOTE: the referred field must not be a repeated field and must be
@@ -1368,44 +1385,6 @@ module Google
         # @return [String]
         attr_accessor :response_body
       
-        # DO NOT USE. This is an experimental field.
-        # Optional. The REST collection name is by default derived from the URL
-        # pattern. If specified, this field overrides the default collection name.
-        # Example:
-        # rpc AddressesAggregatedList(AddressesAggregatedListRequest)
-        # returns (AddressesAggregatedListResponse) `
-        # option (google.api.http) = `
-        # get: "/v1/projects/`project_id`/aggregated/addresses"
-        # rest_collection: "projects.addresses"
-        # `;
-        # `
-        # This method has the automatically derived collection name
-        # "projects.aggregated". Because, semantically, this rpc is actually an
-        # operation on the "projects.addresses" collection, the `rest_collection`
-        # field is configured to override the derived collection name.
-        # Corresponds to the JSON property `restCollection`
-        # @return [String]
-        attr_accessor :rest_collection
-      
-        # DO NOT USE. This is an experimental field.
-        # Optional. The rest method name is by default derived from the URL
-        # pattern. If specified, this field overrides the default method name.
-        # Example:
-        # rpc CreateResource(CreateResourceRequest)
-        # returns (CreateResourceResponse) `
-        # option (google.api.http) = `
-        # post: "/v1/resources",
-        # body: "resource",
-        # rest_method_name: "insert"
-        # `;
-        # `
-        # This method has the automatically derived rest method name
-        # "create", but for backwards compatibility with apiary, it is specified as
-        # insert.
-        # Corresponds to the JSON property `restMethodName`
-        # @return [String]
-        attr_accessor :rest_method_name
-      
         # Selects methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -1419,7 +1398,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_bindings = args[:additional_bindings] if args.key?(:additional_bindings)
-          @authorizations = args[:authorizations] if args.key?(:authorizations)
           @body = args[:body] if args.key?(:body)
           @custom = args[:custom] if args.key?(:custom)
           @delete = args[:delete] if args.key?(:delete)
@@ -1430,8 +1408,6 @@ module Google
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
           @response_body = args[:response_body] if args.key?(:response_body)
-          @rest_collection = args[:rest_collection] if args.key?(:rest_collection)
-          @rest_method_name = args[:rest_method_name] if args.key?(:rest_method_name)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
@@ -2799,6 +2775,29 @@ module Google
         # @return [Google::Apis::ServiceuserV1::Backend]
         attr_accessor :backend
       
+        # Billing related configuration of the service.
+        # The following example shows how to configure monitored resources and metrics
+        # for billing:
+        # monitored_resources:
+        # - type: library.googleapis.com/branch
+        # labels:
+        # - key: /city
+        # description: The city where the library branch is located in.
+        # - key: /name
+        # description: The name of the branch.
+        # metrics:
+        # - name: library.googleapis.com/book/borrowed_count
+        # metric_kind: DELTA
+        # value_type: INT64
+        # billing:
+        # consumer_destinations:
+        # - monitored_resource: library.googleapis.com/branch
+        # metrics:
+        # - library.googleapis.com/book/borrowed_count
+        # Corresponds to the JSON property `billing`
+        # @return [Google::Apis::ServiceuserV1::Billing]
+        attr_accessor :billing
+      
         # The semantic version of the service configuration. The config version
         # affects the interpretation of the service configuration. For example,
         # certain features are enabled by default for certain config versions.
@@ -3151,6 +3150,7 @@ module Google
           @apis = args[:apis] if args.key?(:apis)
           @authentication = args[:authentication] if args.key?(:authentication)
           @backend = args[:backend] if args.key?(:backend)
+          @billing = args[:billing] if args.key?(:billing)
           @config_version = args[:config_version] if args.key?(:config_version)
           @context = args[:context] if args.key?(:context)
           @control = args[:control] if args.key?(:control)

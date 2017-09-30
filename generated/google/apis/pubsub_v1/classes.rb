@@ -558,7 +558,8 @@ module Google
         # For pull subscriptions, this value is used as the initial value for the ack
         # deadline. To override this value for a given message, call
         # `ModifyAckDeadline` with the corresponding `ack_id` if using
-        # pull.
+        # non-streaming pull or send the `ack_id` in a
+        # `StreamingModifyAckDeadlineRequest` if using streaming pull.
         # The minimum custom deadline you can specify is 10 seconds.
         # The maximum custom deadline you can specify is 600 seconds (10 minutes).
         # If this parameter is 0, a default value of 10 seconds is used.

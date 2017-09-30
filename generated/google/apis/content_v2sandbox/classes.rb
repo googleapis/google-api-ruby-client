@@ -404,6 +404,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2sandbox::OrderCancellation>]
         attr_accessor :cancellations
       
+        # The channel type of the order: "purchaseOnGoogle" or "googleExpress".
+        # Corresponds to the JSON property `channelType`
+        # @return [String]
+        attr_accessor :channel_type
+      
         # The id of the line item.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -478,6 +483,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cancellations = args[:cancellations] if args.key?(:cancellations)
+          @channel_type = args[:channel_type] if args.key?(:channel_type)
           @id = args[:id] if args.key?(:id)
           @price = args[:price] if args.key?(:price)
           @product = args[:product] if args.key?(:product)
