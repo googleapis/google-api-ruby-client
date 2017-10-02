@@ -1,3 +1,44 @@
+# 0.14.5
+* Backwards compatible changes:
+  * Added `cloudiot_v1`
+  * Added `cloudiot_v1beta1`
+  * Updated `analyticsreporting_v4`
+  * Updated `androidmanagement_v1`
+  * Updated `appengine_v1`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `classroom_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `cloudtrace_v1`
+  * Updated `cloudtrace_v2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dataflow_v1b3`
+  * Updated `dataproc_v1beta2`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dlp_v2beta1`
+  * Updated `firebaserules_v1`
+  * Updated `fitness_v1`
+  * Updated `iam_v1`
+  * Updated `kgsearch_v1`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `ml_v1`
+  * Updated `oslogin_v1alpha`
+  * Updated `oslogin_v1beta`
+  * Updated `pubsub_v1`
+  * Updated `script_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `streetviewpublish_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `youtube_partner_v1`
+
 # 0.14.4
 * Backwards compatible changes:
   * Updated `acceleratedmobilepageurl_v1`
