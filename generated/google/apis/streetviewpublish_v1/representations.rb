@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Photo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -205,6 +211,18 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :photos, as: 'photos', class: Google::Apis::StreetviewpublishV1::Photo, decorator: Google::Apis::StreetviewpublishV1::Photo::Representation
       
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::StreetviewpublishV1::Status, decorator: Google::Apis::StreetviewpublishV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       

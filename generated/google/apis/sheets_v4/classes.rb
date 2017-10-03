@@ -998,6 +998,11 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # Position settings for text.
+        # Corresponds to the JSON property `titleTextPosition`
+        # @return [Google::Apis::SheetsV4::TextPosition]
+        attr_accessor :title_text_position
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1007,6 +1012,7 @@ module Google
           @format = args[:format] if args.key?(:format)
           @position = args[:position] if args.key?(:position)
           @title = args[:title] if args.key?(:title)
+          @title_text_position = args[:title_text_position] if args.key?(:title_text_position)
         end
       end
       
@@ -1096,6 +1102,12 @@ module Google
         # @return [String]
         attr_accessor :chart_type
       
+        # The behavior of tooltips and data highlighting when hovering on data and
+        # chart area.
+        # Corresponds to the JSON property `compareMode`
+        # @return [String]
+        attr_accessor :compare_mode
+      
         # The domain of data this is charting.
         # Only a single domain is supported.
         # Corresponds to the JSON property `domains`
@@ -1158,6 +1170,7 @@ module Google
         def update!(**args)
           @axis = args[:axis] if args.key?(:axis)
           @chart_type = args[:chart_type] if args.key?(:chart_type)
+          @compare_mode = args[:compare_mode] if args.key?(:compare_mode)
           @domains = args[:domains] if args.key?(:domains)
           @header_count = args[:header_count] if args.key?(:header_count)
           @interpolate_nulls = args[:interpolate_nulls] if args.key?(:interpolate_nulls)
@@ -1504,7 +1517,7 @@ module Google
       
         # The new values to apply to the spreadsheet.  If more than one range is
         # matched by the specified DataFilter the specified values will be
-        # applied to all of of those ranges.
+        # applied to all of those ranges.
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::SheetsV4::DataFilterValueRange>]
         attr_accessor :data
@@ -2722,6 +2735,22 @@ module Google
         # @return [Google::Apis::SheetsV4::PieChartSpec]
         attr_accessor :pie_chart
       
+        # The subtitle of the chart.
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        # The format of a run of text in a cell.
+        # Absent values indicate that the field isn't specified.
+        # Corresponds to the JSON property `subtitleTextFormat`
+        # @return [Google::Apis::SheetsV4::TextFormat]
+        attr_accessor :subtitle_text_format
+      
+        # Position settings for text.
+        # Corresponds to the JSON property `subtitleTextPosition`
+        # @return [Google::Apis::SheetsV4::TextPosition]
+        attr_accessor :subtitle_text_position
+      
         # The title of the chart.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -2732,6 +2761,11 @@ module Google
         # Corresponds to the JSON property `titleTextFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :title_text_format
+      
+        # Position settings for text.
+        # Corresponds to the JSON property `titleTextPosition`
+        # @return [Google::Apis::SheetsV4::TextPosition]
+        attr_accessor :title_text_position
       
         def initialize(**args)
            update!(**args)
@@ -2750,8 +2784,12 @@ module Google
           @maximized = args[:maximized] if args.key?(:maximized)
           @org_chart = args[:org_chart] if args.key?(:org_chart)
           @pie_chart = args[:pie_chart] if args.key?(:pie_chart)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+          @subtitle_text_format = args[:subtitle_text_format] if args.key?(:subtitle_text_format)
+          @subtitle_text_position = args[:subtitle_text_position] if args.key?(:subtitle_text_position)
           @title = args[:title] if args.key?(:title)
           @title_text_format = args[:title_text_format] if args.key?(:title_text_format)
+          @title_text_position = args[:title_text_position] if args.key?(:title_text_position)
         end
       end
       
@@ -3243,12 +3281,12 @@ module Google
         attr_accessor :a1_range
       
         # Selects DeveloperMetadata that matches all of the specified fields.  For
-        # example, if only a metadata ID is specified this will consider the
+        # example, if only a metadata ID is specified this considers the
         # DeveloperMetadata with that particular unique ID. If a metadata key is
-        # specified, all developer metadata with that key will be considered.  If a
-        # key, visibility, and location type are all specified, then all
-        # developer metadata with that key, visibility, and associated with a
-        # location of that type will be considered.  In general, this
+        # specified, this considers all developer metadata with that key.  If a
+        # key, visibility, and location type are all specified, this considers all
+        # developer metadata with that key and visibility that are associated with a
+        # location of that type.  In general, this
         # selects all DeveloperMetadata that matches the intersection of all the
         # specified fields; any field or combination of fields may be specified.
         # Corresponds to the JSON property `developerMetadataLookup`
@@ -3737,12 +3775,12 @@ module Google
       end
       
       # Selects DeveloperMetadata that matches all of the specified fields.  For
-      # example, if only a metadata ID is specified this will consider the
+      # example, if only a metadata ID is specified this considers the
       # DeveloperMetadata with that particular unique ID. If a metadata key is
-      # specified, all developer metadata with that key will be considered.  If a
-      # key, visibility, and location type are all specified, then all
-      # developer metadata with that key, visibility, and associated with a
-      # location of that type will be considered.  In general, this
+      # specified, this considers all developer metadata with that key.  If a
+      # key, visibility, and location type are all specified, this considers all
+      # developer metadata with that key and visibility that are associated with a
+      # location of that type.  In general, this
       # selects all DeveloperMetadata that matches the intersection of all the
       # specified fields; any field or combination of fields may be specified.
       class DeveloperMetadataLookup
@@ -3750,10 +3788,9 @@ module Google
       
         # Determines how this lookup matches the location.  If this field is
         # specified as EXACT, only developer metadata associated on the exact
-        # location specified will be matched.  If this field is specified to
-        # INTERSECTING,
-        # developer metadata associated on intersecting locations will also be
-        # matched.  If left unspecified, this field will assume a default value of
+        # location specified is matched.  If this field is specified to INTERSECTING,
+        # developer metadata associated on intersecting locations is also
+        # matched.  If left unspecified, this field assumes a default value of
         # INTERSECTING.
         # If this field is specified, a metadataLocation
         # must also be specified.
@@ -3762,19 +3799,18 @@ module Google
         attr_accessor :location_matching_strategy
       
         # Limits the selected developer metadata to those entries which are
-        # associated with locations of the specified type.  For example, specifying
-        # this as ROW will only consider
-        # developer metadata associated on rows.  If left unspecified, all location
-        # types will be considered.  This field cannot be specified as
-        # SPREADSHEET when the
-        # locationMatchingStrategy is
-        # specified as INTERSECTING or when the
+        # associated with locations of the specified type.  For example, when this
+        # field is specified as ROW this lookup
+        # only considers developer metadata associated on rows.  If the field is left
+        # unspecified, all location types are considered.  This field cannot be
+        # specified as SPREADSHEET when
+        # the locationMatchingStrategy
+        # is specified as INTERSECTING or when the
         # metadataLocation is specified as a
         # non-spreadsheet location: spreadsheet metadata cannot intersect any other
         # developer metadata location.  This field also must be left unspecified when
-        # the
-        # locationMatchingStrategy is
-        # specified as EXACT.
+        # the locationMatchingStrategy
+        # is specified as EXACT.
         # Corresponds to the JSON property `locationType`
         # @return [String]
         attr_accessor :location_type
@@ -3804,7 +3840,7 @@ module Google
       
         # Limits the selected developer metadata to that which has a matching
         # DeveloperMetadata.visibility.  If left unspecified, all developer
-        # metadata visibile to the requesting project will be considered.
+        # metadata visibile to the requesting project is considered.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -7484,6 +7520,25 @@ module Google
         def update!(**args)
           @format = args[:format] if args.key?(:format)
           @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
+      # Position settings for text.
+      class TextPosition
+        include Google::Apis::Core::Hashable
+      
+        # Horizontal alignment setting for the piece of text.
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
         end
       end
       

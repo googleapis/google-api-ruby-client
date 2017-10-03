@@ -52416,6 +52416,7 @@
 "/sheets:v4/BasicChartAxis/format": format
 "/sheets:v4/BasicChartAxis/position": position
 "/sheets:v4/BasicChartAxis/title": title
+"/sheets:v4/BasicChartAxis/titleTextPosition": title_text_position
 "/sheets:v4/BasicChartDomain": basic_chart_domain
 "/sheets:v4/BasicChartDomain/domain": domain
 "/sheets:v4/BasicChartDomain/reversed": reversed
@@ -52427,6 +52428,7 @@
 "/sheets:v4/BasicChartSpec/axis": axis
 "/sheets:v4/BasicChartSpec/axis/axis": axis
 "/sheets:v4/BasicChartSpec/chartType": chart_type
+"/sheets:v4/BasicChartSpec/compareMode": compare_mode
 "/sheets:v4/BasicChartSpec/domains": domains
 "/sheets:v4/BasicChartSpec/domains/domain": domain
 "/sheets:v4/BasicChartSpec/headerCount": header_count
@@ -52596,8 +52598,12 @@
 "/sheets:v4/ChartSpec/maximized": maximized
 "/sheets:v4/ChartSpec/orgChart": org_chart
 "/sheets:v4/ChartSpec/pieChart": pie_chart
+"/sheets:v4/ChartSpec/subtitle": subtitle
+"/sheets:v4/ChartSpec/subtitleTextFormat": subtitle_text_format
+"/sheets:v4/ChartSpec/subtitleTextPosition": subtitle_text_position
 "/sheets:v4/ChartSpec/title": title
 "/sheets:v4/ChartSpec/titleTextFormat": title_text_format
+"/sheets:v4/ChartSpec/titleTextPosition": title_text_position
 "/sheets:v4/ClearBasicFilterRequest": clear_basic_filter_request
 "/sheets:v4/ClearBasicFilterRequest/sheetId": sheet_id
 "/sheets:v4/ClearValuesRequest": clear_values_request
@@ -53074,6 +53080,8 @@
 "/sheets:v4/TextFormatRun": text_format_run
 "/sheets:v4/TextFormatRun/format": format
 "/sheets:v4/TextFormatRun/startIndex": start_index
+"/sheets:v4/TextPosition": text_position
+"/sheets:v4/TextPosition/horizontalAlignment": horizontal_alignment
 "/sheets:v4/TextRotation": text_rotation
 "/sheets:v4/TextRotation/angle": angle
 "/sheets:v4/TextRotation/vertical": vertical
@@ -56481,6 +56489,14 @@
 "/streetviewpublish:v1/ListPhotosResponse/nextPageToken": next_page_token
 "/streetviewpublish:v1/ListPhotosResponse/photos": photos
 "/streetviewpublish:v1/ListPhotosResponse/photos/photo": photo
+"/streetviewpublish:v1/Operation": operation
+"/streetviewpublish:v1/Operation/done": done
+"/streetviewpublish:v1/Operation/error": error
+"/streetviewpublish:v1/Operation/metadata": metadata
+"/streetviewpublish:v1/Operation/metadata/metadatum": metadatum
+"/streetviewpublish:v1/Operation/name": name
+"/streetviewpublish:v1/Operation/response": response
+"/streetviewpublish:v1/Operation/response/response": response
 "/streetviewpublish:v1/Photo": photo
 "/streetviewpublish:v1/Photo/captureTime": capture_time
 "/streetviewpublish:v1/Photo/connections": connections

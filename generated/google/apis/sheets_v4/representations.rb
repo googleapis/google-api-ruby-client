@@ -886,6 +886,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextRotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1205,6 +1211,8 @@ module Google
       
           property :position, as: 'position'
           property :title, as: 'title'
+          property :title_text_position, as: 'titleTextPosition', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
+      
         end
       end
       
@@ -1233,6 +1241,7 @@ module Google
           collection :axis, as: 'axis', class: Google::Apis::SheetsV4::BasicChartAxis, decorator: Google::Apis::SheetsV4::BasicChartAxis::Representation
       
           property :chart_type, as: 'chartType'
+          property :compare_mode, as: 'compareMode'
           collection :domains, as: 'domains', class: Google::Apis::SheetsV4::BasicChartDomain, decorator: Google::Apis::SheetsV4::BasicChartDomain::Representation
       
           property :header_count, as: 'headerCount'
@@ -1581,8 +1590,15 @@ module Google
       
           property :pie_chart, as: 'pieChart', class: Google::Apis::SheetsV4::PieChartSpec, decorator: Google::Apis::SheetsV4::PieChartSpec::Representation
       
+          property :subtitle, as: 'subtitle'
+          property :subtitle_text_format, as: 'subtitleTextFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
+      
+          property :subtitle_text_position, as: 'subtitleTextPosition', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
+      
           property :title, as: 'title'
           property :title_text_format, as: 'titleTextFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
+      
+          property :title_text_position, as: 'titleTextPosition', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
       
         end
       end
@@ -2658,6 +2674,13 @@ module Google
           property :format, as: 'format', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
           property :start_index, as: 'startIndex'
+        end
+      end
+      
+      class TextPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :horizontal_alignment, as: 'horizontalAlignment'
         end
       end
       

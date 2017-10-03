@@ -226,7 +226,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the developer metadata with the specified id.
+        # Returns the developer metadata with the specified ID.
         # The caller must specify the spreadsheet ID and the developer metadata's
         # unique metadataId.
         # @param [String] spreadsheet_id
@@ -530,10 +530,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns one or more ranges of values from a spreadsheet that match the
-        # specified data filters.  The caller must specify the spreadsheet ID and
-        # one or more DataFilters.  Ranges that match any of the data
-        # filters in the request will be returned.
+        # Returns one or more ranges of values that match the specified data filters.
+        # The caller must specify the spreadsheet ID and one or more
+        # DataFilters.  Ranges that match any of the data filters in
+        # the request will be returned.
         # @param [String] spreadsheet_id
         #   The ID of the spreadsheet to retrieve data from.
         # @param [Google::Apis::SheetsV4::BatchGetValuesByDataFilterRequest] batch_get_values_by_data_filter_request_object
