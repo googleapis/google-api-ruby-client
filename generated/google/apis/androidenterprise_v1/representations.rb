@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApproveProductRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +485,7 @@ module Google
       class AppVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :track, as: 'track'
           property :version_code, as: 'versionCode'
           property :version_string, as: 'versionString'
         end
@@ -777,6 +784,7 @@ module Google
           collection :app_version, as: 'appVersion', class: Google::Apis::AndroidenterpriseV1::AppVersion, decorator: Google::Apis::AndroidenterpriseV1::AppVersion::Representation
       
           property :author_name, as: 'authorName'
+          collection :available_tracks, as: 'availableTracks'
           property :details_url, as: 'detailsUrl'
           property :distribution_channel, as: 'distributionChannel'
           property :icon_url, as: 'iconUrl'
@@ -832,6 +840,8 @@ module Google
           property :kind, as: 'kind'
           collection :product_id, as: 'productId'
           property :product_set_behavior, as: 'productSetBehavior'
+          collection :product_visibility, as: 'productVisibility', class: Google::Apis::AndroidenterpriseV1::ProductVisibility, decorator: Google::Apis::AndroidenterpriseV1::ProductVisibility::Representation
+      
         end
       end
       
@@ -840,6 +850,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_hash_sha1, as: 'certificateHashSha1'
           property :certificate_hash_sha256, as: 'certificateHashSha256'
+        end
+      end
+      
+      class ProductVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
+          collection :tracks, as: 'tracks'
         end
       end
       

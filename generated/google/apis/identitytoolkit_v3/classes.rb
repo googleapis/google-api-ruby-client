@@ -69,6 +69,11 @@ module Google
         # @return [String]
         attr_accessor :session_id
       
+        # All sign-in methods this user has used.
+        # Corresponds to the JSON property `signinMethods`
+        # @return [Array<String>]
+        attr_accessor :signin_methods
+      
         def initialize(**args)
            update!(**args)
         end
@@ -83,6 +88,7 @@ module Google
           @provider_id = args[:provider_id] if args.key?(:provider_id)
           @registered = args[:registered] if args.key?(:registered)
           @session_id = args[:session_id] if args.key?(:session_id)
+          @signin_methods = args[:signin_methods] if args.key?(:signin_methods)
         end
       end
       
@@ -134,6 +140,62 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @users = args[:users] if args.key?(:users)
+        end
+      end
+      
+      # Response of email signIn.
+      class EmailLinkSigninResponse
+        include Google::Apis::Core::Hashable
+      
+        # The user's email.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Expiration time of STS id token in seconds.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [Fixnum]
+        attr_accessor :expires_in
+      
+        # The STS id token to login the newly signed in user.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # Whether the user is new.
+        # Corresponds to the JSON property `isNewUser`
+        # @return [Boolean]
+        attr_accessor :is_new_user
+        alias_method :is_new_user?, :is_new_user
+      
+        # The fixed string "identitytoolkit#EmailLinkSigninResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The RP local ID of the user.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        # The refresh token for the signed in user.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @is_new_user = args[:is_new_user] if args.key?(:is_new_user)
+          @kind = args[:kind] if args.key?(:kind)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
       end
       
@@ -448,6 +510,37 @@ module Google
           @max_results = args[:max_results] if args.key?(:max_results)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @target_project_id = args[:target_project_id] if args.key?(:target_project_id)
+        end
+      end
+      
+      # Request to sign in with email.
+      class IdentitytoolkitRelyingpartyEmailLinkSigninRequest
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Token for linking flow.
+        # Corresponds to the JSON property `idToken`
+        # @return [String]
+        attr_accessor :id_token
+      
+        # The confirmation code.
+        # Corresponds to the JSON property `oobCode`
+        # @return [String]
+        attr_accessor :oob_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @id_token = args[:id_token] if args.key?(:id_token)
+          @oob_code = args[:oob_code] if args.key?(:oob_code)
         end
       end
       

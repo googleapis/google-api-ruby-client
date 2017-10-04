@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmailLinkSigninResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmailTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class DownloadAccountRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentitytoolkitRelyingpartyEmailLinkSigninRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -273,6 +285,7 @@ module Google
           property :provider_id, as: 'providerId'
           property :registered, as: 'registered'
           property :session_id, as: 'sessionId'
+          collection :signin_methods, as: 'signinMethods'
         end
       end
       
@@ -290,6 +303,19 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::Representation
       
+        end
+      end
+      
+      class EmailLinkSigninResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :expires_in, :numeric_string => true, as: 'expiresIn'
+          property :id_token, as: 'idToken'
+          property :is_new_user, as: 'isNewUser'
+          property :kind, as: 'kind'
+          property :local_id, as: 'localId'
+          property :refresh_token, as: 'refreshToken'
         end
       end
       
@@ -368,6 +394,15 @@ module Google
           property :max_results, as: 'maxResults'
           property :next_page_token, as: 'nextPageToken'
           property :target_project_id, as: 'targetProjectId'
+        end
+      end
+      
+      class IdentitytoolkitRelyingpartyEmailLinkSigninRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :id_token, as: 'idToken'
+          property :oob_code, as: 'oobCode'
         end
       end
       

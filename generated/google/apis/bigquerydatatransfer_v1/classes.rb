@@ -346,11 +346,10 @@ module Google
         # @return [Array<Google::Apis::BigquerydatatransferV1::DataSource>]
         attr_accessor :data_sources
       
-        # The next-pagination token. For multiple-page list results,
+        # Output only. The next-pagination token. For multiple-page list results,
         # this token can be used as the
         # `ListDataSourcesRequest.page_token`
         # to request the next page of list results.
-        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -395,17 +394,15 @@ module Google
       class ListTransferConfigsResponse
         include Google::Apis::Core::Hashable
       
-        # The next-pagination token. For multiple-page list results,
+        # Output only. The next-pagination token. For multiple-page list results,
         # this token can be used as the
         # `ListTransferConfigsRequest.page_token`
         # to request the next page of list results.
-        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The stored pipeline transfer configurations.
-        # Output only.
+        # Output only. The stored pipeline transfer configurations.
         # Corresponds to the JSON property `transferConfigs`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferConfig>]
         attr_accessor :transfer_configs
@@ -425,17 +422,15 @@ module Google
       class ListTransferLogsResponse
         include Google::Apis::Core::Hashable
       
-        # The next-pagination token. For multiple-page list results,
+        # Output only. The next-pagination token. For multiple-page list results,
         # this token can be used as the
         # `GetTransferRunLogRequest.page_token`
         # to request the next page of list results.
-        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The stored pipeline transfer messages.
-        # Output only.
+        # Output only. The stored pipeline transfer messages.
         # Corresponds to the JSON property `transferMessages`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferMessage>]
         attr_accessor :transfer_messages
@@ -455,17 +450,15 @@ module Google
       class ListTransferRunsResponse
         include Google::Apis::Core::Hashable
       
-        # The next-pagination token. For multiple-page list results,
+        # Output only. The next-pagination token. For multiple-page list results,
         # this token can be used as the
         # `ListTransferRunsRequest.page_token`
         # to request the next page of list results.
-        # Output only.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The stored pipeline transfer runs.
-        # Output only.
+        # Output only. The stored pipeline transfer runs.
         # Corresponds to the JSON property `transferRuns`
         # @return [Array<Google::Apis::BigquerydatatransferV1::TransferRun>]
         attr_accessor :transfer_runs
@@ -591,9 +584,7 @@ module Google
         # @return [String]
         attr_accessor :data_source_id
       
-        # Region in which BigQuery dataset is located. Currently possible values are:
-        # "US" and "EU".
-        # Output only.
+        # Output only. Region in which BigQuery dataset is located.
         # Corresponds to the JSON property `datasetRegion`
         # @return [String]
         attr_accessor :dataset_region
@@ -625,8 +616,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Next time when data transfer will run.
-        # Output only.
+        # Output only. Next time when data transfer will run.
         # Corresponds to the JSON property `nextRunTime`
         # @return [String]
         attr_accessor :next_run_time
@@ -653,22 +643,19 @@ module Google
         # @return [String]
         attr_accessor :schedule
       
-        # State of the most recently updated transfer run.
-        # Output only.
+        # Output only. State of the most recently updated transfer run.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Data transfer modification time. Ignored by server on input.
-        # Output only.
+        # Output only. Data transfer modification time. Ignored by server on input.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Unique ID of the user on whose behalf transfer is done. Applicable only
-        # to data sources that do not support service accounts. When set to 0,
-        # the data source service account credentials are used.
-        # Output only.
+        # Output only. Unique ID of the user on whose behalf transfer is done.
+        # Applicable only to data sources that do not support service accounts.
+        # When set to 0, the data source service account credentials are used.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id
@@ -730,15 +717,12 @@ module Google
       class TransferRun
         include Google::Apis::Core::Hashable
       
-        # Data source id.
-        # Output only.
+        # Output only. Data source id.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
       
-        # Region in which BigQuery dataset is located. Currently possible values are:
-        # "US" and "EU".
-        # Output only.
+        # Output only. Region in which BigQuery dataset is located.
         # Corresponds to the JSON property `datasetRegion`
         # @return [String]
         attr_accessor :dataset_region
@@ -748,9 +732,8 @@ module Google
         # @return [String]
         attr_accessor :destination_dataset_id
       
-        # Time when transfer run ended. Parameter ignored by server for input
-        # requests.
-        # Output only.
+        # Output only. Time when transfer run ended.
+        # Parameter ignored by server for input requests.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -775,12 +758,11 @@ module Google
         # @return [String]
         attr_accessor :run_time
       
-        # Describes the schedule of this transfer run if it was created as part of
-        # a regular schedule. For batch transfer runs that are directly created,
-        # this is empty.
+        # Output only. Describes the schedule of this transfer run if it was
+        # created as part of a regular schedule. For batch transfer runs that are
+        # scheduled manually, this is empty.
         # NOTE: the system might choose to delay the schedule depending on the
         # current load, so `schedule_time` doesn't always matches this.
-        # Output only.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -790,29 +772,25 @@ module Google
         # @return [String]
         attr_accessor :schedule_time
       
-        # Time when transfer run was started. Parameter ignored by server for input
-        # requests.
-        # Output only.
+        # Output only. Time when transfer run was started.
+        # Parameter ignored by server for input requests.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Data transfer run state. Ignored for input requests.
-        # Output only.
+        # Output only. Data transfer run state. Ignored for input requests.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Last time the data transfer run state was updated.
-        # Output only.
+        # Output only. Last time the data transfer run state was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Unique ID of the user on whose behalf transfer is done. Applicable only
-        # to data sources that do not support service accounts. When set to 0,
-        # the data source service account credentials are used.
-        # Output only.
+        # Output only. Unique ID of the user on whose behalf transfer is done.
+        # Applicable only to data sources that do not support service accounts.
+        # When set to 0, the data source service account credentials are used.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id

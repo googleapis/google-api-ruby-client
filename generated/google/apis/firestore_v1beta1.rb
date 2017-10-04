@@ -12,30 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/bigquerydatatransfer_v1/service.rb'
-require 'google/apis/bigquerydatatransfer_v1/classes.rb'
-require 'google/apis/bigquerydatatransfer_v1/representations.rb'
+require 'google/apis/firestore_v1beta1/service.rb'
+require 'google/apis/firestore_v1beta1/classes.rb'
+require 'google/apis/firestore_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # BigQuery Data Transfer API
+    # Google Cloud Firestore API
     #
-    # Transfers data from partner SaaS applications to Google BigQuery on a
-    # scheduled, managed basis.
+    # 
     #
-    # @see https://cloud.google.com/bigquery/
-    module BigquerydatatransferV1
-      VERSION = 'V1'
-      REVISION = '20171002'
-
-      # View and manage your data in Google BigQuery
-      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+    # @see https://cloud.google.com/firestore
+    module FirestoreV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '0'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
+      # View and manage your Google Cloud Datastore data
+      AUTH_DATASTORE = 'https://www.googleapis.com/auth/datastore'
     end
   end
 end

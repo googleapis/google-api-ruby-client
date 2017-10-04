@@ -191,6 +191,7 @@ module Google
           property :attachment_name, as: 'attachmentName'
           property :creation_time_ms, as: 'creationTimeMs'
           property :data, :base64 => true, as: 'data'
+          property :max_distance_meters, as: 'maxDistanceMeters'
           property :namespaced_type, as: 'namespacedType'
         end
       end

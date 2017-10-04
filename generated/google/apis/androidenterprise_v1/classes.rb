@@ -323,6 +323,12 @@ module Google
       class AppVersion
         include Google::Apis::Core::Hashable
       
+        # The track that this app was published in. For example if track is "alpha",
+        # this is an alpha version of the app.
+        # Corresponds to the JSON property `track`
+        # @return [String]
+        attr_accessor :track
+      
         # Unique increasing identifier for the app version.
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
@@ -341,6 +347,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @track = args[:track] if args.key?(:track)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_string = args[:version_string] if args.key?(:version_string)
         end
@@ -1471,6 +1478,11 @@ module Google
         # @return [String]
         attr_accessor :author_name
       
+        # The tracks that are visible to the enterprise.
+        # Corresponds to the JSON property `availableTracks`
+        # @return [Array<String>]
+        attr_accessor :available_tracks
+      
         # A link to the (consumer) Google Play details page for the product.
         # Corresponds to the JSON property `detailsUrl`
         # @return [String]
@@ -1547,6 +1559,7 @@ module Google
         def update!(**args)
           @app_version = args[:app_version] if args.key?(:app_version)
           @author_name = args[:author_name] if args.key?(:author_name)
+          @available_tracks = args[:available_tracks] if args.key?(:available_tracks)
           @details_url = args[:details_url] if args.key?(:details_url)
           @distribution_channel = args[:distribution_channel] if args.key?(:distribution_channel)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
@@ -1706,6 +1719,16 @@ module Google
         # @return [String]
         attr_accessor :product_set_behavior
       
+        # Other products that are part of the set, in addition to those specified in the
+        # productId array. The only difference between this field and the productId
+        # array is that it's possible to specify additional information about this
+        # product visibility, see ProductVisibility and its fields for more information.
+        # Specifying the same product ID both here and in the productId array is not
+        # allowed and it will result in an error.
+        # Corresponds to the JSON property `productVisibility`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ProductVisibility>]
+        attr_accessor :product_visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1715,6 +1738,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_set_behavior = args[:product_set_behavior] if args.key?(:product_set_behavior)
+          @product_visibility = args[:product_visibility] if args.key?(:product_visibility)
         end
       end
       
@@ -1742,6 +1766,45 @@ module Google
         def update!(**args)
           @certificate_hash_sha1 = args[:certificate_hash_sha1] if args.key?(:certificate_hash_sha1)
           @certificate_hash_sha256 = args[:certificate_hash_sha256] if args.key?(:certificate_hash_sha256)
+        end
+      end
+      
+      # A product to be made visible to a user.
+      class ProductVisibility
+        include Google::Apis::Core::Hashable
+      
+        # The product ID that should be made visible to the user. This is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # This allows to only grant visibility to the specified tracks of the app. For
+        # example, if an app has a prod version, a beta version and an alpha version and
+        # the enterprise has been granted visibility to both the alpha and beta tracks,
+        # if tracks is `"beta", "production"` the user will be able to install the app
+        # and they will get the beta version of the app. If there are no app versions in
+        # the specified track or if the enterprise wasn't granted visibility for the
+        # track, adding the "alpha" and "beta" values to the list of tracks will have no
+        # effect for now; however they will take effect once both conditions are met.
+        # Note that the enterprise itself needs to be granted access to the alpha and/or
+        # beta tracks, regardless of whether individual users or admins have access to
+        # those tracks.
+        # The allowed sets are: `` (considered equivalent to `"production"`) `"
+        # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
+        # of elements is not relevant. Any other set of tracks will be rejected with an
+        # error.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<String>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @tracks = args[:tracks] if args.key?(:tracks)
         end
       end
       

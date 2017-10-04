@@ -541,6 +541,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a specific model resource.
+        # Currently the only supported fields to update are `description` and
+        # `default_version.name`.
+        # @param [String] name
+        #   Required. The project name.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1Model] google_cloud_ml_v1__model_object
+        # @param [String] update_mask
+        #   Required. Specifies the path, relative to `Model`, of the field to update.
+        #   For example, to change the description of a model to "foo" and set its
+        #   default version to "version_1", the `update_mask` parameter would be
+        #   specified as `description`, `default_version.name`, and the `PATCH`
+        #   request body would specify the new value, as follows:
+        #   `
+        #   "description": "foo",
+        #   "defaultVersion": `
+        #   "name":"version_1"
+        #   `
+        #   `
+        #   In this example, the model is blindly overwritten since no etag is given.
+        #   To adopt etag mechanism, include `etag` field in the mask, and include the
+        #   `etag` value in your model resource.
+        #   Currently the supported update masks are `description`,
+        #   `default_version.name`, `labels`, and `etag`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_model(name, google_cloud_ml_v1__model_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Model::Representation
+          command.request_object = google_cloud_ml_v1__model_object
+          command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -766,6 +819,55 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Version resource.
+        # Currently the only supported field to update is `description`.
+        # @param [String] name
+        #   Required. The name of the model.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1Version] google_cloud_ml_v1__version_object
+        # @param [String] update_mask
+        #   Required. Specifies the path, relative to `Version`, of the field to
+        #   update. Must be present and non-empty.
+        #   For example, to change the description of a version to "foo", the
+        #   `update_mask` parameter would be specified as `description`, and the
+        #   `PATCH` request body would specify the new value, as follows:
+        #   `
+        #   "description": "foo"
+        #   `
+        #   In this example, the version is blindly overwritten since no etag is given.
+        #   To adopt etag mechanism, include `etag` field in the mask, and include the
+        #   `etag` value in your version resource.
+        #   Currently the only supported update masks are `description`, `labels`, and
+        #   `etag`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_model_version(name, google_cloud_ml_v1__version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
+          command.request_object = google_cloud_ml_v1__version_object
+          command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
