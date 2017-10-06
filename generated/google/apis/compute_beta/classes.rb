@@ -587,8 +587,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The status of the address, which can be either IN_USE or
-        # RESERVED. An address that is RESERVED is currently reserved and available to
+        # [Output Only] The status of the address, which can be one of RESERVING,
+        # RESERVED, or IN_USE. An address that is RESERVING is currently in the process
+        # of being reserved. A RESERVED address is currently reserved and available to
         # use. An IN_USE address is currently being used by another resource and is not
         # available.
         # Corresponds to the JSON property `status`
@@ -4997,18 +4998,25 @@ module Google
       class FixedOrPercent
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Absolute value calculated based on mode: mode = fixed ->
-        # calculated = fixed = percent -> calculated = ceiling(percent/100 * base_value)
+        # [Output Only] Absolute value of VM instances calculated based on the specific
+        # mode.
+        # 
+        # - If the value is fixed, then the caculated value is equal to the fixed value.
+        # - If the value is a percent, then the calculated value is percent/100 *
+        # targetSize. For example, the calculated value of a 80% of a managed instance
+        # group with 150 instances would be (80/100 * 150) = 120 VM instances. If there
+        # is a remainder, the number is rounded up.
         # Corresponds to the JSON property `calculated`
         # @return [Fixnum]
         attr_accessor :calculated
       
-        # fixed must be non-negative.
+        # Specifies a fixed number of VM instances. This must be a positive integer.
         # Corresponds to the JSON property `fixed`
         # @return [Fixnum]
         attr_accessor :fixed
       
-        # percent must belong to [0, 100].
+        # Specifies a percentage of instances between 0 to 100%, inclusive. For example,
+        # specify 80 for 80%.
         # Corresponds to the JSON property `percent`
         # @return [Fixnum]
         attr_accessor :percent
@@ -5661,6 +5669,13 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
+        # The string to match anywhere in the first 1024 bytes of the response body. If
+        # left empty (the default value), the status code determines health. The
+        # response data can only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5672,6 +5687,7 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -5709,6 +5725,13 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
+        # The string to match anywhere in the first 1024 bytes of the response body. If
+        # left empty (the default value), the status code determines health. The
+        # response data can only be ASCII.
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5720,6 +5743,7 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
           @request_path = args[:request_path] if args.key?(:request_path)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -7645,14 +7669,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerUpdatePolicy]
         attr_accessor :update_policy
       
-        # Versions supported by this IGM. User should set this field if they need fine-
-        # grained control over how many instances in each version are run by this IGM.
-        # Versions are keyed by instanceTemplate. Every instanceTemplate can appear at
-        # most once. This field overrides instanceTemplate field. If both
-        # instanceTemplate and versions are set, the user receives a warning. "
-        # instanceTemplate: X" is semantically equivalent to "versions [ `
-        # instanceTemplate: X ` ]". Exactly one version must have targetSize field left
-        # unset. Size of such a version will be calculated automatically.
+        # Specifies the instance templates used by this managed instance group to create
+        # instances.
+        # Each version is defined by an instanceTemplate. Every template can appear at
+        # most once per instance group. This field overrides the top-level
+        # instanceTemplate field. Read more about the relationships between these fields.
+        # Exactly one version must leave the targetSize field unset. That version will
+        # be applied to all remaining instances. For more information, read about canary
+        # updates.
         # Corresponds to the JSON property `versions`
         # @return [Array<Google::Apis::ComputeBeta::InstanceGroupManagerVersion>]
         attr_accessor :versions
@@ -8110,8 +8134,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_ready_sec
       
-        # Minimal action to be taken on an instance. The order of action types is:
-        # RESTART < REPLACE.
+        # Minimal action to be taken on an instance. You can specify either RESTART to
+        # restart existing instances or REPLACE to delete and create new instances from
+        # the target template. If you specify a code>RESTART, the Updater will attempt
+        # to perform that action only. However, if the Updater determines that the
+        # minimal action you specify is not enough to perform the update, it might
+        # perform a more disruptive action.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
@@ -15028,7 +15056,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Additional restrictions that must be met
+        # Additional restrictions that must be met. All conditions must pass for the
+        # rule to match.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::ComputeBeta::Condition>]
         attr_accessor :conditions

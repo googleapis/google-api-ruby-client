@@ -1705,7 +1705,7 @@ module Google
       class SetMasterAuthRequest
         include Google::Apis::Core::Hashable
       
-        # The exact form of action to be taken on the master auth
+        # The exact form of action to be taken on the master auth.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action

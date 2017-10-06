@@ -129,7 +129,7 @@ module Google
         # The HTTP method to use for the request. The default is POST.
         # The app's request handler for the task's target URL must be able to handle
         # HTTP requests with this http_method, otherwise the task attempt will fail
-        # with error code 405 "Method Not Allowed" because "the method specified in
+        # with error code 405 (Method Not Allowed). See
         # the Request-Line is not allowed for the resource identified by the
         # Request-URI". See
         # [Writing a push task request handler](/appengine/docs/java/taskqueue/push/
@@ -154,7 +154,7 @@ module Google
       
         # The relative URL.
         # The relative URL must begin with "/" and must be a valid HTTP relative URL.
-        # It can contain a path, query string arguments, and `#` fragments.
+        # It can contain a path and query string arguments.
         # If the relative URL is empty, then the root path "/" will be used.
         # No spaces are allowed, and the maximum length allowed is 2083 characters.
         # Corresponds to the JSON property `relativeUrl`
@@ -930,17 +930,12 @@ module Google
         # `filter` can be used to specify a subset of tasks to lease.
         # When `filter` is set to `tag=<my-tag>` then the
         # PullTasksResponse will contain only tasks whose
-        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` can be
-        # a bytes encoded as a string and must be less than 500 bytes.
-        # If `<my-tag>` includes whitespace or special characters (characters which
-        # aren't letters, numbers, or underscores), then it must be double-quoted.
-        # Double quotes and backslashes in quoted strings must be escaped by
-        # preceding it with a backslash (`\`).
-        # When `filter` is set to `tag=oldest_tag()`, only tasks which have the same
-        # tag as the task with the oldest schedule_time will be returned.
+        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
+        # 500 bytes.
+        # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
+        # the same tag as the task with the oldest schedule_time will be returned.
         # Grammar Syntax:
-        # * `filter = "tag=" comparable`
-        # *  `comparable = tag | function`
+        # * `filter = "tag=" tag | "tag_function=" function`
         # * `tag = string | bytes`
         # * `function = "oldest_tag()"`
         # The `oldest_tag()` function returns tasks which have the same tag as the
@@ -1108,22 +1103,18 @@ module Google
         # @return [String]
         attr_accessor :queue_state
       
+        # Rate limits.
+        # This message determines the maximum rate that tasks can be dispatched by a
+        # queue, regardless of whether the dispatch is a first task attempt or a retry.
+        # Corresponds to the JSON property `rateLimits`
+        # @return [Google::Apis::CloudtasksV2beta2::RateLimits]
+        attr_accessor :rate_limits
+      
         # Retry config.
-        # These settings determine retry behavior.
-        # If a task does not complete successfully, meaning that an
-        # acknowledgement is not received from the handler before the
-        # [deadline](/appengine/docs/python/taskqueue/push/#the_task_deadline),
-        # then it will be retried with exponential backoff according to the
-        # settings in RetryConfig.
+        # These settings determine how a failed task attempt is retried.
         # Corresponds to the JSON property `retryConfig`
         # @return [Google::Apis::CloudtasksV2beta2::RetryConfig]
         attr_accessor :retry_config
-      
-        # Throttle config.
-        # These settings determine the throttling behavior.
-        # Corresponds to the JSON property `throttleConfig`
-        # @return [Google::Apis::CloudtasksV2beta2::ThrottleConfig]
-        attr_accessor :throttle_config
       
         def initialize(**args)
            update!(**args)
@@ -1138,8 +1129,74 @@ module Google
           @pull_target = args[:pull_target] if args.key?(:pull_target)
           @purge_time = args[:purge_time] if args.key?(:purge_time)
           @queue_state = args[:queue_state] if args.key?(:queue_state)
+          @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
-          @throttle_config = args[:throttle_config] if args.key?(:throttle_config)
+        end
+      end
+      
+      # Rate limits.
+      # This message determines the maximum rate that tasks can be dispatched by a
+      # queue, regardless of whether the dispatch is a first task attempt or a retry.
+      class RateLimits
+        include Google::Apis::Core::Hashable
+      
+        # Output only.
+        # The max burst size limits how fast the queue is processed when
+        # many tasks are in the queue and the rate is high. This field
+        # allows the queue to have a high rate so processing starts shortly
+        # after a task is enqueued, but still limits resource usage when
+        # many tasks are enqueued in a short period of time.
+        # * For App Engine queues, if
+        # RateLimits.max_tasks_dispatched_per_second is 1, this
+        # field is 10; otherwise this field is
+        # RateLimits.max_tasks_dispatched_per_second / 5.
+        # * For pull queues, this field is output only and always 10,000.
+        # Note: For App Engine queues that were created through
+        # `queue.yaml/xml`, `max_burst_size` might not have the same
+        # settings as specified above; CloudTasks.UpdateQueue can be
+        # used to set `max_burst_size` only to the values specified above.
+        # This field has the same meaning as
+        # [bucket_size in queue.yaml](/appengine/docs/standard/python/config/queueref#
+        # bucket_size).
+        # Corresponds to the JSON property `maxBurstSize`
+        # @return [Fixnum]
+        attr_accessor :max_burst_size
+      
+        # The maximum number of concurrent tasks that Cloud Tasks allows
+        # to be dispatched for this queue. After this threshold has been
+        # reached, Cloud Tasks stops dispatching tasks until the number of
+        # concurrent requests decreases.
+        # The maximum allowed value is 5,000.
+        # * For App Engine queues, this field is 10 by default.
+        # * For pull queues, this field is output only and always -1, which
+        # indicates no limit.
+        # This field has the same meaning as
+        # [max_concurrent_requests in queue.yaml](/appengine/docs/standard/python/config/
+        # queueref#max_concurrent_requests).
+        # Corresponds to the JSON property `maxConcurrentTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_tasks
+      
+        # The maximum rate at which tasks are dispatched from this
+        # queue.
+        # The maximum allowed value is 500.
+        # * For App Engine queues, this field is 1 by default.
+        # * For pull queues, this field is output only and always 10,000.
+        # This field has the same meaning as
+        # [rate in queue.yaml](/appengine/docs/standard/python/config/queueref#rate).
+        # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
+        # @return [Float]
+        attr_accessor :max_tasks_dispatched_per_second
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_burst_size = args[:max_burst_size] if args.key?(:max_burst_size)
+          @max_concurrent_tasks = args[:max_concurrent_tasks] if args.key?(:max_concurrent_tasks)
+          @max_tasks_dispatched_per_second = args[:max_tasks_dispatched_per_second] if args.key?(:max_tasks_dispatched_per_second)
         end
       end
       
@@ -1204,12 +1261,7 @@ module Google
       end
       
       # Retry config.
-      # These settings determine retry behavior.
-      # If a task does not complete successfully, meaning that an
-      # acknowledgement is not received from the handler before the
-      # [deadline](/appengine/docs/python/taskqueue/push/#the_task_deadline),
-      # then it will be retried with exponential backoff according to the
-      # settings in RetryConfig.
+      # These settings determine how a failed task attempt is retried.
       class RetryConfig
         include Google::Apis::Core::Hashable
       
@@ -1232,10 +1284,11 @@ module Google
         # @return [String]
         attr_accessor :max_backoff
       
-        # The maximum number of times that the interval between failed task
-        # retries will be doubled before the increase becomes constant. The
-        # constant is: 2**(max_doublings - 1) *
-        # RetryConfig.min_backoff.
+        # The time between retries increases exponentially `max_doublings` times.
+        # `max_doublings` is maximum number of times that the interval between failed
+        # task retries will be doubled before the interval increases linearly.
+        # After max_doublings intervals, the retry interval will be
+        # 2^(max_doublings - 1) * RetryConfig.min_backoff.
         # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
         # this field is 16 by default.
         # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
@@ -1637,71 +1690,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Throttle config.
-      # These settings determine the throttling behavior.
-      class ThrottleConfig
-        include Google::Apis::Core::Hashable
-      
-        # Output only.
-        # The max burst size limits how fast the queue is processed when
-        # many tasks are in the queue and the rate is high. This field
-        # allows the queue to have a high rate so processing starts shortly
-        # after a task is enqueued, but still limits resource usage when
-        # many tasks are enqueued in a short period of time.
-        # * For App Engine queues, if
-        # ThrottleConfig.max_tasks_dispatched_per_second is 1, this
-        # field is 10; otherwise this field is
-        # ThrottleConfig.max_tasks_dispatched_per_second / 5.
-        # * For pull queues, this field is output only and always 10,000.
-        # Note: For App Engine queues that were created through
-        # `queue.yaml/xml`, `max_burst_size` might not have the same
-        # settings as specified above; CloudTasks.UpdateQueue can be
-        # used to set `max_burst_size` only to the values specified above.
-        # This field has the same meaning as
-        # [bucket_size in queue.yaml](/appengine/docs/standard/python/config/queueref#
-        # bucket_size).
-        # Corresponds to the JSON property `maxBurstSize`
-        # @return [Fixnum]
-        attr_accessor :max_burst_size
-      
-        # The maximum number of outstanding tasks that Cloud Tasks allows
-        # to be dispatched for this queue. After this threshold has been
-        # reached, Cloud Tasks stops dispatching tasks until the number of
-        # outstanding requests decreases.
-        # The maximum allowed value is 5,000.
-        # * For App Engine queues, this field is 10 by default.
-        # * For pull queues, this field is output only and always -1, which
-        # indicates no limit.
-        # This field has the same meaning as
-        # [max_concurrent_requests in queue.yaml](/appengine/docs/standard/python/config/
-        # queueref#max_concurrent_requests).
-        # Corresponds to the JSON property `maxOutstandingTasks`
-        # @return [Fixnum]
-        attr_accessor :max_outstanding_tasks
-      
-        # The maximum rate at which tasks are dispatched from this
-        # queue.
-        # The maximum allowed value is 500.
-        # * For App Engine queues, this field is 1 by default.
-        # * For pull queues, this field is output only and always 10,000.
-        # This field has the same meaning as
-        # [rate in queue.yaml](/appengine/docs/standard/python/config/queueref#rate).
-        # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
-        # @return [Float]
-        attr_accessor :max_tasks_dispatched_per_second
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_burst_size = args[:max_burst_size] if args.key?(:max_burst_size)
-          @max_outstanding_tasks = args[:max_outstanding_tasks] if args.key?(:max_outstanding_tasks)
-          @max_tasks_dispatched_per_second = args[:max_tasks_dispatched_per_second] if args.key?(:max_tasks_dispatched_per_second)
         end
       end
     end

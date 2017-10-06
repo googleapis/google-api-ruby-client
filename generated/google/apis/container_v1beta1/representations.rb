@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PodSecurityPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackNodePoolUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -367,6 +373,8 @@ module Google
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1beta1::NodePool, decorator: Google::Apis::ContainerV1beta1::NodePool::Representation
       
+          property :pod_security_policy_config, as: 'podSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
+      
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :status, as: 'status'
@@ -391,6 +399,8 @@ module Google
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
+          property :desired_pod_security_policy_config, as: 'desiredPodSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
+      
         end
       end
       
@@ -640,6 +650,13 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target_link, as: 'targetLink'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class PodSecurityPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

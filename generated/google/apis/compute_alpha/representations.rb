@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskInstantiationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2476,6 +2482,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterAdvertisedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterAdvertisedPrefix
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2700,6 +2712,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceInstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4462,6 +4480,16 @@ module Google
         end
       end
       
+      class DiskInstantiationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :device_name, as: 'deviceName'
+          property :instantiate_from, as: 'instantiateFrom'
+          property :source_image, as: 'sourceImage'
+        end
+      end
+      
       class DiskList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6145,6 +6173,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :source_instance, as: 'sourceInstance'
+          property :source_instance_params, as: 'sourceInstanceParams', class: Google::Apis::ComputeAlpha::SourceInstanceParams, decorator: Google::Apis::ComputeAlpha::SourceInstanceParams::Representation
+      
         end
       end
       
@@ -7943,6 +7973,14 @@ module Google
         end
       end
       
+      class RouterAdvertisedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :range, as: 'range'
+        end
+      end
+      
       class RouterAdvertisedPrefix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7988,6 +8026,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advertise_mode, as: 'advertiseMode'
           collection :advertised_groups, as: 'advertisedGroups'
+          collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange::Representation
+      
           collection :advertised_prefixs, as: 'advertisedPrefixs', class: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix::Representation
       
           property :asn, as: 'asn'
@@ -7999,6 +8039,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advertise_mode, as: 'advertiseMode'
           collection :advertised_groups, as: 'advertisedGroups'
+          collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedIpRange::Representation
+      
           collection :advertised_prefixs, as: 'advertisedPrefixs', class: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix, decorator: Google::Apis::ComputeAlpha::RouterAdvertisedPrefix::Representation
       
           property :advertised_route_priority, as: 'advertisedRoutePriority'
@@ -8365,6 +8407,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SourceInstanceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_configs, as: 'diskConfigs', class: Google::Apis::ComputeAlpha::DiskInstantiationConfig, decorator: Google::Apis::ComputeAlpha::DiskInstantiationConfig::Representation
+      
         end
       end
       
@@ -9399,6 +9449,8 @@ module Google
       class UsableSubnetwork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :network, as: 'network'
           property :subnetwork, as: 'subnetwork'
         end
       end

@@ -620,8 +620,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The status of the address, which can be either IN_USE or
-        # RESERVED. An address that is RESERVED is currently reserved and available to
+        # [Output Only] The status of the address, which can be one of RESERVING,
+        # RESERVED, or IN_USE. An address that is RESERVING is currently in the process
+        # of being reserved. A RESERVED address is currently reserved and available to
         # use. An IN_USE address is currently being used by another resource and is not
         # available.
         # Corresponds to the JSON property `status`
@@ -4288,6 +4289,47 @@ module Google
         end
       end
       
+      # A specification of the desired way to instantiate a disk in the instance
+      # template when its created from a source instance.
+      class DiskInstantiationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the disk will be auto-deleted when the instance is deleted (
+        # but not when the disk is detached from the instance).
+        # Corresponds to the JSON property `autoDelete`
+        # @return [Boolean]
+        attr_accessor :auto_delete
+        alias_method :auto_delete?, :auto_delete
+      
+        # Specifies the device name of the disk to which the configurations apply to.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # Specifies whether to include the disk and what image to use.
+        # Corresponds to the JSON property `instantiateFrom`
+        # @return [String]
+        attr_accessor :instantiate_from
+      
+        # The custom source image to be used to restore this disk when instantiating
+        # this instance template.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @instantiate_from = args[:instantiate_from] if args.key?(:instantiate_from)
+          @source_image = args[:source_image] if args.key?(:source_image)
+        end
+      end
+      
       # A list of Disk resources.
       class DiskList
         include Google::Apis::Core::Hashable
@@ -5398,18 +5440,25 @@ module Google
       class FixedOrPercent
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Absolute value calculated based on mode: mode = fixed ->
-        # calculated = fixed = percent -> calculated = ceiling(percent/100 * base_value)
+        # [Output Only] Absolute value of VM instances calculated based on the specific
+        # mode.
+        # 
+        # - If the value is fixed, then the caculated value is equal to the fixed value.
+        # - If the value is a percent, then the calculated value is percent/100 *
+        # targetSize. For example, the calculated value of a 80% of a managed instance
+        # group with 150 instances would be (80/100 * 150) = 120 VM instances. If there
+        # is a remainder, the number is rounded up.
         # Corresponds to the JSON property `calculated`
         # @return [Fixnum]
         attr_accessor :calculated
       
-        # fixed must be non-negative.
+        # Specifies a fixed number of VM instances. This must be a positive integer.
         # Corresponds to the JSON property `fixed`
         # @return [Fixnum]
         attr_accessor :fixed
       
-        # percent must belong to [0, 100].
+        # Specifies a percentage of instances between 0 to 100%, inclusive. For example,
+        # specify 80 for 80%.
         # Corresponds to the JSON property `percent`
         # @return [Fixnum]
         attr_accessor :percent
@@ -9204,14 +9253,14 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerUpdatePolicy]
         attr_accessor :update_policy
       
-        # Versions supported by this IGM. User should set this field if they need fine-
-        # grained control over how many instances in each version are run by this IGM.
-        # Versions are keyed by instanceTemplate. Every instanceTemplate can appear at
-        # most once. This field overrides instanceTemplate field. If both
-        # instanceTemplate and versions are set, the user receives a warning. "
-        # instanceTemplate: X" is semantically equivalent to "versions [ `
-        # instanceTemplate: X ` ]". Exactly one version must have targetSize field left
-        # unset. Size of such a version will be calculated automatically.
+        # Specifies the instance templates used by this managed instance group to create
+        # instances.
+        # Each version is defined by an instanceTemplate. Every template can appear at
+        # most once per instance group. This field overrides the top-level
+        # instanceTemplate field. Read more about the relationships between these fields.
+        # Exactly one version must leave the targetSize field unset. That version will
+        # be applied to all remaining instances. For more information, read about canary
+        # updates.
         # Corresponds to the JSON property `versions`
         # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerVersion>]
         attr_accessor :versions
@@ -9771,8 +9820,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_ready_sec
       
-        # Minimal action to be taken on an instance. The order of action types is:
-        # RESTART < REPLACE.
+        # Minimal action to be taken on an instance. You can specify either RESTART to
+        # restart existing instances or REPLACE to delete and create new instances from
+        # the target template. If you specify a code>RESTART, the Updater will attempt
+        # to perform that action only. However, if the Updater determines that the
+        # minimal action you specify is not enough to perform the update, it might
+        # perform a more disruptive action.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
@@ -11052,6 +11105,12 @@ module Google
         # @return [String]
         attr_accessor :source_instance
       
+        # A specification of the parameters to use when creating the instance template
+        # from a source instance.
+        # Corresponds to the JSON property `sourceInstanceParams`
+        # @return [Google::Apis::ComputeAlpha::SourceInstanceParams]
+        attr_accessor :source_instance_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11066,6 +11125,7 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @self_link = args[:self_link] if args.key?(:self_link)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @source_instance_params = args[:source_instance_params] if args.key?(:source_instance_params)
         end
       end
       
@@ -17877,6 +17937,31 @@ module Google
         end
       end
       
+      # Description-tagged IP ranges for the router to advertise.
+      class RouterAdvertisedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # User-specified description for the IP range.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The IP range to advertise. The value must be a CIDR-formatted string.
+        # Corresponds to the JSON property `range`
+        # @return [String]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
       # Description-tagged prefixes for the router to advertise.
       class RouterAdvertisedPrefix
         include Google::Apis::Core::Hashable
@@ -18036,6 +18121,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :advertised_groups
       
+        # User-specified list of individual IP ranges to advertise in custom mode. This
+        # field can only be populated if advertise_mode is CUSTOM and is advertised to
+        # all peers of the router. These IP ranges will be advertised in addition to any
+        # specified groups. Leave this field blank to advertise no custom IP ranges.
+        # Corresponds to the JSON property `advertisedIpRanges`
+        # @return [Array<Google::Apis::ComputeAlpha::RouterAdvertisedIpRange>]
+        attr_accessor :advertised_ip_ranges
+      
         # User-specified list of individual prefixes to advertise in custom mode. This
         # field can only be populated if advertise_mode is CUSTOM and is advertised to
         # all peers of the router. These prefixes will be advertised in addition to any
@@ -18059,6 +18152,7 @@ module Google
         def update!(**args)
           @advertise_mode = args[:advertise_mode] if args.key?(:advertise_mode)
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
+          @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_prefixs = args[:advertised_prefixs] if args.key?(:advertised_prefixs)
           @asn = args[:asn] if args.key?(:asn)
         end
@@ -18081,6 +18175,15 @@ module Google
         # Corresponds to the JSON property `advertisedGroups`
         # @return [Array<String>]
         attr_accessor :advertised_groups
+      
+        # User-specified list of individual IP ranges to advertise in custom mode. This
+        # field can only be populated if advertise_mode is CUSTOM and overrides the list
+        # defined for the router (in Bgp message). These IP ranges will be advertised in
+        # addition to any specified groups. Leave this field blank to advertise no
+        # custom IP ranges.
+        # Corresponds to the JSON property `advertisedIpRanges`
+        # @return [Array<Google::Apis::ComputeAlpha::RouterAdvertisedIpRange>]
+        attr_accessor :advertised_ip_ranges
       
         # User-specified list of individual prefixes to advertise in custom mode. This
         # field can only be populated if advertise_mode is CUSTOM and overrides the list
@@ -18134,6 +18237,7 @@ module Google
         def update!(**args)
           @advertise_mode = args[:advertise_mode] if args.key?(:advertise_mode)
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
+          @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_prefixs = args[:advertised_prefixs] if args.key?(:advertised_prefixs)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
@@ -18719,7 +18823,8 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Additional restrictions that must be met
+        # Additional restrictions that must be met. All conditions must pass for the
+        # rule to match.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::ComputeAlpha::Condition>]
         attr_accessor :conditions
@@ -19576,6 +19681,29 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # A specification of the parameters to use when creating the instance template
+      # from a source instance.
+      class SourceInstanceParams
+        include Google::Apis::Core::Hashable
+      
+        # Attached disks configuration. If not provided, defaults are applied: For boot
+        # disk and any other R/W disks, new custom images will be created from each disk.
+        # For read-only disks, they will be attached in read-only mode. Local SSD disks
+        # will be created as blank volumes.
+        # Corresponds to the JSON property `diskConfigs`
+        # @return [Array<Google::Apis::ComputeAlpha::DiskInstantiationConfig>]
+        attr_accessor :disk_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_configs = args[:disk_configs] if args.key?(:disk_configs)
         end
       end
       
@@ -23566,6 +23694,16 @@ module Google
       class UsableSubnetwork
         include Google::Apis::Core::Hashable
       
+        # The range of internal addresses that are owned by this subnetwork.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Network URL.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Subnetwork URL.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
@@ -23577,6 +23715,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @network = args[:network] if args.key?(:network)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end

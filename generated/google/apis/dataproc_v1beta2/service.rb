@@ -318,6 +318,9 @@ module Google
         #   Required. The Cloud Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
+        # @param [String] cluster_uuid
+        #   Optional. Specifying the cluster_uuid means the RPC should fail (with error
+        #   NOT_FOUND) if cluster with specified UUID does not exist.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -335,13 +338,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_region_cluster(project_id, region, cluster_name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_region_cluster(project_id, region, cluster_name, cluster_uuid: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
+          command.query['clusterUuid'] = cluster_uuid unless cluster_uuid.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

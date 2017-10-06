@@ -878,6 +878,10 @@ module Google
         # to perform the work associated with the task. To return the
         # payloads in the PullTasksResponse, set
         # PullTasksRequest.response_view to Task.View.FULL.
+        # A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per
+        # queue. google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit
+        # is exceeded. google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
+        # ThrottleConfig.max_tasks_dispatched_per_second is exceeded.
         # @param [String] name
         #   Required.
         #   The queue name. For example:

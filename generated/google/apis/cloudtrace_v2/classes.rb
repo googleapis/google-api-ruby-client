@@ -217,6 +217,45 @@ module Google
         end
       end
       
+      # An event describing a message sent/received between Spans.
+      class MessageEvent
+        include Google::Apis::Core::Hashable
+      
+        # The number of compressed bytes sent or received. If missing assumed to
+        # be the same size as uncompressed.
+        # Corresponds to the JSON property `compressedSize`
+        # @return [Fixnum]
+        attr_accessor :compressed_size
+      
+        # An identifier for the message, which must be unique in this span.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Type of MessageEvent. Indicates whether the message was sent or
+        # received.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The number of uncompressed bytes sent or received.
+        # Corresponds to the JSON property `uncompressedSize`
+        # @return [Fixnum]
+        attr_accessor :uncompressed_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compressed_size = args[:compressed_size] if args.key?(:compressed_size)
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
+          @uncompressed_size = args[:uncompressed_size] if args.key?(:uncompressed_size)
+        end
+      end
+      
       # Binary module.
       class Module
         include Google::Apis::Core::Hashable
@@ -239,52 +278,6 @@ module Google
         def update!(**args)
           @build_id = args[:build_id] if args.key?(:build_id)
           @module = args[:module] if args.key?(:module)
-        end
-      end
-      
-      # An event describing an RPC message sent or received on the network.
-      class NetworkEvent
-        include Google::Apis::Core::Hashable
-      
-        # The number of compressed bytes sent or received.
-        # Corresponds to the JSON property `compressedMessageSize`
-        # @return [Fixnum]
-        attr_accessor :compressed_message_size
-      
-        # An identifier for the message, which must be unique in this span.
-        # Corresponds to the JSON property `messageId`
-        # @return [Fixnum]
-        attr_accessor :message_id
-      
-        # For sent messages, this is the time at which the first bit was sent.
-        # For received messages, this is the time at which the last bit was
-        # received.
-        # Corresponds to the JSON property `time`
-        # @return [String]
-        attr_accessor :time
-      
-        # Type of NetworkEvent. Indicates whether the RPC message was sent or
-        # received.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The number of uncompressed bytes sent or received.
-        # Corresponds to the JSON property `uncompressedMessageSize`
-        # @return [Fixnum]
-        attr_accessor :uncompressed_message_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @compressed_message_size = args[:compressed_message_size] if args.key?(:compressed_message_size)
-          @message_id = args[:message_id] if args.key?(:message_id)
-          @time = args[:time] if args.key?(:time)
-          @type = args[:type] if args.key?(:type)
-          @uncompressed_message_size = args[:uncompressed_message_size] if args.key?(:uncompressed_message_size)
         end
       end
       
@@ -411,7 +404,7 @@ module Google
       
         # A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
         # on the span, consisting of either user-supplied key:value pairs, or
-        # details of an RPC message sent/received on the network.
+        # details of a message sent/received between Spans.
         # Corresponds to the JSON property `timeEvents`
         # @return [Google::Apis::CloudtraceV2::TimeEvents]
         attr_accessor :time_events
@@ -624,7 +617,7 @@ module Google
         end
       end
       
-      # A time-stamped annotation or network event in the Span.
+      # A time-stamped annotation or message event in the Span.
       class TimeEvent
         include Google::Apis::Core::Hashable
       
@@ -633,10 +626,10 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Annotation]
         attr_accessor :annotation
       
-        # An event describing an RPC message sent or received on the network.
-        # Corresponds to the JSON property `networkEvent`
-        # @return [Google::Apis::CloudtraceV2::NetworkEvent]
-        attr_accessor :network_event
+        # An event describing a message sent/received between Spans.
+        # Corresponds to the JSON property `messageEvent`
+        # @return [Google::Apis::CloudtraceV2::MessageEvent]
+        attr_accessor :message_event
       
         # The timestamp indicating the time the event occurred.
         # Corresponds to the JSON property `time`
@@ -650,14 +643,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotation = args[:annotation] if args.key?(:annotation)
-          @network_event = args[:network_event] if args.key?(:network_event)
+          @message_event = args[:message_event] if args.key?(:message_event)
           @time = args[:time] if args.key?(:time)
         end
       end
       
       # A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
       # on the span, consisting of either user-supplied key:value pairs, or
-      # details of an RPC message sent/received on the network.
+      # details of a message sent/received between Spans.
       class TimeEvents
         include Google::Apis::Core::Hashable
       
@@ -667,11 +660,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :dropped_annotations_count
       
-        # The number of dropped network events in all the included time events.
-        # If the value is 0, then no network events were dropped.
-        # Corresponds to the JSON property `droppedNetworkEventsCount`
+        # The number of dropped message events in all the included time events.
+        # If the value is 0, then no message events were dropped.
+        # Corresponds to the JSON property `droppedMessageEventsCount`
         # @return [Fixnum]
-        attr_accessor :dropped_network_events_count
+        attr_accessor :dropped_message_events_count
       
         # A collection of `TimeEvent`s.
         # Corresponds to the JSON property `timeEvent`
@@ -685,7 +678,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dropped_annotations_count = args[:dropped_annotations_count] if args.key?(:dropped_annotations_count)
-          @dropped_network_events_count = args[:dropped_network_events_count] if args.key?(:dropped_network_events_count)
+          @dropped_message_events_count = args[:dropped_message_events_count] if args.key?(:dropped_message_events_count)
           @time_event = args[:time_event] if args.key?(:time_event)
         end
       end

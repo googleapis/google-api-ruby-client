@@ -64,13 +64,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Module
+      class MessageEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NetworkEvent
+      class Module
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -187,6 +187,16 @@ module Google
         end
       end
       
+      class MessageEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compressed_size, :numeric_string => true, as: 'compressedSize'
+          property :id, :numeric_string => true, as: 'id'
+          property :type, as: 'type'
+          property :uncompressed_size, :numeric_string => true, as: 'uncompressedSize'
+        end
+      end
+      
       class Module
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -194,17 +204,6 @@ module Google
       
           property :module, as: 'module', class: Google::Apis::CloudtraceV2::TruncatableString, decorator: Google::Apis::CloudtraceV2::TruncatableString::Representation
       
-        end
-      end
-      
-      class NetworkEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :compressed_message_size, :numeric_string => true, as: 'compressedMessageSize'
-          property :message_id, :numeric_string => true, as: 'messageId'
-          property :time, as: 'time'
-          property :type, as: 'type'
-          property :uncompressed_message_size, :numeric_string => true, as: 'uncompressedMessageSize'
         end
       end
       
@@ -283,7 +282,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :annotation, as: 'annotation', class: Google::Apis::CloudtraceV2::Annotation, decorator: Google::Apis::CloudtraceV2::Annotation::Representation
       
-          property :network_event, as: 'networkEvent', class: Google::Apis::CloudtraceV2::NetworkEvent, decorator: Google::Apis::CloudtraceV2::NetworkEvent::Representation
+          property :message_event, as: 'messageEvent', class: Google::Apis::CloudtraceV2::MessageEvent, decorator: Google::Apis::CloudtraceV2::MessageEvent::Representation
       
           property :time, as: 'time'
         end
@@ -293,7 +292,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dropped_annotations_count, as: 'droppedAnnotationsCount'
-          property :dropped_network_events_count, as: 'droppedNetworkEventsCount'
+          property :dropped_message_events_count, as: 'droppedMessageEventsCount'
           collection :time_event, as: 'timeEvent', class: Google::Apis::CloudtraceV2::TimeEvent, decorator: Google::Apis::CloudtraceV2::TimeEvent::Representation
       
         end

@@ -8301,6 +8301,14 @@ module Google
         #   accidentally creating duplicate commitments.
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] source_instance_template
+        #   Specifies instance template to create the instance.
+        #   This field is optional. It can be a full or partial URL. For example, the
+        #   following are all valid URLs to an instance template:
+        #   - https://www.googleapis.com/compute/v1/projects/project/global/global/
+        #   instanceTemplates/instanceTemplate
+        #   - projects/project/global/global/instanceTemplates/instanceTemplate
+        #   - global/instancesTemplates/instanceTemplate
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8322,7 +8330,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(project, zone, instance_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, zone, instance_object = nil, request_id: nil, source_instance_template: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/zones/{zone}/instances', options)
           command.request_representation = Google::Apis::ComputeBeta::Instance::Representation
           command.request_object = instance_object
@@ -8331,6 +8339,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['sourceInstanceTemplate'] = source_instance_template unless source_instance_template.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

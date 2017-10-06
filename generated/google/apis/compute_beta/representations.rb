@@ -4191,6 +4191,7 @@ module Google
           property :port_name, as: 'portName'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
+          property :response, as: 'response'
         end
       end
       
@@ -4202,6 +4203,7 @@ module Google
           property :port_name, as: 'portName'
           property :proxy_header, as: 'proxyHeader'
           property :request_path, as: 'requestPath'
+          property :response, as: 'response'
         end
       end
       

@@ -407,6 +407,11 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::NodePool>]
         attr_accessor :node_pools
       
+        # Configuration for the PodSecurityPolicy feature.
+        # Corresponds to the JSON property `podSecurityPolicyConfig`
+        # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
+        attr_accessor :pod_security_policy_config
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -480,6 +485,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
+          @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @status = args[:status] if args.key?(:status)
@@ -561,6 +567,11 @@ module Google
         # @return [String]
         attr_accessor :desired_node_version
       
+        # Configuration for the PodSecurityPolicy feature.
+        # Corresponds to the JSON property `desiredPodSecurityPolicyConfig`
+        # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
+        attr_accessor :desired_pod_security_policy_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -576,6 +587,7 @@ module Google
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
+          @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
         end
       end
       
@@ -1629,6 +1641,27 @@ module Google
         end
       end
       
+      # Configuration for the PodSecurityPolicy feature.
+      class PodSecurityPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable the PodSecurityPolicy controller for this cluster. If enabled, pods
+        # must be valid under a PodSecurityPolicy to be created.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed
       # NodePool upgrade. This will be an no-op if the last upgrade successfully
       # completed.
@@ -1893,7 +1926,7 @@ module Google
       class SetMasterAuthRequest
         include Google::Apis::Core::Hashable
       
-        # The exact form of action to be taken on the master auth
+        # The exact form of action to be taken on the master auth.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action

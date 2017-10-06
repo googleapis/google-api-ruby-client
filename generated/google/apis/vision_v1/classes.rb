@@ -1410,7 +1410,9 @@ module Google
       class SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
-        # Represents the adult content likelihood for the image.
+        # Represents the adult content likelihood for the image. Adult content may
+        # contain elements such as nudity, pornographic images or cartoons, or
+        # sexual activities.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -1427,7 +1429,7 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Violence likelihood.
+        # Likelihood that this image contains violent content.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence

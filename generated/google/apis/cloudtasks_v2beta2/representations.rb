@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RateLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RenewLeaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,12 +239,6 @@ module Google
       end
       
       class TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ThrottleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -468,10 +468,19 @@ module Google
       
           property :purge_time, as: 'purgeTime'
           property :queue_state, as: 'queueState'
+          property :rate_limits, as: 'rateLimits', class: Google::Apis::CloudtasksV2beta2::RateLimits, decorator: Google::Apis::CloudtasksV2beta2::RateLimits::Representation
+      
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2beta2::RetryConfig, decorator: Google::Apis::CloudtasksV2beta2::RetryConfig::Representation
       
-          property :throttle_config, as: 'throttleConfig', class: Google::Apis::CloudtasksV2beta2::ThrottleConfig, decorator: Google::Apis::CloudtasksV2beta2::ThrottleConfig::Representation
+        end
+      end
       
+      class RateLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_burst_size, as: 'maxBurstSize'
+          property :max_concurrent_tasks, as: 'maxConcurrentTasks'
+          property :max_tasks_dispatched_per_second, as: 'maxTasksDispatchedPerSecond'
         end
       end
       
@@ -569,15 +578,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class ThrottleConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_burst_size, as: 'maxBurstSize'
-          property :max_outstanding_tasks, as: 'maxOutstandingTasks'
-          property :max_tasks_dispatched_per_second, as: 'maxTasksDispatchedPerSecond'
         end
       end
     end
