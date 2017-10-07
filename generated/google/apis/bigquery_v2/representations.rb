@@ -1085,6 +1085,8 @@ module Google
         class Table
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :creation_time, :numeric_string => true, as: 'creationTime'
+            property :expiration_time, :numeric_string => true, as: 'expirationTime'
             property :friendly_name, as: 'friendlyName'
             property :id, as: 'id'
             property :kind, as: 'kind'

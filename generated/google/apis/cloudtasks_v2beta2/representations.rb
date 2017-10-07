@@ -505,8 +505,8 @@ module Google
           property :max_attempts, as: 'maxAttempts'
           property :max_backoff, as: 'maxBackoff'
           property :max_doublings, as: 'maxDoublings'
+          property :max_retry_duration, as: 'maxRetryDuration'
           property :min_backoff, as: 'minBackoff'
-          property :task_age_limit, as: 'taskAgeLimit'
           property :unlimited_attempts, as: 'unlimitedAttempts'
         end
       end

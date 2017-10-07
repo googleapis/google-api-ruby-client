@@ -684,6 +684,10 @@ module Google
         # or the batching documentation for your client library, for example
         # https://developers.google.com/api-client-library/python/guide/batch.
         # Tasks cannot be updated after creation; there is no UpdateTask command.
+        # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
+        # the maximum task size is 100KB.
+        # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this
+        # the maximum task size is 1MB.
         # @param [String] parent
         #   Required.
         #   The queue name. For example:
@@ -881,7 +885,7 @@ module Google
         # A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per
         # queue. google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit
         # is exceeded. google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
-        # ThrottleConfig.max_tasks_dispatched_per_second is exceeded.
+        # RateLimits.max_tasks_dispatched_per_second is exceeded.
         # @param [String] name
         #   Required.
         #   The queue name. For example:

@@ -281,7 +281,7 @@ module Google
       
           collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV1::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV1::AuthorizationInfo::Representation
       
-          collection :metadata, as: 'metadata'
+          hash :metadata, as: 'metadata'
           property :method_name, as: 'methodName'
           property :num_response_items, :numeric_string => true, as: 'numResponseItems'
           hash :request, as: 'request'

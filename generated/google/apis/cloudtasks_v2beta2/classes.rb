@@ -1280,6 +1280,9 @@ module Google
         # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
         # is output only and always 0.
         # `max_backoff` will be truncated to the nearest second.
+        # This field has the same meaning as
+        # [max_backoff_seconds in queue.yaml](/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxBackoff`
         # @return [String]
         attr_accessor :max_backoff
@@ -1293,9 +1296,30 @@ module Google
         # this field is 16 by default.
         # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
         # is output only and always 0.
+        # This field has the same meaning as
+        # [max_doublings in queue.yaml](/appengine/docs/standard/python/config/queueref#
+        # retry_parameters).
         # Corresponds to the JSON property `maxDoublings`
         # @return [Fixnum]
         attr_accessor :max_doublings
+      
+        # If positive, `max_retry_duration` specifies the time limit for retrying a
+        # failed task, measured from when the task was first attempted. Once
+        # `max_retry_duration` time has passed *and* the task has been attempted
+        # RetryConfig.max_attempts times, no further attempts will be made and
+        # the task will be deleted.
+        # If zero, then the task age is unlimited.
+        # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
+        # this field is 0 seconds by default.
+        # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this
+        # field is output only and always 0.
+        # `max_retry_duration` will be truncated to the nearest second.
+        # This field has the same meaning as
+        # [task_age_limit in queue.yaml](/appengine/docs/standard/python/config/queueref#
+        # retry_parameters).
+        # Corresponds to the JSON property `maxRetryDuration`
+        # @return [String]
+        attr_accessor :max_retry_duration
       
         # The minimum amount of time to wait before retrying a task after
         # it fails.
@@ -1304,19 +1328,12 @@ module Google
         # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this
         # field is output only and always 0.
         # `min_backoff` will be truncated to the nearest second.
+        # This field has the same meaning as
+        # [min_backoff_seconds in queue.yaml](/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `minBackoff`
         # @return [String]
         attr_accessor :min_backoff
-      
-        # If positive, task_age_limit specifies the time limit for retrying a failed
-        # task, measured from when the task was first run. If specified with
-        # RetryConfig.max_attempts, the task will be retried until both
-        # limits are reached.
-        # If zero, then the task age is unlimited. This field is zero by default.
-        # `task_age_limit` will be truncated to the nearest second.
-        # Corresponds to the JSON property `taskAgeLimit`
-        # @return [String]
-        attr_accessor :task_age_limit
       
         # If true, then the number of attempts is unlimited.
         # Corresponds to the JSON property `unlimitedAttempts`
@@ -1333,8 +1350,8 @@ module Google
           @max_attempts = args[:max_attempts] if args.key?(:max_attempts)
           @max_backoff = args[:max_backoff] if args.key?(:max_backoff)
           @max_doublings = args[:max_doublings] if args.key?(:max_doublings)
+          @max_retry_duration = args[:max_retry_duration] if args.key?(:max_retry_duration)
           @min_backoff = args[:min_backoff] if args.key?(:min_backoff)
-          @task_age_limit = args[:task_age_limit] if args.key?(:task_age_limit)
           @unlimited_attempts = args[:unlimited_attempts] if args.key?(:unlimited_attempts)
         end
       end

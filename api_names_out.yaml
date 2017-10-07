@@ -8990,6 +8990,8 @@
 "/bigquery:v2/TableList/nextPageToken": next_page_token
 "/bigquery:v2/TableList/tables": tables
 "/bigquery:v2/TableList/tables/table": table
+"/bigquery:v2/TableList/tables/table/creationTime": creation_time
+"/bigquery:v2/TableList/tables/table/expirationTime": expiration_time
 "/bigquery:v2/TableList/tables/table/friendlyName": friendly_name
 "/bigquery:v2/TableList/tables/table/id": id
 "/bigquery:v2/TableList/tables/table/kind": kind
@@ -13643,6 +13645,7 @@
 "/cloudtasks:v2beta2/RetryConfig/maxAttempts": max_attempts
 "/cloudtasks:v2beta2/RetryConfig/maxBackoff": max_backoff
 "/cloudtasks:v2beta2/RetryConfig/maxDoublings": max_doublings
+"/cloudtasks:v2beta2/RetryConfig/maxRetryDuration": max_retry_duration
 "/cloudtasks:v2beta2/RetryConfig/minBackoff": min_backoff
 "/cloudtasks:v2beta2/RetryConfig/taskAgeLimit": task_age_limit
 "/cloudtasks:v2beta2/RetryConfig/unlimitedAttempts": unlimited_attempts

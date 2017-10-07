@@ -93,18 +93,12 @@ module Google
       
         # Quota metrics to indicate the result of allocation. Depending on the
         # request, one or more of the following metrics will be included:
-        # 1. For rate quota, per quota group or per quota metric incremental usage
-        # will be specified using the following delta metric:
+        # 1. Per quota group or per quota metric incremental usage will be specified
+        # using the following delta metric :
         # "serviceruntime.googleapis.com/api/consumer/quota_used_count"
-        # 2. For allocation quota, per quota metric total usage will be specified
-        # using the following gauge metric:
-        # "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        # 3. For both rate quota and allocation quota, the quota limit reached
-        # condition will be specified using the following boolean metric:
+        # 2. The quota limit reached condition will be specified using the following
+        # boolean metric :
         # "serviceruntime.googleapis.com/quota/exceeded"
-        # 4. For allocation quota, value for each quota limit associated with
-        # the metrics will be specified using the following gauge metric:
-        # "serviceruntime.googleapis.com/quota/limit"
         # Corresponds to the JSON property `quotaMetrics`
         # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
         attr_accessor :quota_metrics
@@ -147,7 +141,7 @@ module Google
         # Other service-specific data about the request, response, and other
         # information associated with the current audited event.
         # Corresponds to the JSON property `metadata`
-        # @return [Array<Hash<String,Object>>]
+        # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The name of the service method or operation.

@@ -3041,6 +3041,18 @@ module Google
         class Table
           include Google::Apis::Core::Hashable
         
+          # The time when this table was created, in milliseconds since the epoch.
+          # Corresponds to the JSON property `creationTime`
+          # @return [Fixnum]
+          attr_accessor :creation_time
+        
+          # [Optional] The time when this table expires, in milliseconds since the epoch.
+          # If not present, the table will persist indefinitely. Expired tables will be
+          # deleted and their storage reclaimed.
+          # Corresponds to the JSON property `expirationTime`
+          # @return [Fixnum]
+          attr_accessor :expiration_time
+        
           # The user-friendly name for this table.
           # Corresponds to the JSON property `friendlyName`
           # @return [String]
@@ -3088,6 +3100,8 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @creation_time = args[:creation_time] if args.key?(:creation_time)
+            @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
             @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
