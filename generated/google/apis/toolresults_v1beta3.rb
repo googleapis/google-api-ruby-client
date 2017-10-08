@@ -25,7 +25,7 @@ module Google
     # @see https://firebase.google.com/docs/test-lab/
     module ToolresultsV1beta3
       VERSION = 'V1beta3'
-      REVISION = '20170925'
+      REVISION = '20171006'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

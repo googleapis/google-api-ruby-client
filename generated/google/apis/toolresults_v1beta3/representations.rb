@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GraphicsStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GraphicsStatsBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class History
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -480,6 +492,33 @@ module Google
         end
       end
       
+      class GraphicsStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buckets, as: 'buckets', class: Google::Apis::ToolresultsV1beta3::GraphicsStatsBucket, decorator: Google::Apis::ToolresultsV1beta3::GraphicsStatsBucket::Representation
+      
+          property :high_input_latency_count, :numeric_string => true, as: 'highInputLatencyCount'
+          property :janky_frames, :numeric_string => true, as: 'jankyFrames'
+          property :missed_vsync_count, :numeric_string => true, as: 'missedVsyncCount'
+          property :p50_millis, :numeric_string => true, as: 'p50Millis'
+          property :p90_millis, :numeric_string => true, as: 'p90Millis'
+          property :p95_millis, :numeric_string => true, as: 'p95Millis'
+          property :p99_millis, :numeric_string => true, as: 'p99Millis'
+          property :slow_bitmap_upload_count, :numeric_string => true, as: 'slowBitmapUploadCount'
+          property :slow_draw_count, :numeric_string => true, as: 'slowDrawCount'
+          property :slow_ui_thread_count, :numeric_string => true, as: 'slowUiThreadCount'
+          property :total_frames, :numeric_string => true, as: 'totalFrames'
+        end
+      end
+      
+      class GraphicsStatsBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frame_count, :numeric_string => true, as: 'frameCount'
+          property :render_millis, :numeric_string => true, as: 'renderMillis'
+        end
+      end
+      
       class History
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -610,6 +649,8 @@ module Google
           property :app_start_time, as: 'appStartTime', class: Google::Apis::ToolresultsV1beta3::AppStartTime, decorator: Google::Apis::ToolresultsV1beta3::AppStartTime::Representation
       
           property :execution_id, as: 'executionId'
+          property :graphics_stats, as: 'graphicsStats', class: Google::Apis::ToolresultsV1beta3::GraphicsStats, decorator: Google::Apis::ToolresultsV1beta3::GraphicsStats::Representation
+      
           property :history_id, as: 'historyId'
           property :perf_environment, as: 'perfEnvironment', class: Google::Apis::ToolresultsV1beta3::PerfEnvironment, decorator: Google::Apis::ToolresultsV1beta3::PerfEnvironment::Representation
       

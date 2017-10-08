@@ -776,6 +776,119 @@ module Google
         end
       end
       
+      # Graphics statistics for the App. The information is collected from 'adb shell
+      # dumpsys graphicsstats'. For more info see: https://developer.android.com/
+      # training/testing/performance.html Statistics will only be present for API 23+.
+      class GraphicsStats
+        include Google::Apis::Core::Hashable
+      
+        # Histogram of frame render times. There should be 154 buckets ranging from [5ms,
+        # 6ms) to [4950ms, infinity)
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::GraphicsStatsBucket>]
+        attr_accessor :buckets
+      
+        # Total "high input latency" events.
+        # Corresponds to the JSON property `highInputLatencyCount`
+        # @return [Fixnum]
+        attr_accessor :high_input_latency_count
+      
+        # Total frames with slow render time. Should be <= total_frames.
+        # Corresponds to the JSON property `jankyFrames`
+        # @return [Fixnum]
+        attr_accessor :janky_frames
+      
+        # Total "missed vsync" events.
+        # Corresponds to the JSON property `missedVsyncCount`
+        # @return [Fixnum]
+        attr_accessor :missed_vsync_count
+      
+        # 50th percentile frame render time in milliseconds.
+        # Corresponds to the JSON property `p50Millis`
+        # @return [Fixnum]
+        attr_accessor :p50_millis
+      
+        # 90th percentile frame render time in milliseconds.
+        # Corresponds to the JSON property `p90Millis`
+        # @return [Fixnum]
+        attr_accessor :p90_millis
+      
+        # 95th percentile frame render time in milliseconds.
+        # Corresponds to the JSON property `p95Millis`
+        # @return [Fixnum]
+        attr_accessor :p95_millis
+      
+        # 99th percentile frame render time in milliseconds.
+        # Corresponds to the JSON property `p99Millis`
+        # @return [Fixnum]
+        attr_accessor :p99_millis
+      
+        # Total "slow bitmap upload" events.
+        # Corresponds to the JSON property `slowBitmapUploadCount`
+        # @return [Fixnum]
+        attr_accessor :slow_bitmap_upload_count
+      
+        # Total "slow draw" events.
+        # Corresponds to the JSON property `slowDrawCount`
+        # @return [Fixnum]
+        attr_accessor :slow_draw_count
+      
+        # Total "slow UI thread" events.
+        # Corresponds to the JSON property `slowUiThreadCount`
+        # @return [Fixnum]
+        attr_accessor :slow_ui_thread_count
+      
+        # Total frames rendered by package.
+        # Corresponds to the JSON property `totalFrames`
+        # @return [Fixnum]
+        attr_accessor :total_frames
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @high_input_latency_count = args[:high_input_latency_count] if args.key?(:high_input_latency_count)
+          @janky_frames = args[:janky_frames] if args.key?(:janky_frames)
+          @missed_vsync_count = args[:missed_vsync_count] if args.key?(:missed_vsync_count)
+          @p50_millis = args[:p50_millis] if args.key?(:p50_millis)
+          @p90_millis = args[:p90_millis] if args.key?(:p90_millis)
+          @p95_millis = args[:p95_millis] if args.key?(:p95_millis)
+          @p99_millis = args[:p99_millis] if args.key?(:p99_millis)
+          @slow_bitmap_upload_count = args[:slow_bitmap_upload_count] if args.key?(:slow_bitmap_upload_count)
+          @slow_draw_count = args[:slow_draw_count] if args.key?(:slow_draw_count)
+          @slow_ui_thread_count = args[:slow_ui_thread_count] if args.key?(:slow_ui_thread_count)
+          @total_frames = args[:total_frames] if args.key?(:total_frames)
+        end
+      end
+      
+      # 
+      class GraphicsStatsBucket
+        include Google::Apis::Core::Hashable
+      
+        # Number of frames in the bucket.
+        # Corresponds to the JSON property `frameCount`
+        # @return [Fixnum]
+        attr_accessor :frame_count
+      
+        # Lower bound of render time in milliseconds.
+        # Corresponds to the JSON property `renderMillis`
+        # @return [Fixnum]
+        attr_accessor :render_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frame_count = args[:frame_count] if args.key?(:frame_count)
+          @render_millis = args[:render_millis] if args.key?(:render_millis)
+        end
+      end
+      
       # A History represents a sorted list of Executions ordered by the
       # start_timestamp_millis field (descending). It can be used to group all the
       # Executions of a continuous build.
@@ -1225,6 +1338,13 @@ module Google
         # @return [String]
         attr_accessor :execution_id
       
+        # Graphics statistics for the App. The information is collected from 'adb shell
+        # dumpsys graphicsstats'. For more info see: https://developer.android.com/
+        # training/testing/performance.html Statistics will only be present for API 23+.
+        # Corresponds to the JSON property `graphicsStats`
+        # @return [Google::Apis::ToolresultsV1beta3::GraphicsStats]
+        attr_accessor :graphics_stats
+      
         # A tool results history ID.
         # Corresponds to the JSON property `historyId`
         # @return [String]
@@ -1258,6 +1378,7 @@ module Google
         def update!(**args)
           @app_start_time = args[:app_start_time] if args.key?(:app_start_time)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @graphics_stats = args[:graphics_stats] if args.key?(:graphics_stats)
           @history_id = args[:history_id] if args.key?(:history_id)
           @perf_environment = args[:perf_environment] if args.key?(:perf_environment)
           @perf_metrics = args[:perf_metrics] if args.key?(:perf_metrics)

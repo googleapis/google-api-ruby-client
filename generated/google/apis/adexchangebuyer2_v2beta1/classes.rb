@@ -869,6 +869,16 @@ module Google
         # @return [String]
         attr_accessor :format
       
+        # A user-defined name of the filter set. Filter set names must be unique
+        # globally and match one of the patterns:
+        # - `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting
+        # data)
+        # - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
+        # troubleshooting data)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The account ID of the buyer who owns this filter set.
         # The value of this field is ignored in create operations.
         # Corresponds to the JSON property `ownerAccountId`
@@ -929,6 +939,7 @@ module Google
           @environment = args[:environment] if args.key?(:environment)
           @filter_set_id = args[:filter_set_id] if args.key?(:filter_set_id)
           @format = args[:format] if args.key?(:format)
+          @name = args[:name] if args.key?(:name)
           @owner_account_id = args[:owner_account_id] if args.key?(:owner_account_id)
           @platforms = args[:platforms] if args.key?(:platforms)
           @realtime_time_range = args[:realtime_time_range] if args.key?(:realtime_time_range)
