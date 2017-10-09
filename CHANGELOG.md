@@ -1,3 +1,37 @@
+# 0.15.0
+* Breaking changes:
+  * Deleted `ml_v1beta1`
+* Backwards compatible changes:
+  * Added `firestore_v1beta1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidenterprise_v1`
+  * Updated `bigquery_v2`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `classroom_v1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `cloudtrace_v2`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataflow_v1b3`
+  * Updated `dataproc_v1beta2`
+  * Updated `identitytoolkit_v3`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `proximitybeacon_v1beta1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `sheets_v4`
+  * Updated `streetviewpublish_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `vision_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.14.5
 * Backwards compatible changes:
   * Added `cloudiot_v1`
