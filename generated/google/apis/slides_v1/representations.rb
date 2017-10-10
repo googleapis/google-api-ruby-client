@@ -214,6 +214,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupObjectsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GroupObjectsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +305,12 @@ module Google
       end
       
       class MasterProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MergeTableCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +550,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableBorderCell
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableBorderFill
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableBorderProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableBorderRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableCell
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableRowProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +653,18 @@ module Google
       end
       
       class Thumbnail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UngroupObjectsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnmergeTableCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,7 +712,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateTableBorderPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateTableCellPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateTableColumnPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateTableRowPropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -997,6 +1075,21 @@ module Google
         end
       end
       
+      class GroupObjectsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :children_object_ids, as: 'childrenObjectIds'
+          property :group_object_id, as: 'groupObjectId'
+        end
+      end
+      
+      class GroupObjectsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+        end
+      end
+      
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1140,6 +1233,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class MergeTableCellsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
+      
         end
       end
       
@@ -1446,11 +1548,15 @@ module Google
       
           property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectRequest, decorator: Google::Apis::SlidesV1::DuplicateObjectRequest::Representation
       
+          property :group_objects, as: 'groupObjects', class: Google::Apis::SlidesV1::GroupObjectsRequest, decorator: Google::Apis::SlidesV1::GroupObjectsRequest::Representation
+      
           property :insert_table_columns, as: 'insertTableColumns', class: Google::Apis::SlidesV1::InsertTableColumnsRequest, decorator: Google::Apis::SlidesV1::InsertTableColumnsRequest::Representation
       
           property :insert_table_rows, as: 'insertTableRows', class: Google::Apis::SlidesV1::InsertTableRowsRequest, decorator: Google::Apis::SlidesV1::InsertTableRowsRequest::Representation
       
           property :insert_text, as: 'insertText', class: Google::Apis::SlidesV1::InsertTextRequest, decorator: Google::Apis::SlidesV1::InsertTextRequest::Representation
+      
+          property :merge_table_cells, as: 'mergeTableCells', class: Google::Apis::SlidesV1::MergeTableCellsRequest, decorator: Google::Apis::SlidesV1::MergeTableCellsRequest::Representation
       
           property :refresh_sheets_chart, as: 'refreshSheetsChart', class: Google::Apis::SlidesV1::RefreshSheetsChartRequest, decorator: Google::Apis::SlidesV1::RefreshSheetsChartRequest::Representation
       
@@ -1459,6 +1565,10 @@ module Google
           property :replace_all_shapes_with_sheets_chart, as: 'replaceAllShapesWithSheetsChart', class: Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartRequest, decorator: Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartRequest::Representation
       
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::SlidesV1::ReplaceAllTextRequest, decorator: Google::Apis::SlidesV1::ReplaceAllTextRequest::Representation
+      
+          property :ungroup_objects, as: 'ungroupObjects', class: Google::Apis::SlidesV1::UngroupObjectsRequest, decorator: Google::Apis::SlidesV1::UngroupObjectsRequest::Representation
+      
+          property :unmerge_table_cells, as: 'unmergeTableCells', class: Google::Apis::SlidesV1::UnmergeTableCellsRequest, decorator: Google::Apis::SlidesV1::UnmergeTableCellsRequest::Representation
       
           property :update_image_properties, as: 'updateImageProperties', class: Google::Apis::SlidesV1::UpdateImagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateImagePropertiesRequest::Representation
       
@@ -1474,7 +1584,13 @@ module Google
       
           property :update_slides_position, as: 'updateSlidesPosition', class: Google::Apis::SlidesV1::UpdateSlidesPositionRequest, decorator: Google::Apis::SlidesV1::UpdateSlidesPositionRequest::Representation
       
+          property :update_table_border_properties, as: 'updateTableBorderProperties', class: Google::Apis::SlidesV1::UpdateTableBorderPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableBorderPropertiesRequest::Representation
+      
           property :update_table_cell_properties, as: 'updateTableCellProperties', class: Google::Apis::SlidesV1::UpdateTableCellPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableCellPropertiesRequest::Representation
+      
+          property :update_table_column_properties, as: 'updateTableColumnProperties', class: Google::Apis::SlidesV1::UpdateTableColumnPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableColumnPropertiesRequest::Representation
+      
+          property :update_table_row_properties, as: 'updateTableRowProperties', class: Google::Apis::SlidesV1::UpdateTableRowPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableRowPropertiesRequest::Representation
       
           property :update_text_style, as: 'updateTextStyle', class: Google::Apis::SlidesV1::UpdateTextStyleRequest, decorator: Google::Apis::SlidesV1::UpdateTextStyleRequest::Representation
       
@@ -1501,6 +1617,8 @@ module Google
           property :create_video, as: 'createVideo', class: Google::Apis::SlidesV1::CreateVideoResponse, decorator: Google::Apis::SlidesV1::CreateVideoResponse::Representation
       
           property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectResponse, decorator: Google::Apis::SlidesV1::DuplicateObjectResponse::Representation
+      
+          property :group_objects, as: 'groupObjects', class: Google::Apis::SlidesV1::GroupObjectsResponse, decorator: Google::Apis::SlidesV1::GroupObjectsResponse::Representation
       
           property :replace_all_shapes_with_image, as: 'replaceAllShapesWithImage', class: Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse, decorator: Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse::Representation
       
@@ -1642,10 +1760,51 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :columns, as: 'columns'
+          collection :horizontal_border_rows, as: 'horizontalBorderRows', class: Google::Apis::SlidesV1::TableBorderRow, decorator: Google::Apis::SlidesV1::TableBorderRow::Representation
+      
           property :rows, as: 'rows'
           collection :table_columns, as: 'tableColumns', class: Google::Apis::SlidesV1::TableColumnProperties, decorator: Google::Apis::SlidesV1::TableColumnProperties::Representation
       
           collection :table_rows, as: 'tableRows', class: Google::Apis::SlidesV1::TableRow, decorator: Google::Apis::SlidesV1::TableRow::Representation
+      
+          collection :vertical_border_rows, as: 'verticalBorderRows', class: Google::Apis::SlidesV1::TableBorderRow, decorator: Google::Apis::SlidesV1::TableBorderRow::Representation
+      
+        end
+      end
+      
+      class TableBorderCell
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
+      
+          property :table_border_properties, as: 'tableBorderProperties', class: Google::Apis::SlidesV1::TableBorderProperties, decorator: Google::Apis::SlidesV1::TableBorderProperties::Representation
+      
+        end
+      end
+      
+      class TableBorderFill
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :solid_fill, as: 'solidFill', class: Google::Apis::SlidesV1::SolidFill, decorator: Google::Apis::SlidesV1::SolidFill::Representation
+      
+        end
+      end
+      
+      class TableBorderProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dash_style, as: 'dashStyle'
+          property :table_border_fill, as: 'tableBorderFill', class: Google::Apis::SlidesV1::TableBorderFill, decorator: Google::Apis::SlidesV1::TableBorderFill::Representation
+      
+          property :weight, as: 'weight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
+      
+        end
+      end
+      
+      class TableBorderRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :table_border_cells, as: 'tableBorderCells', class: Google::Apis::SlidesV1::TableBorderCell, decorator: Google::Apis::SlidesV1::TableBorderCell::Representation
       
         end
       end
@@ -1713,6 +1872,16 @@ module Google
           property :row_height, as: 'rowHeight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
           collection :table_cells, as: 'tableCells', class: Google::Apis::SlidesV1::TableCell, decorator: Google::Apis::SlidesV1::TableCell::Representation
+      
+          property :table_row_properties, as: 'tableRowProperties', class: Google::Apis::SlidesV1::TableRowProperties, decorator: Google::Apis::SlidesV1::TableRowProperties::Representation
+      
+        end
+      end
+      
+      class TableRowProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_row_height, as: 'minRowHeight', class: Google::Apis::SlidesV1::Dimension, decorator: Google::Apis::SlidesV1::Dimension::Representation
       
         end
       end
@@ -1791,6 +1960,22 @@ module Google
         end
       end
       
+      class UngroupObjectsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :object_ids, as: 'objectIds'
+        end
+      end
+      
+      class UnmergeTableCellsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
+      
+        end
+      end
+      
       class UpdateImagePropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1863,6 +2048,19 @@ module Google
         end
       end
       
+      class UpdateTableBorderPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :border_position, as: 'borderPosition'
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          property :table_border_properties, as: 'tableBorderProperties', class: Google::Apis::SlidesV1::TableBorderProperties, decorator: Google::Apis::SlidesV1::TableBorderProperties::Representation
+      
+          property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
+      
+        end
+      end
+      
       class UpdateTableCellPropertiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1871,6 +2069,28 @@ module Google
           property :table_cell_properties, as: 'tableCellProperties', class: Google::Apis::SlidesV1::TableCellProperties, decorator: Google::Apis::SlidesV1::TableCellProperties::Representation
       
           property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
+      
+        end
+      end
+      
+      class UpdateTableColumnPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_indices, as: 'columnIndices'
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          property :table_column_properties, as: 'tableColumnProperties', class: Google::Apis::SlidesV1::TableColumnProperties, decorator: Google::Apis::SlidesV1::TableColumnProperties::Representation
+      
+        end
+      end
+      
+      class UpdateTableRowPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          collection :row_indices, as: 'rowIndices'
+          property :table_row_properties, as: 'tableRowProperties', class: Google::Apis::SlidesV1::TableRowProperties, decorator: Google::Apis::SlidesV1::TableRowProperties::Representation
       
         end
       end
