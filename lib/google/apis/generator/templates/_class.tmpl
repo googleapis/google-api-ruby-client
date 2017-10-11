@@ -1,4 +1,4 @@
-<% if cls.type == 'object' -%>
+<% if cls.type == 'object' || (cls.type == 'hash' && cls.properties.length > 0) -%>
 
 # <%= block_comment(cls.description, 0, 1) %>
 class <%= cls.generated_class_name %><% if cls.base_ref %> < <%= cls.base_ref.generated_type %><% end %>
