@@ -41162,6 +41162,8 @@
 "/firebasedynamiclinks:v1/CreateShortDynamicLinkResponse/shortLink": short_link
 "/firebasedynamiclinks:v1/CreateShortDynamicLinkResponse/warning": warning
 "/firebasedynamiclinks:v1/CreateShortDynamicLinkResponse/warning/warning": warning
+"/firebasedynamiclinks:v1/DesktopInfo": desktop_info
+"/firebasedynamiclinks:v1/DesktopInfo/desktopFallbackLink": desktop_fallback_link
 "/firebasedynamiclinks:v1/DeviceInfo": device_info
 "/firebasedynamiclinks:v1/DeviceInfo/deviceModelName": device_model_name
 "/firebasedynamiclinks:v1/DeviceInfo/languageCode": language_code
@@ -41175,6 +41177,7 @@
 "/firebasedynamiclinks:v1/DynamicLinkInfo": dynamic_link_info
 "/firebasedynamiclinks:v1/DynamicLinkInfo/analyticsInfo": analytics_info
 "/firebasedynamiclinks:v1/DynamicLinkInfo/androidInfo": android_info
+"/firebasedynamiclinks:v1/DynamicLinkInfo/desktopInfo": desktop_info
 "/firebasedynamiclinks:v1/DynamicLinkInfo/dynamicLinkDomain": dynamic_link_domain
 "/firebasedynamiclinks:v1/DynamicLinkInfo/iosInfo": ios_info
 "/firebasedynamiclinks:v1/DynamicLinkInfo/link": link
@@ -46367,6 +46370,7 @@
 "/manufacturers:v1/Attributes/sizeType": size_type
 "/manufacturers:v1/Attributes/suggestedRetailPrice": suggested_retail_price
 "/manufacturers:v1/Attributes/targetAccountId": target_account_id
+"/manufacturers:v1/Attributes/targetClientId": target_client_id
 "/manufacturers:v1/Attributes/theme": theme
 "/manufacturers:v1/Attributes/title": title
 "/manufacturers:v1/Attributes/videoLink": video_link
