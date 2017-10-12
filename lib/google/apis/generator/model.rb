@@ -55,8 +55,14 @@ module Google
             return 'Fixnum' if format == 'uint64'
             return TYPE_MAP[type]
           when 'array'
+            if items == self
+              return sprintf('Array<%s>', qualified_name)
+            end
             return sprintf('Array<%s>', items.generated_type)
           when 'hash'
+            if additional_properties == self
+              return sprintf('Hash<String,%s>', qualified_name)
+            end
             return sprintf('Hash<String,%s>', additional_properties.generated_type)
           when 'object'
             return qualified_name
@@ -81,16 +87,16 @@ module Google
           return [] if parameters.nil?
           parameters.values.select { |param| param.location == 'query' }
         end
-        
+
         def required_parameters
           return [] if parameter_order.nil? || parameters.nil?
           parameter_order.map { |name| parameters[name] }.select { |param| param.location == 'path' || param.required }
         end
-        
+
         def optional_query_parameters
           query_parameters.select { |param| param.required != true }
         end
-        
+
       end
 
       class RestResource
