@@ -38989,6 +38989,9 @@
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig/context": context
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig/cryptoKey": crypto_key
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1CryptoReplaceRegexFpeConfig/regex": regex
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1CustomInfoType": google_privacy_dlp_v2beta1_custom_info_type
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1CustomInfoType/dictionary": dictionary
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1CustomInfoType/infoType": info_type
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1DatastoreKey": google_privacy_dlp_v2beta1_datastore_key
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1DatastoreKey/entityKey": entity_key
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1DatastoreOptions": google_privacy_dlp_v2beta1_datastore_options
@@ -39013,6 +39016,8 @@
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1DeidentifyContentResponse/items/item": item
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1DeidentifyContentResponse/summaries": summaries
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1DeidentifyContentResponse/summaries/summary": summary
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1Dictionary": google_privacy_dlp_v2beta1_dictionary
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1Dictionary/wordList": word_list
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1EntityId": google_privacy_dlp_v2beta1_entity_id
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1EntityId/field": field
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1Expressions": google_privacy_dlp_v2beta1_expressions
@@ -39068,6 +39073,8 @@
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1InfoTypeTransformations/transformations": transformations
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1InfoTypeTransformations/transformations/transformation": transformation
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1InspectConfig": google_privacy_dlp_v2beta1_inspect_config
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1InspectConfig/customInfoTypes": custom_info_types
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1InspectConfig/customInfoTypes/custom_info_type": custom_info_type
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1InspectConfig/excludeTypes": exclude_types
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1InspectConfig/includeQuote": include_quote
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1InspectConfig/infoTypeLimits": info_type_limits
@@ -39287,6 +39294,9 @@
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1ValueFrequency": google_privacy_dlp_v2beta1_value_frequency
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1ValueFrequency/count": count
 "/dlp:v2beta1/GooglePrivacyDlpV2beta1ValueFrequency/value": value
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1WordList": google_privacy_dlp_v2beta1_word_list
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1WordList/words": words
+"/dlp:v2beta1/GooglePrivacyDlpV2beta1WordList/words/word": word
 "/dlp:v2beta1/GoogleProtobufEmpty": google_protobuf_empty
 "/dlp:v2beta1/GoogleRpcStatus": google_rpc_status
 "/dlp:v2beta1/GoogleRpcStatus/code": code

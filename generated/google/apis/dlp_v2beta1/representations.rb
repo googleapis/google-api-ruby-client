@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1CustomInfoType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1DatastoreKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2beta1DeidentifyContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta1Dictionary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -628,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1WordList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -891,6 +909,16 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2beta1CustomInfoType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary::Representation
+      
+          property :info_type, as: 'infoType', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2beta1DatastoreKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -948,6 +976,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ContentItem, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ContentItem::Representation
       
           collection :summaries, as: 'summaries', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentificationSummary, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentificationSummary::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1Dictionary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :word_list, as: 'wordList', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1WordList, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1WordList::Representation
       
         end
       end
@@ -1098,6 +1134,8 @@ module Google
       class GooglePrivacyDlpV2beta1InspectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_info_types, as: 'customInfoTypes', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CustomInfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CustomInfoType::Representation
+      
           property :exclude_types, as: 'excludeTypes'
           property :include_quote, as: 'includeQuote'
           collection :info_type_limits, as: 'infoTypeLimits', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeLimit, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeLimit::Representation
@@ -1640,6 +1678,13 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :value, as: 'value', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1WordList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :words, as: 'words'
         end
       end
       

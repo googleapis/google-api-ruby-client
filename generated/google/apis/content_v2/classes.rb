@@ -1136,7 +1136,7 @@ module Google
         # @return [String]
         attr_accessor :attribute_language
       
-        # [DEPRECATED] Please use target.language instead. The two-letter ISO 639-1
+        # [DEPRECATED] Please use targets[].language instead. The two-letter ISO 639-1
         # language of the items in the feed. Must be a valid language for targetCountry.
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
@@ -1171,7 +1171,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # [DEPRECATED] Please use target.includedDestination instead. The list of
+        # [DEPRECATED] Please use targets[].includedDestinations instead. The list of
         # intended destinations (corresponds to checked check boxes in Merchant Center).
         # Corresponds to the JSON property `intendedDestinations`
         # @return [Array<String>]
@@ -1188,9 +1188,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [DEPRECATED] Please use target.country instead. The country where the items in
-        # the feed will be included in the search index, represented as a CLDR territory
-        # code.
+        # [DEPRECATED] Please use targets[].country instead. The country where the items
+        # in the feed will be included in the search index, represented as a CLDR
+        # territory code.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -1946,18 +1946,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :postal_code_group_names
       
-        # be "infinity". For example [`"value": "10", "currency": "USD"`, `"value": "500"
-        # , "currency": "USD"`, `"value": "infinity", "currency": "USD"`] represents the
+        # A list of inclusive order price upper bounds. The last price's value can be "
+        # infinity". For example [`"value": "10", "currency": "USD"`, `"value": "500", "
+        # currency": "USD"`, `"value": "infinity", "currency": "USD"`] represents the
         # headers "<= $10", " $500". All prices within a service must have the same
         # currency. Must be non-empty. Can only be set if all other fields are not set.
         # Corresponds to the JSON property `prices`
         # @return [Array<Google::Apis::ContentV2::Price>]
         attr_accessor :prices
       
-        # be "infinity". For example [`"value": "10", "unit": "kg"`, `"value": "50", "
-        # unit": "kg"`, `"value": "infinity", "unit": "kg"`] represents the headers "<=
-        # 10kg", " 50kg". All weights within a service must have the same unit. Must be
-        # non-empty. Can only be set if all other fields are not set.
+        # A list of inclusive order weight upper bounds. The last weight's value can be "
+        # infinity". For example [`"value": "10", "unit": "kg"`, `"value": "50", "unit":
+        # "kg"`, `"value": "infinity", "unit": "kg"`] represents the headers "<= 10kg", "
+        # 50kg". All weights within a service must have the same unit. Must be non-
+        # empty. Can only be set if all other fields are not set.
         # Corresponds to the JSON property `weights`
         # @return [Array<Google::Apis::ContentV2::Weight>]
         attr_accessor :weights

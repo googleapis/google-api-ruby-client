@@ -849,6 +849,34 @@ module Google
         end
       end
       
+      # Custom information type provided by the user. Used to find domain-specific
+      # sensitive information configurable to the data in question.
+      class GooglePrivacyDlpV2beta1CustomInfoType
+        include Google::Apis::Core::Hashable
+      
+        # Custom information type based on a dictionary of words or phrases. This can
+        # be used to match sensitive information specific to the data, such as a list
+        # of employee IDs or job titles.
+        # Corresponds to the JSON property `dictionary`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary]
+        attr_accessor :dictionary
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dictionary = args[:dictionary] if args.key?(:dictionary)
+          @info_type = args[:info_type] if args.key?(:info_type)
+        end
+      end
+      
       # Record key for a finding in Cloud Datastore.
       class GooglePrivacyDlpV2beta1DatastoreKey
         include Google::Apis::Core::Hashable
@@ -1017,6 +1045,27 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @summaries = args[:summaries] if args.key?(:summaries)
+        end
+      end
+      
+      # Custom information type based on a dictionary of words or phrases. This can
+      # be used to match sensitive information specific to the data, such as a list
+      # of employee IDs or job titles.
+      class GooglePrivacyDlpV2beta1Dictionary
+        include Google::Apis::Core::Hashable
+      
+        # Message defining a list of words or phrases to search for in the data.
+        # Corresponds to the JSON property `wordList`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1WordList]
+        attr_accessor :word_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @word_list = args[:word_list] if args.key?(:word_list)
         end
       end
       
@@ -1462,6 +1511,11 @@ module Google
       class GooglePrivacyDlpV2beta1InspectConfig
         include Google::Apis::Core::Hashable
       
+        # Custom info types provided by the user.
+        # Corresponds to the JSON property `customInfoTypes`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CustomInfoType>]
+        attr_accessor :custom_info_types
+      
         # When true, excludes type information of the findings.
         # Corresponds to the JSON property `excludeTypes`
         # @return [Boolean]
@@ -1503,6 +1557,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_info_types = args[:custom_info_types] if args.key?(:custom_info_types)
           @exclude_types = args[:exclude_types] if args.key?(:exclude_types)
           @include_quote = args[:include_quote] if args.key?(:include_quote)
           @info_type_limits = args[:info_type_limits] if args.key?(:info_type_limits)
@@ -3119,6 +3174,27 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Message defining a list of words or phrases to search for in the data.
+      class GooglePrivacyDlpV2beta1WordList
+        include Google::Apis::Core::Hashable
+      
+        # Words or phrases defining the dictionary. No word can be shorter than 3
+        # characters in length. To match, there must be whitespace or punctuation
+        # around the targeted string. [required]
+        # Corresponds to the JSON property `words`
+        # @return [Array<String>]
+        attr_accessor :words
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @words = args[:words] if args.key?(:words)
         end
       end
       
