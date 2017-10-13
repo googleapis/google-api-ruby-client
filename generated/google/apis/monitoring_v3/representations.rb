@@ -22,6 +22,12 @@ module Google
   module Apis
     module MonitoringV3
       
+      class BasicAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,12 @@ module Google
       end
       
       class CollectdValueError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +161,18 @@ module Google
       end
       
       class ListTimeSeriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUptimeCheckConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUptimeCheckIpsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +233,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TcpCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -224,6 +266,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UptimeCheckConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UptimeCheckIp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
+          property :username, as: 'username'
+        end
       end
       
       class BucketOptions
@@ -281,6 +343,13 @@ module Google
           property :error, as: 'error', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
       
           property :index, as: 'index'
+        end
+      end
+      
+      class ContentMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
         end
       end
       
@@ -375,6 +444,19 @@ module Google
         end
       end
       
+      class HttpCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_info, as: 'authInfo', class: Google::Apis::MonitoringV3::BasicAuthentication, decorator: Google::Apis::MonitoringV3::BasicAuthentication::Representation
+      
+          hash :headers, as: 'headers'
+          property :mask_headers, as: 'maskHeaders'
+          property :path, as: 'path'
+          property :port, as: 'port'
+          property :use_ssl, as: 'useSsl'
+        end
+      end
+      
       class LabelDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -435,6 +517,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
+      
+        end
+      end
+      
+      class ListUptimeCheckConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :uptime_check_configs, as: 'uptimeCheckConfigs', class: Google::Apis::MonitoringV3::UptimeCheckConfig, decorator: Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
+      
+        end
+      end
+      
+      class ListUptimeCheckIpsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :uptime_check_ips, as: 'uptimeCheckIps', class: Google::Apis::MonitoringV3::UptimeCheckIp, decorator: Google::Apis::MonitoringV3::UptimeCheckIp::Representation
       
         end
       end
@@ -508,6 +608,14 @@ module Google
         end
       end
       
+      class ResourceGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_id, as: 'groupId'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
       class SourceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -521,6 +629,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TcpCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
         end
       end
       
@@ -570,6 +685,36 @@ module Google
           property :double_value, as: 'doubleValue'
           property :int64_value, :numeric_string => true, as: 'int64Value'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class UptimeCheckConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content_matchers, as: 'contentMatchers', class: Google::Apis::MonitoringV3::ContentMatcher, decorator: Google::Apis::MonitoringV3::ContentMatcher::Representation
+      
+          property :display_name, as: 'displayName'
+          property :http_check, as: 'httpCheck', class: Google::Apis::MonitoringV3::HttpCheck, decorator: Google::Apis::MonitoringV3::HttpCheck::Representation
+      
+          property :monitored_resource, as: 'monitoredResource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
+      
+          property :name, as: 'name'
+          property :period, as: 'period'
+          property :resource_group, as: 'resourceGroup', class: Google::Apis::MonitoringV3::ResourceGroup, decorator: Google::Apis::MonitoringV3::ResourceGroup::Representation
+      
+          collection :selected_regions, as: 'selectedRegions'
+          property :tcp_check, as: 'tcpCheck', class: Google::Apis::MonitoringV3::TcpCheck, decorator: Google::Apis::MonitoringV3::TcpCheck::Representation
+      
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class UptimeCheckIp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :location, as: 'location'
+          property :region, as: 'region'
         end
       end
     end

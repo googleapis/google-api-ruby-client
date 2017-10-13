@@ -2533,6 +2533,8 @@ module Google
       
         # A concise name for the metric, which can be displayed in user interfaces.
         # Use sentence case without an ending period, for example "Request count".
+        # This field is optional but it is recommended to be set for any metrics
+        # associated with user-visible concepts, such as Quota.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2553,14 +2555,7 @@ module Google
         # @return [String]
         attr_accessor :metric_kind
       
-        # The resource name of the metric descriptor. Depending on the
-        # implementation, the name typically includes: (1) the parent resource name
-        # that defines the scope of the metric type or of its data; and (2) the
-        # metric's URL-encoded type, which also appears in the `type` field of this
-        # descriptor. For example, following is the resource name of a custom
-        # metric within the GCP project `my-project-id`:
-        # "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%
-        # 2Fpaid%2Famount"
+        # The resource name of the metric descriptor.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3387,22 +3382,14 @@ module Google
         # The name of the metric this quota limit applies to. The quota limits with
         # the same metric will be checked together during runtime. The metric must be
         # defined within the service config.
-        # Used by metric-based quotas only.
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # Name of the quota limit. The name is used to refer to the limit when
-        # overriding the default limit on per-consumer basis.
-        # For metric-based quota limits, the name must be provided, and it must be
-        # unique within the service. The name can only include alphanumeric
-        # characters as well as '-'.
+        # Name of the quota limit.
+        # The name must be provided, and it must be unique within the service. The
+        # name can only include alphanumeric characters as well as '-'.
         # The maximum length of the limit name is 64 characters.
-        # The name of a limit is used as a unique identifier for this limit.
-        # Therefore, once a limit has been put into use, its name should be
-        # immutable. You can use the display_name field to provide a user-friendly
-        # name for the limit. The display name can be evolved over time without
-        # affecting the identity of the limit.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3410,24 +3397,17 @@ module Google
         # Specify the unit of the quota limit. It uses the same syntax as
         # Metric.unit. The supported unit kinds are determined by the quota
         # backend system.
-        # The [Google Service Control](https://cloud.google.com/service-control)
-        # supports the following unit components:
-        # * One of the time intevals:
-        # * "/min"  for quota every minute.
-        # * "/d"  for quota every 24 hours, starting 00:00 US Pacific Time.
-        # * Otherwise the quota won't be reset by time, such as storage limit.
-        # * One and only one of the granted containers:
-        # * "/`project`" quota for a project
         # Here are some examples:
         # * "1/min/`project`" for quota per minute per project.
         # Note: the order of unit components is insignificant.
         # The "1" at the beginning is required to follow the metric unit syntax.
-        # Used by metric-based quotas only.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
       
-        # Tiered limit values, currently only STANDARD is supported.
+        # Tiered limit values. You must specify this as a key:value pair, with an
+        # integer value that is the maximum number of requests allowed for the
+        # specified unit. Currently only STANDARD is supported.
         # Corresponds to the JSON property `values`
         # @return [Hash<String,Fixnum>]
         attr_accessor :values
@@ -4604,6 +4584,8 @@ module Google
       
         # True, if the method should skip service control. If so, no control plane
         # feature (like quota and billing) will be enabled.
+        # This flag is used by ESP to allow some Endpoints customers to bypass
+        # Google internal checks.
         # Corresponds to the JSON property `skipServiceControl`
         # @return [Boolean]
         attr_accessor :skip_service_control

@@ -22,6 +22,33 @@ module Google
   module Apis
     module MonitoringV3
       
+      # A type of authentication to perform against the specified resource or URL that
+      # uses username and password. Currently, only Basic authentication is supported
+      # in Uptime Monitoring.
+      class BasicAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # The password to authenticate.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # The username to authenticate.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # BucketOptions describes the bucket boundaries used to create a histogram for
       # the distribution. The buckets can be in a linear sequence, an exponential
       # sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -297,6 +324,27 @@ module Google
         def update!(**args)
           @error = args[:error] if args.key?(:error)
           @index = args[:index] if args.key?(:index)
+        end
+      end
+      
+      # Used to perform string matching. Currently, this matches on the exact content.
+      # In the future, it can be expanded to allow for regular expressions and more
+      # complex matching.
+      class ContentMatcher
+        include Google::Apis::Core::Hashable
+      
+        # String content to match
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
         end
       end
       
@@ -698,6 +746,72 @@ module Google
         end
       end
       
+      # Information involved in an HTTP/HTTPS uptime check request.
+      class HttpCheck
+        include Google::Apis::Core::Hashable
+      
+        # A type of authentication to perform against the specified resource or URL that
+        # uses username and password. Currently, only Basic authentication is supported
+        # in Uptime Monitoring.
+        # Corresponds to the JSON property `authInfo`
+        # @return [Google::Apis::MonitoringV3::BasicAuthentication]
+        attr_accessor :auth_info
+      
+        # The list of headers to send as part of the uptime check request. If two
+        # headers have the same key and different values, they should be entered as a
+        # single header, with the value being a comma-separated list of all the desired
+        # values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page
+        # 31). Entering two separate headers with the same key in a Create call will
+        # cause the first to be overwritten by the second.
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,String>]
+        attr_accessor :headers
+      
+        # Boolean specifiying whether to encrypt the header information. Encryption
+        # should be specified for any headers related to authentication that you do not
+        # wish to be seen when retrieving the configuration. The server will be
+        # responsible for encrypting the headers. On Get/List calls, if mask_headers is
+        # set to True then the headers will be obscured with ******.
+        # Corresponds to the JSON property `maskHeaders`
+        # @return [Boolean]
+        attr_accessor :mask_headers
+        alias_method :mask_headers?, :mask_headers
+      
+        # The path to the page to run the check against. Will be combined with the host (
+        # specified within the MonitoredResource) and port to construct the full URL.
+        # Optional (defaults to "/").
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # The port to the page to run the check against. Will be combined with host (
+        # specified within the MonitoredResource) and path to construct the full URL.
+        # Optional (defaults to 80 without SSL, or 443 with SSL).
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # If true, use HTTPS instead of HTTP to run the check.
+        # Corresponds to the JSON property `useSsl`
+        # @return [Boolean]
+        attr_accessor :use_ssl
+        alias_method :use_ssl?, :use_ssl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_info = args[:auth_info] if args.key?(:auth_info)
+          @headers = args[:headers] if args.key?(:headers)
+          @mask_headers = args[:mask_headers] if args.key?(:mask_headers)
+          @path = args[:path] if args.key?(:path)
+          @port = args[:port] if args.key?(:port)
+          @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
+        end
+      end
+      
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
@@ -905,6 +1019,65 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @time_series = args[:time_series] if args.key?(:time_series)
+        end
+      end
+      
+      # The protocol for the ListUptimeCheckConfigs response.
+      class ListUptimeCheckConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This field represents the pagination token to retrieve the next page of
+        # results. If the value is empty, it means no further results for the request.
+        # To retrieve the next page of results, the value of the next_page_token is
+        # passed to the subsequent List method call (in the request message's page_token
+        # field).
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned uptime check configurations.
+        # Corresponds to the JSON property `uptimeCheckConfigs`
+        # @return [Array<Google::Apis::MonitoringV3::UptimeCheckConfig>]
+        attr_accessor :uptime_check_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @uptime_check_configs = args[:uptime_check_configs] if args.key?(:uptime_check_configs)
+        end
+      end
+      
+      # The protocol for the ListUptimeCheckIps response.
+      class ListUptimeCheckIpsResponse
+        include Google::Apis::Core::Hashable
+      
+        # This field represents the pagination token to retrieve the next page of
+        # results. If the value is empty, it means no further results for the request.
+        # To retrieve the next page of results, the value of the next_page_token is
+        # passed to the subsequent List method call (in the request message's page_token
+        # field). NOTE: this field is not yet implemented
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned list of IP addresses (including region and location) that the
+        # checkers run from.
+        # Corresponds to the JSON property `uptimeCheckIps`
+        # @return [Array<Google::Apis::MonitoringV3::UptimeCheckIp>]
+        attr_accessor :uptime_check_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @uptime_check_ips = args[:uptime_check_ips] if args.key?(:uptime_check_ips)
         end
       end
       
@@ -1242,6 +1415,33 @@ module Google
         end
       end
       
+      # The resource submessage for group checks. It can be used instead of a
+      # monitored resource, when multiple resources are being monitored.
+      class ResourceGroup
+        include Google::Apis::Core::Hashable
+      
+        # The group of resources being monitored. Should be only the group_id, not
+        # projects/<project_id>/groups/<group_id>.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # The resource type of the group members.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
       # SourceContext represents information about the source of a protobuf element,
       # like the file in which it is defined.
       class SourceContext
@@ -1327,6 +1527,26 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Information required for a TCP uptime check request.
+      class TcpCheck
+        include Google::Apis::Core::Hashable
+      
+        # The port to the page to run the check against. Will be combined with host (
+        # specified within the MonitoredResource) to construct the full URL. Required.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
@@ -1534,6 +1754,144 @@ module Google
           @double_value = args[:double_value] if args.key?(:double_value)
           @int64_value = args[:int64_value] if args.key?(:int64_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # This message configures which resources and services to monitor for
+      # availability.
+      class UptimeCheckConfig
+        include Google::Apis::Core::Hashable
+      
+        # The expected content on the page the check is run against. Currently, only the
+        # first entry in the list is supported, and other entries will be ignored. The
+        # server will look for an exact match of the string in the page response's
+        # content. This field is optional and should only be specified if a content
+        # match is required.
+        # Corresponds to the JSON property `contentMatchers`
+        # @return [Array<Google::Apis::MonitoringV3::ContentMatcher>]
+        attr_accessor :content_matchers
+      
+        # A human-friendly name for the uptime check configuration. The display name
+        # should be unique within a Stackdriver Account in order to make it easier to
+        # identify; however, uniqueness is not enforced. Required.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Information involved in an HTTP/HTTPS uptime check request.
+        # Corresponds to the JSON property `httpCheck`
+        # @return [Google::Apis::MonitoringV3::HttpCheck]
+        attr_accessor :http_check
+      
+        # An object representing a resource that can be used for monitoring, logging,
+        # billing, or other purposes. Examples include virtual machine instances,
+        # databases, and storage devices such as disks. The type field identifies a
+        # MonitoredResourceDescriptor object that describes the resource's schema.
+        # Information in the labels field identifies the actual resource and its
+        # attributes according to the schema. For example, a particular Compute Engine
+        # VM instance could be represented by the following object, because the
+        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
+        # zone":
+        # ` "type": "gce_instance",
+        # "labels": ` "instance_id": "12345678901234",
+        # "zone": "us-central1-a" ``
+        # Corresponds to the JSON property `monitoredResource`
+        # @return [Google::Apis::MonitoringV3::MonitoredResource]
+        attr_accessor :monitored_resource
+      
+        # A unique resource name for this UptimeCheckConfig. The format is:projects/[
+        # PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted
+        # when creating the uptime check configuration; on create, the resource name is
+        # assigned by the server and included in the response.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # How often the uptime check is performed. Currently, only 1, 5, 10, and 15
+        # minutes are supported. Required.
+        # Corresponds to the JSON property `period`
+        # @return [String]
+        attr_accessor :period
+      
+        # The resource submessage for group checks. It can be used instead of a
+        # monitored resource, when multiple resources are being monitored.
+        # Corresponds to the JSON property `resourceGroup`
+        # @return [Google::Apis::MonitoringV3::ResourceGroup]
+        attr_accessor :resource_group
+      
+        # The list of regions from which the check will be run. If this field is
+        # specified, enough regions to include a minimum of 3 locations must be provided,
+        # or an error message is returned. Not specifying this field will result in
+        # uptime checks running from all regions.
+        # Corresponds to the JSON property `selectedRegions`
+        # @return [Array<String>]
+        attr_accessor :selected_regions
+      
+        # Information required for a TCP uptime check request.
+        # Corresponds to the JSON property `tcpCheck`
+        # @return [Google::Apis::MonitoringV3::TcpCheck]
+        attr_accessor :tcp_check
+      
+        # The maximum amount of time to wait for the request to complete (must be
+        # between 1 and 60 seconds). Required.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_matchers = args[:content_matchers] if args.key?(:content_matchers)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @http_check = args[:http_check] if args.key?(:http_check)
+          @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
+          @name = args[:name] if args.key?(:name)
+          @period = args[:period] if args.key?(:period)
+          @resource_group = args[:resource_group] if args.key?(:resource_group)
+          @selected_regions = args[:selected_regions] if args.key?(:selected_regions)
+          @tcp_check = args[:tcp_check] if args.key?(:tcp_check)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Contains the region, location, and list of IP addresses where checkers in the
+      # location run from.
+      class UptimeCheckIp
+        include Google::Apis::Core::Hashable
+      
+        # The IP address from which the uptime check originates. This is a full IP
+        # address (not an IP address range). Most IP addresses, as of this publication,
+        # are in IPv4 format; however, one should not rely on the IP addresses being in
+        # IPv4 format indefinitely and should support interpreting this field in either
+        # IPv4 or IPv6 format.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # A more specific location within the region that typically encodes a particular
+        # city/town/metro (and its containing state/province or country) within the
+        # broader umbrella region category.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # A broad region category in which the IP address is located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @location = args[:location] if args.key?(:location)
+          @region = args[:region] if args.key?(:region)
         end
       end
     end

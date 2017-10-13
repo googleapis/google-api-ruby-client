@@ -466,6 +466,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpreadsheetTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpreadsheetTemplateListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StateCompleted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1489,6 +1501,26 @@ module Google
           property :episode_title, as: 'episodeTitle'
           property :season_number, as: 'seasonNumber'
           property :title, as: 'title'
+        end
+      end
+      
+      class SpreadsheetTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :status, as: 'status'
+          property :template_content, as: 'templateContent'
+          property :template_name, as: 'templateName'
+          property :template_type, as: 'templateType'
+        end
+      end
+      
+      class SpreadsheetTemplateListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::SpreadsheetTemplate, decorator: Google::Apis::YoutubePartnerV1::SpreadsheetTemplate::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       

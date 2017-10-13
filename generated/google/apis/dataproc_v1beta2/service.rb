@@ -49,7 +49,7 @@ module Google
         
         # Creates new workflow template.
         # @param [String] parent
-        #   Required The "resource name" of the region, as described in https://cloud.
+        #   Required. The "resource name" of the region, as described in https://cloud.
         #   google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
@@ -84,11 +84,11 @@ module Google
         
         # Deletes a workflow template. It does not cancel in-progress workflows.
         # @param [String] name
-        #   Required The "resource name" of the workflow template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Fixnum] version
-        #   Optional The version of workflow template to delete. If specified, will only
+        #   Optional. The version of workflow template to delete. If specified, will only
         #   delete the template if the current server version matches specified version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,11 +121,11 @@ module Google
         # Retrieves the latest workflow template.Can retrieve previously instantiated
         # template by specifying optional version parameter.
         # @param [String] name
-        #   Required The "resource name" of the workflow template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Fixnum] version
-        #   Optional The version of workflow template to retrieve. Only previously
+        #   Optional. The version of workflow template to retrieve. Only previously
         #   instatiated versions can be retrieved.If unspecified, retrieves the current
         #   version.
         # @param [String] fields
@@ -165,8 +165,8 @@ module Google
         # WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result will
         # always be google.protobuf.Empty.
         # @param [String] name
-        #   Required The "resource name" of the workflow template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::InstantiateWorkflowTemplateRequest] instantiate_workflow_template_request_object
         # @param [String] fields
@@ -200,14 +200,14 @@ module Google
         
         # Lists workflows that match the specified filter in the request.
         # @param [String] parent
-        #   Required The "resource name" of the region, as described in https://cloud.
+        #   Required. The "resource name" of the region, as described in https://cloud.
         #   google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`
         # @param [Fixnum] page_size
-        #   Optional The maximum number of results to return in each response.
+        #   Optional. The maximum number of results to return in each response.
         # @param [String] page_token
-        #   Optional The page token, returned by a previous call, to request the next page
-        #   of results.
+        #   Optional. The page token, returned by a previous call, to request the next
+        #   page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -240,8 +240,8 @@ module Google
         # Updates (replaces) workflow template. The updated template must contain
         # version that matches the current server version.
         # @param [String] name
-        #   Output-only The "resource name" of the template, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Output only. The "resource name" of the template, as described in https://
+        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] fields
@@ -1064,7 +1064,7 @@ module Google
         
         # Creates new workflow template.
         # @param [String] parent
-        #   Required The "resource name" of the region, as described in https://cloud.
+        #   Required. The "resource name" of the region, as described in https://cloud.
         #   google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
@@ -1099,11 +1099,11 @@ module Google
         
         # Deletes a workflow template. It does not cancel in-progress workflows.
         # @param [String] name
-        #   Required The "resource name" of the workflow template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Fixnum] version
-        #   Optional The version of workflow template to delete. If specified, will only
+        #   Optional. The version of workflow template to delete. If specified, will only
         #   delete the template if the current server version matches specified version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1136,11 +1136,11 @@ module Google
         # Retrieves the latest workflow template.Can retrieve previously instantiated
         # template by specifying optional version parameter.
         # @param [String] name
-        #   Required The "resource name" of the workflow template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Fixnum] version
-        #   Optional The version of workflow template to retrieve. Only previously
+        #   Optional. The version of workflow template to retrieve. Only previously
         #   instatiated versions can be retrieved.If unspecified, retrieves the current
         #   version.
         # @param [String] fields
@@ -1180,8 +1180,8 @@ module Google
         # WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result will
         # always be google.protobuf.Empty.
         # @param [String] name
-        #   Required The "resource name" of the workflow template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Required. The "resource name" of the workflow template, as described in https:/
+        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::InstantiateWorkflowTemplateRequest] instantiate_workflow_template_request_object
         # @param [String] fields
@@ -1215,14 +1215,14 @@ module Google
         
         # Lists workflows that match the specified filter in the request.
         # @param [String] parent
-        #   Required The "resource name" of the region, as described in https://cloud.
+        #   Required. The "resource name" of the region, as described in https://cloud.
         #   google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`
         # @param [Fixnum] page_size
-        #   Optional The maximum number of results to return in each response.
+        #   Optional. The maximum number of results to return in each response.
         # @param [String] page_token
-        #   Optional The page token, returned by a previous call, to request the next page
-        #   of results.
+        #   Optional. The page token, returned by a previous call, to request the next
+        #   page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1255,8 +1255,8 @@ module Google
         # Updates (replaces) workflow template. The updated template must contain
         # version that matches the current server version.
         # @param [String] name
-        #   Output-only The "resource name" of the template, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
+        #   Output only. The "resource name" of the template, as described in https://
+        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         #   regions/`region`/workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] fields

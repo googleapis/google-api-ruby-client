@@ -157,6 +157,12 @@ module Google
         # @return [String]
         attr_accessor :source_repository_url
       
+        # The Google Cloud Storage signed URL used for source uploading, generated
+        # by google.cloud.functions.v1beta2.GenerateUploadUrl
+        # Corresponds to the JSON property `sourceUploadUrl`
+        # @return [String]
+        attr_accessor :source_upload_url
+      
         # Output only. Status of the function deployment.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -198,6 +204,7 @@ module Google
           @source_archive_url = args[:source_archive_url] if args.key?(:source_archive_url)
           @source_repository = args[:source_repository] if args.key?(:source_repository)
           @source_repository_url = args[:source_repository_url] if args.key?(:source_repository_url)
+          @source_upload_url = args[:source_upload_url] if args.key?(:source_upload_url)
           @status = args[:status] if args.key?(:status)
           @timeout = args[:timeout] if args.key?(:timeout)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -279,6 +286,79 @@ module Google
         # Update properties of this object
         def update!(**args)
           @retry = args[:retry] if args.key?(:retry)
+        end
+      end
+      
+      # Request of `GenerateDownloadUrl` method.
+      class GenerateDownloadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        # The optional version of function.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # Response of `GenerateDownloadUrl` method.
+      class GenerateDownloadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated Google Cloud Storage signed URL that should be used for
+        # function source code download.
+        # Corresponds to the JSON property `downloadUrl`
+        # @return [String]
+        attr_accessor :download_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_url = args[:download_url] if args.key?(:download_url)
+        end
+      end
+      
+      # Request of `GenerateUploadUrl` method.
+      class GenerateUploadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of `GenerateUploadUrl` method.
+      class GenerateUploadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated Google Cloud Storage signed URL that should be used for a
+        # function source code upload. The uploaded file should be a zip archive
+        # which contains a function.
+        # Corresponds to the JSON property `uploadUrl`
+        # @return [String]
+        attr_accessor :upload_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upload_url = args[:upload_url] if args.key?(:upload_url)
         end
       end
       

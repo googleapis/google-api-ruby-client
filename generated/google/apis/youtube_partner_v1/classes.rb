@@ -3530,6 +3530,77 @@ module Google
       end
       
       # 
+      class SpreadsheetTemplate
+        include Google::Apis::Core::Hashable
+      
+        # The type of the API resource. For spreadsheet template resources, the value is
+        # youtubePartner#spreadsheetTemplate.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The template status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The template content.
+        # Corresponds to the JSON property `templateContent`
+        # @return [String]
+        attr_accessor :template_content
+      
+        # The template name.
+        # Corresponds to the JSON property `templateName`
+        # @return [String]
+        attr_accessor :template_name
+      
+        # The template type.
+        # Corresponds to the JSON property `templateType`
+        # @return [String]
+        attr_accessor :template_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @status = args[:status] if args.key?(:status)
+          @template_content = args[:template_content] if args.key?(:template_content)
+          @template_name = args[:template_name] if args.key?(:template_name)
+          @template_type = args[:template_type] if args.key?(:template_type)
+        end
+      end
+      
+      # 
+      class SpreadsheetTemplateListResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of spreadsheet templates (youtubePartner#spreadsheetTemplate) resources
+        # that match the request criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubePartnerV1::SpreadsheetTemplate>]
+        attr_accessor :items
+      
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # spreadsheetTemplateList.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class StateCompleted
         include Google::Apis::Core::Hashable
       

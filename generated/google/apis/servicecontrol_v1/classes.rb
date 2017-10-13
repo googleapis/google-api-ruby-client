@@ -1231,8 +1231,10 @@ module Google
       
         # Fully qualified name of the API method for which this quota operation is
         # requested. This name is used for matching quota rules or metric rules and
-        # billing status rules defined in service configuration. This field is not
-        # required if the quota operation is performed on non-API resources.
+        # billing status rules defined in service configuration.
+        # This field should not be set if any of the following is true:
+        # (1) the quota operation is performed on non-API resources.
+        # (2) quota_metrics is set because the caller is doing quota override.
         # Example of an RPC method name:
         # google.example.library.v1.LibraryService.CreateShelf
         # Corresponds to the JSON property `methodName`
@@ -1259,6 +1261,7 @@ module Google
         # label value combinations. If a request has such duplicated MetricValue
         # instances, the entire request is rejected with
         # an invalid argument error.
+        # This field is mutually exclusive with method_name.
         # Corresponds to the JSON property `quotaMetrics`
         # @return [Array<Google::Apis::ServicecontrolV1::MetricValueSet>]
         attr_accessor :quota_metrics
