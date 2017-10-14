@@ -10922,6 +10922,7 @@
 "/calendar:v3/calendar.acl.get/ruleId": rule_id
 "/calendar:v3/calendar.acl.insert": insert_acl
 "/calendar:v3/calendar.acl.insert/calendarId": calendar_id
+"/calendar:v3/calendar.acl.insert/sendNotifications": send_notifications
 "/calendar:v3/calendar.acl.list": list_acls
 "/calendar:v3/calendar.acl.list/calendarId": calendar_id
 "/calendar:v3/calendar.acl.list/maxResults": max_results
@@ -10931,9 +10932,11 @@
 "/calendar:v3/calendar.acl.patch": patch_acl
 "/calendar:v3/calendar.acl.patch/calendarId": calendar_id
 "/calendar:v3/calendar.acl.patch/ruleId": rule_id
+"/calendar:v3/calendar.acl.patch/sendNotifications": send_notifications
 "/calendar:v3/calendar.acl.update": update_acl
 "/calendar:v3/calendar.acl.update/calendarId": calendar_id
 "/calendar:v3/calendar.acl.update/ruleId": rule_id
+"/calendar:v3/calendar.acl.update/sendNotifications": send_notifications
 "/calendar:v3/calendar.acl.watch": watch_acl
 "/calendar:v3/calendar.acl.watch/calendarId": calendar_id
 "/calendar:v3/calendar.acl.watch/maxResults": max_results

@@ -137,6 +137,9 @@ module Google
         #   method. If you want to access the primary calendar of the currently logged in
         #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::AclRule] acl_rule_object
+        # @param [Boolean] send_notifications
+        #   Whether to send notifications about the calendar sharing change. Optional. The
+        #   default is True.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -158,13 +161,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_acl(calendar_id, acl_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_acl(calendar_id, acl_rule_object = nil, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'calendars/{calendarId}/acl', options)
           command.request_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.request_object = acl_rule_object
           command.response_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.response_class = Google::Apis::CalendarV3::AclRule
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
+          command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -240,6 +244,9 @@ module Google
         # @param [String] rule_id
         #   ACL rule identifier.
         # @param [Google::Apis::CalendarV3::AclRule] acl_rule_object
+        # @param [Boolean] send_notifications
+        #   Whether to send notifications about the calendar sharing change. Note that
+        #   there are no notifications on access removal. Optional. The default is True.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -261,7 +268,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_acl(calendar_id, rule_id, acl_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_acl(calendar_id, rule_id, acl_rule_object = nil, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'calendars/{calendarId}/acl/{ruleId}', options)
           command.request_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.request_object = acl_rule_object
@@ -269,6 +276,7 @@ module Google
           command.response_class = Google::Apis::CalendarV3::AclRule
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.params['ruleId'] = rule_id unless rule_id.nil?
+          command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -283,6 +291,9 @@ module Google
         # @param [String] rule_id
         #   ACL rule identifier.
         # @param [Google::Apis::CalendarV3::AclRule] acl_rule_object
+        # @param [Boolean] send_notifications
+        #   Whether to send notifications about the calendar sharing change. Note that
+        #   there are no notifications on access removal. Optional. The default is True.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -304,7 +315,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_acl(calendar_id, rule_id, acl_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_acl(calendar_id, rule_id, acl_rule_object = nil, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'calendars/{calendarId}/acl/{ruleId}', options)
           command.request_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.request_object = acl_rule_object
@@ -312,6 +323,7 @@ module Google
           command.response_class = Google::Apis::CalendarV3::AclRule
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.params['ruleId'] = rule_id unless rule_id.nil?
+          command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
