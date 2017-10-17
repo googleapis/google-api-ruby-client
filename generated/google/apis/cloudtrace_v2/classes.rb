@@ -223,11 +223,13 @@ module Google
       
         # The number of compressed bytes sent or received. If missing assumed to
         # be the same size as uncompressed.
-        # Corresponds to the JSON property `compressedSize`
+        # Corresponds to the JSON property `compressedSizeBytes`
         # @return [Fixnum]
-        attr_accessor :compressed_size
+        attr_accessor :compressed_size_bytes
       
-        # An identifier for the message, which must be unique in this span.
+        # An identifier for the MessageEvent's message that can be used to match
+        # SENT and RECEIVED MessageEvents. It is recommended to be unique within
+        # a Span.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -239,9 +241,9 @@ module Google
         attr_accessor :type
       
         # The number of uncompressed bytes sent or received.
-        # Corresponds to the JSON property `uncompressedSize`
+        # Corresponds to the JSON property `uncompressedSizeBytes`
         # @return [Fixnum]
-        attr_accessor :uncompressed_size
+        attr_accessor :uncompressed_size_bytes
       
         def initialize(**args)
            update!(**args)
@@ -249,10 +251,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @compressed_size = args[:compressed_size] if args.key?(:compressed_size)
+          @compressed_size_bytes = args[:compressed_size_bytes] if args.key?(:compressed_size_bytes)
           @id = args[:id] if args.key?(:id)
           @type = args[:type] if args.key?(:type)
-          @uncompressed_size = args[:uncompressed_size] if args.key?(:uncompressed_size)
+          @uncompressed_size_bytes = args[:uncompressed_size_bytes] if args.key?(:uncompressed_size_bytes)
         end
       end
       

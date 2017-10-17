@@ -2282,6 +2282,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :markets
       
+        # Whether or not to migrate the user's exam data to Academy for Ads.
+        # Corresponds to the JSON property `migrateToAfa`
+        # @return [Boolean]
+        attr_accessor :migrate_to_afa
+        alias_method :migrate_to_afa?, :migrate_to_afa
+      
         # The user's phone number.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -2315,6 +2321,7 @@ module Google
           @job_functions = args[:job_functions] if args.key?(:job_functions)
           @languages = args[:languages] if args.key?(:languages)
           @markets = args[:markets] if args.key?(:markets)
+          @migrate_to_afa = args[:migrate_to_afa] if args.key?(:migrate_to_afa)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @primary_country_code = args[:primary_country_code] if args.key?(:primary_country_code)
           @profile_public = args[:profile_public] if args.key?(:profile_public)

@@ -190,10 +190,10 @@ module Google
       class MessageEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :compressed_size, :numeric_string => true, as: 'compressedSize'
+          property :compressed_size_bytes, :numeric_string => true, as: 'compressedSizeBytes'
           property :id, :numeric_string => true, as: 'id'
           property :type, as: 'type'
-          property :uncompressed_size, :numeric_string => true, as: 'uncompressedSize'
+          property :uncompressed_size_bytes, :numeric_string => true, as: 'uncompressedSizeBytes'
         end
       end
       

@@ -13856,9 +13856,11 @@
 "/cloudtrace:v2/ListTracesResponse/traces/trace": trace
 "/cloudtrace:v2/MessageEvent": message_event
 "/cloudtrace:v2/MessageEvent/compressedSize": compressed_size
+"/cloudtrace:v2/MessageEvent/compressedSizeBytes": compressed_size_bytes
 "/cloudtrace:v2/MessageEvent/id": id
 "/cloudtrace:v2/MessageEvent/type": type
 "/cloudtrace:v2/MessageEvent/uncompressedSize": uncompressed_size
+"/cloudtrace:v2/MessageEvent/uncompressedSizeBytes": uncompressed_size_bytes
 "/cloudtrace:v2/Module": module
 "/cloudtrace:v2/Module/buildId": build_id
 "/cloudtrace:v2/Module/module": module
@@ -48538,6 +48540,7 @@
 "/partners:v2/UserProfile/languages/language": language
 "/partners:v2/UserProfile/markets": markets
 "/partners:v2/UserProfile/markets/market": market
+"/partners:v2/UserProfile/migrateToAfa": migrate_to_afa
 "/partners:v2/UserProfile/phoneNumber": phone_number
 "/partners:v2/UserProfile/primaryCountryCode": primary_country_code
 "/partners:v2/UserProfile/profilePublic": profile_public

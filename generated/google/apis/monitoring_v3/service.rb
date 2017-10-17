@@ -798,16 +798,6 @@ module Google
         # @param [String] parent
         #   The project whose uptime check configurations are listed. The format
         #   isprojects/[PROJECT_ID].
-        # @param [String] filter
-        #   If provided, specifies the criteria that must be met by uptime check
-        #   configurations in the provided project to be included in the response. One of
-        #   the following filters can be provided.  uptime_check_config.id = `
-        #   uptime_check_id`  resource.type = gce_instance AND resource.label.instance_id =
-        #   `instance_id`  resource.type = aws_ec2_instance AND resource.label.
-        #   instance_id =  `instance_id`  resource.type = aws_elb_load_balancer AND
-        #   resource.label.name = `name`  resource.type = gae_app AND resource.label.
-        #   module_id = `module_id`  resource.type = uptime_url AND resource.label.host = `
-        #   host`  group.id = `group_id`
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
         #   further constrain the maximum number of results returned in a single page. If
@@ -834,12 +824,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_uptime_check_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_uptime_check_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v3/{+parent}/uptimeCheckConfigs', options)
           command.response_representation = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

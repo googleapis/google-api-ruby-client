@@ -907,6 +907,7 @@ module Google
           collection :job_functions, as: 'jobFunctions'
           collection :languages, as: 'languages'
           collection :markets, as: 'markets'
+          property :migrate_to_afa, as: 'migrateToAfa'
           property :phone_number, as: 'phoneNumber'
           property :primary_country_code, as: 'primaryCountryCode'
           property :profile_public, as: 'profilePublic'
