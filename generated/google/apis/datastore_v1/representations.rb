@@ -262,6 +262,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReserveIdsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReserveIdsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +701,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :previous_transaction, :base64 => true, as: 'previousTransaction'
+        end
+      end
+      
+      class ReserveIdsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          collection :keys, as: 'keys', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
+      
+        end
+      end
+      
+      class ReserveIdsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

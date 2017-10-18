@@ -61,7 +61,7 @@ module Google
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -101,7 +101,7 @@ module Google
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -141,7 +141,7 @@ module Google
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,7 +181,7 @@ module Google
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,7 +224,7 @@ module Google
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -269,7 +269,7 @@ module Google
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -315,7 +315,7 @@ module Google
         #   If set, only deletes the bucket if its metageneration does not match this
         #   value.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -361,7 +361,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -402,7 +402,7 @@ module Google
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -448,7 +448,7 @@ module Google
         #   Set of properties to return. Defaults to noAcl, unless the bucket resource
         #   specifies acl or defaultObjectAcl properties, when it defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -501,7 +501,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -558,7 +558,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -604,7 +604,7 @@ module Google
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::Policy] policy_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -647,7 +647,7 @@ module Google
         # @param [Array<String>, String] permissions
         #   Permissions to test.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -700,7 +700,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -782,7 +782,7 @@ module Google
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -823,7 +823,7 @@ module Google
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -863,7 +863,7 @@ module Google
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -909,7 +909,7 @@ module Google
         #   If present, only return default ACL listing if the bucket's current
         #   metageneration does not match the given value.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -954,7 +954,7 @@ module Google
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -999,7 +999,7 @@ module Google
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
         # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1042,7 +1042,7 @@ module Google
         # @param [String] notification
         #   ID of the notification to delete.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1081,7 +1081,7 @@ module Google
         # @param [String] notification
         #   Notification ID
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1121,7 +1121,7 @@ module Google
         #   The parent bucket of the notification.
         # @param [Google::Apis::StorageV1::Notification] notification_object
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1161,7 +1161,7 @@ module Google
         # @param [String] bucket
         #   Name of a Google Cloud Storage bucket.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1209,7 +1209,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1257,7 +1257,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1305,7 +1305,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1353,7 +1353,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1404,7 +1404,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1457,7 +1457,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1517,7 +1517,7 @@ module Google
         #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
         #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1615,7 +1615,7 @@ module Google
         #   If present, selects a specific revision of the source object (as opposed to
         #   the latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1698,7 +1698,7 @@ module Google
         #   Makes the operation conditional on whether the object's current metageneration
         #   does not match the given value.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1763,7 +1763,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1821,7 +1821,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1897,7 +1897,7 @@ module Google
         #   Set of properties to return. Defaults to noAcl, unless the object resource
         #   specifies the acl property, when it defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1974,7 +1974,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [Boolean] versions
         #   If true, lists all versions of an object as distinct results. The default is
         #   false. For more information, see Object Versioning.
@@ -2047,7 +2047,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2160,7 +2160,7 @@ module Google
         #   If present, selects a specific revision of the source object (as opposed to
         #   the latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2224,7 +2224,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2275,7 +2275,7 @@ module Google
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2342,7 +2342,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2416,7 +2416,7 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [Boolean] versions
         #   If true, lists all versions of an object as distinct results. The default is
         #   false. For more information, see Object Versioning.
@@ -2465,7 +2465,7 @@ module Google
         # @param [String] project_id
         #   Project ID
         # @param [String] user_project
-        #   The project to be billed for this request, for Requester Pays buckets.
+        #   The project to be billed for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

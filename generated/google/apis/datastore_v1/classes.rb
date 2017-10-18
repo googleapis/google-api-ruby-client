@@ -1475,6 +1475,45 @@ module Google
         end
       end
       
+      # The request for Datastore.ReserveIds.
+      class ReserveIdsRequest
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # A list of keys with complete key paths whose numeric IDs should not be
+        # auto-allocated.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::DatastoreV1::Key>]
+        attr_accessor :keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @keys = args[:keys] if args.key?(:keys)
+        end
+      end
+      
+      # The response for Datastore.ReserveIds.
+      class ReserveIdsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request for Datastore.Rollback.
       class RollbackRequest
         include Google::Apis::Core::Hashable

@@ -900,7 +900,7 @@ module Google
           property :name, as: 'name'
           property :origin, as: 'origin'
           property :origin_namespace, as: 'originNamespace'
-          property :original_shuffle_step_name, as: 'originalShuffleStepName'
+          property :original_requesting_step_name, as: 'originalRequestingStepName'
           property :original_step_name, as: 'originalStepName'
           property :portion, as: 'portion'
           property :side_input, as: 'sideInput', class: Google::Apis::DataflowV1b3::SideInputId, decorator: Google::Apis::DataflowV1b3::SideInputId::Representation
@@ -1716,8 +1716,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :get_metadata, as: 'getMetadata', class: Google::Apis::DataflowV1b3::SourceGetMetadataRequest, decorator: Google::Apis::DataflowV1b3::SourceGetMetadataRequest::Representation
       
+          property :name, as: 'name'
+          property :original_name, as: 'originalName'
           property :split, as: 'split', class: Google::Apis::DataflowV1b3::SourceSplitRequest, decorator: Google::Apis::DataflowV1b3::SourceSplitRequest::Representation
       
+          property :stage_name, as: 'stageName'
+          property :system_name, as: 'systemName'
         end
       end
       

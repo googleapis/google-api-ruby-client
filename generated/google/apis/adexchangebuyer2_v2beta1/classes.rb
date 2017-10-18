@@ -1183,8 +1183,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListBidMetricsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.bidMetrics.list
+        # field in the subsequent call to the bidMetrics.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1214,8 +1213,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListBidResponseErrorsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.bidResponseErrors.list
+        # field in the subsequent call to the bidResponseErrors.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1246,8 +1244,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListBidResponsesWithoutBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.bidResponsesWithoutBids.list
+        # field in the subsequent call to the bidResponsesWithoutBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1370,8 +1367,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListCreativeStatusBreakdownByCreativeRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBids.creatives.list
+        # field in the subsequent call to the filteredBids.creatives.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1407,8 +1403,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListCreativeStatusBreakdownByDetailRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBids.details.list
+        # field in the subsequent call to the filteredBids.details.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1528,8 +1523,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListFilteredBidRequestsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBidRequests.list
+        # field in the subsequent call to the filteredBidRequests.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1560,8 +1554,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListFilteredBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBids.list
+        # field in the subsequent call to the filteredBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1591,8 +1584,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListImpressionMetricsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.impressionMetrics.list
+        # field in the subsequent call to the impressionMetrics.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1622,8 +1614,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListLosingBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.losingBids.list
+        # field in the subsequent call to the losingBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1648,8 +1639,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListNonBillableWinningBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.nonBillableWinningBids.list
+        # field in the subsequent call to the nonBillableWinningBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]

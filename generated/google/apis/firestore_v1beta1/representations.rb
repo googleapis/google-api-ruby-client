@@ -172,13 +172,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IndexOperationMetadata
+      class LatLng
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LatLng
+      class ListCollectionIdsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,12 +233,6 @@ module Google
       end
       
       class Precondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -576,24 +570,19 @@ module Google
         end
       end
       
-      class IndexOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cancelled, as: 'cancelled'
-          property :document_progress, as: 'documentProgress', class: Google::Apis::FirestoreV1beta1::Progress, decorator: Google::Apis::FirestoreV1beta1::Progress::Representation
-      
-          property :end_time, as: 'endTime'
-          property :index, as: 'index'
-          property :operation_type, as: 'operationType'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class LatLng
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
+        end
+      end
+      
+      class ListCollectionIdsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
         end
       end
       
@@ -683,14 +672,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exists, as: 'exists'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class Progress
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :work_completed, :numeric_string => true, as: 'workCompleted'
-          property :work_estimated, :numeric_string => true, as: 'workEstimated'
         end
       end
       

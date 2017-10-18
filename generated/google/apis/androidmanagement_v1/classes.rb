@@ -388,11 +388,11 @@ module Google
         alias_method :policy_compliant?, :policy_compliant
       
         # The name of the policy that is intended to be applied to the device. If empty,
-        # the policy with id default is applied. This field may be modified by an update
-        # request. The name of the policy is in the form enterprises/`enterpriseId`/
-        # policies/`policyId`. It is also permissible to only specify the policyId when
-        # updating this field as long as the policyId contains no slashes since the rest
-        # of the policy name can be inferred from context.
+        # the policy_name for the user that owns this device is applied. This field may
+        # be modified by an update request. The name of the policy is in the form
+        # enterprises/`enterpriseId`/policies/`policyId`. It is also permissible to only
+        # specify the policyId when updating this field as long as the policyId contains
+        # no slashes since the rest of the policy name can be inferred from context.
         # Corresponds to the JSON property `policyName`
         # @return [String]
         attr_accessor :policy_name
@@ -425,9 +425,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The resource name of the user of the device in the form enterprises/`
-        # enterpriseId`/users/`userId`. This is the name of the device account
-        # automatically created for this device.
+        # The resource name of the user that owns this device in the form enterprises/`
+        # enterpriseId`/users/`userId`.
         # Corresponds to the JSON property `userName`
         # @return [String]
         attr_accessor :user_name
@@ -575,9 +574,11 @@ module Google
       
         # The name of the policy that will be initially applied to the enrolled device
         # in the form enterprises/`enterpriseId`/policies/`policyId`. If not specified,
-        # the policy with id default is applied. It is permissible to only specify the
-        # policyId when updating this field as long as the policyId contains no slashes
-        # since the rest of the policy name can be inferred from context.
+        # the policy_name for the user that owns the device is applied. If user_name
+        # also isn't specified, the policy defaults to enterprises/`enterpriseId`/
+        # policies/default. It is permissible to only specify the policyId when updating
+        # this field as long as the policyId contains no slashes since the rest of the
+        # policy name can be inferred from context.
         # Corresponds to the JSON property `policyName`
         # @return [String]
         attr_accessor :policy_name

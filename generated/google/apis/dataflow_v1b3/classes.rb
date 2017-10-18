@@ -442,10 +442,11 @@ module Google
         # @return [String]
         attr_accessor :origin_namespace
       
-        # The GroupByKey step name from the original graph.
-        # Corresponds to the JSON property `originalShuffleStepName`
+        # The step name requesting an operation, such as GBK.
+        # I.e. the ParDo causing a read/write from shuffle to occur.
+        # Corresponds to the JSON property `originalRequestingStepName`
         # @return [String]
-        attr_accessor :original_shuffle_step_name
+        attr_accessor :original_requesting_step_name
       
         # System generated name of the original step in the user's graph, before
         # optimization.
@@ -479,7 +480,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @origin = args[:origin] if args.key?(:origin)
           @origin_namespace = args[:origin_namespace] if args.key?(:origin_namespace)
-          @original_shuffle_step_name = args[:original_shuffle_step_name] if args.key?(:original_shuffle_step_name)
+          @original_requesting_step_name = args[:original_requesting_step_name] if args.key?(:original_requesting_step_name)
           @original_step_name = args[:original_step_name] if args.key?(:original_step_name)
           @portion = args[:portion] if args.key?(:portion)
           @side_input = args[:side_input] if args.key?(:side_input)
@@ -3457,6 +3458,17 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SourceGetMetadataRequest]
         attr_accessor :get_metadata
       
+        # User-provided name of the Read instruction for this source.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # System-defined name for the Read instruction for this source
+        # in the original workflow graph.
+        # Corresponds to the JSON property `originalName`
+        # @return [String]
+        attr_accessor :original_name
+      
         # Represents the operation to split a high-level Source specification
         # into bundles (parts for parallel processing).
         # At a high level, splitting of a source into bundles happens as follows:
@@ -3473,6 +3485,18 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SourceSplitRequest]
         attr_accessor :split
       
+        # System-defined name of the stage containing the source operation.
+        # Unique across the workflow.
+        # Corresponds to the JSON property `stageName`
+        # @return [String]
+        attr_accessor :stage_name
+      
+        # System-defined name of the Read instruction for this source.
+        # Unique across the workflow.
+        # Corresponds to the JSON property `systemName`
+        # @return [String]
+        attr_accessor :system_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3480,7 +3504,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @get_metadata = args[:get_metadata] if args.key?(:get_metadata)
+          @name = args[:name] if args.key?(:name)
+          @original_name = args[:original_name] if args.key?(:original_name)
           @split = args[:split] if args.key?(:split)
+          @stage_name = args[:stage_name] if args.key?(:stage_name)
+          @system_name = args[:system_name] if args.key?(:system_name)
         end
       end
       

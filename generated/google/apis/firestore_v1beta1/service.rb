@@ -352,11 +352,7 @@ module Google
         #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
         #   For example:
         #   `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
-        # @param [Fixnum] page_size
-        #   The maximum number of results to return.
-        # @param [String] page_token
-        #   A page token. Must be a value from
-        #   ListCollectionIdsResponse.
+        # @param [Google::Apis::FirestoreV1beta1::ListCollectionIdsRequest] list_collection_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -374,13 +370,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_database_document_collection_ids(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_database_document_collection_ids(parent, list_collection_ids_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta1/{+parent}:listCollectionIds', options)
+          command.request_representation = Google::Apis::FirestoreV1beta1::ListCollectionIdsRequest::Representation
+          command.request_object = list_collection_ids_request_object
           command.response_representation = Google::Apis::FirestoreV1beta1::ListCollectionIdsResponse::Representation
           command.response_class = Google::Apis::FirestoreV1beta1::ListCollectionIdsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
