@@ -857,6 +857,20 @@ module Google
         # Custom information type based on a dictionary of words or phrases. This can
         # be used to match sensitive information specific to the data, such as a list
         # of employee IDs or job titles.
+        # Dictionary words are case-insensitive and all characters other than letters
+        # and digits in the unicode [Basic Multilingual
+        # Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane)
+        # will be replaced with whitespace when scanning for matches, so the
+        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+        # surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and
+        # digits next to non-digits. For example, the dictionary word "jen" will
+        # match the first three letters of the text "jen123" but will return no
+        # matches for "jennifer".
+        # Dictionary words containing a large number of characters that are not
+        # letters or digits may result in unexpected findings because such characters
+        # are treated as whitespace.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary]
         attr_accessor :dictionary
@@ -1051,6 +1065,20 @@ module Google
       # Custom information type based on a dictionary of words or phrases. This can
       # be used to match sensitive information specific to the data, such as a list
       # of employee IDs or job titles.
+      # Dictionary words are case-insensitive and all characters other than letters
+      # and digits in the unicode [Basic Multilingual
+      # Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane)
+      # will be replaced with whitespace when scanning for matches, so the
+      # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+      # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+      # surrounding any match must be of a different type than the adjacent
+      # characters within the word, so letters must be next to non-letters and
+      # digits next to non-digits. For example, the dictionary word "jen" will
+      # match the first three letters of the text "jen123" but will return no
+      # matches for "jennifer".
+      # Dictionary words containing a large number of characters that are not
+      # letters or digits may result in unexpected findings because such characters
+      # are treated as whitespace.
       class GooglePrivacyDlpV2beta1Dictionary
         include Google::Apis::Core::Hashable
       
@@ -1141,7 +1169,7 @@ module Google
       class GooglePrivacyDlpV2beta1FieldTransformation
         include Google::Apis::Core::Hashable
       
-        # A condition for determing whether a transformation should be applied to
+        # A condition for determining whether a transformation should be applied to
         # a field.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordCondition]
@@ -1321,7 +1349,7 @@ module Google
         end
       end
       
-      # Configuration for determing how redaction of images should occur.
+      # Configuration for determining how redaction of images should occur.
       class GooglePrivacyDlpV2beta1ImageRedactionConfig
         include Google::Apis::Core::Hashable
       
@@ -2541,7 +2569,7 @@ module Google
         end
       end
       
-      # A condition for determing whether a transformation should be applied to
+      # A condition for determining whether a transformation should be applied to
       # a field.
       class GooglePrivacyDlpV2beta1RecordCondition
         include Google::Apis::Core::Hashable
@@ -2591,7 +2619,7 @@ module Google
       class GooglePrivacyDlpV2beta1RecordSuppression
         include Google::Apis::Core::Hashable
       
-        # A condition for determing whether a transformation should be applied to
+        # A condition for determining whether a transformation should be applied to
         # a field.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordCondition]
@@ -3181,9 +3209,9 @@ module Google
       class GooglePrivacyDlpV2beta1WordList
         include Google::Apis::Core::Hashable
       
-        # Words or phrases defining the dictionary. No word can be shorter than 3
-        # characters in length. To match, there must be whitespace or punctuation
-        # around the targeted string. [required]
+        # Words or phrases defining the dictionary. The dictionary must contain
+        # at least one phrase and every phrase must contain at least 2 characters
+        # that are letters or digits. [required]
         # Corresponds to the JSON property `words`
         # @return [Array<String>]
         attr_accessor :words

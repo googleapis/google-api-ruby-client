@@ -59,6 +59,7 @@ module Google
       class RemoteConfigCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :expression, as: 'expression'
           property :name, as: 'name'
           property :tag_color, as: 'tagColor'
@@ -72,6 +73,7 @@ module Google
       
           property :default_value, as: 'defaultValue', class: Google::Apis::FirebaseremoteconfigV1::RemoteConfigParameterValue, decorator: Google::Apis::FirebaseremoteconfigV1::RemoteConfigParameterValue::Representation
       
+          property :description, as: 'description'
         end
       end
       

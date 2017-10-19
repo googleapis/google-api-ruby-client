@@ -1289,8 +1289,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # DEPRECATED: This field is no longer supported. Instead of using aliases,
-        # please specify multiple google.api.Endpoint for each of the intented
-        # alias.
+        # please specify multiple google.api.Endpoint for each of the intended
+        # aliases.
         # Additional names that this endpoint will be hosted on.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]

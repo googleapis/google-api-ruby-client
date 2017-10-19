@@ -22,6 +22,392 @@ module Google
   module Apis
     module CloudfunctionsV1
       
+      # Request for the `CallFunction` method.
+      class CallFunctionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Input to be passed to the function.
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # Response of `CallFunction` method.
+      class CallFunctionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Either system or user-function generated error. Set if execution
+        # was not successful.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Execution id of function invocation.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # Result populated for successful execution of synchronous function. Will
+        # not be populated if function does not return a result through context.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # Describes a Cloud Function that contains user computation executed in
+      # response to an event. It encapsulate function and triggers configurations.
+      class CloudFunction
+        include Google::Apis::Core::Hashable
+      
+        # The amount of memory in MB available for a function.
+        # Defaults to 256MB.
+        # Corresponds to the JSON property `availableMemoryMb`
+        # @return [Fixnum]
+        attr_accessor :available_memory_mb
+      
+        # User-provided description of a function.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The name of the function (as defined in source code) that will be
+        # executed. Defaults to the resource name suffix, if not specified. For
+        # backward compatibility, if function with given name is not found, then the
+        # system will try to use function named "function".
+        # For Node.js this is name of a function exported by the module specified
+        # in `source_location`.
+        # Corresponds to the JSON property `entryPoint`
+        # @return [String]
+        attr_accessor :entry_point
+      
+        # Describes EventTrigger, used to request events be sent from another
+        # service.
+        # Corresponds to the JSON property `eventTrigger`
+        # @return [Google::Apis::CloudfunctionsV1::EventTrigger]
+        attr_accessor :event_trigger
+      
+        # Describes HttpsTrigger, could be used to connect web hooks to function.
+        # Corresponds to the JSON property `httpsTrigger`
+        # @return [Google::Apis::CloudfunctionsV1::HttpsTrigger]
+        attr_accessor :https_trigger
+      
+        # Labels associated with this Cloud Function.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # A user-defined name of the function. Function names must be unique
+        # globally and match pattern `projects/*/locations/*/functions/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The email of the function's service account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # The Google Cloud Storage URL, starting with gs://, pointing to the zip
+        # archive which contains the function.
+        # Corresponds to the JSON property `sourceArchiveUrl`
+        # @return [String]
+        attr_accessor :source_archive_url
+      
+        # Describes SourceRepository, used to represent parameters related to
+        # source repository where a function is hosted.
+        # Corresponds to the JSON property `sourceRepository`
+        # @return [Google::Apis::CloudfunctionsV1::SourceRepository]
+        attr_accessor :source_repository
+      
+        # The Google Cloud Storage signed URL used for source uploading, generated
+        # by google.cloud.functions.v1.GenerateUploadUrl
+        # Corresponds to the JSON property `sourceUploadUrl`
+        # @return [String]
+        attr_accessor :source_upload_url
+      
+        # Output only. Status of the function deployment.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The function execution timeout. Execution is considered failed and
+        # can be terminated if the function is not completed at the end of the
+        # timeout period. Defaults to 60 seconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Output only. The last update timestamp of a Cloud Function.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only.
+        # The version identifier of the Cloud Function. Each deployment attempt
+        # results in a new version of a function being created.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_memory_mb = args[:available_memory_mb] if args.key?(:available_memory_mb)
+          @description = args[:description] if args.key?(:description)
+          @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
+          @https_trigger = args[:https_trigger] if args.key?(:https_trigger)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @source_archive_url = args[:source_archive_url] if args.key?(:source_archive_url)
+          @source_repository = args[:source_repository] if args.key?(:source_repository)
+          @source_upload_url = args[:source_upload_url] if args.key?(:source_upload_url)
+          @status = args[:status] if args.key?(:status)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # Describes EventTrigger, used to request events be sent from another
+      # service.
+      class EventTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of event to observe. For example:
+        # `google.storage.object.finalized` and
+        # `google.firebase.analytics.event.log`.
+        # Event type consists of three parts:
+        # 1. namespace: The domain name of the organization in reverse-domain
+        # notation (e.g. `acme.net` appears as `net.acme`) and any orginization
+        # specific subdivisions. If the organization's top-level domain is `com`,
+        # the top-level domain is ommited (e.g. `google.com` appears as
+        # `google`). For example, `google.storage` and
+        # `google.firebase.analytics`.
+        # 2. resource type: The type of resource on which event ocurs. For
+        # example, the Google Cloud Storage API includes the type `object`.
+        # 3. action: The action that generates the event. For example, actions for
+        # a Google Cloud Storage Object include 'finalize' and 'delete'.
+        # These parts are lower case and joined by '.'.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Describes the policy in case of function's execution failure.
+        # If empty, then defaults to ignoring failures (i.e. not retrying them).
+        # Corresponds to the JSON property `failurePolicy`
+        # @return [Google::Apis::CloudfunctionsV1::FailurePolicy]
+        attr_accessor :failure_policy
+      
+        # Required. The resource(s) from which to observe events, for example,
+        # `projects/_/buckets/myBucket`.
+        # Not all syntactically correct values are accepted by all services. For
+        # example:
+        # 1. The authorization model must support it. Google Cloud Functions
+        # only allows EventTriggers to be deployed that observe resources in the
+        # same project as the `CloudFunction`.
+        # 2. The resource type must match the pattern expected for an
+        # `event_type`. For example, an `EventTrigger` that has an
+        # `event_type` of "google.pubsub.topic.publish" should have a resource
+        # that matches Google Cloud Pub/Sub topics.
+        # Additionally, some services may support short names when creating an
+        # `EventTrigger`. These will always be returned in the normalized "long"
+        # format.
+        # See each *service's* documentation for supported formats.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The hostname of the service that should be observed.
+        # If no string is provided, the default service implementing the API will
+        # be used. For example, `storage.googleapis.com` is the default for all
+        # event types in the 'google.storage` namespace.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @failure_policy = args[:failure_policy] if args.key?(:failure_policy)
+          @resource = args[:resource] if args.key?(:resource)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Describes the policy in case of function's execution failure.
+      # If empty, then defaults to ignoring failures (i.e. not retrying them).
+      class FailurePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Describes the retry policy in case of function's execution failure.
+        # A function execution will be retried on any failure.
+        # A failed execution will be retried up to 7 days with an exponential backoff
+        # (capped at 10 seconds).
+        # Retried execution is charged as any other execution.
+        # Corresponds to the JSON property `retry`
+        # @return [Google::Apis::CloudfunctionsV1::Retry]
+        attr_accessor :retry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retry = args[:retry] if args.key?(:retry)
+        end
+      end
+      
+      # Request of `GenerateDownloadUrl` method.
+      class GenerateDownloadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        # The optional version of function. If not set, default, current version
+        # is used.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # Response of `GenerateDownloadUrl` method.
+      class GenerateDownloadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated Google Cloud Storage signed URL that should be used for
+        # function source code download.
+        # Corresponds to the JSON property `downloadUrl`
+        # @return [String]
+        attr_accessor :download_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_url = args[:download_url] if args.key?(:download_url)
+        end
+      end
+      
+      # Request of `GenerateSourceUploadUrl` method.
+      class GenerateUploadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of `GenerateSourceUploadUrl` method.
+      class GenerateUploadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated Google Cloud Storage signed URL that should be used for a
+        # function source code upload. The uploaded file should be a zip archive
+        # which contains a function.
+        # Corresponds to the JSON property `uploadUrl`
+        # @return [String]
+        attr_accessor :upload_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upload_url = args[:upload_url] if args.key?(:upload_url)
+        end
+      end
+      
+      # Describes HttpsTrigger, could be used to connect web hooks to function.
+      class HttpsTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The deployed url for the function.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Response for the `ListFunctions` method.
+      class ListFunctionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The functions that match the request.
+        # Corresponds to the JSON property `functions`
+        # @return [Array<Google::Apis::CloudfunctionsV1::CloudFunction>]
+        attr_accessor :functions
+      
+        # If not empty, indicates that there may be more functions that match
+        # the request; this value should be passed in a new
+        # google.cloud.functions.v1.ListFunctionsRequest
+        # to get more functions.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @functions = args[:functions] if args.key?(:functions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -210,6 +596,45 @@ module Google
       end
       
       # Metadata describing an Operation
+      class OperationMetadataV1
+        include Google::Apis::Core::Hashable
+      
+        # The original request that started the operation.
+        # Corresponds to the JSON property `request`
+        # @return [Hash<String,Object>]
+        attr_accessor :request
+      
+        # Target of the operation - for example
+        # projects/project-1/locations/region-1/functions/function-1
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Type of operation.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Version id of the function created or updated by an API call.
+        # This field is only pupulated for Create and Update operations.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request = args[:request] if args.key?(:request)
+          @target = args[:target] if args.key?(:target)
+          @type = args[:type] if args.key?(:type)
+          @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # Metadata describing an Operation
       class OperationMetadataV1Beta2
         include Google::Apis::Core::Hashable
       
@@ -245,6 +670,63 @@ module Google
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
           @version_id = args[:version_id] if args.key?(:version_id)
+        end
+      end
+      
+      # Describes the retry policy in case of function's execution failure.
+      # A function execution will be retried on any failure.
+      # A failed execution will be retried up to 7 days with an exponential backoff
+      # (capped at 10 seconds).
+      # Retried execution is charged as any other execution.
+      class Retry
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Describes SourceRepository, used to represent parameters related to
+      # source repository where a function is hosted.
+      class SourceRepository
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The URL pointing to the hosted repository where the function
+        # were defined at the time of deployment. It always points to a specific
+        # commit in the format described above.
+        # Corresponds to the JSON property `deployedUrl`
+        # @return [String]
+        attr_accessor :deployed_url
+      
+        # The URL pointing to the hosted repository where the function is defined.
+        # There are supported Cloud Source Repository URLs in the following
+        # formats:
+        # To refer to a specific commit:
+        # `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
+        # To refer to a moveable alias (branch):
+        # `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/
+        # paths/*`
+        # In particular, to refer to HEAD use `master` moveable alias.
+        # To refer to a specific fixed alias (tag):
+        # `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/
+        # *`
+        # You may omit `paths/*` if you want to use the main directory.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployed_url = args[:deployed_url] if args.key?(:deployed_url)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

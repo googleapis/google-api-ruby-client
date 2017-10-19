@@ -211,7 +211,7 @@ module Google
         end
       end
       
-      # Deprecated. Use AppEngineTarget.
+      # Deprecated. Use AppEngineHttpTarget.
       class AppEngineQueueConfig
         include Google::Apis::Core::Hashable
       
@@ -1049,7 +1049,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineHttpTarget]
         attr_accessor :app_engine_http_target
       
-        # Deprecated. Use AppEngineTarget.
+        # Deprecated. Use AppEngineHttpTarget.
         # Corresponds to the JSON property `appEngineQueueConfig`
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineQueueConfig]
         attr_accessor :app_engine_queue_config

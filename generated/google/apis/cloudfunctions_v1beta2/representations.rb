@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadataV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadataV1Beta2
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -276,6 +282,16 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :request, as: 'request'
+          property :target, as: 'target'
+          property :type, as: 'type'
+          property :version_id, :numeric_string => true, as: 'versionId'
         end
       end
       
