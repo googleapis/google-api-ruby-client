@@ -4477,6 +4477,7 @@ module Google
           property :can_ip_forward, as: 'canIpForward'
           property :cpu_platform, as: 'cpuPlatform'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :deletion_protection, as: 'deletionProtection'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
       
@@ -5200,7 +5201,6 @@ module Google
           property :admin_enabled, as: 'adminEnabled'
           collection :circuit_infos, as: 'circuitInfos', class: Google::Apis::ComputeBeta::InterconnectCircuitInfo, decorator: Google::Apis::ComputeBeta::InterconnectCircuitInfo::Representation
       
-          property :connection_authorization, as: 'connectionAuthorization'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
@@ -5444,7 +5444,6 @@ module Google
           property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
           property :location_presence, as: 'locationPresence'
           property :region, as: 'region'
-          property :region_key, as: 'regionKey'
         end
       end
       

@@ -305,7 +305,7 @@ module Google
         attr_accessor :url
       
         # ID of the webhook listening to updates to trigger mirroring.
-        # Removing this webook from the other hosting service will stop
+        # Removing this webhook from the other hosting service will stop
         # Google Cloud Source Repositories from receiving notifications,
         # and thereby disabling mirroring.
         # Corresponds to the JSON property `webhookId`

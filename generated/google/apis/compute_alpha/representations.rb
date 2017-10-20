@@ -1216,18 +1216,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstanceGroupManagerStatefulPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InstanceGroupManagerStatefulPolicyDiskPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstanceGroupManagerUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2789,6 +2777,24 @@ module Google
       end
       
       class SslPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4417,6 +4423,8 @@ module Google
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -4710,6 +4718,7 @@ module Google
           property :description, as: 'description'
           collection :destination_ranges, as: 'destinationRanges'
           property :direction, as: 'direction'
+          property :disabled, as: 'disabled'
           property :enable_logging, as: 'enableLogging'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -5660,7 +5669,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
-          property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatefulPolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatefulPolicy::Representation
+          property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeAlpha::StatefulPolicy, decorator: Google::Apis::ComputeAlpha::StatefulPolicy::Representation
       
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
@@ -5781,21 +5790,6 @@ module Google
           property :deleting, as: 'deleting'
           property :recreating, as: 'recreating'
           property :restarting, as: 'restarting'
-        end
-      end
-      
-      class InstanceGroupManagerStatefulPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :preserved_disks, as: 'preservedDisks', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatefulPolicyDiskPolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatefulPolicyDiskPolicy::Representation
-      
-        end
-      end
-      
-      class InstanceGroupManagerStatefulPolicyDiskPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_name, as: 'deviceName'
         end
       end
       
@@ -6302,7 +6296,6 @@ module Google
           property :admin_enabled, as: 'adminEnabled'
           collection :circuit_infos, as: 'circuitInfos', class: Google::Apis::ComputeAlpha::InterconnectCircuitInfo, decorator: Google::Apis::ComputeAlpha::InterconnectCircuitInfo::Representation
       
-          property :connection_authorization, as: 'connectionAuthorization'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
@@ -6546,7 +6539,6 @@ module Google
           property :expected_rtt_ms, :numeric_string => true, as: 'expectedRttMs'
           property :location_presence, as: 'locationPresence'
           property :region, as: 'region'
-          property :region_key, as: 'regionKey'
         end
       end
       
@@ -8312,6 +8304,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfig::Representation
       
+          property :expr, as: 'expr', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
+      
           collection :src_ip_ranges, as: 'srcIpRanges'
           collection :src_region_codes, as: 'srcRegionCodes'
           property :versioned_expr, as: 'versionedExpr'
@@ -8544,6 +8538,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ssl_policy, as: 'sslPolicy'
+        end
+      end
+      
+      class StatefulPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :preserved_disks, as: 'preservedDisks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk::Representation
+      
+          property :preserved_resources, as: 'preservedResources', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources::Representation
+      
+        end
+      end
+      
+      class StatefulPolicyPreservedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_name, as: 'deviceName'
+        end
+      end
+      
+      class StatefulPolicyPreservedResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk::Representation
+      
         end
       end
       

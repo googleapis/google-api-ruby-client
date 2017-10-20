@@ -484,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TerritoryCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1271,6 +1277,8 @@ module Google
           property :locale, as: 'locale'
           property :name, as: 'name'
           property :status, as: 'status'
+          collection :status_reports, as: 'statusReports', class: Google::Apis::YoutubePartnerV1::StatusReport, decorator: Google::Apis::YoutubePartnerV1::StatusReport::Representation
+      
           property :time_created, as: 'timeCreated', type: DateTime
       
           property :type, as: 'type'
@@ -1521,6 +1529,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::SpreadsheetTemplate, decorator: Google::Apis::YoutubePartnerV1::SpreadsheetTemplate::Representation
       
           property :kind, as: 'kind'
+          property :status, as: 'status'
         end
       end
       
@@ -1529,6 +1538,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
           property :time_completed, :numeric_string => true, as: 'timeCompleted'
+        end
+      end
+      
+      class StatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status_content, as: 'statusContent'
+          property :status_file_name, as: 'statusFileName'
         end
       end
       

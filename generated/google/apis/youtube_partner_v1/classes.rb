@@ -2651,6 +2651,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # The package status reports.
+        # Corresponds to the JSON property `statusReports`
+        # @return [Array<Google::Apis::YoutubePartnerV1::StatusReport>]
+        attr_accessor :status_reports
+      
         # The package creation time. The value is specified in RFC 3339 (YYYY-MM-DDThh:
         # mm:ss.000Z) format.
         # Corresponds to the JSON property `timeCreated`
@@ -2680,6 +2685,7 @@ module Google
           @locale = args[:locale] if args.key?(:locale)
           @name = args[:name] if args.key?(:name)
           @status = args[:status] if args.key?(:status)
+          @status_reports = args[:status_reports] if args.key?(:status_reports)
           @time_created = args[:time_created] if args.key?(:time_created)
           @type = args[:type] if args.key?(:type)
           @uploader_name = args[:uploader_name] if args.key?(:uploader_name)
@@ -3589,6 +3595,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The status of the API response.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3597,6 +3608,7 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -3622,6 +3634,31 @@ module Google
         def update!(**args)
           @state = args[:state] if args.key?(:state)
           @time_completed = args[:time_completed] if args.key?(:time_completed)
+        end
+      end
+      
+      # 
+      class StatusReport
+        include Google::Apis::Core::Hashable
+      
+        # The content of the report message. Used only in Hybrid.
+        # Corresponds to the JSON property `statusContent`
+        # @return [String]
+        attr_accessor :status_content
+      
+        # Status file name. Used only in Hybrid.
+        # Corresponds to the JSON property `statusFileName`
+        # @return [String]
+        attr_accessor :status_file_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status_content = args[:status_content] if args.key?(:status_content)
+          @status_file_name = args[:status_file_name] if args.key?(:status_file_name)
         end
       end
       
