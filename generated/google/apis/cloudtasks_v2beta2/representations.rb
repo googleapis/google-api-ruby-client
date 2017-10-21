@@ -361,7 +361,7 @@ module Google
       class ListQueuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, :base64 => true, as: 'nextPageToken'
+          property :next_page_token, as: 'nextPageToken'
           collection :queues, as: 'queues', class: Google::Apis::CloudtasksV2beta2::Queue, decorator: Google::Apis::CloudtasksV2beta2::Queue::Representation
       
         end
@@ -370,7 +370,7 @@ module Google
       class ListTasksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, :base64 => true, as: 'nextPageToken'
+          property :next_page_token, as: 'nextPageToken'
           collection :tasks, as: 'tasks', class: Google::Apis::CloudtasksV2beta2::Task, decorator: Google::Apis::CloudtasksV2beta2::Task::Representation
       
         end

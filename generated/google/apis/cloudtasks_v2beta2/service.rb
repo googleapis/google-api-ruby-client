@@ -814,7 +814,7 @@ module Google
         # @param [String] order_by
         #   Sort order used for the query. The fields supported for sorting
         #   are Task.schedule_time and PullMessage.tag. All results will be
-        #   returned in ascending order. The default ordering is by
+        #   returned in approximately ascending order. The default ordering is by
         #   Task.schedule_time.
         # @param [Fixnum] page_size
         #   Requested page size. Fewer tasks than requested might be returned.

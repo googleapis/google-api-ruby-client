@@ -1403,15 +1403,15 @@ module Google
         # @return [String]
         attr_accessor :schema_inline_format
       
-        # [Experimental] Allows the schema of the desitination table to be updated as a
-        # side effect of the load job if a schema is autodetected or supplied in the job
-        # configuration. Schema update options are supported in two cases: when
-        # writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
-        # the destination table is a partition of a table, specified by partition
-        # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
-        # One or more of the following values are specified: ALLOW_FIELD_ADDITION:
-        # allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
-        # relaxing a required field in the original schema to nullable.
+        # Allows the schema of the desitination table to be updated as a side effect of
+        # the load job if a schema is autodetected or supplied in the job configuration.
+        # Schema update options are supported in two cases: when writeDisposition is
+        # WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
+        # table is a partition of a table, specified by partition decorators. For normal
+        # tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the
+        # following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable
+        # field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field
+        # in the original schema to nullable.
         # Corresponds to the JSON property `schemaUpdateOptions`
         # @return [Array<String>]
         attr_accessor :schema_update_options
@@ -1442,8 +1442,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_uris
       
-        # [Experimental] If specified, configures time-based partitioning for the
-        # destination table.
+        # If specified, configures time-based partitioning for the destination table.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -1585,15 +1584,14 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
       
-        # [Experimental] Allows the schema of the destination table to be updated as a
-        # side effect of the query job. Schema update options are supported in two cases:
-        # when writeDisposition is WRITE_APPEND; when writeDisposition is
-        # WRITE_TRUNCATE and the destination table is a partition of a table, specified
-        # by partition decorators. For normal tables, WRITE_TRUNCATE will always
-        # overwrite the schema. One or more of the following values are specified:
-        # ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-        # ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema
-        # to nullable.
+        # Allows the schema of the destination table to be updated as a side effect of
+        # the query job. Schema update options are supported in two cases: when
+        # writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
+        # the destination table is a partition of a table, specified by partition
+        # decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+        # One or more of the following values are specified: ALLOW_FIELD_ADDITION:
+        # allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+        # relaxing a required field in the original schema to nullable.
         # Corresponds to the JSON property `schemaUpdateOptions`
         # @return [Array<String>]
         attr_accessor :schema_update_options
@@ -1606,8 +1604,7 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
-        # [Experimental] If specified, configures time-based partitioning for the
-        # destination table.
+        # If specified, configures time-based partitioning for the destination table.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -2702,7 +2699,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :table_reference
       
-        # [Experimental] If specified, configures time-based partitioning for this table.
+        # If specified, configures time-based partitioning for this table.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -3079,7 +3076,7 @@ module Google
           # @return [Google::Apis::BigqueryV2::TableReference]
           attr_accessor :table_reference
         
-          # [Experimental] The time-based partitioning for this table.
+          # The time-based partitioning for this table.
           # Corresponds to the JSON property `timePartitioning`
           # @return [Google::Apis::BigqueryV2::TimePartitioning]
           attr_accessor :time_partitioning

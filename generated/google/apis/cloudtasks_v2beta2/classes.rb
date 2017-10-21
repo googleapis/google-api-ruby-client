@@ -668,7 +668,6 @@ module Google
         # If the next_page_token is empty, there are no more results.
         # The page token is valid for only 2 hours.
         # Corresponds to the JSON property `nextPageToken`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :next_page_token
       
@@ -698,7 +697,6 @@ module Google
         # ListTasksRequest.page_token.
         # If the next_page_token is empty, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :next_page_token
       

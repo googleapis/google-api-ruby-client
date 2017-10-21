@@ -41921,6 +41921,9 @@
 "/firebaserules:v1/TestSuite": test_suite
 "/firebaserules:v1/TestSuite/testCases": test_cases
 "/firebaserules:v1/TestSuite/testCases/test_case": test_case
+"/firebaserules:v1/UpdateReleaseRequest": update_release_request
+"/firebaserules:v1/UpdateReleaseRequest/release": release
+"/firebaserules:v1/UpdateReleaseRequest/updateMask": update_mask
 "/firebaserules:v1/fields": fields
 "/firebaserules:v1/firebaserules.projects.releases.create": create_project_release
 "/firebaserules:v1/firebaserules.projects.releases.create/name": name
@@ -41936,6 +41939,8 @@
 "/firebaserules:v1/firebaserules.projects.releases.list/name": name
 "/firebaserules:v1/firebaserules.projects.releases.list/pageSize": page_size
 "/firebaserules:v1/firebaserules.projects.releases.list/pageToken": page_token
+"/firebaserules:v1/firebaserules.projects.releases.patch": patch_project_release
+"/firebaserules:v1/firebaserules.projects.releases.patch/name": name
 "/firebaserules:v1/firebaserules.projects.releases.update": update_project_release
 "/firebaserules:v1/firebaserules.projects.releases.update/name": name
 "/firebaserules:v1/firebaserules.projects.rulesets.create": create_project_ruleset
@@ -56069,6 +56074,7 @@
 "/speech:v1/SpeechRecognitionResult": speech_recognition_result
 "/speech:v1/SpeechRecognitionResult/alternatives": alternatives
 "/speech:v1/SpeechRecognitionResult/alternatives/alternative": alternative
+"/speech:v1/SpeechRecognitionResult/channelTag": channel_tag
 "/speech:v1/Status": status
 "/speech:v1/Status/code": code
 "/speech:v1/Status/details": details

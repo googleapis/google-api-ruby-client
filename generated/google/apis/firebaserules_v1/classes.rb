@@ -661,6 +661,32 @@ module Google
           @test_cases = args[:test_cases] if args.key?(:test_cases)
         end
       end
+      
+      # The request for FirebaseRulesService.UpdateReleasePatch.
+      class UpdateReleaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # `Release` is a named reference to a `Ruleset`. Once a `Release` refers to a
+        # `Ruleset`, rules-enabled services will be able to enforce the `Ruleset`.
+        # Corresponds to the JSON property `release`
+        # @return [Google::Apis::FirebaserulesV1::Release]
+        attr_accessor :release
+      
+        # Specifies which fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @release = args[:release] if args.key?(:release)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
     end
   end
 end
