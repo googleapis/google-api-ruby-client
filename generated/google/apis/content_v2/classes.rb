@@ -4757,7 +4757,10 @@ module Google
         # @return [String]
         attr_accessor :gtin
       
-        # The REST id of the product.
+        # The REST id of the product. Content API methods that operate on products take
+        # this as their productId parameter.
+        # The REST id for a product is of the form channel:contentLanguage:targetCountry:
+        # offerId.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4838,10 +4841,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :multipack
       
-        # An identifier of the item. Leading and trailing whitespaces are stripped and
-        # multiple whitespaces are replaced by a single whitespace upon submission. Only
-        # valid unicode characters are accepted. See the products feed specification for
-        # details.
+        # A unique identifier for the item. Leading and trailing whitespaces are
+        # stripped and multiple whitespaces are replaced by a single whitespace upon
+        # submission. Only valid unicode characters are accepted. See the products feed
+        # specification for details.
+        # Note: Content API methods that operate on products take the REST id of the
+        # product, not this identifier.
         # Corresponds to the JSON property `offerId`
         # @return [String]
         attr_accessor :offer_id

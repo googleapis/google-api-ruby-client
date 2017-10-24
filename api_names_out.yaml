@@ -12088,6 +12088,7 @@
 "/cloudbuild:v1/BuildOperationMetadata": build_operation_metadata
 "/cloudbuild:v1/BuildOperationMetadata/build": build
 "/cloudbuild:v1/BuildOptions": build_options
+"/cloudbuild:v1/BuildOptions/logStreamingOption": log_streaming_option
 "/cloudbuild:v1/BuildOptions/requestedVerifyOption": requested_verify_option
 "/cloudbuild:v1/BuildOptions/sourceProvenanceHash": source_provenance_hash
 "/cloudbuild:v1/BuildOptions/sourceProvenanceHash/source_provenance_hash": source_provenance_hash

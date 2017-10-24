@@ -838,11 +838,11 @@ module Google
         # @param [String] owner_name
         #   Name of the owner (bidder or account) of the filter set to be created.
         #   For example:
-        #   - For a bidder-level filter set for bidder 123: "bidders/123"
+        #   - For a bidder-level filter set for bidder 123: `bidders/123`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123"
+        #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456"
+        #   whose bidder is 123: `bidders/123/accounts/456`
         # @param [Google::Apis::Adexchangebuyer2V2beta1::FilterSet] filter_set_object
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
@@ -887,11 +887,11 @@ module Google
         #   Full name of the resource to delete.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -931,11 +931,11 @@ module Google
         #   Full name of the resource being requested.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -973,11 +973,11 @@ module Google
         # @param [String] owner_name
         #   Name of the owner (bidder or account) of the filter sets to be listed.
         #   For example:
-        #   - For a bidder-level filter set for bidder 123: "bidders/123"
+        #   - For a bidder-level filter set for bidder 123: `bidders/123`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123"
+        #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456"
+        #   whose bidder is 123: `bidders/123/accounts/456`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] page_size
@@ -1025,11 +1025,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1080,11 +1080,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1135,11 +1135,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1190,11 +1190,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1245,11 +1245,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1300,11 +1300,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
         #   The ID of the creative status for which to retrieve a breakdown by
         #   creative.
@@ -1362,11 +1362,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
         #   The ID of the creative status for which to retrieve a breakdown by detail.
         #   See
@@ -1423,11 +1423,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1478,11 +1478,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1533,11 +1533,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1586,11 +1586,11 @@ module Google
         # @param [String] owner_name
         #   Name of the owner (bidder or account) of the filter set to be created.
         #   For example:
-        #   - For a bidder-level filter set for bidder 123: "bidders/123"
+        #   - For a bidder-level filter set for bidder 123: `bidders/123`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123"
+        #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456"
+        #   whose bidder is 123: `bidders/123/accounts/456`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_absolute_date_range_end_date_day
@@ -1630,6 +1630,7 @@ module Google
         #   data)
         #   - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
         #   troubleshooting data)
+        #   This field is required in create operations.
         # @param [Fixnum] filter_set_owner_account_id
         #   The account ID of the buyer who owns this filter set.
         #   The value of this field is ignored in create operations.
@@ -1715,11 +1716,11 @@ module Google
         #   Full name of the resource to delete.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1759,11 +1760,11 @@ module Google
         #   Full name of the resource being requested.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1801,11 +1802,11 @@ module Google
         # @param [String] owner_name
         #   Name of the owner (bidder or account) of the filter sets to be listed.
         #   For example:
-        #   - For a bidder-level filter set for bidder 123: "bidders/123"
+        #   - For a bidder-level filter set for bidder 123: `bidders/123`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123"
+        #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456"
+        #   whose bidder is 123: `bidders/123/accounts/456`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] page_size
@@ -1853,11 +1854,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1908,11 +1909,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -1963,11 +1964,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -2018,11 +2019,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -2073,11 +2074,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -2128,11 +2129,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
         #   The ID of the creative status for which to retrieve a breakdown by
         #   creative.
@@ -2190,11 +2191,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
         #   The ID of the creative status for which to retrieve a breakdown by detail.
         #   See
@@ -2251,11 +2252,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -2306,11 +2307,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id
@@ -2361,11 +2362,11 @@ module Google
         #   Name of the filter set that should be applied to the requested metrics.
         #   For example:
         #   - For a bidder-level filter set for bidder 123:
-        #   "bidders/123/filterSets/abc"
+        #   `bidders/123/filterSets/abc`
         #   - For an account-level filter set for the buyer account representing bidder
-        #   123: "bidders/123/accounts/123/filterSets/abc"
+        #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
         # @param [Fixnum] filter_set_id

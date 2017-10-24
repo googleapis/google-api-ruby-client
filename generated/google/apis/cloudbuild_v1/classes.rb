@@ -230,6 +230,12 @@ module Google
       class BuildOptions
         include Google::Apis::Core::Hashable
       
+        # LogStreamingOption to define build log streaming behavior to Google Cloud
+        # Storage.
+        # Corresponds to the JSON property `logStreamingOption`
+        # @return [String]
+        attr_accessor :log_streaming_option
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -251,6 +257,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @substitution_option = args[:substitution_option] if args.key?(:substitution_option)

@@ -203,6 +203,7 @@ module Google
       class BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_streaming_option, as: 'logStreamingOption'
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'

@@ -875,6 +875,7 @@ module Google
         # data)
         # - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
         # troubleshooting data)
+        # This field is required in create operations.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -54,10 +54,10 @@ module Google
           @batch_path = 'batch/content/v2sandbox'
         end
         
-        # Marks an order as acknowledged. This method can only be called for non-multi-
-        # client accounts.
+        # Marks an order as acknowledged.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [Google::Apis::ContentV2sandbox::OrdersAcknowledgeRequest] orders_acknowledge_request_object
@@ -97,9 +97,10 @@ module Google
         end
         
         # Sandbox only. Moves a test order from state "inProgress" to state "
-        # pendingShipment". This method can only be called for non-multi-client accounts.
+        # pendingShipment".
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the test order to modify.
         # @param [String] fields
@@ -135,10 +136,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels all line items in an order, making a full refund. This method can only
-        # be called for non-multi-client accounts.
+        # Cancels all line items in an order, making a full refund.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order to cancel.
         # @param [Google::Apis::ContentV2sandbox::OrdersCancelRequest] orders_cancel_request_object
@@ -177,10 +178,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a line item, making a full refund. This method can only be called for
-        # non-multi-client accounts.
+        # Cancels a line item, making a full refund.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [Google::Apis::ContentV2sandbox::OrdersCancelLineItemRequest] orders_cancel_line_item_request_object
@@ -219,10 +220,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sandbox only. Creates a test order. This method can only be called for non-
-        # multi-client accounts.
+        # Sandbox only. Creates a test order.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that should manage the order. This cannot be a multi-
+        #   client account.
         # @param [Google::Apis::ContentV2sandbox::OrdersCreateTestOrderRequest] orders_create_test_order_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -258,8 +259,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves or modifies multiple orders in a single request. This method can
-        # only be called for non-multi-client accounts.
+        # Retrieves or modifies multiple orders in a single request.
         # @param [Google::Apis::ContentV2sandbox::OrdersCustomBatchRequest] orders_custom_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -294,10 +294,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an order from your Merchant Center account. This method can only be
-        # called for non-multi-client accounts.
+        # Retrieves an order from your Merchant Center account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [String] fields
@@ -333,10 +333,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an order using merchant order id. This method can only be called for
-        # non-multi-client accounts.
+        # Retrieves an order using merchant order id.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] merchant_order_id
         #   The merchant order id to be looked for.
         # @param [String] fields
@@ -373,10 +373,10 @@ module Google
         end
         
         # Sandbox only. Retrieves an order template that can be used to quickly create a
-        # new order in sandbox. This method can only be called for non-multi-client
-        # accounts.
+        # new order in sandbox.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that should manage the order. This cannot be a multi-
+        #   client account.
         # @param [String] template_name
         #   The name of the template to retrieve.
         # @param [String] fields
@@ -412,10 +412,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the orders in your Merchant Center account. This method can only be
-        # called for non-multi-client accounts.
+        # Lists the orders in your Merchant Center account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [Boolean] acknowledged
         #   Obtains orders that match the acknowledgement status. When set to true,
         #   obtains orders that have been acknowledged. When false, obtains orders that
@@ -486,10 +486,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refund a portion of the order, up to the full amount paid. This method can
-        # only be called for non-multi-client accounts.
+        # Refund a portion of the order, up to the full amount paid.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order to refund.
         # @param [Google::Apis::ContentV2sandbox::OrdersRefundRequest] orders_refund_request_object
@@ -528,10 +528,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a line item. This method can only be called for non-multi-client
-        # accounts.
+        # Returns a line item.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [Google::Apis::ContentV2sandbox::OrdersReturnLineItemRequest] orders_return_line_item_request_object
@@ -570,10 +570,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks line item(s) as shipped. This method can only be called for non-multi-
-        # client accounts.
+        # Marks line item(s) as shipped.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [Google::Apis::ContentV2sandbox::OrdersShipLineItemsRequest] orders_ship_line_items_request_object
@@ -612,10 +612,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the merchant order ID for a given order. This method can only be
-        # called for non-multi-client accounts.
+        # Updates the merchant order ID for a given order.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [Google::Apis::ContentV2sandbox::OrdersUpdateMerchantOrderIdRequest] orders_update_merchant_order_id_request_object
@@ -654,10 +654,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a shipment's status, carrier, and/or tracking ID. This method can only
-        # be called for non-multi-client accounts.
+        # Updates a shipment's status, carrier, and/or tracking ID.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account.
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
         # @param [String] order_id
         #   The ID of the order.
         # @param [Google::Apis::ContentV2sandbox::OrdersUpdateShipmentRequest] orders_update_shipment_request_object
