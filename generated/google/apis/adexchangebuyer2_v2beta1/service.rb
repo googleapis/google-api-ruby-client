@@ -1612,9 +1612,13 @@ module Google
         # @param [Fixnum] filter_set_buyer_account_id
         #   The ID of the buyer account on which to filter; optional.
         # @param [String] filter_set_creative_id
-        #   The ID of the creative on which to filter; optional.
+        #   The ID of the creative on which to filter; optional. This field may be set
+        #   only for a filter set that accesses buyer-level troubleshooting data, i.e.
+        #   one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # @param [Fixnum] filter_set_deal_id
-        #   The ID of the deal on which to filter; optional.
+        #   The ID of the deal on which to filter; optional. This field may be set
+        #   only for a filter set that accesses buyer-level troubleshooting data, i.e.
+        #   one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # @param [String] filter_set_environment
         #   The environment on which to filter; optional.
         # @param [Fixnum] filter_set_filter_set_id

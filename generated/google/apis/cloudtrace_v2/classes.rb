@@ -345,6 +345,7 @@ module Google
         alias_method :same_process_as_parent_span?, :same_process_as_parent_span
       
         # The [SPAN_ID] portion of the span's resource name.
+        # The ID is a 16-character hexadecimal encoding of an 8-byte array.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id

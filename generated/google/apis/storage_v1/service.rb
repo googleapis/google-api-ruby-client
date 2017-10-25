@@ -448,7 +448,7 @@ module Google
         #   Set of properties to return. Defaults to noAcl, unless the bucket resource
         #   specifies acl or defaultObjectAcl properties, when it defaults to full.
         # @param [String] user_project
-        #   The project to be billed for this request
+        #   The project to be billed for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

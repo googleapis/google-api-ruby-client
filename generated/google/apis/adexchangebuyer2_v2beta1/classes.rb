@@ -842,12 +842,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :buyer_account_id
       
-        # The ID of the creative on which to filter; optional.
+        # The ID of the creative on which to filter; optional. This field may be set
+        # only for a filter set that accesses buyer-level troubleshooting data, i.e.
+        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
         attr_accessor :creative_id
       
-        # The ID of the deal on which to filter; optional.
+        # The ID of the deal on which to filter; optional. This field may be set
+        # only for a filter set that accesses buyer-level troubleshooting data, i.e.
+        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # Corresponds to the JSON property `dealId`
         # @return [Fixnum]
         attr_accessor :deal_id

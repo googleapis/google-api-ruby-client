@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/storage_v1/service.rb'
-require 'google/apis/storage_v1/classes.rb'
-require 'google/apis/storage_v1/representations.rb'
+require 'google/apis/dns_v1beta2/service.rb'
+require 'google/apis/dns_v1beta2/classes.rb'
+require 'google/apis/dns_v1beta2/representations.rb'
 
 module Google
   module Apis
-    # Cloud Storage JSON API
+    # Google Cloud DNS API
     #
-    # Stores and retrieves potentially large, immutable data objects.
+    # Configures and serves authoritative DNS records.
     #
-    # @see https://developers.google.com/storage/docs/json_api/
-    module StorageV1
-      VERSION = 'V1'
-      REVISION = '20171011'
+    # @see https://developers.google.com/cloud-dns
+    module DnsV1beta2
+      VERSION = 'V1beta2'
+      REVISION = '20171019'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
@@ -33,14 +33,11 @@ module Google
       # View your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
 
-      # Manage your data and permissions in Google Cloud Storage
-      AUTH_DEVSTORAGE_FULL_CONTROL = 'https://www.googleapis.com/auth/devstorage.full_control'
+      # View your DNS records hosted by Google Cloud DNS
+      AUTH_NDEV_CLOUDDNS_READONLY = 'https://www.googleapis.com/auth/ndev.clouddns.readonly'
 
-      # View your data in Google Cloud Storage
-      AUTH_DEVSTORAGE_READ_ONLY = 'https://www.googleapis.com/auth/devstorage.read_only'
-
-      # Manage your data in Google Cloud Storage
-      AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'
+      # View and manage your DNS records hosted by Google Cloud DNS
+      AUTH_NDEV_CLOUDDNS_READWRITE = 'https://www.googleapis.com/auth/ndev.clouddns.readwrite'
     end
   end
 end

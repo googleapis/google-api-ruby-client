@@ -287,7 +287,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
-          property :dataset_region, as: 'datasetRegion'
           property :destination_dataset_id, as: 'destinationDatasetId'
           property :end_time, as: 'endTime'
           property :name, as: 'name'

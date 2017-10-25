@@ -722,11 +722,6 @@ module Google
         # @return [String]
         attr_accessor :data_source_id
       
-        # Output only. Region in which BigQuery dataset is located.
-        # Corresponds to the JSON property `datasetRegion`
-        # @return [String]
-        attr_accessor :dataset_region
-      
         # The BigQuery target dataset id.
         # Corresponds to the JSON property `destinationDatasetId`
         # @return [String]
@@ -778,7 +773,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. Data transfer run state. Ignored for input requests.
+        # Data transfer run state. Ignored for input requests.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -791,6 +786,7 @@ module Google
         # Output only. Unique ID of the user on whose behalf transfer is done.
         # Applicable only to data sources that do not support service accounts.
         # When set to 0, the data source service account credentials are used.
+        # May be negative.
         # Corresponds to the JSON property `userId`
         # @return [Fixnum]
         attr_accessor :user_id
@@ -802,7 +798,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
-          @dataset_region = args[:dataset_region] if args.key?(:dataset_region)
           @destination_dataset_id = args[:destination_dataset_id] if args.key?(:destination_dataset_id)
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)

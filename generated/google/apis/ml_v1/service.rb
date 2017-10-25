@@ -503,6 +503,8 @@ module Google
         # versions.
         # @param [String] parent
         #   Required. The name of the project whose models are to be listed.
+        # @param [String] filter
+        #   Optional. Specifies the subset of models to retrieve.
         # @param [Fixnum] page_size
         #   Optional. The number of models to retrieve per "page" of results. If there
         #   are more remaining results than this number, the response message will
@@ -529,11 +531,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_models(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_models(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/models', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -786,6 +789,8 @@ module Google
         # be retrieved in batches (called pages):
         # @param [String] parent
         #   Required. The name of the model for which to list the version.
+        # @param [String] filter
+        #   Optional. Specifies the subset of versions to retrieve.
         # @param [Fixnum] page_size
         #   Optional. The number of versions to retrieve per "page" of results. If
         #   there are more remaining results than this number, the response message
@@ -812,11 +817,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_model_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_model_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListVersionsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -1066,15 +1066,34 @@ module Google
         # <dt>standard_gpu</dt>
         # <dd>
         # A machine equivalent to <code suppresswarning="true">standard</code> that
-        # also includes a
+        # also includes a single NVIDIA Tesla K80 GPU. See more about
         # <a href="/ml-engine/docs/how-tos/using-gpus">
-        # GPU that you can use in your trainer</a>.
+        # using GPUs for training your model</a>.
         # </dd>
         # <dt>complex_model_m_gpu</dt>
         # <dd>
         # A machine equivalent to
         # <code suppresswarning="true">complex_model_m</code> that also includes
-        # four GPUs.
+        # four NVIDIA Tesla K80 GPUs.
+        # </dd>
+        # <dt>complex_model_l_gpu</dt>
+        # <dd>
+        # A machine equivalent to
+        # <code suppresswarning="true">complex_model_l</code> that also includes
+        # eight NVIDIA Tesla K80 GPUs.
+        # </dd>
+        # <dt>standard_p100</dt>
+        # <dd>
+        # A machine equivalent to <code suppresswarning="true">standard</code> that
+        # also includes a single NVIDIA Tesla P100 GPU. The availability of these
+        # GPUs is in the Alpha launch stage.
+        # </dd>
+        # <dt>complex_model_m_p100</dt>
+        # <dd>
+        # A machine equivalent to
+        # <code suppresswarning="true">complex_model_m</code> that also includes
+        # four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
+        # the Alpha launch stage.
         # </dd>
         # </dl>
         # You must set this value when `scaleTier` is set to `CUSTOM`.
