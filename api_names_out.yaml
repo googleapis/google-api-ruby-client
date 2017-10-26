@@ -12160,6 +12160,7 @@
 "/cloudbuild:v1/Results/buildStepImages/build_step_image": build_step_image
 "/cloudbuild:v1/Results/images": images
 "/cloudbuild:v1/Results/images/image": image
+"/cloudbuild:v1/RetryBuildRequest": retry_build_request
 "/cloudbuild:v1/Secret": secret
 "/cloudbuild:v1/Secret/kmsKeyName": kms_key_name
 "/cloudbuild:v1/Secret/secretEnv": secret_env
@@ -12207,6 +12208,9 @@
 "/cloudbuild:v1/cloudbuild.projects.builds.list/pageSize": page_size
 "/cloudbuild:v1/cloudbuild.projects.builds.list/pageToken": page_token
 "/cloudbuild:v1/cloudbuild.projects.builds.list/projectId": project_id
+"/cloudbuild:v1/cloudbuild.projects.builds.retry": retry_build
+"/cloudbuild:v1/cloudbuild.projects.builds.retry/id": id
+"/cloudbuild:v1/cloudbuild.projects.builds.retry/projectId": project_id
 "/cloudbuild:v1/cloudbuild.projects.triggers.create": create_project_trigger
 "/cloudbuild:v1/cloudbuild.projects.triggers.create/projectId": project_id
 "/cloudbuild:v1/cloudbuild.projects.triggers.delete": delete_project_trigger
@@ -12220,6 +12224,9 @@
 "/cloudbuild:v1/cloudbuild.projects.triggers.patch": patch_project_trigger
 "/cloudbuild:v1/cloudbuild.projects.triggers.patch/projectId": project_id
 "/cloudbuild:v1/cloudbuild.projects.triggers.patch/triggerId": trigger_id
+"/cloudbuild:v1/cloudbuild.projects.triggers.run": run_project_trigger
+"/cloudbuild:v1/cloudbuild.projects.triggers.run/projectId": project_id
+"/cloudbuild:v1/cloudbuild.projects.triggers.run/triggerId": trigger_id
 "/cloudbuild:v1/fields": fields
 "/cloudbuild:v1/key": key
 "/cloudbuild:v1/quotaUser": quota_user

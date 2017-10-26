@@ -796,6 +796,19 @@ module Google
         end
       end
       
+      # RetryBuildRequest specifies a build to retry.
+      class RetryBuildRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Secret pairs a set of secret environment variables containing encrypted
       # values with the Cloud KMS key to use to decrypt the value.
       class Secret

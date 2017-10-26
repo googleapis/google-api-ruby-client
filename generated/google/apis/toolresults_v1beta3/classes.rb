@@ -84,10 +84,7 @@ module Google
         attr_accessor :test_targets
       
         # The flag indicates whether Android Test Orchestrator will be used to run test
-        # or not. Test orchestrator is used if either: - orchestrator_option field is
-        # USE_ORCHESTRATOR, and test runner is compatible with orchestrator. Or -
-        # orchestrator_option field is unspecified or ORCHESTRATOR_OPTION_UNSPECIFIED,
-        # and test runner is compatible with orchestrator.
+        # or not.
         # Corresponds to the JSON property `useOrchestrator`
         # @return [Boolean]
         attr_accessor :use_orchestrator
