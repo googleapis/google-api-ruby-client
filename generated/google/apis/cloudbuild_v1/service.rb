@@ -329,10 +329,10 @@ module Google
         # * If the original build specified a commit sha or revision ID, the retried
         # build will use the identical source.
         # For builds that specify StorageSource:
-        # * If the original build pulled source from a GCS object without specifying
+        # * If the original build pulled source from Cloud Storage without specifying
         # the generation of the object, the new build will use the current object,
         # which may be different from the original build source.
-        # * If the original build pulled source from a GCS object and specified the
+        # * If the original build pulled source from Cloud Storage and specified the
         # generation of the object, the new build will attempt to use the same
         # object, which may or may not be available depending on the bucket's
         # lifecycle management settings.

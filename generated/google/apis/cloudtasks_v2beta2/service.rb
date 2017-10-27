@@ -812,10 +812,10 @@ module Google
         #   The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [String] order_by
-        #   Sort order used for the query. The fields supported for sorting
-        #   are Task.schedule_time and PullMessage.tag. All results will be
+        #   Sort order used for the query. The only fields supported for sorting
+        #   are `schedule_time` and `pull_message.tag`. All results will be
         #   returned in approximately ascending order. The default ordering is by
-        #   Task.schedule_time.
+        #   `schedule_time`.
         # @param [Fixnum] page_size
         #   Requested page size. Fewer tasks than requested might be returned.
         #   The maximum page size is 1000. If unspecified, the page size will

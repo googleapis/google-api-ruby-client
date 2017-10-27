@@ -420,6 +420,9 @@ module Google
         # @param [String] apps_id
         #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
         # @param [Google::Apis::AppengineV1beta::DomainMapping] domain_mapping_object
+        # @param [String] override_strategy
+        #   Whether the domain creation should override any existing mappings for this
+        #   domain. By default, overrides are rejected.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -437,13 +440,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_app_domain_mapping(apps_id, domain_mapping_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_app_domain_mapping(apps_id, domain_mapping_object = nil, override_strategy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1beta/apps/{appsId}/domainMappings', options)
           command.request_representation = Google::Apis::AppengineV1beta::DomainMapping::Representation
           command.request_object = domain_mapping_object
           command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
           command.response_class = Google::Apis::AppengineV1beta::Operation
           command.params['appsId'] = apps_id unless apps_id.nil?
+          command.query['overrideStrategy'] = override_strategy unless override_strategy.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

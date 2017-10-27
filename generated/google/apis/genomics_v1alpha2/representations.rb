@@ -353,6 +353,8 @@ module Google
       class PipelineResources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           collection :disks, as: 'disks', class: Google::Apis::GenomicsV1alpha2::Disk, decorator: Google::Apis::GenomicsV1alpha2::Disk::Representation
       

@@ -790,6 +790,22 @@ module Google
       class PipelineResources
         include Google::Apis::Core::Hashable
       
+        # Optional. The number of accelerators of the specified type to attach.
+        # By specifying this parameter, you will download and install the following
+        # third-party software onto your managed GCE instances: NVIDIA® Tesla®
+        # drivers and NVIDIA® CUDA toolkit.
+        # Corresponds to the JSON property `acceleratorCount`
+        # @return [Fixnum]
+        attr_accessor :accelerator_count
+      
+        # Optional. The GCE defined accelerator type.
+        # By specifying this parameter, you will download and install the following
+        # third-party software onto your managed GCE instances: NVIDIA® Tesla®
+        # drivers and NVIDIA® CUDA toolkit.
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
         # The size of the boot disk. Defaults to 10 (GB).
         # Corresponds to the JSON property `bootDiskSizeGb`
         # @return [Fixnum]
@@ -848,6 +864,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @disks = args[:disks] if args.key?(:disks)
           @minimum_cpu_cores = args[:minimum_cpu_cores] if args.key?(:minimum_cpu_cores)

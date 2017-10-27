@@ -7053,6 +7053,7 @@
 "/appengine:v1/appengine.apps.create": create_app
 "/appengine:v1/appengine.apps.domainMappings.create": create_app_domain_mapping
 "/appengine:v1/appengine.apps.domainMappings.create/appsId": apps_id
+"/appengine:v1/appengine.apps.domainMappings.create/overrideStrategy": override_strategy
 "/appengine:v1/appengine.apps.domainMappings.delete": delete_app_domain_mapping
 "/appengine:v1/appengine.apps.domainMappings.delete/appsId": apps_id
 "/appengine:v1/appengine.apps.domainMappings.delete/domainMappingsId": domain_mappings_id
@@ -7321,6 +7322,7 @@
 "/appengine:v1alpha/appengine.apps.domainMappings.create": create_app_domain_mapping
 "/appengine:v1alpha/appengine.apps.domainMappings.create/appsId": apps_id
 "/appengine:v1alpha/appengine.apps.domainMappings.create/noManagedCertificate": no_managed_certificate
+"/appengine:v1alpha/appengine.apps.domainMappings.create/overrideStrategy": override_strategy
 "/appengine:v1alpha/appengine.apps.domainMappings.delete": delete_app_domain_mapping
 "/appengine:v1alpha/appengine.apps.domainMappings.delete/appsId": apps_id
 "/appengine:v1alpha/appengine.apps.domainMappings.delete/domainMappingsId": domain_mappings_id
@@ -7761,6 +7763,7 @@
 "/appengine:v1beta/appengine.apps.create": create_app
 "/appengine:v1beta/appengine.apps.domainMappings.create": create_app_domain_mapping
 "/appengine:v1beta/appengine.apps.domainMappings.create/appsId": apps_id
+"/appengine:v1beta/appengine.apps.domainMappings.create/overrideStrategy": override_strategy
 "/appengine:v1beta/appengine.apps.domainMappings.delete": delete_app_domain_mapping
 "/appengine:v1beta/appengine.apps.domainMappings.delete/appsId": apps_id
 "/appengine:v1beta/appengine.apps.domainMappings.delete/domainMappingsId": domain_mappings_id
@@ -7933,6 +7936,9 @@
 "/appengine:v1beta4/DiskUtilization/targetReadOpsPerSec": target_read_ops_per_sec
 "/appengine:v1beta4/DiskUtilization/targetWriteBytesPerSec": target_write_bytes_per_sec
 "/appengine:v1beta4/DiskUtilization/targetWriteOpsPerSec": target_write_ops_per_sec
+"/appengine:v1beta4/EndpointsApiService": endpoints_api_service
+"/appengine:v1beta4/EndpointsApiService/configId": config_id
+"/appengine:v1beta4/EndpointsApiService/name": name
 "/appengine:v1beta4/ErrorHandler": error_handler
 "/appengine:v1beta4/ErrorHandler/errorCode": error_code
 "/appengine:v1beta4/ErrorHandler/mimeType": mime_type
@@ -8139,6 +8145,7 @@
 "/appengine:v1beta4/Version/defaultExpiration": default_expiration
 "/appengine:v1beta4/Version/deployer": deployer
 "/appengine:v1beta4/Version/deployment": deployment
+"/appengine:v1beta4/Version/endpointsApiService": endpoints_api_service
 "/appengine:v1beta4/Version/env": env
 "/appengine:v1beta4/Version/envVariables": env_variables
 "/appengine:v1beta4/Version/envVariables/env_variable": env_variable
@@ -44917,6 +44924,8 @@
 "/genomics:v1alpha2/PipelineParameter/localCopy": local_copy
 "/genomics:v1alpha2/PipelineParameter/name": name
 "/genomics:v1alpha2/PipelineResources": pipeline_resources
+"/genomics:v1alpha2/PipelineResources/acceleratorCount": accelerator_count
+"/genomics:v1alpha2/PipelineResources/acceleratorType": accelerator_type
 "/genomics:v1alpha2/PipelineResources/bootDiskSizeGb": boot_disk_size_gb
 "/genomics:v1alpha2/PipelineResources/disks": disks
 "/genomics:v1alpha2/PipelineResources/disks/disk": disk

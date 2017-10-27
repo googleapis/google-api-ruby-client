@@ -196,12 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadataExperimental
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OperationMetadataV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -596,17 +590,6 @@ module Google
           property :insert_time, as: 'insertTime'
           property :method_prop, as: 'method'
           property :operation_type, as: 'operationType'
-          property :target, as: 'target'
-          property :user, as: 'user'
-        end
-      end
-      
-      class OperationMetadataExperimental
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :insert_time, as: 'insertTime'
-          property :method_prop, as: 'method'
           property :target, as: 'target'
           property :user, as: 'user'
         end
