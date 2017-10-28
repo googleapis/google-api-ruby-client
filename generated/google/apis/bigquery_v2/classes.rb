@@ -1944,6 +1944,24 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
+        # [Output-only, Experimental] The DDL operation performed, possibly dependent on
+        # the pre-existence of the DDL target. Possible values (new values might be
+        # added in the future): "CREATE": The query created the DDL target. "SKIP": No-
+        # op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table
+        # already exists, or the query is DROP TABLE IF EXISTS while the table does not
+        # exist. "REPLACE": The query replaced the DDL target. Example case: the query
+        # is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query
+        # deleted the DDL target.
+        # Corresponds to the JSON property `ddlOperationPerformed`
+        # @return [String]
+        attr_accessor :ddl_operation_performed
+      
+        # [Output-only, Experimental] The DDL target table. Present only for CREATE/DROP
+        # TABLE/VIEW queries.
+        # Corresponds to the JSON property `ddlTargetTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :ddl_target_table
+      
         # [Output-only] The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
@@ -2001,6 +2019,8 @@ module Google
         def update!(**args)
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
+          @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
+          @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)

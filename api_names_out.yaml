@@ -9046,6 +9046,8 @@
 "/bigquery:v2/JobStatistics2": job_statistics2
 "/bigquery:v2/JobStatistics2/billingTier": billing_tier
 "/bigquery:v2/JobStatistics2/cacheHit": cache_hit
+"/bigquery:v2/JobStatistics2/ddlOperationPerformed": ddl_operation_performed
+"/bigquery:v2/JobStatistics2/ddlTargetTable": ddl_target_table
 "/bigquery:v2/JobStatistics2/numDmlAffectedRows": num_dml_affected_rows
 "/bigquery:v2/JobStatistics2/queryPlan": query_plan
 "/bigquery:v2/JobStatistics2/queryPlan/query_plan": query_plan

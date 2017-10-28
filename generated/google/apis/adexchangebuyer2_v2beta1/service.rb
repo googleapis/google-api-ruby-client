@@ -1609,8 +1609,6 @@ module Google
         # @param [Fixnum] filter_set_absolute_date_range_start_date_year
         #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without
         #   a year.
-        # @param [Fixnum] filter_set_buyer_account_id
-        #   The ID of the buyer account on which to filter; optional.
         # @param [String] filter_set_creative_id
         #   The ID of the creative on which to filter; optional. This field may be set
         #   only for a filter set that accesses buyer-level troubleshooting data, i.e.
@@ -1635,9 +1633,6 @@ module Google
         #   - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
         #   troubleshooting data)
         #   This field is required in create operations.
-        # @param [Fixnum] filter_set_owner_account_id
-        #   The account ID of the buyer who owns this filter set.
-        #   The value of this field is ignored in create operations.
         # @param [Array<String>, String] filter_set_platforms
         #   The list of platforms on which to filter; may be empty. The filters
         #   represented by multiple platforms are ORed together (i.e. if non-empty,
@@ -1682,7 +1677,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_bidder_filter_set(owner_name, account_id: nil, filter_set_absolute_date_range_end_date_day: nil, filter_set_absolute_date_range_end_date_month: nil, filter_set_absolute_date_range_end_date_year: nil, filter_set_absolute_date_range_start_date_day: nil, filter_set_absolute_date_range_start_date_month: nil, filter_set_absolute_date_range_start_date_year: nil, filter_set_buyer_account_id: nil, filter_set_creative_id: nil, filter_set_deal_id: nil, filter_set_environment: nil, filter_set_filter_set_id: nil, filter_set_format: nil, filter_set_name: nil, filter_set_owner_account_id: nil, filter_set_platforms: nil, filter_set_realtime_time_range_start_timestamp: nil, filter_set_relative_date_range_duration_days: nil, filter_set_relative_date_range_offset_days: nil, filter_set_seller_network_ids: nil, filter_set_time_series_granularity: nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_bidder_filter_set(owner_name, account_id: nil, filter_set_absolute_date_range_end_date_day: nil, filter_set_absolute_date_range_end_date_month: nil, filter_set_absolute_date_range_end_date_year: nil, filter_set_absolute_date_range_start_date_day: nil, filter_set_absolute_date_range_start_date_month: nil, filter_set_absolute_date_range_start_date_year: nil, filter_set_creative_id: nil, filter_set_deal_id: nil, filter_set_environment: nil, filter_set_filter_set_id: nil, filter_set_format: nil, filter_set_name: nil, filter_set_platforms: nil, filter_set_realtime_time_range_start_timestamp: nil, filter_set_relative_date_range_duration_days: nil, filter_set_relative_date_range_offset_days: nil, filter_set_seller_network_ids: nil, filter_set_time_series_granularity: nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+ownerName}/filterSets', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
@@ -1694,14 +1689,12 @@ module Google
           command.query['filterSet.absoluteDateRange.startDate.day'] = filter_set_absolute_date_range_start_date_day unless filter_set_absolute_date_range_start_date_day.nil?
           command.query['filterSet.absoluteDateRange.startDate.month'] = filter_set_absolute_date_range_start_date_month unless filter_set_absolute_date_range_start_date_month.nil?
           command.query['filterSet.absoluteDateRange.startDate.year'] = filter_set_absolute_date_range_start_date_year unless filter_set_absolute_date_range_start_date_year.nil?
-          command.query['filterSet.buyerAccountId'] = filter_set_buyer_account_id unless filter_set_buyer_account_id.nil?
           command.query['filterSet.creativeId'] = filter_set_creative_id unless filter_set_creative_id.nil?
           command.query['filterSet.dealId'] = filter_set_deal_id unless filter_set_deal_id.nil?
           command.query['filterSet.environment'] = filter_set_environment unless filter_set_environment.nil?
           command.query['filterSet.filterSetId'] = filter_set_filter_set_id unless filter_set_filter_set_id.nil?
           command.query['filterSet.format'] = filter_set_format unless filter_set_format.nil?
           command.query['filterSet.name'] = filter_set_name unless filter_set_name.nil?
-          command.query['filterSet.ownerAccountId'] = filter_set_owner_account_id unless filter_set_owner_account_id.nil?
           command.query['filterSet.platforms'] = filter_set_platforms unless filter_set_platforms.nil?
           command.query['filterSet.realtimeTimeRange.startTimestamp'] = filter_set_realtime_time_range_start_timestamp unless filter_set_realtime_time_range_start_timestamp.nil?
           command.query['filterSet.relativeDateRange.durationDays'] = filter_set_relative_date_range_duration_days unless filter_set_relative_date_range_duration_days.nil?

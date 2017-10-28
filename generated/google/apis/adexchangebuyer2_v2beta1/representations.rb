@@ -566,14 +566,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absolute_date_range, as: 'absoluteDateRange', class: Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange::Representation
       
-          property :buyer_account_id, :numeric_string => true, as: 'buyerAccountId'
           property :creative_id, as: 'creativeId'
           property :deal_id, :numeric_string => true, as: 'dealId'
           property :environment, as: 'environment'
           property :filter_set_id, :numeric_string => true, as: 'filterSetId'
           property :format, as: 'format'
           property :name, as: 'name'
-          property :owner_account_id, :numeric_string => true, as: 'ownerAccountId'
           collection :platforms, as: 'platforms'
           property :realtime_time_range, as: 'realtimeTimeRange', class: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange::Representation
       

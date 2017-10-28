@@ -837,11 +837,6 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange]
         attr_accessor :absolute_date_range
       
-        # The ID of the buyer account on which to filter; optional.
-        # Corresponds to the JSON property `buyerAccountId`
-        # @return [Fixnum]
-        attr_accessor :buyer_account_id
-      
         # The ID of the creative on which to filter; optional. This field may be set
         # only for a filter set that accesses buyer-level troubleshooting data, i.e.
         # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
@@ -883,12 +878,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # The account ID of the buyer who owns this filter set.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `ownerAccountId`
-        # @return [Fixnum]
-        attr_accessor :owner_account_id
       
         # The list of platforms on which to filter; may be empty. The filters
         # represented by multiple platforms are ORed together (i.e. if non-empty,
@@ -938,14 +927,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absolute_date_range = args[:absolute_date_range] if args.key?(:absolute_date_range)
-          @buyer_account_id = args[:buyer_account_id] if args.key?(:buyer_account_id)
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deal_id = args[:deal_id] if args.key?(:deal_id)
           @environment = args[:environment] if args.key?(:environment)
           @filter_set_id = args[:filter_set_id] if args.key?(:filter_set_id)
           @format = args[:format] if args.key?(:format)
           @name = args[:name] if args.key?(:name)
-          @owner_account_id = args[:owner_account_id] if args.key?(:owner_account_id)
           @platforms = args[:platforms] if args.key?(:platforms)
           @realtime_time_range = args[:realtime_time_range] if args.key?(:realtime_time_range)
           @relative_date_range = args[:relative_date_range] if args.key?(:relative_date_range)
