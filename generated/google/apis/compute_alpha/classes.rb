@@ -8572,6 +8572,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Maintenance policies applied to this instance.
+        # Corresponds to the JSON property `maintenancePolicies`
+        # @return [Array<String>]
+        attr_accessor :maintenance_policies
+      
         # A metadata key/value entry.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ComputeAlpha::Metadata]
@@ -8669,6 +8674,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)

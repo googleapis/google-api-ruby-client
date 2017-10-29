@@ -22,6 +22,12 @@ module Google
   module Apis
     module DeploymentmanagerAlpha
       
+      class AsyncOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Diagnostic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +257,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PollingOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -404,6 +422,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsyncOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_match, as: 'methodMatch'
+          property :polling_options, as: 'pollingOptions', class: Google::Apis::DeploymentmanagerAlpha::PollingOptions, decorator: Google::Apis::DeploymentmanagerAlpha::PollingOptions::Representation
+      
+        end
       end
       
       class AuditConfig
@@ -620,6 +647,14 @@ module Google
         end
       end
       
+      class Diagnostic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :level, as: 'level'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -787,6 +822,8 @@ module Google
       class Options
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :async_options, as: 'asyncOptions', class: Google::Apis::DeploymentmanagerAlpha::AsyncOptions, decorator: Google::Apis::DeploymentmanagerAlpha::AsyncOptions::Representation
+      
           collection :input_mappings, as: 'inputMappings', class: Google::Apis::DeploymentmanagerAlpha::InputMapping, decorator: Google::Apis::DeploymentmanagerAlpha::InputMapping::Representation
       
           property :name_property, as: 'nameProperty'
@@ -807,6 +844,18 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::DeploymentmanagerAlpha::Rule, decorator: Google::Apis::DeploymentmanagerAlpha::Rule::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class PollingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :diagnostics, as: 'diagnostics', class: Google::Apis::DeploymentmanagerAlpha::Diagnostic, decorator: Google::Apis::DeploymentmanagerAlpha::Diagnostic::Representation
+      
+          property :fail_condition, as: 'failCondition'
+          property :finish_condition, as: 'finishCondition'
+          property :polling_link, as: 'pollingLink'
+          property :target_link, as: 'targetLink'
         end
       end
       
@@ -959,6 +1008,7 @@ module Google
           collection :imports, as: 'imports', class: Google::Apis::DeploymentmanagerAlpha::ImportFile, decorator: Google::Apis::DeploymentmanagerAlpha::ImportFile::Representation
       
           property :interpreter, as: 'interpreter'
+          property :main_template, as: 'mainTemplate'
           property :schema, as: 'schema'
           property :template, as: 'template'
         end

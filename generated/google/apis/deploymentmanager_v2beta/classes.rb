@@ -2008,6 +2008,11 @@ module Google
         # @return [String]
         attr_accessor :interpreter
       
+        # The filename of the mainTemplate
+        # Corresponds to the JSON property `mainTemplate`
+        # @return [String]
+        attr_accessor :main_template
+      
         # The contents of the template schema.
         # Corresponds to the JSON property `schema`
         # @return [String]
@@ -2026,6 +2031,7 @@ module Google
         def update!(**args)
           @imports = args[:imports] if args.key?(:imports)
           @interpreter = args[:interpreter] if args.key?(:interpreter)
+          @main_template = args[:main_template] if args.key?(:main_template)
           @schema = args[:schema] if args.key?(:schema)
           @template = args[:template] if args.key?(:template)
         end

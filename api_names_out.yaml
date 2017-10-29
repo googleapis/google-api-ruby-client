@@ -16136,6 +16136,8 @@
 "/compute:alpha/Instance/labels": labels
 "/compute:alpha/Instance/labels/label": label
 "/compute:alpha/Instance/machineType": machine_type
+"/compute:alpha/Instance/maintenancePolicies": maintenance_policies
+"/compute:alpha/Instance/maintenancePolicies/maintenance_policy": maintenance_policy
 "/compute:alpha/Instance/metadata": metadata
 "/compute:alpha/Instance/minCpuPlatform": min_cpu_platform
 "/compute:alpha/Instance/name": name
@@ -32886,6 +32888,9 @@
 "/datastore:v1beta3/fields": fields
 "/datastore:v1beta3/key": key
 "/datastore:v1beta3/quotaUser": quota_user
+"/deploymentmanager:alpha/AsyncOptions": async_options
+"/deploymentmanager:alpha/AsyncOptions/methodMatch": method_match
+"/deploymentmanager:alpha/AsyncOptions/pollingOptions": polling_options
 "/deploymentmanager:alpha/AuditConfig": audit_config
 "/deploymentmanager:alpha/AuditConfig/auditLogConfigs": audit_log_configs
 "/deploymentmanager:alpha/AuditConfig/auditLogConfigs/audit_log_config": audit_log_config
@@ -32986,6 +32991,9 @@
 "/deploymentmanager:alpha/DeploymentsListResponse/nextPageToken": next_page_token
 "/deploymentmanager:alpha/DeploymentsStopRequest": deployments_stop_request
 "/deploymentmanager:alpha/DeploymentsStopRequest/fingerprint": fingerprint
+"/deploymentmanager:alpha/Diagnostic": diagnostic
+"/deploymentmanager:alpha/Diagnostic/field": field
+"/deploymentmanager:alpha/Diagnostic/level": level
 "/deploymentmanager:alpha/Expr": expr
 "/deploymentmanager:alpha/Expr/description": description
 "/deploymentmanager:alpha/Expr/expression": expression
@@ -33066,6 +33074,8 @@
 "/deploymentmanager:alpha/OperationsListResponse/operations": operations
 "/deploymentmanager:alpha/OperationsListResponse/operations/operation": operation
 "/deploymentmanager:alpha/Options": options
+"/deploymentmanager:alpha/Options/asyncOptions": async_options
+"/deploymentmanager:alpha/Options/asyncOptions/async_option": async_option
 "/deploymentmanager:alpha/Options/inputMappings": input_mappings
 "/deploymentmanager:alpha/Options/inputMappings/input_mapping": input_mapping
 "/deploymentmanager:alpha/Options/nameProperty": name_property
@@ -33080,6 +33090,13 @@
 "/deploymentmanager:alpha/Policy/rules": rules
 "/deploymentmanager:alpha/Policy/rules/rule": rule
 "/deploymentmanager:alpha/Policy/version": version
+"/deploymentmanager:alpha/PollingOptions": polling_options
+"/deploymentmanager:alpha/PollingOptions/diagnostics": diagnostics
+"/deploymentmanager:alpha/PollingOptions/diagnostics/diagnostic": diagnostic
+"/deploymentmanager:alpha/PollingOptions/failCondition": fail_condition
+"/deploymentmanager:alpha/PollingOptions/finishCondition": finish_condition
+"/deploymentmanager:alpha/PollingOptions/pollingLink": polling_link
+"/deploymentmanager:alpha/PollingOptions/targetLink": target_link
 "/deploymentmanager:alpha/Resource": resource
 "/deploymentmanager:alpha/Resource/accessControl": access_control
 "/deploymentmanager:alpha/Resource/finalProperties": final_properties
@@ -33152,6 +33169,7 @@
 "/deploymentmanager:alpha/TemplateContents/imports": imports
 "/deploymentmanager:alpha/TemplateContents/imports/import": import
 "/deploymentmanager:alpha/TemplateContents/interpreter": interpreter
+"/deploymentmanager:alpha/TemplateContents/mainTemplate": main_template
 "/deploymentmanager:alpha/TemplateContents/schema": schema
 "/deploymentmanager:alpha/TemplateContents/template": template
 "/deploymentmanager:alpha/TestPermissionsRequest": test_permissions_request
@@ -33929,6 +33947,7 @@
 "/deploymentmanager:v2beta/TemplateContents/imports": imports
 "/deploymentmanager:v2beta/TemplateContents/imports/import": import
 "/deploymentmanager:v2beta/TemplateContents/interpreter": interpreter
+"/deploymentmanager:v2beta/TemplateContents/mainTemplate": main_template
 "/deploymentmanager:v2beta/TemplateContents/schema": schema
 "/deploymentmanager:v2beta/TemplateContents/template": template
 "/deploymentmanager:v2beta/TestPermissionsRequest": test_permissions_request

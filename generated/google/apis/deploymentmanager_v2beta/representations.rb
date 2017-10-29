@@ -935,6 +935,7 @@ module Google
           collection :imports, as: 'imports', class: Google::Apis::DeploymentmanagerV2beta::ImportFile, decorator: Google::Apis::DeploymentmanagerV2beta::ImportFile::Representation
       
           property :interpreter, as: 'interpreter'
+          property :main_template, as: 'mainTemplate'
           property :schema, as: 'schema'
           property :template, as: 'template'
         end

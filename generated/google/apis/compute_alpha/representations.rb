@@ -5505,6 +5505,7 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
+          collection :maintenance_policies, as: 'maintenancePolicies'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
