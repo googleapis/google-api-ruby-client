@@ -1591,71 +1591,9 @@ module Google
         #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456`
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::FilterSet] filter_set_object
         # @param [Fixnum] account_id
         #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_absolute_date_range_end_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        #   if specifying a year/month where the day is not significant.
-        # @param [Fixnum] filter_set_absolute_date_range_end_date_month
-        #   Month of year. Must be from 1 to 12.
-        # @param [Fixnum] filter_set_absolute_date_range_end_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        #   a year.
-        # @param [Fixnum] filter_set_absolute_date_range_start_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        #   if specifying a year/month where the day is not significant.
-        # @param [Fixnum] filter_set_absolute_date_range_start_date_month
-        #   Month of year. Must be from 1 to 12.
-        # @param [Fixnum] filter_set_absolute_date_range_start_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        #   a year.
-        # @param [String] filter_set_creative_id
-        #   The ID of the creative on which to filter; optional. This field may be set
-        #   only for a filter set that accesses buyer-level troubleshooting data, i.e.
-        #   one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
-        # @param [Fixnum] filter_set_deal_id
-        #   The ID of the deal on which to filter; optional. This field may be set
-        #   only for a filter set that accesses buyer-level troubleshooting data, i.e.
-        #   one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
-        # @param [String] filter_set_environment
-        #   The environment on which to filter; optional.
-        # @param [Fixnum] filter_set_filter_set_id
-        #   The ID of the filter set; unique within the account of the filter set
-        #   owner.
-        #   The value of this field is ignored in create operations.
-        # @param [String] filter_set_format
-        #   The format on which to filter; optional.
-        # @param [String] filter_set_name
-        #   A user-defined name of the filter set. Filter set names must be unique
-        #   globally and match one of the patterns:
-        #   - `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting
-        #   data)
-        #   - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
-        #   troubleshooting data)
-        #   This field is required in create operations.
-        # @param [Array<String>, String] filter_set_platforms
-        #   The list of platforms on which to filter; may be empty. The filters
-        #   represented by multiple platforms are ORed together (i.e. if non-empty,
-        #   results must match any one of the platforms).
-        # @param [String] filter_set_realtime_time_range_start_timestamp
-        #   The start timestamp of the real-time RTB metrics aggregation.
-        # @param [Fixnum] filter_set_relative_date_range_duration_days
-        #   The number of days in the requested date range. E.g. for a range spanning
-        #   today, 1. For a range spanning the last 7 days, 7.
-        # @param [Fixnum] filter_set_relative_date_range_offset_days
-        #   The end date of the filter set, specified as the number of days before
-        #   today. E.g. for a range where the last date is today, 0.
-        # @param [Array<Fixnum>, Fixnum] filter_set_seller_network_ids
-        #   The list of IDs of the seller (publisher) networks on which to filter;
-        #   may be empty. The filters represented by multiple seller network IDs are
-        #   ORed together (i.e. if non-empty, results must match any one of the
-        #   publisher networks).
-        #   See [seller-network-ids](https://developers.google.com/ad-exchange/rtb/
-        #   downloads/seller-network-ids)
-        #   file for the set of existing seller network IDs.
-        # @param [String] filter_set_time_series_granularity
-        #   The granularity of time intervals if a time series breakdown is desired;
-        #   optional.
         # @param [Boolean] is_transient
         #   Whether the filter set is transient, or should be persisted indefinitely.
         #   By default, filter sets are not transient.
@@ -1677,30 +1615,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_bidder_filter_set(owner_name, account_id: nil, filter_set_absolute_date_range_end_date_day: nil, filter_set_absolute_date_range_end_date_month: nil, filter_set_absolute_date_range_end_date_year: nil, filter_set_absolute_date_range_start_date_day: nil, filter_set_absolute_date_range_start_date_month: nil, filter_set_absolute_date_range_start_date_year: nil, filter_set_creative_id: nil, filter_set_deal_id: nil, filter_set_environment: nil, filter_set_filter_set_id: nil, filter_set_format: nil, filter_set_name: nil, filter_set_platforms: nil, filter_set_realtime_time_range_start_timestamp: nil, filter_set_relative_date_range_duration_days: nil, filter_set_relative_date_range_offset_days: nil, filter_set_seller_network_ids: nil, filter_set_time_series_granularity: nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_bidder_filter_set(owner_name, filter_set_object = nil, account_id: nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+ownerName}/filterSets', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
+          command.request_object = filter_set_object
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
           command.params['ownerName'] = owner_name unless owner_name.nil?
           command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSet.absoluteDateRange.endDate.day'] = filter_set_absolute_date_range_end_date_day unless filter_set_absolute_date_range_end_date_day.nil?
-          command.query['filterSet.absoluteDateRange.endDate.month'] = filter_set_absolute_date_range_end_date_month unless filter_set_absolute_date_range_end_date_month.nil?
-          command.query['filterSet.absoluteDateRange.endDate.year'] = filter_set_absolute_date_range_end_date_year unless filter_set_absolute_date_range_end_date_year.nil?
-          command.query['filterSet.absoluteDateRange.startDate.day'] = filter_set_absolute_date_range_start_date_day unless filter_set_absolute_date_range_start_date_day.nil?
-          command.query['filterSet.absoluteDateRange.startDate.month'] = filter_set_absolute_date_range_start_date_month unless filter_set_absolute_date_range_start_date_month.nil?
-          command.query['filterSet.absoluteDateRange.startDate.year'] = filter_set_absolute_date_range_start_date_year unless filter_set_absolute_date_range_start_date_year.nil?
-          command.query['filterSet.creativeId'] = filter_set_creative_id unless filter_set_creative_id.nil?
-          command.query['filterSet.dealId'] = filter_set_deal_id unless filter_set_deal_id.nil?
-          command.query['filterSet.environment'] = filter_set_environment unless filter_set_environment.nil?
-          command.query['filterSet.filterSetId'] = filter_set_filter_set_id unless filter_set_filter_set_id.nil?
-          command.query['filterSet.format'] = filter_set_format unless filter_set_format.nil?
-          command.query['filterSet.name'] = filter_set_name unless filter_set_name.nil?
-          command.query['filterSet.platforms'] = filter_set_platforms unless filter_set_platforms.nil?
-          command.query['filterSet.realtimeTimeRange.startTimestamp'] = filter_set_realtime_time_range_start_timestamp unless filter_set_realtime_time_range_start_timestamp.nil?
-          command.query['filterSet.relativeDateRange.durationDays'] = filter_set_relative_date_range_duration_days unless filter_set_relative_date_range_duration_days.nil?
-          command.query['filterSet.relativeDateRange.offsetDays'] = filter_set_relative_date_range_offset_days unless filter_set_relative_date_range_offset_days.nil?
-          command.query['filterSet.sellerNetworkIds'] = filter_set_seller_network_ids unless filter_set_seller_network_ids.nil?
-          command.query['filterSet.timeSeriesGranularity'] = filter_set_time_series_granularity unless filter_set_time_series_granularity.nil?
           command.query['isTransient'] = is_transient unless is_transient.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

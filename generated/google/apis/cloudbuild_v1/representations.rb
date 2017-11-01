@@ -333,6 +333,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch_name, as: 'branchName'
           property :commit_sha, as: 'commitSha'
+          property :dir, as: 'dir'
           property :project_id, as: 'projectId'
           property :repo_name, as: 'repoName'
           property :tag_name, as: 'tagName'

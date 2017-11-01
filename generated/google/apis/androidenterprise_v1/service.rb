@@ -3210,6 +3210,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Revokes access to all devices currently provisioned to the user. The user will
+        # no longer be able to use the managed Play store on any of their managed
+        # devices.
+        # This call only works with EMM-managed accounts.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] user_id
+        #   The ID of the user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revoke_user_device_access(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'enterprises/{enterpriseId}/users/{userId}/deviceAccess', options)
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Revokes a previously generated token (activation code) for the user.
         # @param [String] enterprise_id
         #   The ID of the enterprise.

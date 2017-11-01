@@ -741,6 +741,11 @@ module Google
         # @return [String]
         attr_accessor :commit_sha
       
+        # Directory, relative to the source root, in which to run the build.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
         # ID of the project that owns the repo. If omitted, the project ID requesting
         # the build is assumed.
         # Corresponds to the JSON property `projectId`
@@ -765,6 +770,7 @@ module Google
         def update!(**args)
           @branch_name = args[:branch_name] if args.key?(:branch_name)
           @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
+          @dir = args[:dir] if args.key?(:dir)
           @project_id = args[:project_id] if args.key?(:project_id)
           @repo_name = args[:repo_name] if args.key?(:repo_name)
           @tag_name = args[:tag_name] if args.key?(:tag_name)

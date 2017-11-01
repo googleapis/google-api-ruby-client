@@ -2968,6 +2968,11 @@ module Google
         # @return [String]
         attr_accessor :color_rgb
       
+        # The time at which the Team Drive was created (RFC 3339 date-time).
+        # Corresponds to the JSON property `createdDate`
+        # @return [DateTime]
+        attr_accessor :created_date
+      
         # The ID of this Team Drive which is also the ID of the top level folder for
         # this Team Drive.
         # Corresponds to the JSON property `id`
@@ -3004,6 +3009,7 @@ module Google
           @background_image_link = args[:background_image_link] if args.key?(:background_image_link)
           @capabilities = args[:capabilities] if args.key?(:capabilities)
           @color_rgb = args[:color_rgb] if args.key?(:color_rgb)
+          @created_date = args[:created_date] if args.key?(:created_date)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)

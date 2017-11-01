@@ -178,55 +178,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InAppProductsBatchRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InAppProductsBatchRequestEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InAppProductsBatchResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InAppProductsBatchResponseEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InsertInAppProductsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InsertInAppProductsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListInAppProductsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateInAppProductsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,62 +592,6 @@ module Google
         end
       end
       
-      class InAppProductsBatchRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entrys, as: 'entrys', class: Google::Apis::AndroidpublisherV2::InAppProductsBatchRequestEntry, decorator: Google::Apis::AndroidpublisherV2::InAppProductsBatchRequestEntry::Representation
-      
-        end
-      end
-      
-      class InAppProductsBatchRequestEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :batch_id, as: 'batchId'
-          property :inappproductsinsertrequest, as: 'inappproductsinsertrequest', class: Google::Apis::AndroidpublisherV2::InsertInAppProductsRequest, decorator: Google::Apis::AndroidpublisherV2::InsertInAppProductsRequest::Representation
-      
-          property :inappproductsupdaterequest, as: 'inappproductsupdaterequest', class: Google::Apis::AndroidpublisherV2::UpdateInAppProductsRequest, decorator: Google::Apis::AndroidpublisherV2::UpdateInAppProductsRequest::Representation
-      
-          property :method_name, as: 'methodName'
-        end
-      end
-      
-      class InAppProductsBatchResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entrys, as: 'entrys', class: Google::Apis::AndroidpublisherV2::InAppProductsBatchResponseEntry, decorator: Google::Apis::AndroidpublisherV2::InAppProductsBatchResponseEntry::Representation
-      
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class InAppProductsBatchResponseEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :batch_id, as: 'batchId'
-          property :inappproductsinsertresponse, as: 'inappproductsinsertresponse', class: Google::Apis::AndroidpublisherV2::InsertInAppProductsResponse, decorator: Google::Apis::AndroidpublisherV2::InsertInAppProductsResponse::Representation
-      
-          property :inappproductsupdateresponse, as: 'inappproductsupdateresponse', class: Google::Apis::AndroidpublisherV2::UpdateInAppProductsResponse, decorator: Google::Apis::AndroidpublisherV2::UpdateInAppProductsResponse::Representation
-      
-        end
-      end
-      
-      class InsertInAppProductsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
-      
-        end
-      end
-      
-      class InsertInAppProductsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
-      
-        end
-      end
-      
       class ListInAppProductsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -705,22 +601,6 @@ module Google
           property :page_info, as: 'pageInfo', class: Google::Apis::AndroidpublisherV2::PageInfo, decorator: Google::Apis::AndroidpublisherV2::PageInfo::Representation
       
           property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidpublisherV2::TokenPagination, decorator: Google::Apis::AndroidpublisherV2::TokenPagination::Representation
-      
-        end
-      end
-      
-      class UpdateInAppProductsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
-      
-        end
-      end
-      
-      class UpdateInAppProductsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
       
         end
       end
