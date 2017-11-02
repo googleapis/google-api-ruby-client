@@ -200,9 +200,8 @@ module Google
         # to generate the service account email address and a stable
         # `unique_id`.
         # If the account already exists, the account's resource name is returned
-        # in util::Status's ResourceInfo.resource_name in the format of
-        # projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller can
-        # use the name in other methods to access the account.
+        # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
+        # can use the name in other methods to access the account.
         # All other methods can identify the service account using the format
         # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
@@ -694,9 +693,8 @@ module Google
       # to generate the service account email address and a stable
       # `unique_id`.
       # If the account already exists, the account's resource name is returned
-      # in util::Status's ResourceInfo.resource_name in the format of
-      # projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller can
-      # use the name in other methods to access the account.
+      # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
+      # can use the name in other methods to access the account.
       # All other methods can identify the service account using the format
       # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
       # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
@@ -733,7 +731,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # @OutputOnly. The OAuth2 client id for the service account.
+        # @OutputOnly The OAuth2 client id for the service account.
         # This is used in conjunction with the OAuth2 clientconfig API to make
         # three legged OAuth2 (3LO) flows to access the data of Google users.
         # Corresponds to the JSON property `oauth2ClientId`

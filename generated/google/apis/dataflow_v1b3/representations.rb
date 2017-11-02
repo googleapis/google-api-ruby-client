@@ -502,12 +502,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SideInputId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SideInputInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -897,14 +891,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :component_step_name, as: 'componentStepName'
           property :execution_step_name, as: 'executionStepName'
+          property :input_index, as: 'inputIndex'
           property :name, as: 'name'
           property :origin, as: 'origin'
           property :origin_namespace, as: 'originNamespace'
           property :original_requesting_step_name, as: 'originalRequestingStepName'
           property :original_step_name, as: 'originalStepName'
           property :portion, as: 'portion'
-          property :side_input, as: 'sideInput', class: Google::Apis::DataflowV1b3::SideInputId, decorator: Google::Apis::DataflowV1b3::SideInputId::Representation
-      
           property :worker_id, as: 'workerId'
         end
       end
@@ -1631,14 +1624,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :command, as: 'command'
           property :exit_code, as: 'exitCode'
-        end
-      end
-      
-      class SideInputId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :declaring_step_name, as: 'declaringStepName'
-          property :input_index, as: 'inputIndex'
         end
       end
       

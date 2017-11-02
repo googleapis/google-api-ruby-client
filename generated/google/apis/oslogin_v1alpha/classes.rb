@@ -45,8 +45,8 @@ module Google
       class ImportSshPublicKeyResponse
         include Google::Apis::Core::Hashable
       
-        # The Directory API profile information used for logging in to a virtual
-        # machine on Google Compute Engine.
+        # The user profile information used for logging in to a virtual machine on
+        # Google Compute Engine.
         # Corresponds to the JSON property `loginProfile`
         # @return [Google::Apis::OsloginV1alpha::LoginProfile]
         attr_accessor :login_profile
@@ -61,8 +61,8 @@ module Google
         end
       end
       
-      # The Directory API profile information used for logging in to a virtual
-      # machine on Google Compute Engine.
+      # The user profile information used for logging in to a virtual machine on
+      # Google Compute Engine.
       class LoginProfile
         include Google::Apis::Core::Hashable
       
@@ -100,9 +100,14 @@ module Google
         end
       end
       
-      # The POSIX account information associated with a Directory API User.
+      # The POSIX account information associated with a Google account.
       class PosixAccount
         include Google::Apis::Core::Hashable
+      
+        # Output only. A POSIX account identifier.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
       
         # The GECOS (user information) entry for this account.
         # Corresponds to the JSON property `gecos`
@@ -152,6 +157,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
           @gecos = args[:gecos] if args.key?(:gecos)
           @gid = args[:gid] if args.key?(:gid)
           @home_directory = args[:home_directory] if args.key?(:home_directory)
@@ -163,7 +169,7 @@ module Google
         end
       end
       
-      # The SSH public key information associated with a Directory API User.
+      # The SSH public key information associated with a Google account.
       class SshPublicKey
         include Google::Apis::Core::Hashable
       
@@ -172,8 +178,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :expiration_time_usec
       
-        # The SHA-256 fingerprint of the SSH public key.
-        # Output only.
+        # Output only. The SHA-256 fingerprint of the SSH public key.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint

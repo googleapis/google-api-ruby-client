@@ -425,6 +425,16 @@ module Google
         # @return [String]
         attr_accessor :execution_step_name
       
+        # Index of an input collection that's being read from/written to as a side
+        # input.
+        # The index identifies a step's side inputs starting by 1 (e.g. the first
+        # side input has input_index 1, the third has input_index 3).
+        # Side inputs are identified by a pair of (original_step_name, input_index).
+        # This field helps uniquely identify them.
+        # Corresponds to the JSON property `inputIndex`
+        # @return [Fixnum]
+        attr_accessor :input_index
+      
         # Counter name. Not necessarily globally-unique, but unique within the
         # context of the other fields.
         # Required.
@@ -443,7 +453,8 @@ module Google
         attr_accessor :origin_namespace
       
         # The step name requesting an operation, such as GBK.
-        # I.e. the ParDo causing a read/write from shuffle to occur.
+        # I.e. the ParDo causing a read/write from shuffle to occur, or a
+        # read from side inputs.
         # Corresponds to the JSON property `originalRequestingStepName`
         # @return [String]
         attr_accessor :original_requesting_step_name
@@ -459,11 +470,6 @@ module Google
         # @return [String]
         attr_accessor :portion
       
-        # Uniquely identifies a side input.
-        # Corresponds to the JSON property `sideInput`
-        # @return [Google::Apis::DataflowV1b3::SideInputId]
-        attr_accessor :side_input
-      
         # ID of a particular worker.
         # Corresponds to the JSON property `workerId`
         # @return [String]
@@ -477,13 +483,13 @@ module Google
         def update!(**args)
           @component_step_name = args[:component_step_name] if args.key?(:component_step_name)
           @execution_step_name = args[:execution_step_name] if args.key?(:execution_step_name)
+          @input_index = args[:input_index] if args.key?(:input_index)
           @name = args[:name] if args.key?(:name)
           @origin = args[:origin] if args.key?(:origin)
           @origin_namespace = args[:origin_namespace] if args.key?(:origin_namespace)
           @original_requesting_step_name = args[:original_requesting_step_name] if args.key?(:original_requesting_step_name)
           @original_step_name = args[:original_step_name] if args.key?(:original_step_name)
           @portion = args[:portion] if args.key?(:portion)
-          @side_input = args[:side_input] if args.key?(:side_input)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
       end
@@ -3176,31 +3182,6 @@ module Google
         def update!(**args)
           @command = args[:command] if args.key?(:command)
           @exit_code = args[:exit_code] if args.key?(:exit_code)
-        end
-      end
-      
-      # Uniquely identifies a side input.
-      class SideInputId
-        include Google::Apis::Core::Hashable
-      
-        # The step that receives and usually consumes this side input.
-        # Corresponds to the JSON property `declaringStepName`
-        # @return [String]
-        attr_accessor :declaring_step_name
-      
-        # The index of the side input, from the list of non_parallel_inputs.
-        # Corresponds to the JSON property `inputIndex`
-        # @return [Fixnum]
-        attr_accessor :input_index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @declaring_step_name = args[:declaring_step_name] if args.key?(:declaring_step_name)
-          @input_index = args[:input_index] if args.key?(:input_index)
         end
       end
       

@@ -30854,6 +30854,7 @@
 "/dataflow:v1b3/CounterStructuredName": counter_structured_name
 "/dataflow:v1b3/CounterStructuredName/componentStepName": component_step_name
 "/dataflow:v1b3/CounterStructuredName/executionStepName": execution_step_name
+"/dataflow:v1b3/CounterStructuredName/inputIndex": input_index
 "/dataflow:v1b3/CounterStructuredName/name": name
 "/dataflow:v1b3/CounterStructuredName/origin": origin
 "/dataflow:v1b3/CounterStructuredName/originNamespace": origin_namespace
@@ -47046,6 +47047,7 @@
 "/logging:v2beta1/LogEntry/resource": resource
 "/logging:v2beta1/LogEntry/severity": severity
 "/logging:v2beta1/LogEntry/sourceLocation": source_location
+"/logging:v2beta1/LogEntry/spanId": span_id
 "/logging:v2beta1/LogEntry/textPayload": text_payload
 "/logging:v2beta1/LogEntry/timestamp": timestamp
 "/logging:v2beta1/LogEntry/trace": trace
@@ -48831,6 +48833,7 @@
 "/oslogin:v1alpha/LoginProfile/sshPublicKeys/ssh_public_key": ssh_public_key
 "/oslogin:v1alpha/LoginProfile/suspended": suspended
 "/oslogin:v1alpha/PosixAccount": posix_account
+"/oslogin:v1alpha/PosixAccount/accountId": account_id
 "/oslogin:v1alpha/PosixAccount/gecos": gecos
 "/oslogin:v1alpha/PosixAccount/gid": gid
 "/oslogin:v1alpha/PosixAccount/homeDirectory": home_directory
@@ -48849,6 +48852,9 @@
 "/oslogin:v1alpha/oslogin.users.getLoginProfile/name": name
 "/oslogin:v1alpha/oslogin.users.importSshPublicKey": import_user_ssh_public_key
 "/oslogin:v1alpha/oslogin.users.importSshPublicKey/parent": parent
+"/oslogin:v1alpha/oslogin.users.importSshPublicKey/projectId": project_id
+"/oslogin:v1alpha/oslogin.users.projects.delete": delete_user_project
+"/oslogin:v1alpha/oslogin.users.projects.delete/name": name
 "/oslogin:v1alpha/oslogin.users.sshPublicKeys.delete": delete_user_ssh_public_key
 "/oslogin:v1alpha/oslogin.users.sshPublicKeys.delete/name": name
 "/oslogin:v1alpha/oslogin.users.sshPublicKeys.get": get_user_ssh_public_key
@@ -48868,6 +48874,7 @@
 "/oslogin:v1beta/LoginProfile/sshPublicKeys/ssh_public_key": ssh_public_key
 "/oslogin:v1beta/LoginProfile/suspended": suspended
 "/oslogin:v1beta/PosixAccount": posix_account
+"/oslogin:v1beta/PosixAccount/accountId": account_id
 "/oslogin:v1beta/PosixAccount/gecos": gecos
 "/oslogin:v1beta/PosixAccount/gid": gid
 "/oslogin:v1beta/PosixAccount/homeDirectory": home_directory
@@ -48886,6 +48893,9 @@
 "/oslogin:v1beta/oslogin.users.getLoginProfile/name": name
 "/oslogin:v1beta/oslogin.users.importSshPublicKey": import_user_ssh_public_key
 "/oslogin:v1beta/oslogin.users.importSshPublicKey/parent": parent
+"/oslogin:v1beta/oslogin.users.importSshPublicKey/projectId": project_id
+"/oslogin:v1beta/oslogin.users.projects.delete": delete_user_project
+"/oslogin:v1beta/oslogin.users.projects.delete/name": name
 "/oslogin:v1beta/oslogin.users.sshPublicKeys.delete": delete_user_ssh_public_key
 "/oslogin:v1beta/oslogin.users.sshPublicKeys.delete/name": name
 "/oslogin:v1beta/oslogin.users.sshPublicKeys.get": get_user_ssh_public_key

@@ -658,6 +658,14 @@ module Google
         # @return [Google::Apis::LoggingV2beta1::LogEntrySourceLocation]
         attr_accessor :source_location
       
+        # Optional. Id of the span within the trace associated with the log entry. e.g. "
+        # 0000000000000042" For Stackdriver trace spans, this is the same format that
+        # the Stackdriver trace API uses. The ID is a 16-character hexadecimal encoding
+        # of an 8-byte array.
+        # Corresponds to the JSON property `spanId`
+        # @return [String]
+        attr_accessor :span_id
+      
         # The log entry payload, represented as a Unicode string (UTF-8).
         # Corresponds to the JSON property `textPayload`
         # @return [String]
@@ -698,6 +706,7 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @severity = args[:severity] if args.key?(:severity)
           @source_location = args[:source_location] if args.key?(:source_location)
+          @span_id = args[:span_id] if args.key?(:span_id)
           @text_payload = args[:text_payload] if args.key?(:text_payload)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @trace = args[:trace] if args.key?(:trace)

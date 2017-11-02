@@ -279,7 +279,6 @@ module Google
       end
       
       # Represents a training or prediction job.
-      # Next ID: 16
       class GoogleCloudMlV1Job
         include Google::Apis::Core::Hashable
       
@@ -456,7 +455,6 @@ module Google
       # A model can have multiple versions, each of which is a deployed, trained
       # model ready to receive prediction requests. The model itself is just a
       # container.
-      # Next ID: 8
       class GoogleCloudMlV1Model
         include Google::Apis::Core::Hashable
       
@@ -518,7 +516,6 @@ module Google
       end
       
       # Represents the metadata of the long-running operation.
-      # Next ID: 9
       class GoogleCloudMlV1OperationMetadata
         include Google::Apis::Core::Hashable
       

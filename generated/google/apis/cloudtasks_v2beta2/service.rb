@@ -393,11 +393,6 @@ module Google
         # queue is paused. The state of the queue is stored in
         # Queue.queue_state; if paused it will be set to
         # Queue.QueueState.PAUSED.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
-        # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
         # @param [String] name
         #   Required.
         #   The queue name. For example:
@@ -475,11 +470,6 @@ module Google
         # Queue.QueueState.PAUSED or Queue.QueueState.DISABLED. The state of
         # a queue is stored in Queue.queue_state; after calling this method it
         # will be set to Queue.QueueState.RUNNING.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
-        # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
         # WARNING: Resuming many high-QPS queues at the same time can
         # lead to target overloading. If you are resuming high-QPS
         # queues, follow the 500/50/5 pattern described in
