@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'retriable', '>= 2.0', '< 4.0'
   spec.add_runtime_dependency 'addressable', '~> 2.5', '>= 2.5.1'
   spec.add_runtime_dependency 'mime-types', '~> 3.0'
-  spec.add_runtime_dependency 'googleauth', '~> 0.5'
+  spec.add_runtime_dependency 'googleauth', '>= 0.5', '< 0.7.0'
   spec.add_runtime_dependency 'httpclient', '>= 2.8.1', '< 3.0'
   spec.add_development_dependency 'thor', '~> 0.19'
   spec.add_development_dependency 'activesupport', '>= 4.2', '< 5.1'
