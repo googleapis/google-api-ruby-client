@@ -788,13 +788,13 @@ module Google
         #   Optional. A filter constraining the jobs to list. Filters are case-sensitive
         #   and have the following syntax:field = value AND field = value ...where field
         #   is status.state or labels.[KEY], and [KEY] is a label key. value can be * to
-        #   match all values. status.state can be either ACTIVE or INACTIVE. Only the
+        #   match all values. status.state can be either ACTIVE or NON_ACTIVE. Only the
         #   logical AND operator is supported; space-separated items are treated as having
         #   an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env =
         #   staging AND labels.starred = *
         # @param [String] job_state_matcher
-        #   Optional. Specifies enumerated categories of jobs to list (default = match ALL
-        #   jobs).
+        #   Optional. Specifies enumerated categories of jobs to list. (default = match
+        #   ALL jobs).If filter is provided, jobStateMatcher will be ignored.
         # @param [Fixnum] page_size
         #   Optional. The number of results to return in each response.
         # @param [String] page_token

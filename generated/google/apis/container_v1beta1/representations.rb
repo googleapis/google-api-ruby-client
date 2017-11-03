@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetLoggingServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetMaintenancePolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -699,6 +705,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :enabled, as: 'enabled'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class SetLoggingServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :logging_service, as: 'loggingService'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'

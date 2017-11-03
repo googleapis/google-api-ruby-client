@@ -1874,6 +1874,58 @@ module Google
         end
       end
       
+      # SetLoggingServiceRequest sets the logging service of a cluster.
+      class SetLoggingServiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The name of the cluster to upgrade.
+        # This field is deprecated, use name instead.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # The logging service the cluster should use to write metrics.
+        # Currently available options:
+        # * "logging.googleapis.com" - the Google Cloud Logging service
+        # * "none" - no metrics will be exported from the cluster
+        # Corresponds to the JSON property `loggingService`
+        # @return [String]
+        attr_accessor :logging_service
+      
+        # The name (project, location, cluster) of the cluster to set logging.
+        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The Google Developers Console [project ID or project
+        # number](https://support.google.com/cloud/answer/6158840).
+        # This field is deprecated, use name instead.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The name of the Google Compute Engine
+        # [zone](/compute/docs/zones#available) in which the cluster
+        # resides.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @logging_service = args[:logging_service] if args.key?(:logging_service)
+          @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
       class SetMaintenancePolicyRequest
         include Google::Apis::Core::Hashable

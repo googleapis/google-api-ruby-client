@@ -247,7 +247,7 @@ module Google
         # The hostname of the service that should be observed.
         # If no string is provided, the default service implementing the API will
         # be used. For example, `storage.googleapis.com` is the default for all
-        # event types in the 'google.storage` namespace.
+        # event types in the `google.storage` namespace.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -616,6 +616,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The last update timestamp of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Version id of the function created or updated by an API call.
         # This field is only pupulated for Create and Update operations.
         # Corresponds to the JSON property `versionId`
@@ -631,6 +636,7 @@ module Google
           @request = args[:request] if args.key?(:request)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
@@ -655,6 +661,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The last update timestamp of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Version id of the function created or updated by an API call.
         # This field is only pupulated for Create and Update operations.
         # Corresponds to the JSON property `versionId`
@@ -670,6 +681,7 @@ module Google
           @request = args[:request] if args.key?(:request)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
