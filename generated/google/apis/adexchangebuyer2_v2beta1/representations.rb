@@ -446,6 +446,7 @@ module Google
           property :entity_id, :numeric_string => true, as: 'entityId'
           property :entity_name, as: 'entityName'
           property :entity_type, as: 'entityType'
+          property :partner_client_id, as: 'partnerClientId'
           property :role, as: 'role'
           property :status, as: 'status'
           property :visible_to_seller, as: 'visibleToSeller'

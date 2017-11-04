@@ -311,6 +311,18 @@ module Google
         # @return [String]
         attr_accessor :entity_type
       
+        # Optional arbitrary unique identifier of this client buyer from the
+        # standpoint of its Ad Exchange sponsor buyer.
+        # This field can be used to associate a client buyer with the identifier
+        # in the namespace of its sponsor buyer, lookup client buyers by that
+        # identifier and verify whether an Ad Exchange counterpart of a given client
+        # buyer already exists.
+        # If present, must be unique among all the client buyers for its
+        # Ad Exchange sponsor buyer.
+        # Corresponds to the JSON property `partnerClientId`
+        # @return [String]
+        attr_accessor :partner_client_id
+      
         # The role which is assigned to the client buyer. Each role implies a set of
         # permissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,
         # `CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`.
@@ -340,6 +352,7 @@ module Google
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @entity_name = args[:entity_name] if args.key?(:entity_name)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @partner_client_id = args[:partner_client_id] if args.key?(:partner_client_id)
           @role = args[:role] if args.key?(:role)
           @status = args[:status] if args.key?(:status)
           @visible_to_seller = args[:visible_to_seller] if args.key?(:visible_to_seller)

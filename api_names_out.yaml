@@ -53,6 +53,7 @@
 "/adexchangebuyer2:v2beta1/Client/entityId": entity_id
 "/adexchangebuyer2:v2beta1/Client/entityName": entity_name
 "/adexchangebuyer2:v2beta1/Client/entityType": entity_type
+"/adexchangebuyer2:v2beta1/Client/partnerClientId": partner_client_id
 "/adexchangebuyer2:v2beta1/Client/role": role
 "/adexchangebuyer2:v2beta1/Client/status": status
 "/adexchangebuyer2:v2beta1/Client/visibleToSeller": visible_to_seller
@@ -320,6 +321,7 @@
 "/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.list/accountId": account_id
 "/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.list/pageSize": page_size
 "/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.list/pageToken": page_token
+"/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.list/partnerClientId": partner_client_id
 "/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.update": update_account_client
 "/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.update/accountId": account_id
 "/adexchangebuyer2:v2beta1/adexchangebuyer2.accounts.clients.update/clientAccountId": client_account_id

@@ -479,7 +479,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cancellations, as: 'cancellations', class: Google::Apis::ContentV2sandbox::OrderCancellation, decorator: Google::Apis::ContentV2sandbox::OrderCancellation::Representation
       
-          property :channel_type, as: 'channelType'
           property :id, as: 'id'
           property :price, as: 'price', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
       
