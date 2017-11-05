@@ -24,22 +24,22 @@ module Google
       
       # Request for performing Google Cloud Vision API tasks over a user-provided
       # image, with user-requested features.
-      class AnnotateImageRequest
+      class GoogleCloudVisionV1AnnotateImageRequest
         include Google::Apis::Core::Hashable
       
         # Requested features.
         # Corresponds to the JSON property `features`
-        # @return [Array<Google::Apis::VisionV1::Feature>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Feature>]
         attr_accessor :features
       
         # Client image to perform Google Cloud Vision API tasks over.
         # Corresponds to the JSON property `image`
-        # @return [Google::Apis::VisionV1::Image]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1Image]
         attr_accessor :image
       
         # Image context and/or feature-specific parameters.
         # Corresponds to the JSON property `imageContext`
-        # @return [Google::Apis::VisionV1::ImageContext]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1ImageContext]
         attr_accessor :image_context
       
         def initialize(**args)
@@ -55,12 +55,12 @@ module Google
       end
       
       # Response to an image annotation request.
-      class AnnotateImageResponse
+      class GoogleCloudVisionV1AnnotateImageResponse
         include Google::Apis::Core::Hashable
       
         # Set of crop hints that are used to generate new crops when serving images.
         # Corresponds to the JSON property `cropHintsAnnotation`
-        # @return [Google::Apis::VisionV1::CropHintsAnnotation]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
         # The `Status` type defines a logical error model that is suitable for different
@@ -103,60 +103,60 @@ module Google
         # - Logging. If some API errors are stored in logs, the message `Status` could
         # be used directly after any stripping needed for security/privacy reasons.
         # Corresponds to the JSON property `error`
-        # @return [Google::Apis::VisionV1::Status]
+        # @return [Google::Apis::VisionV1::GoogleRpcStatus]
         attr_accessor :error
       
         # If present, face detection has completed successfully.
         # Corresponds to the JSON property `faceAnnotations`
-        # @return [Array<Google::Apis::VisionV1::FaceAnnotation>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1FaceAnnotation>]
         attr_accessor :face_annotations
       
         # TextAnnotation contains a structured representation of OCR extracted text.
         # The hierarchy of an OCR extracted text structure is like this:
         # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
         # Each structural component, starting from Page, may further have their own
-        # properties. Properties describe detected languages, breaks etc.. Please
-        # refer to the google.cloud.vision.v1.TextAnnotation.TextProperty message
-        # definition below for more detail.
+        # properties. Properties describe detected languages, breaks etc.. Please refer
+        # to the TextAnnotation.TextProperty message definition below for more
+        # detail.
         # Corresponds to the JSON property `fullTextAnnotation`
-        # @return [Google::Apis::VisionV1::TextAnnotation]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotation]
         attr_accessor :full_text_annotation
       
         # Stores image properties, such as dominant colors.
         # Corresponds to the JSON property `imagePropertiesAnnotation`
-        # @return [Google::Apis::VisionV1::ImageProperties]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1ImageProperties]
         attr_accessor :image_properties_annotation
       
         # If present, label detection has completed successfully.
         # Corresponds to the JSON property `labelAnnotations`
-        # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1EntityAnnotation>]
         attr_accessor :label_annotations
       
         # If present, landmark detection has completed successfully.
         # Corresponds to the JSON property `landmarkAnnotations`
-        # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
         # If present, logo detection has completed successfully.
         # Corresponds to the JSON property `logoAnnotations`
-        # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1EntityAnnotation>]
         attr_accessor :logo_annotations
       
         # Set of features pertaining to the image, computed by computer vision
         # methods over safe-search verticals (for example, adult, spoof, medical,
         # violence).
         # Corresponds to the JSON property `safeSearchAnnotation`
-        # @return [Google::Apis::VisionV1::SafeSearchAnnotation]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
       
         # If present, text (OCR) detection has completed successfully.
         # Corresponds to the JSON property `textAnnotations`
-        # @return [Array<Google::Apis::VisionV1::EntityAnnotation>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1EntityAnnotation>]
         attr_accessor :text_annotations
       
         # Relevant information for the image from the Internet.
         # Corresponds to the JSON property `webDetection`
-        # @return [Google::Apis::VisionV1::WebDetection]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1WebDetection]
         attr_accessor :web_detection
       
         def initialize(**args)
@@ -180,12 +180,12 @@ module Google
       end
       
       # Multiple image annotation requests are batched into a single service call.
-      class BatchAnnotateImagesRequest
+      class GoogleCloudVisionV1BatchAnnotateImagesRequest
         include Google::Apis::Core::Hashable
       
         # Individual image annotation requests for this batch.
         # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::VisionV1::AnnotateImageRequest>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1AnnotateImageRequest>]
         attr_accessor :requests
       
         def initialize(**args)
@@ -199,12 +199,12 @@ module Google
       end
       
       # Response to a batch image annotation request.
-      class BatchAnnotateImagesResponse
+      class GoogleCloudVisionV1BatchAnnotateImagesResponse
         include Google::Apis::Core::Hashable
       
         # Individual responses to image annotation requests within the batch.
         # Corresponds to the JSON property `responses`
-        # @return [Array<Google::Apis::VisionV1::AnnotateImageResponse>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1AnnotateImageResponse>]
         attr_accessor :responses
       
         def initialize(**args)
@@ -218,7 +218,7 @@ module Google
       end
       
       # Logical element on the page.
-      class Block
+      class GoogleCloudVisionV1Block
         include Google::Apis::Core::Hashable
       
         # Detected block type (text, image etc) for this block.
@@ -228,17 +228,17 @@ module Google
       
         # A bounding polygon for the detected image annotation.
         # Corresponds to the JSON property `boundingBox`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
         attr_accessor :bounding_box
       
         # List of paragraphs in this block (if this blocks is of type text).
         # Corresponds to the JSON property `paragraphs`
-        # @return [Array<Google::Apis::VisionV1::Paragraph>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Paragraph>]
         attr_accessor :paragraphs
       
         # Additional information detected on the structural component.
         # Corresponds to the JSON property `property`
-        # @return [Google::Apis::VisionV1::TextProperty]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationTextProperty]
         attr_accessor :property
       
         def initialize(**args)
@@ -255,12 +255,12 @@ module Google
       end
       
       # A bounding polygon for the detected image annotation.
-      class BoundingPoly
+      class GoogleCloudVisionV1BoundingPoly
         include Google::Apis::Core::Hashable
       
         # The bounding polygon vertices.
         # Corresponds to the JSON property `vertices`
-        # @return [Array<Google::Apis::VisionV1::Vertex>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Vertex>]
         attr_accessor :vertices
       
         def initialize(**args)
@@ -273,152 +273,9 @@ module Google
         end
       end
       
-      # Represents a color in the RGBA color space. This representation is designed
-      # for simplicity of conversion to/from color representations in various
-      # languages over compactness; for example, the fields of this representation
-      # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-      # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-      # method in iOS; and, with just a little work, it can be easily formatted into
-      # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
-      # Example (Java):
-      # import com.google.type.Color;
-      # // ...
-      # public static java.awt.Color fromProto(Color protocolor) `
-      # float alpha = protocolor.hasAlpha()
-      # ? protocolor.getAlpha().getValue()
-      # : 1.0;
-      # return new java.awt.Color(
-      # protocolor.getRed(),
-      # protocolor.getGreen(),
-      # protocolor.getBlue(),
-      # alpha);
-      # `
-      # public static Color toProto(java.awt.Color color) `
-      # float red = (float) color.getRed();
-      # float green = (float) color.getGreen();
-      # float blue = (float) color.getBlue();
-      # float denominator = 255.0;
-      # Color.Builder resultBuilder =
-      # Color
-      # .newBuilder()
-      # .setRed(red / denominator)
-      # .setGreen(green / denominator)
-      # .setBlue(blue / denominator);
-      # int alpha = color.getAlpha();
-      # if (alpha != 255) `
-      # result.setAlpha(
-      # FloatValue
-      # .newBuilder()
-      # .setValue(((float) alpha) / denominator)
-      # .build());
-      # `
-      # return resultBuilder.build();
-      # `
-      # // ...
-      # Example (iOS / Obj-C):
-      # // ...
-      # static UIColor* fromProto(Color* protocolor) `
-      # float red = [protocolor red];
-      # float green = [protocolor green];
-      # float blue = [protocolor blue];
-      # FloatValue* alpha_wrapper = [protocolor alpha];
-      # float alpha = 1.0;
-      # if (alpha_wrapper != nil) `
-      # alpha = [alpha_wrapper value];
-      # `
-      # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-      # `
-      # static Color* toProto(UIColor* color) `
-      # CGFloat red, green, blue, alpha;
-      # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-      # return nil;
-      # `
-      # Color* result = [Color alloc] init];
-      # [result setRed:red];
-      # [result setGreen:green];
-      # [result setBlue:blue];
-      # if (alpha <= 0.9999) `
-      # [result setAlpha:floatWrapperWithValue(alpha)];
-      # `
-      # [result autorelease];
-      # return result;
-      # `
-      # // ...
-      # Example (JavaScript):
-      # // ...
-      # var protoToCssColor = function(rgb_color) `
-      # var redFrac = rgb_color.red || 0.0;
-      # var greenFrac = rgb_color.green || 0.0;
-      # var blueFrac = rgb_color.blue || 0.0;
-      # var red = Math.floor(redFrac * 255);
-      # var green = Math.floor(greenFrac * 255);
-      # var blue = Math.floor(blueFrac * 255);
-      # if (!('alpha' in rgb_color)) `
-      # return rgbToCssColor_(red, green, blue);
-      # `
-      # var alphaFrac = rgb_color.alpha.value || 0.0;
-      # var rgbParams = [red, green, blue].join(',');
-      # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-      # `;
-      # var rgbToCssColor_ = function(red, green, blue) `
-      # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-      # var hexString = rgbNumber.toString(16);
-      # var missingZeros = 6 - hexString.length;
-      # var resultBuilder = ['#'];
-      # for (var i = 0; i < missingZeros; i++) `
-      # resultBuilder.push('0');
-      # `
-      # resultBuilder.push(hexString);
-      # return resultBuilder.join('');
-      # `;
-      # // ...
-      class Color
-        include Google::Apis::Core::Hashable
-      
-        # The fraction of this color that should be applied to the pixel. That is,
-        # the final pixel color is defined by the equation:
-        # pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
-        # This means that a value of 1.0 corresponds to a solid color, whereas
-        # a value of 0.0 corresponds to a completely transparent color. This
-        # uses a wrapper message rather than a simple float scalar so that it is
-        # possible to distinguish between a default value and the value being unset.
-        # If omitted, this color object is to be rendered as a solid color
-        # (as if the alpha value had been explicitly given with a value of 1.0).
-        # Corresponds to the JSON property `alpha`
-        # @return [Float]
-        attr_accessor :alpha
-      
-        # The amount of blue in the color as a value in the interval [0, 1].
-        # Corresponds to the JSON property `blue`
-        # @return [Float]
-        attr_accessor :blue
-      
-        # The amount of green in the color as a value in the interval [0, 1].
-        # Corresponds to the JSON property `green`
-        # @return [Float]
-        attr_accessor :green
-      
-        # The amount of red in the color as a value in the interval [0, 1].
-        # Corresponds to the JSON property `red`
-        # @return [Float]
-        attr_accessor :red
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alpha = args[:alpha] if args.key?(:alpha)
-          @blue = args[:blue] if args.key?(:blue)
-          @green = args[:green] if args.key?(:green)
-          @red = args[:red] if args.key?(:red)
-        end
-      end
-      
       # Color information consists of RGB channels, score, and the fraction of
       # the image that the color occupies in the image.
-      class ColorInfo
+      class GoogleCloudVisionV1ColorInfo
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
@@ -521,7 +378,7 @@ module Google
         # `;
         # // ...
         # Corresponds to the JSON property `color`
-        # @return [Google::Apis::VisionV1::Color]
+        # @return [Google::Apis::VisionV1::GoogleTypeColor]
         attr_accessor :color
       
         # The fraction of pixels the color occupies in the image.
@@ -548,12 +405,12 @@ module Google
       end
       
       # Single crop hint that is used to generate a new crop when serving an image.
-      class CropHint
+      class GoogleCloudVisionV1CropHint
         include Google::Apis::Core::Hashable
       
         # A bounding polygon for the detected image annotation.
         # Corresponds to the JSON property `boundingPoly`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
         attr_accessor :bounding_poly
       
         # Confidence of this being a salient region.  Range [0, 1].
@@ -580,12 +437,12 @@ module Google
       end
       
       # Set of crop hints that are used to generate new crops when serving images.
-      class CropHintsAnnotation
+      class GoogleCloudVisionV1CropHintsAnnotation
         include Google::Apis::Core::Hashable
       
         # Crop hint results.
         # Corresponds to the JSON property `cropHints`
-        # @return [Array<Google::Apis::VisionV1::CropHint>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1CropHint>]
         attr_accessor :crop_hints
       
         def initialize(**args)
@@ -599,7 +456,7 @@ module Google
       end
       
       # Parameters for crop hints annotation request.
-      class CropHintsParams
+      class GoogleCloudVisionV1CropHintsParams
         include Google::Apis::Core::Hashable
       
         # Aspect ratios in floats, representing the ratio of the width to the height
@@ -622,66 +479,13 @@ module Google
         end
       end
       
-      # Detected start or end of a structural component.
-      class DetectedBreak
-        include Google::Apis::Core::Hashable
-      
-        # True if break prepends the element.
-        # Corresponds to the JSON property `isPrefix`
-        # @return [Boolean]
-        attr_accessor :is_prefix
-        alias_method :is_prefix?, :is_prefix
-      
-        # Detected break type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_prefix = args[:is_prefix] if args.key?(:is_prefix)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Detected language for a structural component.
-      class DetectedLanguage
-        include Google::Apis::Core::Hashable
-      
-        # Confidence of detected language. Range [0, 1].
-        # Corresponds to the JSON property `confidence`
-        # @return [Float]
-        attr_accessor :confidence
-      
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence = args[:confidence] if args.key?(:confidence)
-          @language_code = args[:language_code] if args.key?(:language_code)
-        end
-      end
-      
       # Set of dominant colors and their corresponding scores.
-      class DominantColorsAnnotation
+      class GoogleCloudVisionV1DominantColorsAnnotation
         include Google::Apis::Core::Hashable
       
         # RGB color values with their score and pixel fraction.
         # Corresponds to the JSON property `colors`
-        # @return [Array<Google::Apis::VisionV1::ColorInfo>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1ColorInfo>]
         attr_accessor :colors
       
         def initialize(**args)
@@ -695,12 +499,12 @@ module Google
       end
       
       # Set of detected entity features.
-      class EntityAnnotation
+      class GoogleCloudVisionV1EntityAnnotation
         include Google::Apis::Core::Hashable
       
         # A bounding polygon for the detected image annotation.
         # Corresponds to the JSON property `boundingPoly`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
         attr_accessor :bounding_poly
       
         # The accuracy of the entity detection in an image.
@@ -728,12 +532,12 @@ module Google
         # may indicate the location of the place where the image was taken.
         # Location information is usually present for landmarks.
         # Corresponds to the JSON property `locations`
-        # @return [Array<Google::Apis::VisionV1::LocationInfo>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1LocationInfo>]
         attr_accessor :locations
       
         # Opaque entity ID. Some IDs may be available in
-        # [Google Knowledge Graph Search API](https://developers.google.com/knowledge-
-        # graph/).
+        # [Google Knowledge Graph Search
+        # API](https://developers.google.com/knowledge-graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
@@ -741,7 +545,7 @@ module Google
         # Some entities may have optional user-supplied `Property` (name/value)
         # fields, such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
-        # @return [Array<Google::Apis::VisionV1::Property>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Property>]
         attr_accessor :properties
       
         # Overall score of the result. Range [0, 1].
@@ -777,7 +581,7 @@ module Google
       end
       
       # A face annotation object contains the results of face detection.
-      class FaceAnnotation
+      class GoogleCloudVisionV1FaceAnnotation
         include Google::Apis::Core::Hashable
       
         # Anger likelihood.
@@ -792,7 +596,7 @@ module Google
       
         # A bounding polygon for the detected image annotation.
         # Corresponds to the JSON property `boundingPoly`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
         attr_accessor :bounding_poly
       
         # Detection confidence. Range [0, 1].
@@ -802,7 +606,7 @@ module Google
       
         # A bounding polygon for the detected image annotation.
         # Corresponds to the JSON property `fdBoundingPoly`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
         attr_accessor :fd_bounding_poly
       
         # Headwear likelihood.
@@ -822,7 +626,7 @@ module Google
       
         # Detected face landmarks.
         # Corresponds to the JSON property `landmarks`
-        # @return [Array<Google::Apis::VisionV1::Landmark>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1FaceAnnotationLandmark>]
         attr_accessor :landmarks
       
         # Yaw angle, which indicates the leftward/rightward angle that the face is
@@ -884,11 +688,38 @@ module Google
         end
       end
       
+      # A face-specific landmark (for example, a face feature).
+      class GoogleCloudVisionV1FaceAnnotationLandmark
+        include Google::Apis::Core::Hashable
+      
+        # A 3D position in the image, used primarily for Face detection landmarks.
+        # A valid Position must have both x and y coordinates.
+        # The position coordinates are in the same scale as the original image.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1Position]
+        attr_accessor :position
+      
+        # Face landmark type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @position = args[:position] if args.key?(:position)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Users describe the type of Google Cloud Vision API tasks to perform over
       # images by using *Feature*s. Each Feature indicates a type of image
       # detection task to perform. Features encode the Cloud Vision API
       # vertical to operate on and the number of top-scoring results to return.
-      class Feature
+      class GoogleCloudVisionV1Feature
         include Google::Apis::Core::Hashable
       
         # Maximum number of results of this type.
@@ -913,7 +744,7 @@ module Google
       end
       
       # Client image to perform Google Cloud Vision API tasks over.
-      class Image
+      class GoogleCloudVisionV1Image
         include Google::Apis::Core::Hashable
       
         # Image content, represented as a stream of bytes.
@@ -926,7 +757,7 @@ module Google
       
         # External image source (Google Cloud Storage image location).
         # Corresponds to the JSON property `source`
-        # @return [Google::Apis::VisionV1::ImageSource]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1ImageSource]
         attr_accessor :source
       
         def initialize(**args)
@@ -941,12 +772,12 @@ module Google
       end
       
       # Image context and/or feature-specific parameters.
-      class ImageContext
+      class GoogleCloudVisionV1ImageContext
         include Google::Apis::Core::Hashable
       
         # Parameters for crop hints annotation request.
         # Corresponds to the JSON property `cropHintsParams`
-        # @return [Google::Apis::VisionV1::CropHintsParams]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1CropHintsParams]
         attr_accessor :crop_hints_params
       
         # List of languages to use for TEXT_DETECTION. In most cases, an empty value
@@ -963,7 +794,7 @@ module Google
       
         # Rectangle determined by min and max `LatLng` pairs.
         # Corresponds to the JSON property `latLongRect`
-        # @return [Google::Apis::VisionV1::LatLongRect]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1LatLongRect]
         attr_accessor :lat_long_rect
       
         def initialize(**args)
@@ -979,12 +810,12 @@ module Google
       end
       
       # Stores image properties, such as dominant colors.
-      class ImageProperties
+      class GoogleCloudVisionV1ImageProperties
         include Google::Apis::Core::Hashable
       
         # Set of dominant colors and their corresponding scores.
         # Corresponds to the JSON property `dominantColors`
-        # @return [Google::Apis::VisionV1::DominantColorsAnnotation]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1DominantColorsAnnotation]
         attr_accessor :dominant_colors
       
         def initialize(**args)
@@ -998,7 +829,7 @@ module Google
       end
       
       # External image source (Google Cloud Storage image location).
-      class ImageSource
+      class GoogleCloudVisionV1ImageSource
         include Google::Apis::Core::Hashable
       
         # NOTE: For new code `image_uri` below is preferred.
@@ -1036,98 +867,8 @@ module Google
         end
       end
       
-      # A face-specific landmark (for example, a face feature).
-      # Landmark positions may fall outside the bounds of the image
-      # if the face is near one or more edges of the image.
-      # Therefore it is NOT guaranteed that `0 <= x < width` or
-      # `0 <= y < height`.
-      class Landmark
-        include Google::Apis::Core::Hashable
-      
-        # A 3D position in the image, used primarily for Face detection landmarks.
-        # A valid Position must have both x and y coordinates.
-        # The position coordinates are in the same scale as the original image.
-        # Corresponds to the JSON property `position`
-        # @return [Google::Apis::VisionV1::Position]
-        attr_accessor :position
-      
-        # Face landmark type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @position = args[:position] if args.key?(:position)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # An object representing a latitude/longitude pair. This is expressed as a pair
-      # of doubles representing degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the
-      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-      # standard</a>. Values must be within normalized ranges.
-      # Example of normalization code in Python:
-      # def NormalizeLongitude(longitude):
-      # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-      # q, r = divmod(longitude, 360.0)
-      # if r > 180.0 or (r == 180.0 and q <= -1.0):
-      # return r - 360.0
-      # return r
-      # def NormalizeLatLng(latitude, longitude):
-      # """Wraps decimal degrees latitude and longitude to
-      # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-      # r = latitude % 360.0
-      # if r <= 90.0:
-      # return r, NormalizeLongitude(longitude)
-      # elif r >= 270.0:
-      # return r - 360, NormalizeLongitude(longitude)
-      # else:
-      # return 180 - r, NormalizeLongitude(longitude + 180.0)
-      # assert 180.0 == NormalizeLongitude(180.0)
-      # assert -180.0 == NormalizeLongitude(-180.0)
-      # assert -179.0 == NormalizeLongitude(181.0)
-      # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-      # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-      # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-      # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-      # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-      # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-      # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-      # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-      # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-      # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
-      class LatLng
-        include Google::Apis::Core::Hashable
-      
-        # The latitude in degrees. It must be in the range [-90.0, +90.0].
-        # Corresponds to the JSON property `latitude`
-        # @return [Float]
-        attr_accessor :latitude
-      
-        # The longitude in degrees. It must be in the range [-180.0, +180.0].
-        # Corresponds to the JSON property `longitude`
-        # @return [Float]
-        attr_accessor :longitude
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @latitude = args[:latitude] if args.key?(:latitude)
-          @longitude = args[:longitude] if args.key?(:longitude)
-        end
-      end
-      
       # Rectangle determined by min and max `LatLng` pairs.
-      class LatLongRect
+      class GoogleCloudVisionV1LatLongRect
         include Google::Apis::Core::Hashable
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
@@ -1135,38 +876,8 @@ module Google
         # specified otherwise, this must conform to the
         # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
         # standard</a>. Values must be within normalized ranges.
-        # Example of normalization code in Python:
-        # def NormalizeLongitude(longitude):
-        # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-        # q, r = divmod(longitude, 360.0)
-        # if r > 180.0 or (r == 180.0 and q <= -1.0):
-        # return r - 360.0
-        # return r
-        # def NormalizeLatLng(latitude, longitude):
-        # """Wraps decimal degrees latitude and longitude to
-        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-        # r = latitude % 360.0
-        # if r <= 90.0:
-        # return r, NormalizeLongitude(longitude)
-        # elif r >= 270.0:
-        # return r - 360, NormalizeLongitude(longitude)
-        # else:
-        # return 180 - r, NormalizeLongitude(longitude + 180.0)
-        # assert 180.0 == NormalizeLongitude(180.0)
-        # assert -180.0 == NormalizeLongitude(-180.0)
-        # assert -179.0 == NormalizeLongitude(181.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-        # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-        # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-        # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-        # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
         # Corresponds to the JSON property `maxLatLng`
-        # @return [Google::Apis::VisionV1::LatLng]
+        # @return [Google::Apis::VisionV1::GoogleTypeLatLng]
         attr_accessor :max_lat_lng
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
@@ -1174,38 +885,8 @@ module Google
         # specified otherwise, this must conform to the
         # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
         # standard</a>. Values must be within normalized ranges.
-        # Example of normalization code in Python:
-        # def NormalizeLongitude(longitude):
-        # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-        # q, r = divmod(longitude, 360.0)
-        # if r > 180.0 or (r == 180.0 and q <= -1.0):
-        # return r - 360.0
-        # return r
-        # def NormalizeLatLng(latitude, longitude):
-        # """Wraps decimal degrees latitude and longitude to
-        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-        # r = latitude % 360.0
-        # if r <= 90.0:
-        # return r, NormalizeLongitude(longitude)
-        # elif r >= 270.0:
-        # return r - 360, NormalizeLongitude(longitude)
-        # else:
-        # return 180 - r, NormalizeLongitude(longitude + 180.0)
-        # assert 180.0 == NormalizeLongitude(180.0)
-        # assert -180.0 == NormalizeLongitude(-180.0)
-        # assert -179.0 == NormalizeLongitude(181.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-        # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-        # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-        # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-        # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
         # Corresponds to the JSON property `minLatLng`
-        # @return [Google::Apis::VisionV1::LatLng]
+        # @return [Google::Apis::VisionV1::GoogleTypeLatLng]
         attr_accessor :min_lat_lng
       
         def initialize(**args)
@@ -1220,7 +901,7 @@ module Google
       end
       
       # Detected entity location information.
-      class LocationInfo
+      class GoogleCloudVisionV1LocationInfo
         include Google::Apis::Core::Hashable
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
@@ -1228,38 +909,8 @@ module Google
         # specified otherwise, this must conform to the
         # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
         # standard</a>. Values must be within normalized ranges.
-        # Example of normalization code in Python:
-        # def NormalizeLongitude(longitude):
-        # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-        # q, r = divmod(longitude, 360.0)
-        # if r > 180.0 or (r == 180.0 and q <= -1.0):
-        # return r - 360.0
-        # return r
-        # def NormalizeLatLng(latitude, longitude):
-        # """Wraps decimal degrees latitude and longitude to
-        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-        # r = latitude % 360.0
-        # if r <= 90.0:
-        # return r, NormalizeLongitude(longitude)
-        # elif r >= 270.0:
-        # return r - 360, NormalizeLongitude(longitude)
-        # else:
-        # return 180 - r, NormalizeLongitude(longitude + 180.0)
-        # assert 180.0 == NormalizeLongitude(180.0)
-        # assert -180.0 == NormalizeLongitude(-180.0)
-        # assert -179.0 == NormalizeLongitude(181.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-        # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-        # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-        # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-        # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
         # Corresponds to the JSON property `latLng`
-        # @return [Google::Apis::VisionV1::LatLng]
+        # @return [Google::Apis::VisionV1::GoogleTypeLatLng]
         attr_accessor :lat_lng
       
         def initialize(**args)
@@ -1273,12 +924,12 @@ module Google
       end
       
       # Detected page from OCR.
-      class Page
+      class GoogleCloudVisionV1Page
         include Google::Apis::Core::Hashable
       
         # List of blocks of text, images etc on this page.
         # Corresponds to the JSON property `blocks`
-        # @return [Array<Google::Apis::VisionV1::Block>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Block>]
         attr_accessor :blocks
       
         # Page height in pixels.
@@ -1288,7 +939,7 @@ module Google
       
         # Additional information detected on the structural component.
         # Corresponds to the JSON property `property`
-        # @return [Google::Apis::VisionV1::TextProperty]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationTextProperty]
         attr_accessor :property
       
         # Page width in pixels.
@@ -1310,22 +961,22 @@ module Google
       end
       
       # Structural unit of text representing a number of words in certain order.
-      class Paragraph
+      class GoogleCloudVisionV1Paragraph
         include Google::Apis::Core::Hashable
       
         # A bounding polygon for the detected image annotation.
         # Corresponds to the JSON property `boundingBox`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
         attr_accessor :bounding_box
       
         # Additional information detected on the structural component.
         # Corresponds to the JSON property `property`
-        # @return [Google::Apis::VisionV1::TextProperty]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationTextProperty]
         attr_accessor :property
       
         # List of words in this paragraph.
         # Corresponds to the JSON property `words`
-        # @return [Array<Google::Apis::VisionV1::Word>]
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Word>]
         attr_accessor :words
       
         def initialize(**args)
@@ -1343,7 +994,7 @@ module Google
       # A 3D position in the image, used primarily for Face detection landmarks.
       # A valid Position must have both x and y coordinates.
       # The position coordinates are in the same scale as the original image.
-      class Position
+      class GoogleCloudVisionV1Position
         include Google::Apis::Core::Hashable
       
         # X coordinate.
@@ -1374,7 +1025,7 @@ module Google
       end
       
       # A `Property` consists of a user-supplied name/value pair.
-      class Property
+      class GoogleCloudVisionV1Property
         include Google::Apis::Core::Hashable
       
         # Name of the property.
@@ -1407,7 +1058,7 @@ module Google
       # Set of features pertaining to the image, computed by computer vision
       # methods over safe-search verticals (for example, adult, spoof, medical,
       # violence).
-      class SafeSearchAnnotation
+      class GoogleCloudVisionV1SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
         # Represents the adult content likelihood for the image. Adult content may
@@ -1444,6 +1095,332 @@ module Google
           @medical = args[:medical] if args.key?(:medical)
           @spoof = args[:spoof] if args.key?(:spoof)
           @violence = args[:violence] if args.key?(:violence)
+        end
+      end
+      
+      # A single symbol representation.
+      class GoogleCloudVisionV1Symbol
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingBox`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
+        attr_accessor :bounding_box
+      
+        # Additional information detected on the structural component.
+        # Corresponds to the JSON property `property`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationTextProperty]
+        attr_accessor :property
+      
+        # The actual UTF-8 representation of the symbol.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @property = args[:property] if args.key?(:property)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # TextAnnotation contains a structured representation of OCR extracted text.
+      # The hierarchy of an OCR extracted text structure is like this:
+      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
+      # Each structural component, starting from Page, may further have their own
+      # properties. Properties describe detected languages, breaks etc.. Please refer
+      # to the TextAnnotation.TextProperty message definition below for more
+      # detail.
+      class GoogleCloudVisionV1TextAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # List of pages detected by OCR.
+        # Corresponds to the JSON property `pages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Page>]
+        attr_accessor :pages
+      
+        # UTF-8 text detected on the pages.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pages = args[:pages] if args.key?(:pages)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Detected start or end of a structural component.
+      class GoogleCloudVisionV1TextAnnotationDetectedBreak
+        include Google::Apis::Core::Hashable
+      
+        # True if break prepends the element.
+        # Corresponds to the JSON property `isPrefix`
+        # @return [Boolean]
+        attr_accessor :is_prefix
+        alias_method :is_prefix?, :is_prefix
+      
+        # Detected break type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_prefix = args[:is_prefix] if args.key?(:is_prefix)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Detected language for a structural component.
+      class GoogleCloudVisionV1TextAnnotationDetectedLanguage
+        include Google::Apis::Core::Hashable
+      
+        # Confidence of detected language. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # Additional information detected on the structural component.
+      class GoogleCloudVisionV1TextAnnotationTextProperty
+        include Google::Apis::Core::Hashable
+      
+        # Detected start or end of a structural component.
+        # Corresponds to the JSON property `detectedBreak`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationDetectedBreak]
+        attr_accessor :detected_break
+      
+        # A list of detected languages together with confidence.
+        # Corresponds to the JSON property `detectedLanguages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationDetectedLanguage>]
+        attr_accessor :detected_languages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_break = args[:detected_break] if args.key?(:detected_break)
+          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+        end
+      end
+      
+      # A vertex represents a 2D point in the image.
+      # NOTE: the vertex coordinates are in the same scale as the original image.
+      class GoogleCloudVisionV1Vertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Fixnum]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Fixnum]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
+      # Relevant information for the image from the Internet.
+      class GoogleCloudVisionV1WebDetection
+        include Google::Apis::Core::Hashable
+      
+        # Fully matching images from the Internet.
+        # Can include resized copies of the query image.
+        # Corresponds to the JSON property `fullMatchingImages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1WebDetectionWebImage>]
+        attr_accessor :full_matching_images
+      
+        # Web pages containing the matching images from the Internet.
+        # Corresponds to the JSON property `pagesWithMatchingImages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1WebDetectionWebPage>]
+        attr_accessor :pages_with_matching_images
+      
+        # Partial matching images from the Internet.
+        # Those images are similar enough to share some key-point features. For
+        # example an original image will likely have partial matching for its crops.
+        # Corresponds to the JSON property `partialMatchingImages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1WebDetectionWebImage>]
+        attr_accessor :partial_matching_images
+      
+        # The visually similar image results.
+        # Corresponds to the JSON property `visuallySimilarImages`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1WebDetectionWebImage>]
+        attr_accessor :visually_similar_images
+      
+        # Deduced entities from similar images on the Internet.
+        # Corresponds to the JSON property `webEntities`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1WebDetectionWebEntity>]
+        attr_accessor :web_entities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_matching_images = args[:full_matching_images] if args.key?(:full_matching_images)
+          @pages_with_matching_images = args[:pages_with_matching_images] if args.key?(:pages_with_matching_images)
+          @partial_matching_images = args[:partial_matching_images] if args.key?(:partial_matching_images)
+          @visually_similar_images = args[:visually_similar_images] if args.key?(:visually_similar_images)
+          @web_entities = args[:web_entities] if args.key?(:web_entities)
+        end
+      end
+      
+      # Entity deduced from similar images on the Internet.
+      class GoogleCloudVisionV1WebDetectionWebEntity
+        include Google::Apis::Core::Hashable
+      
+        # Canonical description of the entity, in English.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Opaque entity ID.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Overall relevancy score for the entity.
+        # Not normalized and not comparable across different image queries.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # Metadata for online images.
+      class GoogleCloudVisionV1WebDetectionWebImage
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated) Overall relevancy score for the image.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # The result image URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Metadata for web pages.
+      class GoogleCloudVisionV1WebDetectionWebPage
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated) Overall relevancy score for the web page.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        # The result web page URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # A word representation.
+      class GoogleCloudVisionV1Word
+        include Google::Apis::Core::Hashable
+      
+        # A bounding polygon for the detected image annotation.
+        # Corresponds to the JSON property `boundingBox`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BoundingPoly]
+        attr_accessor :bounding_box
+      
+        # Additional information detected on the structural component.
+        # Corresponds to the JSON property `property`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1TextAnnotationTextProperty]
+        attr_accessor :property
+      
+        # List of symbols in the word.
+        # The order of the symbols follows the natural reading order.
+        # Corresponds to the JSON property `symbols`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1Symbol>]
+        attr_accessor :symbols
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @property = args[:property] if args.key?(:property)
+          @symbols = args[:symbols] if args.key?(:symbols)
         end
       end
       
@@ -1486,7 +1463,7 @@ module Google
       # represented directly using the `Status` message.
       # - Logging. If some API errors are stored in logs, the message `Status` could
       # be used directly after any stripping needed for security/privacy reasons.
-      class Status
+      class GoogleRpcStatus
         include Google::Apis::Core::Hashable
       
         # The status code, which should be an enum value of google.rpc.Code.
@@ -1519,235 +1496,135 @@ module Google
         end
       end
       
-      # A single symbol representation.
-      class Symbol
+      # Represents a color in the RGBA color space. This representation is designed
+      # for simplicity of conversion to/from color representations in various
+      # languages over compactness; for example, the fields of this representation
+      # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+      # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+      # method in iOS; and, with just a little work, it can be easily formatted into
+      # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+      # Example (Java):
+      # import com.google.type.Color;
+      # // ...
+      # public static java.awt.Color fromProto(Color protocolor) `
+      # float alpha = protocolor.hasAlpha()
+      # ? protocolor.getAlpha().getValue()
+      # : 1.0;
+      # return new java.awt.Color(
+      # protocolor.getRed(),
+      # protocolor.getGreen(),
+      # protocolor.getBlue(),
+      # alpha);
+      # `
+      # public static Color toProto(java.awt.Color color) `
+      # float red = (float) color.getRed();
+      # float green = (float) color.getGreen();
+      # float blue = (float) color.getBlue();
+      # float denominator = 255.0;
+      # Color.Builder resultBuilder =
+      # Color
+      # .newBuilder()
+      # .setRed(red / denominator)
+      # .setGreen(green / denominator)
+      # .setBlue(blue / denominator);
+      # int alpha = color.getAlpha();
+      # if (alpha != 255) `
+      # result.setAlpha(
+      # FloatValue
+      # .newBuilder()
+      # .setValue(((float) alpha) / denominator)
+      # .build());
+      # `
+      # return resultBuilder.build();
+      # `
+      # // ...
+      # Example (iOS / Obj-C):
+      # // ...
+      # static UIColor* fromProto(Color* protocolor) `
+      # float red = [protocolor red];
+      # float green = [protocolor green];
+      # float blue = [protocolor blue];
+      # FloatValue* alpha_wrapper = [protocolor alpha];
+      # float alpha = 1.0;
+      # if (alpha_wrapper != nil) `
+      # alpha = [alpha_wrapper value];
+      # `
+      # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+      # `
+      # static Color* toProto(UIColor* color) `
+      # CGFloat red, green, blue, alpha;
+      # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+      # return nil;
+      # `
+      # Color* result = [Color alloc] init];
+      # [result setRed:red];
+      # [result setGreen:green];
+      # [result setBlue:blue];
+      # if (alpha <= 0.9999) `
+      # [result setAlpha:floatWrapperWithValue(alpha)];
+      # `
+      # [result autorelease];
+      # return result;
+      # `
+      # // ...
+      # Example (JavaScript):
+      # // ...
+      # var protoToCssColor = function(rgb_color) `
+      # var redFrac = rgb_color.red || 0.0;
+      # var greenFrac = rgb_color.green || 0.0;
+      # var blueFrac = rgb_color.blue || 0.0;
+      # var red = Math.floor(redFrac * 255);
+      # var green = Math.floor(greenFrac * 255);
+      # var blue = Math.floor(blueFrac * 255);
+      # if (!('alpha' in rgb_color)) `
+      # return rgbToCssColor_(red, green, blue);
+      # `
+      # var alphaFrac = rgb_color.alpha.value || 0.0;
+      # var rgbParams = [red, green, blue].join(',');
+      # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+      # `;
+      # var rgbToCssColor_ = function(red, green, blue) `
+      # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+      # var hexString = rgbNumber.toString(16);
+      # var missingZeros = 6 - hexString.length;
+      # var resultBuilder = ['#'];
+      # for (var i = 0; i < missingZeros; i++) `
+      # resultBuilder.push('0');
+      # `
+      # resultBuilder.push(hexString);
+      # return resultBuilder.join('');
+      # `;
+      # // ...
+      class GoogleTypeColor
         include Google::Apis::Core::Hashable
       
-        # A bounding polygon for the detected image annotation.
-        # Corresponds to the JSON property `boundingBox`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
-        attr_accessor :bounding_box
-      
-        # Additional information detected on the structural component.
-        # Corresponds to the JSON property `property`
-        # @return [Google::Apis::VisionV1::TextProperty]
-        attr_accessor :property
-      
-        # The actual UTF-8 representation of the symbol.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
-          @property = args[:property] if args.key?(:property)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # TextAnnotation contains a structured representation of OCR extracted text.
-      # The hierarchy of an OCR extracted text structure is like this:
-      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-      # Each structural component, starting from Page, may further have their own
-      # properties. Properties describe detected languages, breaks etc.. Please
-      # refer to the google.cloud.vision.v1.TextAnnotation.TextProperty message
-      # definition below for more detail.
-      class TextAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # List of pages detected by OCR.
-        # Corresponds to the JSON property `pages`
-        # @return [Array<Google::Apis::VisionV1::Page>]
-        attr_accessor :pages
-      
-        # UTF-8 text detected on the pages.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pages = args[:pages] if args.key?(:pages)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # Additional information detected on the structural component.
-      class TextProperty
-        include Google::Apis::Core::Hashable
-      
-        # Detected start or end of a structural component.
-        # Corresponds to the JSON property `detectedBreak`
-        # @return [Google::Apis::VisionV1::DetectedBreak]
-        attr_accessor :detected_break
-      
-        # A list of detected languages together with confidence.
-        # Corresponds to the JSON property `detectedLanguages`
-        # @return [Array<Google::Apis::VisionV1::DetectedLanguage>]
-        attr_accessor :detected_languages
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @detected_break = args[:detected_break] if args.key?(:detected_break)
-          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
-        end
-      end
-      
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
-      class Vertex
-        include Google::Apis::Core::Hashable
-      
-        # X coordinate.
-        # Corresponds to the JSON property `x`
-        # @return [Fixnum]
-        attr_accessor :x
-      
-        # Y coordinate.
-        # Corresponds to the JSON property `y`
-        # @return [Fixnum]
-        attr_accessor :y
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @x = args[:x] if args.key?(:x)
-          @y = args[:y] if args.key?(:y)
-        end
-      end
-      
-      # Relevant information for the image from the Internet.
-      class WebDetection
-        include Google::Apis::Core::Hashable
-      
-        # Fully matching images from the Internet.
-        # Can include resized copies of the query image.
-        # Corresponds to the JSON property `fullMatchingImages`
-        # @return [Array<Google::Apis::VisionV1::WebImage>]
-        attr_accessor :full_matching_images
-      
-        # Web pages containing the matching images from the Internet.
-        # Corresponds to the JSON property `pagesWithMatchingImages`
-        # @return [Array<Google::Apis::VisionV1::WebPage>]
-        attr_accessor :pages_with_matching_images
-      
-        # Partial matching images from the Internet.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its crops.
-        # Corresponds to the JSON property `partialMatchingImages`
-        # @return [Array<Google::Apis::VisionV1::WebImage>]
-        attr_accessor :partial_matching_images
-      
-        # The visually similar image results.
-        # Corresponds to the JSON property `visuallySimilarImages`
-        # @return [Array<Google::Apis::VisionV1::WebImage>]
-        attr_accessor :visually_similar_images
-      
-        # Deduced entities from similar images on the Internet.
-        # Corresponds to the JSON property `webEntities`
-        # @return [Array<Google::Apis::VisionV1::WebEntity>]
-        attr_accessor :web_entities
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @full_matching_images = args[:full_matching_images] if args.key?(:full_matching_images)
-          @pages_with_matching_images = args[:pages_with_matching_images] if args.key?(:pages_with_matching_images)
-          @partial_matching_images = args[:partial_matching_images] if args.key?(:partial_matching_images)
-          @visually_similar_images = args[:visually_similar_images] if args.key?(:visually_similar_images)
-          @web_entities = args[:web_entities] if args.key?(:web_entities)
-        end
-      end
-      
-      # Entity deduced from similar images on the Internet.
-      class WebEntity
-        include Google::Apis::Core::Hashable
-      
-        # Canonical description of the entity, in English.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Opaque entity ID.
-        # Corresponds to the JSON property `entityId`
-        # @return [String]
-        attr_accessor :entity_id
-      
-        # Overall relevancy score for the entity.
-        # Not normalized and not comparable across different image queries.
-        # Corresponds to the JSON property `score`
+        # The fraction of this color that should be applied to the pixel. That is,
+        # the final pixel color is defined by the equation:
+        # pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
+        # This means that a value of 1.0 corresponds to a solid color, whereas
+        # a value of 0.0 corresponds to a completely transparent color. This
+        # uses a wrapper message rather than a simple float scalar so that it is
+        # possible to distinguish between a default value and the value being unset.
+        # If omitted, this color object is to be rendered as a solid color
+        # (as if the alpha value had been explicitly given with a value of 1.0).
+        # Corresponds to the JSON property `alpha`
         # @return [Float]
-        attr_accessor :score
+        attr_accessor :alpha
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @entity_id = args[:entity_id] if args.key?(:entity_id)
-          @score = args[:score] if args.key?(:score)
-        end
-      end
-      
-      # Metadata for online images.
-      class WebImage
-        include Google::Apis::Core::Hashable
-      
-        # (Deprecated) Overall relevancy score for the image.
-        # Corresponds to the JSON property `score`
+        # The amount of blue in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `blue`
         # @return [Float]
-        attr_accessor :score
+        attr_accessor :blue
       
-        # The result image URL.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @score = args[:score] if args.key?(:score)
-          @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Metadata for web pages.
-      class WebPage
-        include Google::Apis::Core::Hashable
-      
-        # (Deprecated) Overall relevancy score for the web page.
-        # Corresponds to the JSON property `score`
+        # The amount of green in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `green`
         # @return [Float]
-        attr_accessor :score
+        attr_accessor :green
       
-        # The result web page URL.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
+        # The amount of red in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `red`
+        # @return [Float]
+        attr_accessor :red
       
         def initialize(**args)
            update!(**args)
@@ -1755,30 +1632,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @score = args[:score] if args.key?(:score)
-          @url = args[:url] if args.key?(:url)
+          @alpha = args[:alpha] if args.key?(:alpha)
+          @blue = args[:blue] if args.key?(:blue)
+          @green = args[:green] if args.key?(:green)
+          @red = args[:red] if args.key?(:red)
         end
       end
       
-      # A word representation.
-      class Word
+      # An object representing a latitude/longitude pair. This is expressed as a pair
+      # of doubles representing degrees latitude and degrees longitude. Unless
+      # specified otherwise, this must conform to the
+      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
+      # standard</a>. Values must be within normalized ranges.
+      class GoogleTypeLatLng
         include Google::Apis::Core::Hashable
       
-        # A bounding polygon for the detected image annotation.
-        # Corresponds to the JSON property `boundingBox`
-        # @return [Google::Apis::VisionV1::BoundingPoly]
-        attr_accessor :bounding_box
+        # The latitude in degrees. It must be in the range [-90.0, +90.0].
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
       
-        # Additional information detected on the structural component.
-        # Corresponds to the JSON property `property`
-        # @return [Google::Apis::VisionV1::TextProperty]
-        attr_accessor :property
-      
-        # List of symbols in the word.
-        # The order of the symbols follows the natural reading order.
-        # Corresponds to the JSON property `symbols`
-        # @return [Array<Google::Apis::VisionV1::Symbol>]
-        attr_accessor :symbols
+        # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
       
         def initialize(**args)
            update!(**args)
@@ -1786,9 +1663,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
-          @property = args[:property] if args.key?(:property)
-          @symbols = args[:symbols] if args.key?(:symbols)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
     end

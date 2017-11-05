@@ -50,7 +50,7 @@ module Google
         end
         
         # Run image detection and annotation for a batch of images.
-        # @param [Google::Apis::VisionV1::BatchAnnotateImagesRequest] batch_annotate_images_request_object
+        # @param [Google::Apis::VisionV1::GoogleCloudVisionV1BatchAnnotateImagesRequest] google_cloud_vision_v1_batch_annotate_images_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -60,20 +60,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::VisionV1::BatchAnnotateImagesResponse] parsed result object
+        # @yieldparam result [Google::Apis::VisionV1::GoogleCloudVisionV1BatchAnnotateImagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::VisionV1::BatchAnnotateImagesResponse]
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1BatchAnnotateImagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def annotate_image(batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def annotate_image(google_cloud_vision_v1_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/images:annotate', options)
-          command.request_representation = Google::Apis::VisionV1::BatchAnnotateImagesRequest::Representation
-          command.request_object = batch_annotate_images_request_object
-          command.response_representation = Google::Apis::VisionV1::BatchAnnotateImagesResponse::Representation
-          command.response_class = Google::Apis::VisionV1::BatchAnnotateImagesResponse
+          command.request_representation = Google::Apis::VisionV1::GoogleCloudVisionV1BatchAnnotateImagesRequest::Representation
+          command.request_object = google_cloud_vision_v1_batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1::GoogleCloudVisionV1BatchAnnotateImagesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::GoogleCloudVisionV1BatchAnnotateImagesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
