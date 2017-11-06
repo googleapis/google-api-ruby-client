@@ -1,3 +1,21 @@
+# 0.17.0
+* Breaking changes:
+  * Deleted `cloudmonitoring_v2beta2`
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `bigquery_v2`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `videointelligence_v1beta1`
+  * Updated `vision_v1`
+  * Updated `youtube_partner_v1`
+  * Updated `youtube_v3`
+
 # 0.16.0
 * Breaking changes:
   * Deleted `playmoviespartner_v1`
