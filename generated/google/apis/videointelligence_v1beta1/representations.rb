@@ -34,19 +34,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1Entity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1ExplicitContentAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1ExplicitContentFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1LabelAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudVideointelligenceV1LabelLocation
+      class GoogleCloudVideointelligenceV1LabelFrame
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudVideointelligenceV1SafeSearchAnnotation
+      class GoogleCloudVideointelligenceV1LabelSegment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -224,31 +242,59 @@ module Google
         end
       end
       
-      class GoogleCloudVideointelligenceV1LabelAnnotation
+      class GoogleCloudVideointelligenceV1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :entity_id, as: 'entityId'
           property :language_code, as: 'languageCode'
-          collection :locations, as: 'locations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelLocation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelLocation::Representation
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1ExplicitContentAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1ExplicitContentFrame::Representation
       
         end
       end
       
-      class GoogleCloudVideointelligenceV1LabelLocation
+      class GoogleCloudVideointelligenceV1ExplicitContentFrame
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pornography_likelihood, as: 'pornographyLikelihood'
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1LabelAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category_entities, as: 'categoryEntities', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1Entity, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1Entity::Representation
+      
+          property :entity, as: 'entity', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1Entity, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1Entity::Representation
+      
+          collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelFrame, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelFrame::Representation
+      
+          collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1LabelFrame
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
-          property :level, as: 'level'
-          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment::Representation
-      
+          property :time_offset, as: 'timeOffset'
         end
       end
       
-      class GoogleCloudVideointelligenceV1SafeSearchAnnotation
+      class GoogleCloudVideointelligenceV1LabelSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :adult, as: 'adult'
-          property :time, as: 'time'
+          property :confidence, as: 'confidence'
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment::Representation
+      
         end
       end
       
@@ -267,12 +313,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error, as: 'error', class: Google::Apis::VideointelligenceV1beta1::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta1::GoogleRpcStatus::Representation
       
-          property :input_uri, as: 'inputUri'
-          collection :label_annotations, as: 'labelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
+          property :explicit_annotation, as: 'explicitAnnotation', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1ExplicitContentAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1ExplicitContentAnnotation::Representation
       
-          collection :safe_search_annotations, as: 'safeSearchAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1SafeSearchAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1SafeSearchAnnotation::Representation
+          collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
+      
+          property :input_uri, as: 'inputUri'
+          collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment::Representation
+      
+          collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
         end
       end
@@ -280,8 +330,8 @@ module Google
       class GoogleCloudVideointelligenceV1VideoSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
+          property :end_time_offset, as: 'endTimeOffset'
+          property :start_time_offset, as: 'startTimeOffset'
         end
       end
       

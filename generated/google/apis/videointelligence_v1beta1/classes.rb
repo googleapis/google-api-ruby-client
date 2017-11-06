@@ -64,8 +64,8 @@ module Google
         end
       end
       
-      # Label annotation.
-      class GoogleCloudVideointelligenceV1LabelAnnotation
+      # Detected entity from video analysis.
+      class GoogleCloudVideointelligenceV1Entity
         include Google::Apis::Core::Hashable
       
         # Textual description, e.g. `Fixed-gear bicycle`.
@@ -73,15 +73,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Opaque entity ID. Some IDs may be available in
+        # [Google Knowledge Graph Search
+        # API](https://developers.google.com/knowledge-graph/).
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
         # Language code for `description` in BCP-47 format.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
-      
-        # Where the label was detected and with what confidence.
-        # Corresponds to the JSON property `locations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelLocation>]
-        attr_accessor :locations
       
         def initialize(**args)
            update!(**args)
@@ -90,13 +92,100 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
           @language_code = args[:language_code] if args.key?(:language_code)
-          @locations = args[:locations] if args.key?(:locations)
         end
       end
       
-      # Label location.
-      class GoogleCloudVideointelligenceV1LabelLocation
+      # Explicit content annotation (based on per-frame visual signals only).
+      # If no explicit content has been detected in a frame, no annotations are
+      # present for that frame.
+      class GoogleCloudVideointelligenceV1ExplicitContentAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # All video frames where explicit content was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1ExplicitContentFrame>]
+        attr_accessor :frames
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @frames = args[:frames] if args.key?(:frames)
+        end
+      end
+      
+      # Video frame level annotation results for explicit content.
+      class GoogleCloudVideointelligenceV1ExplicitContentFrame
+        include Google::Apis::Core::Hashable
+      
+        # Likelihood of the pornography content..
+        # Corresponds to the JSON property `pornographyLikelihood`
+        # @return [String]
+        attr_accessor :pornography_likelihood
+      
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Label annotation.
+      class GoogleCloudVideointelligenceV1LabelAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Common categories for the detected entity.
+        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
+        # cases there might be more than one categories e.g. `Terrier` could also be
+        # a `pet`.
+        # Corresponds to the JSON property `categoryEntities`
+        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1Entity>]
+        attr_accessor :category_entities
+      
+        # Detected entity from video analysis.
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1Entity]
+        attr_accessor :entity
+      
+        # All video frames where a label was detected.
+        # Corresponds to the JSON property `frames`
+        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelFrame>]
+        attr_accessor :frames
+      
+        # All video segments where a label was detected.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_entities = args[:category_entities] if args.key?(:category_entities)
+          @entity = args[:entity] if args.key?(:entity)
+          @frames = args[:frames] if args.key?(:frames)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
+      # Video frame level annotation results for label detection.
+      class GoogleCloudVideointelligenceV1LabelFrame
         include Google::Apis::Core::Hashable
       
         # Confidence that the label is accurate. Range: [0, 1].
@@ -104,10 +193,31 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Label level.
-        # Corresponds to the JSON property `level`
+        # Time-offset, relative to the beginning of the video, corresponding to the
+        # video frame for this location.
+        # Corresponds to the JSON property `timeOffset`
         # @return [String]
-        attr_accessor :level
+        attr_accessor :time_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Video segment level annotation results for label detection.
+      class GoogleCloudVideointelligenceV1LabelSegment
+        include Google::Apis::Core::Hashable
+      
+        # Confidence that the label is accurate. Range: [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
       
         # Video segment.
         # Corresponds to the JSON property `segment`
@@ -121,36 +231,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
-          @level = args[:level] if args.key?(:level)
           @segment = args[:segment] if args.key?(:segment)
-        end
-      end
-      
-      # Safe search annotation (based on per-frame visual signals only).
-      # If no unsafe content has been detected in a frame, no annotations
-      # are present for that frame.
-      class GoogleCloudVideointelligenceV1SafeSearchAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # Likelihood of adult content.
-        # Corresponds to the JSON property `adult`
-        # @return [String]
-        attr_accessor :adult
-      
-        # Time-offset, relative to the beginning of the video,
-        # corresponding to the video frame for this annotation.
-        # Corresponds to the JSON property `time`
-        # @return [String]
-        attr_accessor :time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @adult = args[:adult] if args.key?(:adult)
-          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -240,26 +321,41 @@ module Google
         # @return [Google::Apis::VideointelligenceV1beta1::GoogleRpcStatus]
         attr_accessor :error
       
+        # Explicit content annotation (based on per-frame visual signals only).
+        # If no explicit content has been detected in a frame, no annotations are
+        # present for that frame.
+        # Corresponds to the JSON property `explicitAnnotation`
+        # @return [Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1ExplicitContentAnnotation]
+        attr_accessor :explicit_annotation
+      
+        # Label annotations on frame level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `frameLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
+        attr_accessor :frame_label_annotations
+      
         # Video file location in
         # [Google Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
-        # Label annotations. There is exactly one element for each unique label.
-        # Corresponds to the JSON property `labelAnnotations`
+        # Label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
-        attr_accessor :label_annotations
-      
-        # Safe search annotations.
-        # Corresponds to the JSON property `safeSearchAnnotations`
-        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1SafeSearchAnnotation>]
-        attr_accessor :safe_search_annotations
+        attr_accessor :segment_label_annotations
       
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1VideoSegment>]
         attr_accessor :shot_annotations
+      
+        # Label annotations on shot level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `shotLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
+        attr_accessor :shot_label_annotations
       
         def initialize(**args)
            update!(**args)
@@ -268,10 +364,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
-          @label_annotations = args[:label_annotations] if args.key?(:label_annotations)
-          @safe_search_annotations = args[:safe_search_annotations] if args.key?(:safe_search_annotations)
+          @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
+          @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
         end
       end
       
@@ -281,15 +379,15 @@ module Google
       
         # Time-offset, relative to the beginning of the video,
         # corresponding to the end of the segment (inclusive).
-        # Corresponds to the JSON property `endTime`
+        # Corresponds to the JSON property `endTimeOffset`
         # @return [String]
-        attr_accessor :end_time
+        attr_accessor :end_time_offset
       
         # Time-offset, relative to the beginning of the video,
         # corresponding to the start of the segment (inclusive).
-        # Corresponds to the JSON property `startTime`
+        # Corresponds to the JSON property `startTimeOffset`
         # @return [String]
-        attr_accessor :start_time
+        attr_accessor :start_time_offset
       
         def initialize(**args)
            update!(**args)
@@ -297,8 +395,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
+          @end_time_offset = args[:end_time_offset] if args.key?(:end_time_offset)
+          @start_time_offset = args[:start_time_offset] if args.key?(:start_time_offset)
         end
       end
       
