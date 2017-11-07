@@ -12,24 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudtasks_v2beta2/service.rb'
-require 'google/apis/cloudtasks_v2beta2/classes.rb'
-require 'google/apis/cloudtasks_v2beta2/representations.rb'
+require 'google/apis/vision_v1p1beta1/service.rb'
+require 'google/apis/vision_v1p1beta1/classes.rb'
+require 'google/apis/vision_v1p1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Tasks API
+    # Google Cloud Vision API
     #
-    # Manages the execution of large numbers of distributed requests. Cloud Tasks is
-    # in Alpha.
+    # Integrates Google Vision features, including image labeling, face, logo, and
+    # landmark detection, optical character recognition (OCR), and detection of
+    # explicit content, into applications.
     #
-    # @see https://cloud.google.com/cloud-tasks/
-    module CloudtasksV2beta2
-      VERSION = 'V2beta2'
-      REVISION = '20171106'
+    # @see https://cloud.google.com/vision/
+    module VisionV1p1beta1
+      VERSION = 'V1p1beta1'
+      REVISION = '20171102'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Apply machine learning models to understand and label images
+      AUTH_CLOUD_VISION = 'https://www.googleapis.com/auth/cloud-vision'
     end
   end
 end
