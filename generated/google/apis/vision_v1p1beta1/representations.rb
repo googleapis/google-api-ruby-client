@@ -22,6 +22,12 @@ module Google
   module Apis
     module VisionV1p1beta1
       
+      class Color
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p1beta1AnnotateImageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,22 +262,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleRpcStatus
+      class LatLng
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleTypeColor
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleTypeLatLng
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
+      class Color
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alpha, as: 'alpha'
+          property :blue, as: 'blue'
+          property :green, as: 'green'
+          property :red, as: 'red'
+        end
       end
       
       class GoogleCloudVisionV1p1beta1AnnotateImageRequest
@@ -291,7 +301,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crop_hints_annotation, as: 'cropHintsAnnotation', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1CropHintsAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1CropHintsAnnotation::Representation
       
-          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::GoogleRpcStatus, decorator: Google::Apis::VisionV1p1beta1::GoogleRpcStatus::Representation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
       
           collection :face_annotations, as: 'faceAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1FaceAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1FaceAnnotation::Representation
       
@@ -355,7 +365,7 @@ module Google
       class GoogleCloudVisionV1p1beta1ColorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :color, as: 'color', class: Google::Apis::VisionV1p1beta1::GoogleTypeColor, decorator: Google::Apis::VisionV1p1beta1::GoogleTypeColor::Representation
+          property :color, as: 'color', class: Google::Apis::VisionV1p1beta1::Color, decorator: Google::Apis::VisionV1p1beta1::Color::Representation
       
           property :pixel_fraction, as: 'pixelFraction'
           property :score, as: 'score'
@@ -496,9 +506,9 @@ module Google
       class GoogleCloudVisionV1p1beta1LatLongRect
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_lat_lng, as: 'maxLatLng', class: Google::Apis::VisionV1p1beta1::GoogleTypeLatLng, decorator: Google::Apis::VisionV1p1beta1::GoogleTypeLatLng::Representation
+          property :max_lat_lng, as: 'maxLatLng', class: Google::Apis::VisionV1p1beta1::LatLng, decorator: Google::Apis::VisionV1p1beta1::LatLng::Representation
       
-          property :min_lat_lng, as: 'minLatLng', class: Google::Apis::VisionV1p1beta1::GoogleTypeLatLng, decorator: Google::Apis::VisionV1p1beta1::GoogleTypeLatLng::Representation
+          property :min_lat_lng, as: 'minLatLng', class: Google::Apis::VisionV1p1beta1::LatLng, decorator: Google::Apis::VisionV1p1beta1::LatLng::Representation
       
         end
       end
@@ -506,7 +516,7 @@ module Google
       class GoogleCloudVisionV1p1beta1LocationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :lat_lng, as: 'latLng', class: Google::Apis::VisionV1p1beta1::GoogleTypeLatLng, decorator: Google::Apis::VisionV1p1beta1::GoogleTypeLatLng::Representation
+          property :lat_lng, as: 'latLng', class: Google::Apis::VisionV1p1beta1::LatLng, decorator: Google::Apis::VisionV1p1beta1::LatLng::Representation
       
         end
       end
@@ -697,30 +707,20 @@ module Google
         end
       end
       
-      class GoogleRpcStatus
+      class LatLng
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
+      class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class GoogleTypeColor
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :alpha, as: 'alpha'
-          property :blue, as: 'blue'
-          property :green, as: 'green'
-          property :red, as: 'red'
-        end
-      end
-      
-      class GoogleTypeLatLng
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :latitude, as: 'latitude'
-          property :longitude, as: 'longitude'
         end
       end
     end

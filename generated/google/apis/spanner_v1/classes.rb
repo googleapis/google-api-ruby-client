@@ -919,17 +919,9 @@ module Google
       
         # Required. The number of nodes allocated to this instance. This may be zero
         # in API responses for instances that are not yet in state `READY`.
-        # Each Spanner node can provide up to 10,000 QPS of reads or 2000 QPS of
-        # writes (writing single rows at 1KB data per row), and 2 TiB storage.
-        # For optimal performance, we recommend provisioning enough nodes to keep
-        # overall CPU utilization under 75%.
-        # A minimum of 3 nodes is recommended for production environments.  This
-        # minimum is required for SLAs to apply to your instance.
-        # Note that Cloud Spanner performance is highly dependent on workload, schema
-        # design, and dataset characteristics. The performance numbers above are
-        # estimates, and assume [best practices](https://cloud.google.com/spanner/docs/
-        # bulk-loading)
-        # are followed.
+        # See [the documentation](https://cloud.google.com/spanner/docs/instances#
+        # node_count)
+        # for more information about nodes.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
@@ -1711,6 +1703,8 @@ module Google
         # read, or data that is fresh enough to observe the effects of some
         # previously committed transaction whose timestamp is known.
         # Note that this option can only be used in single-use transactions.
+        # A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
+        # Example: `"2014-10-02T15:01:23.045123456Z"`.
         # Corresponds to the JSON property `minReadTimestamp`
         # @return [String]
         attr_accessor :min_read_timestamp
@@ -1723,6 +1717,8 @@ module Google
         # Useful for large scale consistent reads such as mapreduces, or
         # for coordinating many reads against a consistent snapshot of the
         # data.
+        # A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
+        # Example: `"2014-10-02T15:01:23.045123456Z"`.
         # Corresponds to the JSON property `readTimestamp`
         # @return [String]
         attr_accessor :read_timestamp
@@ -1786,7 +1782,6 @@ module Google
       
         # If greater than zero, only the first `limit` rows are yielded. If `limit`
         # is zero, the default is no limit.
-        # A limit cannot be specified if partition_token is set.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1979,12 +1974,14 @@ module Google
         # the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
         # * Label values must be between 0 and 63 characters long and must conform
         # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        # * No more than 20 labels can be associated with a given session.
+        # * No more than 64 labels can be associated with a given session.
+        # See https://goo.gl/xmQnxf for more information on and examples of labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The name of the session.
+        # The name of the session. This is always system-assigned; values provided
+        # when creating a session are ignored.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2232,6 +2229,8 @@ module Google
         # For snapshot read-only transactions, the read timestamp chosen
         # for the transaction. Not returned by default: see
         # TransactionOptions.ReadOnly.return_read_timestamp.
+        # A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
+        # Example: `"2014-10-02T15:01:23.045123456Z"`.
         # Corresponds to the JSON property `readTimestamp`
         # @return [String]
         attr_accessor :read_timestamp

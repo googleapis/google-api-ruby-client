@@ -522,7 +522,6 @@ module Google
       
         # The list of transformations to apply to the fields of the document, in
         # order.
-        # This must not be empty.
         # Corresponds to the JSON property `fieldTransforms`
         # @return [Array<Google::Apis::FirestoreV1beta1::FieldTransform>]
         attr_accessor :field_transforms
