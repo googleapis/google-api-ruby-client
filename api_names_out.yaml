@@ -47579,7 +47579,10 @@
 "/ml:v1/GoogleCloudMlV1__Job/createTime": create_time
 "/ml:v1/GoogleCloudMlV1__Job/endTime": end_time
 "/ml:v1/GoogleCloudMlV1__Job/errorMessage": error_message
+"/ml:v1/GoogleCloudMlV1__Job/etag": etag
 "/ml:v1/GoogleCloudMlV1__Job/jobId": job_id
+"/ml:v1/GoogleCloudMlV1__Job/labels": labels
+"/ml:v1/GoogleCloudMlV1__Job/labels/label": label
 "/ml:v1/GoogleCloudMlV1__Job/predictionInput": prediction_input
 "/ml:v1/GoogleCloudMlV1__Job/predictionOutput": prediction_output
 "/ml:v1/GoogleCloudMlV1__Job/startTime": start_time
@@ -47603,6 +47606,9 @@
 "/ml:v1/GoogleCloudMlV1__Model": google_cloud_ml_v1__model
 "/ml:v1/GoogleCloudMlV1__Model/defaultVersion": default_version
 "/ml:v1/GoogleCloudMlV1__Model/description": description
+"/ml:v1/GoogleCloudMlV1__Model/etag": etag
+"/ml:v1/GoogleCloudMlV1__Model/labels": labels
+"/ml:v1/GoogleCloudMlV1__Model/labels/label": label
 "/ml:v1/GoogleCloudMlV1__Model/name": name
 "/ml:v1/GoogleCloudMlV1__Model/onlinePredictionLogging": online_prediction_logging
 "/ml:v1/GoogleCloudMlV1__Model/regions": regions
@@ -47611,6 +47617,8 @@
 "/ml:v1/GoogleCloudMlV1__OperationMetadata/createTime": create_time
 "/ml:v1/GoogleCloudMlV1__OperationMetadata/endTime": end_time
 "/ml:v1/GoogleCloudMlV1__OperationMetadata/isCancellationRequested": is_cancellation_requested
+"/ml:v1/GoogleCloudMlV1__OperationMetadata/labels": labels
+"/ml:v1/GoogleCloudMlV1__OperationMetadata/labels/label": label
 "/ml:v1/GoogleCloudMlV1__OperationMetadata/modelName": model_name
 "/ml:v1/GoogleCloudMlV1__OperationMetadata/operationType": operation_type
 "/ml:v1/GoogleCloudMlV1__OperationMetadata/startTime": start_time
@@ -47673,7 +47681,10 @@
 "/ml:v1/GoogleCloudMlV1__Version/deploymentUri": deployment_uri
 "/ml:v1/GoogleCloudMlV1__Version/description": description
 "/ml:v1/GoogleCloudMlV1__Version/errorMessage": error_message
+"/ml:v1/GoogleCloudMlV1__Version/etag": etag
 "/ml:v1/GoogleCloudMlV1__Version/isDefault": is_default
+"/ml:v1/GoogleCloudMlV1__Version/labels": labels
+"/ml:v1/GoogleCloudMlV1__Version/labels/label": label
 "/ml:v1/GoogleCloudMlV1__Version/lastUseTime": last_use_time
 "/ml:v1/GoogleCloudMlV1__Version/manualScaling": manual_scaling
 "/ml:v1/GoogleCloudMlV1__Version/name": name
@@ -47811,6 +47822,9 @@
 "/ml:v1/ml.projects.jobs.list/pageSize": page_size
 "/ml:v1/ml.projects.jobs.list/pageToken": page_token
 "/ml:v1/ml.projects.jobs.list/parent": parent
+"/ml:v1/ml.projects.jobs.patch": patch_project_job
+"/ml:v1/ml.projects.jobs.patch/name": name
+"/ml:v1/ml.projects.jobs.patch/updateMask": update_mask
 "/ml:v1/ml.projects.jobs.setIamPolicy": set_project_job_iam_policy
 "/ml:v1/ml.projects.jobs.setIamPolicy/resource": resource
 "/ml:v1/ml.projects.jobs.testIamPermissions": test_project_job_iam_permissions

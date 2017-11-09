@@ -846,9 +846,6 @@ module Google
         #   when creating the uptime check configuration; on create, the resource name is
         #   assigned by the server and included in the response.
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
-        # @param [String] name1
-        #   The uptime check configuration to update. The format isprojects/[PROJECT_ID]/
-        #   uptimeCheckConfigs/[UPTIME_CHECK_ID].
         # @param [String] update_mask
         #   Optional. If present, only the listed fields in the current uptime check
         #   configuration are updated with values from the new configuration. If this
@@ -871,14 +868,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_uptime_check_config(name, uptime_check_config_object = nil, name1: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_uptime_check_config(name, uptime_check_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v3/{+name}', options)
           command.request_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
           command.request_object = uptime_check_config_object
           command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
           command.response_class = Google::Apis::MonitoringV3::UptimeCheckConfig
           command.params['name'] = name unless name.nil?
-          command.query['name1'] = name1 unless name1.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
