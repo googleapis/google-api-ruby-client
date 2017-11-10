@@ -869,13 +869,6 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # The ID of the filter set; unique within the account of the filter set
-        # owner.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `filterSetId`
-        # @return [Fixnum]
-        attr_accessor :filter_set_id
-      
         # The format on which to filter; optional.
         # Corresponds to the JSON property `format`
         # @return [String]
@@ -943,7 +936,6 @@ module Google
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deal_id = args[:deal_id] if args.key?(:deal_id)
           @environment = args[:environment] if args.key?(:environment)
-          @filter_set_id = args[:filter_set_id] if args.key?(:filter_set_id)
           @format = args[:format] if args.key?(:format)
           @name = args[:name] if args.key?(:name)
           @platforms = args[:platforms] if args.key?(:platforms)

@@ -183,6 +183,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_model_name, as: 'deviceModelName'
           property :language_code, as: 'languageCode'
+          property :language_code_raw, as: 'languageCodeRaw'
           property :screen_resolution_height, :numeric_string => true, as: 'screenResolutionHeight'
           property :screen_resolution_width, :numeric_string => true, as: 'screenResolutionWidth'
           property :timezone, as: 'timezone'

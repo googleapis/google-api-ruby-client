@@ -376,6 +376,21 @@ module Google
         # @return [Array<Google::Apis::AnalyticsreportingV4::ReportRequest>]
         attr_accessor :report_requests
       
+        # Enables
+        # [resource based quotas](/analytics/devguides/reporting/core/v4/limits-quotas#
+        # analytics_reporting_api_v4),
+        # (defaults to `False`). If this field is set to `True` the
+        # per view (profile) quotas are governed by the computational
+        # cost of the request. Note that using cost based quotas will
+        # higher enable sampling rates. (10 Million for `SMALL`,
+        # 100M for `LARGE`. See the
+        # [limits and quotas documentation](/analytics/devguides/reporting/core/v4/
+        # limits-quotas#analytics_reporting_api_v4) for details.
+        # Corresponds to the JSON property `useResourceQuotas`
+        # @return [Boolean]
+        attr_accessor :use_resource_quotas
+        alias_method :use_resource_quotas?, :use_resource_quotas
+      
         def initialize(**args)
            update!(**args)
         end
@@ -383,6 +398,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @report_requests = args[:report_requests] if args.key?(:report_requests)
+          @use_resource_quotas = args[:use_resource_quotas] if args.key?(:use_resource_quotas)
         end
       end
       
@@ -391,10 +407,22 @@ module Google
       class GetReportsResponse
         include Google::Apis::Core::Hashable
       
+        # The amount of resource quota tokens deducted to execute the query. Includes
+        # all responses.
+        # Corresponds to the JSON property `queryCost`
+        # @return [Fixnum]
+        attr_accessor :query_cost
+      
         # Responses corresponding to each of the request.
         # Corresponds to the JSON property `reports`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Report>]
         attr_accessor :reports
+      
+        # The resource quota tokens remaining for the property after the request is
+        # completed.
+        # Corresponds to the JSON property `resourceQuotasRemaining`
+        # @return [Google::Apis::AnalyticsreportingV4::ResourceQuotasRemaining]
+        attr_accessor :resource_quotas_remaining
       
         def initialize(**args)
            update!(**args)
@@ -402,7 +430,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @query_cost = args[:query_cost] if args.key?(:query_cost)
           @reports = args[:reports] if args.key?(:reports)
+          @resource_quotas_remaining = args[:resource_quotas_remaining] if args.key?(:resource_quotas_remaining)
         end
       end
       
@@ -1100,6 +1130,32 @@ module Google
         def update!(**args)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # The resource quota tokens remaining for the property after the request is
+      # completed.
+      class ResourceQuotasRemaining
+        include Google::Apis::Core::Hashable
+      
+        # Daily resource quota remaining remaining.
+        # Corresponds to the JSON property `dailyQuotaTokensRemaining`
+        # @return [Fixnum]
+        attr_accessor :daily_quota_tokens_remaining
+      
+        # Hourly resource quota tokens remaining.
+        # Corresponds to the JSON property `hourlyQuotaTokensRemaining`
+        # @return [Fixnum]
+        attr_accessor :hourly_quota_tokens_remaining
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_quota_tokens_remaining = args[:daily_quota_tokens_remaining] if args.key?(:daily_quota_tokens_remaining)
+          @hourly_quota_tokens_remaining = args[:hourly_quota_tokens_remaining] if args.key?(:hourly_quota_tokens_remaining)
         end
       end
       

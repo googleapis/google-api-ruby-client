@@ -22,7 +22,7 @@ module Google
     module OsloginV1alpha
       # Google Cloud OS Login API
       #
-      # Manages OS login configuration for Directory API users.
+      # Manages OS login configuration for Google account users.
       #
       # @example
       #    require 'google/apis/oslogin_v1alpha'

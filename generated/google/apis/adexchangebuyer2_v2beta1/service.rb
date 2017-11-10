@@ -849,8 +849,6 @@ module Google
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456`
         # @param [Google::Apis::Adexchangebuyer2V2beta1::FilterSet] filter_set_object
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
         # @param [Boolean] is_transient
         #   Whether the filter set is transient, or should be persisted indefinitely.
         #   By default, filter sets are not transient.
@@ -872,14 +870,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_bidder_account_filter_set(owner_name, filter_set_object = nil, account_id: nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_bidder_account_filter_set(owner_name, filter_set_object = nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+ownerName}/filterSets', options)
           command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.request_object = filter_set_object
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
           command.params['ownerName'] = owner_name unless owner_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
           command.query['isTransient'] = is_transient unless is_transient.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -897,10 +894,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -918,13 +911,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_bidder_account_filter_set(name, account_id: nil, filter_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_bidder_account_filter_set(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Empty::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
           command.params['name'] = name unless name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -941,10 +932,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -962,13 +949,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_bidder_account_filter_set(name, account_id: nil, filter_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_bidder_account_filter_set(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
           command.params['name'] = name unless name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -983,8 +968,6 @@ module Google
         #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1012,12 +995,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_sets(owner_name, account_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_sets(owner_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+ownerName}/filterSets', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse
           command.params['ownerName'] = owner_name unless owner_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1035,10 +1017,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1065,13 +1043,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_bid_metrics(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_bid_metrics(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/bidMetrics', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1090,10 +1066,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1120,13 +1092,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_bid_response_errors(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_bid_response_errors(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/bidResponseErrors', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1145,10 +1115,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1175,13 +1141,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_bid_responses_without_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_bid_responses_without_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/bidResponsesWithoutBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1200,10 +1164,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1230,13 +1190,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_filtered_bid_requests(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_filtered_bid_requests(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBidRequests', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1255,10 +1213,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1285,13 +1239,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_filtered_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_filtered_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1316,10 +1268,6 @@ module Google
         #   See
         #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
         #   downloads/creative-status-codes).
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1346,14 +1294,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_filtered_bid_creatives(filter_set_name, creative_status_id, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_filtered_bid_creatives(filter_set_name, creative_status_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByCreativeResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByCreativeResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
           command.params['creativeStatusId'] = creative_status_id unless creative_status_id.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1378,10 +1324,6 @@ module Google
         #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
         #   downloads/creative-status-codes).
         #   Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1408,14 +1350,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_filtered_bid_details(filter_set_name, creative_status_id, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_filtered_bid_details(filter_set_name, creative_status_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByDetailResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByDetailResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
           command.params['creativeStatusId'] = creative_status_id unless creative_status_id.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1433,10 +1373,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1463,13 +1399,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_impression_metrics(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_impression_metrics(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/impressionMetrics', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1488,10 +1422,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1518,13 +1448,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_losing_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_losing_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/losingBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListLosingBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListLosingBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1543,10 +1471,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1573,13 +1497,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_account_filter_set_non_billable_winning_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_account_filter_set_non_billable_winning_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/nonBillableWinningBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1597,8 +1519,6 @@ module Google
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456`
         # @param [Google::Apis::Adexchangebuyer2V2beta1::FilterSet] filter_set_object
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
         # @param [Boolean] is_transient
         #   Whether the filter set is transient, or should be persisted indefinitely.
         #   By default, filter sets are not transient.
@@ -1620,14 +1540,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_bidder_filter_set(owner_name, filter_set_object = nil, account_id: nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_bidder_filter_set(owner_name, filter_set_object = nil, is_transient: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+ownerName}/filterSets', options)
           command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.request_object = filter_set_object
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
           command.params['ownerName'] = owner_name unless owner_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
           command.query['isTransient'] = is_transient unless is_transient.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1645,10 +1564,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1666,13 +1581,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_bidder_filter_set(name, account_id: nil, filter_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_bidder_filter_set(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Empty::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Empty
           command.params['name'] = name unless name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1689,10 +1602,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1710,13 +1619,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_bidder_filter_set(name, account_id: nil, filter_set_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_bidder_filter_set(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::FilterSet::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::FilterSet
           command.params['name'] = name unless name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1731,8 +1638,6 @@ module Google
         #   123: `bidders/123/accounts/123`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1760,12 +1665,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_sets(owner_name, account_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_sets(owner_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+ownerName}/filterSets', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilterSetsResponse
           command.params['ownerName'] = owner_name unless owner_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1783,10 +1687,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1813,13 +1713,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_bid_metrics(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_bid_metrics(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/bidMetrics', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidMetricsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1838,10 +1736,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1868,13 +1762,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_bid_response_errors(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_bid_response_errors(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/bidResponseErrors', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponseErrorsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1893,10 +1785,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1923,13 +1811,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_bid_responses_without_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_bid_responses_without_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/bidResponsesWithoutBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListBidResponsesWithoutBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1948,10 +1834,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -1978,13 +1860,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_filtered_bid_requests(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_filtered_bid_requests(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBidRequests', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidRequestsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2003,10 +1883,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -2033,13 +1909,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_filtered_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_filtered_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListFilteredBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2064,10 +1938,6 @@ module Google
         #   See
         #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
         #   downloads/creative-status-codes).
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -2094,14 +1964,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_filtered_bid_creatives(filter_set_name, creative_status_id, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_filtered_bid_creatives(filter_set_name, creative_status_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByCreativeResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByCreativeResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
           command.params['creativeStatusId'] = creative_status_id unless creative_status_id.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2126,10 +1994,6 @@ module Google
         #   [creative-status-codes](https://developers.google.com/ad-exchange/rtb/
         #   downloads/creative-status-codes).
         #   Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -2156,14 +2020,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_filtered_bid_details(filter_set_name, creative_status_id, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_filtered_bid_details(filter_set_name, creative_status_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByDetailResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListCreativeStatusBreakdownByDetailResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
           command.params['creativeStatusId'] = creative_status_id unless creative_status_id.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2181,10 +2043,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -2211,13 +2069,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_impression_metrics(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_impression_metrics(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/impressionMetrics', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListImpressionMetricsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2236,10 +2092,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -2266,13 +2118,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_losing_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_losing_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/losingBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListLosingBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListLosingBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2291,10 +2141,6 @@ module Google
         #   123: `bidders/123/accounts/123/filterSets/abc`
         #   - For an account-level filter set for the child seat buyer account 456
         #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-        # @param [Fixnum] account_id
-        #   Account ID of the buyer.
-        # @param [Fixnum] filter_set_id
-        #   The ID of the filter set to apply.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested.
         #   If unspecified, the server will pick an appropriate default.
@@ -2321,13 +2167,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bidder_filter_set_non_billable_winning_bids(filter_set_name, account_id: nil, filter_set_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_bidder_filter_set_non_billable_winning_bids(filter_set_name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+filterSetName}/nonBillableWinningBids', options)
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::ListNonBillableWinningBidsResponse
           command.params['filterSetName'] = filter_set_name unless filter_set_name.nil?
-          command.query['accountId'] = account_id unless account_id.nil?
-          command.query['filterSetId'] = filter_set_id unless filter_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

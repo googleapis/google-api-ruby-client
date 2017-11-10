@@ -1368,7 +1368,7 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # [Output only] The version of the Kubernetes of this node.
+        # The version of the Kubernetes of this node.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version

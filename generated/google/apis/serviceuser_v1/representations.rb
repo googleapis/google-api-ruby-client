@@ -602,7 +602,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aliases, as: 'aliases'
           property :allow_cors, as: 'allowCors'
-          collection :apis, as: 'apis'
           collection :features, as: 'features'
           property :name, as: 'name'
           property :target, as: 'target'

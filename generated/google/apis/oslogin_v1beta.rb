@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Cloud OS Login API
     #
-    # Manages OS login configuration for Directory API users.
+    # Manages OS login configuration for Google account users.
     #
     # @see https://cloud.google.com/compute/docs/oslogin/rest/
     module OsloginV1beta
       VERSION = 'V1beta'
-      REVISION = '20171031'
+      REVISION = '20171108'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

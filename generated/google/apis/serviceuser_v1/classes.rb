@@ -881,13 +881,6 @@ module Google
         attr_accessor :allow_cors
         alias_method :allow_cors?, :allow_cors
       
-        # The list of APIs served by this endpoint.
-        # If no APIs are specified this translates to "all APIs" exported by the
-        # service, as defined in the top-level service configuration.
-        # Corresponds to the JSON property `apis`
-        # @return [Array<String>]
-        attr_accessor :apis
-      
         # The list of features enabled on this endpoint.
         # Corresponds to the JSON property `features`
         # @return [Array<String>]
@@ -915,7 +908,6 @@ module Google
         def update!(**args)
           @aliases = args[:aliases] if args.key?(:aliases)
           @allow_cors = args[:allow_cors] if args.key?(:allow_cors)
-          @apis = args[:apis] if args.key?(:apis)
           @features = args[:features] if args.key?(:features)
           @name = args[:name] if args.key?(:name)
           @target = args[:target] if args.key?(:target)

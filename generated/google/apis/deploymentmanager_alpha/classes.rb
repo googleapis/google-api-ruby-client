@@ -273,7 +273,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::CompositeTypeLabelEntry>]
         attr_accessor :labels
       
-        # Name of the composite type.
+        # Name of the composite type, must follow the expression: [a-z]([-a-z0-9_.]`0,61`
+        # [a-z0-9])?.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

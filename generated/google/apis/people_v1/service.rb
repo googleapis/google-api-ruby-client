@@ -375,7 +375,6 @@ module Google
         #   * events
         #   * genders
         #   * imClients
-        #   * interests
         #   * locales
         #   * memberships
         #   * metadata
@@ -443,7 +442,6 @@ module Google
         #   * events
         #   * genders
         #   * imClients
-        #   * interests
         #   * locales
         #   * memberships
         #   * metadata
@@ -529,7 +527,6 @@ module Google
         #   * events
         #   * genders
         #   * imClients
-        #   * interests
         #   * locales
         #   * names
         #   * nicknames
@@ -594,7 +591,6 @@ module Google
         #   * events
         #   * genders
         #   * imClients
-        #   * interests
         #   * locales
         #   * memberships
         #   * metadata
