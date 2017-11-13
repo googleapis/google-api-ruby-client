@@ -1,3 +1,36 @@
+# 0.17.1
+* Backwards compatible changes:
+  * Added `dfareporting_v3_0`
+  * Added `vision_v1p1beta1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `analyticsreporting_v4`
+  * Updated `androidmanagement_v1`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `cloudtrace_v1`
+  * Updated `cloudtrace_v2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dfareporting_v2_7`
+  * Updated `dfareporting_v2_8`
+  * Updated `firebasedynamiclinks_v1`
+  * Updated `firestore_v1beta1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `oslogin_v1alpha`
+  * Updated `oslogin_v1beta`
+  * Updated `people_v1`
+  * Updated `script_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `spanner_v1`
+  * Updated `tagmanager_v1`
+  * Updated `tagmanager_v2`
+  * Updated `vision_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.17.0
 * Breaking changes:
   * Deleted `cloudmonitoring_v2beta2`
