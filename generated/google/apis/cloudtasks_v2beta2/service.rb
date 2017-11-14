@@ -343,13 +343,10 @@ module Google
         #   The queue name.
         #   The queue name must have the following format:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        #   * `PROJECT_ID` can contain uppercase and lowercase letters,
-        #   numbers, hyphens, colons, and periods; that is, it must match
-        #   the regular expression: `[a-zA-Z\\d-:\\.]+`.
-        #   * `QUEUE_ID` can contain uppercase and lowercase letters,
-        #   numbers, and hyphens; that is, it must match the regular
-        #   expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-        #   characters.
+        #   * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+        #   hyphens (-), colons (:), or periods (.).
+        #   * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        #   hyphens (-). The maximum length is 100 characters.
         #   Caller-specified and required in CreateQueueRequest, after which
         #   it becomes output only.
         # @param [Google::Apis::CloudtasksV2beta2::Queue] queue_object
@@ -598,6 +595,10 @@ module Google
         # PullTasksResponse. After the task is acknowledged, it will
         # not be returned by a later CloudTasks.PullTasks,
         # CloudTasks.GetTask, or CloudTasks.ListTasks.
+        # To acknowledge multiple tasks at the same time, use
+        # [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
+        # or the batching documentation for your client library, for example
+        # https://developers.google.com/api-client-library/python/guide/batch.
         # @param [String] name
         #   Required.
         #   The task name. For example:

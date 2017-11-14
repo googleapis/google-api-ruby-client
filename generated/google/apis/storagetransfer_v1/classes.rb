@@ -719,8 +719,8 @@ module Google
         attr_accessor :bytes_failed_to_delete_from_sink
       
         # Bytes found in the data source that are scheduled to be transferred,
-        # which will be copied, excluded based on conditions, or skipped due to
-        # failures.
+        # excluding any that are filtered based on object conditions or skipped due
+        # to sync.
         # Corresponds to the JSON property `bytesFoundFromSource`
         # @return [Fixnum]
         attr_accessor :bytes_found_from_source
@@ -762,8 +762,8 @@ module Google
         attr_accessor :objects_failed_to_delete_from_sink
       
         # Objects found in the data source that are scheduled to be transferred,
-        # which will be copied, excluded based on conditions, or skipped due to
-        # failures.
+        # excluding any that are filtered based on object conditions or skipped due
+        # to sync.
         # Corresponds to the JSON property `objectsFoundFromSource`
         # @return [Fixnum]
         attr_accessor :objects_found_from_source

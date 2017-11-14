@@ -130,8 +130,6 @@ module Google
         # The app's request handler for the task's target URL must be able to handle
         # HTTP requests with this http_method, otherwise the task attempt will fail
         # with error code 405 (Method Not Allowed). See
-        # the Request-Line is not allowed for the resource identified by the
-        # Request-URI". See
         # [Writing a push task request handler](/appengine/docs/java/taskqueue/push/
         # creating-handlers#writing_a_push_task_request_handler)
         # and the documentation for the request handlers in the language your app is
@@ -250,8 +248,8 @@ module Google
       class AppEngineRouting
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The host that the task is sent to. For more information, see
+        # Output only. The host that the task is sent to.
+        # For more information, see
         # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
         # routed).
         # The host is constructed as:
@@ -410,8 +408,7 @@ module Google
       class AttemptStatus
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The time that this attempt was dispatched.
+        # Output only. The time that this attempt was dispatched.
         # `dispatch_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `dispatchTime`
         # @return [String]
@@ -460,15 +457,13 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::Status]
         attr_accessor :response_status
       
-        # Output only.
-        # The time that this attempt response was received.
+        # Output only. The time that this attempt response was received.
         # `response_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `responseTime`
         # @return [String]
         attr_accessor :response_time
       
-        # Output only.
-        # The time that this attempt was scheduled.
+        # Output only. The time that this attempt was scheduled.
         # `schedule_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
@@ -848,9 +843,14 @@ module Google
         # @return [String]
         attr_accessor :payload
       
-        # A meta-data tag for this task.
-        # This value is used by CloudTasks.PullTasks calls when
-        # PullTasksRequest.filter is `tag=<tag>`.
+        # The task's tag.
+        # Tags allow similar tasks to be processed in a batch. If you label
+        # tasks with a tag, your task worker can pull tasks
+        # with the same tag using PullTasksRequest.filter. For example,
+        # if you want to aggregate the events associated with a specific
+        # user once a day, you could tag tasks with the user ID.
+        # The task's tag can only be set when the
+        # task is created.
         # The tag must be less than 500 bytes.
         # Corresponds to the JSON property `tag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -1055,13 +1055,10 @@ module Google
         # The queue name.
         # The queue name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        # * `PROJECT_ID` can contain uppercase and lowercase letters,
-        # numbers, hyphens, colons, and periods; that is, it must match
-        # the regular expression: `[a-zA-Z\\d-:\\.]+`.
-        # * `QUEUE_ID` can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-        # characters.
+        # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), colons (:), or periods (.).
+        # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        # hyphens (-). The maximum length is 100 characters.
         # Caller-specified and required in CreateQueueRequest, after which
         # it becomes output only.
         # Corresponds to the JSON property `name`
@@ -1078,9 +1075,9 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::PullTarget]
         attr_accessor :pull_target
       
-        # Output only.
-        # The last time this queue was purged. All tasks that were
-        # created before this time were purged.
+        # Output only. The last time this queue was purged.
+        # All tasks that were created before this time
+        # were purged.
         # A queue can be purged using CloudTasks.PurgeQueue, the
         # [App Engine Task Queue SDK, or the Cloud Console](/appengine/docs/standard/
         # python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue)
@@ -1091,8 +1088,7 @@ module Google
         # @return [String]
         attr_accessor :purge_time
       
-        # Output only.
-        # The state of the queue.
+        # Output only. The state of the queue.
         # `queue_state` can only be changed by called
         # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
         # [queue.yaml](/appengine/docs/python/config/queueref).
@@ -1138,12 +1134,12 @@ module Google
       class RateLimits
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The max burst size limits how fast the queue is processed when
-        # many tasks are in the queue and the rate is high. This field
-        # allows the queue to have a high rate so processing starts shortly
-        # after a task is enqueued, but still limits resource usage when
-        # many tasks are enqueued in a short period of time.
+        # Output only. The max burst size.
+        # Max burst size limits how fast the queue is processed when many
+        # tasks are in the queue and the rate is high. This field allows
+        # the queue to have a high rate so processing starts shortly after
+        # a task is enqueued, but still limits resource usage when many
+        # tasks are enqueued in a short period of time.
         # * For App Engine queues, if
         # RateLimits.max_tasks_dispatched_per_second is 1, this
         # field is 10; otherwise this field is
@@ -1544,8 +1540,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineTaskTarget]
         attr_accessor :app_engine_task_target
       
-        # Output only.
-        # The time that the task was created.
+        # Output only. The time that the task was created.
         # `create_time` will be truncated to the nearest second.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1554,17 +1549,12 @@ module Google
         # The task name.
         # The task name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-        # * `PROJECT_ID` can contain uppercase and lowercase letters,
-        # numbers, hyphens, colons, and periods; that is, it must match
-        # the regular expression: `[a-zA-Z\\d-:\\.]+`.
-        # * `QUEUE_ID` can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-        # characters.
-        # * `TASK_ID` contain uppercase and lowercase letters, numbers,
-        # underscores, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d_-]+`. The maximum length is 500
-        # characters.
+        # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), colons (:), or periods (.).
+        # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        # hyphens (-). The maximum length is 100 characters.
+        # * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), or underscores (_). The maximum length is 500 characters.
         # Optionally caller-specified in CreateTaskRequest.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1599,9 +1589,8 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::TaskStatus]
         attr_accessor :task_status
       
-        # Output only.
-        # The view specifies which subset of the Task has been
-        # returned.
+        # Output only. The view specifies which subset of the Task has
+        # been returned.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -1628,15 +1617,14 @@ module Google
       class TaskStatus
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The number of attempts dispatched. This count includes tasks which have
-        # been dispatched but haven't received a response.
+        # Output only. The number of attempts dispatched.
+        # This count includes tasks which have been dispatched but haven't
+        # received a response.
         # Corresponds to the JSON property `attemptDispatchCount`
         # @return [Fixnum]
         attr_accessor :attempt_dispatch_count
       
-        # Output only.
-        # The number of attempts which have received a response.
+        # Output only. The number of attempts which have received a response.
         # This field is not calculated for
         # [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
         # Corresponds to the JSON property `attemptResponseCount`

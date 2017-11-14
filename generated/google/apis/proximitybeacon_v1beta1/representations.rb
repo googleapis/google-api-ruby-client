@@ -160,6 +160,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
+          property :max_distance_meters, as: 'maxDistanceMeters'
           property :namespaced_type, as: 'namespacedType'
         end
       end

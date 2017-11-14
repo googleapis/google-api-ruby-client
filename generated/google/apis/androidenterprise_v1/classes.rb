@@ -409,6 +409,41 @@ module Google
         end
       end
       
+      # A configuration variables resource contains the managed configuration settings
+      # ID to be applied to a single user, as well as the variable set that is
+      # attributed to the user. The variable set will be used to replace placeholders
+      # in the managed configuration settings.
+      class ConfigurationVariables
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#configurationVariables".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the managed configurations settings.
+        # Corresponds to the JSON property `mcmId`
+        # @return [String]
+        attr_accessor :mcm_id
+      
+        # The variable set that is attributed to the user.
+        # Corresponds to the JSON property `variableSet`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::VariableSet>]
+        attr_accessor :variable_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @mcm_id = args[:mcm_id] if args.key?(:mcm_id)
+          @variable_set = args[:variable_set] if args.key?(:variable_set)
+        end
+      end
+      
       # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
       # This collection cannot be modified via the API. It is automatically populated
@@ -1027,11 +1062,19 @@ module Google
         end
       end
       
-      # A managed configuration resource contains the set of managed properties that
-      # have been configured for an Android app. The app's developer would have
-      # defined configurable properties in the managed configurations schema.
+      # A managed configuration resource contains the set of managed properties
+      # defined by the app developer in the app's managed configurations schema, as
+      # well as any configuration variables defined for the user.
       class ManagedConfiguration
         include Google::Apis::Core::Hashable
+      
+        # A configuration variables resource contains the managed configuration settings
+        # ID to be applied to a single user, as well as the variable set that is
+        # attributed to the user. The variable set will be used to replace placeholders
+        # in the managed configuration settings.
+        # Corresponds to the JSON property `configurationVariables`
+        # @return [Google::Apis::AndroidenterpriseV1::ConfigurationVariables]
+        attr_accessor :configuration_variables
       
         # Identifies what kind of resource this is. Value: the fixed string "
         # androidenterprise#managedConfiguration".
@@ -1056,6 +1099,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configuration_variables = args[:configuration_variables] if args.key?(:configuration_variables)
           @kind = args[:kind] if args.key?(:kind)
           @managed_property = args[:managed_property] if args.key?(:managed_property)
           @product_id = args[:product_id] if args.key?(:product_id)
@@ -1111,6 +1155,74 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @managed_configuration_for_user = args[:managed_configuration_for_user] if args.key?(:managed_configuration_for_user)
+        end
+      end
+      
+      # A managed configurations settings resource contains the set of managed
+      # properties that have been configured for an Android app to be applied to a set
+      # of users. The app's developer would have defined configurable properties in
+      # the managed configurations schema.
+      class ManagedConfigurationsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfigurationsSettings".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The set of managed properties for this configuration.
+        # Corresponds to the JSON property `managedProperty`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedProperty>]
+        attr_accessor :managed_property
+      
+        # The ID of the managed configurations settings.
+        # Corresponds to the JSON property `mcmId`
+        # @return [String]
+        attr_accessor :mcm_id
+      
+        # The name of the managed configurations settings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_property = args[:managed_property] if args.key?(:managed_property)
+          @mcm_id = args[:mcm_id] if args.key?(:mcm_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The managed configurations settings for a product.
+      class ManagedConfigurationsSettingsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfigurationsSettingsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A managed configurations settings for an app that may be assigned to a group
+        # of users in an enterprise.
+        # Corresponds to the JSON property `managedConfigurationsSettings`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings>]
+        attr_accessor :managed_configurations_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_configurations_settings = args[:managed_configurations_settings] if args.key?(:managed_configurations_settings)
         end
       end
       
@@ -2387,6 +2499,41 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # A variable set is a key-value pair of EMM-provided placeholders and its
+      # corresponding value, which is attributed to a user. For example, $FIRSTNAME
+      # could be a placeholder, and its value could be Alice. Placeholders should
+      # start with a '$' sign and should be alphanumeric only.
+      class VariableSet
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#variableSet".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The placeholder string; defined by EMM.
+        # Corresponds to the JSON property `placeholder`
+        # @return [String]
+        attr_accessor :placeholder
+      
+        # The value of the placeholder, specific to the user.
+        # Corresponds to the JSON property `userValue`
+        # @return [String]
+        attr_accessor :user_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @placeholder = args[:placeholder] if args.key?(:placeholder)
+          @user_value = args[:user_value] if args.key?(:user_value)
         end
       end
     end

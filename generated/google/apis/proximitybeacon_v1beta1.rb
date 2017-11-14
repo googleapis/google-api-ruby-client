@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/beacons/proximity/
     module ProximitybeaconV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20171017'
+      REVISION = '20171112'
 
       # View and modify your beacons
       AUTH_USERLOCATION_BEACON_REGISTRY = 'https://www.googleapis.com/auth/userlocation.beacon.registry'

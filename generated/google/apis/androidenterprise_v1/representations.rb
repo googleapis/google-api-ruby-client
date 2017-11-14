@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigurationVariables
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Device
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,18 @@ module Google
       end
       
       class ManagedConfigurationsForUserListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedConfigurationsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedConfigurationsSettingsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VariableSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Administrator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -504,6 +528,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :token, as: 'token'
+        end
+      end
+      
+      class ConfigurationVariables
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :mcm_id, as: 'mcmId'
+          collection :variable_set, as: 'variableSet', class: Google::Apis::AndroidenterpriseV1::VariableSet, decorator: Google::Apis::AndroidenterpriseV1::VariableSet::Representation
+      
         end
       end
       
@@ -660,6 +694,8 @@ module Google
       class ManagedConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :configuration_variables, as: 'configurationVariables', class: Google::Apis::AndroidenterpriseV1::ConfigurationVariables, decorator: Google::Apis::AndroidenterpriseV1::ConfigurationVariables::Representation
+      
           property :kind, as: 'kind'
           collection :managed_property, as: 'managedProperty', class: Google::Apis::AndroidenterpriseV1::ManagedProperty, decorator: Google::Apis::AndroidenterpriseV1::ManagedProperty::Representation
       
@@ -681,6 +717,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :managed_configuration_for_user, as: 'managedConfigurationForUser', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
+      
+        end
+      end
+      
+      class ManagedConfigurationsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :managed_property, as: 'managedProperty', class: Google::Apis::AndroidenterpriseV1::ManagedProperty, decorator: Google::Apis::AndroidenterpriseV1::ManagedProperty::Representation
+      
+          property :mcm_id, as: 'mcmId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ManagedConfigurationsSettingsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :managed_configurations_settings, as: 'managedConfigurationsSettings', class: Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings::Representation
       
         end
       end
@@ -1014,6 +1070,15 @@ module Google
           property :kind, as: 'kind'
           collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
       
+        end
+      end
+      
+      class VariableSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :placeholder, as: 'placeholder'
+          property :user_value, as: 'userValue'
         end
       end
     end
