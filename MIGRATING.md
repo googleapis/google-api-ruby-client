@@ -21,9 +21,9 @@ Timeout options have been moved from `RequestOptions` to `ClientOptions`.
 
 Old                               | New
 ----------------------------------|-----------------
-`RequestOptions.open_timeout_sec` | `ClentOptions.open_timeout_sec`
-`RequestOptions.timeout_sec`      | `ClentOptions.read_timeout_sec`
-`RequestOptions.timeout_sec`      | `ClentOptions.send_timeout_sec`
+`RequestOptions.open_timeout_sec` | `ClientOptions.open_timeout_sec`
+`RequestOptions.timeout_sec`      | `ClientOptions.read_timeout_sec`
+`RequestOptions.timeout_sec`      | `ClientOptions.send_timeout_sec`
 
 ## Batch requests across services no longer supported
 
