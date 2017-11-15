@@ -24,8 +24,7 @@ module Google
       
       # An object that provides information about the nature of an error resulting
       # from an attempted execution of a script function using the Apps Script API.
-      # If a run or
-      # runAsync call
+      # If a run call
       # succeeds but the script function (or Apps Script itself) throws an exception,
       # the response body's error field
       # contains a
@@ -148,11 +147,11 @@ module Google
       end
       
       # A representation of a execution of an Apps Script function that is started
-      # using run or runAsync. The execution response does not arrive until the
-      # function finishes executing. The maximum execution runtime is listed in the [
-      # Apps Script quotas guide](/apps-script/guides/services/quotas#
-      # current_limitations). <p>After the execution is started, it can have one of
-      # four outcomes:</p> <ul> <li> If the script function returns successfully, the
+      # using run. The execution response does not arrive until the function finishes
+      # executing. The maximum execution runtime is listed in the [Apps Script quotas
+      # guide](/apps-script/guides/services/quotas#current_limitations). <p>After the
+      # execution is started, it can have one of four outcomes:</p> <ul> <li> If the
+      # script function returns successfully, the
       # response field contains an
       # ExecutionResponse object
       # with the function's return value in the object's `result` field.</li>
@@ -162,10 +161,10 @@ module Google
       # field contains an array with a single
       # ExecutionError object that
       # provides information about the nature of the error.</li>
-      # <li> If the execution was asynchronous and has not yet completed,
+      # <li> If the execution has not yet completed,
       # the done field is `false` and
       # the neither the `response` nor `error` fields are present.</li>
-      # <li> If the `run` or `runAsync` call itself fails (for example, because of a
+      # <li> If the `run` call itself fails (for example, because of a
       # malformed request or an authorization error), the method returns an HTTP
       # response code in the 4XX range with a different format for the response
       # body. Client libraries automatically convert a 4XX response into an
@@ -174,18 +173,17 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # This field is only used with asynchronous executions. It indicates whether the
-        # script execution has completed. A completed execution has a populated `
-        # response` field containing the ExecutionResponse from function that was
-        # executed.
+        # This field indicates whether the script execution has completed. A completed
+        # execution has a populated `response` field containing the ExecutionResponse
+        # from function that was executed.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # If a `run` or `runAsync` call succeeds but the script function (or Apps Script
-        # itself) throws an exception, the response body's error field contains this `
-        # Status` object.
+        # If a `run` call succeeds but the script function (or Apps Script itself)
+        # throws an exception, the response body's error field contains this `Status`
+        # object.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ScriptV1::Status]
         attr_accessor :error
@@ -233,15 +231,15 @@ module Google
         end
       end
       
-      # If a `run` or `runAsync` call succeeds but the script function (or Apps Script
-      # itself) throws an exception, the response body's error field contains this `
-      # Status` object.
+      # If a `run` call succeeds but the script function (or Apps Script itself)
+      # throws an exception, the response body's error field contains this `Status`
+      # object.
       class Status
         include Google::Apis::Core::Hashable
       
         # The status code. For this API, this value either: <ul> <li> 3, indicating an `
-        # INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` asynchronous
-        # execution.</li> </ul>
+        # INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</
+        # li> </ul>
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code

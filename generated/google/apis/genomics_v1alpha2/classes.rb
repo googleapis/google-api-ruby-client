@@ -792,16 +792,18 @@ module Google
       
         # Optional. The number of accelerators of the specified type to attach.
         # By specifying this parameter, you will download and install the following
-        # third-party software onto your managed GCE instances: NVIDIA® Tesla®
-        # drivers and NVIDIA® CUDA toolkit.
+        # third-party software onto your managed Compute Engine instances:
+        # NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
         # Corresponds to the JSON property `acceleratorCount`
         # @return [Fixnum]
         attr_accessor :accelerator_count
       
-        # Optional. The GCE defined accelerator type.
+        # Optional. The Compute Engine defined accelerator type.
         # By specifying this parameter, you will download and install the following
-        # third-party software onto your managed GCE instances: NVIDIA® Tesla®
-        # drivers and NVIDIA® CUDA toolkit.
+        # third-party software onto your managed Compute Engine instances: NVIDIA®
+        # Tesla® drivers and NVIDIA® CUDA toolkit.
+        # Please see https://cloud.google.com/compute/docs/gpus/ for a list of
+        # available accelerator types.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type

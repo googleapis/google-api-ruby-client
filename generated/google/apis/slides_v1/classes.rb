@@ -3295,6 +3295,14 @@ module Google
       class ShapeProperties
         include Google::Apis::Core::Hashable
       
+        # The alignment of the content in the shape. If unspecified,
+        # the alignment is inherited from a parent placeholder if it exists. If the
+        # shape has no parent, the default alignment matches the alignment for new
+        # shapes created in the Slides editor.
+        # Corresponds to the JSON property `contentAlignment`
+        # @return [String]
+        attr_accessor :content_alignment
+      
         # A hypertext link.
         # Corresponds to the JSON property `link`
         # @return [Google::Apis::SlidesV1::Link]
@@ -3329,6 +3337,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_alignment = args[:content_alignment] if args.key?(:content_alignment)
           @link = args[:link] if args.key?(:link)
           @outline = args[:outline] if args.key?(:outline)
           @shadow = args[:shadow] if args.key?(:shadow)
@@ -3816,6 +3825,12 @@ module Google
       class TableCellProperties
         include Google::Apis::Core::Hashable
       
+        # The alignment of the content in the table cell. The default alignment
+        # matches the alignment for newly created table cells in the Slides editor.
+        # Corresponds to the JSON property `contentAlignment`
+        # @return [String]
+        attr_accessor :content_alignment
+      
         # The table cell background fill.
         # Corresponds to the JSON property `tableCellBackgroundFill`
         # @return [Google::Apis::SlidesV1::TableCellBackgroundFill]
@@ -3827,6 +3842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_alignment = args[:content_alignment] if args.key?(:content_alignment)
           @table_cell_background_fill = args[:table_cell_background_fill] if args.key?(:table_cell_background_fill)
         end
       end
