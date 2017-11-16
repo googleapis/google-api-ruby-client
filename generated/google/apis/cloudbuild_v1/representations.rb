@@ -209,7 +209,9 @@ module Google
       class BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :log_streaming_option, as: 'logStreamingOption'
+          property :machine_type, as: 'machineType'
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'

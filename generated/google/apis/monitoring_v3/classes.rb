@@ -812,6 +812,50 @@ module Google
         end
       end
       
+      # Nimbus InternalCheckers.
+      class InternalChecker
+        include Google::Apis::Core::Hashable
+      
+        # The checker ID.
+        # Corresponds to the JSON property `checkerId`
+        # @return [String]
+        attr_accessor :checker_id
+      
+        # The checker's human-readable name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The GCP zone the uptime check should egress from. Only respected for internal
+        # uptime checks, where internal_network is specified.
+        # Corresponds to the JSON property `gcpZone`
+        # @return [String]
+        attr_accessor :gcp_zone
+      
+        # The internal network to perform this uptime check on.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # The GCP project ID. Not necessarily the same as the project_id for the config.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checker_id = args[:checker_id] if args.key?(:checker_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gcp_zone = args[:gcp_zone] if args.key?(:gcp_zone)
+          @network = args[:network] if args.key?(:network)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
@@ -1157,52 +1201,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The unit in which the metric value is reported. It is only applicable if the
-        # value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are a subset
-        # of The Unified Code for Units of Measure (http://unitsofmeasure.org/ucum.html)
-        # standard:Basic units (UNIT)
-        # bit bit
-        # By byte
-        # s second
-        # min minute
-        # h hour
-        # d dayPrefixes (PREFIX)
-        # k kilo (10**3)
-        # M mega (10**6)
-        # G giga (10**9)
-        # T tera (10**12)
-        # P peta (10**15)
-        # E exa (10**18)
-        # Z zetta (10**21)
-        # Y yotta (10**24)
-        # m milli (10**-3)
-        # u micro (10**-6)
-        # n nano (10**-9)
-        # p pico (10**-12)
-        # f femto (10**-15)
-        # a atto (10**-18)
-        # z zepto (10**-21)
-        # y yocto (10**-24)
-        # Ki kibi (2**10)
-        # Mi mebi (2**20)
-        # Gi gibi (2**30)
-        # Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/
-        # s.The grammar also includes these connectors:
-        # / division (as an infix operator, e.g. 1/s).
-        # . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is
-        # as follows:
-        # Expression = Component ` "." Component ` ` "/" Component ` ;
-        # Component = [ PREFIX ] UNIT [ Annotation ]
-        # | Annotation
-        # | "1"
-        # ;
-        # Annotation = "`" NAME "`" ;
-        # Notes:
-        # Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
-        # it is used alone. For examples,  `requests`/s == 1/s, By`transmitted`/s == By/
-        # s.
-        # NAME is a sequence of non-blank printable ASCII characters not  containing '`'
-        # or '`'.
+        # Optional. The unit in which the metric value is reported. For example, kBy/s
+        # means kilobytes/sec, and 1 is the dimensionless unit. The supported units are
+        # a subset of The Unified Code for Units of Measure standard (http://
+        # unitsofmeasure.org/ucum.html).<br><br> This field is part of the metric's
+        # documentation, but it is ignored by Stackdriver.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -1783,6 +1786,11 @@ module Google
         # @return [Google::Apis::MonitoringV3::HttpCheck]
         attr_accessor :http_check
       
+        # The internal checkers that this check will egress from.
+        # Corresponds to the JSON property `internalCheckers`
+        # @return [Array<Google::Apis::MonitoringV3::InternalChecker>]
+        attr_accessor :internal_checkers
+      
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
         # databases, and storage devices such as disks. The type field identifies a
@@ -1847,6 +1855,7 @@ module Google
           @content_matchers = args[:content_matchers] if args.key?(:content_matchers)
           @display_name = args[:display_name] if args.key?(:display_name)
           @http_check = args[:http_check] if args.key?(:http_check)
+          @internal_checkers = args[:internal_checkers] if args.key?(:internal_checkers)
           @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
           @name = args[:name] if args.key?(:name)
           @period = args[:period] if args.key?(:period)

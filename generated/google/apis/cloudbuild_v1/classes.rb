@@ -230,11 +230,26 @@ module Google
       class BuildOptions
         include Google::Apis::Core::Hashable
       
+        # Requested disk size for the VM that runs the build. Note that this is *NOT*
+        # "disk free"; some of the space will be used by the operating system and
+        # build utilities. Also note that this is the minimum disk size that will be
+        # allocated for the build -- the build may run with a larger disk than
+        # requested. At present, the maximum disk size is 1000GB; builds that request
+        # more than the maximum are rejected with an error.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
         # LogStreamingOption to define build log streaming behavior to Google Cloud
         # Storage.
         # Corresponds to the JSON property `logStreamingOption`
         # @return [String]
         attr_accessor :log_streaming_option
+      
+        # GCE VM size to run the build on.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
       
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
@@ -257,7 +272,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @substitution_option = args[:substitution_option] if args.key?(:substitution_option)

@@ -270,9 +270,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # [Output only] The resource URLs of [instance
-        # groups](/compute/docs/instance-groups/) associated with this
-        # cluster.
+        # Deprecated. Use node_pools.instance_group_urls.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls
@@ -1334,9 +1332,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :initial_node_count
       
-        # [Output only] The resource URLs of [instance
-        # groups](/compute/docs/instance-groups/) associated with this
-        # node pool.
+        # [Output only] The resource URLs of the [managed instance
+        # groups](/compute/docs/instance-groups/creating-groups-of-managed-instances)
+        # associated with this node pool.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls

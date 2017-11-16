@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InternalChecker
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -457,6 +463,17 @@ module Google
         end
       end
       
+      class InternalChecker
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checker_id, as: 'checkerId'
+          property :display_name, as: 'displayName'
+          property :gcp_zone, as: 'gcpZone'
+          property :network, as: 'network'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
       class LabelDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -695,6 +712,8 @@ module Google
       
           property :display_name, as: 'displayName'
           property :http_check, as: 'httpCheck', class: Google::Apis::MonitoringV3::HttpCheck, decorator: Google::Apis::MonitoringV3::HttpCheck::Representation
+      
+          collection :internal_checkers, as: 'internalCheckers', class: Google::Apis::MonitoringV3::InternalChecker, decorator: Google::Apis::MonitoringV3::InternalChecker::Representation
       
           property :monitored_resource, as: 'monitoredResource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
