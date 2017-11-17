@@ -658,10 +658,10 @@ module Google
         # @return [Google::Apis::LoggingV2beta1::LogEntrySourceLocation]
         attr_accessor :source_location
       
-        # Optional. Id of the span within the trace associated with the log entry. e.g. "
-        # 0000000000000042" For Stackdriver trace spans, this is the same format that
-        # the Stackdriver trace API uses. The ID is a 16-character hexadecimal encoding
-        # of an 8-byte array.
+        # Optional. The span ID within the trace associated with the log entry. For
+        # Stackdriver Trace spans, this is the same format that the Stackdriver Trace
+        # API v2 uses: a 16-character hexadecimal encoding of an 8-byte array, such as <
+        # code>"000000000000004a"</code>.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id

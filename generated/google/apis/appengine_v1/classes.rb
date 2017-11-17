@@ -370,6 +370,11 @@ module Google
         # @return [Google::Apis::AppengineV1::RequestUtilization]
         attr_accessor :request_utilization
       
+        # Scheduler settings for standard environment.
+        # Corresponds to the JSON property `standardSchedulerSettings`
+        # @return [Google::Apis::AppengineV1::StandardSchedulerSettings]
+        attr_accessor :standard_scheduler_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -388,6 +393,7 @@ module Google
           @min_total_instances = args[:min_total_instances] if args.key?(:min_total_instances)
           @network_utilization = args[:network_utilization] if args.key?(:network_utilization)
           @request_utilization = args[:request_utilization] if args.key?(:request_utilization)
+          @standard_scheduler_settings = args[:standard_scheduler_settings] if args.key?(:standard_scheduler_settings)
         end
       end
       
@@ -2174,6 +2180,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate_id = args[:certificate_id] if args.key?(:certificate_id)
+        end
+      end
+      
+      # Scheduler settings for standard environment.
+      class StandardSchedulerSettings
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of instances for an app version. Set to a non-positive value (0
+        # by convention) to disable max_instances configuration.
+        # Corresponds to the JSON property `maxInstances`
+        # @return [Fixnum]
+        attr_accessor :max_instances
+      
+        # Minimum number of instances for an app version. Set to a non-positive value (0
+        # by convention) to disable min_instances configuration.
+        # Corresponds to the JSON property `minInstances`
+        # @return [Fixnum]
+        attr_accessor :min_instances
+      
+        # Target CPU utilization ratio to maintain when scaling.
+        # Corresponds to the JSON property `targetCpuUtilization`
+        # @return [Float]
+        attr_accessor :target_cpu_utilization
+      
+        # Target throughput utilization ratio to maintain when scaling
+        # Corresponds to the JSON property `targetThroughputUtilization`
+        # @return [Float]
+        attr_accessor :target_throughput_utilization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_instances = args[:max_instances] if args.key?(:max_instances)
+          @min_instances = args[:min_instances] if args.key?(:min_instances)
+          @target_cpu_utilization = args[:target_cpu_utilization] if args.key?(:target_cpu_utilization)
+          @target_throughput_utilization = args[:target_throughput_utilization] if args.key?(:target_throughput_utilization)
         end
       end
       

@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardSchedulerSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StaticFilesHandler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -481,6 +487,8 @@ module Google
           property :network_utilization, as: 'networkUtilization', class: Google::Apis::AppengineV1::NetworkUtilization, decorator: Google::Apis::AppengineV1::NetworkUtilization::Representation
       
           property :request_utilization, as: 'requestUtilization', class: Google::Apis::AppengineV1::RequestUtilization, decorator: Google::Apis::AppengineV1::RequestUtilization::Representation
+      
+          property :standard_scheduler_settings, as: 'standardSchedulerSettings', class: Google::Apis::AppengineV1::StandardSchedulerSettings, decorator: Google::Apis::AppengineV1::StandardSchedulerSettings::Representation
       
         end
       end
@@ -956,6 +964,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_id, as: 'certificateId'
+        end
+      end
+      
+      class StandardSchedulerSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_instances, as: 'maxInstances'
+          property :min_instances, as: 'minInstances'
+          property :target_cpu_utilization, as: 'targetCpuUtilization'
+          property :target_throughput_utilization, as: 'targetThroughputUtilization'
         end
       end
       

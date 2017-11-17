@@ -287,7 +287,7 @@ module Google
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] org_unit_path
-        #   Full path of the organization unit or its Id
+        #   Full path of the organizational unit or its ID
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] projection
@@ -337,11 +337,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Move or insert multiple Chrome OS Devices to Organization Unit
+        # Move or insert multiple Chrome OS Devices to organizational unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] org_unit_path
-        #   Full path of the target organization unit or its Id
+        #   Full path of the target organizational unit or its ID
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsMoveDevicesToOu] chrome_os_move_devices_to_ou_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -874,7 +874,7 @@ module Google
         
         # Delete Group
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -907,7 +907,7 @@ module Google
         
         # Retrieve Group
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -987,8 +987,8 @@ module Google
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] user_key
-        #   Email or immutable Id of the user if only those groups are to be listed, the
-        #   given user is a member of. If Id, it should match with id of user object
+        #   Email or immutable ID of the user if only those groups are to be listed, the
+        #   given user is a member of. If ID, it should match with id of user object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1027,7 +1027,7 @@ module Google
         
         # Update Group. This method supports patch semantics.
         # @param [String] group_key
-        #   Email or immutable Id of the group. If Id, it should match with id of group
+        #   Email or immutable ID of the group. If ID, it should match with id of group
         #   object
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
@@ -1066,7 +1066,7 @@ module Google
         
         # Update Group
         # @param [String] group_key
-        #   Email or immutable Id of the group. If Id, it should match with id of group
+        #   Email or immutable ID of the group. If ID, it should match with id of group
         #   object
         # @param [Google::Apis::AdminDirectoryV1::Group] group_object
         # @param [String] fields
@@ -1105,7 +1105,7 @@ module Google
         
         # Remove a alias for the group
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [String] group_alias
         #   The alias to be removed
         # @param [String] fields
@@ -1141,7 +1141,7 @@ module Google
         
         # Add a alias for the group
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [Google::Apis::AdminDirectoryV1::Alias] alias_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1179,7 +1179,7 @@ module Google
         
         # List all aliases for a group
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1214,9 +1214,9 @@ module Google
         
         # Remove membership.
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [String] member_key
-        #   Email or immutable Id of the member
+        #   Email or immutable ID of the member
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1250,9 +1250,9 @@ module Google
         
         # Retrieve Group Member
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [String] member_key
-        #   Email or immutable Id of the member
+        #   Email or immutable ID of the member
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1286,9 +1286,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add user to the specified group.
+        # Checks Membership of an user within a Group
         # @param [String] group_key
         #   Email or immutable Id of the group
+        # @param [String] member_key
+        #   Email or immutable Id of the member
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::MembersHasMember] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::MembersHasMember]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def has_member_member(group_key, member_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'groups/{groupKey}/hasMember/{memberKey}', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::MembersHasMember::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::MembersHasMember
+          command.params['groupKey'] = group_key unless group_key.nil?
+          command.params['memberKey'] = member_key unless member_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Add user to the specified group.
+        # @param [String] group_key
+        #   Email or immutable ID of the group
         # @param [Google::Apis::AdminDirectoryV1::Member] member_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1326,7 +1364,7 @@ module Google
         
         # Retrieve all members in a group (paginated)
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Email or immutable ID of the group
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 200
         # @param [String] page_token
@@ -1371,10 +1409,10 @@ module Google
         # Update membership of a user in the specified group. This method supports patch
         # semantics.
         # @param [String] group_key
-        #   Email or immutable Id of the group. If Id, it should match with id of group
+        #   Email or immutable ID of the group. If ID, it should match with id of group
         #   object
         # @param [String] member_key
-        #   Email or immutable Id of the user. If Id, it should match with id of member
+        #   Email or immutable ID of the user. If ID, it should match with id of member
         #   object
         # @param [Google::Apis::AdminDirectoryV1::Member] member_object
         # @param [String] fields
@@ -1414,10 +1452,10 @@ module Google
         
         # Update membership of a user in the specified group.
         # @param [String] group_key
-        #   Email or immutable Id of the group. If Id, it should match with id of group
+        #   Email or immutable ID of the group. If ID, it should match with id of group
         #   object
         # @param [String] member_key
-        #   Email or immutable Id of the user. If Id, it should match with id of member
+        #   Email or immutable ID of the user. If ID, it should match with id of member
         #   object
         # @param [Google::Apis::AdminDirectoryV1::Member] member_object
         # @param [String] fields
@@ -1829,11 +1867,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove Organization Unit
+        # Remove organizational unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
-        #   Full path of the organization unit or its Id
+        #   Full path of the organizational unit or its ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1865,11 +1903,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve Organization Unit
+        # Retrieve organizational unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
-        #   Full path of the organization unit or its Id
+        #   Full path of the organizational unit or its ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1903,7 +1941,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add Organization Unit
+        # Add organizational unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
@@ -1941,11 +1979,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all Organization Units
+        # Retrieve all organizational units
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] org_unit_path
-        #   the URL-encoded organization unit's path or its Id
+        #   the URL-encoded organizational unit's path or its ID
         # @param [String] type
         #   Whether to return all sub-organizations or just immediate children
         # @param [String] fields
@@ -1982,11 +2020,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update Organization Unit. This method supports patch semantics.
+        # Update organizational unit. This method supports patch semantics.
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
-        #   Full path of the organization unit or its Id
+        #   Full path of the organizational unit or its ID
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2023,11 +2061,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update Organization Unit
+        # Update organizational unit
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Array<String>, String] org_unit_path
-        #   Full path of the organization unit or its Id
+        #   Full path of the organizational unit or its ID
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2810,7 +2848,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] schema_key
-        #   Name or immutable Id of the schema
+        #   Name or immutable ID of the schema
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2846,7 +2884,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] schema_key
-        #   Name or immutable Id of the schema
+        #   Name or immutable ID of the schema
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2957,7 +2995,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] schema_key
-        #   Name or immutable Id of the schema.
+        #   Name or immutable ID of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2998,7 +3036,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [String] schema_key
-        #   Name or immutable Id of the schema.
+        #   Name or immutable ID of the schema.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3149,7 +3187,7 @@ module Google
         
         # Delete user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3182,7 +3220,7 @@ module Google
         
         # retrieve user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] custom_field_mask
         #   Comma-separated list of schema names. All fields from these schemas are
         #   fetched. This should only be set when projection=custom.
@@ -3334,7 +3372,7 @@ module Google
         
         # change admin status of a user
         # @param [String] user_key
-        #   Email or immutable Id of the user as admin
+        #   Email or immutable ID of the user as admin
         # @param [Google::Apis::AdminDirectoryV1::UserMakeAdmin] user_make_admin_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3370,7 +3408,7 @@ module Google
         
         # update user. This method supports patch semantics.
         # @param [String] user_key
-        #   Email or immutable Id of the user. If Id, it should match with id of user
+        #   Email or immutable ID of the user. If ID, it should match with id of user
         #   object
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
@@ -3445,7 +3483,7 @@ module Google
         
         # update user
         # @param [String] user_key
-        #   Email or immutable Id of the user. If Id, it should match with id of user
+        #   Email or immutable ID of the user. If ID, it should match with id of user
         #   object
         # @param [Google::Apis::AdminDirectoryV1::User] user_object
         # @param [String] fields
@@ -3559,7 +3597,7 @@ module Google
         
         # Remove a alias for the user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] user_alias
         #   The alias to be removed
         # @param [String] fields
@@ -3595,7 +3633,7 @@ module Google
         
         # Add a alias for the user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [Google::Apis::AdminDirectoryV1::Alias] alias_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3633,7 +3671,7 @@ module Google
         
         # List all aliases for a user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] event
         #   Event on which subscription is intended (if subscribing)
         # @param [String] fields
@@ -3671,7 +3709,7 @@ module Google
         
         # Watch for changes in user aliases list
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] event
         #   Event on which subscription is intended (if subscribing)
@@ -3712,7 +3750,7 @@ module Google
         
         # Remove photos for the user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3745,7 +3783,7 @@ module Google
         
         # Retrieve photo of a user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3780,7 +3818,7 @@ module Google
         
         # Add a photo for the user. This method supports patch semantics.
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3818,7 +3856,7 @@ module Google
         
         # Add a photo for the user
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3856,7 +3894,7 @@ module Google
         
         # Generate new backup verification codes for the user.
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3889,7 +3927,7 @@ module Google
         
         # Invalidate the current backup verification codes for the user.
         # @param [String] user_key
-        #   Email or immutable Id of the user
+        #   Email or immutable ID of the user
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

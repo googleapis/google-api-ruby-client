@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembersHasMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MobileDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -748,6 +754,13 @@ module Google
         end
       end
       
+      class MembersHasMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_member, as: 'isMember'
+        end
+      end
+      
       class MobileDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1263,6 +1276,7 @@ module Google
       class UserPosixAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :gecos, as: 'gecos'
           property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'

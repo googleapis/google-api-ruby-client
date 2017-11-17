@@ -808,6 +808,13 @@ module Google
         attr_accessor :split_health_checks
         alias_method :split_health_checks?, :split_health_checks
       
+        # If true, use Container-Optimized OS (https://cloud.google.com/container-
+        # optimized-os/) base image for VMs, rather than a base Debian image.
+        # Corresponds to the JSON property `useContainerOptimizedOs`
+        # @return [Boolean]
+        attr_accessor :use_container_optimized_os
+        alias_method :use_container_optimized_os?, :use_container_optimized_os
+      
         def initialize(**args)
            update!(**args)
         end
@@ -815,6 +822,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @split_health_checks = args[:split_health_checks] if args.key?(:split_health_checks)
+          @use_container_optimized_os = args[:use_container_optimized_os] if args.key?(:use_container_optimized_os)
         end
       end
       

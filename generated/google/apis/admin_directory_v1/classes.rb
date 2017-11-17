@@ -1248,6 +1248,26 @@ module Google
         end
       end
       
+      # JSON template for Has Member response in Directory API.
+      class MembersHasMember
+        include Google::Apis::Core::Hashable
+      
+        # Identifies whether given user is a member or not.
+        # Corresponds to the JSON property `isMember`
+        # @return [Boolean]
+        attr_accessor :is_member
+        alias_method :is_member?, :is_member
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_member = args[:is_member] if args.key?(:is_member)
+        end
+      end
+      
       # JSON template for Mobile Device resource in Directory API.
       class MobileDevice
         include Google::Apis::Core::Hashable
@@ -3412,6 +3432,11 @@ module Google
       class UserPosixAccount
         include Google::Apis::Core::Hashable
       
+        # A POSIX account field identifier. (Read-only)
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
         # The GECOS (user information) for this account.
         # Corresponds to the JSON property `gecos`
         # @return [String]
@@ -3459,6 +3484,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
           @gecos = args[:gecos] if args.key?(:gecos)
           @gid = args[:gid] if args.key?(:gid)
           @home_directory = args[:home_directory] if args.key?(:home_directory)

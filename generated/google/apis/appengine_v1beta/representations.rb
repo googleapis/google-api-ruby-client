@@ -631,6 +631,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :split_health_checks, as: 'splitHealthChecks'
+          property :use_container_optimized_os, as: 'useContainerOptimizedOs'
         end
       end
       
