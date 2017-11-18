@@ -118,11 +118,11 @@ module Google
         end
         
         # Creates a queue.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
+        # WARNING: Using this method may have unintended side effects if you are
+        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
+        # Read
         # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # carefully before using this method.
         # @param [String] parent
         #   Required.
         #   The location name in which the queue will be created.
@@ -164,11 +164,11 @@ module Google
         # This command will delete the queue even if it has tasks in it.
         # Note: If you delete a queue, a queue with the same name can't be created
         # for 7 days.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
+        # WARNING: Using this method may have unintended side effects if you are
+        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
+        # Read
         # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # carefully before using this method.
         # @param [String] name
         #   Required.
         #   The queue name. For example:
@@ -334,11 +334,11 @@ module Google
         # Updates a queue.
         # This method creates the queue if it does not exist and updates
         # the queue if it does exist.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
+        # WARNING: Using this method may have unintended side effects if you are
+        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
+        # Read
         # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # carefully before using this method.
         # @param [String] name
         #   The queue name.
         #   The queue name must have the following format:

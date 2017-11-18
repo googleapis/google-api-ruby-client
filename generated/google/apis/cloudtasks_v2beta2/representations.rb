@@ -487,7 +487,7 @@ module Google
       class RenewLeaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_lease_duration, as: 'newLeaseDuration'
+          property :lease_duration, as: 'leaseDuration'
           property :response_view, as: 'responseView'
           property :schedule_time, as: 'scheduleTime'
         end

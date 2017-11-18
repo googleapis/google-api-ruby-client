@@ -1201,10 +1201,10 @@ module Google
         # Required.
         # The desired new lease duration, starting from now.
         # The maximum lease duration is 1 week.
-        # `new_lease_duration` will be truncated to the nearest second.
-        # Corresponds to the JSON property `newLeaseDuration`
+        # `lease_duration` will be truncated to the nearest second.
+        # Corresponds to the JSON property `leaseDuration`
         # @return [String]
-        attr_accessor :new_lease_duration
+        attr_accessor :lease_duration
       
         # The response_view specifies which subset of the Task will be
         # returned.
@@ -1235,7 +1235,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @new_lease_duration = args[:new_lease_duration] if args.key?(:new_lease_duration)
+          @lease_duration = args[:lease_duration] if args.key?(:lease_duration)
           @response_view = args[:response_view] if args.key?(:response_view)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
         end
@@ -1281,11 +1281,19 @@ module Google
         # @return [String]
         attr_accessor :max_backoff
       
-        # The time between retries increases exponentially `max_doublings` times.
-        # `max_doublings` is maximum number of times that the interval between failed
-        # task retries will be doubled before the interval increases linearly.
-        # After max_doublings intervals, the retry interval will be
-        # 2^(max_doublings - 1) * RetryConfig.min_backoff.
+        # The time between retries will double `max_doublings` times.
+        # A task's retry interval starts at RetryConfig.min_backoff,
+        # then doubles `max_doublings` times, then increases linearly, and
+        # finally retries retries at intervals of
+        # RetryConfig.max_backoff up to max_attempts times.
+        # For example, if RetryConfig.min_backoff is 10s,
+        # RetryConfig.max_backoff is 300s, and `max_doublings` is 3,
+        # then the a task will first be retried in 10s. The retry interval
+        # will double three times, and then increase linearly by 2^3 * 10s.
+        # Finally, the task will retry at intervals of
+        # RetryConfig.max_backoff until the task has been attempted
+        # `max_attempts` times. Thus, the requests will retry at 10s, 20s,
+        # 40s, 80s, 160s, 240s, 300s, 300s, ....
         # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
         # this field is 16 by default.
         # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
