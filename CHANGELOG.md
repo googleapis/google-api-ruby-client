@@ -1,3 +1,36 @@
+# 0.17.2
+* Backwards compatible changes:
+  * Added `dialogflow_v2beta1`
+  * Added `serviceconsumermanagement_v1`
+  * Added `tpu_v1alpha1`
+  * Updated `admin_directory_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudiot_v1`
+  * Updated `cloudkms_v1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `customsearch_v1`
+  * Updated `dlp_v2beta1`
+  * Updated `genomics_v1alpha2`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `monitoring_v3`
+  * Updated `proximitybeacon_v1beta1`
+  * Updated `script_v1`
+  * Updated `slides_v1`
+  * Updated `sourcerepo_v1`
+  * Updated `storagetransfer_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `youtube_partner_v1`
+
 # 0.17.1
 * Backwards compatible changes:
   * Added `dfareporting_v3_0`
