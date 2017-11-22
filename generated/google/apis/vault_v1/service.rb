@@ -22,7 +22,7 @@ module Google
     module VaultV1
       # Google Vault API
       #
-      # 
+      # Archiving and eDiscovery for G Suite.
       #
       # @example
       #    require 'google/apis/vault_v1'
@@ -30,7 +30,7 @@ module Google
       #    Vault = Google::Apis::VaultV1 # Alias the module
       #    service = Vault::VaultService.new
       #
-      # @see https://apps.google.com/products/vault/
+      # @see https://developers.google.com/vault
       class VaultService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -113,7 +113,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new matter. Returns created matter with default view.
+        # Creates a new matter with the given name and description. The initial state
+        # is open, and the owner is the method caller. Returns the created matter
+        # with default view.
         # @param [Google::Apis::VaultV1::Matter] matter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -212,6 +214,9 @@ module Google
         #   Default and maximum are 100.
         # @param [String] page_token
         #   The pagination token as returned in the response.
+        # @param [String] state
+        #   If set, list only matters with that specific state. The default is listing
+        #   matters of all states.
         # @param [String] view
         #   Specifies which parts of the matter to return in response.
         # @param [String] fields
@@ -231,12 +236,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_matters(page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_matters(page_size: nil, page_token: nil, state: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/matters', options)
           command.response_representation = Google::Apis::VaultV1::ListMattersResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListMattersResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['state'] = state unless state.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -20,12 +20,18 @@ module Google
   module Apis
     # Google Vault API
     #
-    # 
+    # Archiving and eDiscovery for G Suite.
     #
-    # @see https://apps.google.com/products/vault/
+    # @see https://developers.google.com/vault
     module VaultV1
       VERSION = 'V1'
-      REVISION = '20170828'
+      REVISION = '20171026'
+
+      # Manage your eDiscovery data
+      AUTH_EDISCOVERY = 'https://www.googleapis.com/auth/ediscovery'
+
+      # View your eDiscovery data
+      AUTH_EDISCOVERY_READONLY = 'https://www.googleapis.com/auth/ediscovery.readonly'
     end
   end
 end
