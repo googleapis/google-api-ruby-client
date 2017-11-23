@@ -179,6 +179,47 @@ module Google
         end
       end
       
+      # An auxiliary table contains statistical information on the relative
+      # frequency of different quasi-identifiers values. It has one or several
+      # quasi-identifiers columns, and one column that indicates the relative
+      # frequency of each quasi-identifier tuple.
+      # If a tuple is present in the data but not in the auxiliary table, the
+      # corresponding relative frequency is assumed to be zero (and thus, the
+      # tuple is highly reidentifiable).
+      class GooglePrivacyDlpV2beta1AuxiliaryTable
+        include Google::Apis::Core::Hashable
+      
+        # Quasi-identifier columns. [required]
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1QuasiIdField>]
+        attr_accessor :quasi_ids
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `relativeFrequency`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :relative_frequency
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @relative_frequency = args[:relative_frequency] if args.key?(:relative_frequency)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Options defining BigQuery table and row identifiers.
       class GooglePrivacyDlpV2beta1BigQueryOptions
         include Google::Apis::Core::Hashable
@@ -1873,6 +1914,144 @@ module Google
         end
       end
       
+      # Reidentifiability metric. This corresponds to a risk model similar to what
+      # is called "journalist risk" in the literature, except the attack dataset is
+      # statistically modeled instead of being perfectly known. This can be done
+      # using publicly available data (like the US Census), or using a custom
+      # statistical model (indicated as one or several BigQuery tables), or by
+      # extrapolating from the distribution of values in the input dataset.
+      class GooglePrivacyDlpV2beta1KMapEstimationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Several auxiliary tables can be used in the analysis. Each custom_tag
+        # used to tag a quasi-identifiers column must appear in exactly one column
+        # of one auxiliary table.
+        # Corresponds to the JSON property `auxiliaryTables`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1AuxiliaryTable>]
+        attr_accessor :auxiliary_tables
+      
+        # Fields considered to be quasi-identifiers. No two columns can have the
+        # same tag. [required]
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TaggedField>]
+        attr_accessor :quasi_ids
+      
+        # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
+        # Required if no column is tagged with a region-specific InfoType (like
+        # US_ZIP_5) or a region code.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auxiliary_tables = args[:auxiliary_tables] if args.key?(:auxiliary_tables)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # A KMapEstimationHistogramBucket message with the following values:
+      # min_anonymity: 3
+      # max_anonymity: 5
+      # frequency: 42
+      # means that there are 42 records whose quasi-identifier values correspond
+      # to 3, 4 or 5 people in the overlying population. An important particular
+      # case is when min_anonymity = max_anonymity = 1: the frequency field then
+      # corresponds to the number of uniquely identifiable records.
+      class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket
+        include Google::Apis::Core::Hashable
+      
+        # Number of records within these anonymity bounds.
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Fixnum]
+        attr_accessor :bucket_size
+      
+        # Sample of quasi-identifier tuple values in this bucket. The total
+        # number of classes returned per bucket is capped at 20.
+        # Corresponds to the JSON property `bucketValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues>]
+        attr_accessor :bucket_values
+      
+        # Always greater than or equal to min_anonymity.
+        # Corresponds to the JSON property `maxAnonymity`
+        # @return [Fixnum]
+        attr_accessor :max_anonymity
+      
+        # Always positive.
+        # Corresponds to the JSON property `minAnonymity`
+        # @return [Fixnum]
+        attr_accessor :min_anonymity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
+          @max_anonymity = args[:max_anonymity] if args.key?(:max_anonymity)
+          @min_anonymity = args[:min_anonymity] if args.key?(:min_anonymity)
+        end
+      end
+      
+      # A tuple of values for the quasi-identifier columns.
+      class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues
+        include Google::Apis::Core::Hashable
+      
+        # The estimated anonymity for these quasi-identifier values.
+        # Corresponds to the JSON property `estimatedAnonymity`
+        # @return [Fixnum]
+        attr_accessor :estimated_anonymity
+      
+        # The quasi-identifier values.
+        # Corresponds to the JSON property `quasiIdsValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value>]
+        attr_accessor :quasi_ids_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_anonymity = args[:estimated_anonymity] if args.key?(:estimated_anonymity)
+          @quasi_ids_values = args[:quasi_ids_values] if args.key?(:quasi_ids_values)
+        end
+      end
+      
+      # Result of the reidentifiability analysis. Note that these results are an
+      # estimation, not exact values.
+      class GooglePrivacyDlpV2beta1KMapEstimationResult
+        include Google::Apis::Core::Hashable
+      
+        # The intervals [min_anonymity, max_anonymity] do not overlap. If a value
+        # doesn't correspond to any such interval, the associated frequency is
+        # zero. For example, the following records:
+        # `min_anonymity: 1, max_anonymity: 1, frequency: 17`
+        # `min_anonymity: 2, max_anonymity: 3, frequency: 42`
+        # `min_anonymity: 5, max_anonymity: 10, frequency: 99`
+        # mean that there are no record with an estimated anonymity of 4, 5, or
+        # larger than 10.
+        # Corresponds to the JSON property `kMapEstimationHistogram`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket>]
+        attr_accessor :k_map_estimation_histogram
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @k_map_estimation_histogram = args[:k_map_estimation_histogram] if args.key?(:k_map_estimation_histogram)
+        end
+      end
+      
       # A unique identifier for a Datastore entity.
       # If a key's partition ID or any of its path kinds or names are
       # reserved/read-only, the key is reserved/read-only.
@@ -2483,6 +2662,16 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityConfig]
         attr_accessor :k_anonymity_config
       
+        # Reidentifiability metric. This corresponds to a risk model similar to what
+        # is called "journalist risk" in the literature, except the attack dataset is
+        # statistically modeled instead of being perfectly known. This can be done
+        # using publicly available data (like the US Census), or using a custom
+        # statistical model (indicated as one or several BigQuery tables), or by
+        # extrapolating from the distribution of values in the input dataset.
+        # Corresponds to the JSON property `kMapEstimationConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationConfig]
+        attr_accessor :k_map_estimation_config
+      
         # l-diversity metric, used for analysis of reidentification risk.
         # Corresponds to the JSON property `lDiversityConfig`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityConfig]
@@ -2502,6 +2691,7 @@ module Google
         def update!(**args)
           @categorical_stats_config = args[:categorical_stats_config] if args.key?(:categorical_stats_config)
           @k_anonymity_config = args[:k_anonymity_config] if args.key?(:k_anonymity_config)
+          @k_map_estimation_config = args[:k_map_estimation_config] if args.key?(:k_map_estimation_config)
           @l_diversity_config = args[:l_diversity_config] if args.key?(:l_diversity_config)
           @numerical_stats_config = args[:numerical_stats_config] if args.key?(:numerical_stats_config)
         end
@@ -2543,6 +2733,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A quasi-identifier column has a custom_tag, used to know which column
+      # in the data corresponds to which column in the statistical model.
+      class GooglePrivacyDlpV2beta1QuasiIdField
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customTag`
+        # @return [String]
+        attr_accessor :custom_tag
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
+          @field = args[:field] if args.key?(:field)
         end
       end
       
@@ -2850,6 +3066,12 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityResult]
         attr_accessor :k_anonymity_result
       
+        # Result of the reidentifiability analysis. Note that these results are an
+        # estimation, not exact values.
+        # Corresponds to the JSON property `kMapEstimationResult`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationResult]
+        attr_accessor :k_map_estimation_result
+      
         # Result of the l-diversity computation.
         # Corresponds to the JSON property `lDiversityResult`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityResult]
@@ -2868,6 +3090,7 @@ module Google
         def update!(**args)
           @categorical_stats_result = args[:categorical_stats_result] if args.key?(:categorical_stats_result)
           @k_anonymity_result = args[:k_anonymity_result] if args.key?(:k_anonymity_result)
+          @k_map_estimation_result = args[:k_map_estimation_result] if args.key?(:k_map_estimation_result)
           @l_diversity_result = args[:l_diversity_result] if args.key?(:l_diversity_result)
           @numerical_stats_result = args[:numerical_stats_result] if args.key?(:numerical_stats_result)
         end
@@ -2998,6 +3221,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_index = args[:row_index] if args.key?(:row_index)
+        end
+      end
+      
+      # A column with a semantic tag attached.
+      class GooglePrivacyDlpV2beta1TaggedField
+        include Google::Apis::Core::Hashable
+      
+        # A column can be tagged with a custom tag. In this case, the user must
+        # indicate an auxiliary table that contains statistical information on
+        # the possible values of this column (below).
+        # Corresponds to the JSON property `customTag`
+        # @return [String]
+        attr_accessor :custom_tag
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        # A generic empty message that you can re-use to avoid defining duplicated
+        # empty messages in your APIs. A typical example is to use it as the request
+        # or the response type of an API method. For instance:
+        # service Foo `
+        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+        # `
+        # The JSON representation for `Empty` is empty JSON object ````.
+        # Corresponds to the JSON property `inferred`
+        # @return [Google::Apis::DlpV2beta1::GoogleProtobufEmpty]
+        attr_accessor :inferred
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
+          @field = args[:field] if args.key?(:field)
+          @inferred = args[:inferred] if args.key?(:inferred)
+          @info_type = args[:info_type] if args.key?(:info_type)
         end
       end
       
