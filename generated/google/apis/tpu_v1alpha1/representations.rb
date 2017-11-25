@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReimageNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -175,6 +187,19 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class ReimageNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tensorflow_version, as: 'tensorflowVersion'
+        end
+      end
+      
+      class ResetNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

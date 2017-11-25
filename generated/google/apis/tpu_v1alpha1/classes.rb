@@ -454,6 +454,38 @@ module Google
         end
       end
       
+      # Request for ReimageNode.
+      class ReimageNodeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The version for reimage to create.
+        # Corresponds to the JSON property `tensorflowVersion`
+        # @return [String]
+        attr_accessor :tensorflow_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tensorflow_version = args[:tensorflow_version] if args.key?(:tensorflow_version)
+        end
+      end
+      
+      # Request for ResetNode.
+      class ResetNodeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by
       # [gRPC](https://github.com/grpc). The error model is designed to be:

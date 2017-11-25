@@ -251,8 +251,7 @@ module Google
         # Reimage a node's OS.
         # @param [String] name
         #   The resource name.
-        # @param [String] tensorflow_version
-        #   The version for reimage to create.
+        # @param [Google::Apis::TpuV1alpha1::ReimageNodeRequest] reimage_node_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -270,12 +269,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reimage_project_location_node(name, tensorflow_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def reimage_project_location_node(name, reimage_node_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1alpha1/{+name}:reimage', options)
+          command.request_representation = Google::Apis::TpuV1alpha1::ReimageNodeRequest::Representation
+          command.request_object = reimage_node_request_object
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Operation
           command.params['name'] = name unless name.nil?
-          command.query['tensorflowVersion'] = tensorflow_version unless tensorflow_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -284,6 +284,7 @@ module Google
         # Resets a node, which stops and starts the VM.
         # @param [String] name
         #   The resource name.
+        # @param [Google::Apis::TpuV1alpha1::ResetNodeRequest] reset_node_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -301,8 +302,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_project_location_node(name, fields: nil, quota_user: nil, options: nil, &block)
+        def reset_project_location_node(name, reset_node_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1alpha1/{+name}:reset', options)
+          command.request_representation = Google::Apis::TpuV1alpha1::ResetNodeRequest::Representation
+          command.request_object = reset_node_request_object
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Operation
           command.params['name'] = name unless name.nil?
