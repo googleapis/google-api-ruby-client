@@ -1,3 +1,11 @@
+# 0.17.3
+* Backwards compatible changes:
+  * Added `oslogin_v1`
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `dlp_v2beta1`
+  * Updated `tpu_v1alpha1`
+  * Updated `vault_v1`
+
 # 0.17.2
 * Backwards compatible changes:
   * Added `dialogflow_v2beta1`
