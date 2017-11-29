@@ -694,6 +694,231 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a new uptime check configuration.
+        # @param [String] parent
+        #   The project in which to create the uptime check. The format is:projects/[
+        #   PROJECT_ID].
+        # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::UptimeCheckConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::UptimeCheckConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_uptime_check_config(parent, uptime_check_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+parent}/uptimeCheckConfigs', options)
+          command.request_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
+          command.request_object = uptime_check_config_object
+          command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
+          command.response_class = Google::Apis::MonitoringV3::UptimeCheckConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an uptime check configuration. Note that this method will fail if the
+        # uptime check configuration is referenced by an alert policy or other dependent
+        # configs that would be rendered invalid by the deletion.
+        # @param [String] name
+        #   The uptime check configuration to delete. The format isprojects/[PROJECT_ID]/
+        #   uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_uptime_check_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single uptime check configuration.
+        # @param [String] name
+        #   The uptime check configuration to retrieve. The format isprojects/[PROJECT_ID]/
+        #   uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::UptimeCheckConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::UptimeCheckConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_uptime_check_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
+          command.response_class = Google::Apis::MonitoringV3::UptimeCheckConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing valid uptime check configurations for the project, leaving
+        # out any invalid configurations.
+        # @param [String] parent
+        #   The project whose uptime check configurations are listed. The format
+        #   isprojects/[PROJECT_ID].
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. The server may
+        #   further constrain the maximum number of results returned in a single page. If
+        #   the page_size is <=0, the server will decide the number of results to be
+        #   returned.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return more results from the previous method call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_uptime_check_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+parent}/uptimeCheckConfigs', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an uptime check configuration. You can either replace the entire
+        # configuration with a new one or replace only certain fields in the current
+        # configuration by specifying the fields to be updated via "updateMask". Returns
+        # the updated configuration.
+        # @param [String] name
+        #   A unique resource name for this UptimeCheckConfig. The format is:projects/[
+        #   PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted
+        #   when creating the uptime check configuration; on create, the resource name is
+        #   assigned by the server and included in the response.
+        # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
+        # @param [String] update_mask
+        #   Optional. If present, only the listed fields in the current uptime check
+        #   configuration are updated with values from the new configuration. If this
+        #   field is empty, then the current configuration is completely replaced with the
+        #   new configuration.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::UptimeCheckConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::UptimeCheckConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_uptime_check_config(name, uptime_check_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
+          command.request_object = uptime_check_config_object
+          command.response_representation = Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
+          command.response_class = Google::Apis::MonitoringV3::UptimeCheckConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of IPs that checkers run from
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. The server may
+        #   further constrain the maximum number of results returned in a single page. If
+        #   the page_size is <=0, the server will decide the number of results to be
+        #   returned. NOTE: this field is not yet implemented
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return more results from the previous method call. NOTE: this field is not
+        #   yet implemented
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListUptimeCheckIpsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListUptimeCheckIpsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_uptime_check_ips(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/uptimeCheckIps', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListUptimeCheckIpsResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListUptimeCheckIpsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

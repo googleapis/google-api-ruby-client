@@ -403,7 +403,8 @@ module Google
         # indicates an estimated greater likelihood that the recognized words are
         # correct. This field is typically provided only for the top hypothesis, and
         # only for `is_final=true` results. Clients should not rely on the
-        # `confidence` field as it is not guaranteed to be accurate or consistent.
+        # `confidence` field as it is not guaranteed to be accurate, or even set, in
+        # any of the results.
         # The default of 0.0 is a sentinel value indicating `confidence` was not set.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
@@ -443,6 +444,13 @@ module Google
         # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
+        # For multi-channel audio, this is the channel number corresponding to the
+        # recognized result for the audio from that channel.
+        # For audio_channel_count = N, its output values can range from '0' to 'N-1'.
+        # Corresponds to the JSON property `channelTag`
+        # @return [Fixnum]
+        attr_accessor :channel_tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -450,6 +458,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
+          @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
         end
       end
       

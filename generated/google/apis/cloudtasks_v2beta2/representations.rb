@@ -361,7 +361,7 @@ module Google
       class ListQueuesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, :base64 => true, as: 'nextPageToken'
+          property :next_page_token, as: 'nextPageToken'
           collection :queues, as: 'queues', class: Google::Apis::CloudtasksV2beta2::Queue, decorator: Google::Apis::CloudtasksV2beta2::Queue::Representation
       
         end
@@ -370,7 +370,7 @@ module Google
       class ListTasksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, :base64 => true, as: 'nextPageToken'
+          property :next_page_token, as: 'nextPageToken'
           collection :tasks, as: 'tasks', class: Google::Apis::CloudtasksV2beta2::Task, decorator: Google::Apis::CloudtasksV2beta2::Task::Representation
       
         end
@@ -467,11 +467,11 @@ module Google
           property :pull_target, as: 'pullTarget', class: Google::Apis::CloudtasksV2beta2::PullTarget, decorator: Google::Apis::CloudtasksV2beta2::PullTarget::Representation
       
           property :purge_time, as: 'purgeTime'
-          property :queue_state, as: 'queueState'
           property :rate_limits, as: 'rateLimits', class: Google::Apis::CloudtasksV2beta2::RateLimits, decorator: Google::Apis::CloudtasksV2beta2::RateLimits::Representation
       
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2beta2::RetryConfig, decorator: Google::Apis::CloudtasksV2beta2::RetryConfig::Representation
       
+          property :state, as: 'state'
         end
       end
       
@@ -487,7 +487,7 @@ module Google
       class RenewLeaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_lease_duration, as: 'newLeaseDuration'
+          property :lease_duration, as: 'leaseDuration'
           property :response_view, as: 'responseView'
           property :schedule_time, as: 'scheduleTime'
         end

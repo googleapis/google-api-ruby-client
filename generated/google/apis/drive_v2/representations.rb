@@ -990,6 +990,8 @@ module Google
           property :capabilities, as: 'capabilities', class: Google::Apis::DriveV2::TeamDrive::Capabilities, decorator: Google::Apis::DriveV2::TeamDrive::Capabilities::Representation
       
           property :color_rgb, as: 'colorRgb'
+          property :created_date, as: 'createdDate', type: DateTime
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'

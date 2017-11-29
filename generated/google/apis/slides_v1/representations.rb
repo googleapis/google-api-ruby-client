@@ -1680,6 +1680,7 @@ module Google
       class ShapeProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_alignment, as: 'contentAlignment'
           property :link, as: 'link', class: Google::Apis::SlidesV1::Link, decorator: Google::Apis::SlidesV1::Link::Representation
       
           property :outline, as: 'outline', class: Google::Apis::SlidesV1::Outline, decorator: Google::Apis::SlidesV1::Outline::Representation
@@ -1843,6 +1844,7 @@ module Google
       class TableCellProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_alignment, as: 'contentAlignment'
           property :table_cell_background_fill, as: 'tableCellBackgroundFill', class: Google::Apis::SlidesV1::TableCellBackgroundFill, decorator: Google::Apis::SlidesV1::TableCellBackgroundFill::Representation
       
         end

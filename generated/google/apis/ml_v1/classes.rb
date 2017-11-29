@@ -279,7 +279,6 @@ module Google
       end
       
       # Represents a training or prediction job.
-      # Next ID: 16
       class GoogleCloudMlV1Job
         include Google::Apis::Core::Hashable
       
@@ -298,10 +297,31 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a job from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform job updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `GetJob`, and
+        # systems are expected to put that etag in the request to `UpdateJob` to
+        # ensure that their change will be applied to the same version of the job.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
         # Required. The user-specified id of the job.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
+      
+        # Optional. One or more labels that you can add, to organize your jobs.
+        # Each label is a key-value pair, where both the key and the value are
+        # arbitrary strings that you supply.
+        # For more information, see the documentation on
+        # <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Represents input parameters for a prediction job.
         # Corresponds to the JSON property `predictionInput`
@@ -342,7 +362,9 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_message = args[:error_message] if args.key?(:error_message)
+          @etag = args[:etag] if args.key?(:etag)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @labels = args[:labels] if args.key?(:labels)
           @prediction_input = args[:prediction_input] if args.key?(:prediction_input)
           @prediction_output = args[:prediction_output] if args.key?(:prediction_output)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -456,7 +478,6 @@ module Google
       # A model can have multiple versions, each of which is a deployed, trained
       # model ready to receive prediction requests. The model itself is just a
       # container.
-      # Next ID: 8
       class GoogleCloudMlV1Model
         include Google::Apis::Core::Hashable
       
@@ -466,7 +487,6 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 19
         # LINT.IfChange
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
@@ -476,6 +496,27 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a model from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform model updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `GetModel`, and
+        # systems are expected to put that etag in the request to `UpdateModel` to
+        # ensure that their change will be applied to the model as intended.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. One or more labels that you can add, to organize your models.
+        # Each label is a key-value pair, where both the key and the value are
+        # arbitrary strings that you supply.
+        # For more information, see the documentation on
+        # <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Required. The name specified for the model when it was created.
         # The model name must be unique within the project it is created in.
@@ -511,6 +552,8 @@ module Google
         def update!(**args)
           @default_version = args[:default_version] if args.key?(:default_version)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @online_prediction_logging = args[:online_prediction_logging] if args.key?(:online_prediction_logging)
           @regions = args[:regions] if args.key?(:regions)
@@ -518,7 +561,6 @@ module Google
       end
       
       # Represents the metadata of the long-running operation.
-      # Next ID: 9
       class GoogleCloudMlV1OperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -537,6 +579,12 @@ module Google
         # @return [Boolean]
         attr_accessor :is_cancellation_requested
         alias_method :is_cancellation_requested?, :is_cancellation_requested
+      
+        # The user labels, inherited from the model or the model version being
+        # operated on.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Contains the name of the model associated with the operation.
         # Corresponds to the JSON property `modelName`
@@ -559,7 +607,6 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # Next ID: 19
         # LINT.IfChange
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
@@ -574,6 +621,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @is_cancellation_requested = args[:is_cancellation_requested] if args.key?(:is_cancellation_requested)
+          @labels = args[:labels] if args.key?(:labels)
           @model_name = args[:model_name] if args.key?(:model_name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -1066,15 +1114,34 @@ module Google
         # <dt>standard_gpu</dt>
         # <dd>
         # A machine equivalent to <code suppresswarning="true">standard</code> that
-        # also includes a
+        # also includes a single NVIDIA Tesla K80 GPU. See more about
         # <a href="/ml-engine/docs/how-tos/using-gpus">
-        # GPU that you can use in your trainer</a>.
+        # using GPUs for training your model</a>.
         # </dd>
         # <dt>complex_model_m_gpu</dt>
         # <dd>
         # A machine equivalent to
         # <code suppresswarning="true">complex_model_m</code> that also includes
-        # four GPUs.
+        # four NVIDIA Tesla K80 GPUs.
+        # </dd>
+        # <dt>complex_model_l_gpu</dt>
+        # <dd>
+        # A machine equivalent to
+        # <code suppresswarning="true">complex_model_l</code> that also includes
+        # eight NVIDIA Tesla K80 GPUs.
+        # </dd>
+        # <dt>standard_p100</dt>
+        # <dd>
+        # A machine equivalent to <code suppresswarning="true">standard</code> that
+        # also includes a single NVIDIA Tesla P100 GPU. The availability of these
+        # GPUs is in the Alpha launch stage.
+        # </dd>
+        # <dt>complex_model_m_p100</dt>
+        # <dd>
+        # A machine equivalent to
+        # <code suppresswarning="true">complex_model_m</code> that also includes
+        # four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
+        # the Alpha launch stage.
         # </dd>
         # </dl>
         # You must set this value when `scaleTier` is set to `CUSTOM`.
@@ -1216,7 +1283,6 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # Next ID: 19
       # LINT.IfChange
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
@@ -1257,6 +1323,18 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
+        # `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of a model from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform model updates in order to avoid race
+        # conditions: An `etag` is returned in the response to `GetVersion`, and
+        # systems are expected to put that etag in the request to `UpdateVersion` to
+        # ensure that their change will be applied to the model as intended.
+        # Corresponds to the JSON property `etag`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :etag
+      
         # Output only. If true, this version will be used to handle prediction
         # requests that do not specify a version.
         # You can change the default version by calling
@@ -1266,6 +1344,15 @@ module Google
         # @return [Boolean]
         attr_accessor :is_default
         alias_method :is_default?, :is_default
+      
+        # Optional. One or more labels that you can add, to organize your model
+        # versions. Each label is a key-value pair, where both the key and the value
+        # are arbitrary strings that you supply.
+        # For more information, see the documentation on
+        # <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Output only. The time the version was last used for prediction.
         # Corresponds to the JSON property `lastUseTime`
@@ -1305,7 +1392,9 @@ module Google
           @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
           @description = args[:description] if args.key?(:description)
           @error_message = args[:error_message] if args.key?(:error_message)
+          @etag = args[:etag] if args.key?(:etag)
           @is_default = args[:is_default] if args.key?(:is_default)
+          @labels = args[:labels] if args.key?(:labels)
           @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
           @name = args[:name] if args.key?(:name)

@@ -1108,7 +1108,7 @@ module Google
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
         # When creating a new instance, one of initializeParams.sourceImage or disks.
-        # source is required.
+        # source is required except for local SSD.
         # If desired, you can also attach existing non-root persistent disks using this
         # property. This field is only applicable for persistent disks.
         # Note that for InstanceTemplate, specify the disk name, not the URL for the
@@ -1186,7 +1186,7 @@ module Google
         attr_accessor :disk_type
       
         # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or disks.source is required.
+        # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
         # image by its family name. For example, specify family/debian-8 to use the
         # latest Debian 8 image:
@@ -1880,7 +1880,7 @@ module Google
         # A filter string, compatible with a Stackdriver Monitoring filter string for
         # TimeSeries.list API call. This filter is used to select a specific TimeSeries
         # for the purpose of autoscaling and to determine whether the metric is
-        # exporting per-instance or global data.
+        # exporting per-instance or per-group data.
         # For the filter to be valid for autoscaling purposes, the following rules apply:
         # 
         # - You can only use the AND operator for joining selectors.
@@ -1895,7 +1895,8 @@ module Google
         # If the resource type is any other value, the autoscaler expects this metric to
         # contain values that apply to the entire autoscaled instance group and resource
         # label filtering can be performed to point autoscaler at the correct TimeSeries
-        # to scale upon. This is / called a global metric for the purpose of autoscaling.
+        # to scale upon. This is called a per-group metric for the purpose of
+        # autoscaling.
         # If not specified, the type defaults to gce_instance.
         # You should provide a filter that is selective enough to pick just one
         # TimeSeries for the autoscaled group or for each of the instances (if you are
@@ -1907,19 +1908,17 @@ module Google
         attr_accessor :filter
       
         # The identifier (type) of the Stackdriver Monitoring metric. The metric cannot
-        # have negative values and should be a utilization metric, which means that the
-        # number of virtual machines handling requests should increase or decrease
-        # proportionally to the metric.
+        # have negative values.
         # The metric must have a value type of INT64 or DOUBLE.
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # If scaling is based on a global metric value that represents the total amount
-        # of work to be done or resource usage, set this value to an amount assigned for
-        # a single instance of the scaled group. Autoscaler will keep the number of
-        # instances proportional to the value of this metric, the metric itself should
-        # not change value due to group resizing.
+        # If scaling is based on a per-group metric value that represents the total
+        # amount of work to be done or resource usage, set this value to an amount
+        # assigned for a single instance of the scaled group. Autoscaler will keep the
+        # number of instances proportional to the value of this metric, the metric
+        # itself should not change value due to group resizing.
         # A good metric to use with the target is for example pubsub.googleapis.com/
         # subscription/num_undelivered_messages or a custom metric exporting the total
         # number of requests coming to your instances.
@@ -1931,7 +1930,8 @@ module Google
         attr_accessor :single_instance_assignment
       
         # The target value of the metric that autoscaler should maintain. This must be a
-        # positive value.
+        # positive value. A utilization metric scales number of virtual machines
+        # handling requests to increase or decrease proportionally to the metric.
         # For example, a good metric to use as a utilization_target is compute.
         # googleapis.com/instance/network/received_bytes_count. The autoscaler will work
         # to keep this value constant for each of the instances.
@@ -3949,6 +3949,18 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
+        # A list of features to enable on the guest OS. Applicable for bootable disks
+        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
+        # which allows each virtual CPU to have its own queue. For Windows disks, you
+        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
+        # 1621 or higher. Linux disks with kernel versions 3.17 and higher will support
+        # VIRTIO_SCSI_MULTIQUEUE.
+        # For newer Windows images, the server might also populate this property with
+        # the value WINDOWS to indicate that this is a Windows image.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -4142,6 +4154,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -5115,6 +5128,15 @@ module Google
         # @return [String]
         attr_accessor :direction
       
+        # Denotes whether the firewall rule is disabled, i.e not applied to the network
+        # it is associated with. When set to true, the firewall rule is not enforced and
+        # the network behaves as if it did not exist. If this is unspecified, the
+        # firewall rule will be enabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # This field denotes whether to enable logging for a particular firewall rule.
         # If logging is enabled, logs will be exported to the configured export
         # destination for all firewall logs in the network. Logs may be exported to
@@ -5221,10 +5243,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_service_accounts
       
-        # A list of instance tags indicating sets of instances located in the network
-        # that may make network connections as specified in allowed[]. If no targetTags
-        # are specified, the firewall rule applies to all instances on the specified
-        # network.
+        # A list of tags that controls which instances the firewall rule applies to. If
+        # targetTags are specified, then the firewall rule applies only to instances in
+        # the VPC network that have one of those tags. If no targetTags are specified,
+        # the firewall rule applies to all instances on the specified network.
         # Corresponds to the JSON property `targetTags`
         # @return [Array<String>]
         attr_accessor :target_tags
@@ -5241,6 +5263,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @destination_ranges = args[:destination_ranges] if args.key?(:destination_ranges)
           @direction = args[:direction] if args.key?(:direction)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -5482,16 +5505,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The IP address that this forwarding rule is serving on behalf of.
-        # For global forwarding rules, the address must be a global IP. For regional
-        # forwarding rules, the address must live in the same region as the forwarding
-        # rule. By default, this field is empty and an ephemeral IPv4 address from the
-        # same scope (global or regional) will be assigned. A regional forwarding rule
-        # supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
+        # Addresses are restricted based on the forwarding rule's load balancing scheme (
+        # EXTERNAL or INTERNAL) and scope (global or regional).
+        # When the load balancing scheme is EXTERNAL, for global forwarding rules, the
+        # address must be a global IP, and for regional forwarding rules, the address
+        # must live in the same region as the forwarding rule. If this field is empty,
+        # an ephemeral IPv4 address from the same scope (global or regional) will be
+        # assigned. A regional forwarding rule supports IPv4 only. A global forwarding
+        # rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
-        # address belonging to the network/subnetwork configured for the forwarding rule.
-        # A reserved address cannot be used. If the field is empty, the IP address will
-        # be automatically allocated from the internal IP range of the subnetwork or
-        # network configured for this forwarding rule.
+        # address belonging to the network/subnet configured for the forwarding rule. By
+        # default, if this field is empty, an ephemeral internal IP address will be
+        # automatically allocated from the IP range of the subnet or network configured
+        # for this forwarding rule.
+        # An address can be specified either by a literal IP address or a URL reference
+        # to an existing Address resource. The following examples are all valid:
+        # - 100.1.2.3
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
+        # addresses/address
+        # - projects/project/regions/region/addresses/address
+        # - regions/region/addresses/address
+        # - global/addresses/address
+        # - address
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -8537,6 +8572,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Maintenance policies applied to this instance.
+        # Corresponds to the JSON property `maintenancePolicies`
+        # @return [Array<String>]
+        attr_accessor :maintenance_policies
+      
         # A metadata key/value entry.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ComputeAlpha::Metadata]
@@ -8634,6 +8674,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
@@ -9231,7 +9272,7 @@ module Google
       
         # Stateful configuration for this Instanced Group Manager
         # Corresponds to the JSON property `statefulPolicy`
-        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatefulPolicy]
+        # @return [Google::Apis::ComputeAlpha::StatefulPolicy]
         attr_accessor :stateful_policy
       
         # The URLs for all TargetPool resources to which instances in the instanceGroup
@@ -9758,45 +9799,6 @@ module Google
           @deleting = args[:deleting] if args.key?(:deleting)
           @recreating = args[:recreating] if args.key?(:recreating)
           @restarting = args[:restarting] if args.key?(:restarting)
-        end
-      end
-      
-      # 
-      class InstanceGroupManagerStatefulPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Disks created on the instances that will be preserved on instance delete,
-        # resize down, etc.
-        # Corresponds to the JSON property `preservedDisks`
-        # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerStatefulPolicyDiskPolicy>]
-        attr_accessor :preserved_disks
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @preserved_disks = args[:preserved_disks] if args.key?(:preserved_disks)
-        end
-      end
-      
-      # 
-      class InstanceGroupManagerStatefulPolicyDiskPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Device name of the disk to be preserved
-        # Corresponds to the JSON property `deviceName`
-        # @return [String]
-        attr_accessor :device_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device_name = args[:device_name] if args.key?(:device_name)
         end
       end
       
@@ -11512,7 +11514,7 @@ module Google
       end
       
       # Protocol definitions for Mixer API to support Interconnect. Next available tag:
-      # 23
+      # 25
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -11531,14 +11533,6 @@ module Google
         # Corresponds to the JSON property `circuitInfos`
         # @return [Array<Google::Apis::ComputeAlpha::InterconnectCircuitInfo>]
         attr_accessor :circuit_infos
-      
-        # [Output Only] URL to retrieve the Letter Of Authority and Customer Facility
-        # Assignment (LOA-CFA) documentation relating to this Interconnect. This
-        # documentation authorizes the facility provider to connect to the specified
-        # crossconnect ports.
-        # Corresponds to the JSON property `connectionAuthorization`
-        # @return [String]
-        attr_accessor :connection_authorization
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -11663,7 +11657,6 @@ module Google
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
           @circuit_infos = args[:circuit_infos] if args.key?(:circuit_infos)
-          @connection_authorization = args[:connection_authorization] if args.key?(:connection_authorization)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @description = args[:description] if args.key?(:description)
@@ -11687,7 +11680,7 @@ module Google
       end
       
       # Protocol definitions for Mixer API to support InterconnectAttachment. Next
-      # available tag: 18
+      # available tag: 23
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -12552,11 +12545,6 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Scope key for the region of this location.
-        # Corresponds to the JSON property `regionKey`
-        # @return [String]
-        attr_accessor :region_key
-      
         def initialize(**args)
            update!(**args)
         end
@@ -12566,7 +12554,6 @@ module Google
           @expected_rtt_ms = args[:expected_rtt_ms] if args.key?(:expected_rtt_ms)
           @location_presence = args[:location_presence] if args.key?(:location_presence)
           @region = args[:region] if args.key?(:region)
-          @region_key = args[:region_key] if args.key?(:region_key)
         end
       end
       
@@ -19269,6 +19256,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfig]
         attr_accessor :config
       
+        # Represents an expression text. Example:
+        # title: "User account presence" description: "Determines whether the request
+        # has a user account" expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `expr`
+        # @return [Google::Apis::ComputeAlpha::Expr]
+        attr_accessor :expr
+      
         # CIDR IP address range. Only IPv4 is supported.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
@@ -19294,6 +19288,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @expr = args[:expr] if args.key?(:expr)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
@@ -20222,6 +20217,71 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+        end
+      end
+      
+      # 
+      class StatefulPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Disks created on the instances that will be preserved on instance delete,
+        # resize down, etc. DEPRECATED in favor of preservedResources.disks field.
+        # Corresponds to the JSON property `preservedDisks`
+        # @return [Array<Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk>]
+        attr_accessor :preserved_disks
+      
+        # Configuration of all preserved resources.
+        # Corresponds to the JSON property `preservedResources`
+        # @return [Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources]
+        attr_accessor :preserved_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preserved_disks = args[:preserved_disks] if args.key?(:preserved_disks)
+          @preserved_resources = args[:preserved_resources] if args.key?(:preserved_resources)
+        end
+      end
+      
+      # 
+      class StatefulPolicyPreservedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Device name of the disk to be preserved
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_name = args[:device_name] if args.key?(:device_name)
+        end
+      end
+      
+      # Configuration of all preserved resources.
+      class StatefulPolicyPreservedResources
+        include Google::Apis::Core::Hashable
+      
+        # Disks created on the instances that will be preserved on instance delete,
+        # resize down, etc.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk>]
+        attr_accessor :disks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
         end
       end
       

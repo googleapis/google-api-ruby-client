@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetryBuildRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,9 @@ module Google
       class BuildOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :log_streaming_option, as: 'logStreamingOption'
+          property :machine_type, as: 'machineType'
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'
@@ -326,6 +335,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch_name, as: 'branchName'
           property :commit_sha, as: 'commitSha'
+          property :dir, as: 'dir'
           property :project_id, as: 'projectId'
           property :repo_name, as: 'repoName'
           property :tag_name, as: 'tagName'
@@ -338,6 +348,12 @@ module Google
           collection :build_step_images, as: 'buildStepImages'
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
       
+        end
+      end
+      
+      class RetryBuildRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

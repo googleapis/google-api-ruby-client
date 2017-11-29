@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20171004'
+      REVISION = '20171028'
 
       # View and manage announcements in Google Classroom
       AUTH_CLASSROOM_ANNOUNCEMENTS = 'https://www.googleapis.com/auth/classroom.announcements'
@@ -65,6 +65,9 @@ module Google
 
       # View the profile photos of people in your classes
       AUTH_CLASSROOM_PROFILE_PHOTOS = 'https://www.googleapis.com/auth/classroom.profile.photos'
+
+      # Receive notifications about your Google Classroom data
+      AUTH_CLASSROOM_PUSH_NOTIFICATIONS = 'https://www.googleapis.com/auth/classroom.push-notifications'
 
       # Manage your Google Classroom class rosters
       AUTH_CLASSROOM_ROSTERS = 'https://www.googleapis.com/auth/classroom.rosters'

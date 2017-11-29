@@ -294,7 +294,9 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :error_message, as: 'errorMessage'
+          property :etag, :base64 => true, as: 'etag'
           property :job_id, as: 'jobId'
+          hash :labels, as: 'labels'
           property :prediction_input, as: 'predictionInput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput::Representation
       
           property :prediction_output, as: 'predictionOutput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput::Representation
@@ -348,6 +350,8 @@ module Google
           property :default_version, as: 'defaultVersion', class: Google::Apis::MlV1::GoogleCloudMlV1Version, decorator: Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
       
           property :description, as: 'description'
+          property :etag, :base64 => true, as: 'etag'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :online_prediction_logging, as: 'onlinePredictionLogging'
           collection :regions, as: 'regions'
@@ -360,6 +364,7 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :is_cancellation_requested, as: 'isCancellationRequested'
+          hash :labels, as: 'labels'
           property :model_name, as: 'modelName'
           property :operation_type, as: 'operationType'
           property :start_time, as: 'startTime'
@@ -461,7 +466,9 @@ module Google
           property :deployment_uri, as: 'deploymentUri'
           property :description, as: 'description'
           property :error_message, as: 'errorMessage'
+          property :etag, :base64 => true, as: 'etag'
           property :is_default, as: 'isDefault'
+          hash :labels, as: 'labels'
           property :last_use_time, as: 'lastUseTime'
           property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling::Representation
       

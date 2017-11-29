@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointsApiService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorHandler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,12 +197,6 @@ module Google
       end
       
       class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationMetadataExperimental
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -408,6 +408,14 @@ module Google
         end
       end
       
+      class EndpointsApiService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_id, as: 'configId'
+          property :name, as: 'name'
+        end
+      end
+      
       class ErrorHandler
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -602,17 +610,6 @@ module Google
         end
       end
       
-      class OperationMetadataExperimental
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :insert_time, as: 'insertTime'
-          property :method_prop, as: 'method'
-          property :target, as: 'target'
-          property :user, as: 'user'
-        end
-      end
-      
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -781,6 +778,8 @@ module Google
           property :default_expiration, as: 'defaultExpiration'
           property :deployer, as: 'deployer'
           property :deployment, as: 'deployment', class: Google::Apis::AppengineV1beta4::Deployment, decorator: Google::Apis::AppengineV1beta4::Deployment::Representation
+      
+          property :endpoints_api_service, as: 'endpointsApiService', class: Google::Apis::AppengineV1beta4::EndpointsApiService, decorator: Google::Apis::AppengineV1beta4::EndpointsApiService::Representation
       
           property :env, as: 'env'
           hash :env_variables, as: 'envVariables'

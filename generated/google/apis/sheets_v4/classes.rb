@@ -6012,8 +6012,7 @@ module Google
         # @return [String]
         attr_accessor :formula
       
-        # A name to use for the value. This is only used if formula was set.
-        # Otherwise, the column name is used.
+        # A name to use for the value.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

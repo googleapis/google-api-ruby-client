@@ -25,7 +25,7 @@ module Google
       # *
       # The RemoteConfig consists of a list of conditions (which can be
       # thought of as named "if" statements) and a map of parameters (parameter key
-      # to a stucture containing an optional default value, as well as a optional
+      # to a structure containing an optional default value, as well as a optional
       # submap of (condition name to value when that condition is true).
       class RemoteConfig
         include Google::Apis::Core::Hashable
@@ -74,6 +74,15 @@ module Google
       class RemoteConfigCondition
         include Google::Apis::Core::Hashable
       
+        # Optional.
+        # A description for this Condition. Length must be less than or equal to
+        # 100 characters (or more precisely, unicode code points, which is defined in
+        # java/com/google/wireless/android/config/ConstsExporter.java).
+        # A description may contain any Unicode characters
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required.
         # Corresponds to the JSON property `expression`
         # @return [String]
@@ -105,6 +114,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @expression = args[:expression] if args.key?(:expression)
           @name = args[:name] if args.key?(:name)
           @tag_color = args[:tag_color] if args.key?(:tag_color)
@@ -134,6 +144,15 @@ module Google
         # @return [Google::Apis::FirebaseremoteconfigV1::RemoteConfigParameterValue]
         attr_accessor :default_value
       
+        # Optional.
+        # A description for this Parameter. Length must be less than or equal to
+        # 100 characters (or more precisely, unicode code points, which is defined in
+        # java/com/google/wireless/android/config/ConstsExporter.java).
+        # A description may contain any Unicode characters
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         def initialize(**args)
            update!(**args)
         end
@@ -142,6 +161,7 @@ module Google
         def update!(**args)
           @conditional_values = args[:conditional_values] if args.key?(:conditional_values)
           @default_value = args[:default_value] if args.key?(:default_value)
+          @description = args[:description] if args.key?(:description)
         end
       end
       

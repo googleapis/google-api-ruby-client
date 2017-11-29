@@ -52,6 +52,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateDownloadUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateDownloadUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateUploadUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateUploadUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpsTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +107,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationMetadataV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -145,6 +175,7 @@ module Google
           property :source_repository, as: 'sourceRepository', class: Google::Apis::CloudfunctionsV1beta2::SourceRepository, decorator: Google::Apis::CloudfunctionsV1beta2::SourceRepository::Representation
       
           property :source_repository_url, as: 'sourceRepositoryUrl'
+          property :source_upload_url, as: 'sourceUploadUrl'
           property :status, as: 'status'
           property :timeout, as: 'timeout'
           property :update_time, as: 'updateTime'
@@ -168,6 +199,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :retry, as: 'retry', class: Google::Apis::CloudfunctionsV1beta2::Retry, decorator: Google::Apis::CloudfunctionsV1beta2::Retry::Representation
       
+        end
+      end
+      
+      class GenerateDownloadUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
+      class GenerateDownloadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_url, as: 'downloadUrl'
+        end
+      end
+      
+      class GenerateUploadUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GenerateUploadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upload_url, as: 'uploadUrl'
         end
       end
       
@@ -227,12 +285,24 @@ module Google
         end
       end
       
+      class OperationMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :request, as: 'request'
+          property :target, as: 'target'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+          property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
       class OperationMetadataV1Beta2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'
+          property :update_time, as: 'updateTime'
           property :version_id, :numeric_string => true, as: 'versionId'
         end
       end

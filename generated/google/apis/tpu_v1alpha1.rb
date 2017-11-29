@@ -12,23 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/playmoviespartner_v1/service.rb'
-require 'google/apis/playmoviespartner_v1/classes.rb'
-require 'google/apis/playmoviespartner_v1/representations.rb'
+require 'google/apis/tpu_v1alpha1/service.rb'
+require 'google/apis/tpu_v1alpha1/classes.rb'
+require 'google/apis/tpu_v1alpha1/representations.rb'
 
 module Google
   module Apis
-    # Google Play Movies Partner API
+    # Cloud TPU API
     #
-    # Gets the delivery status of titles for Google Play Movies Partners.
+    # TPU API provides customers with access to Google TPU technology.
     #
-    # @see https://developers.google.com/playmoviespartner/
-    module PlaymoviespartnerV1
-      VERSION = 'V1'
-      REVISION = '20170418'
+    # @see https://cloud.google.com/tpu/
+    module TpuV1alpha1
+      VERSION = 'V1alpha1'
+      REVISION = '20171121'
 
-      # View the digital assets you publish on Google Play Movies and TV
-      AUTH_PLAYMOVIES_PARTNER_READONLY = 'https://www.googleapis.com/auth/playmovies_partner.readonly'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

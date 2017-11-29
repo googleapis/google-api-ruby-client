@@ -91,7 +91,6 @@ module Google
           property :done, as: 'done'
           property :error, as: 'error', class: Google::Apis::ScriptV1::Status, decorator: Google::Apis::ScriptV1::Status::Representation
       
-          hash :metadata, as: 'metadata'
           hash :response, as: 'response'
         end
       end

@@ -286,7 +286,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerV2beta::CompositeTypeLabelEntry>]
         attr_accessor :labels
       
-        # Name of the composite type.
+        # Name of the composite type, must follow the expression: [a-z]([-a-z0-9_.]`0,61`
+        # [a-z0-9])?.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2008,6 +2009,11 @@ module Google
         # @return [String]
         attr_accessor :interpreter
       
+        # The filename of the mainTemplate
+        # Corresponds to the JSON property `mainTemplate`
+        # @return [String]
+        attr_accessor :main_template
+      
         # The contents of the template schema.
         # Corresponds to the JSON property `schema`
         # @return [String]
@@ -2026,6 +2032,7 @@ module Google
         def update!(**args)
           @imports = args[:imports] if args.key?(:imports)
           @interpreter = args[:interpreter] if args.key?(:interpreter)
+          @main_template = args[:main_template] if args.key?(:main_template)
           @schema = args[:schema] if args.key?(:schema)
           @template = args[:template] if args.key?(:template)
         end

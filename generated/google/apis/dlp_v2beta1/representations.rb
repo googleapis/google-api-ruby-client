@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1AuxiliaryTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1BigQueryOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1CustomInfoType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1DatastoreKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +215,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2beta1DeidentifyContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta1Dictionary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +376,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1KMapEstimationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1Key
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1QuasiIdField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1Range
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1TaggedField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1TimePartConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -623,6 +677,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2beta1ValueFrequency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta1WordList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -685,6 +745,18 @@ module Google
           property :privacy_metric, as: 'privacyMetric', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrivacyMetric, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrivacyMetric::Representation
       
           property :source_table, as: 'sourceTable', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1AuxiliaryTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :quasi_ids, as: 'quasiIds', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1QuasiIdField, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1QuasiIdField::Representation
+      
+          property :relative_frequency, as: 'relativeFrequency', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId::Representation
+      
+          property :table, as: 'table', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable::Representation
       
         end
       end
@@ -891,6 +963,16 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2beta1CustomInfoType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary::Representation
+      
+          property :info_type, as: 'infoType', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2beta1DatastoreKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -948,6 +1030,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ContentItem, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1ContentItem::Representation
       
           collection :summaries, as: 'summaries', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentificationSummary, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1DeidentificationSummary::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1Dictionary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :word_list, as: 'wordList', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1WordList, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1WordList::Representation
       
         end
       end
@@ -1098,6 +1188,8 @@ module Google
       class GooglePrivacyDlpV2beta1InspectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_info_types, as: 'customInfoTypes', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CustomInfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CustomInfoType::Representation
+      
           property :exclude_types, as: 'excludeTypes'
           property :include_quote, as: 'includeQuote'
           collection :info_type_limits, as: 'infoTypeLimits', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeLimit, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoTypeLimit::Representation
@@ -1194,6 +1286,45 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :equivalence_class_histogram_buckets, as: 'equivalenceClassHistogramBuckets', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityHistogramBucket, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityHistogramBucket::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auxiliary_tables, as: 'auxiliaryTables', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1AuxiliaryTable, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1AuxiliaryTable::Representation
+      
+          collection :quasi_ids, as: 'quasiIds', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TaggedField, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TaggedField::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_size, :numeric_string => true, as: 'bucketSize'
+          collection :bucket_values, as: 'bucketValues', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues::Representation
+      
+          property :max_anonymity, :numeric_string => true, as: 'maxAnonymity'
+          property :min_anonymity, :numeric_string => true, as: 'minAnonymity'
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_anonymity, :numeric_string => true, as: 'estimatedAnonymity'
+          collection :quasi_ids_values, as: 'quasiIdsValues', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1KMapEstimationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :k_map_estimation_histogram, as: 'kMapEstimationHistogram', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket::Representation
       
         end
       end
@@ -1392,6 +1523,8 @@ module Google
       
           property :k_anonymity_config, as: 'kAnonymityConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityConfig::Representation
       
+          property :k_map_estimation_config, as: 'kMapEstimationConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationConfig::Representation
+      
           property :l_diversity_config, as: 'lDiversityConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityConfig::Representation
       
           property :numerical_stats_config, as: 'numericalStatsConfig', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1NumericalStatsConfig, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1NumericalStatsConfig::Representation
@@ -1411,6 +1544,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1QuasiIdField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_tag, as: 'customTag'
+          property :field, as: 'field', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId::Representation
+      
         end
       end
       
@@ -1527,6 +1669,8 @@ module Google
       
           property :k_anonymity_result, as: 'kAnonymityResult', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityResult, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityResult::Representation
       
+          property :k_map_estimation_result, as: 'kMapEstimationResult', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationResult, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationResult::Representation
+      
           property :l_diversity_result, as: 'lDiversityResult', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityResult, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityResult::Representation
       
           property :numerical_stats_result, as: 'numericalStatsResult', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1NumericalStatsResult, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1NumericalStatsResult::Representation
@@ -1577,6 +1721,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :row_index, :numeric_string => true, as: 'rowIndex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1TaggedField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_tag, as: 'customTag'
+          property :field, as: 'field', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId::Representation
+      
+          property :inferred, as: 'inferred', class: Google::Apis::DlpV2beta1::GoogleProtobufEmpty, decorator: Google::Apis::DlpV2beta1::GoogleProtobufEmpty::Representation
+      
+          property :info_type, as: 'infoType', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType::Representation
+      
         end
       end
       
@@ -1640,6 +1797,13 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :value, as: 'value', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1WordList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :words, as: 'words'
         end
       end
       

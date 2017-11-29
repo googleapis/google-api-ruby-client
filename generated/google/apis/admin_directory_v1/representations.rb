@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppAccessCollections
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembersHasMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MobileDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -281,6 +293,18 @@ module Google
       end
       
       class Tokens
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustedAppId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustedApps
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -441,6 +465,20 @@ module Google
           collection :aliases, as: 'aliases'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class AppAccessCollections
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blocked_api_access_buckets, as: 'blockedApiAccessBuckets'
+          property :enforce_settings_for_android_drive, as: 'enforceSettingsForAndroidDrive'
+          property :error_message, as: 'errorMessage'
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          property :resource_id, :numeric_string => true, as: 'resourceId'
+          property :resource_name, as: 'resourceName'
+          property :trust_domain_owned_apps, as: 'trustDomainOwnedApps'
         end
       end
       
@@ -713,6 +751,13 @@ module Google
           collection :members, as: 'members', class: Google::Apis::AdminDirectoryV1::Member, decorator: Google::Apis::AdminDirectoryV1::Member::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class MembersHasMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_member, as: 'isMember'
         end
       end
       
@@ -998,6 +1043,28 @@ module Google
         end
       end
       
+      class TrustedAppId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_package_name, as: 'androidPackageName'
+          property :certificate_hash_sha1, as: 'certificateHashSHA1'
+          property :certificate_hash_sha256, as: 'certificateHashSHA256'
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class TrustedApps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :trusted_apps, as: 'trustedApps', class: Google::Apis::AdminDirectoryV1::TrustedAppId, decorator: Google::Apis::AdminDirectoryV1::TrustedAppId::Representation
+      
+        end
+      end
+      
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1209,6 +1276,7 @@ module Google
       class UserPosixAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :gecos, as: 'gecos'
           property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'

@@ -1587,6 +1587,12 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Indicates whether the tag is paused, which prevents the tag from firing.
+        # Corresponds to the JSON property `paused`
+        # @return [Boolean]
+        attr_accessor :paused
+        alias_method :paused?, :paused
+      
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `priority`
         # @return [Google::Apis::TagmanagerV2::Parameter]
@@ -1656,6 +1662,7 @@ module Google
           @parameter = args[:parameter] if args.key?(:parameter)
           @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
           @path = args[:path] if args.key?(:path)
+          @paused = args[:paused] if args.key?(:paused)
           @priority = args[:priority] if args.key?(:priority)
           @schedule_end_ms = args[:schedule_end_ms] if args.key?(:schedule_end_ms)
           @schedule_start_ms = args[:schedule_start_ms] if args.key?(:schedule_start_ms)

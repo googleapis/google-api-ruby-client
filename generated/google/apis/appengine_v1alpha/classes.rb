@@ -587,51 +587,6 @@ module Google
       end
       
       # Metadata for the given google.longrunning.Operation.
-      class OperationMetadataExperimental
-        include Google::Apis::Core::Hashable
-      
-        # Time that this operation completed.@OutputOnly
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Time that this operation was created.@OutputOnly
-        # Corresponds to the JSON property `insertTime`
-        # @return [String]
-        attr_accessor :insert_time
-      
-        # API method that initiated this operation. Example: google.appengine.
-        # experimental.CustomDomains.CreateCustomDomain.@OutputOnly
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :method_prop
-      
-        # Name of the resource that this operation is acting on. Example: apps/myapp/
-        # customDomains/example.com.@OutputOnly
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # User who requested this operation.@OutputOnly
-        # Corresponds to the JSON property `user`
-        # @return [String]
-        attr_accessor :user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @insert_time = args[:insert_time] if args.key?(:insert_time)
-          @method_prop = args[:method_prop] if args.key?(:method_prop)
-          @target = args[:target] if args.key?(:target)
-          @user = args[:user] if args.key?(:user)
-        end
-      end
-      
-      # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       

@@ -130,8 +130,6 @@ module Google
         # The app's request handler for the task's target URL must be able to handle
         # HTTP requests with this http_method, otherwise the task attempt will fail
         # with error code 405 (Method Not Allowed). See
-        # the Request-Line is not allowed for the resource identified by the
-        # Request-URI". See
         # [Writing a push task request handler](/appengine/docs/java/taskqueue/push/
         # creating-handlers#writing_a_push_task_request_handler)
         # and the documentation for the request handlers in the language your app is
@@ -211,7 +209,7 @@ module Google
         end
       end
       
-      # Deprecated. Use AppEngineTarget.
+      # Deprecated. Use AppEngineHttpTarget.
       class AppEngineQueueConfig
         include Google::Apis::Core::Hashable
       
@@ -250,8 +248,8 @@ module Google
       class AppEngineRouting
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The host that the task is sent to. For more information, see
+        # Output only. The host that the task is sent to.
+        # For more information, see
         # [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
         # routed).
         # The host is constructed as:
@@ -410,8 +408,7 @@ module Google
       class AttemptStatus
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The time that this attempt was dispatched.
+        # Output only. The time that this attempt was dispatched.
         # `dispatch_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `dispatchTime`
         # @return [String]
@@ -460,15 +457,13 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::Status]
         attr_accessor :response_status
       
-        # Output only.
-        # The time that this attempt response was received.
+        # Output only. The time that this attempt response was received.
         # `response_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `responseTime`
         # @return [String]
         attr_accessor :response_time
       
-        # Output only.
-        # The time that this attempt was scheduled.
+        # Output only. The time that this attempt was scheduled.
         # `schedule_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
@@ -668,7 +663,6 @@ module Google
         # If the next_page_token is empty, there are no more results.
         # The page token is valid for only 2 hours.
         # Corresponds to the JSON property `nextPageToken`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :next_page_token
       
@@ -698,7 +692,6 @@ module Google
         # ListTasksRequest.page_token.
         # If the next_page_token is empty, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :next_page_token
       
@@ -850,9 +843,14 @@ module Google
         # @return [String]
         attr_accessor :payload
       
-        # A meta-data tag for this task.
-        # This value is used by CloudTasks.PullTasks calls when
-        # PullTasksRequest.filter is `tag=<tag>`.
+        # The task's tag.
+        # Tags allow similar tasks to be processed in a batch. If you label
+        # tasks with a tag, your task worker can pull tasks
+        # with the same tag using PullTasksRequest.filter. For example,
+        # if you want to aggregate the events associated with a specific
+        # user once a day, you could tag tasks with the user ID.
+        # The task's tag can only be set when the
+        # task is created.
         # The tag must be less than 500 bytes.
         # Corresponds to the JSON property `tag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -1049,7 +1047,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineHttpTarget]
         attr_accessor :app_engine_http_target
       
-        # Deprecated. Use AppEngineTarget.
+        # Deprecated. Use AppEngineHttpTarget.
         # Corresponds to the JSON property `appEngineQueueConfig`
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineQueueConfig]
         attr_accessor :app_engine_queue_config
@@ -1057,13 +1055,14 @@ module Google
         # The queue name.
         # The queue name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        # * `PROJECT_ID` can contain uppercase and lowercase letters,
-        # numbers, hyphens, colons, and periods; that is, it must match
-        # the regular expression: `[a-zA-Z\\d-:\\.]+`.
-        # * `QUEUE_ID` can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-        # characters.
+        # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), colons (:), or periods (.).
+        # * `LOCATION_ID` is the canonical ID for the queue's location.
+        # The list of available locations can be obtained by calling
+        # google.cloud.location.Locations.ListLocations.
+        # For more information, see https://cloud.google.com/about/locations/.
+        # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        # hyphens (-). The maximum length is 100 characters.
         # Caller-specified and required in CreateQueueRequest, after which
         # it becomes output only.
         # Corresponds to the JSON property `name`
@@ -1080,9 +1079,9 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::PullTarget]
         attr_accessor :pull_target
       
-        # Output only.
-        # The last time this queue was purged. All tasks that were
-        # created before this time were purged.
+        # Output only. The last time this queue was purged.
+        # All tasks that were created before this time
+        # were purged.
         # A queue can be purged using CloudTasks.PurgeQueue, the
         # [App Engine Task Queue SDK, or the Cloud Console](/appengine/docs/standard/
         # python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue)
@@ -1092,16 +1091,6 @@ module Google
         # Corresponds to the JSON property `purgeTime`
         # @return [String]
         attr_accessor :purge_time
-      
-        # Output only.
-        # The state of the queue.
-        # `queue_state` can only be changed by called
-        # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-        # [queue.yaml](/appengine/docs/python/config/queueref).
-        # CloudTasks.UpdateQueue cannot be used to change `queue_state`.
-        # Corresponds to the JSON property `queueState`
-        # @return [String]
-        attr_accessor :queue_state
       
         # Rate limits.
         # This message determines the maximum rate that tasks can be dispatched by a
@@ -1116,6 +1105,15 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::RetryConfig]
         attr_accessor :retry_config
       
+        # Output only. The state of the queue.
+        # `state` can only be changed by called
+        # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
+        # [queue.yaml](/appengine/docs/python/config/queueref).
+        # CloudTasks.UpdateQueue cannot be used to change `state`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1128,9 +1126,9 @@ module Google
           @pull_queue_config = args[:pull_queue_config] if args.key?(:pull_queue_config)
           @pull_target = args[:pull_target] if args.key?(:pull_target)
           @purge_time = args[:purge_time] if args.key?(:purge_time)
-          @queue_state = args[:queue_state] if args.key?(:queue_state)
           @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1140,12 +1138,12 @@ module Google
       class RateLimits
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The max burst size limits how fast the queue is processed when
-        # many tasks are in the queue and the rate is high. This field
-        # allows the queue to have a high rate so processing starts shortly
-        # after a task is enqueued, but still limits resource usage when
-        # many tasks are enqueued in a short period of time.
+        # Output only. The max burst size.
+        # Max burst size limits how fast the queue is processed when many
+        # tasks are in the queue and the rate is high. This field allows
+        # the queue to have a high rate so processing starts shortly after
+        # a task is enqueued, but still limits resource usage when many
+        # tasks are enqueued in a short period of time.
         # * For App Engine queues, if
         # RateLimits.max_tasks_dispatched_per_second is 1, this
         # field is 10; otherwise this field is
@@ -1182,6 +1180,8 @@ module Google
         # The maximum allowed value is 500.
         # * For App Engine queues, this field is 1 by default.
         # * For pull queues, this field is output only and always 10,000.
+        # In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
+        # 10 QPS of CloudTasks.PullTasks requests are allowed per queue.
         # This field has the same meaning as
         # [rate in queue.yaml](/appengine/docs/standard/python/config/queueref#rate).
         # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
@@ -1207,10 +1207,10 @@ module Google
         # Required.
         # The desired new lease duration, starting from now.
         # The maximum lease duration is 1 week.
-        # `new_lease_duration` will be truncated to the nearest second.
-        # Corresponds to the JSON property `newLeaseDuration`
+        # `lease_duration` will be truncated to the nearest second.
+        # Corresponds to the JSON property `leaseDuration`
         # @return [String]
-        attr_accessor :new_lease_duration
+        attr_accessor :lease_duration
       
         # The response_view specifies which subset of the Task will be
         # returned.
@@ -1241,7 +1241,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @new_lease_duration = args[:new_lease_duration] if args.key?(:new_lease_duration)
+          @lease_duration = args[:lease_duration] if args.key?(:lease_duration)
           @response_view = args[:response_view] if args.key?(:response_view)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
         end
@@ -1287,11 +1287,19 @@ module Google
         # @return [String]
         attr_accessor :max_backoff
       
-        # The time between retries increases exponentially `max_doublings` times.
-        # `max_doublings` is maximum number of times that the interval between failed
-        # task retries will be doubled before the interval increases linearly.
-        # After max_doublings intervals, the retry interval will be
-        # 2^(max_doublings - 1) * RetryConfig.min_backoff.
+        # The time between retries will double `max_doublings` times.
+        # A task's retry interval starts at RetryConfig.min_backoff,
+        # then doubles `max_doublings` times, then increases linearly, and
+        # finally retries retries at intervals of
+        # RetryConfig.max_backoff up to max_attempts times.
+        # For example, if RetryConfig.min_backoff is 10s,
+        # RetryConfig.max_backoff is 300s, and `max_doublings` is 3,
+        # then the a task will first be retried in 10s. The retry interval
+        # will double three times, and then increase linearly by 2^3 * 10s.
+        # Finally, the task will retry at intervals of
+        # RetryConfig.max_backoff until the task has been attempted
+        # `max_attempts` times. Thus, the requests will retry at 10s, 20s,
+        # 40s, 80s, 160s, 240s, 300s, 300s, ....
         # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
         # this field is 16 by default.
         # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
@@ -1546,8 +1554,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineTaskTarget]
         attr_accessor :app_engine_task_target
       
-        # Output only.
-        # The time that the task was created.
+        # Output only. The time that the task was created.
         # `create_time` will be truncated to the nearest second.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1556,17 +1563,16 @@ module Google
         # The task name.
         # The task name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-        # * `PROJECT_ID` can contain uppercase and lowercase letters,
-        # numbers, hyphens, colons, and periods; that is, it must match
-        # the regular expression: `[a-zA-Z\\d-:\\.]+`.
-        # * `QUEUE_ID` can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-        # characters.
-        # * `TASK_ID` contain uppercase and lowercase letters, numbers,
-        # underscores, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d_-]+`. The maximum length is 500
-        # characters.
+        # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), colons (:), or periods (.).
+        # * `LOCATION_ID` is the canonical ID for the task's location.
+        # The list of available locations can be obtained by calling
+        # google.cloud.location.Locations.ListLocations.
+        # For more information, see https://cloud.google.com/about/locations/.
+        # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        # hyphens (-). The maximum length is 100 characters.
+        # * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
+        # hyphens (-), or underscores (_). The maximum length is 500 characters.
         # Optionally caller-specified in CreateTaskRequest.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1601,9 +1607,8 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::TaskStatus]
         attr_accessor :task_status
       
-        # Output only.
-        # The view specifies which subset of the Task has been
-        # returned.
+        # Output only. The view specifies which subset of the Task has
+        # been returned.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -1630,15 +1635,14 @@ module Google
       class TaskStatus
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The number of attempts dispatched. This count includes tasks which have
-        # been dispatched but haven't received a response.
+        # Output only. The number of attempts dispatched.
+        # This count includes tasks which have been dispatched but haven't
+        # received a response.
         # Corresponds to the JSON property `attemptDispatchCount`
         # @return [Fixnum]
         attr_accessor :attempt_dispatch_count
       
-        # Output only.
-        # The number of attempts which have received a response.
+        # Output only. The number of attempts which have received a response.
         # This field is not calculated for
         # [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
         # Corresponds to the JSON property `attemptResponseCount`

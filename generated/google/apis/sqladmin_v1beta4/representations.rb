@@ -88,6 +88,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DemoteMasterConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemoteMasterContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DemoteMasterMySqlReplicaConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -137,6 +155,12 @@ module Google
       end
       
       class CloneInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesDemoteMasterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -471,6 +495,37 @@ module Google
         end
       end
       
+      class DemoteMasterConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :mysql_replica_configuration, as: 'mysqlReplicaConfiguration', class: Google::Apis::SqladminV1beta4::DemoteMasterMySqlReplicaConfiguration, decorator: Google::Apis::SqladminV1beta4::DemoteMasterMySqlReplicaConfiguration::Representation
+      
+        end
+      end
+      
+      class DemoteMasterContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :master_instance_name, as: 'masterInstanceName'
+          property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1beta4::DemoteMasterConfiguration, decorator: Google::Apis::SqladminV1beta4::DemoteMasterConfiguration::Representation
+      
+        end
+      end
+      
+      class DemoteMasterMySqlReplicaConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :client_certificate, as: 'clientCertificate'
+          property :client_key, as: 'clientKey'
+          property :kind, as: 'kind'
+          property :password, as: 'password'
+          property :username, as: 'username'
+        end
+      end
+      
       class ExportContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -556,6 +611,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :clone_context, as: 'cloneContext', class: Google::Apis::SqladminV1beta4::CloneContext, decorator: Google::Apis::SqladminV1beta4::CloneContext::Representation
+      
+        end
+      end
+      
+      class InstancesDemoteMasterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :demote_master_context, as: 'demoteMasterContext', class: Google::Apis::SqladminV1beta4::DemoteMasterContext, decorator: Google::Apis::SqladminV1beta4::DemoteMasterContext::Representation
       
         end
       end

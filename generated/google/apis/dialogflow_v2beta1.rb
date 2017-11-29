@@ -12,26 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudmonitoring_v2beta2/service.rb'
-require 'google/apis/cloudmonitoring_v2beta2/classes.rb'
-require 'google/apis/cloudmonitoring_v2beta2/representations.rb'
+require 'google/apis/dialogflow_v2beta1/service.rb'
+require 'google/apis/dialogflow_v2beta1/classes.rb'
+require 'google/apis/dialogflow_v2beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Monitoring API
+    # Dialogflow API
     #
-    # Accesses Google Cloud Monitoring data.
+    # An end-to-end development suite for conversational interfaces (e.g., chatbots,
+    # voice-powered apps and devices).
     #
-    # @see https://cloud.google.com/monitoring/v2beta2/
-    module CloudmonitoringV2beta2
-      VERSION = 'V2beta2'
-      REVISION = '20170501'
+    # @see https://cloud.google.com/dialogflow-enterprise/
+    module DialogflowV2beta1
+      VERSION = 'V2beta1'
+      REVISION = '20171115'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View and write monitoring data for all of your Google and third-party Cloud and API projects
-      AUTH_MONITORING = 'https://www.googleapis.com/auth/monitoring'
     end
   end
 end

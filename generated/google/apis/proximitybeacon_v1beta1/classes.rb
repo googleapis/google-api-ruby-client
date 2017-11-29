@@ -66,6 +66,21 @@ module Google
         # @return [String]
         attr_accessor :data
       
+        # The distance away from the beacon at which this attachment should be
+        # delivered to a mobile app.
+        # Setting this to a value greater than zero indicates that the app should
+        # behave as if the beacon is "seen" when the mobile device is less than this
+        # distance away from the beacon.
+        # Different attachments on the same beacon can have different max distances.
+        # Note that even though this value is expressed with fractional meter
+        # precision, real-world behavior is likley to be much less precise than one
+        # meter, due to the nature of current Bluetooth radio technology.
+        # Optional. When not set or zero, the attachment should be delivered at the
+        # beacon's outer limit of detection.
+        # Corresponds to the JSON property `maxDistanceMeters`
+        # @return [Float]
+        attr_accessor :max_distance_meters
+      
         # Specifies what kind of attachment this is. Tells a client how to
         # interpret the `data` field. Format is <var>namespace/type</var>, for
         # example <code>scrupulous-wombat-12345/welcome-message</code>
@@ -80,6 +95,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data = args[:data] if args.key?(:data)
+          @max_distance_meters = args[:max_distance_meters] if args.key?(:max_distance_meters)
           @namespaced_type = args[:namespaced_type] if args.key?(:namespaced_type)
         end
       end
@@ -152,36 +168,6 @@ module Google
         # specified otherwise, this must conform to the
         # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
         # standard</a>. Values must be within normalized ranges.
-        # Example of normalization code in Python:
-        # def NormalizeLongitude(longitude):
-        # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-        # q, r = divmod(longitude, 360.0)
-        # if r > 180.0 or (r == 180.0 and q <= -1.0):
-        # return r - 360.0
-        # return r
-        # def NormalizeLatLng(latitude, longitude):
-        # """Wraps decimal degrees latitude and longitude to
-        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-        # r = latitude % 360.0
-        # if r <= 90.0:
-        # return r, NormalizeLongitude(longitude)
-        # elif r >= 270.0:
-        # return r - 360, NormalizeLongitude(longitude)
-        # else:
-        # return 180 - r, NormalizeLongitude(longitude + 180.0)
-        # assert 180.0 == NormalizeLongitude(180.0)
-        # assert -180.0 == NormalizeLongitude(-180.0)
-        # assert -179.0 == NormalizeLongitude(181.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-        # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-        # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-        # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-        # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::ProximitybeaconV1beta1::LatLng]
         attr_accessor :lat_lng
@@ -662,36 +648,6 @@ module Google
       # specified otherwise, this must conform to the
       # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
       # standard</a>. Values must be within normalized ranges.
-      # Example of normalization code in Python:
-      # def NormalizeLongitude(longitude):
-      # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-      # q, r = divmod(longitude, 360.0)
-      # if r > 180.0 or (r == 180.0 and q <= -1.0):
-      # return r - 360.0
-      # return r
-      # def NormalizeLatLng(latitude, longitude):
-      # """Wraps decimal degrees latitude and longitude to
-      # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-      # r = latitude % 360.0
-      # if r <= 90.0:
-      # return r, NormalizeLongitude(longitude)
-      # elif r >= 270.0:
-      # return r - 360, NormalizeLongitude(longitude)
-      # else:
-      # return 180 - r, NormalizeLongitude(longitude + 180.0)
-      # assert 180.0 == NormalizeLongitude(180.0)
-      # assert -180.0 == NormalizeLongitude(-180.0)
-      # assert -179.0 == NormalizeLongitude(181.0)
-      # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-      # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-      # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-      # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-      # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-      # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-      # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-      # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-      # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-      # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
       class LatLng
         include Google::Apis::Core::Hashable
       

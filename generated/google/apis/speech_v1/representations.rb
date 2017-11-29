@@ -211,6 +211,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alternatives, as: 'alternatives', class: Google::Apis::SpeechV1::SpeechRecognitionAlternative, decorator: Google::Apis::SpeechV1::SpeechRecognitionAlternative::Representation
       
+          property :channel_tag, as: 'channelTag'
         end
       end
       

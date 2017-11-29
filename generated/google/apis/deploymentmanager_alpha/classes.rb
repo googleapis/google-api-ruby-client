@@ -22,6 +22,31 @@ module Google
   module Apis
     module DeploymentmanagerAlpha
       
+      # Async options that determine when a resource should finish.
+      class AsyncOptions
+        include Google::Apis::Core::Hashable
+      
+        # Method regex where this policy will apply.
+        # Corresponds to the JSON property `methodMatch`
+        # @return [String]
+        attr_accessor :method_match
+      
+        # 
+        # Corresponds to the JSON property `pollingOptions`
+        # @return [Google::Apis::DeploymentmanagerAlpha::PollingOptions]
+        attr_accessor :polling_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_match = args[:method_match] if args.key?(:method_match)
+          @polling_options = args[:polling_options] if args.key?(:polling_options)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs.
@@ -248,7 +273,8 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::CompositeTypeLabelEntry>]
         attr_accessor :labels
       
-        # Name of the composite type.
+        # Name of the composite type, must follow the expression: [a-z]([-a-z0-9_.]`0,61`
+        # [a-z0-9])?.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -791,6 +817,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+        end
+      end
+      
+      # 
+      class Diagnostic
+        include Google::Apis::Core::Hashable
+      
+        # JsonPath expression on the resource that if non empty, indicates that this
+        # field needs to be extracted as a diagnostic.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Level to record this diagnostic.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @level = args[:level] if args.key?(:level)
         end
       end
       
@@ -1438,6 +1490,11 @@ module Google
       class Options
         include Google::Apis::Core::Hashable
       
+        # Options regarding how to thread async requests.
+        # Corresponds to the JSON property `asyncOptions`
+        # @return [Array<Google::Apis::DeploymentmanagerAlpha::AsyncOptions>]
+        attr_accessor :async_options
+      
         # The mappings that apply for requests.
         # Corresponds to the JSON property `inputMappings`
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::InputMapping>]
@@ -1461,6 +1518,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_options = args[:async_options] if args.key?(:async_options)
           @input_mappings = args[:input_mappings] if args.key?(:input_mappings)
           @name_property = args[:name_property] if args.key?(:name_property)
           @validation_options = args[:validation_options] if args.key?(:validation_options)
@@ -1542,6 +1600,51 @@ module Google
           @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
           @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class PollingOptions
+        include Google::Apis::Core::Hashable
+      
+        # An array of diagnostics to be collected by Deployment Manager, these
+        # diagnostics will be displayed to the user.
+        # Corresponds to the JSON property `diagnostics`
+        # @return [Array<Google::Apis::DeploymentmanagerAlpha::Diagnostic>]
+        attr_accessor :diagnostics
+      
+        # JsonPath expression that determines if the request failed.
+        # Corresponds to the JSON property `failCondition`
+        # @return [String]
+        attr_accessor :fail_condition
+      
+        # JsonPath expression that determines if the request is completed.
+        # Corresponds to the JSON property `finishCondition`
+        # @return [String]
+        attr_accessor :finish_condition
+      
+        # JsonPath expression that evaluates to string, it indicates where to poll.
+        # Corresponds to the JSON property `pollingLink`
+        # @return [String]
+        attr_accessor :polling_link
+      
+        # JsonPath expression, after polling is completed, indicates where to fetch the
+        # resource.
+        # Corresponds to the JSON property `targetLink`
+        # @return [String]
+        attr_accessor :target_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostics = args[:diagnostics] if args.key?(:diagnostics)
+          @fail_condition = args[:fail_condition] if args.key?(:fail_condition)
+          @finish_condition = args[:finish_condition] if args.key?(:finish_condition)
+          @polling_link = args[:polling_link] if args.key?(:polling_link)
+          @target_link = args[:target_link] if args.key?(:target_link)
         end
       end
       
@@ -2063,6 +2166,11 @@ module Google
         # @return [String]
         attr_accessor :interpreter
       
+        # The filename of the mainTemplate
+        # Corresponds to the JSON property `mainTemplate`
+        # @return [String]
+        attr_accessor :main_template
+      
         # The contents of the template schema.
         # Corresponds to the JSON property `schema`
         # @return [String]
@@ -2081,6 +2189,7 @@ module Google
         def update!(**args)
           @imports = args[:imports] if args.key?(:imports)
           @interpreter = args[:interpreter] if args.key?(:interpreter)
+          @main_template = args[:main_template] if args.key?(:main_template)
           @schema = args[:schema] if args.key?(:schema)
           @template = args[:template] if args.key?(:template)
         end

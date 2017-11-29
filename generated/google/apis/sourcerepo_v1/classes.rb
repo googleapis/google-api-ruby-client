@@ -305,7 +305,7 @@ module Google
         attr_accessor :url
       
         # ID of the webhook listening to updates to trigger mirroring.
-        # Removing this webook from the other hosting service will stop
+        # Removing this webhook from the other hosting service will stop
         # Google Cloud Source Repositories from receiving notifications,
         # and thereby disabling mirroring.
         # Corresponds to the JSON property `webhookId`
@@ -420,13 +420,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The disk usage of the repo, in bytes.
-        # Only returned by GetRepo.
+        # The disk usage of the repo, in bytes. Read-only field. Size is only
+        # returned by GetRepo.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
       
         # URL to clone the repository from Google Cloud Source Repositories.
+        # Read-only field.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url

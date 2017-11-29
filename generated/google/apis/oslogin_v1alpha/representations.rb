@@ -81,6 +81,7 @@ module Google
       class PosixAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
           property :gecos, as: 'gecos'
           property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'

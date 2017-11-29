@@ -409,6 +409,41 @@ module Google
         end
       end
       
+      # A configuration variables resource contains the managed configuration settings
+      # ID to be applied to a single user, as well as the variable set that is
+      # attributed to the user. The variable set will be used to replace placeholders
+      # in the managed configuration settings.
+      class ConfigurationVariables
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#configurationVariables".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the managed configurations settings.
+        # Corresponds to the JSON property `mcmId`
+        # @return [String]
+        attr_accessor :mcm_id
+      
+        # The variable set that is attributed to the user.
+        # Corresponds to the JSON property `variableSet`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::VariableSet>]
+        attr_accessor :variable_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @mcm_id = args[:mcm_id] if args.key?(:mcm_id)
+          @variable_set = args[:variable_set] if args.key?(:variable_set)
+        end
+      end
+      
       # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
       # This collection cannot be modified via the API. It is automatically populated
@@ -737,7 +772,7 @@ module Google
       # purchases the product in Google Play for the first time.
       # Use the API to query group licenses. A Grouplicenses resource includes the
       # total number of licenses purchased (paid apps only) and the total number of
-      # licenses currently in use. Iyn other words, the total number of Entitlements
+      # licenses currently in use. In other words, the total number of Entitlements
       # that exist for the product.
       # Only one group license object is created per product and group license objects
       # are never deleted. If a product is unapproved, its group license remains. This
@@ -1027,11 +1062,19 @@ module Google
         end
       end
       
-      # A managed configuration resource contains the set of managed properties that
-      # have been configured for an Android app. The app's developer would have
-      # defined configurable properties in the managed configurations schema.
+      # A managed configuration resource contains the set of managed properties
+      # defined by the app developer in the app's managed configurations schema, as
+      # well as any configuration variables defined for the user.
       class ManagedConfiguration
         include Google::Apis::Core::Hashable
+      
+        # A configuration variables resource contains the managed configuration settings
+        # ID to be applied to a single user, as well as the variable set that is
+        # attributed to the user. The variable set will be used to replace placeholders
+        # in the managed configuration settings.
+        # Corresponds to the JSON property `configurationVariables`
+        # @return [Google::Apis::AndroidenterpriseV1::ConfigurationVariables]
+        attr_accessor :configuration_variables
       
         # Identifies what kind of resource this is. Value: the fixed string "
         # androidenterprise#managedConfiguration".
@@ -1056,6 +1099,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @configuration_variables = args[:configuration_variables] if args.key?(:configuration_variables)
           @kind = args[:kind] if args.key?(:kind)
           @managed_property = args[:managed_property] if args.key?(:managed_property)
           @product_id = args[:product_id] if args.key?(:product_id)
@@ -1111,6 +1155,74 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @managed_configuration_for_user = args[:managed_configuration_for_user] if args.key?(:managed_configuration_for_user)
+        end
+      end
+      
+      # A managed configurations settings resource contains the set of managed
+      # properties that have been configured for an Android app to be applied to a set
+      # of users. The app's developer would have defined configurable properties in
+      # the managed configurations schema.
+      class ManagedConfigurationsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfigurationsSettings".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The set of managed properties for this configuration.
+        # Corresponds to the JSON property `managedProperty`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedProperty>]
+        attr_accessor :managed_property
+      
+        # The ID of the managed configurations settings.
+        # Corresponds to the JSON property `mcmId`
+        # @return [String]
+        attr_accessor :mcm_id
+      
+        # The name of the managed configurations settings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_property = args[:managed_property] if args.key?(:managed_property)
+          @mcm_id = args[:mcm_id] if args.key?(:mcm_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The managed configurations settings for a product.
+      class ManagedConfigurationsSettingsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#managedConfigurationsSettingsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A managed configurations settings for an app that may be assigned to a group
+        # of users in an enterprise.
+        # Corresponds to the JSON property `managedConfigurationsSettings`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings>]
+        attr_accessor :managed_configurations_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @managed_configurations_settings = args[:managed_configurations_settings] if args.key?(:managed_configurations_settings)
         end
       end
       
@@ -1719,12 +1831,11 @@ module Google
         # @return [String]
         attr_accessor :product_set_behavior
       
-        # Other products that are part of the set, in addition to those specified in the
-        # productId array. The only difference between this field and the productId
-        # array is that it's possible to specify additional information about this
-        # product visibility, see ProductVisibility and its fields for more information.
-        # Specifying the same product ID both here and in the productId array is not
-        # allowed and it will result in an error.
+        # Additional list of product IDs making up the product set. Unlike the productID
+        # array, in this list It's possible to specify which tracks (alpha, beta,
+        # production) of a product are visible to the user. See ProductVisibility and
+        # its fields for more information. Specifying the same product ID both here and
+        # in the productId array is not allowed and it will result in an error.
         # Corresponds to the JSON property `productVisibility`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductVisibility>]
         attr_accessor :product_visibility
@@ -1773,22 +1884,22 @@ module Google
       class ProductVisibility
         include Google::Apis::Core::Hashable
       
-        # The product ID that should be made visible to the user. This is required.
+        # The product ID to make visible to the user. Required for each item in the
+        # productVisibility list.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # This allows to only grant visibility to the specified tracks of the app. For
-        # example, if an app has a prod version, a beta version and an alpha version and
-        # the enterprise has been granted visibility to both the alpha and beta tracks,
-        # if tracks is `"beta", "production"` the user will be able to install the app
-        # and they will get the beta version of the app. If there are no app versions in
-        # the specified track or if the enterprise wasn't granted visibility for the
-        # track, adding the "alpha" and "beta" values to the list of tracks will have no
-        # effect for now; however they will take effect once both conditions are met.
-        # Note that the enterprise itself needs to be granted access to the alpha and/or
-        # beta tracks, regardless of whether individual users or admins have access to
-        # those tracks.
+        # Grants visibility to the specified track(s) of the product to the user. The
+        # track available to the user is based on the following order of preference:
+        # alpha, beta, production. For example, if an app has a prod version, a beta
+        # version and an alpha version and the enterprise has been granted visibility to
+        # both the alpha and beta tracks, if tracks is `"beta", "production"` the user
+        # will be able to install the app and they will get the beta version of the app.
+        # If there are no app versions in the specified track adding the "alpha" and "
+        # beta" values to the list of tracks will have no effect. Note that the
+        # enterprise requires access to alpha and/or beta tracks before users can be
+        # granted visibility to apps in those tracks.
         # The allowed sets are: `` (considered equivalent to `"production"`) `"
         # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
         # of elements is not relevant. Any other set of tracks will be rejected with an
@@ -2388,6 +2499,41 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # A variable set is a key-value pair of EMM-provided placeholders and its
+      # corresponding value, which is attributed to a user. For example, $FIRSTNAME
+      # could be a placeholder, and its value could be Alice. Placeholders should
+      # start with a '$' sign and should be alphanumeric only.
+      class VariableSet
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#variableSet".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The placeholder string; defined by EMM.
+        # Corresponds to the JSON property `placeholder`
+        # @return [String]
+        attr_accessor :placeholder
+      
+        # The value of the placeholder, specific to the user.
+        # Corresponds to the JSON property `userValue`
+        # @return [String]
+        attr_accessor :user_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @placeholder = args[:placeholder] if args.key?(:placeholder)
+          @user_value = args[:user_value] if args.key?(:user_value)
         end
       end
     end

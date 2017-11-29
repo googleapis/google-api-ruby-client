@@ -311,6 +311,18 @@ module Google
         # @return [String]
         attr_accessor :entity_type
       
+        # Optional arbitrary unique identifier of this client buyer from the
+        # standpoint of its Ad Exchange sponsor buyer.
+        # This field can be used to associate a client buyer with the identifier
+        # in the namespace of its sponsor buyer, lookup client buyers by that
+        # identifier and verify whether an Ad Exchange counterpart of a given client
+        # buyer already exists.
+        # If present, must be unique among all the client buyers for its
+        # Ad Exchange sponsor buyer.
+        # Corresponds to the JSON property `partnerClientId`
+        # @return [String]
+        attr_accessor :partner_client_id
+      
         # The role which is assigned to the client buyer. Each role implies a set of
         # permissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,
         # `CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`.
@@ -340,6 +352,7 @@ module Google
           @entity_id = args[:entity_id] if args.key?(:entity_id)
           @entity_name = args[:entity_name] if args.key?(:entity_name)
           @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @partner_client_id = args[:partner_client_id] if args.key?(:partner_client_id)
           @role = args[:role] if args.key?(:role)
           @status = args[:status] if args.key?(:status)
           @visible_to_seller = args[:visible_to_seller] if args.key?(:visible_to_seller)
@@ -837,17 +850,16 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::AbsoluteDateRange]
         attr_accessor :absolute_date_range
       
-        # The ID of the buyer account on which to filter; optional.
-        # Corresponds to the JSON property `buyerAccountId`
-        # @return [Fixnum]
-        attr_accessor :buyer_account_id
-      
-        # The ID of the creative on which to filter; optional.
+        # The ID of the creative on which to filter; optional. This field may be set
+        # only for a filter set that accesses buyer-level troubleshooting data, i.e.
+        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
         attr_accessor :creative_id
       
-        # The ID of the deal on which to filter; optional.
+        # The ID of the deal on which to filter; optional. This field may be set
+        # only for a filter set that accesses buyer-level troubleshooting data, i.e.
+        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # Corresponds to the JSON property `dealId`
         # @return [Fixnum]
         attr_accessor :deal_id
@@ -856,13 +868,6 @@ module Google
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
-      
-        # The ID of the filter set; unique within the account of the filter set
-        # owner.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `filterSetId`
-        # @return [Fixnum]
-        attr_accessor :filter_set_id
       
         # The format on which to filter; optional.
         # Corresponds to the JSON property `format`
@@ -875,15 +880,10 @@ module Google
         # data)
         # - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
         # troubleshooting data)
+        # This field is required in create operations.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # The account ID of the buyer who owns this filter set.
-        # The value of this field is ignored in create operations.
-        # Corresponds to the JSON property `ownerAccountId`
-        # @return [Fixnum]
-        attr_accessor :owner_account_id
       
         # The list of platforms on which to filter; may be empty. The filters
         # represented by multiple platforms are ORed together (i.e. if non-empty,
@@ -933,14 +933,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absolute_date_range = args[:absolute_date_range] if args.key?(:absolute_date_range)
-          @buyer_account_id = args[:buyer_account_id] if args.key?(:buyer_account_id)
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deal_id = args[:deal_id] if args.key?(:deal_id)
           @environment = args[:environment] if args.key?(:environment)
-          @filter_set_id = args[:filter_set_id] if args.key?(:filter_set_id)
           @format = args[:format] if args.key?(:format)
           @name = args[:name] if args.key?(:name)
-          @owner_account_id = args[:owner_account_id] if args.key?(:owner_account_id)
           @platforms = args[:platforms] if args.key?(:platforms)
           @realtime_time_range = args[:realtime_time_range] if args.key?(:realtime_time_range)
           @relative_date_range = args[:relative_date_range] if args.key?(:relative_date_range)
@@ -1183,8 +1180,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListBidMetricsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.bidMetrics.list
+        # field in the subsequent call to the bidMetrics.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1214,8 +1210,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListBidResponseErrorsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.bidResponseErrors.list
+        # field in the subsequent call to the bidResponseErrors.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1246,8 +1241,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListBidResponsesWithoutBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.bidResponsesWithoutBids.list
+        # field in the subsequent call to the bidResponsesWithoutBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1370,8 +1364,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListCreativeStatusBreakdownByCreativeRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBids.creatives.list
+        # field in the subsequent call to the filteredBids.creatives.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1407,8 +1400,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListCreativeStatusBreakdownByDetailRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBids.details.list
+        # field in the subsequent call to the filteredBids.details.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1528,8 +1520,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListFilteredBidRequestsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBidRequests.list
+        # field in the subsequent call to the filteredBidRequests.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1560,8 +1551,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListFilteredBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.filteredBids.list
+        # field in the subsequent call to the filteredBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1591,8 +1581,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListImpressionMetricsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.impressionMetrics.list
+        # field in the subsequent call to the impressionMetrics.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1622,8 +1611,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListLosingBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.losingBids.list
+        # field in the subsequent call to the losingBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -1648,8 +1636,7 @@ module Google
         # A token to retrieve the next page of results.
         # Pass this value in the
         # ListNonBillableWinningBidsRequest.pageToken
-        # field in the subsequent call to the
-        # accounts.filterSets.nonBillableWinningBids.list
+        # field in the subsequent call to the nonBillableWinningBids.list
         # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]

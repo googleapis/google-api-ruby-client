@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateReleaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Arg
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -312,6 +318,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :test_cases, as: 'testCases', class: Google::Apis::FirebaserulesV1::TestCase, decorator: Google::Apis::FirebaserulesV1::TestCase::Representation
       
+        end
+      end
+      
+      class UpdateReleaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :release, as: 'release', class: Google::Apis::FirebaserulesV1::Release, decorator: Google::Apis::FirebaserulesV1::Release::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
     end

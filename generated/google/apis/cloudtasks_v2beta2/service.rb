@@ -118,11 +118,11 @@ module Google
         end
         
         # Creates a queue.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
+        # WARNING: Using this method may have unintended side effects if you are
+        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
+        # Read
         # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # carefully before using this method.
         # @param [String] parent
         #   Required.
         #   The location name in which the queue will be created.
@@ -164,11 +164,11 @@ module Google
         # This command will delete the queue even if it has tasks in it.
         # Note: If you delete a queue, a queue with the same name can't be created
         # for 7 days.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
+        # WARNING: Using this method may have unintended side effects if you are
+        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
+        # Read
         # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # carefully before using this method.
         # @param [String] name
         #   Required.
         #   The queue name. For example:
@@ -334,22 +334,23 @@ module Google
         # Updates a queue.
         # This method creates the queue if it does not exist and updates
         # the queue if it does exist.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
+        # WARNING: Using this method may have unintended side effects if you are
+        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
+        # Read
         # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # carefully before using this method.
         # @param [String] name
         #   The queue name.
         #   The queue name must have the following format:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        #   * `PROJECT_ID` can contain uppercase and lowercase letters,
-        #   numbers, hyphens, colons, and periods; that is, it must match
-        #   the regular expression: `[a-zA-Z\\d-:\\.]+`.
-        #   * `QUEUE_ID` can contain uppercase and lowercase letters,
-        #   numbers, and hyphens; that is, it must match the regular
-        #   expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-        #   characters.
+        #   * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+        #   hyphens (-), colons (:), or periods (.).
+        #   * `LOCATION_ID` is the canonical ID for the queue's location.
+        #   The list of available locations can be obtained by calling
+        #   google.cloud.location.Locations.ListLocations.
+        #   For more information, see https://cloud.google.com/about/locations/.
+        #   * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        #   hyphens (-). The maximum length is 100 characters.
         #   Caller-specified and required in CreateQueueRequest, after which
         #   it becomes output only.
         # @param [Google::Apis::CloudtasksV2beta2::Queue] queue_object
@@ -391,13 +392,8 @@ module Google
         # tasks in the queue until it is resumed via
         # CloudTasks.ResumeQueue. Tasks can still be added when the
         # queue is paused. The state of the queue is stored in
-        # Queue.queue_state; if paused it will be set to
-        # Queue.QueueState.PAUSED.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
-        # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # Queue.state; if paused it will be set to
+        # Queue.State.PAUSED.
         # @param [String] name
         #   Required.
         #   The queue name. For example:
@@ -472,14 +468,9 @@ module Google
         
         # Resume a queue.
         # This method resumes a queue after it has been
-        # Queue.QueueState.PAUSED or Queue.QueueState.DISABLED. The state of
-        # a queue is stored in Queue.queue_state; after calling this method it
-        # will be set to Queue.QueueState.RUNNING.
-        # WARNING: This method is only available to whitelisted
-        # users. Using this method carries some risk. Read
-        # [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml)
-        # carefully and then sign up for
-        # [whitelist access to this method](https://goo.gl/Fe5mUy).
+        # Queue.State.PAUSED or Queue.State.DISABLED. The state of
+        # a queue is stored in Queue.state; after calling this method it
+        # will be set to Queue.State.RUNNING.
         # WARNING: Resuming many high-QPS queues at the same time can
         # lead to target overloading. If you are resuming high-QPS
         # queues, follow the 500/50/5 pattern described in
@@ -521,6 +512,8 @@ module Google
         
         # Sets the access control policy for a Queue. Replaces any existing
         # policy.
+        # Note: The Cloud Console does not check queue-level IAM permissions yet.
+        # Project-level permissions are required to use the Cloud Console.
         # Authorization requires the following [Google IAM](/iam) permission on the
         # specified resource parent:
         # * `cloudtasks.queues.setIamPolicy`
@@ -606,6 +599,10 @@ module Google
         # PullTasksResponse. After the task is acknowledged, it will
         # not be returned by a later CloudTasks.PullTasks,
         # CloudTasks.GetTask, or CloudTasks.ListTasks.
+        # To acknowledge multiple tasks at the same time, use
+        # [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
+        # or the batching documentation for your client library, for example
+        # https://developers.google.com/api-client-library/python/guide/batch.
         # @param [String] name
         #   Required.
         #   The task name. For example:
@@ -812,10 +809,10 @@ module Google
         #   The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [String] order_by
-        #   Sort order used for the query. The fields supported for sorting
-        #   are Task.schedule_time and PullMessage.tag. All results will be
-        #   returned in ascending order. The default ordering is by
-        #   Task.schedule_time.
+        #   Sort order used for the query. The only fields supported for sorting
+        #   are `schedule_time` and `pull_message.tag`. All results will be
+        #   returned in approximately ascending order. The default ordering is by
+        #   `schedule_time`.
         # @param [Fixnum] page_size
         #   Requested page size. Fewer tasks than requested might be returned.
         #   The maximum page size is 1000. If unspecified, the page size will
@@ -964,7 +961,7 @@ module Google
         # task after a fix has been made or to manually force a task to be
         # dispatched now.
         # When this method is called, Cloud Tasks will dispatch the task to its
-        # target, even if the queue is Queue.QueueState.PAUSED.
+        # target, even if the queue is Queue.State.PAUSED.
         # The dispatched task is returned. That is, the task that is returned
         # contains the Task.task_status after the task is dispatched but
         # before the task is received by its target.
@@ -978,6 +975,7 @@ module Google
         # failed. google.rpc.Code.FAILED_PRECONDITION is returned when
         # CloudTasks.RunTask is called on task that is dispatched or
         # already running.
+        # CloudTasks.RunTask cannot be called on pull tasks.
         # @param [String] name
         #   Required.
         #   The task name. For example:

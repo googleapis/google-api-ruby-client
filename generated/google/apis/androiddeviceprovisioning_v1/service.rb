@@ -85,7 +85,7 @@ module Google
         # by calling API methods or using their zero-touch enrollment portal. The API
         # doesn't notify the customer that they have access.
         # @param [String] parent
-        #   Required. The parent resource ID in format `partners/[PARTNER_ID]` that
+        #   Required. The parent resource ID in the format `partners/[PARTNER_ID]` that
         #   identifies the reseller.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::CreateCustomerRequest] create_customer_request_object
         # @param [String] fields

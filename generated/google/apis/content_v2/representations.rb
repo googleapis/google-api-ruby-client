@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountGoogleMyBusinessLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -976,6 +982,8 @@ module Google
           property :adult_content, as: 'adultContent'
           collection :adwords_links, as: 'adwordsLinks', class: Google::Apis::ContentV2::AccountAdwordsLink, decorator: Google::Apis::ContentV2::AccountAdwordsLink::Representation
       
+          property :google_my_business_link, as: 'googleMyBusinessLink', class: Google::Apis::ContentV2::AccountGoogleMyBusinessLink, decorator: Google::Apis::ContentV2::AccountGoogleMyBusinessLink::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -993,6 +1001,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adwords_id, :numeric_string => true, as: 'adwordsId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class AccountGoogleMyBusinessLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gmb_email, as: 'gmbEmail'
           property :status, as: 'status'
         end
       end
@@ -1722,7 +1738,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cancellations, as: 'cancellations', class: Google::Apis::ContentV2::OrderCancellation, decorator: Google::Apis::ContentV2::OrderCancellation::Representation
       
-          property :channel_type, as: 'channelType'
           property :id, as: 'id'
           property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
@@ -1886,6 +1901,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
         end
       end
@@ -1917,8 +1933,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :line_item_id, as: 'lineItemId'
           property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
@@ -2012,7 +2033,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
@@ -2024,6 +2050,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
         end
@@ -2033,6 +2063,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
@@ -2126,6 +2157,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :operation_id, as: 'operationId'
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
@@ -2145,6 +2180,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :line_item_id, as: 'lineItemId'
           property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
           property :reason, as: 'reason'
           property :reason_text, as: 'reasonText'
@@ -2707,6 +2743,7 @@ module Google
           property :kind, as: 'kind'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2::TestOrderLineItem, decorator: Google::Apis::ContentV2::TestOrderLineItem::Representation
       
+          property :notification_mode, as: 'notificationMode'
           property :payment_method, as: 'paymentMethod', class: Google::Apis::ContentV2::TestOrderPaymentMethod, decorator: Google::Apis::ContentV2::TestOrderPaymentMethod::Representation
       
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'

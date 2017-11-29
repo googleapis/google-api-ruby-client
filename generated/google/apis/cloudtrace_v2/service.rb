@@ -22,10 +22,9 @@ module Google
     module CloudtraceV2
       # Stackdriver Trace API
       #
-      # Send and retrieve trace data from Stackdriver Trace. Data is generated and
-      #  available by default for all App Engine applications. Data from other
-      #  applications can be written to Stackdriver Trace for display, reporting, and
-      #  analysis.
+      # Sends application trace data to Stackdriver Trace for viewing. Trace data is
+      #  collected for all App Engine applications by default. Trace data from other
+      #  applications can be provided using this API.
       #
       # @example
       #    require 'google/apis/cloudtrace_v2'
@@ -50,14 +49,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Sends new spans to Stackdriver Trace or updates existing traces. If the
-        # name of a trace that you send matches that of an existing trace, new spans
-        # are added to the existing trace. Attempt to update existing spans results
-        # undefined behavior. If the name does not match, a new trace is created
-        # with given set of spans.
+        # Sends new spans to new or existing traces. You cannot update
+        # existing spans.
         # @param [String] name
-        #   Required. Name of the project where the spans belong. The format is
-        #   `projects/PROJECT_ID`.
+        #   Required. The name of the project where the spans belong. The format is
+        #   `projects/[PROJECT_ID]`.
         # @param [Google::Apis::CloudtraceV2::BatchWriteSpansRequest] batch_write_spans_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,13 +84,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Span.
+        # Creates a new span.
         # @param [String] name
         #   The resource name of the span in the following format:
         #   projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-        #   identifier for a trace within a project.
-        #   [SPAN_ID] is a unique identifier for a span within a trace,
-        #   assigned when the span is created.
+        #   identifier for a trace within a project;
+        #   it is a 32-character hexadecimal encoding of a 16-byte array.
+        #   [SPAN_ID] is a unique identifier for a span within a trace; it
+        #   is a 16-character hexadecimal encoding of an 8-byte array.
         # @param [Google::Apis::CloudtraceV2::Span] span_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -114,7 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_trace_span(name, span_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v2/{+name}', options)
+          command =  make_simple_command(:post, 'v2/{+name}/spans', options)
           command.request_representation = Google::Apis::CloudtraceV2::Span::Representation
           command.request_object = span_object
           command.response_representation = Google::Apis::CloudtraceV2::Span::Representation

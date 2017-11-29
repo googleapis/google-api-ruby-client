@@ -96,6 +96,73 @@ module Google
         end
       end
       
+      # JSON template for App Access Collections Resource object in Directory API.
+      class AppAccessCollections
+        include Google::Apis::Core::Hashable
+      
+        # List of blocked api access buckets.
+        # Corresponds to the JSON property `blockedApiAccessBuckets`
+        # @return [Array<String>]
+        attr_accessor :blocked_api_access_buckets
+      
+        # Boolean to indicate whether to enforce app access settings on Android Drive or
+        # not.
+        # Corresponds to the JSON property `enforceSettingsForAndroidDrive`
+        # @return [Boolean]
+        attr_accessor :enforce_settings_for_android_drive
+        alias_method :enforce_settings_for_android_drive?, :enforce_settings_for_android_drive
+      
+        # Error message provided by the Admin that will be shown to the user when an app
+        # is blocked.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifies the resource as an app access collection. Value: admin#directory#
+        # appaccesscollection
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Unique ID of app access collection. (Readonly)
+        # Corresponds to the JSON property `resourceId`
+        # @return [Fixnum]
+        attr_accessor :resource_id
+      
+        # Resource name given by the customer while creating/updating. Should be unique
+        # under given customer.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Boolean that indicates whether to trust domain owned apps.
+        # Corresponds to the JSON property `trustDomainOwnedApps`
+        # @return [Boolean]
+        attr_accessor :trust_domain_owned_apps
+        alias_method :trust_domain_owned_apps?, :trust_domain_owned_apps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocked_api_access_buckets = args[:blocked_api_access_buckets] if args.key?(:blocked_api_access_buckets)
+          @enforce_settings_for_android_drive = args[:enforce_settings_for_android_drive] if args.key?(:enforce_settings_for_android_drive)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @trust_domain_owned_apps = args[:trust_domain_owned_apps] if args.key?(:trust_domain_owned_apps)
+        end
+      end
+      
       # The template that returns individual ASP (Access Code) data.
       class Asp
         include Google::Apis::Core::Hashable
@@ -1178,6 +1245,26 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @members = args[:members] if args.key?(:members)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # JSON template for Has Member response in Directory API.
+      class MembersHasMember
+        include Google::Apis::Core::Hashable
+      
+        # Identifies whether given user is a member or not.
+        # Corresponds to the JSON property `isMember`
+        # @return [Boolean]
+        attr_accessor :is_member
+        alias_method :is_member?, :is_member
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_member = args[:is_member] if args.key?(:is_member)
         end
       end
       
@@ -2328,6 +2415,86 @@ module Google
         end
       end
       
+      # JSON template for Trusted App Ids Resource object in Directory API.
+      class TrustedAppId
+        include Google::Apis::Core::Hashable
+      
+        # Android package name.
+        # Corresponds to the JSON property `androidPackageName`
+        # @return [String]
+        attr_accessor :android_package_name
+      
+        # SHA1 signature of the app certificate.
+        # Corresponds to the JSON property `certificateHashSHA1`
+        # @return [String]
+        attr_accessor :certificate_hash_sha1
+      
+        # SHA256 signature of the app certificate.
+        # Corresponds to the JSON property `certificateHashSHA256`
+        # @return [String]
+        attr_accessor :certificate_hash_sha256
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifies the resource as a trusted AppId.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
+          @certificate_hash_sha1 = args[:certificate_hash_sha1] if args.key?(:certificate_hash_sha1)
+          @certificate_hash_sha256 = args[:certificate_hash_sha256] if args.key?(:certificate_hash_sha256)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # JSON template for Trusted Apps response object of a user in Directory API.
+      class TrustedApps
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifies the resource as trusted apps response.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Trusted Apps list.
+        # Corresponds to the JSON property `trustedApps`
+        # @return [Array<Google::Apis::AdminDirectoryV1::TrustedAppId>]
+        attr_accessor :trusted_apps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @trusted_apps = args[:trusted_apps] if args.key?(:trusted_apps)
+        end
+      end
+      
       # JSON template for User object in Directory API.
       class User
         include Google::Apis::Core::Hashable
@@ -3265,6 +3432,11 @@ module Google
       class UserPosixAccount
         include Google::Apis::Core::Hashable
       
+        # A POSIX account field identifier. (Read-only)
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
         # The GECOS (user information) for this account.
         # Corresponds to the JSON property `gecos`
         # @return [String]
@@ -3312,6 +3484,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
           @gecos = args[:gecos] if args.key?(:gecos)
           @gid = args[:gid] if args.key?(:gid)
           @home_directory = args[:home_directory] if args.key?(:home_directory)

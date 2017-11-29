@@ -231,8 +231,8 @@ module Google
         #   Only updates the `device_registry` fields indicated by this mask.
         #   The field mask must not be empty, and it must not contain fields that
         #   are immutable or only set by the server.
-        #   Mutable top-level fields: `event_notification_config`, `mqtt_config`, and
-        #   `state_notification_config`.
+        #   Mutable top-level fields: `event_notification_config`, `http_config`,
+        #   `mqtt_config`, and `state_notification_config`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -406,6 +406,9 @@ module Google
         #   The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        # @param [String] field_mask
+        #   The fields of the `Device` resource to be returned in the response. If the
+        #   field mask is unset or empty, all fields are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -423,11 +426,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_registry_device(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_registry_device(name, field_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::CloudiotV1::Device::Representation
           command.response_class = Google::Apis::CloudiotV1::Device
           command.params['name'] = name unless name.nil?
+          command.query['fieldMask'] = field_mask unless field_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

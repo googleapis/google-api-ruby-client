@@ -159,7 +159,7 @@ module Google
         # @return [String]
         attr_accessor :product_page_url
       
-        # The category of the product. For more information, see
+        # The type or category of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#producttype.
         # Corresponds to the JSON property `productType`
         # @return [Array<String>]
@@ -200,11 +200,11 @@ module Google
         # @return [Google::Apis::ManufacturersV1::Price]
         attr_accessor :suggested_retail_price
       
-        # The target account id. Should only be used in the accounts of the data
+        # The target client id. Should only be used in the accounts of the data
         # partners.
-        # Corresponds to the JSON property `targetAccountId`
-        # @return [Fixnum]
-        attr_accessor :target_account_id
+        # Corresponds to the JSON property `targetClientId`
+        # @return [String]
+        attr_accessor :target_client_id
       
         # The theme of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#theme.
@@ -259,7 +259,7 @@ module Google
           @size_system = args[:size_system] if args.key?(:size_system)
           @size_type = args[:size_type] if args.key?(:size_type)
           @suggested_retail_price = args[:suggested_retail_price] if args.key?(:suggested_retail_price)
-          @target_account_id = args[:target_account_id] if args.key?(:target_account_id)
+          @target_client_id = args[:target_client_id] if args.key?(:target_client_id)
           @theme = args[:theme] if args.key?(:theme)
           @title = args[:title] if args.key?(:title)
           @video_link = args[:video_link] if args.key?(:video_link)

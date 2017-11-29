@@ -519,7 +519,7 @@ module Google
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
         #   If it is provided, the transfer configuration will be associated with the
-        #   gaia id of the authorizing user.
+        #   authorizing user.
         #   In order to obtain authorization_code, please make a
         #   request to
         #   https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<
@@ -566,7 +566,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates transfer runs for a time range [range_start_time, range_end_time].
+        # Creates transfer runs for a time range [start_time, end_time].
         # For each date - or whatever granularity the data source supports - in the
         # range, one transfer run is created.
         # Note that runs are created per UTC time in the time range.
@@ -934,7 +934,7 @@ module Google
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
         #   If it is provided, the transfer configuration will be associated with the
-        #   gaia id of the authorizing user.
+        #   authorizing user.
         #   In order to obtain authorization_code, please make a
         #   request to
         #   https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<
@@ -981,7 +981,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates transfer runs for a time range [range_start_time, range_end_time].
+        # Creates transfer runs for a time range [start_time, end_time].
         # For each date - or whatever granularity the data source supports - in the
         # range, one transfer run is created.
         # Note that runs are created per UTC time in the time range.

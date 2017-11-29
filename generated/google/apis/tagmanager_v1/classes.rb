@@ -1127,6 +1127,12 @@ module Google
         # @return [String]
         attr_accessor :parent_folder_id
       
+        # True if the tag is paused.
+        # Corresponds to the JSON property `paused`
+        # @return [Boolean]
+        attr_accessor :paused
+        alias_method :paused?, :paused
+      
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `priority`
         # @return [Google::Apis::TagmanagerV1::Parameter]
@@ -1185,6 +1191,7 @@ module Google
           @notes = args[:notes] if args.key?(:notes)
           @parameter = args[:parameter] if args.key?(:parameter)
           @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @paused = args[:paused] if args.key?(:paused)
           @priority = args[:priority] if args.key?(:priority)
           @schedule_end_ms = args[:schedule_end_ms] if args.key?(:schedule_end_ms)
           @schedule_start_ms = args[:schedule_start_ms] if args.key?(:schedule_start_ms)
@@ -1247,15 +1254,15 @@ module Google
         # @return [String]
         attr_accessor :container_id
       
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `continuousTimeMinMilliseconds`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :continuous_time_min_milliseconds
+      
         # Used in the case of custom event, which is fired iff all Conditions are true.
         # Corresponds to the JSON property `customEventFilter`
         # @return [Array<Google::Apis::TagmanagerV1::Condition>]
         attr_accessor :custom_event_filter
-      
-        # Represents a Google Tag Manager Parameter.
-        # Corresponds to the JSON property `enableAllVideos`
-        # @return [Google::Apis::TagmanagerV1::Parameter]
-        attr_accessor :enable_all_videos
       
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `eventName`
@@ -1274,24 +1281,54 @@ module Google
         attr_accessor :fingerprint
       
         # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `horizontalScrollPercentageList`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :horizontal_scroll_percentage_list
+      
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `interval`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :interval
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `intervalSeconds`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :interval_seconds
       
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `limit`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :limit
       
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `maxTimerLengthSeconds`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :max_timer_length_seconds
+      
         # Trigger display name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
+        # Additional parameters.
+        # Corresponds to the JSON property `parameter`
+        # @return [Array<Google::Apis::TagmanagerV1::Parameter>]
+        attr_accessor :parameter
+      
         # Parent folder id.
         # Corresponds to the JSON property `parentFolderId`
         # @return [String]
         attr_accessor :parent_folder_id
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `selector`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :selector
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `totalTimeMinMilliseconds`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :total_time_min_milliseconds
       
         # The Trigger ID uniquely identifies the GTM Trigger.
         # Corresponds to the JSON property `triggerId`
@@ -1309,9 +1346,24 @@ module Google
         attr_accessor :unique_trigger_id
       
         # Represents a Google Tag Manager Parameter.
-        # Corresponds to the JSON property `videoPercentageList`
+        # Corresponds to the JSON property `verticalScrollPercentageList`
         # @return [Google::Apis::TagmanagerV1::Parameter]
-        attr_accessor :video_percentage_list
+        attr_accessor :vertical_scroll_percentage_list
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `visibilitySelector`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :visibility_selector
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `visiblePercentageMax`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :visible_percentage_max
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `visiblePercentageMin`
+        # @return [Google::Apis::TagmanagerV1::Parameter]
+        attr_accessor :visible_percentage_min
       
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `waitForTags`
@@ -1333,19 +1385,28 @@ module Google
           @auto_event_filter = args[:auto_event_filter] if args.key?(:auto_event_filter)
           @check_validation = args[:check_validation] if args.key?(:check_validation)
           @container_id = args[:container_id] if args.key?(:container_id)
+          @continuous_time_min_milliseconds = args[:continuous_time_min_milliseconds] if args.key?(:continuous_time_min_milliseconds)
           @custom_event_filter = args[:custom_event_filter] if args.key?(:custom_event_filter)
-          @enable_all_videos = args[:enable_all_videos] if args.key?(:enable_all_videos)
           @event_name = args[:event_name] if args.key?(:event_name)
           @filter = args[:filter] if args.key?(:filter)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @horizontal_scroll_percentage_list = args[:horizontal_scroll_percentage_list] if args.key?(:horizontal_scroll_percentage_list)
           @interval = args[:interval] if args.key?(:interval)
+          @interval_seconds = args[:interval_seconds] if args.key?(:interval_seconds)
           @limit = args[:limit] if args.key?(:limit)
+          @max_timer_length_seconds = args[:max_timer_length_seconds] if args.key?(:max_timer_length_seconds)
           @name = args[:name] if args.key?(:name)
+          @parameter = args[:parameter] if args.key?(:parameter)
           @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
+          @selector = args[:selector] if args.key?(:selector)
+          @total_time_min_milliseconds = args[:total_time_min_milliseconds] if args.key?(:total_time_min_milliseconds)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
           @type = args[:type] if args.key?(:type)
           @unique_trigger_id = args[:unique_trigger_id] if args.key?(:unique_trigger_id)
-          @video_percentage_list = args[:video_percentage_list] if args.key?(:video_percentage_list)
+          @vertical_scroll_percentage_list = args[:vertical_scroll_percentage_list] if args.key?(:vertical_scroll_percentage_list)
+          @visibility_selector = args[:visibility_selector] if args.key?(:visibility_selector)
+          @visible_percentage_max = args[:visible_percentage_max] if args.key?(:visible_percentage_max)
+          @visible_percentage_min = args[:visible_percentage_min] if args.key?(:visible_percentage_min)
           @wait_for_tags = args[:wait_for_tags] if args.key?(:wait_for_tags)
           @wait_for_tags_timeout = args[:wait_for_tags_timeout] if args.key?(:wait_for_tags_timeout)
         end

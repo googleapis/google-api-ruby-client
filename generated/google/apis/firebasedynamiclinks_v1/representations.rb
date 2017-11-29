@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DesktopInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -165,11 +171,19 @@ module Google
         end
       end
       
+      class DesktopInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desktop_fallback_link, as: 'desktopFallbackLink'
+        end
+      end
+      
       class DeviceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_model_name, as: 'deviceModelName'
           property :language_code, as: 'languageCode'
+          property :language_code_raw, as: 'languageCodeRaw'
           property :screen_resolution_height, :numeric_string => true, as: 'screenResolutionHeight'
           property :screen_resolution_width, :numeric_string => true, as: 'screenResolutionWidth'
           property :timezone, as: 'timezone'
@@ -191,6 +205,8 @@ module Google
           property :analytics_info, as: 'analyticsInfo', class: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AnalyticsInfo::Representation
       
           property :android_info, as: 'androidInfo', class: Google::Apis::FirebasedynamiclinksV1::AndroidInfo, decorator: Google::Apis::FirebasedynamiclinksV1::AndroidInfo::Representation
+      
+          property :desktop_info, as: 'desktopInfo', class: Google::Apis::FirebasedynamiclinksV1::DesktopInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DesktopInfo::Representation
       
           property :dynamic_link_domain, as: 'dynamicLinkDomain'
           property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation

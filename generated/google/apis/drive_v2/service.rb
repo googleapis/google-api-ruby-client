@@ -1806,6 +1806,10 @@ module Google
         #   The ID for the permission.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1827,11 +1831,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_permission(file_id, permission_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_permission(file_id, permission_id, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'files/{fileId}/permissions/{permissionId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1845,6 +1850,10 @@ module Google
         #   The ID for the permission.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1866,13 +1875,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permission(file_id, permission_id, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_permission(file_id, permission_id, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'files/{fileId}/permissions/{permissionId}', options)
           command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1925,6 +1935,10 @@ module Google
         #   parameter is ignored and an email is sent if the role is owner.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1946,7 +1960,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(file_id, permission_object = nil, email_message: nil, send_notification_emails: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_permission(file_id, permission_object = nil, email_message: nil, send_notification_emails: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'files/{fileId}/permissions', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -1956,6 +1970,7 @@ module Google
           command.query['emailMessage'] = email_message unless email_message.nil?
           command.query['sendNotificationEmails'] = send_notification_emails unless send_notification_emails.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1974,6 +1989,10 @@ module Google
         #   be set to the value of 'nextPageToken' from the previous response.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1995,7 +2014,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_permissions(file_id, max_results: nil, page_token: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_permissions(file_id, max_results: nil, page_token: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'files/{fileId}/permissions', options)
           command.response_representation = Google::Apis::DriveV2::PermissionList::Representation
           command.response_class = Google::Apis::DriveV2::PermissionList
@@ -2003,6 +2022,7 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2022,6 +2042,10 @@ module Google
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2043,7 +2067,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2054,6 +2078,7 @@ module Google
           command.query['removeExpiration'] = remove_expiration unless remove_expiration.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['transferOwnership'] = transfer_ownership unless transfer_ownership.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2073,6 +2098,10 @@ module Google
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the item belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2094,7 +2123,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permission(file_id, permission_id, permission_object = nil, remove_expiration: nil, supports_team_drives: nil, transfer_ownership: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'files/{fileId}/permissions/{permissionId}', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2105,6 +2134,7 @@ module Google
           command.query['removeExpiration'] = remove_expiration unless remove_expiration.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['transferOwnership'] = transfer_ownership unless transfer_ownership.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2946,6 +2976,10 @@ module Google
         # Gets a Team Drive's metadata by ID.
         # @param [String] team_drive_id
         #   The ID of the Team Drive
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then the requester will be granted access if
+        #   they are an administrator of the domain to which the Team Drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2967,11 +3001,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_teamdrive(team_drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_teamdrive(team_drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'teamdrives/{teamDriveId}', options)
           command.response_representation = Google::Apis::DriveV2::TeamDrive::Representation
           command.response_class = Google::Apis::DriveV2::TeamDrive
           command.params['teamDriveId'] = team_drive_id unless team_drive_id.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3025,6 +3060,12 @@ module Google
         #   Maximum number of Team Drives to return.
         # @param [String] page_token
         #   Page token for Team Drives.
+        # @param [String] q
+        #   Query string for searching Team Drives.
+        # @param [Boolean] use_domain_admin_access
+        #   Whether the request should be treated as if it was issued by a domain
+        #   administrator; if set to true, then all Team Drives of the domain in which the
+        #   requester is an administrator are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3046,12 +3087,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_teamdrives(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_teamdrives(max_results: nil, page_token: nil, q: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'teamdrives', options)
           command.response_representation = Google::Apis::DriveV2::TeamDriveList::Representation
           command.response_class = Google::Apis::DriveV2::TeamDriveList
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['q'] = q unless q.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

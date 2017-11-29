@@ -19,19 +19,21 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module QpxExpressV1
-      # QPX Express API
+    module VisionV1p1beta1
+      # Google Cloud Vision API
       #
-      # Finds the least expensive flights between an origin and a destination.
+      # Integrates Google Vision features, including image labeling, face, logo, and
+      #  landmark detection, optical character recognition (OCR), and detection of
+      #  explicit content, into applications.
       #
       # @example
-      #    require 'google/apis/qpx_express_v1'
+      #    require 'google/apis/vision_v1p1beta1'
       #
-      #    QpxExpress = Google::Apis::QpxExpressV1 # Alias the module
-      #    service = QpxExpress::QPXExpressService.new
+      #    Vision = Google::Apis::VisionV1p1beta1 # Alias the module
+      #    service = Vision::VisionService.new
       #
-      # @see http://developers.google.com/qpx-express
-      class QPXExpressService < Google::Apis::Core::BaseService
+      # @see https://cloud.google.com/vision/
+      class VisionService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -40,51 +42,40 @@ module Google
         # @return [String]
         #  Available to use for quota purposes for server-side applications. Can be any
         #  arbitrary string assigned to a user, but should not exceed 40 characters.
-        #  Overrides userIp if both are provided.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  IP address of the site where the request originates. Use this if you want to
-        #  enforce per-user limits.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'qpxExpress/v1/trips/')
-          @batch_path = 'batch/qpxExpress/v1'
+          super('https://vision.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
-        # Returns a list of flights.
-        # @param [Google::Apis::QpxExpressV1::SearchTripsRequest] search_trips_request_object
+        # Run image detection and annotation for a batch of images.
+        # @param [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest] google_cloud_vision_v1p1beta1_batch_annotate_images_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::QpxExpressV1::SearchTripsResponse] parsed result object
+        # @yieldparam result [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::QpxExpressV1::SearchTripsResponse]
+        # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_trips(search_trips_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'search', options)
-          command.request_representation = Google::Apis::QpxExpressV1::SearchTripsRequest::Representation
-          command.request_object = search_trips_request_object
-          command.response_representation = Google::Apis::QpxExpressV1::SearchTripsResponse::Representation
-          command.response_class = Google::Apis::QpxExpressV1::SearchTripsResponse
+        def annotate_image(google_cloud_vision_v1p1beta1_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1p1beta1/images:annotate', options)
+          command.request_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest::Representation
+          command.request_object = google_cloud_vision_v1p1beta1_batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse::Representation
+          command.response_class = Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -93,7 +84,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

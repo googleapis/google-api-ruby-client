@@ -466,7 +466,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpreadsheetTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpreadsheetTemplateListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StateCompleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatusReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1259,6 +1277,8 @@ module Google
           property :locale, as: 'locale'
           property :name, as: 'name'
           property :status, as: 'status'
+          collection :status_reports, as: 'statusReports', class: Google::Apis::YoutubePartnerV1::StatusReport, decorator: Google::Apis::YoutubePartnerV1::StatusReport::Representation
+      
           property :time_created, as: 'timeCreated', type: DateTime
       
           property :type, as: 'type'
@@ -1492,11 +1512,40 @@ module Google
         end
       end
       
+      class SpreadsheetTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :status, as: 'status'
+          property :template_content, as: 'templateContent'
+          property :template_name, as: 'templateName'
+          property :template_type, as: 'templateType'
+        end
+      end
+      
+      class SpreadsheetTemplateListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::SpreadsheetTemplate, decorator: Google::Apis::YoutubePartnerV1::SpreadsheetTemplate::Representation
+      
+          property :kind, as: 'kind'
+          property :status, as: 'status'
+        end
+      end
+      
       class StateCompleted
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
           property :time_completed, :numeric_string => true, as: 'timeCompleted'
+        end
+      end
+      
+      class StatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status_content, as: 'statusContent'
+          property :status_file_name, as: 'statusFileName'
         end
       end
       

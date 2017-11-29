@@ -1068,7 +1068,7 @@ module Google
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
         # When creating a new instance, one of initializeParams.sourceImage or disks.
-        # source is required.
+        # source is required except for local SSD.
         # If desired, you can also attach existing non-root persistent disks using this
         # property. This field is only applicable for persistent disks.
         # Note that for InstanceTemplate, specify the disk name, not the URL for the
@@ -1145,7 +1145,7 @@ module Google
         attr_accessor :disk_type
       
         # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or disks.source is required.
+        # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
         # image by its family name. For example, specify family/debian-8 to use the
         # latest Debian 8 image:
@@ -1827,7 +1827,7 @@ module Google
         # A filter string, compatible with a Stackdriver Monitoring filter string for
         # TimeSeries.list API call. This filter is used to select a specific TimeSeries
         # for the purpose of autoscaling and to determine whether the metric is
-        # exporting per-instance or global data.
+        # exporting per-instance or per-group data.
         # For the filter to be valid for autoscaling purposes, the following rules apply:
         # 
         # - You can only use the AND operator for joining selectors.
@@ -1842,7 +1842,8 @@ module Google
         # If the resource type is any other value, the autoscaler expects this metric to
         # contain values that apply to the entire autoscaled instance group and resource
         # label filtering can be performed to point autoscaler at the correct TimeSeries
-        # to scale upon. This is / called a global metric for the purpose of autoscaling.
+        # to scale upon. This is called a per-group metric for the purpose of
+        # autoscaling.
         # If not specified, the type defaults to gce_instance.
         # You should provide a filter that is selective enough to pick just one
         # TimeSeries for the autoscaled group or for each of the instances (if you are
@@ -1854,19 +1855,17 @@ module Google
         attr_accessor :filter
       
         # The identifier (type) of the Stackdriver Monitoring metric. The metric cannot
-        # have negative values and should be a utilization metric, which means that the
-        # number of virtual machines handling requests should increase or decrease
-        # proportionally to the metric.
+        # have negative values.
         # The metric must have a value type of INT64 or DOUBLE.
         # Corresponds to the JSON property `metric`
         # @return [String]
         attr_accessor :metric
       
-        # If scaling is based on a global metric value that represents the total amount
-        # of work to be done or resource usage, set this value to an amount assigned for
-        # a single instance of the scaled group. Autoscaler will keep the number of
-        # instances proportional to the value of this metric, the metric itself should
-        # not change value due to group resizing.
+        # If scaling is based on a per-group metric value that represents the total
+        # amount of work to be done or resource usage, set this value to an amount
+        # assigned for a single instance of the scaled group. Autoscaler will keep the
+        # number of instances proportional to the value of this metric, the metric
+        # itself should not change value due to group resizing.
         # A good metric to use with the target is for example pubsub.googleapis.com/
         # subscription/num_undelivered_messages or a custom metric exporting the total
         # number of requests coming to your instances.
@@ -1878,7 +1877,8 @@ module Google
         attr_accessor :single_instance_assignment
       
         # The target value of the metric that autoscaler should maintain. This must be a
-        # positive value.
+        # positive value. A utilization metric scales number of virtual machines
+        # handling requests to increase or decrease proportionally to the metric.
         # For example, a good metric to use as a utilization_target is compute.
         # googleapis.com/instance/network/received_bytes_count. The autoscaler will work
         # to keep this value constant for each of the instances.
@@ -4780,10 +4780,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_service_accounts
       
-        # A list of instance tags indicating sets of instances located in the network
-        # that may make network connections as specified in allowed[]. If no targetTags
-        # are specified, the firewall rule applies to all instances on the specified
-        # network.
+        # A list of tags that controls which instances the firewall rule applies to. If
+        # targetTags are specified, then the firewall rule applies only to instances in
+        # the VPC network that have one of those tags. If no targetTags are specified,
+        # the firewall rule applies to all instances on the specified network.
         # Corresponds to the JSON property `targetTags`
         # @return [Array<String>]
         attr_accessor :target_tags
@@ -5040,16 +5040,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The IP address that this forwarding rule is serving on behalf of.
-        # For global forwarding rules, the address must be a global IP. For regional
-        # forwarding rules, the address must live in the same region as the forwarding
-        # rule. By default, this field is empty and an ephemeral IPv4 address from the
-        # same scope (global or regional) will be assigned. A regional forwarding rule
-        # supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
+        # Addresses are restricted based on the forwarding rule's load balancing scheme (
+        # EXTERNAL or INTERNAL) and scope (global or regional).
+        # When the load balancing scheme is EXTERNAL, for global forwarding rules, the
+        # address must be a global IP, and for regional forwarding rules, the address
+        # must live in the same region as the forwarding rule. If this field is empty,
+        # an ephemeral IPv4 address from the same scope (global or regional) will be
+        # assigned. A regional forwarding rule supports IPv4 only. A global forwarding
+        # rule supports either IPv4 or IPv6.
         # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
-        # address belonging to the network/subnetwork configured for the forwarding rule.
-        # A reserved address cannot be used. If the field is empty, the IP address will
-        # be automatically allocated from the internal IP range of the subnetwork or
-        # network configured for this forwarding rule.
+        # address belonging to the network/subnet configured for the forwarding rule. By
+        # default, if this field is empty, an ephemeral internal IP address will be
+        # automatically allocated from the IP range of the subnet or network configured
+        # for this forwarding rule.
+        # An address can be specified either by a literal IP address or a URL reference
+        # to an existing Address resource. The following examples are all valid:
+        # - 100.1.2.3
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
+        # addresses/address
+        # - projects/project/regions/region/addresses/address
+        # - regions/region/addresses/address
+        # - global/addresses/address
+        # - address
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -6904,6 +6916,12 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Whether the resource should be protected against deletion.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -7052,6 +7070,7 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
@@ -9622,7 +9641,7 @@ module Google
       end
       
       # Protocol definitions for Mixer API to support Interconnect. Next available tag:
-      # 23
+      # 25
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -9641,14 +9660,6 @@ module Google
         # Corresponds to the JSON property `circuitInfos`
         # @return [Array<Google::Apis::ComputeBeta::InterconnectCircuitInfo>]
         attr_accessor :circuit_infos
-      
-        # [Output Only] URL to retrieve the Letter Of Authority and Customer Facility
-        # Assignment (LOA-CFA) documentation relating to this Interconnect. This
-        # documentation authorizes the facility provider to connect to the specified
-        # crossconnect ports.
-        # Corresponds to the JSON property `connectionAuthorization`
-        # @return [String]
-        attr_accessor :connection_authorization
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -9773,7 +9784,6 @@ module Google
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
           @circuit_infos = args[:circuit_infos] if args.key?(:circuit_infos)
-          @connection_authorization = args[:connection_authorization] if args.key?(:connection_authorization)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @description = args[:description] if args.key?(:description)
@@ -9797,7 +9807,7 @@ module Google
       end
       
       # Protocol definitions for Mixer API to support InterconnectAttachment. Next
-      # available tag: 18
+      # available tag: 23
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -10662,11 +10672,6 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Scope key for the region of this location.
-        # Corresponds to the JSON property `regionKey`
-        # @return [String]
-        attr_accessor :region_key
-      
         def initialize(**args)
            update!(**args)
         end
@@ -10676,7 +10681,6 @@ module Google
           @expected_rtt_ms = args[:expected_rtt_ms] if args.key?(:expected_rtt_ms)
           @location_presence = args[:location_presence] if args.key?(:location_presence)
           @region = args[:region] if args.key?(:region)
-          @region_key = args[:region_key] if args.key?(:region_key)
         end
       end
       

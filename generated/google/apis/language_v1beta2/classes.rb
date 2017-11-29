@@ -579,7 +579,9 @@ module Google
       class Features
         include Google::Apis::Core::Hashable
       
-        # Classify the full document into categories.
+        # Classify the full document into categories. If this is true,
+        # the API will use the default model which classifies into a
+        # [predefined taxonomy](/natural-language/docs/categories).
         # Corresponds to the JSON property `classifyText`
         # @return [Boolean]
         attr_accessor :classify_text

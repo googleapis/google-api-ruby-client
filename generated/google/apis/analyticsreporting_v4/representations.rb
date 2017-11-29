@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceQuotasRemaining
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Segment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -321,13 +327,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :report_requests, as: 'reportRequests', class: Google::Apis::AnalyticsreportingV4::ReportRequest, decorator: Google::Apis::AnalyticsreportingV4::ReportRequest::Representation
       
+          property :use_resource_quotas, as: 'useResourceQuotas'
         end
       end
       
       class GetReportsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_cost, as: 'queryCost'
           collection :reports, as: 'reports', class: Google::Apis::AnalyticsreportingV4::Report, decorator: Google::Apis::AnalyticsreportingV4::Report::Representation
+      
+          property :resource_quotas_remaining, as: 'resourceQuotasRemaining', class: Google::Apis::AnalyticsreportingV4::ResourceQuotasRemaining, decorator: Google::Apis::AnalyticsreportingV4::ResourceQuotasRemaining::Representation
       
         end
       end
@@ -503,6 +513,14 @@ module Google
           collection :dimensions, as: 'dimensions'
           collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
+        end
+      end
+      
+      class ResourceQuotasRemaining
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_quota_tokens_remaining, as: 'dailyQuotaTokensRemaining'
+          property :hourly_quota_tokens_remaining, as: 'hourlyQuotaTokensRemaining'
         end
       end
       

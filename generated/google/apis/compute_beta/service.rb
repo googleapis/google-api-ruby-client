@@ -8563,6 +8563,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Sets deletion protection on the instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] resource
+        #   Name of the resource for this request.
+        # @param [Boolean] deletion_protection
+        #   Whether the resource should be protected against deletion.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_deletion_protection(project, zone, resource, deletion_protection: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{resource}/setDeletionProtection', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['deletionProtection'] = deletion_protection unless deletion_protection.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the auto-delete flag for a disk attached to an instance.
         # @param [String] project
         #   Project ID for this request.
@@ -9188,11 +9244,10 @@ module Google
         end
         
         # Stops a running instance, shutting it down cleanly, and allows you to restart
-        # the instance at a later time. Stopped instances do not incur per-minute,
-        # virtual machine usage charges while they are stopped, but any resources that
-        # the virtual machine is using, such as persistent disks and static IP addresses,
-        # will continue to be charged until they are deleted. For more information, see
-        # Stopping an instance.
+        # the instance at a later time. Stopped instances do not incur VM usage charges
+        # while they are stopped. However, resources that the VM is using, such as
+        # persistent disks and static IP addresses, will continue to be charged until
+        # they are deleted. For more information, see Stopping an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

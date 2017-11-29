@@ -22,7 +22,7 @@ module Google
     module OsloginV1alpha
       # Google Cloud OS Login API
       #
-      # Manages OS login configuration for Directory API users.
+      # Manages OS login configuration for Google account users.
       #
       # @example
       #    require 'google/apis/oslogin_v1alpha'
@@ -84,6 +84,8 @@ module Google
         # @param [String] parent
         #   The unique ID for the user in format `users/`user``.
         # @param [Google::Apis::OsloginV1alpha::SshPublicKey] ssh_public_key_object
+        # @param [String] project_id
+        #   The project ID of the Google Cloud Platform project.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -101,13 +103,46 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_user_ssh_public_key(parent, ssh_public_key_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def import_user_ssh_public_key(parent, ssh_public_key_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1alpha/{+parent}:importSshPublicKey', options)
           command.request_representation = Google::Apis::OsloginV1alpha::SshPublicKey::Representation
           command.request_object = ssh_public_key_object
           command.response_representation = Google::Apis::OsloginV1alpha::ImportSshPublicKeyResponse::Representation
           command.response_class = Google::Apis::OsloginV1alpha::ImportSshPublicKeyResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a POSIX account.
+        # @param [String] name
+        #   A reference to the POSIX account to update. POSIX accounts are identified
+        #   by the project ID they are associated with. A reference to the POSIX
+        #   account is in format `users/`user`/projects/`project``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsloginV1alpha::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsloginV1alpha::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_project(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::OsloginV1alpha::Empty::Representation
+          command.response_class = Google::Apis::OsloginV1alpha::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

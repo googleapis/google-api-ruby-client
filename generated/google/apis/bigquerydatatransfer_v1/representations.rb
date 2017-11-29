@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TransferConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -255,6 +261,15 @@ module Google
         end
       end
       
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class TransferConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -287,9 +302,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
-          property :dataset_region, as: 'datasetRegion'
           property :destination_dataset_id, as: 'destinationDatasetId'
           property :end_time, as: 'endTime'
+          property :error_status, as: 'errorStatus', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
+      
           property :name, as: 'name'
           hash :params, as: 'params'
           property :run_time, as: 'runTime'

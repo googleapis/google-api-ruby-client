@@ -153,6 +153,25 @@ module Google
         end
       end
       
+      # Desktop related attributes to the Dynamic Link.
+      class DesktopInfo
+        include Google::Apis::Core::Hashable
+      
+        # Link to open on desktop.
+        # Corresponds to the JSON property `desktopFallbackLink`
+        # @return [String]
+        attr_accessor :desktop_fallback_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @desktop_fallback_link = args[:desktop_fallback_link] if args.key?(:desktop_fallback_link)
+        end
+      end
+      
       # Signals associated with the device making the request.
       class DeviceInfo
         include Google::Apis::Core::Hashable
@@ -166,6 +185,14 @@ module Google
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
+      
+        # Device language code raw setting.
+        # iOS does returns language code in different format than iOS WebView.
+        # For example WebView returns en_US, but iOS returns en-US.
+        # Field below will return raw value returned by iOS.
+        # Corresponds to the JSON property `languageCodeRaw`
+        # @return [String]
+        attr_accessor :language_code_raw
       
         # Device display resolution height.
         # Corresponds to the JSON property `screenResolutionHeight`
@@ -190,6 +217,7 @@ module Google
         def update!(**args)
           @device_model_name = args[:device_model_name] if args.key?(:device_model_name)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @language_code_raw = args[:language_code_raw] if args.key?(:language_code_raw)
           @screen_resolution_height = args[:screen_resolution_height] if args.key?(:screen_resolution_height)
           @screen_resolution_width = args[:screen_resolution_width] if args.key?(:screen_resolution_width)
           @timezone = args[:timezone] if args.key?(:timezone)
@@ -241,6 +269,11 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::AndroidInfo]
         attr_accessor :android_info
       
+        # Desktop related attributes to the Dynamic Link.
+        # Corresponds to the JSON property `desktopInfo`
+        # @return [Google::Apis::FirebasedynamiclinksV1::DesktopInfo]
+        attr_accessor :desktop_info
+      
         # Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
         # [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive)
         # on how to set up Dynamic Link domain associated with your Firebase project.
@@ -283,6 +316,7 @@ module Google
         def update!(**args)
           @analytics_info = args[:analytics_info] if args.key?(:analytics_info)
           @android_info = args[:android_info] if args.key?(:android_info)
+          @desktop_info = args[:desktop_info] if args.key?(:desktop_info)
           @dynamic_link_domain = args[:dynamic_link_domain] if args.key?(:dynamic_link_domain)
           @ios_info = args[:ios_info] if args.key?(:ios_info)
           @link = args[:link] if args.key?(:link)

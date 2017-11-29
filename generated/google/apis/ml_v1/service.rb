@@ -288,6 +288,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a specific job resource.
+        # Currently the only supported fields to update are `labels`.
+        # @param [String] name
+        #   Required. The job name.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1Job] google_cloud_ml_v1__job_object
+        # @param [String] update_mask
+        #   Required. Specifies the path, relative to `Job`, of the field to update.
+        #   To adopt etag mechanism, include `etag` field in the mask, and include the
+        #   `etag` value in your job resource.
+        #   For example, to change the labels of a job, the `update_mask` parameter
+        #   would be specified as `labels`, `etag`, and the
+        #   `PATCH` request body would specify the new value, as follows:
+        #   `
+        #   "labels": `
+        #   "owner": "Google",
+        #   "color": "Blue"
+        #   `
+        #   "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4"
+        #   `
+        #   If `etag` matches the one on the server, the labels of the job will be
+        #   replaced with the given ones, and the server end `etag` will be
+        #   recalculated.
+        #   Currently the only supported update masks are `labels` and `etag`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Job] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Job]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_job(name, google_cloud_ml_v1__job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
+          command.request_object = google_cloud_ml_v1__job_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Job::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Job
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
@@ -503,6 +556,8 @@ module Google
         # versions.
         # @param [String] parent
         #   Required. The name of the project whose models are to be listed.
+        # @param [String] filter
+        #   Optional. Specifies the subset of models to retrieve.
         # @param [Fixnum] page_size
         #   Optional. The number of models to retrieve per "page" of results. If there
         #   are more remaining results than this number, the response message will
@@ -529,11 +584,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_models(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_models(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/models', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListModelsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -786,6 +842,8 @@ module Google
         # be retrieved in batches (called pages):
         # @param [String] parent
         #   Required. The name of the model for which to list the version.
+        # @param [String] filter
+        #   Optional. Specifies the subset of versions to retrieve.
         # @param [Fixnum] page_size
         #   Optional. The number of versions to retrieve per "page" of results. If
         #   there are more remaining results than this number, the response message
@@ -812,11 +870,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_model_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_model_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListVersionsResponse::Representation
           command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

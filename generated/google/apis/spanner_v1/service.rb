@@ -294,18 +294,18 @@ module Google
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are
         #   case insensitive. The fields eligible for filtering are:
-        #   * name
-        #   * display_name
-        #   * labels.key where key is the name of a label
+        #   * `name`
+        #   * `display_name`
+        #   * `labels.key` where key is the name of a label
         #   Some examples of using filters are:
-        #   * name:* --> The instance has a name.
-        #   * name:Howl --> The instance's name contains the string "howl".
-        #   * name:HOWL --> Equivalent to above.
-        #   * NAME:howl --> Equivalent to above.
-        #   * labels.env:* --> The instance has the label "env".
-        #   * labels.env:dev --> The instance has the label "env" and the value of
+        #   * `name:*` --> The instance has a name.
+        #   * `name:Howl` --> The instance's name contains the string "howl".
+        #   * `name:HOWL` --> Equivalent to above.
+        #   * `NAME:howl` --> Equivalent to above.
+        #   * `labels.env:*` --> The instance has the label "env".
+        #   * `labels.env:dev` --> The instance has the label "env" and the value of
         #   the label contains the string "dev".
-        #   * name:howl labels.env:dev --> The instance's name contains "howl" and
+        #   * `name:howl labels.env:dev` --> The instance's name contains "howl" and
         #   it has the label "env" with its value
         #   containing "dev".
         # @param [Fixnum] page_size
@@ -1242,10 +1242,10 @@ module Google
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are
         #   case insensitive. The fields eligible for filtering are:
-        #   * labels.key where key is the name of a label
+        #   * `labels.key` where key is the name of a label
         #   Some examples of using filters are:
-        #   * labels.env:* --> The session has the label "env".
-        #   * labels.env:dev --> The session has the label "env" and the value of
+        #   * `labels.env:*` --> The session has the label "env".
+        #   * `labels.env:dev` --> The session has the label "env" and the value of
         #   the label contains the string "dev".
         # @param [Fixnum] page_size
         #   Number of sessions to be returned in the response. If 0 or less, defaults

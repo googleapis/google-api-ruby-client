@@ -210,8 +210,7 @@ module Google
       class CommitRequest
         include Google::Apis::Core::Hashable
       
-        # If non-empty, applies all writes in this transaction, and commits it.
-        # Otherwise, applies the writes as if they were in their own transaction.
+        # If set, applies all writes in this transaction, and commits it.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -523,6 +522,7 @@ module Google
       
         # The list of transformations to apply to the fields of the document, in
         # order.
+        # This must not be empty.
         # Corresponds to the JSON property `fieldTransforms`
         # @return [Array<Google::Apis::FirestoreV1beta1::FieldTransform>]
         attr_accessor :field_transforms
@@ -728,13 +728,13 @@ module Google
         attr_accessor :fields
       
         # The resource name of the index.
+        # Output only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # The state of the index.
-        # The state is read-only.
-        # @OutputOnly
+        # Output only.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -780,96 +780,11 @@ module Google
         end
       end
       
-      # Metadata for index operations. This metadata populates
-      # the metadata field of google.longrunning.Operation.
-      class IndexOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # True if the [google.longrunning.Operation] was cancelled. If the
-        # cancellation is in progress, cancelled will be true but
-        # google.longrunning.Operation.done will be false.
-        # Corresponds to the JSON property `cancelled`
-        # @return [Boolean]
-        attr_accessor :cancelled
-        alias_method :cancelled?, :cancelled
-      
-        # Measures the progress of a particular metric.
-        # Corresponds to the JSON property `documentProgress`
-        # @return [Google::Apis::FirestoreV1beta1::Progress]
-        attr_accessor :document_progress
-      
-        # The time the operation ended, either successfully or otherwise. Unset if
-        # the operation is still active.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The index resource that this operation is acting on. For example:
-        # `projects/`project_id`/databases/`database_id`/indexes/`index_id``
-        # Corresponds to the JSON property `index`
-        # @return [String]
-        attr_accessor :index
-      
-        # The type of index operation.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # The time that work began on the operation.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cancelled = args[:cancelled] if args.key?(:cancelled)
-          @document_progress = args[:document_progress] if args.key?(:document_progress)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @index = args[:index] if args.key?(:index)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
       # specified otherwise, this must conform to the
       # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
       # standard</a>. Values must be within normalized ranges.
-      # Example of normalization code in Python:
-      # def NormalizeLongitude(longitude):
-      # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-      # q, r = divmod(longitude, 360.0)
-      # if r > 180.0 or (r == 180.0 and q <= -1.0):
-      # return r - 360.0
-      # return r
-      # def NormalizeLatLng(latitude, longitude):
-      # """Wraps decimal degrees latitude and longitude to
-      # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-      # r = latitude % 360.0
-      # if r <= 90.0:
-      # return r, NormalizeLongitude(longitude)
-      # elif r >= 270.0:
-      # return r - 360, NormalizeLongitude(longitude)
-      # else:
-      # return 180 - r, NormalizeLongitude(longitude + 180.0)
-      # assert 180.0 == NormalizeLongitude(180.0)
-      # assert -180.0 == NormalizeLongitude(-180.0)
-      # assert -179.0 == NormalizeLongitude(181.0)
-      # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-      # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-      # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-      # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-      # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-      # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-      # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-      # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-      # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-      # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -891,6 +806,32 @@ module Google
         def update!(**args)
           @latitude = args[:latitude] if args.key?(:latitude)
           @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
+      # The request for Firestore.ListCollectionIds.
+      class ListCollectionIdsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of results to return.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token. Must be a value from
+        # ListCollectionIdsResponse.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
         end
       end
       
@@ -1226,33 +1167,6 @@ module Google
         def update!(**args)
           @exists = args[:exists] if args.key?(:exists)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Measures the progress of a particular metric.
-      class Progress
-        include Google::Apis::Core::Hashable
-      
-        # An estimate of how much work has been completed. Note that this may be
-        # greater than `work_estimated`.
-        # Corresponds to the JSON property `workCompleted`
-        # @return [Fixnum]
-        attr_accessor :work_completed
-      
-        # An estimate of how much work needs to be performed. Zero if the
-        # work estimate is unavailable. May change as work progresses.
-        # Corresponds to the JSON property `workEstimated`
-        # @return [Fixnum]
-        attr_accessor :work_estimated
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @work_completed = args[:work_completed] if args.key?(:work_completed)
-          @work_estimated = args[:work_estimated] if args.key?(:work_estimated)
         end
       end
       
@@ -1841,36 +1755,6 @@ module Google
         # specified otherwise, this must conform to the
         # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
         # standard</a>. Values must be within normalized ranges.
-        # Example of normalization code in Python:
-        # def NormalizeLongitude(longitude):
-        # """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-        # q, r = divmod(longitude, 360.0)
-        # if r > 180.0 or (r == 180.0 and q <= -1.0):
-        # return r - 360.0
-        # return r
-        # def NormalizeLatLng(latitude, longitude):
-        # """Wraps decimal degrees latitude and longitude to
-        # [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-        # r = latitude % 360.0
-        # if r <= 90.0:
-        # return r, NormalizeLongitude(longitude)
-        # elif r >= 270.0:
-        # return r - 360, NormalizeLongitude(longitude)
-        # else:
-        # return 180 - r, NormalizeLongitude(longitude + 180.0)
-        # assert 180.0 == NormalizeLongitude(180.0)
-        # assert -180.0 == NormalizeLongitude(-180.0)
-        # assert -179.0 == NormalizeLongitude(181.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-        # assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-        # assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-        # assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-        # assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-        # assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-        # assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-        # assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
         # Corresponds to the JSON property `geoPointValue`
         # @return [Google::Apis::FirestoreV1beta1::LatLng]
         attr_accessor :geo_point_value

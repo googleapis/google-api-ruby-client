@@ -195,13 +195,13 @@ module Google
       class HeldGroupsQuery
         include Google::Apis::Core::Hashable
       
-        # The end date range for the search query. These timestamps are in GMT and
+        # The end time range for the search query. These timestamps are in GMT and
         # rounded down to the start of the given date.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The start date range for the search query. These timestamps are in GMT and
+        # The start time range for the search query. These timestamps are in GMT and
         # rounded down to the start of the given date.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -228,13 +228,13 @@ module Google
       class HeldMailQuery
         include Google::Apis::Core::Hashable
       
-        # The end date range for the search query. These timestamps are in GMT and
+        # The end time range for the search query. These timestamps are in GMT and
         # rounded down to the start of the given date.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The start date range for the search query. These timestamps are in GMT and
+        # The start time range for the search query. These timestamps are in GMT and
         # rounded down to the start of the given date.
         # Corresponds to the JSON property `startTime`
         # @return [String]

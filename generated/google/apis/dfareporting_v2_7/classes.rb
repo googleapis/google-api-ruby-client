@@ -114,6 +114,7 @@ module Google
         # - "47" for BGN
         # - "48" for HRK
         # - "49" for MXN
+        # - "50" for NGN
         # Corresponds to the JSON property `currencyId`
         # @return [Fixnum]
         attr_accessor :currency_id
@@ -2669,7 +2670,7 @@ module Google
         attr_accessor :background_color
       
         # Click-through URL for backup image. Applicable to the following creative types:
-        # FLASH_INPAGE and HTML5_BANNER. Applicable to DISPLAY when the primary asset
+        # FLASH_INPAGE, and HTML5_BANNER. Applicable to DISPLAY when the primary asset
         # type is not HTML_IMAGE.
         # Corresponds to the JSON property `backupImageClickThroughUrl`
         # @return [String]
@@ -4837,6 +4838,7 @@ module Google
         # - "47" for BGN
         # - "48" for HRK
         # - "49" for MXN
+        # - "50" for NGN
         # Corresponds to the JSON property `currencyId`
         # @return [Fixnum]
         attr_accessor :currency_id
@@ -5638,7 +5640,8 @@ module Google
       class FloodlightActivitiesGenerateTagResponse
         include Google::Apis::Core::Hashable
       
-        # Generated tag for this floodlight activity.
+        # Generated tag for this Floodlight activity. For global site tags, this is the
+        # event snippet.
         # Corresponds to the JSON property `floodlightActivityTag`
         # @return [String]
         attr_accessor :floodlight_activity_tag
@@ -5848,7 +5851,7 @@ module Google
         # @return [String]
         attr_accessor :tag_format
       
-        # Value of the cat= paramter in the floodlight tag, which the ad servers use to
+        # Value of the cat= parameter in the floodlight tag, which the ad servers use to
         # identify the activity. This is optional: if empty, a new tag string will be
         # generated for you. This string must be 1 to 8 characters long, with valid
         # characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique

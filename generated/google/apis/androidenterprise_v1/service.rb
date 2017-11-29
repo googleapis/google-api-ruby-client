@@ -1848,8 +1848,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds or updates a per-user managed configuration for an app for the specified
-        # user. This method supports patch semantics.
+        # Adds or updates the managed configuration settings for an app for the
+        # specified user. If you support the Managed configurations iframe, you can
+        # apply managed configurations to a user by specifying an mcmId and its
+        # associated configuration variables (if any) in the request. Alternatively, all
+        # EMMs can apply managed configurations by passing a list of managed properties.
+        # This method supports patch semantics.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1894,8 +1898,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds or updates a per-user managed configuration for an app for the specified
-        # user.
+        # Adds or updates the managed configuration settings for an app for the
+        # specified user. If you support the Managed configurations iframe, you can
+        # apply managed configurations to a user by specifying an mcmId and its
+        # associated configuration variables (if any) in the request. Alternatively, all
+        # EMMs can apply managed configurations by passing a list of managed properties.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1934,6 +1941,45 @@ module Google
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.params['managedConfigurationForUserId'] = managed_configuration_for_user_id unless managed_configuration_for_user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the managed configurations settings for the specified app. Only the
+        # ID and the name is set.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] product_id
+        #   The ID of the product for which the managed configurations settings applies to.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettingsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettingsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_managedconfigurationssettings(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettingsListResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettingsListResponse
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['productId'] = product_id unless product_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3202,6 +3248,45 @@ module Google
           command.request_object = user_object
           command.response_representation = Google::Apis::AndroidenterpriseV1::User::Representation
           command.response_class = Google::Apis::AndroidenterpriseV1::User
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Revokes access to all devices currently provisioned to the user. The user will
+        # no longer be able to use the managed Play store on any of their managed
+        # devices.
+        # This call only works with EMM-managed accounts.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] user_id
+        #   The ID of the user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revoke_user_device_access(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'enterprises/{enterpriseId}/users/{userId}/deviceAccess', options)
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?

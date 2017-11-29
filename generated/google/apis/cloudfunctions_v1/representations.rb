@@ -22,6 +22,72 @@ module Google
   module Apis
     module CloudfunctionsV1
       
+      class CallFunctionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CallFunctionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudFunction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FailurePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateDownloadUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateDownloadUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateUploadUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateUploadUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpsTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListFunctionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,7 +112,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadataV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadataV1Beta2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Retry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceRepository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -56,6 +140,108 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CallFunctionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+        end
+      end
+      
+      class CallFunctionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :execution_id, as: 'executionId'
+          property :result, as: 'result'
+        end
+      end
+      
+      class CloudFunction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_memory_mb, as: 'availableMemoryMb'
+          property :description, as: 'description'
+          property :entry_point, as: 'entryPoint'
+          property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV1::EventTrigger, decorator: Google::Apis::CloudfunctionsV1::EventTrigger::Representation
+      
+          property :https_trigger, as: 'httpsTrigger', class: Google::Apis::CloudfunctionsV1::HttpsTrigger, decorator: Google::Apis::CloudfunctionsV1::HttpsTrigger::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :source_archive_url, as: 'sourceArchiveUrl'
+          property :source_repository, as: 'sourceRepository', class: Google::Apis::CloudfunctionsV1::SourceRepository, decorator: Google::Apis::CloudfunctionsV1::SourceRepository::Representation
+      
+          property :source_upload_url, as: 'sourceUploadUrl'
+          property :status, as: 'status'
+          property :timeout, as: 'timeout'
+          property :update_time, as: 'updateTime'
+          property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
+      class EventTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_type, as: 'eventType'
+          property :failure_policy, as: 'failurePolicy', class: Google::Apis::CloudfunctionsV1::FailurePolicy, decorator: Google::Apis::CloudfunctionsV1::FailurePolicy::Representation
+      
+          property :resource, as: 'resource'
+          property :service, as: 'service'
+        end
+      end
+      
+      class FailurePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry, as: 'retry', class: Google::Apis::CloudfunctionsV1::Retry, decorator: Google::Apis::CloudfunctionsV1::Retry::Representation
+      
+        end
+      end
+      
+      class GenerateDownloadUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
+      class GenerateDownloadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_url, as: 'downloadUrl'
+        end
+      end
+      
+      class GenerateUploadUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GenerateUploadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upload_url, as: 'uploadUrl'
+        end
+      end
+      
+      class HttpsTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+        end
+      end
+      
+      class ListFunctionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :functions, as: 'functions', class: Google::Apis::CloudfunctionsV1::CloudFunction, decorator: Google::Apis::CloudfunctionsV1::CloudFunction::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
       
       class ListLocationsResponse
@@ -98,13 +284,39 @@ module Google
         end
       end
       
+      class OperationMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :request, as: 'request'
+          property :target, as: 'target'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+          property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
       class OperationMetadataV1Beta2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'
+          property :update_time, as: 'updateTime'
           property :version_id, :numeric_string => true, as: 'versionId'
+        end
+      end
+      
+      class Retry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SourceRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployed_url, as: 'deployedUrl'
+          property :url, as: 'url'
         end
       end
       

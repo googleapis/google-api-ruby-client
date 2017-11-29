@@ -268,6 +268,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a signed URL for downloading deployed function source code.
+        # The URL is only valid for a limited period and should be used within
+        # minutes after generation.
+        # For more information about the signed URL usage see:
+        # https://cloud.google.com/storage/docs/access-control/signed-urls
+        # @param [String] name
+        #   The name of function for which source code Google Cloud Storage signed
+        #   URL should be generated.
+        # @param [Google::Apis::CloudfunctionsV1beta2::GenerateDownloadUrlRequest] generate_download_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV1beta2::GenerateDownloadUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV1beta2::GenerateDownloadUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_function_download_url(name, generate_download_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+name}:generateDownloadUrl', options)
+          command.request_representation = Google::Apis::CloudfunctionsV1beta2::GenerateDownloadUrlRequest::Representation
+          command.request_object = generate_download_url_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV1beta2::GenerateDownloadUrlResponse::Representation
+          command.response_class = Google::Apis::CloudfunctionsV1beta2::GenerateDownloadUrlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a signed URL for uploading a function source code.
+        # For more information about the signed URL usage see:
+        # https://cloud.google.com/storage/docs/access-control/signed-urls
+        # Once the function source code upload is complete, the used signed
+        # URL should be provided in CreateFunction or UpdateFunction request
+        # as a reference to the function source code.
+        # @param [String] parent
+        #   The project and location in which the Google Cloud Storage signed URL
+        #   should be generated, specified in the format `projects/*/locations/*
+        # @param [Google::Apis::CloudfunctionsV1beta2::GenerateUploadUrlRequest] generate_upload_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV1beta2::GenerateUploadUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV1beta2::GenerateUploadUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_function_upload_url(parent, generate_upload_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+parent}/functions:generateUploadUrl', options)
+          command.request_representation = Google::Apis::CloudfunctionsV1beta2::GenerateUploadUrlRequest::Representation
+          command.request_object = generate_upload_url_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV1beta2::GenerateUploadUrlResponse::Representation
+          command.response_class = Google::Apis::CloudfunctionsV1beta2::GenerateUploadUrlResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a function with the given name from the requested project.
         # @param [String] name
         #   The name of the function which details should be obtained.

@@ -179,6 +179,47 @@ module Google
         end
       end
       
+      # An auxiliary table contains statistical information on the relative
+      # frequency of different quasi-identifiers values. It has one or several
+      # quasi-identifiers columns, and one column that indicates the relative
+      # frequency of each quasi-identifier tuple.
+      # If a tuple is present in the data but not in the auxiliary table, the
+      # corresponding relative frequency is assumed to be zero (and thus, the
+      # tuple is highly reidentifiable).
+      class GooglePrivacyDlpV2beta1AuxiliaryTable
+        include Google::Apis::Core::Hashable
+      
+        # Quasi-identifier columns. [required]
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1QuasiIdField>]
+        attr_accessor :quasi_ids
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `relativeFrequency`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :relative_frequency
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @relative_frequency = args[:relative_frequency] if args.key?(:relative_frequency)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Options defining BigQuery table and row identifiers.
       class GooglePrivacyDlpV2beta1BigQueryOptions
         include Google::Apis::Core::Hashable
@@ -790,13 +831,13 @@ module Google
         end
       end
       
-      # Replaces an identifier with an surrogate using FPE with the FFX
+      # Replaces an identifier with a surrogate using FPE with the FFX
       # mode of operation.
       # The identifier must be representable by the US-ASCII character set.
       # For a given crypto key and context, the same identifier will be
       # replaced with the same surrogate.
-      # Note that a given identifier must be either the empty string or be at
-      # least two characters long.
+      # Identifiers must be at least two characters long.
+      # In the case that the identifier is the empty string, it will be skipped.
       class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
@@ -846,6 +887,49 @@ module Google
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
           @custom_alphabet = args[:custom_alphabet] if args.key?(:custom_alphabet)
           @radix = args[:radix] if args.key?(:radix)
+        end
+      end
+      
+      # Custom information type provided by the user. Used to find domain-specific
+      # sensitive information configurable to the data in question.
+      class GooglePrivacyDlpV2beta1CustomInfoType
+        include Google::Apis::Core::Hashable
+      
+        # Custom information type based on a dictionary of words or phrases. This can
+        # be used to match sensitive information specific to the data, such as a list
+        # of employee IDs or job titles.
+        # Dictionary words are case-insensitive and all characters other than letters
+        # and digits in the unicode [Basic Multilingual
+        # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
+        # Basic_Multilingual_Plane)
+        # will be replaced with whitespace when scanning for matches, so the
+        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+        # surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and
+        # digits next to non-digits. For example, the dictionary word "jen" will
+        # match the first three letters of the text "jen123" but will return no
+        # matches for "jennifer".
+        # Dictionary words containing a large number of characters that are not
+        # letters or digits may result in unexpected findings because such characters
+        # are treated as whitespace.
+        # Corresponds to the JSON property `dictionary`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary]
+        attr_accessor :dictionary
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dictionary = args[:dictionary] if args.key?(:dictionary)
+          @info_type = args[:info_type] if args.key?(:info_type)
         end
       end
       
@@ -1020,6 +1104,42 @@ module Google
         end
       end
       
+      # Custom information type based on a dictionary of words or phrases. This can
+      # be used to match sensitive information specific to the data, such as a list
+      # of employee IDs or job titles.
+      # Dictionary words are case-insensitive and all characters other than letters
+      # and digits in the unicode [Basic Multilingual
+      # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
+      # Basic_Multilingual_Plane)
+      # will be replaced with whitespace when scanning for matches, so the
+      # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+      # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+      # surrounding any match must be of a different type than the adjacent
+      # characters within the word, so letters must be next to non-letters and
+      # digits next to non-digits. For example, the dictionary word "jen" will
+      # match the first three letters of the text "jen123" but will return no
+      # matches for "jennifer".
+      # Dictionary words containing a large number of characters that are not
+      # letters or digits may result in unexpected findings because such characters
+      # are treated as whitespace.
+      class GooglePrivacyDlpV2beta1Dictionary
+        include Google::Apis::Core::Hashable
+      
+        # Message defining a list of words or phrases to search for in the data.
+        # Corresponds to the JSON property `wordList`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1WordList]
+        attr_accessor :word_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @word_list = args[:word_list] if args.key?(:word_list)
+        end
+      end
+      
       # An entity in a dataset is a field or set of fields that correspond to a
       # single person. For example, in medical records the `EntityId` might be
       # a patient identifier, or for financial records it might be an account
@@ -1092,7 +1212,7 @@ module Google
       class GooglePrivacyDlpV2beta1FieldTransformation
         include Google::Apis::Core::Hashable
       
-        # A condition for determing whether a transformation should be applied to
+        # A condition for determining whether a transformation should be applied to
         # a field.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordCondition]
@@ -1272,7 +1392,7 @@ module Google
         end
       end
       
-      # Configuration for determing how redaction of images should occur.
+      # Configuration for determining how redaction of images should occur.
       class GooglePrivacyDlpV2beta1ImageRedactionConfig
         include Google::Apis::Core::Hashable
       
@@ -1462,6 +1582,11 @@ module Google
       class GooglePrivacyDlpV2beta1InspectConfig
         include Google::Apis::Core::Hashable
       
+        # Custom info types provided by the user.
+        # Corresponds to the JSON property `customInfoTypes`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CustomInfoType>]
+        attr_accessor :custom_info_types
+      
         # When true, excludes type information of the findings.
         # Corresponds to the JSON property `excludeTypes`
         # @return [Boolean]
@@ -1503,6 +1628,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_info_types = args[:custom_info_types] if args.key?(:custom_info_types)
           @exclude_types = args[:exclude_types] if args.key?(:exclude_types)
           @include_quote = args[:include_quote] if args.key?(:include_quote)
           @info_type_limits = args[:info_type_limits] if args.key?(:info_type_limits)
@@ -1785,6 +1911,144 @@ module Google
         # Update properties of this object
         def update!(**args)
           @equivalence_class_histogram_buckets = args[:equivalence_class_histogram_buckets] if args.key?(:equivalence_class_histogram_buckets)
+        end
+      end
+      
+      # Reidentifiability metric. This corresponds to a risk model similar to what
+      # is called "journalist risk" in the literature, except the attack dataset is
+      # statistically modeled instead of being perfectly known. This can be done
+      # using publicly available data (like the US Census), or using a custom
+      # statistical model (indicated as one or several BigQuery tables), or by
+      # extrapolating from the distribution of values in the input dataset.
+      class GooglePrivacyDlpV2beta1KMapEstimationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Several auxiliary tables can be used in the analysis. Each custom_tag
+        # used to tag a quasi-identifiers column must appear in exactly one column
+        # of one auxiliary table.
+        # Corresponds to the JSON property `auxiliaryTables`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1AuxiliaryTable>]
+        attr_accessor :auxiliary_tables
+      
+        # Fields considered to be quasi-identifiers. No two columns can have the
+        # same tag. [required]
+        # Corresponds to the JSON property `quasiIds`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1TaggedField>]
+        attr_accessor :quasi_ids
+      
+        # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
+        # Required if no column is tagged with a region-specific InfoType (like
+        # US_ZIP_5) or a region code.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auxiliary_tables = args[:auxiliary_tables] if args.key?(:auxiliary_tables)
+          @quasi_ids = args[:quasi_ids] if args.key?(:quasi_ids)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # A KMapEstimationHistogramBucket message with the following values:
+      # min_anonymity: 3
+      # max_anonymity: 5
+      # frequency: 42
+      # means that there are 42 records whose quasi-identifier values correspond
+      # to 3, 4 or 5 people in the overlying population. An important particular
+      # case is when min_anonymity = max_anonymity = 1: the frequency field then
+      # corresponds to the number of uniquely identifiable records.
+      class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket
+        include Google::Apis::Core::Hashable
+      
+        # Number of records within these anonymity bounds.
+        # Corresponds to the JSON property `bucketSize`
+        # @return [Fixnum]
+        attr_accessor :bucket_size
+      
+        # Sample of quasi-identifier tuple values in this bucket. The total
+        # number of classes returned per bucket is capped at 20.
+        # Corresponds to the JSON property `bucketValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues>]
+        attr_accessor :bucket_values
+      
+        # Always greater than or equal to min_anonymity.
+        # Corresponds to the JSON property `maxAnonymity`
+        # @return [Fixnum]
+        attr_accessor :max_anonymity
+      
+        # Always positive.
+        # Corresponds to the JSON property `minAnonymity`
+        # @return [Fixnum]
+        attr_accessor :min_anonymity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
+          @max_anonymity = args[:max_anonymity] if args.key?(:max_anonymity)
+          @min_anonymity = args[:min_anonymity] if args.key?(:min_anonymity)
+        end
+      end
+      
+      # A tuple of values for the quasi-identifier columns.
+      class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues
+        include Google::Apis::Core::Hashable
+      
+        # The estimated anonymity for these quasi-identifier values.
+        # Corresponds to the JSON property `estimatedAnonymity`
+        # @return [Fixnum]
+        attr_accessor :estimated_anonymity
+      
+        # The quasi-identifier values.
+        # Corresponds to the JSON property `quasiIdsValues`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value>]
+        attr_accessor :quasi_ids_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_anonymity = args[:estimated_anonymity] if args.key?(:estimated_anonymity)
+          @quasi_ids_values = args[:quasi_ids_values] if args.key?(:quasi_ids_values)
+        end
+      end
+      
+      # Result of the reidentifiability analysis. Note that these results are an
+      # estimation, not exact values.
+      class GooglePrivacyDlpV2beta1KMapEstimationResult
+        include Google::Apis::Core::Hashable
+      
+        # The intervals [min_anonymity, max_anonymity] do not overlap. If a value
+        # doesn't correspond to any such interval, the associated frequency is
+        # zero. For example, the following records:
+        # `min_anonymity: 1, max_anonymity: 1, frequency: 17`
+        # `min_anonymity: 2, max_anonymity: 3, frequency: 42`
+        # `min_anonymity: 5, max_anonymity: 10, frequency: 99`
+        # mean that there are no record with an estimated anonymity of 4, 5, or
+        # larger than 10.
+        # Corresponds to the JSON property `kMapEstimationHistogram`
+        # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket>]
+        attr_accessor :k_map_estimation_histogram
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @k_map_estimation_histogram = args[:k_map_estimation_histogram] if args.key?(:k_map_estimation_histogram)
         end
       end
       
@@ -2317,13 +2581,13 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoHashConfig]
         attr_accessor :crypto_hash_config
       
-        # Replaces an identifier with an surrogate using FPE with the FFX
+        # Replaces an identifier with a surrogate using FPE with the FFX
         # mode of operation.
         # The identifier must be representable by the US-ASCII character set.
         # For a given crypto key and context, the same identifier will be
         # replaced with the same surrogate.
-        # Note that a given identifier must be either the empty string or be at
-        # least two characters long.
+        # Identifiers must be at least two characters long.
+        # In the case that the identifier is the empty string, it will be skipped.
         # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
@@ -2398,6 +2662,16 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityConfig]
         attr_accessor :k_anonymity_config
       
+        # Reidentifiability metric. This corresponds to a risk model similar to what
+        # is called "journalist risk" in the literature, except the attack dataset is
+        # statistically modeled instead of being perfectly known. This can be done
+        # using publicly available data (like the US Census), or using a custom
+        # statistical model (indicated as one or several BigQuery tables), or by
+        # extrapolating from the distribution of values in the input dataset.
+        # Corresponds to the JSON property `kMapEstimationConfig`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationConfig]
+        attr_accessor :k_map_estimation_config
+      
         # l-diversity metric, used for analysis of reidentification risk.
         # Corresponds to the JSON property `lDiversityConfig`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityConfig]
@@ -2417,6 +2691,7 @@ module Google
         def update!(**args)
           @categorical_stats_config = args[:categorical_stats_config] if args.key?(:categorical_stats_config)
           @k_anonymity_config = args[:k_anonymity_config] if args.key?(:k_anonymity_config)
+          @k_map_estimation_config = args[:k_map_estimation_config] if args.key?(:k_map_estimation_config)
           @l_diversity_config = args[:l_diversity_config] if args.key?(:l_diversity_config)
           @numerical_stats_config = args[:numerical_stats_config] if args.key?(:numerical_stats_config)
         end
@@ -2461,6 +2736,32 @@ module Google
         end
       end
       
+      # A quasi-identifier column has a custom_tag, used to know which column
+      # in the data corresponds to which column in the statistical model.
+      class GooglePrivacyDlpV2beta1QuasiIdField
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customTag`
+        # @return [String]
+        attr_accessor :custom_tag
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
+          @field = args[:field] if args.key?(:field)
+        end
+      end
+      
       # Generic half-open interval [start, end)
       class GooglePrivacyDlpV2beta1Range
         include Google::Apis::Core::Hashable
@@ -2486,7 +2787,7 @@ module Google
         end
       end
       
-      # A condition for determing whether a transformation should be applied to
+      # A condition for determining whether a transformation should be applied to
       # a field.
       class GooglePrivacyDlpV2beta1RecordCondition
         include Google::Apis::Core::Hashable
@@ -2536,7 +2837,7 @@ module Google
       class GooglePrivacyDlpV2beta1RecordSuppression
         include Google::Apis::Core::Hashable
       
-        # A condition for determing whether a transformation should be applied to
+        # A condition for determining whether a transformation should be applied to
         # a field.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1RecordCondition]
@@ -2765,6 +3066,12 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KAnonymityResult]
         attr_accessor :k_anonymity_result
       
+        # Result of the reidentifiability analysis. Note that these results are an
+        # estimation, not exact values.
+        # Corresponds to the JSON property `kMapEstimationResult`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1KMapEstimationResult]
+        attr_accessor :k_map_estimation_result
+      
         # Result of the l-diversity computation.
         # Corresponds to the JSON property `lDiversityResult`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1LDiversityResult]
@@ -2783,6 +3090,7 @@ module Google
         def update!(**args)
           @categorical_stats_result = args[:categorical_stats_result] if args.key?(:categorical_stats_result)
           @k_anonymity_result = args[:k_anonymity_result] if args.key?(:k_anonymity_result)
+          @k_map_estimation_result = args[:k_map_estimation_result] if args.key?(:k_map_estimation_result)
           @l_diversity_result = args[:l_diversity_result] if args.key?(:l_diversity_result)
           @numerical_stats_result = args[:numerical_stats_result] if args.key?(:numerical_stats_result)
         end
@@ -2913,6 +3221,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_index = args[:row_index] if args.key?(:row_index)
+        end
+      end
+      
+      # A column with a semantic tag attached.
+      class GooglePrivacyDlpV2beta1TaggedField
+        include Google::Apis::Core::Hashable
+      
+        # A column can be tagged with a custom tag. In this case, the user must
+        # indicate an auxiliary table that contains statistical information on
+        # the possible values of this column (below).
+        # Corresponds to the JSON property `customTag`
+        # @return [String]
+        attr_accessor :custom_tag
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
+        attr_accessor :field
+      
+        # A generic empty message that you can re-use to avoid defining duplicated
+        # empty messages in your APIs. A typical example is to use it as the request
+        # or the response type of an API method. For instance:
+        # service Foo `
+        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+        # `
+        # The JSON representation for `Empty` is empty JSON object ````.
+        # Corresponds to the JSON property `inferred`
+        # @return [Google::Apis::DlpV2beta1::GoogleProtobufEmpty]
+        attr_accessor :inferred
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
+          @field = args[:field] if args.key?(:field)
+          @inferred = args[:inferred] if args.key?(:inferred)
+          @info_type = args[:info_type] if args.key?(:info_type)
         end
       end
       
@@ -3119,6 +3472,27 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Message defining a list of words or phrases to search for in the data.
+      class GooglePrivacyDlpV2beta1WordList
+        include Google::Apis::Core::Hashable
+      
+        # Words or phrases defining the dictionary. The dictionary must contain
+        # at least one phrase and every phrase must contain at least 2 characters
+        # that are letters or digits. [required]
+        # Corresponds to the JSON property `words`
+        # @return [Array<String>]
+        attr_accessor :words
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @words = args[:words] if args.key?(:words)
         end
       end
       

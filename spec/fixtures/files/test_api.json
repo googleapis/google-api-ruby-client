@@ -90,6 +90,9 @@
         "hat": {
           "$ref": "Hat"
         },
+        "recursiveHat": {
+          "$ref": "RecursiveHat"
+        },
         "properties": {
           "$ref": "HashLikeThing"
         },
@@ -129,6 +132,49 @@
             "$ref": "BaseballHat"
           }
         ]
+      }
+    },
+    "RecursiveHat": {
+      "id": "RecursiveHat",
+      "type": "object",
+      "properties": {
+        "bool": {
+          "type": "boolean",
+          "description": "The bool value."
+        },
+        "double": {
+          "type": "number",
+          "description": "The double value.",
+          "format": "double"
+        },
+        "image": {
+          "$ref": "Image",
+          "description": "The image value."
+        },
+        "int": {
+          "type": "integer",
+          "description": "The int value.",
+          "format": "int32"
+        },
+        "kind": {
+          "type": "string",
+          "description": "The kind, fixed to \"test#recursiveHat\".",
+          "default": "test#recursiveHat"
+        },
+        "list": {
+          "type": "array",
+          "description": "The list of typed values.",
+          "items": {
+            "$ref": "RecursiveHat"
+          }
+        },
+        "string": {
+          "type": "string",
+          "description": "The string value."
+        }
+      },
+      "additionalProperties": {
+        "$ref": "RecursiveHat"
       }
     },
     "TopHat": {

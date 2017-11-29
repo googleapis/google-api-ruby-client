@@ -626,6 +626,114 @@ module Google
         end
       end
       
+      # Read-replica configuration for connecting to the on-premises master.
+      class DemoteMasterConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#demoteMasterConfiguration.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Read-replica configuration specific to MySQL databases.
+        # Corresponds to the JSON property `mysqlReplicaConfiguration`
+        # @return [Google::Apis::SqladminV1beta4::DemoteMasterMySqlReplicaConfiguration]
+        attr_accessor :mysql_replica_configuration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @mysql_replica_configuration = args[:mysql_replica_configuration] if args.key?(:mysql_replica_configuration)
+        end
+      end
+      
+      # Database instance demote master context.
+      class DemoteMasterContext
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#demoteMasterContext.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of the instance which will act as on-premises master in the
+        # replication setup.
+        # Corresponds to the JSON property `masterInstanceName`
+        # @return [String]
+        attr_accessor :master_instance_name
+      
+        # Read-replica configuration for connecting to the on-premises master.
+        # Corresponds to the JSON property `replicaConfiguration`
+        # @return [Google::Apis::SqladminV1beta4::DemoteMasterConfiguration]
+        attr_accessor :replica_configuration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @master_instance_name = args[:master_instance_name] if args.key?(:master_instance_name)
+          @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
+        end
+      end
+      
+      # Read-replica configuration specific to MySQL databases.
+      class DemoteMasterMySqlReplicaConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # PEM representation of the trusted CA's x509 certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # PEM representation of the slave's x509 certificate.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # PEM representation of the slave's private key. The corresponsing public key is
+        # encoded in the client's certificate. The format of the slave's private key can
+        # be either PKCS #1 or PKCS #8.
+        # Corresponds to the JSON property `clientKey`
+        # @return [String]
+        attr_accessor :client_key
+      
+        # This is always sql#demoteMasterMysqlReplicaConfiguration.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The password for the replication connection.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # The username for the replication connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_key = args[:client_key] if args.key?(:client_key)
+          @kind = args[:kind] if args.key?(:kind)
+          @password = args[:password] if args.key?(:password)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # Database instance export context.
       class ExportContext
         include Google::Apis::Core::Hashable
@@ -946,6 +1054,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @clone_context = args[:clone_context] if args.key?(:clone_context)
+        end
+      end
+      
+      # Database demote master request.
+      class InstancesDemoteMasterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Database instance demote master context.
+        # Corresponds to the JSON property `demoteMasterContext`
+        # @return [Google::Apis::SqladminV1beta4::DemoteMasterContext]
+        attr_accessor :demote_master_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @demote_master_context = args[:demote_master_context] if args.key?(:demote_master_context)
         end
       end
       

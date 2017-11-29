@@ -316,6 +316,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new build based on the given build.
+        # This API creates a new build using the original build request,  which may
+        # or may not result in an identical build.
+        # For triggered builds:
+        # * Triggered builds resolve to a precise revision, so a retry of a triggered
+        # build will result in a build that uses the same revision.
+        # For non-triggered builds that specify RepoSource:
+        # * If the original build built from the tip of a branch, the retried build
+        # will build from the tip of that branch, which may not be the same revision
+        # as the original build.
+        # * If the original build specified a commit sha or revision ID, the retried
+        # build will use the identical source.
+        # For builds that specify StorageSource:
+        # * If the original build pulled source from Cloud Storage without specifying
+        # the generation of the object, the new build will use the current object,
+        # which may be different from the original build source.
+        # * If the original build pulled source from Cloud Storage and specified the
+        # generation of the object, the new build will attempt to use the same
+        # object, which may or may not be available depending on the bucket's
+        # lifecycle management settings.
+        # @param [String] project_id
+        #   ID of the project.
+        # @param [String] id
+        #   Build ID of the original build.
+        # @param [Google::Apis::CloudbuildV1::RetryBuildRequest] retry_build_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retry_build(project_id, id, retry_build_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/builds/{id}:retry', options)
+          command.request_representation = Google::Apis::CloudbuildV1::RetryBuildRequest::Representation
+          command.request_object = retry_build_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new BuildTrigger.
         # This API is experimental.
         # @param [String] project_id
@@ -479,6 +534,42 @@ module Google
           command.request_object = build_trigger_object
           command.response_representation = Google::Apis::CloudbuildV1::BuildTrigger::Representation
           command.response_class = Google::Apis::CloudbuildV1::BuildTrigger
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['triggerId'] = trigger_id unless trigger_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Runs a BuildTrigger at a particular source revision.
+        # @param [String] project_id
+        #   ID of the project.
+        # @param [String] trigger_id
+        #   ID of the trigger.
+        # @param [Google::Apis::CloudbuildV1::RepoSource] repo_source_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_project_trigger(project_id, trigger_id, repo_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}/triggers/{triggerId}:run', options)
+          command.request_representation = Google::Apis::CloudbuildV1::RepoSource::Representation
+          command.request_object = repo_source_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['triggerId'] = trigger_id unless trigger_id.nil?
           command.query['fields'] = fields unless fields.nil?

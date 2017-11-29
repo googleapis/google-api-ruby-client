@@ -286,18 +286,18 @@ module Google
       class ClusterOperation
         include Google::Apis::Core::Hashable
       
-        # Output-only Indicates the operation is done.
+        # Output only. Indicates the operation is done.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # Output-only Error, if operation failed.
+        # Output only. Error, if operation failed.
         # Corresponds to the JSON property `error`
         # @return [String]
         attr_accessor :error
       
-        # Output-only The id of the cluster operation.
+        # Output only. The id of the cluster operation.
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
@@ -416,12 +416,14 @@ module Google
       class ClusterSelector
         include Google::Apis::Core::Hashable
       
-        # Required The cluster labels. Cluster must have all labels to match.
+        # Required. The cluster labels. Cluster must have all labels to match.
         # Corresponds to the JSON property `clusterLabels`
         # @return [Hash<String,String>]
         attr_accessor :cluster_labels
       
-        # Required The cluster target zone.
+        # Optional. The zone where workflow process executes. This parameter does not
+        # affect the selection of the cluster.If unspecified, the zone of the first
+        # cluster matching the selector is used.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -877,7 +879,7 @@ module Google
       class InstantiateWorkflowTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # Optional A tag that prevents multiple concurrent workflow instances with the
+        # Optional. A tag that prevents multiple concurrent workflow instances with the
         # same tag from running. This mitigates risk of concurrent instances started due
         # to retries.It is recommended to always set this value to a UUID (https://en.
         # wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
@@ -887,7 +889,7 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # Optional The version of workflow template to instantiate. If specified, the
+        # Optional. The version of workflow template to instantiate. If specified, the
         # workflow will be instantiated only if the current version of the workflow
         # template has the supplied version.This option cannot be used to instantiate a
         # previous version of workflow template.
@@ -1260,14 +1262,14 @@ module Google
       class ListWorkflowTemplatesResponse
         include Google::Apis::Core::Hashable
       
-        # Output-only This token is included in the response if there are more results
+        # Output only. This token is included in the response if there are more results
         # to fetch. To fetch additional results, provide this value as the page_token in
         # a subsequent <code>ListWorkflowTemplatesRequest</code>.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Output-only WorkflowTemplates list.
+        # Output only. WorkflowTemplates list.
         # Corresponds to the JSON property `templates`
         # @return [Array<Google::Apis::DataprocV1beta2::WorkflowTemplate>]
         attr_accessor :templates
@@ -1308,7 +1310,7 @@ module Google
       class ManagedCluster
         include Google::Apis::Core::Hashable
       
-        # Required The cluster name. Cluster names within a project must be unique.
+        # Required. The cluster name. Cluster names within a project must be unique.
         # Names from deleted clusters can be reused.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
@@ -1319,7 +1321,7 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::ClusterConfig]
         attr_accessor :config
       
-        # Optional The labels to associate with this cluster.Label keys must be between
+        # Optional. The labels to associate with this cluster.Label keys must be between
         # 1 and 63 characters long, and must conform to the following PCRE regular
         # expression: \p`Ll`\p`Lo``0,62`Label values must be between 1 and 63 characters
         # long, and must conform to the following PCRE regular expression: \p`Ll`\p`Lo`\
@@ -1503,7 +1505,7 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::HiveJob]
         attr_accessor :hive_job
       
-        # Optional The labels to associate with this job.Label keys must be between 1
+        # Optional. The labels to associate with this job.Label keys must be between 1
         # and 63 characters long, and must conform to the following regular expression: \
         # p`Ll`\p`Lo``0,62`Label values must be between 1 and 63 characters long, and
         # must conform to the following regular expression: \p`Ll`\p`Lo`\p`N`_-`0,63`No
@@ -1518,8 +1520,8 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::PigJob]
         attr_accessor :pig_job
       
-        # Optional The optional list of prerequisite job step_ids. If not specified, the
-        # job will start at the beginning of workflow.
+        # Optional. The optional list of prerequisite job step_ids. If not specified,
+        # the job will start at the beginning of workflow.
         # Corresponds to the JSON property `prerequisiteStepIds`
         # @return [Array<String>]
         attr_accessor :prerequisite_step_ids
@@ -1548,9 +1550,9 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::SparkSqlJob]
         attr_accessor :spark_sql_job
       
-        # Required The step id. The id must be unique among all jobs within the template.
-        # The step id is used as prefix for job id, as job workflow-step-id label, and
-        # in prerequisite_step_ids field from other steps.
+        # Required. The step id. The id must be unique among all jobs within the
+        # template.The step id is used as prefix for job id, as job workflow-step-id
+        # label, and in prerequisite_step_ids field from other steps.
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
@@ -2139,7 +2141,7 @@ module Google
       class WorkflowGraph
         include Google::Apis::Core::Hashable
       
-        # Output-only The workflow nodes.
+        # Output only. The workflow nodes.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::DataprocV1beta2::WorkflowNode>]
         attr_accessor :nodes
@@ -2158,17 +2160,17 @@ module Google
       class WorkflowMetadata
         include Google::Apis::Core::Hashable
       
-        # Output-only The name of the managed cluster.
+        # Output only. The name of the managed cluster.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output-only The create cluster operation metadata.
+        # Output only. The create cluster operation metadata.
         # Corresponds to the JSON property `createCluster`
         # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
         attr_accessor :create_cluster
       
-        # Output-only The delete cluster operation metadata.
+        # Output only. The delete cluster operation metadata.
         # Corresponds to the JSON property `deleteCluster`
         # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
         attr_accessor :delete_cluster
@@ -2178,17 +2180,17 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::WorkflowGraph]
         attr_accessor :graph
       
-        # Output-only The workflow state.
+        # Output only. The workflow state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output-only The "resource name" of the template.
+        # Output only. The "resource name" of the template.
         # Corresponds to the JSON property `template`
         # @return [String]
         attr_accessor :template
       
-        # Output-only The version of template at the time of workflow instantiation.
+        # Output only. The version of template at the time of workflow instantiation.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2213,27 +2215,27 @@ module Google
       class WorkflowNode
         include Google::Apis::Core::Hashable
       
-        # Output-only The error detail.
+        # Output only. The error detail.
         # Corresponds to the JSON property `error`
         # @return [String]
         attr_accessor :error
       
-        # Output-only The job id; populated after the node enters RUNNING state.
+        # Output only. The job id; populated after the node enters RUNNING state.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
       
-        # Output-only Node's prerequisite nodes.
+        # Output only. Node's prerequisite nodes.
         # Corresponds to the JSON property `prerequisiteStepIds`
         # @return [Array<String>]
         attr_accessor :prerequisite_step_ids
       
-        # Output-only The node state.
+        # Output only. The node state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output-only The name of the node.
+        # Output only. The name of the node.
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
@@ -2256,22 +2258,22 @@ module Google
       class WorkflowTemplate
         include Google::Apis::Core::Hashable
       
-        # Output-only The time template was created.
+        # Output only. The time template was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Required The template id.
+        # Required. The template id.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Required The Directed Acyclic Graph of Jobs to submit.
+        # Required. The Directed Acyclic Graph of Jobs to submit.
         # Corresponds to the JSON property `jobs`
         # @return [Array<Google::Apis::DataprocV1beta2::OrderedJob>]
         attr_accessor :jobs
       
-        # Optional The labels to associate with this template. These labels will be
+        # Optional. The labels to associate with this template. These labels will be
         # propagated to all jobs and clusters created by the workflow instance.Label
         # keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://
         # www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must
@@ -2281,8 +2283,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output-only The "resource name" of the template, as described in https://cloud.
-        # google.com/apis/design/resource_names of the form projects/`project_id`/
+        # Output only. The "resource name" of the template, as described in https://
+        # cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
         # regions/`region`/workflowTemplates/`template_id`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2294,12 +2296,12 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::WorkflowTemplatePlacement]
         attr_accessor :placement
       
-        # Output-only The time template was last updated.
+        # Output only. The time template was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Optional Used to perform a consistent read-modify-write.This field should be
+        # Optional. Used to perform a consistent read-modify-write.This field should be
         # left blank for a CreateWorkflowTemplate request. It is required for an
         # UpdateWorkflowTemplate request, and must match the current server version. A
         # typical update template flow would fetch the current template with a

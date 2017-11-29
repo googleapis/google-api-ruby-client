@@ -127,7 +127,7 @@ module Google
           property :size_type, as: 'sizeType'
           property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
       
-          property :target_account_id, :numeric_string => true, as: 'targetAccountId'
+          property :target_client_id, as: 'targetClientId'
           property :theme, as: 'theme'
           property :title, as: 'title'
           collection :video_link, as: 'videoLink'

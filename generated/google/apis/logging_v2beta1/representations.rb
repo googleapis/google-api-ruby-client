@@ -331,6 +331,7 @@ module Google
           property :severity, as: 'severity'
           property :source_location, as: 'sourceLocation', class: Google::Apis::LoggingV2beta1::LogEntrySourceLocation, decorator: Google::Apis::LoggingV2beta1::LogEntrySourceLocation::Representation
       
+          property :span_id, as: 'spanId'
           property :text_payload, as: 'textPayload'
           property :timestamp, as: 'timestamp'
           property :trace, as: 'trace'

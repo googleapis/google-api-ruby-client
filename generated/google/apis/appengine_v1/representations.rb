@@ -280,12 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadataExperimental
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OperationMetadataV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +347,12 @@ module Google
       end
       
       class SslSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StandardSchedulerSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -487,6 +487,8 @@ module Google
           property :network_utilization, as: 'networkUtilization', class: Google::Apis::AppengineV1::NetworkUtilization, decorator: Google::Apis::AppengineV1::NetworkUtilization::Representation
       
           property :request_utilization, as: 'requestUtilization', class: Google::Apis::AppengineV1::RequestUtilization, decorator: Google::Apis::AppengineV1::RequestUtilization::Representation
+      
+          property :standard_scheduler_settings, as: 'standardSchedulerSettings', class: Google::Apis::AppengineV1::StandardSchedulerSettings, decorator: Google::Apis::AppengineV1::StandardSchedulerSettings::Representation
       
         end
       end
@@ -844,17 +846,6 @@ module Google
         end
       end
       
-      class OperationMetadataExperimental
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :insert_time, as: 'insertTime'
-          property :method_prop, as: 'method'
-          property :target, as: 'target'
-          property :user, as: 'user'
-        end
-      end
-      
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -973,6 +964,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_id, as: 'certificateId'
+        end
+      end
+      
+      class StandardSchedulerSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_instances, as: 'maxInstances'
+          property :min_instances, as: 'minInstances'
+          property :target_cpu_utilization, as: 'targetCpuUtilization'
+          property :target_throughput_utilization, as: 'targetThroughputUtilization'
         end
       end
       

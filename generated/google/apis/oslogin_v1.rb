@@ -12,20 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/qpx_express_v1/service.rb'
-require 'google/apis/qpx_express_v1/classes.rb'
-require 'google/apis/qpx_express_v1/representations.rb'
+require 'google/apis/oslogin_v1/service.rb'
+require 'google/apis/oslogin_v1/classes.rb'
+require 'google/apis/oslogin_v1/representations.rb'
 
 module Google
   module Apis
-    # QPX Express API
+    # Google Cloud OS Login API
     #
-    # Finds the least expensive flights between an origin and a destination.
+    # Manages OS login configuration for Google account users.
     #
-    # @see http://developers.google.com/qpx-express
-    module QpxExpressV1
+    # @see https://cloud.google.com/compute/docs/oslogin/rest/
+    module OsloginV1
       VERSION = 'V1'
-      REVISION = '20160708'
+      REVISION = '20171120'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage your Google Compute Engine resources
+      AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'
     end
   end
 end

@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetAddonsConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,18 @@ module Google
       end
       
       class SetLegacyAbacRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetLocationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetLoggingServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,7 +274,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetMonitoringServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetNetworkPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetNodePoolAutoscalingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -275,6 +305,18 @@ module Google
       end
       
       class UpdateClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateMasterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateNodePoolRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -682,6 +724,18 @@ module Google
         end
       end
       
+      class SetAddonsConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
+      
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class SetLabelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -699,6 +753,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :enabled, as: 'enabled'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class SetLocationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          collection :locations, as: 'locations'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class SetLoggingServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :logging_service, as: 'loggingService'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
@@ -730,6 +806,17 @@ module Google
         end
       end
       
+      class SetMonitoringServiceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :monitoring_service, as: 'monitoringService'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class SetNetworkPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -737,6 +824,19 @@ module Google
           property :name, as: 'name'
           property :network_policy, as: 'networkPolicy', class: Google::Apis::ContainerV1beta1::NetworkPolicy, decorator: Google::Apis::ContainerV1beta1::NetworkPolicy::Representation
       
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class SetNodePoolAutoscalingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1beta1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoscaling::Representation
+      
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :node_pool_id, as: 'nodePoolId'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
         end
@@ -773,6 +873,30 @@ module Google
           property :project_id, as: 'projectId'
           property :update, as: 'update', class: Google::Apis::ContainerV1beta1::ClusterUpdate, decorator: Google::Apis::ContainerV1beta1::ClusterUpdate::Representation
       
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class UpdateMasterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :master_version, as: 'masterVersion'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class UpdateNodePoolRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :image_type, as: 'imageType'
+          property :name, as: 'name'
+          property :node_pool_id, as: 'nodePoolId'
+          property :node_version, as: 'nodeVersion'
+          property :project_id, as: 'projectId'
           property :zone, as: 'zone'
         end
       end

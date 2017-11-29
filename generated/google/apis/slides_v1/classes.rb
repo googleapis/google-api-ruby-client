@@ -314,7 +314,7 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         # format.
-        # The provided URL can be at maximum 2K bytes large.
+        # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -1870,9 +1870,9 @@ module Google
         attr_accessor :outline_fill
       
         # The outline property state.
-        # Updating the the outline on a page element will implicitly update this
-        # field to`RENDERED`, unless another value is specified in the same request.
-        # To have no outline on a page element, set this field to `NOT_RENDERED`. In
+        # Updating the outline on a page element will implicitly update this field
+        # to `RENDERED`, unless another value is specified in the same request. To
+        # have no outline on a page element, set this field to `NOT_RENDERED`. In
         # this case, any other outline fields set in the same request will be
         # ignored.
         # Corresponds to the JSON property `propertyState`
@@ -2567,7 +2567,7 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         # format.
-        # The provided URL can be at maximum 2K bytes large.
+        # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `imageUrl`
         # @return [String]
         attr_accessor :image_url
@@ -3161,9 +3161,9 @@ module Google
         attr_accessor :color
       
         # The shadow property state.
-        # Updating the the shadow on a page element will implicitly update this field
-        # to `RENDERED`, unless another value is specified in the same request. To
-        # have no shadow on a page element, set this field to `NOT_RENDERED`. In this
+        # Updating the shadow on a page element will implicitly update this field to
+        # `RENDERED`, unless another value is specified in the same request. To have
+        # no shadow on a page element, set this field to `NOT_RENDERED`. In this
         # case, any other shadow fields set in the same request will be ignored.
         # Corresponds to the JSON property `propertyState`
         # @return [String]
@@ -3259,7 +3259,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The background fill property state.
-        # Updating the the fill on a shape will implicitly update this field to
+        # Updating the fill on a shape will implicitly update this field to
         # `RENDERED`, unless another value is specified in the same request. To
         # have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
         # any other fill fields set in the same request will be ignored.
@@ -3295,6 +3295,14 @@ module Google
       class ShapeProperties
         include Google::Apis::Core::Hashable
       
+        # The alignment of the content in the shape. If unspecified,
+        # the alignment is inherited from a parent placeholder if it exists. If the
+        # shape has no parent, the default alignment matches the alignment for new
+        # shapes created in the Slides editor.
+        # Corresponds to the JSON property `contentAlignment`
+        # @return [String]
+        attr_accessor :content_alignment
+      
         # A hypertext link.
         # Corresponds to the JSON property `link`
         # @return [Google::Apis::SlidesV1::Link]
@@ -3329,6 +3337,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_alignment = args[:content_alignment] if args.key?(:content_alignment)
           @link = args[:link] if args.key?(:link)
           @outline = args[:outline] if args.key?(:outline)
           @shadow = args[:shadow] if args.key?(:shadow)
@@ -3501,7 +3510,7 @@ module Google
         # display inside the presentation. Pictures must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         # format.
-        # The provided URL can be at maximum 2K bytes large.
+        # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `contentUrl`
         # @return [String]
         attr_accessor :content_url
@@ -3760,7 +3769,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The background fill property state.
-        # Updating the the fill on a table cell will implicitly update this field
+        # Updating the fill on a table cell will implicitly update this field
         # to `RENDERED`, unless another value is specified in the same request. To
         # have no fill on a table cell, set this field to `NOT_RENDERED`. In this
         # case, any other fill fields set in the same request will be ignored.
@@ -3816,6 +3825,12 @@ module Google
       class TableCellProperties
         include Google::Apis::Core::Hashable
       
+        # The alignment of the content in the table cell. The default alignment
+        # matches the alignment for newly created table cells in the Slides editor.
+        # Corresponds to the JSON property `contentAlignment`
+        # @return [String]
+        attr_accessor :content_alignment
+      
         # The table cell background fill.
         # Corresponds to the JSON property `tableCellBackgroundFill`
         # @return [Google::Apis::SlidesV1::TableCellBackgroundFill]
@@ -3827,6 +3842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @content_alignment = args[:content_alignment] if args.key?(:content_alignment)
           @table_cell_background_fill = args[:table_cell_background_fill] if args.key?(:table_cell_background_fill)
         end
       end

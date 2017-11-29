@@ -87,7 +87,7 @@ module Google
       end
       
       # An Application resource contains the top-level configuration of an App Engine
-      # application. Next tag: 20
+      # application.
       class Application
         include Google::Apis::Core::Hashable
       
@@ -737,7 +737,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Endpoints service configuration id as specified by the Service Management API.
-        # For example "2016-09-19r1"
+        # For example "2016-09-19r1"By default, the Endpoints service configuration id
+        # is fixed and config_id must be specified. To keep the Endpoints service
+        # configuration id updated with each rollout, specify RolloutStrategy.MANAGED
+        # and omit config_id.
         # Corresponds to the JSON property `configId`
         # @return [String]
         attr_accessor :config_id
@@ -805,6 +808,13 @@ module Google
         attr_accessor :split_health_checks
         alias_method :split_health_checks?, :split_health_checks
       
+        # If true, use Container-Optimized OS (https://cloud.google.com/container-
+        # optimized-os/) base image for VMs, rather than a base Debian image.
+        # Corresponds to the JSON property `useContainerOptimizedOs`
+        # @return [Boolean]
+        attr_accessor :use_container_optimized_os
+        alias_method :use_container_optimized_os?, :use_container_optimized_os
+      
         def initialize(**args)
            update!(**args)
         end
@@ -812,6 +822,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @split_health_checks = args[:split_health_checks] if args.key?(:split_health_checks)
+          @use_container_optimized_os = args[:use_container_optimized_os] if args.key?(:use_container_optimized_os)
         end
       end
       
@@ -1774,51 +1785,6 @@ module Google
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @target = args[:target] if args.key?(:target)
-          @user = args[:user] if args.key?(:user)
-        end
-      end
-      
-      # Metadata for the given google.longrunning.Operation.
-      class OperationMetadataExperimental
-        include Google::Apis::Core::Hashable
-      
-        # Time that this operation completed.@OutputOnly
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Time that this operation was created.@OutputOnly
-        # Corresponds to the JSON property `insertTime`
-        # @return [String]
-        attr_accessor :insert_time
-      
-        # API method that initiated this operation. Example: google.appengine.
-        # experimental.CustomDomains.CreateCustomDomain.@OutputOnly
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :method_prop
-      
-        # Name of the resource that this operation is acting on. Example: apps/myapp/
-        # customDomains/example.com.@OutputOnly
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # User who requested this operation.@OutputOnly
-        # Corresponds to the JSON property `user`
-        # @return [String]
-        attr_accessor :user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @insert_time = args[:insert_time] if args.key?(:insert_time)
-          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @target = args[:target] if args.key?(:target)
           @user = args[:user] if args.key?(:user)
         end
