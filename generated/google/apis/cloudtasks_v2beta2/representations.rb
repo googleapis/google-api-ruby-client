@@ -467,11 +467,11 @@ module Google
           property :pull_target, as: 'pullTarget', class: Google::Apis::CloudtasksV2beta2::PullTarget, decorator: Google::Apis::CloudtasksV2beta2::PullTarget::Representation
       
           property :purge_time, as: 'purgeTime'
-          property :queue_state, as: 'queueState'
           property :rate_limits, as: 'rateLimits', class: Google::Apis::CloudtasksV2beta2::RateLimits, decorator: Google::Apis::CloudtasksV2beta2::RateLimits::Representation
       
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2beta2::RetryConfig, decorator: Google::Apis::CloudtasksV2beta2::RetryConfig::Representation
       
+          property :state, as: 'state'
         end
       end
       

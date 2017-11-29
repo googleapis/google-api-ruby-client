@@ -41,6 +41,12 @@ module Google
         # @return [Array<Google::Apis::ContentV2::AccountAdwordsLink>]
         attr_accessor :adwords_links
       
+        # The GMB account which is linked or in the process of being linked with the
+        # Merchant Center accounnt.
+        # Corresponds to the JSON property `googleMyBusinessLink`
+        # @return [Google::Apis::ContentV2::AccountGoogleMyBusinessLink]
+        attr_accessor :google_my_business_link
+      
         # Merchant Center account ID.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -95,6 +101,7 @@ module Google
         def update!(**args)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
           @adwords_links = args[:adwords_links] if args.key?(:adwords_links)
+          @google_my_business_link = args[:google_my_business_link] if args.key?(:google_my_business_link)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -135,6 +142,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adwords_id = args[:adwords_id] if args.key?(:adwords_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class AccountGoogleMyBusinessLink
+        include Google::Apis::Core::Hashable
+      
+        # The GMB email address.
+        # Corresponds to the JSON property `gmbEmail`
+        # @return [String]
+        attr_accessor :gmb_email
+      
+        # Status of the link between this Merchant Center account and the GMB account.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gmb_email = args[:gmb_email] if args.key?(:gmb_email)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -3282,26 +3314,20 @@ module Google
         # Acceptable values are:
         # - "gsx"
         # - "ups"
-        # - "united parcel service"
         # - "usps"
-        # - "united states postal service"
         # - "fedex"
         # - "dhl"
         # - "ecourier"
         # - "cxt"
         # - "google"
-        # - "on trac"
         # - "ontrac"
-        # - "on-trac"
-        # - "on_trac"
-        # - "delvic"
+        # - "emsy"
+        # - "ont"
+        # - "deliv"
         # - "dynamex"
         # - "lasership"
-        # - "smartpost"
-        # - "fedex smartpost"
         # - "mpx"
         # - "uds"
-        # - "united delivery service"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -3363,6 +3389,12 @@ module Google
         # @return [String]
         attr_accessor :line_item_id
       
+        # The ID of the product to ship. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         # The quantity that is shipped.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
@@ -3375,6 +3407,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
         end
       end
@@ -3455,6 +3488,18 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
       
+        # Amount to refund for the cancelation. Optional. If not set, Google will
+        # calculate the default based on the price and tax of the items involved. The
+        # amount must not be larger than the net amount left on the order.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to cancellation amount in amountPretax.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
         # The ID of the line item to cancel. Either lineItemId or productId is required.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
@@ -3464,6 +3509,12 @@ module Google
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
+      
+        # The ID of the product to cancel. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
       
         # The quantity to cancel.
         # Corresponds to the JSON property `quantity`
@@ -3487,8 +3538,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
@@ -3773,10 +3827,28 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
       
+        # Amount to refund for the cancelation. Optional. If not set, Google will
+        # calculate the default based on the price and tax of the items involved. The
+        # amount must not be larger than the net amount left on the order.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to cancellation amount in amountPretax.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
         # The ID of the line item to cancel. Either lineItemId or productId is required.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
         attr_accessor :line_item_id
+      
+        # The ID of the product to cancel. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
       
         # The quantity to cancel.
         # Corresponds to the JSON property `quantity`
@@ -3800,7 +3872,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
@@ -3815,6 +3890,17 @@ module Google
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
+      
+        # The amount that is refunded. Either amount or amountPretax and amountTax
+        # should be filled.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to refund amount in amountPretax.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
       
         # The reason for the refund.
         # Corresponds to the JSON property `reason`
@@ -3833,6 +3919,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
         end
@@ -3846,6 +3934,12 @@ module Google
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
         attr_accessor :line_item_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
       
         # The quantity to return.
         # Corresponds to the JSON property `quantity`
@@ -3869,6 +3963,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
@@ -4156,6 +4251,17 @@ module Google
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :amount
       
+        # The amount that is refunded. Either amount or amountPretax and amountTax
+        # should be filled.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to refund amount in amountPretax.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
         # The ID of the operation. Unique across all operations for a given order.
         # Corresponds to the JSON property `operationId`
         # @return [String]
@@ -4178,6 +4284,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @amount = args[:amount] if args.key?(:amount)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
@@ -4224,6 +4332,12 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         # The quantity to return.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
@@ -4247,6 +4361,7 @@ module Google
         def update!(**args)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
           @reason = args[:reason] if args.key?(:reason)
           @reason_text = args[:reason_text] if args.key?(:reason_text)
@@ -6282,6 +6397,12 @@ module Google
         # @return [Array<Google::Apis::ContentV2::TestOrderLineItem>]
         attr_accessor :line_items
       
+        # Determines if test order must be pulled by merchant or pushed to merchant via
+        # push integration.
+        # Corresponds to the JSON property `notificationMode`
+        # @return [String]
+        attr_accessor :notification_mode
+      
         # The details of the payment method.
         # Corresponds to the JSON property `paymentMethod`
         # @return [Google::Apis::ContentV2::TestOrderPaymentMethod]
@@ -6322,6 +6443,7 @@ module Google
           @customer = args[:customer] if args.key?(:customer)
           @kind = args[:kind] if args.key?(:kind)
           @line_items = args[:line_items] if args.key?(:line_items)
+          @notification_mode = args[:notification_mode] if args.key?(:notification_mode)
           @payment_method = args[:payment_method] if args.key?(:payment_method)
           @predefined_delivery_address = args[:predefined_delivery_address] if args.key?(:predefined_delivery_address)
           @promotions = args[:promotions] if args.key?(:promotions)

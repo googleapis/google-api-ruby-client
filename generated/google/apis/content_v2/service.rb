@@ -88,8 +88,9 @@ module Google
         
         # Claims the website of a Merchant Center sub-account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account whose website is claimed.
         # @param [Boolean] overwrite
@@ -171,7 +172,8 @@ module Google
         
         # Deletes a Merchant Center sub-account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. This must be a multi-client account.
+        #   The ID of the managing account. This must be a multi-client account, and
+        #   accountId must be the ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Boolean] dry_run
@@ -213,8 +215,9 @@ module Google
         
         # Retrieves a Merchant Center account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [String] fields
@@ -334,8 +337,9 @@ module Google
         
         # Updates a Merchant Center account. This method supports patch semantics.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Google::Apis::ContentV2::Account] account_object
@@ -379,8 +383,9 @@ module Google
         
         # Updates a Merchant Center account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Google::Apis::ContentV2::Account] account_object
@@ -459,8 +464,9 @@ module Google
         
         # Retrieves the status of a Merchant Center account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [String] fields
@@ -578,8 +584,9 @@ module Google
         
         # Retrieves the tax settings of the account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [String] fields
@@ -658,8 +665,9 @@ module Google
         
         # Updates the tax settings of the account. This method supports patch semantics.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [Google::Apis::ContentV2::AccountTax] account_tax_object
@@ -703,8 +711,9 @@ module Google
         
         # Updates the tax settings of the account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [Google::Apis::ContentV2::AccountTax] account_tax_object
@@ -2277,8 +2286,9 @@ module Google
         
         # Retrieves the shipping settings of the account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [String] fields
@@ -2395,8 +2405,9 @@ module Google
         # Updates the shipping settings of the account. This method supports patch
         # semantics.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [Google::Apis::ContentV2::ShippingSettings] shipping_settings_object
@@ -2440,8 +2451,9 @@ module Google
         
         # Updates the shipping settings of the account.
         # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this account is not a multi-client account,
-        #   then this parameter must be the same as accountId.
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [Google::Apis::ContentV2::ShippingSettings] shipping_settings_object

@@ -1057,6 +1057,10 @@ module Google
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
+        # * `LOCATION_ID` is the canonical ID for the queue's location.
+        # The list of available locations can be obtained by calling
+        # google.cloud.location.Locations.ListLocations.
+        # For more information, see https://cloud.google.com/about/locations/.
         # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
         # hyphens (-). The maximum length is 100 characters.
         # Caller-specified and required in CreateQueueRequest, after which
@@ -1088,15 +1092,6 @@ module Google
         # @return [String]
         attr_accessor :purge_time
       
-        # Output only. The state of the queue.
-        # `queue_state` can only be changed by called
-        # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-        # [queue.yaml](/appengine/docs/python/config/queueref).
-        # CloudTasks.UpdateQueue cannot be used to change `queue_state`.
-        # Corresponds to the JSON property `queueState`
-        # @return [String]
-        attr_accessor :queue_state
-      
         # Rate limits.
         # This message determines the maximum rate that tasks can be dispatched by a
         # queue, regardless of whether the dispatch is a first task attempt or a retry.
@@ -1110,6 +1105,15 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::RetryConfig]
         attr_accessor :retry_config
       
+        # Output only. The state of the queue.
+        # `state` can only be changed by called
+        # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
+        # [queue.yaml](/appengine/docs/python/config/queueref).
+        # CloudTasks.UpdateQueue cannot be used to change `state`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1122,9 +1126,9 @@ module Google
           @pull_queue_config = args[:pull_queue_config] if args.key?(:pull_queue_config)
           @pull_target = args[:pull_target] if args.key?(:pull_target)
           @purge_time = args[:purge_time] if args.key?(:purge_time)
-          @queue_state = args[:queue_state] if args.key?(:queue_state)
           @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1176,6 +1180,8 @@ module Google
         # The maximum allowed value is 500.
         # * For App Engine queues, this field is 1 by default.
         # * For pull queues, this field is output only and always 10,000.
+        # In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
+        # 10 QPS of CloudTasks.PullTasks requests are allowed per queue.
         # This field has the same meaning as
         # [rate in queue.yaml](/appengine/docs/standard/python/config/queueref#rate).
         # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
@@ -1559,6 +1565,10 @@ module Google
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), colons (:), or periods (.).
+        # * `LOCATION_ID` is the canonical ID for the task's location.
+        # The list of available locations can be obtained by calling
+        # google.cloud.location.Locations.ListLocations.
+        # For more information, see https://cloud.google.com/about/locations/.
         # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
         # hyphens (-). The maximum length is 100 characters.
         # * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
