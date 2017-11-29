@@ -22,7 +22,8 @@ module Google
       :open_timeout_sec,
       :read_timeout_sec,
       :send_timeout_sec,
-      :log_http_requests)
+      :log_http_requests,
+      :transparent_gzip_decompression)
 
     RequestOptions = Struct.new(
       :authorization,
@@ -47,6 +48,8 @@ module Google
       #   @return [Fixnum] How long, in seconds, before failed connections time out
       # @!attribute [rw] read_timeout_sec
       #   @return [Fixnum] How long, in seconds, before requests time out
+      # @!attribute [rw] transparent_gzip_decompression
+      # @return [Boolean] True if gzip compression needs to be enabled
       # Get the default options
       # @return [Google::Apis::ClientOptions]
       def self.default
@@ -92,6 +95,7 @@ module Google
     ClientOptions.default.log_http_requests = false
     ClientOptions.default.application_name = 'unknown'
     ClientOptions.default.application_version = '0.0.0'
+    ClientOptions.default.transparent_gzip_decompression = true
     RequestOptions.default.retries = 0
     RequestOptions.default.normalize_unicode = false
     RequestOptions.default.skip_serialization = false
