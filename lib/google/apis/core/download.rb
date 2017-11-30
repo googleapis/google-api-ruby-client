@@ -99,7 +99,7 @@ module Google
             @offset += next_chunk.bytesize
           end
 
-          @download_io.flush
+         @download_io.flush if @download_io.respond_to?(:flush)
 
           if @close_io_on_finish
             result = nil
@@ -109,7 +109,7 @@ module Google
           check_status(http_res.status.to_i, http_res.header, http_res.body)
           success(result, &block)
         rescue => e
-          @download_io.flush
+          @download_io.flush if @download_io.respond_to?(:flush)
           error(e, rethrow: true, &block)
         end
       end
