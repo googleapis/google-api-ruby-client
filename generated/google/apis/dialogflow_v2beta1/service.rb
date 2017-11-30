@@ -80,7 +80,7 @@ module Google
         end
         
         # Exports the specified agent to a ZIP file.
-        # Operation<response: ExportAgentResponse,
+        # Operation <response: ExportAgentResponse,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The project that the agent to export is associated with.
@@ -119,7 +119,7 @@ module Google
         # Uploads new intents and entity types without deleting the existing ones.
         # Intents and entity types with the same name are replaced with the new
         # versions from ImportAgentRequest.
-        # Operation<response: google.protobuf.Empty,
+        # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The project that the agent to import is associated with.
@@ -157,7 +157,7 @@ module Google
         # Restores the specified agent from a ZIP file.
         # Replaces the current agent version with a new one. All the intents and
         # entity types in the older version are deleted.
-        # Operation<response: google.protobuf.Empty,
+        # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with.
@@ -237,7 +237,7 @@ module Google
         end
         
         # Trains the specified agent.
-        # Operation<response: google.protobuf.Empty,
+        # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The project that the agent to train is associated with.
@@ -273,7 +273,7 @@ module Google
         end
         
         # Deletes entity types in the specified agent.
-        # Operation<response: google.protobuf.Empty,
+        # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Format:
@@ -309,7 +309,7 @@ module Google
         end
         
         # Updates/Creates multiple entity types in the specified agent.
-        # Operation<response: BatchUpdateEntityTypesResponse,
+        # Operation <response: BatchUpdateEntityTypesResponse,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The name of the agent to update or create entity types in.
@@ -547,7 +547,7 @@ module Google
         
         # Creates multiple new entities in the specified entity type (extends the
         # existing collection of entries).
-        # Operation<response: google.protobuf.Empty>
+        # Operation <response: google.protobuf.Empty>
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Format:
         #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
@@ -582,7 +582,7 @@ module Google
         end
         
         # Deletes entities in the specified entity type.
-        # Operation<response: google.protobuf.Empty,
+        # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The name of the entity type to delete entries for. Format:
@@ -619,7 +619,7 @@ module Google
         
         # Updates entities in the specified entity type (replaces the existing
         # collection of entries).
-        # Operation<response: google.protobuf.Empty,
+        # Operation <response: google.protobuf.Empty,
         # metadata: google.protobuf.Struct>
         # @param [String] parent
         #   Required. The name of the entity type to update the entities in. Format:
@@ -655,7 +655,7 @@ module Google
         end
         
         # Deletes intents in the specified agent.
-        # Operation<response: google.protobuf.Empty>
+        # Operation <response: google.protobuf.Empty>
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Format:
         #   `projects/<Project ID>/agent`.
@@ -690,7 +690,7 @@ module Google
         end
         
         # Updates/Creates multiple intents in the specified agent.
-        # Operation<response: BatchUpdateIntentsResponse>
+        # Operation <response: BatchUpdateIntentsResponse>
         # @param [String] parent
         #   Required. The name of the agent to update or create intents in.
         #   Format: `projects/<Project ID>/agent`.

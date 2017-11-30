@@ -81,7 +81,9 @@ module Google
         end
         
         # Performs prediction on the data in the request.
-        # **** REMOVE FROM GENERATED DOCUMENTATION
+        # Cloud ML Engine implements a custom `predict` verb on top of an HTTP POST
+        # method. For details of the format, see the **guide to the
+        # [predict request format](/ml-engine/docs/v1/predict-request)**.
         # @param [String] name
         #   Required. The resource name of a model or a version.
         #   Authorization: requires the `predict` permission on the specified resource.

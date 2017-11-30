@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Product
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class ProductPermissions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -547,6 +559,8 @@ module Google
           property :android_id, as: 'androidId'
           property :kind, as: 'kind'
           property :management_type, as: 'managementType'
+          property :policy, as: 'policy', class: Google::Apis::AndroidenterpriseV1::Policy, decorator: Google::Apis::AndroidenterpriseV1::Policy::Representation
+      
         end
       end
       
@@ -834,6 +848,15 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_availability_policy, as: 'productAvailabilityPolicy'
+          collection :product_policy, as: 'productPolicy', class: Google::Apis::AndroidenterpriseV1::ProductPolicy, decorator: Google::Apis::AndroidenterpriseV1::ProductPolicy::Representation
+      
+        end
+      end
+      
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -887,6 +910,14 @@ module Google
           collection :permission, as: 'permission', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
       
           property :product_id, as: 'productId'
+        end
+      end
+      
+      class ProductPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
+          collection :tracks, as: 'tracks'
         end
       end
       

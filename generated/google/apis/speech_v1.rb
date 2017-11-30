@@ -25,10 +25,13 @@ module Google
     # @see https://cloud.google.com/speech/
     module SpeechV1
       VERSION = 'V1'
-      REVISION = '20171018'
+      REVISION = '20171129'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Convert speech to text using Google speech recognition technology
+      AUTH_CLOUD_SPEECH = 'https://www.googleapis.com/auth/cloud-speech'
     end
   end
 end

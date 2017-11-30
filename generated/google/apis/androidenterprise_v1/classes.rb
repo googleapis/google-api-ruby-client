@@ -446,8 +446,6 @@ module Google
       
       # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
-      # This collection cannot be modified via the API. It is automatically populated
-      # as devices are set up to be managed.
       class Device
         include Google::Apis::Core::Hashable
       
@@ -479,6 +477,11 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
+        # The device policy for a given managed device.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::AndroidenterpriseV1::Policy]
+        attr_accessor :policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -488,6 +491,7 @@ module Google
           @android_id = args[:android_id] if args.key?(:android_id)
           @kind = args[:kind] if args.key?(:kind)
           @management_type = args[:management_type] if args.key?(:management_type)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
@@ -1570,6 +1574,39 @@ module Google
         end
       end
       
+      # The device policy for a given managed device.
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # The availability granted to the device for the specified products. "all" gives
+        # the device access to all products, regardless of approval status. "allApproved"
+        # entitles the device to access all products that are approved for the
+        # enterprise. "allApproved" and "all" do not enable automatic visibility of "
+        # alpha" or "beta" tracks. "whitelist" grants the device access the products
+        # specified in productPolicy[]. Only products that are approved or products that
+        # were previously approved (products with revoked approval) by the enterprise
+        # can be whitelisted. If no value is provided, the availability set at the user
+        # level is applied by default.
+        # Corresponds to the JSON property `productAvailabilityPolicy`
+        # @return [String]
+        attr_accessor :product_availability_policy
+      
+        # The list of product policies.
+        # Corresponds to the JSON property `productPolicy`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPolicy>]
+        attr_accessor :product_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_availability_policy = args[:product_availability_policy] if args.key?(:product_availability_policy)
+          @product_policy = args[:product_policy] if args.key?(:product_policy)
+        end
+      end
+      
       # A Products resource represents an app in the Google Play store that is
       # available to at least some users in the enterprise. (Some apps are restricted
       # to a single enterprise, and no information about them is made available
@@ -1798,6 +1835,44 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @permission = args[:permission] if args.key?(:permission)
           @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # The policy for a product.
+      class ProductPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the product. For example, "app:com.google.android.gm".
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Grants visibility to the specified track(s) of the product to the device. The
+        # track available to the device is based on the following order of preference:
+        # alpha, beta, production. For example, if an app has a prod version, a beta
+        # version and an alpha version and the enterprise has been granted visibility to
+        # both the alpha and beta tracks, if tracks is `"beta", "production"` then the
+        # beta version of the app is made available to the device. If there are no app
+        # versions in the specified track adding the "alpha" and "beta" values to the
+        # list of tracks will have no effect. Note that the enterprise requires access
+        # to alpha and/or beta tracks before users can be granted visibility to apps in
+        # those tracks.
+        # The allowed sets are: `` (considered equivalent to `"production"`) `"
+        # production"` `"beta", "production"` `"alpha", "beta", "production"` The order
+        # of elements is not relevant. Any other set of tracks will be rejected with an
+        # error.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<String>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @tracks = args[:tracks] if args.key?(:tracks)
         end
       end
       

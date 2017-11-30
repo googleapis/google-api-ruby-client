@@ -367,6 +367,7 @@ module Google
           hash :labels, as: 'labels'
           property :model_name, as: 'modelName'
           property :operation_type, as: 'operationType'
+          property :project_number, :numeric_string => true, as: 'projectNumber'
           property :start_time, as: 'startTime'
           property :version, as: 'version', class: Google::Apis::MlV1::GoogleCloudMlV1Version, decorator: Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
       
@@ -405,6 +406,7 @@ module Google
           property :output_path, as: 'outputPath'
           property :region, as: 'region'
           property :runtime_version, as: 'runtimeVersion'
+          property :signature_name, as: 'signatureName'
           property :uri, as: 'uri'
           property :version_name, as: 'versionName'
         end
@@ -438,6 +440,7 @@ module Google
           property :parameter_server_count, :numeric_string => true, as: 'parameterServerCount'
           property :parameter_server_type, as: 'parameterServerType'
           property :python_module, as: 'pythonModule'
+          property :python_version, as: 'pythonVersion'
           property :region, as: 'region'
           property :runtime_version, as: 'runtimeVersion'
           property :scale_tier, as: 'scaleTier'

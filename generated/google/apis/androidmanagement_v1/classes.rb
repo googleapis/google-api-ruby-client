@@ -22,6 +22,32 @@ module Google
   module Apis
     module AndroidmanagementV1
       
+      # Configuration for an always-on VPN connection.
+      class AlwaysOnVpnPackage
+        include Google::Apis::Core::Hashable
+      
+        # Disallows networking when the VPN is not connected.
+        # Corresponds to the JSON property `lockdownEnabled`
+        # @return [Boolean]
+        attr_accessor :lockdown_enabled
+        alias_method :lockdown_enabled?, :lockdown_enabled
+      
+        # The package name of the VPN app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lockdown_enabled = args[:lockdown_enabled] if args.key?(:lockdown_enabled)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # A compliance rule condition which is satisfied if the Android Framework API
       # level on the device does not meet a minimum requirement. There can only be one
       # rule with this type of condition per policy.
@@ -1307,6 +1333,25 @@ module Google
         end
       end
       
+      # A list of package names.
+      class PackageNameList
+        include Google::Apis::Core::Hashable
+      
+        # A list of package names.
+        # Corresponds to the JSON property `packageNames`
+        # @return [Array<String>]
+        attr_accessor :package_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_names = args[:package_names] if args.key?(:package_names)
+        end
+      end
+      
       # Requirements for the password used to unlock a device.
       class PasswordRequirements
         include Google::Apis::Core::Hashable
@@ -1466,6 +1511,12 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
+        # Account types that cannot be managed by the user. <i>Requires the beta version
+        # of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `accountTypesWithManagementDisabled`
+        # @return [Array<String>]
+        attr_accessor :account_types_with_management_disabled
+      
         # Whether adding new users and profiles is disabled.
         # Corresponds to the JSON property `addUserDisabled`
         # @return [Boolean]
@@ -1477,6 +1528,11 @@ module Google
         # @return [Boolean]
         attr_accessor :adjust_volume_disabled
         alias_method :adjust_volume_disabled?, :adjust_volume_disabled
+      
+        # Configuration for an always-on VPN connection.
+        # Corresponds to the JSON property `alwaysOnVpnPackage`
+        # @return [Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage]
+        attr_accessor :always_on_vpn_package
       
         # Policy applied to apps.
         # Corresponds to the JSON property `applications`
@@ -1499,11 +1555,40 @@ module Google
         attr_accessor :block_applications_enabled
         alias_method :block_applications_enabled?, :block_applications_enabled
       
+        # Whether configuring bluetooth is disabled. <i>Requires the beta version of
+        # Android Cloud Policy.</i>
+        # Corresponds to the JSON property `bluetoothConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :bluetooth_config_disabled
+        alias_method :bluetooth_config_disabled?, :bluetooth_config_disabled
+      
+        # Whether bluetooth contact sharing is disabled. <i>Requires the beta version of
+        # Android Cloud Policy.</i>
+        # Corresponds to the JSON property `bluetoothContactSharingDisabled`
+        # @return [Boolean]
+        attr_accessor :bluetooth_contact_sharing_disabled
+        alias_method :bluetooth_contact_sharing_disabled?, :bluetooth_contact_sharing_disabled
+      
+        # Whether bluetooth is disabled. Prefer this setting over
+        # bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by
+        # the user. <i>Requires the beta version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `bluetoothDisabled`
+        # @return [Boolean]
+        attr_accessor :bluetooth_disabled
+        alias_method :bluetooth_disabled?, :bluetooth_disabled
+      
         # Whether all cameras on the device are disabled.
         # Corresponds to the JSON property `cameraDisabled`
         # @return [Boolean]
         attr_accessor :camera_disabled
         alias_method :camera_disabled?, :camera_disabled
+      
+        # Whether configuring cell broadcast is disabled. <i>Requires the beta version
+        # of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `cellBroadcastsConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :cell_broadcasts_config_disabled
+        alias_method :cell_broadcasts_config_disabled?, :cell_broadcasts_config_disabled
       
         # Rules declaring which mitigating actions to take when a device is not
         # compliant with its policy. When the conditions for multiple rules are
@@ -1512,6 +1597,27 @@ module Google
         # Corresponds to the JSON property `complianceRules`
         # @return [Array<Google::Apis::AndroidmanagementV1::ComplianceRule>]
         attr_accessor :compliance_rules
+      
+        # Whether creating windows besides app windows is disabled. <i>Requires the beta
+        # version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `createWindowsDisabled`
+        # @return [Boolean]
+        attr_accessor :create_windows_disabled
+        alias_method :create_windows_disabled?, :create_windows_disabled
+      
+        # Whether configuring user credentials is disabled. <i>Requires the beta version
+        # of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `credentialsConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :credentials_config_disabled
+        alias_method :credentials_config_disabled?, :credentials_config_disabled
+      
+        # Whether roaming data services are disabled. <i>Requires the beta version of
+        # Android Cloud Policy.</i>
+        # Corresponds to the JSON property `dataRoamingDisabled`
+        # @return [Boolean]
+        attr_accessor :data_roaming_disabled
+        alias_method :data_roaming_disabled?, :data_roaming_disabled
       
         # Whether the user is allowed to enable debugging features.
         # Corresponds to the JSON property `debuggingFeaturesAllowed`
@@ -1523,6 +1629,13 @@ module Google
         # Corresponds to the JSON property `defaultPermissionPolicy`
         # @return [String]
         attr_accessor :default_permission_policy
+      
+        # Whether application verification is forced to be enabled. <i>Requires the beta
+        # version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `ensureVerifyAppsEnabled`
+        # @return [Boolean]
+        attr_accessor :ensure_verify_apps_enabled
+        alias_method :ensure_verify_apps_enabled?, :ensure_verify_apps_enabled
       
         # Whether factory resetting from settings is disabled.
         # Corresponds to the JSON property `factoryResetDisabled`
@@ -1545,6 +1658,13 @@ module Google
         attr_accessor :fun_disabled
         alias_method :fun_disabled?, :fun_disabled
       
+        # Whether user installation of apps is disabled. <i>Requires the beta version of
+        # Android Cloud Policy.</i>
+        # Corresponds to the JSON property `installAppsDisabled`
+        # @return [Boolean]
+        attr_accessor :install_apps_disabled
+        alias_method :install_apps_disabled?, :install_apps_disabled
+      
         # Whether the user is allowed to enable the "Unknown Sources" setting, which
         # allows installation of apps from unknown sources.
         # Corresponds to the JSON property `installUnknownSourcesAllowed`
@@ -1558,17 +1678,43 @@ module Google
         attr_accessor :keyguard_disabled
         alias_method :keyguard_disabled?, :keyguard_disabled
       
+        # Disabled keyguard customizations, such as widgets. <i>Requires the beta
+        # version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `keyguardDisabledFeatures`
+        # @return [Array<String>]
+        attr_accessor :keyguard_disabled_features
+      
+        # Provides user facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `longSupportMessage`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :long_support_message
+      
         # Maximum time in milliseconds for user activity until the device will lock. A
         # value of 0 means there is no restriction.
         # Corresponds to the JSON property `maximumTimeToLock`
         # @return [Fixnum]
         attr_accessor :maximum_time_to_lock
       
+        # Whether configuring mobile networks is disabled. <i>Requires the beta version
+        # of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `mobileNetworksConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :mobile_networks_config_disabled
+        alias_method :mobile_networks_config_disabled?, :mobile_networks_config_disabled
+      
         # Whether adding or removing accounts is disabled.
         # Corresponds to the JSON property `modifyAccountsDisabled`
         # @return [Boolean]
         attr_accessor :modify_accounts_disabled
         alias_method :modify_accounts_disabled?, :modify_accounts_disabled
+      
+        # Whether the user mounting physical external media is disabled. <i>Requires the
+        # beta version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `mountPhysicalMediaDisabled`
+        # @return [Boolean]
+        attr_accessor :mount_physical_media_disabled
+        alias_method :mount_physical_media_disabled?, :mount_physical_media_disabled
       
         # The name of the policy in the form enterprises/`enterpriseId`/policies/`
         # policyId`
@@ -1588,21 +1734,53 @@ module Google
         attr_accessor :network_escape_hatch_enabled
         alias_method :network_escape_hatch_enabled?, :network_escape_hatch_enabled
       
+        # Whether resetting network settings is disabled. <i>Requires the beta version
+        # of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `networkResetDisabled`
+        # @return [Boolean]
+        attr_accessor :network_reset_disabled
+        alias_method :network_reset_disabled?, :network_reset_disabled
+      
         # Network configuration for the device. See configure networks for more
         # information.
         # Corresponds to the JSON property `openNetworkConfiguration`
         # @return [Hash<String,Object>]
         attr_accessor :open_network_configuration
       
+        # Whether using NFC to beam out data from apps is disabled. <i>Requires the beta
+        # version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `outgoingBeamDisabled`
+        # @return [Boolean]
+        attr_accessor :outgoing_beam_disabled
+        alias_method :outgoing_beam_disabled?, :outgoing_beam_disabled
+      
+        # Whether outgoing calls are disabled. <i>Requires the beta version of Android
+        # Cloud Policy.</i>
+        # Corresponds to the JSON property `outgoingCallsDisabled`
+        # @return [Boolean]
+        attr_accessor :outgoing_calls_disabled
+        alias_method :outgoing_calls_disabled?, :outgoing_calls_disabled
+      
         # Requirements for the password used to unlock a device.
         # Corresponds to the JSON property `passwordRequirements`
         # @return [Google::Apis::AndroidmanagementV1::PasswordRequirements]
         attr_accessor :password_requirements
       
+        # A list of package names.
+        # Corresponds to the JSON property `permittedInputMethods`
+        # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
+        attr_accessor :permitted_input_methods
+      
         # Default intent handler activities.
         # Corresponds to the JSON property `persistentPreferredActivities`
         # @return [Array<Google::Apis::AndroidmanagementV1::PersistentPreferredActivity>]
         attr_accessor :persistent_preferred_activities
+      
+        # Configuration info for an HTTP proxy. For a direct proxy, set the host, port,
+        # and excluded_hosts fields. For a PAC script proxy, set the pac_uri field.
+        # Corresponds to the JSON property `recommendedGlobalProxy`
+        # @return [Google::Apis::AndroidmanagementV1::ProxyInfo]
+        attr_accessor :recommended_global_proxy
       
         # Whether removing other users is disabled.
         # Corresponds to the JSON property `removeUserDisabled`
@@ -1621,6 +1799,33 @@ module Google
         # @return [Boolean]
         attr_accessor :screen_capture_disabled
         alias_method :screen_capture_disabled?, :screen_capture_disabled
+      
+        # Whether changing the user icon is disabled. <i>Requires the beta version of
+        # Android Cloud Policy.</i>
+        # Corresponds to the JSON property `setUserIconDisabled`
+        # @return [Boolean]
+        attr_accessor :set_user_icon_disabled
+        alias_method :set_user_icon_disabled?, :set_user_icon_disabled
+      
+        # Whether changing the wallpaper is disabled. <i>Requires the beta version of
+        # Android Cloud Policy.</i>
+        # Corresponds to the JSON property `setWallpaperDisabled`
+        # @return [Boolean]
+        attr_accessor :set_wallpaper_disabled
+        alias_method :set_wallpaper_disabled?, :set_wallpaper_disabled
+      
+        # Provides user facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `shortSupportMessage`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :short_support_message
+      
+        # Whether sending or receiving SMS messages is disabled. <i>Requires the beta
+        # version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `smsDisabled`
+        # @return [Boolean]
+        attr_accessor :sms_disabled
+        alias_method :sms_disabled?, :sms_disabled
       
         # Whether the status bar is disabled. This disables notifications, quick
         # settings and other screen overlays that allow escape from full-screen mode.
@@ -1646,17 +1851,45 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::SystemUpdate]
         attr_accessor :system_update
       
+        # Whether configuring tethering and portable hotspots is disabled. <i>Requires
+        # the beta version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `tetheringConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :tethering_config_disabled
+        alias_method :tethering_config_disabled?, :tethering_config_disabled
+      
+        # Whether user uninstallation of applications is disabled. <i>Requires the beta
+        # version of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `uninstallAppsDisabled`
+        # @return [Boolean]
+        attr_accessor :uninstall_apps_disabled
+        alias_method :uninstall_apps_disabled?, :uninstall_apps_disabled
+      
         # Whether the microphone is muted and adjusting microphone volume is disabled.
         # Corresponds to the JSON property `unmuteMicrophoneDisabled`
         # @return [Boolean]
         attr_accessor :unmute_microphone_disabled
         alias_method :unmute_microphone_disabled?, :unmute_microphone_disabled
       
+        # Whether transferring files over USB is disabled. <i>Requires the beta version
+        # of Android Cloud Policy.</i>
+        # Corresponds to the JSON property `usbFileTransferDisabled`
+        # @return [Boolean]
+        attr_accessor :usb_file_transfer_disabled
+        alias_method :usb_file_transfer_disabled?, :usb_file_transfer_disabled
+      
         # The version of the policy. This is a read-only field. The version is
         # incremented each time the policy is updated.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
+      
+        # Whether configuring VPN is disabled. <i>Requires the beta version of Android
+        # Cloud Policy.</i>
+        # Corresponds to the JSON property `vpnConfigDisabled`
+        # @return [Boolean]
+        attr_accessor :vpn_config_disabled
+        alias_method :vpn_config_disabled?, :vpn_config_disabled
       
         # Whether configuring WiFi access points is disabled.
         # Corresponds to the JSON property `wifiConfigDisabled`
@@ -1677,36 +1910,64 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_types_with_management_disabled = args[:account_types_with_management_disabled] if args.key?(:account_types_with_management_disabled)
           @add_user_disabled = args[:add_user_disabled] if args.key?(:add_user_disabled)
           @adjust_volume_disabled = args[:adjust_volume_disabled] if args.key?(:adjust_volume_disabled)
+          @always_on_vpn_package = args[:always_on_vpn_package] if args.key?(:always_on_vpn_package)
           @applications = args[:applications] if args.key?(:applications)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
+          @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)
+          @bluetooth_contact_sharing_disabled = args[:bluetooth_contact_sharing_disabled] if args.key?(:bluetooth_contact_sharing_disabled)
+          @bluetooth_disabled = args[:bluetooth_disabled] if args.key?(:bluetooth_disabled)
           @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
+          @cell_broadcasts_config_disabled = args[:cell_broadcasts_config_disabled] if args.key?(:cell_broadcasts_config_disabled)
           @compliance_rules = args[:compliance_rules] if args.key?(:compliance_rules)
+          @create_windows_disabled = args[:create_windows_disabled] if args.key?(:create_windows_disabled)
+          @credentials_config_disabled = args[:credentials_config_disabled] if args.key?(:credentials_config_disabled)
+          @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
+          @ensure_verify_apps_enabled = args[:ensure_verify_apps_enabled] if args.key?(:ensure_verify_apps_enabled)
           @factory_reset_disabled = args[:factory_reset_disabled] if args.key?(:factory_reset_disabled)
           @frp_admin_emails = args[:frp_admin_emails] if args.key?(:frp_admin_emails)
           @fun_disabled = args[:fun_disabled] if args.key?(:fun_disabled)
+          @install_apps_disabled = args[:install_apps_disabled] if args.key?(:install_apps_disabled)
           @install_unknown_sources_allowed = args[:install_unknown_sources_allowed] if args.key?(:install_unknown_sources_allowed)
           @keyguard_disabled = args[:keyguard_disabled] if args.key?(:keyguard_disabled)
+          @keyguard_disabled_features = args[:keyguard_disabled_features] if args.key?(:keyguard_disabled_features)
+          @long_support_message = args[:long_support_message] if args.key?(:long_support_message)
           @maximum_time_to_lock = args[:maximum_time_to_lock] if args.key?(:maximum_time_to_lock)
+          @mobile_networks_config_disabled = args[:mobile_networks_config_disabled] if args.key?(:mobile_networks_config_disabled)
           @modify_accounts_disabled = args[:modify_accounts_disabled] if args.key?(:modify_accounts_disabled)
+          @mount_physical_media_disabled = args[:mount_physical_media_disabled] if args.key?(:mount_physical_media_disabled)
           @name = args[:name] if args.key?(:name)
           @network_escape_hatch_enabled = args[:network_escape_hatch_enabled] if args.key?(:network_escape_hatch_enabled)
+          @network_reset_disabled = args[:network_reset_disabled] if args.key?(:network_reset_disabled)
           @open_network_configuration = args[:open_network_configuration] if args.key?(:open_network_configuration)
+          @outgoing_beam_disabled = args[:outgoing_beam_disabled] if args.key?(:outgoing_beam_disabled)
+          @outgoing_calls_disabled = args[:outgoing_calls_disabled] if args.key?(:outgoing_calls_disabled)
           @password_requirements = args[:password_requirements] if args.key?(:password_requirements)
+          @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
           @persistent_preferred_activities = args[:persistent_preferred_activities] if args.key?(:persistent_preferred_activities)
+          @recommended_global_proxy = args[:recommended_global_proxy] if args.key?(:recommended_global_proxy)
           @remove_user_disabled = args[:remove_user_disabled] if args.key?(:remove_user_disabled)
           @safe_boot_disabled = args[:safe_boot_disabled] if args.key?(:safe_boot_disabled)
           @screen_capture_disabled = args[:screen_capture_disabled] if args.key?(:screen_capture_disabled)
+          @set_user_icon_disabled = args[:set_user_icon_disabled] if args.key?(:set_user_icon_disabled)
+          @set_wallpaper_disabled = args[:set_wallpaper_disabled] if args.key?(:set_wallpaper_disabled)
+          @short_support_message = args[:short_support_message] if args.key?(:short_support_message)
+          @sms_disabled = args[:sms_disabled] if args.key?(:sms_disabled)
           @status_bar_disabled = args[:status_bar_disabled] if args.key?(:status_bar_disabled)
           @status_reporting_settings = args[:status_reporting_settings] if args.key?(:status_reporting_settings)
           @stay_on_plugged_modes = args[:stay_on_plugged_modes] if args.key?(:stay_on_plugged_modes)
           @system_update = args[:system_update] if args.key?(:system_update)
+          @tethering_config_disabled = args[:tethering_config_disabled] if args.key?(:tethering_config_disabled)
+          @uninstall_apps_disabled = args[:uninstall_apps_disabled] if args.key?(:uninstall_apps_disabled)
           @unmute_microphone_disabled = args[:unmute_microphone_disabled] if args.key?(:unmute_microphone_disabled)
+          @usb_file_transfer_disabled = args[:usb_file_transfer_disabled] if args.key?(:usb_file_transfer_disabled)
           @version = args[:version] if args.key?(:version)
+          @vpn_config_disabled = args[:vpn_config_disabled] if args.key?(:vpn_config_disabled)
           @wifi_config_disabled = args[:wifi_config_disabled] if args.key?(:wifi_config_disabled)
           @wifi_configs_lockdown_enabled = args[:wifi_configs_lockdown_enabled] if args.key?(:wifi_configs_lockdown_enabled)
         end
@@ -1740,6 +2001,45 @@ module Google
           @battery_level = args[:battery_level] if args.key?(:battery_level)
           @create_time = args[:create_time] if args.key?(:create_time)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # Configuration info for an HTTP proxy. For a direct proxy, set the host, port,
+      # and excluded_hosts fields. For a PAC script proxy, set the pac_uri field.
+      class ProxyInfo
+        include Google::Apis::Core::Hashable
+      
+        # For a direct proxy, the hosts for which the proxy is bypassed. The host names
+        # may contain wildcards such as *.example.com.
+        # Corresponds to the JSON property `excludedHosts`
+        # @return [Array<String>]
+        attr_accessor :excluded_hosts
+      
+        # The host of the direct proxy.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The URI of the PAC script used to configure the proxy.
+        # Corresponds to the JSON property `pacUri`
+        # @return [String]
+        attr_accessor :pac_uri
+      
+        # The port of the direct proxy.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_hosts = args[:excluded_hosts] if args.key?(:excluded_hosts)
+          @host = args[:host] if args.key?(:host)
+          @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
+          @port = args[:port] if args.key?(:port)
         end
       end
       

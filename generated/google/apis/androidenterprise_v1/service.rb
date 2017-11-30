@@ -177,6 +177,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the device policy. This method supports patch semantics.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] user_id
+        #   The ID of the user.
+        # @param [String] device_id
+        #   The ID of the device.
+        # @param [Google::Apis::AndroidenterpriseV1::Device] device_object
+        # @param [String] update_mask
+        #   Mask that identifies which fields to update. If not set, all modifiable fields
+        #   will be modified.
+        #   When set in a query parameter, this field should be specified as updateMask=<
+        #   field1>,<field2>,...
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Device] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::Device]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_device(enterprise_id, user_id, device_id, device_object = nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::Device::Representation
+          command.request_object = device_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::Device::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::Device
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['deviceId'] = device_id unless device_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets whether a device's access to Google services is enabled or disabled. The
         # device state takes effect only if enforcing EMM policies on Android devices is
         # enabled in the Google Admin Console. Otherwise, the device state is ignored
@@ -219,6 +269,56 @@ module Google
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.params['deviceId'] = device_id unless device_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the device policy
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] user_id
+        #   The ID of the user.
+        # @param [String] device_id
+        #   The ID of the device.
+        # @param [Google::Apis::AndroidenterpriseV1::Device] device_object
+        # @param [String] update_mask
+        #   Mask that identifies which fields to update. If not set, all modifiable fields
+        #   will be modified.
+        #   When set in a query parameter, this field should be specified as updateMask=<
+        #   field1>,<field2>,...
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Device] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::Device]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_device(enterprise_id, user_id, device_id, device_object = nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::Device::Representation
+          command.request_object = device_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::Device::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::Device
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['userId'] = user_id unless user_id.nil?
+          command.params['deviceId'] = device_id unless device_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

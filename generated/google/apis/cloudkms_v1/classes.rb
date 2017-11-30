@@ -207,7 +207,7 @@ module Google
         attr_accessor :create_time
       
         # Labels with user-defined metadata. For more information, see
-        # [Labeling CryptoKeys](/kms/docs/labeling-keys).
+        # [Labeling Keys](/kms/docs/labeling-keys).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

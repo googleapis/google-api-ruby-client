@@ -596,6 +596,11 @@ module Google
         # @return [String]
         attr_accessor :operation_type
       
+        # Contains the project number associated with the operation.
+        # Corresponds to the JSON property `projectNumber`
+        # @return [Fixnum]
+        attr_accessor :project_number
+      
         # The time operation processing started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -624,6 +629,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @model_name = args[:model_name] if args.key?(:model_name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @project_number = args[:project_number] if args.key?(:project_number)
           @start_time = args[:start_time] if args.key?(:start_time)
           @version = args[:version] if args.key?(:version)
         end
@@ -697,183 +703,6 @@ module Google
       end
       
       # Request for predictions to be issued against a trained model.
-      # The body of the request is a single JSON object with a single top-level
-      # field:
-      # <dl>
-      # <dt>instances</dt>
-      # <dd>A JSON array containing values representing the instances to use for
-      # prediction.</dd>
-      # </dl>
-      # The structure of each element of the instances list is determined by your
-      # model's input definition. Instances can include named inputs or can contain
-      # only unlabeled values.
-      # Not all data includes named inputs. Some instances will be simple
-      # JSON values (boolean, number, or string). However, instances are often lists
-      # of simple values, or complex nested lists. Here are some examples of request
-      # bodies:
-      # CSV data with each row encoded as a string value:
-      # <pre>
-      # `"instances": ["1.0,true,\\"x\\"", "-2.0,false,\\"y\\""]`
-      # </pre>
-      # Plain text:
-      # <pre>
-      # `"instances": ["the quick brown fox", "la bruja le dio"]`
-      # </pre>
-      # Sentences encoded as lists of words (vectors of strings):
-      # <pre>
-      # `
-      # "instances": [
-      # ["the","quick","brown"],
-      # ["la","bruja","le"],
-      # ...
-      # ]
-      # `
-      # </pre>
-      # Floating point scalar values:
-      # <pre>
-      # `"instances": [0.0, 1.1, 2.2]`
-      # </pre>
-      # Vectors of integers:
-      # <pre>
-      # `
-      # "instances": [
-      # [0, 1, 2],
-      # [3, 4, 5],
-      # ...
-      # ]
-      # `
-      # </pre>
-      # Tensors (in this case, two-dimensional tensors):
-      # <pre>
-      # `
-      # "instances": [
-      # [
-      # [0, 1, 2],
-      # [3, 4, 5]
-      # ],
-      # ...
-      # ]
-      # `
-      # </pre>
-      # Images can be represented different ways. In this encoding scheme the first
-      # two dimensions represent the rows and columns of the image, and the third
-      # contains lists (vectors) of the R, G, and B values for each pixel.
-      # <pre>
-      # `
-      # "instances": [
-      # [
-      # [
-      # [138, 30, 66],
-      # [130, 20, 56],
-      # ...
-      # ],
-      # [
-      # [126, 38, 61],
-      # [122, 24, 57],
-      # ...
-      # ],
-      # ...
-      # ],
-      # ...
-      # ]
-      # `
-      # </pre>
-      # JSON strings must be encoded as UTF-8. To send binary data, you must
-      # base64-encode the data and mark it as binary. To mark a JSON string
-      # as binary, replace it with a JSON object with a single attribute named `b64`:
-      # <pre>`"b64": "..."` </pre>
-      # For example:
-      # Two Serialized tf.Examples (fake data, for illustrative purposes only):
-      # <pre>
-      # `"instances": [`"b64": "X5ad6u"`, `"b64": "IA9j4nx"`]`
-      # </pre>
-      # Two JPEG image byte strings (fake data, for illustrative purposes only):
-      # <pre>
-      # `"instances": [`"b64": "ASa8asdf"`, `"b64": "JLK7ljk3"`]`
-      # </pre>
-      # If your data includes named references, format each instance as a JSON object
-      # with the named references as the keys:
-      # JSON input data to be preprocessed:
-      # <pre>
-      # `
-      # "instances": [
-      # `
-      # "a": 1.0,
-      # "b": true,
-      # "c": "x"
-      # `,
-      # `
-      # "a": -2.0,
-      # "b": false,
-      # "c": "y"
-      # `
-      # ]
-      # `
-      # </pre>
-      # Some models have an underlying TensorFlow graph that accepts multiple input
-      # tensors. In this case, you should use the names of JSON name/value pairs to
-      # identify the input tensors, as shown in the following exmaples:
-      # For a graph with input tensor aliases "tag" (string) and "image"
-      # (base64-encoded string):
-      # <pre>
-      # `
-      # "instances": [
-      # `
-      # "tag": "beach",
-      # "image": `"b64": "ASa8asdf"`
-      # `,
-      # `
-      # "tag": "car",
-      # "image": `"b64": "JLK7ljk3"`
-      # `
-      # ]
-      # `
-      # </pre>
-      # For a graph with input tensor aliases "tag" (string) and "image"
-      # (3-dimensional array of 8-bit ints):
-      # <pre>
-      # `
-      # "instances": [
-      # `
-      # "tag": "beach",
-      # "image": [
-      # [
-      # [138, 30, 66],
-      # [130, 20, 56],
-      # ...
-      # ],
-      # [
-      # [126, 38, 61],
-      # [122, 24, 57],
-      # ...
-      # ],
-      # ...
-      # ]
-      # `,
-      # `
-      # "tag": "car",
-      # "image": [
-      # [
-      # [255, 0, 102],
-      # [255, 0, 97],
-      # ...
-      # ],
-      # [
-      # [254, 1, 101],
-      # [254, 2, 93],
-      # ...
-      # ],
-      # ...
-      # ]
-      # `,
-      # ...
-      # ]
-      # `
-      # </pre>
-      # If the call is successful, the response body will contain one prediction
-      # entry per instance in the request body. If prediction fails for any
-      # instance, the response body will contain no predictions and will contian
-      # a single error entry instead.
       class GoogleCloudMlV1PredictRequest
         include Google::Apis::Core::Hashable
       
@@ -974,6 +803,18 @@ module Google
         # @return [String]
         attr_accessor :runtime_version
       
+        # Optional. The name of the signature defined in the SavedModel to use for
+        # this job. Please refer to
+        # [SavedModel](https://tensorflow.github.io/serving/serving_basic.html)
+        # for information about how to use signatures.
+        # Defaults to
+        # [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/
+        # tf/saved_model/signature_constants)
+        # , which is "serving_default".
+        # Corresponds to the JSON property `signatureName`
+        # @return [String]
+        attr_accessor :signature_name
+      
         # Use this field if you want to specify a Google Cloud Storage path for
         # the model to use.
         # Corresponds to the JSON property `uri`
@@ -1003,6 +844,7 @@ module Google
           @output_path = args[:output_path] if args.key?(:output_path)
           @region = args[:region] if args.key?(:region)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @signature_name = args[:signature_name] if args.key?(:signature_name)
           @uri = args[:uri] if args.key?(:uri)
           @version_name = args[:version_name] if args.key?(:version_name)
         end
@@ -1180,6 +1022,12 @@ module Google
         # @return [String]
         attr_accessor :python_module
       
+        # Optional. The version of Python used in training. If not set, the default
+        # version is '2.7'.
+        # Corresponds to the JSON property `pythonVersion`
+        # @return [String]
+        attr_accessor :python_version
+      
         # Required. The Google Compute Engine region to run the training job in.
         # Corresponds to the JSON property `region`
         # @return [String]
@@ -1229,6 +1077,7 @@ module Google
           @parameter_server_count = args[:parameter_server_count] if args.key?(:parameter_server_count)
           @parameter_server_type = args[:parameter_server_type] if args.key?(:parameter_server_type)
           @python_module = args[:python_module] if args.key?(:python_module)
+          @python_version = args[:python_version] if args.key?(:python_version)
           @region = args[:region] if args.key?(:region)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)

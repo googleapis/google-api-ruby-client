@@ -22,6 +22,12 @@ module Google
   module Apis
     module AndroidmanagementV1
       
+      class AlwaysOnVpnPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiLevelCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PackageNameList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PasswordRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +209,12 @@ module Google
       end
       
       class PowerManagementEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProxyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -242,6 +260,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlwaysOnVpnPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :lockdown_enabled, as: 'lockdownEnabled'
+          property :package_name, as: 'packageName'
+        end
       end
       
       class ApiLevelCondition
@@ -545,6 +571,13 @@ module Google
         end
       end
       
+      class PackageNameList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :package_names, as: 'packageNames'
+        end
+      end
+      
       class PasswordRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -582,42 +615,75 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_types_with_management_disabled, as: 'accountTypesWithManagementDisabled'
           property :add_user_disabled, as: 'addUserDisabled'
           property :adjust_volume_disabled, as: 'adjustVolumeDisabled'
+          property :always_on_vpn_package, as: 'alwaysOnVpnPackage', class: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage, decorator: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage::Representation
+      
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
           property :auto_time_required, as: 'autoTimeRequired'
           property :block_applications_enabled, as: 'blockApplicationsEnabled'
+          property :bluetooth_config_disabled, as: 'bluetoothConfigDisabled'
+          property :bluetooth_contact_sharing_disabled, as: 'bluetoothContactSharingDisabled'
+          property :bluetooth_disabled, as: 'bluetoothDisabled'
           property :camera_disabled, as: 'cameraDisabled'
+          property :cell_broadcasts_config_disabled, as: 'cellBroadcastsConfigDisabled'
           collection :compliance_rules, as: 'complianceRules', class: Google::Apis::AndroidmanagementV1::ComplianceRule, decorator: Google::Apis::AndroidmanagementV1::ComplianceRule::Representation
       
+          property :create_windows_disabled, as: 'createWindowsDisabled'
+          property :credentials_config_disabled, as: 'credentialsConfigDisabled'
+          property :data_roaming_disabled, as: 'dataRoamingDisabled'
           property :debugging_features_allowed, as: 'debuggingFeaturesAllowed'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
+          property :ensure_verify_apps_enabled, as: 'ensureVerifyAppsEnabled'
           property :factory_reset_disabled, as: 'factoryResetDisabled'
           collection :frp_admin_emails, as: 'frpAdminEmails'
           property :fun_disabled, as: 'funDisabled'
+          property :install_apps_disabled, as: 'installAppsDisabled'
           property :install_unknown_sources_allowed, as: 'installUnknownSourcesAllowed'
           property :keyguard_disabled, as: 'keyguardDisabled'
+          collection :keyguard_disabled_features, as: 'keyguardDisabledFeatures'
+          property :long_support_message, as: 'longSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
           property :maximum_time_to_lock, :numeric_string => true, as: 'maximumTimeToLock'
+          property :mobile_networks_config_disabled, as: 'mobileNetworksConfigDisabled'
           property :modify_accounts_disabled, as: 'modifyAccountsDisabled'
+          property :mount_physical_media_disabled, as: 'mountPhysicalMediaDisabled'
           property :name, as: 'name'
           property :network_escape_hatch_enabled, as: 'networkEscapeHatchEnabled'
+          property :network_reset_disabled, as: 'networkResetDisabled'
           hash :open_network_configuration, as: 'openNetworkConfiguration'
+          property :outgoing_beam_disabled, as: 'outgoingBeamDisabled'
+          property :outgoing_calls_disabled, as: 'outgoingCallsDisabled'
           property :password_requirements, as: 'passwordRequirements', class: Google::Apis::AndroidmanagementV1::PasswordRequirements, decorator: Google::Apis::AndroidmanagementV1::PasswordRequirements::Representation
       
+          property :permitted_input_methods, as: 'permittedInputMethods', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
+      
           collection :persistent_preferred_activities, as: 'persistentPreferredActivities', class: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity, decorator: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity::Representation
+      
+          property :recommended_global_proxy, as: 'recommendedGlobalProxy', class: Google::Apis::AndroidmanagementV1::ProxyInfo, decorator: Google::Apis::AndroidmanagementV1::ProxyInfo::Representation
       
           property :remove_user_disabled, as: 'removeUserDisabled'
           property :safe_boot_disabled, as: 'safeBootDisabled'
           property :screen_capture_disabled, as: 'screenCaptureDisabled'
+          property :set_user_icon_disabled, as: 'setUserIconDisabled'
+          property :set_wallpaper_disabled, as: 'setWallpaperDisabled'
+          property :short_support_message, as: 'shortSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :sms_disabled, as: 'smsDisabled'
           property :status_bar_disabled, as: 'statusBarDisabled'
           property :status_reporting_settings, as: 'statusReportingSettings', class: Google::Apis::AndroidmanagementV1::StatusReportingSettings, decorator: Google::Apis::AndroidmanagementV1::StatusReportingSettings::Representation
       
           collection :stay_on_plugged_modes, as: 'stayOnPluggedModes'
           property :system_update, as: 'systemUpdate', class: Google::Apis::AndroidmanagementV1::SystemUpdate, decorator: Google::Apis::AndroidmanagementV1::SystemUpdate::Representation
       
+          property :tethering_config_disabled, as: 'tetheringConfigDisabled'
+          property :uninstall_apps_disabled, as: 'uninstallAppsDisabled'
           property :unmute_microphone_disabled, as: 'unmuteMicrophoneDisabled'
+          property :usb_file_transfer_disabled, as: 'usbFileTransferDisabled'
           property :version, :numeric_string => true, as: 'version'
+          property :vpn_config_disabled, as: 'vpnConfigDisabled'
           property :wifi_config_disabled, as: 'wifiConfigDisabled'
           property :wifi_configs_lockdown_enabled, as: 'wifiConfigsLockdownEnabled'
         end
@@ -629,6 +695,16 @@ module Google
           property :battery_level, as: 'batteryLevel'
           property :create_time, as: 'createTime'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class ProxyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_hosts, as: 'excludedHosts'
+          property :host, as: 'host'
+          property :pac_uri, as: 'pacUri'
+          property :port, as: 'port'
         end
       end
       

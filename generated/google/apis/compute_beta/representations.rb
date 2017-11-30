@@ -1432,6 +1432,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicenseCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicenseCodeLicenseAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicenseResourceRequirements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicensesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3705,6 +3741,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_attach_timestamp, as: 'lastAttachTimestamp'
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
+          collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :options, as: 'options'
@@ -4412,6 +4449,7 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeBeta::Image::RawDisk, decorator: Google::Apis::ComputeBeta::Image::RawDisk::Representation
@@ -5465,9 +5503,79 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :charges_use_fee, as: 'chargesUseFee'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :license_code, :numeric_string => true, as: 'licenseCode'
+          property :name, as: 'name'
+          property :resource_requirements, as: 'resourceRequirements', class: Google::Apis::ComputeBeta::LicenseResourceRequirements, decorator: Google::Apis::ComputeBeta::LicenseResourceRequirements::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :transferable, as: 'transferable'
+        end
+      end
+      
+      class LicenseCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          collection :license_alias, as: 'licenseAlias', class: Google::Apis::ComputeBeta::LicenseCodeLicenseAlias, decorator: Google::Apis::ComputeBeta::LicenseCodeLicenseAlias::Representation
+      
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :transferable, as: 'transferable'
+        end
+      end
+      
+      class LicenseCodeLicenseAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class LicenseResourceRequirements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_guest_cpu_count, as: 'minGuestCpuCount'
+          property :min_memory_mb, as: 'minMemoryMb'
+        end
+      end
+      
+      class LicensesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::License, decorator: Google::Apis::ComputeBeta::License::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::LicensesListResponse::Warning, decorator: Google::Apis::ComputeBeta::LicensesListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::LicensesListResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::LicensesListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -6729,6 +6837,7 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'

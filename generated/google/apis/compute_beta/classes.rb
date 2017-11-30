@@ -515,7 +515,8 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # The type of address to reserve. If unspecified, defaults to EXTERNAL.
+        # The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified,
+        # defaults to EXTERNAL.
         # Corresponds to the JSON property `addressType`
         # @return [String]
         attr_accessor :address_type
@@ -1152,13 +1153,13 @@ module Google
         # projects/debian-cloud/global/images/family/debian-8
         # Alternatively, use a specific version of a public operating system image:
         # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
-        # To create a disk with a private image that you created, specify the image name
+        # To create a disk with a custom image that you created, specify the image name
         # in the following format:
-        # global/images/my-private-image
-        # You can also specify a private image by its image family, which returns the
+        # global/images/my-custom-image
+        # You can also specify a custom image by its image family, which returns the
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
-        # global/images/family/my-private-family
+        # global/images/family/my-image-family
         # If the source image is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
@@ -3626,6 +3627,11 @@ module Google
         # @return [String]
         attr_accessor :last_detach_timestamp
       
+        # Integer license codes indicating which licenses are attached to this disk.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
         # Any applicable publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
@@ -3669,13 +3675,13 @@ module Google
         # projects/debian-cloud/global/images/family/debian-8
         # Alternatively, use a specific version of a public operating system image:
         # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
-        # To create a disk with a private image that you created, specify the image name
+        # To create a disk with a custom image that you created, specify the image name
         # in the following format:
-        # global/images/my-private-image
-        # You can also specify a private image by its image family, which returns the
+        # global/images/my-custom-image
+        # You can also specify a custom image by its image family, which returns the
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
-        # global/images/family/my-private-family
+        # global/images/family/my-image-family
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -3761,6 +3767,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_attach_timestamp = args[:last_attach_timestamp] if args.key?(:last_attach_timestamp)
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
@@ -6626,6 +6633,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Integer license codes indicating which licenses are attached to this image.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
         # Any applicable license URI.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
@@ -6727,6 +6739,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
@@ -9640,16 +9653,16 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support Interconnect. Next available tag:
-      # 25
+      # Represents an Interconnects resource. The Interconnects resource is a
+      # dedicated connection between Google's network and your on-premises network.
+      # For more information, see the  Dedicated overview page.
       class Interconnect
         include Google::Apis::Core::Hashable
       
-        # Administrative status of the interconnect. When this is set to ?true?, the
-        # Interconnect is functional and may carry traffic (assuming there are
-        # functional InterconnectAttachments and other requirements are satisfied). When
-        # set to ?false?, no packets will be carried over this Interconnect and no BGP
-        # routes will be exchanged over it. By default, it is set to ?true?.
+        # Administrative status of the interconnect. When this is set to true, the
+        # Interconnect is functional and can carry traffic. When set to false, no
+        # packets can be carried over the interconnect and no BGP routes are exchanged
+        # over it. By default, the status is set to true.
         # Corresponds to the JSON property `adminEnabled`
         # @return [Boolean]
         attr_accessor :admin_enabled
@@ -9707,7 +9720,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :interconnect_attachments
       
-        # 
+        # Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "
+        # DEDICATED"
         # Corresponds to the JSON property `interconnectType`
         # @return [String]
         attr_accessor :interconnect_type
@@ -9718,7 +9732,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Type of link requested. This field indicates speed of each of the links in the
+        # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
+        # interconnect. Options: Ethernet_10G_LR
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -9806,8 +9822,8 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support InterconnectAttachment. Next
-      # available tag: 23
+      # Represents an InterconnectAttachment (VLAN attachment) resource. For more
+      # information, see  Creating VLAN Attachments.
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -9828,8 +9844,7 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ip_address
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -9874,8 +9889,8 @@ module Google
         # @return [String]
         attr_accessor :operational_status
       
-        # Private information for an interconnect attachment when this belongs to an
-        # interconnect of type IT_PRIVATE.
+        # Information for an interconnect attachment when this belongs to an
+        # interconnect of type DEDICATED.
         # Corresponds to the JSON property `privateInterconnectInfo`
         # @return [Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo]
         attr_accessor :private_interconnect_info
@@ -10159,8 +10174,8 @@ module Google
         end
       end
       
-      # Private information for an interconnect attachment when this belongs to an
-      # interconnect of type IT_PRIVATE.
+      # Information for an interconnect attachment when this belongs to an
+      # interconnect of type DEDICATED.
       class InterconnectAttachmentPrivateInfo
         include Google::Apis::Core::Hashable
       
@@ -10277,8 +10292,7 @@ module Google
       class InterconnectCircuitInfo
         include Google::Apis::Core::Hashable
       
-        # Customer-side demarc ID for this circuit. This will only be set if it was
-        # provided by the Customer to Google during circuit turn-up.
+        # Customer-side demarc ID for this circuit.
         # Corresponds to the JSON property `customerDemarcId`
         # @return [String]
         attr_accessor :customer_demarc_id
@@ -10424,7 +10438,9 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support InterconnectLocation.
+      # Represents an InterconnectLocations resource. The InterconnectLocations
+      # resource describes the locations where you can connect to Google's networks.
+      # For more information, see  Colocation Facilities.
       class InterconnectLocation
         include Google::Apis::Core::Hashable
       
@@ -10434,22 +10450,20 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # Availability zone for this location. Within a city, maintenance will not be
-        # simultaneously scheduled in more than one availability zone. Example: "zone1"
-        # or "zone2".
+        # [Output Only] Availability zone for this location. Within a metropolitan area (
+        # metro), maintenance will not be simultaneously scheduled in more than one
+        # availability zone. Example: "zone1" or "zone2".
         # Corresponds to the JSON property `availabilityZone`
         # @return [String]
         attr_accessor :availability_zone
       
-        # City designator used by the Interconnect UI to locate this
-        # InterconnectLocation within the Continent. For example: "Chicago, IL", "
-        # Amsterdam, Netherlands".
+        # [Output Only] Metropolitan area designator that indicates which city an
+        # interconnect is located. For example: "Chicago, IL", "Amsterdam, Netherlands".
         # Corresponds to the JSON property `city`
         # @return [String]
         attr_accessor :city
       
-        # Continent for this location. Used by the location picker in the Interconnect
-        # UI.
+        # [Output Only] Continent for this location.
         # Corresponds to the JSON property `continent`
         # @return [String]
         attr_accessor :continent
@@ -10694,17 +10708,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :affected_circuits
       
-        # Short user-visible description of the purpose of the outage.
+        # A description about the purpose of the outage.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # 
+        # Scheduled end time for the outage (milliseconds since Unix epoch).
         # Corresponds to the JSON property `endTime`
         # @return [Fixnum]
         attr_accessor :end_time
       
-        # 
+        # Form this outage is expected to take. Note that the "IT_" versions of this
+        # enum have been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `issueType`
         # @return [String]
         attr_accessor :issue_type
@@ -10714,17 +10729,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # The party that generated this notification. Note that "NSRC_GOOGLE" has been
+        # deprecated in favor of "GOOGLE"
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
       
-        # Scheduled start and end times for the outage (milliseconds since Unix epoch).
+        # Scheduled start time for the outage (milliseconds since Unix epoch).
         # Corresponds to the JSON property `startTime`
         # @return [Fixnum]
         attr_accessor :start_time
       
-        # 
+        # State of this notification. Note that the "NS_" versions of this enum have
+        # been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -10757,10 +10774,33 @@ module Google
         attr_accessor :charges_use_fee
         alias_method :charges_use_fee?, :charges_use_fee
       
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional textual description of the resource; provided by the client when
+        # the resource is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
         # [Output Only] Type of resource. Always compute#license for licenses.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # [Output Only] The unique code used to attach this license to images, snapshots,
+        # and disks.
+        # Corresponds to the JSON property `licenseCode`
+        # @return [Fixnum]
+        attr_accessor :license_code
       
         # [Output Only] Name of the resource. The name is 1-63 characters long and
         # complies with RFC1035.
@@ -10768,7 +10808,124 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `resourceRequirements`
+        # @return [Google::Apis::ComputeBeta::LicenseResourceRequirements]
+        attr_accessor :resource_requirements
+      
         # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # If false, licenses will not be copied from the source resource when creating
+        # an image from a disk, disk from snapshot, or snapshot from disk.
+        # Corresponds to the JSON property `transferable`
+        # @return [Boolean]
+        attr_accessor :transferable
+        alias_method :transferable?, :transferable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charges_use_fee = args[:charges_use_fee] if args.key?(:charges_use_fee)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @license_code = args[:license_code] if args.key?(:license_code)
+          @name = args[:name] if args.key?(:name)
+          @resource_requirements = args[:resource_requirements] if args.key?(:resource_requirements)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @transferable = args[:transferable] if args.key?(:transferable)
+        end
+      end
+      
+      # 
+      class LicenseCode
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] Description of this License Code.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#licenseCode for licenses.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] URL and description aliases of Licenses with the same License
+        # Code.
+        # Corresponds to the JSON property `licenseAlias`
+        # @return [Array<Google::Apis::ComputeBeta::LicenseCodeLicenseAlias>]
+        attr_accessor :license_alias
+      
+        # [Output Only] Name of the resource. The name is 1-20 characters long and must
+        # be a valid 64 bit integer.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Current state of this License Code.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # [Output Only] If true, the license will remain attached when creating images
+        # or snapshots from disks. Otherwise, the license is not transferred.
+        # Corresponds to the JSON property `transferable`
+        # @return [Boolean]
+        attr_accessor :transferable
+        alias_method :transferable?, :transferable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @license_alias = args[:license_alias] if args.key?(:license_alias)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @transferable = args[:transferable] if args.key?(:transferable)
+        end
+      end
+      
+      # 
+      class LicenseCodeLicenseAlias
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Description of this License Code.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] URL of license corresponding to this License Code.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -10779,10 +10936,146 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @charges_use_fee = args[:charges_use_fee] if args.key?(:charges_use_fee)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
+          @description = args[:description] if args.key?(:description)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class LicenseResourceRequirements
+        include Google::Apis::Core::Hashable
+      
+        # Minimum number of guest cpus required to use the Instance. Enforced at
+        # Instance creation and Instance start.
+        # Corresponds to the JSON property `minGuestCpuCount`
+        # @return [Fixnum]
+        attr_accessor :min_guest_cpu_count
+      
+        # Minimum memory required to use the Instance. Enforced at Instance creation and
+        # Instance start.
+        # Corresponds to the JSON property `minMemoryMb`
+        # @return [Fixnum]
+        attr_accessor :min_memory_mb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_guest_cpu_count = args[:min_guest_cpu_count] if args.key?(:min_guest_cpu_count)
+          @min_memory_mb = args[:min_memory_mb] if args.key?(:min_memory_mb)
+        end
+      end
+      
+      # 
+      class LicensesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of License resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::License>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::LicensesListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::LicensesListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -15615,6 +15908,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Integer license codes indicating which licenses are attached to this snapshot.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
         # [Output Only] A list of public visible licenses that apply to this snapshot.
         # This can be because the original image had licenses attached (such as a
         # Windows image).
@@ -15692,6 +15990,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
