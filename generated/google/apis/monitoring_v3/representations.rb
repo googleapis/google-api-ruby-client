@@ -715,6 +715,7 @@ module Google
       
           collection :internal_checkers, as: 'internalCheckers', class: Google::Apis::MonitoringV3::InternalChecker, decorator: Google::Apis::MonitoringV3::InternalChecker::Representation
       
+          property :is_internal, as: 'isInternal'
           property :monitored_resource, as: 'monitoredResource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
           property :name, as: 'name'

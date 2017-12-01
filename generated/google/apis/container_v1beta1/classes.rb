@@ -829,6 +829,22 @@ module Google
       class IpAllocationPolicy
         include Google::Apis::Core::Hashable
       
+        # If true, allow allocation of cluster CIDR ranges that overlap with certain
+        # kinds of network routes. By default we do not allow cluster CIDR ranges to
+        # intersect with any user declared routes. With allow_route_overlap == true,
+        # we allow overlapping with CIDR ranges that are larger than the cluster CIDR
+        # range.
+        # If this field is set to true, then cluster and services CIDRs must be
+        # fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means:
+        # 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and
+        # `services_ipv4_cidr_block` must be fully-specified.
+        # 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be
+        # fully-specified.
+        # Corresponds to the JSON property `allowRouteOverlap`
+        # @return [Boolean]
+        attr_accessor :allow_route_overlap
+        alias_method :allow_route_overlap?, :allow_route_overlap
+      
         # This field is deprecated, use cluster_ipv4_cidr_block.
         # Corresponds to the JSON property `clusterIpv4Cidr`
         # @return [String]
@@ -934,6 +950,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_route_overlap = args[:allow_route_overlap] if args.key?(:allow_route_overlap)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
           @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)

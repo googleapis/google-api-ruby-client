@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DailyMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeprecationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1006,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HourlyMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpHealthCheck
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1474,6 +1486,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesAddMaintenancePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRemoveMaintenancePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1806,6 +1830,72 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenancePoliciesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenancePoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenancePolicyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2674,6 +2764,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedVmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SignedUrlKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3347,6 +3443,12 @@ module Google
       end
       
       class UsageExportLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmMaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4405,6 +4507,15 @@ module Google
         end
       end
       
+      class DailyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :days_in_cycle, as: 'daysInCycle'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class DeprecationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5305,6 +5416,15 @@ module Google
         end
       end
       
+      class HourlyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :hours_in_cycle, as: 'hoursInCycle'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class HttpHealthCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5439,6 +5559,10 @@ module Google
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :source_image_id, as: 'sourceImageId'
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
+      
+          property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
         end
@@ -5516,6 +5640,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
+      
+          property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeAlpha::ShieldedVmConfig, decorator: Google::Apis::ComputeAlpha::ShieldedVmConfig::Representation
       
           property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
@@ -5749,6 +5875,7 @@ module Google
           property :initial_delay_sec, as: 'initialDelaySec'
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
+          property :mode, as: 'mode'
         end
       end
       
@@ -6215,6 +6342,20 @@ module Google
         end
       end
       
+      class InstancesAddMaintenancePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :maintenance_policies, as: 'maintenancePolicies'
+        end
+      end
+      
+      class InstancesRemoveMaintenancePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :maintenance_policies, as: 'maintenancePolicies'
+        end
+      end
+      
       class InstancesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6323,6 +6464,10 @@ module Google
       class InterconnectAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          property :availability_zone, as: 'availabilityZone'
+          property :bandwidth, as: 'bandwidth'
+          collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
@@ -6333,11 +6478,15 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
+          property :pairing_key, as: 'pairingKey'
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeAlpha::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentPrivateInfo::Representation
       
           property :region, as: 'region'
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :vlan_tag8021q, as: 'vlanTag8021q'
         end
       end
       
@@ -6823,6 +6972,123 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class MaintenancePoliciesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::MaintenancePolicy, decorator: Google::Apis::ComputeAlpha::MaintenancePolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::MaintenancePoliciesList::Warning, decorator: Google::Apis::ComputeAlpha::MaintenancePoliciesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::MaintenancePoliciesList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::MaintenancePoliciesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class MaintenancePoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :maintenance_policies, as: 'maintenancePolicies', class: Google::Apis::ComputeAlpha::MaintenancePolicy, decorator: Google::Apis::ComputeAlpha::MaintenancePolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class MaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :vm_maintenance_policy, as: 'vmMaintenancePolicy', class: Google::Apis::ComputeAlpha::VmMaintenancePolicy, decorator: Google::Apis::ComputeAlpha::VmMaintenancePolicy::Representation
+      
+        end
+      end
+      
+      class MaintenancePolicyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList, decorator: Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :daily_maintenance_window, as: 'dailyMaintenanceWindow', class: Google::Apis::ComputeAlpha::DailyMaintenanceWindow, decorator: Google::Apis::ComputeAlpha::DailyMaintenanceWindow::Representation
+      
+          property :hourly_maintenance_window, as: 'hourlyMaintenanceWindow', class: Google::Apis::ComputeAlpha::HourlyMaintenanceWindow, decorator: Google::Apis::ComputeAlpha::HourlyMaintenanceWindow::Representation
+      
         end
       end
       
@@ -8339,6 +8605,14 @@ module Google
         end
       end
       
+      class ShieldedVmConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_secure_boot, as: 'enableSecureBoot'
+          property :enable_vtpm, as: 'enableVtpm'
+        end
+      end
+      
       class SignedUrlKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8545,8 +8819,6 @@ module Google
       class StatefulPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :preserved_disks, as: 'preservedDisks', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk::Representation
-      
           property :preserved_resources, as: 'preservedResources', class: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources, decorator: Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources::Representation
       
         end
@@ -9512,6 +9784,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
           property :report_name_prefix, as: 'reportNamePrefix'
+        end
+      end
+      
+      class VmMaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeAlpha::MaintenanceWindow, decorator: Google::Apis::ComputeAlpha::MaintenanceWindow::Representation
+      
         end
       end
       

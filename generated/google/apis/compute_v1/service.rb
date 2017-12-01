@@ -5038,12 +5038,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of private images available to the specified project.
-        # Private images are images you create that belong to your project. This method
-        # does not get any images that belong to other projects, including publicly-
-        # available images, like Debian 8. If you want to get a list of publicly-
-        # available images, use this method to make a request to the respective image
-        # project, such as debian-cloud or windows-cloud.
+        # Retrieves the list of custom images available to the specified project. Custom
+        # images are images you create that belong to your project. This method does not
+        # get any images that belong to other projects, including publicly-available
+        # images, like Debian 8. If you want to get a list of publicly-available images,
+        # use this method to make a request to the respective image project, such as
+        # debian-cloud or windows-cloud.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter

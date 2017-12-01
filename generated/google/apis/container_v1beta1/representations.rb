@@ -510,6 +510,7 @@ module Google
       class IpAllocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_route_overlap, as: 'allowRouteOverlap'
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
           property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'

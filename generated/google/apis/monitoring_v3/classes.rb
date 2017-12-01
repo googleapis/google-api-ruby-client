@@ -1786,10 +1786,18 @@ module Google
         # @return [Google::Apis::MonitoringV3::HttpCheck]
         attr_accessor :http_check
       
-        # The internal checkers that this check will egress from.
+        # The internal checkers that this check will egress from. If is_internal is true
+        # and this list is empty, the check will egress from all InternalCheckers
+        # configured for the project that owns this CheckConfig.
         # Corresponds to the JSON property `internalCheckers`
         # @return [Array<Google::Apis::MonitoringV3::InternalChecker>]
         attr_accessor :internal_checkers
+      
+        # Denotes whether this check is a check that egresses from InternalCheckers.
+        # Corresponds to the JSON property `isInternal`
+        # @return [Boolean]
+        attr_accessor :is_internal
+        alias_method :is_internal?, :is_internal
       
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
@@ -1856,6 +1864,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @http_check = args[:http_check] if args.key?(:http_check)
           @internal_checkers = args[:internal_checkers] if args.key?(:internal_checkers)
+          @is_internal = args[:is_internal] if args.key?(:is_internal)
           @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
           @name = args[:name] if args.key?(:name)
           @period = args[:period] if args.key?(:period)

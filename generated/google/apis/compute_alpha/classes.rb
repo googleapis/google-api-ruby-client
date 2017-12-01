@@ -541,7 +541,8 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # The type of address to reserve. If unspecified, defaults to EXTERNAL.
+        # The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified,
+        # defaults to EXTERNAL.
         # Corresponds to the JSON property `addressType`
         # @return [String]
         attr_accessor :address_type
@@ -1193,13 +1194,13 @@ module Google
         # projects/debian-cloud/global/images/family/debian-8
         # Alternatively, use a specific version of a public operating system image:
         # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
-        # To create a disk with a private image that you created, specify the image name
+        # To create a disk with a custom image that you created, specify the image name
         # in the following format:
-        # global/images/my-private-image
-        # You can also specify a private image by its image family, which returns the
+        # global/images/my-custom-image
+        # You can also specify a custom image by its image family, which returns the
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
-        # global/images/family/my-private-family
+        # global/images/family/my-image-family
         # If the source image is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
@@ -3874,6 +3875,39 @@ module Google
         end
       end
       
+      # Time window specified for daily maintenance operations.
+      class DailyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Allows to define schedule that runs every nth day of the month.
+        # Corresponds to the JSON property `daysInCycle`
+        # @return [Fixnum]
+        attr_accessor :days_in_cycle
+      
+        # [Output only] Duration of the time window, automatically chosen to be smallest
+        # possible in the given scenario.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Time within the maintenance window to start the maintenance operations. It
+        # must be in format "HH:MM?, where HH : [00-23] and MM : [00-59] GMT.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_in_cycle = args[:days_in_cycle] if args.key?(:days_in_cycle)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Deprecation status for a public resource.
       class DeprecationStatus
         include Google::Apis::Core::Hashable
@@ -4068,13 +4102,13 @@ module Google
         # projects/debian-cloud/global/images/family/debian-8
         # Alternatively, use a specific version of a public operating system image:
         # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
-        # To create a disk with a private image that you created, specify the image name
+        # To create a disk with a custom image that you created, specify the image name
         # in the following format:
-        # global/images/my-private-image
-        # You can also specify a private image by its image family, which returns the
+        # global/images/my-custom-image
+        # You can also specify a custom image by its image family, which returns the
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
-        # global/images/family/my-private-family
+        # global/images/family/my-image-family
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -7664,6 +7698,39 @@ module Google
         end
       end
       
+      # Time window specified for hourly maintenance operations.
+      class HourlyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Duration of the time window, automatically chosen to be smallest
+        # possible in the given scenario.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Allows to define schedule that runs every nth hour.
+        # Corresponds to the JSON property `hoursInCycle`
+        # @return [Fixnum]
+        attr_accessor :hours_in_cycle
+      
+        # Time within the maintenance window to start the maintenance operations. It
+        # must be in format "HH:MM?, where HH : [00-23] and MM : [00-59] GMT.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @hours_in_cycle = args[:hours_in_cycle] if args.key?(:hours_in_cycle)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # An HttpHealthCheck resource. This resource defines a template for how
       # individual instances should be checked for health, via HTTP.
       class HttpHealthCheck
@@ -8267,6 +8334,28 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
+        # URL of the source snapshot used to create this image. This can be a full or
+        # valid partial URL. You must provide exactly one of:
+        # - this property, or
+        # - the sourceImage property, or
+        # - the rawDisk.source property, or
+        # - the sourceDisk property   in order to create an image.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :source_snapshot_encryption_key
+      
+        # [Output Only] The ID value of the snapshot used to create this image. This
+        # value may be used to determine whether the snapshot was taken from the current
+        # or a previous instance of a given snapshot name.
+        # Corresponds to the JSON property `sourceSnapshotId`
+        # @return [String]
+        attr_accessor :source_snapshot_id
+      
         # The type of the image used to create this disk. The default and only value is
         # RAW
         # Corresponds to the JSON property `sourceType`
@@ -8310,6 +8399,9 @@ module Google
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+          @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
+          @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
           @source_type = args[:source_type] if args.key?(:source_type)
           @status = args[:status] if args.key?(:status)
         end
@@ -8625,6 +8717,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # A set of Shielded VM options.
+        # Corresponds to the JSON property `shieldedVmConfig`
+        # @return [Google::Apis::ComputeAlpha::ShieldedVmConfig]
+        attr_accessor :shielded_vm_config
+      
         # [Output Only] Whether a VM has been restricted for start because Compute
         # Engine has detected suspicious activity.
         # Corresponds to the JSON property `startRestricted`
@@ -8682,6 +8779,7 @@ module Google
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @start_restricted = args[:start_restricted] if args.key?(:start_restricted)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -9631,6 +9729,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::FixedOrPercent]
         attr_accessor :max_unavailable
       
+        # Defines operating mode for this policy.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9640,6 +9743,7 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -11281,6 +11385,44 @@ module Google
       end
       
       # 
+      class InstancesAddMaintenancePoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Maintenance policies to be added to this instance.
+        # Corresponds to the JSON property `maintenancePolicies`
+        # @return [Array<String>]
+        attr_accessor :maintenance_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
+        end
+      end
+      
+      # 
+      class InstancesRemoveMaintenancePoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Maintenance policies to be removed from this instance.
+        # Corresponds to the JSON property `maintenancePolicies`
+        # @return [Array<String>]
+        attr_accessor :maintenance_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
+        end
+      end
+      
+      # 
       class InstancesScopedList
         include Google::Apis::Core::Hashable
       
@@ -11513,16 +11655,16 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support Interconnect. Next available tag:
-      # 25
+      # Represents an Interconnects resource. The Interconnects resource is a
+      # dedicated connection between Google's network and your on-premises network.
+      # For more information, see the  Dedicated overview page.
       class Interconnect
         include Google::Apis::Core::Hashable
       
-        # Administrative status of the interconnect. When this is set to ?true?, the
-        # Interconnect is functional and may carry traffic (assuming there are
-        # functional InterconnectAttachments and other requirements are satisfied). When
-        # set to ?false?, no packets will be carried over this Interconnect and no BGP
-        # routes will be exchanged over it. By default, it is set to ?true?.
+        # Administrative status of the interconnect. When this is set to true, the
+        # Interconnect is functional and can carry traffic. When set to false, no
+        # packets can be carried over the interconnect and no BGP routes are exchanged
+        # over it. By default, the status is set to true.
         # Corresponds to the JSON property `adminEnabled`
         # @return [Boolean]
         attr_accessor :admin_enabled
@@ -11580,7 +11722,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :interconnect_attachments
       
-        # 
+        # Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "
+        # DEDICATED"
         # Corresponds to the JSON property `interconnectType`
         # @return [String]
         attr_accessor :interconnect_type
@@ -11591,7 +11734,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Type of link requested. This field indicates speed of each of the links in the
+        # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
+        # interconnect. Options: Ethernet_10G_LR
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -11679,10 +11824,38 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support InterconnectAttachment. Next
-      # available tag: 23
+      # Represents an InterconnectAttachment (VLAN attachment) resource. For more
+      # information, see  Creating VLAN Attachments.
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
+      
+        # Determines whether this Attachment will carry packets. Not present for
+        # PARTNER_PROVIDER.
+        # Corresponds to the JSON property `adminEnabled`
+        # @return [Boolean]
+        attr_accessor :admin_enabled
+        alias_method :admin_enabled?, :admin_enabled
+      
+        # 
+        # Corresponds to the JSON property `availabilityZone`
+        # @return [String]
+        attr_accessor :availability_zone
+      
+        # 
+        # Corresponds to the JSON property `bandwidth`
+        # @return [String]
+        attr_accessor :bandwidth
+      
+        # Up to 16 candidate prefixes that can be used to restrict the allocation of
+        # cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
+        # prefixes must be within link-local address space (169.254.0.0/16) and must be /
+        # 29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
+        # from the supplied candidate prefix(es). The request will fail if all possible /
+        # 29s are in use on Google?s edge. If not supplied, Google will randomly select
+        # an unused /29 from all of link-local space.
+        # Corresponds to the JSON property `candidateSubnets`
+        # @return [Array<String>]
+        attr_accessor :candidate_subnets
       
         # [Output Only] IPv4 address + prefix length to be configured on Cloud Router
         # Interface for this interconnect attachment.
@@ -11701,8 +11874,7 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ip_address
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -11747,8 +11919,15 @@ module Google
         # @return [String]
         attr_accessor :operational_status
       
-        # Private information for an interconnect attachment when this belongs to an
-        # interconnect of type IT_PRIVATE.
+        # [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present
+        # for DEDICATED]. Opaque string identifying an PARTNER attachment. Of the form ?
+        # cloud-region/XXXXXX?.
+        # Corresponds to the JSON property `pairingKey`
+        # @return [String]
+        attr_accessor :pairing_key
+      
+        # Information for an interconnect attachment when this belongs to an
+        # interconnect of type DEDICATED.
         # Corresponds to the JSON property `privateInterconnectInfo`
         # @return [Google::Apis::ComputeAlpha::InterconnectAttachmentPrivateInfo]
         attr_accessor :private_interconnect_info
@@ -11772,12 +11951,34 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The current state of whether or not this interconnect attachment
+        # is functional.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Available only for DEDICATED and PARTNER_PROVIDER New field: VLAN. Only
+        # specified at creation time. This field is mapped to ieee_802_1q_tag in the
+        # resource proto.
+        # Corresponds to the JSON property `vlanTag8021q`
+        # @return [Fixnum]
+        attr_accessor :vlan_tag8021q
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
+          @availability_zone = args[:availability_zone] if args.key?(:availability_zone)
+          @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @candidate_subnets = args[:candidate_subnets] if args.key?(:candidate_subnets)
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
@@ -11788,10 +11989,14 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
+          @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
           @private_interconnect_info = args[:private_interconnect_info] if args.key?(:private_interconnect_info)
           @region = args[:region] if args.key?(:region)
           @router = args[:router] if args.key?(:router)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @vlan_tag8021q = args[:vlan_tag8021q] if args.key?(:vlan_tag8021q)
         end
       end
       
@@ -12032,8 +12237,8 @@ module Google
         end
       end
       
-      # Private information for an interconnect attachment when this belongs to an
-      # interconnect of type IT_PRIVATE.
+      # Information for an interconnect attachment when this belongs to an
+      # interconnect of type DEDICATED.
       class InterconnectAttachmentPrivateInfo
         include Google::Apis::Core::Hashable
       
@@ -12150,8 +12355,7 @@ module Google
       class InterconnectCircuitInfo
         include Google::Apis::Core::Hashable
       
-        # Customer-side demarc ID for this circuit. This will only be set if it was
-        # provided by the Customer to Google during circuit turn-up.
+        # Customer-side demarc ID for this circuit.
         # Corresponds to the JSON property `customerDemarcId`
         # @return [String]
         attr_accessor :customer_demarc_id
@@ -12297,7 +12501,9 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support InterconnectLocation.
+      # Represents an InterconnectLocations resource. The InterconnectLocations
+      # resource describes the locations where you can connect to Google's networks.
+      # For more information, see  Colocation Facilities.
       class InterconnectLocation
         include Google::Apis::Core::Hashable
       
@@ -12307,22 +12513,20 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # Availability zone for this location. Within a city, maintenance will not be
-        # simultaneously scheduled in more than one availability zone. Example: "zone1"
-        # or "zone2".
+        # [Output Only] Availability zone for this location. Within a metropolitan area (
+        # metro), maintenance will not be simultaneously scheduled in more than one
+        # availability zone. Example: "zone1" or "zone2".
         # Corresponds to the JSON property `availabilityZone`
         # @return [String]
         attr_accessor :availability_zone
       
-        # City designator used by the Interconnect UI to locate this
-        # InterconnectLocation within the Continent. For example: "Chicago, IL", "
-        # Amsterdam, Netherlands".
+        # [Output Only] Metropolitan area designator that indicates which city an
+        # interconnect is located. For example: "Chicago, IL", "Amsterdam, Netherlands".
         # Corresponds to the JSON property `city`
         # @return [String]
         attr_accessor :city
       
-        # Continent for this location. Used by the location picker in the Interconnect
-        # UI.
+        # [Output Only] Continent for this location.
         # Corresponds to the JSON property `continent`
         # @return [String]
         attr_accessor :continent
@@ -12567,17 +12771,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :affected_circuits
       
-        # Short user-visible description of the purpose of the outage.
+        # A description about the purpose of the outage.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # 
+        # Scheduled end time for the outage (milliseconds since Unix epoch).
         # Corresponds to the JSON property `endTime`
         # @return [Fixnum]
         attr_accessor :end_time
       
-        # 
+        # Form this outage is expected to take. Note that the "IT_" versions of this
+        # enum have been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `issueType`
         # @return [String]
         attr_accessor :issue_type
@@ -12587,17 +12792,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # The party that generated this notification. Note that "NSRC_GOOGLE" has been
+        # deprecated in favor of "GOOGLE"
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
       
-        # Scheduled start and end times for the outage (milliseconds since Unix epoch).
+        # Scheduled start time for the outage (milliseconds since Unix epoch).
         # Corresponds to the JSON property `startTime`
         # @return [Fixnum]
         attr_accessor :start_time
       
-        # 
+        # State of this notification. Note that the "NS_" versions of this enum have
+        # been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -13635,6 +13842,429 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class MaintenancePoliciesList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] A list of MaintenancePolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::MaintenancePolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource.Always compute#maintenancePoliciesList for
+        # listsof maintenancePolicies
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::MaintenancePoliciesList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::MaintenancePoliciesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class MaintenancePoliciesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # List of maintenancePolicies contained in this scope.
+        # Corresponds to the JSON property `maintenancePolicies`
+        # @return [Array<Google::Apis::ComputeAlpha::MaintenancePolicy>]
+        attr_accessor :maintenance_policies
+      
+        # Informational warning which replaces the list of maintenancePolicies when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_policies = args[:maintenance_policies] if args.key?(:maintenance_policies)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of maintenancePolicies when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # A maintenance policy for an instance. This specifies what kind of maintenance
+      # operations our infrastructure may perform on this instance and when.
+      class MaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#maintenance_policies for
+        # maintenance policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of the resource, provided by the client when initially creating the
+        # resource. The resource name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        # must be a lowercase letter, and all following characters must be a dash,
+        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # A Vm Maintenance Policy specifies what kind of infrastructure maintenance we
+        # are allowed to perform on this VM and when.
+        # Corresponds to the JSON property `vmMaintenancePolicy`
+        # @return [Google::Apis::ComputeAlpha::VmMaintenancePolicy]
+        attr_accessor :vm_maintenance_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @vm_maintenance_policy = args[:vm_maintenance_policy] if args.key?(:vm_maintenance_policy)
+        end
+      end
+      
+      # Contains a list of maintenancePolicies.
+      class MaintenancePolicyAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of MaintenancePolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::MaintenancePoliciesScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # A maintenance window for VMs and disks. When set, we restrict our maintenance
+      # operations to this window.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Time window specified for daily maintenance operations.
+        # Corresponds to the JSON property `dailyMaintenanceWindow`
+        # @return [Google::Apis::ComputeAlpha::DailyMaintenanceWindow]
+        attr_accessor :daily_maintenance_window
+      
+        # Time window specified for hourly maintenance operations.
+        # Corresponds to the JSON property `hourlyMaintenanceWindow`
+        # @return [Google::Apis::ComputeAlpha::HourlyMaintenanceWindow]
+        attr_accessor :hourly_maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_maintenance_window = args[:daily_maintenance_window] if args.key?(:daily_maintenance_window)
+          @hourly_maintenance_window = args[:hourly_maintenance_window] if args.key?(:hourly_maintenance_window)
         end
       end
       
@@ -19387,6 +20017,33 @@ module Google
         end
       end
       
+      # A set of Shielded VM options.
+      class ShieldedVmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance should have secure boot enabled.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        # Defines whether the instance should have the TPM enabled.
+        # Corresponds to the JSON property `enableVtpm`
+        # @return [Boolean]
+        attr_accessor :enable_vtpm
+        alias_method :enable_vtpm?, :enable_vtpm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+          @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
+        end
+      end
+      
       # Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs
       class SignedUrlKey
         include Google::Apis::Core::Hashable
@@ -20224,12 +20881,6 @@ module Google
       class StatefulPolicy
         include Google::Apis::Core::Hashable
       
-        # Disks created on the instances that will be preserved on instance delete,
-        # resize down, etc. DEPRECATED in favor of preservedResources.disks field.
-        # Corresponds to the JSON property `preservedDisks`
-        # @return [Array<Google::Apis::ComputeAlpha::StatefulPolicyPreservedDisk>]
-        attr_accessor :preserved_disks
-      
         # Configuration of all preserved resources.
         # Corresponds to the JSON property `preservedResources`
         # @return [Google::Apis::ComputeAlpha::StatefulPolicyPreservedResources]
@@ -20241,7 +20892,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @preserved_disks = args[:preserved_disks] if args.key?(:preserved_disks)
           @preserved_resources = args[:preserved_resources] if args.key?(:preserved_resources)
         end
       end
@@ -23931,6 +24581,27 @@ module Google
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @report_name_prefix = args[:report_name_prefix] if args.key?(:report_name_prefix)
+        end
+      end
+      
+      # A Vm Maintenance Policy specifies what kind of infrastructure maintenance we
+      # are allowed to perform on this VM and when.
+      class VmMaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # A maintenance window for VMs and disks. When set, we restrict our maintenance
+        # operations to this window.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::ComputeAlpha::MaintenanceWindow]
+        attr_accessor :maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
         end
       end
       

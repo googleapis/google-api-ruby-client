@@ -500,7 +500,8 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # The type of address to reserve. If unspecified, defaults to EXTERNAL.
+        # The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified,
+        # defaults to EXTERNAL.
         # Corresponds to the JSON property `addressType`
         # @return [String]
         attr_accessor :address_type
@@ -1112,13 +1113,13 @@ module Google
         # projects/debian-cloud/global/images/family/debian-8
         # Alternatively, use a specific version of a public operating system image:
         # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
-        # To create a disk with a private image that you created, specify the image name
+        # To create a disk with a custom image that you created, specify the image name
         # in the following format:
-        # global/images/my-private-image
-        # You can also specify a private image by its image family, which returns the
+        # global/images/my-custom-image
+        # You can also specify a custom image by its image family, which returns the
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
-        # global/images/family/my-private-family
+        # global/images/family/my-image-family
         # If the source image is deleted later, this field will not be set.
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
@@ -3366,13 +3367,13 @@ module Google
         # projects/debian-cloud/global/images/family/debian-8
         # Alternatively, use a specific version of a public operating system image:
         # projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
-        # To create a disk with a private image that you created, specify the image name
+        # To create a disk with a custom image that you created, specify the image name
         # in the following format:
-        # global/images/my-private-image
-        # You can also specify a private image by its image family, which returns the
+        # global/images/my-custom-image
+        # You can also specify a custom image by its image family, which returns the
         # latest version of the image in that family. Replace the image name with family/
         # family-name:
-        # global/images/family/my-private-family
+        # global/images/family/my-image-family
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -8739,16 +8740,16 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support Interconnect. Next available tag:
-      # 25
+      # Represents an Interconnects resource. The Interconnects resource is a
+      # dedicated connection between Google's network and your on-premises network.
+      # For more information, see the  Dedicated overview page.
       class Interconnect
         include Google::Apis::Core::Hashable
       
-        # Administrative status of the interconnect. When this is set to ?true?, the
-        # Interconnect is functional and may carry traffic (assuming there are
-        # functional InterconnectAttachments and other requirements are satisfied). When
-        # set to ?false?, no packets will be carried over this Interconnect and no BGP
-        # routes will be exchanged over it. By default, it is set to ?true?.
+        # Administrative status of the interconnect. When this is set to true, the
+        # Interconnect is functional and can carry traffic. When set to false, no
+        # packets can be carried over the interconnect and no BGP routes are exchanged
+        # over it. By default, the status is set to true.
         # Corresponds to the JSON property `adminEnabled`
         # @return [Boolean]
         attr_accessor :admin_enabled
@@ -8806,7 +8807,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :interconnect_attachments
       
-        # 
+        # Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "
+        # DEDICATED"
         # Corresponds to the JSON property `interconnectType`
         # @return [String]
         attr_accessor :interconnect_type
@@ -8817,7 +8819,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Type of link requested. This field indicates speed of each of the links in the
+        # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
+        # interconnect. Options: Ethernet_10G_LR
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -8905,8 +8909,8 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support InterconnectAttachment. Next
-      # available tag: 23
+      # Represents an InterconnectAttachment (VLAN attachment) resource. For more
+      # information, see  Creating VLAN Attachments.
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -8927,8 +8931,7 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ip_address
       
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
+        # An optional description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -8973,8 +8976,8 @@ module Google
         # @return [String]
         attr_accessor :operational_status
       
-        # Private information for an interconnect attachment when this belongs to an
-        # interconnect of type IT_PRIVATE.
+        # Information for an interconnect attachment when this belongs to an
+        # interconnect of type DEDICATED.
         # Corresponds to the JSON property `privateInterconnectInfo`
         # @return [Google::Apis::ComputeV1::InterconnectAttachmentPrivateInfo]
         attr_accessor :private_interconnect_info
@@ -9258,8 +9261,8 @@ module Google
         end
       end
       
-      # Private information for an interconnect attachment when this belongs to an
-      # interconnect of type IT_PRIVATE.
+      # Information for an interconnect attachment when this belongs to an
+      # interconnect of type DEDICATED.
       class InterconnectAttachmentPrivateInfo
         include Google::Apis::Core::Hashable
       
@@ -9376,8 +9379,7 @@ module Google
       class InterconnectCircuitInfo
         include Google::Apis::Core::Hashable
       
-        # Customer-side demarc ID for this circuit. This will only be set if it was
-        # provided by the Customer to Google during circuit turn-up.
+        # Customer-side demarc ID for this circuit.
         # Corresponds to the JSON property `customerDemarcId`
         # @return [String]
         attr_accessor :customer_demarc_id
@@ -9523,7 +9525,9 @@ module Google
         end
       end
       
-      # Protocol definitions for Mixer API to support InterconnectLocation.
+      # Represents an InterconnectLocations resource. The InterconnectLocations
+      # resource describes the locations where you can connect to Google's networks.
+      # For more information, see  Colocation Facilities.
       class InterconnectLocation
         include Google::Apis::Core::Hashable
       
@@ -9533,22 +9537,20 @@ module Google
         # @return [String]
         attr_accessor :address
       
-        # Availability zone for this location. Within a city, maintenance will not be
-        # simultaneously scheduled in more than one availability zone. Example: "zone1"
-        # or "zone2".
+        # [Output Only] Availability zone for this location. Within a metropolitan area (
+        # metro), maintenance will not be simultaneously scheduled in more than one
+        # availability zone. Example: "zone1" or "zone2".
         # Corresponds to the JSON property `availabilityZone`
         # @return [String]
         attr_accessor :availability_zone
       
-        # City designator used by the Interconnect UI to locate this
-        # InterconnectLocation within the Continent. For example: "Chicago, IL", "
-        # Amsterdam, Netherlands".
+        # [Output Only] Metropolitan area designator that indicates which city an
+        # interconnect is located. For example: "Chicago, IL", "Amsterdam, Netherlands".
         # Corresponds to the JSON property `city`
         # @return [String]
         attr_accessor :city
       
-        # Continent for this location. Used by the location picker in the Interconnect
-        # UI.
+        # [Output Only] Continent for this location.
         # Corresponds to the JSON property `continent`
         # @return [String]
         attr_accessor :continent
@@ -9793,17 +9795,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :affected_circuits
       
-        # Short user-visible description of the purpose of the outage.
+        # A description about the purpose of the outage.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # 
+        # Scheduled end time for the outage (milliseconds since Unix epoch).
         # Corresponds to the JSON property `endTime`
         # @return [Fixnum]
         attr_accessor :end_time
       
-        # 
+        # Form this outage is expected to take. Note that the "IT_" versions of this
+        # enum have been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `issueType`
         # @return [String]
         attr_accessor :issue_type
@@ -9813,17 +9816,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # The party that generated this notification. Note that "NSRC_GOOGLE" has been
+        # deprecated in favor of "GOOGLE"
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
       
-        # Scheduled start and end times for the outage (milliseconds since Unix epoch).
+        # Scheduled start time for the outage (milliseconds since Unix epoch).
         # Corresponds to the JSON property `startTime`
         # @return [Fixnum]
         attr_accessor :start_time
       
-        # 
+        # State of this notification. Note that the "NS_" versions of this enum have
+        # been deprecated in favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
