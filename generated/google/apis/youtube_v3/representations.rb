@@ -2035,6 +2035,7 @@ module Google
           property :bound_stream_last_update_time_ms, as: 'boundStreamLastUpdateTimeMs', type: DateTime
       
           property :closed_captions_type, as: 'closedCaptionsType'
+          property :enable_auto_start, as: 'enableAutoStart'
           property :enable_closed_captions, as: 'enableClosedCaptions'
           property :enable_content_encryption, as: 'enableContentEncryption'
           property :enable_dvr, as: 'enableDvr'
@@ -2902,6 +2903,7 @@ module Google
       class Video
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
           property :age_gating, as: 'ageGating', class: Google::Apis::YoutubeV3::VideoAgeGating, decorator: Google::Apis::YoutubeV3::VideoAgeGating::Representation
       
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoContentDetails, decorator: Google::Apis::YoutubeV3::VideoContentDetails::Representation

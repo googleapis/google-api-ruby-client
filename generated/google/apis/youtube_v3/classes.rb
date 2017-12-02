@@ -3747,6 +3747,12 @@ module Google
         # @return [String]
         attr_accessor :closed_captions_type
       
+        # This setting indicates whether auto start is enabled for this broadcast.
+        # Corresponds to the JSON property `enableAutoStart`
+        # @return [Boolean]
+        attr_accessor :enable_auto_start
+        alias_method :enable_auto_start?, :enable_auto_start
+      
         # This setting indicates whether HTTP POST closed captioning is enabled for this
         # broadcast. The ingestion URL of the closed captions is returned through the
         # liveStreams API. This is mutually exclusive with using the
@@ -3845,6 +3851,7 @@ module Google
           @bound_stream_id = args[:bound_stream_id] if args.key?(:bound_stream_id)
           @bound_stream_last_update_time_ms = args[:bound_stream_last_update_time_ms] if args.key?(:bound_stream_last_update_time_ms)
           @closed_captions_type = args[:closed_captions_type] if args.key?(:closed_captions_type)
+          @enable_auto_start = args[:enable_auto_start] if args.key?(:enable_auto_start)
           @enable_closed_captions = args[:enable_closed_captions] if args.key?(:enable_closed_captions)
           @enable_content_encryption = args[:enable_content_encryption] if args.key?(:enable_content_encryption)
           @enable_dvr = args[:enable_dvr] if args.key?(:enable_dvr)
@@ -6956,6 +6963,11 @@ module Google
       class Video
         include Google::Apis::Core::Hashable
       
+        # The access token to uniquely identify a revocable unlisted video.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
         # Age restriction details related to a video. This data can only be retrieved by
         # the video owner.
         # Corresponds to the JSON property `ageGating`
@@ -7060,6 +7072,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
           @age_gating = args[:age_gating] if args.key?(:age_gating)
           @content_details = args[:content_details] if args.key?(:content_details)
           @etag = args[:etag] if args.key?(:etag)

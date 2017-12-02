@@ -82,6 +82,33 @@ module Google
         end
       end
       
+      # Request for the `CreateSnapshot` method.
+      class CreateSnapshotRequest
+        include Google::Apis::Core::Hashable
+      
+        # The subscription whose backlog the snapshot retains.
+        # Specifically, the created snapshot is guaranteed to retain:
+        # (a) The existing backlog on the subscription. More precisely, this is
+        # defined as the messages in the subscription's backlog that are
+        # unacknowledged upon the successful completion of the
+        # `CreateSnapshot` request; as well as:
+        # (b) Any messages published to the subscription's topic following the
+        # successful completion of the CreateSnapshot request.
+        # Format is `projects/`project`/subscriptions/`sub``.
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -98,6 +125,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response for the `ListSnapshots` method.
+      class ListSnapshotsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, indicates that there may be more snapshot that match the
+        # request; this value should be passed in a new `ListSnapshotsRequest`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting snapshots.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<Google::Apis::PubsubV1::Snapshot>]
+        attr_accessor :snapshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
         end
       end
       
@@ -125,6 +178,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Response for the `ListTopicSnapshots` method.
+      class ListTopicSnapshotsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, indicates that there may be more snapshots that match
+        # the request; this value should be passed in a new
+        # `ListTopicSnapshotsRequest` to get more snapshots.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The names of the snapshots that match the request.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<String>]
+        attr_accessor :snapshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
         end
       end
       
@@ -502,6 +582,56 @@ module Google
         end
       end
       
+      # Request for the `Seek` method.
+      class SeekRequest
+        include Google::Apis::Core::Hashable
+      
+        # The snapshot to seek to. The snapshot's topic must be the same as that of
+        # the provided subscription.
+        # Format is `projects/`project`/snapshots/`snap``.
+        # Corresponds to the JSON property `snapshot`
+        # @return [String]
+        attr_accessor :snapshot
+      
+        # The time to seek to.
+        # Messages retained in the subscription that were published before this
+        # time are marked as acknowledged, and messages retained in the
+        # subscription that were published after this time are marked as
+        # unacknowledged. Note that this operation affects only those messages
+        # retained in the subscription (configured by the combination of
+        # `message_retention_duration` and `retain_acked_messages`). For example,
+        # if `time` corresponds to a point before the message retention
+        # window (or to a point before the system's notion of the subscription
+        # creation time), only retained messages will be marked as unacknowledged,
+        # and already-expunged messages will not be restored.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # 
+      class SeekResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -546,6 +676,46 @@ module Google
         end
       end
       
+      # A snapshot resource.
+      class Snapshot
+        include Google::Apis::Core::Hashable
+      
+        # The snapshot is guaranteed to exist up until this time.
+        # A newly-created snapshot expires no later than 7 days from the time of its
+        # creation. Its exact lifetime is determined at creation by the existing
+        # backlog in the source subscription. Specifically, the lifetime of the
+        # snapshot is `7 days - (age of oldest unacked message in the subscription)`.
+        # For example, consider a subscription whose oldest unacked message is 3 days
+        # old. If a snapshot is created from this subscription, the snapshot -- which
+        # will always capture this 3-day-old backlog as long as the snapshot
+        # exists -- will expire in 4 days. The service will refuse to create a
+        # snapshot that would expire in less than 1 hour after creation.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The name of the snapshot.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the topic from which this snapshot is retaining messages.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # A subscription resource.
       class Subscription
         include Google::Apis::Core::Hashable
@@ -571,6 +741,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
+        # How long to retain unacknowledged messages in the subscription's backlog,
+        # from the moment a message is published.
+        # If `retain_acked_messages` is true, then this also configures the retention
+        # of acknowledged messages, and thus configures how far back in time a `Seek`
+        # can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
+        # minutes.
+        # Corresponds to the JSON property `messageRetentionDuration`
+        # @return [String]
+        attr_accessor :message_retention_duration
+      
         # The name of the subscription. It must have the format
         # `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
         # start with a letter, and contain only letters (`[A-Za-z]`), numbers
@@ -585,6 +765,15 @@ module Google
         # Corresponds to the JSON property `pushConfig`
         # @return [Google::Apis::PubsubV1::PushConfig]
         attr_accessor :push_config
+      
+        # Indicates whether to retain acknowledged messages. If true, then
+        # messages are not expunged from the subscription's backlog, even if they are
+        # acknowledged, until they fall out of the `message_retention_duration`
+        # window.
+        # Corresponds to the JSON property `retainAckedMessages`
+        # @return [Boolean]
+        attr_accessor :retain_acked_messages
+        alias_method :retain_acked_messages?, :retain_acked_messages
       
         # The name of the topic from which this subscription is receiving messages.
         # Format is `projects/`project`/topics/`topic``.
@@ -601,8 +790,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
           @name = args[:name] if args.key?(:name)
           @push_config = args[:push_config] if args.key?(:push_config)
+          @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @topic = args[:topic] if args.key?(:topic)
         end
       end
@@ -670,6 +861,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Request for the UpdateSnapshot method.
+      class UpdateSnapshotRequest
+        include Google::Apis::Core::Hashable
+      
+        # A snapshot resource.
+        # Corresponds to the JSON property `snapshot`
+        # @return [Google::Apis::PubsubV1::Snapshot]
+        attr_accessor :snapshot
+      
+        # Indicates which fields in the provided snapshot to update.
+        # Must be specified and non-empty.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request for the UpdateSubscription method.
+      class UpdateSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        # A subscription resource.
+        # Corresponds to the JSON property `subscription`
+        # @return [Google::Apis::PubsubV1::Subscription]
+        attr_accessor :subscription
+      
+        # Indicates which fields in the provided subscription to update.
+        # Must be specified and non-empty.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subscription = args[:subscription] if args.key?(:subscription)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
     end

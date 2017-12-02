@@ -47,6 +47,89 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a snapshot from the requested subscription.
+        # If the snapshot already exists, returns `ALREADY_EXISTS`.
+        # If the requested subscription doesn't exist, returns `NOT_FOUND`.
+        # If the backlog in the subscription is too old -- and the resulting snapshot
+        # would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
+        # See also the `Snapshot.expire_time` field.
+        # If the name is not provided in the request, the server will assign a random
+        # name for this snapshot on the same project as the subscription, conforming
+        # to the
+        # [resource name
+        # format](https://cloud.google.com/pubsub/docs/overview#names). The generated
+        # name is populated in the returned Snapshot object. Note that for REST API
+        # requests, you must specify a name in the request.
+        # @param [String] name
+        #   Optional user-provided name for this snapshot.
+        #   If the name is not provided in the request, the server will assign a random
+        #   name for this snapshot on the same project as the subscription.
+        #   Note that for REST API requests, you must specify a name.
+        #   Format is `projects/`project`/snapshots/`snap``.
+        # @param [Google::Apis::PubsubV1::CreateSnapshotRequest] create_snapshot_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_snapshot(name, create_snapshot_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::PubsubV1::CreateSnapshotRequest::Representation
+          command.request_object = create_snapshot_request_object
+          command.response_representation = Google::Apis::PubsubV1::Snapshot::Representation
+          command.response_class = Google::Apis::PubsubV1::Snapshot
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes an existing snapshot. All messages retained in the snapshot
+        # are immediately dropped. After a snapshot is deleted, a new one may be
+        # created with the same name, but the new one has no association with the old
+        # snapshot or its subscription, unless the same subscription is specified.
+        # @param [String] snapshot
+        #   The name of the snapshot to delete.
+        #   Format is `projects/`project`/snapshots/`snap``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_snapshot(snapshot, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+snapshot}', options)
+          command.response_representation = Google::Apis::PubsubV1::Empty::Representation
+          command.response_class = Google::Apis::PubsubV1::Empty
+          command.params['snapshot'] = snapshot unless snapshot.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -75,6 +158,79 @@ module Google
           command.response_representation = Google::Apis::PubsubV1::Policy::Representation
           command.response_class = Google::Apis::PubsubV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing snapshots.
+        # @param [String] project
+        #   The name of the cloud project that snapshots belong to.
+        #   Format is `projects/`project``.
+        # @param [Fixnum] page_size
+        #   Maximum number of snapshots to return.
+        # @param [String] page_token
+        #   The value returned by the last `ListSnapshotsResponse`; indicates that this
+        #   is a continuation of a prior `ListSnapshots` call, and that the system
+        #   should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::ListSnapshotsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::ListSnapshotsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_snapshots(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+project}/snapshots', options)
+          command.response_representation = Google::Apis::PubsubV1::ListSnapshotsResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::ListSnapshotsResponse
+          command.params['project'] = project unless project.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing snapshot. Note that certain properties of a
+        # snapshot are not modifiable.
+        # @param [String] name
+        #   The name of the snapshot.
+        # @param [Google::Apis::PubsubV1::UpdateSnapshotRequest] update_snapshot_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_snapshot(name, update_snapshot_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::PubsubV1::UpdateSnapshotRequest::Representation
+          command.request_object = update_snapshot_request_object
+          command.response_representation = Google::Apis::PubsubV1::Snapshot::Representation
+          command.response_class = Google::Apis::PubsubV1::Snapshot
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -453,6 +609,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an existing subscription. Note that certain properties of a
+        # subscription, such as its topic, are not modifiable.
+        # @param [String] name
+        #   The name of the subscription. It must have the format
+        #   `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
+        #   start with a letter, and contain only letters (`[A-Za-z]`), numbers
+        #   (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+        #   plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+        #   in length, and it must not start with `"goog"`.
+        # @param [Google::Apis::PubsubV1::UpdateSubscriptionRequest] update_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::Subscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::Subscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_subscription(name, update_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::PubsubV1::UpdateSubscriptionRequest::Representation
+          command.request_object = update_subscription_request_object
+          command.response_representation = Google::Apis::PubsubV1::Subscription::Representation
+          command.response_class = Google::Apis::PubsubV1::Subscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Pulls messages from the server. Returns an empty list if there are no
         # messages available in the backlog. The server may return `UNAVAILABLE` if
         # there are too many concurrent pull requests pending for the given
@@ -484,6 +679,40 @@ module Google
           command.request_object = pull_request_object
           command.response_representation = Google::Apis::PubsubV1::PullResponse::Representation
           command.response_class = Google::Apis::PubsubV1::PullResponse
+          command.params['subscription'] = subscription unless subscription.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Seeks an existing subscription to a point in time or to a given snapshot,
+        # whichever is provided in the request.
+        # @param [String] subscription
+        #   The subscription to affect.
+        # @param [Google::Apis::PubsubV1::SeekRequest] seek_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::SeekResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::SeekResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def seek_subscription(subscription, seek_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+subscription}:seek', options)
+          command.request_representation = Google::Apis::PubsubV1::SeekRequest::Representation
+          command.request_object = seek_request_object
+          command.response_representation = Google::Apis::PubsubV1::SeekResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::SeekResponse
           command.params['subscription'] = subscription unless subscription.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -850,7 +1079,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the name of the subscriptions for this topic.
+        # Lists the names of the snapshots on this topic.
+        # @param [String] topic
+        #   The name of the topic that snapshots are attached to.
+        #   Format is `projects/`project`/topics/`topic``.
+        # @param [Fixnum] page_size
+        #   Maximum number of snapshot names to return.
+        # @param [String] page_token
+        #   The value returned by the last `ListTopicSnapshotsResponse`; indicates
+        #   that this is a continuation of a prior `ListTopicSnapshots` call, and
+        #   that the system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::ListTopicSnapshotsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::ListTopicSnapshotsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_topic_snapshots(topic, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+topic}/snapshots', options)
+          command.response_representation = Google::Apis::PubsubV1::ListTopicSnapshotsResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::ListTopicSnapshotsResponse
+          command.params['topic'] = topic unless topic.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the names of the subscriptions on this topic.
         # @param [String] topic
         #   The name of the topic that subscriptions are attached to.
         #   Format is `projects/`project`/topics/`topic``.

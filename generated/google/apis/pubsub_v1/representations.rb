@@ -34,13 +34,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSnapshotsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTopicSnapshotsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +136,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SeekRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeekResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Snapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -163,9 +211,25 @@ module Google
         end
       end
       
+      class CreateSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :snapshots, as: 'snapshots', class: Google::Apis::PubsubV1::Snapshot, decorator: Google::Apis::PubsubV1::Snapshot::Representation
+      
         end
       end
       
@@ -175,6 +239,14 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :subscriptions, as: 'subscriptions', class: Google::Apis::PubsubV1::Subscription, decorator: Google::Apis::PubsubV1::Subscription::Representation
       
+        end
+      end
+      
+      class ListTopicSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :snapshots, as: 'snapshots'
         end
       end
       
@@ -279,6 +351,20 @@ module Google
         end
       end
       
+      class SeekRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot, as: 'snapshot'
+          property :time, as: 'time'
+        end
+      end
+      
+      class SeekResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -287,13 +373,24 @@ module Google
         end
       end
       
+      class Snapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :topic, as: 'topic'
+        end
+      end
+      
       class Subscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :message_retention_duration, as: 'messageRetentionDuration'
           property :name, as: 'name'
           property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
       
+          property :retain_acked_messages, as: 'retainAckedMessages'
           property :topic, as: 'topic'
         end
       end
@@ -316,6 +413,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class UpdateSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot, as: 'snapshot', class: Google::Apis::PubsubV1::Snapshot, decorator: Google::Apis::PubsubV1::Snapshot::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subscription, as: 'subscription', class: Google::Apis::PubsubV1::Subscription, decorator: Google::Apis::PubsubV1::Subscription::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
     end
