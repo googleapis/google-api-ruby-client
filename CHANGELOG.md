@@ -1,3 +1,29 @@
+# 0.17.4
+* Backwards compatible changes:
+  * Added `poly_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidmanagement_v1`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudkms_v1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dialogflow_v2beta1`
+  * Updated `firestore_v1beta1`
+  * Updated `fusiontables_v2`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `pubsub_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1beta1`
+  * Updated `testing_v1`
+  * Updated `youtube_partner_v1`
+  * Updated `youtube_v3`
+
 # 0.17.3
 * Backwards compatible changes:
   * Added `oslogin_v1`
