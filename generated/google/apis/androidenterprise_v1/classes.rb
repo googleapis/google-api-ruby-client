@@ -1627,10 +1627,30 @@ module Google
         # @return [String]
         attr_accessor :author_name
       
+        # The countries which this app is available in.
+        # Corresponds to the JSON property `availableCountries`
+        # @return [Array<String>]
+        attr_accessor :available_countries
+      
         # The tracks that are visible to the enterprise.
         # Corresponds to the JSON property `availableTracks`
         # @return [Array<String>]
         attr_accessor :available_tracks
+      
+        # The app category (e.g. RACING, SOCIAL, etc.)
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The content rating for this app.
+        # Corresponds to the JSON property `contentRating`
+        # @return [String]
+        attr_accessor :content_rating
+      
+        # A localized promotional description, if available.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # A link to the (consumer) Google Play details page for the product.
         # Corresponds to the JSON property `detailsUrl`
@@ -1659,6 +1679,22 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The time (in milliseconds since epoch) when application was last published. (
+        # Timestamp is approximate within 7 days of actual publish time.)
+        # Corresponds to the JSON property `lastUpdatedTimestampMillis`
+        # @return [Fixnum]
+        attr_accessor :last_updated_timestamp_millis
+      
+        # The minimum Android SDK necessary to run the app.
+        # Corresponds to the JSON property `minAndroidSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :min_android_sdk_version
+      
+        # The permissions required for this app.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPermission>]
+        attr_accessor :permissions
+      
         # A string of the form app:<package name>. For example, app:com.google.android.
         # gm represents the Gmail app.
         # Corresponds to the JSON property `productId`
@@ -1672,11 +1708,21 @@ module Google
         # @return [String]
         attr_accessor :product_pricing
       
+        # A description of the recent changes made to the app.
+        # Corresponds to the JSON property `recentChanges`
+        # @return [String]
+        attr_accessor :recent_changes
+      
         # Deprecated.
         # Corresponds to the JSON property `requiresContainerApp`
         # @return [Boolean]
         attr_accessor :requires_container_app
         alias_method :requires_container_app?, :requires_container_app
+      
+        # A list of screenshot links representing the app.
+        # Corresponds to the JSON property `screenshotUrls`
+        # @return [Array<String>]
+        attr_accessor :screenshot_urls
       
         # The certificate used to sign this product.
         # Corresponds to the JSON property `signingCertificate`
@@ -1708,14 +1754,23 @@ module Google
         def update!(**args)
           @app_version = args[:app_version] if args.key?(:app_version)
           @author_name = args[:author_name] if args.key?(:author_name)
+          @available_countries = args[:available_countries] if args.key?(:available_countries)
           @available_tracks = args[:available_tracks] if args.key?(:available_tracks)
+          @category = args[:category] if args.key?(:category)
+          @content_rating = args[:content_rating] if args.key?(:content_rating)
+          @description = args[:description] if args.key?(:description)
           @details_url = args[:details_url] if args.key?(:details_url)
           @distribution_channel = args[:distribution_channel] if args.key?(:distribution_channel)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @kind = args[:kind] if args.key?(:kind)
+          @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] if args.key?(:last_updated_timestamp_millis)
+          @min_android_sdk_version = args[:min_android_sdk_version] if args.key?(:min_android_sdk_version)
+          @permissions = args[:permissions] if args.key?(:permissions)
           @product_id = args[:product_id] if args.key?(:product_id)
           @product_pricing = args[:product_pricing] if args.key?(:product_pricing)
+          @recent_changes = args[:recent_changes] if args.key?(:recent_changes)
           @requires_container_app = args[:requires_container_app] if args.key?(:requires_container_app)
+          @screenshot_urls = args[:screenshot_urls] if args.key?(:screenshot_urls)
           @signing_certificate = args[:signing_certificate] if args.key?(:signing_certificate)
           @small_icon_url = args[:small_icon_url] if args.key?(:small_icon_url)
           @title = args[:title] if args.key?(:title)

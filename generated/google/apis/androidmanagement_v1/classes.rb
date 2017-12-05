@@ -1512,7 +1512,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account types that cannot be managed by the user. <i>Requires the beta version
-        # of Android Cloud Policy.</i>
+        # of the Android Device Policy app.</i>
         # Corresponds to the JSON property `accountTypesWithManagementDisabled`
         # @return [Array<String>]
         attr_accessor :account_types_with_management_disabled
@@ -1555,15 +1555,15 @@ module Google
         attr_accessor :block_applications_enabled
         alias_method :block_applications_enabled?, :block_applications_enabled
       
-        # Whether configuring bluetooth is disabled. <i>Requires the beta version of
-        # Android Cloud Policy.</i>
+        # Whether configuring bluetooth is disabled. <i>Requires the beta version of the
+        # Android Device Policy app.</i>
         # Corresponds to the JSON property `bluetoothConfigDisabled`
         # @return [Boolean]
         attr_accessor :bluetooth_config_disabled
         alias_method :bluetooth_config_disabled?, :bluetooth_config_disabled
       
         # Whether bluetooth contact sharing is disabled. <i>Requires the beta version of
-        # Android Cloud Policy.</i>
+        # the Android Device Policy app.</i>
         # Corresponds to the JSON property `bluetoothContactSharingDisabled`
         # @return [Boolean]
         attr_accessor :bluetooth_contact_sharing_disabled
@@ -1571,7 +1571,7 @@ module Google
       
         # Whether bluetooth is disabled. Prefer this setting over
         # bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by
-        # the user. <i>Requires the beta version of Android Cloud Policy.</i>
+        # the user. <i>Requires the beta version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `bluetoothDisabled`
         # @return [Boolean]
         attr_accessor :bluetooth_disabled
@@ -1584,7 +1584,7 @@ module Google
         alias_method :camera_disabled?, :camera_disabled
       
         # Whether configuring cell broadcast is disabled. <i>Requires the beta version
-        # of Android Cloud Policy.</i>
+        # of the Android Device Policy app.</i>
         # Corresponds to the JSON property `cellBroadcastsConfigDisabled`
         # @return [Boolean]
         attr_accessor :cell_broadcasts_config_disabled
@@ -1599,21 +1599,21 @@ module Google
         attr_accessor :compliance_rules
       
         # Whether creating windows besides app windows is disabled. <i>Requires the beta
-        # version of Android Cloud Policy.</i>
+        # version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `createWindowsDisabled`
         # @return [Boolean]
         attr_accessor :create_windows_disabled
         alias_method :create_windows_disabled?, :create_windows_disabled
       
         # Whether configuring user credentials is disabled. <i>Requires the beta version
-        # of Android Cloud Policy.</i>
+        # of the Android Device Policy app.</i>
         # Corresponds to the JSON property `credentialsConfigDisabled`
         # @return [Boolean]
         attr_accessor :credentials_config_disabled
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
         # Whether roaming data services are disabled. <i>Requires the beta version of
-        # Android Cloud Policy.</i>
+        # the Android Device Policy app.</i>
         # Corresponds to the JSON property `dataRoamingDisabled`
         # @return [Boolean]
         attr_accessor :data_roaming_disabled
@@ -1631,7 +1631,7 @@ module Google
         attr_accessor :default_permission_policy
       
         # Whether application verification is forced to be enabled. <i>Requires the beta
-        # version of Android Cloud Policy.</i>
+        # version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `ensureVerifyAppsEnabled`
         # @return [Boolean]
         attr_accessor :ensure_verify_apps_enabled
@@ -1659,7 +1659,7 @@ module Google
         alias_method :fun_disabled?, :fun_disabled
       
         # Whether user installation of apps is disabled. <i>Requires the beta version of
-        # Android Cloud Policy.</i>
+        # the Android Device Policy app.</i>
         # Corresponds to the JSON property `installAppsDisabled`
         # @return [Boolean]
         attr_accessor :install_apps_disabled
@@ -1679,7 +1679,7 @@ module Google
         alias_method :keyguard_disabled?, :keyguard_disabled
       
         # Disabled keyguard customizations, such as widgets. <i>Requires the beta
-        # version of Android Cloud Policy.</i>
+        # version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `keyguardDisabledFeatures`
         # @return [Array<String>]
         attr_accessor :keyguard_disabled_features
@@ -1697,7 +1697,7 @@ module Google
         attr_accessor :maximum_time_to_lock
       
         # Whether configuring mobile networks is disabled. <i>Requires the beta version
-        # of Android Cloud Policy.</i>
+        # of the Android Device Policy app.</i>
         # Corresponds to the JSON property `mobileNetworksConfigDisabled`
         # @return [Boolean]
         attr_accessor :mobile_networks_config_disabled
@@ -1710,7 +1710,7 @@ module Google
         alias_method :modify_accounts_disabled?, :modify_accounts_disabled
       
         # Whether the user mounting physical external media is disabled. <i>Requires the
-        # beta version of Android Cloud Policy.</i>
+        # beta version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `mountPhysicalMediaDisabled`
         # @return [Boolean]
         attr_accessor :mount_physical_media_disabled
@@ -1735,7 +1735,7 @@ module Google
         alias_method :network_escape_hatch_enabled?, :network_escape_hatch_enabled
       
         # Whether resetting network settings is disabled. <i>Requires the beta version
-        # of Android Cloud Policy.</i>
+        # of the Android Device Policy app.</i>
         # Corresponds to the JSON property `networkResetDisabled`
         # @return [Boolean]
         attr_accessor :network_reset_disabled
@@ -1748,14 +1748,14 @@ module Google
         attr_accessor :open_network_configuration
       
         # Whether using NFC to beam out data from apps is disabled. <i>Requires the beta
-        # version of Android Cloud Policy.</i>
+        # version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `outgoingBeamDisabled`
         # @return [Boolean]
         attr_accessor :outgoing_beam_disabled
         alias_method :outgoing_beam_disabled?, :outgoing_beam_disabled
       
-        # Whether outgoing calls are disabled. <i>Requires the beta version of Android
-        # Cloud Policy.</i>
+        # Whether outgoing calls are disabled. <i>Requires the beta version of the
+        # Android Device Policy app.</i>
         # Corresponds to the JSON property `outgoingCallsDisabled`
         # @return [Boolean]
         attr_accessor :outgoing_calls_disabled
@@ -1801,14 +1801,14 @@ module Google
         alias_method :screen_capture_disabled?, :screen_capture_disabled
       
         # Whether changing the user icon is disabled. <i>Requires the beta version of
-        # Android Cloud Policy.</i>
+        # the Android Device Policy app.</i>
         # Corresponds to the JSON property `setUserIconDisabled`
         # @return [Boolean]
         attr_accessor :set_user_icon_disabled
         alias_method :set_user_icon_disabled?, :set_user_icon_disabled
       
         # Whether changing the wallpaper is disabled. <i>Requires the beta version of
-        # Android Cloud Policy.</i>
+        # the Android Device Policy app.</i>
         # Corresponds to the JSON property `setWallpaperDisabled`
         # @return [Boolean]
         attr_accessor :set_wallpaper_disabled
@@ -1821,7 +1821,7 @@ module Google
         attr_accessor :short_support_message
       
         # Whether sending or receiving SMS messages is disabled. <i>Requires the beta
-        # version of Android Cloud Policy.</i>
+        # version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `smsDisabled`
         # @return [Boolean]
         attr_accessor :sms_disabled
@@ -1852,14 +1852,14 @@ module Google
         attr_accessor :system_update
       
         # Whether configuring tethering and portable hotspots is disabled. <i>Requires
-        # the beta version of Android Cloud Policy.</i>
+        # the beta version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `tetheringConfigDisabled`
         # @return [Boolean]
         attr_accessor :tethering_config_disabled
         alias_method :tethering_config_disabled?, :tethering_config_disabled
       
         # Whether user uninstallation of applications is disabled. <i>Requires the beta
-        # version of Android Cloud Policy.</i>
+        # version of the Android Device Policy app.</i>
         # Corresponds to the JSON property `uninstallAppsDisabled`
         # @return [Boolean]
         attr_accessor :uninstall_apps_disabled
@@ -1872,7 +1872,7 @@ module Google
         alias_method :unmute_microphone_disabled?, :unmute_microphone_disabled
       
         # Whether transferring files over USB is disabled. <i>Requires the beta version
-        # of Android Cloud Policy.</i>
+        # of the Android Device Policy app.</i>
         # Corresponds to the JSON property `usbFileTransferDisabled`
         # @return [Boolean]
         attr_accessor :usb_file_transfer_disabled
@@ -1884,8 +1884,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
-        # Whether configuring VPN is disabled. <i>Requires the beta version of Android
-        # Cloud Policy.</i>
+        # Whether configuring VPN is disabled. <i>Requires the beta version of the
+        # Android Device Policy app.</i>
         # Corresponds to the JSON property `vpnConfigDisabled`
         # @return [Boolean]
         attr_accessor :vpn_config_disabled

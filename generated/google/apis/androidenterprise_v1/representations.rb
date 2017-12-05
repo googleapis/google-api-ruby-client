@@ -863,14 +863,24 @@ module Google
           collection :app_version, as: 'appVersion', class: Google::Apis::AndroidenterpriseV1::AppVersion, decorator: Google::Apis::AndroidenterpriseV1::AppVersion::Representation
       
           property :author_name, as: 'authorName'
+          collection :available_countries, as: 'availableCountries'
           collection :available_tracks, as: 'availableTracks'
+          property :category, as: 'category'
+          property :content_rating, as: 'contentRating'
+          property :description, as: 'description'
           property :details_url, as: 'detailsUrl'
           property :distribution_channel, as: 'distributionChannel'
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
+          property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
+          property :min_android_sdk_version, as: 'minAndroidSdkVersion'
+          collection :permissions, as: 'permissions', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
+      
           property :product_id, as: 'productId'
           property :product_pricing, as: 'productPricing'
+          property :recent_changes, as: 'recentChanges'
           property :requires_container_app, as: 'requiresContainerApp'
+          collection :screenshot_urls, as: 'screenshotUrls'
           property :signing_certificate, as: 'signingCertificate', class: Google::Apis::AndroidenterpriseV1::ProductSigningCertificate, decorator: Google::Apis::AndroidenterpriseV1::ProductSigningCertificate::Representation
       
           property :small_icon_url, as: 'smallIconUrl'

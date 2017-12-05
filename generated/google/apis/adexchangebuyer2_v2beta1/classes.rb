@@ -851,15 +851,17 @@ module Google
         attr_accessor :absolute_date_range
       
         # The ID of the creative on which to filter; optional. This field may be set
-        # only for a filter set that accesses buyer-level troubleshooting data, i.e.
-        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
+        # only for a filter set that accesses account-level troubleshooting data,
+        # i.e. one whose name matches the `bidders/*/accounts/*/filterSets/*`
+        # pattern.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
         attr_accessor :creative_id
       
         # The ID of the deal on which to filter; optional. This field may be set
-        # only for a filter set that accesses buyer-level troubleshooting data, i.e.
-        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
+        # only for a filter set that accesses account-level troubleshooting data,
+        # i.e. one whose name matches the `bidders/*/accounts/*/filterSets/*`
+        # pattern.
         # Corresponds to the JSON property `dealId`
         # @return [Fixnum]
         attr_accessor :deal_id
@@ -878,7 +880,7 @@ module Google
         # globally and match one of the patterns:
         # - `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting
         # data)
-        # - `bidders/*/accounts/*/filterSets/*` (for accessing buyer-level
+        # - `bidders/*/accounts/*/filterSets/*` (for accessing account-level
         # troubleshooting data)
         # This field is required in create operations.
         # Corresponds to the JSON property `name`
