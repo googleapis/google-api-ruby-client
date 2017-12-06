@@ -152,6 +152,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Reports a Safe Browsing threat list hit to Google. Only projects with
+        # TRUSTED_REPORTER visibility can use this method.
+        # @param [Google::Apis::SafebrowsingV4::ThreatHit] threat_hit_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SafebrowsingV4::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SafebrowsingV4::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_threat_hit(threat_hit_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v4/threatHits', options)
+          command.request_representation = Google::Apis::SafebrowsingV4::ThreatHit::Representation
+          command.request_object = threat_hit_object
+          command.response_representation = Google::Apis::SafebrowsingV4::Empty::Representation
+          command.response_class = Google::Apis::SafebrowsingV4::Empty
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetches the most recent threat list updates. A client can request updates
         # for multiple lists at once.
         # @param [Google::Apis::SafebrowsingV4::FetchThreatListUpdatesRequest] fetch_threat_list_updates_request_object

@@ -112,6 +112,25 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Describes a Safe Browsing API update request. Clients can request updates for
       # multiple lists in a single request.
       # NOTE: Field index 2 is unused.
@@ -644,6 +663,56 @@ module Google
         end
       end
       
+      # 
+      class ThreatHit
+        include Google::Apis::Core::Hashable
+      
+        # The client metadata associated with Safe Browsing API requests.
+        # Corresponds to the JSON property `clientInfo`
+        # @return [Google::Apis::SafebrowsingV4::ClientInfo]
+        attr_accessor :client_info
+      
+        # An individual threat; for example, a malicious URL or its hash
+        # representation. Only one of these fields should be set.
+        # Corresponds to the JSON property `entry`
+        # @return [Google::Apis::SafebrowsingV4::ThreatEntry]
+        attr_accessor :entry
+      
+        # The platform type reported.
+        # Corresponds to the JSON property `platformType`
+        # @return [String]
+        attr_accessor :platform_type
+      
+        # The resources related to the threat hit.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::SafebrowsingV4::ThreatSource>]
+        attr_accessor :resources
+      
+        # The threat type reported.
+        # Corresponds to the JSON property `threatType`
+        # @return [String]
+        attr_accessor :threat_type
+      
+        # Details about the user that encountered the threat.
+        # Corresponds to the JSON property `userInfo`
+        # @return [Google::Apis::SafebrowsingV4::UserInfo]
+        attr_accessor :user_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_info = args[:client_info] if args.key?(:client_info)
+          @entry = args[:entry] if args.key?(:entry)
+          @platform_type = args[:platform_type] if args.key?(:platform_type)
+          @resources = args[:resources] if args.key?(:resources)
+          @threat_type = args[:threat_type] if args.key?(:threat_type)
+          @user_info = args[:user_info] if args.key?(:user_info)
+        end
+      end
+      
       # The information regarding one or more threats that a client submits when
       # checking for matches in threat lists.
       class ThreatInfo
@@ -764,6 +833,69 @@ module Google
           @threat_entry_metadata = args[:threat_entry_metadata] if args.key?(:threat_entry_metadata)
           @threat_entry_type = args[:threat_entry_type] if args.key?(:threat_entry_type)
           @threat_type = args[:threat_type] if args.key?(:threat_type)
+        end
+      end
+      
+      # A single resource related to a threat hit.
+      class ThreatSource
+        include Google::Apis::Core::Hashable
+      
+        # Referrer of the resource. Only set if the referrer is available.
+        # Corresponds to the JSON property `referrer`
+        # @return [String]
+        attr_accessor :referrer
+      
+        # The remote IP of the resource in ASCII format. Either IPv4 or IPv6.
+        # Corresponds to the JSON property `remoteIp`
+        # @return [String]
+        attr_accessor :remote_ip
+      
+        # The type of source reported.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The URL of the resource.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @referrer = args[:referrer] if args.key?(:referrer)
+          @remote_ip = args[:remote_ip] if args.key?(:remote_ip)
+          @type = args[:type] if args.key?(:type)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Details about the user that encountered the threat.
+      class UserInfo
+        include Google::Apis::Core::Hashable
+      
+        # The UN M.49 region code associated with the user's location.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Unique user identifier defined by the client.
+        # Corresponds to the JSON property `userId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
     end
