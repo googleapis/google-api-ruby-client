@@ -345,6 +345,9 @@ module Google
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         #   * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
         #   hyphens (-), colons (:), or periods (.).
+        #   For more information, see
+        #   [Identifying projects](/resource-manager/docs/creating-managing-projects#
+        #   identifying_projects)
         #   * `LOCATION_ID` is the canonical ID for the queue's location.
         #   The list of available locations can be obtained by calling
         #   google.cloud.location.Locations.ListLocations.

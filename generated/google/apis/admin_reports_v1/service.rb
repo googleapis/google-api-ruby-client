@@ -269,6 +269,64 @@ module Google
         end
         
         # Retrieves a report which is a collection of properties / statistics for a set
+        # of objects.
+        # @param [String] entity_type
+        #   Type of object. Should be one of - gplus_communities.
+        # @param [String] entity_key
+        #   Represents the key of object for which the data should be filtered.
+        # @param [String] date
+        #   Represents the date in yyyy-mm-dd format for which the data is to be fetched.
+        # @param [String] customer_id
+        #   Represents the customer for which the data is to be fetched.
+        # @param [String] filters
+        #   Represents the set of filters including parameter operator value.
+        # @param [Fixnum] max_results
+        #   Maximum number of results to return. Maximum allowed is 1000
+        # @param [String] page_token
+        #   Token to specify next page.
+        # @param [String] parameters
+        #   Represents the application name, parameter name pairs to fetch in csv as
+        #   app_name1:param_name1, app_name2:param_name2.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminReportsV1::UsageReports] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminReportsV1::UsageReports]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_entity_usage_report(entity_type, entity_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'usage/{entityType}/{entityKey}/dates/{date}', options)
+          command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
+          command.response_class = Google::Apis::AdminReportsV1::UsageReports
+          command.params['entityType'] = entity_type unless entity_type.nil?
+          command.params['entityKey'] = entity_key unless entity_key.nil?
+          command.params['date'] = date unless date.nil?
+          command.query['customerId'] = customer_id unless customer_id.nil?
+          command.query['filters'] = filters unless filters.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parameters'] = parameters unless parameters.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a report which is a collection of properties / statistics for a set
         # of users.
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be

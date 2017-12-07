@@ -31,7 +31,7 @@ module Google
       #    Poly = Google::Apis::PolyV1 # Alias the module
       #    service = Poly::PolyServiceService.new
       #
-      # @see https://devsite.googleplex.com/poly/
+      # @see https://developers.google.com/poly/
       class PolyServiceService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

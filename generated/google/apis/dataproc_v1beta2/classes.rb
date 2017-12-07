@@ -519,6 +519,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
+        # Optional. Type of the boot disk (default is 'pd-standard'). Valid values: 'pd-
+        # ssd', 'pd-standard'
+        # Corresponds to the JSON property `bootDiskType`
+        # @return [String]
+        attr_accessor :boot_disk_type
+      
         # Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not
         # attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.
         # apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are
@@ -535,6 +541,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
           @num_local_ssds = args[:num_local_ssds] if args.key?(:num_local_ssds)
         end
       end
@@ -970,8 +977,7 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::JobReference]
         attr_accessor :reference
       
-        # Job scheduling options.Beta Feature: These options are available for testing
-        # purposes only. They may be changed before final release.
+        # Job scheduling options.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::DataprocV1beta2::JobScheduling]
         attr_accessor :scheduling
@@ -1084,8 +1090,7 @@ module Google
         end
       end
       
-      # Job scheduling options.Beta Feature: These options are available for testing
-      # purposes only. They may be changed before final release.
+      # Job scheduling options.
       class JobScheduling
         include Google::Apis::Core::Hashable
       
@@ -1532,8 +1537,7 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::PySparkJob]
         attr_accessor :pyspark_job
       
-        # Job scheduling options.Beta Feature: These options are available for testing
-        # purposes only. They may be changed before final release.
+        # Job scheduling options.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::DataprocV1beta2::JobScheduling]
         attr_accessor :scheduling

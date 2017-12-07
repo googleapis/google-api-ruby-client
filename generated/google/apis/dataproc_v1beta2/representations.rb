@@ -485,6 +485,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :boot_disk_type, as: 'bootDiskType'
           property :num_local_ssds, as: 'numLocalSsds'
         end
       end

@@ -833,8 +833,7 @@ module Google
         # @return [Google::Apis::DataprocV1::JobReference]
         attr_accessor :reference
       
-        # Job scheduling options.Beta Feature: These options are available for testing
-        # purposes only. They may be changed before final release.
+        # Job scheduling options.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::DataprocV1::JobScheduling]
         attr_accessor :scheduling
@@ -947,8 +946,7 @@ module Google
         end
       end
       
-      # Job scheduling options.Beta Feature: These options are available for testing
-      # purposes only. They may be changed before final release.
+      # Job scheduling options.
       class JobScheduling
         include Google::Apis::Core::Hashable
       

@@ -202,6 +202,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :customer_id, as: 'customerId'
+            property :entity_id, as: 'entityId'
             property :profile_id, as: 'profileId'
             property :type, as: 'type'
             property :user_email, as: 'userEmail'

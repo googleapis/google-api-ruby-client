@@ -23,10 +23,10 @@ module Google
     # The Poly API provides read-only access to assets hosted on <a href="https://
     # poly.google.com">poly.google.com</a>.
     #
-    # @see https://devsite.googleplex.com/poly/
+    # @see https://developers.google.com/poly/
     module PolyV1
       VERSION = 'V1'
-      REVISION = '20171124'
+      REVISION = '20171205'
     end
   end
 end

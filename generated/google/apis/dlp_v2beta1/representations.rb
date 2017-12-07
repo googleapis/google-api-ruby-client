@@ -628,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta1SurrogateType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta1Table
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -960,6 +966,8 @@ module Google
       
           property :custom_alphabet, as: 'customAlphabet'
           property :radix, as: 'radix'
+          property :surrogate_info_type, as: 'surrogateInfoType', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType::Representation
+      
         end
       end
       
@@ -969,6 +977,8 @@ module Google
           property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Dictionary::Representation
       
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType::Representation
+      
+          property :surrogate_type, as: 'surrogateType', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1SurrogateType, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1SurrogateType::Representation
       
         end
       end
@@ -1704,6 +1714,12 @@ module Google
           property :code, as: 'code'
           property :count, :numeric_string => true, as: 'count'
           property :details, as: 'details'
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta1SurrogateType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

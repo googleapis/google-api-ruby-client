@@ -260,6 +260,13 @@ module Google
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
+        # @param [String] graceful_decommission_timeout
+        #   Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning
+        #   allows removing nodes from the cluster without interrupting jobs in progress.
+        #   Timeout specifies how long to wait for jobs in progress to finish before
+        #   forcefully removing nodes (and potentially interrupting jobs). Default timeout
+        #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day.
+        #   Only supported on Dataproc image versions 1.2 and higher.
         # @param [String] update_mask
         #   Required. Specifies the path, relative to Cluster, of the field to update. For
         #   example, to change the number of workers in a cluster to 5, the update_mask
@@ -306,7 +313,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_cluster(project_id, region, cluster_name, cluster_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_cluster(project_id, region, cluster_name, cluster_object = nil, graceful_decommission_timeout: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
           command.request_object = cluster_object
@@ -315,6 +322,7 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
+          command.query['gracefulDecommissionTimeout'] = graceful_decommission_timeout unless graceful_decommission_timeout.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

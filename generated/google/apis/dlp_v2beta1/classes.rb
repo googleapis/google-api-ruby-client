@@ -876,6 +876,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :radix
       
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `surrogateInfoType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
+        attr_accessor :surrogate_info_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -887,6 +892,7 @@ module Google
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
           @custom_alphabet = args[:custom_alphabet] if args.key?(:custom_alphabet)
           @radix = args[:radix] if args.key?(:radix)
+          @surrogate_info_type = args[:surrogate_info_type] if args.key?(:surrogate_info_type)
         end
       end
       
@@ -922,6 +928,18 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1InfoType]
         attr_accessor :info_type
       
+        # Message for detecting output from deidentification transformations
+        # such as
+        # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2beta1/content/
+        # deidentify#CryptoReplaceFfxFpeConfig).
+        # These types of transformations are
+        # those that perform pseudonymization, thereby producing a "surrogate" as
+        # output. This should be used in conjunction with a field on the
+        # transformation such as `surrogate_info_type`.
+        # Corresponds to the JSON property `surrogateType`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1SurrogateType]
+        attr_accessor :surrogate_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -930,6 +948,7 @@ module Google
         def update!(**args)
           @dictionary = args[:dictionary] if args.key?(:dictionary)
           @info_type = args[:info_type] if args.key?(:info_type)
+          @surrogate_type = args[:surrogate_type] if args.key?(:surrogate_type)
         end
       end
       
@@ -3177,6 +3196,26 @@ module Google
           @code = args[:code] if args.key?(:code)
           @count = args[:count] if args.key?(:count)
           @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # Message for detecting output from deidentification transformations
+      # such as
+      # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2beta1/content/
+      # deidentify#CryptoReplaceFfxFpeConfig).
+      # These types of transformations are
+      # those that perform pseudonymization, thereby producing a "surrogate" as
+      # output. This should be used in conjunction with a field on the
+      # transformation such as `surrogate_info_type`.
+      class GooglePrivacyDlpV2beta1SurrogateType
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
