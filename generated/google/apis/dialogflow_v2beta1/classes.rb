@@ -433,10 +433,10 @@ module Google
         attr_accessor :input_audio
       
         # Represents the query input. It can contain either:
-        # 1.  an audio config which
-        # instructs the speech recognizer how to process the speech audio,
-        # 2.  a conversational query in the form of text, or
-        # 3.  an event that specifies which intent to trigger.
+        # 1.  An audio config which
+        # instructs the speech recognizer how to process the speech audio.
+        # 2.  A conversational query in the form of text,.
+        # 3.  An event that specifies which intent to trigger.
         # Corresponds to the JSON property `queryInput`
         # @return [Google::Apis::DialogflowV2beta1::QueryInput]
         attr_accessor :query_input
@@ -718,7 +718,7 @@ module Google
         attr_accessor :agent_content
       
         # The URI to a file containing the exported agent. This field is populated
-        # only if `agent_uri`
+        # only if `agent_uri` is specified in `ExportAgentRequest`.
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -2003,10 +2003,10 @@ module Google
       end
       
       # Represents the query input. It can contain either:
-      # 1.  an audio config which
-      # instructs the speech recognizer how to process the speech audio,
-      # 2.  a conversational query in the form of text, or
-      # 3.  an event that specifies which intent to trigger.
+      # 1.  An audio config which
+      # instructs the speech recognizer how to process the speech audio.
+      # 2.  A conversational query in the form of text,.
+      # 3.  An event that specifies which intent to trigger.
       class QueryInput
         include Google::Apis::Core::Hashable
       

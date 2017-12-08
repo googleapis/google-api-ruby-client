@@ -432,45 +432,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the configuration of a device.
-        # @param [String] name
-        #   The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0`.
-        # @param [Fixnum] local_version
-        #   If zero, returns the current device configuration from Cloud IoT Core.
-        #   If nonzero, specifies the local version of the configuration on the device.
-        #   The server returns config data only if a higher (newer) version is
-        #   available from Cloud IoT Core.
-        #   If this value is higher than the latest version available in Cloud IoT
-        #   Core, returns an `OUT_OF_RANGE` error.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudiotV1beta1::HttpDeviceConfig] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudiotV1beta1::HttpDeviceConfig]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_registry_device_config(name, local_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1beta1/{+name}/config', options)
-          command.response_representation = Google::Apis::CloudiotV1beta1::HttpDeviceConfig::Representation
-          command.response_class = Google::Apis::CloudiotV1beta1::HttpDeviceConfig
-          command.params['name'] = name unless name.nil?
-          command.query['localVersion'] = local_version unless local_version.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # List devices in a device registry.
         # @param [String] parent
         #   The device registry path. Required. For example,
@@ -602,74 +563,6 @@ module Google
           command.response_class = Google::Apis::CloudiotV1beta1::Device
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Publishes a telemetry event for a device.
-        # @param [String] name
-        #   The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0`.
-        # @param [Google::Apis::CloudiotV1beta1::HttpPublishEventRequest] http_publish_event_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudiotV1beta1::HttpPublishEventResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudiotV1beta1::HttpPublishEventResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_project_location_registry_device_event(name, http_publish_event_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:publishEvent', options)
-          command.request_representation = Google::Apis::CloudiotV1beta1::HttpPublishEventRequest::Representation
-          command.request_object = http_publish_event_request_object
-          command.response_representation = Google::Apis::CloudiotV1beta1::HttpPublishEventResponse::Representation
-          command.response_class = Google::Apis::CloudiotV1beta1::HttpPublishEventResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the state of a device.
-        # @param [String] name
-        #   The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0`.
-        # @param [Google::Apis::CloudiotV1beta1::HttpSetDeviceStateRequest] http_set_device_state_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudiotV1beta1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudiotV1beta1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_project_location_registry_device_state(name, http_set_device_state_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1beta1/{+name}:setState', options)
-          command.request_representation = Google::Apis::CloudiotV1beta1::HttpSetDeviceStateRequest::Representation
-          command.request_object = http_set_device_state_request_object
-          command.response_representation = Google::Apis::CloudiotV1beta1::Empty::Representation
-          command.response_class = Google::Apis::CloudiotV1beta1::Empty
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

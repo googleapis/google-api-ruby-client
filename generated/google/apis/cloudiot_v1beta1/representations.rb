@@ -88,36 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HttpDeviceConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HttpDeviceState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HttpPublishEventRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HttpPublishEventResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HttpSetDeviceStateRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListDeviceConfigVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -296,43 +266,6 @@ module Google
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class HttpDeviceConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :binary_data, :base64 => true, as: 'binaryData'
-          property :version, :numeric_string => true, as: 'version'
-        end
-      end
-      
-      class HttpDeviceState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :binary_data, :base64 => true, as: 'binaryData'
-        end
-      end
-      
-      class HttpPublishEventRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :binary_data, :base64 => true, as: 'binaryData'
-          property :sub_folder, as: 'subFolder'
-        end
-      end
-      
-      class HttpPublishEventResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class HttpSetDeviceStateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state', class: Google::Apis::CloudiotV1beta1::HttpDeviceState, decorator: Google::Apis::CloudiotV1beta1::HttpDeviceState::Representation
-      
         end
       end
       

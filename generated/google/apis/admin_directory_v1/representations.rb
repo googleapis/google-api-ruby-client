@@ -79,6 +79,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class DeviceFile
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class RecentUser
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -137,6 +143,18 @@ module Google
       end
       
       class Domains2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Feature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,14 +526,21 @@ module Google
       class CalendarResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :building_id, as: 'buildingId'
+          property :capacity, as: 'capacity'
           property :etags, as: 'etags'
+          property :feature_instances, as: 'featureInstances'
+          property :floor_name, as: 'floorName'
+          property :floor_section, as: 'floorSection'
           property :generated_resource_name, as: 'generatedResourceName'
           property :kind, as: 'kind'
+          property :resource_category, as: 'resourceCategory'
           property :resource_description, as: 'resourceDescription'
           property :resource_email, as: 'resourceEmail'
           property :resource_id, as: 'resourceId'
           property :resource_name, as: 'resourceName'
           property :resource_type, as: 'resourceType'
+          property :user_visible_description, as: 'userVisibleDescription'
         end
       end
       
@@ -555,6 +580,8 @@ module Google
           property :annotated_location, as: 'annotatedLocation'
           property :annotated_user, as: 'annotatedUser'
           property :boot_mode, as: 'bootMode'
+          collection :device_files, as: 'deviceFiles', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile::Representation
+      
           property :device_id, as: 'deviceId'
           property :etag, as: 'etag'
           property :ethernet_mac_address, as: 'ethernetMacAddress'
@@ -587,6 +614,17 @@ module Google
             property :active_time, as: 'activeTime'
             property :date, as: 'date', type: Date
         
+          end
+        end
+        
+        class DeviceFile
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :create_time, as: 'createTime', type: DateTime
+        
+            property :download_url, as: 'downloadUrl'
+            property :name, as: 'name'
+            property :type, as: 'type'
           end
         end
         
@@ -700,6 +738,23 @@ module Google
       
           property :etag, as: 'etag'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class Feature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etags, as: 'etags'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      class FeatureInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature, as: 'feature', class: Google::Apis::AdminDirectoryV1::Feature, decorator: Google::Apis::AdminDirectoryV1::Feature::Representation
+      
         end
       end
       

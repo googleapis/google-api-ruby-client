@@ -154,6 +154,31 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudMlV1Capability
+        include Google::Apis::Core::Hashable
+      
+        # Available accelerators for the capability.
+        # Corresponds to the JSON property `availableAccelerators`
+        # @return [Array<String>]
+        attr_accessor :available_accelerators
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_accelerators = args[:available_accelerators] if args.key?(:available_accelerators)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Returns service account information associated with a project.
       class GoogleCloudMlV1GetConfigResponse
         include Google::Apis::Core::Hashable
@@ -400,6 +425,32 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudMlV1ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Locations where at least one type of CMLE capability is available.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Location>]
+        attr_accessor :locations
+      
+        # Optional. Pass this token as the `page_token` field of the request for a
+        # subsequent call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for the ListModels method.
       class GoogleCloudMlV1ListModelsResponse
         include Google::Apis::Core::Hashable
@@ -449,6 +500,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # 
+      class GoogleCloudMlV1Location
+        include Google::Apis::Core::Hashable
+      
+        # Capabilities available in the location.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Capability>]
+        attr_accessor :capabilities
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

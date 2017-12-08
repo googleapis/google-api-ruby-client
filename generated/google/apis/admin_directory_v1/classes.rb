@@ -254,14 +254,39 @@ module Google
       class CalendarResource
         include Google::Apis::Core::Hashable
       
+        # Unique ID for the building a resource is located in.
+        # Corresponds to the JSON property `buildingId`
+        # @return [String]
+        attr_accessor :building_id
+      
+        # Capacity of a resource, number of seats in a room.
+        # Corresponds to the JSON property `capacity`
+        # @return [Fixnum]
+        attr_accessor :capacity
+      
         # ETag of the resource.
         # Corresponds to the JSON property `etags`
         # @return [String]
         attr_accessor :etags
       
-        # The auto-generated name of the calendar resource which includes metadata about
-        # the resource such as building name, floor, capacity, etc. For example, NYC-2-
-        # Training Room 1A (16)
+        # 
+        # Corresponds to the JSON property `featureInstances`
+        # @return [Object]
+        attr_accessor :feature_instances
+      
+        # Name of the floor a resource is located on.
+        # Corresponds to the JSON property `floorName`
+        # @return [String]
+        attr_accessor :floor_name
+      
+        # Name of the section within a floor a resource is located in.
+        # Corresponds to the JSON property `floorSection`
+        # @return [String]
+        attr_accessor :floor_section
+      
+        # The read-only auto-generated name of the calendar resource which includes
+        # metadata about the resource such as building name, floor, capacity, etc. For
+        # example, "NYC-2-Training Room 1A (16)".
         # Corresponds to the JSON property `generatedResourceName`
         # @return [String]
         attr_accessor :generated_resource_name
@@ -272,13 +297,21 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The brief description of the calendar resource.
+        # The category of the calendar resource. Either CONFERENCE_ROOM or OTHER. Legacy
+        # data is set to CATEGORY_UNKNOWN.
+        # Corresponds to the JSON property `resourceCategory`
+        # @return [String]
+        attr_accessor :resource_category
+      
+        # Description of the resource, visible only to admins. The brief description of
+        # the calendar resource.
         # Corresponds to the JSON property `resourceDescription`
         # @return [String]
         attr_accessor :resource_description
       
         # The read-only email ID for the calendar resource. Generated as part of
-        # creating a new calendar resource.
+        # creating a new calendar resource. The read-only email for the calendar
+        # resource. Generated as part of creating a new calendar resource.
         # Corresponds to the JSON property `resourceEmail`
         # @return [String]
         attr_accessor :resource_email
@@ -288,16 +321,23 @@ module Google
         # @return [String]
         attr_accessor :resource_id
       
-        # The name of the calendar resource. For example, Training Room 1A
+        # The name of the calendar resource. For example, "Training Room 1A". The name
+        # of the calendar resource. For example, Training Room 1A
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # The type of the calendar resource. Used for grouping resources in the calendar
-        # user interface.
+        # The type of the calendar resource, intended for non-room resources. The type
+        # of the calendar resource. Used for grouping resources in the calendar user
+        # interface.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
+      
+        # Description of the resource, visible to users and admins.
+        # Corresponds to the JSON property `userVisibleDescription`
+        # @return [String]
+        attr_accessor :user_visible_description
       
         def initialize(**args)
            update!(**args)
@@ -305,14 +345,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @building_id = args[:building_id] if args.key?(:building_id)
+          @capacity = args[:capacity] if args.key?(:capacity)
           @etags = args[:etags] if args.key?(:etags)
+          @feature_instances = args[:feature_instances] if args.key?(:feature_instances)
+          @floor_name = args[:floor_name] if args.key?(:floor_name)
+          @floor_section = args[:floor_section] if args.key?(:floor_section)
           @generated_resource_name = args[:generated_resource_name] if args.key?(:generated_resource_name)
           @kind = args[:kind] if args.key?(:kind)
+          @resource_category = args[:resource_category] if args.key?(:resource_category)
           @resource_description = args[:resource_description] if args.key?(:resource_description)
           @resource_email = args[:resource_email] if args.key?(:resource_email)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @user_visible_description = args[:user_visible_description] if args.key?(:user_visible_description)
         end
       end
       
@@ -462,6 +509,11 @@ module Google
         # @return [String]
         attr_accessor :boot_mode
       
+        # List of device files to download (Read-only)
+        # Corresponds to the JSON property `deviceFiles`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile>]
+        attr_accessor :device_files
+      
         # Unique identifier of Chrome OS Device (Read-only)
         # Corresponds to the JSON property `deviceId`
         # @return [String]
@@ -576,6 +628,7 @@ module Google
           @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
           @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
+          @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
           @etag = args[:etag] if args.key?(:etag)
           @ethernet_mac_address = args[:ethernet_mac_address] if args.key?(:ethernet_mac_address)
@@ -620,6 +673,43 @@ module Google
           def update!(**args)
             @active_time = args[:active_time] if args.key?(:active_time)
             @date = args[:date] if args.key?(:date)
+          end
+        end
+        
+        # 
+        class DeviceFile
+          include Google::Apis::Core::Hashable
+        
+          # Date and time the file was created
+          # Corresponds to the JSON property `createTime`
+          # @return [DateTime]
+          attr_accessor :create_time
+        
+          # File downlod URL
+          # Corresponds to the JSON property `downloadUrl`
+          # @return [String]
+          attr_accessor :download_url
+        
+          # File name
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          # File type
+          # Corresponds to the JSON property `type`
+          # @return [String]
+          attr_accessor :type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @create_time = args[:create_time] if args.key?(:create_time)
+            @download_url = args[:download_url] if args.key?(:download_url)
+            @name = args[:name] if args.key?(:name)
+            @type = args[:type] if args.key?(:type)
           end
         end
         
@@ -1041,6 +1131,56 @@ module Google
           @domains = args[:domains] if args.key?(:domains)
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # JSON template for Feature object in Directory API.
+      class Feature
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etags`
+        # @return [String]
+        attr_accessor :etags
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of the feature.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etags = args[:etags] if args.key?(:etags)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # JSON template for a "feature instance".
+      class FeatureInstance
+        include Google::Apis::Core::Hashable
+      
+        # JSON template for Feature object in Directory API.
+        # Corresponds to the JSON property `feature`
+        # @return [Google::Apis::AdminDirectoryV1::Feature]
+        attr_accessor :feature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
         end
       end
       

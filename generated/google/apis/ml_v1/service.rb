@@ -417,6 +417,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the complete list of CMLE capabilities in a location, along with their
+        # location-specific properties.
+        # @param [String] name
+        #   Required. The name of the location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Location] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Location]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Location::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Location
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all locations that provides at least one type of CMLE capability.
+        # @param [String] parent
+        #   Required. The name of the project for which available locations are to be
+        #   listed (since some locations might be whitelisted for specific projects).
+        # @param [Fixnum] page_size
+        #   Optional. The number of locations to retrieve per "page" of results. If there
+        #   are more remaining results than this number, the response message will
+        #   contain a valid value in the `next_page_token` field.
+        #   The default value is 20, and the maximum page size is 100.
+        # @param [String] page_token
+        #   Optional. A page token to request the next page of results.
+        #   You get the token from the `next_page_token` field of the response from
+        #   the previous call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1ListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_locations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/locations', options)
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListLocationsResponse::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListLocationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a model which will later contain one or more versions.
         # You must add at least one version before you can request predictions from
         # the model. Add versions by calling

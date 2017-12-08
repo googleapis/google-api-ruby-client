@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1Capability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1GetConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1ListModelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class GoogleCloudMlV1ListVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +274,14 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1Capability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_accelerators, as: 'availableAccelerators'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleCloudMlV1GetConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -319,6 +345,15 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::MlV1::GoogleCloudMlV1Location, decorator: Google::Apis::MlV1::GoogleCloudMlV1Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudMlV1ListModelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -334,6 +369,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :versions, as: 'versions', class: Google::Apis::MlV1::GoogleCloudMlV1Version, decorator: Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
       
+        end
+      end
+      
+      class GoogleCloudMlV1Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capabilities, as: 'capabilities', class: Google::Apis::MlV1::GoogleCloudMlV1Capability, decorator: Google::Apis::MlV1::GoogleCloudMlV1Capability::Representation
+      
+          property :name, as: 'name'
         end
       end
       
