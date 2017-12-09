@@ -40,19 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppEngineQueueConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppEngineRouting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppEngineTaskTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,19 +124,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PullQueueConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PullTarget
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PullTaskTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -271,14 +247,6 @@ module Google
         end
       end
       
-      class AppEngineQueueConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_engine_routing_override, as: 'appEngineRoutingOverride', class: Google::Apis::CloudtasksV2beta2::AppEngineRouting, decorator: Google::Apis::CloudtasksV2beta2::AppEngineRouting::Representation
-      
-        end
-      end
-      
       class AppEngineRouting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -286,18 +254,6 @@ module Google
           property :instance, as: 'instance'
           property :service, as: 'service'
           property :version, as: 'version'
-        end
-      end
-      
-      class AppEngineTaskTarget
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_engine_routing, as: 'appEngineRouting', class: Google::Apis::CloudtasksV2beta2::AppEngineRouting, decorator: Google::Apis::CloudtasksV2beta2::AppEngineRouting::Representation
-      
-          hash :headers, as: 'headers'
-          property :http_method, as: 'httpMethod'
-          property :payload, :base64 => true, as: 'payload'
-          property :relative_url, as: 'relativeUrl'
         end
       end
       
@@ -410,23 +366,9 @@ module Google
         end
       end
       
-      class PullQueueConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class PullTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class PullTaskTarget
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :payload, :base64 => true, as: 'payload'
-          property :tag, :base64 => true, as: 'tag'
         end
       end
       
@@ -459,11 +401,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine_http_target, as: 'appEngineHttpTarget', class: Google::Apis::CloudtasksV2beta2::AppEngineHttpTarget, decorator: Google::Apis::CloudtasksV2beta2::AppEngineHttpTarget::Representation
       
-          property :app_engine_queue_config, as: 'appEngineQueueConfig', class: Google::Apis::CloudtasksV2beta2::AppEngineQueueConfig, decorator: Google::Apis::CloudtasksV2beta2::AppEngineQueueConfig::Representation
-      
           property :name, as: 'name'
-          property :pull_queue_config, as: 'pullQueueConfig', class: Google::Apis::CloudtasksV2beta2::PullQueueConfig, decorator: Google::Apis::CloudtasksV2beta2::PullQueueConfig::Representation
-      
           property :pull_target, as: 'pullTarget', class: Google::Apis::CloudtasksV2beta2::PullTarget, decorator: Google::Apis::CloudtasksV2beta2::PullTarget::Representation
       
           property :purge_time, as: 'purgeTime'
@@ -540,13 +478,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine_http_request, as: 'appEngineHttpRequest', class: Google::Apis::CloudtasksV2beta2::AppEngineHttpRequest, decorator: Google::Apis::CloudtasksV2beta2::AppEngineHttpRequest::Representation
       
-          property :app_engine_task_target, as: 'appEngineTaskTarget', class: Google::Apis::CloudtasksV2beta2::AppEngineTaskTarget, decorator: Google::Apis::CloudtasksV2beta2::AppEngineTaskTarget::Representation
-      
           property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :pull_message, as: 'pullMessage', class: Google::Apis::CloudtasksV2beta2::PullMessage, decorator: Google::Apis::CloudtasksV2beta2::PullMessage::Representation
-      
-          property :pull_task_target, as: 'pullTaskTarget', class: Google::Apis::CloudtasksV2beta2::PullTaskTarget, decorator: Google::Apis::CloudtasksV2beta2::PullTaskTarget::Representation
       
           property :schedule_time, as: 'scheduleTime'
           property :task_status, as: 'taskStatus', class: Google::Apis::CloudtasksV2beta2::TaskStatus, decorator: Google::Apis::CloudtasksV2beta2::TaskStatus::Representation

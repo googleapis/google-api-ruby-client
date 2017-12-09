@@ -279,7 +279,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An Operation resource, used to manage asynchronous API requests.
+        # An Operation resource, used to manage asynchronous API requests. (==
+        # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+        # (== resource_for v1.regionOperations ==) (== resource_for beta.
+        # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+        # beta.zoneOperations ==)
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation
@@ -572,7 +576,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An Operation resource, used to manage asynchronous API requests.
+        # An Operation resource, used to manage asynchronous API requests. (==
+        # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+        # (== resource_for v1.regionOperations ==) (== resource_for beta.
+        # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+        # beta.zoneOperations ==)
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation
@@ -1171,7 +1179,11 @@ module Google
         end
       end
       
-      # An Operation resource, used to manage asynchronous API requests.
+      # An Operation resource, used to manage asynchronous API requests. (==
+      # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+      # (== resource_for v1.regionOperations ==) (== resource_for beta.
+      # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+      # beta.zoneOperations ==)
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -1697,6 +1709,12 @@ module Google
         # @return [String]
         attr_accessor :properties
       
+        # Output only. In case this is an action, it will show the runtimePolicies on
+        # which this action will run in the deployment
+        # Corresponds to the JSON property `runtimePolicies`
+        # @return [Array<String>]
+        attr_accessor :runtime_policies
+      
         # Output only. The type of the resource, for example compute.v1.instance, or
         # cloudfunctions.v1beta1.function.
         # Corresponds to the JSON property `type`
@@ -1738,6 +1756,7 @@ module Google
           @manifest = args[:manifest] if args.key?(:manifest)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
+          @runtime_policies = args[:runtime_policies] if args.key?(:runtime_policies)
           @type = args[:type] if args.key?(:type)
           @update = args[:update] if args.key?(:update)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1873,6 +1892,12 @@ module Google
         # @return [String]
         attr_accessor :properties
       
+        # Output only. In case this is an action, it will show the runtimePolicies that
+        # this action will have after updating the deployment.
+        # Corresponds to the JSON property `runtimePolicies`
+        # @return [Array<String>]
+        attr_accessor :runtime_policies
+      
         # Output only. The state of the resource.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1897,6 +1922,7 @@ module Google
           @intent = args[:intent] if args.key?(:intent)
           @manifest = args[:manifest] if args.key?(:manifest)
           @properties = args[:properties] if args.key?(:properties)
+          @runtime_policies = args[:runtime_policies] if args.key?(:runtime_policies)
           @state = args[:state] if args.key?(:state)
           @warnings = args[:warnings] if args.key?(:warnings)
         end
@@ -2273,7 +2299,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An Operation resource, used to manage asynchronous API requests.
+        # An Operation resource, used to manage asynchronous API requests. (==
+        # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+        # (== resource_for v1.regionOperations ==) (== resource_for beta.
+        # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+        # beta.zoneOperations ==)
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation
@@ -2462,7 +2492,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An Operation resource, used to manage asynchronous API requests.
+        # An Operation resource, used to manage asynchronous API requests. (==
+        # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+        # (== resource_for v1.regionOperations ==) (== resource_for beta.
+        # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+        # beta.zoneOperations ==)
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation]
         attr_accessor :operation

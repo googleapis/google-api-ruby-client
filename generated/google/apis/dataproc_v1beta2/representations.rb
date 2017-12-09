@@ -551,6 +551,7 @@ module Google
           property :machine_type_uri, as: 'machineTypeUri'
           property :managed_group_config, as: 'managedGroupConfig', class: Google::Apis::DataprocV1beta2::ManagedGroupConfig, decorator: Google::Apis::DataprocV1beta2::ManagedGroupConfig::Representation
       
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :num_instances, as: 'numInstances'
         end
       end

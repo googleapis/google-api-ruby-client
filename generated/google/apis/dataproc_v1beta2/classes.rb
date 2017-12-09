@@ -859,6 +859,12 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::ManagedGroupConfig]
         attr_accessor :managed_group_config
       
+        # Optional. Specifies the minimum cpu platform for the Instance Group. Examples:
+        # * https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # Optional. The number of VM instances in the instance group. For master
         # instance groups, must be set to 1.
         # Corresponds to the JSON property `numInstances`
@@ -878,6 +884,7 @@ module Google
           @is_preemptible = args[:is_preemptible] if args.key?(:is_preemptible)
           @machine_type_uri = args[:machine_type_uri] if args.key?(:machine_type_uri)
           @managed_group_config = args[:managed_group_config] if args.key?(:managed_group_config)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @num_instances = args[:num_instances] if args.key?(:num_instances)
         end
       end

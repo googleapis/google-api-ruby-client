@@ -872,6 +872,7 @@ module Google
           property :manifest, as: 'manifest'
           property :name, as: 'name'
           property :properties, as: 'properties'
+          collection :runtime_policies, as: 'runtimePolicies'
           property :type, as: 'type'
           property :update, as: 'update', class: Google::Apis::DeploymentmanagerAlpha::ResourceUpdate, decorator: Google::Apis::DeploymentmanagerAlpha::ResourceUpdate::Representation
       
@@ -920,6 +921,7 @@ module Google
           property :intent, as: 'intent'
           property :manifest, as: 'manifest'
           property :properties, as: 'properties'
+          collection :runtime_policies, as: 'runtimePolicies'
           property :state, as: 'state'
           collection :warnings, as: 'warnings', class: Google::Apis::DeploymentmanagerAlpha::ResourceUpdate::Warning, decorator: Google::Apis::DeploymentmanagerAlpha::ResourceUpdate::Warning::Representation
       

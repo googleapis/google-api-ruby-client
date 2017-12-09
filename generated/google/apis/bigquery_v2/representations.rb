@@ -507,12 +507,14 @@ module Google
       class ExplainQueryStage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_parallel_inputs, :numeric_string => true, as: 'completedParallelInputs'
           property :compute_ms_avg, :numeric_string => true, as: 'computeMsAvg'
           property :compute_ms_max, :numeric_string => true, as: 'computeMsMax'
           property :compute_ratio_avg, as: 'computeRatioAvg'
           property :compute_ratio_max, as: 'computeRatioMax'
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
+          property :parallel_inputs, :numeric_string => true, as: 'parallelInputs'
           property :read_ms_avg, :numeric_string => true, as: 'readMsAvg'
           property :read_ms_max, :numeric_string => true, as: 'readMsMax'
           property :read_ratio_avg, as: 'readRatioAvg'
@@ -802,6 +804,7 @@ module Google
           property :ddl_operation_performed, as: 'ddlOperationPerformed'
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
+          property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       

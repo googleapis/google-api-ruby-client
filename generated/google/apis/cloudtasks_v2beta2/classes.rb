@@ -209,33 +209,6 @@ module Google
         end
       end
       
-      # Deprecated. Use AppEngineHttpTarget.
-      class AppEngineQueueConfig
-        include Google::Apis::Core::Hashable
-      
-        # App Engine Routing.
-        # For more information about services, versions, and instances see
-        # [An Overview of App Engine](/appengine/docs/python/an-overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](/appengine/docs/python/
-        # microservices-on-app-engine),
-        # [App Engine Standard request routing](/appengine/docs/standard/python/how-
-        # requests-are-routed),
-        # and [App Engine Flex request routing](/appengine/docs/flexible/python/how-
-        # requests-are-routed).
-        # Corresponds to the JSON property `appEngineRoutingOverride`
-        # @return [Google::Apis::CloudtasksV2beta2::AppEngineRouting]
-        attr_accessor :app_engine_routing_override
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_engine_routing_override = args[:app_engine_routing_override] if args.key?(:app_engine_routing_override)
-        end
-      end
-      
       # App Engine Routing.
       # For more information about services, versions, and instances see
       # [An Overview of App Engine](/appengine/docs/python/an-overview-of-app-engine),
@@ -349,58 +322,6 @@ module Google
           @instance = args[:instance] if args.key?(:instance)
           @service = args[:service] if args.key?(:service)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Deprecated. Use AppEngineHttpRequest.
-      class AppEngineTaskTarget
-        include Google::Apis::Core::Hashable
-      
-        # App Engine Routing.
-        # For more information about services, versions, and instances see
-        # [An Overview of App Engine](/appengine/docs/python/an-overview-of-app-engine),
-        # [Microservices Architecture on Google App Engine](/appengine/docs/python/
-        # microservices-on-app-engine),
-        # [App Engine Standard request routing](/appengine/docs/standard/python/how-
-        # requests-are-routed),
-        # and [App Engine Flex request routing](/appengine/docs/flexible/python/how-
-        # requests-are-routed).
-        # Corresponds to the JSON property `appEngineRouting`
-        # @return [Google::Apis::CloudtasksV2beta2::AppEngineRouting]
-        attr_accessor :app_engine_routing
-      
-        # Deprecated. Use AppEngineHttpRequest.headers.
-        # Corresponds to the JSON property `headers`
-        # @return [Hash<String,String>]
-        attr_accessor :headers
-      
-        # Deprecated. Use AppEngineHttpRequest.http_method.
-        # Corresponds to the JSON property `httpMethod`
-        # @return [String]
-        attr_accessor :http_method
-      
-        # Deprecated. Use AppEngineHttpRequest.payload.
-        # Corresponds to the JSON property `payload`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :payload
-      
-        # Deprecated. Use AppEngineHttpRequest.relative_url.
-        # Corresponds to the JSON property `relativeUrl`
-        # @return [String]
-        attr_accessor :relative_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_engine_routing = args[:app_engine_routing] if args.key?(:app_engine_routing)
-          @headers = args[:headers] if args.key?(:headers)
-          @http_method = args[:http_method] if args.key?(:http_method)
-          @payload = args[:payload] if args.key?(:payload)
-          @relative_url = args[:relative_url] if args.key?(:relative_url)
         end
       end
       
@@ -868,19 +789,6 @@ module Google
         end
       end
       
-      # Deprecated. Use PullTarget.
-      class PullQueueConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Pull target.
       class PullTarget
         include Google::Apis::Core::Hashable
@@ -891,33 +799,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Deprecated. Use PullMessage.
-      class PullTaskTarget
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated. Use PullMessage.payload.
-        # Corresponds to the JSON property `payload`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :payload
-      
-        # Deprecated. Use PullMessage.tag.
-        # Corresponds to the JSON property `tag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :tag
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @payload = args[:payload] if args.key?(:payload)
-          @tag = args[:tag] if args.key?(:tag)
         end
       end
       
@@ -1047,11 +928,6 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineHttpTarget]
         attr_accessor :app_engine_http_target
       
-        # Deprecated. Use AppEngineHttpTarget.
-        # Corresponds to the JSON property `appEngineQueueConfig`
-        # @return [Google::Apis::CloudtasksV2beta2::AppEngineQueueConfig]
-        attr_accessor :app_engine_queue_config
-      
         # The queue name.
         # The queue name must have the following format:
         # `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
@@ -1071,11 +947,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # Deprecated. Use PullTarget.
-        # Corresponds to the JSON property `pullQueueConfig`
-        # @return [Google::Apis::CloudtasksV2beta2::PullQueueConfig]
-        attr_accessor :pull_queue_config
       
         # Pull target.
         # Corresponds to the JSON property `pullTarget`
@@ -1124,9 +995,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine_http_target = args[:app_engine_http_target] if args.key?(:app_engine_http_target)
-          @app_engine_queue_config = args[:app_engine_queue_config] if args.key?(:app_engine_queue_config)
           @name = args[:name] if args.key?(:name)
-          @pull_queue_config = args[:pull_queue_config] if args.key?(:pull_queue_config)
           @pull_target = args[:pull_target] if args.key?(:pull_target)
           @purge_time = args[:purge_time] if args.key?(:purge_time)
           @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
@@ -1552,11 +1421,6 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::AppEngineHttpRequest]
         attr_accessor :app_engine_http_request
       
-        # Deprecated. Use AppEngineHttpRequest.
-        # Corresponds to the JSON property `appEngineTaskTarget`
-        # @return [Google::Apis::CloudtasksV2beta2::AppEngineTaskTarget]
-        attr_accessor :app_engine_task_target
-      
         # Output only. The time that the task was created.
         # `create_time` will be truncated to the nearest second.
         # Corresponds to the JSON property `createTime`
@@ -1592,11 +1456,6 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta2::PullMessage]
         attr_accessor :pull_message
       
-        # Deprecated. Use PullMessage.
-        # Corresponds to the JSON property `pullTaskTarget`
-        # @return [Google::Apis::CloudtasksV2beta2::PullTaskTarget]
-        attr_accessor :pull_task_target
-      
         # The time when the task is scheduled to be attempted.
         # For pull queues, this is the time when the task is available to
         # be leased; if a task is currently leased, this is the time when
@@ -1626,11 +1485,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine_http_request = args[:app_engine_http_request] if args.key?(:app_engine_http_request)
-          @app_engine_task_target = args[:app_engine_task_target] if args.key?(:app_engine_task_target)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @pull_message = args[:pull_message] if args.key?(:pull_message)
-          @pull_task_target = args[:pull_task_target] if args.key?(:pull_task_target)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @task_status = args[:task_status] if args.key?(:task_status)
           @view = args[:view] if args.key?(:view)

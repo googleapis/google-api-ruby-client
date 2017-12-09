@@ -619,6 +619,11 @@ module Google
       class ExplainQueryStage
         include Google::Apis::Core::Hashable
       
+        # Number of parallel input segments completed.
+        # Corresponds to the JSON property `completedParallelInputs`
+        # @return [Fixnum]
+        attr_accessor :completed_parallel_inputs
+      
         # Milliseconds the average shard spent on CPU-bound tasks.
         # Corresponds to the JSON property `computeMsAvg`
         # @return [Fixnum]
@@ -648,6 +653,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Number of parallel input segments to be processed.
+        # Corresponds to the JSON property `parallelInputs`
+        # @return [Fixnum]
+        attr_accessor :parallel_inputs
       
         # Milliseconds the average shard spent reading input.
         # Corresponds to the JSON property `readMsAvg`
@@ -746,12 +756,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completed_parallel_inputs = args[:completed_parallel_inputs] if args.key?(:completed_parallel_inputs)
           @compute_ms_avg = args[:compute_ms_avg] if args.key?(:compute_ms_avg)
           @compute_ms_max = args[:compute_ms_max] if args.key?(:compute_ms_max)
           @compute_ratio_avg = args[:compute_ratio_avg] if args.key?(:compute_ratio_avg)
           @compute_ratio_max = args[:compute_ratio_max] if args.key?(:compute_ratio_max)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @parallel_inputs = args[:parallel_inputs] if args.key?(:parallel_inputs)
           @read_ms_avg = args[:read_ms_avg] if args.key?(:read_ms_avg)
           @read_ms_max = args[:read_ms_max] if args.key?(:read_ms_max)
           @read_ratio_avg = args[:read_ratio_avg] if args.key?(:read_ratio_avg)
@@ -1962,6 +1974,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :ddl_target_table
       
+        # [Output-only] The original estimate of bytes processed for the job.
+        # Corresponds to the JSON property `estimatedBytesProcessed`
+        # @return [Fixnum]
+        attr_accessor :estimated_bytes_processed
+      
         # [Output-only] The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
@@ -1985,7 +2002,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
-        # [Output-only, Experimental] The type of query statement, if valid.
+        # [Output-only, Experimental] The type of query statement, if valid. Possible
+        # values (new values might be added in the future): "SELECT": SELECT query. "
+        # INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/
+        # standard-sql/data-manipulation-language "UPDATE": UPDATE query; see https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
+        # language "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/
+        # reference/standard-sql/data-manipulation-language "CREATE_TABLE": CREATE [OR
+        # REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE]
+        # TABLE ... AS SELECT ... "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE
+        # [OR REPLACE] VIEW ... AS SELECT ... "DROP_VIEW": DROP VIEW query.
         # Corresponds to the JSON property `statementType`
         # @return [String]
         attr_accessor :statement_type
@@ -2021,6 +2047,7 @@ module Google
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
+          @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)

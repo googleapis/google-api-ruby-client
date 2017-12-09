@@ -294,7 +294,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An Operation resource, used to manage asynchronous API requests.
+        # An Operation resource, used to manage asynchronous API requests. (==
+        # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+        # (== resource_for v1.regionOperations ==) (== resource_for beta.
+        # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+        # beta.zoneOperations ==)
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
@@ -790,7 +794,11 @@ module Google
         end
       end
       
-      # An Operation resource, used to manage asynchronous API requests.
+      # An Operation resource, used to manage asynchronous API requests. (==
+      # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+      # (== resource_for v1.regionOperations ==) (== resource_for beta.
+      # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+      # beta.zoneOperations ==)
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -1711,7 +1719,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # An Operation resource, used to manage asynchronous API requests.
+        # An Operation resource, used to manage asynchronous API requests. (==
+        # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+        # (== resource_for v1.regionOperations ==) (== resource_for beta.
+        # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+        # beta.zoneOperations ==)
         # Corresponds to the JSON property `operation`
         # @return [Google::Apis::DeploymentmanagerV2::Operation]
         attr_accessor :operation
