@@ -331,8 +331,6 @@ module Google
       class Constraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :boolean_constraint, as: 'booleanConstraint', class: Google::Apis::CloudresourcemanagerV1::BooleanConstraint, decorator: Google::Apis::CloudresourcemanagerV1::BooleanConstraint::Representation
-      
           property :constraint_default, as: 'constraintDefault'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -502,8 +500,6 @@ module Google
           property :constraint, as: 'constraint'
           property :etag, :base64 => true, as: 'etag'
           property :list_policy, as: 'listPolicy', class: Google::Apis::CloudresourcemanagerV1::ListPolicy, decorator: Google::Apis::CloudresourcemanagerV1::ListPolicy::Representation
-      
-          property :restore_default, as: 'restoreDefault', class: Google::Apis::CloudresourcemanagerV1::RestoreDefault, decorator: Google::Apis::CloudresourcemanagerV1::RestoreDefault::Representation
       
           property :update_time, as: 'updateTime'
           property :version, as: 'version'

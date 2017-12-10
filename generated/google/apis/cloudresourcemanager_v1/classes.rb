@@ -318,14 +318,6 @@ module Google
       class Constraint
         include Google::Apis::Core::Hashable
       
-        # A `Constraint` that is either enforced or not.
-        # For example a constraint `constraints/compute.disableSerialPortAccess`.
-        # If it is enforced on a VM instance, serial port connections will not be
-        # opened to that instance.
-        # Corresponds to the JSON property `booleanConstraint`
-        # @return [Google::Apis::CloudresourcemanagerV1::BooleanConstraint]
-        attr_accessor :boolean_constraint
-      
         # The evaluation behavior of this constraint in the absense of 'Policy'.
         # Corresponds to the JSON property `constraintDefault`
         # @return [String]
@@ -367,7 +359,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @boolean_constraint = args[:boolean_constraint] if args.key?(:boolean_constraint)
           @constraint_default = args[:constraint_default] if args.key?(:constraint_default)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -1075,21 +1066,6 @@ module Google
         # @return [Google::Apis::CloudresourcemanagerV1::ListPolicy]
         attr_accessor :list_policy
       
-        # Ignores policies set above this resource and restores the
-        # `constraint_default` enforcement behavior of the specific `Constraint` at
-        # this resource.
-        # Suppose that `constraint_default` is set to `ALLOW` for the
-        # `Constraint` `constraints/serviceuser.services`. Suppose that organization
-        # foo.com sets a `Policy` at their Organization resource node that restricts
-        # the allowed service activations to deny all service activations. They
-        # could then set a `Policy` with the `policy_type` `restore_default` on
-        # several experimental projects, restoring the `constraint_default`
-        # enforcement of the `Constraint` for only those projects, allowing those
-        # projects to have all services activated.
-        # Corresponds to the JSON property `restoreDefault`
-        # @return [Google::Apis::CloudresourcemanagerV1::RestoreDefault]
-        attr_accessor :restore_default
-      
         # The time stamp the `Policy` was previously updated. This is set by the
         # server, not specified by the caller, and represents the last time a call to
         # `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
@@ -1113,7 +1089,6 @@ module Google
           @constraint = args[:constraint] if args.key?(:constraint)
           @etag = args[:etag] if args.key?(:etag)
           @list_policy = args[:list_policy] if args.key?(:list_policy)
-          @restore_default = args[:restore_default] if args.key?(:restore_default)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
         end
