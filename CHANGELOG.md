@@ -1,3 +1,31 @@
+# 0.18.0
+* Breaking changes:
+  * Deleted `dfareporting_v2_7`
+* Backwards compatible changes:
+  * Added `abusiveexperiencereport_v1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `admin_directory_v1`
+  * Updated `admin_reports_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `bigquery_v2`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudiot_v1beta1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2beta1`
+  * Updated `ml_v1`
+  * Updated `poly_v1`
+  * Updated `safebrowsing_v4`
+  * Updated `streetviewpublish_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `youtube_partner_v1`
+
 # 0.17.4
 * Backwards compatible changes:
   * Added `poly_v1`
