@@ -25,10 +25,13 @@ module Google
     # @see https://developers.google.com/slides/
     module SlidesV1
       VERSION = 'V1'
-      REVISION = '20171113'
+      REVISION = '20171208'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
+
+      # View and manage Google Drive files and folders that you have opened or created with this app
+      AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
 
       # View the files in your Google Drive
       AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'

@@ -363,8 +363,6 @@ module Google
       
         # Connections to other photos. A connection represents the link from this
         # photo to another photo.
-        # The maximum number of connections that can be set through an
-        # google.streetview.publish.v1.UpdatePhotoRequest is 10.
         # Corresponds to the JSON property `connections`
         # @return [Array<Google::Apis::StreetviewpublishV1::Connection>]
         attr_accessor :connections
