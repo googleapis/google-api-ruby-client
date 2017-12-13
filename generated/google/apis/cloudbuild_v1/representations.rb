@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -195,6 +201,8 @@ module Google
           hash :substitutions, as: 'substitutions'
           collection :tags, as: 'tags'
           property :timeout, as: 'timeout'
+          hash :timing, as: 'timing', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
         end
       end
       
@@ -228,6 +236,8 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           collection :secret_env, as: 'secretEnv'
+          property :timing, as: 'timing', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
           collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
       
           collection :wait_for, as: 'waitFor'
@@ -255,6 +265,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :digest, as: 'digest'
           property :name, as: 'name'
+          property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
         end
       end
       
@@ -402,6 +414,14 @@ module Google
           property :bucket, as: 'bucket'
           property :generation, :numeric_string => true, as: 'generation'
           property :object, as: 'object'
+        end
+      end
+      
+      class TimeSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       

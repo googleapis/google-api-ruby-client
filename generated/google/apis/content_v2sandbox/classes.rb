@@ -399,6 +399,11 @@ module Google
       class OrderLineItem
         include Google::Apis::Core::Hashable
       
+        # Annotations that are attached to the line item.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrderMerchantProvidedAnnotation>]
+        attr_accessor :annotations
+      
         # Cancellations of the line item.
         # Corresponds to the JSON property `cancellations`
         # @return [Array<Google::Apis::ContentV2sandbox::OrderCancellation>]
@@ -477,6 +482,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @cancellations = args[:cancellations] if args.key?(:cancellations)
           @id = args[:id] if args.key?(:id)
           @price = args[:price] if args.key?(:price)
@@ -722,6 +728,33 @@ module Google
           @max_days_in_transit = args[:max_days_in_transit] if args.key?(:max_days_in_transit)
           @method_name = args[:method_name] if args.key?(:method_name)
           @min_days_in_transit = args[:min_days_in_transit] if args.key?(:min_days_in_transit)
+        end
+      end
+      
+      # 
+      class OrderMerchantProvidedAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Key for additional merchant provided (as key-value pairs) annotation about the
+        # line item.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value for additional merchant provided (as key-value pairs) annotation about
+        # the line item.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1430,10 +1463,20 @@ module Google
         # @return [Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryReturnLineItem]
         attr_accessor :return_line_item
       
+        # Required for setLineItemMetadata method.
+        # Corresponds to the JSON property `setLineItemMetadata`
+        # @return [Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntrySetLineItemMetadata]
+        attr_accessor :set_line_item_metadata
+      
         # Required for shipLineItems method.
         # Corresponds to the JSON property `shipLineItems`
         # @return [Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryShipLineItems]
         attr_accessor :ship_line_items
+      
+        # Required for updateLineItemShippingDate method.
+        # Corresponds to the JSON property `updateLineItemShippingDetails`
+        # @return [Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails]
+        attr_accessor :update_line_item_shipping_details
       
         # Required for updateShipment method.
         # Corresponds to the JSON property `updateShipment`
@@ -1456,7 +1499,9 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @refund = args[:refund] if args.key?(:refund)
           @return_line_item = args[:return_line_item] if args.key?(:return_line_item)
+          @set_line_item_metadata = args[:set_line_item_metadata] if args.key?(:set_line_item_metadata)
           @ship_line_items = args[:ship_line_items] if args.key?(:ship_line_items)
+          @update_line_item_shipping_details = args[:update_line_item_shipping_details] if args.key?(:update_line_item_shipping_details)
           @update_shipment = args[:update_shipment] if args.key?(:update_shipment)
         end
       end
@@ -1641,6 +1686,39 @@ module Google
       end
       
       # 
+      class OrdersCustomBatchRequestEntrySetLineItemMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrderMerchantProvidedAnnotation>]
+        attr_accessor :annotations
+      
+        # The ID of the line item to set metadata. Either lineItemId or productId is
+        # required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the product to set metadata. This is the REST ID used in the
+        # products service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # 
       class OrdersCustomBatchRequestEntryShipLineItems
         include Google::Apis::Core::Hashable
       
@@ -1715,6 +1793,47 @@ module Google
           @carrier = args[:carrier] if args.key?(:carrier)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Updated delivery by date, in ISO 8601 format. If not specified only ship by
+        # date is updated.
+        # Corresponds to the JSON property `deliverByDate`
+        # @return [String]
+        attr_accessor :deliver_by_date
+      
+        # The ID of the line item to set metadata. Either lineItemId or productId is
+        # required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the product to set metadata. This is the REST ID used in the
+        # products service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Updated ship by date, in ISO 8601 format. If not specified only deliver by
+        # date is updated.
+        # Corresponds to the JSON property `shipByDate`
+        # @return [String]
+        attr_accessor :ship_by_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deliver_by_date = args[:deliver_by_date] if args.key?(:deliver_by_date)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @ship_by_date = args[:ship_by_date] if args.key?(:ship_by_date)
         end
       end
       
@@ -2065,6 +2184,71 @@ module Google
       end
       
       # 
+      class OrdersSetLineItemMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::ContentV2sandbox::OrderMerchantProvidedAnnotation>]
+        attr_accessor :annotations
+      
+        # The ID of the line item to set metadata. Either lineItemId or productId is
+        # required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the product to set metadata. This is the REST ID used in the
+        # products service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # 
+      class OrdersSetLineItemMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersSetLineItemMetadataResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class OrdersShipLineItemsRequest
         include Google::Apis::Core::Hashable
       
@@ -2127,6 +2311,79 @@ module Google
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # ordersShipLineItemsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrdersUpdateLineItemShippingDetailsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Updated delivery by date, in ISO 8601 format. If not specified only ship by
+        # date is updated.
+        # Corresponds to the JSON property `deliverByDate`
+        # @return [String]
+        attr_accessor :deliver_by_date
+      
+        # The ID of the line item to set metadata. Either lineItemId or productId is
+        # required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the product to set metadata. This is the REST ID used in the
+        # products service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Updated ship by date, in ISO 8601 format. If not specified only deliver by
+        # date is updated.
+        # Corresponds to the JSON property `shipByDate`
+        # @return [String]
+        attr_accessor :ship_by_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deliver_by_date = args[:deliver_by_date] if args.key?(:deliver_by_date)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @ship_by_date = args[:ship_by_date] if args.key?(:ship_by_date)
+        end
+      end
+      
+      # 
+      class OrdersUpdateLineItemShippingDetailsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersUpdateLineItemShippingDetailsResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

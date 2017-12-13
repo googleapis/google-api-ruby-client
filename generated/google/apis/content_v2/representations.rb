@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderMerchantProvidedAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderPaymentMethod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -598,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCustomBatchRequestEntrySetLineItemMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCustomBatchRequestEntryShipLineItems
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +617,12 @@ module Google
       end
       
       class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -670,6 +688,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersSetLineItemMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersSetLineItemMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersShipLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -677,6 +707,18 @@ module Google
       end
       
       class OrdersShipLineItemsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersUpdateLineItemShippingDetailsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersUpdateLineItemShippingDetailsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1736,6 +1778,8 @@ module Google
       class OrderLineItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::ContentV2::OrderMerchantProvidedAnnotation, decorator: Google::Apis::ContentV2::OrderMerchantProvidedAnnotation::Representation
+      
           collection :cancellations, as: 'cancellations', class: Google::Apis::ContentV2::OrderCancellation, decorator: Google::Apis::ContentV2::OrderCancellation::Representation
       
           property :id, as: 'id'
@@ -1817,6 +1861,14 @@ module Google
           property :max_days_in_transit, as: 'maxDaysInTransit'
           property :method_name, as: 'methodName'
           property :min_days_in_transit, as: 'minDaysInTransit'
+        end
+      end
+      
+      class OrderMerchantProvidedAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -2013,7 +2065,11 @@ module Google
       
           property :return_line_item, as: 'returnLineItem', class: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryReturnLineItem, decorator: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryReturnLineItem::Representation
       
+          property :set_line_item_metadata, as: 'setLineItemMetadata', class: Google::Apis::ContentV2::OrdersCustomBatchRequestEntrySetLineItemMetadata, decorator: Google::Apis::ContentV2::OrdersCustomBatchRequestEntrySetLineItemMetadata::Representation
+      
           property :ship_line_items, as: 'shipLineItems', class: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryShipLineItems, decorator: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryShipLineItems::Representation
+      
+          property :update_line_item_shipping_details, as: 'updateLineItemShippingDetails', class: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails, decorator: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails::Representation
       
           property :update_shipment, as: 'updateShipment', class: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryUpdateShipment, decorator: Google::Apis::ContentV2::OrdersCustomBatchRequestEntryUpdateShipment::Representation
       
@@ -2070,6 +2126,16 @@ module Google
         end
       end
       
+      class OrdersCustomBatchRequestEntrySetLineItemMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::ContentV2::OrderMerchantProvidedAnnotation, decorator: Google::Apis::ContentV2::OrderMerchantProvidedAnnotation::Representation
+      
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+        end
+      end
+      
       class OrdersCustomBatchRequestEntryShipLineItems
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2089,6 +2155,16 @@ module Google
           property :carrier, as: 'carrier'
           property :shipment_id, as: 'shipmentId'
           property :tracking_id, as: 'trackingId'
+        end
+      end
+      
+      class OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deliver_by_date, as: 'deliverByDate'
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+          property :ship_by_date, as: 'shipByDate'
         end
       end
       
@@ -2195,6 +2271,25 @@ module Google
         end
       end
       
+      class OrdersSetLineItemMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::ContentV2::OrderMerchantProvidedAnnotation, decorator: Google::Apis::ContentV2::OrderMerchantProvidedAnnotation::Representation
+      
+          property :line_item_id, as: 'lineItemId'
+          property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
+        end
+      end
+      
+      class OrdersSetLineItemMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class OrdersShipLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2210,6 +2305,25 @@ module Google
       end
       
       class OrdersShipLineItemsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrdersUpdateLineItemShippingDetailsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deliver_by_date, as: 'deliverByDate'
+          property :line_item_id, as: 'lineItemId'
+          property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
+          property :ship_by_date, as: 'shipByDate'
+        end
+      end
+      
+      class OrdersUpdateLineItemShippingDetailsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'

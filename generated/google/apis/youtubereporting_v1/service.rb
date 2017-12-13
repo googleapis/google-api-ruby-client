@@ -305,10 +305,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubereportingV1::Media] parsed result object
+        # @yieldparam result [Google::Apis::YoutubereportingV1::GdataMedia] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubereportingV1::Media]
+        # @return [Google::Apis::YoutubereportingV1::GdataMedia]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -320,8 +320,8 @@ module Google
             command = make_download_command(:get, 'v1/media/{+resourceName}', options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::YoutubereportingV1::Media::Representation
-          command.response_class = Google::Apis::YoutubereportingV1::Media
+          command.response_representation = Google::Apis::YoutubereportingV1::GdataMedia::Representation
+          command.response_class = Google::Apis::YoutubereportingV1::GdataMedia
           command.params['resourceName'] = resource_name unless resource_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

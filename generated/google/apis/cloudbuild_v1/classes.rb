@@ -165,6 +165,17 @@ module Google
         # @return [String]
         attr_accessor :timeout
       
+        # Stores timing information for phases of the build.
+        # Valid keys are:
+        # - BUILD: time to execute all build steps
+        # - PUSH: time to push all specified images.
+        # - FETCHSOURCE: time to fetch source.
+        # If the build does not specify source, or does not specify images,
+        # these keys will not be included.
+        # Corresponds to the JSON property `timing`
+        # @return [Hash<String,Google::Apis::CloudbuildV1::TimeSpan>]
+        attr_accessor :timing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -191,6 +202,7 @@ module Google
           @substitutions = args[:substitutions] if args.key?(:substitutions)
           @tags = args[:tags] if args.key?(:tags)
           @timeout = args[:timeout] if args.key?(:timeout)
+          @timing = args[:timing] if args.key?(:timing)
         end
       end
       
@@ -343,6 +355,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :secret_env
       
+        # Stores start and end times for a build execution phase.
+        # Corresponds to the JSON property `timing`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :timing
+      
         # List of volumes to mount into the build step.
         # Each volume will be created as an empty volume prior to execution of the
         # build step. Upon completion of the build, volumes and their contents will
@@ -375,6 +392,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
+          @timing = args[:timing] if args.key?(:timing)
           @volumes = args[:volumes] if args.key?(:volumes)
           @wait_for = args[:wait_for] if args.key?(:wait_for)
         end
@@ -475,6 +493,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Stores start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :push_timing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -483,6 +506,7 @@ module Google
         def update!(**args)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
         end
       end
       
@@ -1038,6 +1062,31 @@ module Google
           @bucket = args[:bucket] if args.key?(:bucket)
           @generation = args[:generation] if args.key?(:generation)
           @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # Stores start and end times for a build execution phase.
+      class TimeSpan
+        include Google::Apis::Core::Hashable
+      
+        # End of time span.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start of time span.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       

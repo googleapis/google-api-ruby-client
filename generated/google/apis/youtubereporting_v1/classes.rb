@@ -41,6 +41,582 @@ module Google
         end
       end
       
+      # gdata
+      class GdataBlobstore2Info
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `blobGeneration`
+        # @return [Fixnum]
+        attr_accessor :blob_generation
+      
+        # gdata
+        # Corresponds to the JSON property `blobId`
+        # @return [String]
+        attr_accessor :blob_id
+      
+        # gdata
+        # Corresponds to the JSON property `downloadReadHandle`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :download_read_handle
+      
+        # gdata
+        # Corresponds to the JSON property `readToken`
+        # @return [String]
+        attr_accessor :read_token
+      
+        # gdata
+        # Corresponds to the JSON property `uploadMetadataContainer`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :upload_metadata_container
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_generation = args[:blob_generation] if args.key?(:blob_generation)
+          @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
+          @read_token = args[:read_token] if args.key?(:read_token)
+          @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
+        end
+      end
+      
+      # gdata
+      class GdataCompositeMedia
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `blobRef`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :blob_ref
+      
+        # gdata
+        # Corresponds to the JSON property `blobstore2Info`
+        # @return [Google::Apis::YoutubereportingV1::GdataBlobstore2Info]
+        attr_accessor :blobstore2_info
+      
+        # gdata
+        # Corresponds to the JSON property `cosmoBinaryReference`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :cosmo_binary_reference
+      
+        # gdata
+        # Corresponds to the JSON property `crc32cHash`
+        # @return [Fixnum]
+        attr_accessor :crc32c_hash
+      
+        # gdata
+        # Corresponds to the JSON property `inline`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :inline
+      
+        # gdata
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # gdata
+        # Corresponds to the JSON property `md5Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :md5_hash
+      
+        # gdata
+        # Corresponds to the JSON property `objectId`
+        # @return [Google::Apis::YoutubereportingV1::GdataObjectId]
+        attr_accessor :object_id_prop
+      
+        # gdata
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # gdata
+        # Corresponds to the JSON property `referenceType`
+        # @return [String]
+        attr_accessor :reference_type
+      
+        # gdata
+        # Corresponds to the JSON property `sha1Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha1_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_ref = args[:blob_ref] if args.key?(:blob_ref)
+          @blobstore2_info = args[:blobstore2_info] if args.key?(:blobstore2_info)
+          @cosmo_binary_reference = args[:cosmo_binary_reference] if args.key?(:cosmo_binary_reference)
+          @crc32c_hash = args[:crc32c_hash] if args.key?(:crc32c_hash)
+          @inline = args[:inline] if args.key?(:inline)
+          @length = args[:length] if args.key?(:length)
+          @md5_hash = args[:md5_hash] if args.key?(:md5_hash)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @path = args[:path] if args.key?(:path)
+          @reference_type = args[:reference_type] if args.key?(:reference_type)
+          @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
+        end
+      end
+      
+      # gdata
+      class GdataContentTypeInfo
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `bestGuess`
+        # @return [String]
+        attr_accessor :best_guess
+      
+        # gdata
+        # Corresponds to the JSON property `fromBytes`
+        # @return [String]
+        attr_accessor :from_bytes
+      
+        # gdata
+        # Corresponds to the JSON property `fromFileName`
+        # @return [String]
+        attr_accessor :from_file_name
+      
+        # gdata
+        # Corresponds to the JSON property `fromHeader`
+        # @return [String]
+        attr_accessor :from_header
+      
+        # gdata
+        # Corresponds to the JSON property `fromUrlPath`
+        # @return [String]
+        attr_accessor :from_url_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @best_guess = args[:best_guess] if args.key?(:best_guess)
+          @from_bytes = args[:from_bytes] if args.key?(:from_bytes)
+          @from_file_name = args[:from_file_name] if args.key?(:from_file_name)
+          @from_header = args[:from_header] if args.key?(:from_header)
+          @from_url_path = args[:from_url_path] if args.key?(:from_url_path)
+        end
+      end
+      
+      # gdata
+      class GdataDiffChecksumsResponse
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `checksumsLocation`
+        # @return [Google::Apis::YoutubereportingV1::GdataCompositeMedia]
+        attr_accessor :checksums_location
+      
+        # gdata
+        # Corresponds to the JSON property `chunkSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :chunk_size_bytes
+      
+        # gdata
+        # Corresponds to the JSON property `objectLocation`
+        # @return [Google::Apis::YoutubereportingV1::GdataCompositeMedia]
+        attr_accessor :object_location
+      
+        # gdata
+        # Corresponds to the JSON property `objectSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :object_size_bytes
+      
+        # gdata
+        # Corresponds to the JSON property `objectVersion`
+        # @return [String]
+        attr_accessor :object_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checksums_location = args[:checksums_location] if args.key?(:checksums_location)
+          @chunk_size_bytes = args[:chunk_size_bytes] if args.key?(:chunk_size_bytes)
+          @object_location = args[:object_location] if args.key?(:object_location)
+          @object_size_bytes = args[:object_size_bytes] if args.key?(:object_size_bytes)
+          @object_version = args[:object_version] if args.key?(:object_version)
+        end
+      end
+      
+      # gdata
+      class GdataDiffDownloadResponse
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `objectLocation`
+        # @return [Google::Apis::YoutubereportingV1::GdataCompositeMedia]
+        attr_accessor :object_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_location = args[:object_location] if args.key?(:object_location)
+        end
+      end
+      
+      # gdata
+      class GdataDiffUploadRequest
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `checksumsInfo`
+        # @return [Google::Apis::YoutubereportingV1::GdataCompositeMedia]
+        attr_accessor :checksums_info
+      
+        # gdata
+        # Corresponds to the JSON property `objectInfo`
+        # @return [Google::Apis::YoutubereportingV1::GdataCompositeMedia]
+        attr_accessor :object_info
+      
+        # gdata
+        # Corresponds to the JSON property `objectVersion`
+        # @return [String]
+        attr_accessor :object_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checksums_info = args[:checksums_info] if args.key?(:checksums_info)
+          @object_info = args[:object_info] if args.key?(:object_info)
+          @object_version = args[:object_version] if args.key?(:object_version)
+        end
+      end
+      
+      # gdata
+      class GdataDiffUploadResponse
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `objectVersion`
+        # @return [String]
+        attr_accessor :object_version
+      
+        # gdata
+        # Corresponds to the JSON property `originalObject`
+        # @return [Google::Apis::YoutubereportingV1::GdataCompositeMedia]
+        attr_accessor :original_object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_version = args[:object_version] if args.key?(:object_version)
+          @original_object = args[:original_object] if args.key?(:original_object)
+        end
+      end
+      
+      # gdata
+      class GdataDiffVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `objectSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :object_size_bytes
+      
+        # gdata
+        # Corresponds to the JSON property `objectVersion`
+        # @return [String]
+        attr_accessor :object_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_size_bytes = args[:object_size_bytes] if args.key?(:object_size_bytes)
+          @object_version = args[:object_version] if args.key?(:object_version)
+        end
+      end
+      
+      # gdata
+      class GdataDownloadParameters
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `allowGzipCompression`
+        # @return [Boolean]
+        attr_accessor :allow_gzip_compression
+        alias_method :allow_gzip_compression?, :allow_gzip_compression
+      
+        # gdata
+        # Corresponds to the JSON property `ignoreRange`
+        # @return [Boolean]
+        attr_accessor :ignore_range
+        alias_method :ignore_range?, :ignore_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_gzip_compression = args[:allow_gzip_compression] if args.key?(:allow_gzip_compression)
+          @ignore_range = args[:ignore_range] if args.key?(:ignore_range)
+        end
+      end
+      
+      # gdata
+      class GdataMedia
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # gdata
+        # Corresponds to the JSON property `bigstoreObjectRef`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :bigstore_object_ref
+      
+        # gdata
+        # Corresponds to the JSON property `blobRef`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :blob_ref
+      
+        # gdata
+        # Corresponds to the JSON property `blobstore2Info`
+        # @return [Google::Apis::YoutubereportingV1::GdataBlobstore2Info]
+        attr_accessor :blobstore2_info
+      
+        # gdata
+        # Corresponds to the JSON property `compositeMedia`
+        # @return [Array<Google::Apis::YoutubereportingV1::GdataCompositeMedia>]
+        attr_accessor :composite_media
+      
+        # gdata
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # gdata
+        # Corresponds to the JSON property `contentTypeInfo`
+        # @return [Google::Apis::YoutubereportingV1::GdataContentTypeInfo]
+        attr_accessor :content_type_info
+      
+        # gdata
+        # Corresponds to the JSON property `cosmoBinaryReference`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :cosmo_binary_reference
+      
+        # gdata
+        # Corresponds to the JSON property `crc32cHash`
+        # @return [Fixnum]
+        attr_accessor :crc32c_hash
+      
+        # gdata
+        # Corresponds to the JSON property `diffChecksumsResponse`
+        # @return [Google::Apis::YoutubereportingV1::GdataDiffChecksumsResponse]
+        attr_accessor :diff_checksums_response
+      
+        # gdata
+        # Corresponds to the JSON property `diffDownloadResponse`
+        # @return [Google::Apis::YoutubereportingV1::GdataDiffDownloadResponse]
+        attr_accessor :diff_download_response
+      
+        # gdata
+        # Corresponds to the JSON property `diffUploadRequest`
+        # @return [Google::Apis::YoutubereportingV1::GdataDiffUploadRequest]
+        attr_accessor :diff_upload_request
+      
+        # gdata
+        # Corresponds to the JSON property `diffUploadResponse`
+        # @return [Google::Apis::YoutubereportingV1::GdataDiffUploadResponse]
+        attr_accessor :diff_upload_response
+      
+        # gdata
+        # Corresponds to the JSON property `diffVersionResponse`
+        # @return [Google::Apis::YoutubereportingV1::GdataDiffVersionResponse]
+        attr_accessor :diff_version_response
+      
+        # gdata
+        # Corresponds to the JSON property `downloadParameters`
+        # @return [Google::Apis::YoutubereportingV1::GdataDownloadParameters]
+        attr_accessor :download_parameters
+      
+        # gdata
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # gdata
+        # Corresponds to the JSON property `hash`
+        # @return [String]
+        attr_accessor :hash_prop
+      
+        # gdata
+        # Corresponds to the JSON property `hashVerified`
+        # @return [Boolean]
+        attr_accessor :hash_verified
+        alias_method :hash_verified?, :hash_verified
+      
+        # gdata
+        # Corresponds to the JSON property `inline`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :inline
+      
+        # gdata
+        # Corresponds to the JSON property `isPotentialRetry`
+        # @return [Boolean]
+        attr_accessor :is_potential_retry
+        alias_method :is_potential_retry?, :is_potential_retry
+      
+        # gdata
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # gdata
+        # Corresponds to the JSON property `md5Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :md5_hash
+      
+        # gdata
+        # Corresponds to the JSON property `mediaId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :media_id
+      
+        # gdata
+        # Corresponds to the JSON property `objectId`
+        # @return [Google::Apis::YoutubereportingV1::GdataObjectId]
+        attr_accessor :object_id_prop
+      
+        # gdata
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # gdata
+        # Corresponds to the JSON property `referenceType`
+        # @return [String]
+        attr_accessor :reference_type
+      
+        # gdata
+        # Corresponds to the JSON property `sha1Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha1_hash
+      
+        # gdata
+        # Corresponds to the JSON property `sha256Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha256_hash
+      
+        # gdata
+        # Corresponds to the JSON property `timestamp`
+        # @return [Fixnum]
+        attr_accessor :timestamp
+      
+        # gdata
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @bigstore_object_ref = args[:bigstore_object_ref] if args.key?(:bigstore_object_ref)
+          @blob_ref = args[:blob_ref] if args.key?(:blob_ref)
+          @blobstore2_info = args[:blobstore2_info] if args.key?(:blobstore2_info)
+          @composite_media = args[:composite_media] if args.key?(:composite_media)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @content_type_info = args[:content_type_info] if args.key?(:content_type_info)
+          @cosmo_binary_reference = args[:cosmo_binary_reference] if args.key?(:cosmo_binary_reference)
+          @crc32c_hash = args[:crc32c_hash] if args.key?(:crc32c_hash)
+          @diff_checksums_response = args[:diff_checksums_response] if args.key?(:diff_checksums_response)
+          @diff_download_response = args[:diff_download_response] if args.key?(:diff_download_response)
+          @diff_upload_request = args[:diff_upload_request] if args.key?(:diff_upload_request)
+          @diff_upload_response = args[:diff_upload_response] if args.key?(:diff_upload_response)
+          @diff_version_response = args[:diff_version_response] if args.key?(:diff_version_response)
+          @download_parameters = args[:download_parameters] if args.key?(:download_parameters)
+          @filename = args[:filename] if args.key?(:filename)
+          @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
+          @hash_verified = args[:hash_verified] if args.key?(:hash_verified)
+          @inline = args[:inline] if args.key?(:inline)
+          @is_potential_retry = args[:is_potential_retry] if args.key?(:is_potential_retry)
+          @length = args[:length] if args.key?(:length)
+          @md5_hash = args[:md5_hash] if args.key?(:md5_hash)
+          @media_id = args[:media_id] if args.key?(:media_id)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @path = args[:path] if args.key?(:path)
+          @reference_type = args[:reference_type] if args.key?(:reference_type)
+          @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
+          @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # gdata
+      class GdataObjectId
+        include Google::Apis::Core::Hashable
+      
+        # gdata
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # gdata
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # gdata
+        # Corresponds to the JSON property `objectName`
+        # @return [String]
+        attr_accessor :object_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @generation = args[:generation] if args.key?(:generation)
+          @object_name = args[:object_name] if args.key?(:object_name)
+        end
+      end
+      
       # A job creating reports of a specific type.
       class Job
         include Google::Apis::Core::Hashable
@@ -178,25 +754,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @reports = args[:reports] if args.key?(:reports)
-        end
-      end
-      
-      # Media resource.
-      class Media
-        include Google::Apis::Core::Hashable
-      
-        # Name of the media resource.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       

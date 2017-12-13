@@ -136,6 +136,8 @@ module Google
         # create the requested Photo.
         # * google.rpc.Code.NOT_FOUND if the requested
         # Photo does not exist.
+        # * google.rpc.Code.UNAVAILABLE if the requested
+        # Photo is still being indexed.
         # @param [String] photo_id
         #   Required. ID of the Photo.
         # @param [String] view
@@ -230,6 +232,8 @@ module Google
         # create the requested photo.
         # * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
         # * google.rpc.Code.NOT_FOUND if the requested photo does not exist.
+        # * google.rpc.Code.UNAVAILABLE if the requested
+        # Photo is still being indexed.
         # @param [String] id
         #   Required. A unique identifier for a photo.
         # @param [Google::Apis::StreetviewpublishV1::Photo] photo_object
@@ -435,6 +439,8 @@ module Google
         
         # Lists all the Photos that belong to
         # the user.
+        # <aside class="note"><b>Note:</b> Recently created photos that are still
+        # being indexed are not returned in the response.</aside>
         # @param [String] filter
         #   The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
         #   The only filter supported at the moment is `placeId`.
