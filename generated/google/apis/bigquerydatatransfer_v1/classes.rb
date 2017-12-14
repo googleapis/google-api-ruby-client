@@ -126,7 +126,7 @@ module Google
         attr_accessor :manual_runs_disabled
         alias_method :manual_runs_disabled?, :manual_runs_disabled
       
-        # The minimum interval between two consecutive scheduled runs.
+        # The minimum interval for scheduler to schedule runs.
         # Corresponds to the JSON property `minimumScheduleInterval`
         # @return [String]
         attr_accessor :minimum_schedule_interval
@@ -788,7 +788,7 @@ module Google
       end
       
       # Represents a data transfer run.
-      # Next id: 25
+      # Next id: 27
       class TransferRun
         include Google::Apis::Core::Hashable
       

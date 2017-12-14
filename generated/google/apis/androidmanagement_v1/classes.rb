@@ -2191,6 +2191,12 @@ module Google
       class StatusReportingSettings
         include Google::Apis::Core::Hashable
       
+        # Whether device settings reporting is enabled.
+        # Corresponds to the JSON property `deviceSettingsEnabled`
+        # @return [Boolean]
+        attr_accessor :device_settings_enabled
+        alias_method :device_settings_enabled?, :device_settings_enabled
+      
         # Whether displays reporting is enabled.
         # Corresponds to the JSON property `displayInfoEnabled`
         # @return [Boolean]
@@ -2233,6 +2239,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_settings_enabled = args[:device_settings_enabled] if args.key?(:device_settings_enabled)
           @display_info_enabled = args[:display_info_enabled] if args.key?(:display_info_enabled)
           @hardware_status_enabled = args[:hardware_status_enabled] if args.key?(:hardware_status_enabled)
           @memory_info_enabled = args[:memory_info_enabled] if args.key?(:memory_info_enabled)

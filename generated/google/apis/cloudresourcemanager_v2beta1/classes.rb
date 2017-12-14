@@ -202,7 +202,8 @@ module Google
       
         # Output only.  The lifecycle state of the folder.
         # Updates to the lifecycle_state must be performed via
-        # [DeleteFolder] and [UndeleteFolder].
+        # DeleteFolder and
+        # UndeleteFolder.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
@@ -214,7 +215,8 @@ module Google
         attr_accessor :name
       
         # The Folder’s parent's resource name.
-        # Updates to the folder's parent must be performed via [MoveFolders].
+        # Updates to the folder's parent must be performed via
+        # MoveFolder.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -583,13 +585,13 @@ module Google
         # lifecycleState and parent, where the operators `=`, `NOT`, `AND` and `OR`
         # can be used along with the suffix wildcard symbol `*`.
         # Some example queries are:
-        # |Query|Description|
-        # |------|-----------|
+        # |Query | Description|
+        # |----- | -----------|
         # |displayName=Test*|Folders whose display name starts with "Test".|
         # |lifecycleState=ACTIVE|Folders whose lifecycleState is ACTIVE.|
         # |parent=folders/123|Folders whose parent is "folders/123".|
-        # |parent=folders/123 AND lifecycleState=ACTIVE|Active folders whose
-        # parent is "folders/123".|
+        # |parent=folders/123 AND lifecycleState=ACTIVE|Active folders whose parent is "
+        # folders/123".|
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

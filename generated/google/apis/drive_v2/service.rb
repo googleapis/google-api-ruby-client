@@ -56,10 +56,10 @@ module Google
         
         # Gets the information about the current user along with Drive API settings
         # @param [Boolean] include_subscribed
-        #   When calculating the number of remaining change IDs, whether to include public
-        #   files the user has opened and shared files. When set to false, this counts
-        #   only change IDs for owned files and any shared or public files that the user
-        #   has explicitly added to a folder they own.
+        #   Whether to count changes outside the My Drive hierarchy. When set to false,
+        #   changes to files such as those in the Application Data folder or shared files
+        #   which have not been added to My Drive will be omitted from the
+        #   maxChangeIdCount.
         # @param [Fixnum] max_change_id_count
         #   Maximum number of remaining change IDs to count
         # @param [Fixnum] start_change_id
@@ -182,7 +182,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a specific change.
+        # Deprecated - Use changes.getStartPageToken and changes.list to retrieve recent
+        # changes.
         # @param [String] change_id
         #   The ID of the change.
         # @param [Boolean] supports_team_drives
@@ -272,9 +273,10 @@ module Google
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
         # @param [Boolean] include_subscribed
-        #   Whether to include public files the user has opened and shared files. When set
-        #   to false, the list only includes owned files plus any shared or public files
-        #   the user has explicitly added to a folder they own.
+        #   Whether to include changes outside the My Drive hierarchy in the result. When
+        #   set to false, changes to files such as those in the Application Data folder or
+        #   shared files which have not been added to My Drive will be omitted from the
+        #   result.
         # @param [Boolean] include_team_drive_items
         #   Whether Team Drive files or changes should be included in results.
         # @param [Fixnum] max_results
@@ -287,7 +289,7 @@ module Google
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
         # @param [Fixnum] start_change_id
-        #   Change ID to start listing changes from.
+        #   Deprecated - use pageToken instead.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [String] team_drive_id
@@ -346,9 +348,10 @@ module Google
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
         # @param [Boolean] include_subscribed
-        #   Whether to include public files the user has opened and shared files. When set
-        #   to false, the list only includes owned files plus any shared or public files
-        #   the user has explicitly added to a folder they own.
+        #   Whether to include changes outside the My Drive hierarchy in the result. When
+        #   set to false, changes to files such as those in the Application Data folder or
+        #   shared files which have not been added to My Drive will be omitted from the
+        #   result.
         # @param [Boolean] include_team_drive_items
         #   Whether Team Drive files or changes should be included in results.
         # @param [Fixnum] max_results
@@ -361,7 +364,7 @@ module Google
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
         # @param [Fixnum] start_change_id
-        #   Change ID to start listing changes from.
+        #   Deprecated - use pageToken instead.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [String] team_drive_id
@@ -1315,7 +1318,10 @@ module Google
         # @param [String] remove_parents
         #   Comma-separated list of parent IDs to remove.
         # @param [Boolean] set_modified_date
-        #   Whether to set the modified date with the supplied modified date.
+        #   Whether to set the modified date using the value supplied in the request body.
+        #   Setting this field to true is equivalent to modifiedDateBehavior=fromBodyOrNow,
+        #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
+        #   to the modified date set modifiedDateBehavior=noChange.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [String] timed_text_language
@@ -1517,7 +1523,10 @@ module Google
         # @param [String] remove_parents
         #   Comma-separated list of parent IDs to remove.
         # @param [Boolean] set_modified_date
-        #   Whether to set the modified date with the supplied modified date.
+        #   Whether to set the modified date using the value supplied in the request body.
+        #   Setting this field to true is equivalent to modifiedDateBehavior=fromBodyOrNow,
+        #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
+        #   to the modified date set modifiedDateBehavior=noChange.
         # @param [Boolean] supports_team_drives
         #   Whether the requesting application supports Team Drives.
         # @param [String] timed_text_language
@@ -1929,7 +1938,7 @@ module Google
         #   The ID for the file or Team Drive.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [String] email_message
-        #   A custom message to include in notification emails.
+        #   A plain text custom message to include in notification emails.
         # @param [Boolean] send_notification_emails
         #   Whether to send notification emails when sharing to users or groups. This
         #   parameter is ignored and an email is sent if the role is owner.

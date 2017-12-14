@@ -30,8 +30,8 @@ module Google
         # Required.
         # The task's current schedule time, available in the Task.schedule_time
         # returned in PullTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to check that
-        # the caller is acknowledging the correct task.
+        # CloudTasks.RenewLease. This restriction is to ensure that your task
+        # worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -465,8 +465,8 @@ module Google
         # Required.
         # The task's current schedule time, available in the Task.schedule_time
         # returned in PullTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to check that
-        # the caller is canceling the correct task.
+        # CloudTasks.RenewLease. This restriction is to ensure that your task
+        # worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -830,12 +830,12 @@ module Google
         # PullTasksResponse is leased -- that task will not be
         # returned in a different PullTasksResponse before the
         # Task.schedule_time.
-        # After the lease holder has successfully finished the work
-        # associated with the task, the lease holder must call
+        # After the pull worker has successfully finished the work
+        # associated with the task, the pull worker must call
         # CloudTasks.AcknowledgeTask. If the task is not acknowledged
         # via CloudTasks.AcknowledgeTask before the
         # Task.schedule_time then it will be returned in a later
-        # PullTasksResponse so that another lease holder can process
+        # PullTasksResponse so that another pull worker can process
         # it.
         # The maximum lease duration is 1 week.
         # `lease_duration` will be truncated to the nearest second.
@@ -1101,8 +1101,8 @@ module Google
         # Required.
         # The task's current schedule time, available in the Task.schedule_time
         # returned in PullTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to check that
-        # the caller is renewing the correct task.
+        # CloudTasks.RenewLease. This restriction is to ensure that your task
+        # worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -1457,20 +1457,20 @@ module Google
         attr_accessor :pull_message
       
         # The time when the task is scheduled to be attempted.
+        # For App Engine queues, this is when the task will be attempted or retried.
         # For pull queues, this is the time when the task is available to
         # be leased; if a task is currently leased, this is the time when
         # the current lease expires, that is, the time that the task was
         # leased plus the PullTasksRequest.lease_duration.
-        # For App Engine queues, this is when the task will be attempted or retried.
         # `schedule_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
       
         # Status of the task.
-        # Corresponds to the JSON property `taskStatus`
+        # Corresponds to the JSON property `status`
         # @return [Google::Apis::CloudtasksV2beta2::TaskStatus]
-        attr_accessor :task_status
+        attr_accessor :status
       
         # Output only. The view specifies which subset of the Task has
         # been returned.
@@ -1489,7 +1489,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pull_message = args[:pull_message] if args.key?(:pull_message)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
-          @task_status = args[:task_status] if args.key?(:task_status)
+          @status = args[:status] if args.key?(:status)
           @view = args[:view] if args.key?(:view)
         end
       end

@@ -1027,7 +1027,7 @@ module Google
         #   The ID of the file or Team Drive.
         # @param [Google::Apis::DriveV3::Permission] permission_object
         # @param [String] email_message
-        #   A custom message to include in the notification email.
+        #   A plain text custom message to include in the notification email.
         # @param [Boolean] send_notification_email
         #   Whether to send a notification email when sharing to users or groups. This
         #   defaults to true for users and groups, and is not allowed for other requests.

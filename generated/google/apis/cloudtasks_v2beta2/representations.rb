@@ -483,7 +483,7 @@ module Google
           property :pull_message, as: 'pullMessage', class: Google::Apis::CloudtasksV2beta2::PullMessage, decorator: Google::Apis::CloudtasksV2beta2::PullMessage::Representation
       
           property :schedule_time, as: 'scheduleTime'
-          property :task_status, as: 'taskStatus', class: Google::Apis::CloudtasksV2beta2::TaskStatus, decorator: Google::Apis::CloudtasksV2beta2::TaskStatus::Representation
+          property :status, as: 'status', class: Google::Apis::CloudtasksV2beta2::TaskStatus, decorator: Google::Apis::CloudtasksV2beta2::TaskStatus::Representation
       
           property :view, as: 'view'
         end

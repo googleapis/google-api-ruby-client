@@ -740,6 +740,7 @@ module Google
       class StatusReportingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_settings_enabled, as: 'deviceSettingsEnabled'
           property :display_info_enabled, as: 'displayInfoEnabled'
           property :hardware_status_enabled, as: 'hardwareStatusEnabled'
           property :memory_info_enabled, as: 'memoryInfoEnabled'

@@ -155,6 +155,12 @@ module Google
       class Calendar
         include Google::Apis::Core::Hashable
       
+        # Conferencing properties for this calendar, for example what types of
+        # conferences are allowed.
+        # Corresponds to the JSON property `conferenceProperties`
+        # @return [Google::Apis::CalendarV3::ConferenceProperties]
+        attr_accessor :conference_properties
+      
         # Description of the calendar. Optional.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -198,6 +204,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conference_properties = args[:conference_properties] if args.key?(:conference_properties)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
@@ -287,6 +294,12 @@ module Google
         # Corresponds to the JSON property `colorId`
         # @return [String]
         attr_accessor :color_id
+      
+        # Conferencing properties for this calendar, for example what types of
+        # conferences are allowed.
+        # Corresponds to the JSON property `conferenceProperties`
+        # @return [Google::Apis::CalendarV3::ConferenceProperties]
+        attr_accessor :conference_properties
       
         # The default reminders that the authenticated user has for this calendar.
         # Corresponds to the JSON property `defaultReminders`
@@ -383,6 +396,7 @@ module Google
           @access_role = args[:access_role] if args.key?(:access_role)
           @background_color = args[:background_color] if args.key?(:background_color)
           @color_id = args[:color_id] if args.key?(:color_id)
+          @conference_properties = args[:conference_properties] if args.key?(:conference_properties)
           @default_reminders = args[:default_reminders] if args.key?(:default_reminders)
           @deleted = args[:deleted] if args.key?(:deleted)
           @description = args[:description] if args.key?(:description)
@@ -600,6 +614,311 @@ module Google
       end
       
       # 
+      class ConferenceData
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the conference.
+        # Can be used by developers to keep track of conferences, should not be
+        # displayed to users.
+        # Values for solution types:
+        # - "eventHangout": unset
+        # - "eventNamedHangout": the name of the Hangout.
+        # - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
+        # Optional.
+        # Corresponds to the JSON property `conferenceId`
+        # @return [String]
+        attr_accessor :conference_id
+      
+        # The conference solution, such as Hangouts or Hangouts Meet.
+        # Unset for a conference with failed create request.
+        # Either conferenceSolution and at least one entryPoint, or createRequest is
+        # required.
+        # Corresponds to the JSON property `conferenceSolution`
+        # @return [Google::Apis::CalendarV3::ConferenceSolution]
+        attr_accessor :conference_solution
+      
+        # A request to generate a new conference and attach it to the event. The data is
+        # generated asynchronously. To see whether the data is present check the status
+        # field.
+        # Either conferenceSolution and at least one entryPoint, or createRequest is
+        # required.
+        # Corresponds to the JSON property `createRequest`
+        # @return [Google::Apis::CalendarV3::CreateConferenceRequest]
+        attr_accessor :create_request
+      
+        # Information about individual conference entry points, such as URLs or phone
+        # numbers.
+        # All of them must belong to the same conference.
+        # Either conferenceSolution and at least one entryPoint, or createRequest is
+        # required.
+        # Corresponds to the JSON property `entryPoints`
+        # @return [Array<Google::Apis::CalendarV3::EntryPoint>]
+        attr_accessor :entry_points
+      
+        # The signature of the conference data.
+        # Genereated on server side. Must be preserved while copying the conference data
+        # between events, otherwise the conference data will not be copied.
+        # Unset for a conference with failed create request.
+        # Optional for a conference with a pending create request.
+        # Corresponds to the JSON property `signature`
+        # @return [String]
+        attr_accessor :signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conference_id = args[:conference_id] if args.key?(:conference_id)
+          @conference_solution = args[:conference_solution] if args.key?(:conference_solution)
+          @create_request = args[:create_request] if args.key?(:create_request)
+          @entry_points = args[:entry_points] if args.key?(:entry_points)
+          @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # 
+      class ConferenceProperties
+        include Google::Apis::Core::Hashable
+      
+        # The types of conference solutions that are supported for this calendar.
+        # The possible values are:
+        # - "eventHangout"
+        # - "eventNamedHangout"
+        # - "hangoutsMeet"  Optional.
+        # Corresponds to the JSON property `allowedConferenceSolutionTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_conference_solution_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_conference_solution_types = args[:allowed_conference_solution_types] if args.key?(:allowed_conference_solution_types)
+        end
+      end
+      
+      # 
+      class ConferenceRequestStatus
+        include Google::Apis::Core::Hashable
+      
+        # The current status of the conference create request. Read-only.
+        # The possible values are:
+        # - "pending": the conference create request is still being processed.
+        # - "success": the conference create request succeeded, the entry points are
+        # populated.
+        # - "failure": the conference create request failed, there are no entry points.
+        # Corresponds to the JSON property `statusCode`
+        # @return [String]
+        attr_accessor :status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status_code = args[:status_code] if args.key?(:status_code)
+        end
+      end
+      
+      # 
+      class ConferenceSolution
+        include Google::Apis::Core::Hashable
+      
+        # The user-visible icon for this solution. Read-only.
+        # Corresponds to the JSON property `iconUri`
+        # @return [String]
+        attr_accessor :icon_uri
+      
+        # The key which can uniquely identify the conference solution for this event.
+        # Corresponds to the JSON property `key`
+        # @return [Google::Apis::CalendarV3::ConferenceSolutionKey]
+        attr_accessor :key
+      
+        # The user-visible name of this solution. Not localized. Read-only.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icon_uri = args[:icon_uri] if args.key?(:icon_uri)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class ConferenceSolutionKey
+        include Google::Apis::Core::Hashable
+      
+        # The conference solution type.
+        # If a client encounters an unfamiliar or empty type, it should still be able to
+        # display the entry points. However, it should disallow modifications.
+        # The possible values are:
+        # - "eventHangout"
+        # - "eventNamedHangout"
+        # - "hangoutsMeet"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class CreateConferenceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The conference solution, such as Hangouts or Hangouts Meet.
+        # Corresponds to the JSON property `conferenceSolutionKey`
+        # @return [Google::Apis::CalendarV3::ConferenceSolutionKey]
+        attr_accessor :conference_solution_key
+      
+        # The client-generated unique ID for this request.
+        # Clients should regenerate this ID for every new request. If an ID provided is
+        # the same as for the previous request, the request is ignored.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # The status of the conference create request.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CalendarV3::ConferenceRequestStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conference_solution_key = args[:conference_solution_key] if args.key?(:conference_solution_key)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class EntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # The Access Code to access the conference. The maximum length is 128 characters.
+        # When creating new conference data, populate only the subset of `meetingCode,
+        # accessCode, passcode, password, pin` fields that match the terminology that
+        # the conference provider uses. Only the populated fields should be displayed.
+        # Optional.
+        # Corresponds to the JSON property `accessCode`
+        # @return [String]
+        attr_accessor :access_code
+      
+        # The type of the conference entry point.
+        # Possible values are:
+        # - "video" - joining a conference over HTTP. A conference can have zero or one
+        # video entry point.
+        # - "phone" - joining a conference by dialing a phone number. A conference can
+        # have zero or more phone entry points.
+        # - "sip" - joining a conference over SIP. A conference can have zero or one sip
+        # entry point.
+        # - "more" - further conference joining instructions, for example additional
+        # phone numbers. A conference can have zero or one more entry point. A
+        # conference with only a more entry point is not a valid conference.
+        # Corresponds to the JSON property `entryPointType`
+        # @return [String]
+        attr_accessor :entry_point_type
+      
+        # The label for the URI.Visible to end users. Not localized. The maximum length
+        # is 512 characters.
+        # Examples:
+        # - for video: meet.google.com/aaa-bbbb-ccc
+        # - for phone: +1 123 268 2601
+        # - for sip: sip:12345678@myprovider.com
+        # - for more: should not be filled
+        # Optional.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The Meeting Code to access the conference. The maximum length is 128
+        # characters.
+        # When creating new conference data, populate only the subset of `meetingCode,
+        # accessCode, passcode, password, pin` fields that match the terminology that
+        # the conference provider uses. Only the populated fields should be displayed.
+        # Optional.
+        # Corresponds to the JSON property `meetingCode`
+        # @return [String]
+        attr_accessor :meeting_code
+      
+        # The Passcode to access the conference. The maximum length is 128 characters.
+        # When creating new conference data, populate only the subset of `meetingCode,
+        # accessCode, passcode, password, pin` fields that match the terminology that
+        # the conference provider uses. Only the populated fields should be displayed.
+        # Corresponds to the JSON property `passcode`
+        # @return [String]
+        attr_accessor :passcode
+      
+        # The Password to access the conference. The maximum length is 128 characters.
+        # When creating new conference data, populate only the subset of `meetingCode,
+        # accessCode, passcode, password, pin` fields that match the terminology that
+        # the conference provider uses. Only the populated fields should be displayed.
+        # Optional.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # The PIN to access the conference. The maximum length is 128 characters.
+        # When creating new conference data, populate only the subset of `meetingCode,
+        # accessCode, passcode, password, pin` fields that match the terminology that
+        # the conference provider uses. Only the populated fields should be displayed.
+        # Optional.
+        # Corresponds to the JSON property `pin`
+        # @return [String]
+        attr_accessor :pin
+      
+        # The "URI" of the entry point. The maximum length is 1300 characters.
+        # Format:
+        # - for video, http: or https: schema is required.
+        # - for phone, tel: schema is required. The URI should include the entire dial
+        # sequence (e.g., tel:+12345678900,,,123456789;1234).
+        # - for sip, sip: schema is required, e.g., sip:12345678@myprovider.com.
+        # - for more, http: or https: schema is required.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_code = args[:access_code] if args.key?(:access_code)
+          @entry_point_type = args[:entry_point_type] if args.key?(:entry_point_type)
+          @label = args[:label] if args.key?(:label)
+          @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
+          @passcode = args[:passcode] if args.key?(:passcode)
+          @password = args[:password] if args.key?(:password)
+          @pin = args[:pin] if args.key?(:pin)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
       class Error
         include Google::Apis::Core::Hashable
       
@@ -672,6 +991,12 @@ module Google
         # Corresponds to the JSON property `colorId`
         # @return [String]
         attr_accessor :color_id
+      
+        # The conference-related information, such as details of a Hangouts Meet
+        # conference. To create new conference details use the createRequest field.
+        # Corresponds to the JSON property `conferenceData`
+        # @return [Google::Apis::CalendarV3::ConferenceData]
+        attr_accessor :conference_data
       
         # Creation time of the event (as a RFC3339 timestamp). Read-only.
         # Corresponds to the JSON property `created`
@@ -906,6 +1231,7 @@ module Google
           @attendees = args[:attendees] if args.key?(:attendees)
           @attendees_omitted = args[:attendees_omitted] if args.key?(:attendees_omitted)
           @color_id = args[:color_id] if args.key?(:color_id)
+          @conference_data = args[:conference_data] if args.key?(:conference_data)
           @created = args[:created] if args.key?(:created)
           @creator = args[:creator] if args.key?(:creator)
           @description = args[:description] if args.key?(:description)

@@ -571,6 +571,7 @@ module Google
           property :deal_id, :numeric_string => true, as: 'dealId'
           property :environment, as: 'environment'
           property :format, as: 'format'
+          collection :formats, as: 'formats'
           property :name, as: 'name'
           collection :platforms, as: 'platforms'
           property :realtime_time_range, as: 'realtimeTimeRange', class: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange::Representation

@@ -871,10 +871,18 @@ module Google
         # @return [String]
         attr_accessor :environment
       
+        # DEPRECATED: use repeated formats field instead.
         # The format on which to filter; optional.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
+      
+        # The list of formats on which to filter; may be empty. The filters
+        # represented by multiple formats are ORed together (i.e. if non-empty,
+        # results must match any one of the formats).
+        # Corresponds to the JSON property `formats`
+        # @return [Array<String>]
+        attr_accessor :formats
       
         # A user-defined name of the filter set. Filter set names must be unique
         # globally and match one of the patterns:
@@ -939,6 +947,7 @@ module Google
           @deal_id = args[:deal_id] if args.key?(:deal_id)
           @environment = args[:environment] if args.key?(:environment)
           @format = args[:format] if args.key?(:format)
+          @formats = args[:formats] if args.key?(:formats)
           @name = args[:name] if args.key?(:name)
           @platforms = args[:platforms] if args.key?(:platforms)
           @realtime_time_range = args[:realtime_time_range] if args.key?(:realtime_time_range)

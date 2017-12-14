@@ -105,10 +105,12 @@ module Google
         end
         
         # Requests deletion of a Folder. The Folder is moved into the
-        # [DELETE_REQUESTED] state immediately, and is deleted approximately 30 days
-        # later. This method may only be called on an empty Folder in the [ACTIVE]
-        # state, where a Folder is empty if it doesn't contain any Folders or
-        # Projects in the [ACTIVE] state.
+        # DELETE_REQUESTED state
+        # immediately, and is deleted approximately 30 days later. This method may
+        # only be called on an empty Folder in the
+        # ACTIVE state, where a Folder is empty if
+        # it doesn't contain any Folders or Projects in the
+        # ACTIVE state.
         # The caller must have `resourcemanager.folders.delete` permission on the
         # identified folder.
         # @param [String] name
@@ -235,8 +237,9 @@ module Google
         #   Access to this method is controlled by checking the
         #   `resourcemanager.folders.list` permission on the `parent`.
         # @param [Boolean] show_deleted
-        #   Controls whether Folders in the [DELETE_REQUESTED` state should
-        #   be returned.
+        #   Controls whether Folders in the
+        #   DELETE_REQUESTED
+        #   state should be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -280,7 +283,8 @@ module Google
         # In addition, the Operation.metadata field will be populated with a
         # FolderOperation message as an aid to stateless clients.
         # Folder moves will be rejected if they violate either the naming, height
-        # or fanout constraints described in the [CreateFolder] documentation.
+        # or fanout constraints described in the
+        # CreateFolder documentation.
         # The caller must have `resourcemanager.folders.move` permission on the
         # folder's current and proposed new parent.
         # @param [String] name
@@ -318,9 +322,9 @@ module Google
         
         # Updates a Folder, changing its display_name.
         # Changes to the folder display_name will be rejected if they violate either
-        # the display_name formatting rules or naming constraints described in
-        # the [CreateFolder] documentation.
-        # + The Folder's display name must start and end with a letter or digit,
+        # the display_name formatting rules or naming constraints described in the
+        # CreateFolder documentation.
+        # The Folder's display name must start and end with a letter or digit,
         # may contain letters, digits, spaces, hyphens and underscores and can be
         # no longer than 30 characters. This is captured by the regular expression:
         # [\p`L`\p`N`](`\p`L`\p`N`_- ]`0,28`[\p`L`\p`N`])?.
@@ -476,11 +480,13 @@ module Google
         end
         
         # Cancels the deletion request for a Folder. This method may only be
-        # called on a Folder in the [DELETE_REQUESTED] state.
-        # In order to succeed, the Folder's parent must be in the [ACTIVE] state.
+        # called on a Folder in the
+        # DELETE_REQUESTED state.
+        # In order to succeed, the Folder's parent must be in the
+        # ACTIVE state.
         # In addition, reintroducing the folder into the tree must not violate
         # folder naming, height and fanout constraints described in the
-        # [CreateFolder] documentation.
+        # CreateFolder documentation.
         # The caller must have `resourcemanager.folders.undelete` permission on the
         # identified folder.
         # @param [String] name
