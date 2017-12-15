@@ -110,8 +110,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_trace_span(name, span_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2/{+name}/spans', options)
+        def create_project_trace_span_span(name, span_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2/{+name}', options)
           command.request_representation = Google::Apis::CloudtraceV2::Span::Representation
           command.request_object = span_object
           command.response_representation = Google::Apis::CloudtraceV2::Span::Representation

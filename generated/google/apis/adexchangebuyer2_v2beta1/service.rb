@@ -552,7 +552,7 @@ module Google
         #   not_checked`
         #   <li>attribute: `a numeric attribute from the list of attributes`
         #   <li>disapprovalReason: `a reason from
-        #   DisapprovalReason
+        #   DisapprovalReason`
         #   </ul>
         #   Example: 'accountId=12345 AND (dealsStatus:disapproved AND
         #   disapprovalReason:unacceptable_content) OR attribute:47'

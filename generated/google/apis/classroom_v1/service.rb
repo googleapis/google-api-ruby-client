@@ -1848,6 +1848,94 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a topic.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course or topic, or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course or topic does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        # @param [String] id
+        #   Identifier of the topic.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Topic] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Topic]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_topic(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/courses/{courseId}/topics/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Topic::Representation
+          command.response_class = Google::Apis::ClassroomV1::Topic
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of topics that the requester is permitted to view.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access
+        # the requested course or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return. Zero or unspecified indicates that the
+        #   server may assign a maximum.
+        #   The server may return fewer than the specified number of results.
+        # @param [String] page_token
+        #   nextPageToken
+        #   value returned from a previous
+        #   list call,
+        #   indicating that the subsequent page of results should be returned.
+        #   The list request
+        #   must be otherwise identical to the one that resulted in this token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListTopicResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListTopicResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_topics(course_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/courses/{courseId}/topics', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListTopicResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListTopicResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Accepts an invitation, removing it and adding the invited user to the
         # teachers or students (as appropriate) of the specified course. Only the
         # invited user may accept an invitation.

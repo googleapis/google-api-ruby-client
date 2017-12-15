@@ -739,6 +739,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The agent to import.
+        # Example for how to import an agent via the command line:
+        # curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \
+        # -H "Content-Type: application/json; charset=utf-8" \
+        # --data "`
+        # 'agentContent': '$(cat <agent zip file> | base64 -w 0)'
+        # `" \
+        # "https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
+        # import"
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2231,6 +2239,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The agent to restore.
+        # Example for how to restore an agent via the command line:
+        # curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \
+        # -H "Content-Type: application/json; charset=utf-8" \
+        # --data "`
+        # 'agentContent': '$(cat <agent zip file> | base64 -w 0)'
+        # `" \
+        # "https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
+        # restore"
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

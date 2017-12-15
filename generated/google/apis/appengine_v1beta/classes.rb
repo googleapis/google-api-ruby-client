@@ -312,7 +312,7 @@ module Google
       
         # Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/
         # autoscaler/) should wait between changes to the number of virtual machines.
-        # Only applicable for VM runtimes.
+        # Only applicable in the App Engine flexible environment.
         # Corresponds to the JSON property `coolDownPeriod`
         # @return [String]
         attr_accessor :cool_down_period
@@ -322,7 +322,8 @@ module Google
         # @return [Google::Apis::AppengineV1beta::CpuUtilization]
         attr_accessor :cpu_utilization
       
-        # Target scaling by disk usage. Only applicable for VM runtimes.
+        # Target scaling by disk usage. Only applicable in the App Engine flexible
+        # environment.
         # Corresponds to the JSON property `diskUtilization`
         # @return [Google::Apis::AppengineV1beta::DiskUtilization]
         attr_accessor :disk_utilization
@@ -366,12 +367,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_total_instances
       
-        # Target scaling by network usage. Only applicable for VM runtimes.
+        # Target scaling by network usage. Only applicable in the App Engine flexible
+        # environment.
         # Corresponds to the JSON property `networkUtilization`
         # @return [Google::Apis::AppengineV1beta::NetworkUtilization]
         attr_accessor :network_utilization
       
-        # Target scaling by request utilization. Only applicable for VM runtimes.
+        # Target scaling by request utilization. Only applicable in the App Engine
+        # flexible environment.
         # Corresponds to the JSON property `requestUtilization`
         # @return [Google::Apis::AppengineV1beta::RequestUtilization]
         attr_accessor :request_utilization
@@ -632,7 +635,8 @@ module Google
         end
       end
       
-      # Target scaling by disk usage. Only applicable for VM runtimes.
+      # Target scaling by disk usage. Only applicable in the App Engine flexible
+      # environment.
       class DiskUtilization
         include Google::Apis::Core::Hashable
       
@@ -1555,20 +1559,18 @@ module Google
         end
       end
       
-      # Extra network settings. Only applicable for App Engine flexible environment
-      # versions
+      # Extra network settings. Only applicable in the App Engine flexible environment.
       class Network
         include Google::Apis::Core::Hashable
       
         # List of ports, or port pairs, to forward from the virtual machine to the
-        # application container. Only applicable for App Engine flexible environment
-        # versions.
+        # application container. Only applicable in the App Engine flexible environment.
         # Corresponds to the JSON property `forwardedPorts`
         # @return [Array<String>]
         attr_accessor :forwarded_ports
       
-        # Tag to apply to the VM instance during creation. Only applicable for for App
-        # Engine flexible environment versions.
+        # Tag to apply to the VM instance during creation. for Only applicable in the
+        # App Engine flexible environment.
         # Corresponds to the JSON property `instanceTag`
         # @return [String]
         attr_accessor :instance_tag
@@ -1611,7 +1613,8 @@ module Google
         end
       end
       
-      # Target scaling by network usage. Only applicable for VM runtimes.
+      # Target scaling by network usage. Only applicable in the App Engine flexible
+      # environment.
       class NetworkUtilization
         include Google::Apis::Core::Hashable
       
@@ -2081,7 +2084,8 @@ module Google
         end
       end
       
-      # Target scaling by request utilization. Only applicable for VM runtimes.
+      # Target scaling by request utilization. Only applicable in the App Engine
+      # flexible environment.
       class RequestUtilization
         include Google::Apis::Core::Hashable
       
@@ -2646,7 +2650,7 @@ module Google
         attr_accessor :deployment
       
         # Total size in bytes of all the files that are included in this version and
-        # curerntly hosted on the App Engine disk.@OutputOnly
+        # currently hosted on the App Engine disk.@OutputOnly
         # Corresponds to the JSON property `diskUsageBytes`
         # @return [Fixnum]
         attr_accessor :disk_usage_bytes
@@ -2736,8 +2740,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Extra network settings. Only applicable for App Engine flexible environment
-        # versions
+        # Extra network settings. Only applicable in the App Engine flexible environment.
         # Corresponds to the JSON property `network`
         # @return [Google::Apis::AppengineV1beta::Network]
         attr_accessor :network
@@ -2837,7 +2840,8 @@ module Google
         end
       end
       
-      # Volumes mounted within the app container. Only applicable for VM runtimes.
+      # Volumes mounted within the app container. Only applicable in the App Engine
+      # flexible environment.
       class Volume
         include Google::Apis::Core::Hashable
       

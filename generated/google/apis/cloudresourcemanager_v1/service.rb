@@ -1080,7 +1080,11 @@ module Google
         
         # Lists Projects that are visible to the user and satisfy the
         # specified filter. This method returns Projects in an unspecified order.
-        # New Projects do not necessarily appear at the end of the list.
+        # This method is eventually consistent with project mutations; this means
+        # that a newly created project may not appear in the results or recent
+        # updates to an existing project may not be reflected in the results. To
+        # retrieve the latest state of a project, use the
+        # GetProject method.
         # @param [String] filter
         #   An expression for filtering the results of the request.  Filter rules are
         #   case insensitive. The fields eligible for filtering are:
@@ -1211,7 +1215,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy for the specified Project. Replaces
+        # Sets the IAM access control policy for the specified Project. Overwrites
         # any existing policy.
         # The following constraints apply when using `setIamPolicy()`:
         # + Project does not support `allUsers` and `allAuthenticatedUsers` as
@@ -1235,7 +1239,8 @@ module Google
         # projects that no longer have owners who have accepted the ToS. Edits to
         # IAM policies will be rejected until the lack of a ToS-accepting owner is
         # rectified.
-        # + Calling this method requires enabling the App Engine Admin API.
+        # + This method will replace the existing policy, and cannot be used to
+        # append additional IAM settings.
         # Note: Removing service accounts from policies or changing their roles
         # can render services completely inoperable. It is important to understand
         # how the service account is being used before removing or updating its

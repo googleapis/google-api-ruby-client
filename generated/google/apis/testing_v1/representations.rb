@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LauncherActivityIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Locale
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,18 @@ module Google
       end
       
       class RoboDirective
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoboStartingIntent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartActivityIntent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -354,6 +372,8 @@ module Google
           property :max_steps, as: 'maxSteps'
           collection :robo_directives, as: 'roboDirectives', class: Google::Apis::TestingV1::RoboDirective, decorator: Google::Apis::TestingV1::RoboDirective::Representation
       
+          collection :starting_intents, as: 'startingIntents', class: Google::Apis::TestingV1::RoboStartingIntent, decorator: Google::Apis::TestingV1::RoboStartingIntent::Representation
+      
         end
       end
       
@@ -488,6 +508,12 @@ module Google
         end
       end
       
+      class LauncherActivityIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Locale
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -553,6 +579,25 @@ module Google
           property :action_type, as: 'actionType'
           property :input_text, as: 'inputText'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class RoboStartingIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :launcher_activity, as: 'launcherActivity', class: Google::Apis::TestingV1::LauncherActivityIntent, decorator: Google::Apis::TestingV1::LauncherActivityIntent::Representation
+      
+          property :start_activity, as: 'startActivity', class: Google::Apis::TestingV1::StartActivityIntent, decorator: Google::Apis::TestingV1::StartActivityIntent::Representation
+      
+        end
+      end
+      
+      class StartActivityIntent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          collection :categories, as: 'categories'
+          property :uri, as: 'uri'
         end
       end
       

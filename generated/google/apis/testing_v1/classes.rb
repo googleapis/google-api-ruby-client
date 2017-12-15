@@ -429,6 +429,14 @@ module Google
         # @return [Array<Google::Apis::TestingV1::RoboDirective>]
         attr_accessor :robo_directives
       
+        # The intents used to launch the app for the crawl.
+        # If none are provided, then the main launcher activity is launched.
+        # If some are provided, then only those provided are launched (the main
+        # launcher activity must be provided explicitly).
+        # Corresponds to the JSON property `startingIntents`
+        # @return [Array<Google::Apis::TestingV1::RoboStartingIntent>]
+        attr_accessor :starting_intents
+      
         def initialize(**args)
            update!(**args)
         end
@@ -441,6 +449,7 @@ module Google
           @max_depth = args[:max_depth] if args.key?(:max_depth)
           @max_steps = args[:max_steps] if args.key?(:max_steps)
           @robo_directives = args[:robo_directives] if args.key?(:robo_directives)
+          @starting_intents = args[:starting_intents] if args.key?(:starting_intents)
         end
       end
       
@@ -886,6 +895,19 @@ module Google
         end
       end
       
+      # Specifies an intent that starts the main launcher activity.
+      class LauncherActivityIntent
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A location/region designation for language.
       class Locale
         include Google::Apis::Core::Hashable
@@ -1120,6 +1142,65 @@ module Google
           @action_type = args[:action_type] if args.key?(:action_type)
           @input_text = args[:input_text] if args.key?(:input_text)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Message for specifying the start activities to crawl
+      class RoboStartingIntent
+        include Google::Apis::Core::Hashable
+      
+        # Specifies an intent that starts the main launcher activity.
+        # Corresponds to the JSON property `launcherActivity`
+        # @return [Google::Apis::TestingV1::LauncherActivityIntent]
+        attr_accessor :launcher_activity
+      
+        # A starting intent specified by an action, uri, and categories.
+        # Corresponds to the JSON property `startActivity`
+        # @return [Google::Apis::TestingV1::StartActivityIntent]
+        attr_accessor :start_activity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launcher_activity = args[:launcher_activity] if args.key?(:launcher_activity)
+          @start_activity = args[:start_activity] if args.key?(:start_activity)
+        end
+      end
+      
+      # A starting intent specified by an action, uri, and categories.
+      class StartActivityIntent
+        include Google::Apis::Core::Hashable
+      
+        # Action name.
+        # Required for START_ACTIVITY.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Intent categories to set on the intent.
+        # Optional.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        # URI for the action.
+        # Optional.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @categories = args[:categories] if args.key?(:categories)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
