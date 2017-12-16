@@ -63,6 +63,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_time
       
+        # The type of purchase of the inapp product. This field is only set if this
+        # purchase was not made using the standard in-app billing flow. Possible values
+        # are:
+        # - Test (i.e. purchased from a license testing account)
+        # Corresponds to the JSON property `purchaseType`
+        # @return [Fixnum]
+        attr_accessor :purchase_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -75,6 +83,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time = args[:purchase_time] if args.key?(:purchase_time)
+          @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
         end
       end
       

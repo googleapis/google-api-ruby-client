@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LeaseTasksRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LeaseTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -302,6 +314,24 @@ module Google
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LeaseTasksRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :lease_duration, as: 'leaseDuration'
+          property :max_tasks, as: 'maxTasks'
+          property :response_view, as: 'responseView'
+        end
+      end
+      
+      class LeaseTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tasks, as: 'tasks', class: Google::Apis::CloudtasksV2beta2::Task, decorator: Google::Apis::CloudtasksV2beta2::Task::Representation
+      
         end
       end
       

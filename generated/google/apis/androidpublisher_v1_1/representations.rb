@@ -43,6 +43,7 @@ module Google
           property :order_id, as: 'orderId'
           property :purchase_state, as: 'purchaseState'
           property :purchase_time, :numeric_string => true, as: 'purchaseTime'
+          property :purchase_type, as: 'purchaseType'
         end
       end
       

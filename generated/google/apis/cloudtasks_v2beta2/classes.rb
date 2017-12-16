@@ -548,6 +548,99 @@ module Google
         end
       end
       
+      # Request message for pulling tasks using CloudTasks.LeaseTasks.
+      class LeaseTasksRequest
+        include Google::Apis::Core::Hashable
+      
+        # `filter` can be used to specify a subset of tasks to lease.
+        # When `filter` is set to `tag=<my-tag>` then the
+        # LeaseTasksResponse will contain only tasks whose
+        # LeaseMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
+        # 500 bytes.
+        # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
+        # the same tag as the task with the oldest schedule_time will be returned.
+        # Grammar Syntax:
+        # * `filter = "tag=" tag | "tag_function=" function`
+        # * `tag = string | bytes`
+        # * `function = "oldest_tag()"`
+        # The `oldest_tag()` function returns tasks which have the same tag as the
+        # oldest task (ordered by schedule time).
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The duration of the lease.
+        # Each task returned in the LeaseTasksResponse will have its
+        # Task.schedule_time set to the current time plus the
+        # `lease_duration`. A task that has been returned in a
+        # LeaseTasksResponse is leased -- that task will not be
+        # returned in a different LeaseTasksResponse before the
+        # Task.schedule_time.
+        # After the pull worker has successfully finished the work
+        # associated with the task, the pull worker must call
+        # CloudTasks.AcknowledgeTask. If the task is not acknowledged
+        # via CloudTasks.AcknowledgeTask before the
+        # Task.schedule_time then it will be returned in a later
+        # LeaseTasksResponse so that another pull worker can process
+        # it.
+        # The maximum lease duration is 1 week.
+        # `lease_duration` will be truncated to the nearest second.
+        # Corresponds to the JSON property `leaseDuration`
+        # @return [String]
+        attr_accessor :lease_duration
+      
+        # The maximum number of tasks to lease. The maximum that can be
+        # requested is 1000.
+        # Corresponds to the JSON property `maxTasks`
+        # @return [Fixnum]
+        attr_accessor :max_tasks
+      
+        # The response_view specifies which subset of the Task will be
+        # returned.
+        # By default response_view is Task.View.BASIC; not all
+        # information is retrieved by default because some data, such as
+        # payloads, might be desirable to return only when needed because
+        # of its large size or because of the sensitivity of data that it
+        # contains.
+        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
+        # [Google IAM](/iam/) permission on the
+        # Task.name resource.
+        # Corresponds to the JSON property `responseView`
+        # @return [String]
+        attr_accessor :response_view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @lease_duration = args[:lease_duration] if args.key?(:lease_duration)
+          @max_tasks = args[:max_tasks] if args.key?(:max_tasks)
+          @response_view = args[:response_view] if args.key?(:response_view)
+        end
+      end
+      
+      # Response message for leasing tasks using CloudTasks.LeaseTasks.
+      class LeaseTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # The leased tasks.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::CloudtasksV2beta2::Task>]
+        attr_accessor :tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable

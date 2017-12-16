@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoredResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Option
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +605,14 @@ module Google
         end
       end
       
+      class MonitoredResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :system_labels, as: 'systemLabels'
+          hash :user_labels, as: 'userLabels'
+        end
+      end
+      
       class Option
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -667,6 +681,8 @@ module Google
       class TimeSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::MonitoredResourceMetadata, decorator: Google::Apis::MonitoringV3::MonitoredResourceMetadata::Representation
+      
           property :metric, as: 'metric', class: Google::Apis::MonitoringV3::Metric, decorator: Google::Apis::MonitoringV3::Metric::Representation
       
           property :metric_kind, as: 'metricKind'

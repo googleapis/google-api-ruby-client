@@ -250,6 +250,127 @@ module Google
         end
       end
       
+      # JSON template for Building object in Directory API.
+      class Building
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for the building. The maximum length is 100 characters.
+        # Corresponds to the JSON property `buildingId`
+        # @return [String]
+        attr_accessor :building_id
+      
+        # The building name as seen by users in Calendar. Must be unique for the
+        # customer. For example, "NYC-CHEL". The maximum length is 100 characters.
+        # Corresponds to the JSON property `buildingName`
+        # @return [String]
+        attr_accessor :building_name
+      
+        # JSON template for coordinates of a building in Directory API.
+        # Corresponds to the JSON property `coordinates`
+        # @return [Google::Apis::AdminDirectoryV1::BuildingCoordinates]
+        attr_accessor :coordinates
+      
+        # A brief description of the building. For example, "Chelsea Market".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etags`
+        # @return [String]
+        attr_accessor :etags
+      
+        # The display names for all floors in this building. The floors are expected to
+        # be sorted in ascending order, from lowest floor to highest floor. For example,
+        # ["B2", "B1", "L", "1", "2", "2M", "3", "PH"] Must contain at least one entry.
+        # Corresponds to the JSON property `floorNames`
+        # @return [Array<String>]
+        attr_accessor :floor_names
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @building_id = args[:building_id] if args.key?(:building_id)
+          @building_name = args[:building_name] if args.key?(:building_name)
+          @coordinates = args[:coordinates] if args.key?(:coordinates)
+          @description = args[:description] if args.key?(:description)
+          @etags = args[:etags] if args.key?(:etags)
+          @floor_names = args[:floor_names] if args.key?(:floor_names)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # JSON template for coordinates of a building in Directory API.
+      class BuildingCoordinates
+        include Google::Apis::Core::Hashable
+      
+        # Latitude in decimal degrees.
+        # Corresponds to the JSON property `latitude`
+        # @return [Float]
+        attr_accessor :latitude
+      
+        # Longitude in decimal degrees.
+        # Corresponds to the JSON property `longitude`
+        # @return [Float]
+        attr_accessor :longitude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latitude = args[:latitude] if args.key?(:latitude)
+          @longitude = args[:longitude] if args.key?(:longitude)
+        end
+      end
+      
+      # JSON template for Building List Response object in Directory API.
+      class Buildings
+        include Google::Apis::Core::Hashable
+      
+        # The Buildings in this page of results.
+        # Corresponds to the JSON property `buildings`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Building>]
+        attr_accessor :buildings
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buildings = args[:buildings] if args.key?(:buildings)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # JSON template for Calendar Resource object in Directory API.
       class CalendarResource
         include Google::Apis::Core::Hashable
@@ -303,15 +424,13 @@ module Google
         # @return [String]
         attr_accessor :resource_category
       
-        # Description of the resource, visible only to admins. The brief description of
-        # the calendar resource.
+        # Description of the resource, visible only to admins.
         # Corresponds to the JSON property `resourceDescription`
         # @return [String]
         attr_accessor :resource_description
       
-        # The read-only email ID for the calendar resource. Generated as part of
-        # creating a new calendar resource. The read-only email for the calendar
-        # resource. Generated as part of creating a new calendar resource.
+        # The read-only email for the calendar resource. Generated as part of creating a
+        # new calendar resource.
         # Corresponds to the JSON property `resourceEmail`
         # @return [String]
         attr_accessor :resource_email
@@ -321,15 +440,12 @@ module Google
         # @return [String]
         attr_accessor :resource_id
       
-        # The name of the calendar resource. For example, "Training Room 1A". The name
-        # of the calendar resource. For example, Training Room 1A
+        # The name of the calendar resource. For example, "Training Room 1A".
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # The type of the calendar resource, intended for non-room resources. The type
-        # of the calendar resource. Used for grouping resources in the calendar user
-        # interface.
+        # The type of the calendar resource, intended for non-room resources.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -611,6 +727,11 @@ module Google
         # @return [DateTime]
         attr_accessor :support_end_date
       
+        # 
+        # Corresponds to the JSON property `tpmVersionInfo`
+        # @return [Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo]
+        attr_accessor :tpm_version_info
+      
         # Will Chromebook auto renew after support end date (Read-only)
         # Corresponds to the JSON property `willAutoRenew`
         # @return [Boolean]
@@ -648,6 +769,7 @@ module Google
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @status = args[:status] if args.key?(:status)
           @support_end_date = args[:support_end_date] if args.key?(:support_end_date)
+          @tpm_version_info = args[:tpm_version_info] if args.key?(:tpm_version_info)
           @will_auto_renew = args[:will_auto_renew] if args.key?(:will_auto_renew)
         end
         
@@ -735,6 +857,55 @@ module Google
           def update!(**args)
             @email = args[:email] if args.key?(:email)
             @type = args[:type] if args.key?(:type)
+          end
+        end
+        
+        # 
+        class TpmVersionInfo
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `family`
+          # @return [String]
+          attr_accessor :family
+        
+          # 
+          # Corresponds to the JSON property `firmwareVersion`
+          # @return [String]
+          attr_accessor :firmware_version
+        
+          # 
+          # Corresponds to the JSON property `manufacturer`
+          # @return [String]
+          attr_accessor :manufacturer
+        
+          # 
+          # Corresponds to the JSON property `specLevel`
+          # @return [String]
+          attr_accessor :spec_level
+        
+          # 
+          # Corresponds to the JSON property `tpmModel`
+          # @return [String]
+          attr_accessor :tpm_model
+        
+          # 
+          # Corresponds to the JSON property `vendorSpecific`
+          # @return [String]
+          attr_accessor :vendor_specific
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @family = args[:family] if args.key?(:family)
+            @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
+            @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
+            @spec_level = args[:spec_level] if args.key?(:spec_level)
+            @tpm_model = args[:tpm_model] if args.key?(:tpm_model)
+            @vendor_specific = args[:vendor_specific] if args.key?(:vendor_specific)
           end
         end
       end
@@ -1181,6 +1352,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @feature = args[:feature] if args.key?(:feature)
+        end
+      end
+      
+      # JSON request template for renaming a feature.
+      class FeatureRename
+        include Google::Apis::Core::Hashable
+      
+        # New name of the feature.
+        # Corresponds to the JSON property `newName`
+        # @return [String]
+        attr_accessor :new_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_name = args[:new_name] if args.key?(:new_name)
+        end
+      end
+      
+      # JSON template for Feature List Response object in Directory API.
+      class Features
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The Features in this page of results.
+        # Corresponds to the JSON property `features`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Feature>]
+        attr_accessor :features
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @features = args[:features] if args.key?(:features)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

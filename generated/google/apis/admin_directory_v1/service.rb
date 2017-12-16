@@ -2201,6 +2201,241 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a building.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] building_id
+        #   The ID of the building to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_resource_building(customer, building_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'customer/{customer}/resources/buildings/{buildingId}', options)
+          command.params['customer'] = customer unless customer.nil?
+          command.params['buildingId'] = building_id unless building_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a building.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] building_id
+        #   The unique ID of the building to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Building] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Building]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_resource_building(customer, building_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'customer/{customer}/resources/buildings/{buildingId}', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Building
+          command.params['customer'] = customer unless customer.nil?
+          command.params['buildingId'] = building_id unless building_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a building.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [Google::Apis::AdminDirectoryV1::Building] building_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Building] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Building]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_resource_building(customer, building_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'customer/{customer}/resources/buildings', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.request_object = building_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Building
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of buildings for an account.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Buildings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Buildings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_resource_buildings(customer, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'customer/{customer}/resources/buildings', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::Buildings::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Buildings
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a building. This method supports patch semantics.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] building_id
+        #   The ID of the building to update.
+        # @param [Google::Apis::AdminDirectoryV1::Building] building_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Building] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Building]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_resource_building(customer, building_id, building_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'customer/{customer}/resources/buildings/{buildingId}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.request_object = building_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Building
+          command.params['customer'] = customer unless customer.nil?
+          command.params['buildingId'] = building_id unless building_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a building.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] building_id
+        #   The ID of the building to update.
+        # @param [Google::Apis::AdminDirectoryV1::Building] building_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Building] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Building]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_resource_building(customer, building_id, building_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'customer/{customer}/resources/buildings/{buildingId}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.request_object = building_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Building::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Building
+          command.params['customer'] = customer unless customer.nil?
+          command.params['buildingId'] = building_id unless building_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
@@ -2322,8 +2557,21 @@ module Google
         #   you can also use the my_customer alias to represent your account's customer ID.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
+        # @param [String] order_by
+        #   Field(s) to sort results by in either ascending or descending order. Supported
+        #   fields include resourceId, resourceName, capacity, buildingId, and floorName.
+        #   If no order is specified, defaults to ascending. Should be of the form "field [
+        #   asc|desc], field [asc|desc], ...". For example buildingId, capacity desc would
+        #   return results sorted first by buildingId in ascending order then by capacity
+        #   in descending order.
         # @param [String] page_token
         #   Token to specify the next page in the list.
+        # @param [String] query
+        #   String query used to filter results. Should be of the form "field operator
+        #   value" where field can be any of supported fields and operators can be any of
+        #   supported operations. Operators include '=' for exact match and ':' for prefix
+        #   match where applicable. For prefix match, the value should always be followed
+        #   by a *.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2345,13 +2593,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_calendar_resources(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_calendar_resources(customer, max_results: nil, order_by: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/calendars', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResources::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResources
           command.params['customer'] = customer unless customer.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2442,6 +2692,284 @@ module Google
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
           command.params['customer'] = customer unless customer.nil?
           command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a feature.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] feature_key
+        #   The unique ID of the feature to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_resource_feature(customer, feature_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'customer/{customer}/resources/features/{featureKey}', options)
+          command.params['customer'] = customer unless customer.nil?
+          command.params['featureKey'] = feature_key unless feature_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a feature.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] feature_key
+        #   The unique ID of the feature to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Feature] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Feature]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_resource_feature(customer, feature_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'customer/{customer}/resources/features/{featureKey}', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Feature
+          command.params['customer'] = customer unless customer.nil?
+          command.params['featureKey'] = feature_key unless feature_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a feature.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Feature] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Feature]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_resource_feature(customer, feature_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'customer/{customer}/resources/features', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.request_object = feature_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Feature
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of features for an account.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] page_token
+        #   Token to specify the next page in the list.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Features] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Features]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_resource_features(customer, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'customer/{customer}/resources/features', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::Features::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Features
+          command.params['customer'] = customer unless customer.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a feature. This method supports patch semantics.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] feature_key
+        #   The unique ID of the feature to update.
+        # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Feature] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Feature]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_resource_feature(customer, feature_key, feature_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'customer/{customer}/resources/features/{featureKey}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.request_object = feature_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Feature
+          command.params['customer'] = customer unless customer.nil?
+          command.params['featureKey'] = feature_key unless feature_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Renames a feature.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] old_name
+        #   The unique ID of the feature to rename.
+        # @param [Google::Apis::AdminDirectoryV1::FeatureRename] feature_rename_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rename_resource_feature(customer, old_name, feature_rename_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'customer/{customer}/resources/features/{oldName}/rename', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::FeatureRename::Representation
+          command.request_object = feature_rename_object
+          command.params['customer'] = customer unless customer.nil?
+          command.params['oldName'] = old_name unless old_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a feature.
+        # @param [String] customer
+        #   The unique ID for the customer's G Suite account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] feature_key
+        #   The unique ID of the feature to update.
+        # @param [Google::Apis::AdminDirectoryV1::Feature] feature_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::Feature] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::Feature]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_resource_feature(customer, feature_key, feature_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'customer/{customer}/resources/features/{featureKey}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.request_object = feature_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::Feature::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::Feature
+          command.params['customer'] = customer unless customer.nil?
+          command.params['featureKey'] = feature_key unless feature_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

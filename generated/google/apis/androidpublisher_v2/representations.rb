@@ -659,6 +659,7 @@ module Google
           property :order_id, as: 'orderId'
           property :purchase_state, as: 'purchaseState'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
+          property :purchase_type, as: 'purchaseType'
         end
       end
       
@@ -747,10 +748,12 @@ module Google
           property :developer_payload, as: 'developerPayload'
           property :expiry_time_millis, :numeric_string => true, as: 'expiryTimeMillis'
           property :kind, as: 'kind'
+          property :linked_purchase_token, as: 'linkedPurchaseToken'
           property :order_id, as: 'orderId'
           property :payment_state, as: 'paymentState'
           property :price_amount_micros, :numeric_string => true, as: 'priceAmountMicros'
           property :price_currency_code, as: 'priceCurrencyCode'
+          property :purchase_type, as: 'purchaseType'
           property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
           property :user_cancellation_time_millis, :numeric_string => true, as: 'userCancellationTimeMillis'
         end

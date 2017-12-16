@@ -1107,6 +1107,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
+        # The type of purchase of the inapp product. This field is only set if this
+        # purchase was not made using the standard in-app billing flow. Possible values
+        # are:
+        # - Test (i.e. purchased from a license testing account)
+        # Corresponds to the JSON property `purchaseType`
+        # @return [Fixnum]
+        attr_accessor :purchase_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1119,6 +1127,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
+          @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
         end
       end
       
@@ -1356,6 +1365,7 @@ module Google
         # - Subscription was cancelled by the system, for example because of a billing
         # problem
         # - Subscription was replaced with a new subscription
+        # - Subscription was cancelled by the developer
         # Corresponds to the JSON property `cancelReason`
         # @return [Fixnum]
         attr_accessor :cancel_reason
@@ -1382,6 +1392,20 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The purchase token of the originating purchase if this subscription is one of
+        # the following:
+        # - Re-signup of a cancelled but non-lapsed subscription
+        # - Upgrade/downgrade from a previous subscription  For example, suppose a user
+        # originally signs up and you receive purchase token X, then the user cancels
+        # and goes through the resignup flow and you receive purchase token Y. If you
+        # call this API with purchase token Y, this field will be set to X. If you call
+        # this API with purchase token X, this field will not be set. If user upgrade
+        # his subscription after the first resignup. You receive purchase token Z. If
+        # you call this API with purchase token Z, this field will be set to Y.
+        # Corresponds to the JSON property `linkedPurchaseToken`
+        # @return [String]
+        attr_accessor :linked_purchase_token
       
         # The order id of the latest recurring order associated with the purchase of the
         # subscription.
@@ -1410,6 +1434,14 @@ module Google
         # @return [String]
         attr_accessor :price_currency_code
       
+        # The type of purchase of the subscription. This field is only set if this
+        # purchase was not made using the standard in-app billing flow. Possible values
+        # are:
+        # - Test (i.e. purchased from a license testing account)
+        # Corresponds to the JSON property `purchaseType`
+        # @return [Fixnum]
+        attr_accessor :purchase_type
+      
         # Time at which the subscription was granted, in milliseconds since the Epoch.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [Fixnum]
@@ -1433,10 +1465,12 @@ module Google
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
           @kind = args[:kind] if args.key?(:kind)
+          @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
           @order_id = args[:order_id] if args.key?(:order_id)
           @payment_state = args[:payment_state] if args.key?(:payment_state)
           @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
+          @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
           @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)
         end

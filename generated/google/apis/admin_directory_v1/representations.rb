@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Building
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BuildingCoordinates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Buildings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CalendarResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -86,6 +104,12 @@ module Google
         end
         
         class RecentUser
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class TpmVersionInfo
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +179,18 @@ module Google
       end
       
       class FeatureInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureRename
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Features
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -523,6 +559,39 @@ module Google
         end
       end
       
+      class Building
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :building_id, as: 'buildingId'
+          property :building_name, as: 'buildingName'
+          property :coordinates, as: 'coordinates', class: Google::Apis::AdminDirectoryV1::BuildingCoordinates, decorator: Google::Apis::AdminDirectoryV1::BuildingCoordinates::Representation
+      
+          property :description, as: 'description'
+          property :etags, as: 'etags'
+          collection :floor_names, as: 'floorNames'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class BuildingCoordinates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
+      class Buildings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buildings, as: 'buildings', class: Google::Apis::AdminDirectoryV1::Building, decorator: Google::Apis::AdminDirectoryV1::Building::Representation
+      
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class CalendarResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -605,6 +674,8 @@ module Google
           property :status, as: 'status'
           property :support_end_date, as: 'supportEndDate', type: DateTime
       
+          property :tpm_version_info, as: 'tpmVersionInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo::Representation
+      
           property :will_auto_renew, as: 'willAutoRenew'
         end
         
@@ -633,6 +704,18 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :email, as: 'email'
             property :type, as: 'type'
+          end
+        end
+        
+        class TpmVersionInfo
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :family, as: 'family'
+            property :firmware_version, as: 'firmwareVersion'
+            property :manufacturer, as: 'manufacturer'
+            property :spec_level, as: 'specLevel'
+            property :tpm_model, as: 'tpmModel'
+            property :vendor_specific, as: 'vendorSpecific'
           end
         end
       end
@@ -755,6 +838,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feature, as: 'feature', class: Google::Apis::AdminDirectoryV1::Feature, decorator: Google::Apis::AdminDirectoryV1::Feature::Representation
       
+        end
+      end
+      
+      class FeatureRename
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_name, as: 'newName'
+        end
+      end
+      
+      class Features
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :features, as: 'features', class: Google::Apis::AdminDirectoryV1::Feature, decorator: Google::Apis::AdminDirectoryV1::Feature::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

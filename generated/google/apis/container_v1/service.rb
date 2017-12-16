@@ -22,7 +22,7 @@ module Google
     module ContainerV1
       # Google Container Engine API
       #
-      # The Google Container Engine API is used for building and managing container
+      # The Google Kubernetes Engine API is used for building and managing container
       #  based applications, powered by the open source Kubernetes technology.
       #
       # @example
@@ -48,7 +48,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns configuration info about the Container Engine service.
+        # Returns configuration info about the Kubernetes Engine service.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).

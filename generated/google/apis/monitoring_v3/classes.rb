@@ -1334,6 +1334,44 @@ module Google
         end
       end
       
+      # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+      # contain the minimum set of information to uniquely identify a monitored
+      # resource instance. There is some other useful auxiliary metadata. Google
+      # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
+      # metadata for cloud resources of all types , and stores the metadata in this
+      # message.
+      class MonitoredResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Values for predefined system metadata labels. System labels are a
+        # kind of metadata extracted by Google Stackdriver. Stackdriver determines what
+        # system labels are useful and how to obtain their values. Some examples: "
+        # machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
+        # label values can be only strings, Boolean values, or a list of strings. For
+        # example:
+        # ` "name": "my-test-instance",
+        # "security_group": ["a", "b", "c"],
+        # "spot_instance": false `
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Hash<String,Object>]
+        attr_accessor :system_labels
+      
+        # Output only. A map of user-defined metadata labels.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
       # A protocol buffer option, which can be attached to a message, field,
       # enumeration, etc.
       class Option
@@ -1588,6 +1626,16 @@ module Google
       class TimeSeries
         include Google::Apis::Core::Hashable
       
+        # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+        # contain the minimum set of information to uniquely identify a monitored
+        # resource instance. There is some other useful auxiliary metadata. Google
+        # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
+        # metadata for cloud resources of all types , and stores the metadata in this
+        # message.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::MonitoringV3::MonitoredResourceMetadata]
+        attr_accessor :metadata
+      
         # A specific metric, identified by specifying values for all of the labels of a
         # MetricDescriptor.
         # Corresponds to the JSON property `metric`
@@ -1646,6 +1694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @metric = args[:metric] if args.key?(:metric)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @points = args[:points] if args.key?(:points)
@@ -1793,7 +1842,7 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::InternalChecker>]
         attr_accessor :internal_checkers
       
-        # Denotes whether this check is a check that egresses from InternalCheckers.
+        # Denotes whether this is a check that egresses from InternalCheckers.
         # Corresponds to the JSON property `isInternal`
         # @return [Boolean]
         attr_accessor :is_internal
