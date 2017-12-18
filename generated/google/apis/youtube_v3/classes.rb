@@ -6963,11 +6963,6 @@ module Google
       class Video
         include Google::Apis::Core::Hashable
       
-        # The access token to uniquely identify a revocable unlisted video.
-        # Corresponds to the JSON property `accessToken`
-        # @return [String]
-        attr_accessor :access_token
-      
         # Age restriction details related to a video. This data can only be retrieved by
         # the video owner.
         # Corresponds to the JSON property `ageGating`
@@ -7072,7 +7067,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access_token = args[:access_token] if args.key?(:access_token)
           @age_gating = args[:age_gating] if args.key?(:age_gating)
           @content_details = args[:content_details] if args.key?(:content_details)
           @etag = args[:etag] if args.key?(:etag)

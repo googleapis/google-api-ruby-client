@@ -2903,7 +2903,6 @@ module Google
       class Video
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :access_token, as: 'accessToken'
           property :age_gating, as: 'ageGating', class: Google::Apis::YoutubeV3::VideoAgeGating, decorator: Google::Apis::YoutubeV3::VideoAgeGating::Representation
       
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoContentDetails, decorator: Google::Apis::YoutubeV3::VideoContentDetails::Representation
