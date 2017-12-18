@@ -1,3 +1,44 @@
+# 0.18.1
+* Backwards compatible changes:
+  * Added `cloudshell_v1`
+  * Added `cloudshell_v1alpha1`
+  * Added `digitalassetlinks_v1`
+  * Added `dlp_v2beta2`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `admin_directory_v1`
+  * Updated `androidmanagement_v1`
+  * Updated `androidpublisher_v1_1`
+  * Updated `androidpublisher_v2`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `calendar_v3`
+  * Updated `classroom_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `cloudtrace_v2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `content_v2`
+  * Updated `content_v2sandbox`
+  * Updated `dialogflow_v2beta1`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `monitoring_v3`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `slides_v1`
+  * Updated `speech_v1`
+  * Updated `speech_v1beta1`
+  * Updated `streetviewpublish_v1`
+  * Updated `testing_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `youtube_v3`
+  * Updated `youtubereporting_v1`
+
 # 0.18.0
 * Breaking changes:
   * Deleted `dfareporting_v2_7`
