@@ -1049,6 +1049,11 @@ module Google
       class BasicChartSeries
         include Google::Apis::Core::Hashable
       
+        # Properties that describe the style of a line.
+        # Corresponds to the JSON property `lineStyle`
+        # @return [Google::Apis::SheetsV4::LineStyle]
+        attr_accessor :line_style
+      
         # The data included in a domain or series.
         # Corresponds to the JSON property `series`
         # @return [Google::Apis::SheetsV4::ChartData]
@@ -1081,6 +1086,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @line_style = args[:line_style] if args.key?(:line_style)
           @series = args[:series] if args.key?(:series)
           @target_axis = args[:target_axis] if args.key?(:target_axis)
           @type = args[:type] if args.key?(:type)
@@ -2767,6 +2773,11 @@ module Google
         # @return [Google::Apis::SheetsV4::TextPosition]
         attr_accessor :title_text_position
       
+        # A waterfall chart.
+        # Corresponds to the JSON property `waterfallChart`
+        # @return [Google::Apis::SheetsV4::WaterfallChartSpec]
+        attr_accessor :waterfall_chart
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2790,6 +2801,7 @@ module Google
           @title = args[:title] if args.key?(:title)
           @title_text_format = args[:title_text_format] if args.key?(:title_text_format)
           @title_text_position = args[:title_text_position] if args.key?(:title_text_position)
+          @waterfall_chart = args[:waterfall_chart] if args.key?(:waterfall_chart)
         end
       end
       
@@ -5146,6 +5158,31 @@ module Google
         def update!(**args)
           @convergence_threshold = args[:convergence_threshold] if args.key?(:convergence_threshold)
           @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
+        end
+      end
+      
+      # Properties that describe the style of a line.
+      class LineStyle
+        include Google::Apis::Core::Hashable
+      
+        # The dash type of the line.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The thickness of the line, in px.
+        # Corresponds to the JSON property `width`
+        # @return [Fixnum]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @width = args[:width] if args.key?(:width)
         end
       end
       
@@ -8396,6 +8433,252 @@ module Google
           @major_dimension = args[:major_dimension] if args.key?(:major_dimension)
           @range = args[:range] if args.key?(:range)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Styles for a waterfall chart column.
+      class WaterfallChartColumnStyle
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :color
+      
+        # The label of the column's legend.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color = args[:color] if args.key?(:color)
+          @label = args[:label] if args.key?(:label)
+        end
+      end
+      
+      # The domain of a waterfall chart.
+      class WaterfallChartDomain
+        include Google::Apis::Core::Hashable
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :data
+      
+        # True to reverse the order of the domain values (horizontal axis).
+        # Corresponds to the JSON property `reversed`
+        # @return [Boolean]
+        attr_accessor :reversed
+        alias_method :reversed?, :reversed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @reversed = args[:reversed] if args.key?(:reversed)
+        end
+      end
+      
+      # A single series of data for a waterfall chart.
+      class WaterfallChartSeries
+        include Google::Apis::Core::Hashable
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :data
+      
+        # True to hide the subtotal column from the end of the series. By default,
+        # a subtotal column will appear at the end of each series. Setting this
+        # field to true will hide that subtotal column for this series.
+        # Corresponds to the JSON property `hideTrailingSubtotal`
+        # @return [Boolean]
+        attr_accessor :hide_trailing_subtotal
+        alias_method :hide_trailing_subtotal?, :hide_trailing_subtotal
+      
+        # Styles for a waterfall chart column.
+        # Corresponds to the JSON property `negativeColumnsStyle`
+        # @return [Google::Apis::SheetsV4::WaterfallChartColumnStyle]
+        attr_accessor :negative_columns_style
+      
+        # Styles for a waterfall chart column.
+        # Corresponds to the JSON property `positiveColumnsStyle`
+        # @return [Google::Apis::SheetsV4::WaterfallChartColumnStyle]
+        attr_accessor :positive_columns_style
+      
+        # Styles for a waterfall chart column.
+        # Corresponds to the JSON property `subtotalColumnsStyle`
+        # @return [Google::Apis::SheetsV4::WaterfallChartColumnStyle]
+        attr_accessor :subtotal_columns_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @hide_trailing_subtotal = args[:hide_trailing_subtotal] if args.key?(:hide_trailing_subtotal)
+          @negative_columns_style = args[:negative_columns_style] if args.key?(:negative_columns_style)
+          @positive_columns_style = args[:positive_columns_style] if args.key?(:positive_columns_style)
+          @subtotal_columns_style = args[:subtotal_columns_style] if args.key?(:subtotal_columns_style)
+        end
+      end
+      
+      # A waterfall chart.
+      class WaterfallChartSpec
+        include Google::Apis::Core::Hashable
+      
+        # Properties that describe the style of a line.
+        # Corresponds to the JSON property `connectorLineStyle`
+        # @return [Google::Apis::SheetsV4::LineStyle]
+        attr_accessor :connector_line_style
+      
+        # The domain of a waterfall chart.
+        # Corresponds to the JSON property `domain`
+        # @return [Google::Apis::SheetsV4::WaterfallChartDomain]
+        attr_accessor :domain
+      
+        # True to interpret the first value as a total.
+        # Corresponds to the JSON property `firstValueIsTotal`
+        # @return [Boolean]
+        attr_accessor :first_value_is_total
+        alias_method :first_value_is_total?, :first_value_is_total
+      
+        # True to hide connector lines between columns.
+        # Corresponds to the JSON property `hideConnectorLines`
+        # @return [Boolean]
+        attr_accessor :hide_connector_lines
+        alias_method :hide_connector_lines?, :hide_connector_lines
+      
+        # The data this waterfall chart is visualizing.
+        # Corresponds to the JSON property `series`
+        # @return [Array<Google::Apis::SheetsV4::WaterfallChartSeries>]
+        attr_accessor :series
+      
+        # The stacked type.
+        # Corresponds to the JSON property `stackedType`
+        # @return [String]
+        attr_accessor :stacked_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_line_style = args[:connector_line_style] if args.key?(:connector_line_style)
+          @domain = args[:domain] if args.key?(:domain)
+          @first_value_is_total = args[:first_value_is_total] if args.key?(:first_value_is_total)
+          @hide_connector_lines = args[:hide_connector_lines] if args.key?(:hide_connector_lines)
+          @series = args[:series] if args.key?(:series)
+          @stacked_type = args[:stacked_type] if args.key?(:stacked_type)
         end
       end
     end

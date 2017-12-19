@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisplayProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,8 @@ module Google
           property :applied_policy_name, as: 'appliedPolicyName'
           property :applied_policy_version, :numeric_string => true, as: 'appliedPolicyVersion'
           property :applied_state, as: 'appliedState'
+          property :device_settings, as: 'deviceSettings', class: Google::Apis::AndroidmanagementV1::DeviceSettings, decorator: Google::Apis::AndroidmanagementV1::DeviceSettings::Representation
+      
           property :disabled_reason, as: 'disabledReason', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           collection :displays, as: 'displays', class: Google::Apis::AndroidmanagementV1::DisplayProp, decorator: Google::Apis::AndroidmanagementV1::DisplayProp::Representation
@@ -372,6 +380,18 @@ module Google
       
           property :state, as: 'state'
           property :user_name, as: 'userName'
+        end
+      end
+      
+      class DeviceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adb_enabled, as: 'adbEnabled'
+          property :development_settings_enabled, as: 'developmentSettingsEnabled'
+          property :encryption_status, as: 'encryptionStatus'
+          property :is_device_secure, as: 'isDeviceSecure'
+          property :is_encrypted, as: 'isEncrypted'
+          property :unknown_sources_enabled, as: 'unknownSourcesEnabled'
         end
       end
       
@@ -721,6 +741,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_build_number, as: 'androidBuildNumber'
           property :android_build_time, as: 'androidBuildTime'
+          property :android_device_policy_version_code, as: 'androidDevicePolicyVersionCode'
+          property :android_device_policy_version_name, as: 'androidDevicePolicyVersionName'
           property :android_version, as: 'androidVersion'
           property :bootloader_version, as: 'bootloaderVersion'
           property :device_kernel_version, as: 'deviceKernelVersion'

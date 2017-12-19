@@ -2313,7 +2313,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resizes the specified persistent disk.
+        # Resizes the specified persistent disk. You can only increase the size of the
+        # disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9273,7 +9274,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches the specified network with the data included in the request.
+        # Patches the specified network with the data included in the request. Only the
+        # following fields can be modified: routingConfig.routingMode.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network

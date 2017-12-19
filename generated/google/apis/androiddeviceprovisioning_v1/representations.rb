@@ -46,7 +46,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Configuration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerApplyConfigurationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerListConfigurationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerListCustomersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerListDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerListDpcsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerRemoveConfigurationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerUnclaimDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DevicesLongRunningOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +137,12 @@ module Google
       end
       
       class DevicesLongRunningOperationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Dpc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,10 +287,85 @@ module Google
         end
       end
       
+      class Configuration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :company_name, as: 'companyName'
+          property :configuration_id, :numeric_string => true, as: 'configurationId'
+          property :configuration_name, as: 'configurationName'
+          property :contact_email, as: 'contactEmail'
+          property :contact_phone, as: 'contactPhone'
+          property :custom_message, as: 'customMessage'
+          property :dpc_extras, as: 'dpcExtras'
+          property :dpc_resource_path, as: 'dpcResourcePath'
+          property :is_default, as: 'isDefault'
+          property :name, as: 'name'
+        end
+      end
+      
       class CreateCustomerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer, as: 'customer', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
+      
+        end
+      end
+      
+      class CustomerApplyConfigurationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :configuration, as: 'configuration'
+          property :device, as: 'device', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceReference, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceReference::Representation
+      
+        end
+      end
+      
+      class CustomerListConfigurationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configurations, as: 'configurations', class: Google::Apis::AndroiddeviceprovisioningV1::Configuration, decorator: Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
+      
+        end
+      end
+      
+      class CustomerListCustomersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :customers, as: 'customers', class: Google::Apis::AndroiddeviceprovisioningV1::Company, decorator: Google::Apis::AndroiddeviceprovisioningV1::Company::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class CustomerListDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::AndroiddeviceprovisioningV1::Device, decorator: Google::Apis::AndroiddeviceprovisioningV1::Device::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class CustomerListDpcsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dpcs, as: 'dpcs', class: Google::Apis::AndroiddeviceprovisioningV1::Dpc, decorator: Google::Apis::AndroiddeviceprovisioningV1::Dpc::Representation
+      
+        end
+      end
+      
+      class CustomerRemoveConfigurationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceReference, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceReference::Representation
+      
+        end
+      end
+      
+      class CustomerUnclaimDeviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceReference, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceReference::Representation
       
         end
       end
@@ -275,6 +410,15 @@ module Google
         end
       end
       
+      class DeviceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, :numeric_string => true, as: 'deviceId'
+          property :device_identifier, as: 'deviceIdentifier', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier::Representation
+      
+        end
+      end
+      
       class DevicesLongRunningOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -290,6 +434,15 @@ module Google
           collection :per_device_status, as: 'perDeviceStatus', class: Google::Apis::AndroiddeviceprovisioningV1::OperationPerDevice, decorator: Google::Apis::AndroiddeviceprovisioningV1::OperationPerDevice::Representation
       
           property :success_count, as: 'successCount'
+        end
+      end
+      
+      class Dpc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dpc_name, as: 'dpcName'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
         end
       end
       

@@ -49,7 +49,8 @@ module Google
         end
       end
       
-      # An Accelerator Type resource.
+      # An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (==
+      # resource_for v1.acceleratorTypes ==)
       class AcceleratorType
         include Google::Apis::Core::Hashable
       
@@ -491,7 +492,9 @@ module Google
         end
       end
       
-      # A reserved address resource.
+      # A reserved address resource. (== resource_for beta.addresses ==) (==
+      # resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (==
+      # resource_for v1.globalAddresses ==)
       class Address
         include Google::Apis::Core::Hashable
       
@@ -564,9 +567,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # For external addresses, this field should not be used.
         # The URL of the subnetwork in which to reserve the address. If an IP address is
-        # specified, it must be within the subnetwork's IP range.
+        # specified, it must be within the subnetwork's IP range. This field can only be
+        # used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1147,7 +1150,9 @@ module Google
       # Represents an Autoscaler resource. Autoscalers allow you to automatically
       # scale virtual machine instances in managed instance groups according to an
       # autoscaling policy that you define. For more information, read Autoscaling
-      # Groups of Instances.
+      # Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.
+      # autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for
+      # v1.regionAutoscalers ==)
       class Autoscaler
         include Google::Apis::Core::Hashable
       
@@ -2029,7 +2034,8 @@ module Google
       end
       
       # A BackendService resource. This resource defines a group of backend virtual
-      # machines and their serving capacity.
+      # machines and their serving capacity. (== resource_for v1.backendService ==) (==
+      # resource_for beta.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -2708,7 +2714,8 @@ module Google
       # Committed use discounts are subject to Google Cloud Platform's Service
       # Specific Terms. By purchasing a committed use discount, you agree to these
       # terms. Committed use discounts will not renew, so you must purchase a new
-      # commitment to continue receiving discounts.
+      # commitment to continue receiving discounts. (== resource_for beta.commitments =
+      # =) (== resource_for v1.commitments ==)
       class Commitment
         include Google::Apis::Core::Hashable
       
@@ -3266,7 +3273,7 @@ module Google
         end
       end
       
-      # A Disk resource.
+      # A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)
       class Disk
         include Google::Apis::Core::Hashable
       
@@ -3740,7 +3747,8 @@ module Google
         end
       end
       
-      # A DiskType resource.
+      # A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.
+      # diskTypes ==)
       class DiskType
         include Google::Apis::Core::Hashable
       
@@ -4604,7 +4612,11 @@ module Google
       
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
-      # IPAddress, IPProtocol, ports] tuple.
+      # IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==)
+      # (== resource_for v1.forwardingRules ==) (== resource_for beta.
+      # globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (==
+      # resource_for beta.regionForwardingRules ==) (== resource_for v1.
+      # regionForwardingRules ==)
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -5157,9 +5169,8 @@ module Google
       class GuestOsFeature
         include Google::Apis::Core::Hashable
       
-        # The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
-        # supported. For newer Windows images, the server might also populate this
-        # property with the value WINDOWS to indicate that this is a Windows image.
+        # The ID of a supported feature. Read  Enabling guest operating system features
+        # to see a list of available options.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6048,7 +6059,8 @@ module Google
         end
       end
       
-      # An Image resource.
+      # An Image resource. (== resource_for beta.images ==) (== resource_for v1.images
+      # ==)
       class Image
         include Google::Apis::Core::Hashable
       
@@ -6086,14 +6098,9 @@ module Google
         # @return [String]
         attr_accessor :family
       
-        # A list of features to enable on the guest OS. Applicable for bootable images
-        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
-        # which allows each virtual CPU to have its own queue. For Windows images, you
-        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
-        # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
-        # VIRTIO_SCSI_MULTIQUEUE.
-        # For newer Windows images, the server might also populate this property with
-        # the value WINDOWS to indicate that this is a Windows image.
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeV1::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -6399,7 +6406,8 @@ module Google
         end
       end
       
-      # An Instance resource.
+      # An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.
+      # instances ==)
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -6717,7 +6725,9 @@ module Google
         end
       end
       
-      # 
+      # InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.
+      # instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (==
+      # resource_for v1.regionInstanceGroups ==)
       class InstanceGroup
         include Google::Apis::Core::Hashable
       
@@ -7058,7 +7068,10 @@ module Google
         end
       end
       
-      # An Instance Group Manager resource.
+      # An Instance Group Manager resource. (== resource_for beta.
+      # instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (==
+      # resource_for beta.regionInstanceGroupManagers ==) (== resource_for v1.
+      # regionInstanceGroupManagers ==)
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -8300,7 +8313,8 @@ module Google
         end
       end
       
-      # An Instance Template resource.
+      # An Instance Template resource. (== resource_for beta.instanceTemplates ==) (==
+      # resource_for v1.instanceTemplates ==)
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -8742,7 +8756,8 @@ module Google
       
       # Represents an Interconnects resource. The Interconnects resource is a
       # dedicated connection between Google's network and your on-premises network.
-      # For more information, see the  Dedicated overview page.
+      # For more information, see the  Dedicated overview page. (== resource_for v1.
+      # interconnects ==) (== resource_for beta.interconnects ==)
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -8910,7 +8925,8 @@ module Google
       end
       
       # Represents an InterconnectAttachment (VLAN attachment) resource. For more
-      # information, see  Creating VLAN Attachments.
+      # information, see  Creating VLAN Attachments. (== resource_for beta.
+      # interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -9890,7 +9906,8 @@ module Google
         end
       end
       
-      # A Machine Type resource.
+      # A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for
+      # beta.machineTypes ==)
       class MachineType
         include Google::Apis::Core::Hashable
       
@@ -10577,7 +10594,8 @@ module Google
       end
       
       # Represents a Network resource. Read Networks and Firewalls for more
-      # information.
+      # information. (== resource_for v1.networks ==) (== resource_for beta.networks ==
+      # )
       class Network
         include Google::Apis::Core::Hashable
       
@@ -11014,7 +11032,11 @@ module Google
         end
       end
       
-      # An Operation resource, used to manage asynchronous API requests.
+      # An Operation resource, used to manage asynchronous API requests. (==
+      # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+      # (== resource_for v1.regionOperations ==) (== resource_for beta.
+      # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+      # beta.zoneOperations ==)
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -11709,7 +11731,8 @@ module Google
       end
       
       # A Project resource. Projects can only be created in the Google Cloud Platform
-      # Console. Unless marked otherwise, values can only be modified in the console.
+      # Console. Unless marked otherwise, values can only be modified in the console. (
+      # == resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       
@@ -11926,7 +11949,8 @@ module Google
         end
       end
       
-      # Region resource.
+      # Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions
+      # ==)
       class Region
         include Google::Apis::Core::Hashable
       
@@ -12838,7 +12862,7 @@ module Google
       # either to another instance destination, an instance gateway, or a Google
       # Compute Engine-operated gateway.
       # Packets that do not match any route in the sending instance's routing table
-      # are dropped.
+      # are dropped. (== resource_for beta.routes ==) (== resource_for v1.routes ==)
       class Route
         include Google::Apis::Core::Hashable
       
@@ -14008,7 +14032,8 @@ module Google
         end
       end
       
-      # A persistent disk snapshot resource.
+      # A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (==
+      # resource_for v1.snapshots ==)
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -14266,7 +14291,8 @@ module Google
       
       # An SslCertificate resource. This resource provides a mechanism to upload an
       # SSL key and certificate to the load balancer to serve secure connections from
-      # the user.
+      # the user. (== resource_for beta.sslCertificates ==) (== resource_for v1.
+      # sslCertificates ==)
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -14455,7 +14481,8 @@ module Google
         end
       end
       
-      # A Subnetwork resource.
+      # A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for
+      # v1.subnetworks ==)
       class Subnetwork
         include Google::Apis::Core::Hashable
       
@@ -15043,7 +15070,9 @@ module Google
         end
       end
       
-      # A TargetHttpProxy resource. This resource defines an HTTP proxy.
+      # A TargetHttpProxy resource. This resource defines an HTTP proxy. (==
+      # resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies =
+      # =)
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -15245,7 +15274,9 @@ module Google
         end
       end
       
-      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
+      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (==
+      # resource_for beta.targetHttpsProxies ==) (== resource_for v1.
+      # targetHttpsProxies ==)
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -15440,7 +15471,8 @@ module Google
       end
       
       # A TargetInstance resource. This resource defines an endpoint instance that
-      # terminates traffic of certain protocols.
+      # terminates traffic of certain protocols. (== resource_for beta.targetInstances
+      # ==) (== resource_for v1.targetInstances ==)
       class TargetInstance
         include Google::Apis::Core::Hashable
       
@@ -15849,7 +15881,8 @@ module Google
       end
       
       # A TargetPool resource. This resource defines a pool of instances, an
-      # associated HttpHealthCheck resource, and the fallback target pool.
+      # associated HttpHealthCheck resource, and the fallback target pool. (==
+      # resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -16488,7 +16521,8 @@ module Google
         end
       end
       
-      # A TargetSslProxy resource. This resource defines an SSL proxy.
+      # A TargetSslProxy resource. This resource defines an SSL proxy. (==
+      # resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)
       class TargetSslProxy
         include Google::Apis::Core::Hashable
       
@@ -16721,7 +16755,8 @@ module Google
         end
       end
       
-      # A TargetTcpProxy resource. This resource defines a TCP proxy.
+      # A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for
+      # beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies ==)
       class TargetTcpProxy
         include Google::Apis::Core::Hashable
       
@@ -16908,7 +16943,8 @@ module Google
         end
       end
       
-      # Represents a Target VPN gateway resource.
+      # Represents a Target VPN gateway resource. (== resource_for beta.
+      # targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
       class TargetVpnGateway
         include Google::Apis::Core::Hashable
       
@@ -17744,7 +17780,8 @@ module Google
         end
       end
       
-      # 
+      # VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.
+      # vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
@@ -18342,7 +18379,7 @@ module Google
         end
       end
       
-      # A Zone resource.
+      # A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)
       class Zone
         include Google::Apis::Core::Hashable
       

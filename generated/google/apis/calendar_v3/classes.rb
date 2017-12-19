@@ -764,9 +764,10 @@ module Google
         # If a client encounters an unfamiliar or empty type, it should still be able to
         # display the entry points. However, it should disallow modifications.
         # The possible values are:
-        # - "eventHangout"
-        # - "eventNamedHangout"
-        # - "hangoutsMeet"
+        # - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
+        # - "eventNamedHangout" for Classic Hangouts for GSuite users (http://hangouts.
+        # google.com)
+        # - "hangoutsMeet" for Hangouts Meet (http://meet.google.com)
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -993,7 +994,9 @@ module Google
         attr_accessor :color_id
       
         # The conference-related information, such as details of a Hangouts Meet
-        # conference. To create new conference details use the createRequest field.
+        # conference. To create new conference details use the createRequest field. To
+        # persist your changes, remember to set the conferenceDataVersion request
+        # parameter to 1 for all event modification requests.
         # Corresponds to the JSON property `conferenceData`
         # @return [Google::Apis::CalendarV3::ConferenceData]
         attr_accessor :conference_data

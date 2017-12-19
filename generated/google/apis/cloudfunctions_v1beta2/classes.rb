@@ -220,10 +220,10 @@ module Google
         # `event_type` names contain the service that is sending an event and the
         # kind of event that was fired. Must be of the form
         # `providers/*/eventTypes/*` e.g. Directly handle a Message published to
-        # Google Cloud Pub/Sub `providers/cloud.pubsub/eventTypes/topic.publish`
-        # Handle an object changing in Google Cloud Storage
+        # Google Cloud Pub/Sub `providers/cloud.pubsub/eventTypes/topic.publish`.
+        # Handle an object changing in Google Cloud Storage:
         # `providers/cloud.storage/eventTypes/object.change`
-        # Handle a write to the Firebase Realtime Database
+        # Handle a write to the Firebase Realtime Database:
         # `providers/google.firebase.database/eventTypes/ref.write`
         # Corresponds to the JSON property `eventType`
         # @return [String]

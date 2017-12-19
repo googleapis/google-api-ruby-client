@@ -149,6 +149,106 @@ module Google
         end
       end
       
+      # A configuration collects the provisioning options for Android devices. Each
+      # configuration combines the following:
+      # * The EMM device policy controller (DPC) installed on the devices.
+      # * EMM policies enforced on the devices.
+      # * Metadata displayed on the device to help users during setup.
+      # Customers can add as many configurations as they need. However, zero-touch
+      # enrollment works best when a customer sets a default configuration that's
+      # applied to any new devices the organization purchases.
+      class Configuration
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the organization. Zero-touch enrollment shows this
+        # organization name to device users during device provisioning.
+        # Corresponds to the JSON property `companyName`
+        # @return [String]
+        attr_accessor :company_name
+      
+        # Output only. The ID of the configuration. Assigned by the server.
+        # Corresponds to the JSON property `configurationId`
+        # @return [Fixnum]
+        attr_accessor :configuration_id
+      
+        # Required. A short name that describes the configuration's purpose. For
+        # example, _Sales team_ or _Temporary employees_. The zero-touch enrollment
+        # portal displays this name to IT admins.
+        # Corresponds to the JSON property `configurationName`
+        # @return [String]
+        attr_accessor :configuration_name
+      
+        # Required. The email address that device users can contact to get help.
+        # Zero-touch enrollment shows this email address to device users before
+        # device provisioning. The value is validated on input.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # Required. The telephone number that device users can call, using another
+        # device, to get help. Zero-touch enrollment shows this number to device
+        # users before device provisioning. Accepts numerals, spaces, the plus sign,
+        # hyphens, and parentheses.
+        # Corresponds to the JSON property `contactPhone`
+        # @return [String]
+        attr_accessor :contact_phone
+      
+        # A message, containing one or two sentences, to help device users get help
+        # or give them more details about what’s happening to their device.
+        # Zero-touch enrollment shows this message before the device is provisioned.
+        # Corresponds to the JSON property `customMessage`
+        # @return [String]
+        attr_accessor :custom_message
+      
+        # The JSON-formatted EMM provisioning extras that are passed to the DPC.
+        # Corresponds to the JSON property `dpcExtras`
+        # @return [String]
+        attr_accessor :dpc_extras
+      
+        # Required. The resource name of the selected DPC (device policy controller)
+        # in the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs,
+        # call
+        # `customers.dpcs.list`.
+        # Corresponds to the JSON property `dpcResourcePath`
+        # @return [String]
+        attr_accessor :dpc_resource_path
+      
+        # Required. Whether this is the default configuration that zero-touch
+        # enrollment applies to any new devices the organization purchases in the
+        # future. Only one customer configuration can be the default. Setting this
+        # value to `true`, changes the previous default configuration's `isDefault`
+        # value to `false`.
+        # Corresponds to the JSON property `isDefault`
+        # @return [Boolean]
+        attr_accessor :is_default
+        alias_method :is_default?, :is_default
+      
+        # Output only. The API resource name in the format
+        # `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
+        # the server.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @company_name = args[:company_name] if args.key?(:company_name)
+          @configuration_id = args[:configuration_id] if args.key?(:configuration_id)
+          @configuration_name = args[:configuration_name] if args.key?(:configuration_name)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @contact_phone = args[:contact_phone] if args.key?(:contact_phone)
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+          @dpc_extras = args[:dpc_extras] if args.key?(:dpc_extras)
+          @dpc_resource_path = args[:dpc_resource_path] if args.key?(:dpc_resource_path)
+          @is_default = args[:is_default] if args.key?(:is_default)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message to create a customer.
       class CreateCustomerRequest
         include Google::Apis::Core::Hashable
@@ -165,6 +265,182 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
+      # Request message for customer to assign a configuration to device.
+      class CustomerApplyConfigurationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The configuration applied to the device in the format
+        # `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+        # Corresponds to the JSON property `configuration`
+        # @return [String]
+        attr_accessor :configuration
+      
+        # A `DeviceReference` is an API abstraction that lets you supply a _device_
+        # argument to a method using one of the following identifier types:
+        # * A numeric API resource ID.
+        # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
+        # device.
+        # Methods that operate on devices take a `DeviceReference` as a parameter type
+        # because it's more flexible for the caller. To learn more about device
+        # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
+        attr_accessor :device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configuration = args[:configuration] if args.key?(:configuration)
+          @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Response message of customer's listing configuration.
+      class CustomerListConfigurationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The configurations.
+        # Corresponds to the JSON property `configurations`
+        # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Configuration>]
+        attr_accessor :configurations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configurations = args[:configurations] if args.key?(:configurations)
+        end
+      end
+      
+      # Response message for listing my customers.
+      class CustomerListCustomersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Customers the current user can act as.
+        # Corresponds to the JSON property `customers`
+        # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
+        attr_accessor :customers
+      
+        # Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customers = args[:customers] if args.key?(:customers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message of customer's liting devices.
+      class CustomerListDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The customer's devices.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
+        attr_accessor :devices
+      
+        # A token used to access the next page of results. Omitted if no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @devices = args[:devices] if args.key?(:devices)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message of customer's listing DPCs.
+      class CustomerListDpcsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DPCs available to the customer that support zero-touch
+        # enrollment.
+        # Corresponds to the JSON property `dpcs`
+        # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Dpc>]
+        attr_accessor :dpcs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dpcs = args[:dpcs] if args.key?(:dpcs)
+        end
+      end
+      
+      # Request message for customer to remove the configuration from device.
+      class CustomerRemoveConfigurationRequest
+        include Google::Apis::Core::Hashable
+      
+        # A `DeviceReference` is an API abstraction that lets you supply a _device_
+        # argument to a method using one of the following identifier types:
+        # * A numeric API resource ID.
+        # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
+        # device.
+        # Methods that operate on devices take a `DeviceReference` as a parameter type
+        # because it's more flexible for the caller. To learn more about device
+        # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
+        attr_accessor :device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Request message for customer to unclaim a device.
+      class CustomerUnclaimDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # A `DeviceReference` is an API abstraction that lets you supply a _device_
+        # argument to a method using one of the following identifier types:
+        # * A numeric API resource ID.
+        # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
+        # device.
+        # Methods that operate on devices take a `DeviceReference` as a parameter type
+        # because it's more flexible for the caller. To learn more about device
+        # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
+        attr_accessor :device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device = args[:device] if args.key?(:device)
         end
       end
       
@@ -315,6 +591,39 @@ module Google
         end
       end
       
+      # A `DeviceReference` is an API abstraction that lets you supply a _device_
+      # argument to a method using one of the following identifier types:
+      # * A numeric API resource ID.
+      # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
+      # device.
+      # Methods that operate on devices take a `DeviceReference` as a parameter type
+      # because it's more flexible for the caller. To learn more about device
+      # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+      class DeviceReference
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the device.
+        # Corresponds to the JSON property `deviceId`
+        # @return [Fixnum]
+        attr_accessor :device_id
+      
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # learn more, read [Identifiers](/zero-touch/guides/identifiers).
+        # Corresponds to the JSON property `deviceIdentifier`
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
+        attr_accessor :device_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @device_identifier = args[:device_identifier] if args.key?(:device_identifier)
+        end
+      end
+      
       # Long running operation metadata.
       class DevicesLongRunningOperationMetadata
         include Google::Apis::Core::Hashable
@@ -369,6 +678,46 @@ module Google
         def update!(**args)
           @per_device_status = args[:per_device_status] if args.key?(:per_device_status)
           @success_count = args[:success_count] if args.key?(:success_count)
+        end
+      end
+      
+      # An EMM's DPC ([device policy controller](/android/work/dpc/build-dpc)).
+      # Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a
+      # device to maintain the customer's mobile policies. All the DPCs listed by the
+      # API support zero-touch enrollment and are available in Google Play.
+      class Dpc
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The title of the DPC app in Google Play. For example, _Google
+        # Apps Device Policy_. Useful in an application's user interface.
+        # Corresponds to the JSON property `dpcName`
+        # @return [String]
+        attr_accessor :dpc_name
+      
+        # Output only. The API resource name in the format
+        # `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by
+        # the server. To maintain a reference to a DPC across customer accounts,
+        # persist and match the last path component (`DPC_ID`).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The DPC's Android application ID that looks like a Java
+        # package name. Zero-touch enrollment installs the DPC app onto a device
+        # using this identifier.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dpc_name = args[:dpc_name] if args.key?(:dpc_name)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
         end
       end
       

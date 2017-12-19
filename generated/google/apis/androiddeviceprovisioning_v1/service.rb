@@ -48,6 +48,418 @@ module Google
           @batch_path = 'batch'
         end
         
+        # List the user's customer accounts.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::CustomerListCustomersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::CustomerListCustomersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customers(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/customers', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListCustomersResponse::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListCustomersResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new configuration. Once created, a customer can apply the
+        # configuration to devices.
+        # @param [String] parent
+        #   Required. The customer that manages the configuration. An API resource name
+        #   in the format `customers/[CUSTOMER_ID]`.
+        # @param [Google::Apis::AndroiddeviceprovisioningV1::Configuration] configuration_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Configuration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Configuration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_configuration(parent, configuration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/configurations', options)
+          command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
+          command.request_object = configuration_object
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Configuration
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an unused configuration. The API call fails if the customer has
+        # devices with the configuration applied.
+        # @param [String] name
+        #   Required. The configuration to delete. An API resource name in the format
+        #   `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the
+        #   configuration is applied to any devices, the API call fails.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_customer_configuration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a configuration.
+        # @param [String] name
+        #   Required. The configuration to get. An API resource name in the format
+        #   `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Configuration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Configuration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_configuration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Configuration
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists a customer's configurations.
+        # @param [String] parent
+        #   Required. The customer that manages the listed configurations. An API
+        #   resource name in the format `customers/[CUSTOMER_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::CustomerListConfigurationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::CustomerListConfigurationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_configurations(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/configurations', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListConfigurationsResponse::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListConfigurationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a configuration's field values.
+        # @param [String] name
+        #   Output only. The API resource name in the format
+        #   `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
+        #   the server.
+        # @param [Google::Apis::AndroiddeviceprovisioningV1::Configuration] configuration_object
+        # @param [String] update_mask
+        #   Required. The field mask applied to the target `Configuration` before
+        #   updating the fields. To learn more about using field masks, read
+        #   [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in
+        #   the Protocol Buffers documentation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Configuration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Configuration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_customer_configuration(name, configuration_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
+          command.request_object = configuration_object
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Configuration::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Configuration
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Applies a Configuration to the device to register the device for zero-touch
+        # enrollment. After applying a configuration to a device, the device
+        # automatically provisions itself on first boot, or next factory reset.
+        # @param [String] parent
+        #   Required. The customer managing the device. An API resource name in the
+        #   format `customers/[CUSTOMER_ID]`.
+        # @param [Google::Apis::AndroiddeviceprovisioningV1::CustomerApplyConfigurationRequest] customer_apply_configuration_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def apply_customer_device_configuration(parent, customer_apply_configuration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/devices:applyConfiguration', options)
+          command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerApplyConfigurationRequest::Representation
+          command.request_object = customer_apply_configuration_request_object
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Empty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a device.
+        # @param [String] name
+        #   Required. The device to get. An API resource name in the format
+        #   `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Device] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Device]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_device(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Device::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Device
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists a customer's devices.
+        # @param [String] parent
+        #   Required. The customer managing the devices. An API resource name in the
+        #   format `customers/[CUSTOMER_ID]`.
+        # @param [Fixnum] page_size
+        #   The maximum number of devices to show in a page of results. The default
+        #   value returns all the devices in a single page.
+        # @param [String] page_token
+        #   A token specifying which result page to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::CustomerListDevicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::CustomerListDevicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_devices(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/devices', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDevicesResponse::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDevicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a configuration from device.
+        # @param [String] parent
+        #   Required. The customer managing the device in the format
+        #   `customers/[CUSTOMER_ID]`.
+        # @param [Google::Apis::AndroiddeviceprovisioningV1::CustomerRemoveConfigurationRequest] customer_remove_configuration_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_customer_device_configuration(parent, customer_remove_configuration_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/devices:removeConfiguration', options)
+          command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerRemoveConfigurationRequest::Representation
+          command.request_object = customer_remove_configuration_request_object
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Empty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unclaims a device from a customer and removes it from zero-touch
+        # enrollment.
+        # After removing a device, a customer must contact their reseller to register
+        # the device into zero-touch enrollment again.
+        # @param [String] parent
+        #   Required. The customer managing the device. An API resource name in the
+        #   format `customers/[CUSTOMER_ID]`.
+        # @param [Google::Apis::AndroiddeviceprovisioningV1::CustomerUnclaimDeviceRequest] customer_unclaim_device_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unclaim_customer_device(parent, customer_unclaim_device_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+parent}/devices:unclaim', options)
+          command.request_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerUnclaimDeviceRequest::Representation
+          command.request_object = customer_unclaim_device_request_object
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::Empty::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::Empty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the DPCs (device policy controllers) that support zero-touch
+        # enrollment.
+        # @param [String] parent
+        #   Required. The customer that can use the DPCs in configurations. An API
+        #   resource name in the format `customers/[CUSTOMER_ID]`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroiddeviceprovisioningV1::CustomerListDpcsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroiddeviceprovisioningV1::CustomerListDpcsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_dpcs(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+parent}/dpcs', options)
+          command.response_representation = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDpcsResponse::Representation
+          command.response_class = Google::Apis::AndroiddeviceprovisioningV1::CustomerListDpcsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.

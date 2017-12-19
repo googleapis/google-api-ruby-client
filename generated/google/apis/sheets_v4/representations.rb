@@ -670,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LineStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MatchedDeveloperMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1024,6 +1030,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WaterfallChartColumnStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WaterfallChartDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WaterfallChartSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WaterfallChartSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddBandingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1228,6 +1258,8 @@ module Google
       class BasicChartSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_style, as: 'lineStyle', class: Google::Apis::SheetsV4::LineStyle, decorator: Google::Apis::SheetsV4::LineStyle::Representation
+      
           property :series, as: 'series', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
           property :target_axis, as: 'targetAxis'
@@ -1599,6 +1631,8 @@ module Google
           property :title_text_format, as: 'titleTextFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
           property :title_text_position, as: 'titleTextPosition', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
+      
+          property :waterfall_chart, as: 'waterfallChart', class: Google::Apis::SheetsV4::WaterfallChartSpec, decorator: Google::Apis::SheetsV4::WaterfallChartSpec::Representation
       
         end
       end
@@ -2140,6 +2174,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :convergence_threshold, as: 'convergenceThreshold'
           property :max_iterations, as: 'maxIterations'
+        end
+      end
+      
+      class LineStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :width, as: 'width'
         end
       end
       
@@ -2914,6 +2956,54 @@ module Google
         items
       end
       
+        end
+      end
+      
+      class WaterfallChartColumnStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :label, as: 'label'
+        end
+      end
+      
+      class WaterfallChartDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :reversed, as: 'reversed'
+        end
+      end
+      
+      class WaterfallChartSeries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :hide_trailing_subtotal, as: 'hideTrailingSubtotal'
+          property :negative_columns_style, as: 'negativeColumnsStyle', class: Google::Apis::SheetsV4::WaterfallChartColumnStyle, decorator: Google::Apis::SheetsV4::WaterfallChartColumnStyle::Representation
+      
+          property :positive_columns_style, as: 'positiveColumnsStyle', class: Google::Apis::SheetsV4::WaterfallChartColumnStyle, decorator: Google::Apis::SheetsV4::WaterfallChartColumnStyle::Representation
+      
+          property :subtotal_columns_style, as: 'subtotalColumnsStyle', class: Google::Apis::SheetsV4::WaterfallChartColumnStyle, decorator: Google::Apis::SheetsV4::WaterfallChartColumnStyle::Representation
+      
+        end
+      end
+      
+      class WaterfallChartSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connector_line_style, as: 'connectorLineStyle', class: Google::Apis::SheetsV4::LineStyle, decorator: Google::Apis::SheetsV4::LineStyle::Representation
+      
+          property :domain, as: 'domain', class: Google::Apis::SheetsV4::WaterfallChartDomain, decorator: Google::Apis::SheetsV4::WaterfallChartDomain::Representation
+      
+          property :first_value_is_total, as: 'firstValueIsTotal'
+          property :hide_connector_lines, as: 'hideConnectorLines'
+          collection :series, as: 'series', class: Google::Apis::SheetsV4::WaterfallChartSeries, decorator: Google::Apis::SheetsV4::WaterfallChartSeries::Representation
+      
+          property :stacked_type, as: 'stackedType'
         end
       end
     end

@@ -322,6 +322,11 @@ module Google
         # @return [String]
         attr_accessor :applied_state
       
+        # Information about security related device settings on device.
+        # Corresponds to the JSON property `deviceSettings`
+        # @return [Google::Apis::AndroidmanagementV1::DeviceSettings]
+        attr_accessor :device_settings
+      
         # Provides user facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `disabledReason`
@@ -467,6 +472,7 @@ module Google
           @applied_policy_name = args[:applied_policy_name] if args.key?(:applied_policy_name)
           @applied_policy_version = args[:applied_policy_version] if args.key?(:applied_policy_version)
           @applied_state = args[:applied_state] if args.key?(:applied_state)
+          @device_settings = args[:device_settings] if args.key?(:device_settings)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
           @displays = args[:displays] if args.key?(:displays)
           @enrollment_time = args[:enrollment_time] if args.key?(:enrollment_time)
@@ -489,6 +495,63 @@ module Google
           @software_info = args[:software_info] if args.key?(:software_info)
           @state = args[:state] if args.key?(:state)
           @user_name = args[:user_name] if args.key?(:user_name)
+        end
+      end
+      
+      # Information about security related device settings on device.
+      class DeviceSettings
+        include Google::Apis::Core::Hashable
+      
+        # If the ADB is enabled Settings.Global.ADB_ENABLED.
+        # Corresponds to the JSON property `adbEnabled`
+        # @return [Boolean]
+        attr_accessor :adb_enabled
+        alias_method :adb_enabled?, :adb_enabled
+      
+        # If the developer mode is enabled Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.
+        # Corresponds to the JSON property `developmentSettingsEnabled`
+        # @return [Boolean]
+        attr_accessor :development_settings_enabled
+        alias_method :development_settings_enabled?, :development_settings_enabled
+      
+        # Encryption status from DevicePolicyManager.
+        # Corresponds to the JSON property `encryptionStatus`
+        # @return [String]
+        attr_accessor :encryption_status
+      
+        # Device secured with PIN/password.
+        # Corresponds to the JSON property `isDeviceSecure`
+        # @return [Boolean]
+        attr_accessor :is_device_secure
+        alias_method :is_device_secure?, :is_device_secure
+      
+        # Whether the storage encryption is enabled DevicePolicyManager.
+        # ENCRYPTION_STATUS_ACTIVE or DevicePolicyManager.
+        # ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.
+        # Corresponds to the JSON property `isEncrypted`
+        # @return [Boolean]
+        attr_accessor :is_encrypted
+        alias_method :is_encrypted?, :is_encrypted
+      
+        # If installing apps from unknown sources is enabled. Settings.Secure.
+        # INSTALL_NON_MARKET_APPS.
+        # Corresponds to the JSON property `unknownSourcesEnabled`
+        # @return [Boolean]
+        attr_accessor :unknown_sources_enabled
+        alias_method :unknown_sources_enabled?, :unknown_sources_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adb_enabled = args[:adb_enabled] if args.key?(:adb_enabled)
+          @development_settings_enabled = args[:development_settings_enabled] if args.key?(:development_settings_enabled)
+          @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
+          @is_device_secure = args[:is_device_secure] if args.key?(:is_device_secure)
+          @is_encrypted = args[:is_encrypted] if args.key?(:is_encrypted)
+          @unknown_sources_enabled = args[:unknown_sources_enabled] if args.key?(:unknown_sources_enabled)
         end
       end
       
@@ -2085,6 +2148,16 @@ module Google
         # @return [String]
         attr_accessor :android_build_time
       
+        # The Android Device Policy app version code.
+        # Corresponds to the JSON property `androidDevicePolicyVersionCode`
+        # @return [Fixnum]
+        attr_accessor :android_device_policy_version_code
+      
+        # The Android Device Policy app version as displayed to the user.
+        # Corresponds to the JSON property `androidDevicePolicyVersionName`
+        # @return [String]
+        attr_accessor :android_device_policy_version_name
+      
         # The user visible Android version string, e.g. 6.0.1.
         # Corresponds to the JSON property `androidVersion`
         # @return [String]
@@ -2113,6 +2186,8 @@ module Google
         def update!(**args)
           @android_build_number = args[:android_build_number] if args.key?(:android_build_number)
           @android_build_time = args[:android_build_time] if args.key?(:android_build_time)
+          @android_device_policy_version_code = args[:android_device_policy_version_code] if args.key?(:android_device_policy_version_code)
+          @android_device_policy_version_name = args[:android_device_policy_version_name] if args.key?(:android_device_policy_version_name)
           @android_version = args[:android_version] if args.key?(:android_version)
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
           @device_kernel_version = args[:device_kernel_version] if args.key?(:device_kernel_version)

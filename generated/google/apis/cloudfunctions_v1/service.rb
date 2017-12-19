@@ -308,13 +308,20 @@ module Google
         
         # Returns a signed URL for uploading a function source code.
         # For more information about the signed URL usage see:
-        # https://cloud.google.com/storage/docs/access-control/signed-urls
+        # https://cloud.google.com/storage/docs/access-control/signed-urls.
         # Once the function source code upload is complete, the used signed
         # URL should be provided in CreateFunction or UpdateFunction request
         # as a reference to the function source code.
+        # When uploading source code to the generated signed URL, please follow
+        # these restrictions:
+        # * Source file type should be a zip file.
+        # * Source file size should not exceed 100MB limit.
+        # When making a HTTP PUT request, these two headers need to be specified:
+        # * `content-type: application/zip`
+        # * `x-google-content-length-range: 0,104857600`
         # @param [String] parent
         #   The project and location in which the Google Cloud Storage signed URL
-        #   should be generated, specified in the format `projects/*/locations/*
+        #   should be generated, specified in the format `projects/*/locations/*`.
         # @param [Google::Apis::CloudfunctionsV1::GenerateUploadUrlRequest] generate_upload_url_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
