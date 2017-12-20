@@ -49,7 +49,8 @@ module Google
         end
       end
       
-      # An Accelerator Type resource.
+      # An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (==
+      # resource_for v1.acceleratorTypes ==)
       class AcceleratorType
         include Google::Apis::Core::Hashable
       
@@ -506,7 +507,9 @@ module Google
         end
       end
       
-      # A reserved address resource.
+      # A reserved address resource. (== resource_for beta.addresses ==) (==
+      # resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (==
+      # resource_for v1.globalAddresses ==)
       class Address
         include Google::Apis::Core::Hashable
       
@@ -597,9 +600,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # For external addresses, this field should not be used.
         # The URL of the subnetwork in which to reserve the address. If an IP address is
-        # specified, it must be within the subnetwork's IP range.
+        # specified, it must be within the subnetwork's IP range. This field can only be
+        # used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1286,7 +1289,9 @@ module Google
       # Represents an Autoscaler resource. Autoscalers allow you to automatically
       # scale virtual machine instances in managed instance groups according to an
       # autoscaling policy that you define. For more information, read Autoscaling
-      # Groups of Instances.
+      # Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.
+      # autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for
+      # v1.regionAutoscalers ==)
       class Autoscaler
         include Google::Apis::Core::Hashable
       
@@ -2038,6 +2043,11 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
+        # Message containing Cloud CDN configuration for a backend bucket.
+        # Corresponds to the JSON property `cdnPolicy`
+        # @return [Google::Apis::ComputeBeta::BackendBucketCdnPolicy]
+        attr_accessor :cdn_policy
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -2087,6 +2097,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
@@ -2094,6 +2105,37 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Message containing Cloud CDN configuration for a backend bucket.
+      class BackendBucketCdnPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Number of seconds up to which the response to a signed URL request will be
+        # cached in the CDN. After this time period, the Signed URL will be revalidated
+        # before being served. Defaults to 1hr (3600s). If this field is set, Cloud CDN
+        # will internally act as though all responses from this bucket had a ?Cache-
+        # Control: public, max-age=[TTL]? header, regardless of any existing Cache-
+        # Control header. The actual headers served in responses will not be altered.
+        # Corresponds to the JSON property `signedUrlCacheMaxAgeSec`
+        # @return [Fixnum]
+        attr_accessor :signed_url_cache_max_age_sec
+      
+        # [Output Only] Names of the keys currently configured for Cloud CDN Signed URL
+        # on this backend bucket.
+        # Corresponds to the JSON property `signedUrlKeyNames`
+        # @return [Array<String>]
+        attr_accessor :signed_url_key_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
+          @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
       end
       
@@ -2215,7 +2257,8 @@ module Google
       end
       
       # A BackendService resource. This resource defines a group of backend virtual
-      # machines and their serving capacity.
+      # machines and their serving capacity. (== resource_for v1.backendService ==) (==
+      # resource_for beta.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -2528,6 +2571,22 @@ module Google
         # @return [Google::Apis::ComputeBeta::CacheKeyPolicy]
         attr_accessor :cache_key_policy
       
+        # Number of seconds up to which the response to a signed URL request will be
+        # cached in the CDN. After this time period, the Signed URL will be revalidated
+        # before being served. Defaults to 1hr (3600s). If this field is set, Cloud CDN
+        # will internally act as though all responses from this backend had a ?Cache-
+        # Control: public, max-age=[TTL]? header, regardless of any existing Cache-
+        # Control header. The actual headers served in responses will not be altered.
+        # Corresponds to the JSON property `signedUrlCacheMaxAgeSec`
+        # @return [Fixnum]
+        attr_accessor :signed_url_cache_max_age_sec
+      
+        # [Output Only] Names of the keys currently configured for Cloud CDN Signed URL
+        # on this backend service.
+        # Corresponds to the JSON property `signedUrlKeyNames`
+        # @return [Array<String>]
+        attr_accessor :signed_url_key_names
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2535,6 +2594,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
+          @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
+          @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
       end
       
@@ -2948,7 +3009,8 @@ module Google
       # Committed use discounts are subject to Google Cloud Platform's Service
       # Specific Terms. By purchasing a committed use discount, you agree to these
       # terms. Committed use discounts will not renew, so you must purchase a new
-      # commitment to continue receiving discounts.
+      # commitment to continue receiving discounts. (== resource_for beta.commitments =
+      # =) (== resource_for v1.commitments ==)
       class Commitment
         include Google::Apis::Core::Hashable
       
@@ -3569,7 +3631,7 @@ module Google
         end
       end
       
-      # A Disk resource.
+      # A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)
       class Disk
         include Google::Apis::Core::Hashable
       
@@ -3905,6 +3967,47 @@ module Google
         end
       end
       
+      # A specification of the desired way to instantiate a disk in the instance
+      # template when its created from a source instance.
+      class DiskInstantiationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the disk will be auto-deleted when the instance is deleted (
+        # but not when the disk is detached from the instance).
+        # Corresponds to the JSON property `autoDelete`
+        # @return [Boolean]
+        attr_accessor :auto_delete
+        alias_method :auto_delete?, :auto_delete
+      
+        # Specifies the device name of the disk to which the configurations apply to.
+        # Corresponds to the JSON property `deviceName`
+        # @return [String]
+        attr_accessor :device_name
+      
+        # Specifies whether to include the disk and what image to use.
+        # Corresponds to the JSON property `instantiateFrom`
+        # @return [String]
+        attr_accessor :instantiate_from
+      
+        # The custom source image to be used to restore this disk when instantiating
+        # this instance template.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @device_name = args[:device_name] if args.key?(:device_name)
+          @instantiate_from = args[:instantiate_from] if args.key?(:instantiate_from)
+          @source_image = args[:source_image] if args.key?(:source_image)
+        end
+      end
+      
       # A list of Disk resources.
       class DiskList
         include Google::Apis::Core::Hashable
@@ -4055,7 +4158,8 @@ module Google
         end
       end
       
-      # A DiskType resource.
+      # A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.
+      # diskTypes ==)
       class DiskType
         include Google::Apis::Core::Hashable
       
@@ -5042,7 +5146,11 @@ module Google
       
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
-      # IPAddress, IPProtocol, ports] tuple.
+      # IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==)
+      # (== resource_for v1.forwardingRules ==) (== resource_for beta.
+      # globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (==
+      # resource_for beta.regionForwardingRules ==) (== resource_for v1.
+      # regionForwardingRules ==)
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -5637,9 +5745,8 @@ module Google
       class GuestOsFeature
         include Google::Apis::Core::Hashable
       
-        # The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
-        # supported. For newer Windows images, the server might also populate this
-        # property with the value WINDOWS to indicate that this is a Windows image.
+        # The ID of a supported feature. Read  Enabling guest operating system features
+        # to see a list of available options.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6550,7 +6657,8 @@ module Google
         end
       end
       
-      # An Image resource.
+      # An Image resource. (== resource_for beta.images ==) (== resource_for v1.images
+      # ==)
       class Image
         include Google::Apis::Core::Hashable
       
@@ -6588,14 +6696,9 @@ module Google
         # @return [String]
         attr_accessor :family
       
-        # A list of features to enable on the guest OS. Applicable for bootable images
-        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
-        # which allows each virtual CPU to have its own queue. For Windows images, you
-        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
-        # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
-        # VIRTIO_SCSI_MULTIQUEUE.
-        # For newer Windows images, the server might also populate this property with
-        # the value WINDOWS to indicate that this is a Windows image.
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -6907,7 +7010,8 @@ module Google
         end
       end
       
-      # An Instance resource.
+      # An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.
+      # instances ==)
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -7225,7 +7329,9 @@ module Google
         end
       end
       
-      # 
+      # InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.
+      # instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (==
+      # resource_for v1.regionInstanceGroups ==)
       class InstanceGroup
         include Google::Apis::Core::Hashable
       
@@ -7566,7 +7672,10 @@ module Google
         end
       end
       
-      # An Instance Group Manager resource.
+      # An Instance Group Manager resource. (== resource_for beta.
+      # instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (==
+      # resource_for beta.regionInstanceGroupManagers ==) (== resource_for v1.
+      # regionInstanceGroupManagers ==)
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -9213,7 +9322,8 @@ module Google
         end
       end
       
-      # An Instance Template resource.
+      # An Instance Template resource. (== resource_for beta.instanceTemplates ==) (==
+      # resource_for v1.instanceTemplates ==)
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -9261,6 +9371,22 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The source instance used to create the template. You can provide this as a
+        # partial or full URL to the resource. For example, the following are valid
+        # values:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        # instance
+        # - projects/project/zones/zone/instances/instance
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # A specification of the parameters to use when creating the instance template
+        # from a source instance.
+        # Corresponds to the JSON property `sourceInstanceParams`
+        # @return [Google::Apis::ComputeBeta::SourceInstanceParams]
+        attr_accessor :source_instance_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9274,6 +9400,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @source_instance_params = args[:source_instance_params] if args.key?(:source_instance_params)
         end
       end
       
@@ -9655,7 +9783,8 @@ module Google
       
       # Represents an Interconnects resource. The Interconnects resource is a
       # dedicated connection between Google's network and your on-premises network.
-      # For more information, see the  Dedicated overview page.
+      # For more information, see the  Dedicated overview page. (== resource_for v1.
+      # interconnects ==) (== resource_for beta.interconnects ==)
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -9823,7 +9952,8 @@ module Google
       end
       
       # Represents an InterconnectAttachment (VLAN attachment) resource. For more
-      # information, see  Creating VLAN Attachments.
+      # information, see  Creating VLAN Attachments. (== resource_for beta.
+      # interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -11208,7 +11338,8 @@ module Google
         end
       end
       
-      # A Machine Type resource.
+      # A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for
+      # beta.machineTypes ==)
       class MachineType
         include Google::Apis::Core::Hashable
       
@@ -11895,7 +12026,8 @@ module Google
       end
       
       # Represents a Network resource. Read Networks and Firewalls for more
-      # information.
+      # information. (== resource_for v1.networks ==) (== resource_for beta.networks ==
+      # )
       class Network
         include Google::Apis::Core::Hashable
       
@@ -12341,7 +12473,11 @@ module Google
         end
       end
       
-      # An Operation resource, used to manage asynchronous API requests.
+      # An Operation resource, used to manage asynchronous API requests. (==
+      # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+      # (== resource_for v1.regionOperations ==) (== resource_for beta.
+      # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+      # beta.zoneOperations ==)
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -13114,7 +13250,8 @@ module Google
       end
       
       # A Project resource. Projects can only be created in the Google Cloud Platform
-      # Console. Unless marked otherwise, values can only be modified in the console.
+      # Console. Unless marked otherwise, values can only be modified in the console. (
+      # == resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       
@@ -13370,7 +13507,8 @@ module Google
         end
       end
       
-      # Region resource.
+      # Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions
+      # ==)
       class Region
         include Google::Apis::Core::Hashable
       
@@ -14341,7 +14479,7 @@ module Google
       # either to another instance destination, an instance gateway, or a Google
       # Compute Engine-operated gateway.
       # Packets that do not match any route in the sending instance's routing table
-      # are dropped.
+      # are dropped. (== resource_for beta.routes ==) (== resource_for v1.routes ==)
       class Route
         include Google::Apis::Core::Hashable
       
@@ -14744,6 +14882,31 @@ module Google
         end
       end
       
+      # Description-tagged IP ranges for the router to advertise.
+      class RouterAdvertisedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # User-specified description for the IP range.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The IP range to advertise. The value must be a CIDR-formatted string.
+        # Corresponds to the JSON property `range`
+        # @return [String]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
       # Contains a list of routers.
       class RouterAggregatedList
         include Google::Apis::Core::Hashable
@@ -14865,6 +15028,27 @@ module Google
       class RouterBgp
         include Google::Apis::Core::Hashable
       
+        # User-specified flag to indicate which mode to use for advertisement.
+        # Corresponds to the JSON property `advertiseMode`
+        # @return [String]
+        attr_accessor :advertise_mode
+      
+        # User-specified list of prefix groups to advertise in custom mode. This field
+        # can only be populated if advertise_mode is CUSTOM and is advertised to all
+        # peers of the router. These groups will be advertised in addition to any
+        # specified prefixes. Leave this field blank to advertise no custom groups.
+        # Corresponds to the JSON property `advertisedGroups`
+        # @return [Array<String>]
+        attr_accessor :advertised_groups
+      
+        # User-specified list of individual IP ranges to advertise in custom mode. This
+        # field can only be populated if advertise_mode is CUSTOM and is advertised to
+        # all peers of the router. These IP ranges will be advertised in addition to any
+        # specified groups. Leave this field blank to advertise no custom IP ranges.
+        # Corresponds to the JSON property `advertisedIpRanges`
+        # @return [Array<Google::Apis::ComputeBeta::RouterAdvertisedIpRange>]
+        attr_accessor :advertised_ip_ranges
+      
         # Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN,
         # either 16-bit or 32-bit. The value will be fixed for this router resource. All
         # VPN tunnels that link to this router will have the same local ASN.
@@ -14878,6 +15062,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advertise_mode = args[:advertise_mode] if args.key?(:advertise_mode)
+          @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
+          @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @asn = args[:asn] if args.key?(:asn)
         end
       end
@@ -14885,6 +15072,29 @@ module Google
       # 
       class RouterBgpPeer
         include Google::Apis::Core::Hashable
+      
+        # User-specified flag to indicate which mode to use for advertisement.
+        # Corresponds to the JSON property `advertiseMode`
+        # @return [String]
+        attr_accessor :advertise_mode
+      
+        # User-specified list of prefix groups to advertise in custom mode. This field
+        # can only be populated if advertise_mode is CUSTOM and overrides the list
+        # defined for the router (in Bgp message). These groups will be advertised in
+        # addition to any specified prefixes. Leave this field blank to advertise no
+        # custom groups.
+        # Corresponds to the JSON property `advertisedGroups`
+        # @return [Array<String>]
+        attr_accessor :advertised_groups
+      
+        # User-specified list of individual IP ranges to advertise in custom mode. This
+        # field can only be populated if advertise_mode is CUSTOM and overrides the list
+        # defined for the router (in Bgp message). These IP ranges will be advertised in
+        # addition to any specified groups. Leave this field blank to advertise no
+        # custom IP ranges.
+        # Corresponds to the JSON property `advertisedIpRanges`
+        # @return [Array<Google::Apis::ComputeBeta::RouterAdvertisedIpRange>]
+        attr_accessor :advertised_ip_ranges
       
         # The priority of routes advertised to this BGP peer. In the case where there is
         # more than one matching route of maximum length, the routes with lowest
@@ -14927,6 +15137,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advertise_mode = args[:advertise_mode] if args.key?(:advertise_mode)
+          @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
+          @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -15771,6 +15984,42 @@ module Google
       class SecurityPolicyRuleMatcher
         include Google::Apis::Core::Hashable
       
+        # The configuration options available when specifying versioned_expr. This field
+        # must be specified if versioned_expr is specified and cannot be specified if
+        # versioned_expr is not specified.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfig]
+        attr_accessor :config
+      
+        # CIDR IP address range. Only IPv4 is supported.
+        # Corresponds to the JSON property `srcIpRanges`
+        # @return [Array<String>]
+        attr_accessor :src_ip_ranges
+      
+        # Preconfigured versioned expression. If this field is specified, config must
+        # also be specified. Available preconfigured expressions along with their
+        # requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range
+        # field in config.
+        # Corresponds to the JSON property `versionedExpr`
+        # @return [String]
+        attr_accessor :versioned_expr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleMatcherConfig
+        include Google::Apis::Core::Hashable
+      
         # CIDR IP address range. Only IPv4 is supported.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
@@ -15859,7 +16108,38 @@ module Google
         end
       end
       
-      # A persistent disk snapshot resource.
+      # Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs
+      class SignedUrlKey
+        include Google::Apis::Core::Hashable
+      
+        # Name of the key. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        # must be a lowercase letter, and all following characters must be a dash,
+        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        # 128-bit key value used for signing the URL. The key value must be a valid RFC
+        # 4648 Section 5 base64url encoded string.
+        # Corresponds to the JSON property `keyValue`
+        # @return [String]
+        attr_accessor :key_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_name = args[:key_name] if args.key?(:key_name)
+          @key_value = args[:key_value] if args.key?(:key_value)
+        end
+      end
+      
+      # A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (==
+      # resource_for v1.snapshots ==)
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -16121,9 +16401,33 @@ module Google
         end
       end
       
+      # A specification of the parameters to use when creating the instance template
+      # from a source instance.
+      class SourceInstanceParams
+        include Google::Apis::Core::Hashable
+      
+        # Attached disks configuration. If not provided, defaults are applied: For boot
+        # disk and any other R/W disks, new custom images will be created from each disk.
+        # For read-only disks, they will be attached in read-only mode. Local SSD disks
+        # will be created as blank volumes.
+        # Corresponds to the JSON property `diskConfigs`
+        # @return [Array<Google::Apis::ComputeBeta::DiskInstantiationConfig>]
+        attr_accessor :disk_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_configs = args[:disk_configs] if args.key?(:disk_configs)
+        end
+      end
+      
       # An SslCertificate resource. This resource provides a mechanism to upload an
       # SSL key and certificate to the load balancer to serve secure connections from
-      # the user.
+      # the user. (== resource_for beta.sslCertificates ==) (== resource_for v1.
+      # sslCertificates ==)
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -16312,7 +16616,335 @@ module Google
         end
       end
       
-      # A Subnetwork resource.
+      # 
+      class SslPoliciesList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SslPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeBeta::SslPolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#sslPoliciesList for lists
+        # of sslPolicies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::SslPoliciesList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::SslPoliciesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SslPoliciesListAvailableFeaturesResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+        end
+      end
+      
+      # A SSL policy specifies the server-side support for SSL features. This can be
+      # attached to a TargetHttpsProxy or a TargetSslProxy. This affects connections
+      # between clients and the HTTPS or SSL proxy load balancer. They do not affect
+      # the connection between the load balancers and the backends.
+      class SslPolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # List of features enabled when the selected profile is CUSTOM. The
+        # - method returns the set of features that can be specified in this list. This
+        # field must be empty if the profile is not CUSTOM.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Array<String>]
+        attr_accessor :custom_features
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The list of features enabled in the SSL policy.
+        # Corresponds to the JSON property `enabledFeatures`
+        # @return [Array<String>]
+        attr_accessor :enabled_features
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a SslPolicy. An up-to-date fingerprint must be provided in order to
+        # update the SslPolicy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The minimum version of SSL protocol that can be used by the clients to
+        # establish a connection with the load balancer. This can be one of TLS_1_0,
+        # TLS_1_1, TLS_1_2, TLS_1_3.
+        # Corresponds to the JSON property `minTlsVersion`
+        # @return [String]
+        attr_accessor :min_tls_version
+      
+        # Name of the resource. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        # must be a lowercase letter, and all following characters must be a dash,
+        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Profile specifies the set of SSL features that can be used by the load
+        # balancer when negotiating SSL with clients. This can be one of COMPATIBLE,
+        # MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to
+        # enable must be specified in the customFeatures field.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] If potential misconfigurations are detected for this SSL policy,
+        # this field will be populated with warning messages.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ComputeBeta::SslPolicy::Warning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @description = args[:description] if args.key?(:description)
+          @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
+          @name = args[:name] if args.key?(:name)
+          @profile = args[:profile] if args.key?(:profile)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+        
+        # 
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::SslPolicy::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SslPolicyReference
+        include Google::Apis::Core::Hashable
+      
+        # URL of the SSL policy resource. Set this to empty string to clear any existing
+        # SSL policy associated with the target proxy resource.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+        end
+      end
+      
+      # A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for
+      # v1.subnetworks ==)
       class Subnetwork
         include Google::Apis::Core::Hashable
       
@@ -16927,7 +17559,9 @@ module Google
         end
       end
       
-      # A TargetHttpProxy resource. This resource defines an HTTP proxy.
+      # A TargetHttpProxy resource. This resource defines an HTTP proxy. (==
+      # resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies =
+      # =)
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -17110,6 +17744,25 @@ module Google
       end
       
       # 
+      class TargetHttpsProxiesSetQuicOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # QUIC policy for the TargetHttpsProxy resource.
+        # Corresponds to the JSON property `quicOverride`
+        # @return [String]
+        attr_accessor :quic_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quic_override = args[:quic_override] if args.key?(:quic_override)
+        end
+      end
+      
+      # 
       class TargetHttpsProxiesSetSslCertificatesRequest
         include Google::Apis::Core::Hashable
       
@@ -17129,7 +17782,9 @@ module Google
         end
       end
       
-      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
+      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (==
+      # resource_for beta.targetHttpsProxies ==) (== resource_for v1.
+      # targetHttpsProxies ==)
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -17166,6 +17821,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies the QUIC override policy for this TargetHttpsProxy resource. This
+        # determines whether the load balancer will attempt to negotiate QUIC with
+        # clients or not. Can specify one of NONE, ENABLE, or DISABLE. Specify ENABLE to
+        # always enable QUIC, Enables QUIC when set to ENABLE, and disables QUIC when
+        # set to DISABLE. If NONE is specified, uses the QUIC policy with no user
+        # overrides, which is equivalent to DISABLE. Not specifying this field is
+        # equivalent to specifying NONE.
+        # Corresponds to the JSON property `quicOverride`
+        # @return [String]
+        attr_accessor :quic_override
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -17177,6 +17843,13 @@ module Google
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
+      
+        # URL of SslPolicy resource that will be associated with the TargetHttpsProxy
+        # resource. If not set, the TargetHttpsProxy resource will not have any SSL
+        # policy configured.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
       
         # A fully-qualified or valid partial URL to the UrlMap resource that defines the
         # mapping from URL to the BackendService. For example, the following are all
@@ -17199,8 +17872,10 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @quic_override = args[:quic_override] if args.key?(:quic_override)
           @self_link = args[:self_link] if args.key?(:self_link)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
           @url_map = args[:url_map] if args.key?(:url_map)
         end
       end
@@ -17324,7 +17999,8 @@ module Google
       end
       
       # A TargetInstance resource. This resource defines an endpoint instance that
-      # terminates traffic of certain protocols.
+      # terminates traffic of certain protocols. (== resource_for beta.targetInstances
+      # ==) (== resource_for v1.targetInstances ==)
       class TargetInstance
         include Google::Apis::Core::Hashable
       
@@ -17733,7 +18409,8 @@ module Google
       end
       
       # A TargetPool resource. This resource defines a pool of instances, an
-      # associated HttpHealthCheck resource, and the fallback target pool.
+      # associated HttpHealthCheck resource, and the fallback target pool. (==
+      # resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -18372,7 +19049,8 @@ module Google
         end
       end
       
-      # A TargetSslProxy resource. This resource defines an SSL proxy.
+      # A TargetSslProxy resource. This resource defines an SSL proxy. (==
+      # resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)
       class TargetSslProxy
         include Google::Apis::Core::Hashable
       
@@ -18431,6 +19109,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ssl_certificates
       
+        # URL of SslPolicy resource that will be associated with the TargetSslProxy
+        # resource. If not set, the TargetSslProxy resource will not have any SSL policy
+        # configured.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18446,6 +19131,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
         end
       end
       
@@ -18605,7 +19291,8 @@ module Google
         end
       end
       
-      # A TargetTcpProxy resource. This resource defines a TCP proxy.
+      # A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for
+      # beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies ==)
       class TargetTcpProxy
         include Google::Apis::Core::Hashable
       
@@ -18792,7 +19479,8 @@ module Google
         end
       end
       
-      # Represents a Target VPN gateway resource.
+      # Represents a Target VPN gateway resource. (== resource_for beta.
+      # targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
       class TargetVpnGateway
         include Google::Apis::Core::Hashable
       
@@ -18825,6 +19513,25 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this TargetVpnGateway, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # TargetVpnGateway.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this TargetVpnGateway resource. These can be later modified
+        # by the setLabels method. Each label key/value must comply with RFC1035. Label
+        # values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -18874,6 +19581,8 @@ module Google
           @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @region = args[:region] if args.key?(:region)
@@ -19708,7 +20417,8 @@ module Google
         end
       end
       
-      # 
+      # VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.
+      # vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
@@ -19744,6 +20454,24 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # A fingerprint for the labels being applied to this VpnTunnel, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve a VpnTunnel.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this VpnTunnel. These can be later modified by the
+        # setLabels method. Each label key/value pair must comply with RFC1035. Label
+        # values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Local traffic selector to use when establishing the VPN tunnel with peer VPN
         # gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/
@@ -19823,6 +20551,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @ike_version = args[:ike_version] if args.key?(:ike_version)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @local_traffic_selector = args[:local_traffic_selector] if args.key?(:local_traffic_selector)
           @name = args[:name] if args.key?(:name)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
@@ -20306,7 +21036,7 @@ module Google
         end
       end
       
-      # A Zone resource.
+      # A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)
       class Zone
         include Google::Apis::Core::Hashable
       

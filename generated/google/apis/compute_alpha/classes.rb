@@ -49,7 +49,8 @@ module Google
         end
       end
       
-      # An Accelerator Type resource.
+      # An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (==
+      # resource_for v1.acceleratorTypes ==)
       class AcceleratorType
         include Google::Apis::Core::Hashable
       
@@ -532,7 +533,9 @@ module Google
         end
       end
       
-      # A reserved address resource.
+      # A reserved address resource. (== resource_for beta.addresses ==) (==
+      # resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (==
+      # resource_for v1.globalAddresses ==)
       class Address
         include Google::Apis::Core::Hashable
       
@@ -630,9 +633,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # For external addresses, this field should not be used.
         # The URL of the subnetwork in which to reserve the address. If an IP address is
-        # specified, it must be within the subnetwork's IP range.
+        # specified, it must be within the subnetwork's IP range. This field can only be
+        # used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1065,6 +1068,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # [Output Only] A zero-based index to this disk, where 0 is reserved for the
         # boot disk. If you have many disks attached to an instance, each disk would
         # have a unique index number.
@@ -1107,6 +1117,14 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field
+        # is set to PRESERVED iff the LocalSSD data has been saved to a persistent
+        # location by customer request. (see the discard_local_ssd option on Stop/
+        # Suspend). Read-only in the api.
+        # Corresponds to the JSON property `savedState`
+        # @return [String]
+        attr_accessor :saved_state
+      
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
         # When creating a new instance, one of initializeParams.sourceImage or disks.
         # source is required except for local SSD.
@@ -1135,12 +1153,14 @@ module Google
           @device_name = args[:device_name] if args.key?(:device_name)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @index = args[:index] if args.key?(:index)
           @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
           @interface = args[:interface] if args.key?(:interface)
           @kind = args[:kind] if args.key?(:kind)
           @licenses = args[:licenses] if args.key?(:licenses)
           @mode = args[:mode] if args.key?(:mode)
+          @saved_state = args[:saved_state] if args.key?(:saved_state)
           @source = args[:source] if args.key?(:source)
           @type = args[:type] if args.key?(:type)
         end
@@ -1327,7 +1347,9 @@ module Google
       # Represents an Autoscaler resource. Autoscalers allow you to automatically
       # scale virtual machine instances in managed instance groups according to an
       # autoscaling policy that you define. For more information, read Autoscaling
-      # Groups of Instances.
+      # Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.
+      # autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for
+      # v1.regionAutoscalers ==)
       class Autoscaler
         include Google::Apis::Core::Hashable
       
@@ -1367,6 +1389,14 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # [Output Only] Target recommended MIG size computed by autoscaler. Autoscaler
+        # calculates recommended MIG size even when autoscaling policy mode is different
+        # from ON. This field is empty when autoscaler is not connected to the existing
+        # managed instance group or autoscaler did not generate its first prediction.
+        # Corresponds to the JSON property `recommendedSize`
+        # @return [Fixnum]
+        attr_accessor :recommended_size
       
         # [Output Only] URL of the region where the instance group resides (for
         # autoscalers living in regional scope).
@@ -1414,6 +1444,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @recommended_size = args[:recommended_size] if args.key?(:recommended_size)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -2401,7 +2432,8 @@ module Google
       end
       
       # A BackendService resource. This resource defines a group of backend virtual
-      # machines and their serving capacity.
+      # machines and their serving capacity. (== resource_for v1.backendService ==) (==
+      # resource_for beta.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -3303,7 +3335,8 @@ module Google
       # Committed use discounts are subject to Google Cloud Platform's Service
       # Specific Terms. By purchasing a committed use discount, you agree to these
       # terms. Committed use discounts will not renew, so you must purchase a new
-      # commitment to continue receiving discounts.
+      # commitment to continue receiving discounts. (== resource_for beta.commitments =
+      # =) (== resource_for v1.commitments ==)
       class Commitment
         include Google::Apis::Core::Hashable
       
@@ -3963,7 +3996,7 @@ module Google
         end
       end
       
-      # A Disk resource.
+      # A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)
       class Disk
         include Google::Apis::Core::Hashable
       
@@ -3983,14 +4016,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
-        # A list of features to enable on the guest OS. Applicable for bootable disks
-        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
-        # which allows each virtual CPU to have its own queue. For Windows disks, you
-        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
-        # 1621 or higher. Linux disks with kernel versions 3.17 and higher will support
-        # VIRTIO_SCSI_MULTIQUEUE.
-        # For newer Windows images, the server might also populate this property with
-        # the value WINDOWS to indicate that this is a Windows image.
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -4527,7 +4555,8 @@ module Google
         end
       end
       
-      # A DiskType resource.
+      # A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.
+      # diskTypes ==)
       class DiskType
         include Google::Apis::Core::Hashable
       
@@ -5534,7 +5563,11 @@ module Google
       
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target virtual machines to forward a packet to if it matches the given [
-      # IPAddress, IPProtocol, ports] tuple.
+      # IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==)
+      # (== resource_for v1.forwardingRules ==) (== resource_for beta.
+      # globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (==
+      # resource_for beta.regionForwardingRules ==) (== resource_for v1.
+      # regionForwardingRules ==)
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -6210,9 +6243,8 @@ module Google
       class GuestOsFeature
         include Google::Apis::Core::Hashable
       
-        # The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
-        # supported. For newer Windows images, the server might also populate this
-        # property with the value WINDOWS to indicate that this is a Windows image.
+        # The ID of a supported feature. Read  Enabling guest operating system features
+        # to see a list of available options.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -8177,7 +8209,8 @@ module Google
         end
       end
       
-      # An Image resource.
+      # An Image resource. (== resource_for beta.images ==) (== resource_for v1.images
+      # ==)
       class Image
         include Google::Apis::Core::Hashable
       
@@ -8215,14 +8248,9 @@ module Google
         # @return [String]
         attr_accessor :family
       
-        # A list of features to enable on the guest OS. Applicable for bootable images
-        # only. Currently, only one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE,
-        # which allows each virtual CPU to have its own queue. For Windows images, you
-        # can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.
-        # 1621 or higher. Linux images with kernel versions 3.17 and higher will support
-        # VIRTIO_SCSI_MULTIQUEUE.
-        # For newer Windows images, the server might also populate this property with
-        # the value WINDOWS to indicate that this is a Windows image.
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -8559,7 +8587,8 @@ module Google
         end
       end
       
-      # An Instance resource.
+      # An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.
+      # instances ==)
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -8906,7 +8935,9 @@ module Google
         end
       end
       
-      # 
+      # InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.
+      # instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (==
+      # resource_for v1.regionInstanceGroups ==)
       class InstanceGroup
         include Google::Apis::Core::Hashable
       
@@ -9247,7 +9278,10 @@ module Google
         end
       end
       
-      # An Instance Group Manager resource.
+      # An Instance Group Manager resource. (== resource_for beta.
+      # instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (==
+      # resource_for beta.regionInstanceGroupManagers ==) (== resource_for v1.
+      # regionInstanceGroupManagers ==)
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -11153,7 +11187,8 @@ module Google
         end
       end
       
-      # An Instance Template resource.
+      # An Instance Template resource. (== resource_for beta.instanceTemplates ==) (==
+      # resource_for v1.instanceTemplates ==)
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -11423,6 +11458,36 @@ module Google
       end
       
       # 
+      class InstancesResumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Array of disks associated with this instance that are protected with a
+        # customer-supplied encryption key.
+        # In order to resume the instance, the disk url and its corresponding key must
+        # be provided.
+        # If the disk is not protected with a customer-supplied encryption key it should
+        # not be specified.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeAlpha::CustomerEncryptionKeyProtectedDisk>]
+        attr_accessor :disks
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `instanceEncryptionKey`
+        # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
+        attr_accessor :instance_encryption_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @instance_encryption_key = args[:instance_encryption_key] if args.key?(:instance_encryption_key)
+        end
+      end
+      
+      # 
       class InstancesScopedList
         include Google::Apis::Core::Hashable
       
@@ -11657,7 +11722,8 @@ module Google
       
       # Represents an Interconnects resource. The Interconnects resource is a
       # dedicated connection between Google's network and your on-premises network.
-      # For more information, see the  Dedicated overview page.
+      # For more information, see the  Dedicated overview page. (== resource_for v1.
+      # interconnects ==) (== resource_for beta.interconnects ==)
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -11734,6 +11800,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this Interconnect, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # Interconnect.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this Interconnect resource. These can be later modified by
+        # the setLabels method. Each label key/value must comply with RFC1035. Label
+        # values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Type of link requested. This field indicates speed of each of the links in the
         # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
         # interconnect. Options: Ethernet_10G_LR
@@ -11794,6 +11879,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The current state of whether or not this Interconnect is
+        # functional.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11812,6 +11903,8 @@ module Google
           @interconnect_attachments = args[:interconnect_attachments] if args.key?(:interconnect_attachments)
           @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @link_type = args[:link_type] if args.key?(:link_type)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
@@ -11821,11 +11914,13 @@ module Google
           @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
       # Represents an InterconnectAttachment (VLAN attachment) resource. For more
-      # information, see  Creating VLAN Attachments.
+      # information, see  Creating VLAN Attachments. (== resource_for beta.
+      # interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -11903,6 +11998,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this InterconnectAttachment,
+        # which is essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # InterconnectAttachment.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this InterconnectAttachment resource. These can be later
+        # modified by the setLabels method. Each label key/value must comply with
+        # RFC1035. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
@@ -11925,6 +12039,21 @@ module Google
         # Corresponds to the JSON property `pairingKey`
         # @return [String]
         attr_accessor :pairing_key
+      
+        # [Output only for PARTNER. Input for PARTNER_PROVIDER. Not present for
+        # DEDICATED] BGP ASN of the Partner. A layer 3 Partner should supply this if
+        # they configured BGP on behalf of the customer.
+        # Corresponds to the JSON property `partnerAsn`
+        # @return [Fixnum]
+        attr_accessor :partner_asn
+      
+        # Informational metadata about Partner attachments from Partners to display to
+        # customers. These fields are propagated from PARTNER_PROVIDER attachments to
+        # their corresponding PARTNER attachments. Only mutable for PARTNER_PROVIDER
+        # type, output-only for PARTNER, not available for DEDICATED.
+        # Corresponds to the JSON property `partnerMetadata`
+        # @return [Google::Apis::ComputeAlpha::InterconnectAttachmentPartnerMetadata]
+        attr_accessor :partner_metadata
       
         # Information for an interconnect attachment when this belongs to an
         # interconnect of type DEDICATED.
@@ -11962,9 +12091,9 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Available only for DEDICATED and PARTNER_PROVIDER New field: VLAN. Only
-        # specified at creation time. This field is mapped to ieee_802_1q_tag in the
-        # resource proto.
+        # Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for this
+        # attachment, in the range 2-4094. This field refers to 802.1q VLAN tag, also
+        # known as IEEE 802.1Q Only specified at creation time.
         # Corresponds to the JSON property `vlanTag8021q`
         # @return [Fixnum]
         attr_accessor :vlan_tag8021q
@@ -11987,9 +12116,13 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
+          @partner_asn = args[:partner_asn] if args.key?(:partner_asn)
+          @partner_metadata = args[:partner_metadata] if args.key?(:partner_metadata)
           @private_interconnect_info = args[:private_interconnect_info] if args.key?(:private_interconnect_info)
           @region = args[:region] if args.key?(:region)
           @router = args[:router] if args.key?(:router)
@@ -12234,6 +12367,45 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Informational metadata about Partner attachments from Partners to display to
+      # customers. These fields are propagated from PARTNER_PROVIDER attachments to
+      # their corresponding PARTNER attachments. Only mutable for PARTNER_PROVIDER
+      # type, output-only for PARTNER, not available for DEDICATED.
+      class InterconnectAttachmentPartnerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Plain text name of the Interconnect this attachment is connected to, as
+        # displayed in the Partner?s portal. For instance ?Chicago 1?. This value may be
+        # validated to match approved Partner values.
+        # Corresponds to the JSON property `interconnectName`
+        # @return [String]
+        attr_accessor :interconnect_name
+      
+        # Plain text name of the Partner providing this attachment. This value may be
+        # validated to match approved Partner values.
+        # Corresponds to the JSON property `partnerName`
+        # @return [String]
+        attr_accessor :partner_name
+      
+        # URL of the Partner?s portal for this Attachment. Partners may customise this
+        # to be a deep-link to the specific resource on the Partner portal. This value
+        # may be validated to match approved Partner values.
+        # Corresponds to the JSON property `portalUrl`
+        # @return [String]
+        attr_accessor :portal_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnect_name = args[:interconnect_name] if args.key?(:interconnect_name)
+          @partner_name = args[:partner_name] if args.key?(:partner_name)
+          @portal_url = args[:portal_url] if args.key?(:portal_url)
         end
       end
       
@@ -13421,7 +13593,8 @@ module Google
         end
       end
       
-      # A Machine Type resource.
+      # A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for
+      # beta.machineTypes ==)
       class MachineType
         include Google::Apis::Core::Hashable
       
@@ -14614,7 +14787,8 @@ module Google
       end
       
       # Represents a Network resource. Read Networks and Firewalls for more
-      # information.
+      # information. (== resource_for v1.networks ==) (== resource_for beta.networks ==
+      # )
       class Network
         include Google::Apis::Core::Hashable
       
@@ -15763,7 +15937,11 @@ module Google
         end
       end
       
-      # An Operation resource, used to manage asynchronous API requests.
+      # An Operation resource, used to manage asynchronous API requests. (==
+      # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
+      # (== resource_for v1.regionOperations ==) (== resource_for beta.
+      # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
+      # beta.zoneOperations ==)
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -16562,7 +16740,8 @@ module Google
       end
       
       # A Project resource. Projects can only be created in the Google Cloud Platform
-      # Console. Unless marked otherwise, values can only be modified in the console.
+      # Console. Unless marked otherwise, values can only be modified in the console. (
+      # == resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       
@@ -16864,7 +17043,8 @@ module Google
         end
       end
       
-      # Region resource.
+      # Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions
+      # ==)
       class Region
         include Google::Apis::Core::Hashable
       
@@ -18144,7 +18324,7 @@ module Google
       # either to another instance destination, an instance gateway, or a Google
       # Compute Engine-operated gateway.
       # Packets that do not match any route in the sending instance's routing table
-      # are dropped.
+      # are dropped. (== resource_for beta.routes ==) (== resource_for v1.routes ==)
       class Route
         include Google::Apis::Core::Hashable
       
@@ -19898,11 +20078,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
-        # Match by country or region code.
-        # Corresponds to the JSON property `srcRegionCodes`
-        # @return [Array<String>]
-        attr_accessor :src_region_codes
-      
         # Preconfigured versioned expression. If this field is specified, config must
         # also be specified. Available preconfigured expressions along with their
         # requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range
@@ -19920,7 +20095,6 @@ module Google
           @config = args[:config] if args.key?(:config)
           @expr = args[:expr] if args.key?(:expr)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
-          @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
         end
       end
@@ -20074,7 +20248,8 @@ module Google
         end
       end
       
-      # A persistent disk snapshot resource.
+      # A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (==
+      # resource_for v1.snapshots ==)
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -20192,6 +20367,11 @@ module Google
         # @return [String]
         attr_accessor :storage_bytes_status
       
+        # GCS bucket storage location of the snapshot (regional or multi-regional).
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20216,6 +20396,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
       end
       
@@ -20361,7 +20542,8 @@ module Google
       
       # An SslCertificate resource. This resource provides a mechanism to upload an
       # SSL key and certificate to the load balancer to serve secure connections from
-      # the user.
+      # the user. (== resource_for beta.sslCertificates ==) (== resource_for v1.
+      # sslCertificates ==)
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -20935,7 +21117,8 @@ module Google
         end
       end
       
-      # A Subnetwork resource.
+      # A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for
+      # v1.subnetworks ==)
       class Subnetwork
         include Google::Apis::Core::Hashable
       
@@ -21571,7 +21754,9 @@ module Google
         end
       end
       
-      # A TargetHttpProxy resource. This resource defines an HTTP proxy.
+      # A TargetHttpProxy resource. This resource defines an HTTP proxy. (==
+      # resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies =
+      # =)
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -21792,7 +21977,9 @@ module Google
         end
       end
       
-      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy.
+      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (==
+      # resource_for beta.targetHttpsProxies ==) (== resource_for v1.
+      # targetHttpsProxies ==)
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -22014,7 +22201,8 @@ module Google
       end
       
       # A TargetInstance resource. This resource defines an endpoint instance that
-      # terminates traffic of certain protocols.
+      # terminates traffic of certain protocols. (== resource_for beta.targetInstances
+      # ==) (== resource_for v1.targetInstances ==)
       class TargetInstance
         include Google::Apis::Core::Hashable
       
@@ -22423,7 +22611,8 @@ module Google
       end
       
       # A TargetPool resource. This resource defines a pool of instances, an
-      # associated HttpHealthCheck resource, and the fallback target pool.
+      # associated HttpHealthCheck resource, and the fallback target pool. (==
+      # resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -23062,7 +23251,8 @@ module Google
         end
       end
       
-      # A TargetSslProxy resource. This resource defines an SSL proxy.
+      # A TargetSslProxy resource. This resource defines an SSL proxy. (==
+      # resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)
       class TargetSslProxy
         include Google::Apis::Core::Hashable
       
@@ -23310,7 +23500,8 @@ module Google
         end
       end
       
-      # A TargetTcpProxy resource. This resource defines a TCP proxy.
+      # A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for
+      # beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies ==)
       class TargetTcpProxy
         include Google::Apis::Core::Hashable
       
@@ -23497,7 +23688,8 @@ module Google
         end
       end
       
-      # Represents a Target VPN gateway resource.
+      # Represents a Target VPN gateway resource. (== resource_for beta.
+      # targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
       class TargetVpnGateway
         include Google::Apis::Core::Hashable
       
@@ -24605,7 +24797,8 @@ module Google
         end
       end
       
-      # 
+      # VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.
+      # vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
@@ -25223,7 +25416,7 @@ module Google
         end
       end
       
-      # A Zone resource.
+      # A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)
       class Zone
         include Google::Apis::Core::Hashable
       

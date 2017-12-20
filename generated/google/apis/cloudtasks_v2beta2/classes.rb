@@ -69,13 +69,11 @@ module Google
       # task-level app_engine_routing.
       # The `url` that the task will be sent to is:
       # * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
-      # The task will be sent to a task handler by an HTTP
-      # request using the specified AppEngineHttpRequest.http_method (for example
-      # POST, HTTP GET, etc). The task attempt has succeeded if the task handler
-      # returns an HTTP response code in the range [200 - 299]. Error 503 is
-      # considered an App Engine system error instead of an application error.
-      # Requests returning error 503 will be retried regardless of retry
-      # configuration and not counted against retry counts.
+      # The task attempt has succeeded if the app's request handler returns
+      # an HTTP response code in the range [`200` - `299`]. `503` is
+      # considered an App Engine system error instead of an application
+      # error. Requests returning error `503` will be retried regardless of
+      # retry configuration and not counted against retry counts.
       # Any other response code or a failure to receive a response before the
       # deadline is a failed attempt.
       class AppEngineHttpRequest
@@ -118,10 +116,15 @@ module Google
         # * `Host`
         # * `X-Google-*`
         # * `X-AppEngine-*`
-        # In addition, some App Engine headers, which contain
-        # task-specific information, are also be sent to the task handler; see
+        # In addition, Cloud Tasks sets some headers when the task is dispatched,
+        # such as headers containing information about the task; see
         # [request headers](/appengine/docs/python/taskqueue/push/creating-handlers#
         # reading_request_headers).
+        # These headers are set only when the task is dispatched, so they are not
+        # visible when the task is returned in a Cloud Tasks response.
+        # Although there is no specific limit for the maximum number of headers or
+        # the size, there is a limit on the maximum size of the Task. For more
+        # information, see the CloudTasks.CreateTask documentation.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -134,7 +137,7 @@ module Google
         # creating-handlers#writing_a_push_task_request_handler)
         # and the documentation for the request handlers in the language your app is
         # written in e.g.
-        # [python RequestHandler](/appengine/docs/python/tools/webapp/
+        # [Python Request Handler](/appengine/docs/python/tools/webapp/
         # requesthandlerclass).
         # Corresponds to the JSON property `httpMethod`
         # @return [String]
@@ -555,7 +558,7 @@ module Google
         # `filter` can be used to specify a subset of tasks to lease.
         # When `filter` is set to `tag=<my-tag>` then the
         # LeaseTasksResponse will contain only tasks whose
-        # LeaseMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
+        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
         # 500 bytes.
         # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
         # the same tag as the task with the oldest schedule_time will be returned.
@@ -1501,13 +1504,11 @@ module Google
         # task-level app_engine_routing.
         # The `url` that the task will be sent to is:
         # * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
-        # The task will be sent to a task handler by an HTTP
-        # request using the specified AppEngineHttpRequest.http_method (for example
-        # POST, HTTP GET, etc). The task attempt has succeeded if the task handler
-        # returns an HTTP response code in the range [200 - 299]. Error 503 is
-        # considered an App Engine system error instead of an application error.
-        # Requests returning error 503 will be retried regardless of retry
-        # configuration and not counted against retry counts.
+        # The task attempt has succeeded if the app's request handler returns
+        # an HTTP response code in the range [`200` - `299`]. `503` is
+        # considered an App Engine system error instead of an application
+        # error. Requests returning error `503` will be retried regardless of
+        # retry configuration and not counted against retry counts.
         # Any other response code or a failure to receive a response before the
         # deadline is a failed attempt.
         # Corresponds to the JSON property `appEngineHttpRequest`

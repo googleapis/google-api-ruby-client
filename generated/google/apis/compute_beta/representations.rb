@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -516,6 +522,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskInstantiationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2008,6 +2020,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterAdvertisedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2164,6 +2182,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleMatcherConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SerialPortOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2171,6 +2195,12 @@ module Google
       end
       
       class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SignedUrlKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2200,6 +2230,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceInstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCertificate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2220,6 +2256,54 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPoliciesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPoliciesListAvailableFeaturesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2334,6 +2418,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetHttpsProxiesSetQuicOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3346,6 +3436,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
+          property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicy::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCdn'
@@ -3353,6 +3445,14 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class BackendBucketCdnPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
+          collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
       end
       
@@ -3457,6 +3557,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeBeta::CacheKeyPolicy, decorator: Google::Apis::ComputeBeta::CacheKeyPolicy::Representation
       
+          property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
+          collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
       end
       
@@ -3792,6 +3894,16 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DiskInstantiationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :device_name, as: 'deviceName'
+          property :instantiate_from, as: 'instantiateFrom'
+          property :source_image, as: 'sourceImage'
         end
       end
       
@@ -5114,6 +5226,9 @@ module Google
           property :properties, as: 'properties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
       
           property :self_link, as: 'selfLink'
+          property :source_instance, as: 'sourceInstance'
+          property :source_instance_params, as: 'sourceInstanceParams', class: Google::Apis::ComputeBeta::SourceInstanceParams, decorator: Google::Apis::ComputeBeta::SourceInstanceParams::Representation
+      
         end
       end
       
@@ -6532,6 +6647,14 @@ module Google
         end
       end
       
+      class RouterAdvertisedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :range, as: 'range'
+        end
+      end
+      
       class RouterAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6567,6 +6690,10 @@ module Google
       class RouterBgp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertise_mode, as: 'advertiseMode'
+          collection :advertised_groups, as: 'advertisedGroups'
+          collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeBeta::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeBeta::RouterAdvertisedIpRange::Representation
+      
           property :asn, as: 'asn'
         end
       end
@@ -6574,6 +6701,10 @@ module Google
       class RouterBgpPeer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertise_mode, as: 'advertiseMode'
+          collection :advertised_groups, as: 'advertisedGroups'
+          collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeBeta::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeBeta::RouterAdvertisedIpRange::Representation
+      
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
@@ -6804,6 +6935,16 @@ module Google
       class SecurityPolicyRuleMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfig::Representation
+      
+          collection :src_ip_ranges, as: 'srcIpRanges'
+          property :versioned_expr, as: 'versionedExpr'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           collection :src_ip_ranges, as: 'srcIpRanges'
         end
       end
@@ -6824,6 +6965,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class SignedUrlKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_name, as: 'keyName'
+          property :key_value, as: 'keyValue'
         end
       end
       
@@ -6885,6 +7034,14 @@ module Google
         end
       end
       
+      class SourceInstanceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_configs, as: 'diskConfigs', class: Google::Apis::ComputeBeta::DiskInstantiationConfig, decorator: Google::Apis::ComputeBeta::DiskInstantiationConfig::Representation
+      
+        end
+      end
+      
       class SslCertificate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6928,6 +7085,89 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SslPoliciesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::SslPolicy, decorator: Google::Apis::ComputeBeta::SslPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SslPoliciesList::Warning, decorator: Google::Apis::ComputeBeta::SslPoliciesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SslPoliciesList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SslPoliciesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class SslPoliciesListAvailableFeaturesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :features, as: 'features'
+        end
+      end
+      
+      class SslPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_features, as: 'customFeatures'
+          property :description, as: 'description'
+          collection :enabled_features, as: 'enabledFeatures'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :min_tls_version, as: 'minTlsVersion'
+          property :name, as: 'name'
+          property :profile, as: 'profile'
+          property :self_link, as: 'selfLink'
+          collection :warnings, as: 'warnings', class: Google::Apis::ComputeBeta::SslPolicy::Warning, decorator: Google::Apis::ComputeBeta::SslPolicy::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SslPolicy::Warning::Datum, decorator: Google::Apis::ComputeBeta::SslPolicy::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class SslPolicyReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssl_policy, as: 'sslPolicy'
         end
       end
       
@@ -7130,6 +7370,13 @@ module Google
         end
       end
       
+      class TargetHttpsProxiesSetQuicOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quic_override, as: 'quicOverride'
+        end
+      end
+      
       class TargetHttpsProxiesSetSslCertificatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7145,8 +7392,10 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :quic_override, as: 'quicOverride'
           property :self_link, as: 'selfLink'
           collection :ssl_certificates, as: 'sslCertificates'
+          property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'
         end
       end
@@ -7481,6 +7730,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :service, as: 'service'
           collection :ssl_certificates, as: 'sslCertificates'
+          property :ssl_policy, as: 'sslPolicy'
         end
       end
       
@@ -7584,6 +7834,8 @@ module Google
           collection :forwarding_rules, as: 'forwardingRules'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
           property :region, as: 'region'
@@ -7832,6 +8084,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :ike_version, as: 'ikeVersion'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
           property :peer_ip, as: 'peerIp'

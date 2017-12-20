@@ -1498,6 +1498,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesResumeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1596,6 +1602,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentPartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3830,6 +3842,8 @@ module Google
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
+      
           property :index, as: 'index'
           property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeAlpha::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeAlpha::AttachedDiskInitializeParams::Representation
       
@@ -3837,6 +3851,7 @@ module Google
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
           property :mode, as: 'mode'
+          property :saved_state, as: 'savedState'
           property :source, as: 'source'
           property :type, as: 'type'
         end
@@ -3890,6 +3905,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :recommended_size, as: 'recommendedSize'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -6356,6 +6372,16 @@ module Google
         end
       end
       
+      class InstancesResumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::CustomerEncryptionKeyProtectedDisk, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKeyProtectedDisk::Representation
+      
+          property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
+      
+        end
+      end
+      
       class InstancesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6449,6 +6475,8 @@ module Google
           collection :interconnect_attachments, as: 'interconnectAttachments'
           property :interconnect_type, as: 'interconnectType'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :link_type, as: 'linkType'
           property :location, as: 'location'
           property :name, as: 'name'
@@ -6458,6 +6486,7 @@ module Google
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :requested_link_count, as: 'requestedLinkCount'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
         end
       end
       
@@ -6476,9 +6505,14 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :pairing_key, as: 'pairingKey'
+          property :partner_asn, :numeric_string => true, as: 'partnerAsn'
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeAlpha::InterconnectAttachmentPartnerMetadata, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentPartnerMetadata::Representation
+      
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeAlpha::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentPrivateInfo::Representation
       
           property :region, as: 'region'
@@ -6551,6 +6585,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentPartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interconnect_name, as: 'interconnectName'
+          property :partner_name, as: 'partnerName'
+          property :portal_url, as: 'portalUrl'
         end
       end
       
@@ -8574,7 +8617,6 @@ module Google
           property :expr, as: 'expr', class: Google::Apis::ComputeAlpha::Expr, decorator: Google::Apis::ComputeAlpha::Expr::Representation
       
           collection :src_ip_ranges, as: 'srcIpRanges'
-          collection :src_region_codes, as: 'srcRegionCodes'
           property :versioned_expr, as: 'versionedExpr'
         end
       end
@@ -8644,6 +8686,7 @@ module Google
           property :status, as: 'status'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       

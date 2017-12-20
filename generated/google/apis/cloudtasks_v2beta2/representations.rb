@@ -522,8 +522,8 @@ module Google
       class TaskStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :attempt_dispatch_count, :numeric_string => true, as: 'attemptDispatchCount'
-          property :attempt_response_count, :numeric_string => true, as: 'attemptResponseCount'
+          property :attempt_dispatch_count, as: 'attemptDispatchCount'
+          property :attempt_response_count, as: 'attemptResponseCount'
           property :first_attempt_status, as: 'firstAttemptStatus', class: Google::Apis::CloudtasksV2beta2::AttemptStatus, decorator: Google::Apis::CloudtasksV2beta2::AttemptStatus::Representation
       
           property :last_attempt_status, as: 'lastAttemptStatus', class: Google::Apis::CloudtasksV2beta2::AttemptStatus, decorator: Google::Apis::CloudtasksV2beta2::AttemptStatus::Representation
