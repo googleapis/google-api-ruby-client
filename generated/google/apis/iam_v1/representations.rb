@@ -64,12 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Expr
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListRolesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -216,8 +210,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
-          property :condition, as: 'condition', class: Google::Apis::IamV1::Expr, decorator: Google::Apis::IamV1::Expr::Representation
-      
           property :member, as: 'member'
           property :role, as: 'role'
         end
@@ -252,16 +244,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Expr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
         end
       end
       

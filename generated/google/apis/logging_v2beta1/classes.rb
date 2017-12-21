@@ -676,7 +676,9 @@ module Google
         # If this field is omitted in a new log entry, then Stackdriver Logging assigns
         # it the current time.Incoming log entries should have timestamps that are no
         # more than the logs retention period in the past, and no more than 24 hours in
-        # the future. See the entries.write API method for more information.
+        # the future. Log entries outside those time boundaries will not be available
+        # when calling entries.list, but those log entries can still be exported with
+        # LogSinks.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -1563,11 +1565,11 @@ module Google
         # log entries that did not supply their own values, the entries earlier in the
         # list will sort before the entries later in the list. See the entries.list
         # method.Log entries with timestamps that are more than the logs retention
-        # period in the past or more than 24 hours in the future might be discarded.
-        # Discarding does not return an error.To improve throughput and to avoid
-        # exceeding the quota limit for calls to entries.write, you should try to
-        # include several log entries in this list, rather than calling this method for
-        # each individual log entry.
+        # period in the past or more than 24 hours in the future will not be available
+        # when calling entries.list. However, those log entries can still be exported
+        # with LogSinks.To improve throughput and to avoid exceeding the quota limit for
+        # calls to entries.write, you should try to include several log entries in this
+        # list, rather than calling this method for each individual log entry.
         # Corresponds to the JSON property `entries`
         # @return [Array<Google::Apis::LoggingV2beta1::LogEntry>]
         attr_accessor :entries

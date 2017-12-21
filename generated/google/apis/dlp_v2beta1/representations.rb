@@ -1775,6 +1775,7 @@ module Google
       
           property :transformation, as: 'transformation', class: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrimitiveTransformation, decorator: Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrimitiveTransformation::Representation
       
+          property :transformed_bytes, :numeric_string => true, as: 'transformedBytes'
         end
       end
       

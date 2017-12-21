@@ -1980,6 +1980,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :supported_by, as: 'supportedBy'
         end
       end
       
@@ -2630,6 +2631,7 @@ module Google
       
           property :transformation, as: 'transformation', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2PrimitiveTransformation, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2PrimitiveTransformation::Representation
       
+          property :transformed_bytes, :numeric_string => true, as: 'transformedBytes'
         end
       end
       

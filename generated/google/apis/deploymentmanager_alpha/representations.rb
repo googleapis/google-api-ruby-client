@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MethodMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -480,6 +486,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collection, as: 'collection'
+          property :method_map, as: 'methodMap', class: Google::Apis::DeploymentmanagerAlpha::MethodMap, decorator: Google::Apis::DeploymentmanagerAlpha::MethodMap::Representation
+      
           property :options, as: 'options', class: Google::Apis::DeploymentmanagerAlpha::Options, decorator: Google::Apis::DeploymentmanagerAlpha::Options::Representation
       
         end
@@ -741,6 +749,17 @@ module Google
           collection :manifests, as: 'manifests', class: Google::Apis::DeploymentmanagerAlpha::Manifest, decorator: Google::Apis::DeploymentmanagerAlpha::Manifest::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class MethodMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create, as: 'create'
+          property :delete, as: 'delete'
+          property :get, as: 'get'
+          property :set_iam_policy, as: 'setIamPolicy'
+          property :update, as: 'update'
         end
       end
       

@@ -292,16 +292,31 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `max`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :max
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `min`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :min
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `replacementValue`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :replacement_value
@@ -649,6 +664,11 @@ module Google
         attr_accessor :operator
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :value
@@ -935,7 +955,8 @@ module Google
         # These types of transformations are
         # those that perform pseudonymization, thereby producing a "surrogate" as
         # output. This should be used in conjunction with a field on the
-        # transformation such as `surrogate_info_type`.
+        # transformation such as `surrogate_info_type`. This custom info type does
+        # not support the use of `detection_rules`.
         # Corresponds to the JSON property `surrogateType`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1SurrogateType]
         attr_accessor :surrogate_type
@@ -1353,11 +1374,21 @@ module Google
         attr_accessor :bucket_size
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `lowerBound`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :lower_bound
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `upperBound`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :upper_bound
@@ -2420,11 +2451,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `maxValue`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :max_value
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `minValue`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :min_value
@@ -3004,6 +3045,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `newValue`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :new_value
@@ -3206,7 +3252,8 @@ module Google
       # These types of transformations are
       # those that perform pseudonymization, thereby producing a "surrogate" as
       # output. This should be used in conjunction with a field on the
-      # transformation such as `surrogate_info_type`.
+      # transformation such as `surrogate_info_type`. This custom info type does
+      # not support the use of `detection_rules`.
       class GooglePrivacyDlpV2beta1SurrogateType
         include Google::Apis::Core::Hashable
       
@@ -3329,6 +3376,8 @@ module Google
       end
       
       # Summary of a single tranformation.
+      # Only one of 'transformation', 'field_transformation', or 'record_suppress'
+      # will be set.
       class GooglePrivacyDlpV2beta1TransformationSummary
         include Google::Apis::Core::Hashable
       
@@ -3337,8 +3386,9 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldId]
         attr_accessor :field
       
-        # The field transformation that was applied. This list will contain
-        # multiple only in the case of errors.
+        # The field transformation that was applied.
+        # If multiple field transformations are requested for a single field,
+        # this list will contain all of them; otherwise, only one is supplied.
         # Corresponds to the JSON property `fieldTransformations`
         # @return [Array<Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1FieldTransformation>]
         attr_accessor :field_transformations
@@ -3364,6 +3414,11 @@ module Google
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1PrimitiveTransformation]
         attr_accessor :transformation
       
+        # Total size in bytes that were transformed in some way.
+        # Corresponds to the JSON property `transformedBytes`
+        # @return [Fixnum]
+        attr_accessor :transformed_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3376,6 +3431,7 @@ module Google
           @record_suppress = args[:record_suppress] if args.key?(:record_suppress)
           @results = args[:results] if args.key?(:results)
           @transformation = args[:transformation] if args.key?(:transformation)
+          @transformed_bytes = args[:transformed_bytes] if args.key?(:transformed_bytes)
         end
       end
       
@@ -3426,6 +3482,11 @@ module Google
       end
       
       # Set of primitive values supported by the system.
+      # Note that for the purposes of inspection or transformation, the number
+      # of bytes considered to comprise a 'Value' is based on its representation
+      # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+      # 123456789, the number of bytes would be counted as 9, even though an
+      # int64 only holds up to 8 bytes of data.
       class GooglePrivacyDlpV2beta1Value
         include Google::Apis::Core::Hashable
       
@@ -3499,6 +3560,11 @@ module Google
         attr_accessor :count
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1Value]
         attr_accessor :value

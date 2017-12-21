@@ -227,6 +227,12 @@ module Google
         # @return [String]
         attr_accessor :collection
       
+        # Deployment Manager will call these methods during the events of creation/
+        # deletion/update/get/setIamPolicy
+        # Corresponds to the JSON property `methodMap`
+        # @return [Google::Apis::DeploymentmanagerAlpha::MethodMap]
+        attr_accessor :method_map
+      
         # Options allows customized resource handling by Deployment Manager.
         # Corresponds to the JSON property `options`
         # @return [Google::Apis::DeploymentmanagerAlpha::Options]
@@ -239,6 +245,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @collection = args[:collection] if args.key?(:collection)
+          @method_map = args[:method_map] if args.key?(:method_map)
           @options = args[:options] if args.key?(:options)
         end
       end
@@ -1176,6 +1183,51 @@ module Google
         def update!(**args)
           @manifests = args[:manifests] if args.key?(:manifests)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Deployment Manager will call these methods during the events of creation/
+      # deletion/update/get/setIamPolicy
+      class MethodMap
+        include Google::Apis::Core::Hashable
+      
+        # The action identifier for the create method to be used for this collection
+        # Corresponds to the JSON property `create`
+        # @return [String]
+        attr_accessor :create
+      
+        # The action identifier for the delete method to be used for this collection
+        # Corresponds to the JSON property `delete`
+        # @return [String]
+        attr_accessor :delete
+      
+        # The action identifier for the get method to be used for this collection
+        # Corresponds to the JSON property `get`
+        # @return [String]
+        attr_accessor :get
+      
+        # The action identifier for the setIamPolicy method to be used for this
+        # collection
+        # Corresponds to the JSON property `setIamPolicy`
+        # @return [String]
+        attr_accessor :set_iam_policy
+      
+        # The action identifier for the update method to be used for this collection
+        # Corresponds to the JSON property `update`
+        # @return [String]
+        attr_accessor :update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create = args[:create] if args.key?(:create)
+          @delete = args[:delete] if args.key?(:delete)
+          @get = args[:get] if args.key?(:get)
+          @set_iam_policy = args[:set_iam_policy] if args.key?(:set_iam_policy)
+          @update = args[:update] if args.key?(:update)
         end
       end
       

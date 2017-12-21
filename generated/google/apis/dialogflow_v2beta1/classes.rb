@@ -712,6 +712,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The exported agent.
+        # Example for how to export an agent to a zip file via a command line:
+        # curl \
+        # 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
+        # export'\
+        # -X POST \
+        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Accept: application/json' \
+        # -H 'Content-Type: application/json' \
+        # --compressed \
+        # --data-binary '``' \
+        # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
+        # | base64 --decode > <agent zip file>
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -740,13 +752,17 @@ module Google
       
         # The agent to import.
         # Example for how to import an agent via the command line:
-        # curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \
-        # -H "Content-Type: application/json; charset=utf-8" \
-        # --data "`
+        # curl \
+        # 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
+        # import\
+        # -X POST \
+        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Accept: application/json' \
+        # -H 'Content-Type: application/json' \
+        # --compressed \
+        # --data-binary "`
         # 'agentContent': '$(cat <agent zip file> | base64 -w 0)'
-        # `" \
-        # "https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
-        # import"
+        # `"
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2240,13 +2256,17 @@ module Google
       
         # The agent to restore.
         # Example for how to restore an agent via the command line:
-        # curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \
-        # -H "Content-Type: application/json; charset=utf-8" \
-        # --data "`
+        # curl \
+        # 'https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
+        # restore\
+        # -X POST \
+        # -H 'Authorization: Bearer '$(gcloud auth print-access-token) \
+        # -H 'Accept: application/json' \
+        # -H 'Content-Type: application/json' \
+        # --compressed \
+        # --data-binary "`
         # 'agentContent': '$(cat <agent zip file> | base64 -w 0)'
         # `" \
-        # "https://dialogflow.googleapis.com/v2beta1/projects/<project_name>/agent:
-        # restore"
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

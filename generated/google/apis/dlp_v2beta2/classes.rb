@@ -284,7 +284,8 @@ module Google
         # These types of transformations are
         # those that perform pseudonymization, thereby producing a "surrogate" as
         # output. This should be used in conjunction with a field on the
-        # transformation such as `surrogate_info_type`.
+        # transformation such as `surrogate_info_type`. This custom info type does
+        # not support the use of `detection_rules`.
         # Corresponds to the JSON property `surrogateType`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta1SurrogateType]
         attr_accessor :surrogate_type
@@ -1069,11 +1070,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `maxValue`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta1Value]
         attr_accessor :max_value
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `minValue`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta1Value]
         attr_accessor :min_value
@@ -1392,7 +1403,8 @@ module Google
       # These types of transformations are
       # those that perform pseudonymization, thereby producing a "surrogate" as
       # output. This should be used in conjunction with a field on the
-      # transformation such as `surrogate_info_type`.
+      # transformation such as `surrogate_info_type`. This custom info type does
+      # not support the use of `detection_rules`.
       class GooglePrivacyDlpV2beta1SurrogateType
         include Google::Apis::Core::Hashable
       
@@ -1451,6 +1463,11 @@ module Google
       end
       
       # Set of primitive values supported by the system.
+      # Note that for the purposes of inspection or transformation, the number
+      # of bytes considered to comprise a 'Value' is based on its representation
+      # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+      # 123456789, the number of bytes would be counted as 9, even though an
+      # int64 only holds up to 8 bytes of data.
       class GooglePrivacyDlpV2beta1Value
         include Google::Apis::Core::Hashable
       
@@ -1524,6 +1541,11 @@ module Google
         attr_accessor :count
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta1Value]
         attr_accessor :value
@@ -1746,22 +1768,36 @@ module Google
         end
       end
       
-      # Buckets represented as ranges, along with replacement values. Ranges must
-      # be non-overlapping.
+      # Bucket is represented as a range, along with replacement values.
       class GooglePrivacyDlpV2beta2Bucket
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `max`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :max
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `min`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :min
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `replacementValue`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :replacement_value
@@ -1789,7 +1825,7 @@ module Google
       class GooglePrivacyDlpV2beta2BucketingConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # Set of buckets. Ranges must be non-overlapping.
         # Corresponds to the JSON property `buckets`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Bucket>]
         attr_accessor :buckets
@@ -2072,12 +2108,17 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId]
         attr_accessor :field
       
-        # Operator used to compare the field or info type to the value. [required]
+        # Operator used to compare the field or infoType to the value. [required]
         # Corresponds to the JSON property `operator`
         # @return [String]
         attr_accessor :operator
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :value
@@ -2094,7 +2135,7 @@ module Google
         end
       end
       
-      # 
+      # A collection of conditions.
       class GooglePrivacyDlpV2beta2Conditions
         include Google::Apis::Core::Hashable
       
@@ -2385,7 +2426,8 @@ module Google
         # These types of transformations are
         # those that perform pseudonymization, thereby producing a "surrogate" as
         # output. This should be used in conjunction with a field on the
-        # transformation such as `surrogate_info_type`.
+        # transformation such as `surrogate_info_type`. This custom info type does
+        # not support the use of `detection_rules`.
         # Corresponds to the JSON property `surrogateType`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2SurrogateType]
         attr_accessor :surrogate_type
@@ -2687,7 +2729,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # 
+        # State of a job.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2738,11 +2780,11 @@ module Google
         end
       end
       
-      # A collection of expressions
+      # An expression, consisting or an operator and conditions.
       class GooglePrivacyDlpV2beta2Expressions
         include Google::Apis::Core::Hashable
       
-        # 
+        # A collection of conditions.
         # Corresponds to the JSON property `conditions`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Conditions]
         attr_accessor :conditions
@@ -2891,7 +2933,7 @@ module Google
       class GooglePrivacyDlpV2beta2FindingLimits
         include Google::Apis::Core::Hashable
       
-        # Configuration of findings limit given for specified info types.
+        # Configuration of findings limit given for specified infoTypes.
         # Corresponds to the JSON property `maxFindingsPerInfoType`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoTypeLimit>]
         attr_accessor :max_findings_per_info_type
@@ -2941,11 +2983,21 @@ module Google
         attr_accessor :bucket_size
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `lowerBound`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :lower_bound
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `upperBound`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :upper_bound
@@ -3051,19 +3103,24 @@ module Google
         end
       end
       
-      # Info type description.
+      # InfoType description.
       class GooglePrivacyDlpV2beta2InfoTypeDescription
         include Google::Apis::Core::Hashable
       
-        # Human readable form of the info type name.
+        # Human readable form of the infoType name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Internal name of the info type.
+        # Internal name of the infoType.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Which parts of the API supports this InfoType.
+        # Corresponds to the JSON property `supportedBy`
+        # @return [Array<String>]
+        attr_accessor :supported_by
       
         def initialize(**args)
            update!(**args)
@@ -3073,10 +3130,11 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @supported_by = args[:supported_by] if args.key?(:supported_by)
         end
       end
       
-      # Max findings configuration per info type, per content item or long
+      # Max findings configuration per infoType, per content item or long
       # running DlpJob.
       class GooglePrivacyDlpV2beta2InfoTypeLimit
         include Google::Apis::Core::Hashable
@@ -3106,7 +3164,7 @@ module Google
       class GooglePrivacyDlpV2beta2InfoTypeStatistics
         include Google::Apis::Core::Hashable
       
-        # Number of findings for this info type.
+        # Number of findings for this infoType.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -3132,8 +3190,8 @@ module Google
       class GooglePrivacyDlpV2beta2InfoTypeTransformation
         include Google::Apis::Core::Hashable
       
-        # Info types to apply the transformation to. Empty list will match all
-        # available info types for this transformation.
+        # InfoTypes to apply the transformation to. Empty list will match all
+        # available infoTypes for this transformation.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoType>]
         attr_accessor :info_types
@@ -3161,8 +3219,8 @@ module Google
       class GooglePrivacyDlpV2beta2InfoTypeTransformations
         include Google::Apis::Core::Hashable
       
-        # Transformation for each info type. Cannot specify more than one
-        # for a given info type. [required]
+        # Transformation for each infoType. Cannot specify more than one
+        # for a given infoType. [required]
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoTypeTransformation>]
         attr_accessor :transformations
@@ -3183,7 +3241,7 @@ module Google
       class GooglePrivacyDlpV2beta2InspectConfig
         include Google::Apis::Core::Hashable
       
-        # Custom info types provided by the user.
+        # Custom infoTypes provided by the user.
         # Corresponds to the JSON property `customInfoTypes`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CustomInfoType>]
         attr_accessor :custom_info_types
@@ -3320,7 +3378,7 @@ module Google
       class GooglePrivacyDlpV2beta2InspectDataSourceRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # A configuration for the job.
         # Corresponds to the JSON property `jobConfig`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InspectJobConfig]
         attr_accessor :job_config
@@ -3934,7 +3992,7 @@ module Google
       class GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse
         include Google::Apis::Core::Hashable
       
-        # List of deidentifyTemplates, up to page_size in
+        # List of deidentify templates, up to page_size in
         # ListDeidentifyTemplatesRequest.
         # Corresponds to the JSON property `deidentifyTemplates`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DeidentifyTemplate>]
@@ -3986,7 +4044,7 @@ module Google
       class GooglePrivacyDlpV2beta2ListInfoTypesResponse
         include Google::Apis::Core::Hashable
       
-        # Set of sensitive info types.
+        # Set of sensitive infoTypes.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoTypeDescription>]
         attr_accessor :info_types
@@ -4101,11 +4159,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `maxValue`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :max_value
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `minValue`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :min_value
@@ -4432,7 +4500,7 @@ module Google
       class GooglePrivacyDlpV2beta2RecordCondition
         include Google::Apis::Core::Hashable
       
-        # A collection of expressions
+        # An expression, consisting or an operator and conditions.
         # Corresponds to the JSON property `expressions`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Expressions]
         attr_accessor :expressions
@@ -4689,6 +4757,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `newValue`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :new_value
@@ -4747,7 +4820,8 @@ module Google
       class GooglePrivacyDlpV2beta2Result
         include Google::Apis::Core::Hashable
       
-        # 
+        # Statistics of how many instances of each info type were found during
+        # inspect job.
         # Corresponds to the JSON property `infoTypeStats`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoTypeStatistics>]
         attr_accessor :info_type_stats
@@ -4894,7 +4968,8 @@ module Google
       # These types of transformations are
       # those that perform pseudonymization, thereby producing a "surrogate" as
       # output. This should be used in conjunction with a field on the
-      # transformation such as `surrogate_info_type`.
+      # transformation such as `surrogate_info_type`. This custom info type does
+      # not support the use of `detection_rules`.
       class GooglePrivacyDlpV2beta2SurrogateType
         include Google::Apis::Core::Hashable
       
@@ -5042,6 +5117,8 @@ module Google
       end
       
       # Summary of a single tranformation.
+      # Only one of 'transformation', 'field_transformation', or 'record_suppress'
+      # will be set.
       class GooglePrivacyDlpV2beta2TransformationSummary
         include Google::Apis::Core::Hashable
       
@@ -5050,8 +5127,9 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId]
         attr_accessor :field
       
-        # The field transformation that was applied. This list will contain
-        # multiple entries only in the case of errors.
+        # The field transformation that was applied.
+        # If multiple field transformations are requested for a single field,
+        # this list will contain all of them; otherwise, only one is supplied.
         # Corresponds to the JSON property `fieldTransformations`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldTransformation>]
         attr_accessor :field_transformations
@@ -5077,6 +5155,11 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2PrimitiveTransformation]
         attr_accessor :transformation
       
+        # Total size in bytes that were transformed in some way.
+        # Corresponds to the JSON property `transformedBytes`
+        # @return [Fixnum]
+        attr_accessor :transformed_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5089,6 +5172,7 @@ module Google
           @record_suppress = args[:record_suppress] if args.key?(:record_suppress)
           @results = args[:results] if args.key?(:results)
           @transformation = args[:transformation] if args.key?(:transformation)
+          @transformed_bytes = args[:transformed_bytes] if args.key?(:transformed_bytes)
         end
       end
       
@@ -5191,6 +5275,11 @@ module Google
       end
       
       # Set of primitive values supported by the system.
+      # Note that for the purposes of inspection or transformation, the number
+      # of bytes considered to comprise a 'Value' is based on its representation
+      # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+      # 123456789, the number of bytes would be counted as 9, even though an
+      # int64 only holds up to 8 bytes of data.
       class GooglePrivacyDlpV2beta2Value
         include Google::Apis::Core::Hashable
       
@@ -5264,6 +5353,11 @@ module Google
         attr_accessor :count
       
         # Set of primitive values supported by the system.
+        # Note that for the purposes of inspection or transformation, the number
+        # of bytes considered to comprise a 'Value' is based on its representation
+        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
+        # 123456789, the number of bytes would be counted as 9, even though an
+        # int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Value]
         attr_accessor :value
