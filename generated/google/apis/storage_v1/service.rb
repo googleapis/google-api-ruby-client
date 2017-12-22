@@ -539,6 +539,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Locks retention policy on a bucket.
+        # @param [String] bucket
+        #   Name of a bucket.
+        # @param [Fixnum] if_metageneration_match
+        #   Makes the operation conditional on whether bucket's current metageneration
+        #   matches the given value.
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::Bucket] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::Bucket]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lock_bucket_retention_policy(bucket, if_metageneration_match, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'b/{bucket}/lockRetentionPolicy', options)
+          command.response_representation = Google::Apis::StorageV1::Bucket::Representation
+          command.response_class = Google::Apis::StorageV1::Bucket
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a bucket. Changes to the bucket will be readable immediately after
         # writing, but configuration changes may take time to propagate. This method
         # supports patch semantics.
@@ -1871,7 +1913,8 @@ module Google
         # @param [String] kms_key_name
         #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
         #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
-        #   object. Overrides the object metadata's kms_key_name value, if any.
+        #   object. Overrides the object metadata's kms_key_name value, if any. Limited
+        #   availability; usable only by enabled projects.
         # @param [String] name
         #   Name of the object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any. For information

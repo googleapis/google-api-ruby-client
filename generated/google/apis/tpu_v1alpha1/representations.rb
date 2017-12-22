@@ -152,6 +152,7 @@ module Google
           property :cidr_block, as: 'cidrBlock'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :health, as: 'health'
           property :health_description, as: 'healthDescription'
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'

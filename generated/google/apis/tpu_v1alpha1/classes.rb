@@ -203,8 +203,8 @@ module Google
         # @return [String]
         attr_accessor :cidr_block
       
-        # The time when the node was created.
         # Output only.
+        # The time when the node was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -214,9 +214,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The health status of the TPU node.
+        # Corresponds to the JSON property `health`
+        # @return [String]
+        attr_accessor :health
+      
+        # Output only.
         # If this field is populated, it contains a description of why the TPU Node
         # is unhealthy.
-        # Output only.
         # Corresponds to the JSON property `healthDescription`
         # @return [String]
         attr_accessor :health_description
@@ -228,6 +233,7 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Output only.
         # The immutable name of the TPU
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -255,17 +261,17 @@ module Google
         # @return [String]
         attr_accessor :port
       
+        # Output only.
         # The service account used to run the tensor flow services within the node.
         # To share resources, including Google Cloud Storage data, with the
         # Tensorflow job running in the Node, this account must have permissions to
         # that data.
-        # Output only.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
       
-        # The current state for the TPU Node.
         # Output only.
+        # The current state for the TPU Node.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -286,6 +292,7 @@ module Google
           @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @health = args[:health] if args.key?(:health)
           @health_description = args[:health_description] if args.key?(:health_description)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @name = args[:name] if args.key?(:name)

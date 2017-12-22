@@ -357,6 +357,15 @@ module Google
         # @return [String]
         attr_accessor :detail
       
+        # Subject to whom this error applies. See the specific code enum for more
+        # details on this field. For example:
+        # - “project:<project-id or project-number>”
+        # - “folder:<folder-id>”
+        # - “organization:<organization-id>”
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
         def initialize(**args)
            update!(**args)
         end
@@ -365,6 +374,7 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @detail = args[:detail] if args.key?(:detail)
+          @subject = args[:subject] if args.key?(:subject)
         end
       end
       

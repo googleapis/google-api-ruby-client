@@ -82,8 +82,8 @@ module Google
         
         # Performs prediction on the data in the request.
         # Cloud ML Engine implements a custom `predict` verb on top of an HTTP POST
-        # method. For details of the format, see the **guide to the
-        # [predict request format](/ml-engine/docs/v1/predict-request)**.
+        # method. <p>For details of the request and response format, see the **guide
+        # to the [predict request format](/ml-engine/docs/v1/predict-request)**.
         # @param [String] name
         #   Required. The resource name of a model or a version.
         #   Authorization: requires the `predict` permission on the specified resource.
@@ -247,10 +247,20 @@ module Google
         end
         
         # Lists the jobs in the project.
+        # If there are no jobs that match the request parameters, the list
+        # request returns an empty response body: ``.
         # @param [String] parent
         #   Required. The name of the project for which to list jobs.
         # @param [String] filter
         #   Optional. Specifies the subset of jobs to retrieve.
+        #   You can filter on the value of one or more attributes of the job object.
+        #   For example, retrieve jobs with a job identifier that starts with 'census':
+        #   <p><code>gcloud ml-engine jobs list --filter='jobId:census*'</code>
+        #   <p>List all failed jobs with names that start with 'rnn':
+        #   <p><code>gcloud ml-engine jobs list --filter='jobId:rnn*
+        #   AND state:FAILED'</code>
+        #   <p>For more examples, see the guide to
+        #   <a href="/ml-engine/docs/monitor-training">monitoring jobs</a>.
         # @param [Fixnum] page_size
         #   Optional. The number of jobs to retrieve per "page" of results. If there
         #   are more remaining results than this number, the response message will
@@ -629,6 +639,8 @@ module Google
         # Lists the models in a project.
         # Each project can contain multiple models, and each model can have multiple
         # versions.
+        # If there are no models that match the request parameters, the list request
+        # returns an empty response body: ``.
         # @param [String] parent
         #   Required. The name of the project whose models are to be listed.
         # @param [String] filter
@@ -912,9 +924,11 @@ module Google
         end
         
         # Gets basic information about all the versions of a model.
-        # If you expect that a model has a lot of versions, or if you need to handle
+        # If you expect that a model has many versions, or if you need to handle
         # only a limited number of results at a time, you can request that the list
-        # be retrieved in batches (called pages):
+        # be retrieved in batches (called pages).
+        # If there are no versions that match the request parameters, the list
+        # request returns an empty response body: ``.
         # @param [String] parent
         #   Required. The name of the model for which to list the version.
         # @param [String] filter
@@ -976,7 +990,7 @@ module Google
         #   To adopt etag mechanism, include `etag` field in the mask, and include the
         #   `etag` value in your version resource.
         #   Currently the only supported update masks are `description`, `labels`, and
-        #   `etag`.
+        #   `etag`, and `expire_time`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -79,6 +79,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class RetentionPolicy
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Versioning
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -235,6 +241,7 @@ module Google
       
           collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
       
+          property :default_event_based_hold, as: 'defaultEventBasedHold'
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
           property :encryption, as: 'encryption', class: Google::Apis::StorageV1::Bucket::Encryption, decorator: Google::Apis::StorageV1::Bucket::Encryption::Representation
@@ -253,6 +260,8 @@ module Google
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Bucket::Owner, decorator: Google::Apis::StorageV1::Bucket::Owner::Representation
       
           property :project_number, :numeric_string => true, as: 'projectNumber'
+          property :retention_policy, as: 'retentionPolicy', class: Google::Apis::StorageV1::Bucket::RetentionPolicy, decorator: Google::Apis::StorageV1::Bucket::RetentionPolicy::Representation
+      
           property :self_link, as: 'selfLink'
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
@@ -340,6 +349,16 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :entity, as: 'entity'
             property :entity_id, as: 'entityId'
+          end
+        end
+        
+        class RetentionPolicy
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :effective_time, as: 'effectiveTime', type: DateTime
+        
+            property :is_locked, as: 'isLocked'
+            property :retention_period, :numeric_string => true, as: 'retentionPeriod'
           end
         end
         
@@ -488,6 +507,7 @@ module Google
           property :customer_encryption, as: 'customerEncryption', class: Google::Apis::StorageV1::Object::CustomerEncryption, decorator: Google::Apis::StorageV1::Object::CustomerEncryption::Representation
       
           property :etag, as: 'etag'
+          property :event_based_hold, as: 'eventBasedHold'
           property :generation, :numeric_string => true, as: 'generation'
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -499,9 +519,12 @@ module Google
           property :name, as: 'name'
           property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::Object::Owner::Representation
       
+          property :retention_expiration_time, as: 'retentionExpirationTime', type: DateTime
+      
           property :self_link, as: 'selfLink'
           property :size, :numeric_string => true, as: 'size'
           property :storage_class, as: 'storageClass'
+          property :temporary_hold, as: 'temporaryHold'
           property :time_created, as: 'timeCreated', type: DateTime
       
           property :time_deleted, as: 'timeDeleted', type: DateTime

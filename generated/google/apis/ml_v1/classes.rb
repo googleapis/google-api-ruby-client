@@ -368,7 +368,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Represents input parameters for a training job.
+        # Represents input parameters for a training job. When using the
+        # gcloud command to submit your training job, you can specify
+        # the input parameters as command-line arguments and/or in a YAML configuration
+        # file referenced from the --config command-line argument. For
+        # details, see the guide to
+        # <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
         # Corresponds to the JSON property `trainingInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingInput]
         attr_accessor :training_input
@@ -610,6 +615,8 @@ module Google
         # Optional. The list of regions where the model is going to be deployed.
         # Currently only one region per model is supported.
         # Defaults to 'us-central1' if nothing is set.
+        # See the <a href="/ml-engine/docs/regions">available regions</a> for
+        # ML Engine services.
         # Note:
         # *   No matter where a model is deployed, it can always be accessed by
         # users from anywhere, both for online and batch prediction.
@@ -866,6 +873,8 @@ module Google
         attr_accessor :output_path
       
         # Required. The Google Compute Engine region to run the prediction job in.
+        # See the <a href="/ml-engine/docs/regions">available regions</a> for
+        # ML Engine services.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -976,7 +985,12 @@ module Google
         end
       end
       
-      # Represents input parameters for a training job.
+      # Represents input parameters for a training job. When using the
+      # gcloud command to submit your training job, you can specify
+      # the input parameters as command-line arguments and/or in a YAML configuration
+      # file referenced from the --config command-line argument. For
+      # details, see the guide to
+      # <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
       class GoogleCloudMlV1TrainingInput
         include Google::Apis::Core::Hashable
       
@@ -1052,14 +1066,14 @@ module Google
         # <dd>
         # A machine equivalent to <code suppresswarning="true">standard</code> that
         # also includes a single NVIDIA Tesla P100 GPU. The availability of these
-        # GPUs is in the Alpha launch stage.
+        # GPUs is in the Beta launch stage.
         # </dd>
         # <dt>complex_model_m_p100</dt>
         # <dd>
         # A machine equivalent to
         # <code suppresswarning="true">complex_model_m</code> that also includes
         # four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
-        # the Alpha launch stage.
+        # the Beta launch stage.
         # </dd>
         # </dl>
         # You must set this value when `scaleTier` is set to `CUSTOM`.
@@ -1099,12 +1113,15 @@ module Google
         attr_accessor :python_module
       
         # Optional. The version of Python used in training. If not set, the default
-        # version is '2.7'.
+        # version is '2.7'. Python '3.5' is available when `runtime_version` is set
+        # to '1.4' and above. Python '2.7' works with all supported runtime versions.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
       
         # Required. The Google Compute Engine region to run the training job in.
+        # See the <a href="/ml-engine/docs/regions">available regions</a> for
+        # ML Engine services.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region

@@ -655,6 +655,13 @@ module Google
         # @return [Array<Google::Apis::CalendarV3::EntryPoint>]
         attr_accessor :entry_points
       
+        # Additional notes (such as instructions from the domain administrator, legal
+        # notices) to display to the user. Can contain HTML. The maximum length is 2048
+        # characters. Optional.
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
         # The signature of the conference data.
         # Genereated on server side. Must be preserved while copying the conference data
         # between events, otherwise the conference data will not be copied.
@@ -674,6 +681,7 @@ module Google
           @conference_solution = args[:conference_solution] if args.key?(:conference_solution)
           @create_request = args[:create_request] if args.key?(:create_request)
           @entry_points = args[:entry_points] if args.key?(:entry_points)
+          @notes = args[:notes] if args.key?(:notes)
           @signature = args[:signature] if args.key?(:signature)
         end
       end

@@ -406,6 +406,7 @@ module Google
       
           collection :entry_points, as: 'entryPoints', class: Google::Apis::CalendarV3::EntryPoint, decorator: Google::Apis::CalendarV3::EntryPoint::Representation
       
+          property :notes, as: 'notes'
           property :signature, as: 'signature'
         end
       end

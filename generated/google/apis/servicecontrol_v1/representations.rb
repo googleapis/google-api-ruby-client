@@ -319,6 +319,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :detail, as: 'detail'
+          property :subject, as: 'subject'
         end
       end
       

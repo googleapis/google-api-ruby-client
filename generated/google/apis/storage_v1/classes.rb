@@ -41,6 +41,21 @@ module Google
         # @return [Array<Google::Apis::StorageV1::Bucket::CorsConfiguration>]
         attr_accessor :cors_configurations
       
+        # Defines the default value for Event-Based hold on newly created objects in
+        # this bucket. Event-Based hold is a way to retain objects indefinitely until an
+        # event occurs, signified by the hold's release. After being released, such
+        # objects will be subject to bucket-level retention (if any). One sample use
+        # case of this flag is for banks to hold loan documents for at least 3 years
+        # after loan is paid in full. Here bucket-level retention is 3 years and the
+        # event is loan being paid in full. In this example these objects will be held
+        # intact for any number of years until the event has occurred (hold is released)
+        # and then 3 more years after that. Objects under Event-Based hold cannot be
+        # deleted, overwritten or archived until the hold is removed.
+        # Corresponds to the JSON property `defaultEventBasedHold`
+        # @return [Boolean]
+        attr_accessor :default_event_based_hold
+        alias_method :default_event_based_hold?, :default_event_based_hold
+      
         # Default access controls to apply to new objects when no ACL is provided.
         # Corresponds to the JSON property `defaultObjectAcl`
         # @return [Array<Google::Apis::StorageV1::ObjectAccessControl>]
@@ -57,7 +72,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The ID of the bucket. For buckets, the id and name properities are the same.
+        # The ID of the bucket. For buckets, the id and name properties are the same.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -111,6 +126,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :project_number
       
+        # Defines the retention policy for a bucket. The Retention policy enforces a
+        # minimum retention time for all objects contained in the bucket, based on their
+        # creation time. Any attempt to overwrite or delete objects younger than the
+        # retention period will result in a PERMISSION_DENIED error. An unlocked
+        # retention policy can be modified or removed from the bucket via the
+        # UpdateBucketMetadata RPC. A locked retention policy cannot be removed or
+        # shortened in duration for the lifetime of the bucket. Attempting to remove or
+        # decrease period of a locked retention policy will result in a
+        # PERMISSION_DENIED error.
+        # Corresponds to the JSON property `retentionPolicy`
+        # @return [Google::Apis::StorageV1::Bucket::RetentionPolicy]
+        attr_accessor :retention_policy
+      
         # The URI of this bucket.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -157,6 +185,7 @@ module Google
           @acl = args[:acl] if args.key?(:acl)
           @billing = args[:billing] if args.key?(:billing)
           @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
+          @default_event_based_hold = args[:default_event_based_hold] if args.key?(:default_event_based_hold)
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @encryption = args[:encryption] if args.key?(:encryption)
           @etag = args[:etag] if args.key?(:etag)
@@ -170,6 +199,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
           @project_number = args[:project_number] if args.key?(:project_number)
+          @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @time_created = args[:time_created] if args.key?(:time_created)
@@ -182,7 +212,7 @@ module Google
         class Billing
           include Google::Apis::Core::Hashable
         
-          # When set to true, bucket is requester pays.
+          # When set to true, Requester Pays is enabled for this bucket.
           # Corresponds to the JSON property `requesterPays`
           # @return [Boolean]
           attr_accessor :requester_pays
@@ -245,7 +275,9 @@ module Google
         class Encryption
           include Google::Apis::Core::Hashable
         
-          # 
+          # A Cloud KMS key that will be used to encrypt objects inserted into this bucket,
+          # if no encryption method is specified. Limited availability; usable only by
+          # enabled projects.
           # Corresponds to the JSON property `defaultKmsKeyName`
           # @return [String]
           attr_accessor :default_kms_key_name
@@ -431,6 +463,49 @@ module Google
           def update!(**args)
             @entity = args[:entity] if args.key?(:entity)
             @entity_id = args[:entity_id] if args.key?(:entity_id)
+          end
+        end
+        
+        # Defines the retention policy for a bucket. The Retention policy enforces a
+        # minimum retention time for all objects contained in the bucket, based on their
+        # creation time. Any attempt to overwrite or delete objects younger than the
+        # retention period will result in a PERMISSION_DENIED error. An unlocked
+        # retention policy can be modified or removed from the bucket via the
+        # UpdateBucketMetadata RPC. A locked retention policy cannot be removed or
+        # shortened in duration for the lifetime of the bucket. Attempting to remove or
+        # decrease period of a locked retention policy will result in a
+        # PERMISSION_DENIED error.
+        class RetentionPolicy
+          include Google::Apis::Core::Hashable
+        
+          # The time from which policy was enforced and effective. RFC 3339 format.
+          # Corresponds to the JSON property `effectiveTime`
+          # @return [DateTime]
+          attr_accessor :effective_time
+        
+          # Once locked, an object retention policy cannot be modified.
+          # Corresponds to the JSON property `isLocked`
+          # @return [Boolean]
+          attr_accessor :is_locked
+          alias_method :is_locked?, :is_locked
+        
+          # Specifies the duration that objects need to be retained. Retention duration
+          # must be greater than zero and less than 100 years. Note that enforcement of
+          # retention periods less than a day is not guaranteed. Such periods should only
+          # be used for testing purposes.
+          # Corresponds to the JSON property `retentionPeriod`
+          # @return [Fixnum]
+          attr_accessor :retention_period
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @effective_time = args[:effective_time] if args.key?(:effective_time)
+            @is_locked = args[:is_locked] if args.key?(:is_locked)
+            @retention_period = args[:retention_period] if args.key?(:retention_period)
           end
         end
         
@@ -987,6 +1062,19 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Defines the Event-Based hold for an object. Event-Based hold is a way to
+        # retain objects indefinitely until an event occurs, signified by the hold's
+        # release. After being released, such objects will be subject to bucket-level
+        # retention (if any). One sample use case of this flag is for banks to hold loan
+        # documents for at least 3 years after loan is paid in full. Here bucket-level
+        # retention is 3 years and the event is loan being paid in full. In this example
+        # these objects will be held intact for any number of years until the event has
+        # occurred (hold is released) and then 3 more years after that.
+        # Corresponds to the JSON property `eventBasedHold`
+        # @return [Boolean]
+        attr_accessor :event_based_hold
+        alias_method :event_based_hold?, :event_based_hold
+      
         # The content generation of this object. Used for object versioning.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
@@ -1004,7 +1092,7 @@ module Google
         attr_accessor :kind
       
         # Cloud KMS Key used to encrypt this object, if the object is encrypted by such
-        # a key.
+        # a key. Limited availability; usable only by enabled projects.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -1043,6 +1131,16 @@ module Google
         # @return [Google::Apis::StorageV1::Object::Owner]
         attr_accessor :owner
       
+        # Specifies the earliest time that the object's retention period expires. This
+        # value is server-determined and is in RFC 3339 format. Note 1: This field is
+        # not provided for objects with an active Event-Based hold, since retention
+        # expiration is unknown until the hold is removed. Note 2: This value can be
+        # provided even when TemporaryHold is set (so that the user can reason about
+        # policy without having to first unset the TemporaryHold).
+        # Corresponds to the JSON property `retentionExpirationTime`
+        # @return [DateTime]
+        attr_accessor :retention_expiration_time
+      
         # The link to this object.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1057,6 +1155,16 @@ module Google
         # Corresponds to the JSON property `storageClass`
         # @return [String]
         attr_accessor :storage_class
+      
+        # Defines the temporary hold for an object. This flag is used to enforce a
+        # temporary hold on an object. While it is set to true, the object is protected
+        # against deletion and overwrites. A common use case of this flag is regulatory
+        # investigations where objects need to be retained while the investigation is
+        # ongoing.
+        # Corresponds to the JSON property `temporaryHold`
+        # @return [Boolean]
+        attr_accessor :temporary_hold
+        alias_method :temporary_hold?, :temporary_hold
       
         # The creation time of the object in RFC 3339 format.
         # Corresponds to the JSON property `timeCreated`
@@ -1097,6 +1205,7 @@ module Google
           @crc32c = args[:crc32c] if args.key?(:crc32c)
           @customer_encryption = args[:customer_encryption] if args.key?(:customer_encryption)
           @etag = args[:etag] if args.key?(:etag)
+          @event_based_hold = args[:event_based_hold] if args.key?(:event_based_hold)
           @generation = args[:generation] if args.key?(:generation)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -1107,9 +1216,11 @@ module Google
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
+          @retention_expiration_time = args[:retention_expiration_time] if args.key?(:retention_expiration_time)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
+          @temporary_hold = args[:temporary_hold] if args.key?(:temporary_hold)
           @time_created = args[:time_created] if args.key?(:time_created)
           @time_deleted = args[:time_deleted] if args.key?(:time_deleted)
           @time_storage_class_updated = args[:time_storage_class_updated] if args.key?(:time_storage_class_updated)
