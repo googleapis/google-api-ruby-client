@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryTimelineSample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Streamingbuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -813,6 +819,8 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :statement_type, as: 'statementType'
+          collection :timeline, as: 'timeline', class: Google::Apis::BigqueryV2::QueryTimelineSample, decorator: Google::Apis::BigqueryV2::QueryTimelineSample::Representation
+      
           property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
@@ -961,6 +969,18 @@ module Google
       
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_rows, :numeric_string => true, as: 'totalRows'
+        end
+      end
+      
+      class QueryTimelineSample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_inputs, as: 'activeInputs'
+          property :completed_inputs, as: 'completedInputs'
+          property :completed_inputs_for_active_stages, as: 'completedInputsForActiveStages'
+          property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
+          property :pending_inputs, :numeric_string => true, as: 'pendingInputs'
+          property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
         end
       end
       

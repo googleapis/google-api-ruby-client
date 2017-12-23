@@ -2016,6 +2016,11 @@ module Google
         # @return [String]
         attr_accessor :statement_type
       
+        # [Output-only] Describes a timeline of job execution.
+        # Corresponds to the JSON property `timeline`
+        # @return [Array<Google::Apis::BigqueryV2::QueryTimelineSample>]
+        attr_accessor :timeline
+      
         # [Output-only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
         # @return [Fixnum]
@@ -2053,6 +2058,7 @@ module Google
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @schema = args[:schema] if args.key?(:schema)
           @statement_type = args[:statement_type] if args.key?(:statement_type)
+          @timeline = args[:timeline] if args.key?(:timeline)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
@@ -2593,6 +2599,56 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_rows = args[:total_rows] if args.key?(:total_rows)
+        end
+      end
+      
+      # 
+      class QueryTimelineSample
+        include Google::Apis::Core::Hashable
+      
+        # Total number of active workers. This does not correspond directly to slot
+        # usage. This is the largest value observed since the last sample.
+        # Corresponds to the JSON property `activeInputs`
+        # @return [Fixnum]
+        attr_accessor :active_inputs
+      
+        # Total parallel units of work completed by this query.
+        # Corresponds to the JSON property `completedInputs`
+        # @return [Fixnum]
+        attr_accessor :completed_inputs
+      
+        # Total parallel units of work completed by the currently active stages.
+        # Corresponds to the JSON property `completedInputsForActiveStages`
+        # @return [Fixnum]
+        attr_accessor :completed_inputs_for_active_stages
+      
+        # Milliseconds elapsed since the start of query execution.
+        # Corresponds to the JSON property `elapsedMs`
+        # @return [Fixnum]
+        attr_accessor :elapsed_ms
+      
+        # Total parallel units of work remaining for the active stages.
+        # Corresponds to the JSON property `pendingInputs`
+        # @return [Fixnum]
+        attr_accessor :pending_inputs
+      
+        # Cumulative slot-ms consumed by the query.
+        # Corresponds to the JSON property `totalSlotMs`
+        # @return [Fixnum]
+        attr_accessor :total_slot_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_inputs = args[:active_inputs] if args.key?(:active_inputs)
+          @completed_inputs = args[:completed_inputs] if args.key?(:completed_inputs)
+          @completed_inputs_for_active_stages = args[:completed_inputs_for_active_stages] if args.key?(:completed_inputs_for_active_stages)
+          @elapsed_ms = args[:elapsed_ms] if args.key?(:elapsed_ms)
+          @pending_inputs = args[:pending_inputs] if args.key?(:pending_inputs)
+          @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
         end
       end
       
