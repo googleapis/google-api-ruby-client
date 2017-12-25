@@ -1,3 +1,35 @@
+# 0.19.0
+* Breaking changes:
+  * Deleted `consumersurveys_v2`
+* Backwards compatible changes:
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `androidmanagement_v1`
+  * Updated `bigquery_v2`
+  * Updated `calendar_v3`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `deploymentmanager_alpha`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2beta1`
+  * Updated `dlp_v2beta2`
+  * Updated `iam_v1`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `ml_v1`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `sheets_v4`
+  * Updated `speech_v1`
+  * Updated `storage_v1`
+  * Updated `tpu_v1alpha1`
+  * Updated `youtube_partner_v1`
+
 # 0.18.1
 * Backwards compatible changes:
   * Added `cloudshell_v1`
