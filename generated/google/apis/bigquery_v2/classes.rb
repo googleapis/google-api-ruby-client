@@ -2713,7 +2713,9 @@ module Google
       
         # [Optional] The time when this table expires, in milliseconds since the epoch.
         # If not present, the table will persist indefinitely. Expired tables will be
-        # deleted and their storage reclaimed.
+        # deleted and their storage reclaimed. The defaultTableExpirationMs property of
+        # the encapsulating dataset can be used to set a default expirationTime on newly
+        # created tables.
         # Corresponds to the JSON property `expirationTime`
         # @return [Fixnum]
         attr_accessor :expiration_time
