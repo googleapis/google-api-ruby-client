@@ -1,3 +1,7 @@
+# 0.19.1
+* Backwards compatible changes:
+  * Updated `bigquery_v2`
+
 # 0.19.0
 * Breaking changes:
   * Deleted `consumersurveys_v2`
