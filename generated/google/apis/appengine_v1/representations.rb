@@ -94,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateVersionMetadataV1Alpha
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateVersionMetadataV1Beta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DebugInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -540,6 +552,20 @@ module Google
         end
       end
       
+      class CreateVersionMetadataV1Alpha
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_build_id, as: 'cloudBuildId'
+        end
+      end
+      
+      class CreateVersionMetadataV1Beta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_build_id, as: 'cloudBuildId'
+        end
+      end
+      
       class DebugInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -862,6 +888,8 @@ module Google
       class OperationMetadataV1Alpha
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_version_metadata, as: 'createVersionMetadata', class: Google::Apis::AppengineV1::CreateVersionMetadataV1Alpha, decorator: Google::Apis::AppengineV1::CreateVersionMetadataV1Alpha::Representation
+      
           property :end_time, as: 'endTime'
           property :ephemeral_message, as: 'ephemeralMessage'
           property :insert_time, as: 'insertTime'
@@ -875,6 +903,8 @@ module Google
       class OperationMetadataV1Beta
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_version_metadata, as: 'createVersionMetadata', class: Google::Apis::AppengineV1::CreateVersionMetadataV1Beta, decorator: Google::Apis::AppengineV1::CreateVersionMetadataV1Beta::Representation
+      
           property :end_time, as: 'endTime'
           property :ephemeral_message, as: 'ephemeralMessage'
           property :insert_time, as: 'insertTime'
@@ -1082,6 +1112,7 @@ module Google
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'
           property :vm, as: 'vm'
+          collection :zones, as: 'zones'
         end
       end
       

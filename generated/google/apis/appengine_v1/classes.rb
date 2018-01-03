@@ -545,6 +545,48 @@ module Google
         end
       end
       
+      # Metadata for the given google.longrunning.Operation during a google.appengine.
+      # v1alpha.CreateVersionRequest.
+      class CreateVersionMetadataV1Alpha
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Build ID if one was created as part of the version create. @
+        # OutputOnly
+        # Corresponds to the JSON property `cloudBuildId`
+        # @return [String]
+        attr_accessor :cloud_build_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation during a google.appengine.
+      # v1beta.CreateVersionRequest.
+      class CreateVersionMetadataV1Beta
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Build ID if one was created as part of the version create. @
+        # OutputOnly
+        # Corresponds to the JSON property `cloudBuildId`
+        # @return [String]
+        attr_accessor :cloud_build_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
+        end
+      end
+      
       # Request message for Instances.DebugInstance.
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1784,6 +1826,12 @@ module Google
       class OperationMetadataV1Alpha
         include Google::Apis::Core::Hashable
       
+        # Metadata for the given google.longrunning.Operation during a google.appengine.
+        # v1alpha.CreateVersionRequest.
+        # Corresponds to the JSON property `createVersionMetadata`
+        # @return [Google::Apis::AppengineV1::CreateVersionMetadataV1Alpha]
+        attr_accessor :create_version_metadata
+      
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -1828,6 +1876,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_version_metadata = args[:create_version_metadata] if args.key?(:create_version_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -1841,6 +1890,12 @@ module Google
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1Beta
         include Google::Apis::Core::Hashable
+      
+        # Metadata for the given google.longrunning.Operation during a google.appengine.
+        # v1beta.CreateVersionRequest.
+        # Corresponds to the JSON property `createVersionMetadata`
+        # @return [Google::Apis::AppengineV1::CreateVersionMetadataV1Beta]
+        attr_accessor :create_version_metadata
       
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
@@ -1886,6 +1941,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_version_metadata = args[:create_version_metadata] if args.key?(:create_version_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -2191,14 +2247,14 @@ module Google
       class StandardSchedulerSettings
         include Google::Apis::Core::Hashable
       
-        # Maximum number of instances for an app version. Set to a non-positive value (0
-        # by convention) to disable max_instances configuration.
+        # Maximum number of instances for an app version. Set to zero to disable
+        # max_instances configuration.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
       
-        # Minimum number of instances for an app version. Set to a non-positive value (0
-        # by convention) to disable min_instances configuration.
+        # Minimum number of instances for an app version. Set to zero to disable
+        # min_instances configuration.
         # Corresponds to the JSON property `minInstances`
         # @return [Fixnum]
         attr_accessor :min_instances
@@ -2704,6 +2760,11 @@ module Google
         attr_accessor :vm
         alias_method :vm?, :vm
       
+        # The choice of gce zones to use for this App Engine Flexible version.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2742,6 +2803,7 @@ module Google
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
           @vm = args[:vm] if args.key?(:vm)
+          @zones = args[:zones] if args.key?(:zones)
         end
       end
       

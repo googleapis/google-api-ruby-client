@@ -340,6 +340,48 @@ module Google
         end
       end
       
+      # Metadata for the given google.longrunning.Operation during a google.appengine.
+      # v1alpha.CreateVersionRequest.
+      class CreateVersionMetadataV1Alpha
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Build ID if one was created as part of the version create. @
+        # OutputOnly
+        # Corresponds to the JSON property `cloudBuildId`
+        # @return [String]
+        attr_accessor :cloud_build_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation during a google.appengine.
+      # v1beta.CreateVersionRequest.
+      class CreateVersionMetadataV1Beta
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Build ID if one was created as part of the version create. @
+        # OutputOnly
+        # Corresponds to the JSON property `cloudBuildId`
+        # @return [String]
+        attr_accessor :cloud_build_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
+        end
+      end
+      
       # Request message for Instances.DebugInstance.
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1289,6 +1331,12 @@ module Google
       class OperationMetadataV1Alpha
         include Google::Apis::Core::Hashable
       
+        # Metadata for the given google.longrunning.Operation during a google.appengine.
+        # v1alpha.CreateVersionRequest.
+        # Corresponds to the JSON property `createVersionMetadata`
+        # @return [Google::Apis::AppengineV1beta5::CreateVersionMetadataV1Alpha]
+        attr_accessor :create_version_metadata
+      
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -1333,6 +1381,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_version_metadata = args[:create_version_metadata] if args.key?(:create_version_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -1346,6 +1395,12 @@ module Google
       # Metadata for the given google.longrunning.Operation.
       class OperationMetadataV1Beta
         include Google::Apis::Core::Hashable
+      
+        # Metadata for the given google.longrunning.Operation during a google.appengine.
+        # v1beta.CreateVersionRequest.
+        # Corresponds to the JSON property `createVersionMetadata`
+        # @return [Google::Apis::AppengineV1beta5::CreateVersionMetadataV1Beta]
+        attr_accessor :create_version_metadata
       
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
@@ -1391,6 +1446,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_version_metadata = args[:create_version_metadata] if args.key?(:create_version_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
