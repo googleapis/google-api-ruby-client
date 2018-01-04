@@ -601,14 +601,14 @@ module Google
         end
         
         # Acknowledges a pull task.
-        # The pull worker, that is, the entity that received this task in
-        # a PullTasksResponse, must call this method to indicate that
+        # The worker, that is, the entity that received this task in
+        # a LeaseTasksResponse, must call this method to indicate that
         # the work associated with the task has finished.
-        # The pull worker must acknowledge a task within the
-        # PullTasksRequest.lease_duration or the lease will expire and
+        # The worker must acknowledge a task within the
+        # LeaseTasksRequest.lease_duration or the lease will expire and
         # the task will become ready to be returned in a different
-        # PullTasksResponse. After the task is acknowledged, it will
-        # not be returned by a later CloudTasks.PullTasks,
+        # LeaseTasksResponse. After the task is acknowledged, it will
+        # not be returned by a later CloudTasks.LeaseTasks,
         # CloudTasks.GetTask, or CloudTasks.ListTasks.
         # To acknowledge multiple tasks at the same time, use
         # [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
@@ -649,9 +649,9 @@ module Google
         end
         
         # Cancel a pull task's lease.
-        # The pull worker can use this method to cancel a task's lease
+        # The worker can use this method to cancel a task's lease
         # by setting Task.schedule_time to now. This will make the task
-        # available to be leased to the next caller of CloudTasks.PullTasks.
+        # available to be leased to the next caller of CloudTasks.LeaseTasks.
         # @param [String] name
         #   Required.
         #   The task name. For example:
@@ -811,11 +811,11 @@ module Google
         end
         
         # Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
-        # This method is invoked by the pull worker to obtain a
-        # lease. The pull worker must acknowledge the task via
+        # This method is invoked by the worker to obtain a
+        # lease. The worker must acknowledge the task via
         # CloudTasks.AcknowledgeTask after they have performed the work
         # associated with the task.
-        # The payload is intended to store data that the pull worker needs
+        # The payload is intended to store data that the worker needs
         # to perform the work associated with the task. To return the
         # payloads in the LeaseTasksResponse, set
         # LeaseTasksRequest.response_view to Task.View.FULL.
@@ -927,56 +927,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls tasks from a pull queue and acquires a lease on them for a
-        # specified PullTasksRequest.lease_duration.
-        # This method is invoked by the pull worker to obtain the
-        # lease. The pull worker must acknowledge the task via
-        # CloudTasks.AcknowledgeTask after they have performed the work
-        # associated with the task.
-        # The payload is intended to store data that the pull worker needs
-        # to perform the work associated with the task. To return the
-        # payloads in the PullTasksResponse, set
-        # PullTasksRequest.response_view to Task.View.FULL.
-        # A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per
-        # queue. google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit
-        # is exceeded. google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
-        # RateLimits.max_tasks_dispatched_per_second is exceeded.
-        # @param [String] name
-        #   Required.
-        #   The queue name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        # @param [Google::Apis::CloudtasksV2beta2::PullTasksRequest] pull_tasks_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudtasksV2beta2::PullTasksResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudtasksV2beta2::PullTasksResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def pull_tasks(name, pull_tasks_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v2beta2/{+name}/tasks:pull', options)
-          command.request_representation = Google::Apis::CloudtasksV2beta2::PullTasksRequest::Representation
-          command.request_object = pull_tasks_request_object
-          command.response_representation = Google::Apis::CloudtasksV2beta2::PullTasksResponse::Representation
-          command.response_class = Google::Apis::CloudtasksV2beta2::PullTasksResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Renew the current lease of a pull task.
-        # The pull worker can use this method to extend the lease by a new
+        # The worker can use this method to extend the lease by a new
         # duration, starting from now. The new task lease will be
         # returned in Task.schedule_time.
         # @param [String] name

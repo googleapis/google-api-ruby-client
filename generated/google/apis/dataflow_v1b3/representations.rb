@@ -1554,6 +1554,7 @@ module Google
       class RuntimeEnvironment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_experiments, as: 'additionalExperiments'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
           property :machine_type, as: 'machineType'
           property :max_workers, as: 'maxWorkers'

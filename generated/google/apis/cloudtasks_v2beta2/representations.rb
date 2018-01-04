@@ -142,18 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PullTasksRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PullTasksResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PurgeQueueRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -399,24 +387,6 @@ module Google
       class PullTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class PullTasksRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
-          property :lease_duration, as: 'leaseDuration'
-          property :max_tasks, as: 'maxTasks'
-          property :response_view, as: 'responseView'
-        end
-      end
-      
-      class PullTasksResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :tasks, as: 'tasks', class: Google::Apis::CloudtasksV2beta2::Task, decorator: Google::Apis::CloudtasksV2beta2::Task::Representation
-      
         end
       end
       

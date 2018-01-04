@@ -2937,6 +2937,11 @@ module Google
       class RuntimeEnvironment
         include Google::Apis::Core::Hashable
       
+        # Additional experiment flags for the job.
+        # Corresponds to the JSON property `additionalExperiments`
+        # @return [Array<String>]
+        attr_accessor :additional_experiments
+      
         # Whether to bypass the safety checks for the job's temporary directory.
         # Use with caution.
         # Corresponds to the JSON property `bypassTempDirValidation`
@@ -2980,6 +2985,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_workers = args[:max_workers] if args.key?(:max_workers)

@@ -1552,6 +1552,75 @@ module Google
       end
       
       # 
+      class FamilyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Resource type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Family membership info of the user that made the request.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::BooksV1::FamilyInfo::Membership]
+        attr_accessor :membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @membership = args[:membership] if args.key?(:membership)
+        end
+        
+        # Family membership info of the user that made the request.
+        class Membership
+          include Google::Apis::Core::Hashable
+        
+          # Restrictions on user buying and acquiring content.
+          # Corresponds to the JSON property `acquirePermission`
+          # @return [String]
+          attr_accessor :acquire_permission
+        
+          # The age group of the user.
+          # Corresponds to the JSON property `ageGroup`
+          # @return [String]
+          attr_accessor :age_group
+        
+          # The maximum allowed maturity rating for the user.
+          # Corresponds to the JSON property `allowedMaturityRating`
+          # @return [String]
+          attr_accessor :allowed_maturity_rating
+        
+          # 
+          # Corresponds to the JSON property `isInFamily`
+          # @return [Boolean]
+          attr_accessor :is_in_family
+          alias_method :is_in_family?, :is_in_family
+        
+          # The role of the user in the family.
+          # Corresponds to the JSON property `role`
+          # @return [String]
+          attr_accessor :role
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @acquire_permission = args[:acquire_permission] if args.key?(:acquire_permission)
+            @age_group = args[:age_group] if args.key?(:age_group)
+            @allowed_maturity_rating = args[:allowed_maturity_rating] if args.key?(:allowed_maturity_rating)
+            @is_in_family = args[:is_in_family] if args.key?(:is_in_family)
+            @role = args[:role] if args.key?(:role)
+          end
+        end
+      end
+      
+      # 
       class GeoLayerData
         include Google::Apis::Core::Hashable
       
@@ -2571,6 +2640,11 @@ module Google
           include Google::Apis::Core::Hashable
         
           # 
+          # Corresponds to the JSON property `matchMyInterests`
+          # @return [Google::Apis::BooksV1::UserSettings::Notification::MatchMyInterests]
+          attr_accessor :match_my_interests
+        
+          # 
           # Corresponds to the JSON property `moreFromAuthors`
           # @return [Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors]
           attr_accessor :more_from_authors
@@ -2579,6 +2653,11 @@ module Google
           # Corresponds to the JSON property `moreFromSeries`
           # @return [Google::Apis::BooksV1::UserSettings::Notification::MoreFromSeries]
           attr_accessor :more_from_series
+        
+          # 
+          # Corresponds to the JSON property `priceDrop`
+          # @return [Google::Apis::BooksV1::UserSettings::Notification::PriceDrop]
+          attr_accessor :price_drop
         
           # 
           # Corresponds to the JSON property `rewardExpirations`
@@ -2591,9 +2670,30 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @match_my_interests = args[:match_my_interests] if args.key?(:match_my_interests)
             @more_from_authors = args[:more_from_authors] if args.key?(:more_from_authors)
             @more_from_series = args[:more_from_series] if args.key?(:more_from_series)
+            @price_drop = args[:price_drop] if args.key?(:price_drop)
             @reward_expirations = args[:reward_expirations] if args.key?(:reward_expirations)
+          end
+          
+          # 
+          class MatchMyInterests
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `opted_state`
+            # @return [String]
+            attr_accessor :opted_state
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @opted_state = args[:opted_state] if args.key?(:opted_state)
+            end
           end
           
           # 
@@ -2617,6 +2717,25 @@ module Google
           
           # 
           class MoreFromSeries
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `opted_state`
+            # @return [String]
+            attr_accessor :opted_state
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @opted_state = args[:opted_state] if args.key?(:opted_state)
+            end
+          end
+          
+          # 
+          class PriceDrop
             include Google::Apis::Core::Hashable
           
             # 

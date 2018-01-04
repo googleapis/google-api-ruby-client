@@ -797,7 +797,7 @@ module Google
         # @return [String]
         attr_accessor :data_source_id
       
-        # The BigQuery target dataset id.
+        # Output only. The BigQuery target dataset id.
         # Corresponds to the JSON property `destinationDatasetId`
         # @return [String]
         attr_accessor :destination_dataset_id
@@ -860,7 +860,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Data transfer specific parameters.
+        # Output only. Data transfer specific parameters.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params

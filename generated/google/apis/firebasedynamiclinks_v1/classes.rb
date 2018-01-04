@@ -186,6 +186,12 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Device language code setting obtained by executing JavaScript code in
+        # WebView.
+        # Corresponds to the JSON property `languageCodeFromWebview`
+        # @return [String]
+        attr_accessor :language_code_from_webview
+      
         # Device language code raw setting.
         # iOS does returns language code in different format than iOS WebView.
         # For example WebView returns en_US, but iOS returns en-US.
@@ -217,6 +223,7 @@ module Google
         def update!(**args)
           @device_model_name = args[:device_model_name] if args.key?(:device_model_name)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @language_code_from_webview = args[:language_code_from_webview] if args.key?(:language_code_from_webview)
           @language_code_raw = args[:language_code_raw] if args.key?(:language_code_raw)
           @screen_resolution_height = args[:screen_resolution_height] if args.key?(:screen_resolution_height)
           @screen_resolution_width = args[:screen_resolution_width] if args.key?(:screen_resolution_width)

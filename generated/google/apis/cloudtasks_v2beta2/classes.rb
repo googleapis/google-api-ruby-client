@@ -29,8 +29,8 @@ module Google
       
         # Required.
         # The task's current schedule time, available in the Task.schedule_time
-        # returned in PullTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to ensure that your task
+        # returned in LeaseTasksResponse.tasks or
+        # CloudTasks.RenewLease. This restriction is to ensure that your
         # worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
@@ -467,8 +467,8 @@ module Google
       
         # Required.
         # The task's current schedule time, available in the Task.schedule_time
-        # returned in PullTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to ensure that your task
+        # returned in LeaseTasksResponse.tasks or
+        # CloudTasks.RenewLease. This restriction is to ensure that your
         # worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
@@ -579,12 +579,12 @@ module Google
         # LeaseTasksResponse is leased -- that task will not be
         # returned in a different LeaseTasksResponse before the
         # Task.schedule_time.
-        # After the pull worker has successfully finished the work
-        # associated with the task, the pull worker must call
+        # After the worker has successfully finished the work
+        # associated with the task, the worker must call
         # CloudTasks.AcknowledgeTask. If the task is not acknowledged
         # via CloudTasks.AcknowledgeTask before the
         # Task.schedule_time then it will be returned in a later
-        # LeaseTasksResponse so that another pull worker can process
+        # LeaseTasksResponse so that another worker can process
         # it.
         # The maximum lease duration is 1 week.
         # `lease_duration` will be truncated to the nearest second.
@@ -806,7 +806,7 @@ module Google
       # ]
       # `
       # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam).
+      # [IAM developer's guide](https://cloud.google.com/iam/docs).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -830,7 +830,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Version of the `Policy`. The default version is 0.
+        # Deprecated.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -848,13 +848,13 @@ module Google
       end
       
       # The pull message contains data that can be used by the caller of
-      # CloudTasks.PullTasks to process the task.
+      # CloudTasks.LeaseTasks to process the task.
       # This proto can only be used for tasks in a queue which has
       # Queue.pull_target set.
       class PullMessage
         include Google::Apis::Core::Hashable
       
-        # A data payload consumed by the task worker to execute the task.
+        # A data payload consumed by the worker to execute the task.
         # Corresponds to the JSON property `payload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -862,8 +862,8 @@ module Google
       
         # The task's tag.
         # Tags allow similar tasks to be processed in a batch. If you label
-        # tasks with a tag, your task worker can pull tasks
-        # with the same tag using PullTasksRequest.filter. For example,
+        # tasks with a tag, your worker can lease tasks
+        # with the same tag using LeaseTasksRequest.filter. For example,
         # if you want to aggregate the events associated with a specific
         # user once a day, you could tag tasks with the user ID.
         # The task's tag can only be set when the
@@ -895,99 +895,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Request message for pulling tasks using CloudTasks.PullTasks.
-      class PullTasksRequest
-        include Google::Apis::Core::Hashable
-      
-        # `filter` can be used to specify a subset of tasks to lease.
-        # When `filter` is set to `tag=<my-tag>` then the
-        # PullTasksResponse will contain only tasks whose
-        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
-        # 500 bytes.
-        # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
-        # the same tag as the task with the oldest schedule_time will be returned.
-        # Grammar Syntax:
-        # * `filter = "tag=" tag | "tag_function=" function`
-        # * `tag = string | bytes`
-        # * `function = "oldest_tag()"`
-        # The `oldest_tag()` function returns tasks which have the same tag as the
-        # oldest task (ordered by schedule time).
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        # The duration of the lease.
-        # Each task returned in the PullTasksResponse will have its
-        # Task.schedule_time set to the current time plus the
-        # `lease_duration`. A task that has been returned in a
-        # PullTasksResponse is leased -- that task will not be
-        # returned in a different PullTasksResponse before the
-        # Task.schedule_time.
-        # After the pull worker has successfully finished the work
-        # associated with the task, the pull worker must call
-        # CloudTasks.AcknowledgeTask. If the task is not acknowledged
-        # via CloudTasks.AcknowledgeTask before the
-        # Task.schedule_time then it will be returned in a later
-        # PullTasksResponse so that another pull worker can process
-        # it.
-        # The maximum lease duration is 1 week.
-        # `lease_duration` will be truncated to the nearest second.
-        # Corresponds to the JSON property `leaseDuration`
-        # @return [String]
-        attr_accessor :lease_duration
-      
-        # The maximum number of tasks to lease. The maximum that can be
-        # requested is 1000.
-        # Corresponds to the JSON property `maxTasks`
-        # @return [Fixnum]
-        attr_accessor :max_tasks
-      
-        # The response_view specifies which subset of the Task will be
-        # returned.
-        # By default response_view is Task.View.BASIC; not all
-        # information is retrieved by default because some data, such as
-        # payloads, might be desirable to return only when needed because
-        # of its large size or because of the sensitivity of data that it
-        # contains.
-        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the
-        # Task.name resource.
-        # Corresponds to the JSON property `responseView`
-        # @return [String]
-        attr_accessor :response_view
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filter = args[:filter] if args.key?(:filter)
-          @lease_duration = args[:lease_duration] if args.key?(:lease_duration)
-          @max_tasks = args[:max_tasks] if args.key?(:max_tasks)
-          @response_view = args[:response_view] if args.key?(:response_view)
-        end
-      end
-      
-      # Response message for pulling tasks using CloudTasks.PullTasks.
-      class PullTasksResponse
-        include Google::Apis::Core::Hashable
-      
-        # The leased tasks.
-        # Corresponds to the JSON property `tasks`
-        # @return [Array<Google::Apis::CloudtasksV2beta2::Task>]
-        attr_accessor :tasks
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -1149,7 +1056,7 @@ module Google
         # * For App Engine queues, this field is 1 by default.
         # * For pull queues, this field is output only and always 10,000.
         # In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
-        # 10 QPS of CloudTasks.PullTasks requests are allowed per queue.
+        # 10 QPS of CloudTasks.LeaseTasks requests are allowed per queue.
         # This field has the same meaning as
         # [rate in queue.yaml](/appengine/docs/standard/python/config/queueref#rate).
         # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
@@ -1196,8 +1103,8 @@ module Google
       
         # Required.
         # The task's current schedule time, available in the Task.schedule_time
-        # returned in PullTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to ensure that your task
+        # returned in LeaseTasksResponse.tasks or
+        # CloudTasks.RenewLease. This restriction is to ensure that your
         # worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
@@ -1390,7 +1297,7 @@ module Google
         # ]
         # `
         # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam).
+        # [IAM developer's guide](https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::CloudtasksV2beta2::Policy]
         attr_accessor :policy
@@ -1543,7 +1450,7 @@ module Google
         attr_accessor :name
       
         # The pull message contains data that can be used by the caller of
-        # CloudTasks.PullTasks to process the task.
+        # CloudTasks.LeaseTasks to process the task.
         # This proto can only be used for tasks in a queue which has
         # Queue.pull_target set.
         # Corresponds to the JSON property `pullMessage`
@@ -1555,7 +1462,7 @@ module Google
         # For pull queues, this is the time when the task is available to
         # be leased; if a task is currently leased, this is the time when
         # the current lease expires, that is, the time that the task was
-        # leased plus the PullTasksRequest.lease_duration.
+        # leased plus the LeaseTasksRequest.lease_duration.
         # `schedule_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]

@@ -459,6 +459,8 @@ module Google
         #   creatives.list
         #   method.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Creative] creative_object
+        # @param [String] account_id1
+        #   The account the creative belongs to.
         # @param [String] duplicate_id_mode
         #   Indicates if multiple creatives can share an ID or not. Default is
         #   NO_DUPLICATES (one ID per creative).
@@ -479,13 +481,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_creative(account_id, creative_object = nil, duplicate_id_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_account_creative(account_id, creative_object = nil, account_id1: nil, duplicate_id_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/accounts/{accountId}/creatives', options)
           command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
           command.request_object = creative_object
           command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Creative
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['accountId1'] = account_id1 unless account_id1.nil?
           command.query['duplicateIdMode'] = duplicate_id_mode unless duplicate_id_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -636,6 +639,8 @@ module Google
         #   creatives.list
         #   method.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Creative] creative_object
+        # @param [String] account_id1
+        #   The account the creative belongs to.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -653,7 +658,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_creative(account_id, creative_id, creative_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_account_creative(account_id, creative_id, creative_object = nil, account_id1: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v2beta1/accounts/{accountId}/creatives/{creativeId}', options)
           command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::Creative::Representation
           command.request_object = creative_object
@@ -661,6 +666,7 @@ module Google
           command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Creative
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['creativeId'] = creative_id unless creative_id.nil?
+          command.query['accountId1'] = account_id1 unless account_id1.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
