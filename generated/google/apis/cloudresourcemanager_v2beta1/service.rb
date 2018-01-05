@@ -239,7 +239,7 @@ module Google
         # @param [Boolean] show_deleted
         #   Controls whether Folders in the
         #   DELETE_REQUESTED
-        #   state should be returned.
+        #   state should be returned. Defaults to false. This field is optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

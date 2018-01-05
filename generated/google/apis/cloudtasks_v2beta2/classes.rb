@@ -558,7 +558,7 @@ module Google
         # `filter` can be used to specify a subset of tasks to lease.
         # When `filter` is set to `tag=<my-tag>` then the
         # LeaseTasksResponse will contain only tasks whose
-        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
+        # LeaseMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
         # 500 bytes.
         # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
         # the same tag as the task with the oldest schedule_time will be returned.

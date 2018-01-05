@@ -165,11 +165,10 @@ module Google
         # @return [String]
         attr_accessor :timeout
       
-        # Stores timing information for phases of the build.
-        # Valid keys are:
-        # - BUILD: time to execute all build steps
-        # - PUSH: time to push all specified images.
-        # - FETCHSOURCE: time to fetch source.
+        # Stores timing information for phases of the build. Valid keys are:
+        # * BUILD: time to execute all build steps
+        # * PUSH: time to push all specified images.
+        # * FETCHSOURCE: time to fetch source.
         # If the build does not specify source, or does not specify images,
         # these keys will not be included.
         # Corresponds to the JSON property `timing`
@@ -258,7 +257,7 @@ module Google
         # @return [String]
         attr_accessor :log_streaming_option
       
-        # GCE VM size to run the build on.
+        # Compute Engine machine type on which to run the build.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type

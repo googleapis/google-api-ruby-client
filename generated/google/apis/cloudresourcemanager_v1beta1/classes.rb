@@ -504,7 +504,7 @@ module Google
       # ]
       # `
       # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam).
+      # [IAM developer's guide](https://cloud.google.com/iam/docs).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -533,7 +533,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Version of the `Policy`. The default version is 0.
+        # Deprecated.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -730,7 +730,7 @@ module Google
         # ]
         # `
         # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam).
+        # [IAM developer's guide](https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::CloudresourcemanagerV1beta1::Policy]
         attr_accessor :policy

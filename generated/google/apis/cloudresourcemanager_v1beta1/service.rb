@@ -433,6 +433,8 @@ module Google
         
         # Returns the IAM access control policy for the specified Project.
         # Permission is denied if the policy or the resource does not exist.
+        # For additional information about resource structure and identification,
+        # see [Resource Names](/apis/design/resource_names).
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.

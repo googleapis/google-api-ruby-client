@@ -77,7 +77,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc
+        # Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc
         # generates this value when it creates the cluster.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
@@ -114,7 +114,7 @@ module Google
         # @return [Google::Apis::DataprocV1::ClusterStatus]
         attr_accessor :status
       
-        # Output-only. The previous cluster status.
+        # Output only. The previous cluster status.
         # Corresponds to the JSON property `statusHistory`
         # @return [Array<Google::Apis::DataprocV1::ClusterStatus>]
         attr_accessor :status_history
@@ -241,27 +241,27 @@ module Google
       class ClusterOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Output-only. Name of the cluster for the operation.
+        # Output only. Name of the cluster for the operation.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output-only. Cluster UUID for the operation.
+        # Output only. Cluster UUID for the operation.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
       
-        # Output-only. Short description of operation.
+        # Output only. Short description of operation.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Output-only. Labels associated with the operation
+        # Output only. Labels associated with the operation
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output-only. The operation type.
+        # Output only. The operation type.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -271,12 +271,12 @@ module Google
         # @return [Google::Apis::DataprocV1::ClusterOperationStatus]
         attr_accessor :status
       
-        # Output-only. The previous operation status.
+        # Output only. The previous operation status.
         # Corresponds to the JSON property `statusHistory`
         # @return [Array<Google::Apis::DataprocV1::ClusterOperationStatus>]
         attr_accessor :status_history
       
-        # Output-only. Errors encountered during operation execution.
+        # Output only. Errors encountered during operation execution.
         # Corresponds to the JSON property `warnings`
         # @return [Array<String>]
         attr_accessor :warnings
@@ -302,22 +302,22 @@ module Google
       class ClusterOperationStatus
         include Google::Apis::Core::Hashable
       
-        # Output-only.A message containing any operation metadata details.
+        # Output only. A message containing any operation metadata details.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
       
-        # Output-only. A message containing the detailed operation state.
+        # Output only. A message containing the detailed operation state.
         # Corresponds to the JSON property `innerState`
         # @return [String]
         attr_accessor :inner_state
       
-        # Output-only. A message containing the operation state.
+        # Output only. A message containing the operation state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output-only. The time this state was entered.
+        # Output only. The time this state was entered.
         # Corresponds to the JSON property `stateStartTime`
         # @return [String]
         attr_accessor :state_start_time
@@ -339,22 +339,22 @@ module Google
       class ClusterStatus
         include Google::Apis::Core::Hashable
       
-        # Output-only. Optional details of cluster's state.
+        # Output only. Optional details of cluster's state.
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
       
-        # Output-only. The cluster's state.
+        # Output only. The cluster's state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output-only. Time when this state was entered.
+        # Output only. Time when this state was entered.
         # Corresponds to the JSON property `stateStartTime`
         # @return [String]
         attr_accessor :state_start_time
       
-        # Output-only. Additional state information that includes status reported by the
+        # Output only. Additional state information that includes status reported by the
         # agent.
         # Corresponds to the JSON property `substate`
         # @return [String]
@@ -390,7 +390,7 @@ module Google
       class DiagnoseClusterResults
         include Google::Apis::Core::Hashable
       
-        # Output-only. The Google Cloud Storage URI of the diagnostic output. The output
+        # Output only. The Google Cloud Storage URI of the diagnostic output. The output
         # report is a plain text file with a summary of collected diagnostics.
         # Corresponds to the JSON property `outputUri`
         # @return [String]
@@ -714,7 +714,7 @@ module Google
         # @return [Google::Apis::DataprocV1::DiskConfig]
         attr_accessor :disk_config
       
-        # Output-only. The Google Compute Engine image resource used for cluster
+        # Output only. The Google Compute Engine image resource used for cluster
         # instances. Inferred from SoftwareConfig.image_version.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
@@ -775,14 +775,14 @@ module Google
       class Job
         include Google::Apis::Core::Hashable
       
-        # Output-only. If present, the location of miscellaneous control files which may
+        # Output only. If present, the location of miscellaneous control files which may
         # be used as part of job setup and handling. If not present, control files may
         # be placed in the same location as driver_output_uri.
         # Corresponds to the JSON property `driverControlFilesUri`
         # @return [String]
         attr_accessor :driver_control_files_uri
       
-        # Output-only. A URI pointing to the location of the stdout of the job's driver
+        # Output only. A URI pointing to the location of the stdout of the job's driver
         # program.
         # Corresponds to the JSON property `driverOutputResourceUri`
         # @return [String]
@@ -855,12 +855,12 @@ module Google
         # @return [Google::Apis::DataprocV1::JobStatus]
         attr_accessor :status
       
-        # Output-only. The previous job status.
+        # Output only. The previous job status.
         # Corresponds to the JSON property `statusHistory`
         # @return [Array<Google::Apis::DataprocV1::JobStatus>]
         attr_accessor :status_history
       
-        # Output-only. The collection of YARN applications spun up by this job.Beta
+        # Output only. The collection of YARN applications spun up by this job.Beta
         # Feature: This report is available for testing purposes only. It may be changed
         # before final release.
         # Corresponds to the JSON property `yarnApplications`
@@ -900,7 +900,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output-only. A cluster UUID generated by the Cloud Dataproc service when the
+        # Output only. A cluster UUID generated by the Cloud Dataproc service when the
         # job is submitted.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
@@ -972,23 +972,23 @@ module Google
       class JobStatus
         include Google::Apis::Core::Hashable
       
-        # Output-only. Optional job state details, such as an error description if the
+        # Output only. Optional job state details, such as an error description if the
         # state is <code>ERROR</code>.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
       
-        # Output-only. A state message specifying the overall job state.
+        # Output only. A state message specifying the overall job state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output-only. The time when this state was entered.
+        # Output only. The time when this state was entered.
         # Corresponds to the JSON property `stateStartTime`
         # @return [String]
         attr_accessor :state_start_time
       
-        # Output-only. Additional state information, which includes status reported by
+        # Output only. Additional state information, which includes status reported by
         # the agent.
         # Corresponds to the JSON property `substate`
         # @return [String]
@@ -1011,12 +1011,12 @@ module Google
       class ListClustersResponse
         include Google::Apis::Core::Hashable
       
-        # Output-only. The clusters in the project.
+        # Output only. The clusters in the project.
         # Corresponds to the JSON property `clusters`
         # @return [Array<Google::Apis::DataprocV1::Cluster>]
         attr_accessor :clusters
       
-        # Output-only. This token is included in the response if there are more results
+        # Output only. This token is included in the response if there are more results
         # to fetch. To fetch additional results, provide this value as the page_token in
         # a subsequent ListClustersRequest.
         # Corresponds to the JSON property `nextPageToken`
@@ -1038,7 +1038,7 @@ module Google
       class ListJobsResponse
         include Google::Apis::Core::Hashable
       
-        # Output-only. Jobs list.
+        # Output only. Jobs list.
         # Corresponds to the JSON property `jobs`
         # @return [Array<Google::Apis::DataprocV1::Job>]
         attr_accessor :jobs
@@ -1111,12 +1111,12 @@ module Google
       class ManagedGroupConfig
         include Google::Apis::Core::Hashable
       
-        # Output-only. The name of the Instance Group Manager for this group.
+        # Output only. The name of the Instance Group Manager for this group.
         # Corresponds to the JSON property `instanceGroupManagerName`
         # @return [String]
         attr_accessor :instance_group_manager_name
       
-        # Output-only. The name of the Instance Template used for the Managed Instance
+        # Output only. The name of the Instance Template used for the Managed Instance
         # Group.
         # Corresponds to the JSON property `instanceTemplateName`
         # @return [String]

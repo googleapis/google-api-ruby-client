@@ -2886,7 +2886,7 @@ module Google
         end
       end
       
-      # Container structure describing a single finding within a string or image.
+      # Represents a piece of potentially sensitive content.
       class GooglePrivacyDlpV2beta2Finding
         include Google::Apis::Core::Hashable
       
@@ -2900,17 +2900,19 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoType]
         attr_accessor :info_type
       
-        # Estimate of how likely it is that the info_type is correct.
+        # Estimate of how likely it is that the `info_type` is correct.
         # Corresponds to the JSON property `likelihood`
         # @return [String]
         attr_accessor :likelihood
       
-        # Specifies the location of a finding within its source item.
+        # Specifies the location of the finding.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Location]
         attr_accessor :location
       
-        # The specific string that may be potentially sensitive info.
+        # The content that was found. Even if the content is not textual, it
+        # may be converted to a textual representation here.
+        # Provided if requested by the `InspectConfig`.
         # Corresponds to the JSON property `quote`
         # @return [String]
         attr_accessor :quote
@@ -4085,7 +4087,7 @@ module Google
         end
       end
       
-      # Specifies the location of a finding within its source item.
+      # Specifies the location of the finding.
       class GooglePrivacyDlpV2beta2Location
         include Google::Apis::Core::Hashable
       
@@ -4104,7 +4106,8 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId]
         attr_accessor :field_id
       
-        # Location within an image's pixels.
+        # The area within the image that contained the finding.
+        # Provided when the content is an image.
         # Corresponds to the JSON property `imageBoxes`
         # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ImageLocation>]
         attr_accessor :image_boxes
@@ -4114,7 +4117,7 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2RecordKey]
         attr_accessor :record_key
       
-        # Location of a finding within a `ContentItem.Table`.
+        # Location of a finding within a table.
         # Corresponds to the JSON property `tableLocation`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2TableLocation]
         attr_accessor :table_location
@@ -5007,7 +5010,7 @@ module Google
         end
       end
       
-      # Location of a finding within a `ContentItem.Table`.
+      # Location of a finding within a table.
       class GooglePrivacyDlpV2beta2TableLocation
         include Google::Apis::Core::Hashable
       

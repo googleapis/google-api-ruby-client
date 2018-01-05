@@ -664,6 +664,7 @@ module Google
           property :install_unknown_sources_allowed, as: 'installUnknownSourcesAllowed'
           property :keyguard_disabled, as: 'keyguardDisabled'
           collection :keyguard_disabled_features, as: 'keyguardDisabledFeatures'
+          property :kiosk_custom_launcher_enabled, as: 'kioskCustomLauncherEnabled'
           property :long_support_message, as: 'longSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           property :maximum_time_to_lock, :numeric_string => true, as: 'maximumTimeToLock'

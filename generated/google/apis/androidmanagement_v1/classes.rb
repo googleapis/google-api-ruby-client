@@ -1747,6 +1747,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :keyguard_disabled_features
       
+        # Flag to specify if kiosk custom launcher is enabled. If it is enabled the
+        # value for receiver_activity in PersistentPreferredActivity related to home
+        # intent will be ignored. When custom launcher is enabled, the kiosk will start
+        # in launcher mode and not locked to a specific application.
+        # Corresponds to the JSON property `kioskCustomLauncherEnabled`
+        # @return [Boolean]
+        attr_accessor :kiosk_custom_launcher_enabled
+        alias_method :kiosk_custom_launcher_enabled?, :kiosk_custom_launcher_enabled
+      
         # Provides user facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `longSupportMessage`
@@ -1999,6 +2008,7 @@ module Google
           @install_unknown_sources_allowed = args[:install_unknown_sources_allowed] if args.key?(:install_unknown_sources_allowed)
           @keyguard_disabled = args[:keyguard_disabled] if args.key?(:keyguard_disabled)
           @keyguard_disabled_features = args[:keyguard_disabled_features] if args.key?(:keyguard_disabled_features)
+          @kiosk_custom_launcher_enabled = args[:kiosk_custom_launcher_enabled] if args.key?(:kiosk_custom_launcher_enabled)
           @long_support_message = args[:long_support_message] if args.key?(:long_support_message)
           @maximum_time_to_lock = args[:maximum_time_to_lock] if args.key?(:maximum_time_to_lock)
           @mobile_networks_config_disabled = args[:mobile_networks_config_disabled] if args.key?(:mobile_networks_config_disabled)
