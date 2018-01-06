@@ -656,6 +656,7 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # **Deprecated. Use `score` instead.**
         # The accuracy of the entity detection in an image.
         # For example, for an image in which the "Eiffel Tower" entity is detected,
         # this field represents the confidence that there is a tower in the query
@@ -864,14 +865,14 @@ module Google
         end
       end
       
-      # Users describe the type of Google Cloud Vision API tasks to perform over
-      # images by using *Feature*s. Each Feature indicates a type of image
-      # detection task to perform. Features encode the Cloud Vision API
-      # vertical to operate on and the number of top-scoring results to return.
+      # The type of Google Cloud Vision API detection to perform, and the maximum
+      # number of results to return for that type. Multiple `Feature` objects can
+      # be specified in the `features` list.
       class GoogleCloudVisionV1p1beta1Feature
         include Google::Apis::Core::Hashable
       
-        # Maximum number of results of this type.
+        # Maximum number of results of this type. Does not apply to
+        # `TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`.
         # Corresponds to the JSON property `maxResults`
         # @return [Fixnum]
         attr_accessor :max_results
@@ -905,14 +906,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Image content, represented as a stream of bytes.
-        # Note: as with all `bytes` fields, protobuffers use a pure binary
+        # Note: As with all `bytes` fields, protobuffers use a pure binary
         # representation, whereas JSON representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :content
       
-        # External image source (Google Cloud Storage image location).
+        # External image source (Google Cloud Storage or web URL image location).
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ImageSource]
         attr_accessor :source
@@ -991,29 +992,32 @@ module Google
         end
       end
       
-      # External image source (Google Cloud Storage image location).
+      # External image source (Google Cloud Storage or web URL image location).
       class GoogleCloudVisionV1p1beta1ImageSource
         include Google::Apis::Core::Hashable
       
-        # NOTE: For new code `image_uri` below is preferred.
-        # Google Cloud Storage image URI, which must be in the following form:
-        # `gs://bucket_name/object_name` (for details, see
+        # **Use `image_uri` instead.**
+        # The Google Cloud Storage  URI of the form
+        # `gs://bucket_name/object_name`. Object versioning is not supported. See
         # [Google Cloud Storage Request
-        # URIs](https://cloud.google.com/storage/docs/reference-uris)).
-        # NOTE: Cloud Storage object versioning is not supported.
+        # URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
         # Corresponds to the JSON property `gcsImageUri`
         # @return [String]
         attr_accessor :gcs_image_uri
       
-        # Image URI which supports:
-        # 1) Google Cloud Storage image URI, which must be in the following form:
-        # `gs://bucket_name/object_name` (for details, see
+        # The URI of the source image. Can be either:
+        # 1. A Google Cloud Storage URI of the form
+        # `gs://bucket_name/object_name`. Object versioning is not supported. See
         # [Google Cloud Storage Request
-        # URIs](https://cloud.google.com/storage/docs/reference-uris)).
-        # NOTE: Cloud Storage object versioning is not supported.
-        # 2) Publicly accessible image HTTP/HTTPS URL.
-        # This is preferred over the legacy `gcs_image_uri` above. When both
-        # `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
+        # URIs](https://cloud.google.com/storage/docs/reference-uris) for more
+        # info.
+        # 2. A publicly-accessible image HTTP/HTTPS URL. When fetching images from
+        # HTTP/HTTPS URLs, Google cannot guarantee that the request will be
+        # completed. Your request may fail if the specified host denies the
+        # request (e.g. due to request throttling or DOS prevention), or if Google
+        # throttles requests to the site for abuse prevention. You should not
+        # depend on externally-hosted images for production applications.
+        # When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
         # precedence.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
