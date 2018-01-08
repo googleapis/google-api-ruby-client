@@ -1,3 +1,39 @@
+# 0.19.2
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidmanagement_v1`
+  * Updated `androidpublisher_v2`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1alpha`
+  * Updated `appengine_v1beta`
+  * Updated `appengine_v1beta4`
+  * Updated `appengine_v1beta5`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `books_v1`
+  * Updated `classroom_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudiot_v1`
+  * Updated `cloudiot_v1beta1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `dataflow_v1b3`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dlp_v2beta1`
+  * Updated `dlp_v2beta2`
+  * Updated `firebasedynamiclinks_v1`
+  * Updated `iam_v1`
+  * Updated `plus_domains_v1`
+  * Updated `plus_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `storage_v1beta1`
+  * Updated `storage_v1beta2`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+
 # 0.19.1
 * Backwards compatible changes:
   * Updated `bigquery_v2`
