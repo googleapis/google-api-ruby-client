@@ -833,7 +833,6 @@ module Google
       end
       
       # One of the person's interests.
-      # **DEPRECATED** (Message will not be returned.)
       class Interest
         include Google::Apis::Core::Hashable
       
@@ -1389,7 +1388,6 @@ module Google
         attr_accessor :im_clients
       
         # The person's interests.
-        # **DEPRECATED** (No values will be returned.)
         # Corresponds to the JSON property `interests`
         # @return [Array<Google::Apis::PeopleV1::Interest>]
         attr_accessor :interests

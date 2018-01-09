@@ -292,8 +292,7 @@ module Google
         # Method for media download. Download is supported
         # on the URI `/v1/media/`+name`?alt=media`.
         # @param [String] resource_name
-        #   Name of the media that is being downloaded.  See
-        #   ReadRequest.resource_name.
+        #   Name of the media that is being downloaded.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

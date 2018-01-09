@@ -682,6 +682,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdatePageElementAltTextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdatePageElementTransformRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1574,6 +1580,8 @@ module Google
       
           property :update_line_properties, as: 'updateLineProperties', class: Google::Apis::SlidesV1::UpdateLinePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateLinePropertiesRequest::Representation
       
+          property :update_page_element_alt_text, as: 'updatePageElementAltText', class: Google::Apis::SlidesV1::UpdatePageElementAltTextRequest, decorator: Google::Apis::SlidesV1::UpdatePageElementAltTextRequest::Representation
+      
           property :update_page_element_transform, as: 'updatePageElementTransform', class: Google::Apis::SlidesV1::UpdatePageElementTransformRequest, decorator: Google::Apis::SlidesV1::UpdatePageElementTransformRequest::Representation
       
           property :update_page_properties, as: 'updatePageProperties', class: Google::Apis::SlidesV1::UpdatePagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdatePagePropertiesRequest::Representation
@@ -1995,6 +2003,15 @@ module Google
           property :line_properties, as: 'lineProperties', class: Google::Apis::SlidesV1::LineProperties, decorator: Google::Apis::SlidesV1::LineProperties::Representation
       
           property :object_id_prop, as: 'objectId'
+        end
+      end
+      
+      class UpdatePageElementAltTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :object_id_prop, as: 'objectId'
+          property :title, as: 'title'
         end
       end
       

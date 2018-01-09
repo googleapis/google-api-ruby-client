@@ -119,8 +119,9 @@ module Google
         end
         
         # Lists the projects associated with a billing account. The current
-        # authenticated user must be an [owner of the billing
-        # account](https://support.google.com/cloud/answer/4430947).
+        # authenticated user must have the "billing.resourceAssociations.list" IAM
+        # permission, which is often given to billing account
+        # [viewers](https://support.google.com/cloud/answer/4430947).
         # @param [String] name
         #   The resource name of the billing account associated with the projects that
         #   you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -300,9 +301,10 @@ module Google
         # @param [String] end_time
         #   Optional exclusive end time of the time range for which the pricing
         #   versions will be returned. Timestamps in the future are not allowed.
-        #   Maximum allowable time range is 1 month (31 days). Time range as a whole
-        #   is optional. If not specified, the latest pricing will be returned (up to
-        #   12 hours old at most).
+        #   The time range has to be within a single calendar month in
+        #   America/Los_Angeles timezone. Time range as a whole is optional. If not
+        #   specified, the latest pricing will be returned (up to 12 hours old at
+        #   most).
         # @param [Fixnum] page_size
         #   Requested page size. Defaults to 5000.
         # @param [String] page_token
@@ -312,9 +314,10 @@ module Google
         # @param [String] start_time
         #   Optional inclusive start time of the time range for which the pricing
         #   versions will be returned. Timestamps in the future are not allowed.
-        #   Maximum allowable time range is 1 month (31 days). Time range as a whole
-        #   is optional. If not specified, the latest pricing will be returned (up to
-        #   12 hours old at most).
+        #   The time range has to be within a single calendar month in
+        #   America/Los_Angeles timezone. Time range as a whole is optional. If not
+        #   specified, the latest pricing will be returned (up to 12 hours old at
+        #   most).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

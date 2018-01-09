@@ -2908,6 +2908,12 @@ module Google
         # @return [Google::Apis::SlidesV1::UpdateLinePropertiesRequest]
         attr_accessor :update_line_properties
       
+        # Updates the alt text title and/or description of a
+        # page element.
+        # Corresponds to the JSON property `updatePageElementAltText`
+        # @return [Google::Apis::SlidesV1::UpdatePageElementAltTextRequest]
+        attr_accessor :update_page_element_alt_text
+      
         # Updates the transform of a page element.
         # Updating the transform of a group will change the absolute transform of the
         # page elements in that group, which can change their visual appearance. See
@@ -3001,6 +3007,7 @@ module Google
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_image_properties = args[:update_image_properties] if args.key?(:update_image_properties)
           @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
+          @update_page_element_alt_text = args[:update_page_element_alt_text] if args.key?(:update_page_element_alt_text)
           @update_page_element_transform = args[:update_page_element_transform] if args.key?(:update_page_element_transform)
           @update_page_properties = args[:update_page_properties] if args.key?(:update_page_properties)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
@@ -4382,6 +4389,44 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @line_properties = args[:line_properties] if args.key?(:line_properties)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+        end
+      end
+      
+      # Updates the alt text title and/or description of a
+      # page element.
+      class UpdatePageElementAltTextRequest
+        include Google::Apis::Core::Hashable
+      
+        # The updated alt text description of the page element. If unset the existing
+        # value will be maintained. The description is exposed to screen readers
+        # and other accessibility interfaces. Only use human readable values related
+        # to the content of the page element.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The object ID of the page element the updates are applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The updated alt text title of the page element. If unset the
+        # existing value will be maintained. The title is exposed to screen readers
+        # and other accessibility interfaces. Only use human readable values related
+        # to the content of the page element.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
