@@ -1036,6 +1036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WaterfallChartCustomSubtotal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WaterfallChartDomain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2968,6 +2974,15 @@ module Google
         end
       end
       
+      class WaterfallChartCustomSubtotal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_is_subtotal, as: 'dataIsSubtotal'
+          property :label, as: 'label'
+          property :subtotal_index, as: 'subtotalIndex'
+        end
+      end
+      
       class WaterfallChartDomain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2980,6 +2995,8 @@ module Google
       class WaterfallChartSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_subtotals, as: 'customSubtotals', class: Google::Apis::SheetsV4::WaterfallChartCustomSubtotal, decorator: Google::Apis::SheetsV4::WaterfallChartCustomSubtotal::Representation
+      
           property :data, as: 'data', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
           property :hide_trailing_subtotal, as: 'hideTrailingSubtotal'

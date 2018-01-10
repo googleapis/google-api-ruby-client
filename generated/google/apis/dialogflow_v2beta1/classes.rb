@@ -1330,6 +1330,12 @@ module Google
       class IntentMessageImage
         include Google::Apis::Core::Hashable
       
+        # Optional. A text description of the image to be used for accessibility,
+        # e.g., screen readers.
+        # Corresponds to the JSON property `accessibilityText`
+        # @return [String]
+        attr_accessor :accessibility_text
+      
         # Optional. The public URI to an image file.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
@@ -1341,6 +1347,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accessibility_text = args[:accessibility_text] if args.key?(:accessibility_text)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
         end
       end

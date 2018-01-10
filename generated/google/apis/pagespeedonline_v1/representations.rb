@@ -109,6 +109,7 @@ module Google
       class Result
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :captcha_result, as: 'captchaResult'
           property :formatted_results, as: 'formattedResults', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults, decorator: Google::Apis::PagespeedonlineV1::Result::FormattedResults::Representation
       
           property :id, as: 'id'

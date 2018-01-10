@@ -8559,6 +8559,46 @@ module Google
         end
       end
       
+      # A custom subtotal column for a waterfall chart series.
+      class WaterfallChartCustomSubtotal
+        include Google::Apis::Core::Hashable
+      
+        # True if the data point at subtotal_index is the subtotal. If false,
+        # the subtotal will be computed and appear after the data point.
+        # Corresponds to the JSON property `dataIsSubtotal`
+        # @return [Boolean]
+        attr_accessor :data_is_subtotal
+        alias_method :data_is_subtotal?, :data_is_subtotal
+      
+        # A label for the subtotal column.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The 0-based index of a data point within the series. If
+        # data_is_subtotal is true, the data point at this index is the
+        # subtotal. Otherwise, the subtotal appears after the data point with
+        # this index. A series can have multiple subtotals at arbitrary indices,
+        # but subtotals do not affect the indices of the data points. For
+        # example, if a series has 3 data points, their indices will always be 0,
+        # 1, and 2, regardless of how many subtotals exist on the series or what
+        # data points they are associated with.
+        # Corresponds to the JSON property `subtotalIndex`
+        # @return [Fixnum]
+        attr_accessor :subtotal_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_is_subtotal = args[:data_is_subtotal] if args.key?(:data_is_subtotal)
+          @label = args[:label] if args.key?(:label)
+          @subtotal_index = args[:subtotal_index] if args.key?(:subtotal_index)
+        end
+      end
+      
       # The domain of a waterfall chart.
       class WaterfallChartDomain
         include Google::Apis::Core::Hashable
@@ -8588,6 +8628,13 @@ module Google
       # A single series of data for a waterfall chart.
       class WaterfallChartSeries
         include Google::Apis::Core::Hashable
+      
+        # Custom subtotal columns appearing in this series. The order in which
+        # subtotals are defined is not significant. Only one subtotal may be
+        # defined for each data point.
+        # Corresponds to the JSON property `customSubtotals`
+        # @return [Array<Google::Apis::SheetsV4::WaterfallChartCustomSubtotal>]
+        attr_accessor :custom_subtotals
       
         # The data included in a domain or series.
         # Corresponds to the JSON property `data`
@@ -8623,6 +8670,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_subtotals = args[:custom_subtotals] if args.key?(:custom_subtotals)
           @data = args[:data] if args.key?(:data)
           @hide_trailing_subtotal = args[:hide_trailing_subtotal] if args.key?(:hide_trailing_subtotal)
           @negative_columns_style = args[:negative_columns_style] if args.key?(:negative_columns_style)

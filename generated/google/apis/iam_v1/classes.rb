@@ -156,8 +156,9 @@ module Google
         # @return [String]
         attr_accessor :key_algorithm
       
-        # The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
-        # default output format.
+        # The output format of the private key. The default value is
+        # `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File
+        # format.
         # Corresponds to the JSON property `privateKeyType`
         # @return [String]
         attr_accessor :private_key_type

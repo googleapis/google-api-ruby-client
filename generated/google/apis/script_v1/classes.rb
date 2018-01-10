@@ -22,6 +22,203 @@ module Google
   module Apis
     module ScriptV1
       
+      # The Content resource.
+      class Content
+        include Google::Apis::Core::Hashable
+      
+        # The list of script project files.
+        # One of the files is a script manifest; it must be named "appsscript",
+        # must have type of JSON, and include the manifest configurations for the
+        # project.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::ScriptV1::File>]
+        attr_accessor :files
+      
+        # The script project's Drive ID.
+        # Corresponds to the JSON property `scriptId`
+        # @return [String]
+        attr_accessor :script_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @files = args[:files] if args.key?(:files)
+          @script_id = args[:script_id] if args.key?(:script_id)
+        end
+      end
+      
+      # Request to create a script project.
+      class CreateProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Drive ID of a parent file that the created script project is bound to.
+        # This is usually the ID of a Google Doc, Google Sheet, Google Form, or
+        # Google Slides file. If not set, a standalone script project is created.
+        # Corresponds to the JSON property `parentId`
+        # @return [String]
+        attr_accessor :parent_id
+      
+        # The title for the project.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent_id = args[:parent_id] if args.key?(:parent_id)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Representation of a single script deployment.
+      class Deployment
+        include Google::Apis::Core::Hashable
+      
+        # Metadata the defines how a deployment is configured.
+        # Corresponds to the JSON property `deploymentConfig`
+        # @return [Google::Apis::ScriptV1::DeploymentConfig]
+        attr_accessor :deployment_config
+      
+        # The deployment ID for this deployment.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
+        # The deployment's entry points.
+        # Corresponds to the JSON property `entryPoints`
+        # @return [Array<Google::Apis::ScriptV1::EntryPoint>]
+        attr_accessor :entry_points
+      
+        # A set of functions. No duplicates are permitted.
+        # Corresponds to the JSON property `functionSet`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeFunctionSet]
+        attr_accessor :function_set
+      
+        # A set of scopes. No duplicates are permitted.
+        # Corresponds to the JSON property `scopeSet`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeScopeSet]
+        attr_accessor :scope_set
+      
+        # Last modified date time stamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_config = args[:deployment_config] if args.key?(:deployment_config)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
+          @entry_points = args[:entry_points] if args.key?(:entry_points)
+          @function_set = args[:function_set] if args.key?(:function_set)
+          @scope_set = args[:scope_set] if args.key?(:scope_set)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Metadata the defines how a deployment is configured.
+      class DeploymentConfig
+        include Google::Apis::Core::Hashable
+      
+        # The description for this deployment.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The manifest file name for this deployment.
+        # Corresponds to the JSON property `manifestFileName`
+        # @return [String]
+        attr_accessor :manifest_file_name
+      
+        # The script project's Drive ID.
+        # Corresponds to the JSON property `scriptId`
+        # @return [String]
+        attr_accessor :script_id
+      
+        # The version number on which this deployment is based.
+        # Corresponds to the JSON property `versionNumber`
+        # @return [Fixnum]
+        attr_accessor :version_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @manifest_file_name = args[:manifest_file_name] if args.key?(:manifest_file_name)
+          @script_id = args[:script_id] if args.key?(:script_id)
+          @version_number = args[:version_number] if args.key?(:version_number)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A configuration that defines how a deployment is accessed externally.
+      class EntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # An add-on entry point.
+        # Corresponds to the JSON property `addOn`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeAddOnEntryPoint]
+        attr_accessor :add_on
+      
+        # The type of the entry point.
+        # Corresponds to the JSON property `entryPointType`
+        # @return [String]
+        attr_accessor :entry_point_type
+      
+        # An API executable entry point.
+        # Corresponds to the JSON property `executionApi`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeExecutionApiEntryPoint]
+        attr_accessor :execution_api
+      
+        # A web application entry point.
+        # Corresponds to the JSON property `webApp`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeWebAppEntryPoint]
+        attr_accessor :web_app
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_on = args[:add_on] if args.key?(:add_on)
+          @entry_point_type = args[:entry_point_type] if args.key?(:entry_point_type)
+          @execution_api = args[:execution_api] if args.key?(:execution_api)
+          @web_app = args[:web_app] if args.key?(:web_app)
+        end
+      end
+      
       # An object that provides information about the nature of an error resulting
       # from an attempted execution of a script function using the Apps Script API.
       # If a run call
@@ -146,6 +343,558 @@ module Google
         end
       end
       
+      # An individual file within a script project.
+      # A file is a third-party source code created by one or more
+      # developers. It can be a server-side JS code, HTML, or a
+      # configuration file. Each script project can contain multiple files.
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # Creation date timestamp.
+        # This read-only field is only visible to users who have WRITER
+        # permission for the script project.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A set of functions. No duplicates are permitted.
+        # Corresponds to the JSON property `functionSet`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeFunctionSet]
+        attr_accessor :function_set
+      
+        # A simple user profile resource.
+        # Corresponds to the JSON property `lastModifyUser`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeUser]
+        attr_accessor :last_modify_user
+      
+        # The name of the file. The file extension is not part of the file
+        # name, which can be identified from the type field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The file content.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # The type of the file.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Last modified date timestamp.
+        # This read-only field is only visible to users who have WRITER
+        # permission for the script project.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @function_set = args[:function_set] if args.key?(:function_set)
+          @last_modify_user = args[:last_modify_user] if args.key?(:last_modify_user)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An add-on entry point.
+      class GoogleAppsScriptTypeAddOnEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # The add-on's required list of supported container types.
+        # Corresponds to the JSON property `addOnType`
+        # @return [String]
+        attr_accessor :add_on_type
+      
+        # The add-on's optional description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The add-on's optional help URL.
+        # Corresponds to the JSON property `helpUrl`
+        # @return [String]
+        attr_accessor :help_url
+      
+        # The add-on's required post install tip URL.
+        # Corresponds to the JSON property `postInstallTipUrl`
+        # @return [String]
+        attr_accessor :post_install_tip_url
+      
+        # The add-on's optional report issue URL.
+        # Corresponds to the JSON property `reportIssueUrl`
+        # @return [String]
+        attr_accessor :report_issue_url
+      
+        # The add-on's required title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_on_type = args[:add_on_type] if args.key?(:add_on_type)
+          @description = args[:description] if args.key?(:description)
+          @help_url = args[:help_url] if args.key?(:help_url)
+          @post_install_tip_url = args[:post_install_tip_url] if args.key?(:post_install_tip_url)
+          @report_issue_url = args[:report_issue_url] if args.key?(:report_issue_url)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # API executable entry point configuration.
+      class GoogleAppsScriptTypeExecutionApiConfig
+        include Google::Apis::Core::Hashable
+      
+        # Who has permission to run the API executable.
+        # Corresponds to the JSON property `access`
+        # @return [String]
+        attr_accessor :access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access = args[:access] if args.key?(:access)
+        end
+      end
+      
+      # An API executable entry point.
+      class GoogleAppsScriptTypeExecutionApiEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # API executable entry point configuration.
+        # Corresponds to the JSON property `entryPointConfig`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeExecutionApiConfig]
+        attr_accessor :entry_point_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_point_config = args[:entry_point_config] if args.key?(:entry_point_config)
+        end
+      end
+      
+      # Represents a function in a script project.
+      class GoogleAppsScriptTypeFunction
+        include Google::Apis::Core::Hashable
+      
+        # The function name in the script project.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A set of functions. No duplicates are permitted.
+      class GoogleAppsScriptTypeFunctionSet
+        include Google::Apis::Core::Hashable
+      
+        # A list of functions composing the set.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::ScriptV1::GoogleAppsScriptTypeFunction>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Representation of a single script process execution that was started from
+      # the script editor, a trigger, an application, or using the Apps Script API.
+      # This is distinct from the `Operation`
+      # resource, which only represents exeuctions started via the Apps Script API.
+      class GoogleAppsScriptTypeProcess
+        include Google::Apis::Core::Hashable
+      
+        # Duration the execution spent executing.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # User-facing name for the user executing the script.
+        # Corresponds to the JSON property `executingUser`
+        # @return [String]
+        attr_accessor :executing_user
+      
+        # Name of the function the started the execution.
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        # The executions status.
+        # Corresponds to the JSON property `processStatus`
+        # @return [String]
+        attr_accessor :process_status
+      
+        # The executions type.
+        # Corresponds to the JSON property `processType`
+        # @return [String]
+        attr_accessor :process_type
+      
+        # Name of the script being executed.
+        # Corresponds to the JSON property `projectName`
+        # @return [String]
+        attr_accessor :project_name
+      
+        # Time the execution started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The executing users access level to the script.
+        # Corresponds to the JSON property `userAccessLevel`
+        # @return [String]
+        attr_accessor :user_access_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @executing_user = args[:executing_user] if args.key?(:executing_user)
+          @function_name = args[:function_name] if args.key?(:function_name)
+          @process_status = args[:process_status] if args.key?(:process_status)
+          @process_type = args[:process_type] if args.key?(:process_type)
+          @project_name = args[:project_name] if args.key?(:project_name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @user_access_level = args[:user_access_level] if args.key?(:user_access_level)
+        end
+      end
+      
+      # Represents an authorization scope.
+      class GoogleAppsScriptTypeScope
+        include Google::Apis::Core::Hashable
+      
+        # Who authorized the scope.
+        # Corresponds to the JSON property `authorizer`
+        # @return [String]
+        attr_accessor :authorizer
+      
+        # The scope's identifying string.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorizer = args[:authorizer] if args.key?(:authorizer)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A set of scopes. No duplicates are permitted.
+      class GoogleAppsScriptTypeScopeSet
+        include Google::Apis::Core::Hashable
+      
+        # List of scope values in the set.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::ScriptV1::GoogleAppsScriptTypeScope>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A simple user profile resource.
+      class GoogleAppsScriptTypeUser
+        include Google::Apis::Core::Hashable
+      
+        # The user's domain.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The user's identifying email address.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The user's display name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The user's photo.
+        # Corresponds to the JSON property `photoUrl`
+        # @return [String]
+        attr_accessor :photo_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+          @photo_url = args[:photo_url] if args.key?(:photo_url)
+        end
+      end
+      
+      # Web app entry point configuration.
+      class GoogleAppsScriptTypeWebAppConfig
+        include Google::Apis::Core::Hashable
+      
+        # Who has permission to run the web app.
+        # Corresponds to the JSON property `access`
+        # @return [String]
+        attr_accessor :access
+      
+        # Who to execute the web app as.
+        # Corresponds to the JSON property `executeAs`
+        # @return [String]
+        attr_accessor :execute_as
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access = args[:access] if args.key?(:access)
+          @execute_as = args[:execute_as] if args.key?(:execute_as)
+        end
+      end
+      
+      # A web application entry point.
+      class GoogleAppsScriptTypeWebAppEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # Web app entry point configuration.
+        # Corresponds to the JSON property `entryPointConfig`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeWebAppConfig]
+        attr_accessor :entry_point_config
+      
+        # The URL for the web application.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_point_config = args[:entry_point_config] if args.key?(:entry_point_config)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Response with the list of deployments for the specified Apps Script project.
+      class ListDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of deployments.
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<Google::Apis::ScriptV1::Deployment>]
+        attr_accessor :deployments
+      
+        # The token that can be used in the next call to get the next page of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployments = args[:deployments] if args.key?(:deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response with the list of
+      # Process resources.
+      class ListScriptProcessesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token for the next page of results. If empty, there are no more pages
+        # remaining.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of processes matching request parameters.
+        # Corresponds to the JSON property `processes`
+        # @return [Array<Google::Apis::ScriptV1::GoogleAppsScriptTypeProcess>]
+        attr_accessor :processes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @processes = args[:processes] if args.key?(:processes)
+        end
+      end
+      
+      # Response with the list of
+      # Process resources.
+      class ListUserProcessesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token for the next page of results. If empty, there are no more pages
+        # remaining.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of processes matching request parameters.
+        # Corresponds to the JSON property `processes`
+        # @return [Array<Google::Apis::ScriptV1::GoogleAppsScriptTypeProcess>]
+        attr_accessor :processes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @processes = args[:processes] if args.key?(:processes)
+        end
+      end
+      
+      # Response with the list of the versions for the specified script project.
+      class ListVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token use to fetch the next page of records. if not exist in the
+        # response, that means no more versions to list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of versions.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::ScriptV1::Version>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # Resource containing usage stats for a given script, based on the supplied
+      # filter and mask present in the request.
+      class Metrics
+        include Google::Apis::Core::Hashable
+      
+        # Number of active users.
+        # Corresponds to the JSON property `activeUsers`
+        # @return [Array<Google::Apis::ScriptV1::MetricsValue>]
+        attr_accessor :active_users
+      
+        # Number of failed executions.
+        # Corresponds to the JSON property `failedExecutions`
+        # @return [Array<Google::Apis::ScriptV1::MetricsValue>]
+        attr_accessor :failed_executions
+      
+        # Number of total executions.
+        # Corresponds to the JSON property `totalExecutions`
+        # @return [Array<Google::Apis::ScriptV1::MetricsValue>]
+        attr_accessor :total_executions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_users = args[:active_users] if args.key?(:active_users)
+          @failed_executions = args[:failed_executions] if args.key?(:failed_executions)
+          @total_executions = args[:total_executions] if args.key?(:total_executions)
+        end
+      end
+      
+      # Metrics value that holds number of executions counted.
+      class MetricsValue
+        include Google::Apis::Core::Hashable
+      
+        # Required field indicating the end time of the interval.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required field indicating the start time of the interval.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Indicates the number of executions counted.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A representation of a execution of an Apps Script function that is started
       # using run. The execution response does not arrive until the function finishes
       # executing. The maximum execution runtime is listed in the [Apps Script quotas
@@ -203,6 +952,63 @@ module Google
           @done = args[:done] if args.key?(:done)
           @error = args[:error] if args.key?(:error)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # The script project resource.
+      class Project
+        include Google::Apis::Core::Hashable
+      
+        # When the script was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A simple user profile resource.
+        # Corresponds to the JSON property `creator`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeUser]
+        attr_accessor :creator
+      
+        # A simple user profile resource.
+        # Corresponds to the JSON property `lastModifyUser`
+        # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeUser]
+        attr_accessor :last_modify_user
+      
+        # The parent's Drive ID that the script will be attached to. This is usually
+        # the ID of a Google Document or Google Sheet. This filed is optional, and
+        # if not set, a stand-alone script will be created.
+        # Corresponds to the JSON property `parentId`
+        # @return [String]
+        attr_accessor :parent_id
+      
+        # The script project's Drive ID.
+        # Corresponds to the JSON property `scriptId`
+        # @return [String]
+        attr_accessor :script_id
+      
+        # The title for the project.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # When the script was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @last_modify_user = args[:last_modify_user] if args.key?(:last_modify_user)
+          @parent_id = args[:parent_id] if args.key?(:parent_id)
+          @script_id = args[:script_id] if args.key?(:script_id)
+          @title = args[:title] if args.key?(:title)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -266,6 +1072,65 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request with deployment information to update an existing deployment.
+      class UpdateDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Metadata the defines how a deployment is configured.
+        # Corresponds to the JSON property `deploymentConfig`
+        # @return [Google::Apis::ScriptV1::DeploymentConfig]
+        attr_accessor :deployment_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_config = args[:deployment_config] if args.key?(:deployment_config)
+        end
+      end
+      
+      # A resource representing a script project version. A version is a "snapshot"
+      # of a script project and is similar to a read-only branched release. When
+      # creating deployments, the version to use must be specified.
+      class Version
+        include Google::Apis::Core::Hashable
+      
+        # When the version was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The description for this version.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The script project's Drive ID.
+        # Corresponds to the JSON property `scriptId`
+        # @return [String]
+        attr_accessor :script_id
+      
+        # The incremental ID that is created by Apps Script when a version is
+        # created. This is system assigned number and is immutable once created.
+        # Corresponds to the JSON property `versionNumber`
+        # @return [Fixnum]
+        attr_accessor :version_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @script_id = args[:script_id] if args.key?(:script_id)
+          @version_number = args[:version_number] if args.key?(:version_number)
         end
       end
     end

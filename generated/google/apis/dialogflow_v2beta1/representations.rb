@@ -760,6 +760,7 @@ module Google
       class IntentMessageImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accessibility_text, as: 'accessibilityText'
           property :image_uri, as: 'imageUri'
         end
       end

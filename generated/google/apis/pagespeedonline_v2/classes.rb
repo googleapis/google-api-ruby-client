@@ -265,6 +265,11 @@ module Google
       class Result
         include Google::Apis::Core::Hashable
       
+        # The captcha verify result
+        # Corresponds to the JSON property `captchaResult`
+        # @return [String]
+        attr_accessor :captcha_result
+      
         # Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed
         # rule instantiated and run by the server.
         # Corresponds to the JSON property `formattedResults`
@@ -326,6 +331,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @captcha_result = args[:captcha_result] if args.key?(:captcha_result)
           @formatted_results = args[:formatted_results] if args.key?(:formatted_results)
           @id = args[:id] if args.key?(:id)
           @invalid_rules = args[:invalid_rules] if args.key?(:invalid_rules)
