@@ -22,10 +22,10 @@ module Google
     #
     # An API for managing and executing Google Apps Script projects.
     #
-    # @see https://developers.google.com/apps-script/execution/rest/v1/scripts/run
+    # @see https://developers.google.com/apps-script/api
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20180109'
+      REVISION = '20180110'
 
       # Read, send, delete, and manage your email
       AUTH_SCOPE = 'https://mail.google.com/'

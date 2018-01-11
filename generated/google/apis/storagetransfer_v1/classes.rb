@@ -730,7 +730,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :bytes_found_only_from_sink
       
-        # Bytes in the data source that failed during the transfer.
+        # Bytes in the data source that failed to be transferred or that failed to
+        # be deleted after being transferred.
         # Corresponds to the JSON property `bytesFromSourceFailed`
         # @return [Fixnum]
         attr_accessor :bytes_from_source_failed
@@ -773,7 +774,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :objects_found_only_from_sink
       
-        # Objects in the data source that failed during the transfer.
+        # Objects in the data source that failed to be transferred or that failed
+        # to be deleted after being transferred.
         # Corresponds to the JSON property `objectsFromSourceFailed`
         # @return [Fixnum]
         attr_accessor :objects_from_source_failed

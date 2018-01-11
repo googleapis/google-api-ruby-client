@@ -621,7 +621,7 @@ module Google
         # Can be used by developers to keep track of conferences, should not be
         # displayed to users.
         # Values for solution types:
-        # - "eventHangout": unset
+        # - "eventHangout": unset.
         # - "eventNamedHangout": the name of the Hangout.
         # - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
         # Optional.
@@ -630,7 +630,7 @@ module Google
         attr_accessor :conference_id
       
         # The conference solution, such as Hangouts or Hangouts Meet.
-        # Unset for a conference with failed create request.
+        # Unset for a conference with a failed create request.
         # Either conferenceSolution and at least one entryPoint, or createRequest is
         # required.
         # Corresponds to the JSON property `conferenceSolution`
@@ -665,7 +665,7 @@ module Google
         # The signature of the conference data.
         # Genereated on server side. Must be preserved while copying the conference data
         # between events, otherwise the conference data will not be copied.
-        # Unset for a conference with failed create request.
+        # Unset for a conference with a failed create request.
         # Optional for a conference with a pending create request.
         # Corresponds to the JSON property `signature`
         # @return [String]
@@ -737,7 +737,7 @@ module Google
       class ConferenceSolution
         include Google::Apis::Core::Hashable
       
-        # The user-visible icon for this solution. Read-only.
+        # The user-visible icon for this solution.
         # Corresponds to the JSON property `iconUri`
         # @return [String]
         attr_accessor :icon_uri
@@ -747,7 +747,7 @@ module Google
         # @return [Google::Apis::CalendarV3::ConferenceSolutionKey]
         attr_accessor :key
       
-        # The user-visible name of this solution. Not localized. Read-only.
+        # The user-visible name of this solution. Not localized.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -773,7 +773,7 @@ module Google
         # display the entry points. However, it should disallow modifications.
         # The possible values are:
         # - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
-        # - "eventNamedHangout" for Classic Hangouts for GSuite users (http://hangouts.
+        # - "eventNamedHangout" for classic Hangouts for G Suite users (http://hangouts.
         # google.com)
         # - "hangoutsMeet" for Hangouts Meet (http://meet.google.com)
         # Corresponds to the JSON property `type`
@@ -827,7 +827,7 @@ module Google
       class EntryPoint
         include Google::Apis::Core::Hashable
       
-        # The Access Code to access the conference. The maximum length is 128 characters.
+        # The access code to access the conference. The maximum length is 128 characters.
         # When creating new conference data, populate only the subset of `meetingCode,
         # accessCode, passcode, password, pin` fields that match the terminology that
         # the conference provider uses. Only the populated fields should be displayed.
@@ -851,19 +851,19 @@ module Google
         # @return [String]
         attr_accessor :entry_point_type
       
-        # The label for the URI.Visible to end users. Not localized. The maximum length
+        # The label for the URI. Visible to end users. Not localized. The maximum length
         # is 512 characters.
         # Examples:
         # - for video: meet.google.com/aaa-bbbb-ccc
         # - for phone: +1 123 268 2601
-        # - for sip: sip:12345678@myprovider.com
+        # - for sip: 12345678@altostrat.com
         # - for more: should not be filled
         # Optional.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
       
-        # The Meeting Code to access the conference. The maximum length is 128
+        # The meeting code to access the conference. The maximum length is 128
         # characters.
         # When creating new conference data, populate only the subset of `meetingCode,
         # accessCode, passcode, password, pin` fields that match the terminology that
@@ -873,7 +873,7 @@ module Google
         # @return [String]
         attr_accessor :meeting_code
       
-        # The Passcode to access the conference. The maximum length is 128 characters.
+        # The passcode to access the conference. The maximum length is 128 characters.
         # When creating new conference data, populate only the subset of `meetingCode,
         # accessCode, passcode, password, pin` fields that match the terminology that
         # the conference provider uses. Only the populated fields should be displayed.
@@ -881,7 +881,7 @@ module Google
         # @return [String]
         attr_accessor :passcode
       
-        # The Password to access the conference. The maximum length is 128 characters.
+        # The password to access the conference. The maximum length is 128 characters.
         # When creating new conference data, populate only the subset of `meetingCode,
         # accessCode, passcode, password, pin` fields that match the terminology that
         # the conference provider uses. Only the populated fields should be displayed.
@@ -899,7 +899,7 @@ module Google
         # @return [String]
         attr_accessor :pin
       
-        # The "URI" of the entry point. The maximum length is 1300 characters.
+        # The URI of the entry point. The maximum length is 1300 characters.
         # Format:
         # - for video, http: or https: schema is required.
         # - for phone, tel: schema is required. The URI should include the entire dial
