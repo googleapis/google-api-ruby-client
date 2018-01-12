@@ -198,6 +198,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Instantiates a template and begins execution.This method is equivalent to
+        # executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate,
+        # DeleteWorkflowTemplate.The returned Operation can be used to track execution
+        # of workflow by polling google.cloud.dataproc.v1beta2.OperationService.
+        # GetOperation. The Operation will complete when entire workflow is finished.The
+        # running workflow can be aborted via google.cloud.dataproc.v1beta2.
+        # OperationService.CancelOperation.The google.cloud.dataproc.v1beta2.Operation.
+        # metadata will always be google.cloud.dataproc.v1beta2.WorkflowMetadata.The
+        # google.cloud.dataproc.v1beta2.Operation.result will always be google.protobuf.
+        # Empty.
+        # @param [String] parent
+        #   Required. The "resource name" of the workflow template region, as described in
+        #   https://cloud.google.com/apis/design/resource_names of the form projects/`
+        #   project_id`/regions/`region`
+        # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
+        # @param [String] instance_id
+        #   Optional. A tag that prevents multiple concurrent workflow instances with the
+        #   same tag from running. This mitigates risk of concurrent instances started due
+        #   to retries.It is recommended to always set this value to a UUID (https://en.
+        #   wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instantiate_project_location_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instanceId'] = instance_id unless instance_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists workflows that match the specified filter in the request.
         # @param [String] parent
         #   Required. The "resource name" of the region, as described in https://cloud.
@@ -1208,6 +1260,58 @@ module Google
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Instantiates a template and begins execution.This method is equivalent to
+        # executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate,
+        # DeleteWorkflowTemplate.The returned Operation can be used to track execution
+        # of workflow by polling google.cloud.dataproc.v1beta2.OperationService.
+        # GetOperation. The Operation will complete when entire workflow is finished.The
+        # running workflow can be aborted via google.cloud.dataproc.v1beta2.
+        # OperationService.CancelOperation.The google.cloud.dataproc.v1beta2.Operation.
+        # metadata will always be google.cloud.dataproc.v1beta2.WorkflowMetadata.The
+        # google.cloud.dataproc.v1beta2.Operation.result will always be google.protobuf.
+        # Empty.
+        # @param [String] parent
+        #   Required. The "resource name" of the workflow template region, as described in
+        #   https://cloud.google.com/apis/design/resource_names of the form projects/`
+        #   project_id`/regions/`region`
+        # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
+        # @param [String] instance_id
+        #   Optional. A tag that prevents multiple concurrent workflow instances with the
+        #   same tag from running. This mitigates risk of concurrent instances started due
+        #   to retries.It is recommended to always set this value to a UUID (https://en.
+        #   wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1beta2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1beta2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instantiate_project_region_workflow_template_inline(parent, workflow_template_object = nil, instance_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+parent}/workflowTemplates:instantiateInline', options)
+          command.request_representation = Google::Apis::DataprocV1beta2::WorkflowTemplate::Representation
+          command.request_object = workflow_template_object
+          command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1beta2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instanceId'] = instance_id unless instance_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -1526,9 +1526,11 @@ module Google
         attr_accessor :owners
       
         # Collection of parent folders which contain this file.
-        # Setting this field will put the file in all of the provided folders. On insert,
-        # if no folders are provided, the file will be placed in the default root
-        # folder.
+        # If not specified as part of an insert request, the file will be placed
+        # directly in the user's My Drive folder. If not specified as part of a copy
+        # request, the file will inherit any discoverable parents of the source file.
+        # Update requests can also use the addParents and removeParents parameters to
+        # modify the parents list.
         # Corresponds to the JSON property `parents`
         # @return [Array<Google::Apis::DriveV2::ParentReference>]
         attr_accessor :parents

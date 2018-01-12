@@ -351,60 +351,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a `Release`.
-        # Only updates to the `ruleset_name` and `test_suite_name` fields will be
-        # honored. `Release` rename is not supported. To create a `Release` use the
-        # CreateRelease method.
-        # @param [String] name
-        #   Resource name for the `Release`.
-        #   `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`
-        #   which affords developers a great deal of flexibility in mapping the name
-        #   to the style that best fits their existing development practices. For
-        #   example, a name could refer to an environment, an app, a version, or some
-        #   combination of three.
-        #   In the table below, for the project name `projects/foo`, the following
-        #   relative release paths show how flat and structured names might be chosen
-        #   to match a desired development / deployment strategy.
-        #   Use Case     | Flat Name           | Structured Name
-        #   -------------|---------------------|----------------
-        #   Environments | releases/qa         | releases/qa
-        #   Apps         | releases/app1_qa    | releases/app1/qa
-        #   Versions     | releases/app1_v2_qa | releases/app1/v2/qa
-        #   The delimiter between the release name path elements can be almost anything
-        #   and it should work equally well with the release name list filter, but in
-        #   many ways the structured paths provide a clearer picture of the
-        #   relationship between `Release` instances.
-        #   Format: `projects/`project_id`/releases/`release_id``
-        # @param [Google::Apis::FirebaserulesV1::Release] release_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaserulesV1::Release] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaserulesV1::Release]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_release(name, release_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:put, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::FirebaserulesV1::Release::Representation
-          command.request_object = release_object
-          command.response_representation = Google::Apis::FirebaserulesV1::Release::Representation
-          command.response_class = Google::Apis::FirebaserulesV1::Release
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Create a `Ruleset` from `Source`.
         # The `Ruleset` is given a unique generated name which is returned to the
         # caller. `Source` containing syntactic or semantics errors will result in an

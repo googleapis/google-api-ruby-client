@@ -685,8 +685,10 @@ module Google
       
         # The IDs of the parent folders which contain the file.
         # If not specified as part of a create request, the file will be placed directly
-        # in the My Drive folder. Update requests must use the addParents and
-        # removeParents parameters to modify the values.
+        # in the user's My Drive folder. If not specified as part of a copy request, the
+        # file will inherit any discoverable parents of the source file. Update requests
+        # must use the addParents and removeParents parameters to modify the parents
+        # list.
         # Corresponds to the JSON property `parents`
         # @return [Array<String>]
         attr_accessor :parents

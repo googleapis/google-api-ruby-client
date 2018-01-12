@@ -288,7 +288,7 @@ module Google
       end
       
       # Configuration to automatically mirror a repository from another
-      # hosting service, for example GitHub or BitBucket.
+      # hosting service, for example GitHub or Bitbucket.
       class MirrorConfig
         include Google::Apis::Core::Hashable
       
@@ -408,7 +408,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Configuration to automatically mirror a repository from another
-        # hosting service, for example GitHub or BitBucket.
+        # hosting service, for example GitHub or Bitbucket.
         # Corresponds to the JSON property `mirrorConfig`
         # @return [Google::Apis::SourcerepoV1::MirrorConfig]
         attr_accessor :mirror_config
