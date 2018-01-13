@@ -26,12 +26,12 @@ module Google
     # @see http://cloud.google.com/debugger
     module ClouddebuggerV2
       VERSION = 'V2'
-      REVISION = '20170809'
+      REVISION = '20180112'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # Manage cloud debugger
+      # Use Stackdriver Debugger
       AUTH_CLOUD_DEBUGGER = 'https://www.googleapis.com/auth/cloud_debugger'
     end
   end

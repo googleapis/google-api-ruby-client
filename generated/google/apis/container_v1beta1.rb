@@ -18,7 +18,7 @@ require 'google/apis/container_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Container Engine API
+    # Google Kubernetes Engine API
     #
     # The Google Kubernetes Engine API is used for building and managing container
     # based applications, powered by the open source Kubernetes technology.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/container-engine/
     module ContainerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20171127'
+      REVISION = '20171227'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

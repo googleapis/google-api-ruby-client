@@ -1356,6 +1356,12 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::NodeTaint>]
         attr_accessor :taints
       
+        # WorkloadMetadataConfig defines the metadata configuration to expose to
+        # workloads on the node pool.
+        # Corresponds to the JSON property `workloadMetadataConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadMetadataConfig]
+        attr_accessor :workload_metadata_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1375,6 +1381,7 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
+          @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
         end
       end
       
@@ -2377,6 +2384,64 @@ module Google
         end
       end
       
+      # SetNodePoolSizeRequest sets the size a node
+      # pool.
+      class SetNodePoolSizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The name of the cluster to update.
+        # This field is deprecated, use name instead.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # The name (project, location, cluster, node pool id) of the node pool to set
+        # size.
+        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The desired node count for the pool.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # The name of the node pool to update.
+        # This field is deprecated, use name instead.
+        # Corresponds to the JSON property `nodePoolId`
+        # @return [String]
+        attr_accessor :node_pool_id
+      
+        # The Google Developers Console [project ID or project
+        # number](https://support.google.com/cloud/answer/6158840).
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The name of the Google Compute Engine
+        # [zone](/compute/docs/zones#available) in which the cluster
+        # resides.
+        # This field is deprecated, use name instead.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @name = args[:name] if args.key?(:name)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # StartIPRotationRequest creates a new IP for the cluster and then performs
       # a node upgrade on each node pool to point to the new IP.
       class StartIpRotationRequest
@@ -2587,6 +2652,27 @@ module Google
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # WorkloadMetadataConfig defines the metadata configuration to expose to
+      # workloads on the node pool.
+      class WorkloadMetadataConfig
+        include Google::Apis::Core::Hashable
+      
+        # NodeMetadata is the configuration for if and how to expose the node
+        # metadata to the workload running on the node.
+        # Corresponds to the JSON property `nodeMetadata`
+        # @return [String]
+        attr_accessor :node_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_metadata = args[:node_metadata] if args.key?(:node_metadata)
         end
       end
     end

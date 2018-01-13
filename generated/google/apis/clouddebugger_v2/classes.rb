@@ -310,7 +310,6 @@ module Google
       
         # References to the locations and revisions of the source code used in the
         # deployed application.
-        # NOTE: this field is experimental and can be ignored.
         # Corresponds to the JSON property `extSourceContexts`
         # @return [Array<Google::Apis::ClouddebuggerV2::ExtendedSourceContext>]
         attr_accessor :ext_source_contexts

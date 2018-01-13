@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetNodePoolSizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +323,12 @@ module Google
       end
       
       class UpdateNodePoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadMetadataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -629,6 +641,8 @@ module Google
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
       
+          property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
+      
         end
       end
       
@@ -856,6 +870,18 @@ module Google
         end
       end
       
+      class SetNodePoolSizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :node_count, as: 'nodeCount'
+          property :node_pool_id, as: 'nodePoolId'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class StartIpRotationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -899,6 +925,13 @@ module Google
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class WorkloadMetadataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_metadata, as: 'nodeMetadata'
         end
       end
     end
