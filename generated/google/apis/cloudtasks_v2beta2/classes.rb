@@ -551,7 +551,7 @@ module Google
         end
       end
       
-      # Request message for pulling tasks using CloudTasks.LeaseTasks.
+      # Request message for leasing tasks using CloudTasks.LeaseTasks.
       class LeaseTasksRequest
         include Google::Apis::Core::Hashable
       
@@ -964,7 +964,7 @@ module Google
         # python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue)
         # .
         # Purge time will be truncated to the nearest microsecond. Purge
-        # time will be zero if the queue has never been purged.
+        # time will be unset if the queue has never been purged.
         # Corresponds to the JSON property `purgeTime`
         # @return [String]
         attr_accessor :purge_time
@@ -985,7 +985,7 @@ module Google
         # Output only. The state of the queue.
         # `state` can only be changed by called
         # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-        # [queue.yaml](/appengine/docs/python/config/queueref).
+        # [queue.yaml/xml](/appengine/docs/python/config/queueref).
         # CloudTasks.UpdateQueue cannot be used to change `state`.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1014,23 +1014,23 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The max burst size.
-        # Max burst size limits how fast the queue is processed when many
-        # tasks are in the queue and the rate is high. This field allows
-        # the queue to have a high rate so processing starts shortly after
-        # a task is enqueued, but still limits resource usage when many
-        # tasks are enqueued in a short period of time.
-        # * For App Engine queues, if
-        # RateLimits.max_tasks_dispatched_per_second is 1, this
-        # field is 10; otherwise this field is
-        # RateLimits.max_tasks_dispatched_per_second / 5.
-        # * For pull queues, this field is output only and always 10,000.
-        # Note: For App Engine queues that were created through
-        # `queue.yaml/xml`, `max_burst_size` might not have the same
-        # settings as specified above; CloudTasks.UpdateQueue can be
-        # used to set `max_burst_size` only to the values specified above.
-        # This field has the same meaning as
-        # [bucket_size in queue.yaml](/appengine/docs/standard/python/config/queueref#
-        # bucket_size).
+        # Max burst size limits how fast tasks in queue are processed when
+        # many tasks are in the queue and the rate is high. This field
+        # allows the queue to have a high rate so processing starts shortly
+        # after a task is enqueued, but still limits resource usage when
+        # many tasks are enqueued in a short period of time.
+        # The [token bucket](https://wikipedia.org/wiki/Token_Bucket)
+        # algorithm is used to control the rate of task dispatches. Each
+        # queue has a token bucket that holds tokens, up to the maximum
+        # specified by `max_burst_size`. Each time a task is dispatched, a
+        # token is removed from the bucket. Tasks will be dispatched until
+        # the queue's bucket runs out of tokens. The bucket will be
+        # continuously refilled with new tokens based on
+        # RateLimits.max_tasks_dispatched_per_second.
+        # Cloud Tasks will pick the value of `max_burst_size` when the
+        # queue is created. For App Engine queues that were created or
+        # updated using `queue.yaml/xml`, `max_burst_size` is equal to
+        # [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size).
         # Corresponds to the JSON property `maxBurstSize`
         # @return [Fixnum]
         attr_accessor :max_burst_size
@@ -1040,25 +1040,27 @@ module Google
         # reached, Cloud Tasks stops dispatching tasks until the number of
         # concurrent requests decreases.
         # The maximum allowed value is 5,000.
-        # * For App Engine queues, this field is 10 by default.
-        # * For pull queues, this field is output only and always -1, which
-        # indicates no limit.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # This field is output only for
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # This field has the same meaning as
-        # [max_concurrent_requests in queue.yaml](/appengine/docs/standard/python/config/
-        # queueref#max_concurrent_requests).
+        # [max_concurrent_requests in queue.yaml/xml](/appengine/docs/standard/python/
+        # config/queueref#max_concurrent_requests).
         # Corresponds to the JSON property `maxConcurrentTasks`
         # @return [Fixnum]
         attr_accessor :max_concurrent_tasks
       
-        # The maximum rate at which tasks are dispatched from this
-        # queue.
+        # The maximum rate at which tasks are dispatched from this queue.
         # The maximum allowed value is 500.
-        # * For App Engine queues, this field is 1 by default.
-        # * For pull queues, this field is output only and always 10,000.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # This field is output only for
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
-        # 10 QPS of CloudTasks.LeaseTasks requests are allowed per queue.
+        # 10 QPS of CloudTasks.LeaseTasks requests are allowed per pull queue.
         # This field has the same meaning as
-        # [rate in queue.yaml](/appengine/docs/standard/python/config/queueref#rate).
+        # [rate in queue.yaml/xml](/appengine/docs/standard/python/config/queueref#rate).
         # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
         # @return [Float]
         attr_accessor :max_tasks_dispatched_per_second
@@ -1148,15 +1150,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_attempts
       
-        # The maximum amount of time to wait before retrying a task after
-        # it fails. The default is 1 hour.
-        # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
-        # this field is 1 hour by default.
-        # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
-        # is output only and always 0.
+        # A task will be scheduled for retry between RetryConfig.min_backoff and
+        # RetryConfig.max_backoff duration after it fails, if the queue's
+        # RetryConfig specifies that the task should be retried.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # This field is output only for
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # `max_backoff` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [max_backoff_seconds in queue.yaml](/appengine/docs/standard/python/config/
+        # [max_backoff_seconds in queue.yaml/xml](/appengine/docs/standard/python/config/
         # queueref#retry_parameters).
         # Corresponds to the JSON property `maxBackoff`
         # @return [String]
@@ -1175,13 +1178,13 @@ module Google
         # RetryConfig.max_backoff until the task has been attempted
         # `max_attempts` times. Thus, the requests will retry at 10s, 20s,
         # 40s, 80s, 160s, 240s, 300s, 300s, ....
-        # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
-        # this field is 16 by default.
-        # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field
-        # is output only and always 0.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # This field is output only for
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # This field has the same meaning as
-        # [max_doublings in queue.yaml](/appengine/docs/standard/python/config/queueref#
-        # retry_parameters).
+        # [max_doublings in queue.yaml/xml](/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxDoublings`
         # @return [Fixnum]
         attr_accessor :max_doublings
@@ -1192,27 +1195,28 @@ module Google
         # RetryConfig.max_attempts times, no further attempts will be made and
         # the task will be deleted.
         # If zero, then the task age is unlimited.
-        # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
-        # this field is 0 seconds by default.
-        # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this
-        # field is output only and always 0.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # This field is output only for
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # `max_retry_duration` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [task_age_limit in queue.yaml](/appengine/docs/standard/python/config/queueref#
-        # retry_parameters).
+        # [task_age_limit in queue.yaml/xml](/appengine/docs/standard/python/config/
+        # queueref#retry_parameters).
         # Corresponds to the JSON property `maxRetryDuration`
         # @return [String]
         attr_accessor :max_retry_duration
       
-        # The minimum amount of time to wait before retrying a task after
-        # it fails.
-        # * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
-        # this field is 0.1 seconds by default.
-        # * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this
-        # field is output only and always 0.
+        # A task will be scheduled for retry between RetryConfig.min_backoff and
+        # RetryConfig.max_backoff duration after it fails, if the queue's
+        # RetryConfig specifies that the task should be retried.
+        # If unspecified when the queue is created, Cloud Tasks will pick the
+        # default.
+        # This field is output only for
+        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # `min_backoff` will be truncated to the nearest second.
         # This field has the same meaning as
-        # [min_backoff_seconds in queue.yaml](/appengine/docs/standard/python/config/
+        # [min_backoff_seconds in queue.yaml/xml](/appengine/docs/standard/python/config/
         # queueref#retry_parameters).
         # Corresponds to the JSON property `minBackoff`
         # @return [String]
