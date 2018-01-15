@@ -1,3 +1,40 @@
+# 0.19.3
+* Backwards compatible changes:
+  * Updated `admin_reports_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `calendar_v3`
+  * Updated `cloudbilling_v1`
+  * Updated `clouddebugger_v2`
+  * Updated `cloudkms_v1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2beta2`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `firebaserules_v1`
+  * Updated `games_v1`
+  * Updated `iam_v1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `pagespeedonline_v1`
+  * Updated `pagespeedonline_v2`
+  * Updated `people_v1`
+  * Updated `pubsub_v1`
+  * Updated `pubsub_v1beta2`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `script_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `sheets_v4`
+  * Updated `slides_v1`
+  * Updated `sourcerepo_v1`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+  * Updated `youtube_partner_v1`
+  * Updated `youtubereporting_v1`
+
 # 0.19.2
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
