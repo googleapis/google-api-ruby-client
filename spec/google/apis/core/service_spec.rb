@@ -36,6 +36,11 @@ RSpec.describe Google::Apis::Core::BaseService do
     expect(agent).to match /^test\/1.0/
   end
 
+  it 'should include os version in user agent' do
+    agent = service.send(:user_agent)
+    expect(agent).to match /#{Google::Apis::OS_VERSION}/
+  end
+
   it 'should inherit authorization' do
     Google::Apis::RequestOptions.default.authorization = 'a token'
     expect(service.authorization).to eql 'a token'

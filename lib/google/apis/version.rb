@@ -21,7 +21,7 @@ module Google
     # @private
     OS_VERSION = begin
       if RUBY_PLATFORM =~ /mswin|win32|mingw|bccwin|cygwin/
-        `ver`.sub(/\s*\[Version\s*/, '/').sub(']', '').strip
+        `ver`.sub(/\s*\[Version\s*/, '/').sub(']', '')
       elsif RUBY_PLATFORM =~ /darwin/i
         "Mac OS X/#{`sw_vers -productVersion`}"
       elsif RUBY_PLATFORM == 'java'
@@ -31,7 +31,7 @@ module Google
         "#{name}/#{version}"
       else
         `uname -sr`.sub(' ', '/')
-      end
+      end.strip
     rescue
       RUBY_PLATFORM
     end
