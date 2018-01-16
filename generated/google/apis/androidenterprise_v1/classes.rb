@@ -1321,6 +1321,11 @@ module Google
         # @return [String]
         attr_accessor :device_id
       
+        # Policy app on the device.
+        # Corresponds to the JSON property `dpcPackageName`
+        # @return [String]
+        attr_accessor :dpc_package_name
+      
         # Identifies the extent to which the device is controlled by an Android EMM in
         # various deployment configurations.
         # Possible values include:
@@ -1342,6 +1347,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_id = args[:device_id] if args.key?(:device_id)
+          @dpc_package_name = args[:dpc_package_name] if args.key?(:dpc_package_name)
           @management_type = args[:management_type] if args.key?(:management_type)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -1647,7 +1653,7 @@ module Google
         # @return [String]
         attr_accessor :content_rating
       
-        # A localized promotional description, if available.
+        # The localized promotional description, if available.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1679,8 +1685,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The time (in milliseconds since epoch) when application was last published. (
-        # Timestamp is approximate within 7 days of actual publish time.)
+        # The approximate time (within 7 days) the app was last published, expressed in
+        # milliseconds since epoch.
         # Corresponds to the JSON property `lastUpdatedTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_updated_timestamp_millis
@@ -1690,7 +1696,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_android_sdk_version
       
-        # The permissions required for this app.
+        # A list of permissions required by the app.
         # Corresponds to the JSON property `permissions`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPermission>]
         attr_accessor :permissions
@@ -2664,100 +2670,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @placeholder = args[:placeholder] if args.key?(:placeholder)
           @user_value = args[:user_value] if args.key?(:user_value)
-        end
-      end
-      
-      # WebApp resource info.
-      class WebApp
-        include Google::Apis::Core::Hashable
-      
-        # A list of icons representing this website. Must have at least one element.
-        # Corresponds to the JSON property `icons`
-        # @return [Array<Google::Apis::AndroidenterpriseV1::WebAppImage>]
-        attr_accessor :icons
-      
-        # The name of the web application as it is usually displayed to the user (e.g.,
-        # amongst a list of other applications, or as a label for an icon). Required.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # String that represents the start URL, i.e. the URL that should load when the
-        # user opens the application. Required.
-        # Corresponds to the JSON property `startUrl`
-        # @return [String]
-        attr_accessor :start_url
-      
-        # The ID of the application.
-        # Corresponds to the JSON property `webAppId`
-        # @return [String]
-        attr_accessor :web_app_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @icons = args[:icons] if args.key?(:icons)
-          @name = args[:name] if args.key?(:name)
-          @start_url = args[:start_url] if args.key?(:start_url)
-          @web_app_id = args[:web_app_id] if args.key?(:web_app_id)
-        end
-      end
-      
-      # Each image object represents an image that is used as part of a web
-      # application, suitable to use in various contexts depending on the semantics of
-      # the member that is using the object (e.g., an icon that is part of an
-      # application menu, etc.).
-      class WebAppImage
-        include Google::Apis::Core::Hashable
-      
-        # The actual bytes of the image.
-        # Corresponds to the JSON property `imageData`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :image_data
-      
-        # The purposes this image may be used for. Optional.
-        # Corresponds to the JSON property `purposes`
-        # @return [Array<String>]
-        attr_accessor :purposes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_data = args[:image_data] if args.key?(:image_data)
-          @purposes = args[:purposes] if args.key?(:purposes)
-        end
-      end
-      
-      # The web app details for an enterprise.
-      class WebAppsListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#webAppsListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The manifest describing a web app.
-        # Corresponds to the JSON property `webApp`
-        # @return [Array<Google::Apis::AndroidenterpriseV1::WebApp>]
-        attr_accessor :web_app
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @web_app = args[:web_app] if args.key?(:web_app)
         end
       end
     end

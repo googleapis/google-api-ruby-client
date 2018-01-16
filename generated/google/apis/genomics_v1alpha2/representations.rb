@@ -58,18 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImportReadGroupSetsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportVariantsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -234,20 +222,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ImportReadGroupSetsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :read_group_set_ids, as: 'readGroupSetIds'
-        end
-      end
-      
-      class ImportVariantsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :call_set_ids, as: 'callSetIds'
         end
       end
       
