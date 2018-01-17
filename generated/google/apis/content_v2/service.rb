@@ -914,7 +914,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the datafeeds in your Merchant Center account.
+        # Lists the configurations for datafeeds in your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the datafeeds. This account cannot be a
         #   multi-client account.
@@ -1621,6 +1621,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Notifies that item return and refund was handled directly in store.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order.
+        # @param [Google::Apis::ContentV2::OrdersInStoreRefundLineItemRequest] orders_in_store_refund_line_item_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrdersInStoreRefundLineItemResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrdersInStoreRefundLineItemResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def instorerefundlineitem_order(merchant_id, order_id, orders_in_store_refund_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/inStoreRefundLineItem', options)
+          command.request_representation = Google::Apis::ContentV2::OrdersInStoreRefundLineItemRequest::Representation
+          command.request_object = orders_in_store_refund_line_item_request_object
+          command.response_representation = Google::Apis::ContentV2::OrdersInStoreRefundLineItemResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrdersInStoreRefundLineItemResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the orders in your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
@@ -1737,6 +1779,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Rejects return on an line item.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order.
+        # @param [Google::Apis::ContentV2::OrdersRejectReturnLineItemRequest] orders_reject_return_line_item_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrdersRejectReturnLineItemResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrdersRejectReturnLineItemResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rejectreturnlineitem_order(merchant_id, order_id, orders_reject_return_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/rejectReturnLineItem', options)
+          command.request_representation = Google::Apis::ContentV2::OrdersRejectReturnLineItemRequest::Representation
+          command.request_object = orders_reject_return_line_item_request_object
+          command.response_representation = Google::Apis::ContentV2::OrdersRejectReturnLineItemResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrdersRejectReturnLineItemResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a line item.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
@@ -1771,6 +1855,49 @@ module Google
           command.request_object = orders_return_line_item_request_object
           command.response_representation = Google::Apis::ContentV2::OrdersReturnLineItemResponse::Representation
           command.response_class = Google::Apis::ContentV2::OrdersReturnLineItemResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns and refunds a line item. Note that this method can only be called on
+        # fully shipped orders.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] order_id
+        #   The ID of the order.
+        # @param [Google::Apis::ContentV2::OrdersReturnRefundLineItemRequest] orders_return_refund_line_item_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::OrdersReturnRefundLineItemResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::OrdersReturnRefundLineItemResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def returnrefundlineitem_order(merchant_id, order_id, orders_return_refund_line_item_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/orders/{orderId}/returnRefundLineItem', options)
+          command.request_representation = Google::Apis::ContentV2::OrdersReturnRefundLineItemRequest::Representation
+          command.request_object = orders_return_refund_line_item_request_object
+          command.response_representation = Google::Apis::ContentV2::OrdersReturnRefundLineItemResponse::Representation
+          command.response_class = Google::Apis::ContentV2::OrdersReturnRefundLineItemResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['orderId'] = order_id unless order_id.nil?
           command.query['fields'] = fields unless fields.nil?

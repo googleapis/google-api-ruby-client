@@ -3756,6 +3756,11 @@ module Google
         # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryCancelLineItem]
         attr_accessor :cancel_line_item
       
+        # Required for inStoreReturnLineItem method.
+        # Corresponds to the JSON property `inStoreRefundLineItem`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryInStoreRefundLineItem]
+        attr_accessor :in_store_refund_line_item
+      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -3788,10 +3793,20 @@ module Google
         # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryRefund]
         attr_accessor :refund
       
+        # Required for rejectReturnLineItem method.
+        # Corresponds to the JSON property `rejectReturnLineItem`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryRejectReturnLineItem]
+        attr_accessor :reject_return_line_item
+      
         # Required for returnLineItem method.
         # Corresponds to the JSON property `returnLineItem`
         # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryReturnLineItem]
         attr_accessor :return_line_item
+      
+        # Required for returnRefundLineItem method.
+        # Corresponds to the JSON property `returnRefundLineItem`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryReturnRefundLineItem]
+        attr_accessor :return_refund_line_item
       
         # Required for setLineItemMetadata method.
         # Corresponds to the JSON property `setLineItemMetadata`
@@ -3822,13 +3837,16 @@ module Google
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @cancel = args[:cancel] if args.key?(:cancel)
           @cancel_line_item = args[:cancel_line_item] if args.key?(:cancel_line_item)
+          @in_store_refund_line_item = args[:in_store_refund_line_item] if args.key?(:in_store_refund_line_item)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @order_id = args[:order_id] if args.key?(:order_id)
           @refund = args[:refund] if args.key?(:refund)
+          @reject_return_line_item = args[:reject_return_line_item] if args.key?(:reject_return_line_item)
           @return_line_item = args[:return_line_item] if args.key?(:return_line_item)
+          @return_refund_line_item = args[:return_refund_line_item] if args.key?(:return_refund_line_item)
           @set_line_item_metadata = args[:set_line_item_metadata] if args.key?(:set_line_item_metadata)
           @ship_line_items = args[:ship_line_items] if args.key?(:ship_line_items)
           @update_line_item_shipping_details = args[:update_line_item_shipping_details] if args.key?(:update_line_item_shipping_details)
@@ -3928,6 +3946,62 @@ module Google
       end
       
       # 
+      class OrdersCustomBatchRequestEntryInStoreRefundLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. Required.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to refund amount in amountPretax. Required.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
+        # The ID of the line item to return. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The quantity to return and refund.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
       class OrdersCustomBatchRequestEntryRefund
         include Google::Apis::Core::Hashable
       
@@ -3972,6 +4046,50 @@ module Google
       end
       
       # 
+      class OrdersCustomBatchRequestEntryRejectReturnLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to return. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The quantity to return and refund.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
       class OrdersCustomBatchRequestEntryReturnLineItem
         include Google::Apis::Core::Hashable
       
@@ -4007,6 +4125,63 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryReturnRefundLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. Optional, but if filled then both amountPretax
+        # and amountTax must be set.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to refund amount in amountPretax.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
+        # The ID of the line item to return. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The quantity to return and refund.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
@@ -4330,6 +4505,94 @@ module Google
       end
       
       # 
+      class OrdersInStoreRefundLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. Required.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to refund amount in amountPretax. Required.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
+        # The ID of the line item to return. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The quantity to return and refund.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersInStoreRefundLineItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersInStoreRefundLineItemResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class OrdersListResponse
         include Google::Apis::Core::Hashable
       
@@ -4438,6 +4701,82 @@ module Google
       end
       
       # 
+      class OrdersRejectReturnLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to return. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The quantity to return and refund.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersRejectReturnLineItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersRejectReturnLineItemResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class OrdersReturnLineItemRequest
         include Google::Apis::Core::Hashable
       
@@ -4498,6 +4837,95 @@ module Google
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # ordersReturnLineItemResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrdersReturnRefundLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. Optional, but if filled then both amountPretax
+        # and amountTax must be set.
+        # Corresponds to the JSON property `amountPretax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_pretax
+      
+        # Tax amount that correspond to refund amount in amountPretax.
+        # Corresponds to the JSON property `amountTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount_tax
+      
+        # The ID of the line item to return. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the product to return. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The quantity to return and refund.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_pretax = args[:amount_pretax] if args.key?(:amount_pretax)
+          @amount_tax = args[:amount_tax] if args.key?(:amount_tax)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersReturnRefundLineItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersReturnRefundLineItemResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

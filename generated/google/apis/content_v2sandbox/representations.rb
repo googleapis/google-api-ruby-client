@@ -226,13 +226,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCustomBatchRequestEntryInStoreRefundLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCustomBatchRequestEntryRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCustomBatchRequestEntryRejectReturnLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCustomBatchRequestEntryReturnLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCustomBatchRequestEntryReturnRefundLineItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +310,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersInStoreRefundLineItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersInStoreRefundLineItemResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +340,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersRejectReturnLineItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersRejectReturnLineItemResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersReturnLineItemRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +359,18 @@ module Google
       end
       
       class OrdersReturnLineItemResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersReturnRefundLineItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersReturnRefundLineItemResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -797,6 +851,8 @@ module Google
       
           property :cancel_line_item, as: 'cancelLineItem', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryCancelLineItem, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryCancelLineItem::Representation
       
+          property :in_store_refund_line_item, as: 'inStoreRefundLineItem', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryInStoreRefundLineItem, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryInStoreRefundLineItem::Representation
+      
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :merchant_order_id, as: 'merchantOrderId'
           property :method_prop, as: 'method'
@@ -804,7 +860,11 @@ module Google
           property :order_id, as: 'orderId'
           property :refund, as: 'refund', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryRefund, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryRefund::Representation
       
+          property :reject_return_line_item, as: 'rejectReturnLineItem', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryRejectReturnLineItem, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryRejectReturnLineItem::Representation
+      
           property :return_line_item, as: 'returnLineItem', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryReturnLineItem, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryReturnLineItem::Representation
+      
+          property :return_refund_line_item, as: 'returnRefundLineItem', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryReturnRefundLineItem, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntryReturnRefundLineItem::Representation
       
           property :set_line_item_metadata, as: 'setLineItemMetadata', class: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntrySetLineItemMetadata, decorator: Google::Apis::ContentV2sandbox::OrdersCustomBatchRequestEntrySetLineItemMetadata::Representation
       
@@ -842,6 +902,21 @@ module Google
         end
       end
       
+      class OrdersCustomBatchRequestEntryInStoreRefundLineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
       class OrdersCustomBatchRequestEntryRefund
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -856,9 +931,35 @@ module Google
         end
       end
       
+      class OrdersCustomBatchRequestEntryRejectReturnLineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
       class OrdersCustomBatchRequestEntryReturnLineItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrdersCustomBatchRequestEntryReturnRefundLineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
           property :line_item_id, as: 'lineItemId'
           property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
@@ -959,6 +1060,30 @@ module Google
         end
       end
       
+      class OrdersInStoreRefundLineItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :line_item_id, as: 'lineItemId'
+          property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrdersInStoreRefundLineItemResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class OrdersListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -992,6 +1117,26 @@ module Google
         end
       end
       
+      class OrdersRejectReturnLineItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_item_id, as: 'lineItemId'
+          property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrdersRejectReturnLineItemResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class OrdersReturnLineItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1005,6 +1150,30 @@ module Google
       end
       
       class OrdersReturnLineItemResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrdersReturnRefundLineItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_pretax, as: 'amountPretax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :amount_tax, as: 'amountTax', class: Google::Apis::ContentV2sandbox::Price, decorator: Google::Apis::ContentV2sandbox::Price::Representation
+      
+          property :line_item_id, as: 'lineItemId'
+          property :operation_id, as: 'operationId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrdersReturnRefundLineItemResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'
