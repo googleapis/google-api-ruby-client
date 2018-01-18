@@ -558,16 +558,22 @@ module Google
         # `filter` can be used to specify a subset of tasks to lease.
         # When `filter` is set to `tag=<my-tag>` then the
         # LeaseTasksResponse will contain only tasks whose
-        # LeaseMessage.tag is equal to `<my-tag>`. `<my-tag>` must be less than
-        # 500 bytes.
+        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be
+        # less than 500 characters.
         # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
         # the same tag as the task with the oldest schedule_time will be returned.
         # Grammar Syntax:
         # * `filter = "tag=" tag | "tag_function=" function`
-        # * `tag = string | bytes`
+        # * `tag = string`
         # * `function = "oldest_tag()"`
         # The `oldest_tag()` function returns tasks which have the same tag as the
         # oldest task (ordered by schedule time).
+        # SDK compatibility: Although the SDK allows tags to be either
+        # string or [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/
+        # api/taskqueue/TaskOptions.html#tag-byte:A-),
+        # only UTF-8 encoded tags can be used in Cloud Tasks. Tag which aren't UTF-8
+        # encoded can't be used in LeaseTasksRequest.filter and won't display in
+        # PullMessage.tag.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -606,8 +612,7 @@ module Google
         # of its large size or because of the sensitivity of data that it
         # contains.
         # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the
-        # Task.name resource.
+        # [Google IAM](/iam/) permission on the Task.name resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -868,9 +873,13 @@ module Google
         # user once a day, you could tag tasks with the user ID.
         # The task's tag can only be set when the
         # task is created.
-        # The tag must be less than 500 bytes.
+        # The tag must be less than 500 characters.
+        # SDK compatibility: Although the SDK allows tags to be either
+        # string or [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/
+        # api/taskqueue/TaskOptions.html#tag-byte:A-),
+        # only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8
+        # encoded, the tag will be empty when the task is returned by Cloud Tasks.
         # Corresponds to the JSON property `tag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :tag
       

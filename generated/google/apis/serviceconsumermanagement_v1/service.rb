@@ -262,6 +262,7 @@ module Google
         end
         
         # Add a new tenant project to the tenancy unit.
+        # There can be at most 512 tenant projects in a tenancy units.
         # If there are previously failed AddTenantProject calls, you might need to
         # call RemoveTenantProject first to clean them before you can make another
         # AddTenantProject with the same tag.

@@ -338,6 +338,218 @@ module Google
         end
       end
       
+      # JSON template for an Analytics account tree requests. The account tree request
+      # is used in the provisioning api to create an account, property, and view (
+      # profile). It contains the basic information required to make these fields.
+      class AccountTreeRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `accountName`
+        # @return [String]
+        attr_accessor :account_name
+      
+        # 
+        # Corresponds to the JSON property `accountSettings`
+        # @return [Google::Apis::AnalyticsV3::AccountTreeRequest::AccountSettings]
+        attr_accessor :account_settings
+      
+        # Resource type for account ticket.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `profileName`
+        # @return [String]
+        attr_accessor :profile_name
+      
+        # 
+        # Corresponds to the JSON property `timezone`
+        # @return [String]
+        attr_accessor :timezone
+      
+        # 
+        # Corresponds to the JSON property `webpropertyName`
+        # @return [String]
+        attr_accessor :webproperty_name
+      
+        # 
+        # Corresponds to the JSON property `websiteUrl`
+        # @return [String]
+        attr_accessor :website_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_name = args[:account_name] if args.key?(:account_name)
+          @account_settings = args[:account_settings] if args.key?(:account_settings)
+          @kind = args[:kind] if args.key?(:kind)
+          @profile_name = args[:profile_name] if args.key?(:profile_name)
+          @timezone = args[:timezone] if args.key?(:timezone)
+          @webproperty_name = args[:webproperty_name] if args.key?(:webproperty_name)
+          @website_url = args[:website_url] if args.key?(:website_url)
+        end
+        
+        # 
+        class AccountSettings
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `admobReporting`
+          # @return [Boolean]
+          attr_accessor :admob_reporting
+          alias_method :admob_reporting?, :admob_reporting
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleAnySales`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_any_sales
+          alias_method :sharing_with_google_any_sales?, :sharing_with_google_any_sales
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleProducts`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_products
+          alias_method :sharing_with_google_products?, :sharing_with_google_products
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleSales`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_sales
+          alias_method :sharing_with_google_sales?, :sharing_with_google_sales
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleSupport`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_support
+          alias_method :sharing_with_google_support?, :sharing_with_google_support
+        
+          # 
+          # Corresponds to the JSON property `sharingWithOthers`
+          # @return [Boolean]
+          attr_accessor :sharing_with_others
+          alias_method :sharing_with_others?, :sharing_with_others
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @admob_reporting = args[:admob_reporting] if args.key?(:admob_reporting)
+            @sharing_with_google_any_sales = args[:sharing_with_google_any_sales] if args.key?(:sharing_with_google_any_sales)
+            @sharing_with_google_products = args[:sharing_with_google_products] if args.key?(:sharing_with_google_products)
+            @sharing_with_google_sales = args[:sharing_with_google_sales] if args.key?(:sharing_with_google_sales)
+            @sharing_with_google_support = args[:sharing_with_google_support] if args.key?(:sharing_with_google_support)
+            @sharing_with_others = args[:sharing_with_others] if args.key?(:sharing_with_others)
+          end
+        end
+      end
+      
+      # JSON template for an Analytics account tree response. The account tree
+      # response is used in the provisioning api to return the result of creating an
+      # account, property, and view (profile).
+      class AccountTreeResponse
+        include Google::Apis::Core::Hashable
+      
+        # JSON template for Analytics account entry.
+        # Corresponds to the JSON property `account`
+        # @return [Google::Apis::AnalyticsV3::Account]
+        attr_accessor :account
+      
+        # 
+        # Corresponds to the JSON property `accountSettings`
+        # @return [Google::Apis::AnalyticsV3::AccountTreeResponse::AccountSettings]
+        attr_accessor :account_settings
+      
+        # Resource type for account ticket.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # JSON template for an Analytics view (profile).
+        # Corresponds to the JSON property `profile`
+        # @return [Google::Apis::AnalyticsV3::Profile]
+        attr_accessor :profile
+      
+        # JSON template for an Analytics web property.
+        # Corresponds to the JSON property `webproperty`
+        # @return [Google::Apis::AnalyticsV3::Webproperty]
+        attr_accessor :webproperty
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account = args[:account] if args.key?(:account)
+          @account_settings = args[:account_settings] if args.key?(:account_settings)
+          @kind = args[:kind] if args.key?(:kind)
+          @profile = args[:profile] if args.key?(:profile)
+          @webproperty = args[:webproperty] if args.key?(:webproperty)
+        end
+        
+        # 
+        class AccountSettings
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `admobReporting`
+          # @return [Boolean]
+          attr_accessor :admob_reporting
+          alias_method :admob_reporting?, :admob_reporting
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleAnySales`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_any_sales
+          alias_method :sharing_with_google_any_sales?, :sharing_with_google_any_sales
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleProducts`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_products
+          alias_method :sharing_with_google_products?, :sharing_with_google_products
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleSales`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_sales
+          alias_method :sharing_with_google_sales?, :sharing_with_google_sales
+        
+          # 
+          # Corresponds to the JSON property `sharingWithGoogleSupport`
+          # @return [Boolean]
+          attr_accessor :sharing_with_google_support
+          alias_method :sharing_with_google_support?, :sharing_with_google_support
+        
+          # 
+          # Corresponds to the JSON property `sharingWithOthers`
+          # @return [Boolean]
+          attr_accessor :sharing_with_others
+          alias_method :sharing_with_others?, :sharing_with_others
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @admob_reporting = args[:admob_reporting] if args.key?(:admob_reporting)
+            @sharing_with_google_any_sales = args[:sharing_with_google_any_sales] if args.key?(:sharing_with_google_any_sales)
+            @sharing_with_google_products = args[:sharing_with_google_products] if args.key?(:sharing_with_google_products)
+            @sharing_with_google_sales = args[:sharing_with_google_sales] if args.key?(:sharing_with_google_sales)
+            @sharing_with_google_support = args[:sharing_with_google_support] if args.key?(:sharing_with_google_support)
+            @sharing_with_others = args[:sharing_with_others] if args.key?(:sharing_with_others)
+          end
+        end
+      end
+      
       # An account collection provides a list of Analytics accounts to which a user
       # has access. The account collection is the entry point to all management
       # information. Each resource in the collection corresponds to a single Analytics

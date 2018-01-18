@@ -64,6 +64,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountTreeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class AccountSettings
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountTreeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class AccountSettings
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accounts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -711,6 +735,59 @@ module Google
           property :redirect_uri, as: 'redirectUri'
           property :webproperty, as: 'webproperty', class: Google::Apis::AnalyticsV3::Webproperty, decorator: Google::Apis::AnalyticsV3::Webproperty::Representation
       
+        end
+      end
+      
+      class AccountTreeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_name, as: 'accountName'
+          property :account_settings, as: 'accountSettings', class: Google::Apis::AnalyticsV3::AccountTreeRequest::AccountSettings, decorator: Google::Apis::AnalyticsV3::AccountTreeRequest::AccountSettings::Representation
+      
+          property :kind, as: 'kind'
+          property :profile_name, as: 'profileName'
+          property :timezone, as: 'timezone'
+          property :webproperty_name, as: 'webpropertyName'
+          property :website_url, as: 'websiteUrl'
+        end
+        
+        class AccountSettings
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :admob_reporting, as: 'admobReporting'
+            property :sharing_with_google_any_sales, as: 'sharingWithGoogleAnySales'
+            property :sharing_with_google_products, as: 'sharingWithGoogleProducts'
+            property :sharing_with_google_sales, as: 'sharingWithGoogleSales'
+            property :sharing_with_google_support, as: 'sharingWithGoogleSupport'
+            property :sharing_with_others, as: 'sharingWithOthers'
+          end
+        end
+      end
+      
+      class AccountTreeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account', class: Google::Apis::AnalyticsV3::Account, decorator: Google::Apis::AnalyticsV3::Account::Representation
+      
+          property :account_settings, as: 'accountSettings', class: Google::Apis::AnalyticsV3::AccountTreeResponse::AccountSettings, decorator: Google::Apis::AnalyticsV3::AccountTreeResponse::AccountSettings::Representation
+      
+          property :kind, as: 'kind'
+          property :profile, as: 'profile', class: Google::Apis::AnalyticsV3::Profile, decorator: Google::Apis::AnalyticsV3::Profile::Representation
+      
+          property :webproperty, as: 'webproperty', class: Google::Apis::AnalyticsV3::Webproperty, decorator: Google::Apis::AnalyticsV3::Webproperty::Representation
+      
+        end
+        
+        class AccountSettings
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :admob_reporting, as: 'admobReporting'
+            property :sharing_with_google_any_sales, as: 'sharingWithGoogleAnySales'
+            property :sharing_with_google_products, as: 'sharingWithGoogleProducts'
+            property :sharing_with_google_sales, as: 'sharingWithGoogleSales'
+            property :sharing_with_google_support, as: 'sharingWithGoogleSupport'
+            property :sharing_with_others, as: 'sharingWithOthers'
+          end
         end
       end
       

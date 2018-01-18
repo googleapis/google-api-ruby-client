@@ -260,6 +260,44 @@ module Google
         end
       end
       
+      # The read group set import response.
+      class ImportReadGroupSetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # IDs of the read group sets that were created.
+        # Corresponds to the JSON property `readGroupSetIds`
+        # @return [Array<String>]
+        attr_accessor :read_group_set_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_group_set_ids = args[:read_group_set_ids] if args.key?(:read_group_set_ids)
+        end
+      end
+      
+      # The variant data import response.
+      class ImportVariantsResponse
+        include Google::Apis::Core::Hashable
+      
+        # IDs of the call sets created during the import.
+        # Corresponds to the JSON property `callSetIds`
+        # @return [Array<String>]
+        attr_accessor :call_set_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_set_ids = args[:call_set_ids] if args.key?(:call_set_ids)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable

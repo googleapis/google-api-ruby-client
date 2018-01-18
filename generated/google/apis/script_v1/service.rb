@@ -30,7 +30,7 @@ module Google
       #    Script = Google::Apis::ScriptV1 # Alias the module
       #    service = Script::ScriptService.new
       #
-      # @see https://developers.google.com/apps-script/api
+      # @see https://developers.google.com/apps-script/api/
       class ScriptService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

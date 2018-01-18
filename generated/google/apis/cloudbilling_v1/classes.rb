@@ -369,14 +369,21 @@ module Google
         # @return [Google::Apis::CloudbillingV1::AggregationInfo]
         attr_accessor :aggregation_info
       
-        # Conversion rate for currency conversion, from USD to the currency specified
-        # in the request. If the currency is not specified this defaults to 1.0.
+        # Conversion rate used for currency conversion, from USD to the currency
+        # specified in the request. This includes any surcharge collected for billing
+        # in non USD currency. If a currency is not specified in the request this
+        # defaults to 1.0.
         # Example: USD * currency_conversion_rate = JPY
         # Corresponds to the JSON property `currencyConversionRate`
         # @return [Float]
         attr_accessor :currency_conversion_rate
       
-        # The timestamp from which this pricing was effective.
+        # The timestamp from which this pricing was effective within the requested
+        # time range. This is guaranteed to be greater than or equal to the
+        # start_time field in the request and less than the end_time field in the
+        # request. If a time range was not specified in the request this field will
+        # be equivalent to a time within the last 12 hours, indicating the latest
+        # pricing info.
         # Corresponds to the JSON property `effectiveTime`
         # @return [String]
         attr_accessor :effective_time

@@ -3578,6 +3578,7 @@ module Google
         attr_accessor :service
       
         # Resources constituting the tenancy unit.
+        # There can be at most 512 tenant resources in a tenancy units.
         # Corresponds to the JSON property `tenantResources`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::TenantResource>]
         attr_accessor :tenant_resources

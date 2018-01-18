@@ -617,13 +617,16 @@ module Google
         #   `person.names` or `person.photos`.
         # @param [Boolean] request_sync_token
         #   Whether the response should include a sync token, which can be used to get
-        #   all changes since the last request.
+        #   all changes since the last request. For subsequent sync requests use the
+        #   `sync_token` param instead. Initial sync requests that specify
+        #   `request_sync_token` have an additional rate limit.
         # @param [String] sort_order
         #   The order in which the connections should be sorted. Defaults to
         #   `LAST_MODIFIED_ASCENDING`.
         # @param [String] sync_token
-        #   A sync token, returned by a previous call to `people.connections.list`.
+        #   A sync token returned by a previous call to `people.connections.list`.
         #   Only resources changed since the sync token was created will be returned.
+        #   Sync requests that specify `sync_token` have an additional rate limit.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

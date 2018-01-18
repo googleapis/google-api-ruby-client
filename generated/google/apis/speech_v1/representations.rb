@@ -22,24 +22,6 @@ module Google
   module Apis
     module SpeechV1
       
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LongRunningRecognizeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -104,27 +86,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::SpeechV1::Operation, decorator: Google::Apis::SpeechV1::Operation::Representation
-      
-        end
       end
       
       class LongRunningRecognizeRequest
@@ -211,7 +172,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alternatives, as: 'alternatives', class: Google::Apis::SpeechV1::SpeechRecognitionAlternative, decorator: Google::Apis::SpeechV1::SpeechRecognitionAlternative::Representation
       
-          property :channel_tag, as: 'channelTag'
         end
       end
       

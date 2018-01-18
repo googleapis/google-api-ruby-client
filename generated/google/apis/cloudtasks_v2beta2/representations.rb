@@ -380,7 +380,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :payload, :base64 => true, as: 'payload'
-          property :tag, :base64 => true, as: 'tag'
+          property :tag, as: 'tag'
         end
       end
       

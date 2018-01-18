@@ -172,18 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleIamV1AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleIamV1AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleIamV1Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -525,24 +513,6 @@ module Google
         end
       end
       
-      class GoogleIamV1AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::MlV1::GoogleIamV1AuditLogConfig, decorator: Google::Apis::MlV1::GoogleIamV1AuditLogConfig::Representation
-      
-          collection :exempted_members, as: 'exemptedMembers'
-          property :service, as: 'service'
-        end
-      end
-      
-      class GoogleIamV1AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -556,12 +526,9 @@ module Google
       class GoogleIamV1Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::MlV1::GoogleIamV1AuditConfig, decorator: Google::Apis::MlV1::GoogleIamV1AuditConfig::Representation
-      
           collection :bindings, as: 'bindings', class: Google::Apis::MlV1::GoogleIamV1Binding, decorator: Google::Apis::MlV1::GoogleIamV1Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
           property :version, as: 'version'
         end
       end

@@ -22,63 +22,6 @@ module Google
   module Apis
     module SpeechV1
       
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::SpeechV1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
       # The top-level message sent by the client for the `LongRunningRecognize`
       # method.
       class LongRunningRecognizeRequest
@@ -444,13 +387,6 @@ module Google
         # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
-        # For multi-channel audio, this is the channel number corresponding to the
-        # recognized result for the audio from that channel.
-        # For audio_channel_count = N, its output values can range from '0' to 'N-1'.
-        # Corresponds to the JSON property `channelTag`
-        # @return [Fixnum]
-        attr_accessor :channel_tag
-      
         def initialize(**args)
            update!(**args)
         end
@@ -458,7 +394,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
-          @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
         end
       end
       
