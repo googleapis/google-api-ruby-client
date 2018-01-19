@@ -32,8 +32,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :accelerator_count
       
-        # Full or partial URL of the accelerator type resource to expose to this
-        # instance.
+        # Full or partial URL of the accelerator type resource to attach to this
+        # instance. If you are creating an instance template, specify only the
+        # accelerator name.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1206,6 +1207,12 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Labels to apply to this disk. These can be later modified by the disks.
+        # setLabels method. This field is only applicable for persistent disks.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The source image to create this disk. When creating a new instance, one of
         # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
@@ -1241,6 +1248,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_storage_type = args[:disk_storage_type] if args.key?(:disk_storage_type)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @labels = args[:labels] if args.key?(:labels)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
         end
@@ -4376,6 +4384,12 @@ module Google
         attr_accessor :auto_delete
         alias_method :auto_delete?, :auto_delete
       
+        # The custom source image to be used to restore this disk when instantiating
+        # this instance template.
+        # Corresponds to the JSON property `customImage`
+        # @return [String]
+        attr_accessor :custom_image
+      
         # Specifies the device name of the disk to which the configurations apply to.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
@@ -4386,12 +4400,6 @@ module Google
         # @return [String]
         attr_accessor :instantiate_from
       
-        # The custom source image to be used to restore this disk when instantiating
-        # this instance template.
-        # Corresponds to the JSON property `sourceImage`
-        # @return [String]
-        attr_accessor :source_image
-      
         def initialize(**args)
            update!(**args)
         end
@@ -4399,9 +4407,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @custom_image = args[:custom_image] if args.key?(:custom_image)
           @device_name = args[:device_name] if args.key?(:device_name)
           @instantiate_from = args[:instantiate_from] if args.key?(:instantiate_from)
-          @source_image = args[:source_image] if args.key?(:source_image)
         end
       end
       
@@ -8727,6 +8735,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # Total amount of preserved state for SUSPENDED instances. Read-only in the api.
+        # Corresponds to the JSON property `preservedStateSizeGb`
+        # @return [Fixnum]
+        attr_accessor :preserved_state_size_gb
+      
         # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
@@ -8805,6 +8818,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @preserved_state_size_gb = args[:preserved_state_size_gb] if args.key?(:preserved_state_size_gb)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -14613,10 +14627,19 @@ module Google
       class ManagedInstanceOverride
         include Google::Apis::Core::Hashable
       
-        # Disk overrides defined for this instance
+        # Disk overrides defined for this instance. According to documentation the
+        # maximum number of disks attached to an instance is 128: https://cloud.google.
+        # com/compute/docs/disks/ However, compute API defines the limit at 140, so this
+        # is what we check.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::ComputeAlpha::ManagedInstanceOverrideDiskOverride>]
         attr_accessor :disks
+      
+        # Metadata overrides defined for this instance. TODO(b/69785416) validate the
+        # total length is <9 KB
+        # Corresponds to the JSON property `metadata`
+        # @return [Array<Google::Apis::ComputeAlpha::ManagedInstanceOverride::Metadatum>]
+        attr_accessor :metadata
       
         # [Output Only] Indicates where does the override come from.
         # Corresponds to the JSON property `origin`
@@ -14630,7 +14653,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @origin = args[:origin] if args.key?(:origin)
+        end
+        
+        # 
+        class Metadatum
+          include Google::Apis::Core::Hashable
+        
+          # Key for the metadata entry. Keys must conform to the following regexp: [a-zA-
+          # Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a
+          # URL in the metadata server. Additionally, to avoid ambiguity, keys must not
+          # conflict with any other metadata keys for the project.
+          # Corresponds to the JSON property `key`
+          # @return [String]
+          attr_accessor :key
+        
+          # Value for the metadata entry. These are free-form strings, and only have
+          # meaning as interpreted by the image running in the instance. The only
+          # restriction placed on values is that their size must be less than or equal to
+          # 262144 bytes (256 KiB).
+          # Corresponds to the JSON property `value`
+          # @return [String]
+          attr_accessor :value
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @key = args[:key] if args.key?(:key)
+            @value = args[:value] if args.key?(:value)
+          end
         end
       end
       
@@ -16739,9 +16794,8 @@ module Google
         end
       end
       
-      # A Project resource. Projects can only be created in the Google Cloud Platform
-      # Console. Unless marked otherwise, values can only be modified in the console. (
-      # == resource_for v1.projects ==) (== resource_for beta.projects ==)
+      # A Project resource. For an overview of projects, see  Cloud Platform Resource
+      # Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       
@@ -20565,6 +20619,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output Only] Expiry time of the certificate. RFC3339
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -20576,6 +20635,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Configuration and status of a managed SSL certificate.
+        # Corresponds to the JSON property `managed`
+        # @return [Google::Apis::ComputeAlpha::SslCertificateManagedSslCertificate]
+        attr_accessor :managed
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -20598,6 +20662,24 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Configuration and status of a self-managed SSL certificate..
+        # Corresponds to the JSON property `selfManaged`
+        # @return [Google::Apis::ComputeAlpha::SslCertificateSelfManagedSslCertificate]
+        attr_accessor :self_managed
+      
+        # [Output Only] Domains associated with the certificate via Subject Alternative
+        # Name.
+        # Corresponds to the JSON property `subjectAlternativeNames`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_names
+      
+        # (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "
+        # MANAGED". If not specified, the certificate is self-managed and the fields
+        # certificate and private_key are used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20607,11 +20689,16 @@ module Google
           @certificate = args[:certificate] if args.key?(:certificate)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @managed = args[:managed] if args.key?(:managed)
           @name = args[:name] if args.key?(:name)
           @private_key = args[:private_key] if args.key?(:private_key)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_managed = args[:self_managed] if args.key?(:self_managed)
+          @subject_alternative_names = args[:subject_alternative_names] if args.key?(:subject_alternative_names)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -20729,6 +20816,67 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration and status of a managed SSL certificate.
+      class SslCertificateManagedSslCertificate
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Detailed statuses of the domains specified for managed
+        # certificate resource.
+        # Corresponds to the JSON property `domainStatus`
+        # @return [Hash<String,String>]
+        attr_accessor :domain_status
+      
+        # The domains for which a managed SSL certificate will be generated. Currently
+        # only single-domain certs are supported.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # [Output only] Status of the managed certificate resource.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_status = args[:domain_status] if args.key?(:domain_status)
+          @domains = args[:domains] if args.key?(:domains)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Configuration and status of a self-managed SSL certificate..
+      class SslCertificateSelfManagedSslCertificate
+        include Google::Apis::Core::Hashable
+      
+        # A local certificate file. The certificate must be in PEM format. The
+        # certificate chain must be no greater than 5 certs long. The chain must include
+        # at least one intermediate cert.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # A write-only private key in PEM format. Only insert requests will include this
+        # field.
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @private_key = args[:private_key] if args.key?(:private_key)
         end
       end
       

@@ -66,12 +66,12 @@ module Google
       class LoginProfile
         include Google::Apis::Core::Hashable
       
-        # A unique user ID for identifying the user.
+        # A unique user ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The list of POSIX accounts associated with the Directory API user.
+        # The list of POSIX accounts associated with the user.
         # Corresponds to the JSON property `posixAccounts`
         # @return [Array<Google::Apis::OsloginV1alpha::PosixAccount>]
         attr_accessor :posix_accounts
@@ -80,12 +80,6 @@ module Google
         # Corresponds to the JSON property `sshPublicKeys`
         # @return [Hash<String,Google::Apis::OsloginV1alpha::SshPublicKey>]
         attr_accessor :ssh_public_keys
-      
-        # Indicates if the user is suspended.
-        # Corresponds to the JSON property `suspended`
-        # @return [Boolean]
-        attr_accessor :suspended
-        alias_method :suspended?, :suspended
       
         def initialize(**args)
            update!(**args)
@@ -96,7 +90,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @posix_accounts = args[:posix_accounts] if args.key?(:posix_accounts)
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
-          @suspended = args[:suspended] if args.key?(:suspended)
         end
       end
       

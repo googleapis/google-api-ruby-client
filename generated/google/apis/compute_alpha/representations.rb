@@ -1938,6 +1938,12 @@ module Google
       
       class ManagedInstanceOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Metadatum
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2838,6 +2844,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslCertificateManagedSslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslCertificateSelfManagedSslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3864,6 +3882,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_storage_type, as: 'diskStorageType'
           property :disk_type, as: 'diskType'
+          hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -4619,9 +4638,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete, as: 'autoDelete'
+          property :custom_image, as: 'customImage'
           property :device_name, as: 'deviceName'
           property :instantiate_from, as: 'instantiateFrom'
-          property :source_image, as: 'sourceImage'
         end
       end
       
@@ -5652,6 +5671,7 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
+          property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
@@ -7184,7 +7204,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::ManagedInstanceOverrideDiskOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverrideDiskOverride::Representation
       
+          collection :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Metadatum, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Metadatum::Representation
+      
           property :origin, as: 'origin'
+        end
+        
+        class Metadatum
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :key, as: 'key'
+            property :value, as: 'value'
+          end
         end
       end
       
@@ -8736,11 +8766,18 @@ module Google
           property :certificate, as: 'certificate'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :expiry_time, as: 'expiryTime'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :managed, as: 'managed', class: Google::Apis::ComputeAlpha::SslCertificateManagedSslCertificate, decorator: Google::Apis::ComputeAlpha::SslCertificateManagedSslCertificate::Representation
+      
           property :name, as: 'name'
           property :private_key, as: 'privateKey'
           property :self_link, as: 'selfLink'
+          property :self_managed, as: 'selfManaged', class: Google::Apis::ComputeAlpha::SslCertificateSelfManagedSslCertificate, decorator: Google::Apis::ComputeAlpha::SslCertificateSelfManagedSslCertificate::Representation
+      
+          collection :subject_alternative_names, as: 'subjectAlternativeNames'
+          property :type, as: 'type'
         end
       end
       
@@ -8773,6 +8810,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SslCertificateManagedSslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :domain_status, as: 'domainStatus'
+          collection :domains, as: 'domains'
+          property :status, as: 'status'
+        end
+      end
+      
+      class SslCertificateSelfManagedSslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate'
+          property :private_key, as: 'privateKey'
         end
       end
       

@@ -519,8 +519,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
-        # Optional. Type of the boot disk (default is 'pd-standard'). Valid values: 'pd-
-        # ssd', 'pd-standard'
+        # Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-
+        # ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk
+        # Hard Disk Drive).
         # Corresponds to the JSON property `bootDiskType`
         # @return [String]
         attr_accessor :boot_disk_type

@@ -1185,8 +1185,16 @@ module Google
         # Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes
         # in length. These are reflected as part of a URL in the metadata server.
         # Additionally, to avoid ambiguity, keys must not conflict with any other
-        # metadata keys for the project or be one of the four reserved keys:
-        # "instance-template", "kube-env", "startup-script", and "user-data"
+        # metadata keys for the project or be one of the reserved keys:
+        # "cluster-name"
+        # "cluster-uid"
+        # "configure-sh"
+        # "gci-update-strategy"
+        # "gci-ensure-gke-docker"
+        # "instance-template"
+        # "kube-env"
+        # "startup-script"
+        # "user-data"
         # Values are free-form strings, and only have meaning as interpreted by
         # the image running in the instance. The only restriction placed on them is
         # that each value's size must be less than or equal to 32 KB.

@@ -645,8 +645,8 @@ module Google
         #   Optional. The beginning of the time interval. The default value for the start
         #   time is the end time. The start time must not be later than the end time.
         # @param [String] order_by
-        #   Specifies the order in which the points of the time series should be returned.
-        #   By default, results are not ordered. Currently, this field must be left blank.
+        #   Unsupported: must be left blank. The points in each time series are returned
+        #   in reverse time order.
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return. When view
         #   field sets to FULL, it limits the number of Points server will return; if view

@@ -1555,6 +1555,14 @@ module Google
       class WriteLogEntriesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the request should expect normal response, but the entries
+        # won't be persisted nor exported. Useful for checking whether the logging API
+        # endpoints are working properly before sending valuable data.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
         # Required. The log entries to send to Stackdriver Logging. The order of log
         # entries in this list does not matter. Values supplied in this method's
         # log_name, resource, and labels fields are copied into those log entries in
@@ -1626,6 +1634,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
           @entries = args[:entries] if args.key?(:entries)
           @labels = args[:labels] if args.key?(:labels)
           @log_name = args[:log_name] if args.key?(:log_name)

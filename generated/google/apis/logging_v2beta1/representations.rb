@@ -493,6 +493,7 @@ module Google
       class WriteLogEntriesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
           collection :entries, as: 'entries', class: Google::Apis::LoggingV2beta1::LogEntry, decorator: Google::Apis::LoggingV2beta1::LogEntry::Representation
       
           hash :labels, as: 'labels'

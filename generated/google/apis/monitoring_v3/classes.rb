@@ -1653,12 +1653,12 @@ module Google
         # @return [String]
         attr_accessor :metric_kind
       
-        # The data points of this time series. When listing time series, the order of
-        # the points is specified by the list method.When creating a time series, this
-        # field must contain exactly one point and the point's type must be the same as
-        # the value type of the associated metric. If the associated metric's descriptor
-        # must be auto-created, then the value type of the descriptor is determined by
-        # the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
+        # The data points of this time series. When listing time series, points are
+        # returned in reverse time order.When creating a time series, this field must
+        # contain exactly one point and the point's type must be the same as the value
+        # type of the associated metric. If the associated metric's descriptor must be
+        # auto-created, then the value type of the descriptor is determined by the point'
+        # s type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
         # Corresponds to the JSON property `points`
         # @return [Array<Google::Apis::MonitoringV3::Point>]
         attr_accessor :points

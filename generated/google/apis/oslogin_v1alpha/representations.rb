@@ -74,7 +74,6 @@ module Google
       
           hash :ssh_public_keys, as: 'sshPublicKeys', class: Google::Apis::OsloginV1alpha::SshPublicKey, decorator: Google::Apis::OsloginV1alpha::SshPublicKey::Representation
       
-          property :suspended, as: 'suspended'
         end
       end
       

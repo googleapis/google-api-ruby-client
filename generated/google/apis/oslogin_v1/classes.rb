@@ -66,7 +66,7 @@ module Google
       class LoginProfile
         include Google::Apis::Core::Hashable
       
-        # The primary email address that uniquely identifies the user.
+        # A unique user ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -81,13 +81,6 @@ module Google
         # @return [Hash<String,Google::Apis::OsloginV1::SshPublicKey>]
         attr_accessor :ssh_public_keys
       
-        # Indicates if the user is suspended. A suspended user cannot log in but
-        # their profile information is retained.
-        # Corresponds to the JSON property `suspended`
-        # @return [Boolean]
-        attr_accessor :suspended
-        alias_method :suspended?, :suspended
-      
         def initialize(**args)
            update!(**args)
         end
@@ -97,7 +90,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @posix_accounts = args[:posix_accounts] if args.key?(:posix_accounts)
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
-          @suspended = args[:suspended] if args.key?(:suspended)
         end
       end
       
