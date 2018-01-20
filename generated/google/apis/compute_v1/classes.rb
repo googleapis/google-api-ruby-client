@@ -32,8 +32,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :accelerator_count
       
-        # Full or partial URL of the accelerator type resource to expose to this
-        # instance.
+        # Full or partial URL of the accelerator type resource to attach to this
+        # instance. If you are creating an instance template, specify only the
+        # accelerator name.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1108,6 +1109,12 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Labels to apply to this disk. These can be later modified by the disks.
+        # setLabels method. This field is only applicable for persistent disks.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The source image to create this disk. When creating a new instance, one of
         # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
@@ -1142,6 +1149,7 @@ module Google
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @labels = args[:labels] if args.key?(:labels)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
         end
@@ -11730,9 +11738,8 @@ module Google
         end
       end
       
-      # A Project resource. Projects can only be created in the Google Cloud Platform
-      # Console. Unless marked otherwise, values can only be modified in the console. (
-      # == resource_for v1.projects ==) (== resource_for beta.projects ==)
+      # A Project resource. For an overview of projects, see  Cloud Platform Resource
+      # Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       

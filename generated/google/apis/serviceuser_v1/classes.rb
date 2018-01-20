@@ -1368,15 +1368,6 @@ module Google
         # @return [String]
         attr_accessor :put
       
-        # The name of the response field whose value is mapped to the HTTP body of
-        # response. Other response fields are ignored. This field is optional. When
-        # not set, the response message will be used as HTTP body of response.
-        # NOTE: the referred field must be not a repeated field and must be present
-        # at the top-level of response message type.
-        # Corresponds to the JSON property `responseBody`
-        # @return [String]
-        attr_accessor :response_body
-      
         # Selects methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -1399,7 +1390,6 @@ module Google
           @patch = args[:patch] if args.key?(:patch)
           @post = args[:post] if args.key?(:post)
           @put = args[:put] if args.key?(:put)
-          @response_body = args[:response_body] if args.key?(:response_body)
           @selector = args[:selector] if args.key?(:selector)
         end
       end

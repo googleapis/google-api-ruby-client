@@ -3207,6 +3207,8 @@ module Google
           property :device_name, as: 'deviceName'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
           property :index, as: 'index'
           property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeBeta::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeBeta::AttachedDiskInitializeParams::Representation
       
@@ -3226,6 +3228,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_storage_type, as: 'diskStorageType'
           property :disk_type, as: 'diskType'
+          hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -3837,6 +3840,8 @@ module Google
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -3901,9 +3906,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete, as: 'autoDelete'
+          property :custom_image, as: 'customImage'
           property :device_name, as: 'deviceName'
           property :instantiate_from, as: 'instantiateFrom'
-          property :source_image, as: 'sourceImage'
         end
       end
       
@@ -4575,6 +4580,10 @@ module Google
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :source_image_id, as: 'sourceImageId'
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
         end
@@ -5365,6 +5374,8 @@ module Google
           collection :interconnect_attachments, as: 'interconnectAttachments'
           property :interconnect_type, as: 'interconnectType'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :link_type, as: 'linkType'
           property :location, as: 'location'
           property :name, as: 'name'
@@ -5388,6 +5399,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
           property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo::Representation

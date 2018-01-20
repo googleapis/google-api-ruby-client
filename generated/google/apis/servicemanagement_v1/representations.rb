@@ -34,18 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,24 +580,6 @@ module Google
         end
       end
       
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ServicemanagementV1::AuditLogConfig, decorator: Google::Apis::ServicemanagementV1::AuditLogConfig::Representation
-      
-          collection :exempted_members, as: 'exemptedMembers'
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
       class AuthProvider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -991,7 +961,6 @@ module Google
           property :patch, as: 'patch'
           property :post, as: 'post'
           property :put, as: 'put'
-          property :response_body, as: 'responseBody'
           property :selector, as: 'selector'
         end
       end
@@ -1230,12 +1199,9 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::ServicemanagementV1::AuditConfig, decorator: Google::Apis::ServicemanagementV1::AuditConfig::Representation
-      
           collection :bindings, as: 'bindings', class: Google::Apis::ServicemanagementV1::Binding, decorator: Google::Apis::ServicemanagementV1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
           property :version, as: 'version'
         end
       end

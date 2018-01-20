@@ -1184,12 +1184,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationExtract]
         attr_accessor :extract
       
-        # [Experimental] The labels associated with this job. You can use these to
-        # organize and group your jobs. Label keys and values can be no longer than 63
-        # characters, can only contain lowercase letters, numeric characters,
-        # underscores and dashes. International characters are allowed. Label values are
-        # optional. Label keys must start with a letter and each label in the list must
-        # have a different key.
+        # The labels associated with this job. You can use these to organize and group
+        # your jobs. Label keys and values can be no longer than 63 characters, can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter and each label in the list must have a different key.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2742,12 +2741,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Experimental] The labels associated with this table. You can use these to
-        # organize and group your tables. Label keys and values can be no longer than 63
-        # characters, can only contain lowercase letters, numeric characters,
-        # underscores and dashes. International characters are allowed. Label values are
-        # optional. Label keys must start with a letter and each label in the list must
-        # have a different key.
+        # The labels associated with this table. You can use these to organize and group
+        # your tables. Label keys and values can be no longer than 63 characters, can
+        # only contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter and each label in the list must have a different key.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -3170,8 +3168,8 @@ module Google
           # @return [String]
           attr_accessor :kind
         
-          # [Experimental] The labels associated with this table. You can use these to
-          # organize and group your tables.
+          # The labels associated with this table. You can use these to organize and group
+          # your tables.
           # Corresponds to the JSON property `labels`
           # @return [Hash<String,String>]
           attr_accessor :labels

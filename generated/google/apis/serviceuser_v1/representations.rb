@@ -683,7 +683,6 @@ module Google
           property :patch, as: 'patch'
           property :post, as: 'post'
           property :put, as: 'put'
-          property :response_body, as: 'responseBody'
           property :selector, as: 'selector'
         end
       end

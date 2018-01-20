@@ -2873,6 +2873,7 @@ module Google
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          hash :labels, as: 'labels'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       

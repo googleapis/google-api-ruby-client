@@ -32,8 +32,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :accelerator_count
       
-        # Full or partial URL of the accelerator type resource to expose to this
-        # instance.
+        # Full or partial URL of the accelerator type resource to attach to this
+        # instance. If you are creating an instance template, specify only the
+        # accelerator name.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1028,6 +1029,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # [Output Only] A zero-based index to this disk, where 0 is reserved for the
         # boot disk. If you have many disks attached to an instance, each disk would
         # have a unique index number.
@@ -1097,6 +1105,7 @@ module Google
           @boot = args[:boot] if args.key?(:boot)
           @device_name = args[:device_name] if args.key?(:device_name)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @index = args[:index] if args.key?(:index)
           @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
           @interface = args[:interface] if args.key?(:interface)
@@ -1148,6 +1157,12 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Labels to apply to this disk. These can be later modified by the disks.
+        # setLabels method. This field is only applicable for persistent disks.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The source image to create this disk. When creating a new instance, one of
         # initializeParams.sourceImage or disks.source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
@@ -1183,6 +1198,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_storage_type = args[:disk_storage_type] if args.key?(:disk_storage_type)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @labels = args[:labels] if args.key?(:labels)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
         end
@@ -3651,6 +3667,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
+        # A list of features to enable on the guest operating system. Applicable only
+        # for bootable images. Read  Enabling guest operating system features to see a
+        # list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeBeta::GuestOsFeature>]
+        attr_accessor :guest_os_features
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -3823,6 +3846,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -3979,6 +4003,12 @@ module Google
         attr_accessor :auto_delete
         alias_method :auto_delete?, :auto_delete
       
+        # The custom source image to be used to restore this disk when instantiating
+        # this instance template.
+        # Corresponds to the JSON property `customImage`
+        # @return [String]
+        attr_accessor :custom_image
+      
         # Specifies the device name of the disk to which the configurations apply to.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
@@ -3989,12 +4019,6 @@ module Google
         # @return [String]
         attr_accessor :instantiate_from
       
-        # The custom source image to be used to restore this disk when instantiating
-        # this instance template.
-        # Corresponds to the JSON property `sourceImage`
-        # @return [String]
-        attr_accessor :source_image
-      
         def initialize(**args)
            update!(**args)
         end
@@ -4002,9 +4026,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @custom_image = args[:custom_image] if args.key?(:custom_image)
           @device_name = args[:device_name] if args.key?(:device_name)
           @instantiate_from = args[:instantiate_from] if args.key?(:instantiate_from)
-          @source_image = args[:source_image] if args.key?(:source_image)
         end
       end
       
@@ -6810,6 +6834,28 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
+        # URL of the source snapshot used to create this image. This can be a full or
+        # valid partial URL. You must provide exactly one of:
+        # - this property, or
+        # - the sourceImage property, or
+        # - the rawDisk.source property, or
+        # - the sourceDisk property   in order to create an image.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        # Represents a customer-supplied encryption key
+        # Corresponds to the JSON property `sourceSnapshotEncryptionKey`
+        # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
+        attr_accessor :source_snapshot_encryption_key
+      
+        # [Output Only] The ID value of the snapshot used to create this image. This
+        # value may be used to determine whether the snapshot was taken from the current
+        # or a previous instance of a given snapshot name.
+        # Corresponds to the JSON property `sourceSnapshotId`
+        # @return [String]
+        attr_accessor :source_snapshot_id
+      
         # The type of the image used to create this disk. The default and only value is
         # RAW
         # Corresponds to the JSON property `sourceType`
@@ -6853,6 +6899,9 @@ module Google
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+          @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
+          @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
           @source_type = args[:source_type] if args.key?(:source_type)
           @status = args[:status] if args.key?(:status)
         end
@@ -9861,6 +9910,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this Interconnect, which is
+        # essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # Interconnect.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this Interconnect resource. These can be later modified by
+        # the setLabels method. Each label key/value must comply with RFC1035. Label
+        # values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Type of link requested. This field indicates speed of each of the links in the
         # bundle, not the entire bundle. Only 10G per link is allowed for a dedicated
         # interconnect. Options: Ethernet_10G_LR
@@ -9939,6 +10007,8 @@ module Google
           @interconnect_attachments = args[:interconnect_attachments] if args.key?(:interconnect_attachments)
           @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @link_type = args[:link_type] if args.key?(:link_type)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
@@ -10003,6 +10073,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # A fingerprint for the labels being applied to this InterconnectAttachment,
+        # which is essentially a hash of the labels set used for optimistic locking. The
+        # fingerprint is initially generated by Compute Engine and changes after every
+        # request to modify or update labels. You must always provide an up-to-date
+        # fingerprint hash in order to update or change labels.
+        # To see the latest fingerprint, make a get() request to retrieve an
+        # InterconnectAttachment.
+        # Corresponds to the JSON property `labelFingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Labels to apply to this InterconnectAttachment resource. These can be later
+        # modified by the setLabels method. Each label key/value must comply with
+        # RFC1035. Label values may be empty.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression [a-z]([-a-
@@ -10058,6 +10147,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
           @kind = args[:kind] if args.key?(:kind)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @private_interconnect_info = args[:private_interconnect_info] if args.key?(:private_interconnect_info)
@@ -13249,9 +13340,8 @@ module Google
         end
       end
       
-      # A Project resource. Projects can only be created in the Google Cloud Platform
-      # Console. Unless marked otherwise, values can only be modified in the console. (
-      # == resource_for v1.projects ==) (== resource_for beta.projects ==)
+      # A Project resource. For an overview of projects, see  Cloud Platform Resource
+      # Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       

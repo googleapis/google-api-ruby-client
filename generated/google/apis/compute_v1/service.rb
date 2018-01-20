@@ -6478,10 +6478,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified instance template. If you delete an instance template
-        # that is being referenced from another instance group, the instance group will
-        # not be able to create or recreate virtual machine instances. Deleting an
-        # instance template is permanent and cannot be undone.
+        # Deletes the specified instance template. Deleting an instance template is
+        # permanent and cannot be undone. It's not possible to delete templates which
+        # are in use by an instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
