@@ -1036,10 +1036,16 @@ module Google
         # the queue's bucket runs out of tokens. The bucket will be
         # continuously refilled with new tokens based on
         # RateLimits.max_tasks_dispatched_per_second.
-        # Cloud Tasks will pick the value of `max_burst_size` when the
-        # queue is created. For App Engine queues that were created or
-        # updated using `queue.yaml/xml`, `max_burst_size` is equal to
+        # Cloud Tasks will pick the value of `max_burst_size` based on the value of
+        # RateLimits.max_tasks_dispatched_per_second.
+        # For App Engine queues that were created or updated using
+        # `queue.yaml/xml`, `max_burst_size` is equal to
         # [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size).
+        # Since `max_burst_size` is output only, if CloudTasks.UpdateQueue is
+        # called on a queue created by `queue.yaml/xml`, `max_burst_size` will be
+        # reset based on the value of RateLimits.max_tasks_dispatched_per_second,
+        # regardless of whether RateLimits.max_tasks_dispatched_per_second is
+        # updated.
         # Corresponds to the JSON property `maxBurstSize`
         # @return [Fixnum]
         attr_accessor :max_burst_size
@@ -1048,9 +1054,9 @@ module Google
         # to be dispatched for this queue. After this threshold has been
         # reached, Cloud Tasks stops dispatching tasks until the number of
         # concurrent requests decreases.
-        # The maximum allowed value is 5,000.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
+        # The maximum allowed value is 5,000. -1 indicates no limit.
         # This field is output only for
         # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         # This field has the same meaning as
@@ -1061,11 +1067,11 @@ module Google
         attr_accessor :max_concurrent_tasks
       
         # The maximum rate at which tasks are dispatched from this queue.
-        # The maximum allowed value is 500.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # This field is output only for
-        # [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        # * For App Engine queues, the maximum allowed value is 500.
+        # * This field is output only   for [pull queues](google.cloud.tasks.v2beta2.
+        # PullTarget).
         # In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
         # 10 QPS of CloudTasks.LeaseTasks requests are allowed per pull queue.
         # This field has the same meaning as
@@ -1159,9 +1165,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_attempts
       
-        # A task will be scheduled for retry between RetryConfig.min_backoff and
-        # RetryConfig.max_backoff duration after it fails, if the queue's
-        # RetryConfig specifies that the task should be retried.
+        # A task will be [scheduled](Task.schedule_time) for retry between
+        # RetryConfig.min_backoff and RetryConfig.max_backoff duration after
+        # it fails, if the queue's RetryConfig specifies that the task should be
+        # retried.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
         # This field is output only for
@@ -1216,9 +1223,10 @@ module Google
         # @return [String]
         attr_accessor :max_retry_duration
       
-        # A task will be scheduled for retry between RetryConfig.min_backoff and
-        # RetryConfig.max_backoff duration after it fails, if the queue's
-        # RetryConfig specifies that the task should be retried.
+        # A task will be [scheduled](Task.schedule_time) for retry between
+        # RetryConfig.min_backoff and RetryConfig.max_backoff duration after
+        # it fails, if the queue's RetryConfig specifies that the task should be
+        # retried.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
         # This field is output only for
