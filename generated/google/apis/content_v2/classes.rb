@@ -1865,6 +1865,12 @@ module Google
       class DeliveryTime
         include Google::Apis::Core::Hashable
       
+        # Holiday cutoff definitions. If configured, they specify order cutoff times for
+        # holiday-specific shipping.
+        # Corresponds to the JSON property `holidayCutoffs`
+        # @return [Array<Google::Apis::ContentV2::HolidayCutoff>]
+        attr_accessor :holiday_cutoffs
+      
         # Maximum number of business days that is spent in transit. 0 means same day
         # delivery, 1 means next day delivery. Must be greater than or equal to
         # minTransitTimeInDays. Required.
@@ -1884,6 +1890,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @holiday_cutoffs = args[:holiday_cutoffs] if args.key?(:holiday_cutoffs)
           @max_transit_time_in_days = args[:max_transit_time_in_days] if args.key?(:max_transit_time_in_days)
           @min_transit_time_in_days = args[:min_transit_time_in_days] if args.key?(:min_transit_time_in_days)
         end
@@ -2007,6 +2014,110 @@ module Google
           @postal_code_group_names = args[:postal_code_group_names] if args.key?(:postal_code_group_names)
           @prices = args[:prices] if args.key?(:prices)
           @weights = args[:weights] if args.key?(:weights)
+        end
+      end
+      
+      # 
+      class HolidayCutoff
+        include Google::Apis::Core::Hashable
+      
+        # Date of the order deadline, in ISO 8601 format. E.g. "2016-11-29" for 29th
+        # November 2016. Required.
+        # Corresponds to the JSON property `deadlineDate`
+        # @return [String]
+        attr_accessor :deadline_date
+      
+        # Hour of the day on the deadline date until which the order has to be placed to
+        # qualify for the delivery guarantee. Possible values are: 0 (midnight), 1, ...,
+        # 12 (noon), 13, ..., 23. Required.
+        # Corresponds to the JSON property `deadlineHour`
+        # @return [Fixnum]
+        attr_accessor :deadline_hour
+      
+        # Timezone identifier for the deadline hour. A list of identifiers can be found
+        # in  the AdWords API documentation. E.g. "Europe/Zurich". Required.
+        # Corresponds to the JSON property `deadlineTimezone`
+        # @return [String]
+        attr_accessor :deadline_timezone
+      
+        # Unique identifier for the holiday. Required.
+        # Corresponds to the JSON property `holidayId`
+        # @return [String]
+        attr_accessor :holiday_id
+      
+        # Date on which the deadline will become visible to consumers in ISO 8601 format.
+        # E.g. "2016-10-31" for 31st October 2016. Required.
+        # Corresponds to the JSON property `visibleFromDate`
+        # @return [String]
+        attr_accessor :visible_from_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deadline_date = args[:deadline_date] if args.key?(:deadline_date)
+          @deadline_hour = args[:deadline_hour] if args.key?(:deadline_hour)
+          @deadline_timezone = args[:deadline_timezone] if args.key?(:deadline_timezone)
+          @holiday_id = args[:holiday_id] if args.key?(:holiday_id)
+          @visible_from_date = args[:visible_from_date] if args.key?(:visible_from_date)
+        end
+      end
+      
+      # 
+      class HolidaysHoliday
+        include Google::Apis::Core::Hashable
+      
+        # The CLDR territory code of the country in which the holiday is available. E.g.
+        # "US", "DE", "GB". A holiday cutoff can only be configured in a shipping
+        # settings service with matching delivery country. Always present.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Date of the holiday, in ISO 8601 format. E.g. "2016-12-25" for Christmas 2016.
+        # Always present.
+        # Corresponds to the JSON property `date`
+        # @return [String]
+        attr_accessor :date
+      
+        # Date on which the order has to arrive at the customer's, in ISO 8601 format. E.
+        # g. "2016-12-24" for 24th December 2016. Always present.
+        # Corresponds to the JSON property `deliveryGuaranteeDate`
+        # @return [String]
+        attr_accessor :delivery_guarantee_date
+      
+        # Hour of the day in the delivery location's timezone on the guaranteed delivery
+        # date by which the order has to arrive at the customer's. Possible values are:
+        # 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Always present.
+        # Corresponds to the JSON property `deliveryGuaranteeHour`
+        # @return [Fixnum]
+        attr_accessor :delivery_guarantee_hour
+      
+        # Unique identifier for the holiday to be used when configuring holiday cutoffs.
+        # Always present.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The holiday type. Always present.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @date = args[:date] if args.key?(:date)
+          @delivery_guarantee_date = args[:delivery_guarantee_date] if args.key?(:delivery_guarantee_date)
+          @delivery_guarantee_hour = args[:delivery_guarantee_hour] if args.key?(:delivery_guarantee_hour)
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -6108,6 +6219,11 @@ module Google
         # @return [String]
         attr_accessor :google_expiration_date
       
+        # A list of all issues associated with the product.
+        # Corresponds to the JSON property `itemLevelIssues`
+        # @return [Array<Google::Apis::ContentV2::ProductStatusItemLevelIssue>]
+        attr_accessor :item_level_issues
+      
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # productStatus".
         # Corresponds to the JSON property `kind`
@@ -6149,6 +6265,7 @@ module Google
           @data_quality_issues = args[:data_quality_issues] if args.key?(:data_quality_issues)
           @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
           @google_expiration_date = args[:google_expiration_date] if args.key?(:google_expiration_date)
+          @item_level_issues = args[:item_level_issues] if args.key?(:item_level_issues)
           @kind = args[:kind] if args.key?(:kind)
           @last_update_date = args[:last_update_date] if args.key?(:last_update_date)
           @link = args[:link] if args.key?(:link)
@@ -6223,6 +6340,12 @@ module Google
       class ProductStatusDestinationStatus
         include Google::Apis::Core::Hashable
       
+        # Whether the approval status might change due to further processing.
+        # Corresponds to the JSON property `approvalPending`
+        # @return [Boolean]
+        attr_accessor :approval_pending
+        alias_method :approval_pending?, :approval_pending
+      
         # The destination's approval status.
         # Corresponds to the JSON property `approvalStatus`
         # @return [String]
@@ -6233,8 +6356,7 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Whether the destination is required, excluded, selected by default or should
-        # be validated.
+        # Provided for backward compatibility only. Always set to "required".
         # Corresponds to the JSON property `intention`
         # @return [String]
         attr_accessor :intention
@@ -6245,9 +6367,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approval_pending = args[:approval_pending] if args.key?(:approval_pending)
           @approval_status = args[:approval_status] if args.key?(:approval_status)
           @destination = args[:destination] if args.key?(:destination)
           @intention = args[:intention] if args.key?(:intention)
+        end
+      end
+      
+      # 
+      class ProductStatusItemLevelIssue
+        include Google::Apis::Core::Hashable
+      
+        # The attribute's name, if the issue is caused by a single attribute.
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
+        # The error code of the issue.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The destination the issue applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Whether the issue can be resolved by the merchant.
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
+        # How this issue affects serving of the offer.
+        # Corresponds to the JSON property `servability`
+        # @return [String]
+        attr_accessor :servability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
+          @code = args[:code] if args.key?(:code)
+          @destination = args[:destination] if args.key?(:destination)
+          @resolution = args[:resolution] if args.key?(:resolution)
+          @servability = args[:servability] if args.key?(:servability)
         end
       end
       
@@ -6986,6 +7152,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @carriers = args[:carriers] if args.key?(:carriers)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class ShippingsettingsGetSupportedHolidaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of holidays applicable for delivery guarantees. May be empty.
+        # Corresponds to the JSON property `holidays`
+        # @return [Array<Google::Apis::ContentV2::HolidaysHoliday>]
+        attr_accessor :holidays
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # shippingsettingsGetSupportedHolidaysResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @holidays = args[:holidays] if args.key?(:holidays)
           @kind = args[:kind] if args.key?(:kind)
         end
       end

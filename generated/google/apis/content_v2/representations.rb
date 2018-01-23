@@ -334,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HolidayCutoff
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HolidaysHoliday
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Installment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -886,6 +898,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductStatusItemLevelIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductTax
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1013,6 +1031,12 @@ module Google
       end
       
       class ShippingsettingsGetSupportedCarriersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsGetSupportedHolidaysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1592,6 +1616,8 @@ module Google
       class DeliveryTime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :holiday_cutoffs, as: 'holidayCutoffs', class: Google::Apis::ContentV2::HolidayCutoff, decorator: Google::Apis::ContentV2::HolidayCutoff::Representation
+      
           property :max_transit_time_in_days, as: 'maxTransitTimeInDays'
           property :min_transit_time_in_days, as: 'minTransitTimeInDays'
         end
@@ -1627,6 +1653,29 @@ module Google
       
           collection :weights, as: 'weights', class: Google::Apis::ContentV2::Weight, decorator: Google::Apis::ContentV2::Weight::Representation
       
+        end
+      end
+      
+      class HolidayCutoff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deadline_date, as: 'deadlineDate'
+          property :deadline_hour, as: 'deadlineHour'
+          property :deadline_timezone, as: 'deadlineTimezone'
+          property :holiday_id, as: 'holidayId'
+          property :visible_from_date, as: 'visibleFromDate'
+        end
+      end
+      
+      class HolidaysHoliday
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_code, as: 'countryCode'
+          property :date, as: 'date'
+          property :delivery_guarantee_date, as: 'deliveryGuaranteeDate'
+          property :delivery_guarantee_hour, :numeric_string => true, as: 'deliveryGuaranteeHour'
+          property :id, as: 'id'
+          property :type, as: 'type'
         end
       end
       
@@ -2733,6 +2782,8 @@ module Google
           collection :destination_statuses, as: 'destinationStatuses', class: Google::Apis::ContentV2::ProductStatusDestinationStatus, decorator: Google::Apis::ContentV2::ProductStatusDestinationStatus::Representation
       
           property :google_expiration_date, as: 'googleExpirationDate'
+          collection :item_level_issues, as: 'itemLevelIssues', class: Google::Apis::ContentV2::ProductStatusItemLevelIssue, decorator: Google::Apis::ContentV2::ProductStatusItemLevelIssue::Representation
+      
           property :kind, as: 'kind'
           property :last_update_date, as: 'lastUpdateDate'
           property :link, as: 'link'
@@ -2760,9 +2811,21 @@ module Google
       class ProductStatusDestinationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_pending, as: 'approvalPending'
           property :approval_status, as: 'approvalStatus'
           property :destination, as: 'destination'
           property :intention, as: 'intention'
+        end
+      end
+      
+      class ProductStatusItemLevelIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_name, as: 'attributeName'
+          property :code, as: 'code'
+          property :destination, as: 'destination'
+          property :resolution, as: 'resolution'
+          property :servability, as: 'servability'
         end
       end
       
@@ -2990,6 +3053,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :carriers, as: 'carriers', class: Google::Apis::ContentV2::CarriersCarrier, decorator: Google::Apis::ContentV2::CarriersCarrier::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class ShippingsettingsGetSupportedHolidaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :holidays, as: 'holidays', class: Google::Apis::ContentV2::HolidaysHoliday, decorator: Google::Apis::ContentV2::HolidaysHoliday::Representation
       
           property :kind, as: 'kind'
         end
