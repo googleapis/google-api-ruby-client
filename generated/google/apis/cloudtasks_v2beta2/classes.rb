@@ -23,15 +23,16 @@ module Google
     module CloudtasksV2beta2
       
       # Request message for acknowledging a task using
-      # CloudTasks.AcknowledgeTask.
+      # AcknowledgeTask.
       class AcknowledgeTaskRequest
         include Google::Apis::Core::Hashable
       
         # Required.
-        # The task's current schedule time, available in the Task.schedule_time
-        # returned in LeaseTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to ensure that your
-        # worker currently holds the lease.
+        # The task's current schedule time, available in the
+        # schedule_time returned by
+        # LeaseTasks response or
+        # RenewLease response. This restriction is
+        # to ensure that your worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -50,7 +51,7 @@ module Google
       # The message defines the HTTP request that is sent to an App Engine app when
       # the task is dispatched.
       # This proto can only be used for tasks in a queue which has
-      # Queue.app_engine_http_target set.
+      # app_engine_http_target set.
       # Using AppEngineHttpRequest requires
       # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
       # Google IAM permission for the project
@@ -64,11 +65,14 @@ module Google
       # [dispatch files](/appengine/docs/python/config/dispatchref).
       # The AppEngineRouting used to construct the URL that the task is
       # delivered to can be set at the queue-level or task-level:
-      # *  If set, AppEngineHttpTarget.app_engine_routing_override is used for
-      # all tasks in the queue, no matter what the setting is for the
+      # * If set,
+      # app_engine_routing_override
+      # is used for all tasks in the queue, no matter what the setting
+      # is for the
       # task-level app_engine_routing.
       # The `url` that the task will be sent to is:
-      # * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
+      # * `url =` host `+`
+      # relative_url
       # The task attempt has succeeded if the app's request handler returns
       # an HTTP response code in the range [`200` - `299`]. `503` is
       # considered an App Engine system error instead of an application
@@ -103,15 +107,15 @@ module Google
         # This header can be modified, but Cloud Tasks will append
         # `"AppEngine-Google; (+http://code.google.com/appengine)"` to the
         # modified `User-Agent`.
-        # If the task has an AppEngineHttpRequest.payload, Cloud Tasks sets the
-        # following headers:
+        # If the task has a payload, Cloud
+        # Tasks sets the following headers:
         # * `Content-Type`: By default, the `Content-Type` header is set to
-        # `"application/octet-stream"`. The default can be overridden by explictly
+        # `"application/octet-stream"`. The default can be overridden by explicitly
         # setting `Content-Type` to a particular media type when the
         # [task is created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask).
         # For example, `Content-Type` can be set to `"application/json"`.
         # * `Content-Length`: This is computed by Cloud Tasks. This value is
-        # output only. It cannot be changed.
+        # output only.   It cannot be changed.
         # The headers below cannot be set or overridden:
         # * `Host`
         # * `X-Google-*`
@@ -124,7 +128,7 @@ module Google
         # visible when the task is returned in a Cloud Tasks response.
         # Although there is no specific limit for the maximum number of headers or
         # the size, there is a limit on the maximum size of the Task. For more
-        # information, see the CloudTasks.CreateTask documentation.
+        # information, see the CreateTask documentation.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -241,31 +245,39 @@ module Google
         # example <app-id>.appspot.com, which is associated with the
         # queue's project ID. Some tasks which were created using the App Engine
         # SDK use a custom domain name.
-        # * `service =` AppEngineRouting.service
-        # * `version =` AppEngineRouting.version
+        # * `service =` service
+        # * `version =` version
         # * `version_dot_service =`
-        # AppEngineRouting.version `+ '.' +` AppEngineRouting.service
-        # * `instance =` AppEngineRouting.instance
+        # version `+ '.' +`
+        # service
+        # * `instance =` instance
         # * `instance_dot_service =`
-        # AppEngineRouting.instance `+ '.' +` AppEngineRouting.service
+        # instance `+ '.' +`
+        # service
         # * `instance_dot_version =`
-        # AppEngineRouting.instance `+ '.' +` AppEngineRouting.version
+        # instance `+ '.' +`
+        # version
         # * `instance_dot_version_dot_service =`
-        # AppEngineRouting.instance `+ '.' +`
-        # AppEngineRouting.version `+ '.' +` AppEngineRouting.service
-        # If AppEngineRouting.service is empty, then the task will be sent
+        # instance `+ '.' +`
+        # version `+ '.' +`
+        # service
+        # If service is empty, then the task will be sent
         # to the service which is the default service when the task is attempted.
-        # If AppEngineRouting.version is empty, then the task will be sent
+        # If version is empty, then the task will be sent
         # to the version which is the default version when the task is attempted.
-        # If AppEngineRouting.instance is empty, then the task will be sent
-        # to an instance which is available when the task is attempted.
-        # When AppEngineRouting.service is "default",
-        # AppEngineRouting.version is "default", and
-        # AppEngineRouting.instance is empty, AppEngineRouting.host is
-        # shortened to just the `application_domain_name`.
-        # If AppEngineRouting.service, AppEngineRouting.version, or
-        # AppEngineRouting.instance is invalid, then the task will be sent
-        # to the default version of the default service when the task is attempted.
+        # If instance is empty, then the task
+        # will be sent to an instance which is available when the task is
+        # attempted.
+        # When service is "default",
+        # version is "default", and
+        # instance is empty,
+        # host is shortened to just the
+        # `application_domain_name`.
+        # If service,
+        # version, or
+        # instance is invalid, then the task
+        # will be sent to the default version of the default service when
+        # the task is attempted.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -288,14 +300,17 @@ module Google
         # App service.
         # By default, the task is sent to the service which is the default
         # service when the task is attempted ("default").
-        # For some queues or tasks which were created using the App Engine Task Queue
-        # API, AppEngineRouting.host is not parsable into
-        # AppEngineRouting.service, AppEngineRouting.version, and
-        # AppEngineRouting.instance. For example, some tasks which were created
-        # using the App Engine SDK use a custom domain name; custom domains are not
-        # parsed by Cloud Tasks. If AppEngineRouting.host is not parsable, then
-        # AppEngineRouting.service, AppEngineRouting.version, and
-        # AppEngineRouting.instance are the empty string.
+        # For some queues or tasks which were created using the App Engine
+        # Task Queue API, host is not parsable
+        # into service,
+        # version, and
+        # instance. For example, some tasks
+        # which were created using the App Engine SDK use a custom domain
+        # name; custom domains are not parsed by Cloud Tasks. If
+        # host is not parsable, then
+        # service,
+        # version, and
+        # instance are the empty string.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -303,14 +318,17 @@ module Google
         # App version.
         # By default, the task is sent to the version which is the default
         # version when the task is attempted ("default").
-        # For some queues or tasks which were created using the App Engine Task Queue
-        # API, AppEngineRouting.host is not parsable into
-        # AppEngineRouting.service, AppEngineRouting.version, and
-        # AppEngineRouting.instance. For example, some tasks which were created
-        # using the App Engine SDK use a custom domain name; custom domains are not
-        # parsed by Cloud Tasks. If AppEngineRouting.host is not parsable, then
-        # AppEngineRouting.service, AppEngineRouting.version, and
-        # AppEngineRouting.instance are the empty string.
+        # For some queues or tasks which were created using the App Engine
+        # Task Queue API, host is not parsable
+        # into service,
+        # version, and
+        # instance. For example, some tasks
+        # which were created using the App Engine SDK use a custom domain
+        # name; custom domains are not parsed by Cloud Tasks. If
+        # host is not parsable, then
+        # service,
+        # version, and
+        # instance are the empty string.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -447,29 +465,30 @@ module Google
       end
       
       # Request message for canceling a lease using
-      # CloudTasks.CancelLease.
+      # CancelLease.
       class CancelLeaseRequest
         include Google::Apis::Core::Hashable
       
         # The response_view specifies which subset of the Task will be
         # returned.
-        # By default response_view is Task.View.BASIC; not all
+        # By default response_view is BASIC; not all
         # information is retrieved by default because some data, such as
         # payloads, might be desirable to return only when needed because
         # of its large size or because of the sensitivity of data that it
         # contains.
-        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the
-        # Task.name resource.
+        # Authorization for FULL requires
+        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
+        # Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
       
         # Required.
-        # The task's current schedule time, available in the Task.schedule_time
-        # returned in LeaseTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to ensure that your
-        # worker currently holds the lease.
+        # The task's current schedule time, available in the
+        # schedule_time returned by
+        # LeaseTasks response or
+        # RenewLease response. This restriction is
+        # to ensure that your worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -485,20 +504,20 @@ module Google
         end
       end
       
-      # Request message for CloudTasks.CreateTask.
+      # Request message for CreateTask.
       class CreateTaskRequest
         include Google::Apis::Core::Hashable
       
         # The response_view specifies which subset of the Task will be
         # returned.
-        # By default response_view is Task.View.BASIC; not all
+        # By default response_view is BASIC; not all
         # information is retrieved by default because some data, such as
         # payloads, might be desirable to return only when needed because
         # of its large size or because of the sensitivity of data that it
         # contains.
-        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the
-        # Task.name resource.
+        # Authorization for FULL requires
+        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
+        # Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -551,14 +570,14 @@ module Google
         end
       end
       
-      # Request message for leasing tasks using CloudTasks.LeaseTasks.
+      # Request message for leasing tasks using LeaseTasks.
       class LeaseTasksRequest
         include Google::Apis::Core::Hashable
       
         # `filter` can be used to specify a subset of tasks to lease.
         # When `filter` is set to `tag=<my-tag>` then the
-        # LeaseTasksResponse will contain only tasks whose
-        # PullMessage.tag is equal to `<my-tag>`. `<my-tag>` must be
+        # response will contain only tasks whose
+        # tag is equal to `<my-tag>`. `<my-tag>` must be
         # less than 500 characters.
         # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
         # the same tag as the task with the oldest schedule_time will be returned.
@@ -569,29 +588,23 @@ module Google
         # The `oldest_tag()` function returns tasks which have the same tag as the
         # oldest task (ordered by schedule time).
         # SDK compatibility: Although the SDK allows tags to be either
-        # string or [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/
-        # api/taskqueue/TaskOptions.html#tag-byte:A-),
-        # only UTF-8 encoded tags can be used in Cloud Tasks. Tag which aren't UTF-8
-        # encoded can't be used in LeaseTasksRequest.filter and won't display in
-        # PullMessage.tag.
+        # string or
+        # [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/api/
+        # taskqueue/TaskOptions.html#tag-byte:A-),
+        # only UTF-8 encoded tags can be used in Cloud Tasks. Tag which
+        # aren't UTF-8 encoded can't be used in the
+        # filter and the task's
+        # tag will be displayed as empty in Cloud Tasks.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # The duration of the lease.
-        # Each task returned in the LeaseTasksResponse will have its
-        # Task.schedule_time set to the current time plus the
-        # `lease_duration`. A task that has been returned in a
-        # LeaseTasksResponse is leased -- that task will not be
-        # returned in a different LeaseTasksResponse before the
-        # Task.schedule_time.
-        # After the worker has successfully finished the work
-        # associated with the task, the worker must call
-        # CloudTasks.AcknowledgeTask. If the task is not acknowledged
-        # via CloudTasks.AcknowledgeTask before the
-        # Task.schedule_time then it will be returned in a later
-        # LeaseTasksResponse so that another worker can process
-        # it.
+        # After the worker has successfully finished the work associated
+        # with the task, the worker must call via
+        # AcknowledgeTask before the
+        # schedule_time. Otherwise the task will be
+        # returned to a later LeaseTasks call so
+        # that another worker can retry it.
         # The maximum lease duration is 1 week.
         # `lease_duration` will be truncated to the nearest second.
         # Corresponds to the JSON property `leaseDuration`
@@ -606,13 +619,14 @@ module Google
       
         # The response_view specifies which subset of the Task will be
         # returned.
-        # By default response_view is Task.View.BASIC; not all
+        # By default response_view is BASIC; not all
         # information is retrieved by default because some data, such as
         # payloads, might be desirable to return only when needed because
         # of its large size or because of the sensitivity of data that it
         # contains.
-        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the Task.name resource.
+        # Authorization for FULL requires
+        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
+        # Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -630,7 +644,7 @@ module Google
         end
       end
       
-      # Response message for leasing tasks using CloudTasks.LeaseTasks.
+      # Response message for leasing tasks using LeaseTasks.
       class LeaseTasksResponse
         include Google::Apis::Core::Hashable
       
@@ -674,14 +688,14 @@ module Google
         end
       end
       
-      # Response message for CloudTasks.ListQueues.
+      # Response message for ListQueues.
       class ListQueuesResponse
         include Google::Apis::Core::Hashable
       
         # A token to retrieve next page of results.
         # To return the next page of results, call
-        # CloudTasks.ListQueues with this value as the
-        # ListQueuesRequest.page_token.
+        # ListQueues with this value as the
+        # page_token.
         # If the next_page_token is empty, there are no more results.
         # The page token is valid for only 2 hours.
         # Corresponds to the JSON property `nextPageToken`
@@ -704,14 +718,14 @@ module Google
         end
       end
       
-      # Response message for listing tasks using CloudTasks.ListTasks.
+      # Response message for listing tasks using ListTasks.
       class ListTasksResponse
         include Google::Apis::Core::Hashable
       
         # A token to retrieve next page of results.
         # To return the next page of results, call
-        # CloudTasks.ListTasks with this value as the
-        # ListTasksRequest.page_token.
+        # ListTasks with this value as the
+        # page_token.
         # If the next_page_token is empty, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -773,7 +787,7 @@ module Google
         end
       end
       
-      # Request message for CloudTasks.PauseQueue.
+      # Request message for PauseQueue.
       class PauseQueueRequest
         include Google::Apis::Core::Hashable
       
@@ -853,9 +867,9 @@ module Google
       end
       
       # The pull message contains data that can be used by the caller of
-      # CloudTasks.LeaseTasks to process the task.
+      # LeaseTasks to process the task.
       # This proto can only be used for tasks in a queue which has
-      # Queue.pull_target set.
+      # pull_target set.
       class PullMessage
         include Google::Apis::Core::Hashable
       
@@ -867,10 +881,11 @@ module Google
       
         # The task's tag.
         # Tags allow similar tasks to be processed in a batch. If you label
-        # tasks with a tag, your worker can lease tasks
-        # with the same tag using LeaseTasksRequest.filter. For example,
-        # if you want to aggregate the events associated with a specific
-        # user once a day, you could tag tasks with the user ID.
+        # tasks with a tag, your worker can
+        # lease tasks with the same tag using
+        # filter. For example, if you want to
+        # aggregate the events associated with a specific user once a day,
+        # you could tag tasks with the user ID.
         # The task's tag can only be set when the
         # task is created.
         # The tag must be less than 500 characters.
@@ -907,7 +922,7 @@ module Google
         end
       end
       
-      # Request message for CloudTasks.PurgeQueue.
+      # Request message for PurgeQueue.
       class PurgeQueueRequest
         include Google::Apis::Core::Hashable
       
@@ -950,12 +965,12 @@ module Google
         # identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the queue's location.
         # The list of available locations can be obtained by calling
-        # google.cloud.location.Locations.ListLocations.
+        # ListLocations.
         # For more information, see https://cloud.google.com/about/locations/.
         # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
         # hyphens (-). The maximum length is 100 characters.
-        # Caller-specified and required in CreateQueueRequest, after which
-        # it becomes output only.
+        # Caller-specified and required in CreateQueue,
+        # after which it becomes output only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -968,7 +983,7 @@ module Google
         # Output only. The last time this queue was purged.
         # All tasks that were created before this time
         # were purged.
-        # A queue can be purged using CloudTasks.PurgeQueue, the
+        # A queue can be purged using PurgeQueue, the
         # [App Engine Task Queue SDK, or the Cloud Console](/appengine/docs/standard/
         # python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue)
         # .
@@ -993,9 +1008,10 @@ module Google
       
         # Output only. The state of the queue.
         # `state` can only be changed by called
-        # CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
+        # PauseQueue,
+        # ResumeQueue, or uploading
         # [queue.yaml/xml](/appengine/docs/python/config/queueref).
-        # CloudTasks.UpdateQueue cannot be used to change `state`.
+        # UpdateQueue cannot be used to change `state`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1035,17 +1051,21 @@ module Google
         # token is removed from the bucket. Tasks will be dispatched until
         # the queue's bucket runs out of tokens. The bucket will be
         # continuously refilled with new tokens based on
-        # RateLimits.max_tasks_dispatched_per_second.
-        # Cloud Tasks will pick the value of `max_burst_size` based on the value of
-        # RateLimits.max_tasks_dispatched_per_second.
+        # max_tasks_dispatched_per_second.
+        # Cloud Tasks will pick the value of `max_burst_size` based on the
+        # value of
+        # max_tasks_dispatched_per_second.
         # For App Engine queues that were created or updated using
         # `queue.yaml/xml`, `max_burst_size` is equal to
         # [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size).
-        # Since `max_burst_size` is output only, if CloudTasks.UpdateQueue is
-        # called on a queue created by `queue.yaml/xml`, `max_burst_size` will be
-        # reset based on the value of RateLimits.max_tasks_dispatched_per_second,
-        # regardless of whether RateLimits.max_tasks_dispatched_per_second is
-        # updated.
+        # Since `max_burst_size` is output only, if
+        # UpdateQueue is called on a queue
+        # created by `queue.yaml/xml`, `max_burst_size` will be reset based
+        # on the value of
+        # max_tasks_dispatched_per_second,
+        # regardless of whether
+        # max_tasks_dispatched_per_second
+        # is updated.
         # Corresponds to the JSON property `maxBurstSize`
         # @return [Fixnum]
         attr_accessor :max_burst_size
@@ -1071,9 +1091,10 @@ module Google
         # default.
         # * For App Engine queues, the maximum allowed value is 500.
         # * This field is output only   for [pull queues](google.cloud.tasks.v2beta2.
-        # PullTarget).
-        # In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
-        # 10 QPS of CloudTasks.LeaseTasks requests are allowed per pull queue.
+        # PullTarget). In
+        # addition to the `max_tasks_dispatched_per_second` limit, a
+        # maximum of 10 QPS of LeaseTasks
+        # requests are allowed per pull queue.
         # This field has the same meaning as
         # [rate in queue.yaml/xml](/appengine/docs/standard/python/config/queueref#rate).
         # Corresponds to the JSON property `maxTasksDispatchedPerSecond`
@@ -1092,7 +1113,8 @@ module Google
         end
       end
       
-      # Request message for renewing a lease using CloudTasks.RenewLease.
+      # Request message for renewing a lease using
+      # RenewLease.
       class RenewLeaseRequest
         include Google::Apis::Core::Hashable
       
@@ -1106,23 +1128,24 @@ module Google
       
         # The response_view specifies which subset of the Task will be
         # returned.
-        # By default response_view is Task.View.BASIC; not all
+        # By default response_view is BASIC; not all
         # information is retrieved by default because some data, such as
         # payloads, might be desirable to return only when needed because
         # of its large size or because of the sensitivity of data that it
         # contains.
-        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the
-        # Task.name resource.
+        # Authorization for FULL requires
+        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
+        # Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
       
         # Required.
-        # The task's current schedule time, available in the Task.schedule_time
-        # returned in LeaseTasksResponse.tasks or
-        # CloudTasks.RenewLease. This restriction is to ensure that your
-        # worker currently holds the lease.
+        # The task's current schedule time, available in the
+        # schedule_time returned by
+        # LeaseTasks response or
+        # RenewLease response. This restriction is
+        # to ensure that your worker currently holds the lease.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -1139,7 +1162,7 @@ module Google
         end
       end
       
-      # Request message for CloudTasks.ResumeQueue.
+      # Request message for ResumeQueue.
       class ResumeQueueRequest
         include Google::Apis::Core::Hashable
       
@@ -1166,8 +1189,9 @@ module Google
         attr_accessor :max_attempts
       
         # A task will be [scheduled](Task.schedule_time) for retry between
-        # RetryConfig.min_backoff and RetryConfig.max_backoff duration after
-        # it fails, if the queue's RetryConfig specifies that the task should be
+        # min_backoff and
+        # max_backoff duration after it fails,
+        # if the queue's RetryConfig specifies that the task should be
         # retried.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
@@ -1182,18 +1206,21 @@ module Google
         attr_accessor :max_backoff
       
         # The time between retries will double `max_doublings` times.
-        # A task's retry interval starts at RetryConfig.min_backoff,
-        # then doubles `max_doublings` times, then increases linearly, and
-        # finally retries retries at intervals of
-        # RetryConfig.max_backoff up to max_attempts times.
-        # For example, if RetryConfig.min_backoff is 10s,
-        # RetryConfig.max_backoff is 300s, and `max_doublings` is 3,
-        # then the a task will first be retried in 10s. The retry interval
-        # will double three times, and then increase linearly by 2^3 * 10s.
-        # Finally, the task will retry at intervals of
-        # RetryConfig.max_backoff until the task has been attempted
-        # `max_attempts` times. Thus, the requests will retry at 10s, 20s,
-        # 40s, 80s, 160s, 240s, 300s, 300s, ....
+        # A task's retry interval starts at
+        # min_backoff, then doubles
+        # `max_doublings` times, then increases linearly, and finally
+        # retries retries at intervals of
+        # max_backoff up to
+        # max_attempts times.
+        # For example, if min_backoff is 10s,
+        # max_backoff is 300s, and
+        # `max_doublings` is 3, then the a task will first be retried in
+        # 10s. The retry interval will double three times, and then
+        # increase linearly by 2^3 * 10s.  Finally, the task will retry at
+        # intervals of max_backoff until the
+        # task has been attempted max_attempts
+        # times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s,
+        # 240s, 300s, 300s, ....
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
         # This field is output only for
@@ -1205,11 +1232,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_doublings
       
-        # If positive, `max_retry_duration` specifies the time limit for retrying a
-        # failed task, measured from when the task was first attempted. Once
-        # `max_retry_duration` time has passed *and* the task has been attempted
-        # RetryConfig.max_attempts times, no further attempts will be made and
-        # the task will be deleted.
+        # If positive, `max_retry_duration` specifies the time limit for
+        # retrying a failed task, measured from when the task was first
+        # attempted. Once `max_retry_duration` time has passed *and* the
+        # task has been attempted max_attempts
+        # times, no further attempts will be made and the task will be
+        # deleted.
         # If zero, then the task age is unlimited.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
@@ -1224,8 +1252,9 @@ module Google
         attr_accessor :max_retry_duration
       
         # A task will be [scheduled](Task.schedule_time) for retry between
-        # RetryConfig.min_backoff and RetryConfig.max_backoff duration after
-        # it fails, if the queue's RetryConfig specifies that the task should be
+        # min_backoff and
+        # max_backoff duration after it fails,
+        # if the queue's RetryConfig specifies that the task should be
         # retried.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
@@ -1261,20 +1290,20 @@ module Google
       end
       
       # Request message for forcing a task to run now using
-      # CloudTasks.RunTask.
+      # RunTask.
       class RunTaskRequest
         include Google::Apis::Core::Hashable
       
         # The response_view specifies which subset of the Task will be
         # returned.
-        # By default response_view is Task.View.BASIC; not all
+        # By default response_view is BASIC; not all
         # information is retrieved by default because some data, such as
         # payloads, might be desirable to return only when needed because
         # of its large size or because of the sensitivity of data that it
         # contains.
-        # Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView`
-        # [Google IAM](/iam/) permission on the
-        # Task.name resource.
+        # Authorization for FULL requires
+        # `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
+        # Task resource.
         # Corresponds to the JSON property `responseView`
         # @return [String]
         attr_accessor :response_view
@@ -1413,7 +1442,7 @@ module Google
         # The message defines the HTTP request that is sent to an App Engine app when
         # the task is dispatched.
         # This proto can only be used for tasks in a queue which has
-        # Queue.app_engine_http_target set.
+        # app_engine_http_target set.
         # Using AppEngineHttpRequest requires
         # [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
         # Google IAM permission for the project
@@ -1427,11 +1456,14 @@ module Google
         # [dispatch files](/appengine/docs/python/config/dispatchref).
         # The AppEngineRouting used to construct the URL that the task is
         # delivered to can be set at the queue-level or task-level:
-        # *  If set, AppEngineHttpTarget.app_engine_routing_override is used for
-        # all tasks in the queue, no matter what the setting is for the
+        # * If set,
+        # app_engine_routing_override
+        # is used for all tasks in the queue, no matter what the setting
+        # is for the
         # task-level app_engine_routing.
         # The `url` that the task will be sent to is:
-        # * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
+        # * `url =` host `+`
+        # relative_url
         # The task attempt has succeeded if the app's request handler returns
         # an HTTP response code in the range [`200` - `299`]. `503` is
         # considered an App Engine system error instead of an application
@@ -1459,21 +1491,21 @@ module Google
         # identifying_projects)
         # * `LOCATION_ID` is the canonical ID for the task's location.
         # The list of available locations can be obtained by calling
-        # google.cloud.location.Locations.ListLocations.
+        # ListLocations.
         # For more information, see https://cloud.google.com/about/locations/.
         # * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
         # hyphens (-). The maximum length is 100 characters.
         # * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
         # hyphens (-), or underscores (_). The maximum length is 500 characters.
-        # Optionally caller-specified in CreateTaskRequest.
+        # Optionally caller-specified in CreateTask.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # The pull message contains data that can be used by the caller of
-        # CloudTasks.LeaseTasks to process the task.
+        # LeaseTasks to process the task.
         # This proto can only be used for tasks in a queue which has
-        # Queue.pull_target set.
+        # pull_target set.
         # Corresponds to the JSON property `pullMessage`
         # @return [Google::Apis::CloudtasksV2beta2::PullMessage]
         attr_accessor :pull_message
@@ -1483,7 +1515,7 @@ module Google
         # For pull queues, this is the time when the task is available to
         # be leased; if a task is currently leased, this is the time when
         # the current lease expires, that is, the time that the task was
-        # leased plus the LeaseTasksRequest.lease_duration.
+        # leased plus the lease_duration.
         # `schedule_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]

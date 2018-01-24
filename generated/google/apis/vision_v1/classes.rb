@@ -231,6 +231,11 @@ module Google
         # @return [Google::Apis::VisionV1::BoundingPoly]
         attr_accessor :bounding_box
       
+        # Confidence of the OCR results on the block. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # List of paragraphs in this block (if this blocks is of type text).
         # Corresponds to the JSON property `paragraphs`
         # @return [Array<Google::Apis::VisionV1::Paragraph>]
@@ -249,6 +254,7 @@ module Google
         def update!(**args)
           @block_type = args[:block_type] if args.key?(:block_type)
           @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
           @property = args[:property] if args.key?(:property)
         end
@@ -897,6 +903,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_results
       
+        # Model to use for the feature.
+        # Supported values: "builtin/stable" (the default if unset) and
+        # "builtin/latest".
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # The feature type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -909,6 +922,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_results = args[:max_results] if args.key?(:max_results)
+          @model = args[:model] if args.key?(:model)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -967,6 +981,11 @@ module Google
         # @return [Google::Apis::VisionV1::LatLongRect]
         attr_accessor :lat_long_rect
       
+        # Parameters for web detection request.
+        # Corresponds to the JSON property `webDetectionParams`
+        # @return [Google::Apis::VisionV1::WebDetectionParams]
+        attr_accessor :web_detection_params
+      
         def initialize(**args)
            update!(**args)
         end
@@ -976,6 +995,7 @@ module Google
           @crop_hints_params = args[:crop_hints_params] if args.key?(:crop_hints_params)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
           @lat_long_rect = args[:lat_long_rect] if args.key?(:lat_long_rect)
+          @web_detection_params = args[:web_detection_params] if args.key?(:web_detection_params)
         end
       end
       
@@ -1161,6 +1181,11 @@ module Google
         # @return [Array<Google::Apis::VisionV1::Block>]
         attr_accessor :blocks
       
+        # Confidence of the OCR results on the page. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Page height in pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
@@ -1183,6 +1208,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blocks = args[:blocks] if args.key?(:blocks)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @height = args[:height] if args.key?(:height)
           @property = args[:property] if args.key?(:property)
           @width = args[:width] if args.key?(:width)
@@ -1197,6 +1223,11 @@ module Google
         # Corresponds to the JSON property `boundingBox`
         # @return [Google::Apis::VisionV1::BoundingPoly]
         attr_accessor :bounding_box
+      
+        # Confidence of the OCR results for the paragraph. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
       
         # Additional information detected on the structural component.
         # Corresponds to the JSON property `property`
@@ -1215,6 +1246,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @property = args[:property] if args.key?(:property)
           @words = args[:words] if args.key?(:words)
         end
@@ -1302,6 +1334,14 @@ module Google
         # @return [String]
         attr_accessor :medical
       
+        # Likelihood that the request image contains racy content. Racy content may
+        # include (but is not limited to) skimpy or sheer clothing, strategically
+        # covered nudity, lewd or provocative poses, or close-ups of sensitive
+        # body areas.
+        # Corresponds to the JSON property `racy`
+        # @return [String]
+        attr_accessor :racy
+      
         # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
@@ -1322,6 +1362,7 @@ module Google
         def update!(**args)
           @adult = args[:adult] if args.key?(:adult)
           @medical = args[:medical] if args.key?(:medical)
+          @racy = args[:racy] if args.key?(:racy)
           @spoof = args[:spoof] if args.key?(:spoof)
           @violence = args[:violence] if args.key?(:violence)
         end
@@ -1408,6 +1449,11 @@ module Google
         # @return [Google::Apis::VisionV1::BoundingPoly]
         attr_accessor :bounding_box
       
+        # Confidence of the OCR results for the symbol. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Additional information detected on the structural component.
         # Corresponds to the JSON property `property`
         # @return [Google::Apis::VisionV1::TextProperty]
@@ -1425,6 +1471,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @property = args[:property] if args.key?(:property)
           @text = args[:text] if args.key?(:text)
         end
@@ -1516,6 +1563,11 @@ module Google
       class WebDetection
         include Google::Apis::Core::Hashable
       
+        # Best guess text labels for the request image.
+        # Corresponds to the JSON property `bestGuessLabels`
+        # @return [Array<Google::Apis::VisionV1::WebLabel>]
+        attr_accessor :best_guess_labels
+      
         # Fully matching images from the Internet.
         # Can include resized copies of the query image.
         # Corresponds to the JSON property `fullMatchingImages`
@@ -1550,11 +1602,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @best_guess_labels = args[:best_guess_labels] if args.key?(:best_guess_labels)
           @full_matching_images = args[:full_matching_images] if args.key?(:full_matching_images)
           @pages_with_matching_images = args[:pages_with_matching_images] if args.key?(:pages_with_matching_images)
           @partial_matching_images = args[:partial_matching_images] if args.key?(:partial_matching_images)
           @visually_similar_images = args[:visually_similar_images] if args.key?(:visually_similar_images)
           @web_entities = args[:web_entities] if args.key?(:web_entities)
+        end
+      end
+      
+      # Parameters for web detection request.
+      class WebDetectionParams
+        include Google::Apis::Core::Hashable
+      
+        # Whether to include results derived from the geo information in the image.
+        # Corresponds to the JSON property `includeGeoResults`
+        # @return [Boolean]
+        attr_accessor :include_geo_results
+        alias_method :include_geo_results?, :include_geo_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_geo_results = args[:include_geo_results] if args.key?(:include_geo_results)
         end
       end
       
@@ -1615,9 +1688,55 @@ module Google
         end
       end
       
+      # Label to provide extra metadata for the web detection.
+      class WebLabel
+        include Google::Apis::Core::Hashable
+      
+        # Label for extra metadata.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
+        # For more information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # Metadata for web pages.
       class WebPage
         include Google::Apis::Core::Hashable
+      
+        # Fully matching images on the page.
+        # Can include resized copies of the query image.
+        # Corresponds to the JSON property `fullMatchingImages`
+        # @return [Array<Google::Apis::VisionV1::WebImage>]
+        attr_accessor :full_matching_images
+      
+        # Title for the web page, may contain HTML markups.
+        # Corresponds to the JSON property `pageTitle`
+        # @return [String]
+        attr_accessor :page_title
+      
+        # Partial matching images on the page.
+        # Those images are similar enough to share some key-point features. For
+        # example an original image will likely have partial matching for its
+        # crops.
+        # Corresponds to the JSON property `partialMatchingImages`
+        # @return [Array<Google::Apis::VisionV1::WebImage>]
+        attr_accessor :partial_matching_images
       
         # (Deprecated) Overall relevancy score for the web page.
         # Corresponds to the JSON property `score`
@@ -1635,6 +1754,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @full_matching_images = args[:full_matching_images] if args.key?(:full_matching_images)
+          @page_title = args[:page_title] if args.key?(:page_title)
+          @partial_matching_images = args[:partial_matching_images] if args.key?(:partial_matching_images)
           @score = args[:score] if args.key?(:score)
           @url = args[:url] if args.key?(:url)
         end
@@ -1648,6 +1770,11 @@ module Google
         # Corresponds to the JSON property `boundingBox`
         # @return [Google::Apis::VisionV1::BoundingPoly]
         attr_accessor :bounding_box
+      
+        # Confidence of the OCR results for the word. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
       
         # Additional information detected on the structural component.
         # Corresponds to the JSON property `property`
@@ -1667,6 +1794,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @property = args[:property] if args.key?(:property)
           @symbols = args[:symbols] if args.key?(:symbols)
         end

@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WebDetectionParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class WebImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -324,6 +336,7 @@ module Google
           property :block_type, as: 'blockType'
           property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           collection :paragraphs, as: 'paragraphs', class: Google::Apis::VisionV1::Paragraph, decorator: Google::Apis::VisionV1::Paragraph::Representation
       
           property :property, as: 'property', class: Google::Apis::VisionV1::TextProperty, decorator: Google::Apis::VisionV1::TextProperty::Representation
@@ -454,6 +467,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_results, as: 'maxResults'
+          property :model, as: 'model'
           property :type, as: 'type'
         end
       end
@@ -474,6 +488,8 @@ module Google
       
           collection :language_hints, as: 'languageHints'
           property :lat_long_rect, as: 'latLongRect', class: Google::Apis::VisionV1::LatLongRect, decorator: Google::Apis::VisionV1::LatLongRect::Representation
+      
+          property :web_detection_params, as: 'webDetectionParams', class: Google::Apis::VisionV1::WebDetectionParams, decorator: Google::Apis::VisionV1::WebDetectionParams::Representation
       
         end
       end
@@ -534,6 +550,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :blocks, as: 'blocks', class: Google::Apis::VisionV1::Block, decorator: Google::Apis::VisionV1::Block::Representation
       
+          property :confidence, as: 'confidence'
           property :height, as: 'height'
           property :property, as: 'property', class: Google::Apis::VisionV1::TextProperty, decorator: Google::Apis::VisionV1::TextProperty::Representation
       
@@ -546,6 +563,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           property :property, as: 'property', class: Google::Apis::VisionV1::TextProperty, decorator: Google::Apis::VisionV1::TextProperty::Representation
       
           collection :words, as: 'words', class: Google::Apis::VisionV1::Word, decorator: Google::Apis::VisionV1::Word::Representation
@@ -576,6 +594,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
           property :medical, as: 'medical'
+          property :racy, as: 'racy'
           property :spoof, as: 'spoof'
           property :violence, as: 'violence'
         end
@@ -595,6 +614,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           property :property, as: 'property', class: Google::Apis::VisionV1::TextProperty, decorator: Google::Apis::VisionV1::TextProperty::Representation
       
           property :text, as: 'text'
@@ -631,6 +651,8 @@ module Google
       class WebDetection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :best_guess_labels, as: 'bestGuessLabels', class: Google::Apis::VisionV1::WebLabel, decorator: Google::Apis::VisionV1::WebLabel::Representation
+      
           collection :full_matching_images, as: 'fullMatchingImages', class: Google::Apis::VisionV1::WebImage, decorator: Google::Apis::VisionV1::WebImage::Representation
       
           collection :pages_with_matching_images, as: 'pagesWithMatchingImages', class: Google::Apis::VisionV1::WebPage, decorator: Google::Apis::VisionV1::WebPage::Representation
@@ -641,6 +663,13 @@ module Google
       
           collection :web_entities, as: 'webEntities', class: Google::Apis::VisionV1::WebEntity, decorator: Google::Apis::VisionV1::WebEntity::Representation
       
+        end
+      end
+      
+      class WebDetectionParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_geo_results, as: 'includeGeoResults'
         end
       end
       
@@ -661,9 +690,22 @@ module Google
         end
       end
       
+      class WebLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
       class WebPage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :full_matching_images, as: 'fullMatchingImages', class: Google::Apis::VisionV1::WebImage, decorator: Google::Apis::VisionV1::WebImage::Representation
+      
+          property :page_title, as: 'pageTitle'
+          collection :partial_matching_images, as: 'partialMatchingImages', class: Google::Apis::VisionV1::WebImage, decorator: Google::Apis::VisionV1::WebImage::Representation
+      
           property :score, as: 'score'
           property :url, as: 'url'
         end
@@ -674,6 +716,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_box, as: 'boundingBox', class: Google::Apis::VisionV1::BoundingPoly, decorator: Google::Apis::VisionV1::BoundingPoly::Representation
       
+          property :confidence, as: 'confidence'
           property :property, as: 'property', class: Google::Apis::VisionV1::TextProperty, decorator: Google::Apis::VisionV1::TextProperty::Representation
       
           collection :symbols, as: 'symbols', class: Google::Apis::VisionV1::Symbol, decorator: Google::Apis::VisionV1::Symbol::Representation

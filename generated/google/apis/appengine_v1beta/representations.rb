@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DebugInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -507,6 +513,8 @@ module Google
           property :cool_down_period, as: 'coolDownPeriod'
           property :cpu_utilization, as: 'cpuUtilization', class: Google::Apis::AppengineV1beta::CpuUtilization, decorator: Google::Apis::AppengineV1beta::CpuUtilization::Representation
       
+          collection :custom_metrics, as: 'customMetrics', class: Google::Apis::AppengineV1beta::CustomMetric, decorator: Google::Apis::AppengineV1beta::CustomMetric::Representation
+      
           property :disk_utilization, as: 'diskUtilization', class: Google::Apis::AppengineV1beta::DiskUtilization, decorator: Google::Apis::AppengineV1beta::DiskUtilization::Representation
       
           property :max_concurrent_requests, as: 'maxConcurrentRequests'
@@ -598,6 +606,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_build_id, as: 'cloudBuildId'
+        end
+      end
+      
+      class CustomMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :metric_name, as: 'metricName'
+          property :single_instance_assignment, as: 'singleInstanceAssignment'
+          property :target_type, as: 'targetType'
+          property :target_utilization, as: 'targetUtilization'
         end
       end
       

@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExamToken
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GetCompanyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -543,15 +537,6 @@ module Google
           property :passed, as: 'passed'
           property :taken, as: 'taken'
           property :warning, as: 'warning'
-        end
-      end
-      
-      class ExamToken
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :exam_id, :numeric_string => true, as: 'examId'
-          property :exam_type, as: 'examType'
-          property :token, as: 'token'
         end
       end
       

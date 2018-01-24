@@ -322,6 +322,11 @@ module Google
         # @return [Google::Apis::AppengineV1beta::CpuUtilization]
         attr_accessor :cpu_utilization
       
+        # Target scaling by user-provided metrics.
+        # Corresponds to the JSON property `customMetrics`
+        # @return [Array<Google::Apis::AppengineV1beta::CustomMetric>]
+        attr_accessor :custom_metrics
+      
         # Target scaling by disk usage. Only applicable in the App Engine flexible
         # environment.
         # Corresponds to the JSON property `diskUtilization`
@@ -392,6 +397,7 @@ module Google
         def update!(**args)
           @cool_down_period = args[:cool_down_period] if args.key?(:cool_down_period)
           @cpu_utilization = args[:cpu_utilization] if args.key?(:cpu_utilization)
+          @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
           @disk_utilization = args[:disk_utilization] if args.key?(:disk_utilization)
           @max_concurrent_requests = args[:max_concurrent_requests] if args.key?(:max_concurrent_requests)
           @max_idle_instances = args[:max_idle_instances] if args.key?(:max_idle_instances)
@@ -640,6 +646,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
+        end
+      end
+      
+      # Allows autoscaling based on Stackdriver metrics.
+      class CustomMetric
+        include Google::Apis::Core::Hashable
+      
+        # Allows filtering on the metric's fields.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The name of the metric.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        # May be used instead of target_utilization when an instance can handle a
+        # specific amount of work/resources and the metric value is equal to the current
+        # amount of work remaining. The autoscaler will try to keep the number of
+        # instances equal to the metric value divided by single_instance_assignment.
+        # Corresponds to the JSON property `singleInstanceAssignment`
+        # @return [Float]
+        attr_accessor :single_instance_assignment
+      
+        # The type of the metric. Must be a string representing a Stackdriver metric
+        # type e.g. GAGUE, DELTA_PER_SECOND, etc.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
+      
+        # The target value for the metric.
+        # Corresponds to the JSON property `targetUtilization`
+        # @return [Float]
+        attr_accessor :target_utilization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @single_instance_assignment = args[:single_instance_assignment] if args.key?(:single_instance_assignment)
+          @target_type = args[:target_type] if args.key?(:target_type)
+          @target_utilization = args[:target_utilization] if args.key?(:target_utilization)
         end
       end
       

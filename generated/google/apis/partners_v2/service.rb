@@ -393,61 +393,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Exam Token for a Partner's user to take an exam in the Exams System
-        # @param [String] exam_type
-        #   The exam type we are requesting a token for.
-        # @param [Array<String>, String] request_metadata_experiment_ids
-        #   Experiment IDs the current request belongs to.
-        # @param [String] request_metadata_locale
-        #   Locale to use for the current request.
-        # @param [String] request_metadata_partners_session_id
-        #   Google Partners session ID.
-        # @param [String] request_metadata_traffic_source_traffic_source_id
-        #   Identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_traffic_source_traffic_sub_id
-        #   Second level identifier to indicate where the traffic comes from.
-        #   An identifier has multiple letters created by a team which redirected the
-        #   traffic to us.
-        # @param [String] request_metadata_user_overrides_ip_address
-        #   IP address to use instead of the user's geo-located IP address.
-        # @param [String] request_metadata_user_overrides_user_id
-        #   Logged-in user ID to impersonate instead of the user's ID.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PartnersV2::ExamToken] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PartnersV2::ExamToken]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_exam_token(exam_type, request_metadata_experiment_ids: nil, request_metadata_locale: nil, request_metadata_partners_session_id: nil, request_metadata_traffic_source_traffic_source_id: nil, request_metadata_traffic_source_traffic_sub_id: nil, request_metadata_user_overrides_ip_address: nil, request_metadata_user_overrides_user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v2/exams/{examType}/token', options)
-          command.response_representation = Google::Apis::PartnersV2::ExamToken::Representation
-          command.response_class = Google::Apis::PartnersV2::ExamToken
-          command.params['examType'] = exam_type unless exam_type.nil?
-          command.query['requestMetadata.experimentIds'] = request_metadata_experiment_ids unless request_metadata_experiment_ids.nil?
-          command.query['requestMetadata.locale'] = request_metadata_locale unless request_metadata_locale.nil?
-          command.query['requestMetadata.partnersSessionId'] = request_metadata_partners_session_id unless request_metadata_partners_session_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSourceId'] = request_metadata_traffic_source_traffic_source_id unless request_metadata_traffic_source_traffic_source_id.nil?
-          command.query['requestMetadata.trafficSource.trafficSubId'] = request_metadata_traffic_source_traffic_sub_id unless request_metadata_traffic_source_traffic_sub_id.nil?
-          command.query['requestMetadata.userOverrides.ipAddress'] = request_metadata_user_overrides_ip_address unless request_metadata_user_overrides_ip_address.nil?
-          command.query['requestMetadata.userOverrides.userId'] = request_metadata_user_overrides_user_id unless request_metadata_user_overrides_user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists advertiser leads for a user's associated company.
         # Should only be called within the context of an authorized logged in user.
         # @param [String] order_by

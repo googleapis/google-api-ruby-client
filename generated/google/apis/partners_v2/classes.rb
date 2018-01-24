@@ -897,37 +897,6 @@ module Google
         end
       end
       
-      # A token that allows a user to take an exam.
-      class ExamToken
-        include Google::Apis::Core::Hashable
-      
-        # The id of the exam the token is for.
-        # Corresponds to the JSON property `examId`
-        # @return [Fixnum]
-        attr_accessor :exam_id
-      
-        # The type of the exam the token belongs to.
-        # Corresponds to the JSON property `examType`
-        # @return [String]
-        attr_accessor :exam_type
-      
-        # The token, only present if the user has access to the exam.
-        # Corresponds to the JSON property `token`
-        # @return [String]
-        attr_accessor :token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exam_id = args[:exam_id] if args.key?(:exam_id)
-          @exam_type = args[:exam_type] if args.key?(:exam_type)
-          @token = args[:token] if args.key?(:token)
-        end
-      end
-      
       # Response message for GetCompany.
       class GetCompanyResponse
         include Google::Apis::Core::Hashable
