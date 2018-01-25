@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTensorFlowVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,7 +94,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopNodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TensorFlowVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -127,6 +151,15 @@ module Google
         end
       end
       
+      class ListTensorFlowVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tensorflow_versions, as: 'tensorflowVersions', class: Google::Apis::TpuV1alpha1::TensorFlowVersion, decorator: Google::Apis::TpuV1alpha1::TensorFlowVersion::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -155,6 +188,7 @@ module Google
           property :health, as: 'health'
           property :health_description, as: 'healthDescription'
           property :ip_address, as: 'ipAddress'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV1alpha1::NetworkEndpoint, decorator: Google::Apis::TpuV1alpha1::NetworkEndpoint::Representation
@@ -204,12 +238,32 @@ module Google
         end
       end
       
+      class StartNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopNodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TensorFlowVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
     end

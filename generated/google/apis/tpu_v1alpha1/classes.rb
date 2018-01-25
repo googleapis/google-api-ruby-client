@@ -116,6 +116,31 @@ module Google
         end
       end
       
+      # Response for ListTensorFlowVersions.
+      class ListTensorFlowVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next page token or empty if none.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The listed nodes.
+        # Corresponds to the JSON property `tensorflowVersions`
+        # @return [Array<Google::Apis::TpuV1alpha1::TensorFlowVersion>]
+        attr_accessor :tensorflow_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tensorflow_versions = args[:tensorflow_versions] if args.key?(:tensorflow_versions)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -191,13 +216,14 @@ module Google
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The CIDR block that the TPU node will use when selecting //an IP address.
-        # This CIDR block must be a /29 block; the GCE networks API forbids a smaller
-        # block, and using a larger block would be wasteful (a node can only consume
-        # one IP address). Errors will occur if the CIDR block has already been used
-        # for a currently existing TPU node, the CIDR block conflicts with any
-        # subnetworks in the user's provided network, or the provided network is
-        # peered with another network that is using that CIDR block.
+        # The CIDR block that the TPU node will use when selecting an IP address.
+        # This CIDR block must be a /29 block; the Compute Engine networks API
+        # forbids a smaller block, and using a larger block would be wasteful (a
+        # node can only consume one IP address). Errors will occur if the CIDR block
+        # has already been used for a currently existing TPU node, the CIDR block
+        # conflicts with any subnetworks in the user's provided network, or the
+        # provided network is peered with another network that is using that CIDR
+        # block.
         # Required.
         # Corresponds to the JSON property `cidrBlock`
         # @return [String]
@@ -228,10 +254,16 @@ module Google
       
         # Output only.
         # DEPRECATED! Use network_endpoints instead.
-        # The network address for the TPU Node as visible to GCE instances.
+        # The network address for the TPU Node as visible to Compute Engine
+        # instances.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # Resource labels to represent user-provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # Output only.
         # The immutable name of the TPU
@@ -240,8 +272,8 @@ module Google
         attr_accessor :name
       
         # The name of a network they wish to peer the TPU node to. It must be a
-        # preexisting GCE network inside of the project on which this API has been
-        # activated. If none is provided, "default" will be used.
+        # preexisting Compute Engine network inside of the project on which this API
+        # has been activated. If none is provided, "default" will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -256,7 +288,7 @@ module Google
       
         # Output only.
         # DEPRECATED! Use network_endpoints instead.
-        # The network port for the TPU Node as visible to GCE instances.
+        # The network port for the TPU Node as visible to Compute Engine instances.
         # Corresponds to the JSON property `port`
         # @return [String]
         attr_accessor :port
@@ -295,6 +327,7 @@ module Google
           @health = args[:health] if args.key?(:health)
           @health_description = args[:health_description] if args.key?(:health_description)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
@@ -493,6 +526,19 @@ module Google
         end
       end
       
+      # Request for StartNode.
+      class StartNodeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by
       # [gRPC](https://github.com/grpc). The error model is designed to be:
@@ -562,6 +608,44 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request for StopNode.
+      class StopNodeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A tensorflow version that a Node can be configured with.
+      class TensorFlowVersion
+        include Google::Apis::Core::Hashable
+      
+        # The resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # the tensorflow version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end

@@ -121,6 +121,7 @@ module Google
       class RecognitionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_word_confidence, as: 'enableWordConfidence'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
           property :encoding, as: 'encoding'
           property :language_code, as: 'languageCode'

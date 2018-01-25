@@ -43,6 +43,26 @@ module Google
         end
       end
       
+      # Contains information about an auditable service.
+      class AuditableService
+        include Google::Apis::Core::Hashable
+      
+        # Public name of the service.
+        # For example, the service name for Cloud IAM is 'iam.googleapis.com'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -309,6 +329,12 @@ module Google
       class Permission
         include Google::Apis::Core::Hashable
       
+        # The service API associated with the permission is not enabled.
+        # Corresponds to the JSON property `apiDisabled`
+        # @return [Boolean]
+        attr_accessor :api_disabled
+        alias_method :api_disabled?, :api_disabled
+      
         # The current custom role support level.
         # Corresponds to the JSON property `customRolesSupportLevel`
         # @return [String]
@@ -346,6 +372,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_disabled = args[:api_disabled] if args.key?(:api_disabled)
           @custom_roles_support_level = args[:custom_roles_support_level] if args.key?(:custom_roles_support_level)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
@@ -437,6 +464,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @binding_deltas = args[:binding_deltas] if args.key?(:binding_deltas)
+        end
+      end
+      
+      # A request to get the list of auditable services for a resource.
+      class QueryAuditableServicesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name to query from the list of auditable
+        # services.
+        # The name follows the Google Cloud Platform resource format.
+        # For example, a Cloud Platform project with id `my-project` will be named
+        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # A response containing a list of auditable services for a resource.
+      class QueryAuditableServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The auditable services for a resource.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::IamV1::AuditableService>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @services = args[:services] if args.key?(:services)
         end
       end
       

@@ -74,7 +74,7 @@ module Google
       class RemoteConfigCondition
         include Google::Apis::Core::Hashable
       
-        # Optional.
+        # DO NOT USE. Implementation removed and will not be added unless requested.
         # A description for this Condition. Length must be less than or equal to
         # 100 characters (or more precisely, unicode code points, which is defined in
         # java/com/google/wireless/android/config/ConstsExporter.java).

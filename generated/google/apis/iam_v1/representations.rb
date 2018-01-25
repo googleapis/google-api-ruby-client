@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditableService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,18 @@ module Google
       end
       
       class PolicyDelta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryAuditableServicesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryAuditableServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -198,6 +216,13 @@ module Google
         end
       end
       
+      class AuditableService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -276,6 +301,7 @@ module Google
       class Permission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_disabled, as: 'apiDisabled'
           property :custom_roles_support_level, as: 'customRolesSupportLevel'
           property :description, as: 'description'
           property :name, as: 'name'
@@ -299,6 +325,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :binding_deltas, as: 'bindingDeltas', class: Google::Apis::IamV1::BindingDelta, decorator: Google::Apis::IamV1::BindingDelta::Representation
+      
+        end
+      end
+      
+      class QueryAuditableServicesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class QueryAuditableServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :services, as: 'services', class: Google::Apis::IamV1::AuditableService, decorator: Google::Apis::IamV1::AuditableService::Representation
       
         end
       end

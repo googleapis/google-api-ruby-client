@@ -227,6 +227,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :hyperparameters
       
+        # True if the trial is stopped early.
+        # Corresponds to the JSON property `isTrialStoppedEarly`
+        # @return [Boolean]
+        attr_accessor :is_trial_stopped_early
+        alias_method :is_trial_stopped_early?, :is_trial_stopped_early
+      
         # The trial id for these results.
         # Corresponds to the JSON property `trialId`
         # @return [String]
@@ -241,6 +247,7 @@ module Google
           @all_metrics = args[:all_metrics] if args.key?(:all_metrics)
           @final_metric = args[:final_metric] if args.key?(:final_metric)
           @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
+          @is_trial_stopped_early = args[:is_trial_stopped_early] if args.key?(:is_trial_stopped_early)
           @trial_id = args[:trial_id] if args.key?(:trial_id)
         end
       end

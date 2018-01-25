@@ -324,13 +324,13 @@ module Google
       class CustomerListCustomersResponse
         include Google::Apis::Core::Hashable
       
-        # Customers the current user can act as.
+        # The customer accounts the calling user is a member of.
         # Corresponds to the JSON property `customers`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
         attr_accessor :customers
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # A token used to access the next page of results. Omitted if no further
+        # results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

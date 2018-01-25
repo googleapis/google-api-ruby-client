@@ -26,7 +26,7 @@ module Google
     # @see https://firebase.google.com/docs/remote-config/
     module FirebaseremoteconfigV1
       VERSION = 'V1'
-      REVISION = '20171016'
+      REVISION = '20180122'
     end
   end
 end

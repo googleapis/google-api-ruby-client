@@ -123,7 +123,8 @@ module Google
         # Deletes inspect templates.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be deleted,
-        #   for example `organizations/433245324/deidentifyTemplates/432452342`.
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -154,7 +155,8 @@ module Google
         # Gets an inspect template.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be read, for
-        #   example `organizations/433245324/deidentifyTemplates/432452342`.
+        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,7 +226,8 @@ module Google
         # Updates the inspect template.
         # @param [String] name
         #   Resource name of organization and deidentify template to be updated, for
-        #   example `organizations/433245324/deidentifyTemplates/432452342`.
+        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2beta2_update_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -293,7 +296,8 @@ module Google
         # Deletes inspect templates.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be deleted, for
-        #   example `organizations/433245324/inspectTemplates/432452342`.
+        #   example `organizations/433245324/inspectTemplates/432452342` or
+        #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -324,7 +328,8 @@ module Google
         # Gets an inspect template.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be read, for
-        #   example `organizations/433245324/inspectTemplates/432452342`.
+        #   example `organizations/433245324/inspectTemplates/432452342` or
+        #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -394,7 +399,8 @@ module Google
         # Updates the inspect template.
         # @param [String] name
         #   Resource name of organization and inspectTemplate to be updated, for
-        #   example `organizations/433245324/inspectTemplates/432452342`.
+        #   example `organizations/433245324/inspectTemplates/432452342` or
+        #   projects/project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2UpdateInspectTemplateRequest] google_privacy_dlp_v2beta2_update_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -530,7 +536,7 @@ module Google
         end
         
         # Schedules a job to compute risk analysis metrics over content in a Google
-        # Cloud Platform repository. [How-to guide`(/dlp/docs/compute-risk-analysis)
+        # Cloud Platform repository. [How-to guide](/dlp/docs/compute-risk-analysis)
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskRequest] google_privacy_dlp_v2beta2_analyze_data_source_risk_request_object
@@ -635,7 +641,8 @@ module Google
         # Deletes inspect templates.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be deleted,
-        #   for example `organizations/433245324/deidentifyTemplates/432452342`.
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -666,7 +673,8 @@ module Google
         # Gets an inspect template.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be read, for
-        #   example `organizations/433245324/deidentifyTemplates/432452342`.
+        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -736,7 +744,8 @@ module Google
         # Updates the inspect template.
         # @param [String] name
         #   Resource name of organization and deidentify template to be updated, for
-        #   example `organizations/433245324/deidentifyTemplates/432452342`.
+        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2beta2_update_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -995,7 +1004,8 @@ module Google
         # Deletes inspect templates.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be deleted, for
-        #   example `organizations/433245324/inspectTemplates/432452342`.
+        #   example `organizations/433245324/inspectTemplates/432452342` or
+        #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1026,7 +1036,8 @@ module Google
         # Gets an inspect template.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be read, for
-        #   example `organizations/433245324/inspectTemplates/432452342`.
+        #   example `organizations/433245324/inspectTemplates/432452342` or
+        #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1096,7 +1107,8 @@ module Google
         # Updates the inspect template.
         # @param [String] name
         #   Resource name of organization and inspectTemplate to be updated, for
-        #   example `organizations/433245324/inspectTemplates/432452342`.
+        #   example `organizations/433245324/inspectTemplates/432452342` or
+        #   projects/project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2UpdateInspectTemplateRequest] google_privacy_dlp_v2beta2_update_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

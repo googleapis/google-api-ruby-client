@@ -190,6 +190,14 @@ module Google
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
+        # *Optional* If `true`, the top result includes a list of words and the
+        # confidence for those words. If `false`, no word-level confidence
+        # information is returned. The default is `false`.
+        # Corresponds to the JSON property `enableWordConfidence`
+        # @return [Boolean]
+        attr_accessor :enable_word_confidence
+        alias_method :enable_word_confidence?, :enable_word_confidence
+      
         # *Optional* If `true`, the top result includes a list of words and
         # the start and end time offsets (timestamps) for those words. If
         # `false`, no word-level time offset information is returned. The default is
@@ -252,6 +260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_word_confidence = args[:enable_word_confidence] if args.key?(:enable_word_confidence)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -344,10 +353,10 @@ module Google
       
         # *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
-        # correct. This field is typically provided only for the top hypothesis, and
-        # only for `is_final=true` results. Clients should not rely on the
-        # `confidence` field as it is not guaranteed to be accurate, or even set, in
-        # any of the results.
+        # correct. This field is set only for the top alternative of a non-streaming
+        # result or, of a streaming result where `is_final=true`.
+        # This field is not guaranteed to be accurate and users should not rely on it
+        # to be always provided.
         # The default of 0.0 is a sentinel value indicating `confidence` was not set.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
@@ -469,9 +478,7 @@ module Google
         end
       end
       
-      # Word-specific information for recognized words. Word information is only
-      # included in the response when certain request parameters are set, such
-      # as `enable_word_time_offsets`.
+      # Word-specific information for recognized words.
       class WordInfo
         include Google::Apis::Core::Hashable
       

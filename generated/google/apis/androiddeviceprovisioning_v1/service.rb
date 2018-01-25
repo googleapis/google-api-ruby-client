@@ -48,11 +48,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # List the user's customer accounts.
+        # Lists the user's customer accounts.
         # @param [Fixnum] page_size
-        #   The maximum number of items to return.
+        #   The maximum number of customers to show in a page of results.
+        #   A number between 1 and 1000 (inclusive).
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
+        #   A token specifying which result page to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

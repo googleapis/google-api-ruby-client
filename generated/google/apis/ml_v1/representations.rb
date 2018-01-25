@@ -286,6 +286,7 @@ module Google
           property :final_metric, as: 'finalMetric', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutputHyperparameterMetric::Representation
       
           hash :hyperparameters, as: 'hyperparameters'
+          property :is_trial_stopped_early, as: 'isTrialStoppedEarly'
           property :trial_id, as: 'trialId'
         end
       end
