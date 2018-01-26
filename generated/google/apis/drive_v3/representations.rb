@@ -212,6 +212,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_installed, as: 'appInstalled'
+          property :can_create_team_drives, as: 'canCreateTeamDrives'
           hash :export_formats, as: 'exportFormats', :class => Array do
         include Representable::JSON::Collection
         items

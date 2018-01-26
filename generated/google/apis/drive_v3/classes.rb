@@ -32,6 +32,12 @@ module Google
         attr_accessor :app_installed
         alias_method :app_installed?, :app_installed
       
+        # Whether the user can create Team Drives.
+        # Corresponds to the JSON property `canCreateTeamDrives`
+        # @return [Boolean]
+        attr_accessor :can_create_team_drives
+        alias_method :can_create_team_drives?, :can_create_team_drives
+      
         # A map of source MIME type to possible targets for all supported exports.
         # Corresponds to the JSON property `exportFormats`
         # @return [Hash<String,Array<String>>]
@@ -85,6 +91,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_installed = args[:app_installed] if args.key?(:app_installed)
+          @can_create_team_drives = args[:can_create_team_drives] if args.key?(:can_create_team_drives)
           @export_formats = args[:export_formats] if args.key?(:export_formats)
           @folder_color_palette = args[:folder_color_palette] if args.key?(:folder_color_palette)
           @import_formats = args[:import_formats] if args.key?(:import_formats)

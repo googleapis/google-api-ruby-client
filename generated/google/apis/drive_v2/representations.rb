@@ -321,6 +321,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_role_info, as: 'additionalRoleInfo', class: Google::Apis::DriveV2::About::AdditionalRoleInfo, decorator: Google::Apis::DriveV2::About::AdditionalRoleInfo::Representation
       
+          property :can_create_team_drives, as: 'canCreateTeamDrives'
           property :domain_sharing_policy, as: 'domainSharingPolicy'
           property :etag, as: 'etag'
           collection :export_formats, as: 'exportFormats', class: Google::Apis::DriveV2::About::ExportFormat, decorator: Google::Apis::DriveV2::About::ExportFormat::Representation

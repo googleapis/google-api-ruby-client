@@ -32,6 +32,12 @@ module Google
         # @return [Array<Google::Apis::DriveV2::About::AdditionalRoleInfo>]
         attr_accessor :additional_role_info
       
+        # Whether the user can create Team Drives.
+        # Corresponds to the JSON property `canCreateTeamDrives`
+        # @return [Boolean]
+        attr_accessor :can_create_team_drives
+        alias_method :can_create_team_drives?, :can_create_team_drives
+      
         # The domain sharing policy for the current user. Possible values are:
         # - allowed
         # - allowedWithWarning
@@ -169,6 +175,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_role_info = args[:additional_role_info] if args.key?(:additional_role_info)
+          @can_create_team_drives = args[:can_create_team_drives] if args.key?(:can_create_team_drives)
           @domain_sharing_policy = args[:domain_sharing_policy] if args.key?(:domain_sharing_policy)
           @etag = args[:etag] if args.key?(:etag)
           @export_formats = args[:export_formats] if args.key?(:export_formats)

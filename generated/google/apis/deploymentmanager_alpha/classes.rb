@@ -53,7 +53,7 @@ module Google
       # If there are AuditConfigs for both `allServices` and a specific service, the
       # union of the two AuditConfigs is used for that service: the log_types
       # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditConfig are exempted.
+      # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
       # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
@@ -1318,7 +1318,9 @@ module Google
         attr_accessor :progress
       
         # [Output Only] The URL of the region where the operation resides. Only
-        # available when performing regional operations.
+        # available when performing regional operations. You must specify this field as
+        # part of the HTTP request URL. It is not settable as a field in the request
+        # body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -1371,7 +1373,8 @@ module Google
         attr_accessor :warnings
       
         # [Output Only] The URL of the zone where the operation resides. Only available
-        # when performing per-zone operations.
+        # when performing per-zone operations. You must specify this field as part of
+        # the HTTP request URL. It is not settable as a field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1601,7 +1604,7 @@ module Google
       # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
       # sean@example.com"] ` ] `
       # For a description of IAM and its features, see the [IAM developer's guide](
-      # https://cloud.google.com/iam).
+      # https://cloud.google.com/iam/docs).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1647,7 +1650,7 @@ module Google
         # @return [Array<Google::Apis::DeploymentmanagerAlpha::Rule>]
         attr_accessor :rules
       
-        # Version of the `Policy`. The default version is 0.
+        # Deprecated.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
