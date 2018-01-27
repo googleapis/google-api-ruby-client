@@ -1989,14 +1989,14 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
       
-        # [Output-only, Experimental] Referenced tables for the job. Queries that
-        # reference more than 50 tables will not have a complete list.
+        # [Output-only] Referenced tables for the job. Queries that reference more than
+        # 50 tables will not have a complete list.
         # Corresponds to the JSON property `referencedTables`
         # @return [Array<Google::Apis::BigqueryV2::TableReference>]
         attr_accessor :referenced_tables
       
-        # [Output-only, Experimental] The schema of the results. Present only for
-        # successful dry run of non-legacy SQL queries.
+        # [Output-only] The schema of the results. Present only for successful dry run
+        # of non-legacy SQL queries.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema

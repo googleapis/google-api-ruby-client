@@ -157,13 +157,12 @@ module Google
         end
         
         # Instantiates a template and begins execution.The returned Operation can be
-        # used to track execution of workflow by polling google.cloud.dataproc.v1beta2.
-        # OperationService.GetOperation. The Operation will complete when entire
-        # workflow is finished.The running workflow can be aborted via google.cloud.
-        # dataproc.v1beta2.OperationService.CancelOperation.The google.cloud.dataproc.
-        # v1beta2.Operation.metadata will always be google.cloud.dataproc.v1beta2.
-        # WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result will
-        # always be google.protobuf.Empty.
+        # used to track execution of workflow by polling operations.get. The Operation
+        # will complete when entire workflow is finished.The running workflow can be
+        # aborted via operations.cancel. This will cause any inflight jobs to be
+        # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
+        # will be WorkflowMetadata.On successful completion, Operation.response will be
+        # Empty.
         # @param [String] name
         #   Required. The "resource name" of the workflow template, as described in https:/
         #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
@@ -201,13 +200,11 @@ module Google
         # Instantiates a template and begins execution.This method is equivalent to
         # executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate,
         # DeleteWorkflowTemplate.The returned Operation can be used to track execution
-        # of workflow by polling google.cloud.dataproc.v1beta2.OperationService.
-        # GetOperation. The Operation will complete when entire workflow is finished.The
-        # running workflow can be aborted via google.cloud.dataproc.v1beta2.
-        # OperationService.CancelOperation.The google.cloud.dataproc.v1beta2.Operation.
-        # metadata will always be google.cloud.dataproc.v1beta2.WorkflowMetadata.The
-        # google.cloud.dataproc.v1beta2.Operation.result will always be google.protobuf.
-        # Empty.
+        # of workflow by polling operations.get. The Operation will complete when entire
+        # workflow is finished.The running workflow can be aborted via operations.cancel.
+        # This will cause any inflight jobs to be cancelled and workflow-owned clusters
+        # to be deleted.The Operation.metadata will be WorkflowMetadata.On successful
+        # completion, Operation.response will be Empty.
         # @param [String] parent
         #   Required. The "resource name" of the workflow template region, as described in
         #   https://cloud.google.com/apis/design/resource_names of the form projects/`
@@ -1224,13 +1221,12 @@ module Google
         end
         
         # Instantiates a template and begins execution.The returned Operation can be
-        # used to track execution of workflow by polling google.cloud.dataproc.v1beta2.
-        # OperationService.GetOperation. The Operation will complete when entire
-        # workflow is finished.The running workflow can be aborted via google.cloud.
-        # dataproc.v1beta2.OperationService.CancelOperation.The google.cloud.dataproc.
-        # v1beta2.Operation.metadata will always be google.cloud.dataproc.v1beta2.
-        # WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result will
-        # always be google.protobuf.Empty.
+        # used to track execution of workflow by polling operations.get. The Operation
+        # will complete when entire workflow is finished.The running workflow can be
+        # aborted via operations.cancel. This will cause any inflight jobs to be
+        # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
+        # will be WorkflowMetadata.On successful completion, Operation.response will be
+        # Empty.
         # @param [String] name
         #   Required. The "resource name" of the workflow template, as described in https:/
         #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
@@ -1268,13 +1264,11 @@ module Google
         # Instantiates a template and begins execution.This method is equivalent to
         # executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate,
         # DeleteWorkflowTemplate.The returned Operation can be used to track execution
-        # of workflow by polling google.cloud.dataproc.v1beta2.OperationService.
-        # GetOperation. The Operation will complete when entire workflow is finished.The
-        # running workflow can be aborted via google.cloud.dataproc.v1beta2.
-        # OperationService.CancelOperation.The google.cloud.dataproc.v1beta2.Operation.
-        # metadata will always be google.cloud.dataproc.v1beta2.WorkflowMetadata.The
-        # google.cloud.dataproc.v1beta2.Operation.result will always be google.protobuf.
-        # Empty.
+        # of workflow by polling operations.get. The Operation will complete when entire
+        # workflow is finished.The running workflow can be aborted via operations.cancel.
+        # This will cause any inflight jobs to be cancelled and workflow-owned clusters
+        # to be deleted.The Operation.metadata will be WorkflowMetadata.On successful
+        # completion, Operation.response will be Empty.
         # @param [String] parent
         #   Required. The "resource name" of the workflow template region, as described in
         #   https://cloud.google.com/apis/design/resource_names of the form projects/`

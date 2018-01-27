@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/activity/
     module AppsactivityV1
       VERSION = 'V1'
-      REVISION = '20180123'
+      REVISION = '20180124'
 
       # View the activity history of your Google apps
       AUTH_ACTIVITY = 'https://www.googleapis.com/auth/activity'
