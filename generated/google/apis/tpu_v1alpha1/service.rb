@@ -248,7 +248,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Reimage a node's OS.
+        # Reimages a node's OS.
         # @param [String] name
         #   The resource name.
         # @param [Google::Apis::TpuV1alpha1::ReimageNodeRequest] reimage_node_request_object
@@ -314,7 +314,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Start a node.
+        # Starts a node.
         # @param [String] name
         #   The resource name.
         # @param [Google::Apis::TpuV1alpha1::StartNodeRequest] start_node_request_object
@@ -561,7 +561,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List TensorFlow versions.
+        # Lists TensorFlow versions supported by this API.
         # @param [String] parent
         #   The parent resource name.
         # @param [String] filter

@@ -937,7 +937,6 @@ module Google
         attr_accessor :localizations
       
         # Basic details about a channel, including title, description and thumbnails.
-        # Next available id: 15.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::ChannelSnippet]
         attr_accessor :snippet
@@ -1717,7 +1716,6 @@ module Google
       end
       
       # Basic details about a channel, including title, description and thumbnails.
-      # Next available id: 15.
       class ChannelSnippet
         include Google::Apis::Core::Hashable
       
