@@ -1,3 +1,38 @@
+# 0.19.5
+* Backwards compatible changes:
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `appengine_v1beta`
+  * Updated `appsactivity_v1`
+  * Updated `bigquery_v2`
+  * Updated `cloudiot_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `content_v2`
+  * Updated `dataproc_v1beta2`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dlp_v2beta2`
+  * Updated `dns_v1beta2`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `firebaseremoteconfig_v1`
+  * Updated `firestore_v1beta1`
+  * Updated `gmail_v1`
+  * Updated `iam_v1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `partners_v2`
+  * Updated `safebrowsing_v4`
+  * Updated `sheets_v4`
+  * Updated `speech_v1`
+  * Updated `tpu_v1alpha1`
+  * Updated `vision_v1`
+  * Updated `youtube_partner_v1`
+  * Updated `youtube_v3`
+
 # 0.19.4
 * Backwards compatible changes:
   * Updated `analytics_v3`
