@@ -171,6 +171,7 @@ module Google
         # * FETCHSOURCE: time to fetch source.
         # If the build does not specify source, or does not specify images,
         # these keys will not be included.
+        # @OutputOnly
         # Corresponds to the JSON property `timing`
         # @return [Hash<String,Google::Apis::CloudbuildV1::TimeSpan>]
         attr_accessor :timing

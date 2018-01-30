@@ -1177,6 +1177,7 @@ module Google
       
           property :runtime, as: 'runtime'
           property :runtime_api_version, as: 'runtimeApiVersion'
+          property :runtime_channel, as: 'runtimeChannel'
           property :serving_status, as: 'servingStatus'
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'

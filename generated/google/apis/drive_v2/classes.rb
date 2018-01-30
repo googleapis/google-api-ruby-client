@@ -2423,7 +2423,8 @@ module Google
         # - They can only be set on user and group permissions
         # - The date must be in the future
         # - The date cannot be more than a year in the future
-        # - The date can only be set on drive.permissions.update requests
+        # - The date can only be set on drive.permissions.update or drive.permissions.
+        # patch requests
         # Corresponds to the JSON property `expirationDate`
         # @return [DateTime]
         attr_accessor :expiration_date

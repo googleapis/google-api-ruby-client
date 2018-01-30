@@ -640,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HistogramRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HistogramSeries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +677,18 @@ module Google
       end
       
       class LineStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManualRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManualRuleGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -749,6 +767,12 @@ module Google
       end
       
       class PivotGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PivotGroupRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2137,6 +2161,15 @@ module Google
         end
       end
       
+      class HistogramRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :interval, as: 'interval'
+          property :start, as: 'start'
+        end
+      end
+      
       class HistogramSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2188,6 +2221,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :width, as: 'width'
+        end
+      end
+      
+      class ManualRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :groups, as: 'groups', class: Google::Apis::SheetsV4::ManualRuleGroup, decorator: Google::Apis::SheetsV4::ManualRuleGroup::Representation
+      
+        end
+      end
+      
+      class ManualRuleGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_name, as: 'groupName', class: Google::Apis::SheetsV4::ExtendedValue, decorator: Google::Apis::SheetsV4::ExtendedValue::Representation
+      
+          collection :items, as: 'items', class: Google::Apis::SheetsV4::ExtendedValue, decorator: Google::Apis::SheetsV4::ExtendedValue::Representation
+      
         end
       end
       
@@ -2321,12 +2372,26 @@ module Google
       class PivotGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_rule, as: 'groupRule', class: Google::Apis::SheetsV4::PivotGroupRule, decorator: Google::Apis::SheetsV4::PivotGroupRule::Representation
+      
+          property :label, as: 'label'
+          property :repeat_headings, as: 'repeatHeadings'
           property :show_totals, as: 'showTotals'
           property :sort_order, as: 'sortOrder'
           property :source_column_offset, as: 'sourceColumnOffset'
           property :value_bucket, as: 'valueBucket', class: Google::Apis::SheetsV4::PivotGroupSortValueBucket, decorator: Google::Apis::SheetsV4::PivotGroupSortValueBucket::Representation
       
           collection :value_metadata, as: 'valueMetadata', class: Google::Apis::SheetsV4::PivotGroupValueMetadata, decorator: Google::Apis::SheetsV4::PivotGroupValueMetadata::Representation
+      
+        end
+      end
+      
+      class PivotGroupRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :histogram_rule, as: 'histogramRule', class: Google::Apis::SheetsV4::HistogramRule, decorator: Google::Apis::SheetsV4::HistogramRule::Representation
+      
+          property :manual_rule, as: 'manualRule', class: Google::Apis::SheetsV4::ManualRule, decorator: Google::Apis::SheetsV4::ManualRule::Representation
       
         end
       end
@@ -2369,6 +2434,7 @@ module Google
       class PivotValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :calculated_display_type, as: 'calculatedDisplayType'
           property :formula, as: 'formula'
           property :name, as: 'name'
           property :source_column_offset, as: 'sourceColumnOffset'

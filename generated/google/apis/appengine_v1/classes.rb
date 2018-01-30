@@ -2735,6 +2735,12 @@ module Google
         # @return [String]
         attr_accessor :runtime_api_version
       
+        # The channel of the runtime to use. Only available for some runtimes. Defaults
+        # to the default channel.
+        # Corresponds to the JSON property `runtimeChannel`
+        # @return [String]
+        attr_accessor :runtime_channel
+      
         # Current serving status of this version. Only the versions with a SERVING
         # status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
         # invalid value. Defaults to SERVING.
@@ -2799,6 +2805,7 @@ module Google
           @resources = args[:resources] if args.key?(:resources)
           @runtime = args[:runtime] if args.key?(:runtime)
           @runtime_api_version = args[:runtime_api_version] if args.key?(:runtime_api_version)
+          @runtime_channel = args[:runtime_channel] if args.key?(:runtime_channel)
           @serving_status = args[:serving_status] if args.key?(:serving_status)
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
