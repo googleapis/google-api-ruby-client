@@ -1474,6 +1474,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contains_text, as: 'containsText', class: Google::Apis::SlidesV1::SubstringMatchCriteria, decorator: Google::Apis::SlidesV1::SubstringMatchCriteria::Representation
       
+          property :image_replace_method, as: 'imageReplaceMethod'
           property :image_url, as: 'imageUrl'
           collection :page_object_ids, as: 'pageObjectIds'
           property :replace_method, as: 'replaceMethod'

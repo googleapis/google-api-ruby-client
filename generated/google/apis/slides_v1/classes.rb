@@ -2562,6 +2562,17 @@ module Google
         # @return [Google::Apis::SlidesV1::SubstringMatchCriteria]
         attr_accessor :contains_text
       
+        # The image replace method.
+        # If you specify both a `replace_method` and an `image_replace_method`, the
+        # `image_replace_method` takes precedence.
+        # If you do not specify a value for `image_replace_method`, but specify a
+        # value for `replace_method`, then the specified `replace_method` value is
+        # used.
+        # If you do not specify either, then CENTER_INSIDE is used.
+        # Corresponds to the JSON property `imageReplaceMethod`
+        # @return [String]
+        attr_accessor :image_replace_method
+      
         # The image URL.
         # The image is fetched once at insertion time and a copy is stored for
         # display inside the presentation. Images must be less than 50MB in size,
@@ -2582,6 +2593,9 @@ module Google
         attr_accessor :page_object_ids
       
         # The replace method.
+        # Deprecated: use `image_replace_method` instead.
+        # If you specify both a `replace_method` and an `image_replace_method`, the
+        # `image_replace_method` takes precedence.
         # Corresponds to the JSON property `replaceMethod`
         # @return [String]
         attr_accessor :replace_method
@@ -2593,6 +2607,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contains_text = args[:contains_text] if args.key?(:contains_text)
+          @image_replace_method = args[:image_replace_method] if args.key?(:image_replace_method)
           @image_url = args[:image_url] if args.key?(:image_url)
           @page_object_ids = args[:page_object_ids] if args.key?(:page_object_ids)
           @replace_method = args[:replace_method] if args.key?(:replace_method)

@@ -61,18 +61,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Agent] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Agent]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent(parent, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+parent}/agent', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Agent::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Agent
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -85,7 +85,7 @@ module Google
         # @param [String] parent
         #   Required. The project that the agent to export is associated with.
         #   Format: `projects/<Project ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::ExportAgentRequest] export_agent_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ExportAgentRequest] google_cloud_dialogflow_v2beta1_export_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -95,20 +95,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_agent(parent, export_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def export_agent(parent, google_cloud_dialogflow_v2beta1_export_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/agent:export', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::ExportAgentRequest::Representation
-          command.request_object = export_agent_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ExportAgentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_export_agent_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -124,7 +124,7 @@ module Google
         # @param [String] parent
         #   Required. The project that the agent to import is associated with.
         #   Format: `projects/<Project ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::ImportAgentRequest] import_agent_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ImportAgentRequest] google_cloud_dialogflow_v2beta1_import_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -134,20 +134,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_agent(parent, import_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def import_agent(parent, google_cloud_dialogflow_v2beta1_import_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/agent:import', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::ImportAgentRequest::Representation
-          command.request_object = import_agent_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ImportAgentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_import_agent_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -162,7 +162,7 @@ module Google
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with.
         #   Format: `projects/<Project ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::RestoreAgentRequest] restore_agent_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1RestoreAgentRequest] google_cloud_dialogflow_v2beta1_restore_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -172,20 +172,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_agent(parent, restore_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def restore_agent(parent, google_cloud_dialogflow_v2beta1_restore_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/agent:restore', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::RestoreAgentRequest::Representation
-          command.request_object = restore_agent_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1RestoreAgentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_restore_agent_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -216,18 +216,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::SearchAgentsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchAgentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::SearchAgentsResponse]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchAgentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_project_agents(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+parent}/agent:search', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::SearchAgentsResponse::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::SearchAgentsResponse
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchAgentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchAgentsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -242,7 +242,7 @@ module Google
         # @param [String] parent
         #   Required. The project that the agent to train is associated with.
         #   Format: `projects/<Project ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::TrainAgentRequest] train_agent_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TrainAgentRequest] google_cloud_dialogflow_v2beta1_train_agent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -252,20 +252,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def train_agent(parent, train_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def train_agent(parent, google_cloud_dialogflow_v2beta1_train_agent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/agent:train', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::TrainAgentRequest::Representation
-          command.request_object = train_agent_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1TrainAgentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_train_agent_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -278,7 +278,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Format:
         #   `projects/<Project ID>/agent`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchDeleteEntityTypesRequest] batch_delete_entity_types_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest] google_cloud_dialogflow_v2beta1_batch_delete_entity_types_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,20 +288,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_entity_types(parent, batch_delete_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_delete_entity_types(parent, google_cloud_dialogflow_v2beta1_batch_delete_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entityTypes:batchDelete', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchDeleteEntityTypesRequest::Representation
-          command.request_object = batch_delete_entity_types_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_delete_entity_types_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -314,7 +314,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the agent to update or create entity types in.
         #   Format: `projects/<Project ID>/agent`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchUpdateEntityTypesRequest] batch_update_entity_types_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest] google_cloud_dialogflow_v2beta1_batch_update_entity_types_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -324,20 +324,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_entity_types(parent, batch_update_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_update_entity_types(parent, google_cloud_dialogflow_v2beta1_batch_update_entity_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entityTypes:batchUpdate', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchUpdateEntityTypesRequest::Representation
-          command.request_object = batch_update_entity_types_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_update_entity_types_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -348,7 +348,7 @@ module Google
         # @param [String] parent
         #   Required. The agent to create a entity type for.
         #   Format: `projects/<Project ID>/agent`.
-        # @param [Google::Apis::DialogflowV2beta1::EntityType] entity_type_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
@@ -364,20 +364,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::EntityType] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::EntityType]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_agent_entity_type(parent, entity_type_object = nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_agent_entity_type(parent, google_cloud_dialogflow_v2beta1_entity_type_object = nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entityTypes', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::EntityType::Representation
-          command.request_object = entity_type_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::EntityType::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::EntityType
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_entity_type_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType
           command.params['parent'] = parent unless parent.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -398,18 +398,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Empty]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Empty::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Empty
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -435,18 +435,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::EntityType] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::EntityType]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_entity_type(name, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::EntityType::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::EntityType
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType
           command.params['name'] = name unless name.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -478,18 +478,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::ListEntityTypesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEntityTypesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::ListEntityTypesResponse]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEntityTypesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_entity_types(parent, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+parent}/entityTypes', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::ListEntityTypesResponse::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::ListEntityTypesResponse
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEntityTypesResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEntityTypesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -505,7 +505,7 @@ module Google
         #   automatically.
         #   The unique identifier of the entity type. Format:
         #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::EntityType] entity_type_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] google_cloud_dialogflow_v2beta1_entity_type_object
         # @param [String] language_code
         #   Optional. The language of entity synonyms defined in `entity_type`. If not
         #   specified, the agent's default language is used.
@@ -523,20 +523,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::EntityType] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::EntityType]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_agent_entity_type(name, entity_type_object = nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_agent_entity_type(name, google_cloud_dialogflow_v2beta1_entity_type_object = nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::EntityType::Representation
-          command.request_object = entity_type_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::EntityType::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::EntityType
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_entity_type_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityType
           command.params['name'] = name unless name.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
@@ -551,7 +551,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Format:
         #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchCreateEntitiesRequest] batch_create_entities_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_create_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -561,20 +561,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_entity_create_entities(parent, batch_create_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_entity_create_entities(parent, google_cloud_dialogflow_v2beta1_batch_create_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entities:batchCreate', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchCreateEntitiesRequest::Representation
-          command.request_object = batch_create_entities_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_create_entities_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -587,7 +587,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the entity type to delete entries for. Format:
         #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchDeleteEntitiesRequest] batch_delete_entities_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_delete_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -597,20 +597,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_entity_delete_entities(parent, batch_delete_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_entity_delete_entities(parent, google_cloud_dialogflow_v2beta1_batch_delete_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entities:batchDelete', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchDeleteEntitiesRequest::Representation
-          command.request_object = batch_delete_entities_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_delete_entities_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -624,7 +624,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the entity type to update the entities in. Format:
         #   `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchUpdateEntitiesRequest] batch_update_entities_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest] google_cloud_dialogflow_v2beta1_batch_update_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -634,20 +634,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_entity_update_entities(parent, batch_update_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_entity_update_entities(parent, google_cloud_dialogflow_v2beta1_batch_update_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entities:batchUpdate', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchUpdateEntitiesRequest::Representation
-          command.request_object = batch_update_entities_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_update_entities_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -659,7 +659,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Format:
         #   `projects/<Project ID>/agent`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchDeleteIntentsRequest] batch_delete_intents_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest] google_cloud_dialogflow_v2beta1_batch_delete_intents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -669,20 +669,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_intents(parent, batch_delete_intents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_delete_intents(parent, google_cloud_dialogflow_v2beta1_batch_delete_intents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/intents:batchDelete', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchDeleteIntentsRequest::Representation
-          command.request_object = batch_delete_intents_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_delete_intents_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -694,7 +694,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the agent to update or create intents in.
         #   Format: `projects/<Project ID>/agent`.
-        # @param [Google::Apis::DialogflowV2beta1::BatchUpdateIntentsRequest] batch_update_intents_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest] google_cloud_dialogflow_v2beta1_batch_update_intents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -704,20 +704,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_intents(parent, batch_update_intents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_update_intents(parent, google_cloud_dialogflow_v2beta1_batch_update_intents_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/intents:batchUpdate', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::BatchUpdateIntentsRequest::Representation
-          command.request_object = batch_update_intents_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_batch_update_intents_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -728,7 +728,7 @@ module Google
         # @param [String] parent
         #   Required. The agent to create a intent for.
         #   Format: `projects/<Project ID>/agent`.
-        # @param [Google::Apis::DialogflowV2beta1::Intent] intent_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
@@ -746,20 +746,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Intent] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Intent]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_agent_intent(parent, intent_object = nil, intent_view: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_agent_intent(parent, google_cloud_dialogflow_v2beta1_intent_object = nil, intent_view: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/intents', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::Intent::Representation
-          command.request_object = intent_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Intent::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Intent
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_intent_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent
           command.params['parent'] = parent unless parent.nil?
           command.query['intentView'] = intent_view unless intent_view.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -781,18 +781,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Empty]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_intent(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Empty::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Empty
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -820,18 +820,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Intent] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Intent]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_intent(name, intent_view: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Intent::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Intent
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent
           command.params['name'] = name unless name.nil?
           command.query['intentView'] = intent_view unless intent_view.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -866,18 +866,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::ListIntentsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListIntentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::ListIntentsResponse]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListIntentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_intents(parent, intent_view: nil, language_code: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+parent}/intents', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::ListIntentsResponse::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::ListIntentsResponse
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListIntentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListIntentsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['intentView'] = intent_view unless intent_view.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -894,7 +894,7 @@ module Google
         #   automatically.
         #   The unique identifier of this intent.
         #   Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::Intent] intent_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] google_cloud_dialogflow_v2beta1_intent_object
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
@@ -914,20 +914,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Intent] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Intent]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_agent_intent(name, intent_object = nil, intent_view: nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_agent_intent(name, google_cloud_dialogflow_v2beta1_intent_object = nil, intent_view: nil, language_code: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::Intent::Representation
-          command.request_object = intent_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Intent::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Intent
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_intent_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent
           command.params['name'] = name unless name.nil?
           command.query['intentView'] = intent_view unless intent_view.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
@@ -950,18 +950,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Empty]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_session_contexts(parent, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+parent}/contexts', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Empty::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Empty
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -978,7 +978,7 @@ module Google
         #   It's up to the API caller to choose an appropriate session ID. It can be
         #   a random number or some type of user identifier (preferably hashed).
         #   The length of the session ID must not exceed 36 bytes.
-        # @param [Google::Apis::DialogflowV2beta1::DetectIntentRequest] detect_intent_request_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -988,20 +988,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::DetectIntentResponse] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::DetectIntentResponse]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def detect_session_intent(session, detect_intent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def detect_session_intent(session, google_cloud_dialogflow_v2beta1_detect_intent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+session}:detectIntent', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::DetectIntentRequest::Representation
-          command.request_object = detect_intent_request_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::DetectIntentResponse::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::DetectIntentResponse
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_detect_intent_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse
           command.params['session'] = session unless session.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1012,7 +1012,7 @@ module Google
         # @param [String] parent
         #   Required. The session to create a context for.
         #   Format: `projects/<Project ID>/agent/sessions/<Session ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::Context] context_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1022,20 +1022,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Context] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Context]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_agent_session_context(parent, context_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_agent_session_context(parent, google_cloud_dialogflow_v2beta1_context_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/contexts', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::Context::Representation
-          command.request_object = context_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Context::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Context
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_context_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1055,18 +1055,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Empty]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_session_context(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Empty::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Empty
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1086,18 +1086,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Context] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Context]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_session_context(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Context::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Context
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1122,18 +1122,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::ListContextsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::ListContextsResponse]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_session_contexts(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+parent}/contexts', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::ListContextsResponse::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::ListContextsResponse
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1147,7 +1147,7 @@ module Google
         #   Required. The unique identifier of the context. Format:
         #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
         #   Note: The Context ID is always converted to lowercase.
-        # @param [Google::Apis::DialogflowV2beta1::Context] context_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
         # @param [String] fields
@@ -1159,20 +1159,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Context] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Context]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_agent_session_context(name, context_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_agent_session_context(name, google_cloud_dialogflow_v2beta1_context_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::Context::Representation
-          command.request_object = context_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::Context::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Context
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_context_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1184,7 +1184,7 @@ module Google
         # @param [String] parent
         #   Required. The session to create a session entity type for.
         #   Format: `projects/<Project ID>/agent/sessions/<Session ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::SessionEntityType] session_entity_type_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1194,20 +1194,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::SessionEntityType] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::SessionEntityType]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_agent_session_entity_type(parent, session_entity_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_agent_session_entity_type(parent, google_cloud_dialogflow_v2beta1_session_entity_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v2beta1/{+parent}/entityTypes', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::SessionEntityType::Representation
-          command.request_object = session_entity_type_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::SessionEntityType::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::SessionEntityType
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_session_entity_type_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1228,18 +1228,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Empty]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_agent_session_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Empty::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Empty
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1260,18 +1260,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::SessionEntityType] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::SessionEntityType]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_agent_session_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::SessionEntityType::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::SessionEntityType
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1296,18 +1296,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::ListSessionEntityTypesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::ListSessionEntityTypesResponse]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_agent_session_entity_types(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+parent}/entityTypes', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::ListSessionEntityTypesResponse::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::ListSessionEntityTypesResponse
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1321,7 +1321,7 @@ module Google
         #   Required. The unique identifier of this session entity type. Format:
         #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
         #   Display Name>`.
-        # @param [Google::Apis::DialogflowV2beta1::SessionEntityType] session_entity_type_object
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
         # @param [String] fields
@@ -1333,20 +1333,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::SessionEntityType] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::SessionEntityType]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_agent_session_entity_type(name, session_entity_type_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_agent_session_entity_type(name, google_cloud_dialogflow_v2beta1_session_entity_type_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::SessionEntityType::Representation
-          command.request_object = session_entity_type_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::SessionEntityType::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::SessionEntityType
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_session_entity_type_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1368,18 +1368,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DialogflowV2beta1::Operation]
+        # @return [Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_operation(name, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v2beta1/{+name}', options)
-          command.response_representation = Google::Apis::DialogflowV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::Operation
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
