@@ -73,6 +73,12 @@ module Google
       class Constraints
         include Google::Apis::Core::Hashable
       
+        # A client's physical location, expressed as a ISO 31166-1 alpha-2
+        # region code.
+        # Corresponds to the JSON property `deviceLocation`
+        # @return [String]
+        attr_accessor :device_location
+      
         # Requests the lists for a specific language. Expects ISO 639 alpha-2
         # format.
         # Corresponds to the JSON property `language`
@@ -111,6 +117,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_location = args[:device_location] if args.key?(:device_location)
           @language = args[:language] if args.key?(:language)
           @max_database_entries = args[:max_database_entries] if args.key?(:max_database_entries)
           @max_update_entries = args[:max_update_entries] if args.key?(:max_update_entries)

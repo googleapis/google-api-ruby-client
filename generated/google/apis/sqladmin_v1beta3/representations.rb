@@ -287,6 +287,7 @@ module Google
           property :enabled, as: 'enabled'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
         end
       end
@@ -337,6 +338,7 @@ module Google
       
           property :destination_instance_name, as: 'destinationInstanceName'
           property :kind, as: 'kind'
+          property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :source_instance_name, as: 'sourceInstanceName'
         end
       end

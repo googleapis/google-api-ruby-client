@@ -69,6 +69,14 @@ module Google
         # @return [String]
         attr_accessor :license
       
+        # Application-defined opaque metadata for this asset. This field is only
+        # returned when querying for the signed-in user's own assets, not for public
+        # assets. This string is limited to 1K chars. It is up to the creator of
+        # the asset to define the format for this string (for example, JSON).
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
         # The unique identifier for the asset in the form:
         # `assets/`ASSET_ID``.
         # Corresponds to the JSON property `name`
@@ -112,6 +120,7 @@ module Google
           @formats = args[:formats] if args.key?(:formats)
           @is_curated = args[:is_curated] if args.key?(:is_curated)
           @license = args[:license] if args.key?(:license)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @presentation_params = args[:presentation_params] if args.key?(:presentation_params)
           @thumbnail = args[:thumbnail] if args.key?(:thumbnail)

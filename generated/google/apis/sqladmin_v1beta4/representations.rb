@@ -363,6 +363,7 @@ module Google
           property :binary_log_enabled, as: 'binaryLogEnabled'
           property :enabled, as: 'enabled'
           property :kind, as: 'kind'
+          property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
         end
       end
@@ -416,6 +417,7 @@ module Google
       
           property :destination_instance_name, as: 'destinationInstanceName'
           property :kind, as: 'kind'
+          property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
         end
       end
       

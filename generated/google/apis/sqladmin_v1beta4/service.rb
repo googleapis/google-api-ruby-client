@@ -595,8 +595,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Demotes the standalone instance to be a read replica Cloud SQL instance of an
-        # on-premises master.
+        # Reserved for future use.
         # @param [String] project
         #   ID of the project that contains the instance.
         # @param [String] instance

@@ -93,6 +93,7 @@ module Google
       
           property :is_curated, as: 'isCurated'
           property :license, as: 'license'
+          property :metadata, as: 'metadata'
           property :name, as: 'name'
           property :presentation_params, as: 'presentationParams', class: Google::Apis::PolyV1::PresentationParams, decorator: Google::Apis::PolyV1::PresentationParams::Representation
       

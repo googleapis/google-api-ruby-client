@@ -196,6 +196,7 @@ module Google
       class Constraints
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_location, as: 'deviceLocation'
           property :language, as: 'language'
           property :max_database_entries, as: 'maxDatabaseEntries'
           property :max_update_entries, as: 'maxUpdateEntries'

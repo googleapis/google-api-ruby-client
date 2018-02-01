@@ -1335,7 +1335,9 @@ module Google
       
         # The content that was found. Even if the content is not textual, it
         # may be converted to a textual representation here.
-        # Provided if requested by the `InspectConfig`.
+        # Provided if requested by the `InspectConfig` and the finding is
+        # less than or equal to 4096 bytes long. If the finding exceeds 4096 bytes
+        # in length, the quote may be omitted.
         # Corresponds to the JSON property `quote`
         # @return [String]
         attr_accessor :quote

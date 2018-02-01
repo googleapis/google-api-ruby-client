@@ -82,6 +82,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Whether replication log archiving is enabled. Replication log archiving is
+        # required for the point-in-time recovery (PITR) feature. PostgreSQL instances
+        # only.
+        # Corresponds to the JSON property `replicationLogArchivingEnabled`
+        # @return [Boolean]
+        attr_accessor :replication_log_archiving_enabled
+        alias_method :replication_log_archiving_enabled?, :replication_log_archiving_enabled
+      
         # Start time for the daily backup configuration in UTC timezone in the 24 hour
         # format - HH:MM.
         # Corresponds to the JSON property `startTime`
@@ -97,6 +105,7 @@ module Google
           @binary_log_enabled = args[:binary_log_enabled] if args.key?(:binary_log_enabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @kind = args[:kind] if args.key?(:kind)
+          @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -273,6 +282,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The epoch timestamp, in milliseconds, of the time to which a point-in-time
+        # recovery (PITR) is performed. PostgreSQL instances only. For MySQL instances,
+        # use the binLogCoordinates property.
+        # Corresponds to the JSON property `pitrTimestampMs`
+        # @return [Fixnum]
+        attr_accessor :pitr_timestamp_ms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -282,6 +298,7 @@ module Google
           @bin_log_coordinates = args[:bin_log_coordinates] if args.key?(:bin_log_coordinates)
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
           @kind = args[:kind] if args.key?(:kind)
+          @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
         end
       end
       
@@ -422,9 +439,9 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica]
         attr_accessor :failover_replica
       
-        # The GCE zone that the instance is serving from. In case when the instance is
-        # failed over to standby zone, this value may be different with what user
-        # specified in the settings.
+        # The Compute Engine zone that the instance is currently serving from. This
+        # value could be different from the zone that was specified when the instance
+        # was created if the instance has failed over to its secondary zone.
         # Corresponds to the JSON property `gceZone`
         # @return [String]
         attr_accessor :gce_zone
@@ -771,8 +788,8 @@ module Google
       
         # The path to the file in Google Cloud Storage where the export will be stored.
         # The URI is in the form gs://bucketName/fileName. If the file already exists,
-        # the operation fails. If fileType is SQL and the filename ends with .gz, the
-        # contents are compressed.
+        # the requests succeeds, but the operation fails. If fileType is SQL and the
+        # filename ends with .gz, the contents are compressed.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1329,7 +1346,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Maintenance timing setting: canary (Earlier) or stable (Later).
+        # Learn more.
         # Corresponds to the JSON property `updateTrack`
         # @return [String]
         attr_accessor :update_track
@@ -1731,16 +1749,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The activation policy specifies when the instance is activated; it is
-        # applicable only when the instance state is RUNNABLE. The activation policy
-        # cannot be updated together with other settings for Second Generation instances.
-        # Valid values:
-        # ALWAYS: The instance is on; it is not deactivated by inactivity.
+        # applicable only when the instance state is RUNNABLE. Valid values:
+        # ALWAYS: The instance is on, and remains so even in the absence of connection
+        # requests.
         # NEVER: The instance is off; it is not activated, even if a connection request
         # arrives.
-        # ON_DEMAND: The instance responds to incoming requests, and turns itself off
-        # when not in use. Instances with PER_USE pricing turn off after 15 minutes of
-        # inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of
-        # inactivity.
+        # ON_DEMAND: First Generation instances only. The instance responds to incoming
+        # requests, and turns itself off when not in use. Instances with PER_USE pricing
+        # turn off after 15 minutes of inactivity. Instances with PER_PACKAGE pricing
+        # turn off after 12 hours of inactivity.
         # Corresponds to the JSON property `activationPolicy`
         # @return [String]
         attr_accessor :activation_policy
@@ -1751,7 +1768,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
-        # Reserved for future use.
+        # Availability type (PostgreSQL instances only). Potential values:
+        # ZONAL: The instance serves data from only one zone. Outages in that zone
+        # affect data accessibility.
+        # REGIONAL: The instance can serve data from more than one zone in a region (it
+        # is highly available).
+        # For more information, see Overview of the High Availability Configuration.
         # Corresponds to the JSON property `availabilityType`
         # @return [String]
         attr_accessor :availability_type

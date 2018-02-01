@@ -50,6 +50,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Whether replication log archiving is enabled. Replication log archiving is
+        # required for the point-in-time recovery (PITR) feature. PostgreSQL instances
+        # only.
+        # Corresponds to the JSON property `replicationLogArchivingEnabled`
+        # @return [Boolean]
+        attr_accessor :replication_log_archiving_enabled
+        alias_method :replication_log_archiving_enabled?, :replication_log_archiving_enabled
+      
         # Start time for the daily backup configuration in UTC timezone in the 24 hour
         # format - HH:MM.
         # Corresponds to the JSON property `startTime`
@@ -66,6 +74,7 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -223,6 +232,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The epoch timestamp, in milliseconds, of the time to which a point-in-time
+        # recovery (PITR) is performed. PostgreSQL instances only. For MySQL instances,
+        # use the binLogCoordinates property.
+        # Corresponds to the JSON property `pitrTimestampMs`
+        # @return [Fixnum]
+        attr_accessor :pitr_timestamp_ms
+      
         # Name of the Cloud SQL instance to be cloned.
         # Corresponds to the JSON property `sourceInstanceName`
         # @return [String]
@@ -237,6 +253,7 @@ module Google
           @bin_log_coordinates = args[:bin_log_coordinates] if args.key?(:bin_log_coordinates)
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
           @kind = args[:kind] if args.key?(:kind)
+          @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @source_instance_name = args[:source_instance_name] if args.key?(:source_instance_name)
         end
       end
