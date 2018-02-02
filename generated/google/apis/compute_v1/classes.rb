@@ -98,7 +98,8 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] The name of the zone where the accelerator type resides, such as
-        # us-central1-a.
+        # us-central1-a. You must specify this field as part of the HTTP request URL. It
+        # is not settable as a field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -475,6 +476,19 @@ module Google
         # @return [String]
         attr_accessor :nat_ip
       
+        # The DNS domain name for the public PTR record. This field can only be set when
+        # the set_public_ptr field is enabled.
+        # Corresponds to the JSON property `publicPtrDomainName`
+        # @return [String]
+        attr_accessor :public_ptr_domain_name
+      
+        # Specifies whether a public DNS ?PTR? record should be created to map the
+        # external IP address of the instance to a DNS domain name.
+        # Corresponds to the JSON property `setPublicPtr`
+        # @return [Boolean]
+        attr_accessor :set_public_ptr
+        alias_method :set_public_ptr?, :set_public_ptr
+      
         # The type of configuration. The default and only option is ONE_TO_ONE_NAT.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -489,6 +503,8 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @public_ptr_domain_name = args[:public_ptr_domain_name] if args.key?(:public_ptr_domain_name)
+          @set_public_ptr = args[:set_public_ptr] if args.key?(:set_public_ptr)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -549,7 +565,8 @@ module Google
         attr_accessor :name
       
         # [Output Only] URL of the region where the regional address resides. This field
-        # is not applicable to global addresses.
+        # is not applicable to global addresses. You must specify this field as part of
+        # the HTTP request URL. You cannot set this field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -2166,7 +2183,9 @@ module Google
         attr_accessor :protocol
       
         # [Output Only] URL of the region where the regional backend service resides.
-        # This field is not applicable to global backend services.
+        # This field is not applicable to global backend services. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -3449,7 +3468,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :users
       
-        # [Output Only] URL of the zone where the disk resides.
+        # [Output Only] URL of the zone where the disk resides. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3807,7 +3828,9 @@ module Google
         # @return [String]
         attr_accessor :valid_disk_size
       
-        # [Output Only] URL of the zone where the disk type resides.
+        # [Output Only] URL of the zone where the disk type resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -4282,7 +4305,7 @@ module Google
         attr_accessor :creation_timestamp
       
         # The list of DENY rules specified by this firewall. Each rule specifies a
-        # protocol and port-range tuple that describes a permitted connection.
+        # protocol and port-range tuple that describes a denied connection.
         # Corresponds to the JSON property `denied`
         # @return [Array<Google::Apis::ComputeV1::Firewall::Denied>]
         attr_accessor :denied
@@ -4739,7 +4762,6 @@ module Google
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
         # 5222
         # - TargetVpnGateway: 500, 4500
-        # -
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
@@ -4755,7 +4777,9 @@ module Google
         attr_accessor :ports
       
         # [Output Only] URL of the region where the regional forwarding rule resides.
-        # This field is not applicable to global forwarding rules.
+        # This field is not applicable to global forwarding rules. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -4780,7 +4804,6 @@ module Google
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
         # object.
-        # This field is not used for internal load balancing.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -6577,7 +6600,9 @@ module Google
         # @return [Google::Apis::ComputeV1::Tags]
         attr_accessor :tags
       
-        # [Output Only] URL of the zone where the instance resides.
+        # [Output Only] URL of the zone where the instance resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -8168,6 +8193,124 @@ module Google
         end
       end
       
+      # Contains a list of instance referrers.
+      class InstanceListReferrers
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of Reference resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::Reference>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#instanceListReferrers for lists
+        # of Instance referrers.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InstanceListReferrers::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InstanceListReferrers::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class MoveInstanceRequest
         include Google::Apis::Core::Hashable
@@ -9007,7 +9150,8 @@ module Google
         attr_accessor :private_interconnect_info
       
         # [Output Only] URL of the region where the regional interconnect attachment
-        # resides.
+        # resides. You must specify this field as part of the HTTP request URL. It is
+        # not settable as a field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -10393,6 +10537,8 @@ module Google
         # - REFRESHING The managed instance group is applying configuration changes to
         # the instance without stopping it. For example, the group can update the target
         # pool list for an instance without stopping that instance.
+        # - VERIFYING The managed instance group has created the instance and it is in
+        # the process of being verified.
         # Corresponds to the JSON property `currentAction`
         # @return [String]
         attr_accessor :current_action
@@ -11127,7 +11273,9 @@ module Google
         attr_accessor :progress
       
         # [Output Only] The URL of the region where the operation resides. Only
-        # available when performing regional operations.
+        # available when performing regional operations. You must specify this field as
+        # part of the HTTP request URL. It is not settable as a field in the request
+        # body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -11180,7 +11328,8 @@ module Google
         attr_accessor :warnings
       
         # [Output Only] The URL of the zone where the operation resides. Only available
-        # when performing per-zone operations.
+        # when performing per-zone operations. You must specify this field as part of
+        # the HTTP request URL. It is not settable as a field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -11953,6 +12102,45 @@ module Google
           @limit = args[:limit] if args.key?(:limit)
           @metric = args[:metric] if args.key?(:metric)
           @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # Represents a reference to a resource.
+      class Reference
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Type of the resource. Always compute#reference for references.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A description of the reference type with no implied semantics. Possible values
+        # include:
+        # - MEMBER_OF
+        # Corresponds to the JSON property `referenceType`
+        # @return [String]
+        attr_accessor :reference_type
+      
+        # URL of the resource which refers to the target.
+        # Corresponds to the JSON property `referrer`
+        # @return [String]
+        attr_accessor :referrer
+      
+        # URL of the resource to which this reference points.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @reference_type = args[:reference_type] if args.key?(:reference_type)
+          @referrer = args[:referrer] if args.key?(:referrer)
+          @target = args[:target] if args.key?(:target)
         end
       end
       
@@ -13242,7 +13430,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] URI of the region where the router resides.
+        # [Output Only] URI of the region where the router resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -14505,8 +14695,7 @@ module Google
         attr_accessor :description
       
         # [Output Only] The gateway address for default routes to reach destination
-        # addresses outside this subnetwork. This field can be set only at resource
-        # creation time.
+        # addresses outside this subnetwork.
         # Corresponds to the JSON property `gatewayAddress`
         # @return [String]
         attr_accessor :gateway_address
@@ -15539,7 +15728,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] URL of the zone where the target instance resides.
+        # [Output Only] URL of the zone where the target instance resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -17001,7 +17192,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] URL of the region where the target VPN gateway resides.
+        # [Output Only] URL of the region where the target VPN gateway resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -17473,8 +17666,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The list of expected URL mappings. Request to update this UrlMap will succeed
-        # only if all of the test cases pass.
+        # The list of expected URL mapping tests. Request to update this UrlMap will
+        # succeed only if all of the test cases pass. You can specify a maximum of 100
+        # tests per UrlMap.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeV1::UrlMapTest>]
         attr_accessor :tests
@@ -17847,7 +18041,9 @@ module Google
         # @return [String]
         attr_accessor :peer_ip
       
-        # [Output Only] URL of the region where the VPN tunnel resides.
+        # [Output Only] URL of the region where the VPN tunnel resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -17885,8 +18081,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # URL of the VPN gateway with which this VPN tunnel is associated. Provided by
-        # the client when the VPN tunnel is created.
+        # URL of the Target VPN gateway with which this VPN tunnel is associated.
+        # Provided by the client when the VPN tunnel is created.
         # Corresponds to the JSON property `targetVpnGateway`
         # @return [String]
         attr_accessor :target_vpn_gateway

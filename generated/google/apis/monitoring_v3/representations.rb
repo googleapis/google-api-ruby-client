@@ -548,6 +548,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
           collection :uptime_check_configs, as: 'uptimeCheckConfigs', class: Google::Apis::MonitoringV3::UptimeCheckConfig, decorator: Google::Apis::MonitoringV3::UptimeCheckConfig::Representation
       
         end

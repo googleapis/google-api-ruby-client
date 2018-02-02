@@ -1084,6 +1084,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceListReferrers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1613,6 +1631,12 @@ module Google
       end
       
       class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2724,6 +2748,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
+          property :public_ptr_domain_name, as: 'publicPtrDomainName'
+          property :set_public_ptr, as: 'setPublicPtr'
           property :type, as: 'type'
         end
       end
@@ -4602,6 +4628,38 @@ module Google
         end
       end
       
+      class InstanceListReferrers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Reference, decorator: Google::Apis::ComputeV1::Reference::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceListReferrers::Warning, decorator: Google::Apis::ComputeV1::InstanceListReferrers::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstanceListReferrers::Warning::Datum, decorator: Google::Apis::ComputeV1::InstanceListReferrers::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class MoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5571,6 +5629,16 @@ module Google
           property :limit, as: 'limit'
           property :metric, as: 'metric'
           property :usage, as: 'usage'
+        end
+      end
+      
+      class Reference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :reference_type, as: 'referenceType'
+          property :referrer, as: 'referrer'
+          property :target, as: 'target'
         end
       end
       

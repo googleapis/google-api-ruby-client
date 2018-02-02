@@ -943,6 +943,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :video_url, as: 'videoUrl'
+          property :video_vast_xml, as: 'videoVastXml'
         end
       end
       

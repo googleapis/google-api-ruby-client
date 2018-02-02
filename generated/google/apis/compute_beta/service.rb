@@ -3238,8 +3238,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified firewall rule with the data included in the request.
-        # Using PUT method, can only update following fields of firewall rule: allowed,
+        # Updates the specified firewall rule with the data included in the request. The
+        # PUT method can only update the following fields of firewall rule: allowed,
         # description, sourceRanges, sourceTags, targetTags.
         # @param [String] project
         #   Project ID for this request.
@@ -12521,7 +12521,7 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] backend_service
-        #   Name of the BackendService resource to which the queried instance belongs.
+        #   Name of the BackendService resource for which to get health.
         # @param [Google::Apis::ComputeBeta::ResourceGroupReference] resource_group_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

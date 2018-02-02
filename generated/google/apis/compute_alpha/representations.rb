@@ -8942,6 +8942,7 @@ module Google
           property :allow_subnet_cidr_routes_overlap, as: 'allowSubnetCidrRoutesOverlap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_flow_logs, as: 'enableFlowLogs'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'

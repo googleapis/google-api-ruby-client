@@ -762,7 +762,8 @@ module Google
         # single header, with the value being a comma-separated list of all the desired
         # values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page
         # 31). Entering two separate headers with the same key in a Create call will
-        # cause the first to be overwritten by the second.
+        # cause the first to be overwritten by the second. The maximum number of headers
+        # allowed is 100.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -1079,6 +1080,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total number of uptime check configurations for the project, irrespective
+        # of any pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         # The returned uptime check configurations.
         # Corresponds to the JSON property `uptimeCheckConfigs`
         # @return [Array<Google::Apis::MonitoringV3::UptimeCheckConfig>]
@@ -1091,6 +1098,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
           @uptime_check_configs = args[:uptime_check_configs] if args.key?(:uptime_check_configs)
         end
       end

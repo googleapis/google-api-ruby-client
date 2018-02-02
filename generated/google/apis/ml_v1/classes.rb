@@ -256,6 +256,13 @@ module Google
       class GoogleCloudMlV1HyperparameterSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates if the hyperparameter tuning job enables auto trial
+        # early stopping.
+        # Corresponds to the JSON property `enableTrialEarlyStopping`
+        # @return [Boolean]
+        attr_accessor :enable_trial_early_stopping
+        alias_method :enable_trial_early_stopping?, :enable_trial_early_stopping
+      
         # Required. The type of goal to use for tuning. Available types are
         # `MAXIMIZE` and `MINIMIZE`.
         # Defaults to `MAXIMIZE`.
@@ -296,17 +303,26 @@ module Google
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec>]
         attr_accessor :params
       
+        # Optional. The prior hyperparameter tuning job id that users hope to
+        # continue with. The job id will be used to find the corresponding vizier
+        # study guid and resume the study.
+        # Corresponds to the JSON property `resumePreviousJobId`
+        # @return [String]
+        attr_accessor :resume_previous_job_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_trial_early_stopping = args[:enable_trial_early_stopping] if args.key?(:enable_trial_early_stopping)
           @goal = args[:goal] if args.key?(:goal)
           @hyperparameter_metric_tag = args[:hyperparameter_metric_tag] if args.key?(:hyperparameter_metric_tag)
           @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
           @max_trials = args[:max_trials] if args.key?(:max_trials)
           @params = args[:params] if args.key?(:params)
+          @resume_previous_job_id = args[:resume_previous_job_id] if args.key?(:resume_previous_job_id)
         end
       end
       

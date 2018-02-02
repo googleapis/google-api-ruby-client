@@ -294,12 +294,14 @@ module Google
       class GoogleCloudMlV1HyperparameterSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_trial_early_stopping, as: 'enableTrialEarlyStopping'
           property :goal, as: 'goal'
           property :hyperparameter_metric_tag, as: 'hyperparameterMetricTag'
           property :max_parallel_trials, as: 'maxParallelTrials'
           property :max_trials, as: 'maxTrials'
           collection :params, as: 'params', class: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec::Representation
       
+          property :resume_previous_job_id, as: 'resumePreviousJobId'
         end
       end
       

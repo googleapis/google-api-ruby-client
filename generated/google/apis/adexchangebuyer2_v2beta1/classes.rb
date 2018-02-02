@@ -2148,6 +2148,12 @@ module Google
         # @return [String]
         attr_accessor :video_url
       
+        # The contents of a VAST document for a video ad.
+        # This document should conform to the VAST 2.0 or 3.0 standard.
+        # Corresponds to the JSON property `videoVastXml`
+        # @return [String]
+        attr_accessor :video_vast_xml
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2155,6 +2161,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @video_url = args[:video_url] if args.key?(:video_url)
+          @video_vast_xml = args[:video_vast_xml] if args.key?(:video_vast_xml)
         end
       end
       

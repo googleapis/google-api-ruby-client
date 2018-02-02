@@ -98,7 +98,8 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] The name of the zone where the accelerator type resides, such as
-        # us-central1-a.
+        # us-central1-a. You must specify this field as part of the HTTP request URL. It
+        # is not settable as a field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -615,7 +616,8 @@ module Google
         attr_accessor :network_tier
       
         # [Output Only] URL of the region where the regional address resides. This field
-        # is not applicable to global addresses.
+        # is not applicable to global addresses. You must specify this field as part of
+        # the HTTP request URL. You cannot set this field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -1270,7 +1272,8 @@ module Google
       # ] `
       # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
       # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
-      # com from DATA_WRITE logging.
+      # com from DATA_WRITE logging. This message is only visible as GOOGLE_INTERNAL
+      # or IAM_AUDIT_CONFIG.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -2584,7 +2587,9 @@ module Google
         attr_accessor :protocol
       
         # [Output Only] URL of the region where the regional backend service resides.
-        # This field is not applicable to global backend services.
+        # This field is not applicable to global backend services. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -4104,7 +4109,8 @@ module Google
         attr_accessor :physical_block_size_bytes
       
         # [Output Only] URL of the region where the disk resides. Only applicable for
-        # regional resources.
+        # regional resources. You must specify this field as part of the HTTP request
+        # URL. It is not settable as a field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -4210,7 +4216,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :users
       
-        # [Output Only] URL of the zone where the disk resides.
+        # [Output Only] URL of the zone where the disk resides. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -4615,7 +4623,9 @@ module Google
         # @return [String]
         attr_accessor :valid_disk_size
       
-        # [Output Only] URL of the zone where the disk type resides.
+        # [Output Only] URL of the zone where the disk type resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -5174,7 +5184,7 @@ module Google
         attr_accessor :creation_timestamp
       
         # The list of DENY rules specified by this firewall. Each rule specifies a
-        # protocol and port-range tuple that describes a permitted connection.
+        # protocol and port-range tuple that describes a denied connection.
         # Corresponds to the JSON property `denied`
         # @return [Array<Google::Apis::ComputeAlpha::Firewall::Denied>]
         attr_accessor :denied
@@ -5731,7 +5741,6 @@ module Google
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
         # 5222
         # - TargetVpnGateway: 500, 4500
-        # -
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
@@ -5747,7 +5756,9 @@ module Google
         attr_accessor :ports
       
         # [Output Only] URL of the region where the regional forwarding rule resides.
-        # This field is not applicable to global forwarding rules.
+        # This field is not applicable to global forwarding rules. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -5791,7 +5802,6 @@ module Google
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
         # object.
-        # This field is not used for internal load balancing.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -8788,7 +8798,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Tags]
         attr_accessor :tags
       
-        # [Output Only] URL of the zone where the instance resides.
+        # [Output Only] URL of the zone where the instance resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -9555,8 +9567,8 @@ module Google
         attr_accessor :restarting
       
         # [Output Only] The number of instances in the managed instance group that are
-        # being verified. More details regarding verification process are covered in the
-        # documentation of ManagedInstance.InstanceAction.VERIFYING enum field.
+        # being verified. See the managedInstances[].currentAction property in the
+        # listManagedInstances method documentation.
         # Corresponds to the JSON property `verifying`
         # @return [Fixnum]
         attr_accessor :verifying
@@ -12076,7 +12088,8 @@ module Google
         attr_accessor :private_interconnect_info
       
         # [Output Only] URL of the region where the regional interconnect attachment
-        # resides.
+        # resides. You must specify this field as part of the HTTP request URL. It is
+        # not settable as a field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -14477,6 +14490,8 @@ module Google
         # - REFRESHING The managed instance group is applying configuration changes to
         # the instance without stopping it. For example, the group can update the target
         # pool list for an instance without stopping that instance.
+        # - VERIFYING The managed instance group has created the instance and it is in
+        # the process of being verified.
         # Corresponds to the JSON property `currentAction`
         # @return [String]
         attr_accessor :current_action
@@ -16079,7 +16094,9 @@ module Google
         attr_accessor :progress
       
         # [Output Only] The URL of the region where the operation resides. Only
-        # available when performing regional operations.
+        # available when performing regional operations. You must specify this field as
+        # part of the HTTP request URL. It is not settable as a field in the request
+        # body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -16132,7 +16149,8 @@ module Google
         attr_accessor :warnings
       
         # [Output Only] The URL of the zone where the operation resides. Only available
-        # when performing per-zone operations.
+        # when performing per-zone operations. You must specify this field as part of
+        # the HTTP request URL. It is not settable as a field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -16728,11 +16746,12 @@ module Google
       # appspot.gserviceaccount.com", ] `, ` "role": "roles/viewer", "members": ["user:
       # sean@example.com"] ` ] `
       # For a description of IAM and its features, see the [IAM developer's guide](
-      # https://cloud.google.com/iam).
+      # https://cloud.google.com/iam/docs).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Specifies cloud audit logging configuration for this policy.
+        # Specifies cloud audit logging configuration for this policy. This field is
+        # only visible as GOOGLE_INTERNAL or IAM_AUDIT_CONFIG.
         # Corresponds to the JSON property `auditConfigs`
         # @return [Array<Google::Apis::ComputeAlpha::AuditConfig>]
         attr_accessor :audit_configs
@@ -16774,7 +16793,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::Rule>]
         attr_accessor :rules
       
-        # Version of the `Policy`. The default version is 0.
+        # Deprecated.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -18757,7 +18776,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] URI of the region where the router resides.
+        # [Output Only] URI of the region where the router resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -21297,6 +21318,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Whether to enable flow logging for this subnetwork.
+        # Corresponds to the JSON property `enableFlowLogs`
+        # @return [Boolean]
+        attr_accessor :enable_flow_logs
+        alias_method :enable_flow_logs?, :enable_flow_logs
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
@@ -21307,8 +21334,7 @@ module Google
         attr_accessor :fingerprint
       
         # [Output Only] The gateway address for default routes to reach destination
-        # addresses outside this subnetwork. This field can be set only at resource
-        # creation time.
+        # addresses outside this subnetwork.
         # Corresponds to the JSON property `gatewayAddress`
         # @return [String]
         attr_accessor :gateway_address
@@ -21387,6 +21413,7 @@ module Google
           @allow_subnet_cidr_routes_overlap = args[:allow_subnet_cidr_routes_overlap] if args.key?(:allow_subnet_cidr_routes_overlap)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_flow_logs = args[:enable_flow_logs] if args.key?(:enable_flow_logs)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
@@ -22410,7 +22437,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] URL of the zone where the target instance resides.
+        # [Output Only] URL of the zone where the target instance resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -23906,7 +23935,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # [Output Only] URL of the region where the target VPN gateway resides.
+        # [Output Only] URL of the region where the target VPN gateway resides. You must
+        # specify this field as part of the HTTP request URL. It is not settable as a
+        # field in the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -24460,8 +24491,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The list of expected URL mappings. Request to update this UrlMap will succeed
-        # only if all of the test cases pass.
+        # The list of expected URL mapping tests. Request to update this UrlMap will
+        # succeed only if all of the test cases pass. You can specify a maximum of 100
+        # tests per UrlMap.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeAlpha::UrlMapTest>]
         attr_accessor :tests
@@ -25023,7 +25055,9 @@ module Google
         # @return [String]
         attr_accessor :peer_ip
       
-        # [Output Only] URL of the region where the VPN tunnel resides.
+        # [Output Only] URL of the region where the VPN tunnel resides. You must specify
+        # this field as part of the HTTP request URL. It is not settable as a field in
+        # the request body.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -25061,8 +25095,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # URL of the VPN gateway with which this VPN tunnel is associated. Provided by
-        # the client when the VPN tunnel is created.
+        # URL of the Target VPN gateway with which this VPN tunnel is associated.
+        # Provided by the client when the VPN tunnel is created.
         # Corresponds to the JSON property `targetVpnGateway`
         # @return [String]
         attr_accessor :target_vpn_gateway
