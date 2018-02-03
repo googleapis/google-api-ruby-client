@@ -662,6 +662,12 @@ module Google
         # @return [String]
         attr_accessor :notes
       
+        # Additional properties related to a conference. An example would be a solution-
+        # specific setting for enabling video streaming.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::CalendarV3::ConferenceParameters]
+        attr_accessor :parameters
+      
         # The signature of the conference data.
         # Genereated on server side. Must be preserved while copying the conference data
         # between events, otherwise the conference data will not be copied.
@@ -682,7 +688,46 @@ module Google
           @create_request = args[:create_request] if args.key?(:create_request)
           @entry_points = args[:entry_points] if args.key?(:entry_points)
           @notes = args[:notes] if args.key?(:notes)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # 
+      class ConferenceParameters
+        include Google::Apis::Core::Hashable
+      
+        # Additional add-on specific data.
+        # Corresponds to the JSON property `addOnParameters`
+        # @return [Google::Apis::CalendarV3::ConferenceParametersAddOnParameters]
+        attr_accessor :add_on_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_on_parameters = args[:add_on_parameters] if args.key?(:add_on_parameters)
+        end
+      end
+      
+      # 
+      class ConferenceParametersAddOnParameters
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       

@@ -317,6 +317,9 @@ module Google
         #   [Required] Project ID of the job to cancel
         # @param [String] job_id
         #   [Required] Job ID of the job to cancel
+        # @param [String] location
+        #   [Experimental] The geographic location of the job. Required except for US and
+        #   EU.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -338,12 +341,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def cancel_job(project_id, job_id, location: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'projects/{projectId}/jobs/{jobId}/cancel', options)
           command.response_representation = Google::Apis::BigqueryV2::CancelJobResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::CancelJobResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -357,6 +361,9 @@ module Google
         #   [Required] Project ID of the requested job
         # @param [String] job_id
         #   [Required] Job ID of the requested job
+        # @param [String] location
+        #   [Experimental] The geographic location of the job. Required except for US and
+        #   EU.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -378,12 +385,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_job(project_id, job_id, location: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Job::Representation
           command.response_class = Google::Apis::BigqueryV2::Job
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -395,6 +403,9 @@ module Google
         #   [Required] Project ID of the query job
         # @param [String] job_id
         #   [Required] Job ID of the query job
+        # @param [String] location
+        #   [Experimental] The geographic location where the job should run. Required
+        #   except for US and EU.
         # @param [Fixnum] max_results
         #   Maximum number of results to read
         # @param [String] page_token
@@ -426,12 +437,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_job_query_results(project_id, job_id, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_job_query_results(project_id, job_id, location: nil, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/queries/{jobId}', options)
           command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::GetQueryResultsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['location'] = location unless location.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['startIndex'] = start_index unless start_index.nil?

@@ -94,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConferenceParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConferenceParametersAddOnParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConferenceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,7 +419,24 @@ module Google
           collection :entry_points, as: 'entryPoints', class: Google::Apis::CalendarV3::EntryPoint, decorator: Google::Apis::CalendarV3::EntryPoint::Representation
       
           property :notes, as: 'notes'
+          property :parameters, as: 'parameters', class: Google::Apis::CalendarV3::ConferenceParameters, decorator: Google::Apis::CalendarV3::ConferenceParameters::Representation
+      
           property :signature, as: 'signature'
+        end
+      end
+      
+      class ConferenceParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_on_parameters, as: 'addOnParameters', class: Google::Apis::CalendarV3::ConferenceParametersAddOnParameters, decorator: Google::Apis::CalendarV3::ConferenceParametersAddOnParameters::Representation
+      
+        end
+      end
+      
+      class ConferenceParametersAddOnParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
         end
       end
       

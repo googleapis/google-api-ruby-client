@@ -481,6 +481,7 @@ module Google
             property :id, as: 'id'
             property :kind, as: 'kind'
             hash :labels, as: 'labels'
+            property :location, as: 'location'
           end
         end
       end
@@ -644,6 +645,7 @@ module Google
           property :dry_run, as: 'dryRun'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobConfigurationExtract, decorator: Google::Apis::BigqueryV2::JobConfigurationExtract::Representation
       
+          property :job_timeout_ms, :numeric_string => true, as: 'jobTimeoutMs'
           hash :labels, as: 'labels'
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobConfigurationLoad, decorator: Google::Apis::BigqueryV2::JobConfigurationLoad::Representation
       
@@ -782,6 +784,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_id, as: 'jobId'
+          property :location, as: 'location'
           property :project_id, as: 'projectId'
         end
       end
@@ -789,6 +792,7 @@ module Google
       class JobStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_ratio, as: 'completionRatio'
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :end_time, :numeric_string => true, as: 'endTime'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
@@ -939,6 +943,7 @@ module Google
       
           property :dry_run, as: 'dryRun'
           property :kind, as: 'kind'
+          property :location, as: 'location'
           property :max_results, as: 'maxResults'
           property :parameter_mode, as: 'parameterMode'
           property :preserve_nulls, as: 'preserveNulls'
@@ -977,7 +982,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_inputs, as: 'activeInputs'
           property :completed_inputs, as: 'completedInputs'
-          property :completed_inputs_for_active_stages, as: 'completedInputsForActiveStages'
           property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
           property :pending_inputs, :numeric_string => true, as: 'pendingInputs'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'

@@ -514,6 +514,11 @@ module Google
           # @return [Hash<String,String>]
           attr_accessor :labels
         
+          # [Experimental] The geographic location where the data resides.
+          # Corresponds to the JSON property `location`
+          # @return [String]
+          attr_accessor :location
+        
           def initialize(**args)
              update!(**args)
           end
@@ -525,6 +530,7 @@ module Google
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
             @labels = args[:labels] if args.key?(:labels)
+            @location = args[:location] if args.key?(:location)
           end
         end
       end
@@ -1184,6 +1190,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationExtract]
         attr_accessor :extract
       
+        # [Optional] Job timeout in milliseconds. If this time limit is exceeded,
+        # BigQuery may attempt to terminate the job.
+        # Corresponds to the JSON property `jobTimeoutMs`
+        # @return [Fixnum]
+        attr_accessor :job_timeout_ms
+      
         # The labels associated with this job. You can use these to organize and group
         # your jobs. Label keys and values can be no longer than 63 characters, can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -1212,6 +1224,7 @@ module Google
           @copy = args[:copy] if args.key?(:copy)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @extract = args[:extract] if args.key?(:extract)
+          @job_timeout_ms = args[:job_timeout_ms] if args.key?(:job_timeout_ms)
           @labels = args[:labels] if args.key?(:labels)
           @load = args[:load] if args.key?(:load)
           @query = args[:query] if args.key?(:query)
@@ -1864,6 +1877,12 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
+        # [Experimental] The geographic location of the job. Required except for US and
+        # EU.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # [Required] The ID of the project containing this job.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -1876,6 +1895,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @location = args[:location] if args.key?(:location)
           @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
@@ -1883,6 +1903,12 @@ module Google
       # 
       class JobStatistics
         include Google::Apis::Core::Hashable
+      
+        # [Experimental] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT
+        # jobs.
+        # Corresponds to the JSON property `completionRatio`
+        # @return [Float]
+        attr_accessor :completion_ratio
       
         # [Output-only] Creation time of this job, in milliseconds since the epoch. This
         # field will be present on all jobs.
@@ -1930,6 +1956,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completion_ratio = args[:completion_ratio] if args.key?(:completion_ratio)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
@@ -2426,6 +2453,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Experimental] The geographic location where the job should run. Required
+        # except for US and EU.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # [Optional] The maximum number of rows of data to return per page of results.
         # Setting this flag to a small value such as 1000 and then paging through
         # results might improve reliability when the query result set is large. In
@@ -2496,6 +2529,7 @@ module Google
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @kind = args[:kind] if args.key?(:kind)
+          @location = args[:location] if args.key?(:location)
           @max_results = args[:max_results] if args.key?(:max_results)
           @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
@@ -2616,11 +2650,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :completed_inputs
       
-        # Total parallel units of work completed by the currently active stages.
-        # Corresponds to the JSON property `completedInputsForActiveStages`
-        # @return [Fixnum]
-        attr_accessor :completed_inputs_for_active_stages
-      
         # Milliseconds elapsed since the start of query execution.
         # Corresponds to the JSON property `elapsedMs`
         # @return [Fixnum]
@@ -2644,7 +2673,6 @@ module Google
         def update!(**args)
           @active_inputs = args[:active_inputs] if args.key?(:active_inputs)
           @completed_inputs = args[:completed_inputs] if args.key?(:completed_inputs)
-          @completed_inputs_for_active_stages = args[:completed_inputs_for_active_stages] if args.key?(:completed_inputs_for_active_stages)
           @elapsed_ms = args[:elapsed_ms] if args.key?(:elapsed_ms)
           @pending_inputs = args[:pending_inputs] if args.key?(:pending_inputs)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
