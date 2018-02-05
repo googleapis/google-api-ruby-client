@@ -1,3 +1,33 @@
+# 0.19.6
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigquery_v2`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `calendar_v3`
+  * Updated `cloudbuild_v1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2beta1`
+  * Updated `dlp_v2beta2`
+  * Updated `drive_v2`
+  * Updated `gmail_v1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `poly_v1`
+  * Updated `safebrowsing_v4`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `sheets_v4`
+  * Updated `slides_v1`
+  * Updated `sqladmin_v1beta3`
+  * Updated `sqladmin_v1beta4`
+  * Updated `testing_v1`
+  * Updated `tpu_v1alpha1`
+  * Updated `youtube_partner_v1`
+
 # 0.19.5
 * Backwards compatible changes:
   * Updated `androiddeviceprovisioning_v1`
