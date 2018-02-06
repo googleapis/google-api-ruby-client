@@ -76,7 +76,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :images
       
-        # URL to logs for this build in Google Cloud Logging.
+        # URL to logs for this build in Google Cloud Console.
         # @OutputOnly
         # Corresponds to the JSON property `logUrl`
         # @return [String]
