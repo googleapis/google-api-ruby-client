@@ -274,6 +274,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pubsub_topic_name, as: 'pubsubTopicName'
+          property :subfolder_matches, as: 'subfolderMatches'
         end
       end
       

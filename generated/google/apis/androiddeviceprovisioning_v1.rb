@@ -20,13 +20,13 @@ module Google
   module Apis
     # Android Device Provisioning Partner API
     #
-    # Automates reseller integration into zero-touch enrollment by assigning devices
-    # to customers and creating device reports.
+    # Automates Android zero-touch enrollment for device resellers, customers, and
+    # EMMs.
     #
     # @see https://developers.google.com/zero-touch/
     module AndroiddeviceprovisioningV1
       VERSION = 'V1'
-      REVISION = '20180120'
+      REVISION = '20180203'
     end
   end
 end

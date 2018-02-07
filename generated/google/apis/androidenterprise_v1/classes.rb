@@ -1175,6 +1175,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The last updated time of the managed configuration settings in milliseconds
+        # since 1970-01-01T00:00:00Z.
+        # Corresponds to the JSON property `lastUpdatedTimestampMillis`
+        # @return [Fixnum]
+        attr_accessor :last_updated_timestamp_millis
+      
         # The set of managed properties for this configuration.
         # Corresponds to the JSON property `managedProperty`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedProperty>]
@@ -1197,6 +1203,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] if args.key?(:last_updated_timestamp_millis)
           @managed_property = args[:managed_property] if args.key?(:managed_property)
           @mcm_id = args[:mcm_id] if args.key?(:mcm_id)
           @name = args[:name] if args.key?(:name)

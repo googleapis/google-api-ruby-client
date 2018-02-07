@@ -450,6 +450,11 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic_name
       
+        # 
+        # Corresponds to the JSON property `subfolderMatches`
+        # @return [String]
+        attr_accessor :subfolder_matches
+      
         def initialize(**args)
            update!(**args)
         end
@@ -457,6 +462,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pubsub_topic_name = args[:pubsub_topic_name] if args.key?(:pubsub_topic_name)
+          @subfolder_matches = args[:subfolder_matches] if args.key?(:subfolder_matches)
         end
       end
       

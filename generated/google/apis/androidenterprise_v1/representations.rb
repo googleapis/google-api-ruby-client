@@ -739,6 +739,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
           collection :managed_property, as: 'managedProperty', class: Google::Apis::AndroidenterpriseV1::ManagedProperty, decorator: Google::Apis::AndroidenterpriseV1::ManagedProperty::Representation
       
           property :mcm_id, as: 'mcmId'

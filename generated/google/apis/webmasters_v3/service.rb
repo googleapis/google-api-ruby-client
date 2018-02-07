@@ -283,7 +283,8 @@ module Google
         # Removes a site from the set of the user's Search Console sites.
         # @param [String] site_url
         #   The URI of the property as defined in Search Console. Examples: http://www.
-        #   example.com/ or android-app://com.example/
+        #   example.com/ or android-app://com.example/ Note: for property-sets, use the
+        #   URI that starts with sc-set: which is used in Search Console URLs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -317,7 +318,8 @@ module Google
         # Retrieves information about specific site.
         # @param [String] site_url
         #   The URI of the property as defined in Search Console. Examples: http://www.
-        #   example.com/ or android-app://com.example/
+        #   example.com/ or android-app://com.example/ Note: for property-sets, use the
+        #   URI that starts with sc-set: which is used in Search Console URLs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

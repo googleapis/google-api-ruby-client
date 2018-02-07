@@ -22,8 +22,8 @@ module Google
     module AndroiddeviceprovisioningV1
       # Android Device Provisioning Partner API
       #
-      # Automates reseller integration into zero-touch enrollment by assigning devices
-      #  to customers and creating device reports.
+      # Automates Android zero-touch enrollment for device resellers, customers, and
+      #  EMMs.
       #
       # @example
       #    require 'google/apis/androiddeviceprovisioning_v1'
@@ -51,7 +51,7 @@ module Google
         # Lists the user's customer accounts.
         # @param [Fixnum] page_size
         #   The maximum number of customers to show in a page of results.
-        #   A number between 1 and 1000 (inclusive).
+        #   A number between 1 and 100 (inclusive).
         # @param [String] page_token
         #   A token specifying which result page to return.
         # @param [String] fields
