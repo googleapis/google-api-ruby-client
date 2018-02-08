@@ -5329,6 +5329,50 @@ module Google
         end
       end
       
+      # Nonprofit information.
+      class Nonprofit
+        include Google::Apis::Core::Hashable
+      
+        # Id of the nonprofit.
+        # Corresponds to the JSON property `nonprofitId`
+        # @return [Google::Apis::YoutubeV3::NonprofitId]
+        attr_accessor :nonprofit_id
+      
+        # Legal name of the nonprofit.
+        # Corresponds to the JSON property `nonprofitLegalName`
+        # @return [String]
+        attr_accessor :nonprofit_legal_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nonprofit_id = args[:nonprofit_id] if args.key?(:nonprofit_id)
+          @nonprofit_legal_name = args[:nonprofit_legal_name] if args.key?(:nonprofit_legal_name)
+        end
+      end
+      
+      # 
+      class NonprofitId
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Paging details for lists of resources, including total number of items
       # available and number of resources returned in a single page.
       class PageInfo
@@ -6798,11 +6842,22 @@ module Google
         # @return [String]
         attr_accessor :display_string
       
+        # True if this event is a Super Chat for Good purchase.
+        # Corresponds to the JSON property `isSuperChatForGood`
+        # @return [Boolean]
+        attr_accessor :is_super_chat_for_good
+        alias_method :is_super_chat_for_good?, :is_super_chat_for_good
+      
         # The tier for the paid message, which is based on the amount of money spent to
         # purchase the message.
         # Corresponds to the JSON property `messageType`
         # @return [Fixnum]
         attr_accessor :message_type
+      
+        # Nonprofit information.
+        # Corresponds to the JSON property `nonprofit`
+        # @return [Google::Apis::YoutubeV3::Nonprofit]
+        attr_accessor :nonprofit
       
         # Details about the supporter.
         # Corresponds to the JSON property `supporterDetails`
@@ -6821,7 +6876,9 @@ module Google
           @created_at = args[:created_at] if args.key?(:created_at)
           @currency = args[:currency] if args.key?(:currency)
           @display_string = args[:display_string] if args.key?(:display_string)
+          @is_super_chat_for_good = args[:is_super_chat_for_good] if args.key?(:is_super_chat_for_good)
           @message_type = args[:message_type] if args.key?(:message_type)
+          @nonprofit = args[:nonprofit] if args.key?(:nonprofit)
           @supporter_details = args[:supporter_details] if args.key?(:supporter_details)
         end
       end

@@ -664,6 +664,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Nonprofit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonprofitId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2457,6 +2469,22 @@ module Google
         end
       end
       
+      class Nonprofit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nonprofit_id, as: 'nonprofitId', class: Google::Apis::YoutubeV3::NonprofitId, decorator: Google::Apis::YoutubeV3::NonprofitId::Representation
+      
+          property :nonprofit_legal_name, as: 'nonprofitLegalName'
+        end
+      end
+      
+      class NonprofitId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
       class PageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2851,7 +2879,10 @@ module Google
       
           property :currency, as: 'currency'
           property :display_string, as: 'displayString'
+          property :is_super_chat_for_good, as: 'isSuperChatForGood'
           property :message_type, as: 'messageType'
+          property :nonprofit, as: 'nonprofit', class: Google::Apis::YoutubeV3::Nonprofit, decorator: Google::Apis::YoutubeV3::Nonprofit::Representation
+      
           property :supporter_details, as: 'supporterDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
       
         end

@@ -48,12 +48,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates an enterprise by completing the enterprise signup flow.
+        # Creates an enterprise. This is the last step in the enterprise signup flow.
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object
         # @param [String] enterprise_token
         #   The enterprise token appended to the callback URL.
         # @param [String] project_id
-        #   The id of the Google Cloud Platform project which will own the enterprise.
+        #   The ID of the Google Cloud Platform project which will own the enterprise.
         # @param [String] signup_url_name
         #   The name of the SignupUrl used to sign up for the enterprise.
         # @param [String] fields
@@ -89,7 +89,7 @@ module Google
         
         # Gets an enterprise.
         # @param [String] name
-        #   The name of the enterprise in the form enterprises/`enterpriseId`
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,7 +119,7 @@ module Google
         
         # Updates an enterprise.
         # @param [String] name
-        #   The name of the enterprise in the form enterprises/`enterpriseId`
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object
         # @param [String] update_mask
         #   The field mask indicating the fields to update. If not set, all modifiable
@@ -157,7 +157,7 @@ module Google
         # Gets info about an application.
         # @param [String] name
         #   The name of the application in the form enterprises/`enterpriseId`/
-        #   applications/`package_name`
+        #   applications/`package_name`.
         # @param [String] language_code
         #   The preferred language for localized application info, as a BCP47 tag (e.g. "
         #   en-US", "de"). If not specified the default language of the application will
@@ -190,10 +190,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a device, which causes the device to be wiped.
+        # Deletes a device. This operation wipes the device.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
-        #   deviceId`
+        #   deviceId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,7 +224,7 @@ module Google
         # Gets a device.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
-        #   deviceId`
+        #   deviceId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,7 +257,7 @@ module Google
         # of the command.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
-        #   deviceId`
+        #   deviceId`.
         # @param [Google::Apis::AndroidmanagementV1::Command] command_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -290,12 +290,12 @@ module Google
         
         # Lists devices for a given enterprise.
         # @param [String] parent
-        #   The name of the enterprise in the form enterprises/`enterpriseId`
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Fixnum] page_size
         #   The requested page size. The actual page size may be fixed to a min or max
         #   value.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
+        #   A token identifying a page of results returned by the server.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,7 +328,7 @@ module Google
         # Updates a device.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
-        #   deviceId`
+        #   deviceId`.
         # @param [Google::Apis::AndroidmanagementV1::Device] device_object
         # @param [String] update_mask
         #   The field mask indicating the fields to update. If not set, all modifiable
@@ -512,7 +512,7 @@ module Google
         
         # Creates an enrollment token for a given enterprise.
         # @param [String] parent
-        #   The name of the enterprise in the form enterprises/`enterpriseId`
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Google::Apis::AndroidmanagementV1::EnrollmentToken] enrollment_token_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -543,10 +543,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an enrollment token, which prevents future use of the token.
+        # Deletes an enrollment token. This operation invalidates the token, preventing
+        # its future use.
         # @param [String] name
         #   The name of the enrollment token in the form enterprises/`enterpriseId`/
-        #   enrollmentTokens/`enrollmentTokenId`
+        #   enrollmentTokens/`enrollmentTokenId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -578,7 +579,7 @@ module Google
         # referencing the policy.
         # @param [String] name
         #   The name of the policy in the form enterprises/`enterpriseId`/policies/`
-        #   policyId`
+        #   policyId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -609,7 +610,7 @@ module Google
         # Gets a policy.
         # @param [String] name
         #   The name of the policy in the form enterprises/`enterpriseId`/policies/`
-        #   policyId`
+        #   policyId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -639,12 +640,12 @@ module Google
         
         # Lists policies for a given enterprise.
         # @param [String] parent
-        #   The name of the enterprise in the form enterprises/`enterpriseId`
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Fixnum] page_size
         #   The requested page size. The actual page size may be fixed to a min or max
         #   value.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
+        #   A token identifying a page of results returned by the server.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -677,7 +678,7 @@ module Google
         # Updates or creates a policy.
         # @param [String] name
         #   The name of the policy in the form enterprises/`enterpriseId`/policies/`
-        #   policyId`
+        #   policyId`.
         # @param [Google::Apis::AndroidmanagementV1::Policy] policy_object
         # @param [String] update_mask
         #   The field mask indicating the fields to update. If not set, all modifiable
@@ -715,7 +716,7 @@ module Google
         # Creates a web token to access an embeddable managed Google Play web UI for a
         # given enterprise.
         # @param [String] parent
-        #   The name of the enterprise in the form enterprises/`enterpriseId`
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Google::Apis::AndroidmanagementV1::WebToken] web_token_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -748,14 +749,14 @@ module Google
         
         # Creates an enterprise signup URL.
         # @param [String] callback_url
-        #   The callback URL to which the admin will be redirected after successfully
+        #   The callback URL that the admin will be redirected to after successfully
         #   creating an enterprise. Before redirecting there the system will add a query
         #   parameter to this URL named enterpriseToken which will contain an opaque token
         #   to be used for the create enterprise request. The URL will be parsed then
         #   reformatted in order to add the enterpriseToken parameter, so there may be
         #   some minor formatting changes.
         # @param [String] project_id
-        #   The id of the Google Cloud Platform project which will own the enterprise.
+        #   The ID of the Google Cloud Platform project which will own the enterprise.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

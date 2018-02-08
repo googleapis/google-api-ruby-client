@@ -22,7 +22,19 @@ module Google
   module Apis
     module IamV1
       
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,11 +220,28 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::IamV1::AuditLogConfig, decorator: Google::Apis::IamV1::AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
       class AuditData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_delta, as: 'policyDelta', class: Google::Apis::IamV1::PolicyDelta, decorator: Google::Apis::IamV1::PolicyDelta::Representation
       
+        end
+      end
+      
+      class AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
         end
       end
       
@@ -314,6 +343,8 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::IamV1::AuditConfig, decorator: Google::Apis::IamV1::AuditConfig::Representation
+      
           collection :bindings, as: 'bindings', class: Google::Apis::IamV1::Binding, decorator: Google::Apis::IamV1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
@@ -425,6 +456,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::IamV1::Policy, decorator: Google::Apis::IamV1::Policy::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       

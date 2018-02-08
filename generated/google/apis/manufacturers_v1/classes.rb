@@ -415,7 +415,7 @@ module Google
         # @return [String]
         attr_accessor :attribute
       
-        # Description of the issue.
+        # Longer description of the issue focused on how to resolve it.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

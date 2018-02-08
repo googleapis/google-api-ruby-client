@@ -49,12 +49,12 @@ module Google
       end
       
       # A compliance rule condition which is satisfied if the Android Framework API
-      # level on the device does not meet a minimum requirement. There can only be one
+      # level on the device doesn't meet a minimum requirement. There can only be one
       # rule with this type of condition per policy.
       class ApiLevelCondition
         include Google::Apis::Core::Hashable
       
-        # The minimum desired Android Framework API level. If the device does not meet
+        # The minimum desired Android Framework API level. If the device doesn't meet
         # the minimum requirement, this condition is satisfied. Must be greater than
         # zero.
         # Corresponds to the JSON property `minApiLevel`
@@ -71,18 +71,17 @@ module Google
         end
       end
       
-      # Application information.
+      # Information about an app.
       class Application
         include Google::Apis::Core::Hashable
       
-        # The set of managed properties available to be pre-configured for the
-        # application.
+        # The set of managed properties available to be pre-configured for the app.
         # Corresponds to the JSON property `managedProperties`
         # @return [Array<Google::Apis::AndroidmanagementV1::ManagedProperty>]
         attr_accessor :managed_properties
       
-        # The name of the application in the form enterprises/`enterpriseId`/
-        # applications/`package_name`
+        # The name of the app in the form enterprises/`enterpriseId`/applications/`
+        # package_name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -92,7 +91,7 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPermission>]
         attr_accessor :permissions
       
-        # The title of the application. Localized.
+        # The title of the app. Localized.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -110,12 +109,12 @@ module Google
         end
       end
       
-      # Application permission.
+      # A permission required by the app.
       class ApplicationPermission
         include Google::Apis::Core::Hashable
       
-        # A longer description of the permission, giving more details of what it affects.
-        # Localized.
+        # A longer description of the permission, providing more detail on what it
+        # affects. Localized.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -158,7 +157,7 @@ module Google
         # @return [String]
         attr_accessor :install_type
       
-        # Whether the application is allowed to lock itself in full-screen mode.
+        # Whether the app is allowed to lock itself in full-screen mode.
         # Corresponds to the JSON property `lockTaskAllowed`
         # @return [Boolean]
         attr_accessor :lock_task_allowed
@@ -178,8 +177,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
       
-        # The package name of the app, e.g. com.google.android.youtube for the YouTube
-        # app.
+        # The package name of the app. For example, com.google.android.youtube for the
+        # YouTube app.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -261,16 +260,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A compliance rule condition which is satisfied if the Android Framework API
-        # level on the device does not meet a minimum requirement. There can only be one
+        # level on the device doesn't meet a minimum requirement. There can only be one
         # rule with this type of condition per policy.
         # Corresponds to the JSON property `apiLevelCondition`
         # @return [Google::Apis::AndroidmanagementV1::ApiLevelCondition]
         attr_accessor :api_level_condition
       
-        # If set to true, the rule includes a mitigating action to disable applications
-        # so that the device is effectively disabled, but application data is preserved.
-        # If the device is running an app in locked task mode, the app will be closed
-        # and a UI showing the reason for non-compliance will be displayed.
+        # If set to true, the rule includes a mitigating action to disable apps so that
+        # the device is effectively disabled, but app data is preserved. If the device
+        # is running an app in locked task mode, the app will be closed and a UI showing
+        # the reason for non-compliance will be displayed.
         # Corresponds to the JSON property `disableApps`
         # @return [Boolean]
         attr_accessor :disable_apps
@@ -298,7 +297,7 @@ module Google
       end
       
       # A device owned by an enterprise. Unless otherwise noted, all fields are read-
-      # only and cannot be modified by an update device request.
+      # only and can't be modified by enterprises.devices.patch.
       class Device
         include Google::Apis::Core::Hashable
       
@@ -307,17 +306,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :api_level
       
-        # The name of the policy that is currently applied by the device.
+        # The name of the policy currently applied to the device.
         # Corresponds to the JSON property `appliedPolicyName`
         # @return [String]
         attr_accessor :applied_policy_name
       
-        # The version of the policy that is currently applied by the device.
+        # The version of the policy currently applied to the device.
         # Corresponds to the JSON property `appliedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :applied_policy_version
       
-        # The state that is currently applied by the device.
+        # The state currently applied to the device.
         # Corresponds to the JSON property `appliedState`
         # @return [String]
         attr_accessor :applied_state
@@ -327,14 +326,14 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::DeviceSettings]
         attr_accessor :device_settings
       
-        # Provides user facing message with locale info. The maximum message length is
+        # Provides a user-facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `disabledReason`
         # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
         attr_accessor :disabled_reason
       
-        # Displays on the device. This information is only available when
-        # displayInfoEnabled is true in the device's policy.
+        # Detailed information about displays on the device. This information is only
+        # available if displayInfoEnabled is true in the device's policy.
         # Corresponds to the JSON property `displays`
         # @return [Array<Google::Apis::AndroidmanagementV1::DisplayProp>]
         attr_accessor :displays
@@ -344,27 +343,27 @@ module Google
         # @return [String]
         attr_accessor :enrollment_time
       
-        # If this device was enrolled with an enrollment token with additional data
+        # If the device was enrolled with an enrollment token with additional data
         # provided, this field contains that data.
         # Corresponds to the JSON property `enrollmentTokenData`
         # @return [String]
         attr_accessor :enrollment_token_data
       
-        # If this device was enrolled with an enrollment token, this field contains the
+        # If the device was enrolled with an enrollment token, this field contains the
         # name of the token.
         # Corresponds to the JSON property `enrollmentTokenName`
         # @return [String]
         attr_accessor :enrollment_token_name
       
         # Information about device hardware. The fields related to temperature
-        # thresholds are only available when hardwareStatusEnabled is true in the device'
-        # s policy.
+        # thresholds are only available if hardwareStatusEnabled is true in the device's
+        # policy.
         # Corresponds to the JSON property `hardwareInfo`
         # @return [Google::Apis::AndroidmanagementV1::HardwareInfo]
         attr_accessor :hardware_info
       
         # Hardware status samples in chronological order. This information is only
-        # available when hardwareStatusEnabled is true in the device's policy.
+        # available if hardwareStatusEnabled is true in the device's policy.
         # Corresponds to the JSON property `hardwareStatusSamples`
         # @return [Array<Google::Apis::AndroidmanagementV1::HardwareStatus>]
         attr_accessor :hardware_status_samples
@@ -385,7 +384,7 @@ module Google
         attr_accessor :last_status_report_time
       
         # Events related to memory and storage measurements in chronological order. This
-        # information is only available when memoryInfoEnabled is true in the device's
+        # information is only available if memoryInfoEnabled is true in the device's
         # policy.
         # Corresponds to the JSON property `memoryEvents`
         # @return [Array<Google::Apis::AndroidmanagementV1::MemoryEvent>]
@@ -397,7 +396,7 @@ module Google
         attr_accessor :memory_info
       
         # The name of the device in the form enterprises/`enterpriseId`/devices/`
-        # deviceId`
+        # deviceId`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -407,7 +406,7 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::NetworkInfo]
         attr_accessor :network_info
       
-        # Details about policy settings for which the device is not in compliance.
+        # Details about policy settings that the device is not compliant with.
         # Corresponds to the JSON property `nonComplianceDetails`
         # @return [Array<Google::Apis::AndroidmanagementV1::NonComplianceDetail>]
         attr_accessor :non_compliance_details
@@ -418,27 +417,27 @@ module Google
         attr_accessor :policy_compliant
         alias_method :policy_compliant?, :policy_compliant
       
-        # The name of the policy that is intended to be applied to the device. If empty,
-        # the policy_name for the user that owns this device is applied. This field may
-        # be modified by an update request. The name of the policy is in the form
-        # enterprises/`enterpriseId`/policies/`policyId`. It is also permissible to only
-        # specify the policyId when updating this field as long as the policyId contains
-        # no slashes since the rest of the policy name can be inferred from context.
+        # The name of the policy applied to the device, in the form enterprises/`
+        # enterpriseId`/policies/`policyId`. If not specified, the policy_name for the
+        # device's user is applied. This field can be modified by a patch request. You
+        # can specify only the policyId when calling enterprises.devices.patch, as long
+        # as the policyId doesn’t contain any slashes. The rest of the policy name is
+        # inferred.
         # Corresponds to the JSON property `policyName`
         # @return [String]
         attr_accessor :policy_name
       
         # Power management events on the device in chronological order. This information
-        # is only available when powerManagementEventsEnabled is true in the device's
+        # is only available if powerManagementEventsEnabled is true in the device's
         # policy.
         # Corresponds to the JSON property `powerManagementEvents`
         # @return [Array<Google::Apis::AndroidmanagementV1::PowerManagementEvent>]
         attr_accessor :power_management_events
       
-        # The previous device names used for the same physical device when it has been
-        # enrolled multiple times. The serial number is used as the unique identifier to
-        # determine if the same physical device has enrolled previously. The names are
-        # in chronological order.
+        # If the same physical device has been enrolled multiple times, this field
+        # contains its previous device names. The serial number is used as the unique
+        # identifier to determine if the same physical device has enrolled previously.
+        # The names are in chronological order.
         # Corresponds to the JSON property `previousDeviceNames`
         # @return [Array<String>]
         attr_accessor :previous_device_names
@@ -448,10 +447,10 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::SoftwareInfo]
         attr_accessor :software_info
       
-        # The state that is intended to be applied to the device. This field may be
-        # modified by an update request. Note that UpdateDevice only handles toggling
-        # between ACTIVE and DISABLED states. Use the delete device method to cause the
-        # device to enter the DELETED state.
+        # The state to be applied to the device. This field can be modified by a patch
+        # request. Note that when calling enterprises.devices.patch, ACTIVE and DISABLED
+        # are the only allowable values. To enter the device into a DELETED state, call
+        # enterprises.devices.delete.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -634,16 +633,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional, arbitrary data associated with the enrollment token. This could
-        # contain, for example, the id of an org unit to which the device is assigned
-        # after enrollment. After a device enrolls with the token, this data will be
-        # exposed in the enrollment_token_data field of the Device resource. The data
-        # must be 1024 characters or less; otherwise, the creation request will fail.
+        # contain, for example, the ID of an org unit the device is assigned to after
+        # enrollment. After a device enrolls with the token, this data will be exposed
+        # in the enrollment_token_data field of the Device resource. The data must be
+        # 1024 characters or less; otherwise, the creation request will fail.
         # Corresponds to the JSON property `additionalData`
         # @return [String]
         attr_accessor :additional_data
       
-        # The duration of the token. If not specified, the duration will be 1 hour. The
-        # allowed range is 1 minute to 30 days.
+        # The length of time the enrollment token is valid, ranging from 1 minute to 30
+        # days. If not specified, the default duration is 1 hour.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
@@ -656,18 +655,18 @@ module Google
       
         # The name of the enrollment token, which is generated by the server during
         # creation, in the form enterprises/`enterpriseId`/enrollmentTokens/`
-        # enrollmentTokenId`
+        # enrollmentTokenId`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the policy that will be initially applied to the enrolled device
-        # in the form enterprises/`enterpriseId`/policies/`policyId`. If not specified,
-        # the policy_name for the user that owns the device is applied. If user_name
-        # also isn't specified, the policy defaults to enterprises/`enterpriseId`/
-        # policies/default. It is permissible to only specify the policyId when updating
-        # this field as long as the policyId contains no slashes since the rest of the
-        # policy name can be inferred from context.
+        # The name of the policy initially applied to the enrolled device, in the form
+        # enterprises/`enterpriseId`/policies/`policyId`. If not specified, the
+        # policy_name for the device’s user is applied. If user_name is also not
+        # specified, enterprises/`enterpriseId`/policies/default is applied by default.
+        # When updating this field, you can specify only the policyId as long as the
+        # policyId doesn’t contain any slashes. The rest of the policy name will be
+        # inferred.
         # Corresponds to the JSON property `policyName`
         # @return [String]
         attr_accessor :policy_name
@@ -680,7 +679,7 @@ module Google
         # @return [String]
         attr_accessor :qr_code
       
-        # The token value which is passed to the device and authorizes the device to
+        # The token value that's passed to the device and authorizes the device to
         # enroll. This is a read-only field generated by the server.
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -706,21 +705,20 @@ module Google
       class Enterprise
         include Google::Apis::Core::Hashable
       
-        # Whether app auto-approval is enabled. When enabled, apps installed via policy
-        # for this enterprise have all permissions automatically approved. When enabled,
-        # it is the caller's responsibility to display the permissions required by an
-        # app to the enterprise admin before setting the app to be installed in a policy.
+        # Whether permissions for apps installed via policy are automatically approved.
+        # If enabled, you must display an app's permissions to the enterprise admin
+        # before setting the app to be installed in a policy.
         # Corresponds to the JSON property `appAutoApprovalEnabled`
         # @return [Boolean]
         attr_accessor :app_auto_approval_enabled
         alias_method :app_auto_approval_enabled?, :app_auto_approval_enabled
       
-        # The notification types to enable via Google Cloud Pub/Sub.
+        # The types of Google Pub/Sub notifications enabled for the enterprise.
         # Corresponds to the JSON property `enabledNotificationTypes`
         # @return [Array<String>]
         attr_accessor :enabled_notification_types
       
-        # The name of the enterprise as it will appear to users.
+        # The name of the enterprise displayed to users.
         # Corresponds to the JSON property `enterpriseDisplayName`
         # @return [String]
         attr_accessor :enterprise_display_name
@@ -732,24 +730,22 @@ module Google
         attr_accessor :logo
       
         # The name of the enterprise which is generated by the server during creation,
-        # in the form enterprises/`enterpriseId`
+        # in the form enterprises/`enterpriseId`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A color in RGB format indicating the predominant color to display in the
+        # A color in RGB format that indicates the predominant color to display in the
         # device management app UI. The color components are stored as follows: (red <<
-        # 16) | (green << 8) | blue, where each component may take a value between 0 and
-        # 255 inclusive.
+        # 16) | (green << 8) | blue, where the value of each component is between 0 and
+        # 255, inclusive.
         # Corresponds to the JSON property `primaryColor`
         # @return [Fixnum]
         attr_accessor :primary_color
       
-        # When Cloud Pub/Sub notifications are enabled, this field is required to
-        # indicate the topic to which the notifications will be published. The format of
-        # this field is projects/`project`/topics/`topic`. You must have granted the
-        # publish permission on this topic to android-cloud-policy@system.
-        # gserviceaccount.com
+        # The topic that Cloud Pub/Sub notifications are published to, in the form
+        # projects/`project`/topics/`topic`. This field is only required if Pub/Sub
+        # notifications are enabled.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -776,13 +772,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The base-64 encoded SHA-256 hash of the content hosted at url. If the content
-        # does not match this hash, Android Device Policy will not use the data.
+        # doesn't match this hash, Android Device Policy won't use the data.
         # Corresponds to the JSON property `sha256Hash`
         # @return [String]
         attr_accessor :sha256_hash
       
         # The absolute URL to the data, which must use either the http or https scheme.
-        # Android Device Policy does not provide any credentials in the GET request, so
+        # Android Device Policy doesn't provide any credentials in the GET request, so
         # the URL must be publicly accessible. Including a long, random component in the
         # URL may be used to prevent attackers from discovering the URL.
         # Corresponds to the JSON property `url`
@@ -801,8 +797,8 @@ module Google
       end
       
       # Information about device hardware. The fields related to temperature
-      # thresholds are only available when hardwareStatusEnabled is true in the device'
-      # s policy.
+      # thresholds are only available if hardwareStatusEnabled is true in the device's
+      # policy.
       class HardwareInfo
         include Google::Apis::Core::Hashable
       
@@ -818,7 +814,7 @@ module Google
         # @return [Array<Float>]
         attr_accessor :battery_throttling_temperatures
       
-        # Brand of the device, e.g. Google.
+        # Brand of the device. For example, Google.
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
@@ -833,7 +829,7 @@ module Google
         # @return [Array<Float>]
         attr_accessor :cpu_throttling_temperatures
       
-        # Baseband version, e.g. MDM9625_104662.22.05.34p.
+        # Baseband version. For example, MDM9625_104662.22.05.34p.
         # Corresponds to the JSON property `deviceBasebandVersion`
         # @return [String]
         attr_accessor :device_baseband_version
@@ -848,17 +844,17 @@ module Google
         # @return [Array<Float>]
         attr_accessor :gpu_throttling_temperatures
       
-        # Name of the hardware, e.g. Angler.
+        # Name of the hardware. For example, Angler.
         # Corresponds to the JSON property `hardware`
         # @return [String]
         attr_accessor :hardware
       
-        # Manufacturer, e.g. Motorola.
+        # Manufacturer. For example, Motorola.
         # Corresponds to the JSON property `manufacturer`
         # @return [String]
         attr_accessor :manufacturer
       
-        # The model of the device, e.g. Asus Nexus 7.
+        # The model of the device. For example, Asus Nexus 7.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -1039,13 +1035,13 @@ module Google
       class ManagedProperty
         include Google::Apis::Core::Hashable
       
-        # The default value of the properties. BUNDLE_ARRAY properties never have a
+        # The default value of the property. BUNDLE_ARRAY properties don't have a
         # default value.
         # Corresponds to the JSON property `defaultValue`
         # @return [Object]
         attr_accessor :default_value
       
-        # A longer description of the property, giving more detail of what it affects.
+        # A longer description of the property, providing more detail of what it affects.
         # Localized.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1056,8 +1052,8 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ManagedPropertyEntry>]
         attr_accessor :entries
       
-        # The unique key that the application uses to identify the property, e.g. "com.
-        # google.android.gm.fieldname".
+        # The unique key that the app uses to identify the property, e.g. "com.google.
+        # android.gm.fieldname".
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -1181,17 +1177,17 @@ module Google
       class NetworkInfo
         include Google::Apis::Core::Hashable
       
-        # IMEI number of the GSM device, e.g. A1000031212.
+        # IMEI number of the GSM device. For example, A1000031212.
         # Corresponds to the JSON property `imei`
         # @return [String]
         attr_accessor :imei
       
-        # MEID number of the CDMA device, e.g. A00000292788E1.
+        # MEID number of the CDMA device. For example, A00000292788E1.
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
       
-        # WiFi MAC address of the device, e.g. 7c:11:11:11:11:11.
+        # Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.
         # Corresponds to the JSON property `wifiMacAddress`
         # @return [String]
         attr_accessor :wifi_mac_address
@@ -1231,7 +1227,7 @@ module Google
         attr_accessor :field_path
       
         # If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or
-        # APP_NOT_UPDATED, the detailed reason the app cannot be installed or updated.
+        # APP_NOT_UPDATED, the detailed reason the app can't be installed or updated.
         # Corresponds to the JSON property `installationFailureReason`
         # @return [String]
         attr_accessor :installation_failure_reason
@@ -1241,8 +1237,7 @@ module Google
         # @return [String]
         attr_accessor :non_compliance_reason
       
-        # The package name indicating which application is out of compliance, if
-        # applicable.
+        # The package name indicating which app is out of compliance, if applicable.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -1282,8 +1277,8 @@ module Google
         # @return [String]
         attr_accessor :non_compliance_reason
       
-        # The package name indicating which application is out of compliance. If not set,
-        # then this condition matches any package name.
+        # The package name of the app that's out of compliance. If not set, then this
+        # condition matches any package name.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -1419,8 +1414,8 @@ module Google
       class PasswordRequirements
         include Google::Apis::Core::Hashable
       
-        # A device will be wiped after too many incorrect device-unlock passwords have
-        # been entered. A value of 0 means there is no restriction.
+        # Number of incorrect device-unlock passwords that can be entered before a
+        # device is wiped. A value of 0 means there is no restriction.
         # Corresponds to the JSON property `maximumFailedPasswordsForWipe`
         # @return [Fixnum]
         attr_accessor :maximum_failed_passwords_for_wipe
@@ -1430,9 +1425,9 @@ module Google
         # @return [String]
         attr_accessor :password_expiration_timeout
       
-        # The length of the password history. After setting this, the user will not be
-        # able to enter a new password that is the same as any password in the history.
-        # A value of 0 means there is no restriction.
+        # The length of the password history. After setting this field, the user won't
+        # be able to enter a new password that is the same as any password in the
+        # history. A value of 0 means there is no restriction.
         # Corresponds to the JSON property `passwordHistoryLength`
         # @return [Fixnum]
         attr_accessor :password_history_length
@@ -1570,11 +1565,12 @@ module Google
         end
       end
       
-      # A policy, which governs behavior for a device.
+      # A policy resources represents a group settings that govern the behavior of a
+      # managed device and the apps installed on it.
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Account types that cannot be managed by the user.
+        # Account types that can't be managed by the user.
         # Corresponds to the JSON property `accountTypesWithManagementDisabled`
         # @return [Array<String>]
         attr_accessor :account_types_with_management_disabled
@@ -1681,12 +1677,12 @@ module Google
         attr_accessor :debugging_features_allowed
         alias_method :debugging_features_allowed?, :debugging_features_allowed
       
-        # The default permission policy for requests for runtime permissions.
+        # The default permission policy for runtime permission requests.
         # Corresponds to the JSON property `defaultPermissionPolicy`
         # @return [String]
         attr_accessor :default_permission_policy
       
-        # Whether application verification is forced to be enabled.
+        # Whether app verification is force-enabled.
         # Corresponds to the JSON property `ensureVerifyAppsEnabled`
         # @return [Boolean]
         attr_accessor :ensure_verify_apps_enabled
@@ -1701,7 +1697,7 @@ module Google
         # Email addresses of device administrators for factory reset protection. When
         # the device is factory reset, it will require one of these admins to log in
         # with the Google account email and password to unlock the device. If no admins
-        # are specified, the device will not provide factory reset protection.
+        # are specified, the device won't provide factory reset protection.
         # Corresponds to the JSON property `frpAdminEmails`
         # @return [Array<String>]
         attr_accessor :frp_admin_emails
@@ -1747,14 +1743,14 @@ module Google
         attr_accessor :kiosk_custom_launcher_enabled
         alias_method :kiosk_custom_launcher_enabled?, :kiosk_custom_launcher_enabled
       
-        # Provides user facing message with locale info. The maximum message length is
+        # Provides a user-facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `longSupportMessage`
         # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
         attr_accessor :long_support_message
       
-        # Maximum time in milliseconds for user activity until the device will lock. A
-        # value of 0 means there is no restriction.
+        # Maximum time in milliseconds for user activity until the device locks. A value
+        # of 0 means there is no restriction.
         # Corresponds to the JSON property `maximumTimeToLock`
         # @return [Fixnum]
         attr_accessor :maximum_time_to_lock
@@ -1778,7 +1774,7 @@ module Google
         alias_method :mount_physical_media_disabled?, :mount_physical_media_disabled
       
         # The name of the policy in the form enterprises/`enterpriseId`/policies/`
-        # policyId`
+        # policyId`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1807,7 +1803,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :open_network_configuration
       
-        # Whether using NFC to beam out data from apps is disabled.
+        # Whether using NFC to beam data from apps is disabled.
         # Corresponds to the JSON property `outgoingBeamDisabled`
         # @return [Boolean]
         attr_accessor :outgoing_beam_disabled
@@ -1870,20 +1866,20 @@ module Google
         attr_accessor :set_wallpaper_disabled
         alias_method :set_wallpaper_disabled?, :set_wallpaper_disabled
       
-        # Provides user facing message with locale info. The maximum message length is
+        # Provides a user-facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `shortSupportMessage`
         # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
         attr_accessor :short_support_message
       
-        # Whether sending or receiving SMS messages is disabled.
+        # Whether sending and receiving SMS messages is disabled.
         # Corresponds to the JSON property `smsDisabled`
         # @return [Boolean]
         attr_accessor :sms_disabled
         alias_method :sms_disabled?, :sms_disabled
       
         # Whether the status bar is disabled. This disables notifications, quick
-        # settings and other screen overlays that allow escape from full-screen mode.
+        # settings, and other screen overlays that allow escape from full-screen mode.
         # Corresponds to the JSON property `statusBarDisabled`
         # @return [Boolean]
         attr_accessor :status_bar_disabled
@@ -1942,14 +1938,14 @@ module Google
         attr_accessor :vpn_config_disabled
         alias_method :vpn_config_disabled?, :vpn_config_disabled
       
-        # Whether configuring WiFi access points is disabled.
+        # Whether configuring Wi-Fi access points is disabled.
         # Corresponds to the JSON property `wifiConfigDisabled`
         # @return [Boolean]
         attr_accessor :wifi_config_disabled
         alias_method :wifi_config_disabled?, :wifi_config_disabled
       
-        # Whether WiFi networks defined in Open Network Configuration are locked so they
-        # cannot be edited by the user.
+        # Whether Wi-Fi networks defined in Open Network Configuration are locked so
+        # they can't be edited by the user.
         # Corresponds to the JSON property `wifiConfigsLockdownEnabled`
         # @return [Boolean]
         attr_accessor :wifi_configs_lockdown_enabled
@@ -2099,14 +2095,14 @@ module Google
       class SignupUrl
         include Google::Apis::Core::Hashable
       
-        # The name of the resource. This must be included in the create enterprise
-        # request at the end of the signup flow.
+        # The name of the resource. Use this value in the signupUrl field when calling
+        # enterprises.create to complete the enterprise signup flow.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A URL under which the Admin can sign up for an enterprise. The page pointed to
-        # cannot be rendered in an iframe.
+        # A URL where an enterprise admin can register their enterprise. The page can't
+        # be rendered in an iframe.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2126,8 +2122,8 @@ module Google
       class SoftwareInfo
         include Google::Apis::Core::Hashable
       
-        # Android build Id string meant for displaying to the user, e.g. shamu-userdebug
-        # 6.0.1 MOB30I 2756745 dev-keys.
+        # Android build ID string meant for displaying to the user. For example, shamu-
+        # userdebug 6.0.1 MOB30I 2756745 dev-keys.
         # Corresponds to the JSON property `androidBuildNumber`
         # @return [String]
         attr_accessor :android_build_number
@@ -2147,7 +2143,7 @@ module Google
         # @return [String]
         attr_accessor :android_device_policy_version_name
       
-        # The user visible Android version string, e.g. 6.0.1.
+        # The user-visible Android version string. For example, 6.0.1.
         # Corresponds to the JSON property `androidVersion`
         # @return [String]
         attr_accessor :android_version
@@ -2157,7 +2153,7 @@ module Google
         # @return [String]
         attr_accessor :bootloader_version
       
-        # Kernel version, e.g. 2.6.32.9-g103d848.
+        # Kernel version, for example, 2.6.32.9-g103d848.
         # Corresponds to the JSON property `deviceKernelVersion`
         # @return [String]
         attr_accessor :device_kernel_version
@@ -2318,7 +2314,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If the type is WINDOWED, the end of the maintenance window, measured as the
-        # number of minutes after midnight in device local time. This value must be
+        # number of minutes after midnight in device's local time. This value must be
         # between 0 and 1439, inclusive. If this value is less than start_minutes, then
         # the maintenance window spans midnight. If the maintenance window specified is
         # smaller than 30 minutes, the actual window is extended to 30 minutes beyond
@@ -2328,8 +2324,8 @@ module Google
         attr_accessor :end_minutes
       
         # If the type is WINDOWED, the start of the maintenance window, measured as the
-        # number of minutes after midnight in device local time. This value must be
-        # between 0 and 1439, inclusive.
+        # number of minutes after midnight in the device's local time. This value must
+        # be between 0 and 1439, inclusive.
         # Corresponds to the JSON property `startMinutes`
         # @return [Fixnum]
         attr_accessor :start_minutes
@@ -2351,20 +2347,21 @@ module Google
         end
       end
       
-      # Provides user facing message with locale info. The maximum message length is
+      # Provides a user-facing message with locale info. The maximum message length is
       # 4096 characters.
       class UserFacingMessage
         include Google::Apis::Core::Hashable
       
-        # The default message that gets displayed if no localized message is specified,
-        # or the user's locale does not match with any of the localized messages. A
-        # default message must be provided if any localized messages are provided.
+        # The default message displayed if no localized message is specified or the user'
+        # s locale doesn't match with any of the localized messages. A default message
+        # must be provided if any localized messages are provided.
         # Corresponds to the JSON property `defaultMessage`
         # @return [String]
         attr_accessor :default_message
       
-        # A map which contains <locale, message> pairs. The locale is a BCP 47 language
-        # code, e.g. en-US, es-ES, fr.
+        # A map containing <locale, message> pairs, where locale is a well-formed BCP 47
+        # language (https://www.w3.org/International/articles/language-tags/) code, such
+        # as en-US, es-ES, or fr.
         # Corresponds to the JSON property `localizedMessages`
         # @return [Hash<String,String>]
         attr_accessor :localized_messages
@@ -2380,12 +2377,12 @@ module Google
         end
       end
       
-      # A web token used to access an embeddable managed Google Play web UI.
+      # A web token used to access the managed Google Play iframe.
       class WebToken
         include Google::Apis::Core::Hashable
       
-        # The name of the web token, which is generated by the server during creation,
-        # in the form enterprises/`enterpriseId`/webTokens/`webTokenId`.
+        # The name of the web token, which is generated by the server during creation in
+        # the form enterprises/`enterpriseId`/webTokens/`webTokenId`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2397,7 +2394,7 @@ module Google
         # @return [String]
         attr_accessor :parent_frame_url
       
-        # Permissions the admin may exercise in the embedded UI. The admin must have all
+        # Permissions available to an admin in the embedded UI. An admin must have all
         # of these permissions in order to view the UI.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]

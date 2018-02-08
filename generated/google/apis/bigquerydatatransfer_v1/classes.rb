@@ -638,7 +638,7 @@ module Google
       # When a new transfer configuration is created, the specified
       # `destination_dataset_id` is created when needed and shared with the
       # appropriate data source service account.
-      # Next id: 20
+      # Next id: 21
       class TransferConfig
         include Google::Apis::Core::Hashable
       
