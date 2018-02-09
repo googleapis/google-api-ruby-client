@@ -599,6 +599,72 @@ module Google
         end
       end
       
+      # Android application details based on application manifest and apk archive
+      # contents
+      class ApkDetail
+        include Google::Apis::Core::Hashable
+      
+        # An Android app manifest. See
+        # http://developer.android.com/guide/topics/manifest/manifest-intro.html
+        # Corresponds to the JSON property `apkManifest`
+        # @return [Google::Apis::TestingV1::ApkManifest]
+        attr_accessor :apk_manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apk_manifest = args[:apk_manifest] if args.key?(:apk_manifest)
+        end
+      end
+      
+      # An Android app manifest. See
+      # http://developer.android.com/guide/topics/manifest/manifest-intro.html
+      class ApkManifest
+        include Google::Apis::Core::Hashable
+      
+        # User-readable name for the application.
+        # Corresponds to the JSON property `applicationLabel`
+        # @return [String]
+        attr_accessor :application_label
+      
+        # 
+        # Corresponds to the JSON property `intentFilters`
+        # @return [Array<Google::Apis::TestingV1::IntentFilter>]
+        attr_accessor :intent_filters
+      
+        # Maximum API level on which the application is designed to run.
+        # Corresponds to the JSON property `maxSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :max_sdk_version
+      
+        # Minimum API level required for the application to run.
+        # Corresponds to the JSON property `minSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :min_sdk_version
+      
+        # Full Java-style package name for this application, e.g.
+        # "com.example.foo".
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_label = args[:application_label] if args.key?(:application_label)
+          @intent_filters = args[:intent_filters] if args.key?(:intent_filters)
+          @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
+          @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # Response containing the current state of the specified test matrix.
       class CancelTestMatrixResponse
         include Google::Apis::Core::Hashable
@@ -853,6 +919,26 @@ module Google
         end
       end
       
+      # Response containing the details of the specified Android application APK.
+      class GetApkDetailsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Android application details based on application manifest and apk archive
+        # contents
+        # Corresponds to the JSON property `apkDetail`
+        # @return [Google::Apis::TestingV1::ApkDetail]
+        attr_accessor :apk_detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apk_detail = args[:apk_detail] if args.key?(:apk_detail)
+        end
+      end
+      
       # Enables automatic Google account login.
       # If set, the service will automatically generate a Google test account and add
       # it to the device, before executing the test. Note that test accounts might be
@@ -892,6 +978,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
+        end
+      end
+      
+      # The <intent-filter> section of an <activity> tag.
+      # https://developer.android.com/guide/topics/manifest/intent-filter-element.html
+      class IntentFilter
+        include Google::Apis::Core::Hashable
+      
+        # The android:name value of the <action> tag
+        # Corresponds to the JSON property `actionNames`
+        # @return [Array<String>]
+        attr_accessor :action_names
+      
+        # The android:name value of the <category> tag
+        # Corresponds to the JSON property `categoryNames`
+        # @return [Array<String>]
+        attr_accessor :category_names
+      
+        # The android:mimeType value of the <data> tag
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_names = args[:action_names] if args.key?(:action_names)
+          @category_names = args[:category_names] if args.key?(:category_names)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       

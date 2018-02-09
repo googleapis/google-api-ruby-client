@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApkDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApkManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelTestMatrixResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetApkDetailsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAuto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +173,12 @@ module Google
       end
       
       class GoogleCloudStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntentFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +437,26 @@ module Google
         end
       end
       
+      class ApkDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apk_manifest, as: 'apkManifest', class: Google::Apis::TestingV1::ApkManifest, decorator: Google::Apis::TestingV1::ApkManifest::Representation
+      
+        end
+      end
+      
+      class ApkManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_label, as: 'applicationLabel'
+          collection :intent_filters, as: 'intentFilters', class: Google::Apis::TestingV1::IntentFilter, decorator: Google::Apis::TestingV1::IntentFilter::Representation
+      
+          property :max_sdk_version, as: 'maxSdkVersion'
+          property :min_sdk_version, as: 'minSdkVersion'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class CancelTestMatrixResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -495,6 +539,14 @@ module Google
         end
       end
       
+      class GetApkDetailsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apk_detail, as: 'apkDetail', class: Google::Apis::TestingV1::ApkDetail, decorator: Google::Apis::TestingV1::ApkDetail::Representation
+      
+        end
+      end
+      
       class GoogleAuto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -505,6 +557,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_path, as: 'gcsPath'
+        end
+      end
+      
+      class IntentFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :action_names, as: 'actionNames'
+          collection :category_names, as: 'categoryNames'
+          property :mime_type, as: 'mimeType'
         end
       end
       

@@ -697,7 +697,7 @@ module Google
         
         # Creates a new uptime check configuration.
         # @param [String] parent
-        #   The project in which to create the uptime check. The formatis projects/[
+        #   The project in which to create the uptime check. The format  is projects/[
         #   PROJECT_ID].
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
         # @param [String] fields
@@ -733,7 +733,7 @@ module Google
         # uptime check configuration is referenced by an alert policy or other dependent
         # configs that would be rendered invalid by the deletion.
         # @param [String] name
-        #   The uptime check configuration to delete. The formatis projects/[PROJECT_ID]/
+        #   The uptime check configuration to delete. The format  is projects/[PROJECT_ID]/
         #   uptimeCheckConfigs/[UPTIME_CHECK_ID].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -764,8 +764,8 @@ module Google
         
         # Gets a single uptime check configuration.
         # @param [String] name
-        #   The uptime check configuration to retrieve. The formatis projects/[PROJECT_ID]/
-        #   uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        #   The uptime check configuration to retrieve. The format  is projects/[
+        #   PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -796,7 +796,7 @@ module Google
         # Lists the existing valid uptime check configurations for the project, leaving
         # out any invalid configurations.
         # @param [String] parent
-        #   The project whose uptime check configurations are listed. The formatis
+        #   The project whose uptime check configurations are listed. The format  is
         #   projects/[PROJECT_ID].
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may

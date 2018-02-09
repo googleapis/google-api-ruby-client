@@ -48,6 +48,36 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Request the details of an Android application APK.
+        # @param [Google::Apis::TestingV1::FileReference] file_reference_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TestingV1::GetApkDetailsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TestingV1::GetApkDetailsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_application_detail_service_apk_details(file_reference_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/applicationDetailService/getApkDetails', options)
+          command.request_representation = Google::Apis::TestingV1::FileReference::Representation
+          command.request_object = file_reference_object
+          command.response_representation = Google::Apis::TestingV1::GetApkDetailsResponse::Representation
+          command.response_class = Google::Apis::TestingV1::GetApkDetailsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels unfinished test executions in a test matrix.
         # This call returns immediately and cancellation proceeds asychronously.
         # If the matrix is already final, this operation will have no effect.

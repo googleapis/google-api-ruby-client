@@ -598,6 +598,21 @@ module Google
       # `google.rpc.context.OriginContext`.
       # Available context types are defined in package
       # `google.rpc.context`.
+      # This also provides mechanism to whitelist any protobuf message extension that
+      # can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+      # “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+      # specific protobuf types that can appear in grpc metadata as follows in your
+      # yaml file:
+      # Example:
+      # context:
+      # rules:
+      # - selector: "google.example.library.v1.LibraryService.CreateBook"
+      # allowed_request_extensions:
+      # - google.foo.v1.NewExtension
+      # allowed_response_extensions:
+      # - google.foo.v1.NewExtension
+      # You can also specify extension ID instead of fully qualified extension name
+      # here.
       class Context
         include Google::Apis::Core::Hashable
       
@@ -622,6 +637,18 @@ module Google
       class ContextRule
         include Google::Apis::Core::Hashable
       
+        # A list of full type names or extension IDs of extensions allowed in grpc
+        # side channel from client to backend.
+        # Corresponds to the JSON property `allowedRequestExtensions`
+        # @return [Array<String>]
+        attr_accessor :allowed_request_extensions
+      
+        # A list of full type names or extension IDs of extensions allowed in grpc
+        # side channel from backend to client.
+        # Corresponds to the JSON property `allowedResponseExtensions`
+        # @return [Array<String>]
+        attr_accessor :allowed_response_extensions
+      
         # A list of full type names of provided contexts.
         # Corresponds to the JSON property `provided`
         # @return [Array<String>]
@@ -644,6 +671,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_request_extensions = args[:allowed_request_extensions] if args.key?(:allowed_request_extensions)
+          @allowed_response_extensions = args[:allowed_response_extensions] if args.key?(:allowed_response_extensions)
           @provided = args[:provided] if args.key?(:provided)
           @requested = args[:requested] if args.key?(:requested)
           @selector = args[:selector] if args.key?(:selector)
@@ -2940,6 +2969,21 @@ module Google
         # `google.rpc.context.OriginContext`.
         # Available context types are defined in package
         # `google.rpc.context`.
+        # This also provides mechanism to whitelist any protobuf message extension that
+        # can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+        # “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+        # specific protobuf types that can appear in grpc metadata as follows in your
+        # yaml file:
+        # Example:
+        # context:
+        # rules:
+        # - selector: "google.example.library.v1.LibraryService.CreateBook"
+        # allowed_request_extensions:
+        # - google.foo.v1.NewExtension
+        # allowed_response_extensions:
+        # - google.foo.v1.NewExtension
+        # You can also specify extension ID instead of fully qualified extension name
+        # here.
         # Corresponds to the JSON property `context`
         # @return [Google::Apis::ServiceconsumermanagementV1::Context]
         attr_accessor :context
@@ -3665,10 +3709,12 @@ module Google
       class TenantProjectPolicy
         include Google::Apis::Core::Hashable
       
-        # Additional policy bindings to be applied on the tenant
-        # project.
-        # At least one owner must be set in the bindings. Among the list of members
-        # as owners, at least one of them must be either `user` or `group` based.
+        # Policy bindings to be applied to the tenant project, in addition to the
+        # 'roles/owner' role granted to the Service Consumer Management service
+        # account.
+        # At least one binding must have the role `roles/owner`. Among the list of
+        # members for `roles/owner`, at least one of them must be either `user` or
+        # `group` type.
         # Corresponds to the JSON property `policyBindings`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::PolicyBinding>]
         attr_accessor :policy_bindings

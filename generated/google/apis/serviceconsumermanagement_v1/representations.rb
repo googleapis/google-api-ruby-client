@@ -602,6 +602,8 @@ module Google
       class ContextRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_request_extensions, as: 'allowedRequestExtensions'
+          collection :allowed_response_extensions, as: 'allowedResponseExtensions'
           collection :provided, as: 'provided'
           collection :requested, as: 'requested'
           property :selector, as: 'selector'

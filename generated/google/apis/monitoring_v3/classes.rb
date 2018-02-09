@@ -1880,8 +1880,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # How often the uptime check is performed. Currently, only 1, 5, 10, and 15
-        # minutes are supported. Required.
+        # How often, in seconds, the uptime check is performed. Currently, the only
+        # supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and
+        # 900s (15 minutes). Required.
         # Corresponds to the JSON property `period`
         # @return [String]
         attr_accessor :period

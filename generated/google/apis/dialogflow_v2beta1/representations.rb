@@ -697,7 +697,7 @@ module Google
           property :is_fallback, as: 'isFallback'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentMessage::Representation
       
-          property :ml_enabled, as: 'mlEnabled'
+          property :ml_disabled, as: 'mlDisabled'
           property :name, as: 'name'
           collection :output_contexts, as: 'outputContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Context, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Context::Representation
       
