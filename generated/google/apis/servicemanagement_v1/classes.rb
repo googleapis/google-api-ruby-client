@@ -123,6 +123,123 @@ module Google
         end
       end
       
+      # Specifies the audit configuration for a service.
+      # The configuration determines which permission types are logged, and what
+      # identities, if any, are exempted from logging.
+      # An AuditConfig must have one or more AuditLogConfigs.
+      # If there are AuditConfigs for both `allServices` and a specific service,
+      # the union of the two AuditConfigs is used for that service: the log_types
+      # specified in each AuditConfig are enabled, and the exempted_members in each
+      # AuditLogConfig are exempted.
+      # Example Policy with multiple AuditConfigs:
+      # `
+      # "audit_configs": [
+      # `
+      # "service": "allServices"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `,
+      # `
+      # "log_type": "ADMIN_READ",
+      # `
+      # ]
+      # `,
+      # `
+      # "service": "fooservice.googleapis.com"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # "exempted_members": [
+      # "user:bar@gmail.com"
+      # ]
+      # `
+      # ]
+      # `
+      # ]
+      # `
+      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
+      # bar@gmail.com from DATA_WRITE logging.
+      class AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for logging of each type of permission.
+        # Next ID: 4
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::ServicemanagementV1::AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Provides the configuration for logging a type of permissions.
+      # Example:
+      # `
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `
+      # ]
+      # `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+      # foo@gmail.com from DATA_READ logging.
+      class AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that do not cause logging for this type of
+        # permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
       # Configuration for an anthentication provider, including support for
       # [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
       # token-32).
@@ -1441,71 +1558,6 @@ module Google
         end
       end
       
-      # The metadata associated with a long running operation resource.
-      class FlowOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The state of the operation with respect to cancellation.
-        # Corresponds to the JSON property `cancelState`
-        # @return [String]
-        attr_accessor :cancel_state
-      
-        # Deadline for the flow to complete, to prevent orphaned Operations.
-        # If the flow has not completed by this time, it may be terminated by
-        # the engine, or force-failed by Operation lookup.
-        # Note that this is not a hard deadline after which the Flow will
-        # definitely be failed, rather it is a deadline after which it is reasonable
-        # to suspect a problem and other parts of the system may kill operation
-        # to ensure we don't have orphans.
-        # see also: go/prevent-orphaned-operations
-        # Corresponds to the JSON property `deadline`
-        # @return [String]
-        attr_accessor :deadline
-      
-        # The name of the top-level flow corresponding to this operation.
-        # Must be equal to the "name" field for a FlowName enum.
-        # Corresponds to the JSON property `flowName`
-        # @return [String]
-        attr_accessor :flow_name
-      
-        # Operation type which is a flow type and subtype info as that is missing in
-        # our datastore otherwise. This maps to the ordinal value of the enum:
-        # jcg/api/tenant/operations/OperationNamespace.java
-        # Corresponds to the JSON property `operationType`
-        # @return [Fixnum]
-        attr_accessor :operation_type
-      
-        # The full name of the resources that this flow is directly associated with.
-        # Corresponds to the JSON property `resourceNames`
-        # @return [Array<String>]
-        attr_accessor :resource_names
-      
-        # The start time of the operation.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # 
-        # Corresponds to the JSON property `surface`
-        # @return [String]
-        attr_accessor :surface
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cancel_state = args[:cancel_state] if args.key?(:cancel_state)
-          @deadline = args[:deadline] if args.key?(:deadline)
-          @flow_name = args[:flow_name] if args.key?(:flow_name)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @resource_names = args[:resource_names] if args.key?(:resource_names)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @surface = args[:surface] if args.key?(:surface)
-        end
-      end
-      
       # Request message for GenerateConfigReport method.
       class GenerateConfigReportRequest
         include Google::Apis::Core::Hashable
@@ -2462,13 +2514,12 @@ module Google
         # * `Gi`    gibi    (2**30)
         # * `Ti`    tebi    (2**40)
         # **Grammar**
-        # The grammar includes the dimensionless unit `1`, such as `1/s`.
         # The grammar also includes these connectors:
         # * `/`    division (as an infix operator, e.g. `1/s`).
         # * `.`    multiplication (as an infix operator, e.g. `GBy.d`)
         # The grammar for a unit is as follows:
         # Expression = Component ` "." Component ` ` "/" Component ` ;
-        # Component = [ PREFIX ] UNIT [ Annotation ]
+        # Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
         # | Annotation
         # | "1"
         # ;
@@ -2479,6 +2530,9 @@ module Google
         # ``requests`/s == 1/s`, `By`transmitted`/s == By/s`.
         # * `NAME` is a sequence of non-blank printable ASCII characters not
         # containing '`' or '`'.
+        # * `1` represents dimensionless value 1, such as in `1/s`.
+        # * `%` represents dimensionless value 1/100, and annotates values giving
+        # a percentage.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -3060,6 +3114,11 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::ServicemanagementV1::AuditConfig>]
+        attr_accessor :audit_configs
+      
         # Associates a list of `members` to a `role`.
         # `bindings` with no members will result in an error.
         # Corresponds to the JSON property `bindings`
@@ -3091,6 +3150,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)

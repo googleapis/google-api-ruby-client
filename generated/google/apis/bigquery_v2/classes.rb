@@ -650,10 +650,20 @@ module Google
         # @return [Float]
         attr_accessor :compute_ratio_max
       
+        # Stage end time in milliseconds.
+        # Corresponds to the JSON property `endMs`
+        # @return [Fixnum]
+        attr_accessor :end_ms
+      
         # Unique ID for stage within plan.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
+      
+        # IDs for stages that are inputs to this stage.
+        # Corresponds to the JSON property `inputStages`
+        # @return [Array<Fixnum>]
+        attr_accessor :input_stages
       
         # Human-readable name for stage.
         # Corresponds to the JSON property `name`
@@ -704,6 +714,11 @@ module Google
         # Corresponds to the JSON property `shuffleOutputBytesSpilled`
         # @return [Fixnum]
         attr_accessor :shuffle_output_bytes_spilled
+      
+        # Stage start time in milliseconds.
+        # Corresponds to the JSON property `startMs`
+        # @return [Fixnum]
+        attr_accessor :start_ms
       
         # Current status for the stage.
         # Corresponds to the JSON property `status`
@@ -767,7 +782,9 @@ module Google
           @compute_ms_max = args[:compute_ms_max] if args.key?(:compute_ms_max)
           @compute_ratio_avg = args[:compute_ratio_avg] if args.key?(:compute_ratio_avg)
           @compute_ratio_max = args[:compute_ratio_max] if args.key?(:compute_ratio_max)
+          @end_ms = args[:end_ms] if args.key?(:end_ms)
           @id = args[:id] if args.key?(:id)
+          @input_stages = args[:input_stages] if args.key?(:input_stages)
           @name = args[:name] if args.key?(:name)
           @parallel_inputs = args[:parallel_inputs] if args.key?(:parallel_inputs)
           @read_ms_avg = args[:read_ms_avg] if args.key?(:read_ms_avg)
@@ -778,6 +795,7 @@ module Google
           @records_written = args[:records_written] if args.key?(:records_written)
           @shuffle_output_bytes = args[:shuffle_output_bytes] if args.key?(:shuffle_output_bytes)
           @shuffle_output_bytes_spilled = args[:shuffle_output_bytes_spilled] if args.key?(:shuffle_output_bytes_spilled)
+          @start_ms = args[:start_ms] if args.key?(:start_ms)
           @status = args[:status] if args.key?(:status)
           @steps = args[:steps] if args.key?(:steps)
           @wait_ms_avg = args[:wait_ms_avg] if args.key?(:wait_ms_avg)
@@ -1449,8 +1467,8 @@ module Google
       
         # [Optional] The format of the data files. For CSV files, specify "CSV". For
         # datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
-        # specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". The default value
-        # is CSV.
+        # specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet,
+        # specify "PARQUET". For orc, specify "ORC". The default value is CSV.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
@@ -2042,7 +2060,7 @@ module Google
         # @return [String]
         attr_accessor :statement_type
       
-        # [Output-only] Describes a timeline of job execution.
+        # [Output-only] [Experimental] Describes a timeline of job execution.
         # Corresponds to the JSON property `timeline`
         # @return [Array<Google::Apis::BigqueryV2::QueryTimelineSample>]
         attr_accessor :timeline
@@ -3350,6 +3368,13 @@ module Google
         # @return [String]
         attr_accessor :field
       
+        # [Experimental] [Optional] If set to true, queries over this table require a
+        # partition filter that can be used for partition elimination to be specified.
+        # Corresponds to the JSON property `requirePartitionFilter`
+        # @return [Boolean]
+        attr_accessor :require_partition_filter
+        alias_method :require_partition_filter?, :require_partition_filter
+      
         # [Required] The only type supported is DAY, which will generate one partition
         # per day.
         # Corresponds to the JSON property `type`
@@ -3364,6 +3389,7 @@ module Google
         def update!(**args)
           @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
           @field = args[:field] if args.key?(:field)
+          @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @type = args[:type] if args.key?(:type)
         end
       end

@@ -519,7 +519,9 @@ module Google
           property :compute_ms_max, :numeric_string => true, as: 'computeMsMax'
           property :compute_ratio_avg, as: 'computeRatioAvg'
           property :compute_ratio_max, as: 'computeRatioMax'
+          property :end_ms, :numeric_string => true, as: 'endMs'
           property :id, :numeric_string => true, as: 'id'
+          collection :input_stages, as: 'inputStages'
           property :name, as: 'name'
           property :parallel_inputs, :numeric_string => true, as: 'parallelInputs'
           property :read_ms_avg, :numeric_string => true, as: 'readMsAvg'
@@ -530,6 +532,7 @@ module Google
           property :records_written, :numeric_string => true, as: 'recordsWritten'
           property :shuffle_output_bytes, :numeric_string => true, as: 'shuffleOutputBytes'
           property :shuffle_output_bytes_spilled, :numeric_string => true, as: 'shuffleOutputBytesSpilled'
+          property :start_ms, :numeric_string => true, as: 'startMs'
           property :status, as: 'status'
           collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
       
@@ -1169,6 +1172,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expiration_ms, :numeric_string => true, as: 'expirationMs'
           property :field, as: 'field'
+          property :require_partition_filter, as: 'requirePartitionFilter'
           property :type, as: 'type'
         end
       end
