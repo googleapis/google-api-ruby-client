@@ -1,3 +1,29 @@
+# 0.19.7
+* Backwards compatible changes:
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidmanagement_v1`
+  * Updated `bigquery_v2`
+  * Updated `bigquerydatatransfer_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudiot_v1`
+  * Updated `cloudkms_v1`
+  * Updated `dataproc_v1`
+  * Updated `dialogflow_v2beta1`
+  * Updated `genomics_v1`
+  * Updated `genomics_v1alpha2`
+  * Updated `iam_v1`
+  * Updated `manufacturers_v1`
+  * Updated `monitoring_v3`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `slides_v1`
+  * Updated `testing_v1`
+  * Updated `webmasters_v3`
+  * Updated `youtube_partner_v1`
+  * Updated `youtube_v3`
+
 # 0.19.6
 * Backwards compatible changes:
   * Updated `adexchangebuyer2_v2beta1`
