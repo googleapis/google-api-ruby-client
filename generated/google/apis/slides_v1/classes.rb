@@ -170,6 +170,11 @@ module Google
         # @return [Array<Google::Apis::SlidesV1::Response>]
         attr_accessor :replies
       
+        # Provides control over how write requests are executed.
+        # Corresponds to the JSON property `writeControl`
+        # @return [Google::Apis::SlidesV1::WriteControl]
+        attr_accessor :write_control
+      
         def initialize(**args)
            update!(**args)
         end
@@ -178,6 +183,7 @@ module Google
         def update!(**args)
           @presentation_id = args[:presentation_id] if args.key?(:presentation_id)
           @replies = args[:replies] if args.key?(:replies)
+          @write_control = args[:write_control] if args.key?(:write_control)
         end
       end
       
@@ -1189,6 +1195,12 @@ module Google
         # @return [Google::Apis::SlidesV1::ImageProperties]
         attr_accessor :image_properties
       
+        # The source URL is the URL used to insert the image. The source URL can be
+        # empty.
+        # Corresponds to the JSON property `sourceUrl`
+        # @return [String]
+        attr_accessor :source_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1197,6 +1209,7 @@ module Google
         def update!(**args)
           @content_url = args[:content_url] if args.key?(:content_url)
           @image_properties = args[:image_properties] if args.key?(:image_properties)
+          @source_url = args[:source_url] if args.key?(:source_url)
         end
       end
       

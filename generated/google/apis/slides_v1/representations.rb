@@ -823,6 +823,8 @@ module Google
           property :presentation_id, as: 'presentationId'
           collection :replies, as: 'replies', class: Google::Apis::SlidesV1::Response, decorator: Google::Apis::SlidesV1::Response::Representation
       
+          property :write_control, as: 'writeControl', class: Google::Apis::SlidesV1::WriteControl, decorator: Google::Apis::SlidesV1::WriteControl::Representation
+      
         end
       end
       
@@ -1102,6 +1104,7 @@ module Google
           property :content_url, as: 'contentUrl'
           property :image_properties, as: 'imageProperties', class: Google::Apis::SlidesV1::ImageProperties, decorator: Google::Apis::SlidesV1::ImageProperties::Representation
       
+          property :source_url, as: 'sourceUrl'
         end
       end
       

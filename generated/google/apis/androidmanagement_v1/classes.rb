@@ -152,6 +152,11 @@ module Google
         # @return [String]
         attr_accessor :default_permission_policy
       
+        # The scopes delegated to the app from Android Device Policy.
+        # Corresponds to the JSON property `delegatedScopes`
+        # @return [Array<String>]
+        attr_accessor :delegated_scopes
+      
         # The type of installation to perform.
         # Corresponds to the JSON property `installType`
         # @return [String]
@@ -177,6 +182,16 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
       
+        # The minimum version of the app that runs on the device. If set, the device
+        # attempts to update the app to at least this version code. If the app is not up-
+        # to-date, the device will contain a NonComplianceDetail with
+        # non_compliance_reason set to APP_NOT_UPDATED. The app must already be
+        # published to Google Play with a version code greater than or equal to this
+        # value. At most 20 apps may specify a minimum version code per policy.
+        # Corresponds to the JSON property `minimumVersionCode`
+        # @return [Fixnum]
+        attr_accessor :minimum_version_code
+      
         # The package name of the app. For example, com.google.android.youtube for the
         # YouTube app.
         # Corresponds to the JSON property `packageName`
@@ -196,9 +211,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
+          @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @install_type = args[:install_type] if args.key?(:install_type)
           @lock_task_allowed = args[:lock_task_allowed] if args.key?(:lock_task_allowed)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
+          @minimum_version_code = args[:minimum_version_code] if args.key?(:minimum_version_code)
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
         end
@@ -501,13 +518,14 @@ module Google
       class DeviceSettings
         include Google::Apis::Core::Hashable
       
-        # If the ADB is enabled Settings.Global.ADB_ENABLED.
+        # Whether ADB (https://developer.android.com/studio/command-line/adb.html) is
+        # enabled on the device.
         # Corresponds to the JSON property `adbEnabled`
         # @return [Boolean]
         attr_accessor :adb_enabled
         alias_method :adb_enabled?, :adb_enabled
       
-        # If the developer mode is enabled Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.
+        # Whether developer mode is enabled on the device.
         # Corresponds to the JSON property `developmentSettingsEnabled`
         # @return [Boolean]
         attr_accessor :development_settings_enabled
@@ -518,26 +536,30 @@ module Google
         # @return [String]
         attr_accessor :encryption_status
       
-        # Device secured with PIN/password.
+        # Whether the device is secured with PIN/password.
         # Corresponds to the JSON property `isDeviceSecure`
         # @return [Boolean]
         attr_accessor :is_device_secure
         alias_method :is_device_secure?, :is_device_secure
       
-        # Whether the storage encryption is enabled DevicePolicyManager.
-        # ENCRYPTION_STATUS_ACTIVE or DevicePolicyManager.
-        # ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.
+        # Whether the storage encryption is enabled.
         # Corresponds to the JSON property `isEncrypted`
         # @return [Boolean]
         attr_accessor :is_encrypted
         alias_method :is_encrypted?, :is_encrypted
       
-        # If installing apps from unknown sources is enabled. Settings.Secure.
-        # INSTALL_NON_MARKET_APPS.
+        # Whether installing apps from unknown sources is enabled.
         # Corresponds to the JSON property `unknownSourcesEnabled`
         # @return [Boolean]
         attr_accessor :unknown_sources_enabled
         alias_method :unknown_sources_enabled?, :unknown_sources_enabled
+      
+        # Whether Verify Apps (Google Play Protect (https://support.google.com/
+        # googleplay/answer/2812853)) is enabled on the device.
+        # Corresponds to the JSON property `verifyAppsEnabled`
+        # @return [Boolean]
+        attr_accessor :verify_apps_enabled
+        alias_method :verify_apps_enabled?, :verify_apps_enabled
       
         def initialize(**args)
            update!(**args)
@@ -551,6 +573,7 @@ module Google
           @is_device_secure = args[:is_device_secure] if args.key?(:is_device_secure)
           @is_encrypted = args[:is_encrypted] if args.key?(:is_encrypted)
           @unknown_sources_enabled = args[:unknown_sources_enabled] if args.key?(:unknown_sources_enabled)
+          @verify_apps_enabled = args[:verify_apps_enabled] if args.key?(:verify_apps_enabled)
         end
       end
       
@@ -1187,6 +1210,11 @@ module Google
         # @return [String]
         attr_accessor :meid
       
+        # Alphabetic name of current registered operator. For example, Vodafone.
+        # Corresponds to the JSON property `networkOperatorName`
+        # @return [String]
+        attr_accessor :network_operator_name
+      
         # Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.
         # Corresponds to the JSON property `wifiMacAddress`
         # @return [String]
@@ -1200,6 +1228,7 @@ module Google
         def update!(**args)
           @imei = args[:imei] if args.key?(:imei)
           @meid = args[:meid] if args.key?(:meid)
+          @network_operator_name = args[:network_operator_name] if args.key?(:network_operator_name)
           @wifi_mac_address = args[:wifi_mac_address] if args.key?(:wifi_mac_address)
         end
       end
@@ -1592,6 +1621,13 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage]
         attr_accessor :always_on_vpn_package
       
+        # The app tracks for Android Device Policy the device can access. The device
+        # receives the latest version among all accessible tracks. If no tracks are
+        # specified, then the device only uses the production track.
+        # Corresponds to the JSON property `androidDevicePolicyTracks`
+        # @return [Array<String>]
+        attr_accessor :android_device_policy_tracks
+      
         # Policy applied to apps.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
@@ -1961,6 +1997,7 @@ module Google
           @add_user_disabled = args[:add_user_disabled] if args.key?(:add_user_disabled)
           @adjust_volume_disabled = args[:adjust_volume_disabled] if args.key?(:adjust_volume_disabled)
           @always_on_vpn_package = args[:always_on_vpn_package] if args.key?(:always_on_vpn_package)
+          @android_device_policy_tracks = args[:android_device_policy_tracks] if args.key?(:android_device_policy_tracks)
           @applications = args[:applications] if args.key?(:applications)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
@@ -2153,6 +2190,14 @@ module Google
         # @return [String]
         attr_accessor :bootloader_version
       
+        # SHA-256 hash of android.content.pm.Signature (https://developer.android.com/
+        # reference/android/content/pm/Signature.html) associated with the system
+        # package, which can be used to verify that the system build hasn't been
+        # modified.
+        # Corresponds to the JSON property `deviceBuildSignature`
+        # @return [String]
+        attr_accessor :device_build_signature
+      
         # Kernel version, for example, 2.6.32.9-g103d848.
         # Corresponds to the JSON property `deviceKernelVersion`
         # @return [String]
@@ -2175,6 +2220,7 @@ module Google
           @android_device_policy_version_name = args[:android_device_policy_version_name] if args.key?(:android_device_policy_version_name)
           @android_version = args[:android_version] if args.key?(:android_version)
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
+          @device_build_signature = args[:device_build_signature] if args.key?(:device_build_signature)
           @device_kernel_version = args[:device_kernel_version] if args.key?(:device_kernel_version)
           @security_patch_level = args[:security_patch_level] if args.key?(:security_patch_level)
         end

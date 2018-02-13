@@ -308,9 +308,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_permission_policy, as: 'defaultPermissionPolicy'
+          collection :delegated_scopes, as: 'delegatedScopes'
           property :install_type, as: 'installType'
           property :lock_task_allowed, as: 'lockTaskAllowed'
           hash :managed_configuration, as: 'managedConfiguration'
+          property :minimum_version_code, as: 'minimumVersionCode'
           property :package_name, as: 'packageName'
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
@@ -392,6 +394,7 @@ module Google
           property :is_device_secure, as: 'isDeviceSecure'
           property :is_encrypted, as: 'isEncrypted'
           property :unknown_sources_enabled, as: 'unknownSourcesEnabled'
+          property :verify_apps_enabled, as: 'verifyAppsEnabled'
         end
       end
       
@@ -554,6 +557,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :imei, as: 'imei'
           property :meid, as: 'meid'
+          property :network_operator_name, as: 'networkOperatorName'
           property :wifi_mac_address, as: 'wifiMacAddress'
         end
       end
@@ -640,6 +644,7 @@ module Google
           property :adjust_volume_disabled, as: 'adjustVolumeDisabled'
           property :always_on_vpn_package, as: 'alwaysOnVpnPackage', class: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage, decorator: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage::Representation
       
+          collection :android_device_policy_tracks, as: 'androidDevicePolicyTracks'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
           property :auto_time_required, as: 'autoTimeRequired'
@@ -746,6 +751,7 @@ module Google
           property :android_device_policy_version_name, as: 'androidDevicePolicyVersionName'
           property :android_version, as: 'androidVersion'
           property :bootloader_version, as: 'bootloaderVersion'
+          property :device_build_signature, as: 'deviceBuildSignature'
           property :device_kernel_version, as: 'deviceKernelVersion'
           property :security_patch_level, as: 'securityPatchLevel'
         end
