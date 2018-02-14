@@ -151,10 +151,10 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Location from which this application will be run. Application instances will
-        # run out of data centers in the chosen location, which is also where all of the
-        # application's end user content is stored.Defaults to us-central.Options are:us-
-        # central - Central USeurope-west - Western Europeus-east1 - Eastern US
+        # Location from which this application runs. Application instances run out of
+        # the data centers in the specified location, which is also where all of the
+        # application's end user content is stored.Defaults to us-central1.View the list
+        # of supported locations (https://cloud.google.com/appengine/docs/locations).
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -339,7 +339,8 @@ module Google
         # @return [String]
         attr_accessor :max_pending_latency
       
-        # Maximum number of instances that should be started to handle requests.
+        # Maximum number of instances that should be started to handle requests for this
+        # version.
         # Corresponds to the JSON property `maxTotalInstances`
         # @return [Fixnum]
         attr_accessor :max_total_instances
@@ -356,7 +357,7 @@ module Google
         # @return [String]
         attr_accessor :min_pending_latency
       
-        # Minimum number of instances that should be maintained for this version.
+        # Minimum number of running instances that should be maintained for this version.
         # Corresponds to the JSON property `minTotalInstances`
         # @return [Fixnum]
         attr_accessor :min_total_instances
@@ -1485,13 +1486,13 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # App Engine Flexible Environment is available in the given location.@OutputOnly
+        # App Engine flexible environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `flexibleEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :flexible_environment_available
         alias_method :flexible_environment_available?, :flexible_environment_available
       
-        # App Engine Standard Environment is available in the given location.@OutputOnly
+        # App Engine standard environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `standardEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :standard_environment_available
@@ -1540,8 +1541,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :forwarded_ports
       
-        # Tag to apply to the VM instance during creation. for Only applicable in the
-        # App Engine flexible environment.
+        # Tag to apply to the instance during creation. Only applicable in the App
+        # Engine flexible environment.
         # Corresponds to the JSON property `instanceTag`
         # @return [String]
         attr_accessor :instance_tag
@@ -1556,13 +1557,13 @@ module Google
         # Specify the short name, not the resource path.If a subnetwork name is
         # specified, a network name will also be required unless it is for the default
         # network.
-        # If the network the VM instance is being created in is a Legacy network, then
+        # If the network that the instance is being created in is a Legacy network, then
         # the IP address is allocated from the IPv4Range.
-        # If the network the VM instance is being created in is an auto Subnet Mode
+        # If the network that the instance is being created in is an auto Subnet Mode
         # Network, then only network name should be specified (not the subnetwork_name)
         # and the IP address is created from the IPCidrRange of the subnetwork that
         # exists in that zone for that network.
-        # If the network the VM instance is being created in is a custom Subnet Mode
+        # If the network that the instance is being created in is a custom Subnet Mode
         # Network, then the subnetwork_name must be specified and the IP address is
         # created from the IPCidrRange of the subnetwork.If specified, the subnetwork
         # must exist in the same region as the App Engine flexible environment
@@ -2247,13 +2248,13 @@ module Google
       class StandardSchedulerSettings
         include Google::Apis::Core::Hashable
       
-        # Maximum number of instances for an app version. Set to zero to disable
+        # Maximum number of instances to run for this version. Set to zero to disable
         # max_instances configuration.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
       
-        # Minimum number of instances for an app version. Set to zero to disable
+        # Minimum number of instances to run for this version. Set to zero to disable
         # min_instances configuration.
         # Corresponds to the JSON property `minInstances`
         # @return [Fixnum]
@@ -2766,7 +2767,8 @@ module Google
         attr_accessor :vm
         alias_method :vm?, :vm
       
-        # The choice of gce zones to use for this App Engine Flexible version.
+        # The Google Compute Engine zones that are supported by this version in the App
+        # Engine flexible environment.
         # Corresponds to the JSON property `zones`
         # @return [Array<String>]
         attr_accessor :zones

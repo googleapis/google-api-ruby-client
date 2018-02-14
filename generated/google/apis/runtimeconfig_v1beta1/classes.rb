@@ -634,7 +634,7 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # [Output Only] The time of the last variable update.
+        # Output only. The time of the last variable update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -676,14 +676,14 @@ module Google
       class Waiter
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The instant at which this Waiter resource was created. Adding
+        # Output only. The instant at which this Waiter resource was created. Adding
         # the value of `timeout` to this instant yields the timeout deadline for the
         # waiter.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # [Output Only] If the value is `false`, it means the waiter is still waiting
+        # Output only. If the value is `false`, it means the waiter is still waiting
         # for one of its conditions to be met.
         # If true, the waiter has finished. If the waiter finished due to a timeout
         # or failure, `error` will be set.

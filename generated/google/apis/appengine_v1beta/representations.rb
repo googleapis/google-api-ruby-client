@@ -901,6 +901,7 @@ module Google
           collection :forwarded_ports, as: 'forwardedPorts'
           property :instance_tag, as: 'instanceTag'
           property :name, as: 'name'
+          property :session_affinity, as: 'sessionAffinity'
           property :subnetwork_name, as: 'subnetworkName'
         end
       end

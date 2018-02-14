@@ -993,13 +993,13 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # App Engine Flexible Environment is available in the given location.@OutputOnly
+        # App Engine flexible environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `flexibleEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :flexible_environment_available
         alias_method :flexible_environment_available?, :flexible_environment_available
       
-        # App Engine Standard Environment is available in the given location.@OutputOnly
+        # App Engine standard environment is available in the given location.@OutputOnly
         # Corresponds to the JSON property `standardEnvironmentAvailable`
         # @return [Boolean]
         attr_accessor :standard_environment_available

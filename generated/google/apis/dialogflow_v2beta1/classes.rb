@@ -1658,8 +1658,6 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityTypeBatch]
         attr_accessor :entity_type_batch_inline
       
-        # Warning: Importing entity types from a URI is not implemented yet.
-        # This feature is coming soon.
         # The URI to a Google Cloud Storage file containing entity types to update
         # or create. The file format can either be a serialized proto (of
         # EntityBatch type) or a JSON object. Note: The URI must start with
@@ -1723,8 +1721,6 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentBatch]
         attr_accessor :intent_batch_inline
       
-        # Warning: Importing intents from a URI is not implemented yet.
-        # This feature is coming soon.
         # The URI to a Google Cloud Storage file containing intents to update or
         # create. The file format can either be a serialized proto (of IntentBatch
         # type) or JSON object. Note: The URI must start with "gs://".
@@ -2071,8 +2067,6 @@ module Google
       class GoogleCloudDialogflowV2beta1ExportAgentRequest
         include Google::Apis::Core::Hashable
       
-        # Warning: Exporting agents to a URI is not implemented yet.
-        # This feature is coming soon.
         # Optional. The Google Cloud Storage URI to export the agent to.
         # Note: The URI must start with
         # "gs://". If left unspecified, the serialized agent is returned inline.
@@ -2151,8 +2145,6 @@ module Google
         # @return [String]
         attr_accessor :agent_content
       
-        # Warning: Importing agents from a URI is not implemented yet.
-        # This feature is coming soon.
         # The URI to a Google Cloud Storage file containing the agent to import.
         # Note: The URI must start with "gs://".
         # Corresponds to the JSON property `agentUri`
@@ -3539,8 +3531,6 @@ module Google
         # @return [String]
         attr_accessor :agent_content
       
-        # Warning: Restoring agents from a URI is not implemented yet.
-        # This feature is coming soon.
         # The URI to a Google Cloud Storage file containing the agent to restore.
         # Note: The URI must start with "gs://".
         # Corresponds to the JSON property `agentUri`

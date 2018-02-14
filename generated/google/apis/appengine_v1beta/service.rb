@@ -54,7 +54,7 @@ module Google
         # location - The region (https://cloud.google.com/appengine/docs/locations)
         # where you want the App Engine application located.For more information about
         # App Engine applications, see Managing Projects, Applications, and Billing (
-        # https://cloud.google.com/appengine/docs/python/console/).
+        # https://cloud.google.com/appengine/docs/standard/python/console/).
         # @param [Google::Apis::AppengineV1beta::Application] application_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1310,19 +1310,19 @@ module Google
         # automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/
         # admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.
         # automatic_scaling):  For Version resources that use automatic scaling and run
-        # in the App  Engine Flexible environment.
+        # in the App  Engine flexible environment.
         # automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/
         # admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.
         # automatic_scaling):  For Version resources that use automatic scaling and run
-        # in the App  Engine Flexible environment.
+        # in the App  Engine flexible environment.
         # automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/
         # docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.
         # automatic_scaling):  For Version resources that use automatic scaling and run
-        # in the App  Engine Flexible environment.
+        # in the App  Engine flexible environment.
         # automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/
         # appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.
         # FIELDS.automatic_scaling):  For Version resources that use automatic scaling
-        # and run in the App  Engine Flexible environment.
+        # and run in the App  Engine flexible environment.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
         #   default/versions/1.

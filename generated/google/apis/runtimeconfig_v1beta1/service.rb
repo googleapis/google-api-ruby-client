@@ -53,8 +53,8 @@ module Google
         # Creates a new RuntimeConfig resource. The configuration name must be
         # unique within project.
         # @param [String] parent
-        #   The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&
-        #   ref_topic=6158848)
+        #   The [project
+        #   ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
         #   for this request, in the format `projects/[PROJECT_ID]`.
         # @param [Google::Apis::RuntimeconfigV1beta1::RuntimeConfig] runtime_config_object
         # @param [String] request_id
@@ -193,8 +193,8 @@ module Google
         
         # Lists all the RuntimeConfig resources within project.
         # @param [String] parent
-        #   The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&
-        #   ref_topic=6158848)
+        #   The [project
+        #   ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
         #   for this request, in the format `projects/[PROJECT_ID]`.
         # @param [Fixnum] page_size
         #   Specifies the number of results to return per page. If there are fewer
@@ -414,8 +414,8 @@ module Google
         # a variable with a name that is a prefix of an existing variable name, or a
         # name that has an existing variable name as a prefix.
         # To learn more about creating a variable, read the
-        # [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-
-        # get-variables)
+        # [Setting and Getting
+        # Data](/deployment-manager/runtime-configurator/set-and-get-variables)
         # documentation.
         # @param [String] parent
         #   The path to the RutimeConfig resource that this variable should belong to.
@@ -531,13 +531,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists variables within given a configuration, matching any provided filters.
-        # This only lists variable names, not the values, unless `return_values` is
-        # true, in which case only variables that user has IAM permission to GetVariable
-        # will be returned.
+        # Lists variables within given a configuration, matching any provided
+        # filters. This only lists variable names, not the values, unless
+        # `return_values` is true, in which case only variables that user has IAM
+        # permission to GetVariable will be returned.
         # @param [String] parent
-        #   The path to the RuntimeConfig resource for which you want to list variables.
-        #   The configuration must exist beforehand; the path must be in the format:
+        #   The path to the RuntimeConfig resource for which you want to list
+        #   variables. The configuration must exist beforehand; the path must be in the
+        #   format:
         #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [String] filter
         #   Filters variables by matching the specified filter. For example:
@@ -660,12 +661,12 @@ module Google
         # When there is a change, this method returns the new value or times out.
         # If a variable is deleted while being watched, the `variableState` state is
         # set to `DELETED` and the method returns the last known variable `value`.
-        # If you set the deadline for watching to a larger value than internal timeout
-        # (60 seconds), the current variable value is returned and the `variableState`
-        # will be `VARIABLE_STATE_UNSPECIFIED`.
+        # If you set the deadline for watching to a larger value than internal
+        # timeout (60 seconds), the current variable value is returned and the
+        # `variableState` will be `VARIABLE_STATE_UNSPECIFIED`.
         # To learn more about creating a watcher, read the
-        # [Watching a Variable for Changes](/deployment-manager/runtime-configurator/
-        # watching-a-variable)
+        # [Watching a Variable for
+        # Changes](/deployment-manager/runtime-configurator/watching-a-variable)
         # documentation.
         # @param [String] name
         #   The name of the variable to watch, in the format:
