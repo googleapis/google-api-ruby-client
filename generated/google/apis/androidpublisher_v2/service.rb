@@ -2355,7 +2355,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the purchases that were cancelled, refunded or charged-back.
+        # Lists the purchases that were canceled, refunded or charged-back.
         # @param [String] package_name
         #   The package name of the application for which voided purchases need to be
         #   returned (for example, 'com.some.thing').

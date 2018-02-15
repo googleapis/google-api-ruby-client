@@ -886,6 +886,7 @@ module Google
         #   * Supported fields/values for inspect jobs:
         #   - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
         #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
+        #   - `trigger_name` - The resource name of the trigger that created job.
         #   * Supported fields for risk analysis jobs:
         #   - `state` - RUNNING|CANCELED|FINISHED|FAILED
         #   * The operator must be `=` or `!=`.
@@ -1133,6 +1134,186 @@ module Google
           command.request_object = google_privacy_dlp_v2beta2_update_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InspectTemplate::Representation
           command.response_class = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InspectTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a job to run DLP actions such as scanning storage for sensitive
+        # information on a set schedule.
+        # @param [String] parent
+        #   The parent resource name, for example projects/my-project-id.
+        # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CreateJobTriggerRequest] google_privacy_dlp_v2beta2_create_job_trigger_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_job_trigger(parent, google_privacy_dlp_v2beta2_create_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta2/{+parent}/jobTriggers', options)
+          command.request_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CreateJobTriggerRequest::Representation
+          command.request_object = google_privacy_dlp_v2beta2_create_job_trigger_request_object
+          command.response_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger::Representation
+          command.response_class = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a job trigger.
+        # @param [String] name
+        #   Resource name of the project and the triggeredJob, for example
+        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_job_trigger(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2beta2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DlpV2beta2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a job trigger.
+        # @param [String] name
+        #   Resource name of the project and the triggeredJob, for example
+        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_job_trigger(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta2/{+name}', options)
+          command.response_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger::Representation
+          command.response_class = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists job triggers.
+        # @param [String] parent
+        #   The parent resource name, for example projects/my-project-id.
+        # @param [String] order_by
+        #   Optional comma separated list of triggeredJob fields to order by,
+        #   followed by 'asc/desc' postfix, i.e.
+        #   `"create_time asc,name desc,schedule_mode asc"`. This list is
+        #   case-insensitive.
+        #   Example: `"name asc,schedule_mode desc, status desc"`
+        #   Supported filters keys and values are:
+        #   - `create_time`: corresponds to time the triggeredJob was created.
+        #   - `update_time`: corresponds to time the triggeredJob was last updated.
+        #   - `name`: corresponds to JobTrigger's display name.
+        #   - `status`: corresponds to the triggeredJob status.
+        # @param [Fixnum] page_size
+        #   Optional size of the page, can be limited by a server.
+        # @param [String] page_token
+        #   Optional page token to continue retrieval. Comes from previous call
+        #   to ListJobTriggers. `order_by` and `filter` should not change for
+        #   subsequent calls, but can be omitted if token is specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ListJobTriggersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ListJobTriggersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_job_triggers(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta2/{+parent}/jobTriggers', options)
+          command.response_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ListJobTriggersResponse::Representation
+          command.response_class = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ListJobTriggersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a job trigger.
+        # @param [String] name
+        #   Resource name of the project and the triggeredJob, for example
+        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        # @param [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2UpdateJobTriggerRequest] google_privacy_dlp_v2beta2_update_job_trigger_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_job_trigger(name, google_privacy_dlp_v2beta2_update_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta2/{+name}', options)
+          command.request_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2UpdateJobTriggerRequest::Representation
+          command.request_object = google_privacy_dlp_v2beta2_update_job_trigger_request_object
+          command.response_representation = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger::Representation
+          command.response_class = Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

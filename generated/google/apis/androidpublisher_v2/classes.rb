@@ -1096,7 +1096,7 @@ module Google
       
         # The purchase state of the order. Possible values are:
         # - Purchased
-        # - Cancelled
+        # - Canceled
         # Corresponds to the JSON property `purchaseState`
         # @return [Fixnum]
         attr_accessor :purchase_state
@@ -1111,6 +1111,7 @@ module Google
         # purchase was not made using the standard in-app billing flow. Possible values
         # are:
         # - Test (i.e. purchased from a license testing account)
+        # - Promo (i.e. purchased using a promo code)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type
@@ -1359,13 +1360,13 @@ module Google
         attr_accessor :auto_renewing
         alias_method :auto_renewing?, :auto_renewing
       
-        # The reason why a subscription was cancelled or is not auto-renewing. Possible
+        # The reason why a subscription was canceled or is not auto-renewing. Possible
         # values are:
-        # - User cancelled the subscription
-        # - Subscription was cancelled by the system, for example because of a billing
+        # - User canceled the subscription
+        # - Subscription was canceled by the system, for example because of a billing
         # problem
         # - Subscription was replaced with a new subscription
-        # - Subscription was cancelled by the developer
+        # - Subscription was canceled by the developer
         # Corresponds to the JSON property `cancelReason`
         # @return [Fixnum]
         attr_accessor :cancel_reason
@@ -1740,7 +1741,7 @@ module Google
         end
       end
       
-      # A VoidedPurchase resource indicates a purchase that was either cancelled/
+      # A VoidedPurchase resource indicates a purchase that was either canceled/
       # refunded/charged-back.
       class VoidedPurchase
         include Google::Apis::Core::Hashable
@@ -1762,7 +1763,7 @@ module Google
         # @return [String]
         attr_accessor :purchase_token
       
-        # The time at which the purchase was cancelled/refunded/charged-back, in
+        # The time at which the purchase was canceled/refunded/charged-back, in
         # milliseconds since the epoch (Jan 1, 1970).
         # Corresponds to the JSON property `voidedTimeMillis`
         # @return [Fixnum]

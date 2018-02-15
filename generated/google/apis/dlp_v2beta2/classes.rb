@@ -1582,6 +1582,33 @@ module Google
         end
       end
       
+      # A task to execute on the completion of a job.
+      class GooglePrivacyDlpV2beta2Action
+        include Google::Apis::Core::Hashable
+      
+        # Publish the results of a DlpJob to a pub sub channel.
+        # Compatible with: Inpect, Risk
+        # Corresponds to the JSON property `pubSub`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2PublishToPubSub]
+        attr_accessor :pub_sub
+      
+        # If set, the detailed findings will be persisted to the specified
+        # OutputStorageConfig. Compatible with: Inspect
+        # Corresponds to the JSON property `saveFindings`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2SaveFindings]
+        attr_accessor :save_findings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
+          @save_findings = args[:save_findings] if args.key?(:save_findings)
+        end
+      end
+      
       # Result of a risk analysis operation request.
       class GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskDetails
         include Google::Apis::Core::Hashable
@@ -1651,6 +1678,15 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2RiskAnalysisJobConfig]
         attr_accessor :job_config
       
+        # Optional job ID to use for the created job. If not provided, a job ID will
+        # automatically be generated. Must be unique within the project. The job ID
+        # can contain uppercase and lowercase letters, numbers, and hyphens; that is,
+        # it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length
+        # is 100 characters. Can be empty to allow the system to generate one.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1658,6 +1694,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_config = args[:job_config] if args.key?(:job_config)
+          @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
       
@@ -2039,6 +2076,12 @@ module Google
       class GooglePrivacyDlpV2beta2CloudStorageOptions
         include Google::Apis::Core::Hashable
       
+        # Max number of bytes to scan from a file. If a scanned file's size is bigger
+        # than this value then the rest of the bytes are omitted.
+        # Corresponds to the JSON property `bytesLimitPerFile`
+        # @return [Fixnum]
+        attr_accessor :bytes_limit_per_file
+      
         # Set of files to scan.
         # Corresponds to the JSON property `fileSet`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FileSet]
@@ -2050,6 +2093,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bytes_limit_per_file = args[:bytes_limit_per_file] if args.key?(:bytes_limit_per_file)
           @file_set = args[:file_set] if args.key?(:file_set)
         end
       end
@@ -2252,6 +2296,34 @@ module Google
         end
       end
       
+      # Request message for CreateJobTrigger.
+      class GooglePrivacyDlpV2beta2CreateJobTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        # Contains a configuration to make dlp api calls on a repeating basis.
+        # Corresponds to the JSON property `jobTrigger`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger]
+        attr_accessor :job_trigger
+      
+        # The trigger id can contain uppercase and lowercase letters,
+        # numbers, and hyphens; that is, it must match the regular
+        # expression: `[a-zA-Z\\d-]+`. The maximum length is 100
+        # characters. Can be empty to allow the system to generate one.
+        # Corresponds to the JSON property `triggerId`
+        # @return [String]
+        attr_accessor :trigger_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_trigger = args[:job_trigger] if args.key?(:job_trigger)
+          @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
+        end
+      end
+      
       # Pseudonymization method that generates surrogates via cryptographic hashing.
       # Uses SHA-256.
       # The key size must be either 32 or 64 bytes.
@@ -2392,6 +2464,13 @@ module Google
       class GooglePrivacyDlpV2beta2CustomInfoType
         include Google::Apis::Core::Hashable
       
+        # Set of detection rules to apply to all findings of this custom info type.
+        # Rules are applied in order that they are specified. Not supported for the
+        # `surrogate_type` custom info type.
+        # Corresponds to the JSON property `detectionRules`
+        # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DetectionRule>]
+        attr_accessor :detection_rules
+      
         # Custom information type based on a dictionary of words or phrases. This can
         # be used to match sensitive information specific to the data, such as a list
         # of employee IDs or job titles.
@@ -2419,6 +2498,18 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InfoType]
         attr_accessor :info_type
       
+        # Likelihood to return for this custom info type. This base value can be
+        # altered by a detection rule if the finding meets the criteria specified by
+        # the rule. Defaults to `VERY_LIKELY` if not specified.
+        # Corresponds to the JSON property `likelihood`
+        # @return [String]
+        attr_accessor :likelihood
+      
+        # Message defining a custom regular expression.
+        # Corresponds to the JSON property `regex`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Regex]
+        attr_accessor :regex
+      
         # Message for detecting output from deidentification transformations
         # such as
         # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2beta1/content/
@@ -2438,8 +2529,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @detection_rules = args[:detection_rules] if args.key?(:detection_rules)
           @dictionary = args[:dictionary] if args.key?(:dictionary)
           @info_type = args[:info_type] if args.key?(:info_type)
+          @likelihood = args[:likelihood] if args.key?(:likelihood)
+          @regex = args[:regex] if args.key?(:regex)
           @surrogate_type = args[:surrogate_type] if args.key?(:surrogate_type)
         end
       end
@@ -2654,6 +2748,28 @@ module Google
         end
       end
       
+      # Rule for modifying a custom info type to alter behavior under certain
+      # circumstances, depending on the specific details of the rule. Not supported
+      # for the `surrogate_type` custom info type.
+      class GooglePrivacyDlpV2beta2DetectionRule
+        include Google::Apis::Core::Hashable
+      
+        # Detection rule that adjusts the likelihood of findings within a certain
+        # proximity of hotwords.
+        # Corresponds to the JSON property `hotwordRule`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2HotwordRule]
+        attr_accessor :hotword_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hotword_rule = args[:hotword_rule] if args.key?(:hotword_rule)
+        end
+      end
+      
       # Custom information type based on a dictionary of words or phrases. This can
       # be used to match sensitive information specific to the data, such as a list
       # of employee IDs or job titles.
@@ -2714,6 +2830,12 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InspectDataSourceDetails]
         attr_accessor :inspect_details
       
+        # If created by a job trigger, the resource name of the trigger that
+        # instantiated the job.
+        # Corresponds to the JSON property `jobTriggerName`
+        # @return [String]
+        attr_accessor :job_trigger_name
+      
         # The server-assigned name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2749,6 +2871,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_results = args[:error_results] if args.key?(:error_results)
           @inspect_details = args[:inspect_details] if args.key?(:inspect_details)
+          @job_trigger_name = args[:job_trigger_name] if args.key?(:job_trigger_name)
           @name = args[:name] if args.key?(:name)
           @risk_details = args[:risk_details] if args.key?(:risk_details)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -2777,6 +2900,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # The results of an unsuccessful activation of the JobTrigger.
+      class GooglePrivacyDlpV2beta2Error
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::DlpV2beta2::GoogleRpcStatus]
+        attr_accessor :details
+      
+        # The times the error occurred.
+        # Corresponds to the JSON property `timestamps`
+        # @return [Array<String>]
+        attr_accessor :timestamps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @timestamps = args[:timestamps] if args.key?(:timestamps)
         end
       end
       
@@ -3015,6 +3201,40 @@ module Google
           @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
           @lower_bound = args[:lower_bound] if args.key?(:lower_bound)
           @upper_bound = args[:upper_bound] if args.key?(:upper_bound)
+        end
+      end
+      
+      # Detection rule that adjusts the likelihood of findings within a certain
+      # proximity of hotwords.
+      class GooglePrivacyDlpV2beta2HotwordRule
+        include Google::Apis::Core::Hashable
+      
+        # Message defining a custom regular expression.
+        # Corresponds to the JSON property `hotwordRegex`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Regex]
+        attr_accessor :hotword_regex
+      
+        # Message for specifying an adjustment to the likelihood of a finding as
+        # part of a detection rule.
+        # Corresponds to the JSON property `likelihoodAdjustment`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2LikelihoodAdjustment]
+        attr_accessor :likelihood_adjustment
+      
+        # Message for specifying a window around a finding to apply a detection
+        # rule.
+        # Corresponds to the JSON property `proximity`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Proximity]
+        attr_accessor :proximity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hotword_regex = args[:hotword_regex] if args.key?(:hotword_regex)
+          @likelihood_adjustment = args[:likelihood_adjustment] if args.key?(:likelihood_adjustment)
+          @proximity = args[:proximity] if args.key?(:proximity)
         end
       end
       
@@ -3387,6 +3607,15 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InspectJobConfig]
         attr_accessor :job_config
       
+        # Optional job ID to use for the created job. If not provided, a job ID will
+        # automatically be generated. Must be unique within the project. The job ID
+        # can contain uppercase and lowercase letters, numbers, and hyphens; that is,
+        # it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length
+        # is 100 characters. Can be empty to allow the system to generate one.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3394,12 +3623,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_config = args[:job_config] if args.key?(:job_config)
+          @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
       
       # 
       class GooglePrivacyDlpV2beta2InspectJobConfig
         include Google::Apis::Core::Hashable
+      
+        # Actions to execute at the completion of the job. Are executed in the order
+        # provided.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Action>]
+        attr_accessor :actions
       
         # Configuration description of the scanning process.
         # When used with redactContent only info_types and min_likelihood are currently
@@ -3431,6 +3667,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @output_config = args[:output_config] if args.key?(:output_config)
@@ -3521,6 +3758,86 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Contains a configuration to make dlp api calls on a repeating basis.
+      class GooglePrivacyDlpV2beta2JobTrigger
+        include Google::Apis::Core::Hashable
+      
+        # The creation timestamp of a triggeredJob, output only field.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # User provided description (max 256 chars)
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name (max 100 chars)
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A stream of errors encountered when the trigger was activated. Repeated
+        # errors may result in the JobTrigger automaticaly being paused.
+        # Will return the last 100 errors. Whenever the JobTrigger is modified
+        # this list will be cleared. Output only field.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Error>]
+        attr_accessor :errors
+      
+        # 
+        # Corresponds to the JSON property `inspectJob`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2InspectJobConfig]
+        attr_accessor :inspect_job
+      
+        # The timestamp of the last time this trigger executed.
+        # Corresponds to the JSON property `lastRunTime`
+        # @return [String]
+        attr_accessor :last_run_time
+      
+        # Unique resource name for the triggeredJob, assigned by the service when the
+        # triggeredJob is created, for example
+        # `projects/dlp-test-project/triggeredJobs/53234423`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A status for this trigger. [required]
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # A list of triggers which will be OR'ed together. Only one in the list
+        # needs to trigger for a job to be started. The list may contain only
+        # a single Schedule trigger and must have at least one object.
+        # Corresponds to the JSON property `triggers`
+        # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Trigger>]
+        attr_accessor :triggers
+      
+        # The last update timestamp of a triggeredJob, output only field.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @errors = args[:errors] if args.key?(:errors)
+          @inspect_job = args[:inspect_job] if args.key?(:inspect_job)
+          @last_run_time = args[:last_run_time] if args.key?(:last_run_time)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @triggers = args[:triggers] if args.key?(:triggers)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3992,6 +4309,39 @@ module Google
         end
       end
       
+      # Message for specifying an adjustment to the likelihood of a finding as
+      # part of a detection rule.
+      class GooglePrivacyDlpV2beta2LikelihoodAdjustment
+        include Google::Apis::Core::Hashable
+      
+        # Set the likelihood of a finding to a fixed value.
+        # Corresponds to the JSON property `fixedLikelihood`
+        # @return [String]
+        attr_accessor :fixed_likelihood
+      
+        # Increase or decrease the likelihood by the specified number of
+        # levels. For example, if a finding would be `POSSIBLE` without the
+        # detection rule and `relative_likelihood` is 1, then it is upgraded to
+        # `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`.
+        # Likelihood may never drop below `VERY_UNLIKELY` or exceed
+        # `VERY_LIKELY`, so applying an adjustment of 1 followed by an
+        # adjustment of -1 when base likelihood is `VERY_LIKELY` will result in
+        # a final likelihood of `LIKELY`.
+        # Corresponds to the JSON property `relativeLikelihood`
+        # @return [Fixnum]
+        attr_accessor :relative_likelihood
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_likelihood = args[:fixed_likelihood] if args.key?(:fixed_likelihood)
+          @relative_likelihood = args[:relative_likelihood] if args.key?(:relative_likelihood)
+        end
+      end
+      
       # Response message for ListDeidentifyTemplates.
       class GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse
         include Google::Apis::Core::Hashable
@@ -4085,6 +4435,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inspect_templates = args[:inspect_templates] if args.key?(:inspect_templates)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListJobTriggers.
+      class GooglePrivacyDlpV2beta2ListJobTriggersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of triggeredJobs, up to page_size in ListJobTriggersRequest.
+        # Corresponds to the JSON property `jobTriggers`
+        # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger>]
+        attr_accessor :job_triggers
+      
+        # If the next page is available then the next page token to be used
+        # in following ListJobTriggers request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_triggers = args[:job_triggers] if args.key?(:job_triggers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -4449,6 +4825,55 @@ module Google
         end
       end
       
+      # Message for specifying a window around a finding to apply a detection
+      # rule.
+      class GooglePrivacyDlpV2beta2Proximity
+        include Google::Apis::Core::Hashable
+      
+        # Number of characters after the finding to consider.
+        # Corresponds to the JSON property `windowAfter`
+        # @return [Fixnum]
+        attr_accessor :window_after
+      
+        # Number of characters before the finding to consider.
+        # Corresponds to the JSON property `windowBefore`
+        # @return [Fixnum]
+        attr_accessor :window_before
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @window_after = args[:window_after] if args.key?(:window_after)
+          @window_before = args[:window_before] if args.key?(:window_before)
+        end
+      end
+      
+      # Publish the results of a DlpJob to a pub sub channel.
+      # Compatible with: Inpect, Risk
+      class GooglePrivacyDlpV2beta2PublishToPubSub
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Pub/Sub topic to send notifications to. The topic must have given
+        # publishing access rights to the DLP API service account executing
+        # the long running DlpJob sending the notifications.
+        # Format is projects/`project`/topics/`topic`.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # A quasi-identifier column has a custom_tag, used to know which column
       # in the data corresponds to which column in the statistical model.
       class GooglePrivacyDlpV2beta2QuasiIdField
@@ -4678,6 +5103,25 @@ module Google
         end
       end
       
+      # Message defining a custom regular expression.
+      class GooglePrivacyDlpV2beta2Regex
+        include Google::Apis::Core::Hashable
+      
+        # Pattern defining the regular expression.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pattern = args[:pattern] if args.key?(:pattern)
+        end
+      end
+      
       # Request to re-identify an item.
       class GooglePrivacyDlpV2beta2ReidentifyContentRequest
         include Google::Apis::Core::Hashable
@@ -4857,6 +5301,12 @@ module Google
       class GooglePrivacyDlpV2beta2RiskAnalysisJobConfig
         include Google::Apis::Core::Hashable
       
+        # Actions to execute at the completion of the job. Are executed in the order
+        # provided.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Action>]
+        attr_accessor :actions
+      
         # Privacy metric to compute for reidentification risk analysis.
         # Corresponds to the JSON property `privacyMetric`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2PrivacyMetric]
@@ -4877,6 +5327,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
           @privacy_metric = args[:privacy_metric] if args.key?(:privacy_metric)
           @source_table = args[:source_table] if args.key?(:source_table)
         end
@@ -4901,6 +5352,50 @@ module Google
         end
       end
       
+      # If set, the detailed findings will be persisted to the specified
+      # OutputStorageConfig. Compatible with: Inspect
+      class GooglePrivacyDlpV2beta2SaveFindings
+        include Google::Apis::Core::Hashable
+      
+        # Cloud repository for storing output.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2OutputStorageConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Schedule for triggeredJobs.
+      class GooglePrivacyDlpV2beta2Schedule
+        include Google::Apis::Core::Hashable
+      
+        # With this option a job is started a regular periodic basis. For
+        # example: every 10 minutes.
+        # A scheduled start time will be skipped if the previous
+        # execution has not ended when its scheduled time occurs.
+        # This value must be set to a time duration greater than or equal
+        # to 60 minutes and can be no longer than 60 days.
+        # Corresponds to the JSON property `reccurrencePeriodDuration`
+        # @return [String]
+        attr_accessor :reccurrence_period_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reccurrence_period_duration = args[:reccurrence_period_duration] if args.key?(:reccurrence_period_duration)
+        end
+      end
+      
       # Shared message indicating Cloud storage type.
       class GooglePrivacyDlpV2beta2StorageConfig
         include Google::Apis::Core::Hashable
@@ -4921,6 +5416,12 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DatastoreOptions]
         attr_accessor :datastore_options
       
+        # Configuration of the timespan of the items to include in scanning.
+        # Currently only supported when inspecting Google Cloud Storage and BigQuery.
+        # Corresponds to the JSON property `timespanConfig`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2TimespanConfig]
+        attr_accessor :timespan_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4930,6 +5431,7 @@ module Google
           @big_query_options = args[:big_query_options] if args.key?(:big_query_options)
           @cloud_storage_options = args[:cloud_storage_options] if args.key?(:cloud_storage_options)
           @datastore_options = args[:datastore_options] if args.key?(:datastore_options)
+          @timespan_config = args[:timespan_config] if args.key?(:timespan_config)
         end
       end
       
@@ -5096,6 +5598,43 @@ module Google
         end
       end
       
+      # Configuration of the timespan of the items to include in scanning.
+      # Currently only supported when inspecting Google Cloud Storage and BigQuery.
+      class GooglePrivacyDlpV2beta2TimespanConfig
+        include Google::Apis::Core::Hashable
+      
+        # When the job is started by a JobTrigger we will automatically figure out
+        # a valid start_time to avoid scanning files that have not been modified
+        # since the last time the JobTrigger executed. This will be based on the
+        # time of the execution of the last run of the JobTrigger.
+        # Corresponds to the JSON property `enableAutoPopulationOfTimespanConfig`
+        # @return [Boolean]
+        attr_accessor :enable_auto_population_of_timespan_config
+        alias_method :enable_auto_population_of_timespan_config?, :enable_auto_population_of_timespan_config
+      
+        # Exclude files newer than this value.
+        # If set to zero, no upper time limit is applied.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Exclude files older than this value.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_auto_population_of_timespan_config = args[:enable_auto_population_of_timespan_config] if args.key?(:enable_auto_population_of_timespan_config)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Overview of the modifications that occurred.
       class GooglePrivacyDlpV2beta2TransformationOverview
         include Google::Apis::Core::Hashable
@@ -5206,6 +5745,25 @@ module Google
         end
       end
       
+      # What event needs to occur for a new job to be started.
+      class GooglePrivacyDlpV2beta2Trigger
+        include Google::Apis::Core::Hashable
+      
+        # Schedule for triggeredJobs.
+        # Corresponds to the JSON property `schedule`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Schedule]
+        attr_accessor :schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule = args[:schedule] if args.key?(:schedule)
+        end
+      end
+      
       # Using raw keys is prone to security risks due to accidentally
       # leaking the key. Choose another type of key if possible.
       class GooglePrivacyDlpV2beta2UnwrappedCryptoKey
@@ -5275,6 +5833,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inspect_template = args[:inspect_template] if args.key?(:inspect_template)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message for UpdateJobTrigger.
+      class GooglePrivacyDlpV2beta2UpdateJobTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        # Contains a configuration to make dlp api calls on a repeating basis.
+        # Corresponds to the JSON property `jobTrigger`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2JobTrigger]
+        attr_accessor :job_trigger
+      
+        # Mask to control which fields get updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_trigger = args[:job_trigger] if args.key?(:job_trigger)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end

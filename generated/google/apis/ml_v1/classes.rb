@@ -345,31 +345,10 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a job from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform job updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `GetJob`, and
-        # systems are expected to put that etag in the request to `UpdateJob` to
-        # ensure that their change will be applied to the same version of the job.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
         # Required. The user-specified id of the job.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
-      
-        # Optional. One or more labels that you can add, to organize your jobs.
-        # Each label is a key-value pair, where both the key and the value are
-        # arbitrary strings that you supply.
-        # For more information, see the documentation on
-        # <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
       
         # Represents input parameters for a prediction job.
         # Corresponds to the JSON property `predictionInput`
@@ -415,9 +394,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_message = args[:error_message] if args.key?(:error_message)
-          @etag = args[:etag] if args.key?(:etag)
           @job_id = args[:job_id] if args.key?(:job_id)
-          @labels = args[:labels] if args.key?(:labels)
           @prediction_input = args[:prediction_input] if args.key?(:prediction_input)
           @prediction_output = args[:prediction_output] if args.key?(:prediction_output)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -601,27 +578,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a model from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform model updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `GetModel`, and
-        # systems are expected to put that etag in the request to `UpdateModel` to
-        # ensure that their change will be applied to the model as intended.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # Optional. One or more labels that you can add, to organize your models.
-        # Each label is a key-value pair, where both the key and the value are
-        # arbitrary strings that you supply.
-        # For more information, see the documentation on
-        # <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
         # Required. The name specified for the model when it was created.
         # The model name must be unique within the project it is created in.
         # Corresponds to the JSON property `name`
@@ -658,8 +614,6 @@ module Google
         def update!(**args)
           @default_version = args[:default_version] if args.key?(:default_version)
           @description = args[:description] if args.key?(:description)
-          @etag = args[:etag] if args.key?(:etag)
-          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @online_prediction_logging = args[:online_prediction_logging] if args.key?(:online_prediction_logging)
           @regions = args[:regions] if args.key?(:regions)
@@ -685,12 +639,6 @@ module Google
         # @return [Boolean]
         attr_accessor :is_cancellation_requested
         alias_method :is_cancellation_requested?, :is_cancellation_requested
-      
-        # The user labels, inherited from the model or the model version being
-        # operated on.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
       
         # Contains the name of the model associated with the operation.
         # Corresponds to the JSON property `modelName`
@@ -732,7 +680,6 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @is_cancellation_requested = args[:is_cancellation_requested] if args.key?(:is_cancellation_requested)
-          @labels = args[:labels] if args.key?(:labels)
           @model_name = args[:model_name] if args.key?(:model_name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @project_number = args[:project_number] if args.key?(:project_number)
@@ -1288,18 +1235,6 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a model from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform model updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `GetVersion`, and
-        # systems are expected to put that etag in the request to `UpdateVersion` to
-        # ensure that their change will be applied to the model as intended.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
         # Output only. If true, this version will be used to handle prediction
         # requests that do not specify a version.
         # You can change the default version by calling
@@ -1309,15 +1244,6 @@ module Google
         # @return [Boolean]
         attr_accessor :is_default
         alias_method :is_default?, :is_default
-      
-        # Optional. One or more labels that you can add, to organize your model
-        # versions. Each label is a key-value pair, where both the key and the value
-        # are arbitrary strings that you supply.
-        # For more information, see the documentation on
-        # <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
       
         # Output only. The time the version was last used for prediction.
         # Corresponds to the JSON property `lastUseTime`
@@ -1357,9 +1283,7 @@ module Google
           @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
           @description = args[:description] if args.key?(:description)
           @error_message = args[:error_message] if args.key?(:error_message)
-          @etag = args[:etag] if args.key?(:etag)
           @is_default = args[:is_default] if args.key?(:is_default)
-          @labels = args[:labels] if args.key?(:labels)
           @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
           @name = args[:name] if args.key?(:name)
@@ -1371,14 +1295,6 @@ module Google
       # Associates `members` with a `role`.
       class GoogleIamV1Binding
         include Google::Apis::Core::Hashable
-      
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::MlV1::GoogleTypeExpr]
-        attr_accessor :condition
       
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
@@ -1411,7 +1327,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -1517,15 +1432,6 @@ module Google
         # @return [Google::Apis::MlV1::GoogleIamV1Policy]
         attr_accessor :policy
       
-        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the
-        # following default mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1533,7 +1439,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -1789,53 +1694,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
-      class GoogleTypeExpr
-        include Google::Apis::Core::Hashable
-      
-        # An optional description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
-        # Corresponds to the JSON property `expression`
-        # @return [String]
-        attr_accessor :expression
-      
-        # An optional string indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # An optional title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @expression = args[:expression] if args.key?(:expression)
-          @location = args[:location] if args.key?(:location)
-          @title = args[:title] if args.key?(:title)
         end
       end
     end

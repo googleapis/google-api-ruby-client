@@ -226,12 +226,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleTypeExpr
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleApiHttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -311,9 +305,7 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :error_message, as: 'errorMessage'
-          property :etag, :base64 => true, as: 'etag'
           property :job_id, as: 'jobId'
-          hash :labels, as: 'labels'
           property :prediction_input, as: 'predictionInput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput::Representation
       
           property :prediction_output, as: 'predictionOutput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionOutput::Representation
@@ -385,8 +377,6 @@ module Google
           property :default_version, as: 'defaultVersion', class: Google::Apis::MlV1::GoogleCloudMlV1Version, decorator: Google::Apis::MlV1::GoogleCloudMlV1Version::Representation
       
           property :description, as: 'description'
-          property :etag, :base64 => true, as: 'etag'
-          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :online_prediction_logging, as: 'onlinePredictionLogging'
           collection :regions, as: 'regions'
@@ -399,7 +389,6 @@ module Google
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :is_cancellation_requested, as: 'isCancellationRequested'
-          hash :labels, as: 'labels'
           property :model_name, as: 'modelName'
           property :operation_type, as: 'operationType'
           property :project_number, :numeric_string => true, as: 'projectNumber'
@@ -504,9 +493,7 @@ module Google
           property :deployment_uri, as: 'deploymentUri'
           property :description, as: 'description'
           property :error_message, as: 'errorMessage'
-          property :etag, :base64 => true, as: 'etag'
           property :is_default, as: 'isDefault'
-          hash :labels, as: 'labels'
           property :last_use_time, as: 'lastUseTime'
           property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling::Representation
       
@@ -519,8 +506,6 @@ module Google
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::MlV1::GoogleTypeExpr, decorator: Google::Apis::MlV1::GoogleTypeExpr::Representation
-      
           collection :members, as: 'members'
           property :role, as: 'role'
         end
@@ -541,7 +526,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::MlV1::GoogleIamV1Policy, decorator: Google::Apis::MlV1::GoogleIamV1Policy::Representation
       
-          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -592,16 +576,6 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class GoogleTypeExpr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
         end
       end
     end
