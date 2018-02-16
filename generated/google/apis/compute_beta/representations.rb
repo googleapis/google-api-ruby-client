@@ -1798,6 +1798,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectsSetDefaultNetworkTierRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3072,6 +3078,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
+          property :network_tier, as: 'networkTier'
           property :public_ptr_domain_name, as: 'publicPtrDomainName'
           property :set_public_ptr, as: 'setPublicPtr'
           property :type, as: 'type'
@@ -3091,6 +3098,7 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :network_tier, as: 'networkTier'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -4219,6 +4227,7 @@ module Google
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_tier, as: 'networkTier'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :region, as: 'region'
@@ -6228,6 +6237,7 @@ module Google
           property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_network_tier, as: 'defaultNetworkTier'
           property :default_service_account, as: 'defaultServiceAccount'
           property :description, as: 'description'
           collection :enabled_features, as: 'enabledFeatures'
@@ -6273,6 +6283,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
+        end
+      end
+      
+      class ProjectsSetDefaultNetworkTierRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_tier, as: 'networkTier'
         end
       end
       

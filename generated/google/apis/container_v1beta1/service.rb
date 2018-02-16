@@ -1043,7 +1043,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the version and/or iamge type of a specific node pool.
+        # Updates the version and/or image type of a specific node pool.
         # @param [String] name
         #   The name (project, location, cluster, node pool) of the node pool to update.
         #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
@@ -2402,7 +2402,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the version and/or iamge type of a specific node pool.
+        # Updates the version and/or image type of a specific node pool.
         # @param [String] project_id
         #   The Google Developers Console [project ID or project
         #   number](https://support.google.com/cloud/answer/6158840).

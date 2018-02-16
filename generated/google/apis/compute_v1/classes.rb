@@ -3457,7 +3457,8 @@ module Google
         attr_accessor :status
       
         # URL of the disk type resource describing which disk type to use to create the
-        # disk. Provide this when creating the disk.
+        # disk. Provide this when creating the disk. For example: project/zones/zone/
+        # diskTypes/pd-standard or pd-ssd
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4757,10 +4758,10 @@ module Google
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
-        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
-        # 5222
-        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
-        # 5222
+        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        # 1883, 5222
+        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        # 1883, 5222
         # - TargetVpnGateway: 500, 4500
         # Corresponds to the JSON property `portRange`
         # @return [String]

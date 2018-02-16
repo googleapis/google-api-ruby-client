@@ -476,6 +476,17 @@ module Google
         # @return [String]
         attr_accessor :nat_ip
       
+        # This signifies the networking tier used for configuring this access
+        # configuration and can only take the following values: PREMIUM, STANDARD.
+        # If an AccessConfig is specified without a valid external IP address, an
+        # ephemeral IP will be created with this networkTier.
+        # If an AccessConfig with a valid external IP address is specified, it must
+        # match that of the networkTier associated with the Address resource owning that
+        # IP.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
         # The DNS domain name for the public PTR record. This field can only be set when
         # the set_public_ptr field is enabled.
         # Corresponds to the JSON property `publicPtrDomainName`
@@ -503,6 +514,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
           @public_ptr_domain_name = args[:public_ptr_domain_name] if args.key?(:public_ptr_domain_name)
           @set_public_ptr = args[:set_public_ptr] if args.key?(:set_public_ptr)
           @type = args[:type] if args.key?(:type)
@@ -582,6 +594,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # This signifies the networking tier used for configuring this Address and can
+        # only take the following values: PREMIUM , STANDARD.
+        # If this field is not specified, it is assumed to be PREMIUM.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
         # [Output Only] URL of the region where the regional address resides. This field
         # is not applicable to global addresses. You must specify this field as part of
         # the HTTP request URL. You cannot set this field in the request body.
@@ -631,6 +650,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -1212,7 +1232,7 @@ module Google
       # If there are AuditConfigs for both `allServices` and a specific service, the
       # union of the two AuditConfigs is used for that service: the log_types
       # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditConfig are exempted.
+      # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
       # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
@@ -1222,8 +1242,7 @@ module Google
       # ] `
       # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
       # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
-      # com from DATA_WRITE logging. This message is only visible as GOOGLE_INTERNAL
-      # or IAM_AUDIT_CONFIG.
+      # com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -3826,7 +3845,8 @@ module Google
         attr_accessor :storage_type
       
         # URL of the disk type resource describing which disk type to use to create the
-        # disk. Provide this when creating the disk.
+        # disk. Provide this when creating the disk. For example: project/zones/zone/
+        # diskTypes/pd-standard or pd-ssd
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5303,6 +5323,16 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # This signifies the networking tier used for configuring this load balancer and
+        # can only take the following values: PREMIUM , STANDARD.
+        # For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For
+        # GlobalForwardingRule, the valid value is PREMIUM.
+        # If this field is not specified, it is assumed to be PREMIUM. If IPAddress is
+        # specified, this value must be equal to the networkTier of the Address.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
         # This field is used along with the target field for TargetHttpProxy,
         # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
         # TargetInstance.
@@ -5312,10 +5342,10 @@ module Google
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
-        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
-        # 5222
-        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
-        # 5222
+        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        # 1883, 5222
+        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        # 1883, 5222
         # - TargetVpnGateway: 500, 4500
         # Corresponds to the JSON property `portRange`
         # @return [String]
@@ -5401,6 +5431,7 @@ module Google
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
           @port_range = args[:port_range] if args.key?(:port_range)
           @ports = args[:ports] if args.key?(:ports)
           @region = args[:region] if args.key?(:region)
@@ -13295,8 +13326,7 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Specifies cloud audit logging configuration for this policy. This field is
-        # only visible as GOOGLE_INTERNAL or IAM_AUDIT_CONFIG.
+        # Specifies cloud audit logging configuration for this policy.
         # Corresponds to the JSON property `auditConfigs`
         # @return [Array<Google::Apis::ComputeBeta::AuditConfig>]
         attr_accessor :audit_configs
@@ -13373,6 +13403,13 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # This signifies the default network tier used for configuring resources of the
+        # project and can only take the following values: PREMIUM, STANDARD. Initially
+        # the default network tier is PREMIUM.
+        # Corresponds to the JSON property `defaultNetworkTier`
+        # @return [String]
+        attr_accessor :default_network_tier
+      
         # [Output Only] Default service account used by VMs running in this project.
         # Corresponds to the JSON property `defaultServiceAccount`
         # @return [String]
@@ -13436,6 +13473,7 @@ module Google
         def update!(**args)
           @common_instance_metadata = args[:common_instance_metadata] if args.key?(:common_instance_metadata)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_network_tier = args[:default_network_tier] if args.key?(:default_network_tier)
           @default_service_account = args[:default_service_account] if args.key?(:default_service_account)
           @description = args[:description] if args.key?(:description)
           @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
@@ -13542,6 +13580,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
+        end
+      end
+      
+      # 
+      class ProjectsSetDefaultNetworkTierRequest
+        include Google::Apis::Core::Hashable
+      
+        # Default network tier to be set.
+        # Corresponds to the JSON property `networkTier`
+        # @return [String]
+        attr_accessor :network_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_tier = args[:network_tier] if args.key?(:network_tier)
         end
       end
       

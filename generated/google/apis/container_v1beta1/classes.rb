@@ -310,6 +310,17 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::IpAllocationPolicy]
         attr_accessor :ip_allocation_policy
       
+        # The fingerprint of the set of labels for this cluster.
+        # Corresponds to the JSON property `labelFingerprint`
+        # @return [String]
+        attr_accessor :label_fingerprint
+      
+        # Configuration for the legacy Attribute Based Access Control authorization
+        # mode.
+        # Corresponds to the JSON property `legacyAbac`
+        # @return [Google::Apis::ContainerV1beta1::LegacyAbac]
+        attr_accessor :legacy_abac
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/regions-zones/regions-zones#available) or
         # [region](/compute/docs/regions-zones/regions-zones#available) in which
@@ -410,6 +421,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
         attr_accessor :pod_security_policy_config
       
+        # The resource labels for the cluster to use to annotate any related GCE
+        # resources.
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels
+      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -470,6 +487,8 @@ module Google
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
+          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
+          @legacy_abac = args[:legacy_abac] if args.key?(:legacy_abac)
           @location = args[:location] if args.key?(:location)
           @locations = args[:locations] if args.key?(:locations)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
@@ -484,6 +503,7 @@ module Google
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @status = args[:status] if args.key?(:status)
@@ -982,6 +1002,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # Configuration for the legacy Attribute Based Access Control authorization
+      # mode.
+      class LegacyAbac
+        include Google::Apis::Core::Hashable
+      
+        # Whether the ABAC authorizer is enabled for this cluster. When enabled,
+        # identities in the system, including service accounts, nodes, and
+        # controllers, will have statically granted permissions beyond those
+        # provided by the RBAC configuration or IAM.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       

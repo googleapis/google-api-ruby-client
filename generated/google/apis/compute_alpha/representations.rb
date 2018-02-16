@@ -6307,6 +6307,8 @@ module Google
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
       
+          property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeAlpha::ShieldedVmConfig, decorator: Google::Apis::ComputeAlpha::ShieldedVmConfig::Representation
+      
           property :tags, as: 'tags', class: Google::Apis::ComputeAlpha::Tags, decorator: Google::Apis::ComputeAlpha::Tags::Representation
       
         end
@@ -6521,6 +6523,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
           property :description, as: 'description'
+          property :edge_availability_domain, as: 'edgeAvailabilityDomain'
           property :google_reference_id, as: 'googleReferenceId'
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
@@ -8766,7 +8769,7 @@ module Google
           property :certificate, as: 'certificate'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :expiry_time, as: 'expiryTime'
+          property :expire_time, as: 'expireTime'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :managed, as: 'managed', class: Google::Apis::ComputeAlpha::SslCertificateManagedSslCertificate, decorator: Google::Apis::ComputeAlpha::SslCertificateManagedSslCertificate::Representation
@@ -8943,6 +8946,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_flow_logs, as: 'enableFlowLogs'
+          property :enable_private_v6_access, as: 'enablePrivateV6Access'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'

@@ -1262,7 +1262,7 @@ module Google
       # If there are AuditConfigs for both `allServices` and a specific service, the
       # union of the two AuditConfigs is used for that service: the log_types
       # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditConfig are exempted.
+      # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
       # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
@@ -1272,8 +1272,7 @@ module Google
       # ] `
       # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
       # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
-      # com from DATA_WRITE logging. This message is only visible as GOOGLE_INTERNAL
-      # or IAM_AUDIT_CONFIG.
+      # com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -4205,7 +4204,8 @@ module Google
         attr_accessor :storage_type
       
         # URL of the disk type resource describing which disk type to use to create the
-        # disk. Provide this when creating the disk.
+        # disk. Provide this when creating the disk. For example: project/zones/zone/
+        # diskTypes/pd-standard or pd-ssd
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5736,10 +5736,10 @@ module Google
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
-        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
-        # 5222
-        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883,
-        # 5222
+        # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        # 1883, 5222
+        # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        # 1883, 5222
         # - TargetVpnGateway: 500, 4500
         # Corresponds to the JSON property `portRange`
         # @return [String]
@@ -11168,6 +11168,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # A set of Shielded VM options.
+        # Corresponds to the JSON property `shieldedVmConfig`
+        # @return [Google::Apis::ComputeAlpha::ShieldedVmConfig]
+        attr_accessor :shielded_vm_config
+      
         # A set of instance tags.
         # Corresponds to the JSON property `tags`
         # @return [Google::Apis::ComputeAlpha::Tags]
@@ -11190,6 +11195,7 @@ module Google
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
@@ -12000,6 +12006,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Desired availability domain for the attachment. Can only be specified when
+        # creating PARTNER-type InterconnectAttachments.
+        # For improved reliability, customers should configure a pair of attachments
+        # with one per availability domain. The selected availability domain will be
+        # provided to the Partner via the pairing key so that the provisioned circuit
+        # will lie in the specified domain. If not specified, the value will default to
+        # AVAILABILITY_DOMAIN_ANY.
+        # Corresponds to the JSON property `edgeAvailabilityDomain`
+        # @return [String]
+        attr_accessor :edge_availability_domain
+      
         # [Output Only] Google reference ID, to be used when raising support tickets
         # with Google or otherwise to debug backend connectivity issues.
         # Corresponds to the JSON property `googleReferenceId`
@@ -12139,6 +12156,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
           @description = args[:description] if args.key?(:description)
+          @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
           @google_reference_id = args[:google_reference_id] if args.key?(:google_reference_id)
           @id = args[:id] if args.key?(:id)
           @interconnect = args[:interconnect] if args.key?(:interconnect)
@@ -16750,8 +16768,7 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Specifies cloud audit logging configuration for this policy. This field is
-        # only visible as GOOGLE_INTERNAL or IAM_AUDIT_CONFIG.
+        # Specifies cloud audit logging configuration for this policy.
         # Corresponds to the JSON property `auditConfigs`
         # @return [Array<Google::Apis::ComputeAlpha::AuditConfig>]
         attr_accessor :audit_configs
@@ -20640,10 +20657,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Expiry time of the certificate. RFC3339
-        # Corresponds to the JSON property `expiryTime`
+        # [Output Only] Expire time of the certificate. RFC3339
+        # Corresponds to the JSON property `expireTime`
         # @return [String]
-        attr_accessor :expiry_time
+        attr_accessor :expire_time
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -20710,7 +20727,7 @@ module Google
           @certificate = args[:certificate] if args.key?(:certificate)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
-          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @managed = args[:managed] if args.key?(:managed)
@@ -21324,6 +21341,14 @@ module Google
         attr_accessor :enable_flow_logs
         alias_method :enable_flow_logs?, :enable_flow_logs
       
+        # Whether the VMs in this subnet can directly access Google services via
+        # internal IPv6 addresses. This field can be both set at resource creation time
+        # and updated using patch.
+        # Corresponds to the JSON property `enablePrivateV6Access`
+        # @return [Boolean]
+        attr_accessor :enable_private_v6_access
+        alias_method :enable_private_v6_access?, :enable_private_v6_access
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
@@ -21414,6 +21439,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_flow_logs = args[:enable_flow_logs] if args.key?(:enable_flow_logs)
+          @enable_private_v6_access = args[:enable_private_v6_access] if args.key?(:enable_private_v6_access)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)

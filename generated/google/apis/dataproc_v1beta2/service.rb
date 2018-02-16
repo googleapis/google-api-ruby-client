@@ -605,7 +605,9 @@ module Google
         #   <strong>Note:</strong> currently only some fields can be updated: |Mask|
         #   Purpose| |labels|Updates labels| |config.worker_config.num_instances|Resize
         #   primary worker group| |config.secondary_worker_config.num_instances|Resize
-        #   secondary worker group|
+        #   secondary worker group| |config.lifecycle_config.auto_delete_ttl|Reset MAX TTL
+        #   duration| |config.lifecycle_config.auto_delete_time|Update MAX TTL deletion
+        #   timestamp| |config.lifecycle_config.idle_delete_ttl|Update Idle TTL duration|
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

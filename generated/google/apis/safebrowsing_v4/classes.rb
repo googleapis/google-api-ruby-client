@@ -538,7 +538,8 @@ module Google
         attr_accessor :encoded_data
       
         # The offset of the first entry in the encoded data, or, if only a single
-        # integer was encoded, that single integer's value.
+        # integer was encoded, that single integer's value. If the field is empty or
+        # missing, assume zero.
         # Corresponds to the JSON property `firstValue`
         # @return [Fixnum]
         attr_accessor :first_value

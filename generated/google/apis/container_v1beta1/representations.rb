@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LegacyAbac
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -408,6 +414,9 @@ module Google
           collection :instance_group_urls, as: 'instanceGroupUrls'
           property :ip_allocation_policy, as: 'ipAllocationPolicy', class: Google::Apis::ContainerV1beta1::IpAllocationPolicy, decorator: Google::Apis::ContainerV1beta1::IpAllocationPolicy::Representation
       
+          property :label_fingerprint, as: 'labelFingerprint'
+          property :legacy_abac, as: 'legacyAbac', class: Google::Apis::ContainerV1beta1::LegacyAbac, decorator: Google::Apis::ContainerV1beta1::LegacyAbac::Representation
+      
           property :location, as: 'location'
           collection :locations, as: 'locations'
           property :logging_service, as: 'loggingService'
@@ -429,6 +438,7 @@ module Google
       
           property :pod_security_policy_config, as: 'podSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
+          hash :resource_labels, as: 'resourceLabels'
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :status, as: 'status'
@@ -541,6 +551,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class LegacyAbac
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
