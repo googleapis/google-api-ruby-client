@@ -137,6 +137,11 @@ module Google
         # @return [String]
         attr_accessor :ads
       
+        # Retrieved campaigns in SDF format.
+        # Corresponds to the JSON property `campaigns`
+        # @return [String]
+        attr_accessor :campaigns
+      
         # Retrieved insertion orders in SDF format.
         # Corresponds to the JSON property `insertionOrders`
         # @return [String]
@@ -155,6 +160,7 @@ module Google
         def update!(**args)
           @ad_groups = args[:ad_groups] if args.key?(:ad_groups)
           @ads = args[:ads] if args.key?(:ads)
+          @campaigns = args[:campaigns] if args.key?(:campaigns)
           @insertion_orders = args[:insertion_orders] if args.key?(:insertion_orders)
           @line_items = args[:line_items] if args.key?(:line_items)
         end

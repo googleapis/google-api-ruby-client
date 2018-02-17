@@ -563,6 +563,35 @@ module Google
       end
       
       # 
+      class DestinationTableProperties
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] The description for the destination table. This will only be used
+        # if the destination table is newly created. If the table already exists and a
+        # value different than the current description is provided, the job will fail.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Optional] The friendly name for the destination table. This will only be used
+        # if the destination table is newly created. If the table already exists and a
+        # value different than the current friendly name is provided, the job will fail.
+        # Corresponds to the JSON property `friendlyName`
+        # @return [String]
+        attr_accessor :friendly_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
+        end
+      end
+      
+      # 
       class EncryptionConfiguration
         include Google::Apis::Core::Hashable
       
@@ -1254,7 +1283,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Optional] The compression type to use for exported files. Possible values
-        # include GZIP and NONE. The default value is NONE.
+        # include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE
+        # and SNAPPY are only supported for Avro.
         # Corresponds to the JSON property `compression`
         # @return [String]
         attr_accessor :compression
@@ -1349,7 +1379,7 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
-        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Custom encryption configuration (e.g., Cloud KMS keys).
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
@@ -1358,6 +1388,12 @@ module Google
         # Corresponds to the JSON property `destinationTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :destination_table
+      
+        # [Experimental] [Optional] Properties with which to create the destination
+        # table if it is new.
+        # Corresponds to the JSON property `destinationTableProperties`
+        # @return [Google::Apis::BigqueryV2::DestinationTableProperties]
+        attr_accessor :destination_table_properties
       
         # [Optional] The character encoding of the data. The supported values are UTF-8
         # or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the
@@ -1513,6 +1549,7 @@ module Google
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
+          @destination_table_properties = args[:destination_table_properties] if args.key?(:destination_table_properties)
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
@@ -1562,7 +1599,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
       
-        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Custom encryption configuration (e.g., Cloud KMS keys).
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
@@ -1731,7 +1768,7 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
-        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Custom encryption configuration (e.g., Cloud KMS keys).
         # Corresponds to the JSON property `destinationEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
@@ -2746,7 +2783,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Experimental] Custom encryption configuration (e.g., Cloud KMS keys).
+        # Custom encryption configuration (e.g., Cloud KMS keys).
         # Corresponds to the JSON property `encryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :encryption_configuration

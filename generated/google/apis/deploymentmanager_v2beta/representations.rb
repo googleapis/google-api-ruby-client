@@ -22,6 +22,12 @@ module Google
   module Apis
     module DeploymentmanagerV2beta
       
+      class AsyncOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Diagnostic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PollingOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -398,6 +416,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AsyncOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_match, as: 'methodMatch'
+          property :polling_options, as: 'pollingOptions', class: Google::Apis::DeploymentmanagerV2beta::PollingOptions, decorator: Google::Apis::DeploymentmanagerV2beta::PollingOptions::Representation
+      
+        end
       end
       
       class AuditConfig
@@ -600,6 +627,14 @@ module Google
         end
       end
       
+      class Diagnostic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :level, as: 'level'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -767,6 +802,8 @@ module Google
       class Options
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :async_options, as: 'asyncOptions', class: Google::Apis::DeploymentmanagerV2beta::AsyncOptions, decorator: Google::Apis::DeploymentmanagerV2beta::AsyncOptions::Representation
+      
           collection :input_mappings, as: 'inputMappings', class: Google::Apis::DeploymentmanagerV2beta::InputMapping, decorator: Google::Apis::DeploymentmanagerV2beta::InputMapping::Representation
       
           property :validation_options, as: 'validationOptions', class: Google::Apis::DeploymentmanagerV2beta::ValidationOptions, decorator: Google::Apis::DeploymentmanagerV2beta::ValidationOptions::Representation
@@ -787,6 +824,18 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::DeploymentmanagerV2beta::Rule, decorator: Google::Apis::DeploymentmanagerV2beta::Rule::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class PollingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :diagnostics, as: 'diagnostics', class: Google::Apis::DeploymentmanagerV2beta::Diagnostic, decorator: Google::Apis::DeploymentmanagerV2beta::Diagnostic::Representation
+      
+          property :fail_condition, as: 'failCondition'
+          property :finish_condition, as: 'finishCondition'
+          property :polling_link, as: 'pollingLink'
+          property :target_link, as: 'targetLink'
         end
       end
       

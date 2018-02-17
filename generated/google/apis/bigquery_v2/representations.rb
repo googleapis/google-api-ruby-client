@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DestinationTableProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptionConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -494,6 +500,14 @@ module Google
         end
       end
       
+      class DestinationTableProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :friendly_name, as: 'friendlyName'
+        end
+      end
+      
       class EncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -681,6 +695,8 @@ module Google
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
           property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :destination_table_properties, as: 'destinationTableProperties', class: Google::Apis::BigqueryV2::DestinationTableProperties, decorator: Google::Apis::BigqueryV2::DestinationTableProperties::Representation
       
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
@@ -983,8 +999,8 @@ module Google
       class QueryTimelineSample
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :active_inputs, as: 'activeInputs'
-          property :completed_inputs, as: 'completedInputs'
+          property :active_inputs, :numeric_string => true, as: 'activeInputs'
+          property :completed_inputs, :numeric_string => true, as: 'completedInputs'
           property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
           property :pending_inputs, :numeric_string => true, as: 'pendingInputs'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'

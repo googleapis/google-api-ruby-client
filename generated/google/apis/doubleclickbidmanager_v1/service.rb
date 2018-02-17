@@ -53,7 +53,7 @@ module Google
           @batch_path = 'batch/doubleclickbidmanager/v1'
         end
         
-        # Retrieves line items in CSV format.
+        # Retrieves line items in CSV format. TrueView line items are not supported.
         # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,7 +88,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads line items in CSV format.
+        # Uploads line items in CSV format. TrueView line items are not supported.
         # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

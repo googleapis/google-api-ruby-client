@@ -22,6 +22,31 @@ module Google
   module Apis
     module DeploymentmanagerV2beta
       
+      # Async options that determine when a resource should finish.
+      class AsyncOptions
+        include Google::Apis::Core::Hashable
+      
+        # Method regex where this policy will apply.
+        # Corresponds to the JSON property `methodMatch`
+        # @return [String]
+        attr_accessor :method_match
+      
+        # 
+        # Corresponds to the JSON property `pollingOptions`
+        # @return [Google::Apis::DeploymentmanagerV2beta::PollingOptions]
+        attr_accessor :polling_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_match = args[:method_match] if args.key?(:method_match)
+          @polling_options = args[:polling_options] if args.key?(:polling_options)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs.
@@ -758,6 +783,32 @@ module Google
         end
       end
       
+      # 
+      class Diagnostic
+        include Google::Apis::Core::Hashable
+      
+        # JsonPath expression on the resource that if non empty, indicates that this
+        # field needs to be extracted as a diagnostic.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Level to record this diagnostic.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @level = args[:level] if args.key?(:level)
+        end
+      end
+      
       # Represents an expression text. Example:
       # title: "User account presence" description: "Determines whether the request
       # has a user account" expression: "size(request.user) > 0"
@@ -1409,6 +1460,11 @@ module Google
       class Options
         include Google::Apis::Core::Hashable
       
+        # Options regarding how to thread async requests.
+        # Corresponds to the JSON property `asyncOptions`
+        # @return [Array<Google::Apis::DeploymentmanagerV2beta::AsyncOptions>]
+        attr_accessor :async_options
+      
         # The mappings that apply for requests.
         # Corresponds to the JSON property `inputMappings`
         # @return [Array<Google::Apis::DeploymentmanagerV2beta::InputMapping>]
@@ -1436,6 +1492,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_options = args[:async_options] if args.key?(:async_options)
           @input_mappings = args[:input_mappings] if args.key?(:input_mappings)
           @validation_options = args[:validation_options] if args.key?(:validation_options)
           @virtual_properties = args[:virtual_properties] if args.key?(:virtual_properties)
@@ -1517,6 +1574,51 @@ module Google
           @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
           @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class PollingOptions
+        include Google::Apis::Core::Hashable
+      
+        # An array of diagnostics to be collected by Deployment Manager, these
+        # diagnostics will be displayed to the user.
+        # Corresponds to the JSON property `diagnostics`
+        # @return [Array<Google::Apis::DeploymentmanagerV2beta::Diagnostic>]
+        attr_accessor :diagnostics
+      
+        # JsonPath expression that determines if the request failed.
+        # Corresponds to the JSON property `failCondition`
+        # @return [String]
+        attr_accessor :fail_condition
+      
+        # JsonPath expression that determines if the request is completed.
+        # Corresponds to the JSON property `finishCondition`
+        # @return [String]
+        attr_accessor :finish_condition
+      
+        # JsonPath expression that evaluates to string, it indicates where to poll.
+        # Corresponds to the JSON property `pollingLink`
+        # @return [String]
+        attr_accessor :polling_link
+      
+        # JsonPath expression, after polling is completed, indicates where to fetch the
+        # resource.
+        # Corresponds to the JSON property `targetLink`
+        # @return [String]
+        attr_accessor :target_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostics = args[:diagnostics] if args.key?(:diagnostics)
+          @fail_condition = args[:fail_condition] if args.key?(:fail_condition)
+          @finish_condition = args[:finish_condition] if args.key?(:finish_condition)
+          @polling_link = args[:polling_link] if args.key?(:polling_link)
+          @target_link = args[:target_link] if args.key?(:target_link)
         end
       end
       

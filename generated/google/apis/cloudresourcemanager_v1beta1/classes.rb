@@ -405,9 +405,10 @@ module Google
         # @return [String]
         attr_accessor :creation_time
       
-        # A friendly string to be used to refer to the Organization in the UI.
-        # Assigned by the server, set to the primary domain of the G Suite
-        # customer that owns the organization.
+        # A human-readable string that refers to the Organization in the
+        # GCP Console UI. This string is set by the server and cannot be
+        # changed. The string will be set to the primary domain (for example,
+        # "google.com") of the G Suite customer that owns the organization.
         # @OutputOnly
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -429,7 +430,6 @@ module Google
         # An immutable id for the Organization that is assigned on creation. This
         # should be omitted when creating a new Organization.
         # This field is read-only.
-        # This field is deprecated and will be removed in v1. Use name instead.
         # Corresponds to the JSON property `organizationId`
         # @return [String]
         attr_accessor :organization_id

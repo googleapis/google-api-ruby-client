@@ -180,6 +180,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_groups, as: 'adGroups'
           property :ads, as: 'ads'
+          property :campaigns, as: 'campaigns'
           property :insertion_orders, as: 'insertionOrders'
           property :line_items, as: 'lineItems'
         end
