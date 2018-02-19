@@ -1,3 +1,40 @@
+# 0.19.8
+* Backwards compatible changes:
+  * Added `serviceusage_v1`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidmanagement_v1`
+  * Updated `androidpublisher_v1_1`
+  * Updated `androidpublisher_v2`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1alpha`
+  * Updated `appengine_v1beta`
+  * Updated `appengine_v1beta4`
+  * Updated `appengine_v1beta5`
+  * Updated `bigquery_v2`
+  * Updated `cloudiot_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataproc_v1beta2`
+  * Updated `deploymentmanager_alpha`
+  * Updated `deploymentmanager_v2beta`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2beta2`
+  * Updated `doubleclickbidmanager_v1`
+  * Updated `drive_v2`
+  * Updated `logging_v2`
+  * Updated `logging_v2beta1`
+  * Updated `manufacturers_v1`
+  * Updated `ml_v1`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `safebrowsing_v4`
+  * Updated `slides_v1`
+  * Updated `spanner_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.19.7
 * Backwards compatible changes:
   * Updated `androiddeviceprovisioning_v1`
