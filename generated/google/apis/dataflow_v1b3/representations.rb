@@ -724,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkerLifecycleEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkerMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2057,12 +2063,22 @@ module Google
         end
       end
       
+      class WorkerLifecycleEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event'
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
       class WorkerMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :time, as: 'time'
           property :worker_health_report, as: 'workerHealthReport', class: Google::Apis::DataflowV1b3::WorkerHealthReport, decorator: Google::Apis::DataflowV1b3::WorkerHealthReport::Representation
+      
+          property :worker_lifecycle_event, as: 'workerLifecycleEvent', class: Google::Apis::DataflowV1b3::WorkerLifecycleEvent, decorator: Google::Apis::DataflowV1b3::WorkerLifecycleEvent::Representation
       
           property :worker_message_code, as: 'workerMessageCode', class: Google::Apis::DataflowV1b3::WorkerMessageCode, decorator: Google::Apis::DataflowV1b3::WorkerMessageCode::Representation
       

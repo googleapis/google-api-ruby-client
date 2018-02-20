@@ -4821,6 +4821,37 @@ module Google
         end
       end
       
+      # A report of an event in a worker's lifecycle.
+      # The proto contains one event, because the worker is expected to
+      # asynchronously send each message immediately after the event.
+      # Due to this asynchrony, messages may arrive out of order (or missing), and it
+      # is up to the consumer to interpret.
+      # The timestamp of the event is in the enclosing WorkerMessage proto.
+      class WorkerLifecycleEvent
+        include Google::Apis::Core::Hashable
+      
+        # The event being reported.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # Other stats that can accompany an event. E.g.
+        # ` "downloaded_bytes" : "123456" `
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
       # WorkerMessage provides information to the backend about a worker.
       class WorkerMessage
         include Google::Apis::Core::Hashable
@@ -4850,6 +4881,16 @@ module Google
         # Corresponds to the JSON property `workerHealthReport`
         # @return [Google::Apis::DataflowV1b3::WorkerHealthReport]
         attr_accessor :worker_health_report
+      
+        # A report of an event in a worker's lifecycle.
+        # The proto contains one event, because the worker is expected to
+        # asynchronously send each message immediately after the event.
+        # Due to this asynchrony, messages may arrive out of order (or missing), and it
+        # is up to the consumer to interpret.
+        # The timestamp of the event is in the enclosing WorkerMessage proto.
+        # Corresponds to the JSON property `workerLifecycleEvent`
+        # @return [Google::Apis::DataflowV1b3::WorkerLifecycleEvent]
+        attr_accessor :worker_lifecycle_event
       
         # A message code is used to report status and error messages to the service.
         # The message codes are intended to be machine readable. The service will
@@ -4886,6 +4927,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @time = args[:time] if args.key?(:time)
           @worker_health_report = args[:worker_health_report] if args.key?(:worker_health_report)
+          @worker_lifecycle_event = args[:worker_lifecycle_event] if args.key?(:worker_lifecycle_event)
           @worker_message_code = args[:worker_message_code] if args.key?(:worker_message_code)
           @worker_metrics = args[:worker_metrics] if args.key?(:worker_metrics)
           @worker_shutdown_notice = args[:worker_shutdown_notice] if args.key?(:worker_shutdown_notice)

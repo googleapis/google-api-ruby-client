@@ -172,16 +172,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads the product in a Manufacturer Center account.
-        # The checks at upload time are minimal. All required attributes need to be
-        # present for a product to be valid. Issues may show up later
-        # after the API has accepted a new upload for a product and it is possible to
-        # overwrite an existing valid product with an invalid product. To detect
-        # this, you should retrieve the product and check it for issues once the
-        # new version is available.
-        # Uploaded products first need to be processed before they can be
+        # Inserts or updates the attributes of the product in a Manufacturer Center
+        # account.
+        # Creates a product with the provided attributes. If the product already
+        # exists, then all attributes are replaced with the new ones. The checks at
+        # upload time are minimal. All required attributes need to be present for a
+        # product to be valid. Issues may show up later after the API has accepted a
+        # new upload for a product and it is possible to overwrite an existing valid
+        # product with an invalid product. To detect this, you should retrieve the
+        # product and check it for issues once the new version is available.
+        # Uploaded attributes first need to be processed before they can be
         # retrieved. Until then, new products will be unavailable, and retrieval
-        # of uploaded products will return the original state of the product.
+        # of previously uploaded products will return the original state of the
+        # product.
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
         #   `account_id` - The ID of the Manufacturer Center account.
@@ -212,7 +215,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_account_product_product(parent, name, attributes_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_account_product(parent, name, attributes_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:put, 'v1/{+parent}/products/{+name}', options)
           command.request_representation = Google::Apis::ManufacturersV1::Attributes::Representation
           command.request_object = attributes_object
