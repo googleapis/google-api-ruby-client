@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PeopleV1
-      # Google People API
+      # People API
       #
       # Provides access to information about profiles and contacts.
       #

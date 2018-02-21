@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplaceImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Request
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1527,6 +1533,15 @@ module Google
         end
       end
       
+      class ReplaceImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_object_id, as: 'imageObjectId'
+          property :image_replace_method, as: 'imageReplaceMethod'
+          property :url, as: 'url'
+        end
+      end
+      
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1575,6 +1590,8 @@ module Google
           property :replace_all_shapes_with_sheets_chart, as: 'replaceAllShapesWithSheetsChart', class: Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartRequest, decorator: Google::Apis::SlidesV1::ReplaceAllShapesWithSheetsChartRequest::Representation
       
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::SlidesV1::ReplaceAllTextRequest, decorator: Google::Apis::SlidesV1::ReplaceAllTextRequest::Representation
+      
+          property :replace_image, as: 'replaceImage', class: Google::Apis::SlidesV1::ReplaceImageRequest, decorator: Google::Apis::SlidesV1::ReplaceImageRequest::Representation
       
           property :ungroup_objects, as: 'ungroupObjects', class: Google::Apis::SlidesV1::UngroupObjectsRequest, decorator: Google::Apis::SlidesV1::UngroupObjectsRequest::Representation
       
@@ -2156,8 +2173,12 @@ module Google
       class VideoProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_play, as: 'autoPlay'
+          property :end, as: 'end'
+          property :mute, as: 'mute'
           property :outline, as: 'outline', class: Google::Apis::SlidesV1::Outline, decorator: Google::Apis::SlidesV1::Outline::Representation
       
+          property :start, as: 'start'
         end
       end
       

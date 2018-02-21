@@ -236,6 +236,8 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           collection :secret_env, as: 'secretEnv'
+          property :status, as: 'status'
+          property :timeout, as: 'timeout'
           property :timing, as: 'timing', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
       
           collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation

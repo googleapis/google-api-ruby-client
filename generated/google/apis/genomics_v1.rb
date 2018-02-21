@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/genomics
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20180208'
+      REVISION = '20180220'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

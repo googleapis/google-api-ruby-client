@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudbuildV1
-      # Google Cloud Container Builder API
+      # Cloud Container Builder API
       #
       # Builds container images in the cloud.
       #

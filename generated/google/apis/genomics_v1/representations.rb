@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerStartedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContainerStoppedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CoverageBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DelayedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +125,12 @@ module Google
       end
       
       class Entry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Event
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +161,12 @@ module Google
       end
       
       class ExternalId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FailedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +269,18 @@ module Google
       end
       
       class Program
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PullStartedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PullStoppedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnexpectedExitStatusEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Variant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +509,18 @@ module Google
       end
       
       class VariantSetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerAssignedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerReleasedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +652,23 @@ module Google
         end
       end
       
+      class ContainerStartedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
+          property :ip_address, as: 'ipAddress'
+          hash :port_mappings, as: 'portMappings'
+        end
+      end
+      
+      class ContainerStoppedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
+          property :exit_status, as: 'exitStatus'
+        end
+      end
+      
       class CoverageBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -611,6 +688,14 @@ module Google
         end
       end
       
+      class DelayedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cause, as: 'cause'
+          collection :metrics, as: 'metrics'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -624,6 +709,15 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::GenomicsV1::Status, decorator: Google::Apis::GenomicsV1::Status::Representation
       
+        end
+      end
+      
+      class Event
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :details, as: 'details'
+          property :timestamp, as: 'timestamp'
         end
       end
       
@@ -671,6 +765,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :source_name, as: 'sourceName'
+        end
+      end
+      
+      class FailedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cause, as: 'cause'
+          property :code, as: 'code'
         end
       end
       
@@ -837,6 +939,20 @@ module Google
           property :name, as: 'name'
           property :prev_program_id, as: 'prevProgramId'
           property :version, as: 'version'
+        end
+      end
+      
+      class PullStartedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_uri, as: 'imageUri'
+        end
+      end
+      
+      class PullStoppedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_uri, as: 'imageUri'
         end
       end
       
@@ -1194,6 +1310,14 @@ module Google
         end
       end
       
+      class UnexpectedExitStatusEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
+          property :exit_status, as: 'exitStatus'
+        end
+      end
+      
       class Variant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1277,6 +1401,22 @@ module Google
           property :number, as: 'number'
           property :type, as: 'type'
           property :value, as: 'value'
+        end
+      end
+      
+      class WorkerAssignedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class WorkerReleasedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :zone, as: 'zone'
         end
       end
     end

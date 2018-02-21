@@ -34,7 +34,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerStartedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContainerStoppedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ControllerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DelayedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -53,6 +71,18 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FailedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +160,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PullStartedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PullStoppedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepeatedString
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +220,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnexpectedExitStatusEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerAssignedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerReleasedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -194,6 +254,23 @@ module Google
         end
       end
       
+      class ContainerStartedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
+          property :ip_address, as: 'ipAddress'
+          hash :port_mappings, as: 'portMappings'
+        end
+      end
+      
+      class ContainerStoppedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
+          property :exit_status, as: 'exitStatus'
+        end
+      end
+      
       class ControllerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -207,6 +284,14 @@ module Google
           property :image, as: 'image'
           property :machine_type, as: 'machineType'
           hash :vars, as: 'vars'
+        end
+      end
+      
+      class DelayedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cause, as: 'cause'
+          collection :metrics, as: 'metrics'
         end
       end
       
@@ -234,6 +319,23 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Event
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :details, as: 'details'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class FailedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cause, as: 'cause'
+          property :code, as: 'code'
         end
       end
       
@@ -366,6 +468,20 @@ module Google
         end
       end
       
+      class PullStartedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_uri, as: 'imageUri'
+        end
+      end
+      
+      class PullStoppedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_uri, as: 'imageUri'
+        end
+      end
+      
       class RepeatedString
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -444,6 +560,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class UnexpectedExitStatusEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_id, as: 'actionId'
+          property :exit_status, as: 'exitStatus'
+        end
+      end
+      
+      class WorkerAssignedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class WorkerReleasedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :zone, as: 'zone'
         end
       end
     end

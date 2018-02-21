@@ -2770,6 +2770,43 @@ module Google
         end
       end
       
+      # Replaces an existing image with a new image.
+      # Replacing an image removes some image effects from the existing image.
+      class ReplaceImageRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the existing image that will be replaced.
+        # Corresponds to the JSON property `imageObjectId`
+        # @return [String]
+        attr_accessor :image_object_id
+      
+        # The replacement method.
+        # Corresponds to the JSON property `imageReplaceMethod`
+        # @return [String]
+        attr_accessor :image_replace_method
+      
+        # The URL of the new image.
+        # The image is fetched once at insertion time and a copy is stored for
+        # display inside the presentation. Images must be less than 50MB in size,
+        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        # format.
+        # The provided URL can be at most 2 kB in length.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_object_id = args[:image_object_id] if args.key?(:image_object_id)
+          @image_replace_method = args[:image_replace_method] if args.key?(:image_replace_method)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # A single kind of update to apply to a presentation.
       class Request
         include Google::Apis::Core::Hashable
@@ -2916,6 +2953,12 @@ module Google
         # @return [Google::Apis::SlidesV1::ReplaceAllTextRequest]
         attr_accessor :replace_all_text
       
+        # Replaces an existing image with a new image.
+        # Replacing an image removes some image effects from the existing image.
+        # Corresponds to the JSON property `replaceImage`
+        # @return [Google::Apis::SlidesV1::ReplaceImageRequest]
+        attr_accessor :replace_image
+      
         # Ungroups objects, such as groups.
         # Corresponds to the JSON property `ungroupObjects`
         # @return [Google::Apis::SlidesV1::UngroupObjectsRequest]
@@ -3031,6 +3074,7 @@ module Google
           @replace_all_shapes_with_image = args[:replace_all_shapes_with_image] if args.key?(:replace_all_shapes_with_image)
           @replace_all_shapes_with_sheets_chart = args[:replace_all_shapes_with_sheets_chart] if args.key?(:replace_all_shapes_with_sheets_chart)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
+          @replace_image = args[:replace_image] if args.key?(:replace_image)
           @ungroup_objects = args[:ungroup_objects] if args.key?(:ungroup_objects)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_image_properties = args[:update_image_properties] if args.key?(:update_image_properties)
@@ -5028,6 +5072,28 @@ module Google
       class VideoProperties
         include Google::Apis::Core::Hashable
       
+        # Whether to enable video autoplay when the page is displayed in present
+        # mode. Defaults to false.
+        # Corresponds to the JSON property `autoPlay`
+        # @return [Boolean]
+        attr_accessor :auto_play
+        alias_method :auto_play?, :auto_play
+      
+        # The time at which to end playback, measured in seconds from the beginning
+        # of the video.
+        # If set, the end time should be after the start time.
+        # If not set or if you set this to a value that exceeds the video duration,
+        # the video will be played until its end.
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Whether to mute the audio during video playback. Defaults to false.
+        # Corresponds to the JSON property `mute`
+        # @return [Boolean]
+        attr_accessor :mute
+        alias_method :mute?, :mute
+      
         # The outline of a PageElement.
         # If these fields are unset, they may be inherited from a parent placeholder
         # if it exists. If there is no parent, the fields will default to the value
@@ -5037,13 +5103,27 @@ module Google
         # @return [Google::Apis::SlidesV1::Outline]
         attr_accessor :outline
       
+        # The time at which to start playback, measured in seconds from the beginning
+        # of the video.
+        # If set, the start time should be before the end time.
+        # If you set this to a value that exceeds the video's length in seconds, the
+        # video will be played from the last second.
+        # If not set, the video will be played from the beginning.
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @auto_play = args[:auto_play] if args.key?(:auto_play)
+          @end = args[:end] if args.key?(:end)
+          @mute = args[:mute] if args.key?(:mute)
           @outline = args[:outline] if args.key?(:outline)
+          @start = args[:start] if args.key?(:start)
         end
       end
       

@@ -361,6 +361,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :secret_env
       
+        # Status of the build step. At this time, build step status is only updated
+        # on build completion; step status is not updated in real-time as the build
+        # progresses.
+        # @OutputOnly
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Time limit for executing this build step. If not defined, the step has no
+        # time limit and will be allowed to continue to run until either it completes
+        # or the build itself times out.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
         # Stores start and end times for a build execution phase.
         # Corresponds to the JSON property `timing`
         # @return [Google::Apis::CloudbuildV1::TimeSpan]
@@ -398,6 +413,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
+          @status = args[:status] if args.key?(:status)
+          @timeout = args[:timeout] if args.key?(:timeout)
           @timing = args[:timing] if args.key?(:timing)
           @volumes = args[:volumes] if args.key?(:volumes)
           @wait_for = args[:wait_for] if args.key?(:wait_for)
