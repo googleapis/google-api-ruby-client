@@ -20,7 +20,7 @@ require 'date'
 module Google
   module Apis
     module Core
-      # Support for serializing hashes + propery value/nil/unset tracking
+      # Support for serializing hashes + property value/nil/unset tracking
       # To be included in representers as a feature.
       # @private
       module JsonRepresentationSupport
