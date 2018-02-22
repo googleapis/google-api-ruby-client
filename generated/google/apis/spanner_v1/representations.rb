@@ -196,6 +196,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Partition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionReadRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlanNode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +497,7 @@ module Google
           hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
       
           hash :params, as: 'params'
+          property :partition_token, :base64 => true, as: 'partitionToken'
           property :query_mode, as: 'queryMode'
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :sql, as: 'sql'
@@ -627,6 +658,60 @@ module Google
         end
       end
       
+      class Partition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_token, :base64 => true, as: 'partitionToken'
+        end
+      end
+      
+      class PartitionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_partitions, :numeric_string => true, as: 'maxPartitions'
+          property :partition_size_bytes, :numeric_string => true, as: 'partitionSizeBytes'
+        end
+      end
+      
+      class PartitionQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :param_types, as: 'paramTypes', class: Google::Apis::SpannerV1::Type, decorator: Google::Apis::SpannerV1::Type::Representation
+      
+          hash :params, as: 'params'
+          property :partition_options, as: 'partitionOptions', class: Google::Apis::SpannerV1::PartitionOptions, decorator: Google::Apis::SpannerV1::PartitionOptions::Representation
+      
+          property :sql, as: 'sql'
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
+      
+        end
+      end
+      
+      class PartitionReadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+          property :index, as: 'index'
+          property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
+      
+          property :partition_options, as: 'partitionOptions', class: Google::Apis::SpannerV1::PartitionOptions, decorator: Google::Apis::SpannerV1::PartitionOptions::Representation
+      
+          property :table, as: 'table'
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation
+      
+        end
+      end
+      
+      class PartitionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partitions, as: 'partitions', class: Google::Apis::SpannerV1::Partition, decorator: Google::Apis::SpannerV1::Partition::Representation
+      
+          property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::Transaction, decorator: Google::Apis::SpannerV1::Transaction::Representation
+      
+        end
+      end
+      
       class PlanNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -680,6 +765,7 @@ module Google
           property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
       
           property :limit, :numeric_string => true, as: 'limit'
+          property :partition_token, :base64 => true, as: 'partitionToken'
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :table, as: 'table'
           property :transaction, as: 'transaction', class: Google::Apis::SpannerV1::TransactionSelector, decorator: Google::Apis::SpannerV1::TransactionSelector::Representation

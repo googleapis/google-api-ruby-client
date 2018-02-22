@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetImportMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class FormatComplexity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjParseError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PresentationParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +89,12 @@ module Google
       end
       
       class Quaternion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartAssetImportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -104,6 +128,18 @@ module Google
         end
       end
       
+      class AssetImportMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :file_path, as: 'filePath'
+          property :image_error, as: 'imageError', class: Google::Apis::PolyV1::ImageError, decorator: Google::Apis::PolyV1::ImageError::Representation
+      
+          property :obj_parse_error, as: 'objParseError', class: Google::Apis::PolyV1::ObjParseError, decorator: Google::Apis::PolyV1::ObjParseError::Representation
+      
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -131,6 +167,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :lod_hint, as: 'lodHint'
           property :triangle_count, :numeric_string => true, as: 'triangleCount'
+        end
+      end
+      
+      class ImageError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :file_path, as: 'filePath'
         end
       end
       
@@ -164,6 +208,18 @@ module Google
         end
       end
       
+      class ObjParseError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :end_index, as: 'endIndex'
+          property :file_path, as: 'filePath'
+          property :line, as: 'line'
+          property :line_number, as: 'lineNumber'
+          property :start_index, as: 'startIndex'
+        end
+      end
+      
       class PresentationParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -180,6 +236,17 @@ module Google
           property :x, as: 'x'
           property :y, as: 'y'
           property :z, as: 'z'
+        end
+      end
+      
+      class StartAssetImportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_id, as: 'assetId'
+          property :asset_import_id, as: 'assetImportId'
+          collection :asset_import_messages, as: 'assetImportMessages', class: Google::Apis::PolyV1::AssetImportMessage, decorator: Google::Apis::PolyV1::AssetImportMessage::Representation
+      
+          property :publish_url, as: 'publishUrl'
         end
       end
       

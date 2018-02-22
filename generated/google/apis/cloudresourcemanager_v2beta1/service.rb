@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudresourcemanagerV2beta1
-      # Google Cloud Resource Manager API
+      # Cloud Resource Manager API
       #
       # The Google Cloud Resource Manager API provides methods for creating, reading,
       #  and updating project metadata.

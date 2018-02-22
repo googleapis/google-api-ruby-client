@@ -940,7 +940,468 @@ module Google
         # Deletes all active contexts in the specified session.
         # @param [String] parent
         #   Required. The name of the session to delete all contexts from. Format:
-        #   `projects/<Project ID>/agent/sessions/<Session ID>`.
+        #   `projects/<Project ID>/agent/sessions/<Session ID>` or `projects/<Project
+        #   ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`. Note: Runtimes are
+        #   under construction and will be available soon. If <Runtime ID> is not
+        #   specified we assume default 'sandbox' runtime.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_agent_runtime_session_contexts(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+parent}/contexts', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes a natural language query and returns structured, actionable data
+        # as a result. This method is not idempotent, because it may cause contexts
+        # and session entity types to be updated, which in turn might affect
+        # results of future queries.
+        # @param [String] session
+        #   Required. The name of the session this query is sent to. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>`, or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        #   It's up to the API caller to choose an appropriate session ID. It can be
+        #   a random number or some type of user identifier (preferably hashed).
+        #   The length of the session ID must not exceed 36 bytes.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def detect_project_agent_runtime_session_intent(session, google_cloud_dialogflow_v2beta1_detect_intent_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/{+session}:detectIntent', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_detect_intent_request_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a context.
+        # @param [String] parent
+        #   Required. The session to create a context for.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_agent_runtime_session_context(parent, google_cloud_dialogflow_v2beta1_context_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/{+parent}/contexts', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_context_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified context.
+        # @param [String] name
+        #   Required. The name of the context to delete. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
+        #   or `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        #   ID>/contexts/<Context ID>`. Note: Runtimes are under construction and will
+        #   be available soon. If <Runtime ID> is not specified, we assume default
+        #   'sandbox' runtime.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_agent_runtime_session_context(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified context.
+        # @param [String] name
+        #   Required. The name of the context. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
+        #   or `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        #   ID>/contexts/<Context ID>`. Note: Runtimes are under construction and will
+        #   be available soon. If <Runtime ID> is not specified, we assume default
+        #   'sandbox' runtime.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_runtime_session_context(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all contexts in the specified session.
+        # @param [String] parent
+        #   Required. The session to list all contexts from.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By
+        #   default 100 and at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_agent_runtime_session_contexts(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+parent}/contexts', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListContextsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified context.
+        # @param [String] name
+        #   Required. The unique identifier of the context. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
+        #   or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        #   ID>/contexts/<Context ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   The Context ID is always converted to lowercase.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_runtime_session_context(name, google_cloud_dialogflow_v2beta1_context_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_context_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a session entity type.
+        # @param [String] parent
+        #   Required. The session to create a session entity type for.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_agent_runtime_session_entity_type(parent, google_cloud_dialogflow_v2beta1_session_entity_type_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v2beta1/{+parent}/entityTypes', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_session_entity_type_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified session entity type.
+        # @param [String] name
+        #   Required. The name of the entity type to delete. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
+        #   Display Name>` or `projects/<Project ID>/agent/runtimes/<Runtime
+        #   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`. Note:
+        #   Runtimes are under construction and will be available soon. If <Runtime ID>
+        #   is not specified, we assume default 'sandbox' runtime.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_agent_runtime_session_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified session entity type.
+        # @param [String] name
+        #   Required. The name of the session entity type. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
+        #   Display Name>` or `projects/<Project ID>/agent/runtimes/<Runtime
+        #   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`. Note:
+        #   Runtimes are under construction and will be available soon. If <Runtime ID>
+        #   is not specified, we assume default 'sandbox' runtime.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_runtime_session_entity_type(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all session entity types in the specified session.
+        # @param [String] parent
+        #   Required. The session to list all session entity types from.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By
+        #   default 100 and at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_agent_runtime_session_entity_types(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v2beta1/{+parent}/entityTypes', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified session entity type.
+        # @param [String] name
+        #   Required. The unique identifier of this session entity type. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
+        #   Display Name>`, or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>sessions/<Session
+        #   ID>/entityTypes/<Entity Type Display Name>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_runtime_session_entity_type(name, google_cloud_dialogflow_v2beta1_session_entity_type_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_session_entity_type_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes all active contexts in the specified session.
+        # @param [String] parent
+        #   Required. The name of the session to delete all contexts from. Format:
+        #   `projects/<Project ID>/agent/sessions/<Session ID>` or `projects/<Project
+        #   ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`. Note: Runtimes are
+        #   under construction and will be available soon. If <Runtime ID> is not
+        #   specified we assume default 'sandbox' runtime.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -974,7 +1435,10 @@ module Google
         # results of future queries.
         # @param [String] session
         #   Required. The name of the session this query is sent to. Format:
-        #   `projects/<Project ID>/agent/sessions/<Session ID>`.
+        #   `projects/<Project ID>/agent/sessions/<Session ID>`, or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         #   It's up to the API caller to choose an appropriate session ID. It can be
         #   a random number or some type of user identifier (preferably hashed).
         #   The length of the session ID must not exceed 36 bytes.
@@ -1011,7 +1475,10 @@ module Google
         # Creates a context.
         # @param [String] parent
         #   Required. The session to create a context for.
-        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>`.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1045,7 +1512,11 @@ module Google
         # Deletes the specified context.
         # @param [String] name
         #   Required. The name of the context to delete. Format:
-        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
+        #   or `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        #   ID>/contexts/<Context ID>`. Note: Runtimes are under construction and will
+        #   be available soon. If <Runtime ID> is not specified, we assume default
+        #   'sandbox' runtime.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1076,7 +1547,11 @@ module Google
         # Retrieves the specified context.
         # @param [String] name
         #   Required. The name of the context. Format:
-        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
+        #   or `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        #   ID>/contexts/<Context ID>`. Note: Runtimes are under construction and will
+        #   be available soon. If <Runtime ID> is not specified, we assume default
+        #   'sandbox' runtime.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1107,7 +1582,10 @@ module Google
         # Returns the list of all contexts in the specified session.
         # @param [String] parent
         #   Required. The session to list all contexts from.
-        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>`.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -1145,8 +1623,13 @@ module Google
         # Updates the specified context.
         # @param [String] name
         #   Required. The unique identifier of the context. Format:
-        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
-        #   Note: The Context ID is always converted to lowercase.
+        #   `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
+        #   or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        #   ID>/contexts/<Context ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   The Context ID is always converted to lowercase.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -1183,7 +1666,10 @@ module Google
         # Creates a session entity type.
         # @param [String] parent
         #   Required. The session to create a session entity type for.
-        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>`.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1218,7 +1704,10 @@ module Google
         # @param [String] name
         #   Required. The name of the entity type to delete. Format:
         #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-        #   Display Name>`.
+        #   Display Name>` or `projects/<Project ID>/agent/runtimes/<Runtime
+        #   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`. Note:
+        #   Runtimes are under construction and will be available soon. If <Runtime ID>
+        #   is not specified, we assume default 'sandbox' runtime.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1250,7 +1739,10 @@ module Google
         # @param [String] name
         #   Required. The name of the session entity type. Format:
         #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-        #   Display Name>`.
+        #   Display Name>` or `projects/<Project ID>/agent/runtimes/<Runtime
+        #   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`. Note:
+        #   Runtimes are under construction and will be available soon. If <Runtime ID>
+        #   is not specified, we assume default 'sandbox' runtime.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1281,7 +1773,10 @@ module Google
         # Returns the list of all session entity types in the specified session.
         # @param [String] parent
         #   Required. The session to list all session entity types from.
-        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>`.
+        #   Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session ID>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -1320,7 +1815,11 @@ module Google
         # @param [String] name
         #   Required. The unique identifier of this session entity type. Format:
         #   `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-        #   Display Name>`.
+        #   Display Name>`, or
+        #   `projects/<Project ID>/agent/runtimes/<Runtime ID>sessions/<Session
+        #   ID>/entityTypes/<Entity Type Display Name>`.
+        #   Note: Runtimes are under construction and will be available soon.
+        #   If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType] google_cloud_dialogflow_v2beta1_session_entity_type_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.

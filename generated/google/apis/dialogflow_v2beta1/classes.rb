@@ -73,8 +73,13 @@ module Google
         attr_accessor :lifespan_count
       
         # Required. The unique identifier of the context. Format:
-        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
-        # Note: The Context ID is always converted to lowercase.
+        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
+        # or
+        # `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        # ID>/contexts/<Context ID>`.
+        # Note: Runtimes are under construction and will be available soon.
+        # The Context ID is always converted to lowercase.
+        # If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -309,7 +314,7 @@ module Google
         attr_accessor :messages
       
         # Optional. Indicates whether Machine Learning is disabled for the intent.
-        # Note: If `ml_diabled` setting is set to false, then this intent is not
+        # Note: If `ml_diabled` setting is set to true, then this intent is not
         # taken into account during inference in `ML ONLY` match mode. Also,
         # auto-markup in the UI is turned off.
         # Corresponds to the JSON property `mlDisabled`
@@ -1793,8 +1798,13 @@ module Google
         attr_accessor :lifespan_count
       
         # Required. The unique identifier of the context. Format:
-        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
-        # Note: The Context ID is always converted to lowercase.
+        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
+        # or
+        # `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
+        # ID>/contexts/<Context ID>`.
+        # Note: Runtimes are under construction and will be available soon.
+        # The Context ID is always converted to lowercase.
+        # If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3597,7 +3607,11 @@ module Google
       
         # Required. The unique identifier of this session entity type. Format:
         # `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-        # Display Name>`.
+        # Display Name>`, or
+        # `projects/<Project ID>/agent/runtimes/<Runtime ID>sessions/<Session
+        # ID>/entityTypes/<Entity Type Display Name>`.
+        # Note: Runtimes are under construction and will be available soon.
+        # If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -759,8 +759,18 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
+        # If present, results will be restricted to the specified partition
+        # previously created using PartitionQuery().  There must be an exact
+        # match for the values of fields common to this message and the
+        # PartitionQueryRequest message used to create this partition_token.
+        # Corresponds to the JSON property `partitionToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :partition_token
+      
         # Used to control the amount of debugging information returned in
-        # ResultSetStats.
+        # ResultSetStats. If partition_token is set, query_mode can only
+        # be set to QueryMode.NORMAL.
         # Corresponds to the JSON property `queryMode`
         # @return [String]
         attr_accessor :query_mode
@@ -797,6 +807,7 @@ module Google
         def update!(**args)
           @param_types = args[:param_types] if args.key?(:param_types)
           @params = args[:params] if args.key?(:params)
+          @partition_token = args[:partition_token] if args.key?(:partition_token)
           @query_mode = args[:query_mode] if args.key?(:query_mode)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @sql = args[:sql] if args.key?(:sql)
@@ -1510,6 +1521,216 @@ module Google
         end
       end
       
+      # Information returned for each partition returned in a
+      # PartitionResponse.
+      class Partition
+        include Google::Apis::Core::Hashable
+      
+        # This token can be passed to Read, StreamingRead, ExecuteSql, or
+        # ExecuteStreamingSql requests to restrict the results to those identified by
+        # this partition token.
+        # Corresponds to the JSON property `partitionToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :partition_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_token = args[:partition_token] if args.key?(:partition_token)
+        end
+      end
+      
+      # Options for a PartitionQueryRequest and
+      # PartitionReadRequest.
+      class PartitionOptions
+        include Google::Apis::Core::Hashable
+      
+        # The desired maximum number of partitions to return.  For example, this may
+        # be set to the number of workers available.  The default for this option
+        # is currently 10,000. The maximum value is currently 200,000.  This is only
+        # a hint.  The actual number of partitions returned may be smaller or larger
+        # than this maximum count request.
+        # Corresponds to the JSON property `maxPartitions`
+        # @return [Fixnum]
+        attr_accessor :max_partitions
+      
+        # The desired data size for each partition generated.  The default for this
+        # option is currently 1 GiB.  This is only a hint. The actual size of each
+        # partition may be smaller or larger than this size request.
+        # Corresponds to the JSON property `partitionSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :partition_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_partitions = args[:max_partitions] if args.key?(:max_partitions)
+          @partition_size_bytes = args[:partition_size_bytes] if args.key?(:partition_size_bytes)
+        end
+      end
+      
+      # The request for PartitionQuery
+      class PartitionQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # It is not always possible for Cloud Spanner to infer the right SQL type
+        # from a JSON value.  For example, values of type `BYTES` and values
+        # of type `STRING` both appear in params as JSON strings.
+        # In these cases, `param_types` can be used to specify the exact
+        # SQL type for some or all of the SQL query parameters. See the
+        # definition of Type for more information
+        # about SQL types.
+        # Corresponds to the JSON property `paramTypes`
+        # @return [Hash<String,Google::Apis::SpannerV1::Type>]
+        attr_accessor :param_types
+      
+        # The SQL query string can contain parameter placeholders. A parameter
+        # placeholder consists of `'@'` followed by the parameter
+        # name. Parameter names consist of any combination of letters,
+        # numbers, and underscores.
+        # Parameters can appear anywhere that a literal value is expected.  The same
+        # parameter name can be used more than once, for example:
+        # `"WHERE id > @msg_id AND id < @msg_id + 100"`
+        # It is an error to execute an SQL query with unbound parameters.
+        # Parameter values are specified using `params`, which is a JSON
+        # object whose keys are parameter names, and whose values are the
+        # corresponding parameter values.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,Object>]
+        attr_accessor :params
+      
+        # Options for a PartitionQueryRequest and
+        # PartitionReadRequest.
+        # Corresponds to the JSON property `partitionOptions`
+        # @return [Google::Apis::SpannerV1::PartitionOptions]
+        attr_accessor :partition_options
+      
+        # The query request to generate partitions for. The request will fail if
+        # the query is not root partitionable. The query plan of a root
+        # partitionable query has a single distributed union operator. A distributed
+        # union operator conceptually divides one or more tables into multiple
+        # splits, remotely evaluates a subquery independently on each split, and
+        # then unions all results.
+        # Corresponds to the JSON property `sql`
+        # @return [String]
+        attr_accessor :sql
+      
+        # This message is used to select the transaction in which a
+        # Read or
+        # ExecuteSql call runs.
+        # See TransactionOptions for more information about transactions.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::SpannerV1::TransactionSelector]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @param_types = args[:param_types] if args.key?(:param_types)
+          @params = args[:params] if args.key?(:params)
+          @partition_options = args[:partition_options] if args.key?(:partition_options)
+          @sql = args[:sql] if args.key?(:sql)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # The request for PartitionRead
+      class PartitionReadRequest
+        include Google::Apis::Core::Hashable
+      
+        # The columns of table to be returned for each row matching
+        # this request.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        # If non-empty, the name of an index on table. This index is
+        # used instead of the table primary key when interpreting key_set
+        # and sorting result rows. See key_set for further information.
+        # Corresponds to the JSON property `index`
+        # @return [String]
+        attr_accessor :index
+      
+        # `KeySet` defines a collection of Cloud Spanner keys and/or key ranges. All
+        # the keys are expected to be in the same table or index. The keys need
+        # not be sorted in any particular way.
+        # If the same key is specified multiple times in the set (for example
+        # if two ranges, two keys, or a key and a range overlap), Cloud Spanner
+        # behaves as if the key were only specified once.
+        # Corresponds to the JSON property `keySet`
+        # @return [Google::Apis::SpannerV1::KeySet]
+        attr_accessor :key_set
+      
+        # Options for a PartitionQueryRequest and
+        # PartitionReadRequest.
+        # Corresponds to the JSON property `partitionOptions`
+        # @return [Google::Apis::SpannerV1::PartitionOptions]
+        attr_accessor :partition_options
+      
+        # Required. The name of the table in the database to be read.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # This message is used to select the transaction in which a
+        # Read or
+        # ExecuteSql call runs.
+        # See TransactionOptions for more information about transactions.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::SpannerV1::TransactionSelector]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @index = args[:index] if args.key?(:index)
+          @key_set = args[:key_set] if args.key?(:key_set)
+          @partition_options = args[:partition_options] if args.key?(:partition_options)
+          @table = args[:table] if args.key?(:table)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # The response for PartitionQuery
+      # or PartitionRead
+      class PartitionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Partitions created by this request.
+        # Corresponds to the JSON property `partitions`
+        # @return [Array<Google::Apis::SpannerV1::Partition>]
+        attr_accessor :partitions
+      
+        # A transaction.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::SpannerV1::Transaction]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitions = args[:partitions] if args.key?(:partitions)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
       # Node information for nodes appearing in a QueryPlan.plan_nodes.
       class PlanNode
         include Google::Apis::Core::Hashable
@@ -1781,10 +2002,20 @@ module Google
         attr_accessor :key_set
       
         # If greater than zero, only the first `limit` rows are yielded. If `limit`
-        # is zero, the default is no limit.
+        # is zero, the default is no limit. A limit cannot be specified if
+        # `partition_token` is set.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
+      
+        # If present, results will be restricted to the specified partition
+        # previously created using PartitionRead().    There must be an exact
+        # match for the values of fields common to this message and the
+        # PartitionReadRequest message used to create this partition_token.
+        # Corresponds to the JSON property `partitionToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :partition_token
       
         # If this request is resuming a previously interrupted read,
         # `resume_token` should be copied from the last
@@ -1820,6 +2051,7 @@ module Google
           @index = args[:index] if args.key?(:index)
           @key_set = args[:key_set] if args.key?(:key_set)
           @limit = args[:limit] if args.key?(:limit)
+          @partition_token = args[:partition_token] if args.key?(:partition_token)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @table = args[:table] if args.key?(:table)
           @transaction = args[:transaction] if args.key?(:transaction)

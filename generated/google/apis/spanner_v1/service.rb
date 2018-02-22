@@ -1284,6 +1284,86 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a set of partition tokens that can be used to execute a query
+        # operation in parallel.  Each of the returned partition tokens can be used
+        # by ExecuteStreamingSql to specify a subset
+        # of the query result to read.  The same session and read-only transaction
+        # must be used by the PartitionQueryRequest used to create the
+        # partition tokens and the ExecuteSqlRequests that use the partition tokens.
+        # Partition tokens become invalid when the session used to create them
+        # is deleted or begins a new transaction.
+        # @param [String] session
+        #   Required. The session used to create the partitions.
+        # @param [Google::Apis::SpannerV1::PartitionQueryRequest] partition_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::PartitionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::PartitionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def partition_session_query(session, partition_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+session}:partitionQuery', options)
+          command.request_representation = Google::Apis::SpannerV1::PartitionQueryRequest::Representation
+          command.request_object = partition_query_request_object
+          command.response_representation = Google::Apis::SpannerV1::PartitionResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::PartitionResponse
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a set of partition tokens that can be used to execute a read
+        # operation in parallel.  Each of the returned partition tokens can be used
+        # by StreamingRead to specify a subset of the read
+        # result to read.  The same session and read-only transaction must be used by
+        # the PartitionReadRequest used to create the partition tokens and the
+        # ReadRequests that use the partition tokens.
+        # Partition tokens become invalid when the session used to create them
+        # is deleted or begins a new transaction.
+        # @param [String] session
+        #   Required. The session used to create the partitions.
+        # @param [Google::Apis::SpannerV1::PartitionReadRequest] partition_read_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::PartitionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::PartitionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def partition_session_read(session, partition_read_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+session}:partitionRead', options)
+          command.request_representation = Google::Apis::SpannerV1::PartitionReadRequest::Representation
+          command.request_object = partition_read_request_object
+          command.response_representation = Google::Apis::SpannerV1::PartitionResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::PartitionResponse
+          command.params['session'] = session unless session.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Reads rows from the database using key lookups and scans, as a
         # simple key/value style alternative to
         # ExecuteSql.  This method cannot be used to

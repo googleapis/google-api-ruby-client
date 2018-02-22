@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta2BigQueryKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta2BigQueryOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1673,6 +1679,15 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2beta2BigQueryKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_number, :numeric_string => true, as: 'rowNumber'
+          property :table_reference, as: 'tableReference', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2BigQueryTable, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2BigQueryTable::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2beta2BigQueryOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2622,6 +2637,8 @@ module Google
       class GooglePrivacyDlpV2beta2RecordKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_key, as: 'bigQueryKey', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2BigQueryKey, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2BigQueryKey::Representation
+      
           property :cloud_storage_key, as: 'cloudStorageKey', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CloudStorageKey, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CloudStorageKey::Representation
       
           property :datastore_key, as: 'datastoreKey', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DatastoreKey, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DatastoreKey::Representation

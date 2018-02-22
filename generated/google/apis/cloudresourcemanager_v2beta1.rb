@@ -18,7 +18,7 @@ require 'google/apis/cloudresourcemanager_v2beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Resource Manager API
+    # Cloud Resource Manager API
     #
     # The Google Cloud Resource Manager API provides methods for creating, reading,
     # and updating project metadata.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/resource-manager
     module CloudresourcemanagerV2beta1
       VERSION = 'V2beta1'
-      REVISION = '20180122'
+      REVISION = '20180219'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

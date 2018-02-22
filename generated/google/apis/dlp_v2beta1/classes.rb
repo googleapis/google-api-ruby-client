@@ -220,6 +220,37 @@ module Google
         end
       end
       
+      # LINT.IfChange
+      # Row key for identifying a record in BigQuery table.
+      class GooglePrivacyDlpV2beta1BigQueryKey
+        include Google::Apis::Core::Hashable
+      
+        # Absolute number of the row from the beginning of the table at the time
+        # of scanning.
+        # Corresponds to the JSON property `rowNumber`
+        # @return [Fixnum]
+        attr_accessor :row_number
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified  by its project_id, dataset_id, and table_name. Within a query
+        # a table is often referenced with a string in the format of:
+        # `<project_id>:<dataset_id>.<table_id>` or
+        # `<project_id>.<dataset_id>.<table_id>`.
+        # Corresponds to the JSON property `tableReference`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryTable]
+        attr_accessor :table_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_number = args[:row_number] if args.key?(:row_number)
+          @table_reference = args[:table_reference] if args.key?(:table_reference)
+        end
+      end
+      
       # Options defining BigQuery table and row identifiers.
       class GooglePrivacyDlpV2beta1BigQueryOptions
         include Google::Apis::Core::Hashable
@@ -2876,6 +2907,12 @@ module Google
       class GooglePrivacyDlpV2beta1RecordKey
         include Google::Apis::Core::Hashable
       
+        # LINT.IfChange
+        # Row key for identifying a record in BigQuery table.
+        # Corresponds to the JSON property `bigQueryKey`
+        # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1BigQueryKey]
+        attr_accessor :big_query_key
+      
         # Record key for a finding in a Cloud Storage file.
         # Corresponds to the JSON property `cloudStorageKey`
         # @return [Google::Apis::DlpV2beta1::GooglePrivacyDlpV2beta1CloudStorageKey]
@@ -2892,6 +2929,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @big_query_key = args[:big_query_key] if args.key?(:big_query_key)
           @cloud_storage_key = args[:cloud_storage_key] if args.key?(:cloud_storage_key)
           @datastore_key = args[:datastore_key] if args.key?(:datastore_key)
         end
