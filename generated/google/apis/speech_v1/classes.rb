@@ -190,14 +190,6 @@ module Google
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
-        # *Optional* If `true`, the top result includes a list of words and the
-        # confidence for those words. If `false`, no word-level confidence
-        # information is returned. The default is `false`.
-        # Corresponds to the JSON property `enableWordConfidence`
-        # @return [Boolean]
-        attr_accessor :enable_word_confidence
-        alias_method :enable_word_confidence?, :enable_word_confidence
-      
         # *Optional* If `true`, the top result includes a list of words and
         # the start and end time offsets (timestamps) for those words. If
         # `false`, no word-level time offset information is returned. The default is
@@ -260,7 +252,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_word_confidence = args[:enable_word_confidence] if args.key?(:enable_word_confidence)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)
           @language_code = args[:language_code] if args.key?(:language_code)

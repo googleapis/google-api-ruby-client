@@ -262,6 +262,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1OutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LatLng
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -703,6 +733,47 @@ module Google
           property :property, as: 'property', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextAnnotationTextProperty, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextAnnotationTextProperty::Representation
       
           collection :symbols, as: 'symbols', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1Symbol, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1Symbol::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1OutputConfig, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1OutputConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1OutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_size, as: 'batchSize'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1GcsDestination, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1GcsDestination::Representation
       
         end
       end

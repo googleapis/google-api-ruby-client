@@ -1104,7 +1104,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height in pixels.
+        # Page height. For PDFs the unit is points. For images (including
+        # TIFFs) the unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -1114,7 +1115,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # Page width in pixels.
+        # Page width. For PDFs the unit is points. For images (including
+        # TIFFs) the unit is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -1696,6 +1698,138 @@ module Google
           @confidence = args[:confidence] if args.key?(:confidence)
           @property = args[:property] if args.key?(:property)
           @symbols = args[:symbols] if args.key?(:symbols)
+        end
+      end
+      
+      # The response for a single offline file annotation request.
+      class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The desired output location and metadata.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1OutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Response to an async batch file annotation request.
+      class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of file annotation responses, one for each request in
+        # AsyncBatchAnnotateFilesRequest.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # The Google Cloud Storage location where the output will be written to.
+      class GoogleCloudVisionV1p2beta1GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage URI where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI. This field
+        # can either represent a single file, or a prefix for multiple outputs.
+        # Prefixes must end in a `/`.
+        # Examples:
+        # *    File: gs://bucket-name/filename.json
+        # *    Prefix: gs://bucket-name/prefix/here/
+        # *    File: gs://bucket-name/prefix/here
+        # If multiple outputs, each response is still AnnotateFileResponse, each of
+        # which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large
+        # and overflows into multiple sharded files.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Contains metadata for the BatchAnnotateImages operation.
+      class GoogleCloudVisionV1p2beta1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the operation result was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The desired output location and metadata.
+      class GoogleCloudVisionV1p2beta1OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The max number of response protos to put into each output JSON file on GCS.
+        # The valid range is [1, 100]. If not specified, the default value is 20.
+        # For example, for one pdf file with 100 pages, 100 response protos will
+        # be generated. If `batch_size` = 20, then 5 json files each
+        # containing 20 response protos will be written under the prefix
+        # `gcs_destination`.`uri`.
+        # Currently, batch_size only applies to GcsDestination, with potential future
+        # support for other output configurations.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # The Google Cloud Storage location where the output will be written to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
       

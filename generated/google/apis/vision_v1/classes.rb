@@ -279,6 +279,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to/from color representations in various
       # languages over compactness; for example, the fields of this representation
@@ -700,6 +713,25 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Set of detected entity features.
       class EntityAnnotation
         include Google::Apis::Core::Hashable
@@ -927,6 +959,138 @@ module Google
         end
       end
       
+      # The response for a single offline file annotation request.
+      class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The desired output location and metadata.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1OutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
+      # Response to an async batch file annotation request.
+      class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of file annotation responses, one for each request in
+        # AsyncBatchAnnotateFilesRequest.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # The Google Cloud Storage location where the output will be written to.
+      class GoogleCloudVisionV1p2beta1GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage URI where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI. This field
+        # can either represent a single file, or a prefix for multiple outputs.
+        # Prefixes must end in a `/`.
+        # Examples:
+        # *    File: gs://bucket-name/filename.json
+        # *    Prefix: gs://bucket-name/prefix/here/
+        # *    File: gs://bucket-name/prefix/here
+        # If multiple outputs, each response is still AnnotateFileResponse, each of
+        # which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large
+        # and overflows into multiple sharded files.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Contains metadata for the BatchAnnotateImages operation.
+      class GoogleCloudVisionV1p2beta1OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the operation result was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The desired output location and metadata.
+      class GoogleCloudVisionV1p2beta1OutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The max number of response protos to put into each output JSON file on GCS.
+        # The valid range is [1, 100]. If not specified, the default value is 20.
+        # For example, for one pdf file with 100 pages, 100 response protos will
+        # be generated. If `batch_size` = 20, then 5 json files each
+        # containing 20 response protos will be written under the prefix
+        # `gcs_destination`.`uri`.
+        # Currently, batch_size only applies to GcsDestination, with potential future
+        # support for other output configurations.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # The Google Cloud Storage location where the output will be written to.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
       # Client image to perform Google Cloud Vision API tasks over.
       class Image
         include Google::Apis::Core::Hashable
@@ -1149,6 +1313,31 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::VisionV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # Detected entity location information.
       class LocationInfo
         include Google::Apis::Core::Hashable
@@ -1172,6 +1361,103 @@ module Google
         end
       end
       
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress.
+        # If `true`, the operation is completed, and either `error` or `response` is
+        # available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by
+        # [gRPC](https://github.com/grpc). The error model is designed to be:
+        # - Simple to use and understand for most users
+        # - Flexible enough to meet unexpected needs
+        # # Overview
+        # The `Status` message contains three pieces of data: error code, error message,
+        # and error details. The error code should be an enum value of
+        # google.rpc.Code, but it may accept additional error codes if needed.  The
+        # error message should be a developer-facing English message that helps
+        # developers *understand* and *resolve* the error. If a localized user-facing
+        # error message is needed, put the localized message in the error details or
+        # localize it in the client. The optional error details may contain arbitrary
+        # information about the error. There is a predefined set of error detail types
+        # in the package `google.rpc` that can be used for common error conditions.
+        # # Language mapping
+        # The `Status` message is the logical representation of the error model, but it
+        # is not necessarily the actual wire format. When the `Status` message is
+        # exposed in different client libraries and different wire protocols, it can be
+        # mapped differently. For example, it will likely be mapped to some exceptions
+        # in Java, but more likely mapped to some error codes in C.
+        # # Other uses
+        # The error model and the `Status` message can be used in a variety of
+        # environments, either with or without APIs, to provide a
+        # consistent developer experience across different environments.
+        # Example uses of this error model include:
+        # - Partial errors. If a service needs to return partial errors to the client,
+        # it may embed the `Status` in the normal response to indicate the partial
+        # errors.
+        # - Workflow errors. A typical workflow has multiple steps. Each step may
+        # have a `Status` message for error reporting.
+        # - Batch operations. If a client uses batch request and batch response, the
+        # `Status` message should be used directly inside batch response, one for
+        # each error sub-response.
+        # - Asynchronous operations. If an API call embeds asynchronous operation
+        # results in its response, the status of those operations should be
+        # represented directly using the `Status` message.
+        # - Logging. If some API errors are stored in logs, the message `Status` could
+        # be used directly after any stripping needed for security/privacy reasons.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation.  It typically
+        # contains progress information and common metadata such as create time.
+        # Some services might not provide such metadata.  Any method that returns a
+        # long-running operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the
+        # `name` should have the format of `operations/some/unique/name`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Detected page from OCR.
       class Page
         include Google::Apis::Core::Hashable
@@ -1186,7 +1472,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height in pixels.
+        # Page height. For PDFs the unit is points. For images (including
+        # TIFFs) the unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -1196,7 +1483,8 @@ module Google
         # @return [Google::Apis::VisionV1::TextProperty]
         attr_accessor :property
       
-        # Page width in pixels.
+        # Page width. For PDFs the unit is points. For images (including
+        # TIFFs) the unit is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width

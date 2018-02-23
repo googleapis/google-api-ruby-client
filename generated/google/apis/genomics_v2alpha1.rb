@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/genomics
     module GenomicsV2alpha1
       VERSION = 'V2alpha1'
-      REVISION = '20180220'
+      REVISION = '20180222'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

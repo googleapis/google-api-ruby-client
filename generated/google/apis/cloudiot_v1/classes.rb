@@ -301,8 +301,8 @@ module Google
         # The metadata key-value pairs assigned to the device. This metadata is not
         # interpreted or indexed by Cloud IoT Core. It can be used to add contextual
         # information for the device.
-        # Keys must conform to the regular expression [a-zA-Z0-9-_]+ and be less than
-        # 128 bytes in length.
+        # Keys must conform to the regular expression a-zA-Z+ and
+        # be less than 128 bytes in length.
         # Values are free-form strings. Each value must be less than or equal to 32
         # KB in size.
         # The total size of all keys and values must be less than 256 KB, and the

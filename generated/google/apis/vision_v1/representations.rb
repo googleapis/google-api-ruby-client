@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +131,36 @@ module Google
       end
       
       class Feature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1OutputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,7 +208,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,6 +406,12 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -421,6 +481,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EntityAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -469,6 +535,47 @@ module Google
           property :max_results, as: 'maxResults'
           property :model, as: 'model'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1OutputConfig, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1OutputConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :responses, as: 'responses', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1OutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_size, as: 'batchSize'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1GcsDestination, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1GcsDestination::Representation
+      
         end
       end
       
@@ -537,11 +644,32 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::VisionV1::Operation, decorator: Google::Apis::VisionV1::Operation::Representation
+      
+        end
+      end
+      
       class LocationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :lat_lng, as: 'latLng', class: Google::Apis::VisionV1::LatLng, decorator: Google::Apis::VisionV1::LatLng::Representation
       
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::VisionV1::Status, decorator: Google::Apis::VisionV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       

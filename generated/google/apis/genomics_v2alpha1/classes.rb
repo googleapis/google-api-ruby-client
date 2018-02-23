@@ -716,7 +716,8 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::Status]
         attr_accessor :error
       
-        # An OperationMetadata object. This will always be returned with the Operation.
+        # An OperationMetadata or Metadata object. This will always be returned with the
+        # Operation.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata

@@ -22,6 +22,31 @@ module Google
   module Apis
     module TpuV1alpha1
       
+      # A accelerator type that a Node can be configured with.
+      class AcceleratorType
+        include Google::Apis::Core::Hashable
+      
+        # The resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # the accelerator type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -38,6 +63,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response for ListAcceleratorTypes.
+      class ListAcceleratorTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The listed nodes.
+        # Corresponds to the JSON property `acceleratorTypes`
+        # @return [Array<Google::Apis::TpuV1alpha1::AcceleratorType>]
+        attr_accessor :accelerator_types
+      
+        # The next page token or empty if none.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_types = args[:accelerator_types] if args.key?(:accelerator_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

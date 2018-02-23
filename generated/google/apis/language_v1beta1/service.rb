@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module LanguageV1beta1
-      # Google Cloud Natural Language API
+      # Cloud Natural Language API
       #
       # Provides natural language understanding technologies to developers. Examples
       #  include sentiment analysis, entity recognition, entity sentiment analysis, and

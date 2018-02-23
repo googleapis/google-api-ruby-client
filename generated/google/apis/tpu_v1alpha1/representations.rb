@@ -22,7 +22,19 @@ module Google
   module Apis
     module TpuV1alpha1
       
+      class AcceleratorType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAcceleratorTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,9 +130,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceleratorType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ListAcceleratorTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerator_types, as: 'acceleratorTypes', class: Google::Apis::TpuV1alpha1::AcceleratorType, decorator: Google::Apis::TpuV1alpha1::AcceleratorType::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

@@ -18,7 +18,7 @@ require 'google/apis/language_v1beta2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Natural Language API
+    # Cloud Natural Language API
     #
     # Provides natural language understanding technologies to developers. Examples
     # include sentiment analysis, entity recognition, entity sentiment analysis, and
@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/natural-language/
     module LanguageV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20171031'
+      REVISION = '20180221'
 
       # Apply machine learning models to reveal the structure and meaning of text
       AUTH_CLOUD_LANGUAGE = 'https://www.googleapis.com/auth/cloud-language'
