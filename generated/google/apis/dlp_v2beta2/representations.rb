@@ -496,6 +496,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta2DateShiftConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta2DateTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta2DeidentifyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -892,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2beta2QuoteInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2beta2Range
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1043,6 +1061,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2beta2TimePartConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2beta2TimeZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1932,6 +1956,31 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2beta2DateShiftConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId::Representation
+      
+          property :crypto_key, as: 'cryptoKey', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoKey, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoKey::Representation
+      
+          property :lower_bound_days, as: 'lowerBoundDays'
+          property :upper_bound_days, as: 'upperBoundDays'
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta2DateTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::DlpV2beta2::GoogleTypeDate, decorator: Google::Apis::DlpV2beta2::GoogleTypeDate::Representation
+      
+          property :day_of_week, as: 'dayOfWeek'
+          property :time, as: 'time', class: Google::Apis::DlpV2beta2::GoogleTypeTimeOfDay, decorator: Google::Apis::DlpV2beta2::GoogleTypeTimeOfDay::Representation
+      
+          property :time_zone, as: 'timeZone', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2TimeZone, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2TimeZone::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2beta2DeidentifyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2078,6 +2127,8 @@ module Google
           property :location, as: 'location', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Location, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2Location::Representation
       
           property :quote, as: 'quote'
+          property :quote_info, as: 'quoteInfo', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2QuoteInfo, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2QuoteInfo::Representation
+      
         end
       end
       
@@ -2532,6 +2583,7 @@ module Google
       class GooglePrivacyDlpV2beta2OutputStorageConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_schema, as: 'outputSchema'
           property :table, as: 'table', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2BigQueryTable, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2BigQueryTable::Representation
       
         end
@@ -2564,6 +2616,8 @@ module Google
           property :crypto_hash_config, as: 'cryptoHashConfig', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoHashConfig, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoHashConfig::Representation
       
           property :crypto_replace_ffx_fpe_config, as: 'cryptoReplaceFfxFpeConfig', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig::Representation
+      
+          property :date_shift_config, as: 'dateShiftConfig', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DateShiftConfig, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DateShiftConfig::Representation
       
           property :fixed_size_bucketing_config, as: 'fixedSizeBucketingConfig', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FixedSizeBucketingConfig, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FixedSizeBucketingConfig::Representation
       
@@ -2614,6 +2668,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_tag, as: 'customTag'
           property :field, as: 'field', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2beta2QuoteInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_time, as: 'dateTime', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DateTime, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DateTime::Representation
       
         end
       end
@@ -2856,6 +2918,13 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2beta2TimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :offset_minutes, as: 'offsetMinutes'
+        end
+      end
+      
       class GooglePrivacyDlpV2beta2TimespanConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2948,6 +3017,7 @@ module Google
           property :boolean_value, as: 'booleanValue'
           property :date_value, as: 'dateValue', class: Google::Apis::DlpV2beta2::GoogleTypeDate, decorator: Google::Apis::DlpV2beta2::GoogleTypeDate::Representation
       
+          property :day_of_week_value, as: 'dayOfWeekValue'
           property :float_value, as: 'floatValue'
           property :integer_value, :numeric_string => true, as: 'integerValue'
           property :string_value, as: 'stringValue'

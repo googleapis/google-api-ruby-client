@@ -23,7 +23,7 @@ module Google
     module DataprocV1
       
       # Specifies the type and number of accelerator cards attached to the instances
-      # of an instance group (see GPUs on Compute Engine).
+      # of an instance. See GPUs on Compute Engine.
       class AcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -33,11 +33,11 @@ module Google
         attr_accessor :accelerator_count
       
         # Full URL, partial URI, or short name of the accelerator type resource to
-        # expose to this instance. See Google Compute Engine AcceleratorTypes( /compute/
-        # docs/reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/
-        # compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-
-        # tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-
-        # tesla-k80 * nvidia-tesla-k80
+        # expose to this instance. See Google Compute Engine AcceleratorTypes.Examples:
+        # https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
+        # acceleratorTypes/nvidia-tesla-k80
+        # projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+        # nvidia-tesla-k80
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri

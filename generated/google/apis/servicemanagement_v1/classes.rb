@@ -621,14 +621,6 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::ServicemanagementV1::Expr]
-        attr_accessor :condition
-      
         # Specifies the identities requesting access for a Cloud Platform resource.
         # `members` can have the following values:
         # * `allUsers`: A special identifier that represents anyone who is
@@ -660,7 +652,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
         end
@@ -843,6 +834,21 @@ module Google
       # `google.rpc.context.OriginContext`.
       # Available context types are defined in package
       # `google.rpc.context`.
+      # This also provides mechanism to whitelist any protobuf message extension that
+      # can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+      # “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+      # specific protobuf types that can appear in grpc metadata as follows in your
+      # yaml file:
+      # Example:
+      # context:
+      # rules:
+      # - selector: "google.example.library.v1.LibraryService.CreateBook"
+      # allowed_request_extensions:
+      # - google.foo.v1.NewExtension
+      # allowed_response_extensions:
+      # - google.foo.v1.NewExtension
+      # You can also specify extension ID instead of fully qualified extension name
+      # here.
       class Context
         include Google::Apis::Core::Hashable
       
@@ -867,6 +873,18 @@ module Google
       class ContextRule
         include Google::Apis::Core::Hashable
       
+        # A list of full type names or extension IDs of extensions allowed in grpc
+        # side channel from client to backend.
+        # Corresponds to the JSON property `allowedRequestExtensions`
+        # @return [Array<String>]
+        attr_accessor :allowed_request_extensions
+      
+        # A list of full type names or extension IDs of extensions allowed in grpc
+        # side channel from backend to client.
+        # Corresponds to the JSON property `allowedResponseExtensions`
+        # @return [Array<String>]
+        attr_accessor :allowed_response_extensions
+      
         # A list of full type names of provided contexts.
         # Corresponds to the JSON property `provided`
         # @return [Array<String>]
@@ -889,6 +907,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_request_extensions = args[:allowed_request_extensions] if args.key?(:allowed_request_extensions)
+          @allowed_response_extensions = args[:allowed_response_extensions] if args.key?(:allowed_response_extensions)
           @provided = args[:provided] if args.key?(:provided)
           @requested = args[:requested] if args.key?(:requested)
           @selector = args[:selector] if args.key?(:selector)
@@ -1432,53 +1452,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorization = args[:authorization] if args.key?(:authorization)
-        end
-      end
-      
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
-      class Expr
-        include Google::Apis::Core::Hashable
-      
-        # An optional description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
-        # Corresponds to the JSON property `expression`
-        # @return [String]
-        attr_accessor :expression
-      
-        # An optional string indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # An optional title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @expression = args[:expression] if args.key?(:expression)
-          @location = args[:location] if args.key?(:location)
-          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -3526,6 +3499,21 @@ module Google
         # `google.rpc.context.OriginContext`.
         # Available context types are defined in package
         # `google.rpc.context`.
+        # This also provides mechanism to whitelist any protobuf message extension that
+        # can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
+        # “x-goog-ext-<extension_id>-jspb” format. For example, list any service
+        # specific protobuf types that can appear in grpc metadata as follows in your
+        # yaml file:
+        # Example:
+        # context:
+        # rules:
+        # - selector: "google.example.library.v1.LibraryService.CreateBook"
+        # allowed_request_extensions:
+        # - google.foo.v1.NewExtension
+        # allowed_response_extensions:
+        # - google.foo.v1.NewExtension
+        # You can also specify extension ID instead of fully qualified extension name
+        # here.
         # Corresponds to the JSON property `context`
         # @return [Google::Apis::ServicemanagementV1::Context]
         attr_accessor :context

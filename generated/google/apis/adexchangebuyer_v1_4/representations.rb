@@ -472,6 +472,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetingValueDemogAgeCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetingValueDemogGenderCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetingValueSize
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -487,6 +499,7 @@ module Google
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_pretargeting_to_non_guaranteed_deals, as: 'applyPretargetingToNonGuaranteedDeals'
           collection :bidder_location, as: 'bidderLocation', class: Google::Apis::AdexchangebuyerV1_4::Account::BidderLocation, decorator: Google::Apis::AdexchangebuyerV1_4::Account::BidderLocation::Representation
       
           property :cookie_matching_nid, as: 'cookieMatchingNid'
@@ -651,6 +664,7 @@ module Google
           collection :vendor_type, as: 'vendorType'
           property :version, as: 'version'
           property :video_url, as: 'videoURL'
+          property :video_vast_xml, as: 'videoVastXML'
           property :width, as: 'width'
         end
         
@@ -1370,6 +1384,10 @@ module Google
       
           property :day_part_targeting_value, as: 'dayPartTargetingValue', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueDayPartTargeting, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueDayPartTargeting::Representation
       
+          property :demog_age_criteria_value, as: 'demogAgeCriteriaValue', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogAgeCriteria, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogAgeCriteria::Representation
+      
+          property :demog_gender_criteria_value, as: 'demogGenderCriteriaValue', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogGenderCriteria, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogGenderCriteria::Representation
+      
           property :long_value, :numeric_string => true, as: 'longValue'
           property :string_value, as: 'stringValue'
         end
@@ -1378,6 +1396,7 @@ module Google
       class TargetingValueCreativeSize
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_formats, as: 'allowedFormats'
           collection :companion_sizes, as: 'companionSizes', class: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize, decorator: Google::Apis::AdexchangebuyerV1_4::TargetingValueSize::Representation
       
           property :creative_size_type, as: 'creativeSizeType'
@@ -1405,6 +1424,20 @@ module Google
           property :end_minute, as: 'endMinute'
           property :start_hour, as: 'startHour'
           property :start_minute, as: 'startMinute'
+        end
+      end
+      
+      class TargetingValueDemogAgeCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :demog_age_criteria_ids, as: 'demogAgeCriteriaIds'
+        end
+      end
+      
+      class TargetingValueDemogGenderCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :demog_gender_criteria_ids, as: 'demogGenderCriteriaIds'
         end
       end
       

@@ -2119,7 +2119,8 @@ module Google
         end
       end
       
-      # A request to update an existing contact group. Only the name can be updated.
+      # A request to update an existing contact group. All updated fields will be
+      # replaced.
       class UpdateContactGroupRequest
         include Google::Apis::Core::Hashable
       

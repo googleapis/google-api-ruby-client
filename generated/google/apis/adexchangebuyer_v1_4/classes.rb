@@ -26,6 +26,15 @@ module Google
       class Account
         include Google::Apis::Core::Hashable
       
+        # When this is false, bid requests that include a deal ID for a private auction
+        # or preferred deal are always sent to your bidder. When true, all active
+        # pretargeting configs will be applied to private auctions and preferred deals.
+        # Programmatic Guaranteed deals (when enabled) are always sent to your bidder.
+        # Corresponds to the JSON property `applyPretargetingToNonGuaranteedDeals`
+        # @return [Boolean]
+        attr_accessor :apply_pretargeting_to_non_guaranteed_deals
+        alias_method :apply_pretargeting_to_non_guaranteed_deals?, :apply_pretargeting_to_non_guaranteed_deals
+      
         # Your bidder locations that have distinct URLs.
         # Corresponds to the JSON property `bidderLocation`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::Account::BidderLocation>]
@@ -77,6 +86,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @apply_pretargeting_to_non_guaranteed_deals = args[:apply_pretargeting_to_non_guaranteed_deals] if args.key?(:apply_pretargeting_to_non_guaranteed_deals)
           @bidder_location = args[:bidder_location] if args.key?(:bidder_location)
           @cookie_matching_nid = args[:cookie_matching_nid] if args.key?(:cookie_matching_nid)
           @cookie_matching_url = args[:cookie_matching_url] if args.key?(:cookie_matching_url)
@@ -470,7 +480,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The HTML snippet that displays the ad when inserted in the web page. If set,
-        # videoURL should not be set.
+        # videoURL, videoVastXML, and nativeAd should not be set.
         # Corresponds to the JSON property `HTMLSnippet`
         # @return [String]
         attr_accessor :html_snippet
@@ -574,8 +584,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :languages
       
-        # If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
-        # not be set. (The videoURL inside nativeAd can be set.)
+        # If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of
+        # nativeAd should not be set. (The videoURL inside nativeAd can be set.)
         # Corresponds to the JSON property `nativeAd`
         # @return [Google::Apis::AdexchangebuyerV1_4::Creative::NativeAd]
         attr_accessor :native_ad
@@ -631,11 +641,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :version
       
-        # The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not
-        # be set. Note, this is different from resource.native_ad.video_url above.
+        # The URL to fetch a video ad. If set, HTMLSnippet, videoVastXML, and nativeAd
+        # should not be set. Note, this is different from resource.native_ad.video_url
+        # above.
         # Corresponds to the JSON property `videoURL`
         # @return [String]
         attr_accessor :video_url
+      
+        # The contents of a VAST document for a video ad. This document should conform
+        # to the VAST 2.0 or 3.0 standard. If set, HTMLSnippet, videoURL, and nativeAd
+        # and should not be set.
+        # Corresponds to the JSON property `videoVastXML`
+        # @return [String]
+        attr_accessor :video_vast_xml
       
         # Ad width.
         # Corresponds to the JSON property `width`
@@ -675,6 +693,7 @@ module Google
           @vendor_type = args[:vendor_type] if args.key?(:vendor_type)
           @version = args[:version] if args.key?(:version)
           @video_url = args[:video_url] if args.key?(:video_url)
+          @video_vast_xml = args[:video_vast_xml] if args.key?(:video_vast_xml)
           @width = args[:width] if args.key?(:width)
         end
         
@@ -802,8 +821,8 @@ module Google
           end
         end
         
-        # If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should
-        # not be set. (The videoURL inside nativeAd can be set.)
+        # If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of
+        # nativeAd should not be set. (The videoURL inside nativeAd can be set.)
         class NativeAd
           include Google::Apis::Core::Hashable
         
@@ -3399,7 +3418,7 @@ module Google
       class TargetingValue
         include Google::Apis::Core::Hashable
       
-        # The creative size value to exclude/include.
+        # Next Id: 7
         # Corresponds to the JSON property `creativeSizeValue`
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueCreativeSize]
         attr_accessor :creative_size_value
@@ -3409,6 +3428,16 @@ module Google
         # Corresponds to the JSON property `dayPartTargetingValue`
         # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueDayPartTargeting]
         attr_accessor :day_part_targeting_value
+      
+        # 
+        # Corresponds to the JSON property `demogAgeCriteriaValue`
+        # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogAgeCriteria]
+        attr_accessor :demog_age_criteria_value
+      
+        # 
+        # Corresponds to the JSON property `demogGenderCriteriaValue`
+        # @return [Google::Apis::AdexchangebuyerV1_4::TargetingValueDemogGenderCriteria]
+        attr_accessor :demog_gender_criteria_value
       
         # The long value to exclude/include.
         # Corresponds to the JSON property `longValue`
@@ -3428,14 +3457,21 @@ module Google
         def update!(**args)
           @creative_size_value = args[:creative_size_value] if args.key?(:creative_size_value)
           @day_part_targeting_value = args[:day_part_targeting_value] if args.key?(:day_part_targeting_value)
+          @demog_age_criteria_value = args[:demog_age_criteria_value] if args.key?(:demog_age_criteria_value)
+          @demog_gender_criteria_value = args[:demog_gender_criteria_value] if args.key?(:demog_gender_criteria_value)
           @long_value = args[:long_value] if args.key?(:long_value)
           @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
-      # 
+      # Next Id: 7
       class TargetingValueCreativeSize
         include Google::Apis::Core::Hashable
+      
+        # The formats allowed by the publisher.
+        # Corresponds to the JSON property `allowedFormats`
+        # @return [Array<String>]
+        attr_accessor :allowed_formats
       
         # For video size type, the list of companion sizes.
         # Corresponds to the JSON property `companionSizes`
@@ -3468,6 +3504,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_formats = args[:allowed_formats] if args.key?(:allowed_formats)
           @companion_sizes = args[:companion_sizes] if args.key?(:companion_sizes)
           @creative_size_type = args[:creative_size_type] if args.key?(:creative_size_type)
           @native_template = args[:native_template] if args.key?(:native_template)
@@ -3541,6 +3578,44 @@ module Google
           @end_minute = args[:end_minute] if args.key?(:end_minute)
           @start_hour = args[:start_hour] if args.key?(:start_hour)
           @start_minute = args[:start_minute] if args.key?(:start_minute)
+        end
+      end
+      
+      # 
+      class TargetingValueDemogAgeCriteria
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `demogAgeCriteriaIds`
+        # @return [Array<String>]
+        attr_accessor :demog_age_criteria_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @demog_age_criteria_ids = args[:demog_age_criteria_ids] if args.key?(:demog_age_criteria_ids)
+        end
+      end
+      
+      # 
+      class TargetingValueDemogGenderCriteria
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `demogGenderCriteriaIds`
+        # @return [Array<String>]
+        attr_accessor :demog_gender_criteria_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @demog_gender_criteria_ids = args[:demog_gender_criteria_ids] if args.key?(:demog_gender_criteria_ids)
         end
       end
       

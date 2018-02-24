@@ -333,7 +333,7 @@ module Google
       class ContentMatcher
         include Google::Apis::Core::Hashable
       
-        # String content to match
+        # String content to match (max 1024 bytes)
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

@@ -2619,6 +2619,98 @@ module Google
         end
       end
       
+      # Shifts dates by random number of days, with option to be consistent for the
+      # same context.
+      class GooglePrivacyDlpV2beta2DateShiftConfig
+        include Google::Apis::Core::Hashable
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2FieldId]
+        attr_accessor :context
+      
+        # This is a data encryption key (DEK) (as opposed to
+        # a key encryption key (KEK) stored by KMS).
+        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
+        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # unwrap the data crypto key.
+        # Corresponds to the JSON property `cryptoKey`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoKey]
+        attr_accessor :crypto_key
+      
+        # For example, -5 means shift date to at most 5 days back in the past.
+        # [Required]
+        # Corresponds to the JSON property `lowerBoundDays`
+        # @return [Fixnum]
+        attr_accessor :lower_bound_days
+      
+        # Range of shift in days. Actual shift will be selected at random within this
+        # range (inclusive ends). Negative means shift to earlier in time. Must not
+        # be more than 365250 days (1000 years) each direction.
+        # For example, 3 means shift date to at most 3 days into the future.
+        # [Required]
+        # Corresponds to the JSON property `upperBoundDays`
+        # @return [Fixnum]
+        attr_accessor :upper_bound_days
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @lower_bound_days = args[:lower_bound_days] if args.key?(:lower_bound_days)
+          @upper_bound_days = args[:upper_bound_days] if args.key?(:upper_bound_days)
+        end
+      end
+      
+      # Message for a date time object.
+      class GooglePrivacyDlpV2beta2DateTime
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, e.g. date of birth. The time of day and
+        # time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+        # represent a year and month where the day is not significant, e.g. credit card
+        # expiration date. The year may be 0 to represent a month and day independent
+        # of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+        # and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::DlpV2beta2::GoogleTypeDate]
+        attr_accessor :date
+      
+        # 
+        # Corresponds to the JSON property `dayOfWeek`
+        # @return [String]
+        attr_accessor :day_of_week
+      
+        # Represents a time of day. The date and time zone are either not significant
+        # or are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::DlpV2beta2::GoogleTypeTimeOfDay]
+        attr_accessor :time
+      
+        # 
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2TimeZone]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
+          @time = args[:time] if args.key?(:time)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
       # The configuration that controls how the data will change.
       class GooglePrivacyDlpV2beta2DeidentifyConfig
         include Google::Apis::Core::Hashable
@@ -3135,6 +3227,11 @@ module Google
         # @return [String]
         attr_accessor :quote
       
+        # Message for infoType-dependent details parsed from quote.
+        # Corresponds to the JSON property `quoteInfo`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2QuoteInfo]
+        attr_accessor :quote_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3146,6 +3243,7 @@ module Google
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @location = args[:location] if args.key?(:location)
           @quote = args[:quote] if args.key?(:quote)
+          @quote_info = args[:quote_info] if args.key?(:quote_info)
         end
       end
       
@@ -4611,6 +4709,16 @@ module Google
       class GooglePrivacyDlpV2beta2OutputStorageConfig
         include Google::Apis::Core::Hashable
       
+        # Schema used for writing the findings. Columns are derived from the
+        # `Finding` object. If appending to an existing table, any columns from the
+        # predefined schema that are missing will be added. No columns in the
+        # existing table will be deleted.
+        # If unspecified, then all available columns will be used for a new table,
+        # and no changes will be made to an existing table.
+        # Corresponds to the JSON property `outputSchema`
+        # @return [String]
+        attr_accessor :output_schema
+      
         # Message defining the location of a BigQuery table. A table is uniquely
         # identified  by its project_id, dataset_id, and table_name. Within a query
         # a table is often referenced with a string in the format of:
@@ -4626,6 +4734,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
           @table = args[:table] if args.key?(:table)
         end
       end
@@ -4749,6 +4858,12 @@ module Google
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
       
+        # Shifts dates by random number of days, with option to be consistent for the
+        # same context.
+        # Corresponds to the JSON property `dateShiftConfig`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DateShiftConfig]
+        attr_accessor :date_shift_config
+      
         # Buckets values based on fixed size ranges. The
         # Bucketing transformation can provide all of this functionality,
         # but requires more configuration. This message is provided as a convenience to
@@ -4797,6 +4912,7 @@ module Google
           @character_mask_config = args[:character_mask_config] if args.key?(:character_mask_config)
           @crypto_hash_config = args[:crypto_hash_config] if args.key?(:crypto_hash_config)
           @crypto_replace_ffx_fpe_config = args[:crypto_replace_ffx_fpe_config] if args.key?(:crypto_replace_ffx_fpe_config)
+          @date_shift_config = args[:date_shift_config] if args.key?(:date_shift_config)
           @fixed_size_bucketing_config = args[:fixed_size_bucketing_config] if args.key?(:fixed_size_bucketing_config)
           @redact_config = args[:redact_config] if args.key?(:redact_config)
           @replace_config = args[:replace_config] if args.key?(:replace_config)
@@ -4927,6 +5043,25 @@ module Google
         def update!(**args)
           @custom_tag = args[:custom_tag] if args.key?(:custom_tag)
           @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # Message for infoType-dependent details parsed from quote.
+      class GooglePrivacyDlpV2beta2QuoteInfo
+        include Google::Apis::Core::Hashable
+      
+        # Message for a date time object.
+        # Corresponds to the JSON property `dateTime`
+        # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2DateTime]
+        attr_accessor :date_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_time = args[:date_time] if args.key?(:date_time)
         end
       end
       
@@ -5634,6 +5769,26 @@ module Google
         end
       end
       
+      # 
+      class GooglePrivacyDlpV2beta2TimeZone
+        include Google::Apis::Core::Hashable
+      
+        # Set only if the offset can be determined. Positive for time ahead of UTC.
+        # E.g. For "UTC-9", this value is -540.
+        # Corresponds to the JSON property `offsetMinutes`
+        # @return [Fixnum]
+        attr_accessor :offset_minutes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @offset_minutes = args[:offset_minutes] if args.key?(:offset_minutes)
+        end
+      end
+      
       # Configuration of the timespan of the items to include in scanning.
       # Currently only supported when inspecting Google Cloud Storage and BigQuery.
       class GooglePrivacyDlpV2beta2TimespanConfig
@@ -5925,6 +6080,11 @@ module Google
         attr_accessor :date_value
       
         # 
+        # Corresponds to the JSON property `dayOfWeekValue`
+        # @return [String]
+        attr_accessor :day_of_week_value
+      
+        # 
         # Corresponds to the JSON property `floatValue`
         # @return [Float]
         attr_accessor :float_value
@@ -5959,6 +6119,7 @@ module Google
         def update!(**args)
           @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
+          @day_of_week_value = args[:day_of_week_value] if args.key?(:day_of_week_value)
           @float_value = args[:float_value] if args.key?(:float_value)
           @integer_value = args[:integer_value] if args.key?(:integer_value)
           @string_value = args[:string_value] if args.key?(:string_value)

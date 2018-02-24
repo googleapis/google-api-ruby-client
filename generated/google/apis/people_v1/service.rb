@@ -364,7 +364,8 @@ module Google
         #   [`people.connections.list`](/people/api/rest/v1/people.connections/list).
         # @param [String] person_fields
         #   **Required.** A field mask to restrict which fields on the person are
-        #   returned. Valid values are:
+        #   returned. Multiple fields can be specified by separating them with commas.
+        #   Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
@@ -432,7 +433,8 @@ module Google
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] person_fields
         #   **Required.** A field mask to restrict which fields on each person are
-        #   returned. Valid values are:
+        #   returned. Multiple fields can be specified by separating them with commas.
+        #   Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
@@ -520,7 +522,8 @@ module Google
         # @param [Google::Apis::PeopleV1::Person] person_object
         # @param [String] update_person_fields
         #   **Required.** A field mask to restrict which fields on the person are
-        #   updated. Valid values are:
+        #   updated. Multiple fields can be specified by separating them with commas.
+        #   All updated fields will be replaced. Valid values are:
         #   * addresses
         #   * biographies
         #   * birthdays
@@ -583,7 +586,8 @@ module Google
         #   The token of the page to be returned.
         # @param [String] person_fields
         #   **Required.** A field mask to restrict which fields on each person are
-        #   returned. Valid values are:
+        #   returned. Multiple fields can be specified by separating them with commas.
+        #   Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
