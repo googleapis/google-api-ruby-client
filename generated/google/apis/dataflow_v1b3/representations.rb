@@ -1564,7 +1564,9 @@ module Google
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
           property :machine_type, as: 'machineType'
           property :max_workers, as: 'maxWorkers'
+          property :network, as: 'network'
           property :service_account_email, as: 'serviceAccountEmail'
+          property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
           property :zone, as: 'zone'
         end
@@ -2066,6 +2068,7 @@ module Google
       class WorkerLifecycleEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_start_time, as: 'containerStartTime'
           property :event, as: 'event'
           hash :metadata, as: 'metadata'
         end

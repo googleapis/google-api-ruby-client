@@ -2961,10 +2961,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_workers
       
+        # Network to which VMs will be assigned.  If empty or unspecified,
+        # the service will use the network "default".
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # The email address of the service account to run the job as.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
+      
+        # Subnetwork to which VMs will be assigned, if desired.  Expected to be of
+        # the form "regions/REGION/subnetworks/SUBNETWORK".
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
       
         # The Cloud Storage path to use for temporary files.
         # Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -2989,7 +3001,9 @@ module Google
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
+          @network = args[:network] if args.key?(:network)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -4830,6 +4844,12 @@ module Google
       class WorkerLifecycleEvent
         include Google::Apis::Core::Hashable
       
+        # The start time of this container. All events will report this so that
+        # events can be grouped together across container/VM restarts.
+        # Corresponds to the JSON property `containerStartTime`
+        # @return [String]
+        attr_accessor :container_start_time
+      
         # The event being reported.
         # Corresponds to the JSON property `event`
         # @return [String]
@@ -4847,6 +4867,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @container_start_time = args[:container_start_time] if args.key?(:container_start_time)
           @event = args[:event] if args.key?(:event)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
