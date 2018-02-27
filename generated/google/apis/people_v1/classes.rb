@@ -996,7 +996,9 @@ module Google
         end
       end
       
-      # A request to modify an existing contact group's members.
+      # A request to modify an existing contact group's members. Contacts can be
+      # removed from any group but they can only be added to a user group or
+      # myContacts or starred system groups.
       class ModifyContactGroupMembersRequest
         include Google::Apis::Core::Hashable
       
@@ -2119,8 +2121,8 @@ module Google
         end
       end
       
-      # A request to update an existing contact group. All updated fields will be
-      # replaced.
+      # A request to update an existing user contact group. All updated fields will
+      # be replaced.
       class UpdateContactGroupRequest
         include Google::Apis::Core::Hashable
       
