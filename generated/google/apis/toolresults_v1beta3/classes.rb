@@ -1147,7 +1147,7 @@ module Google
       class ListScreenshotClustersResponse
         include Google::Apis::Core::Hashable
       
-        # The set of clustres associated with an execution Always set
+        # The set of clusters associated with an execution Always set
         # Corresponds to the JSON property `clusters`
         # @return [Array<Google::Apis::ToolresultsV1beta3::ScreenshotCluster>]
         attr_accessor :clusters

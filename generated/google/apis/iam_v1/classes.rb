@@ -930,7 +930,7 @@ module Google
         # The private key data. Only provided in `CreateServiceAccountKey`
         # responses. Make sure to keep the private key data secure because it
         # allows for the assertion of the service account identity.
-        # When decoded, the private key data can be used to authenticate with
+        # When base64 decoded, the private key data can be used to authenticate with
         # Google API client libraries and with
         # <a href="/sdk/gcloud/reference/auth/activate-service-account">gcloud
         # auth activate-service-account</a>.
