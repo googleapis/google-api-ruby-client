@@ -1591,6 +1591,14 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
+        # The auto-update policy for apps installed on the device. "choiceToTheUser"
+        # allows the device's user to configure the app update policy. "always" enables
+        # auto updates. "never" disables auto updates. "wifiOnly" enables auto updates
+        # only when the device is connected to wifi.
+        # Corresponds to the JSON property `autoUpdatePolicy`
+        # @return [String]
+        attr_accessor :auto_update_policy
+      
         # The availability granted to the device for the specified products. "all" gives
         # the device access to all products, regardless of approval status. "allApproved"
         # entitles the device to access all products that are approved for the
@@ -1615,6 +1623,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_update_policy = args[:auto_update_policy] if args.key?(:auto_update_policy)
           @product_availability_policy = args[:product_availability_policy] if args.key?(:product_availability_policy)
           @product_policy = args[:product_policy] if args.key?(:product_policy)
         end

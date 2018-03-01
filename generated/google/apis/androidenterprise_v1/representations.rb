@@ -853,6 +853,7 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_update_policy, as: 'autoUpdatePolicy'
           property :product_availability_policy, as: 'productAvailabilityPolicy'
           collection :product_policy, as: 'productPolicy', class: Google::Apis::AndroidenterpriseV1::ProductPolicy, decorator: Google::Apis::AndroidenterpriseV1::ProductPolicy::Representation
       

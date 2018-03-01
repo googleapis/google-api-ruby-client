@@ -18,7 +18,7 @@ require 'google/apis/appengine_v1beta5/representations.rb'
 
 module Google
   module Apis
-    # Google App Engine Admin API
+    # App Engine Admin API
     #
     # The App Engine Admin API enables developers to provision and manage their App
     # Engine applications.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/appengine/docs/admin-api/
     module AppengineV1beta5
       VERSION = 'V1beta5'
-      REVISION = '20180209'
+      REVISION = '20180222'
 
       # View and manage your applications deployed on Google App Engine
       AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'

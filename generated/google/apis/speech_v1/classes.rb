@@ -199,7 +199,9 @@ module Google
         attr_accessor :enable_word_time_offsets
         alias_method :enable_word_time_offsets?, :enable_word_time_offsets
       
-        # *Required* Encoding of audio data sent in all `RecognitionAudio` messages.
+        # Encoding of audio data sent in all `RecognitionAudio` messages.
+        # This field is optional for `FLAC` and `WAV` audio files and required
+        # for all other audio formats. For details, see AudioEncoding.
         # Corresponds to the JSON property `encoding`
         # @return [String]
         attr_accessor :encoding
@@ -232,11 +234,13 @@ module Google
         attr_accessor :profanity_filter
         alias_method :profanity_filter?, :profanity_filter
       
-        # *Required* Sample rate in Hertz of the audio data sent in all
+        # Sample rate in Hertz of the audio data sent in all
         # `RecognitionAudio` messages. Valid values are: 8000-48000.
         # 16000 is optimal. For best results, set the sampling rate of the audio
         # source to 16000 Hz. If that's not possible, use the native sample rate of
         # the audio source (instead of re-sampling).
+        # This field is optional for `FLAC` and `WAV` audio files and required
+        # for all other audio formats. For details, see AudioEncoding.
         # Corresponds to the JSON property `sampleRateHertz`
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz

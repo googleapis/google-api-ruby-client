@@ -1532,7 +1532,7 @@ module Google
         end
       end
       
-      # A description of how to set up the device prior to running the test
+      # A description of how to set up the Android device prior to running the test.
       class TestSetup
         include Google::Apis::Core::Hashable
       
@@ -1640,7 +1640,7 @@ module Google
         attr_accessor :disable_video_recording
         alias_method :disable_video_recording?, :disable_video_recording
       
-        # A description of how to set up the device prior to running the test
+        # A description of how to set up the Android device prior to running the test.
         # Corresponds to the JSON property `testSetup`
         # @return [Google::Apis::TestingV1::TestSetup]
         attr_accessor :test_setup

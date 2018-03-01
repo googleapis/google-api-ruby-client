@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppengineV1beta4
-      # Google App Engine Admin API
+      # App Engine Admin API
       #
       # The App Engine Admin API enables developers to provision and manage their App
       #  Engine applications.

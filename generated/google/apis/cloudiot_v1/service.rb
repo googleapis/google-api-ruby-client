@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudiotV1
-      # Google Cloud IoT API
+      # Cloud IoT API
       #
       # Registers and manages IoT (Internet of Things) devices that connect to the
       #  Google Cloud Platform.

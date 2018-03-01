@@ -524,7 +524,7 @@ module Google
         end
       end
       
-      # Describes billing configuration for new a Tenant Project
+      # Describes billing configuration for a new Tenant Project
       class BillingConfig
         include Google::Apis::Core::Hashable
       
@@ -3651,7 +3651,7 @@ module Google
       class TenantProjectConfig
         include Google::Apis::Core::Hashable
       
-        # Describes billing configuration for new a Tenant Project
+        # Describes billing configuration for a new Tenant Project
         # Corresponds to the JSON property `billingConfig`
         # @return [Google::Apis::ServiceconsumermanagementV1::BillingConfig]
         attr_accessor :billing_config

@@ -18,7 +18,7 @@ require 'google/apis/cloudiot_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud IoT API
+    # Cloud IoT API
     #
     # Registers and manages IoT (Internet of Things) devices that connect to the
     # Google Cloud Platform.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/iot
     module CloudiotV1
       VERSION = 'V1'
-      REVISION = '20180215'
+      REVISION = '20180222'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
