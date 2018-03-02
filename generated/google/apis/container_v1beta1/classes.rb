@@ -1336,6 +1336,7 @@ module Google
         # in length. These are reflected as part of a URL in the metadata server.
         # Additionally, to avoid ambiguity, keys must not conflict with any other
         # metadata keys for the project or be one of the reserved keys:
+        # "cluster-location"
         # "cluster-name"
         # "cluster-uid"
         # "configure-sh"
@@ -2712,8 +2713,8 @@ module Google
       class WorkloadMetadataConfig
         include Google::Apis::Core::Hashable
       
-        # NodeMetadata is the configuration for if and how to expose the node
-        # metadata to the workload running on the node.
+        # NodeMetadata is the configuration for how to expose the node metadata to
+        # the workload running on the node.
         # Corresponds to the JSON property `nodeMetadata`
         # @return [String]
         attr_accessor :node_metadata

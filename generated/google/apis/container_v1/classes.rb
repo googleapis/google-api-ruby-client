@@ -1186,6 +1186,7 @@ module Google
         # in length. These are reflected as part of a URL in the metadata server.
         # Additionally, to avoid ambiguity, keys must not conflict with any other
         # metadata keys for the project or be one of the reserved keys:
+        # "cluster-location"
         # "cluster-name"
         # "cluster-uid"
         # "configure-sh"

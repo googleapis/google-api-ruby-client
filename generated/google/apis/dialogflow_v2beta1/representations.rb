@@ -1213,6 +1213,7 @@ module Google
           property :is_fallback, as: 'isFallback'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessage::Representation
       
+          property :ml_disabled, as: 'mlDisabled'
           property :ml_enabled, as: 'mlEnabled'
           property :name, as: 'name'
           collection :output_contexts, as: 'outputContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation

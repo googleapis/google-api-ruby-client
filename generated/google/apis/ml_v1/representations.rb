@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1GetConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamV1AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamV1Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -264,9 +282,18 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tpu_service_account, as: 'tpuServiceAccount'
+        end
+      end
+      
       class GoogleCloudMlV1GetConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::MlV1::GoogleCloudMlV1Config, decorator: Google::Apis::MlV1::GoogleCloudMlV1Config::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :service_account_project, :numeric_string => true, as: 'serviceAccountProject'
         end
@@ -503,6 +530,23 @@ module Google
         end
       end
       
+      class GoogleIamV1AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::MlV1::GoogleIamV1AuditLogConfig, decorator: Google::Apis::MlV1::GoogleIamV1AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleIamV1AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
       class GoogleIamV1Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -514,6 +558,8 @@ module Google
       class GoogleIamV1Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::MlV1::GoogleIamV1AuditConfig, decorator: Google::Apis::MlV1::GoogleIamV1AuditConfig::Representation
+      
           collection :bindings, as: 'bindings', class: Google::Apis::MlV1::GoogleIamV1Binding, decorator: Google::Apis::MlV1::GoogleIamV1Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
@@ -526,6 +572,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::MlV1::GoogleIamV1Policy, decorator: Google::Apis::MlV1::GoogleIamV1Policy::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       

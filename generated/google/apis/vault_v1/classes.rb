@@ -98,7 +98,7 @@ module Google
       class CorpusQuery
         include Google::Apis::Core::Hashable
       
-        # Query options for drive holds.
+        # Query options for Drive holds.
         # Corresponds to the JSON property `driveQuery`
         # @return [Google::Apis::VaultV1::HeldDriveQuery]
         attr_accessor :drive_query
@@ -171,7 +171,7 @@ module Google
         end
       end
       
-      # Query options for drive holds.
+      # Query options for Drive holds.
       class HeldDriveQuery
         include Google::Apis::Core::Hashable
       
@@ -267,7 +267,7 @@ module Google
         # @return [String]
         attr_accessor :hold_time
       
-        # The org unit's immutable ID as provided by the admin SDK.
+        # The org unit's immutable ID as provided by the Admin SDK.
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id

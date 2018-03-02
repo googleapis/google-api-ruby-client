@@ -179,9 +179,33 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudMlV1Config
+        include Google::Apis::Core::Hashable
+      
+        # The service account Cloud ML uses to run on TPU node.
+        # Corresponds to the JSON property `tpuServiceAccount`
+        # @return [String]
+        attr_accessor :tpu_service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tpu_service_account = args[:tpu_service_account] if args.key?(:tpu_service_account)
+        end
+      end
+      
       # Returns service account information associated with a project.
       class GoogleCloudMlV1GetConfigResponse
         include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Config]
+        attr_accessor :config
       
         # The service account Cloud ML uses to access resources in the project.
         # Corresponds to the JSON property `serviceAccount`
@@ -199,6 +223,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @config = args[:config] if args.key?(:config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_project = args[:service_account_project] if args.key?(:service_account_project)
         end
@@ -1292,6 +1317,123 @@ module Google
         end
       end
       
+      # Specifies the audit configuration for a service.
+      # The configuration determines which permission types are logged, and what
+      # identities, if any, are exempted from logging.
+      # An AuditConfig must have one or more AuditLogConfigs.
+      # If there are AuditConfigs for both `allServices` and a specific service,
+      # the union of the two AuditConfigs is used for that service: the log_types
+      # specified in each AuditConfig are enabled, and the exempted_members in each
+      # AuditLogConfig are exempted.
+      # Example Policy with multiple AuditConfigs:
+      # `
+      # "audit_configs": [
+      # `
+      # "service": "allServices"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `,
+      # `
+      # "log_type": "ADMIN_READ",
+      # `
+      # ]
+      # `,
+      # `
+      # "service": "fooservice.googleapis.com"
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # "exempted_members": [
+      # "user:bar@gmail.com"
+      # ]
+      # `
+      # ]
+      # `
+      # ]
+      # `
+      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
+      # bar@gmail.com from DATA_WRITE logging.
+      class GoogleIamV1AuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for logging of each type of permission.
+        # Next ID: 4
+        # Corresponds to the JSON property `auditLogConfigs`
+        # @return [Array<Google::Apis::MlV1::GoogleIamV1AuditLogConfig>]
+        attr_accessor :audit_log_configs
+      
+        # Specifies a service that will be enabled for audit logging.
+        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+        # `allServices` is a special value that covers all services.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Provides the configuration for logging a type of permissions.
+      # Example:
+      # `
+      # "audit_log_configs": [
+      # `
+      # "log_type": "DATA_READ",
+      # "exempted_members": [
+      # "user:foo@gmail.com"
+      # ]
+      # `,
+      # `
+      # "log_type": "DATA_WRITE",
+      # `
+      # ]
+      # `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+      # foo@gmail.com from DATA_READ logging.
+      class GoogleIamV1AuditLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the identities that do not cause logging for this type of
+        # permission.
+        # Follows the same format of Binding.members.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
+        # The log type that this config enables.
+        # Corresponds to the JSON property `logType`
+        # @return [String]
+        attr_accessor :log_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class GoogleIamV1Binding
         include Google::Apis::Core::Hashable
@@ -1361,6 +1503,11 @@ module Google
       class GoogleIamV1Policy
         include Google::Apis::Core::Hashable
       
+        # Specifies cloud audit logging configuration for this policy.
+        # Corresponds to the JSON property `auditConfigs`
+        # @return [Array<Google::Apis::MlV1::GoogleIamV1AuditConfig>]
+        attr_accessor :audit_configs
+      
         # Associates a list of `members` to a `role`.
         # `bindings` with no members will result in an error.
         # Corresponds to the JSON property `bindings`
@@ -1392,6 +1539,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
@@ -1432,6 +1580,15 @@ module Google
         # @return [Google::Apis::MlV1::GoogleIamV1Policy]
         attr_accessor :policy
       
+        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
+        # the fields in the mask will be modified. If no mask is provided, the
+        # following default mask is used:
+        # paths: "bindings, etag"
+        # This field is only used by Cloud IAM.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1439,6 +1596,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

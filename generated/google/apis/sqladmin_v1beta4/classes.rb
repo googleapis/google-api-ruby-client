@@ -688,6 +688,18 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::DemoteMasterConfiguration]
         attr_accessor :replica_configuration
       
+        # Verify GTID consistency for demote operation. Default value: True. Second
+        # Generation instances only. Setting this flag to false enables you to bypass
+        # GTID consistency check between on-premises master and Cloud SQL instance
+        # during the demotion operation but also exposes you to the risk of future
+        # replication failures. Change the value only if you know the reason for the
+        # GTID divergence and are confident that doing so will not cause any replication
+        # issues.
+        # Corresponds to the JSON property `verifyGtidConsistency`
+        # @return [Boolean]
+        attr_accessor :verify_gtid_consistency
+        alias_method :verify_gtid_consistency?, :verify_gtid_consistency
+      
         def initialize(**args)
            update!(**args)
         end
@@ -697,6 +709,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @master_instance_name = args[:master_instance_name] if args.key?(:master_instance_name)
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
+          @verify_gtid_consistency = args[:verify_gtid_consistency] if args.key?(:verify_gtid_consistency)
         end
       end
       

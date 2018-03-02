@@ -18,7 +18,7 @@ require 'google/apis/serviceuser_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Service User API
+    # Service User API
     #
     # Enables services that service consumers want to use on Google Cloud Platform,
     # lists the available or enabled services, or disables services that service
@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/service-management/
     module ServiceuserV1
       VERSION = 'V1'
-      REVISION = '20180220'
+      REVISION = '20180223'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

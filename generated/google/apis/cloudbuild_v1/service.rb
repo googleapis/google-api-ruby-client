@@ -168,7 +168,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a requested build in progress.
+        # Cancels a build in progress.
         # @param [String] project_id
         #   ID of the project.
         # @param [String] id
@@ -205,9 +205,9 @@ module Google
         end
         
         # Starts a build with the specified configuration.
-        # The long-running Operation returned by this method will include the ID of
-        # the build, which can be passed to GetBuild to determine its status (e.g.,
-        # success or failure).
+        # This method returns a long-running `Operation`, which includes the build ID.
+        # Pass the build ID to `GetBuild` to determine the build status
+        # (such as `SUCCESS` or `FAILURE`).
         # @param [String] project_id
         #   ID of the project.
         # @param [Google::Apis::CloudbuildV1::Build] build_object
@@ -241,8 +241,8 @@ module Google
         end
         
         # Returns information about a previously requested build.
-        # The Build that is returned includes its status (e.g., success or failure,
-        # or in-progress), and timing information.
+        # The `Build` that is returned includes its status (such as `SUCCESS`,
+        # `FAILURE`, or `WORKING`), and timing information.
         # @param [String] project_id
         #   ID of the project.
         # @param [String] id
@@ -316,22 +316,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new build based on the given build.
-        # This API creates a new build using the original build request,  which may
+        # Creates a new build based on the specified build.
+        # This method creates a new build using the original build request, which may
         # or may not result in an identical build.
         # For triggered builds:
-        # * Triggered builds resolve to a precise revision, so a retry of a triggered
-        # build will result in a build that uses the same revision.
-        # For non-triggered builds that specify RepoSource:
+        # * Triggered builds resolve to a precise revision; therefore a retry of a
+        # triggered build will result in a build that uses the same revision.
+        # For non-triggered builds that specify `RepoSource`:
         # * If the original build built from the tip of a branch, the retried build
         # will build from the tip of that branch, which may not be the same revision
         # as the original build.
         # * If the original build specified a commit sha or revision ID, the retried
         # build will use the identical source.
-        # For builds that specify StorageSource:
-        # * If the original build pulled source from Cloud Storage without specifying
-        # the generation of the object, the new build will use the current object,
-        # which may be different from the original build source.
+        # For builds that specify `StorageSource`:
+        # * If the original build pulled source from Google Cloud Storage without
+        # specifying the generation of the object, the new build will use the current
+        # object, which may be different from the original build source.
         # * If the original build pulled source from Cloud Storage and specified the
         # generation of the object, the new build will attempt to use the same
         # object, which may or may not be available depending on the bucket's
@@ -371,7 +371,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new BuildTrigger.
+        # Creates a new `BuildTrigger`.
         # This API is experimental.
         # @param [String] project_id
         #   ID of the project for which to configure automatic builds.
@@ -405,12 +405,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an BuildTrigger by its project ID and trigger ID.
+        # Deletes a `BuildTrigger` by its project ID and trigger ID.
         # This API is experimental.
         # @param [String] project_id
         #   ID of the project that owns the trigger.
         # @param [String] trigger_id
-        #   ID of the BuildTrigger to delete.
+        #   ID of the `BuildTrigger` to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,12 +439,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets information about a BuildTrigger.
+        # Returns information about a `BuildTrigger`.
         # This API is experimental.
         # @param [String] project_id
         #   ID of the project that owns the trigger.
         # @param [String] trigger_id
-        #   ID of the BuildTrigger to get.
+        #   ID of the `BuildTrigger` to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -473,7 +473,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists existing BuildTrigger.
+        # Lists existing `BuildTrigger`s.
         # This API is experimental.
         # @param [String] project_id
         #   ID of the project for which to list BuildTriggers.
@@ -504,12 +504,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an BuildTrigger by its project ID and trigger ID.
+        # Updates a `BuildTrigger` by its project ID and trigger ID.
         # This API is experimental.
         # @param [String] project_id
         #   ID of the project that owns the trigger.
         # @param [String] trigger_id
-        #   ID of the BuildTrigger to update.
+        #   ID of the `BuildTrigger` to update.
         # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -541,7 +541,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs a BuildTrigger at a particular source revision.
+        # Runs a `BuildTrigger` at a particular source revision.
         # @param [String] project_id
         #   ID of the project.
         # @param [String] trigger_id

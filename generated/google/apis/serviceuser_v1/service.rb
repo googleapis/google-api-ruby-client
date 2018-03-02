@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ServiceuserV1
-      # Google Service User API
+      # Service User API
       #
       # Enables services that service consumers want to use on Google Cloud Platform,
       #  lists the available or enabled services, or disables services that service

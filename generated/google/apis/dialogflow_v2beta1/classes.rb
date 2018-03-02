@@ -2272,10 +2272,26 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessage>]
         attr_accessor :messages
       
+        # Optional. Indicates whether Machine Learning is disabled for the intent.
+        # Note: If `ml_disabled` setting is set to true, then this intent is not
+        # taken into account during inference in `ML ONLY` match mode. Also,
+        # auto-markup in the UI is turned off.
+        # Corresponds to the JSON property `mlDisabled`
+        # @return [Boolean]
+        attr_accessor :ml_disabled
+        alias_method :ml_disabled?, :ml_disabled
+      
         # Optional. Indicates whether Machine Learning is enabled for the intent.
         # Note: If `ml_enabled` setting is set to false, then this intent is not
         # taken into account during inference in `ML ONLY` match mode. Also,
         # auto-markup in the UI is turned off.
+        # DEPRECATED! Please use `ml_disabled` field instead.
+        # NOTE: If neither `ml_enabled` nor `ml_disabled` field is set, then the
+        # default value is determined as follows:
+        # - Before April 15th, 2018 the default is:
+        # ml_enabled = false / ml_disabled = true.
+        # - After April 15th, 2018 the default is:
+        # ml_enabled = true / ml_disabled = false.
         # Corresponds to the JSON property `mlEnabled`
         # @return [Boolean]
         attr_accessor :ml_enabled
@@ -2356,6 +2372,7 @@ module Google
           @input_context_names = args[:input_context_names] if args.key?(:input_context_names)
           @is_fallback = args[:is_fallback] if args.key?(:is_fallback)
           @messages = args[:messages] if args.key?(:messages)
+          @ml_disabled = args[:ml_disabled] if args.key?(:ml_disabled)
           @ml_enabled = args[:ml_enabled] if args.key?(:ml_enabled)
           @name = args[:name] if args.key?(:name)
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)

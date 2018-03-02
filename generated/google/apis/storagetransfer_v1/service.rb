@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module StoragetransferV1
-      # Google Storage Transfer API
+      # Storage Transfer API
       #
       # Transfers data from external data sources to a Google Cloud Storage bucket or
       #  between Google Cloud Storage buckets.

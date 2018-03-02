@@ -455,6 +455,8 @@ module Google
         #   The matter ID.
         # @param [String] hold_id
         #   The hold ID.
+        # @param [String] view
+        #   Specifies which parts of the Hold to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -472,12 +474,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_matter_hold(matter_id, hold_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_matter_hold(matter_id, hold_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/matters/{matterId}/holds/{holdId}', options)
           command.response_representation = Google::Apis::VaultV1::Hold::Representation
           command.response_class = Google::Apis::VaultV1::Hold
           command.params['matterId'] = matter_id unless matter_id.nil?
           command.params['holdId'] = hold_id unless hold_id.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -493,6 +496,8 @@ module Google
         # @param [String] page_token
         #   The pagination token as returned in the response.
         #   An empty token means start from the beginning.
+        # @param [String] view
+        #   Specifies which parts of the Hold to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -510,13 +515,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_matter_holds(matter_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_matter_holds(matter_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/matters/{matterId}/holds', options)
           command.response_representation = Google::Apis::VaultV1::ListHoldsResponse::Representation
           command.response_class = Google::Apis::VaultV1::ListHoldsResponse
           command.params['matterId'] = matter_id unless matter_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

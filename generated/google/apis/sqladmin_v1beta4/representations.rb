@@ -513,6 +513,7 @@ module Google
           property :master_instance_name, as: 'masterInstanceName'
           property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1beta4::DemoteMasterConfiguration, decorator: Google::Apis::SqladminV1beta4::DemoteMasterConfiguration::Representation
       
+          property :verify_gtid_consistency, as: 'verifyGtidConsistency'
         end
       end
       
