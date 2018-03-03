@@ -510,8 +510,14 @@ module Google
         #   Project ID of the jobs to list
         # @param [Boolean] all_users
         #   Whether to display jobs owned by all users in the project. Default false
+        # @param [Fixnum] max_creation_time
+        #   Max value for job creation time, in milliseconds since the POSIX epoch. If set,
+        #   only jobs created before or at this timestamp are returned
         # @param [Fixnum] max_results
         #   Maximum number of results to return
+        # @param [Fixnum] min_creation_time
+        #   Min value for job creation time, in milliseconds since the POSIX epoch. If set,
+        #   only jobs created after or at this timestamp are returned
         # @param [String] page_token
         #   Page token, returned by a previous call, to request the next page of results
         # @param [String] projection
@@ -539,13 +545,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(project_id, all_users: nil, max_results: nil, page_token: nil, projection: nil, state_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_jobs(project_id, all_users: nil, max_creation_time: nil, max_results: nil, min_creation_time: nil, page_token: nil, projection: nil, state_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::BigqueryV2::JobList::Representation
           command.response_class = Google::Apis::BigqueryV2::JobList
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['allUsers'] = all_users unless all_users.nil?
+          command.query['maxCreationTime'] = max_creation_time unless max_creation_time.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['minCreationTime'] = min_creation_time unless min_creation_time.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['stateFilter'] = state_filter unless state_filter.nil?

@@ -54,6 +54,14 @@ module Google
         # @param [String] region
         #   Required. The Cloud Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
+        # @param [String] request_id
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   CreateClusterRequest requests with the same id, then the second request will
+        #   be ignored and the first google.longrunning.Operation created and stored in
+        #   the backend is returned.It is recommended to always set this value to a UUID (
+        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        #   ). The maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -71,7 +79,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_cluster(project_id, region, cluster_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_cluster(project_id, region, cluster_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters', options)
           command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
           command.request_object = cluster_object
@@ -79,6 +87,7 @@ module Google
           command.response_class = Google::Apis::DataprocV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -95,6 +104,14 @@ module Google
         # @param [String] cluster_uuid
         #   Optional. Specifying the cluster_uuid means the RPC should fail (with error
         #   NOT_FOUND) if cluster with specified UUID does not exist.
+        # @param [String] request_id
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   DeleteClusterRequest requests with the same id, then the second request will
+        #   be ignored and the first google.longrunning.Operation created and stored in
+        #   the backend is returned.It is recommended to always set this value to a UUID (
+        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        #   ). The maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -112,7 +129,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_cluster(project_id, region, cluster_name, cluster_uuid: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_cluster(project_id, region, cluster_name, cluster_uuid: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1::Operation::Representation
           command.response_class = Google::Apis::DataprocV1::Operation
@@ -120,6 +137,7 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['clusterUuid'] = cluster_uuid unless cluster_uuid.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -271,6 +289,14 @@ module Google
         #   forcefully removing nodes (and potentially interrupting jobs). Default timeout
         #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day.
         #   Only supported on Dataproc image versions 1.2 and higher.
+        # @param [String] request_id
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   UpdateClusterRequest requests with the same id, then the second request will
+        #   be ignored and the first google.longrunning.Operation created and stored in
+        #   the backend is returned.It is recommended to always set this value to a UUID (
+        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        #   ). The maximum length is 40 characters.
         # @param [String] update_mask
         #   Required. Specifies the path, relative to Cluster, of the field to update. For
         #   example, to change the number of workers in a cluster to 5, the update_mask
@@ -317,7 +343,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_cluster(project_id, region, cluster_name, cluster_object = nil, graceful_decommission_timeout: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_cluster(project_id, region, cluster_name, cluster_object = nil, graceful_decommission_timeout: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
           command.request_object = cluster_object
@@ -327,6 +353,7 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['gracefulDecommissionTimeout'] = graceful_decommission_timeout unless graceful_decommission_timeout.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

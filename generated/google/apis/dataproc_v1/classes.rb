@@ -1658,6 +1658,17 @@ module Google
         # @return [Google::Apis::DataprocV1::Job]
         attr_accessor :job
       
+        # Optional. A unique id used to identify the request. If the server receives two
+        # SubmitJobRequest requests with the same id, then the second request will be
+        # ignored and the first Job created and stored in the backend is returned.It is
+        # recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
+        # Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        # numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        # characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1665,6 +1676,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job = args[:job] if args.key?(:job)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       

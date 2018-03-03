@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DataflowV1b3
-      # Google Dataflow API
+      # Dataflow API
       #
       # Manages Google Cloud Dataflow projects on Google Cloud Platform.
       #

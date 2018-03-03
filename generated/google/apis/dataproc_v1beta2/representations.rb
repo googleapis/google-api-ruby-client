@@ -849,6 +849,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job, as: 'job', class: Google::Apis::DataprocV1beta2::Job, decorator: Google::Apis::DataprocV1beta2::Job::Representation
       
+          property :request_id, as: 'requestId'
         end
       end
       

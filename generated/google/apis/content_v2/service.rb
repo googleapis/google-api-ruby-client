@@ -2116,6 +2116,297 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Batches multiple POS-related calls in a single request.
+        # @param [Google::Apis::ContentV2::PosCustomBatchRequest] pos_custom_batch_request_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::PosCustomBatchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::PosCustomBatchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def custombatch_po(pos_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'pos/batch', options)
+          command.request_representation = Google::Apis::ContentV2::PosCustomBatchRequest::Representation
+          command.request_object = pos_custom_batch_request_object
+          command.response_representation = Google::Apis::ContentV2::PosCustomBatchResponse::Representation
+          command.response_class = Google::Apis::ContentV2::PosCustomBatchResponse
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a store for the given merchant.
+        # @param [Fixnum] merchant_id
+        #   The ID of the POS provider.
+        # @param [Fixnum] target_merchant_id
+        #   The ID of the target merchant.
+        # @param [String] store_code
+        #   A store code that is unique per merchant.
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_po(merchant_id, target_merchant_id, store_code, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{merchantId}/pos/{targetMerchantId}/store/{storeCode}', options)
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
+          command.params['storeCode'] = store_code unless store_code.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves information about the given store.
+        # @param [Fixnum] merchant_id
+        #   The ID of the POS provider.
+        # @param [Fixnum] target_merchant_id
+        #   The ID of the target merchant.
+        # @param [String] store_code
+        #   A store code that is unique per merchant.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::PosStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::PosStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_po(merchant_id, target_merchant_id, store_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/pos/{targetMerchantId}/store/{storeCode}', options)
+          command.response_representation = Google::Apis::ContentV2::PosStore::Representation
+          command.response_class = Google::Apis::ContentV2::PosStore
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
+          command.params['storeCode'] = store_code unless store_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a store for the given merchant.
+        # @param [Fixnum] merchant_id
+        #   The ID of the POS provider.
+        # @param [Fixnum] target_merchant_id
+        #   The ID of the target merchant.
+        # @param [Google::Apis::ContentV2::PosStore] pos_store_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::PosStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::PosStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_po(merchant_id, target_merchant_id, pos_store_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/pos/{targetMerchantId}/store', options)
+          command.request_representation = Google::Apis::ContentV2::PosStore::Representation
+          command.request_object = pos_store_object
+          command.response_representation = Google::Apis::ContentV2::PosStore::Representation
+          command.response_class = Google::Apis::ContentV2::PosStore
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submit inventory for the given merchant.
+        # @param [Fixnum] merchant_id
+        #   The ID of the POS provider.
+        # @param [Fixnum] target_merchant_id
+        #   The ID of the target merchant.
+        # @param [Google::Apis::ContentV2::PosInventoryRequest] pos_inventory_request_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::PosInventoryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::PosInventoryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def inventory_po(merchant_id, target_merchant_id, pos_inventory_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/pos/{targetMerchantId}/inventory', options)
+          command.request_representation = Google::Apis::ContentV2::PosInventoryRequest::Representation
+          command.request_object = pos_inventory_request_object
+          command.response_representation = Google::Apis::ContentV2::PosInventoryResponse::Representation
+          command.response_class = Google::Apis::ContentV2::PosInventoryResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the stores of the target merchant.
+        # @param [Fixnum] merchant_id
+        #   The ID of the POS provider.
+        # @param [Fixnum] target_merchant_id
+        #   The ID of the target merchant.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::PosListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::PosListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_pos(merchant_id, target_merchant_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/pos/{targetMerchantId}/store', options)
+          command.response_representation = Google::Apis::ContentV2::PosListResponse::Representation
+          command.response_class = Google::Apis::ContentV2::PosListResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submit a sale event for the given merchant.
+        # @param [Fixnum] merchant_id
+        #   The ID of the POS provider.
+        # @param [Fixnum] target_merchant_id
+        #   The ID of the target merchant.
+        # @param [Google::Apis::ContentV2::PosSaleRequest] pos_sale_request_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::PosSaleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::PosSaleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def sale_po(merchant_id, target_merchant_id, pos_sale_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/pos/{targetMerchantId}/sale', options)
+          command.request_representation = Google::Apis::ContentV2::PosSaleRequest::Representation
+          command.request_object = pos_sale_request_object
+          command.response_representation = Google::Apis::ContentV2::PosSaleResponse::Representation
+          command.response_class = Google::Apis::ContentV2::PosSaleResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['targetMerchantId'] = target_merchant_id unless target_merchant_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves, inserts, and deletes multiple products in a single request.
         # @param [Google::Apis::ContentV2::BatchProductsRequest] batch_products_request_object
         # @param [Boolean] dry_run

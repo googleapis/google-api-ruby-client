@@ -63,7 +63,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # URL for individual seller reviews, i.e., reviews for each child account.
+        # [DEPRECATED] This field is never returned and will be ignored if provided.
         # Corresponds to the JSON property `reviewsUrl`
         # @return [String]
         attr_accessor :reviews_url
@@ -150,7 +150,9 @@ module Google
       class AccountGoogleMyBusinessLink
         include Google::Apis::Core::Hashable
       
-        # The GMB email address.
+        # The GMB email address of which a specific account within a GMB account. A
+        # sample account within a GMB account could be a business account with set of
+        # locations, managed under the GMB account.
         # Corresponds to the JSON property `gmbEmail`
         # @return [String]
         attr_accessor :gmb_email
@@ -5386,6 +5388,632 @@ module Google
         def update!(**args)
           @execution_status = args[:execution_status] if args.key?(:execution_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class PosCustomBatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The request entries to be processed in the batch.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::PosCustomBatchRequestEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # 
+      class PosCustomBatchRequestEntry
+        include Google::Apis::Core::Hashable
+      
+        # An entry ID, unique within the batch request.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # The absolute quantity of an item available at the given store.
+        # Corresponds to the JSON property `inventory`
+        # @return [Google::Apis::ContentV2::PosInventory]
+        attr_accessor :inventory
+      
+        # The ID of the POS provider.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # 
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The change of the available quantity of an item at the given store.
+        # Corresponds to the JSON property `sale`
+        # @return [Google::Apis::ContentV2::PosSale]
+        attr_accessor :sale
+      
+        # Store resource.
+        # Corresponds to the JSON property `store`
+        # @return [Google::Apis::ContentV2::PosStore]
+        attr_accessor :store
+      
+        # The store code. Required only to get/submit store information.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The ID of the account for which to get/submit data.
+        # Corresponds to the JSON property `targetMerchantId`
+        # @return [Fixnum]
+        attr_accessor :target_merchant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @inventory = args[:inventory] if args.key?(:inventory)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @sale = args[:sale] if args.key?(:sale)
+          @store = args[:store] if args.key?(:store)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_merchant_id = args[:target_merchant_id] if args.key?(:target_merchant_id)
+        end
+      end
+      
+      # 
+      class PosCustomBatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the execution of the batch requests.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::PosCustomBatchResponseEntry>]
+        attr_accessor :entries
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posCustomBatchResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class PosCustomBatchResponseEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the request entry to which this entry responds.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # A list of errors returned by a failed batch entry.
+        # Corresponds to the JSON property `errors`
+        # @return [Google::Apis::ContentV2::Errors]
+        attr_accessor :errors
+      
+        # The absolute quantity of an item available at the given store.
+        # Corresponds to the JSON property `inventory`
+        # @return [Google::Apis::ContentV2::PosInventory]
+        attr_accessor :inventory
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posCustomBatchResponseEntry".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The change of the available quantity of an item at the given store.
+        # Corresponds to the JSON property `sale`
+        # @return [Google::Apis::ContentV2::PosSale]
+        attr_accessor :sale
+      
+        # Store resource.
+        # Corresponds to the JSON property `store`
+        # @return [Google::Apis::ContentV2::PosStore]
+        attr_accessor :store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @errors = args[:errors] if args.key?(:errors)
+          @inventory = args[:inventory] if args.key?(:inventory)
+          @kind = args[:kind] if args.key?(:kind)
+          @sale = args[:sale] if args.key?(:sale)
+          @store = args[:store] if args.key?(:store)
+        end
+      end
+      
+      # The absolute quantity of an item available at the given store.
+      class PosInventory
+        include Google::Apis::Core::Hashable
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # A unique identifier for the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posInventory".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The current price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The available quantity of the item.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The identifier of the merchant's store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The CLDR territory code for the item.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The inventory timestamp, in ISO 8601 format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @price = args[:price] if args.key?(:price)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # 
+      class PosInventoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # A unique identifier for the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # The current price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The available quantity of the item.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The identifier of the merchant's store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The CLDR territory code for the item.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The inventory timestamp, in ISO 8601 format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @price = args[:price] if args.key?(:price)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # 
+      class PosInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # A unique identifier for the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posInventoryResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The current price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The available quantity of the item.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The identifier of the merchant's store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The CLDR territory code for the item.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The inventory timestamp, in ISO 8601 format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @price = args[:price] if args.key?(:price)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # 
+      class PosListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2::PosStore>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # The change of the available quantity of an item at the given store.
+      class PosSale
+        include Google::Apis::Core::Hashable
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # A unique identifier for the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posSale".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The relative change of the available quantity. Negative for items sold.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # A unique ID to group items from the same sale event.
+        # Corresponds to the JSON property `saleId`
+        # @return [String]
+        attr_accessor :sale_id
+      
+        # The identifier of the merchant's store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The CLDR territory code for the item.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The inventory timestamp, in ISO 8601 format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @price = args[:price] if args.key?(:price)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @sale_id = args[:sale_id] if args.key?(:sale_id)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # 
+      class PosSaleRequest
+        include Google::Apis::Core::Hashable
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # A unique identifier for the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # The price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The relative change of the available quantity. Negative for items sold.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # A unique ID to group items from the same sale event.
+        # Corresponds to the JSON property `saleId`
+        # @return [String]
+        attr_accessor :sale_id
+      
+        # The identifier of the merchant's store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The CLDR territory code for the item.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The inventory timestamp, in ISO 8601 format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @price = args[:price] if args.key?(:price)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @sale_id = args[:sale_id] if args.key?(:sale_id)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # 
+      class PosSaleResponse
+        include Google::Apis::Core::Hashable
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # A unique identifier for the item.
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posSaleResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The relative change of the available quantity. Negative for items sold.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # A unique ID to group items from the same sale event.
+        # Corresponds to the JSON property `saleId`
+        # @return [String]
+        attr_accessor :sale_id
+      
+        # The identifier of the merchant's store.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        # The CLDR territory code for the item.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The inventory timestamp, in ISO 8601 format.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @gtin = args[:gtin] if args.key?(:gtin)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @price = args[:price] if args.key?(:price)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @sale_id = args[:sale_id] if args.key?(:sale_id)
+          @store_code = args[:store_code] if args.key?(:store_code)
+          @target_country = args[:target_country] if args.key?(:target_country)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # Store resource.
+      class PosStore
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # posStore".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The street address of the store.
+        # Corresponds to the JSON property `storeAddress`
+        # @return [String]
+        attr_accessor :store_address
+      
+        # A store identifier that is unique for the given merchant.
+        # Corresponds to the JSON property `storeCode`
+        # @return [String]
+        attr_accessor :store_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @store_address = args[:store_address] if args.key?(:store_address)
+          @store_code = args[:store_code] if args.key?(:store_code)
         end
       end
       

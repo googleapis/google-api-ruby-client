@@ -814,6 +814,78 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PosCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosCustomBatchResponseEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosInventoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosSale
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosSaleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosSaleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PostalCodeGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2581,6 +2653,171 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_status, as: 'executionStatus'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class PosCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2::PosCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::PosCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class PosCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :inventory, as: 'inventory', class: Google::Apis::ContentV2::PosInventory, decorator: Google::Apis::ContentV2::PosInventory::Representation
+      
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :method_prop, as: 'method'
+          property :sale, as: 'sale', class: Google::Apis::ContentV2::PosSale, decorator: Google::Apis::ContentV2::PosSale::Representation
+      
+          property :store, as: 'store', class: Google::Apis::ContentV2::PosStore, decorator: Google::Apis::ContentV2::PosStore::Representation
+      
+          property :store_code, as: 'storeCode'
+          property :target_merchant_id, :numeric_string => true, as: 'targetMerchantId'
+        end
+      end
+      
+      class PosCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2::PosCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::PosCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class PosCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::Errors::Representation
+      
+          property :inventory, as: 'inventory', class: Google::Apis::ContentV2::PosInventory, decorator: Google::Apis::ContentV2::PosInventory::Representation
+      
+          property :kind, as: 'kind'
+          property :sale, as: 'sale', class: Google::Apis::ContentV2::PosSale, decorator: Google::Apis::ContentV2::PosSale::Representation
+      
+          property :store, as: 'store', class: Google::Apis::ContentV2::PosStore, decorator: Google::Apis::ContentV2::PosStore::Representation
+      
+        end
+      end
+      
+      class PosInventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_language, as: 'contentLanguage'
+          property :gtin, as: 'gtin'
+          property :item_id, as: 'itemId'
+          property :kind, as: 'kind'
+          property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :store_code, as: 'storeCode'
+          property :target_country, as: 'targetCountry'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class PosInventoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_language, as: 'contentLanguage'
+          property :gtin, as: 'gtin'
+          property :item_id, as: 'itemId'
+          property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :store_code, as: 'storeCode'
+          property :target_country, as: 'targetCountry'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class PosInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_language, as: 'contentLanguage'
+          property :gtin, as: 'gtin'
+          property :item_id, as: 'itemId'
+          property :kind, as: 'kind'
+          property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :store_code, as: 'storeCode'
+          property :target_country, as: 'targetCountry'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class PosListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2::PosStore, decorator: Google::Apis::ContentV2::PosStore::Representation
+      
+        end
+      end
+      
+      class PosSale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_language, as: 'contentLanguage'
+          property :gtin, as: 'gtin'
+          property :item_id, as: 'itemId'
+          property :kind, as: 'kind'
+          property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :sale_id, as: 'saleId'
+          property :store_code, as: 'storeCode'
+          property :target_country, as: 'targetCountry'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class PosSaleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_language, as: 'contentLanguage'
+          property :gtin, as: 'gtin'
+          property :item_id, as: 'itemId'
+          property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :sale_id, as: 'saleId'
+          property :store_code, as: 'storeCode'
+          property :target_country, as: 'targetCountry'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class PosSaleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_language, as: 'contentLanguage'
+          property :gtin, as: 'gtin'
+          property :item_id, as: 'itemId'
+          property :kind, as: 'kind'
+          property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :sale_id, as: 'saleId'
+          property :store_code, as: 'storeCode'
+          property :target_country, as: 'targetCountry'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class PosStore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :store_address, as: 'storeAddress'
+          property :store_code, as: 'storeCode'
         end
       end
       
