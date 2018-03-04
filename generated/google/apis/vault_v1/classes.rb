@@ -108,6 +108,11 @@ module Google
         # @return [Google::Apis::VaultV1::HeldGroupsQuery]
         attr_accessor :groups_query
       
+        # Query options for hangouts chat holds.
+        # Corresponds to the JSON property `hangoutsChatQuery`
+        # @return [Google::Apis::VaultV1::HeldHangoutsChatQuery]
+        attr_accessor :hangouts_chat_query
+      
         # Query options for mail holds.
         # Corresponds to the JSON property `mailQuery`
         # @return [Google::Apis::VaultV1::HeldMailQuery]
@@ -121,6 +126,7 @@ module Google
         def update!(**args)
           @drive_query = args[:drive_query] if args.key?(:drive_query)
           @groups_query = args[:groups_query] if args.key?(:groups_query)
+          @hangouts_chat_query = args[:hangouts_chat_query] if args.key?(:hangouts_chat_query)
           @mail_query = args[:mail_query] if args.key?(:mail_query)
         end
       end
@@ -221,6 +227,26 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @terms = args[:terms] if args.key?(:terms)
+        end
+      end
+      
+      # Query options for hangouts chat holds.
+      class HeldHangoutsChatQuery
+        include Google::Apis::Core::Hashable
+      
+        # If true, include rooms the user has participated in.
+        # Corresponds to the JSON property `includeRooms`
+        # @return [Boolean]
+        attr_accessor :include_rooms
+        alias_method :include_rooms?, :include_rooms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_rooms = args[:include_rooms] if args.key?(:include_rooms)
         end
       end
       

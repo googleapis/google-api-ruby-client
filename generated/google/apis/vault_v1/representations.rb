@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeldHangoutsChatQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeldMailQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,8 @@ module Google
       
           property :groups_query, as: 'groupsQuery', class: Google::Apis::VaultV1::HeldGroupsQuery, decorator: Google::Apis::VaultV1::HeldGroupsQuery::Representation
       
+          property :hangouts_chat_query, as: 'hangoutsChatQuery', class: Google::Apis::VaultV1::HeldHangoutsChatQuery, decorator: Google::Apis::VaultV1::HeldHangoutsChatQuery::Representation
+      
           property :mail_query, as: 'mailQuery', class: Google::Apis::VaultV1::HeldMailQuery, decorator: Google::Apis::VaultV1::HeldMailQuery::Representation
       
         end
@@ -205,6 +213,13 @@ module Google
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           property :terms, as: 'terms'
+        end
+      end
+      
+      class HeldHangoutsChatQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_rooms, as: 'includeRooms'
         end
       end
       
