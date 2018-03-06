@@ -20,7 +20,7 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module ServiceusageV1
+    module ServiceusageV1beta1
       
       # Api is a light-weight descriptor for an API Interface.
       # Interfaces are also described as "protocol buffer services" in some contexts,
@@ -35,12 +35,12 @@ module Google
       
         # The methods of this interface, in unspecified order.
         # Corresponds to the JSON property `methods`
-        # @return [Array<Google::Apis::ServiceusageV1::MethodProp>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::MethodProp>]
         attr_accessor :methods_prop
       
         # Included interfaces. See Mixin.
         # Corresponds to the JSON property `mixins`
-        # @return [Array<Google::Apis::ServiceusageV1::Mixin>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Mixin>]
         attr_accessor :mixins
       
         # The fully qualified name of this interface, including package name
@@ -51,13 +51,13 @@ module Google
       
         # Any metadata attached to the interface.
         # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::ServiceusageV1::Option>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Option>]
         attr_accessor :options
       
         # `SourceContext` represents information about the source of a
         # protobuf element, like the file in which it is defined.
         # Corresponds to the JSON property `sourceContext`
-        # @return [Google::Apis::ServiceusageV1::SourceContext]
+        # @return [Google::Apis::ServiceusageV1beta1::SourceContext]
         attr_accessor :source_context
       
         # The source syntax of the service.
@@ -236,13 +236,13 @@ module Google
       
         # Defines a set of authentication providers that a service supports.
         # Corresponds to the JSON property `providers`
-        # @return [Array<Google::Apis::ServiceusageV1::AuthProvider>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::AuthProvider>]
         attr_accessor :providers
       
         # A list of authentication rules that apply to individual API methods.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::AuthenticationRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::AuthenticationRule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -279,7 +279,7 @@ module Google
       
         # Configuration for a custom authentication provider.
         # Corresponds to the JSON property `customAuth`
-        # @return [Google::Apis::ServiceusageV1::CustomAuthRequirements]
+        # @return [Google::Apis::ServiceusageV1beta1::CustomAuthRequirements]
         attr_accessor :custom_auth
       
         # OAuth scopes are a way to define data and permissions on data. For example,
@@ -297,12 +297,12 @@ module Google
         # request to be accepted and passed to the backend, a request can still fail
         # due to the backend requiring additional scopes or permissions.
         # Corresponds to the JSON property `oauth`
-        # @return [Google::Apis::ServiceusageV1::OAuthRequirements]
+        # @return [Google::Apis::ServiceusageV1beta1::OAuthRequirements]
         attr_accessor :oauth
       
         # Requirements for additional authentication providers.
         # Corresponds to the JSON property `requirements`
-        # @return [Array<Google::Apis::ServiceusageV1::AuthRequirement>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::AuthRequirement>]
         attr_accessor :requirements
       
         # Selects the methods to which this rule applies.
@@ -401,7 +401,7 @@ module Google
         # A list of API backend rules that apply to individual API methods.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::BackendRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::BackendRule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -454,6 +454,34 @@ module Google
         end
       end
       
+      # Request message for the `BatchEnableServices` method.
+      class BatchEnableServicesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The identifiers of the services to enable on the project.
+        # A valid identifier would be:
+        # serviceusage.googleapis.com
+        # Enabling services requires that each service is public or is shared with
+        # the user enabling the service.
+        # Two or more services must be specified. To enable a single service,
+        # use the `EnableService` method instead.
+        # A single request can enable a maximum of 20 services at a time. If more
+        # than 20 services are specified, the request will fail, and no state changes
+        # will occur.
+        # Corresponds to the JSON property `serviceIds`
+        # @return [Array<String>]
+        attr_accessor :service_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_ids = args[:service_ids] if args.key?(:service_ids)
+        end
+      end
+      
       # Billing related configuration of the service.
       # The following example shows how to configure monitored resources and metrics
       # for billing:
@@ -481,7 +509,7 @@ module Google
         # a different monitored resource type. A metric can be used in at most
         # one consumer destination.
         # Corresponds to the JSON property `consumerDestinations`
-        # @return [Array<Google::Apis::ServiceusageV1::BillingDestination>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::BillingDestination>]
         attr_accessor :consumer_destinations
       
         def initialize(**args)
@@ -522,19 +550,6 @@ module Google
         end
       end
       
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # `Context` defines which contexts an API requests.
       # Example:
       # context:
@@ -569,7 +584,7 @@ module Google
         # A list of RPC context rules that apply to individual API methods.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::ContextRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::ContextRule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -686,7 +701,7 @@ module Google
         # The list of custom error rules that apply to individual API messages.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::CustomErrorRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::CustomErrorRule>]
         attr_accessor :rules
       
         # The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
@@ -758,7 +773,7 @@ module Google
         end
       end
       
-      # Request message for DisableService.
+      # Request message for the `DisableService` method.
       class DisableServiceRequest
         include Google::Apis::Core::Hashable
       
@@ -851,13 +866,13 @@ module Google
       
         # The top level pages for the documentation set.
         # Corresponds to the JSON property `pages`
-        # @return [Array<Google::Apis::ServiceusageV1::Page>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Page>]
         attr_accessor :pages
       
         # A list of documentation rules that apply to individual API elements.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::DocumentationRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::DocumentationRule>]
         attr_accessor :rules
       
         # A short summary of what the service does. Can only be provided by
@@ -917,26 +932,7 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request message for EnableService.
+      # Request message for the `EnableService` method.
       class EnableServiceRequest
         include Google::Apis::Core::Hashable
       
@@ -946,26 +942,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # The EnabledState reflects whether the service has been explicitly enabled or
-      # not.
-      class EnabledState
-        include Google::Apis::Core::Hashable
-      
-        # Whether or not the service has been explicitly enabled.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1044,7 +1020,7 @@ module Google
       
         # Enum value definitions.
         # Corresponds to the JSON property `enumvalue`
-        # @return [Array<Google::Apis::ServiceusageV1::EnumValue>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::EnumValue>]
         attr_accessor :enumvalue
       
         # Enum type name.
@@ -1054,13 +1030,13 @@ module Google
       
         # Protocol buffer options.
         # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::ServiceusageV1::Option>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Option>]
         attr_accessor :options
       
         # `SourceContext` represents information about the source of a
         # protobuf element, like the file in which it is defined.
         # Corresponds to the JSON property `sourceContext`
-        # @return [Google::Apis::ServiceusageV1::SourceContext]
+        # @return [Google::Apis::ServiceusageV1beta1::SourceContext]
         attr_accessor :source_context
       
         # The source syntax.
@@ -1098,7 +1074,7 @@ module Google
       
         # Protocol buffer options.
         # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::ServiceusageV1::Option>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Option>]
         attr_accessor :options
       
         def initialize(**args)
@@ -1126,7 +1102,7 @@ module Google
         # authorization:
         # provider: firebaserules.googleapis.com
         # Corresponds to the JSON property `authorization`
-        # @return [Google::Apis::ServiceusageV1::AuthorizationConfig]
+        # @return [Google::Apis::ServiceusageV1beta1::AuthorizationConfig]
         attr_accessor :authorization
       
         def initialize(**args)
@@ -1181,7 +1157,7 @@ module Google
       
         # The protocol buffer options.
         # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::ServiceusageV1::Option>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Option>]
         attr_accessor :options
       
         # Whether to use alternative packed wire representation.
@@ -1245,7 +1221,7 @@ module Google
         # normalization process. It is an error to specify an API interface here
         # which cannot be resolved against the associated IDL files.
         # Corresponds to the JSON property `apis`
-        # @return [Array<Google::Apis::ServiceusageV1::Api>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Api>]
         attr_accessor :apis
       
         # `Authentication` defines the authentication configuration for an API.
@@ -1261,12 +1237,12 @@ module Google
         # requirements:
         # provider_id: google_calendar_auth
         # Corresponds to the JSON property `authentication`
-        # @return [Google::Apis::ServiceusageV1::Authentication]
+        # @return [Google::Apis::ServiceusageV1beta1::Authentication]
         attr_accessor :authentication
       
         # `Backend` defines the backend configuration for a service.
         # Corresponds to the JSON property `backend`
-        # @return [Google::Apis::ServiceusageV1::Backend]
+        # @return [Google::Apis::ServiceusageV1beta1::Backend]
         attr_accessor :backend
       
         # Billing related configuration of the service.
@@ -1289,7 +1265,7 @@ module Google
         # metrics:
         # - library.googleapis.com/book/borrowed_count
         # Corresponds to the JSON property `billing`
-        # @return [Google::Apis::ServiceusageV1::Billing]
+        # @return [Google::Apis::ServiceusageV1beta1::Billing]
         attr_accessor :billing
       
         # The semantic version of the service configuration. The config version
@@ -1329,14 +1305,14 @@ module Google
         # You can also specify extension ID instead of fully qualified extension name
         # here.
         # Corresponds to the JSON property `context`
-        # @return [Google::Apis::ServiceusageV1::Context]
+        # @return [Google::Apis::ServiceusageV1beta1::Context]
         attr_accessor :context
       
         # Selects and configures the service controller used by the service.  The
         # service controller handles features like abuse, quota, billing, logging,
         # monitoring, etc.
         # Corresponds to the JSON property `control`
-        # @return [Google::Apis::ServiceusageV1::Control]
+        # @return [Google::Apis::ServiceusageV1beta1::Control]
         attr_accessor :control
       
         # Customize service error responses.  For example, list any service
@@ -1348,7 +1324,7 @@ module Google
         # - google.foo.v1.CustomError
         # - google.foo.v1.AnotherError
         # Corresponds to the JSON property `customError`
-        # @return [Google::Apis::ServiceusageV1::CustomError]
+        # @return [Google::Apis::ServiceusageV1beta1::CustomError]
         attr_accessor :custom_error
       
         # `Documentation` provides the information for describing a service.
@@ -1405,14 +1381,14 @@ module Google
         # The directive `suppress_warning` does not directly affect documentation
         # and is documented together with service config validation.
         # Corresponds to the JSON property `documentation`
-        # @return [Google::Apis::ServiceusageV1::Documentation]
+        # @return [Google::Apis::ServiceusageV1beta1::Documentation]
         attr_accessor :documentation
       
         # Configuration for network endpoints.  If this is empty, then an endpoint
         # with the same name as the service is automatically generated to service all
         # defined APIs.
         # Corresponds to the JSON property `endpoints`
-        # @return [Array<Google::Apis::ServiceusageV1::Endpoint>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Endpoint>]
         attr_accessor :endpoints
       
         # A list of all enum types included in this API service.  Enums
@@ -1422,20 +1398,20 @@ module Google
         # enums:
         # - name: google.someapi.v1.SomeEnum
         # Corresponds to the JSON property `enums`
-        # @return [Array<Google::Apis::ServiceusageV1::Enum>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Enum>]
         attr_accessor :enums
       
         # Experimental service configuration. These configuration options can
         # only be used by whitelisted users.
         # Corresponds to the JSON property `experimental`
-        # @return [Google::Apis::ServiceusageV1::Experimental]
+        # @return [Google::Apis::ServiceusageV1beta1::Experimental]
         attr_accessor :experimental
       
         # Defines the HTTP configuration for an API service. It contains a list of
         # HttpRule, each specifying the mapping of an RPC method
         # to one or more HTTP REST API methods.
         # Corresponds to the JSON property `http`
-        # @return [Google::Apis::ServiceusageV1::Http]
+        # @return [Google::Apis::ServiceusageV1beta1::Http]
         attr_accessor :http
       
         # A unique ID for a specific instance of this message, typically assigned
@@ -1473,23 +1449,23 @@ module Google
         # logs:
         # - activity_history
         # Corresponds to the JSON property `logging`
-        # @return [Google::Apis::ServiceusageV1::Logging]
+        # @return [Google::Apis::ServiceusageV1beta1::Logging]
         attr_accessor :logging
       
         # Defines the logs used by this service.
         # Corresponds to the JSON property `logs`
-        # @return [Array<Google::Apis::ServiceusageV1::LogDescriptor>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::LogDescriptor>]
         attr_accessor :logs
       
         # Defines the metrics used by this service.
         # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::ServiceusageV1::MetricDescriptor>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::MetricDescriptor>]
         attr_accessor :metrics
       
         # Defines the monitored resources used by this service. This is required
         # by the Service.monitoring and Service.logging configurations.
         # Corresponds to the JSON property `monitoredResources`
-        # @return [Array<Google::Apis::ServiceusageV1::MonitoredResourceDescriptor>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::MonitoredResourceDescriptor>]
         attr_accessor :monitored_resources
       
         # Monitoring configuration of the service.
@@ -1528,7 +1504,7 @@ module Google
         # - library.googleapis.com/book/returned_count
         # - library.googleapis.com/book/overdue_count
         # Corresponds to the JSON property `monitoring`
-        # @return [Google::Apis::ServiceusageV1::Monitoring]
+        # @return [Google::Apis::ServiceusageV1beta1::Monitoring]
         attr_accessor :monitoring
       
         # The DNS address at which this service is available,
@@ -1582,12 +1558,12 @@ module Google
         # metric_kind: DELTA
         # value_type: INT64
         # Corresponds to the JSON property `quota`
-        # @return [Google::Apis::ServiceusageV1::Quota]
+        # @return [Google::Apis::ServiceusageV1beta1::Quota]
         attr_accessor :quota
       
         # Source information used to create a Service Config
         # Corresponds to the JSON property `sourceInfo`
-        # @return [Google::Apis::ServiceusageV1::SourceInfo]
+        # @return [Google::Apis::ServiceusageV1beta1::SourceInfo]
         attr_accessor :source_info
       
         # ### System parameter configuration
@@ -1596,7 +1572,7 @@ module Google
         # and/or a URL query parameter. This configuration specifies which methods
         # change the names of the system parameters.
         # Corresponds to the JSON property `systemParameters`
-        # @return [Google::Apis::ServiceusageV1::SystemParameters]
+        # @return [Google::Apis::ServiceusageV1beta1::SystemParameters]
         attr_accessor :system_parameters
       
         # A list of all proto message types included in this API service.
@@ -1605,7 +1581,7 @@ module Google
         # show up in the generated discovery doc. This field should only be used
         # to define system APIs in ESF.
         # Corresponds to the JSON property `systemTypes`
-        # @return [Array<Google::Apis::ServiceusageV1::Type>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Type>]
         attr_accessor :system_types
       
         # The product title for this service.
@@ -1621,12 +1597,12 @@ module Google
         # types:
         # - name: google.protobuf.Int32
         # Corresponds to the JSON property `types`
-        # @return [Array<Google::Apis::ServiceusageV1::Type>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Type>]
         attr_accessor :types
       
         # Configuration controlling usage of a service.
         # Corresponds to the JSON property `usage`
-        # @return [Google::Apis::ServiceusageV1::Usage]
+        # @return [Google::Apis::ServiceusageV1beta1::Usage]
         attr_accessor :usage
       
         # `Visibility` defines restrictions for the visibility of service
@@ -1647,7 +1623,7 @@ module Google
         # Here, all methods are publicly visible except for the restricted methods
         # EnhancedSearch and Delegate.
         # Corresponds to the JSON property `visibility`
-        # @return [Google::Apis::ServiceusageV1::Visibility]
+        # @return [Google::Apis::ServiceusageV1beta1::Visibility]
         attr_accessor :visibility
       
         def initialize(**args)
@@ -1707,7 +1683,7 @@ module Google
         # A list of HTTP configuration rules that apply to individual API methods.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::HttpRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::HttpRule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -1908,7 +1884,7 @@ module Google
         # not contain an `additional_bindings` field themselves (that is,
         # the nesting may only be one level deep).
         # Corresponds to the JSON property `additionalBindings`
-        # @return [Array<Google::Apis::ServiceusageV1::HttpRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::HttpRule>]
         attr_accessor :additional_bindings
       
         # Specifies the permission(s) required for an API element for the overall
@@ -1916,7 +1892,7 @@ module Google
         # that contain the name of the resource and indicates the permissions that
         # will be checked on that resource.
         # Corresponds to the JSON property `authorizations`
-        # @return [Array<Google::Apis::ServiceusageV1::AuthorizationRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::AuthorizationRule>]
         attr_accessor :authorizations
       
         # The name of the request field whose value is mapped to the HTTP body, or
@@ -1929,7 +1905,7 @@ module Google
       
         # A custom pattern is used for defining custom HTTP verb.
         # Corresponds to the JSON property `custom`
-        # @return [Google::Apis::ServiceusageV1::CustomHttpPattern]
+        # @return [Google::Apis::ServiceusageV1beta1::CustomHttpPattern]
         attr_accessor :custom
       
         # Used for deleting a resource.
@@ -1947,7 +1923,7 @@ module Google
         # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
         # your configuration for Bytestream methods.
         # Corresponds to the JSON property `mediaDownload`
-        # @return [Google::Apis::ServiceusageV1::MediaDownload]
+        # @return [Google::Apis::ServiceusageV1beta1::MediaDownload]
         attr_accessor :media_download
       
         # Defines the Media configuration for a service in case of an upload.
@@ -1955,7 +1931,7 @@ module Google
         # Bytestream, add instead [][google.bytestream.RestByteStream] as an API to
         # your configuration for Bytestream methods.
         # Corresponds to the JSON property `mediaUpload`
-        # @return [Google::Apis::ServiceusageV1::MediaUpload]
+        # @return [Google::Apis::ServiceusageV1beta1::MediaUpload]
         attr_accessor :media_upload
       
         # Used for updating a resource.
@@ -2071,32 +2047,6 @@ module Google
         end
       end
       
-      # Response message for ListEnabledServices.
-      class ListEnabledServicesResponse
-        include Google::Apis::Core::Hashable
-      
-        # Token that can be passed to `ListEnabledServices` to resume a paginated
-        # query.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The state of the enabled services for the requested parent.
-        # Corresponds to the JSON property `services`
-        # @return [Array<Google::Apis::ServiceusageV1::ServiceState>]
-        attr_accessor :services
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @services = args[:services] if args.key?(:services)
-        end
-      end
-      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2108,7 +2058,7 @@ module Google
       
         # A list of operations that matches the specified filter in the request.
         # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::ServiceusageV1::Operation>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Operation>]
         attr_accessor :operations
       
         def initialize(**args)
@@ -2119,6 +2069,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for the `ListServices` method.
+      class ListServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token that can be passed to `ListServices` to resume a paginated
+        # query.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The available services for the requested project.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Service>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @services = args[:services] if args.key?(:services)
         end
       end
       
@@ -2148,7 +2124,7 @@ module Google
         # Runtime requests that contain labels not specified here are
         # considered invalid.
         # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::ServiceusageV1::LabelDescriptor>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::LabelDescriptor>]
         attr_accessor :labels
       
         # The name of the log. It must be less than 512 characters long and can
@@ -2207,7 +2183,7 @@ module Google
         # different monitored resource type. A log can be used in at most
         # one consumer destination.
         # Corresponds to the JSON property `consumerDestinations`
-        # @return [Array<Google::Apis::ServiceusageV1::LoggingDestination>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::LoggingDestination>]
         attr_accessor :consumer_destinations
       
         # Logging configurations for sending logs to the producer project.
@@ -2215,7 +2191,7 @@ module Google
         # different monitored resource type. A log can be used in at most
         # one producer destination.
         # Corresponds to the JSON property `producerDestinations`
-        # @return [Array<Google::Apis::ServiceusageV1::LoggingDestination>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::LoggingDestination>]
         attr_accessor :producer_destinations
       
         def initialize(**args)
@@ -2402,7 +2378,7 @@ module Google
       
         # Any metadata attached to the method.
         # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::ServiceusageV1::Option>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Option>]
         attr_accessor :options
       
         # If true, the request is streamed.
@@ -2474,7 +2450,7 @@ module Google
         # you can look at latencies for successful responses or just
         # for responses that failed.
         # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::ServiceusageV1::LabelDescriptor>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::LabelDescriptor>]
         attr_accessor :labels
       
         # Whether the metric records instantaneous values, changes to a value, etc.
@@ -2724,7 +2700,7 @@ module Google
         # resource type. For example, an individual Google Cloud SQL database is
         # identified by values for the labels `"database_id"` and `"zone"`.
         # Corresponds to the JSON property `labels`
-        # @return [Array<Google::Apis::ServiceusageV1::LabelDescriptor>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::LabelDescriptor>]
         attr_accessor :labels
       
         # Optional. The resource name of the monitored resource descriptor:
@@ -2801,7 +2777,7 @@ module Google
         # different monitored resource type. A metric can be used in at most
         # one consumer destination.
         # Corresponds to the JSON property `consumerDestinations`
-        # @return [Array<Google::Apis::ServiceusageV1::MonitoringDestination>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::MonitoringDestination>]
         attr_accessor :consumer_destinations
       
         # Monitoring configurations for sending metrics to the producer project.
@@ -2809,7 +2785,7 @@ module Google
         # different monitored resource type. A metric can be used in at most
         # one producer destination.
         # Corresponds to the JSON property `producerDestinations`
-        # @return [Array<Google::Apis::ServiceusageV1::MonitoringDestination>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::MonitoringDestination>]
         attr_accessor :producer_destinations
       
         def initialize(**args)
@@ -2940,7 +2916,7 @@ module Google
         # - Logging. If some API errors are stored in logs, the message `Status` could
         # be used directly after any stripping needed for security/privacy reasons.
         # Corresponds to the JSON property `error`
-        # @return [Google::Apis::ServiceusageV1::Status]
+        # @return [Google::Apis::ServiceusageV1beta1::Status]
         attr_accessor :error
       
         # Service-specific metadata associated with the operation.  It typically
@@ -3006,7 +2982,7 @@ module Google
       
         # Detailed status information for each step. The order is undetermined.
         # Corresponds to the JSON property `steps`
-        # @return [Array<Google::Apis::ServiceusageV1::Step>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Step>]
         attr_accessor :steps
       
         def initialize(**args)
@@ -3087,7 +3063,7 @@ module Google
         # Subpages of this page. The order of subpages specified here will be
         # honored in the generated docset.
         # Corresponds to the JSON property `subpages`
-        # @return [Array<Google::Apis::ServiceusageV1::Page>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Page>]
         attr_accessor :subpages
       
         def initialize(**args)
@@ -3099,54 +3075,6 @@ module Google
           @content = args[:content] if args.key?(:content)
           @name = args[:name] if args.key?(:name)
           @subpages = args[:subpages] if args.key?(:subpages)
-        end
-      end
-      
-      # The published version of a Service that is managed by
-      # Google Service Management.
-      class PublishedService
-        include Google::Apis::Core::Hashable
-      
-        # The resource name of the service.
-        # A valid name would be:
-        # - services/serviceusage.googleapis.com
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # `Service` is the root object of Google service configuration schema. It
-        # describes basic information about a service, such as the name and the
-        # title, and delegates other aspects to sub-sections. Each sub-section is
-        # either a proto message or a repeated proto message that configures a
-        # specific aspect, such as auth. See each proto message definition for details.
-        # Example:
-        # type: google.api.Service
-        # config_version: 3
-        # name: calendar.googleapis.com
-        # title: Google Calendar API
-        # apis:
-        # - name: google.calendar.v3.Calendar
-        # authentication:
-        # providers:
-        # - id: google_calendar_auth
-        # jwks_uri: https://www.googleapis.com/oauth2/v1/certs
-        # issuer: https://securetoken.google.com
-        # rules:
-        # - selector: "*"
-        # requirements:
-        # provider_id: google_calendar_auth
-        # Corresponds to the JSON property `service`
-        # @return [Google::Apis::ServiceusageV1::GoogleApiService]
-        attr_accessor :service
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -3194,13 +3122,13 @@ module Google
       
         # List of `QuotaLimit` definitions for the service.
         # Corresponds to the JSON property `limits`
-        # @return [Array<Google::Apis::ServiceusageV1::QuotaLimit>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaLimit>]
         attr_accessor :limits
       
         # List of `MetricRule` definitions, each one mapping a selected method to one
         # or more metrics.
         # Corresponds to the JSON property `metricRules`
-        # @return [Array<Google::Apis::ServiceusageV1::MetricRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::MetricRule>]
         attr_accessor :metric_rules
       
         def initialize(**args)
@@ -3330,41 +3258,14 @@ module Google
         end
       end
       
-      # Response message for SearchServices.
-      class SearchServicesResponse
+      # A service that is available for use by the consumer.
+      class Service
         include Google::Apis::Core::Hashable
       
-        # Token that can be passed to `SearchServices` to resume a paginated query.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The state of services available publicly or available to the authenticated
-        # caller.
-        # Corresponds to the JSON property `services`
-        # @return [Array<Google::Apis::ServiceusageV1::PublishedService>]
-        attr_accessor :services
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @services = args[:services] if args.key?(:services)
-        end
-      end
-      
-      # The properties of a consumer with respect to a Service.
-      class ServiceState
-        include Google::Apis::Core::Hashable
-      
-        # The EnabledState reflects whether the service has been explicitly enabled or
-        # not.
-        # Corresponds to the JSON property `enabled`
-        # @return [Google::Apis::ServiceusageV1::EnabledState]
-        attr_accessor :enabled
+        # The configuration of the service.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ServiceusageV1beta1::ServiceConfig]
+        attr_accessor :config
       
         # The resource name of the consumer and service.
         # A valid name would be:
@@ -3373,11 +3274,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The published version of a Service that is managed by
-        # Google Service Management.
-        # Corresponds to the JSON property `service`
-        # @return [Google::Apis::ServiceusageV1::PublishedService]
-        attr_accessor :service
+        # The resource name of the consumer.
+        # A valid name would be:
+        # - projects/123
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Whether or not the service has been enabled for use by the consumer.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -3385,9 +3292,176 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
+          @config = args[:config] if args.key?(:config)
           @name = args[:name] if args.key?(:name)
-          @service = args[:service] if args.key?(:service)
+          @parent = args[:parent] if args.key?(:parent)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The configuration of the service.
+      class ServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of API interfaces exported by this service. Contains only the names,
+        # versions, and method names of the interfaces.
+        # Corresponds to the JSON property `apis`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Api>]
+        attr_accessor :apis
+      
+        # `Authentication` defines the authentication configuration for an API.
+        # Example for an API targeted for external use:
+        # name: calendar.googleapis.com
+        # authentication:
+        # providers:
+        # - id: google_calendar_auth
+        # jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+        # issuer: https://securetoken.google.com
+        # rules:
+        # - selector: "*"
+        # requirements:
+        # provider_id: google_calendar_auth
+        # Corresponds to the JSON property `authentication`
+        # @return [Google::Apis::ServiceusageV1beta1::Authentication]
+        attr_accessor :authentication
+      
+        # `Documentation` provides the information for describing a service.
+        # Example:
+        # <pre><code>documentation:
+        # summary: >
+        # The Google Calendar API gives access
+        # to most calendar features.
+        # pages:
+        # - name: Overview
+        # content: &#40;== include google/foo/overview.md ==&#41;
+        # - name: Tutorial
+        # content: &#40;== include google/foo/tutorial.md ==&#41;
+        # subpages;
+        # - name: Java
+        # content: &#40;== include google/foo/tutorial_java.md ==&#41;
+        # rules:
+        # - selector: google.calendar.Calendar.Get
+        # description: >
+        # ...
+        # - selector: google.calendar.Calendar.Put
+        # description: >
+        # ...
+        # </code></pre>
+        # Documentation is provided in markdown syntax. In addition to
+        # standard markdown features, definition lists, tables and fenced
+        # code blocks are supported. Section headers can be provided and are
+        # interpreted relative to the section nesting of the context where
+        # a documentation fragment is embedded.
+        # Documentation from the IDL is merged with documentation defined
+        # via the config at normalization time, where documentation provided
+        # by config rules overrides IDL provided.
+        # A number of constructs specific to the API platform are supported
+        # in documentation text.
+        # In order to reference a proto element, the following
+        # notation can be used:
+        # <pre><code>&#91;fully.qualified.proto.name]&#91;]</code></pre>
+        # To override the display text used for the link, this can be used:
+        # <pre><code>&#91;display text]&#91;fully.qualified.proto.name]</code></pre>
+        # Text can be excluded from doc using the following notation:
+        # <pre><code>&#40;-- internal comment --&#41;</code></pre>
+        # Comments can be made conditional using a visibility label. The below
+        # text will be only rendered if the `BETA` label is available:
+        # <pre><code>&#40;--BETA: comment for BETA users --&#41;</code></pre>
+        # A few directives are available in documentation. Note that
+        # directives must appear on a single line to be properly
+        # identified. The `include` directive includes a markdown file from
+        # an external source:
+        # <pre><code>&#40;== include path/to/file ==&#41;</code></pre>
+        # The `resource_for` directive marks a message to be the resource of
+        # a collection in REST view. If it is not specified, tools attempt
+        # to infer the resource from the operations in a collection:
+        # <pre><code>&#40;== resource_for v1.shelves.books ==&#41;</code></pre>
+        # The directive `suppress_warning` does not directly affect documentation
+        # and is documented together with service config validation.
+        # Corresponds to the JSON property `documentation`
+        # @return [Google::Apis::ServiceusageV1beta1::Documentation]
+        attr_accessor :documentation
+      
+        # Configuration for network endpoints. Contains only the names and aliases
+        # of the endpoints.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Endpoint>]
+        attr_accessor :endpoints
+      
+        # The DNS address at which this service is available.
+        # An example DNS address would be:
+        # `calendar.googleapis.com`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Quota configuration helps to achieve fairness and budgeting in service
+        # usage.
+        # The quota configuration works this way:
+        # - The service configuration defines a set of metrics.
+        # - For API calls, the quota.metric_rules maps methods to metrics with
+        # corresponding costs.
+        # - The quota.limits defines limits on the metrics, which will be used for
+        # quota checks at runtime.
+        # An example quota configuration in yaml format:
+        # quota:
+        # - name: apiWriteQpsPerProject
+        # metric: library.googleapis.com/write_calls
+        # unit: "1/min/`project`"  # rate limit for consumer projects
+        # values:
+        # STANDARD: 10000
+        # # The metric rules bind all methods to the read_calls metric,
+        # # except for the UpdateBook and DeleteBook methods. These two methods
+        # # are mapped to the write_calls metric, with the UpdateBook method
+        # # consuming at twice rate as the DeleteBook method.
+        # metric_rules:
+        # - selector: "*"
+        # metric_costs:
+        # library.googleapis.com/read_calls: 1
+        # - selector: google.example.library.v1.LibraryService.UpdateBook
+        # metric_costs:
+        # library.googleapis.com/write_calls: 2
+        # - selector: google.example.library.v1.LibraryService.DeleteBook
+        # metric_costs:
+        # library.googleapis.com/write_calls: 1
+        # Corresponding Metric definition:
+        # metrics:
+        # - name: library.googleapis.com/read_calls
+        # display_name: Read requests
+        # metric_kind: DELTA
+        # value_type: INT64
+        # - name: library.googleapis.com/write_calls
+        # display_name: Write requests
+        # metric_kind: DELTA
+        # value_type: INT64
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::ServiceusageV1beta1::Quota]
+        attr_accessor :quota
+      
+        # The product title for this service.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Configuration controlling usage of a service.
+        # Corresponds to the JSON property `usage`
+        # @return [Google::Apis::ServiceusageV1beta1::Usage]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apis = args[:apis] if args.key?(:apis)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @documentation = args[:documentation] if args.key?(:documentation)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @name = args[:name] if args.key?(:name)
+          @quota = args[:quota] if args.key?(:quota)
+          @title = args[:title] if args.key?(:title)
+          @usage = args[:usage] if args.key?(:usage)
         end
       end
       
@@ -3574,7 +3648,7 @@ module Google
         # If none of the specified names are present the behavior is
         # parameter-dependent.
         # Corresponds to the JSON property `parameters`
-        # @return [Array<Google::Apis::ServiceusageV1::SystemParameter>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::SystemParameter>]
         attr_accessor :parameters
       
         # Selects the methods to which this rule applies. Use '*' to indicate all
@@ -3626,7 +3700,7 @@ module Google
         # http_header: Api-Key2
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::SystemParameterRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::SystemParameterRule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -3645,7 +3719,7 @@ module Google
       
         # The list of fields.
         # Corresponds to the JSON property `fields`
-        # @return [Array<Google::Apis::ServiceusageV1::Field>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Field>]
         attr_accessor :fields
       
         # The fully qualified message name.
@@ -3660,13 +3734,13 @@ module Google
       
         # The protocol buffer options.
         # Corresponds to the JSON property `options`
-        # @return [Array<Google::Apis::ServiceusageV1::Option>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::Option>]
         attr_accessor :options
       
         # `SourceContext` represents information about the source of a
         # protobuf element, like the file in which it is defined.
         # Corresponds to the JSON property `sourceContext`
-        # @return [Google::Apis::ServiceusageV1::SourceContext]
+        # @return [Google::Apis::ServiceusageV1beta1::SourceContext]
         attr_accessor :source_context
       
         # The source syntax.
@@ -3714,7 +3788,7 @@ module Google
         # A list of usage rules that apply to individual API methods.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::UsageRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::UsageRule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -3808,7 +3882,7 @@ module Google
         # A list of visibility rules that apply to individual API elements.
         # **NOTE:** All service configuration rules follow "last one wins" order.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceusageV1::VisibilityRule>]
+        # @return [Array<Google::Apis::ServiceusageV1beta1::VisibilityRule>]
         attr_accessor :rules
       
         def initialize(**args)

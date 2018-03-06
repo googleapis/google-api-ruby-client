@@ -527,7 +527,6 @@ module Google
         #   * addresses
         #   * biographies
         #   * birthdays
-        #   * braggingRights
         #   * emailAddresses
         #   * events
         #   * genders
@@ -541,7 +540,6 @@ module Google
         #   * phoneNumbers
         #   * relations
         #   * residences
-        #   * skills
         #   * urls
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

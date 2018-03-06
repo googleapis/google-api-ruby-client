@@ -42,6 +42,16 @@ module Google
         # The environment to pass into the container.  This environment is merged
         # with any values specified in the Pipeline message.  These values overwrite
         # any in the Pipeline message.
+        # In addition to the values passed here, a few other values are
+        # automatically injected into the environment.  These cannot be hidden or
+        # overwritten.
+        # `GOOGLE_PIPELINE_FAILED` will be set to "1" if the pipeline has failed
+        # because an action has exited with a non-zero status (and did not have the
+        # IGNORE_EXIT_STATUS flag set).  This can be used to determine if additional
+        # debug or logging actions should execute.
+        # `GOOGLE_LAST_EXIT_STATUS` will be set to the exit status of the last
+        # non-background action that executed.  This can be used by workflow engine
+        # authors to determine whether an individual action has succeeded or failed.
         # Corresponds to the JSON property `environment`
         # @return [Hash<String,String>]
         attr_accessor :environment
@@ -975,7 +985,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # User defined labels to associate with the returned operation.  These
-        # labels are not propogated to any Google Cloud Platform resources used by
+        # labels are not propagated to any Google Cloud Platform resources used by
         # the operation, and may be modified at any time.
         # To associate labels with resources created while executing the operation,
         # see the appropriate resource message (i.e., VirtualMachine).

@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/serviceusage_v1/service.rb'
-require 'google/apis/serviceusage_v1/classes.rb'
-require 'google/apis/serviceusage_v1/representations.rb'
+require 'google/apis/serviceusage_v1beta1/service.rb'
+require 'google/apis/serviceusage_v1beta1/classes.rb'
+require 'google/apis/serviceusage_v1beta1/representations.rb'
 
 module Google
   module Apis
@@ -25,9 +25,9 @@ module Google
     # consumers no longer use.
     #
     # @see https://cloud.google.com/service-usage/
-    module ServiceusageV1
-      VERSION = 'V1'
-      REVISION = '20180210'
+    module ServiceusageV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20180303'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

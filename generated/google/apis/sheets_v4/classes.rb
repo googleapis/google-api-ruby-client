@@ -1459,7 +1459,7 @@ module Google
         attr_accessor :requests
       
         # True if grid data should be returned. Meaningful only if
-        # if include_spreadsheet_response is 'true'.
+        # if include_spreadsheet_in_response is 'true'.
         # This parameter is ignored if a field mask was set in the request.
         # Corresponds to the JSON property `responseIncludeGridData`
         # @return [Boolean]

@@ -99,8 +99,8 @@ module Google
         # Full long Dynamic Link URL with desired query parameters specified.
         # For example,
         # "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
-        # [Learn more](https://firebase.google.com/docs/dynamic-links/android#create-a-
-        # dynamic-link-programmatically).
+        # [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-
+        # shortener).
         # Corresponds to the JSON property `longDynamicLink`
         # @return [String]
         attr_accessor :long_dynamic_link

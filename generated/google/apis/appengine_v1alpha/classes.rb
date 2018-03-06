@@ -395,6 +395,12 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Cross-service attributes for the location. For example
         # `"cloud.googleapis.com/region": "us-east1"`
         # Corresponds to the JSON property `labels`
@@ -424,6 +430,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)

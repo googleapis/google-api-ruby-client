@@ -153,7 +153,7 @@ module Google
       
         # Location from which this application runs. Application instances run out of
         # the data centers in the specified location, which is also where all of the
-        # application's end user content is stored.Defaults to us-central1.View the list
+        # application's end user content is stored.Defaults to us-central.View the list
         # of supported locations (https://cloud.google.com/appengine/docs/locations).
         # Corresponds to the JSON property `locationId`
         # @return [String]
@@ -1580,6 +1580,12 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Cross-service attributes for the location. For example
         # `"cloud.googleapis.com/region": "us-east1"`
         # Corresponds to the JSON property `labels`
@@ -1609,6 +1615,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)

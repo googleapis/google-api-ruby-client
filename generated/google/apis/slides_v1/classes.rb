@@ -318,7 +318,7 @@ module Google
         # The image URL.
         # The image is fetched once at insertion time and a copy is stored for
         # display inside the presentation. Images must be less than 50MB in size,
-        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
         # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `url`
@@ -2589,7 +2589,7 @@ module Google
         # The image URL.
         # The image is fetched once at insertion time and a copy is stored for
         # display inside the presentation. Images must be less than 50MB in size,
-        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
         # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `imageUrl`
@@ -2788,7 +2788,7 @@ module Google
         # The URL of the new image.
         # The image is fetched once at insertion time and a copy is stored for
         # display inside the presentation. Images must be less than 50MB in size,
-        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
         # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `url`
@@ -3587,7 +3587,7 @@ module Google
         # Writing the content_url:
         # The picture is fetched once at insertion time and a copy is stored for
         # display inside the presentation. Pictures must be less than 50MB in size,
-        # cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
         # The provided URL can be at most 2 kB in length.
         # Corresponds to the JSON property `contentUrl`

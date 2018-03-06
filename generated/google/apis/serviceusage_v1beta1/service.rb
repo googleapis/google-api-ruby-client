@@ -19,7 +19,7 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module ServiceusageV1
+    module ServiceusageV1beta1
       # Service Usage API
       #
       # Enables services that service consumers want to use on Google Cloud Platform,
@@ -27,9 +27,9 @@ module Google
       #  consumers no longer use.
       #
       # @example
-      #    require 'google/apis/serviceusage_v1'
+      #    require 'google/apis/serviceusage_v1beta1'
       #
-      #    Serviceusage = Google::Apis::ServiceusageV1 # Alias the module
+      #    Serviceusage = Google::Apis::ServiceusageV1beta1 # Alias the module
       #    service = Serviceusage::ServiceUsageService.new
       #
       # @see https://cloud.google.com/service-usage/
@@ -49,81 +49,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
-        # @param [String] name
-        #   The name of the operation resource to be cancelled.
-        # @param [Google::Apis::ServiceusageV1::CancelOperationRequest] cancel_operation_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServiceusageV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::ServiceusageV1::CancelOperationRequest::Representation
-          command.request_object = cancel_operation_request_object
-          command.response_representation = Google::Apis::ServiceusageV1::Empty::Representation
-          command.response_class = Google::Apis::ServiceusageV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
-        # @param [String] name
-        #   The name of the operation resource to be deleted.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServiceusageV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ServiceusageV1::Empty::Representation
-          command.response_class = Google::Apis::ServiceusageV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.
@@ -138,18 +63,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServiceusageV1::Operation]
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
-          command.response_class = Google::Apis::ServiceusageV1::Operation
+          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -182,18 +107,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::ListOperationsResponse] parsed result object
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListOperationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServiceusageV1::ListOperationsResponse]
+        # @return [Google::Apis::ServiceusageV1beta1::ListOperationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/operations', options)
-          command.response_representation = Google::Apis::ServiceusageV1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::ServiceusageV1::ListOperationsResponse
+          command =  make_simple_command(:get, 'v1beta1/operations', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ListOperationsResponse
           command.query['filter'] = filter unless filter.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -203,11 +128,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a service so it can no longer be used with a
-        # project. This prevents unintended usage that may cause unexpected billing
+        # Enable multiple services on a project. The operation is atomic: if enabling
+        # any service fails, then the entire batch fails, and no state changes occur.
+        # Operation<response: google.protobuf.Empty>
+        # @param [String] parent
+        #   Parent to enable services on.
+        #   An example name would be:
+        #   projects/123
+        #   The `BatchEnableServices` method currently only supports projects.
+        # @param [Google::Apis::ServiceusageV1beta1::BatchEnableServicesRequest] batch_enable_services_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_enable_services(parent, batch_enable_services_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta1/{+parent}/services:batchEnable', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::BatchEnableServicesRequest::Representation
+          command.request_object = batch_enable_services_request_object
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disable a service so that it can no longer be used with a project.
+        # This prevents unintended usage that may cause unexpected billing
         # charges or security leaks.
         # It is not valid to call the disable method on a service that is not
-        # currently enabled. Callers will receive a FAILED_PRECONDITION status if
+        # currently enabled. Callers will receive a `FAILED_PRECONDITION` status if
         # the target service is not currently enabled.
         # Operation<response: google.protobuf.Empty>
         # @param [String] name
@@ -215,7 +178,7 @@ module Google
         #   The enable and disable methods currently only support projects.
         #   An example name would be:
         #   projects/123/services/serviceusage.googleapis.com
-        # @param [Google::Apis::ServiceusageV1::DisableServiceRequest] disable_service_request_object
+        # @param [Google::Apis::ServiceusageV1beta1::DisableServiceRequest] disable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -225,38 +188,37 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServiceusageV1::Operation]
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def disable_service(name, disable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:disable', options)
-          command.request_representation = Google::Apis::ServiceusageV1::DisableServiceRequest::Representation
+          command =  make_simple_command(:post, 'v1beta1/{+name}:disable', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::DisableServiceRequest::Representation
           command.request_object = disable_service_request_object
-          command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
-          command.response_class = Google::Apis::ServiceusageV1::Operation
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Enable a service so it can be used with a project.
-        # See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
-        # more information.
+        # Enable a service so that it can be used with a project.
         # Operation<response: google.protobuf.Empty>
         # @param [String] name
         #   Name of the consumer and service to enable the service on.
-        #   The enable and disable methods currently only support projects.
+        #   The `EnableService` and `DisableService` methods currently only support
+        #   projects.
         #   Enabling a service requires that the service is public or is shared with
         #   the user enabling the service.
         #   An example name would be:
         #   projects/123/services/serviceusage.googleapis.com
-        # @param [Google::Apis::ServiceusageV1::EnableServiceRequest] enable_service_request_object
+        # @param [Google::Apis::ServiceusageV1beta1::EnableServiceRequest] enable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -266,29 +228,29 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServiceusageV1::Operation]
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def enable_service(name, enable_service_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'v1/{+name}:enable', options)
-          command.request_representation = Google::Apis::ServiceusageV1::EnableServiceRequest::Representation
+          command =  make_simple_command(:post, 'v1beta1/{+name}:enable', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::EnableServiceRequest::Representation
           command.request_object = enable_service_request_object
-          command.response_representation = Google::Apis::ServiceusageV1::Operation::Representation
-          command.response_class = Google::Apis::ServiceusageV1::Operation
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the service definition and EnabledState for a given service.
+        # Returns the service configuration and enabled state for a given service.
         # @param [String] name
-        #   Name of the consumer and service to get the ConsumerState for.
+        #   Name of the consumer and service to get the `ConsumerState` for.
         #   An example name would be:
         #   projects/123/services/serviceusage.googleapis.com
         # @param [String] fields
@@ -300,34 +262,43 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::ServiceState] parsed result object
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Service] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServiceusageV1::ServiceState]
+        # @return [Google::Apis::ServiceusageV1beta1::Service]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_service(name, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ServiceusageV1::ServiceState::Representation
-          command.response_class = Google::Apis::ServiceusageV1::ServiceState
+          command =  make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Service::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Service
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # List enabled services.
+        # List all services available to the specified project, and the current
+        # state of those services with respect to the project. The list includes
+        # all public services, all services for which the calling user has the
+        # `servicemanagement.services.bind` permission, and all services that have
+        # already been enabled on the project. The list can be filtered to
+        # only include services in a specific state, for example to only include
+        # services enabled on the project.
         # @param [String] parent
         #   Parent to search for services on.
         #   An example name would be:
         #   projects/123
+        # @param [String] filter
+        #   Only list services that conform to the given filter.
+        #   The allowed filter strings are `state:ENABLED` and `state:DISABLED`.
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
         # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous list
-        #   call.
+        #   Token identifying which result to start with, which is returned by a
+        #   previous list call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -337,56 +308,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::ListEnabledServicesResponse] parsed result object
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListServicesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ServiceusageV1::ListEnabledServicesResponse]
+        # @return [Google::Apis::ServiceusageV1beta1::ListServicesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_service_enabled(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/{+parent}/services:enabled', options)
-          command.response_representation = Google::Apis::ServiceusageV1::ListEnabledServicesResponse::Representation
-          command.response_class = Google::Apis::ServiceusageV1::ListEnabledServicesResponse
+        def list_services(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1beta1/{+parent}/services', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ListServicesResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ListServicesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Search available services.
-        # When no filter is specified, returns all accessible services. This includes
-        # public services and services for which the calling user has the
-        # "servicemanagement.services.bind" permission.
-        # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
-        # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous search
-        #   call.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1::SearchServicesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServiceusageV1::SearchServicesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_services(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/services:search', options)
-          command.response_representation = Google::Apis::ServiceusageV1::SearchServicesResponse::Representation
-          command.response_class = Google::Apis::ServiceusageV1::SearchServicesResponse
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
