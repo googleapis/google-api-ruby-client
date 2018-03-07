@@ -336,11 +336,12 @@ module Google
         # The configuration for notification of telemetry events received from the
         # device. All telemetry events that were successfully published by the
         # device and acknowledged by Cloud IoT Core are guaranteed to be
-        # delivered to Cloud Pub/Sub. Only the first configuration is used. If you
-        # try to publish a device telemetry event using MQTT without specifying a
-        # Cloud Pub/Sub topic for the device's registry, the connection closes
-        # automatically. If you try to do so using an HTTP connection, an error
-        # is returned.
+        # delivered to Cloud Pub/Sub. If multiple configurations match a message,
+        # only the first matching configuration is used. If you try to publish a
+        # device telemetry event using MQTT without specifying a Cloud Pub/Sub topic
+        # for the device's registry, the connection closes automatically. If you try
+        # to do so using an HTTP connection, an error is returned. Up to 10
+        # configurations may be provided.
         # Corresponds to the JSON property `eventNotificationConfigs`
         # @return [Array<Google::Apis::CloudiotV1::EventNotificationConfig>]
         attr_accessor :event_notification_configs

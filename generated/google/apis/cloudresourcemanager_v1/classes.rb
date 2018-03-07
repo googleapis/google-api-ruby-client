@@ -1181,7 +1181,7 @@ module Google
       class OrganizationOwner
         include Google::Apis::Core::Hashable
       
-        # The Google for Work customer id used in the Directory API.
+        # The G Suite customer id used in the Directory API.
         # Corresponds to the JSON property `directoryCustomerId`
         # @return [String]
         attr_accessor :directory_customer_id
@@ -1448,7 +1448,7 @@ module Google
         # An optional query string used to filter the Organizations to return in
         # the response. Filter rules are case-insensitive.
         # Organizations may be filtered by `owner.directoryCustomerId` or by
-        # `domain`, where the domain is a Google for Work domain, for example:
+        # `domain`, where the domain is a G Suite domain, for example:
         # |Filter|Description|
         # |------|-----------|
         # |owner.directorycustomerid:123456789|Organizations with

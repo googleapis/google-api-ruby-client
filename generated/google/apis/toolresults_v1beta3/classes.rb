@@ -913,7 +913,7 @@ module Google
         # @return [String]
         attr_accessor :history_id
       
-        # A name to uniquely identify a history within a project. Maximum of 100
+        # A name to uniquely identify a history within a project. Maximum of 200
         # characters.
         # - In response always set - In create request: always set
         # Corresponds to the JSON property `name`

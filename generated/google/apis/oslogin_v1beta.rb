@@ -18,14 +18,14 @@ require 'google/apis/oslogin_v1beta/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud OS Login API
+    # Cloud OS Login API
     #
     # Manages OS login configuration for Google account users.
     #
     # @see https://cloud.google.com/compute/docs/oslogin/rest/
     module OsloginV1beta
       VERSION = 'V1beta'
-      REVISION = '20180117'
+      REVISION = '20180306'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

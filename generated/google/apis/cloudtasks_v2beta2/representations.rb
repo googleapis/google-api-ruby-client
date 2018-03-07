@@ -353,6 +353,7 @@ module Google
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'

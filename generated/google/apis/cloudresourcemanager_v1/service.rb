@@ -44,7 +44,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudresourcemanager.googleapis.com/', '')
+          super('https://content-cloudresourcemanager.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
@@ -821,7 +821,8 @@ module Google
         # polling at the 5th second with an exponential backoff.
         # Authorization requires the Google IAM permission
         # `resourcemanager.projects.create` on the specified parent for the new
-        # project.
+        # project. The parent is identified by a specified ResourceId,
+        # which must include both an ID and a type, such as organization.
         # @param [Google::Apis::CloudresourcemanagerV1::Project] project_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
