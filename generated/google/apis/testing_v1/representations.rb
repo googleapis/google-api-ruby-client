@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Apk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApkDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,12 @@ module Google
       end
       
       class Orientation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegularFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -396,6 +408,8 @@ module Google
           property :max_steps, as: 'maxSteps'
           collection :robo_directives, as: 'roboDirectives', class: Google::Apis::TestingV1::RoboDirective, decorator: Google::Apis::TestingV1::RoboDirective::Representation
       
+          property :robo_script, as: 'roboScript', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
           collection :starting_intents, as: 'startingIntents', class: Google::Apis::TestingV1::RoboStartingIntent, decorator: Google::Apis::TestingV1::RoboStartingIntent::Representation
       
         end
@@ -434,6 +448,15 @@ module Google
       
           collection :tags, as: 'tags'
           property :version_string, as: 'versionString'
+        end
+      end
+      
+      class Apk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          property :package_name, as: 'packageName'
         end
       end
       
@@ -494,6 +517,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :obb_file, as: 'obbFile', class: Google::Apis::TestingV1::ObbFile, decorator: Google::Apis::TestingV1::ObbFile::Representation
+      
+          property :regular_file, as: 'regularFile', class: Google::Apis::TestingV1::RegularFile, decorator: Google::Apis::TestingV1::RegularFile::Representation
       
         end
       end
@@ -622,6 +647,15 @@ module Google
         end
       end
       
+      class RegularFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          property :device_path, as: 'devicePath'
+        end
+      end
+      
       class ResultStorage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -724,6 +758,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, as: 'account', class: Google::Apis::TestingV1::Account, decorator: Google::Apis::TestingV1::Account::Representation
+      
+          collection :additional_apks, as: 'additionalApks', class: Google::Apis::TestingV1::Apk, decorator: Google::Apis::TestingV1::Apk::Representation
       
           collection :directories_to_pull, as: 'directoriesToPull'
           collection :environment_variables, as: 'environmentVariables', class: Google::Apis::TestingV1::EnvironmentVariable, decorator: Google::Apis::TestingV1::EnvironmentVariable::Representation

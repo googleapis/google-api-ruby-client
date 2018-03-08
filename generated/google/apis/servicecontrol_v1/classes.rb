@@ -1043,7 +1043,8 @@ module Google
         # - `servicecontrol.googleapis.com/service_agent` describing the service
         # used to handle the API request (e.g. ESP),
         # - `servicecontrol.googleapis.com/platform` describing the platform
-        # where the API is served (e.g. GAE, GCE, GKE).
+        # where the API is served, such as App Engine, Compute Engine, or
+        # Kubernetes Engine.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

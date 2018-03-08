@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ProximitybeaconV1beta1
-      # Google Proximity Beacon API
+      # Proximity Beacon API
       #
       # Registers, manages, indexes, and searches beacons.
       #

@@ -1840,6 +1840,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterAdvertisedIpRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2881,6 +2887,8 @@ module Google
           property :device_name, as: 'deviceName'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
+      
           property :index, as: 'index'
           property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeV1::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeV1::AttachedDiskInitializeParams::Representation
       
@@ -3447,6 +3455,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -4131,6 +4141,10 @@ module Google
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :source_image_id, as: 'sourceImageId'
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
         end
@@ -5318,6 +5332,7 @@ module Google
       
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -5990,6 +6005,14 @@ module Google
         end
       end
       
+      class RouterAdvertisedIpRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :range, as: 'range'
+        end
+      end
+      
       class RouterAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6025,6 +6048,10 @@ module Google
       class RouterBgp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertise_mode, as: 'advertiseMode'
+          collection :advertised_groups, as: 'advertisedGroups'
+          collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeV1::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeV1::RouterAdvertisedIpRange::Representation
+      
           property :asn, as: 'asn'
         end
       end
@@ -6032,6 +6059,10 @@ module Google
       class RouterBgpPeer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertise_mode, as: 'advertiseMode'
+          collection :advertised_groups, as: 'advertisedGroups'
+          collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeV1::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeV1::RouterAdvertisedIpRange::Representation
+      
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
@@ -6305,6 +6336,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'

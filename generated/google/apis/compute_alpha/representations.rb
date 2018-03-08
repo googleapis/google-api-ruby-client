@@ -2722,6 +2722,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulingNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3742,7 +3748,10 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :network_tier, as: 'networkTier'
+          property :prefix_length, as: 'prefixLength'
+          property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -7170,7 +7179,6 @@ module Google
       
           property :override, as: 'override', class: Google::Apis::ComputeAlpha::ManagedInstanceOverride, decorator: Google::Apis::ComputeAlpha::ManagedInstanceOverride::Representation
       
-          property :standby_mode, as: 'standbyMode'
           property :tag, as: 'tag'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
       
@@ -8571,8 +8579,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
+      
           property :on_host_maintenance, as: 'onHostMaintenance'
           property :preemptible, as: 'preemptible'
+        end
+      end
+      
+      class SchedulingNodeAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :operator, as: 'operator'
+          collection :values, as: 'values'
         end
       end
       
@@ -8683,6 +8702,7 @@ module Google
       class ShieldedVmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_secure_boot, as: 'enableSecureBoot'
           property :enable_vtpm, as: 'enableVtpm'
         end
@@ -8702,6 +8722,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -8951,6 +8973,7 @@ module Google
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'

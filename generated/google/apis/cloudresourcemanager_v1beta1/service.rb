@@ -44,7 +44,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudresourcemanager.googleapis.com/', '')
+          super('https://content-cloudresourcemanager.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
@@ -125,7 +125,7 @@ module Google
         #   An optional query string used to filter the Organizations to return in
         #   the response. Filter rules are case-insensitive.
         #   Organizations may be filtered by `owner.directoryCustomerId` or by
-        #   `domain`, where the domain is a Google for Work domain, for example:
+        #   `domain`, where the domain is a G Suite domain, for example:
         #   |Filter|Description|
         #   |------|-----------|
         #   |owner.directorycustomerid:123456789|Organizations with `owner.
@@ -280,7 +280,9 @@ module Google
         # The creator can later grant permission to others to read or update the
         # Project.
         # Several APIs are activated automatically for the Project, including
-        # Google Cloud Storage.
+        # Google Cloud Storage. The parent is identified by a specified
+        # ResourceId, which must include both an ID and a type, such as
+        # project, folder, or organization.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::Project] project_object
         # @param [Boolean] use_legacy_stack
         #   A safety hatch to opt out of the new reliable project creation process.

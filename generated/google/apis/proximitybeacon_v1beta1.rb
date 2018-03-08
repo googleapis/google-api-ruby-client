@@ -18,14 +18,14 @@ require 'google/apis/proximitybeacon_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Proximity Beacon API
+    # Proximity Beacon API
     #
     # Registers, manages, indexes, and searches beacons.
     #
     # @see https://developers.google.com/beacons/proximity/
     module ProximitybeaconV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20171112'
+      REVISION = '20180305'
 
       # View and modify your beacons
       AUTH_USERLOCATION_BEACON_REGISTRY = 'https://www.googleapis.com/auth/userlocation.beacon.registry'

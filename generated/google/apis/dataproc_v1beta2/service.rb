@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://dataproc.googleapis.com/', '')
+          super('https://content-dataproc.googleapis.com/', '')
           @batch_path = 'batch'
         end
         

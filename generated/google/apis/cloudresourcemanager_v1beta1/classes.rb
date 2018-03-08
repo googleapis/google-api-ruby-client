@@ -464,7 +464,7 @@ module Google
       class OrganizationOwner
         include Google::Apis::Core::Hashable
       
-        # The Google for Work customer id used in the Directory API.
+        # The G Suite customer id used in the Directory API.
         # Corresponds to the JSON property `directoryCustomerId`
         # @return [String]
         attr_accessor :directory_customer_id

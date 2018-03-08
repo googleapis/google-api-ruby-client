@@ -2467,7 +2467,7 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessageListSelect]
         attr_accessor :list_select
       
-        # The response containing a custom payload.
+        # Returns a response containing a custom payload.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload

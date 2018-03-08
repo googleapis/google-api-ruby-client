@@ -600,13 +600,19 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The URL of the network in which to reserve the address. This field can only be
+        # used with INTERNAL type with VPC_PEERING purpose.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
       
         # This signifies the networking tier used for configuring this Address and can
         # only take the following values: PREMIUM , STANDARD.
@@ -614,6 +620,16 @@ module Google
         # Corresponds to the JSON property `networkTier`
         # @return [String]
         attr_accessor :network_tier
+      
+        # The prefix length if the resource reprensents an IP range.
+        # Corresponds to the JSON property `prefixLength`
+        # @return [Fixnum]
+        attr_accessor :prefix_length
+      
+        # The purpose of resource, only used with INTERNAL type.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
       
         # [Output Only] URL of the region where the regional address resides. This field
         # is not applicable to global addresses. You must specify this field as part of
@@ -664,7 +680,10 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
+          @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -1392,8 +1411,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -2262,8 +2281,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -2554,8 +2573,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -3381,8 +3400,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -4085,8 +4104,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -4403,7 +4422,19 @@ module Google
         # @return [String]
         attr_accessor :device_name
       
-        # Specifies whether to include the disk and what image to use.
+        # Specifies whether to include the disk and what image to use. Possible values
+        # are:
+        # - source-image: to use the same image that was used to create the source
+        # instance's corresponding disk. Applicable to the boot disk and additional read-
+        # write disks.
+        # - source-image-family: to use the same image family that was used to create
+        # the source instance's corresponding disk. Applicable to the boot disk and
+        # additional read-write disks.
+        # - custom-image: to use a user-provided image url for disk creation. Applicable
+        # to the boot disk and additional read-write disks.
+        # - attach-read-only: to attach a read-only disk. Applicable to read-only disks.
+        # - do-not-include: to exclude a disk from the template. Applicable to
+        # additional read-write disks, local SSDs, and read-only disks.
         # Corresponds to the JSON property `instantiateFrom`
         # @return [String]
         attr_accessor :instantiate_from
@@ -5240,8 +5271,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -5701,8 +5732,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -5771,10 +5802,10 @@ module Google
         # An optional prefix to the service name for this Forwarding Rule. If specified,
         # will be the first label of the fully qualified service name.
         # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
-        # the label must be 1-63 characters long and match the regular expression [a-z]([
-        # -a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
+        # the label must be 1-63 characters long and match the regular expression `[a-z](
+        # [-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
+        # letter, and all following characters must be a dash, lowercase letter, or
+        # digit, except the last character, which cannot be a dash.
         # This field is only used for internal load balancing.
         # Corresponds to the JSON property `serviceLabel`
         # @return [String]
@@ -6199,11 +6230,11 @@ module Google
       
         # A list of labels to apply for this resource. Each label key & value must
         # comply with RFC1035. Specifically, the name must be 1-63 characters long and
-        # match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first
-        # character must be a lowercase letter, and all following characters must be a
-        # dash, lowercase letter, or digit, except the last character, which cannot be a
-        # dash. For example, "webserver-frontend": "images". A label value can also be
-        # empty (e.g. "my-label": "").
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash. For example, "webserver-frontend": "images". A label value can also
+        # be empty (e.g. "my-label": "").
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -6564,8 +6595,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -6920,9 +6951,10 @@ module Google
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-        # must be a lowercase letter, and all following characters must be a dash,
-        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7829,8 +7861,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -8051,8 +8083,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -8318,8 +8350,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -8731,9 +8763,10 @@ module Google
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-        # must be a lowercase letter, and all following characters must be a dash,
-        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -11250,8 +11283,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -11866,8 +11899,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -12062,8 +12095,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -14303,9 +14336,10 @@ module Google
         # The name of the resource, provided by the client when initially creating the
         # resource. The resource name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-        # must be a lowercase letter, and all following characters must be a dash,
-        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -14486,7 +14520,7 @@ module Google
         end
       end
       
-      # 
+      # Next available tag: 12
       class ManagedInstance
         include Google::Apis::Core::Hashable
       
@@ -14549,12 +14583,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ManagedInstanceOverride]
         attr_accessor :override
       
-        # [Output Only] Standby mode of the instance. This field is non-empty iff the
-        # instance is a standby.
-        # Corresponds to the JSON property `standbyMode`
-        # @return [String]
-        attr_accessor :standby_mode
-      
         # [Output Only] Tag describing the version.
         # Corresponds to the JSON property `tag`
         # @return [String]
@@ -14578,7 +14606,6 @@ module Google
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @override = args[:override] if args.key?(:override)
-          @standby_mode = args[:standby_mode] if args.key?(:standby_mode)
           @tag = args[:tag] if args.key?(:tag)
           @version = args[:version] if args.key?(:version)
         end
@@ -14937,8 +14964,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -15065,8 +15092,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -15907,7 +15934,7 @@ module Google
       
         # Name of this peering. Provided by the client when the peering is created. The
         # name must comply with RFC1035. Specifically, the name must be 1-63 characters
-        # long and match regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the
+        # long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
         # first character must be a lowercase letter, and all the following characters
         # must be a dash, lowercase letter, or digit, except the last character, which
         # cannot be a dash.
@@ -18448,8 +18475,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -18774,8 +18801,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -19851,6 +19878,11 @@ module Google
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
       
+        # A set of node affinity and anti-affinity.
+        # Corresponds to the JSON property `nodeAffinities`
+        # @return [Array<Google::Apis::ComputeAlpha::SchedulingNodeAffinity>]
+        attr_accessor :node_affinities
+      
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
         # only possible behavior is TERMINATE. For more information, see Setting
@@ -19874,8 +19906,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+        end
+      end
+      
+      # Node Affinity: the configuration of desired nodes onto which this Instance
+      # could be scheduled.
+      class SchedulingNodeAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to the label key of Node resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Defines the operation of node selection.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Corresponds to the label values of Node resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @operator = args[:operator] if args.key?(:operator)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -19920,8 +19985,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -20165,7 +20230,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Expr]
         attr_accessor :expr
       
-        # CIDR IP address range. Only IPv4 is supported.
+        # CIDR IP address range.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
@@ -20195,7 +20260,7 @@ module Google
       class SecurityPolicyRuleMatcherConfig
         include Google::Apis::Core::Hashable
       
-        # CIDR IP address range. Only IPv4 is supported.
+        # CIDR IP address range.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
@@ -20287,6 +20352,12 @@ module Google
       class ShieldedVmConfig
         include Google::Apis::Core::Hashable
       
+        # Defines whether the instance should have integrity monitoring enabled.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
         # Defines whether the instance should have secure boot enabled.
         # Corresponds to the JSON property `enableSecureBoot`
         # @return [Boolean]
@@ -20305,6 +20376,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
         end
@@ -20316,9 +20388,10 @@ module Google
       
         # Name of the key. The name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-        # must be a lowercase letter, and all following characters must be a dash,
-        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `keyName`
         # @return [String]
         attr_accessor :key_name
@@ -20360,6 +20433,13 @@ module Google
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
+      
+        # [Output Only] A list of features to enable on the guest operating system.
+        # Applicable only for bootable images. Read  Enabling guest operating system
+        # features to see a list of available options.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
+        attr_accessor :guest_os_features
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -20404,8 +20484,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -20473,6 +20553,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -20681,8 +20762,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -21114,9 +21195,10 @@ module Google
       
         # Name of the resource. The name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-        # must be a lowercase letter, and all following characters must be a dash,
-        # lowercase letter, or digit, except the last character, which cannot be a dash.
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -21378,6 +21460,12 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # [Output Only] The range of internal IPv6 addresses that are owned by this
+        # subnetwork.
+        # Corresponds to the JSON property `ipv6CidrRange`
+        # @return [String]
+        attr_accessor :ipv6_cidr_range
+      
         # [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork
         # resources.
         # Corresponds to the JSON property `kind`
@@ -21387,8 +21475,8 @@ module Google
         # The name of the resource, provided by the client when initially creating the
         # resource. The name must be 1-63 characters long, and comply with RFC1035.
         # Specifically, the name must be 1-63 characters long and match the regular
-        # expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be
-        # a lowercase letter, and all following characters must be a dash, lowercase
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
         # letter, or digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -21444,6 +21532,7 @@ module Google
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -21986,8 +22075,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -22215,8 +22304,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -22444,8 +22533,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -22888,8 +22977,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -23490,8 +23579,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -23733,8 +23822,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -23947,8 +24036,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -24499,8 +24588,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`
@@ -25068,8 +25157,8 @@ module Google
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         # and all following characters must be a dash, lowercase letter, or digit,
         # except the last character, which cannot be a dash.
         # Corresponds to the JSON property `name`

@@ -33,7 +33,7 @@ module Google
         attr_accessor :accelerator_count
       
         # Full URL, partial URI, or short name of the accelerator type resource to
-        # expose to this instance. See Google Compute Engine AcceleratorTypes.Examples:
+        # expose to this instance. See Compute Engine AcceleratorTypes.Examples:
         # https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
         # acceleratorTypes/nvidia-tesla-k80
         # projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
@@ -67,7 +67,7 @@ module Google
       end
       
       # Describes the identifying information, config, and status of a cluster of
-      # Google Compute Engine instances.
+      # Compute Engine instances.
       class Cluster
         include Google::Apis::Core::Hashable
       
@@ -140,8 +140,8 @@ module Google
       class ClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A Google Cloud Storage staging bucket used for sharing generated SSH
-        # keys and config. If you do not specify a staging bucket, Cloud Dataproc will
+        # Optional. A Cloud Storage staging bucket used for sharing generated SSH keys
+        # and config. If you do not specify a staging bucket, Cloud Dataproc will
         # determine an appropriate Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Google Compute Engine zone where
         # your cluster is deployed, and then it will create and manage this project-
@@ -150,8 +150,8 @@ module Google
         # @return [String]
         attr_accessor :config_bucket
       
-        # Common config settings for resources of Google Compute Engine cluster
-        # instances, applicable to all instances in the cluster.
+        # Common config settings for resources of Compute Engine cluster instances,
+        # applicable to all instances in the cluster.
         # Corresponds to the JSON property `gceClusterConfig`
         # @return [Google::Apis::DataprocV1::GceClusterConfig]
         attr_accessor :gce_cluster_config
@@ -171,14 +171,14 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::NodeInitializationAction>]
         attr_accessor :initialization_actions
       
-        # Optional. The config settings for Google Compute Engine resources in an
-        # instance group, such as a master or worker group.
+        # Optional. The config settings for Compute Engine resources in an instance
+        # group, such as a master or worker group.
         # Corresponds to the JSON property `masterConfig`
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :master_config
       
-        # Optional. The config settings for Google Compute Engine resources in an
-        # instance group, such as a master or worker group.
+        # Optional. The config settings for Compute Engine resources in an instance
+        # group, such as a master or worker group.
         # Corresponds to the JSON property `secondaryWorkerConfig`
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :secondary_worker_config
@@ -188,8 +188,8 @@ module Google
         # @return [Google::Apis::DataprocV1::SoftwareConfig]
         attr_accessor :software_config
       
-        # Optional. The config settings for Google Compute Engine resources in an
-        # instance group, such as a master or worker group.
+        # Optional. The config settings for Compute Engine resources in an instance
+        # group, such as a master or worker group.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :worker_config
@@ -454,8 +454,8 @@ module Google
         end
       end
       
-      # Common config settings for resources of Google Compute Engine cluster
-      # instances, applicable to all instances in the cluster.
+      # Common config settings for resources of Compute Engine cluster instances,
+      # applicable to all instances in the cluster.
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -470,19 +470,18 @@ module Google
         attr_accessor :internal_ip_only
         alias_method :internal_ip_only?, :internal_ip_only
       
-        # The Google Compute Engine metadata entries to add to all instances (see
-        # Project and instance metadata (https://cloud.google.com/compute/docs/storing-
-        # retrieving-metadata#project_and_instance_metadata)).
+        # The Compute Engine metadata entries to add to all instances (see Project and
+        # instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-
+        # metadata#project_and_instance_metadata)).
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Optional. The Google Compute Engine network to be used for machine
-        # communications. Cannot be specified with subnetwork_uri. If neither
-        # network_uri nor subnetwork_uri is specified, the "default" network of the
-        # project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using
-        # Subnetworks for more information).A full URL, partial URI, or short name are
-        # valid. Examples:
+        # Optional. The Compute Engine network to be used for machine communications.
+        # Cannot be specified with subnetwork_uri. If neither network_uri nor
+        # subnetwork_uri is specified, the "default" network of the project is used, if
+        # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks for more
+        # information).A full URL, partial URI, or short name are valid. Examples:
         # https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/
         # default
         # projects/[project_id]/regions/global/default
@@ -491,7 +490,7 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Optional. The service account of the instances. Defaults to the default Google
+        # Optional. The service account of the instances. Defaults to the default
         # Compute Engine service account. Custom service accounts need permissions
         # equivalent to the folloing IAM roles:
         # roles/logging.logWriter
@@ -516,9 +515,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :service_account_scopes
       
-        # Optional. The Google Compute Engine subnetwork to be used for machine
-        # communications. Cannot be specified with network_uri.A full URL, partial URI,
-        # or short name are valid. Examples:
+        # Optional. The Compute Engine subnetwork to be used for machine communications.
+        # Cannot be specified with network_uri.A full URL, partial URI, or short name
+        # are valid. Examples:
         # https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/
         # sub0
         # projects/[project_id]/regions/us-east1/sub0
@@ -527,13 +526,13 @@ module Google
         # @return [String]
         attr_accessor :subnetwork_uri
       
-        # The Google Compute Engine tags to add to all instances (see Tagging instances).
+        # The Compute Engine tags to add to all instances (see Tagging instances).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
       
-        # Optional. The zone where the Google Compute Engine cluster will be located. On
-        # a create request, it is required in the "global" region. If omitted in a non-
+        # Optional. The zone where the Compute Engine cluster will be located. On a
+        # create request, it is required in the "global" region. If omitted in a non-
         # global Cloud Dataproc region, the service will pick a zone in the
         # corresponding Compute Engine region. On a get request, zone will always be
         # present.A full URL, partial URI, or short name are valid. Examples:
@@ -697,14 +696,14 @@ module Google
         end
       end
       
-      # Optional. The config settings for Google Compute Engine resources in an
-      # instance group, such as a master or worker group.
+      # Optional. The config settings for Compute Engine resources in an instance
+      # group, such as a master or worker group.
       class InstanceGroupConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The Google Compute Engine accelerator configuration for these
-        # instances.Beta Feature: This feature is still under development. It may be
-        # changed before final release.
+        # Optional. The Compute Engine accelerator configuration for these instances.
+        # Beta Feature: This feature is still under development. It may be changed
+        # before final release.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::DataprocV1::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -714,8 +713,8 @@ module Google
         # @return [Google::Apis::DataprocV1::DiskConfig]
         attr_accessor :disk_config
       
-        # Output only. The Google Compute Engine image resource used for cluster
-        # instances. Inferred from SoftwareConfig.image_version.
+        # Output only. The Compute Engine image resource used for cluster instances.
+        # Inferred from SoftwareConfig.image_version.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -733,8 +732,8 @@ module Google
         attr_accessor :is_preemptible
         alias_method :is_preemptible?, :is_preemptible
       
-        # Optional. The Google Compute Engine machine type used for cluster instances.A
-        # full URL, partial URI, or short name are valid. Examples:
+        # Optional. The Compute Engine machine type used for cluster instances.A full
+        # URL, partial URI, or short name are valid. Examples:
         # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/
         # machineTypes/n1-standard-2
         # projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
@@ -1138,7 +1137,7 @@ module Google
       class NodeInitializationAction
         include Google::Apis::Core::Hashable
       
-        # Required. Google Cloud Storage URI of executable file.
+        # Required. Cloud Storage URI of executable file.
         # Corresponds to the JSON property `executableFile`
         # @return [String]
         attr_accessor :executable_file

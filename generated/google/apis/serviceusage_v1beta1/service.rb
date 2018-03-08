@@ -296,6 +296,7 @@ module Google
         #   The allowed filter strings are `state:ENABLED` and `state:DISABLED`.
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
+        #   Requested page size cannot exceed 200.
         # @param [String] page_token
         #   Token identifying which result to start with, which is returned by a
         #   previous list call.

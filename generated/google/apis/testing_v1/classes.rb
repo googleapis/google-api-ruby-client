@@ -429,6 +429,11 @@ module Google
         # @return [Array<Google::Apis::TestingV1::RoboDirective>]
         attr_accessor :robo_directives
       
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `roboScript`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :robo_script
+      
         # The intents used to launch the app for the crawl.
         # If none are provided, then the main launcher activity is launched.
         # If some are provided, then only those provided are launched (the main
@@ -449,6 +454,7 @@ module Google
           @max_depth = args[:max_depth] if args.key?(:max_depth)
           @max_steps = args[:max_steps] if args.key?(:max_steps)
           @robo_directives = args[:robo_directives] if args.key?(:robo_directives)
+          @robo_script = args[:robo_script] if args.key?(:robo_script)
           @starting_intents = args[:starting_intents] if args.key?(:starting_intents)
         end
       end
@@ -596,6 +602,32 @@ module Google
           @release_date = args[:release_date] if args.key?(:release_date)
           @tags = args[:tags] if args.key?(:tags)
           @version_string = args[:version_string] if args.key?(:version_string)
+        end
+      end
+      
+      # An Android package file to install.
+      class Apk
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :location
+      
+        # The java package for the APK to be installed.
+        # Optional, value is determined by examining the application's manifest.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @package_name = args[:package_name] if args.key?(:package_name)
         end
       end
       
@@ -788,6 +820,11 @@ module Google
         # @return [Google::Apis::TestingV1::ObbFile]
         attr_accessor :obb_file
       
+        # A file or directory to install on the device before the test starts
+        # Corresponds to the JSON property `regularFile`
+        # @return [Google::Apis::TestingV1::RegularFile]
+        attr_accessor :regular_file
+      
         def initialize(**args)
            update!(**args)
         end
@@ -795,6 +832,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @obb_file = args[:obb_file] if args.key?(:obb_file)
+          @regular_file = args[:regular_file] if args.key?(:regular_file)
         end
       end
       
@@ -1189,6 +1227,46 @@ module Google
         end
       end
       
+      # A file or directory to install on the device before the test starts
+      class RegularFile
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :content
+      
+        # Where to put the content on the device. Must be an absolute, whitelisted
+        # path. If the file exists, it will be replaced.
+        # The following device-side directories and any of their subdirectories are
+        # whitelisted:
+        # <p>$`EXTERNAL_STORAGE`, or /sdcard</p>
+        # <p>$`ANDROID_DATA`/local/tmp, or /data/local/tmp</p>
+        # <p>Specifying a path outside of these directory trees is invalid.
+        # <p> The paths /sdcard and /data will be made available and treated as
+        # implicit path substitutions. E.g. if /sdcard on a particular device does
+        # not map to external storage, the system will replace it with the external
+        # storage path prefix for that device and copy the file there.
+        # <p> It is strongly advised to use the <a href=
+        # "http://developer.android.com/reference/android/os/Environment.html">
+        # Environment API</a> in app and test code to access files on the device in a
+        # portable way.
+        # Required
+        # Corresponds to the JSON property `devicePath`
+        # @return [String]
+        attr_accessor :device_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @device_path = args[:device_path] if args.key?(:device_path)
+        end
+      end
+      
       # Locations where the results of running the test are stored.
       class ResultStorage
         include Google::Apis::Core::Hashable
@@ -1541,6 +1619,13 @@ module Google
         # @return [Google::Apis::TestingV1::Account]
         attr_accessor :account
       
+        # APKs to install in addition to those being directly tested.
+        # Currently capped at 100.
+        # Optional
+        # Corresponds to the JSON property `additionalApks`
+        # @return [Array<Google::Apis::TestingV1::Apk>]
+        attr_accessor :additional_apks
+      
         # List of directories on the device to upload to GCS at the end of the test;
         # they must be absolute paths under /sdcard or /data/local/tmp.
         # Path names are restricted to characters a-z A-Z 0-9 _ - . + and /
@@ -1578,6 +1663,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account = args[:account] if args.key?(:account)
+          @additional_apks = args[:additional_apks] if args.key?(:additional_apks)
           @directories_to_pull = args[:directories_to_pull] if args.key?(:directories_to_pull)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @files_to_push = args[:files_to_push] if args.key?(:files_to_push)

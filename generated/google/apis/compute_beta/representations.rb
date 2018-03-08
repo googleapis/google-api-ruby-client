@@ -1840,6 +1840,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionDiskTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2832,6 +2856,30 @@ module Google
       
       class ValidateUrlMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsableSubnetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsableSubnetworksAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3860,6 +3908,8 @@ module Google
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :options, as: 'options'
+          property :region, as: 'region'
+          collection :replica_zones, as: 'replicaZones'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_image, as: 'sourceImage'
@@ -5400,6 +5450,8 @@ module Google
       class InterconnectAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_enabled, as: 'adminEnabled'
+          collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
@@ -5417,6 +5469,8 @@ module Google
           property :region, as: 'region'
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
+          property :type, as: 'type'
+          property :vlan_tag8021q, as: 'vlanTag8021q'
         end
       end
       
@@ -6359,6 +6413,45 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RegionDiskTypeList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::DiskType, decorator: Google::Apis::ComputeBeta::DiskType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RegionDiskTypeList::Warning, decorator: Google::Apis::ComputeBeta::RegionDiskTypeList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RegionDiskTypeList::Warning::Datum, decorator: Google::Apis::ComputeBeta::RegionDiskTypeList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RegionDisksResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gb, :numeric_string => true, as: 'sizeGb'
         end
       end
       
@@ -8094,6 +8187,47 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeBeta::UrlMapValidationResult, decorator: Google::Apis::ComputeBeta::UrlMapValidationResult::Representation
       
+        end
+      end
+      
+      class UsableSubnetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class UsableSubnetworksAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::UsableSubnetwork, decorator: Google::Apis::ComputeBeta::UsableSubnetwork::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::UsableSubnetworksAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::UsableSubnetworksAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::UsableSubnetworksAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::UsableSubnetworksAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
