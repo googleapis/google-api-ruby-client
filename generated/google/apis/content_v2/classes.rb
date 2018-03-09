@@ -1583,7 +1583,7 @@ module Google
         # @return [Google::Apis::ContentV2::Datafeed]
         attr_accessor :datafeed
       
-        # The ID of the data feed to get or delete.
+        # The ID of the data feed to get, delete or fetch.
         # Corresponds to the JSON property `datafeedId`
         # @return [Fixnum]
         attr_accessor :datafeed_id

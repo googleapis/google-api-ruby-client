@@ -1769,6 +1769,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_size, :numeric_string => true, as: 'bucketSize'
+          property :bucket_value_count, :numeric_string => true, as: 'bucketValueCount'
           collection :bucket_values, as: 'bucketValues', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ValueFrequency, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2ValueFrequency::Representation
       
           property :value_frequency_lower_bound, :numeric_string => true, as: 'valueFrequencyLowerBound'
@@ -2370,6 +2371,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_size, :numeric_string => true, as: 'bucketSize'
+          property :bucket_value_count, :numeric_string => true, as: 'bucketValueCount'
           collection :bucket_values, as: 'bucketValues', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2KAnonymityEquivalenceClass, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2KAnonymityEquivalenceClass::Representation
       
           property :equivalence_class_size_lower_bound, :numeric_string => true, as: 'equivalenceClassSizeLowerBound'
@@ -2400,6 +2402,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_size, :numeric_string => true, as: 'bucketSize'
+          property :bucket_value_count, :numeric_string => true, as: 'bucketValueCount'
           collection :bucket_values, as: 'bucketValues', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2KMapEstimationQuasiIdValues, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2KMapEstimationQuasiIdValues::Representation
       
           property :max_anonymity, :numeric_string => true, as: 'maxAnonymity'
@@ -2475,6 +2478,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_size, :numeric_string => true, as: 'bucketSize'
+          property :bucket_value_count, :numeric_string => true, as: 'bucketValueCount'
           collection :bucket_values, as: 'bucketValues', class: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2LDiversityEquivalenceClass, decorator: Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2LDiversityEquivalenceClass::Representation
       
           property :sensitive_value_frequency_lower_bound, :numeric_string => true, as: 'sensitiveValueFrequencyLowerBound'

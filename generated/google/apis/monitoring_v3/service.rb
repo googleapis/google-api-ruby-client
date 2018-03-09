@@ -49,6 +49,219 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a new alerting policy.
+        # @param [String] name
+        #   The project in which to create the alerting policy. The format is projects/[
+        #   PROJECT_ID].Note that this field names the parent container in which the
+        #   alerting policy will be written, not the name of the created policy. The
+        #   alerting policy that is returned will have a name that contains a normalized
+        #   representation of this name as a prefix but adds a suffix of the form /
+        #   alertPolicies/[POLICY_ID], identifying the policy in the container.
+        # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::AlertPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::AlertPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_alert_policy(name, alert_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+name}/alertPolicies', options)
+          command.request_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
+          command.request_object = alert_policy_object
+          command.response_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
+          command.response_class = Google::Apis::MonitoringV3::AlertPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an alerting policy.
+        # @param [String] name
+        #   The alerting policy to delete. The format is:
+        #   projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        #   For more information, see AlertPolicy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_alert_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single alerting policy.
+        # @param [String] name
+        #   The alerting policy to retrieve. The format is
+        #   projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::AlertPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::AlertPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_alert_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
+          command.response_class = Google::Apis::MonitoringV3::AlertPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing alerting policies for the project.
+        # @param [String] name
+        #   The project whose alert policies are to be listed. The format is
+        #   projects/[PROJECT_ID]
+        #   Note that this field names the parent container in which the alerting policies
+        #   to be listed are stored. To retrieve a single alerting policy by name, use the
+        #   GetAlertPolicy operation, instead.
+        # @param [String] filter
+        #   If provided, this field specifies the criteria that must be met by alert
+        #   policies to be included in the response.For more details, see sorting and
+        #   filtering.
+        # @param [String] order_by
+        #   A comma-separated list of fields by which to sort the result. Supports the
+        #   same set of field references as the filter field. Entries can be prefixed with
+        #   a minus sign to sort by the field in descending order.For more details, see
+        #   sorting and filtering.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return more results from the previous method call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListAlertPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListAlertPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_alert_policies(name, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}/alertPolicies', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListAlertPoliciesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListAlertPoliciesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an alerting policy. You can either replace the entire policy with a
+        # new one or replace only certain fields in the current alerting policy by
+        # specifying the fields to be updated via updateMask. Returns the updated
+        # alerting policy.
+        # @param [String] name
+        #   Required if the policy exists. The resource name for this policy. The syntax
+        #   is:
+        #   projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        #   [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
+        #   created. When calling the alertPolicies.create method, do not include the name
+        #   field in the alerting policy passed as part of the request.
+        # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
+        # @param [String] update_mask
+        #   Optional. A list of alerting policy field names. If this field is not empty,
+        #   each listed field in the existing alerting policy is set to the value of the
+        #   corresponding field in the supplied policy (alert_policy), or to the field's
+        #   default value if the field is not in the supplied alerting policy. Fields not
+        #   listed retain their previous value.Examples of valid field masks include
+        #   display_name, documentation, documentation.content, documentation.mime_type,
+        #   user_labels, user_label.nameofkey, enabled, conditions, combiner, etc.If this
+        #   field is empty, then the supplied alerting policy replaces the existing policy.
+        #   It is the same as deleting the existing policy and adding the supplied policy,
+        #   except for the following:
+        #   The new policy will have the same [ALERT_POLICY_ID] as the former policy. This
+        #   gives you continuity with the former policy in your notifications and
+        #   incidents.
+        #   Conditions in the new policy will keep their former [CONDITION_ID] if the
+        #   supplied condition includes the name field with that [CONDITION_ID]. If the
+        #   supplied condition omits the name field, then a new [CONDITION_ID] is created.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::AlertPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::AlertPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_alert_policy(name, alert_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
+          command.request_object = alert_policy_object
+          command.response_representation = Google::Apis::MonitoringV3::AlertPolicy::Representation
+          command.response_class = Google::Apis::MonitoringV3::AlertPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Stackdriver Monitoring Agent only: Creates a new time series.<aside class="
         # caution">This method is only for use by the Stackdriver Monitoring Agent. Use
         # projects.timeSeries.create instead.</aside>
@@ -552,6 +765,405 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single channel descriptor. The descriptor indicates which fields are
+        # expected / permitted for a notification channel of the given type.
+        # @param [String] name
+        #   The channel type for which to execute the request. The format is projects/[
+        #   PROJECT_ID]/notificationChannelDescriptors/`channel_type`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::NotificationChannelDescriptor] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::NotificationChannelDescriptor]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_notification_channel_descriptor(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::NotificationChannelDescriptor::Representation
+          command.response_class = Google::Apis::MonitoringV3::NotificationChannelDescriptor
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the descriptors for supported channel types. The use of descriptors
+        # makes it possible for new channel types to be dynamically added.
+        # @param [String] name
+        #   The REST resource name of the parent from which to retrieve the notification
+        #   channel descriptors. The expected syntax is:
+        #   projects/[PROJECT_ID]
+        #   Note that this names the parent container in which to look for the descriptors;
+        #   to retrieve a single descriptor by name, use the
+        #   GetNotificationChannelDescriptor operation, instead.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. If not set to a
+        #   positive number, a reasonable value will be chosen by the service.
+        # @param [String] page_token
+        #   If non-empty, page_token must contain a value returned as the next_page_token
+        #   in a previous response to request the next set of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListNotificationChannelDescriptorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListNotificationChannelDescriptorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_notification_channel_descriptors(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}/notificationChannelDescriptors', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListNotificationChannelDescriptorsResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListNotificationChannelDescriptorsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new notification channel, representing a single notification
+        # endpoint such as an email address, SMS number, or pagerduty service.
+        # @param [String] name
+        #   The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID]
+        #   Note that this names the container into which the channel will be written.
+        #   This does not name the newly created channel. The resulting channel's name
+        #   will have a normalized version of this field as a prefix, but will add /
+        #   notificationChannels/[CHANNEL_ID] to identify the channel.
+        # @param [Google::Apis::MonitoringV3::NotificationChannel] notification_channel_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::NotificationChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::NotificationChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_notification_channel(name, notification_channel_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+name}/notificationChannels', options)
+          command.request_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
+          command.request_object = notification_channel_object
+          command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
+          command.response_class = Google::Apis::MonitoringV3::NotificationChannel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a notification channel.
+        # @param [String] name
+        #   The channel for which to execute the request. The format is projects/[
+        #   PROJECT_ID]/notificationChannels/[CHANNEL_ID].
+        # @param [Boolean] force
+        #   If true, the notification channel will be deleted regardless of its use in
+        #   alert policies (the policies will be updated to remove the channel). If false,
+        #   channels that are still referenced by an existing alerting policy will fail to
+        #   be deleted in a delete operation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_notification_channel(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single notification channel. The channel includes the relevant
+        # configuration details with which the channel was created. However, the
+        # response may truncate or omit passwords, API keys, or other private key matter
+        # and thus the response may not be 100% identical to the information that was
+        # supplied in the call to the create method.
+        # @param [String] name
+        #   The channel for which to execute the request. The format is projects/[
+        #   PROJECT_ID]/notificationChannels/[CHANNEL_ID].
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::NotificationChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::NotificationChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_notification_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
+          command.response_class = Google::Apis::MonitoringV3::NotificationChannel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests a verification code for an already verified channel that can then be
+        # used in a call to VerifyNotificationChannel() on a different channel with an
+        # equivalent identity in the same or in a different project. This makes it
+        # possible to copy a channel between projects without requiring manual
+        # reverification of the channel. If the channel is not in the verified state,
+        # this method will fail (in other words, this may only be used if the
+        # SendNotificationChannelVerificationCode and VerifyNotificationChannel paths
+        # have already been used to put the given channel into the verified state).There
+        # is no guarantee that the verification codes returned by this method will be of
+        # a similar structure or form as the ones that are delivered to the channel via
+        # SendNotificationChannelVerificationCode; while VerifyNotificationChannel()
+        # will recognize both the codes delivered via
+        # SendNotificationChannelVerificationCode() and returned from
+        # GetNotificationChannelVerificationCode(), it is typically the case that the
+        # verification codes delivered via SendNotificationChannelVerificationCode()
+        # will be shorter and also have a shorter expiration (e.g. codes such as "G-
+        # 123456") whereas GetVerificationCode() will typically return a much longer,
+        # websafe base 64 encoded string that has a longer expiration time.
+        # @param [String] name
+        #   The notification channel for which a verification code is to be generated and
+        #   retrieved. This must name a channel that is already verified; if the specified
+        #   channel is not verified, the request will fail.
+        # @param [Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeRequest] get_notification_channel_verification_code_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_notification_channel_verification_code(name, get_notification_channel_verification_code_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+name}:getVerificationCode', options)
+          command.request_representation = Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeRequest::Representation
+          command.request_object = get_notification_channel_verification_code_request_object
+          command.response_representation = Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::GetNotificationChannelVerificationCodeResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the notification channels that have been created for the project.
+        # @param [String] name
+        #   The project on which to execute the request. The format is projects/[
+        #   PROJECT_ID]. That is, this names the container in which to look for the
+        #   notification channels; it does not name a specific channel. To query a
+        #   specific channel by REST resource name, use the GetNotificationChannel
+        #   operation.
+        # @param [String] filter
+        #   If provided, this field specifies the criteria that must be met by
+        #   notification channels to be included in the response.For more details, see
+        #   sorting and filtering.
+        # @param [String] order_by
+        #   A comma-separated list of fields by which to sort the result. Supports the
+        #   same set of fields as in filter. Entries can be prefixed with a minus sign to
+        #   sort in descending rather than ascending order.For more details, see sorting
+        #   and filtering.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. If not set to a
+        #   positive number, a reasonable value will be chosen by the service.
+        # @param [String] page_token
+        #   If non-empty, page_token must contain a value returned as the next_page_token
+        #   in a previous response to request the next set of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListNotificationChannelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListNotificationChannelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_notification_channels(name, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v3/{+name}/notificationChannels', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListNotificationChannelsResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListNotificationChannelsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a notification channel. Fields not specified in the field mask remain
+        # unchanged.
+        # @param [String] name
+        #   The full REST resource name for this channel. The syntax is:
+        #   projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        #   The [CHANNEL_ID] is automatically assigned by the server on creation.
+        # @param [Google::Apis::MonitoringV3::NotificationChannel] notification_channel_object
+        # @param [String] update_mask
+        #   The fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::NotificationChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::NotificationChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_notification_channel(name, notification_channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
+          command.request_object = notification_channel_object
+          command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
+          command.response_class = Google::Apis::MonitoringV3::NotificationChannel
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Causes a verification code to be delivered to the channel. The code can then
+        # be supplied in VerifyNotificationChannel to verify the channel.
+        # @param [String] name
+        #   The notification channel to which to send a verification code.
+        # @param [Google::Apis::MonitoringV3::SendNotificationChannelVerificationCodeRequest] send_notification_channel_verification_code_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_notification_channel_verification_code(name, send_notification_channel_verification_code_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+name}:sendVerificationCode', options)
+          command.request_representation = Google::Apis::MonitoringV3::SendNotificationChannelVerificationCodeRequest::Representation
+          command.request_object = send_notification_channel_verification_code_request_object
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Verifies a NotificationChannel by proving receipt of the code delivered to the
+        # channel as a result of calling SendNotificationChannelVerificationCode.
+        # @param [String] name
+        #   The notification channel to verify.
+        # @param [Google::Apis::MonitoringV3::VerifyNotificationChannelRequest] verify_notification_channel_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::NotificationChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::NotificationChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def verify_notification_channel(name, verify_notification_channel_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v3/{+name}:verify', options)
+          command.request_representation = Google::Apis::MonitoringV3::VerifyNotificationChannelRequest::Representation
+          command.request_object = verify_notification_channel_request_object
+          command.response_representation = Google::Apis::MonitoringV3::NotificationChannel::Representation
+          command.response_class = Google::Apis::MonitoringV3::NotificationChannel
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

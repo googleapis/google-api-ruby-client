@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module OsloginV1
-      # Google Cloud OS Login API
+      # Cloud OS Login API
       #
       # Manages OS login configuration for Google account users.
       #

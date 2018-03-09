@@ -22,6 +22,18 @@ module Google
   module Apis
     module MonitoringV3
       
+      class Aggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlertPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicAuthentication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContentMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Documentation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +131,18 @@ module Google
       end
       
       class Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetNotificationChannelVerificationCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetNotificationChannelVerificationCodeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAlertPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGroupMembersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +203,18 @@ module Google
       end
       
       class ListMonitoredResourceDescriptorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNotificationChannelDescriptorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNotificationChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,7 +244,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetricAbsence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricThreshold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +275,24 @@ module Google
       end
       
       class MonitoredResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MutationRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationChannelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +317,12 @@ module Google
       end
       
       class ResourceGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SendNotificationChannelVerificationCodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Trigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -290,6 +386,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyNotificationChannelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Aggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_period, as: 'alignmentPeriod'
+          property :cross_series_reducer, as: 'crossSeriesReducer'
+          collection :group_by_fields, as: 'groupByFields'
+          property :per_series_aligner, as: 'perSeriesAligner'
+        end
+      end
+      
+      class AlertPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :combiner, as: 'combiner'
+          collection :conditions, as: 'conditions', class: Google::Apis::MonitoringV3::Condition, decorator: Google::Apis::MonitoringV3::Condition::Representation
+      
+          property :creation_record, as: 'creationRecord', class: Google::Apis::MonitoringV3::MutationRecord, decorator: Google::Apis::MonitoringV3::MutationRecord::Representation
+      
+          property :display_name, as: 'displayName'
+          property :documentation, as: 'documentation', class: Google::Apis::MonitoringV3::Documentation, decorator: Google::Apis::MonitoringV3::Documentation::Representation
+      
+          property :enabled, as: 'enabled'
+          property :mutation_record, as: 'mutationRecord', class: Google::Apis::MonitoringV3::MutationRecord, decorator: Google::Apis::MonitoringV3::MutationRecord::Representation
+      
+          property :name, as: 'name'
+          collection :notification_channels, as: 'notificationChannels'
+          hash :user_labels, as: 'userLabels'
+        end
       end
       
       class BasicAuthentication
@@ -358,6 +490,18 @@ module Google
         end
       end
       
+      class Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition_absent, as: 'conditionAbsent', class: Google::Apis::MonitoringV3::MetricAbsence, decorator: Google::Apis::MonitoringV3::MetricAbsence::Representation
+      
+          property :condition_threshold, as: 'conditionThreshold', class: Google::Apis::MonitoringV3::MetricThreshold, decorator: Google::Apis::MonitoringV3::MetricThreshold::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
       class ContentMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -406,6 +550,14 @@ module Google
         end
       end
       
+      class Documentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -442,6 +594,21 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class GetNotificationChannelVerificationCodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+        end
+      end
+      
+      class GetNotificationChannelVerificationCodeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :expire_time, as: 'expireTime'
         end
       end
       
@@ -498,6 +665,15 @@ module Google
         end
       end
       
+      class ListAlertPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policies, as: 'alertPolicies', class: Google::Apis::MonitoringV3::AlertPolicy, decorator: Google::Apis::MonitoringV3::AlertPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListGroupMembersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -531,6 +707,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resource_descriptors, as: 'resourceDescriptors', class: Google::Apis::MonitoringV3::MonitoredResourceDescriptor, decorator: Google::Apis::MonitoringV3::MonitoredResourceDescriptor::Representation
+      
+        end
+      end
+      
+      class ListNotificationChannelDescriptorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channel_descriptors, as: 'channelDescriptors', class: Google::Apis::MonitoringV3::NotificationChannelDescriptor, decorator: Google::Apis::MonitoringV3::NotificationChannelDescriptor::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListNotificationChannelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :notification_channels, as: 'notificationChannels', class: Google::Apis::MonitoringV3::NotificationChannel, decorator: Google::Apis::MonitoringV3::NotificationChannel::Representation
       
         end
       end
@@ -571,6 +765,18 @@ module Google
         end
       end
       
+      class MetricAbsence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregations, as: 'aggregations', class: Google::Apis::MonitoringV3::Aggregation, decorator: Google::Apis::MonitoringV3::Aggregation::Representation
+      
+          property :duration, as: 'duration'
+          property :filter, as: 'filter'
+          property :trigger, as: 'trigger', class: Google::Apis::MonitoringV3::Trigger, decorator: Google::Apis::MonitoringV3::Trigger::Representation
+      
+        end
+      end
+      
       class MetricDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -583,6 +789,23 @@ module Google
           property :type, as: 'type'
           property :unit, as: 'unit'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class MetricThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregations, as: 'aggregations', class: Google::Apis::MonitoringV3::Aggregation, decorator: Google::Apis::MonitoringV3::Aggregation::Representation
+      
+          property :comparison, as: 'comparison'
+          collection :denominator_aggregations, as: 'denominatorAggregations', class: Google::Apis::MonitoringV3::Aggregation, decorator: Google::Apis::MonitoringV3::Aggregation::Representation
+      
+          property :denominator_filter, as: 'denominatorFilter'
+          property :duration, as: 'duration'
+          property :filter, as: 'filter'
+          property :threshold_value, as: 'thresholdValue'
+          property :trigger, as: 'trigger', class: Google::Apis::MonitoringV3::Trigger, decorator: Google::Apis::MonitoringV3::Trigger::Representation
+      
         end
       end
       
@@ -611,6 +834,41 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :system_labels, as: 'systemLabels'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class MutationRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mutate_time, as: 'mutateTime'
+          property :mutated_by, as: 'mutatedBy'
+        end
+      end
+      
+      class NotificationChannel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enabled, as: 'enabled'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          hash :user_labels, as: 'userLabels'
+          property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
+      class NotificationChannelDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
+      
+          property :name, as: 'name'
+          collection :supported_tiers, as: 'supportedTiers'
+          property :type, as: 'type'
         end
       end
       
@@ -645,6 +903,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group_id, as: 'groupId'
           property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class SendNotificationChannelVerificationCodeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -692,6 +956,14 @@ module Google
           property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class Trigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :percent, as: 'percent'
         end
       end
       
@@ -752,6 +1024,13 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :location, as: 'location'
           property :region, as: 'region'
+        end
+      end
+      
+      class VerifyNotificationChannelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
     end

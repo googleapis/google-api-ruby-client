@@ -1949,6 +1949,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_size
       
+        # Total number of distinct values in this bucket.
+        # Corresponds to the JSON property `bucketValueCount`
+        # @return [Fixnum]
+        attr_accessor :bucket_value_count
+      
         # Sample of value frequencies in this bucket. The total number of
         # values returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
@@ -1972,6 +1977,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_value_count = args[:bucket_value_count] if args.key?(:bucket_value_count)
           @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
           @value_frequency_lower_bound = args[:value_frequency_lower_bound] if args.key?(:value_frequency_lower_bound)
           @value_frequency_upper_bound = args[:value_frequency_upper_bound] if args.key?(:value_frequency_upper_bound)
@@ -4040,6 +4046,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_size
       
+        # Total number of distinct equivalence classes in this bucket.
+        # Corresponds to the JSON property `bucketValueCount`
+        # @return [Fixnum]
+        attr_accessor :bucket_value_count
+      
         # Sample of equivalence classes in this bucket. The total number of
         # classes returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
@@ -4063,6 +4074,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_value_count = args[:bucket_value_count] if args.key?(:bucket_value_count)
           @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
           @equivalence_class_size_lower_bound = args[:equivalence_class_size_lower_bound] if args.key?(:equivalence_class_size_lower_bound)
           @equivalence_class_size_upper_bound = args[:equivalence_class_size_upper_bound] if args.key?(:equivalence_class_size_upper_bound)
@@ -4145,6 +4157,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_size
       
+        # Total number of distinct quasi-identifier tuple values in this bucket.
+        # Corresponds to the JSON property `bucketValueCount`
+        # @return [Fixnum]
+        attr_accessor :bucket_value_count
+      
         # Sample of quasi-identifier tuple values in this bucket. The total
         # number of classes returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
@@ -4168,6 +4185,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_value_count = args[:bucket_value_count] if args.key?(:bucket_value_count)
           @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
           @max_anonymity = args[:max_anonymity] if args.key?(:max_anonymity)
           @min_anonymity = args[:min_anonymity] if args.key?(:min_anonymity)
@@ -4387,6 +4405,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_size
       
+        # Total number of distinct equivalence classes in this bucket.
+        # Corresponds to the JSON property `bucketValueCount`
+        # @return [Fixnum]
+        attr_accessor :bucket_value_count
+      
         # Sample of equivalence classes in this bucket. The total number of
         # classes returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
@@ -4412,6 +4435,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bucket_size = args[:bucket_size] if args.key?(:bucket_size)
+          @bucket_value_count = args[:bucket_value_count] if args.key?(:bucket_value_count)
           @bucket_values = args[:bucket_values] if args.key?(:bucket_values)
           @sensitive_value_frequency_lower_bound = args[:sensitive_value_frequency_lower_bound] if args.key?(:sensitive_value_frequency_lower_bound)
           @sensitive_value_frequency_upper_bound = args[:sensitive_value_frequency_upper_bound] if args.key?(:sensitive_value_frequency_upper_bound)

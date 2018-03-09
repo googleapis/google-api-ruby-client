@@ -22,6 +22,174 @@ module Google
   module Apis
     module MonitoringV3
       
+      # Describes how to combine multiple time series to provide different views of
+      # the data. Aggregation consists of an alignment step on individual time series (
+      # alignment_period and per_series_aligner) followed by an optional reduction
+      # step of the data across the aligned time series (cross_series_reducer and
+      # group_by_fields). For more details, see Aggregation.
+      class Aggregation
+        include Google::Apis::Core::Hashable
+      
+        # The alignment period for per-time series alignment. If present,
+        # alignmentPeriod must be at least 60 seconds. After per-time series alignment,
+        # each time series will contain data points only on the period boundaries. If
+        # perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+        # ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then
+        # this field must be defined; otherwise an error is returned.
+        # Corresponds to the JSON property `alignmentPeriod`
+        # @return [String]
+        attr_accessor :alignment_period
+      
+        # The approach to be used to combine time series. Not all reducer functions may
+        # be applied to all time series, depending on the metric type and the value type
+        # of the original time series. Reduction may change the metric type of value
+        # type of the time series.Time series data must be aligned in order to perform
+        # cross-time series reduction. If crossSeriesReducer is specified, then
+        # perSeriesAligner must be specified and not equal ALIGN_NONE and
+        # alignmentPeriod must be specified; otherwise, an error is returned.
+        # Corresponds to the JSON property `crossSeriesReducer`
+        # @return [String]
+        attr_accessor :cross_series_reducer
+      
+        # The set of fields to preserve when crossSeriesReducer is specified. The
+        # groupByFields determine how the time series are partitioned into subsets prior
+        # to applying the aggregation function. Each subset contains time series that
+        # have the same value for each of the grouping fields. Each individual time
+        # series is a member of exactly one subset. The crossSeriesReducer is applied to
+        # each subset of time series. It is not possible to reduce across different
+        # resource types, so this field implicitly contains resource.type. Fields not
+        # specified in groupByFields are aggregated away. If groupByFields is not
+        # specified and all the time series have the same resource type, then the time
+        # series are aggregated into a single output time series. If crossSeriesReducer
+        # is not defined, this field is ignored.
+        # Corresponds to the JSON property `groupByFields`
+        # @return [Array<String>]
+        attr_accessor :group_by_fields
+      
+        # The approach to be used to align individual time series. Not all alignment
+        # functions may be applied to all time series, depending on the metric type and
+        # value type of the original time series. Alignment may change the metric type
+        # or the value type of the time series.Time series data must be aligned in order
+        # to perform cross-time series reduction. If crossSeriesReducer is specified,
+        # then perSeriesAligner must be specified and not equal ALIGN_NONE and
+        # alignmentPeriod must be specified; otherwise, an error is returned.
+        # Corresponds to the JSON property `perSeriesAligner`
+        # @return [String]
+        attr_accessor :per_series_aligner
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_period = args[:alignment_period] if args.key?(:alignment_period)
+          @cross_series_reducer = args[:cross_series_reducer] if args.key?(:cross_series_reducer)
+          @group_by_fields = args[:group_by_fields] if args.key?(:group_by_fields)
+          @per_series_aligner = args[:per_series_aligner] if args.key?(:per_series_aligner)
+        end
+      end
+      
+      # A description of the conditions under which some aspect of your system is
+      # considered to be "unhealthy" and the ways to notify people or services about
+      # this state. For an overview of alert policies, see Introduction to Alerting.
+      class AlertPolicy
+        include Google::Apis::Core::Hashable
+      
+        # How to combine the results of multiple conditions to determine if an incident
+        # should be opened.
+        # Corresponds to the JSON property `combiner`
+        # @return [String]
+        attr_accessor :combiner
+      
+        # A list of conditions for the policy. The conditions are combined by AND or OR
+        # according to the combiner field. If the combined conditions evaluate to true,
+        # then an incident is created. A policy can have from one to six conditions.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::MonitoringV3::Condition>]
+        attr_accessor :conditions
+      
+        # Describes a change made to a configuration.
+        # Corresponds to the JSON property `creationRecord`
+        # @return [Google::Apis::MonitoringV3::MutationRecord]
+        attr_accessor :creation_record
+      
+        # A short name or phrase used to identify the policy in dashboards,
+        # notifications, and incidents. To avoid confusion, don't use the same display
+        # name for multiple policies in the same project. The name is limited to 512
+        # Unicode characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A content string and a MIME type that describes the content string's format.
+        # Corresponds to the JSON property `documentation`
+        # @return [Google::Apis::MonitoringV3::Documentation]
+        attr_accessor :documentation
+      
+        # Whether or not the policy is enabled. On write, the default interpretation if
+        # unset is that the policy is enabled. On read, clients should not make any
+        # assumption about the state if it has not been populated. The field should
+        # always be populated on List and Get operations, unless a field projection has
+        # been specified that strips it out.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Describes a change made to a configuration.
+        # Corresponds to the JSON property `mutationRecord`
+        # @return [Google::Apis::MonitoringV3::MutationRecord]
+        attr_accessor :mutation_record
+      
+        # Required if the policy exists. The resource name for this policy. The syntax
+        # is:
+        # projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        # [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
+        # created. When calling the alertPolicies.create method, do not include the name
+        # field in the alerting policy passed as part of the request.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Identifies the notification channels to which notifications should be sent
+        # when incidents are opened or closed or when new violations occur on an already
+        # opened incident. Each element of this array corresponds to the name field in
+        # each of the NotificationChannel objects that are returned from the
+        # ListNotificationChannels method. The syntax of the entries in this field is:
+        # projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        # Corresponds to the JSON property `notificationChannels`
+        # @return [Array<String>]
+        attr_accessor :notification_channels
+      
+        # User-supplied key/value data to be used for organizing and identifying the
+        # AlertPolicy objects.The field can contain up to 64 entries. Each key and value
+        # is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels
+        # and values can contain only lowercase letters, numerals, underscores, and
+        # dashes. Keys must begin with a letter.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @combiner = args[:combiner] if args.key?(:combiner)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @creation_record = args[:creation_record] if args.key?(:creation_record)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @documentation = args[:documentation] if args.key?(:documentation)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @mutation_record = args[:mutation_record] if args.key?(:mutation_record)
+          @name = args[:name] if args.key?(:name)
+          @notification_channels = args[:notification_channels] if args.key?(:notification_channels)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
       # A type of authentication to perform against the specified resource or URL that
       # uses username and password. Currently, only Basic authentication is supported
       # in Uptime Monitoring.
@@ -327,6 +495,63 @@ module Google
         end
       end
       
+      # A condition is a true/false test that determines when an alerting policy
+      # should open an incident. If a condition evaluates to true, it signifies that
+      # something is wrong.
+      class Condition
+        include Google::Apis::Core::Hashable
+      
+        # A condition type that checks that monitored resources are reporting data. The
+        # configuration defines a metric and a set of monitored resources. The predicate
+        # is considered in violation when a time series for the specified metric of a
+        # monitored resource does not include any data in the specified duration.
+        # Corresponds to the JSON property `conditionAbsent`
+        # @return [Google::Apis::MonitoringV3::MetricAbsence]
+        attr_accessor :condition_absent
+      
+        # A condition type that compares a collection of time series against a threshold.
+        # Corresponds to the JSON property `conditionThreshold`
+        # @return [Google::Apis::MonitoringV3::MetricThreshold]
+        attr_accessor :condition_threshold
+      
+        # A short name or phrase used to identify the condition in dashboards,
+        # notifications, and incidents. To avoid confusion, don't use the same display
+        # name for multiple conditions in the same policy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required if the condition exists. The unique resource name for this condition.
+        # Its syntax is:
+        # projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+        # [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is
+        # created as part of a new or updated alerting policy.When calling the
+        # alertPolicies.create method, do not include the name field in the conditions
+        # of the requested alerting policy. Stackdriver Monitoring creates the condition
+        # identifiers and includes them in the new policy.When calling the alertPolicies.
+        # update method to update a policy, including a condition name causes the
+        # existing condition to be updated. Conditions without names are added to the
+        # updated policy. Existing conditions are deleted if they are not updated.Best
+        # practice is to preserve [CONDITION_ID] if you make only small changes, such as
+        # those to condition thresholds, durations, or trigger values. Otherwise, treat
+        # the change as a new condition and let the existing condition be deleted.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_absent = args[:condition_absent] if args.key?(:condition_absent)
+          @condition_threshold = args[:condition_threshold] if args.key?(:condition_threshold)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Used to perform string matching. Currently, this matches on the exact content.
       # In the future, it can be expanded to allow for regular expressions and more
       # complex matching.
@@ -522,6 +747,35 @@ module Google
         end
       end
       
+      # A content string and a MIME type that describes the content string's format.
+      class Documentation
+        include Google::Apis::Core::Hashable
+      
+        # The text of the documentation, interpreted according to mime_type. The content
+        # may not exceed 8,192 Unicode characters and may not exceed more than 10,240
+        # bytes when encoded in UTF-8 format, whichever is smaller.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The format of the content field. Presently, only the value "text/markdown" is
+        # supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more
+        # information.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance:
@@ -674,6 +928,63 @@ module Google
           @options = args[:options] if args.key?(:options)
           @packed = args[:packed] if args.key?(:packed)
           @type_url = args[:type_url] if args.key?(:type_url)
+        end
+      end
+      
+      # The GetNotificationChannelVerificationCode request.
+      class GetNotificationChannelVerificationCodeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The desired expiration time. If specified, the API will guarantee that the
+        # returned code will not be valid after the specified timestamp; however, the
+        # API cannot guarantee that the returned code will be valid for at least as long
+        # as the requested time (the API puts an upper bound on the amount of time for
+        # which a code may be valid). If omitted, a default expiration will be used,
+        # which may be less than the max permissible expiration (so specifying an
+        # expiration may extend the code's lifetime over omitting an expiration, even
+        # though the API does impose an upper limit on the maximum expiration that is
+        # permitted).
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # The GetNotificationChannelVerificationCode request.
+      class GetNotificationChannelVerificationCodeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The verification code, which may be used to verify other channels that have an
+        # equivalent identity (i.e. other channels of the same type with the same
+        # fingerprint such as other email channels with the same email address or other
+        # sms channels with the same number).
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # The expiration time associated with the code that was returned. If an
+        # expiration was provided in the request, this is the minimum of the requested
+        # expiration in the request and the max permitted expiration.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
         end
       end
       
@@ -924,6 +1235,33 @@ module Google
         end
       end
       
+      # The protocol for the ListAlertPolicies response.
+      class ListAlertPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The returned alert policies.
+        # Corresponds to the JSON property `alertPolicies`
+        # @return [Array<Google::Apis::MonitoringV3::AlertPolicy>]
+        attr_accessor :alert_policies
+      
+        # If there might be more results than were returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policies = args[:alert_policies] if args.key?(:alert_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The ListGroupMembers response.
       class ListGroupMembersResponse
         include Google::Apis::Core::Hashable
@@ -1037,6 +1375,61 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resource_descriptors = args[:resource_descriptors] if args.key?(:resource_descriptors)
+        end
+      end
+      
+      # The ListNotificationChannelDescriptors response.
+      class ListNotificationChannelDescriptorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The monitored resource descriptors supported for the specified project,
+        # optionally filtered.
+        # Corresponds to the JSON property `channelDescriptors`
+        # @return [Array<Google::Apis::MonitoringV3::NotificationChannelDescriptor>]
+        attr_accessor :channel_descriptors
+      
+        # If not empty, indicates that there may be more results that match the request.
+        # Use the value in the page_token field in a subsequent request to fetch the
+        # next set of results. If empty, all results have been returned.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_descriptors = args[:channel_descriptors] if args.key?(:channel_descriptors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The ListNotificationChannels response.
+      class ListNotificationChannelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If not empty, indicates that there may be more results that match the request.
+        # Use the value in the page_token field in a subsequent request to fetch the
+        # next set of results. If empty, all results have been returned.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The notification channels defined for the specified project.
+        # Corresponds to the JSON property `notificationChannels`
+        # @return [Array<Google::Apis::MonitoringV3::NotificationChannel>]
+        attr_accessor :notification_channels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @notification_channels = args[:notification_channels] if args.key?(:notification_channels)
         end
       end
       
@@ -1161,6 +1554,61 @@ module Google
         end
       end
       
+      # A condition type that checks that monitored resources are reporting data. The
+      # configuration defines a metric and a set of monitored resources. The predicate
+      # is considered in violation when a time series for the specified metric of a
+      # monitored resource does not include any data in the specified duration.
+      class MetricAbsence
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the alignment of data points in individual time series as well as
+        # how to combine the retrieved time series together (such as when aggregating
+        # multiple streams on each resource to a single stream for each resource or when
+        # aggregating streams across all members of a group of resrouces). Multiple
+        # aggregations are applied in the order specified.This field is similar to the
+        # one in the MetricService.ListTimeSeries request. It is advisable to use the
+        # ListTimeSeries method when debugging this field.
+        # Corresponds to the JSON property `aggregations`
+        # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
+        attr_accessor :aggregations
+      
+        # The amount of time that a time series must fail to report new data to be
+        # considered failing. Currently, only values that are a multiple of a minute--e.
+        # g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an
+        # error will be returned. The Duration.nanos field is ignored.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # A filter that identifies which time series should be compared with the
+        # threshold.The filter is similar to the one that is specified in the
+        # MetricService.ListTimeSeries request (that call is useful to verify the time
+        # series that will be retrieved / processed) and must specify the metric type
+        # and optionally may contain restrictions on resource type, resource labels, and
+        # metric labels. This field may not exceed 2048 Unicode characters in length.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Specifies how many time series must fail a predicate to trigger a condition.
+        # If not specified, then a `count: 1` trigger is used.
+        # Corresponds to the JSON property `trigger`
+        # @return [Google::Apis::MonitoringV3::Trigger]
+        attr_accessor :trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregations = args[:aggregations] if args.key?(:aggregations)
+          @duration = args[:duration] if args.key?(:duration)
+          @filter = args[:filter] if args.key?(:filter)
+          @trigger = args[:trigger] if args.key?(:trigger)
+        end
+      end
+      
       # Defines a metric type and its schema. Once a metric descriptor is created,
       # deleting or altering it stops data collection and makes the metric type's
       # existing data unusable.
@@ -1238,6 +1686,106 @@ module Google
           @type = args[:type] if args.key?(:type)
           @unit = args[:unit] if args.key?(:unit)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # A condition type that compares a collection of time series against a threshold.
+      class MetricThreshold
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the alignment of data points in individual time series as well as
+        # how to combine the retrieved time series together (such as when aggregating
+        # multiple streams on each resource to a single stream for each resource or when
+        # aggregating streams across all members of a group of resrouces). Multiple
+        # aggregations are applied in the order specified.This field is similar to the
+        # one in the MetricService.ListTimeSeries request. It is advisable to use the
+        # ListTimeSeries method when debugging this field.
+        # Corresponds to the JSON property `aggregations`
+        # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
+        attr_accessor :aggregations
+      
+        # The comparison to apply between the time series (indicated by filter and
+        # aggregation) and the threshold (indicated by threshold_value). The comparison
+        # is applied on each time series, with the time series on the left-hand side and
+        # the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are
+        # supported currently.
+        # Corresponds to the JSON property `comparison`
+        # @return [String]
+        attr_accessor :comparison
+      
+        # Specifies the alignment of data points in individual time series selected by
+        # denominatorFilter as well as how to combine the retrieved time series together
+        # (such as when aggregating multiple streams on each resource to a single stream
+        # for each resource or when aggregating streams across all members of a group of
+        # resources).When computing ratios, the aggregations and
+        # denominator_aggregations fields must use the same alignment period and produce
+        # time series that have the same periodicity and labels.This field is similar to
+        # the one in the MetricService.ListTimeSeries request. It is advisable to use
+        # the ListTimeSeries method when debugging this field.
+        # Corresponds to the JSON property `denominatorAggregations`
+        # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
+        attr_accessor :denominator_aggregations
+      
+        # A filter that identifies a time series that should be used as the denominator
+        # of a ratio that will be compared with the threshold. If a denominator_filter
+        # is specified, the time series specified by the filter field will be used as
+        # the numerator.The filter is similar to the one that is specified in the
+        # MetricService.ListTimeSeries request (that call is useful to verify the time
+        # series that will be retrieved / processed) and must specify the metric type
+        # and optionally may contain restrictions on resource type, resource labels, and
+        # metric labels. This field may not exceed 2048 Unicode characters in length.
+        # Corresponds to the JSON property `denominatorFilter`
+        # @return [String]
+        attr_accessor :denominator_filter
+      
+        # The amount of time that a time series must violate the threshold to be
+        # considered failing. Currently, only values that are a multiple of a minute--e.
+        # g. 60, 120, or 300 seconds--are supported. If an invalid value is given, an
+        # error will be returned. The Duration.nanos field is ignored. When choosing a
+        # duration, it is useful to keep in mind the frequency of the underlying time
+        # series data (which may also be affected by any alignments specified in the
+        # aggregation field); a good duration is long enough so that a single outlier
+        # does not generate spurious alerts, but short enough that unhealthy states are
+        # detected and alerted on quickly.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # A filter that identifies which time series should be compared with the
+        # threshold.The filter is similar to the one that is specified in the
+        # MetricService.ListTimeSeries request (that call is useful to verify the time
+        # series that will be retrieved / processed) and must specify the metric type
+        # and optionally may contain restrictions on resource type, resource labels, and
+        # metric labels. This field may not exceed 2048 Unicode characters in length.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # A value against which to compare the time series.
+        # Corresponds to the JSON property `thresholdValue`
+        # @return [Float]
+        attr_accessor :threshold_value
+      
+        # Specifies how many time series must fail a predicate to trigger a condition.
+        # If not specified, then a `count: 1` trigger is used.
+        # Corresponds to the JSON property `trigger`
+        # @return [Google::Apis::MonitoringV3::Trigger]
+        attr_accessor :trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregations = args[:aggregations] if args.key?(:aggregations)
+          @comparison = args[:comparison] if args.key?(:comparison)
+          @denominator_aggregations = args[:denominator_aggregations] if args.key?(:denominator_aggregations)
+          @denominator_filter = args[:denominator_filter] if args.key?(:denominator_filter)
+          @duration = args[:duration] if args.key?(:duration)
+          @filter = args[:filter] if args.key?(:filter)
+          @threshold_value = args[:threshold_value] if args.key?(:threshold_value)
+          @trigger = args[:trigger] if args.key?(:trigger)
         end
       end
       
@@ -1380,6 +1928,188 @@ module Google
         end
       end
       
+      # Describes a change made to a configuration.
+      class MutationRecord
+        include Google::Apis::Core::Hashable
+      
+        # When the change occurred.
+        # Corresponds to the JSON property `mutateTime`
+        # @return [String]
+        attr_accessor :mutate_time
+      
+        # The email address of the user making the change.
+        # Corresponds to the JSON property `mutatedBy`
+        # @return [String]
+        attr_accessor :mutated_by
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mutate_time = args[:mutate_time] if args.key?(:mutate_time)
+          @mutated_by = args[:mutated_by] if args.key?(:mutated_by)
+        end
+      end
+      
+      # A NotificationChannel is a medium through which an alert is delivered when a
+      # policy violation is detected. Examples of channels include email, SMS, and
+      # third-party messaging applications. Fields containing sensitive information
+      # like authentication tokens or contact info are only partially populated on
+      # retrieval.
+      class NotificationChannel
+        include Google::Apis::Core::Hashable
+      
+        # An optional human-readable description of this notification channel. This
+        # description may provide additional details, beyond the display name, for the
+        # channel. This may not exceeed 1024 Unicode characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # An optional human-readable name for this notification channel. It is
+        # recommended that you specify a non-empty and unique name in order to make it
+        # easier to identify the channels in your project, though this is not enforced.
+        # The display name is limited to 512 Unicode characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether notifications are forwarded to the described channel. This makes it
+        # possible to disable delivery of notifications to a particular channel without
+        # removing the channel from all alerting policies that reference the channel.
+        # This is a more convenient approach when the change is temporary and you want
+        # to receive notifications from the same set of alerting policies on the channel
+        # at some point in the future.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Configuration fields that define the channel and its behavior. The permissible
+        # and required labels are specified in the NotificationChannelDescriptor.labels
+        # of the NotificationChannelDescriptor corresponding to the type field.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The full REST resource name for this channel. The syntax is:
+        # projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        # The [CHANNEL_ID] is automatically assigned by the server on creation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the notification channel. This field matches the value of the
+        # NotificationChannelDescriptor.type field.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # User-supplied key/value data that does not need to conform to the
+        # corresponding NotificationChannelDescriptor's schema, unlike the labels field.
+        # This field is intended to be used for organizing and identifying the
+        # NotificationChannel objects.The field can contain up to 64 entries. Each key
+        # and value is limited to 63 Unicode characters or 128 bytes, whichever is
+        # smaller. Labels and values can contain only lowercase letters, numerals,
+        # underscores, and dashes. Keys must begin with a letter.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        # Indicates whether this channel has been verified or not. On a
+        # ListNotificationChannels or GetNotificationChannel operation, this field is
+        # expected to be populated.If the value is UNVERIFIED, then it indicates that
+        # the channel is non-functioning (it both requires verification and lacks
+        # verification); otherwise, it is assumed that the channel works.If the channel
+        # is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type
+        # that does not require verification or that this specific channel has been
+        # exempted from verification because it was created prior to verification being
+        # required for channels of this type.This field cannot be modified using a
+        # standard UpdateNotificationChannel operation. To change the value of this
+        # field, you must call VerifyNotificationChannel.
+        # Corresponds to the JSON property `verificationStatus`
+        # @return [String]
+        attr_accessor :verification_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
+          @verification_status = args[:verification_status] if args.key?(:verification_status)
+        end
+      end
+      
+      # A description of a notification channel. The descriptor includes the
+      # properties of the channel and the set of labels or fields that must be
+      # specified to configure channels of a given type.
+      class NotificationChannelDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # A human-readable description of the notification channel type. The description
+        # may include a description of the properties of the channel and pointers to
+        # external documentation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A human-readable name for the notification channel type. This form of the name
+        # is suitable for a user interface.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The set of labels that must be defined to identify a particular channel of the
+        # corresponding type. Each label includes a description for how that field
+        # should be populated.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
+        attr_accessor :labels
+      
+        # The full REST resource name for this descriptor. The syntax is:
+        # projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]
+        # In the above, [TYPE] is the value of the type field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The tiers that support this notification channel; the project service tier
+        # must be one of the supported_tiers.
+        # Corresponds to the JSON property `supportedTiers`
+        # @return [Array<String>]
+        attr_accessor :supported_tiers
+      
+        # The type of notification channel, such as "email", "sms", etc. Notification
+        # channel types are globally unique.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @supported_tiers = args[:supported_tiers] if args.key?(:supported_tiers)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A protocol buffer option, which can be attached to a message, field,
       # enumeration, etc.
       class Option
@@ -1488,6 +2218,19 @@ module Google
         def update!(**args)
           @group_id = args[:group_id] if args.key?(:group_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # The SendNotificationChannelVerificationCode request.
+      class SendNotificationChannelVerificationCodeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1711,6 +2454,34 @@ module Google
         end
       end
       
+      # Specifies how many time series must fail a predicate to trigger a condition.
+      # If not specified, then a `count: 1` trigger is used.
+      class Trigger
+        include Google::Apis::Core::Hashable
+      
+        # The absolute number of time series that must fail the predicate for the
+        # condition to be triggered.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The percentage of time series that must fail the predicate for the condition
+        # to be triggered.
+        # Corresponds to the JSON property `percent`
+        # @return [Float]
+        attr_accessor :percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @percent = args[:percent] if args.key?(:percent)
+        end
+      end
+      
       # A protocol buffer message type.
       class Type
         include Google::Apis::Core::Hashable
@@ -1882,7 +2653,7 @@ module Google
       
         # How often, in seconds, the uptime check is performed. Currently, the only
         # supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and
-        # 900s (15 minutes). Required.
+        # 900s (15 minutes). Optional, defaults to 300s.
         # Corresponds to the JSON property `period`
         # @return [String]
         attr_accessor :period
@@ -1968,6 +2739,30 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @location = args[:location] if args.key?(:location)
           @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # The VerifyNotificationChannel request.
+      class VerifyNotificationChannelRequest
+        include Google::Apis::Core::Hashable
+      
+        # The verification code that was delivered to the channel as a result of
+        # invoking the SendNotificationChannelVerificationCode API method or that was
+        # retrieved from a verified channel via GetNotificationChannelVerificationCode.
+        # For example, one might have "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in
+        # general, one is only guaranteed that the code is valid UTF-8; one should not
+        # make any assumptions regarding the structure or format of the code).
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
         end
       end
     end
