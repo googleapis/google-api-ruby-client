@@ -297,6 +297,7 @@ module Google
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
         #   Requested page size cannot exceed 200.
+        #   If not set, the default page size is 50.
         # @param [String] page_token
         #   Token identifying which result to start with, which is returned by a
         #   previous list call.

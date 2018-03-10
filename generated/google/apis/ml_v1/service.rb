@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MlV1
-      # Google Cloud Machine Learning Engine
+      # Cloud Machine Learning Engine
       #
       # An API to enable creating and using machine learning models.
       #

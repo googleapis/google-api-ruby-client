@@ -18,7 +18,7 @@ require 'google/apis/cloudbilling_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Billing API
+    # Cloud Billing API
     #
     # Allows developers to manage billing for their Google Cloud Platform projects
     # programmatically.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/billing/
     module CloudbillingV1
       VERSION = 'V1'
-      REVISION = '20180116'
+      REVISION = '20180307'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

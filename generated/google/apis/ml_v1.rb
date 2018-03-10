@@ -18,14 +18,14 @@ require 'google/apis/ml_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Machine Learning Engine
+    # Cloud Machine Learning Engine
     #
     # An API to enable creating and using machine learning models.
     #
     # @see https://cloud.google.com/ml/
     module MlV1
       VERSION = 'V1'
-      REVISION = '20180228'
+      REVISION = '20180306'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

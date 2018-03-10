@@ -593,7 +593,6 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # LINT.IfChange
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -691,7 +690,6 @@ module Google
         # information about all of the versions of a given model by calling
         # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
         # versions/list).
-        # LINT.IfChange
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -1001,7 +999,7 @@ module Google
       
         # Optional. A Google Cloud Storage path in which to store training outputs
         # and other data needed for training. This path is passed to your TensorFlow
-        # program as the 'job_dir' command-line argument. The benefit of specifying
+        # program as the '--job-dir' command-line argument. The benefit of specifying
         # this field is that Cloud ML validates the path for use in training.
         # Corresponds to the JSON property `jobDir`
         # @return [String]
@@ -1220,7 +1218,6 @@ module Google
       # information about all of the versions of a given model by calling
       # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
       # versions/list).
-      # LINT.IfChange
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
@@ -1259,6 +1256,12 @@ module Google
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
+      
+        # The ML framework used to train this version of the model. If not specified,
+        # defaults to `TENSORFLOW`
+        # Corresponds to the JSON property `framework`
+        # @return [String]
+        attr_accessor :framework
       
         # Output only. If true, this version will be used to handle prediction
         # requests that do not specify a version.
@@ -1308,6 +1311,7 @@ module Google
           @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
           @description = args[:description] if args.key?(:description)
           @error_message = args[:error_message] if args.key?(:error_message)
+          @framework = args[:framework] if args.key?(:framework)
           @is_default = args[:is_default] if args.key?(:is_default)
           @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)

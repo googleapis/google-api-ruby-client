@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudbillingV1
-      # Google Cloud Billing API
+      # Cloud Billing API
       #
       # Allows developers to manage billing for their Google Cloud Platform projects
       #  programmatically.
@@ -48,9 +48,47 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a billing account.
+        # This method can only be used to create
+        # [billing subaccounts](https://cloud.google.com/billing/docs/concepts).
+        # When creating a subaccount, the current authenticated user must have the
+        # `billing.accounts.update` IAM permission on the master account, which is
+        # typically given to billing account
+        # [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # > This method is currently in
+        # > [Beta](https://cloud.google.com/terms/launch-stages).
+        # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::BillingAccount] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::BillingAccount]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_billing_account(billing_account_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/billingAccounts', options)
+          command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.request_object = billing_account_object
+          command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a billing account. The current authenticated user
-        # must be an [owner of the billing
-        # account](https://support.google.com/cloud/answer/4430947).
+        # must be a [viewer of the billing
+        # account](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] name
         #   The resource name of the billing account to retrieve. For example,
         #   `billingAccounts/012345-567890-ABCDEF`.
@@ -81,8 +119,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the billing accounts that the current authenticated user
-        # [owns](https://support.google.com/cloud/answer/4430947).
+        # Gets the access control policy for a billing account.
+        # The caller must have the `billing.accounts.getIamPolicy` permission on the
+        # account, which is often given to billing account
+        # [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # > This method is currently in
+        # > [Beta](https://cloud.google.com/terms/launch-stages).
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::CloudbillingV1::Policy::Representation
+          command.response_class = Google::Apis::CloudbillingV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the billing accounts that the current authenticated user has
+        # permission to [view](https://cloud.google.com/billing/docs/how-to/billing-
+        # access).
+        # @param [String] filter
+        #   Options for how to filter the returned billing accounts.
+        #   Currently this only supports filtering for
+        #   [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
+        #   single provided reseller billing account.
+        #   (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF").
+        #   Boolean algebra and other fields are not currently supported.
+        #   > This field is currently in
+        #   > [Beta](https://cloud.google.com/terms/launch-stages).
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the
         #   default.
@@ -107,10 +191,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_accounts(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_accounts(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/billingAccounts', options)
           command.response_representation = Google::Apis::CloudbillingV1::ListBillingAccountsResponse::Representation
           command.response_class = Google::Apis::CloudbillingV1::ListBillingAccountsResponse
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -118,10 +203,132 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a billing account's fields.
+        # Currently the only field that can be edited is `display_name`.
+        # The current authenticated user must have the `billing.accounts.update`
+        # IAM permission, which is typically given to the
+        # [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
+        # of the billing account.
+        # > This method is currently in
+        # > [Beta](https://cloud.google.com/terms/launch-stages).
+        # @param [String] name
+        #   The name of the billing account resource to be updated.
+        # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
+        # @param [String] update_mask
+        #   The update mask applied to the resource.
+        #   Only "display_name" is currently supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::BillingAccount] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::BillingAccount]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_billing_account(name, billing_account_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.request_object = billing_account_object
+          command.response_representation = Google::Apis::CloudbillingV1::BillingAccount::Representation
+          command.response_class = Google::Apis::CloudbillingV1::BillingAccount
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy for a billing account. Replaces any existing
+        # policy.
+        # The caller must have the `billing.accounts.setIamPolicy` permission on the
+        # account, which is often given to billing account
+        # [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # > This method is currently in
+        # > [Beta](https://cloud.google.com/terms/launch-stages).
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::CloudbillingV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_billing_account_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::CloudbillingV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::CloudbillingV1::Policy::Representation
+          command.response_class = Google::Apis::CloudbillingV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests the access control policy for a billing account. This method takes
+        # the resource and a set of permissions as input and returns the subset of
+        # the input permissions that the caller is allowed for that resource.
+        # > This method is currently in
+        # > [Beta](https://cloud.google.com/terms/launch-stages).
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::CloudbillingV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_billing_account_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::CloudbillingV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::CloudbillingV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the projects associated with a billing account. The current
-        # authenticated user must have the "billing.resourceAssociations.list" IAM
+        # authenticated user must have the `billing.resourceAssociations.list` IAM
         # permission, which is often given to billing account
-        # [viewers](https://support.google.com/cloud/answer/4430947).
+        # [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] name
         #   The resource name of the billing account associated with the projects that
         #   you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -203,13 +410,13 @@ module Google
         # billing account, this method changes the billing account used for resource
         # usage charges.
         # *Note:* Incurred charges that have not yet been reported in the transaction
-        # history of the Google Cloud Console may be billed to the new billing
+        # history of the GCP Console might be billed to the new billing
         # account, even if the charge occurred before the new billing account was
         # assigned to the project.
         # The current authenticated user must have ownership privileges for both the
         # [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
         # ) and the [billing
-        # account](https://support.google.com/cloud/answer/4430947).
+        # account](https://cloud.google.com/billing/docs/how-to/billing-access).
         # You can disable billing on the project by setting the
         # `billing_account_name` field to empty. This action disassociates the
         # current billing account from the project. Any billable activity of your

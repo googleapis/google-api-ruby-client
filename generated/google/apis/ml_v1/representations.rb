@@ -520,6 +520,7 @@ module Google
           property :deployment_uri, as: 'deploymentUri'
           property :description, as: 'description'
           property :error_message, as: 'errorMessage'
+          property :framework, as: 'framework'
           property :is_default, as: 'isDefault'
           property :last_use_time, as: 'lastUseTime'
           property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling::Representation
