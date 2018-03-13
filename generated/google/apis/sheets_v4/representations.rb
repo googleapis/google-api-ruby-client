@@ -934,6 +934,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TreemapChartColorScale
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TreemapChartSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UnmergeCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1661,6 +1673,8 @@ module Google
           property :title_text_format, as: 'titleTextFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
           property :title_text_position, as: 'titleTextPosition', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
+      
+          property :treemap_chart, as: 'treemapChart', class: Google::Apis::SheetsV4::TreemapChartSpec, decorator: Google::Apis::SheetsV4::TreemapChartSpec::Representation
       
           property :waterfall_chart, as: 'waterfallChart', class: Google::Apis::SheetsV4::WaterfallChartSpec, decorator: Google::Apis::SheetsV4::WaterfallChartSpec::Representation
       
@@ -2812,6 +2826,45 @@ module Google
           property :delimiter, as: 'delimiter'
           property :delimiter_type, as: 'delimiterType'
           property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class TreemapChartColorScale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_value_color, as: 'maxValueColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :mid_value_color, as: 'midValueColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :min_value_color, as: 'minValueColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :no_data_color, as: 'noDataColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+        end
+      end
+      
+      class TreemapChartSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color_data, as: 'colorData', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :color_scale, as: 'colorScale', class: Google::Apis::SheetsV4::TreemapChartColorScale, decorator: Google::Apis::SheetsV4::TreemapChartColorScale::Representation
+      
+          property :header_color, as: 'headerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :hide_tooltips, as: 'hideTooltips'
+          property :hinted_levels, as: 'hintedLevels'
+          property :labels, as: 'labels', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :levels, as: 'levels'
+          property :max_value, as: 'maxValue'
+          property :min_value, as: 'minValue'
+          property :parent_labels, as: 'parentLabels', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :size_data, as: 'sizeData', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
         end
       end

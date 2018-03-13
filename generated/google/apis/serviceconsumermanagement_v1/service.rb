@@ -209,8 +209,9 @@ module Google
         #   `service` the name of a service, for example 'service.googleapis.com'.
         # @param [Fixnum] page_size
         #   The maximum number of results returned by this request. Currently, the
-        #   default maximum is set to 1000. If page_size is not provided or provided a
-        #   number larger than 1000, it will be automatically set to 1000.
+        #   default maximum is set to 1000. If page_size is not provided or the size
+        #   provided is a number larger than 1000, it will be automatically set to
+        #   1000.
         #   Optional.
         # @param [String] page_token
         #   The continuation token, which is used to page through large result sets.
@@ -221,7 +222,7 @@ module Google
         #   Set a query ``expression`` for querying tenancy units. Your ``expression``
         #   must be in the format: `field_name=literal_string`. The `field_name` is the
         #   name of the field you want to compare. Supported fields are
-        #   `tenant_resources.tag` and`tenant_resources.resource`.
+        #   `tenant_resources.tag` and `tenant_resources.resource`.
         #   For example, to search tenancy units that contain at least one tenant
         #   resource with given tag 'xyz', use query `tenant_resources.tag=xyz`.
         #   To search tenancy units that contain at least one tenant resource with
@@ -262,10 +263,10 @@ module Google
         end
         
         # Add a new tenant project to the tenancy unit.
-        # There can be at most 512 tenant projects in a tenancy units.
-        # If there are previously failed AddTenantProject calls, you might need to
-        # call RemoveTenantProject first to clean them before you can make another
-        # AddTenantProject with the same tag.
+        # There can be at most 512 tenant projects in a tenancy unit.
+        # If there are previously failed `AddTenantProject` calls, you might need to
+        # call `RemoveTenantProject` first to clean them before you can make another
+        # `AddTenantProject` with the same tag.
         # Operation<response: Empty>.
         # @param [String] parent
         #   Name of the tenancy unit.
@@ -337,7 +338,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete tenancy unit.  Before the tenancy unit is deleted, there should be
+        # Delete a tenancy unit.  Before the tenancy unit is deleted, there should be
         # no tenant resource in it.
         # Operation<response: Empty>.
         # @param [String] name
@@ -369,10 +370,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Find tenancy unit for a service and consumer.
-        # This method should not be used in producers' runtime path, e.g. finding
-        # the tenant project number when creating VMs. Producers should persist
-        # the tenant project information after the project is created.
+        # Find the tenancy unit for a service and consumer.
+        # This method should not be used in producers' runtime path, for example
+        # finding the tenant project number when creating VMs. Producers should
+        # persist the tenant project information after the project is created.
         # @param [String] parent
         #   Service and consumer. Required.
         #   services/`service`/`collection id`/`resource id`

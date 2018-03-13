@@ -22,7 +22,7 @@ module Google
   module Apis
     module ServiceconsumermanagementV1
       
-      # Request to add a newly created and configured tenant project to tenancy
+      # Request to add a newly created and configured tenant project to a tenancy
       # unit.
       class AddTenantProjectRequest
         include Google::Apis::Core::Hashable
@@ -524,7 +524,7 @@ module Google
         end
       end
       
-      # Describes billing configuration for a new Tenant Project
+      # Describes billing configuration for a new tenant project.
       class BillingConfig
         include Google::Apis::Core::Hashable
       
@@ -705,13 +705,13 @@ module Google
       class CreateTenancyUnitRequest
         include Google::Apis::Core::Hashable
       
-        # Optional producer provided identifier of the tenancy unit
-        # Must be no longer than 40 characters and preferably URI friendly
-        # If it is not provided, UID for the tenancy unit will be auto generated
+        # Optional producer provided identifier of the tenancy unit.
+        # Must be no longer than 40 characters and preferably URI friendly.
+        # If it is not provided, a UID for the tenancy unit will be auto generated.
         # It must be unique across a service.
         # If the tenancy unit already exists for the service and consumer pair,
-        # CreateTenancyUnit will return existing tenancy unit if provided identifier
-        # is identical or empty, otherwise the call will fail.
+        # `CreateTenancyUnit` will return existing the tenancy unit if provided
+        # identifier is identical or empty, otherwise the call will fail.
         # Corresponds to the JSON property `tenancyUnitId`
         # @return [String]
         attr_accessor :tenancy_unit_id
@@ -1661,7 +1661,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Tenancy Units matching the request.
+        # Tenancy units matching the request.
         # Corresponds to the JSON property `tenancyUnits`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::TenancyUnit>]
         attr_accessor :tenancy_units
@@ -2624,7 +2624,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Uses the same format as in IAM policy.
-        # `member` must include both prefix and id. E.g., `user:`emailId``,
+        # `member` must include both prefix and ID. For example, `user:`emailId``,
         # `serviceAccount:`emailId``, `group:`emailId``.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
@@ -3357,7 +3357,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Roles for the service account above on tenant project.
+        # Roles for the associated service account for the tenant project.
         # Corresponds to the JSON property `tenantProjectRoles`
         # @return [Array<String>]
         attr_accessor :tenant_project_roles
@@ -3600,8 +3600,8 @@ module Google
       class TenancyUnit
         include Google::Apis::Core::Hashable
       
-        # @OutputOnly Cloud resource One Platform Name of the consumer of this
-        # service. For example 'projects/123456'.
+        # @OutputOnly Cloud resource name of the consumer of this service.
+        # For example 'projects/123456'.
         # Corresponds to the JSON property `consumer`
         # @return [String]
         attr_accessor :consumer
@@ -3651,7 +3651,7 @@ module Google
       class TenantProjectConfig
         include Google::Apis::Core::Hashable
       
-        # Describes billing configuration for a new Tenant Project
+        # Describes billing configuration for a new tenant project.
         # Corresponds to the JSON property `billingConfig`
         # @return [Google::Apis::ServiceconsumermanagementV1::BillingConfig]
         attr_accessor :billing_config
@@ -3677,14 +3677,14 @@ module Google
       
         # Google Cloud API names of services that will be activated on this project
         # during provisioning.  If any of these services can not be activated,
-        # addTenantProject method will fail.
+        # the `addTenantProject` method will fail.
         # For example: 'compute.googleapis.com','cloudfunctions.googleapis.com'
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
       
         # Describes policy settings that need to be applied to a newly
-        # created Tenant Project.
+        # created tenant project.
         # Corresponds to the JSON property `tenantProjectPolicy`
         # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectPolicy]
         attr_accessor :tenant_project_policy
@@ -3705,7 +3705,7 @@ module Google
       end
       
       # Describes policy settings that need to be applied to a newly
-      # created Tenant Project.
+      # created tenant project.
       class TenantProjectPolicy
         include Google::Apis::Core::Hashable
       
@@ -3734,7 +3734,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # @OutputOnly Identifier of the tenant resource.
-        # For cloud projects it is in the form 'projects/`number`'.
+        # For cloud projects, it is in the form 'projects/`number`'.
         # For example 'projects/123456'.
         # Corresponds to the JSON property `resource`
         # @return [String]

@@ -5082,7 +5082,7 @@ module Google
         # The time at which to end playback, measured in seconds from the beginning
         # of the video.
         # If set, the end time should be after the start time.
-        # If not set or if you set this to a value that exceeds the video duration,
+        # If not set or if you set this to a value that exceeds the video's length,
         # the video will be played until its end.
         # Corresponds to the JSON property `end`
         # @return [Fixnum]

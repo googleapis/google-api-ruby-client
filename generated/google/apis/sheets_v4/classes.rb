@@ -1156,7 +1156,7 @@ module Google
         attr_accessor :series
       
         # The stacked type for charts that support vertical stacking.
-        # Applies to Area, Bar, Column, and Stepped Area charts.
+        # Applies to Area, Bar, Column, Combo, and Stepped Area charts.
         # Corresponds to the JSON property `stackedType`
         # @return [String]
         attr_accessor :stacked_type
@@ -2773,6 +2773,11 @@ module Google
         # @return [Google::Apis::SheetsV4::TextPosition]
         attr_accessor :title_text_position
       
+        # A <a href="/chart/interactive/docs/gallery/treemap">Treemap chart</a>.
+        # Corresponds to the JSON property `treemapChart`
+        # @return [Google::Apis::SheetsV4::TreemapChartSpec]
+        attr_accessor :treemap_chart
+      
         # A waterfall chart.
         # Corresponds to the JSON property `waterfallChart`
         # @return [Google::Apis::SheetsV4::WaterfallChartSpec]
@@ -2801,6 +2806,7 @@ module Google
           @title = args[:title] if args.key?(:title)
           @title_text_format = args[:title_text_format] if args.key?(:title_text_format)
           @title_text_position = args[:title_text_position] if args.key?(:title_text_position)
+          @treemap_chart = args[:treemap_chart] if args.key?(:treemap_chart)
           @waterfall_chart = args[:waterfall_chart] if args.key?(:waterfall_chart)
         end
       end
@@ -7951,6 +7957,630 @@ module Google
           @delimiter = args[:delimiter] if args.key?(:delimiter)
           @delimiter_type = args[:delimiter_type] if args.key?(:delimiter_type)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # A color scale for a treemap chart.
+      class TreemapChartColorScale
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `maxValueColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :max_value_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `midValueColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :mid_value_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `minValueColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :min_value_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `noDataColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :no_data_color
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_value_color = args[:max_value_color] if args.key?(:max_value_color)
+          @mid_value_color = args[:mid_value_color] if args.key?(:mid_value_color)
+          @min_value_color = args[:min_value_color] if args.key?(:min_value_color)
+          @no_data_color = args[:no_data_color] if args.key?(:no_data_color)
+        end
+      end
+      
+      # A <a href="/chart/interactive/docs/gallery/treemap">Treemap chart</a>.
+      class TreemapChartSpec
+        include Google::Apis::Core::Hashable
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `colorData`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :color_data
+      
+        # A color scale for a treemap chart.
+        # Corresponds to the JSON property `colorScale`
+        # @return [Google::Apis::SheetsV4::TreemapChartColorScale]
+        attr_accessor :color_scale
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `headerColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :header_color
+      
+        # True to hide tooltips.
+        # Corresponds to the JSON property `hideTooltips`
+        # @return [Boolean]
+        attr_accessor :hide_tooltips
+        alias_method :hide_tooltips?, :hide_tooltips
+      
+        # The number of additional data levels beyond the labeled levels to be shown
+        # on the treemap chart. These levels are not interactive and are shown
+        # without their labels. Defaults to 0 if not specified.
+        # Corresponds to the JSON property `hintedLevels`
+        # @return [Fixnum]
+        attr_accessor :hinted_levels
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `labels`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :labels
+      
+        # The number of data levels to show on the treemap chart. These levels are
+        # interactive and are shown with their labels. Defaults to 2 if not
+        # specified.
+        # Corresponds to the JSON property `levels`
+        # @return [Fixnum]
+        attr_accessor :levels
+      
+        # The maximum possible data value. Cells with values greater than this will
+        # have the same color as cells with this value. If not specified, defaults
+        # to the actual maximum value from color_data, or the maximum value from
+        # size_data if color_data is not specified.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Float]
+        attr_accessor :max_value
+      
+        # The minimum possible data value. Cells with values less than this will
+        # have the same color as cells with this value. If not specified, defaults
+        # to the actual minimum value from color_data, or the minimum value from
+        # size_data if color_data is not specified.
+        # Corresponds to the JSON property `minValue`
+        # @return [Float]
+        attr_accessor :min_value
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `parentLabels`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :parent_labels
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `sizeData`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :size_data
+      
+        # The format of a run of text in a cell.
+        # Absent values indicate that the field isn't specified.
+        # Corresponds to the JSON property `textFormat`
+        # @return [Google::Apis::SheetsV4::TextFormat]
+        attr_accessor :text_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color_data = args[:color_data] if args.key?(:color_data)
+          @color_scale = args[:color_scale] if args.key?(:color_scale)
+          @header_color = args[:header_color] if args.key?(:header_color)
+          @hide_tooltips = args[:hide_tooltips] if args.key?(:hide_tooltips)
+          @hinted_levels = args[:hinted_levels] if args.key?(:hinted_levels)
+          @labels = args[:labels] if args.key?(:labels)
+          @levels = args[:levels] if args.key?(:levels)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @parent_labels = args[:parent_labels] if args.key?(:parent_labels)
+          @size_data = args[:size_data] if args.key?(:size_data)
+          @text_format = args[:text_format] if args.key?(:text_format)
         end
       end
       
