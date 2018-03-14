@@ -145,6 +145,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # User labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # User assigned name for this resource. Must be unique within the project. The
         # name must be 1-63 characters long, must begin with a letter, end with a letter
         # or digit, and only contain lowercase letters, digits or dashes.
@@ -176,6 +181,7 @@ module Google
           @dns_name = args[:dns_name] if args.key?(:dns_name)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @name_server_set = args[:name_server_set] if args.key?(:name_server_set)
           @name_servers = args[:name_servers] if args.key?(:name_servers)

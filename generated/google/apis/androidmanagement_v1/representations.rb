@@ -327,6 +327,7 @@ module Google
           property :new_password, as: 'newPassword'
           collection :reset_password_flags, as: 'resetPasswordFlags'
           property :type, as: 'type'
+          property :user_name, as: 'userName'
         end
       end
       
@@ -645,6 +646,7 @@ module Google
           property :always_on_vpn_package, as: 'alwaysOnVpnPackage', class: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage, decorator: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage::Representation
       
           collection :android_device_policy_tracks, as: 'androidDevicePolicyTracks'
+          property :app_auto_update_policy, as: 'appAutoUpdatePolicy'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
           property :auto_time_required, as: 'autoTimeRequired'

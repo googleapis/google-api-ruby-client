@@ -164,9 +164,7 @@ module Google
         attr_accessor :supports_multiple_transfers
         alias_method :supports_multiple_transfers?, :supports_multiple_transfers
       
-        # Transfer type. Currently supports only batch transfers,
-        # which are transfers that use the BigQuery batch APIs (load or
-        # query) to ingest the data.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `transferType`
         # @return [String]
         attr_accessor :transfer_type

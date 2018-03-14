@@ -3840,6 +3840,11 @@ module Google
         attr_accessor :start_with_slate
         alias_method :start_with_slate?, :start_with_slate
       
+        # 
+        # Corresponds to the JSON property `stereoLayout`
+        # @return [String]
+        attr_accessor :stereo_layout
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3861,6 +3866,7 @@ module Google
           @projection = args[:projection] if args.key?(:projection)
           @record_from_start = args[:record_from_start] if args.key?(:record_from_start)
           @start_with_slate = args[:start_with_slate] if args.key?(:start_with_slate)
+          @stereo_layout = args[:stereo_layout] if args.key?(:stereo_layout)
         end
       end
       
@@ -6427,6 +6433,11 @@ module Google
         # @return [String]
         attr_accessor :channel_id
       
+        # The cumulative time a user has been a sponsor in months.
+        # Corresponds to the JSON property `cumulativeDurationMonths`
+        # @return [Fixnum]
+        attr_accessor :cumulative_duration_months
+      
         # Details about the sponsor.
         # Corresponds to the JSON property `sponsorDetails`
         # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
@@ -6445,6 +6456,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @cumulative_duration_months = args[:cumulative_duration_months] if args.key?(:cumulative_duration_months)
           @sponsor_details = args[:sponsor_details] if args.key?(:sponsor_details)
           @sponsor_since = args[:sponsor_since] if args.key?(:sponsor_since)
         end

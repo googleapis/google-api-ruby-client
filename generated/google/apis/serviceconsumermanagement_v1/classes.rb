@@ -710,7 +710,7 @@ module Google
         # If it is not provided, a UID for the tenancy unit will be auto generated.
         # It must be unique across a service.
         # If the tenancy unit already exists for the service and consumer pair,
-        # `CreateTenancyUnit` will return existing the tenancy unit if provided
+        # `CreateTenancyUnit` will return the existing tenancy unit if the provided
         # identifier is identical or empty, otherwise the call will fail.
         # Corresponds to the JSON property `tenancyUnitId`
         # @return [String]

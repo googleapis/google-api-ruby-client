@@ -2060,6 +2060,7 @@ module Google
           property :projection, as: 'projection'
           property :record_from_start, as: 'recordFromStart'
           property :start_with_slate, as: 'startWithSlate'
+          property :stereo_layout, as: 'stereoLayout'
         end
       end
       
@@ -2765,6 +2766,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
+          property :cumulative_duration_months, as: 'cumulativeDurationMonths'
           property :sponsor_details, as: 'sponsorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
       
           property :sponsor_since, as: 'sponsorSince', type: DateTime

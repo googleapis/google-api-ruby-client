@@ -102,6 +102,7 @@ module Google
           property :dns_name, as: 'dnsName'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :name_server_set, as: 'nameServerSet'
           collection :name_servers, as: 'nameServers'

@@ -3836,7 +3836,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_provisioning_account_tree(account_tree_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, 'provisioning/createAccount', options)
+          command =  make_simple_command(:post, 'provisioning/createAccountTree', options)
           command.request_representation = Google::Apis::AnalyticsV3::AccountTreeRequest::Representation
           command.request_object = account_tree_request_object
           command.response_representation = Google::Apis::AnalyticsV3::AccountTreeResponse::Representation
