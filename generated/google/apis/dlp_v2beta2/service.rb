@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DlpV2beta2
-      # DLP API
+      # Cloud DLP API
       #
       # The Google Data Loss Prevention API provides methods for detection of privacy-
       #  sensitive fragments in text, images, and Google Cloud Platform storage

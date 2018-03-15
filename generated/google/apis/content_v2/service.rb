@@ -1263,6 +1263,399 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves and updates the Lia settings of multiple accounts in a single
+        # request.
+        # @param [Google::Apis::ContentV2::LiasettingsCustomBatchRequest] liasettings_custom_batch_request_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsCustomBatchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsCustomBatchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def custombatch_liasetting(liasettings_custom_batch_request_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'liasettings/batch', options)
+          command.request_representation = Google::Apis::ContentV2::LiasettingsCustomBatchRequest::Representation
+          command.request_object = liasettings_custom_batch_request_object
+          command.response_representation = Google::Apis::ContentV2::LiasettingsCustomBatchResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsCustomBatchResponse
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Lia settings of the account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which to get/update Lia settings.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiaSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiaSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_liasetting(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/liasettings/{accountId}', options)
+          command.response_representation = Google::Apis::ContentV2::LiaSettings::Representation
+          command.response_class = Google::Apis::ContentV2::LiaSettings
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of accesable Google My Business accounts.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which to retrieve the accessible Google My Business
+        #   accounts.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsGetAccessibleGmbAccountsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsGetAccessibleGmbAccountsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def getaccessiblegmbaccounts_liasetting(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/liasettings/{accountId}/accessiblegmbaccounts', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsGetAccessibleGmbAccountsResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsGetAccessibleGmbAccountsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Lia settings of the sub-accounts in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. This must be a multi-client account.
+        # @param [Fixnum] max_results
+        #   The maximum number of Lia settings to return in the response, used for paging.
+        # @param [String] page_token
+        #   The token returned by the previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_liasettings(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{merchantId}/liasettings', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsListResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsListResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Lia settings of the account. This method supports patch semantics.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which to get/update Lia settings.
+        # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiaSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiaSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_liasetting(merchant_id, account_id, lia_settings_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{merchantId}/liasettings/{accountId}', options)
+          command.request_representation = Google::Apis::ContentV2::LiaSettings::Representation
+          command.request_object = lia_settings_object
+          command.response_representation = Google::Apis::ContentV2::LiaSettings::Representation
+          command.response_class = Google::Apis::ContentV2::LiaSettings
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests access to a specified Google By Business account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which GMB access is requested.
+        # @param [String] gmb_email
+        #   The email of the Google My Business Account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsRequestGmbAccessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsRequestGmbAccessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def requestgmbaccess_liasetting(merchant_id, account_id, gmb_email: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/requestgmbaccess', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsRequestGmbAccessResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsRequestGmbAccessResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['gmbEmail'] = gmb_email unless gmb_email.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests the inventory validation for the specified country.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] country
+        #   The country for which the inventory validation is requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsRequestInventoryVerificationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsRequestInventoryVerificationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def requestinventoryverification_liasetting(merchant_id, account_id, country, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsRequestInventoryVerificationResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsRequestInventoryVerificationResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['country'] = country unless country.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the inventory validation verification for the specified country.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] contact_email
+        #   The email of the inventory check contact.
+        # @param [String] contact_name
+        #   The name of the inventory verification contact.
+        # @param [String] country
+        #   The country for which the inventory verification is requested.
+        # @param [String] language
+        #   The country for which the inventory verification is requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiasettingsSetInventoryVerificationContactResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiasettingsSetInventoryVerificationContactResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def setinventoryverificationcontact_liasetting(merchant_id, account_id, contact_email: nil, contact_name: nil, country: nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/liasettings/{accountId}/setinventoryverificationcontact', options)
+          command.response_representation = Google::Apis::ContentV2::LiasettingsSetInventoryVerificationContactResponse::Representation
+          command.response_class = Google::Apis::ContentV2::LiasettingsSetInventoryVerificationContactResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['contactEmail'] = contact_email unless contact_email.nil?
+          command.query['contactName'] = contact_name unless contact_name.nil?
+          command.query['country'] = country unless country.nil?
+          command.query['language'] = language unless language.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Lia settings of the account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which to get/update Lia settings.
+        # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::LiaSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::LiaSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_liasetting(merchant_id, account_id, lia_settings_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{merchantId}/liasettings/{accountId}', options)
+          command.request_representation = Google::Apis::ContentV2::LiaSettings::Representation
+          command.request_object = lia_settings_object
+          command.response_representation = Google::Apis::ContentV2::LiaSettings::Representation
+          command.response_class = Google::Apis::ContentV2::LiaSettings
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks an order as acknowledged.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client

@@ -328,6 +328,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GmbAccounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GmbAccountsGmbAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Headers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +407,90 @@ module Google
       end
       
       class SetInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiaAboutPageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiaCountrySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiaInventorySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiaOnDisplayToOrderSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiaSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsCustomBatchResponseEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsGetAccessibleGmbAccountsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsRequestGmbAccessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsRequestInventoryVerificationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiasettingsSetInventoryVerificationContactResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1714,6 +1810,25 @@ module Google
         end
       end
       
+      class GmbAccounts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, :numeric_string => true, as: 'accountId'
+          collection :gmb_accounts, as: 'gmbAccounts', class: Google::Apis::ContentV2::GmbAccountsGmbAccount, decorator: Google::Apis::ContentV2::GmbAccountsGmbAccount::Representation
+      
+        end
+      end
+      
+      class GmbAccountsGmbAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :listing_count, :numeric_string => true, as: 'listingCount'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class Headers
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1849,6 +1964,145 @@ module Google
       end
       
       class SetInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiaAboutPageSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+          property :url, as: 'url'
+        end
+      end
+      
+      class LiaCountrySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :about, as: 'about', class: Google::Apis::ContentV2::LiaAboutPageSettings, decorator: Google::Apis::ContentV2::LiaAboutPageSettings::Representation
+      
+          property :country, as: 'country'
+          property :hosted_local_storefront_active, as: 'hostedLocalStorefrontActive'
+          property :inventory, as: 'inventory', class: Google::Apis::ContentV2::LiaInventorySettings, decorator: Google::Apis::ContentV2::LiaInventorySettings::Representation
+      
+          property :on_display_to_order, as: 'onDisplayToOrder', class: Google::Apis::ContentV2::LiaOnDisplayToOrderSettings, decorator: Google::Apis::ContentV2::LiaOnDisplayToOrderSettings::Representation
+      
+          property :store_pickup_active, as: 'storePickupActive'
+        end
+      end
+      
+      class LiaInventorySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inventory_verification_contact_email, as: 'inventoryVerificationContactEmail'
+          property :inventory_verification_contact_name, as: 'inventoryVerificationContactName'
+          property :inventory_verification_contact_status, as: 'inventoryVerificationContactStatus'
+          property :status, as: 'status'
+        end
+      end
+      
+      class LiaOnDisplayToOrderSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shipping_cost_policy_url, as: 'shippingCostPolicyUrl'
+          property :status, as: 'status'
+        end
+      end
+      
+      class LiaSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, :numeric_string => true, as: 'accountId'
+          collection :country_settings, as: 'countrySettings', class: Google::Apis::ContentV2::LiaCountrySettings, decorator: Google::Apis::ContentV2::LiaCountrySettings::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiasettingsCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2::LiasettingsCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::LiasettingsCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class LiasettingsCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, :numeric_string => true, as: 'accountId'
+          property :batch_id, as: 'batchId'
+          property :contact_email, as: 'contactEmail'
+          property :contact_name, as: 'contactName'
+          property :country, as: 'country'
+          property :gmb_email, as: 'gmbEmail'
+          property :lia_settings, as: 'liaSettings', class: Google::Apis::ContentV2::LiaSettings, decorator: Google::Apis::ContentV2::LiaSettings::Representation
+      
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :method_prop, as: 'method'
+        end
+      end
+      
+      class LiasettingsCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2::LiasettingsCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::LiasettingsCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiasettingsCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::Errors::Representation
+      
+          property :gmb_accounts, as: 'gmbAccounts', class: Google::Apis::ContentV2::GmbAccounts, decorator: Google::Apis::ContentV2::GmbAccounts::Representation
+      
+          property :kind, as: 'kind'
+          property :lia_settings, as: 'liaSettings', class: Google::Apis::ContentV2::LiaSettings, decorator: Google::Apis::ContentV2::LiaSettings::Representation
+      
+        end
+      end
+      
+      class LiasettingsGetAccessibleGmbAccountsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, :numeric_string => true, as: 'accountId'
+          collection :gmb_accounts, as: 'gmbAccounts', class: Google::Apis::ContentV2::GmbAccountsGmbAccount, decorator: Google::Apis::ContentV2::GmbAccountsGmbAccount::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiasettingsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2::LiaSettings, decorator: Google::Apis::ContentV2::LiaSettings::Representation
+      
+        end
+      end
+      
+      class LiasettingsRequestGmbAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiasettingsRequestInventoryVerificationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LiasettingsSetInventoryVerificationContactResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'

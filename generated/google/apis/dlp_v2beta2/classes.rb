@@ -3263,11 +3263,16 @@ module Google
         attr_accessor :max_findings_per_info_type
       
         # Max number of findings that will be returned for each item scanned.
+        # When set within `InspectDataSourceRequest`,
+        # the maximum returned is 1000 regardless if this is set higher.
+        # When set within `InspectContentRequest`, this field is ignored.
         # Corresponds to the JSON property `maxFindingsPerItem`
         # @return [Fixnum]
         attr_accessor :max_findings_per_item
       
-        # Max total number of findings that will be returned per request/job.
+        # Max number of findings that will be returned per request/job.
+        # When set within `InspectContentRequest`, the maximum returned is 1000
+        # regardless if this is set higher.
         # Corresponds to the JSON property `maxFindingsPerRequest`
         # @return [Fixnum]
         attr_accessor :max_findings_per_request

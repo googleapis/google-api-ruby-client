@@ -397,8 +397,8 @@ module Google
         # The ID(s) of the step(s) that this build step depends on.
         # This build step will not start until all the build steps in `wait_for`
         # have completed successfully. If `wait_for` is empty, this build step will
-        # start when all previous build steps in the `Build.Steps` list have completed
-        # successfully.
+        # start when all previous build steps in the `Build.Steps` list have
+        # completed successfully.
         # Corresponds to the JSON property `waitFor`
         # @return [Array<String>]
         attr_accessor :wait_for

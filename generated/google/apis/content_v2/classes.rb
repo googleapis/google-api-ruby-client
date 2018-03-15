@@ -1960,6 +1960,68 @@ module Google
         end
       end
       
+      # 
+      class GmbAccounts
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the account.
+        # Corresponds to the JSON property `accountId`
+        # @return [Fixnum]
+        attr_accessor :account_id
+      
+        # A list of GMB account which are available to the merchant.
+        # Corresponds to the JSON property `gmbAccounts`
+        # @return [Array<Google::Apis::ContentV2::GmbAccountsGmbAccount>]
+        attr_accessor :gmb_accounts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @gmb_accounts = args[:gmb_accounts] if args.key?(:gmb_accounts)
+        end
+      end
+      
+      # 
+      class GmbAccountsGmbAccount
+        include Google::Apis::Core::Hashable
+      
+        # The email which identifies the GMB account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Number of listings under this account.
+        # Corresponds to the JSON property `listingCount`
+        # @return [Fixnum]
+        attr_accessor :listing_count
+      
+        # The name of the GMB account.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the GMB account (User or Business).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @listing_count = args[:listing_count] if args.key?(:listing_count)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A non-empty list of row or column headers for a table. Exactly one of prices,
       # weights, numItems, postalCodeGroupNames, or locations must be set.
       class Headers
@@ -2460,6 +2522,459 @@ module Google
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # inventorySetResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiaAboutPageSettings
+        include Google::Apis::Core::Hashable
+      
+        # The status verification process.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The about URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # 
+      class LiaCountrySettings
+        include Google::Apis::Core::Hashable
+      
+        # The about page settings.
+        # Corresponds to the JSON property `about`
+        # @return [Google::Apis::ContentV2::LiaAboutPageSettings]
+        attr_accessor :about
+      
+        # CLDR country code (e.g. "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The status of the "Merchant hosted local storefront" feature.
+        # Corresponds to the JSON property `hostedLocalStorefrontActive`
+        # @return [Boolean]
+        attr_accessor :hosted_local_storefront_active
+        alias_method :hosted_local_storefront_active?, :hosted_local_storefront_active
+      
+        # LIA inventory settings.
+        # Corresponds to the JSON property `inventory`
+        # @return [Google::Apis::ContentV2::LiaInventorySettings]
+        attr_accessor :inventory
+      
+        # LIA "On Display To Order" settings.
+        # Corresponds to the JSON property `onDisplayToOrder`
+        # @return [Google::Apis::ContentV2::LiaOnDisplayToOrderSettings]
+        attr_accessor :on_display_to_order
+      
+        # The status of the "Store pickup" feature.
+        # Corresponds to the JSON property `storePickupActive`
+        # @return [Boolean]
+        attr_accessor :store_pickup_active
+        alias_method :store_pickup_active?, :store_pickup_active
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @about = args[:about] if args.key?(:about)
+          @country = args[:country] if args.key?(:country)
+          @hosted_local_storefront_active = args[:hosted_local_storefront_active] if args.key?(:hosted_local_storefront_active)
+          @inventory = args[:inventory] if args.key?(:inventory)
+          @on_display_to_order = args[:on_display_to_order] if args.key?(:on_display_to_order)
+          @store_pickup_active = args[:store_pickup_active] if args.key?(:store_pickup_active)
+        end
+      end
+      
+      # 
+      class LiaInventorySettings
+        include Google::Apis::Core::Hashable
+      
+        # The email of contact which will be contacted during the verification process.
+        # Corresponds to the JSON property `inventoryVerificationContactEmail`
+        # @return [String]
+        attr_accessor :inventory_verification_contact_email
+      
+        # The name of contact which will be contacted during the verification process.
+        # Corresponds to the JSON property `inventoryVerificationContactName`
+        # @return [String]
+        attr_accessor :inventory_verification_contact_name
+      
+        # The status of the verification contact.
+        # Corresponds to the JSON property `inventoryVerificationContactStatus`
+        # @return [String]
+        attr_accessor :inventory_verification_contact_status
+      
+        # The status of the inventory verification process.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inventory_verification_contact_email = args[:inventory_verification_contact_email] if args.key?(:inventory_verification_contact_email)
+          @inventory_verification_contact_name = args[:inventory_verification_contact_name] if args.key?(:inventory_verification_contact_name)
+          @inventory_verification_contact_status = args[:inventory_verification_contact_status] if args.key?(:inventory_verification_contact_status)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class LiaOnDisplayToOrderSettings
+        include Google::Apis::Core::Hashable
+      
+        # Shipping cost and policy URL.
+        # Corresponds to the JSON property `shippingCostPolicyUrl`
+        # @return [String]
+        attr_accessor :shipping_cost_policy_url
+      
+        # The status of the ?On display to order? feature.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shipping_cost_policy_url = args[:shipping_cost_policy_url] if args.key?(:shipping_cost_policy_url)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class LiaSettings
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the account to which these LIA settings belong. Ignored upon update,
+        # always present in get request responses.
+        # Corresponds to the JSON property `accountId`
+        # @return [Fixnum]
+        attr_accessor :account_id
+      
+        # The LIA settings for each country.
+        # Corresponds to the JSON property `countrySettings`
+        # @return [Array<Google::Apis::ContentV2::LiaCountrySettings>]
+        attr_accessor :country_settings
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liaSettings".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @country_settings = args[:country_settings] if args.key?(:country_settings)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiasettingsCustomBatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The request entries to be processed in the batch.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::LiasettingsCustomBatchRequestEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # 
+      class LiasettingsCustomBatchRequestEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the account for which to get/update account shipping settings.
+        # Corresponds to the JSON property `accountId`
+        # @return [Fixnum]
+        attr_accessor :account_id
+      
+        # An entry ID, unique within the batch request.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # Inventory validation contact email. Required only for
+        # SetInventoryValidationContact.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # Inventory validation contact name. Required only for
+        # SetInventoryValidationContact.
+        # Corresponds to the JSON property `contactName`
+        # @return [String]
+        attr_accessor :contact_name
+      
+        # The country code. Required only for RequestInventoryVerification.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The GMB account. Required only for RequestGmbAccess.
+        # Corresponds to the JSON property `gmbEmail`
+        # @return [String]
+        attr_accessor :gmb_email
+      
+        # The account Lia settings to update. Only defined if the method is update.
+        # Corresponds to the JSON property `liaSettings`
+        # @return [Google::Apis::ContentV2::LiaSettings]
+        attr_accessor :lia_settings
+      
+        # The ID of the managing account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # 
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @contact_name = args[:contact_name] if args.key?(:contact_name)
+          @country = args[:country] if args.key?(:country)
+          @gmb_email = args[:gmb_email] if args.key?(:gmb_email)
+          @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+        end
+      end
+      
+      # 
+      class LiasettingsCustomBatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the execution of the batch requests.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::LiasettingsCustomBatchResponseEntry>]
+        attr_accessor :entries
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsCustomBatchResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiasettingsCustomBatchResponseEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the request entry to which this entry responds.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # A list of errors returned by a failed batch entry.
+        # Corresponds to the JSON property `errors`
+        # @return [Google::Apis::ContentV2::Errors]
+        attr_accessor :errors
+      
+        # The the list of accessible GMB accounts.
+        # Corresponds to the JSON property `gmbAccounts`
+        # @return [Google::Apis::ContentV2::GmbAccounts]
+        attr_accessor :gmb_accounts
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsCustomBatchResponseEntry".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The retrieved or updated Lia settings.
+        # Corresponds to the JSON property `liaSettings`
+        # @return [Google::Apis::ContentV2::LiaSettings]
+        attr_accessor :lia_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @errors = args[:errors] if args.key?(:errors)
+          @gmb_accounts = args[:gmb_accounts] if args.key?(:gmb_accounts)
+          @kind = args[:kind] if args.key?(:kind)
+          @lia_settings = args[:lia_settings] if args.key?(:lia_settings)
+        end
+      end
+      
+      # 
+      class LiasettingsGetAccessibleGmbAccountsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the account.
+        # Corresponds to the JSON property `accountId`
+        # @return [Fixnum]
+        attr_accessor :account_id
+      
+        # A list of GMB account which are available to the merchant.
+        # Corresponds to the JSON property `gmbAccounts`
+        # @return [Array<Google::Apis::ContentV2::GmbAccountsGmbAccount>]
+        attr_accessor :gmb_accounts
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsGetAccessibleGmbAccountsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @gmb_accounts = args[:gmb_accounts] if args.key?(:gmb_accounts)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiasettingsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of Lia settings.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2::LiaSettings>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class LiasettingsRequestGmbAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsRequestGmbAccessResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiasettingsRequestInventoryVerificationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsRequestInventoryVerificationResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LiasettingsSetInventoryVerificationContactResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # liasettingsSetInventoryVerificationContactResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

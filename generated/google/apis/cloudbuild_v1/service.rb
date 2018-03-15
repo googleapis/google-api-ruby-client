@@ -205,9 +205,9 @@ module Google
         end
         
         # Starts a build with the specified configuration.
-        # This method returns a long-running `Operation`, which includes the build ID.
-        # Pass the build ID to `GetBuild` to determine the build status
-        # (such as `SUCCESS` or `FAILURE`).
+        # This method returns a long-running `Operation`, which includes the build
+        # ID. Pass the build ID to `GetBuild` to determine the build status (such as
+        # `SUCCESS` or `FAILURE`).
         # @param [String] project_id
         #   ID of the project.
         # @param [Google::Apis::CloudbuildV1::Build] build_object

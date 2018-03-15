@@ -215,8 +215,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an ACL entry on the specified bucket. This method supports patch
-        # semantics.
+        # Patches an ACL entry on the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] entity
@@ -987,8 +986,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a default object ACL entry on the specified bucket. This method
-        # supports patch semantics.
+        # Patches a default object ACL entry on the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] entity
@@ -1431,8 +1429,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an ACL entry on the specified object. This method supports patch
-        # semantics.
+        # Patches an ACL entry on the specified object.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] object
