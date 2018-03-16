@@ -426,6 +426,7 @@ module Google
       
           property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
       
+          property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :monitoring_service, as: 'monitoringService'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -438,6 +439,7 @@ module Google
       
           property :pod_security_policy_config, as: 'podSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
+          property :private_cluster, as: 'privateCluster'
           hash :resource_labels, as: 'resourceLabels'
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'

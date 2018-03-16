@@ -4418,6 +4418,7 @@ module Google
           property :start_timestamp, as: 'startTimestamp'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :type, as: 'type'
         end
       end
       

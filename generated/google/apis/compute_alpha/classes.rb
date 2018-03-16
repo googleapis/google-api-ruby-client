@@ -3448,6 +3448,13 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # The type of commitment, which affects the discount rate and the eligible
+        # resources. Type LARGE_VM specifies a commitment that will only apply to large
+        # VMs. Type NORMAL specifies a commitment that applies to all other resources.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3467,6 +3474,7 @@ module Google
           @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -11996,12 +12004,14 @@ module Google
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
       
-        # 
+        # [Deprecated] Replaced by edge_availability_domain.
         # Corresponds to the JSON property `availabilityZone`
         # @return [String]
         attr_accessor :availability_zone
       
-        # 
+        # Provisioned bandwidth capacity for the interconnectAttachment. Can be set by
+        # the partner to update the customer's provisioned bandwidth. Output only for
+        # for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -12039,13 +12049,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Desired availability domain for the attachment. Can only be specified when
-        # creating PARTNER-type InterconnectAttachments.
-        # For improved reliability, customers should configure a pair of attachments
-        # with one per availability domain. The selected availability domain will be
-        # provided to the Partner via the pairing key so that the provisioned circuit
-        # will lie in the specified domain. If not specified, the value will default to
-        # AVAILABILITY_DOMAIN_ANY.
+        # Desired availability domain for the attachment. Only available for type
+        # PARTNER, at creation time. For improved reliability, customers should
+        # configure a pair of attachments with one per availability domain. The selected
+        # availability domain will be provided to the Partner via the pairing key so
+        # that the provisioned circuit will lie in the specified domain. If not
+        # specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         # Corresponds to the JSON property `edgeAvailabilityDomain`
         # @return [String]
         attr_accessor :edge_availability_domain
@@ -12110,23 +12119,23 @@ module Google
         attr_accessor :operational_status
       
         # [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present
-        # for DEDICATED]. Opaque string identifying an PARTNER attachment. Of the form ?
-        # cloud-region/XXXXXX?.
+        # for DEDICATED]. The opaque identifier of an PARTNER attachment used to
+        # initiate provisioning with a selected partner. Of the form "XXXXX/region/
+        # domain"
         # Corresponds to the JSON property `pairingKey`
         # @return [String]
         attr_accessor :pairing_key
       
-        # [Output only for PARTNER. Input for PARTNER_PROVIDER. Not present for
-        # DEDICATED] BGP ASN of the Partner. A layer 3 Partner should supply this if
-        # they configured BGP on behalf of the customer.
+        # Optional BGP ASN for the router that should be supplied by a layer 3 Partner
+        # if they configured BGP on behalf of the customer. Output only for PARTNER type,
+        # input only for PARTNER_PROVIDER, not available for DEDICATED.
         # Corresponds to the JSON property `partnerAsn`
         # @return [Fixnum]
         attr_accessor :partner_asn
       
         # Informational metadata about Partner attachments from Partners to display to
         # customers. These fields are propagated from PARTNER_PROVIDER attachments to
-        # their corresponding PARTNER attachments. Only mutable for PARTNER_PROVIDER
-        # type, output-only for PARTNER, not available for DEDICATED.
+        # their corresponding PARTNER attachments.
         # Corresponds to the JSON property `partnerMetadata`
         # @return [Google::Apis::ComputeAlpha::InterconnectAttachmentPartnerMetadata]
         attr_accessor :partner_metadata
@@ -12157,8 +12166,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The current state of whether or not this interconnect attachment
-        # is functional.
+        # [Output Only] The current state of this attachment's functionality.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -12450,8 +12458,7 @@ module Google
       
       # Informational metadata about Partner attachments from Partners to display to
       # customers. These fields are propagated from PARTNER_PROVIDER attachments to
-      # their corresponding PARTNER attachments. Only mutable for PARTNER_PROVIDER
-      # type, output-only for PARTNER, not available for DEDICATED.
+      # their corresponding PARTNER attachments.
       class InterconnectAttachmentPartnerMetadata
         include Google::Apis::Core::Hashable
       

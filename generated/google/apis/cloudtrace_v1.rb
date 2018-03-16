@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/trace
     module CloudtraceV1
       VERSION = 'V1'
-      REVISION = '20171106'
+      REVISION = '20180312'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

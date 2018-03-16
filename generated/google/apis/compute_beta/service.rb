@@ -57,25 +57,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -177,25 +174,22 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -254,25 +248,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -480,25 +471,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -658,25 +646,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -885,25 +870,22 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1370,25 +1352,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1610,25 +1589,22 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -1923,25 +1899,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2207,25 +2180,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2327,25 +2297,22 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2404,25 +2371,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -2696,25 +2660,22 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3070,25 +3031,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3297,25 +3255,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3524,25 +3479,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -3899,25 +3851,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4199,25 +4148,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4412,25 +4358,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4563,25 +4506,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -4779,25 +4719,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5146,25 +5083,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5513,25 +5447,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -5979,25 +5910,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6205,25 +6133,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -6507,25 +6432,22 @@ module Google
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7233,25 +7155,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7463,25 +7382,22 @@ module Google
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7546,25 +7462,22 @@ module Google
         #   included instances.
         # @param [Google::Apis::ComputeBeta::InstanceGroupsListInstancesRequest] instance_groups_list_instances_request_object
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -7931,25 +7844,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8107,25 +8017,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8572,25 +8479,22 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -8655,25 +8559,22 @@ module Google
         #   Name of the target instance scoping this request, or '-' if the request should
         #   span over all instances in the container.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9352,6 +9253,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Simulates a maintenance event on the instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def simulate_instance_maintenance_event(project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/simulateMaintenanceEvent', options)
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts an instance that was stopped using the using the instances().stop
         # method. For more information, see Restart an instance.
         # @param [String] project
@@ -9688,25 +9630,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -9915,25 +9854,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10191,25 +10127,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10407,25 +10340,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10802,25 +10732,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10878,25 +10805,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -10998,25 +10922,22 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -11268,25 +11189,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12304,25 +12222,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12736,25 +12651,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -12976,25 +12888,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -13150,25 +13059,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -13271,25 +13177,22 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -13560,25 +13463,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -14083,25 +13983,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -14721,25 +14618,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -14805,25 +14699,22 @@ module Google
         #   Name of the regional instance group for which we want to list the instances.
         # @param [Google::Apis::ComputeBeta::RegionInstanceGroupsListInstancesRequest] region_instance_groups_list_instances_request_object
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -15067,25 +14958,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -15183,25 +15071,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -15259,25 +15144,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -15527,25 +15409,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -15947,25 +15826,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -16285,25 +16161,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -16634,25 +16507,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -16934,25 +16804,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -17193,25 +17060,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -17270,25 +17134,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -17441,25 +17302,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -17766,25 +17624,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -17843,25 +17698,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -18266,25 +18118,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -18577,25 +18426,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -18911,25 +18757,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -19139,25 +18982,22 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -19372,25 +19212,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -19644,25 +19481,22 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -20077,25 +19911,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -20551,25 +20382,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -20733,25 +20561,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -20961,25 +20786,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -21333,25 +21155,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -21600,25 +21419,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -21828,25 +21644,22 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -22088,25 +21901,22 @@ module Google
         # @param [String] zone
         #   Name of the zone for request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a
@@ -22204,25 +22014,22 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Sets a filter `expression` for filtering listed resources. Your `expression`
-        #   must be in the format: field_name comparison_string literal_string.
-        #   The field_name is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The comparison_string must be
-        #   either eq (equals) or ne (not equals). The literal_string is the string value
-        #   to filter to. The literal value must be valid for the type of field you are
-        #   filtering by (string, number, boolean). For string fields, the literal value
-        #   is interpreted as a regular expression using RE2 syntax. The literal value
-        #   must match the entire field.
-        #   For example, to filter for instances that do not have a name of example-
-        #   instance, you would use name ne example-instance.
-        #   You can filter on nested fields. For example, you could filter on instances
-        #   that have set the scheduling.automaticRestart field to true. Use filtering on
-        #   nested fields to take advantage of labels to organize and search for results
-        #   based on label values.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-
-        #   central1-f). Multiple expressions are treated as AND expressions, meaning that
-        #   resources must match all expressions to pass the filters.
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than maxResults, Compute Engine returns a

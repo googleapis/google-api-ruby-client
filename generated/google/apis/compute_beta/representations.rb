@@ -1354,6 +1354,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectAttachmentPartnerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectAttachmentPrivateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4190,6 +4196,7 @@ module Google
           property :description, as: 'description'
           collection :destination_ranges, as: 'destinationRanges'
           property :direction, as: 'direction'
+          property :disabled, as: 'disabled'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -5444,6 +5451,7 @@ module Google
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :requested_link_count, as: 'requestedLinkCount'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
         end
       end
       
@@ -5451,11 +5459,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
+          property :bandwidth, as: 'bandwidth'
           collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
           property :description, as: 'description'
+          property :edge_availability_domain, as: 'edgeAvailabilityDomain'
           property :google_reference_id, as: 'googleReferenceId'
           property :id, :numeric_string => true, as: 'id'
           property :interconnect, as: 'interconnect'
@@ -5464,11 +5474,16 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :operational_status, as: 'operationalStatus'
+          property :pairing_key, as: 'pairingKey'
+          property :partner_asn, :numeric_string => true, as: 'partnerAsn'
+          property :partner_metadata, as: 'partnerMetadata', class: Google::Apis::ComputeBeta::InterconnectAttachmentPartnerMetadata, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentPartnerMetadata::Representation
+      
           property :private_interconnect_info, as: 'privateInterconnectInfo', class: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo, decorator: Google::Apis::ComputeBeta::InterconnectAttachmentPrivateInfo::Representation
       
           property :region, as: 'region'
           property :router, as: 'router'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
           property :type, as: 'type'
           property :vlan_tag8021q, as: 'vlanTag8021q'
         end
@@ -5535,6 +5550,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InterconnectAttachmentPartnerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interconnect_name, as: 'interconnectName'
+          property :partner_name, as: 'partnerName'
+          property :portal_url, as: 'portalUrl'
         end
       end
       
@@ -7300,6 +7324,7 @@ module Google
           property :allow_subnet_cidr_routes_overlap, as: 'allowSubnetCidrRoutesOverlap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_flow_logs, as: 'enableFlowLogs'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'

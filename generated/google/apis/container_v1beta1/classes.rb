@@ -365,6 +365,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig]
         attr_accessor :master_authorized_networks_config
       
+        # The IP prefix in CIDR notation to use for the hosted master network.
+        # This prefix will be used for assigning private IP addresses to the
+        # master or set of masters, as well as the ILB VIP.
+        # Corresponds to the JSON property `masterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :master_ipv4_cidr_block
+      
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
         # * `monitoring.googleapis.com` - the Google Cloud Monitoring service.
@@ -420,6 +427,14 @@ module Google
         # Corresponds to the JSON property `podSecurityPolicyConfig`
         # @return [Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig]
         attr_accessor :pod_security_policy_config
+      
+        # If this is a private cluster setup. Private clusters are clusters that, by
+        # default have no external IP addresses on the nodes and where nodes and the
+        # master communicate over private IP addresses.
+        # Corresponds to the JSON property `privateCluster`
+        # @return [Boolean]
+        attr_accessor :private_cluster
+        alias_method :private_cluster?, :private_cluster
       
         # The resource labels for the cluster to use to annotate any related GCE
         # resources.
@@ -495,6 +510,7 @@ module Google
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
+          @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -503,6 +519,7 @@ module Google
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
+          @private_cluster = args[:private_cluster] if args.key?(:private_cluster)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)

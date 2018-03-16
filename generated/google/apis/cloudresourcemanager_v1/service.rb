@@ -854,9 +854,7 @@ module Google
         
         # Marks the Project identified by the specified
         # `project_id` (for example, `my-project-123`) for deletion.
-        # This method will only affect the Project if the following criteria are met:
-        # + The Project does not have a billing account associated with it.
-        # + The Project has a lifecycle state of
+        # This method will only affect the Project if it has a lifecycle state of
         # ACTIVE.
         # This method changes the Project's lifecycle state from
         # ACTIVE

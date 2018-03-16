@@ -217,6 +217,8 @@ module Google
         # @param [String] project
         #   The project ID for this request.
         # @param [Google::Apis::DeploymentmanagerV2::Deployment] deployment_object
+        # @param [String] create_policy
+        #   Sets the policy to use for creating new resources.
         # @param [Boolean] preview
         #   If set to true, creates a deployment and creates "shell" resources but does
         #   not actually instantiate these resources. This allows you to preview what your
@@ -246,13 +248,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(project, deployment_object = nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_deployment(project, deployment_object = nil, create_policy: nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/global/deployments', options)
           command.request_representation = Google::Apis::DeploymentmanagerV2::Deployment::Representation
           command.request_object = deployment_object
           command.response_representation = Google::Apis::DeploymentmanagerV2::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2::Operation
           command.params['project'] = project unless project.nil?
+          command.query['createPolicy'] = create_policy unless create_policy.nil?
           command.query['preview'] = preview unless preview.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

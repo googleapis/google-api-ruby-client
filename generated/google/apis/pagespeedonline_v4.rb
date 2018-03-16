@@ -23,9 +23,10 @@ module Google
     # Analyzes the performance of a web page and provides tailored suggestions to
     # make that page faster.
     #
+    # @see https://developers.google.com/speed/docs/insights/v4/getting-started
     module PagespeedonlineV4
       VERSION = 'V4'
-      REVISION = '20180308'
+      REVISION = '20180315'
     end
   end
 end

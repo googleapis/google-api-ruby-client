@@ -31,6 +31,7 @@ module Google
       #    Pagespeedonline = Google::Apis::PagespeedonlineV4 # Alias the module
       #    service = Pagespeedonline::PagespeedonlineService.new
       #
+      # @see https://developers.google.com/speed/docs/insights/v4/getting-started
       class PagespeedonlineService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

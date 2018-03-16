@@ -45,7 +45,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://servicemanagement.googleapis.com/', '')
+          super('https://content-servicemanagement.googleapis.com/', '')
           @batch_path = 'batch'
         end
         

@@ -488,7 +488,7 @@ module Google
         #   The project ID for this request.
         # @param [Google::Apis::DeploymentmanagerV2beta::Deployment] deployment_object
         # @param [String] create_policy
-        #   
+        #   Sets the policy to use for creating new resources.
         # @param [Boolean] preview
         #   If set to true, creates a deployment and creates "shell" resources but does
         #   not actually instantiate these resources. This allows you to preview what your
