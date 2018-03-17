@@ -566,6 +566,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :integer
       
+        # A metric value representing temporal values of a variable.
+        # Corresponds to the JSON property `integerGauge`
+        # @return [Google::Apis::DataflowV1b3::IntegerGauge]
+        attr_accessor :integer_gauge
+      
         # A metric value representing a list of integers.
         # Corresponds to the JSON property `integerList`
         # @return [Google::Apis::DataflowV1b3::IntegerList]
@@ -617,6 +622,7 @@ module Google
           @floating_point_list = args[:floating_point_list] if args.key?(:floating_point_list)
           @floating_point_mean = args[:floating_point_mean] if args.key?(:floating_point_mean)
           @integer = args[:integer] if args.key?(:integer)
+          @integer_gauge = args[:integer_gauge] if args.key?(:integer_gauge)
           @integer_list = args[:integer_list] if args.key?(:integer_list)
           @integer_mean = args[:integer_mean] if args.key?(:integer_mean)
           @internal = args[:internal] if args.key?(:internal)
@@ -1478,6 +1484,32 @@ module Google
           @only_count_value_bytes = args[:only_count_value_bytes] if args.key?(:only_count_value_bytes)
           @original_name = args[:original_name] if args.key?(:original_name)
           @system_name = args[:system_name] if args.key?(:system_name)
+        end
+      end
+      
+      # A metric value representing temporal values of a variable.
+      class IntegerGauge
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this value was measured. Measured as msecs from epoch.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # A representation of an int64, n, that is immune to precision loss when
+        # encoded in JSON.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DataflowV1b3::SplitInt64]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

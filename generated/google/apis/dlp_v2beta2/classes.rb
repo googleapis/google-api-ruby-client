@@ -2437,6 +2437,7 @@ module Google
       # replaced with the same surrogate.
       # Identifiers must be at least two characters long.
       # In the case that the identifier is the empty string, it will be skipped.
+      # See [Pseudonymization](/dlp/docs/pseudonymization) for example usage.
       class GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
@@ -4883,6 +4884,7 @@ module Google
         # replaced with the same surrogate.
         # Identifiers must be at least two characters long.
         # In the case that the identifier is the empty string, it will be skipped.
+        # See [Pseudonymization](/dlp/docs/pseudonymization) for example usage.
         # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
         # @return [Google::Apis::DlpV2beta2::GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config

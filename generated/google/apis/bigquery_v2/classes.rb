@@ -2112,6 +2112,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
+        # [Output-only] Total number of partitions processed from all partitioned tables
+        # referenced in the job.
+        # Corresponds to the JSON property `totalPartitionsProcessed`
+        # @return [Fixnum]
+        attr_accessor :total_partitions_processed
+      
         # [Output-only] Slot-milliseconds for the job.
         # Corresponds to the JSON property `totalSlotMs`
         # @return [Fixnum]
@@ -2142,6 +2148,7 @@ module Google
           @timeline = args[:timeline] if args.key?(:timeline)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
+          @total_partitions_processed = args[:total_partitions_processed] if args.key?(:total_partitions_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
         end

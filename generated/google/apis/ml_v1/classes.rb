@@ -729,7 +729,7 @@ module Google
         # @return [Array<Float>]
         attr_accessor :discrete_values
       
-        # Required if typeis `DOUBLE` or `INTEGER`. This field
+        # Required if type is `DOUBLE` or `INTEGER`. This field
         # should be unset if type is `CATEGORICAL`. This value should be integers if
         # type is `INTEGER`.
         # Corresponds to the JSON property `maxValue`
@@ -1289,6 +1289,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The version of Python used in prediction. If not set, the default
+        # version is '2.7'. Python '3.5' is available when `runtime_version` is set
+        # to '1.4' and above. Python '2.7' works with all supported runtime versions.
+        # Corresponds to the JSON property `pythonVersion`
+        # @return [String]
+        attr_accessor :python_version
+      
         # Optional. The Google Cloud ML runtime version to use for this deployment.
         # If not set, Google Cloud ML will choose a version.
         # Corresponds to the JSON property `runtimeVersion`
@@ -1316,6 +1323,7 @@ module Google
           @last_use_time = args[:last_use_time] if args.key?(:last_use_time)
           @manual_scaling = args[:manual_scaling] if args.key?(:manual_scaling)
           @name = args[:name] if args.key?(:name)
+          @python_version = args[:python_version] if args.key?(:python_version)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @state = args[:state] if args.key?(:state)
         end

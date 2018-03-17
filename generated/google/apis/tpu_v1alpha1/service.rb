@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://tpu.googleapis.com/', '')
+          super('https://content-tpu.googleapis.com/', '')
           @batch_path = 'batch'
         end
         

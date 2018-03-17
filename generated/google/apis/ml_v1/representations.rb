@@ -526,6 +526,7 @@ module Google
           property :manual_scaling, as: 'manualScaling', class: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1ManualScaling::Representation
       
           property :name, as: 'name'
+          property :python_version, as: 'pythonVersion'
           property :runtime_version, as: 'runtimeVersion'
           property :state, as: 'state'
         end

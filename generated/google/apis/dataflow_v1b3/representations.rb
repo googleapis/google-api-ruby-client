@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntegerGauge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntegerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -932,6 +938,8 @@ module Google
       
           property :integer, as: 'integer', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
       
+          property :integer_gauge, as: 'integerGauge', class: Google::Apis::DataflowV1b3::IntegerGauge, decorator: Google::Apis::DataflowV1b3::IntegerGauge::Representation
+      
           property :integer_list, as: 'integerList', class: Google::Apis::DataflowV1b3::IntegerList, decorator: Google::Apis::DataflowV1b3::IntegerList::Representation
       
           property :integer_mean, as: 'integerMean', class: Google::Apis::DataflowV1b3::IntegerMean, decorator: Google::Apis::DataflowV1b3::IntegerMean::Representation
@@ -1162,6 +1170,15 @@ module Google
           property :only_count_value_bytes, as: 'onlyCountValueBytes'
           property :original_name, as: 'originalName'
           property :system_name, as: 'systemName'
+        end
+      end
+      
+      class IntegerGauge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timestamp, as: 'timestamp'
+          property :value, as: 'value', class: Google::Apis::DataflowV1b3::SplitInt64, decorator: Google::Apis::DataflowV1b3::SplitInt64::Representation
+      
         end
       end
       
