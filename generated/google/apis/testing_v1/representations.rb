@@ -394,6 +394,7 @@ module Google
           collection :supported_abis, as: 'supportedAbis'
           collection :supported_version_ids, as: 'supportedVersionIds'
           collection :tags, as: 'tags'
+          property :video_recording_not_supported, as: 'videoRecordingNotSupported'
         end
       end
       
@@ -701,6 +702,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
           collection :progress_messages, as: 'progressMessages'
+          property :video_recording_disabled, as: 'videoRecordingDisabled'
         end
       end
       

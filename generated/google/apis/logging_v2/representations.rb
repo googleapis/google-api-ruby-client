@@ -349,6 +349,8 @@ module Google
           property :receive_timestamp, as: 'receiveTimestamp'
           property :resource, as: 'resource', class: Google::Apis::LoggingV2::MonitoredResource, decorator: Google::Apis::LoggingV2::MonitoredResource::Representation
       
+          property :secondary_resource, as: 'secondaryResource', class: Google::Apis::LoggingV2::MonitoredResource, decorator: Google::Apis::LoggingV2::MonitoredResource::Representation
+      
           property :severity, as: 'severity'
           property :source_location, as: 'sourceLocation', class: Google::Apis::LoggingV2::LogEntrySourceLocation, decorator: Google::Apis::LoggingV2::LogEntrySourceLocation::Representation
       
@@ -531,6 +533,8 @@ module Google
           property :log_name, as: 'logName'
           property :partial_success, as: 'partialSuccess'
           property :resource, as: 'resource', class: Google::Apis::LoggingV2::MonitoredResource, decorator: Google::Apis::LoggingV2::MonitoredResource::Representation
+      
+          property :secondary_resource, as: 'secondaryResource', class: Google::Apis::LoggingV2::MonitoredResource, decorator: Google::Apis::LoggingV2::MonitoredResource::Representation
       
         end
       end
