@@ -339,7 +339,7 @@ module Google
         end
         
         # Delete a tenancy unit.  Before the tenancy unit is deleted, there should be
-        # no tenant resource in it.
+        # no tenant resources in it.
         # Operation<response: Empty>.
         # @param [String] name
         #   Name of the tenancy unit to be deleted.

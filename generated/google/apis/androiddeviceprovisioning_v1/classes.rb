@@ -26,7 +26,7 @@ module Google
       class ClaimDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # The customer to claim for.
+        # Required. The ID of the customer for whom the device is being claimed.
         # Corresponds to the JSON property `customerId`
         # @return [Fixnum]
         attr_accessor :customer_id
@@ -37,7 +37,7 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # The section to claim.
+        # Required. The section type of the device's provisioning record.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -80,11 +80,13 @@ module Google
         end
       end
       
-      # Request to claim devices asynchronously in batch.
+      # Request to claim devices asynchronously in batch. Claiming a device adds the
+      # device to zero-touch enrollment and shows the device in the customer's view
+      # of the portal.
       class ClaimDevicesRequest
         include Google::Apis::Core::Hashable
       
-        # List of claims.
+        # Required. A list of device claims.
         # Corresponds to the JSON property `claims`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::PartnerClaim>]
         attr_accessor :claims
@@ -624,21 +626,27 @@ module Google
         end
       end
       
-      # Long running operation metadata.
+      # Tracks the status of a long-running operation to asynchronously update a
+      # batch of reseller metadata attached to devices. To learn more, read
+      # [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
       class DevicesLongRunningOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Number of devices parsed in your requests.
+        # The number of metadata updates in the operation. This might be different
+        # from the number of updates in the request if the API can't parse some of
+        # the updates.
         # Corresponds to the JSON property `devicesCount`
         # @return [Fixnum]
         attr_accessor :devices_count
       
-        # The overall processing status.
+        # The processing status of the operation.
         # Corresponds to the JSON property `processingStatus`
         # @return [String]
         attr_accessor :processing_status
       
-        # Processing progress from 0 to 100.
+        # The processing progress of the operation. Measured as a number from 0 to
+        # 100. A value of 10O doesnt always mean the operation completed—check for
+        # the inclusion of a `done` field.
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
@@ -655,17 +663,21 @@ module Google
         end
       end
       
-      # Long running operation response.
+      # Tracks the status of a long-running operation to claim, unclaim, or attach
+      # metadata to devices. To learn more, read
+      # [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
       class DevicesLongRunningOperationResponse
         include Google::Apis::Core::Hashable
       
-        # Processing status for each device.
-        # One `PerDeviceStatus` per device. The order is the same as in your requests.
+        # The processing status for each device in the operation.
+        # One `PerDeviceStatus` per device. The list order matches the items in the
+        # original request.
         # Corresponds to the JSON property `perDeviceStatus`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::OperationPerDevice>]
         attr_accessor :per_device_status
       
-        # Number of succeesfully processed ones.
+        # A summary of how many items in the operation the server processed
+        # successfully. Updated as the operation progresses.
         # Corresponds to the JSON property `successCount`
         # @return [Fixnum]
         attr_accessor :success_count
@@ -750,12 +762,13 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Number of devices to show.
+        # Required. The maximum number of devices to show in a page of results. Must
+        # be between 1 and 100 inclusive.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Page token.
+        # A token specifying which result page to return.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -781,7 +794,8 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # Page token of the next page.
+        # A token used to access the next page of results. Omitted if no further
+        # results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -801,22 +815,23 @@ module Google
       class FindDevicesByOwnerRequest
         include Google::Apis::Core::Hashable
       
-        # List of customer IDs to search for.
+        # Required. The list of customer IDs to search for.
         # Corresponds to the JSON property `customerId`
         # @return [Array<Fixnum>]
         attr_accessor :customer_id
       
-        # The number of devices to show in the result.
+        # Required. The maximum number of devices to show in a page of results. Must
+        # be between 1 and 100 inclusive.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Page token.
+        # A token specifying which result page to return.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
       
-        # The section type.
+        # Required. The section type of the device's provisioning record.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -838,12 +853,13 @@ module Google
       class FindDevicesByOwnerResponse
         include Google::Apis::Core::Hashable
       
-        # Devices found.
+        # The customer's devices.
         # Corresponds to the JSON property `devices`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # Page token of the next page.
+        # A token used to access the next page of results.
+        # Omitted if no further results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -863,7 +879,7 @@ module Google
       class ListCustomersResponse
         include Google::Apis::Core::Hashable
       
-        # List of customers related to this partner.
+        # List of customers related to this reseller partner.
         # Corresponds to the JSON property `customers`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
         attr_accessor :customers
@@ -967,7 +983,8 @@ module Google
         end
       end
       
-      # Operation the server received for every device.
+      # A task for each device in the operation. Corresponds to each device
+      # change in the request.
       class OperationPerDevice
         include Google::Apis::Core::Hashable
       
@@ -976,7 +993,7 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::PartnerClaim]
         attr_accessor :claim
       
-        # Stores the processing result for each device.
+        # Captures the processing status for each device in the operation.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::PerDeviceStatusInBatch]
         attr_accessor :result
@@ -1008,7 +1025,7 @@ module Google
       class PartnerClaim
         include Google::Apis::Core::Hashable
       
-        # Customer ID to claim for.
+        # Required. The ID of the customer for whom the device is being claimed.
         # Corresponds to the JSON property `customerId`
         # @return [Fixnum]
         attr_accessor :customer_id
@@ -1025,7 +1042,7 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
       
-        # Section type to claim.
+        # Required. The section type of the device's provisioning record.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -1058,7 +1075,7 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Section type to unclaim.
+        # Required. The section type of the device's provisioning record.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -1075,26 +1092,26 @@ module Google
         end
       end
       
-      # Stores the processing result for each device.
+      # Captures the processing status for each device in the operation.
       class PerDeviceStatusInBatch
         include Google::Apis::Core::Hashable
       
-        # Device ID of the device if process succeeds.
+        # If processing succeeds, the device ID of the device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Error identifier.
+        # If processing fails, the error type.
         # Corresponds to the JSON property `errorIdentifier`
         # @return [String]
         attr_accessor :error_identifier
       
-        # Error message.
+        # If processing fails, a developer message explaining what went wrong.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
       
-        # Process result.
+        # The result status of the device after processing.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -1199,7 +1216,7 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # The section type to unclaim for.
+        # Required. The section type of the device's provisioning record.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
         attr_accessor :section_type
@@ -1220,7 +1237,7 @@ module Google
       class UnclaimDevicesRequest
         include Google::Apis::Core::Hashable
       
-        # List of devices to unclaim.
+        # Required. The list of devices to unclaim.
         # Corresponds to the JSON property `unclaims`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::PartnerUnclaim>]
         attr_accessor :unclaims
@@ -1239,7 +1256,7 @@ module Google
       class UpdateDeviceMetadataInBatchRequest
         include Google::Apis::Core::Hashable
       
-        # List of metadata updates.
+        # Required. The list of metadata updates.
         # Corresponds to the JSON property `updates`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::UpdateMetadataArguments>]
         attr_accessor :updates

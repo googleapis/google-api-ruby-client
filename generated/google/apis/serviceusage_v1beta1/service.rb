@@ -134,7 +134,8 @@ module Google
         # @param [String] parent
         #   Parent to enable services on.
         #   An example name would be:
-        #   projects/123
+        #   `projects/123`
+        #   where `123` is the project number (not project ID).
         #   The `BatchEnableServices` method currently only supports projects.
         # @param [Google::Apis::ServiceusageV1beta1::BatchEnableServicesRequest] batch_enable_services_request_object
         # @param [String] fields
@@ -177,7 +178,8 @@ module Google
         #   Name of the consumer and service to disable the service on.
         #   The enable and disable methods currently only support projects.
         #   An example name would be:
-        #   projects/123/services/serviceusage.googleapis.com
+        #   `projects/123/services/serviceusage.googleapis.com`
+        #   where `123` is the project number (not project ID).
         # @param [Google::Apis::ServiceusageV1beta1::DisableServiceRequest] disable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -217,7 +219,8 @@ module Google
         #   Enabling a service requires that the service is public or is shared with
         #   the user enabling the service.
         #   An example name would be:
-        #   projects/123/services/serviceusage.googleapis.com
+        #   `projects/123/services/serviceusage.googleapis.com`
+        #   where `123` is the project number (not project ID).
         # @param [Google::Apis::ServiceusageV1beta1::EnableServiceRequest] enable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -252,7 +255,8 @@ module Google
         # @param [String] name
         #   Name of the consumer and service to get the `ConsumerState` for.
         #   An example name would be:
-        #   projects/123/services/serviceusage.googleapis.com
+        #   `projects/123/services/serviceusage.googleapis.com`
+        #   where `123` is the project number (not project ID).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -290,7 +294,8 @@ module Google
         # @param [String] parent
         #   Parent to search for services on.
         #   An example name would be:
-        #   projects/123
+        #   `projects/123`
+        #   where `123` is the project number (not project ID).
         # @param [String] filter
         #   Only list services that conform to the given filter.
         #   The allowed filter strings are `state:ENABLED` and `state:DISABLED`.

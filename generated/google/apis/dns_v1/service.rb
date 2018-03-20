@@ -60,6 +60,9 @@ module Google
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or id.
         # @param [Google::Apis::DnsV1::Change] change_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -81,7 +84,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_change(project, managed_zone, change_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_change(project, managed_zone, change_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/managedZones/{managedZone}/changes', options)
           command.request_representation = Google::Apis::DnsV1::Change::Representation
           command.request_object = change_object
@@ -89,6 +92,7 @@ module Google
           command.response_class = Google::Apis::DnsV1::Change
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -104,6 +108,9 @@ module Google
         # @param [String] change_id
         #   The identifier of the requested change, from a previous
         #   ResourceRecordSetsChangeResponse.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -125,13 +132,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_change(project, managed_zone, change_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_change(project, managed_zone, change_id, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/changes/{changeId}', options)
           command.response_representation = Google::Apis::DnsV1::Change::Representation
           command.response_class = Google::Apis::DnsV1::Change
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.params['changeId'] = change_id unless change_id.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -191,10 +199,210 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch the representation of an existing DnsKey.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
+        # @param [String] dns_key_id
+        #   The identifier of the requested DnsKey.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] digest_type
+        #   An optional comma-separated list of digest types to compute and display for
+        #   key signing keys. If omitted, the recommended digest type will be computed and
+        #   displayed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::DnsKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::DnsKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_dns_key(project, managed_zone, dns_key_id, client_operation_id: nil, digest_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}', options)
+          command.response_representation = Google::Apis::DnsV1::DnsKey::Representation
+          command.response_class = Google::Apis::DnsV1::DnsKey
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.params['dnsKeyId'] = dns_key_id unless dns_key_id.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['digestType'] = digest_type unless digest_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enumerate DnsKeys to a ResourceRecordSet collection.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
+        # @param [String] digest_type
+        #   An optional comma-separated list of digest types to compute and display for
+        #   key signing keys. If omitted, the recommended digest type will be computed and
+        #   displayed.
+        # @param [Fixnum] max_results
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
+        # @param [String] page_token
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::DnsKeysListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::DnsKeysListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_dns_keys(project, managed_zone, digest_type: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/dnsKeys', options)
+          command.response_representation = Google::Apis::DnsV1::DnsKeysListResponse::Representation
+          command.response_class = Google::Apis::DnsV1::DnsKeysListResponse
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['digestType'] = digest_type unless digest_type.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch the representation of an existing Operation.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request.
+        # @param [String] operation
+        #   Identifies the operation addressed by this request.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_managed_zone_operation(project, managed_zone, operation, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/operations/{operation}', options)
+          command.response_representation = Google::Apis::DnsV1::Operation::Representation
+          command.response_class = Google::Apis::DnsV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.params['operation'] = operation unless operation.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enumerate Operations for the given ManagedZone.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request.
+        # @param [Fixnum] max_results
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
+        # @param [String] page_token
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
+        # @param [String] sort_by
+        #   Sorting criterion. The only supported values are START_TIME and ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::ManagedZoneOperationsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::ManagedZoneOperationsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_managed_zone_operations(project, managed_zone, max_results: nil, page_token: nil, sort_by: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/operations', options)
+          command.response_representation = Google::Apis::DnsV1::ManagedZoneOperationsListResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ManagedZoneOperationsListResponse
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['sortBy'] = sort_by unless sort_by.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -216,13 +424,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_managed_zone(project, managed_zone_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_managed_zone(project, managed_zone_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, '{project}/managedZones', options)
           command.request_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.request_object = managed_zone_object
           command.response_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.response_class = Google::Apis::DnsV1::ManagedZone
           command.params['project'] = project unless project.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -235,6 +444,9 @@ module Google
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or id.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -256,10 +468,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_managed_zone(project, managed_zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_managed_zone(project, managed_zone, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/managedZones/{managedZone}', options)
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -272,6 +485,9 @@ module Google
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or id.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,12 +509,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_managed_zone(project, managed_zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_managed_zone(project, managed_zone, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}/managedZones/{managedZone}', options)
           command.response_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.response_class = Google::Apis::DnsV1::ManagedZone
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -351,9 +568,104 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Update an existing ManagedZone. This method supports patch semantics.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
+        # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_managed_zone(project, managed_zone, managed_zone_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, '{project}/managedZones/{managedZone}', options)
+          command.request_representation = Google::Apis::DnsV1::ManagedZone::Representation
+          command.request_object = managed_zone_object
+          command.response_representation = Google::Apis::DnsV1::Operation::Representation
+          command.response_class = Google::Apis::DnsV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update an existing ManagedZone.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
+        # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_managed_zone(project, managed_zone, managed_zone_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, '{project}/managedZones/{managedZone}', options)
+          command.request_representation = Google::Apis::DnsV1::ManagedZone::Representation
+          command.request_object = managed_zone_object
+          command.response_representation = Google::Apis::DnsV1::Operation::Representation
+          command.response_class = Google::Apis::DnsV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetch the representation of an existing Project.
         # @param [String] project
         #   Identifies the project addressed by this request.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -375,11 +687,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_project(project, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{project}', options)
           command.response_representation = Google::Apis::DnsV1::Project::Representation
           command.response_class = Google::Apis::DnsV1::Project
           command.params['project'] = project unless project.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

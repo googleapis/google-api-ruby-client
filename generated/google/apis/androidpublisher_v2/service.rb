@@ -1496,7 +1496,7 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production" or "rollout".
+        #   production", "rollout" or "internal".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1539,7 +1539,7 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production" or "rollout".
+        #   production", "rollout" or "internal".
         # @param [Google::Apis::AndroidpublisherV2::Testers] testers_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1585,7 +1585,7 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production" or "rollout".
+        #   production", "rollout" or "internal".
         # @param [Google::Apis::AndroidpublisherV2::Testers] testers_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1632,7 +1632,7 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production" or "rollout".
+        #   production", "rollout" or "internal".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1716,7 +1716,7 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production" or "rollout".
+        #   production", "rollout" or "internal".
         # @param [Google::Apis::AndroidpublisherV2::Track] track_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1764,7 +1764,7 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track to read or modify. Acceptable values are: "alpha", "beta", "
-        #   production" or "rollout".
+        #   production", "rollout" or "internal".
         # @param [Google::Apis::AndroidpublisherV2::Track] track_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

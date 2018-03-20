@@ -872,9 +872,6 @@ module Google
       # <pre><code>&#91;display text]&#91;fully.qualified.proto.name]</code></pre>
       # Text can be excluded from doc using the following notation:
       # <pre><code>&#40;-- internal comment --&#41;</code></pre>
-      # Comments can be made conditional using a visibility label. The below
-      # text will be only rendered if the `BETA` label is available:
-      # <pre><code>&#40;--BETA: comment for BETA users --&#41;</code></pre>
       # A few directives are available in documentation. Note that
       # directives must appear on a single line to be properly
       # identified. The `include` directive includes a markdown file from
@@ -3046,9 +3043,6 @@ module Google
         # <pre><code>&#91;display text]&#91;fully.qualified.proto.name]</code></pre>
         # Text can be excluded from doc using the following notation:
         # <pre><code>&#40;-- internal comment --&#41;</code></pre>
-        # Comments can be made conditional using a visibility label. The below
-        # text will be only rendered if the `BETA` label is available:
-        # <pre><code>&#40;--BETA: comment for BETA users --&#41;</code></pre>
         # A few directives are available in documentation. Note that
         # directives must appear on a single line to be properly
         # identified. The `include` directive includes a markdown file from
@@ -3285,27 +3279,6 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1::Usage]
         attr_accessor :usage
       
-        # `Visibility` defines restrictions for the visibility of service
-        # elements.  Restrictions are specified using visibility labels
-        # (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-        # Users and projects can have access to more than one visibility label. The
-        # effective visibility for multiple labels is the union of each label's
-        # elements, plus any unrestricted elements.
-        # If an element and its parents have no restrictions, visibility is
-        # unconditionally granted.
-        # Example:
-        # visibility:
-        # rules:
-        # - selector: google.calendar.Calendar.EnhancedSearch
-        # restriction: TRUSTED_TESTER
-        # - selector: google.calendar.Calendar.Delegate
-        # restriction: GOOGLE_INTERNAL
-        # Here, all methods are publicly visible except for the restricted methods
-        # EnhancedSearch and Delegate.
-        # Corresponds to the JSON property `visibility`
-        # @return [Google::Apis::ServiceconsumermanagementV1::Visibility]
-        attr_accessor :visibility
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3340,7 +3313,6 @@ module Google
           @title = args[:title] if args.key?(:title)
           @types = args[:types] if args.key?(:types)
           @usage = args[:usage] if args.key?(:usage)
-          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -3677,7 +3649,7 @@ module Google
       
         # Google Cloud API names of services that will be activated on this project
         # during provisioning.  If any of these services can not be activated,
-        # the `addTenantProject` method will fail.
+        # request will fail.
         # For example: 'compute.googleapis.com','cloudfunctions.googleapis.com'
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
@@ -3905,79 +3877,6 @@ module Google
           @allow_unregistered_calls = args[:allow_unregistered_calls] if args.key?(:allow_unregistered_calls)
           @selector = args[:selector] if args.key?(:selector)
           @skip_service_control = args[:skip_service_control] if args.key?(:skip_service_control)
-        end
-      end
-      
-      # `Visibility` defines restrictions for the visibility of service
-      # elements.  Restrictions are specified using visibility labels
-      # (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-      # Users and projects can have access to more than one visibility label. The
-      # effective visibility for multiple labels is the union of each label's
-      # elements, plus any unrestricted elements.
-      # If an element and its parents have no restrictions, visibility is
-      # unconditionally granted.
-      # Example:
-      # visibility:
-      # rules:
-      # - selector: google.calendar.Calendar.EnhancedSearch
-      # restriction: TRUSTED_TESTER
-      # - selector: google.calendar.Calendar.Delegate
-      # restriction: GOOGLE_INTERNAL
-      # Here, all methods are publicly visible except for the restricted methods
-      # EnhancedSearch and Delegate.
-      class Visibility
-        include Google::Apis::Core::Hashable
-      
-        # A list of visibility rules that apply to individual API elements.
-        # **NOTE:** All service configuration rules follow "last one wins" order.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ServiceconsumermanagementV1::VisibilityRule>]
-        attr_accessor :rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rules = args[:rules] if args.key?(:rules)
-        end
-      end
-      
-      # A visibility rule provides visibility configuration for an individual API
-      # element.
-      class VisibilityRule
-        include Google::Apis::Core::Hashable
-      
-        # A comma-separated list of visibility labels that apply to the `selector`.
-        # Any of the listed labels can be used to grant the visibility.
-        # If a rule has multiple labels, removing one of the labels but not all of
-        # them can break clients.
-        # Example:
-        # visibility:
-        # rules:
-        # - selector: google.calendar.Calendar.EnhancedSearch
-        # restriction: GOOGLE_INTERNAL, TRUSTED_TESTER
-        # Removing GOOGLE_INTERNAL from this restriction will break clients that
-        # rely on this method and only had access to it through GOOGLE_INTERNAL.
-        # Corresponds to the JSON property `restriction`
-        # @return [String]
-        attr_accessor :restriction
-      
-        # Selects methods, messages, fields, enums, etc. to which this rule applies.
-        # Refer to selector for syntax details.
-        # Corresponds to the JSON property `selector`
-        # @return [String]
-        attr_accessor :selector
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @restriction = args[:restriction] if args.key?(:restriction)
-          @selector = args[:selector] if args.key?(:selector)
         end
       end
     end
