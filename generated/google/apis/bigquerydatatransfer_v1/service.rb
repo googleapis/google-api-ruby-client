@@ -161,7 +161,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get information about a location.
+        # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
         # @param [String] fields

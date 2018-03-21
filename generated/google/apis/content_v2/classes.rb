@@ -1969,7 +1969,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # A list of GMB account which are available to the merchant.
+        # A list of GMB accounts which are available to the merchant.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Array<Google::Apis::ContentV2::GmbAccountsGmbAccount>]
         attr_accessor :gmb_accounts
@@ -2004,7 +2004,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Type of the GMB account (User or Business).
+        # The type of the GMB account (User or Business).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2540,12 +2540,12 @@ module Google
       class LiaAboutPageSettings
         include Google::Apis::Core::Hashable
       
-        # The status verification process.
+        # The status of the verification process for the About page.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # The about URL.
+        # The URL for the About page.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2565,7 +2565,7 @@ module Google
       class LiaCountrySettings
         include Google::Apis::Core::Hashable
       
-        # The about page settings.
+        # The settings for the About page.
         # Corresponds to the JSON property `about`
         # @return [Google::Apis::ContentV2::LiaAboutPageSettings]
         attr_accessor :about
@@ -2581,7 +2581,7 @@ module Google
         attr_accessor :hosted_local_storefront_active
         alias_method :hosted_local_storefront_active?, :hosted_local_storefront_active
       
-        # LIA inventory settings.
+        # LIA inventory verification settings.
         # Corresponds to the JSON property `inventory`
         # @return [Google::Apis::ContentV2::LiaInventorySettings]
         attr_accessor :inventory
@@ -2616,12 +2616,12 @@ module Google
       class LiaInventorySettings
         include Google::Apis::Core::Hashable
       
-        # The email of contact which will be contacted during the verification process.
+        # The email of the contact for the inventory verification process.
         # Corresponds to the JSON property `inventoryVerificationContactEmail`
         # @return [String]
         attr_accessor :inventory_verification_contact_email
       
-        # The name of contact which will be contacted during the verification process.
+        # The name of the contact for the inventory verification process.
         # Corresponds to the JSON property `inventoryVerificationContactName`
         # @return [String]
         attr_accessor :inventory_verification_contact_name
@@ -2874,7 +2874,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # A list of GMB account which are available to the merchant.
+        # A list of GMB accounts which are available to the merchant.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Array<Google::Apis::ContentV2::GmbAccountsGmbAccount>]
         attr_accessor :gmb_accounts
@@ -2907,7 +2907,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The token for the retrieval of the next page of Lia settings.
+        # The token for the retrieval of the next page of LIA settings.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3297,7 +3297,8 @@ module Google
       class OrderCustomer
         include Google::Apis::Core::Hashable
       
-        # Email address of the customer.
+        # Email address that should be used for order related communications. In certain
+        # cases this might not be a real users email, but a proxy email.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -6097,7 +6098,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The identifier of the merchant's store.
+        # The identifier of the merchant's store. Either a storeCode inserted via the
+        # API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -6159,7 +6161,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The identifier of the merchant's store.
+        # The identifier of the merchant's store. Either a storeCode inserted via the
+        # API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -6226,7 +6229,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The identifier of the merchant's store.
+        # The identifier of the merchant's store. Either a storeCode inserted via the
+        # API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -6325,7 +6329,8 @@ module Google
         # @return [String]
         attr_accessor :sale_id
       
-        # The identifier of the merchant's store.
+        # The identifier of the merchant's store. Either a storeCode inserted via the
+        # API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -6393,7 +6398,8 @@ module Google
         # @return [String]
         attr_accessor :sale_id
       
-        # The identifier of the merchant's store.
+        # The identifier of the merchant's store. Either a storeCode inserted via the
+        # API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -6466,7 +6472,8 @@ module Google
         # @return [String]
         attr_accessor :sale_id
       
-        # The identifier of the merchant's store.
+        # The identifier of the merchant's store. Either a storeCode inserted via the
+        # API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code

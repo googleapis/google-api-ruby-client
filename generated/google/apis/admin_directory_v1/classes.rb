@@ -727,7 +727,7 @@ module Google
         # @return [DateTime]
         attr_accessor :support_end_date
       
-        # 
+        # Trusted Platform Module (TPM) (Read-only)
         # Corresponds to the JSON property `tpmVersionInfo`
         # @return [Google::Apis::AdminDirectoryV1::ChromeOsDevice::TpmVersionInfo]
         attr_accessor :tpm_version_info
@@ -807,7 +807,7 @@ module Google
           # @return [DateTime]
           attr_accessor :create_time
         
-          # File downlod URL
+          # File download URL
           # Corresponds to the JSON property `downloadUrl`
           # @return [String]
           attr_accessor :download_url
@@ -860,36 +860,36 @@ module Google
           end
         end
         
-        # 
+        # Trusted Platform Module (TPM) (Read-only)
         class TpmVersionInfo
           include Google::Apis::Core::Hashable
         
-          # 
+          # TPM family.
           # Corresponds to the JSON property `family`
           # @return [String]
           attr_accessor :family
         
-          # 
+          # TPM firmware version.
           # Corresponds to the JSON property `firmwareVersion`
           # @return [String]
           attr_accessor :firmware_version
         
-          # 
+          # TPM manufacturer code.
           # Corresponds to the JSON property `manufacturer`
           # @return [String]
           attr_accessor :manufacturer
         
-          # 
+          # TPM specification level.
           # Corresponds to the JSON property `specLevel`
           # @return [String]
           attr_accessor :spec_level
         
-          # 
+          # TPM model number.
           # Corresponds to the JSON property `tpmModel`
           # @return [String]
           attr_accessor :tpm_model
         
-          # 
+          # Vendor-specific information such as Vendor ID.
           # Corresponds to the JSON property `vendorSpecific`
           # @return [String]
           attr_accessor :vendor_specific
@@ -1620,7 +1620,8 @@ module Google
       class MembersHasMember
         include Google::Apis::Core::Hashable
       
-        # Identifies whether given user is a member or not.
+        # Identifies whether the given user is a member of the group. Membership can be
+        # direct or nested.
         # Corresponds to the JSON property `isMember`
         # @return [Boolean]
         attr_accessor :is_member

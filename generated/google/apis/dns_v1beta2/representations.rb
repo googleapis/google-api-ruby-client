@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ManagedZonesDeleteResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ManagedZonesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -247,14 +241,6 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DnsV1beta2::Operation, decorator: Google::Apis::DnsV1beta2::Operation::Representation
-      
-        end
-      end
-      
-      class ManagedZonesDeleteResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :header, as: 'header', class: Google::Apis::DnsV1beta2::ResponseHeader, decorator: Google::Apis::DnsV1beta2::ResponseHeader::Representation
       
         end
       end

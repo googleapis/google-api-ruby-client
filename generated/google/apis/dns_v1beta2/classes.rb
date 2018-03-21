@@ -502,25 +502,6 @@ module Google
       end
       
       # 
-      class ManagedZonesDeleteResponse
-        include Google::Apis::Core::Hashable
-      
-        # Elements common to every response.
-        # Corresponds to the JSON property `header`
-        # @return [Google::Apis::DnsV1beta2::ResponseHeader]
-        attr_accessor :header
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @header = args[:header] if args.key?(:header)
-        end
-      end
-      
-      # 
       class ManagedZonesListResponse
         include Google::Apis::Core::Hashable
       

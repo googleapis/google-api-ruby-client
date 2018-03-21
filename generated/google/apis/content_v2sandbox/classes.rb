@@ -339,7 +339,8 @@ module Google
       class OrderCustomer
         include Google::Apis::Core::Hashable
       
-        # Email address of the customer.
+        # Email address that should be used for order related communications. In certain
+        # cases this might not be a real users email, but a proxy email.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email

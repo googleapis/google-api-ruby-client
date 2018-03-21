@@ -1263,7 +1263,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves and updates the Lia settings of multiple accounts in a single
+        # Retrieves and/or updates the LIA settings of multiple accounts in a single
         # request.
         # @param [Google::Apis::ContentV2::LiasettingsCustomBatchRequest] liasettings_custom_batch_request_object
         # @param [Boolean] dry_run
@@ -1302,13 +1302,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the Lia settings of the account.
+        # Retrieves the LIA settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
         #   of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which to get/update Lia settings.
+        #   The ID of the account for which to get or update LIA settings.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1342,13 +1342,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of accesable Google My Business accounts.
+        # Retrieves the list of accessible Google My Business accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
         #   of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which to retrieve the accessible Google My Business
+        #   The ID of the account for which to retrieve accessible Google My Business
         #   accounts.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1383,11 +1383,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Lia settings of the sub-accounts in your Merchant Center account.
+        # Lists the LIA settings of the sub-accounts in your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. This must be a multi-client account.
         # @param [Fixnum] max_results
-        #   The maximum number of Lia settings to return in the response, used for paging.
+        #   The maximum number of LIA settings to return in the response, used for paging.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -1424,13 +1424,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the Lia settings of the account. This method supports patch semantics.
+        # Updates the LIA settings of the account. This method supports patch semantics.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
         #   of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which to get/update Lia settings.
+        #   The ID of the account for which to get or update LIA settings.
         # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -1470,7 +1470,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests access to a specified Google By Business account.
+        # Requests access to a specified Google My Business account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
@@ -1478,7 +1478,7 @@ module Google
         # @param [Fixnum] account_id
         #   The ID of the account for which GMB access is requested.
         # @param [String] gmb_email
-        #   The email of the Google My Business Account.
+        #   The email of the Google My Business account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1513,7 +1513,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests the inventory validation for the specified country.
+        # Requests inventory validation for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
@@ -1522,7 +1522,7 @@ module Google
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
         # @param [String] country
-        #   The country for which the inventory validation is requested.
+        #   The country for which inventory validation is requested.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1557,7 +1557,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the inventory validation verification for the specified country.
+        # Sets the inventory verification contract for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
@@ -1566,13 +1566,13 @@ module Google
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
         # @param [String] contact_email
-        #   The email of the inventory check contact.
+        #   The email of the inventory verification contact.
         # @param [String] contact_name
         #   The name of the inventory verification contact.
         # @param [String] country
-        #   The country for which the inventory verification is requested.
+        #   The country for which inventory verification is requested.
         # @param [String] language
-        #   The country for which the inventory verification is requested.
+        #   The language for which inventory verification is requested.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1610,13 +1610,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the Lia settings of the account.
+        # Updates the LIA settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and accountId must be the ID
         #   of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which to get/update Lia settings.
+        #   The ID of the account for which to get or update LIA settings.
         # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -2549,7 +2549,7 @@ module Google
         
         # Deletes a store for the given merchant.
         # @param [Fixnum] merchant_id
-        #   The ID of the POS provider.
+        #   The ID of the POS or inventory data provider.
         # @param [Fixnum] target_merchant_id
         #   The ID of the target merchant.
         # @param [String] store_code
@@ -2591,7 +2591,7 @@ module Google
         
         # Retrieves information about the given store.
         # @param [Fixnum] merchant_id
-        #   The ID of the POS provider.
+        #   The ID of the POS or inventory data provider.
         # @param [Fixnum] target_merchant_id
         #   The ID of the target merchant.
         # @param [String] store_code
@@ -2632,7 +2632,7 @@ module Google
         
         # Creates a store for the given merchant.
         # @param [Fixnum] merchant_id
-        #   The ID of the POS provider.
+        #   The ID of the POS or inventory data provider.
         # @param [Fixnum] target_merchant_id
         #   The ID of the target merchant.
         # @param [Google::Apis::ContentV2::PosStore] pos_store_object
@@ -2676,7 +2676,7 @@ module Google
         
         # Submit inventory for the given merchant.
         # @param [Fixnum] merchant_id
-        #   The ID of the POS provider.
+        #   The ID of the POS or inventory data provider.
         # @param [Fixnum] target_merchant_id
         #   The ID of the target merchant.
         # @param [Google::Apis::ContentV2::PosInventoryRequest] pos_inventory_request_object
@@ -2720,7 +2720,7 @@ module Google
         
         # Lists the stores of the target merchant.
         # @param [Fixnum] merchant_id
-        #   The ID of the POS provider.
+        #   The ID of the POS or inventory data provider.
         # @param [Fixnum] target_merchant_id
         #   The ID of the target merchant.
         # @param [String] fields
@@ -2758,7 +2758,7 @@ module Google
         
         # Submit a sale event for the given merchant.
         # @param [Fixnum] merchant_id
-        #   The ID of the POS provider.
+        #   The ID of the POS or inventory data provider.
         # @param [Fixnum] target_merchant_id
         #   The ID of the target merchant.
         # @param [Google::Apis::ContentV2::PosSaleRequest] pos_sale_request_object

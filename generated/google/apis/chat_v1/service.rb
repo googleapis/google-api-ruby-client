@@ -22,7 +22,7 @@ module Google
     module ChatV1
       # Hangouts Chat API
       #
-      # 
+      # Create bots and extend the new Hangouts Chat.
       #
       # @example
       #    require 'google/apis/chat_v1'

@@ -1286,11 +1286,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks Membership of an user within a Group
+        # Checks whether the given user is a member of the group. Membership can be
+        # direct or nested.
         # @param [String] group_key
-        #   Email or immutable Id of the group
+        #   Identifies the group in the API request. The value can be the group's email
+        #   address, group alias, or the unique group ID.
         # @param [String] member_key
-        #   Email or immutable Id of the member
+        #   Identifies the user member in the API request. The value can be the user's
+        #   primary email address, alias, or unique ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2320,6 +2323,10 @@ module Google
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [Fixnum] max_results
+        #   Maximum number of results to return.
+        # @param [String] page_token
+        #   Token to specify the next page in the list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2341,11 +2348,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_buildings(customer, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_resource_buildings(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/buildings', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Buildings::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Buildings
           command.params['customer'] = customer unless customer.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2570,8 +2579,10 @@ module Google
         #   String query used to filter results. Should be of the form "field operator
         #   value" where field can be any of supported fields and operators can be any of
         #   supported operations. Operators include '=' for exact match and ':' for prefix
-        #   match where applicable. For prefix match, the value should always be followed
-        #   by a *.
+        #   match or HAS match where applicable. For prefix match, the value should always
+        #   be followed by a *. Supported fields include generatedResourceName, name,
+        #   buildingId, featureInstances.feature.name. For example buildingId=US-NYC-9TH
+        #   AND featureInstances.feature.name:Phone.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2817,6 +2828,8 @@ module Google
         # @param [String] customer
         #   The unique ID for the customer's G Suite account. As an account administrator,
         #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [Fixnum] max_results
+        #   Maximum number of results to return.
         # @param [String] page_token
         #   Token to specify the next page in the list.
         # @param [String] fields
@@ -2840,11 +2853,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_features(customer, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_resource_features(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/features', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::Features::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::Features
           command.params['customer'] = customer unless customer.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

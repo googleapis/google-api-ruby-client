@@ -460,18 +460,16 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DnsV2beta1::ManagedZonesDeleteResponse] parsed result object
+        # @yieldparam result [NilClass] No result returned for this method
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DnsV2beta1::ManagedZonesDeleteResponse]
+        # @return [void]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_managed_zone(project, managed_zone, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{project}/managedZones/{managedZone}', options)
-          command.response_representation = Google::Apis::DnsV2beta1::ManagedZonesDeleteResponse::Representation
-          command.response_class = Google::Apis::DnsV2beta1::ManagedZonesDeleteResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
