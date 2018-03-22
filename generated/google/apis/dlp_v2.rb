@@ -18,16 +18,16 @@ require 'google/apis/dlp_v2/representations.rb'
 
 module Google
   module Apis
-    # Cloud DLP API
+    # Cloud Data Loss Prevention (DLP) API
     #
-    # The Google Data Loss Prevention API provides methods for detection of privacy-
-    # sensitive fragments in text, images, and Google Cloud Platform storage
+    # Provides methods for detection, risk analysis, and de-identification of
+    # privacy-sensitive fragments in text, images, and Google Cloud Platform storage
     # repositories.
     #
     # @see https://cloud.google.com/dlp/docs/
     module DlpV2
       VERSION = 'V2'
-      REVISION = '20180317'
+      REVISION = '20180320'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

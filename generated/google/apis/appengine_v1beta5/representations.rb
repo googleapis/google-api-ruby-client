@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateVersionMetadataV1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateVersionMetadataV1Alpha
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -385,6 +391,13 @@ module Google
         end
       end
       
+      class CreateVersionMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_build_id, as: 'cloudBuildId'
+        end
+      end
+      
       class CreateVersionMetadataV1Alpha
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -433,6 +446,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_id, as: 'configId'
           property :name, as: 'name'
+          property :rollout_strategy, as: 'rolloutStrategy'
         end
       end
       
@@ -625,6 +639,8 @@ module Google
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_version_metadata, as: 'createVersionMetadata', class: Google::Apis::AppengineV1beta5::CreateVersionMetadataV1, decorator: Google::Apis::AppengineV1beta5::CreateVersionMetadataV1::Representation
+      
           property :end_time, as: 'endTime'
           property :ephemeral_message, as: 'ephemeralMessage'
           property :insert_time, as: 'insertTime'

@@ -341,6 +341,27 @@ module Google
       end
       
       # Metadata for the given google.longrunning.Operation during a google.appengine.
+      # v1.CreateVersionRequest.
+      class CreateVersionMetadataV1
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Build ID if one was created as part of the version create. @
+        # OutputOnly
+        # Corresponds to the JSON property `cloudBuildId`
+        # @return [String]
+        attr_accessor :cloud_build_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation during a google.appengine.
       # v1alpha.CreateVersionRequest.
       class CreateVersionMetadataV1Alpha
         include Google::Apis::Core::Hashable
@@ -481,9 +502,10 @@ module Google
       
       # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
       # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
-      # via an NGINX proxy.The fields here refer to the name and configuration id of a
-      # "service" resource in the Service Management API (https://cloud.google.com/
-      # service-management/overview).
+      # via an NGINX proxy. Only valid for App Engine Flexible environment deployments.
+      # .The fields here refer to the name and configuration id of a "service"
+      # resource in the Service Management API (https://cloud.google.com/service-
+      # management/overview).
       class EndpointsApiService
         include Google::Apis::Core::Hashable
       
@@ -502,6 +524,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED,
+        # config_id must be omitted.
+        # Corresponds to the JSON property `rolloutStrategy`
+        # @return [String]
+        attr_accessor :rollout_strategy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -510,6 +538,7 @@ module Google
         def update!(**args)
           @config_id = args[:config_id] if args.key?(:config_id)
           @name = args[:name] if args.key?(:name)
+          @rollout_strategy = args[:rollout_strategy] if args.key?(:rollout_strategy)
         end
       end
       
@@ -1300,6 +1329,12 @@ module Google
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       
+        # Metadata for the given google.longrunning.Operation during a google.appengine.
+        # v1.CreateVersionRequest.
+        # Corresponds to the JSON property `createVersionMetadata`
+        # @return [Google::Apis::AppengineV1beta4::CreateVersionMetadataV1]
+        attr_accessor :create_version_metadata
+      
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -1344,6 +1379,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_version_metadata = args[:create_version_metadata] if args.key?(:create_version_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -2036,9 +2072,10 @@ module Google
       
         # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
         # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
-        # via an NGINX proxy.The fields here refer to the name and configuration id of a
-        # "service" resource in the Service Management API (https://cloud.google.com/
-        # service-management/overview).
+        # via an NGINX proxy. Only valid for App Engine Flexible environment deployments.
+        # .The fields here refer to the name and configuration id of a "service"
+        # resource in the Service Management API (https://cloud.google.com/service-
+        # management/overview).
         # Corresponds to the JSON property `endpointsApiService`
         # @return [Google::Apis::AppengineV1beta4::EndpointsApiService]
         attr_accessor :endpoints_api_service

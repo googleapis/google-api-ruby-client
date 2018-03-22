@@ -586,6 +586,9 @@ module Google
         # This method only stores the service configuration. To roll out the service
         # configuration to backend systems please call
         # CreateServiceRollout.
+        # Only the 100 most recent service configurations and ones referenced by
+        # existing rollouts are kept for each service. The rest will be deleted
+        # eventually.
         # @param [String] service_name
         #   The name of the service.  See the [overview](/service-management/overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
@@ -702,6 +705,9 @@ module Google
         # generated service configuration. To rollout the service configuration to
         # other services,
         # please call CreateServiceRollout.
+        # Only the 100 most recent configuration sources and ones referenced by
+        # existing service configurtions are kept for each service. The rest will be
+        # deleted eventually.
         # Operation<response: SubmitConfigSourceResponse>
         # @param [String] service_name
         #   The name of the service.  See the [overview](/service-management/overview)
@@ -853,6 +859,9 @@ module Google
         # Please note that any previous pending and running Rollouts and associated
         # Operations will be automatically cancelled so that the latest Rollout will
         # not be blocked by previous Rollouts.
+        # Only the 100 most recent (in any state) and the last 10 successful (if not
+        # already part of the set of 100 most recent) rollouts are kept for each
+        # service. The rest will be deleted eventually.
         # Operation<response: Rollout>
         # @param [String] service_name
         #   The name of the service.  See the [overview](/service-management/overview)

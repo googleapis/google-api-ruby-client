@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudBuildOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class CpuUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateVersionMetadataV1
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -537,6 +549,14 @@ module Google
         end
       end
       
+      class CloudBuildOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_yaml_path, as: 'appYamlPath'
+          property :cloud_build_timeout, as: 'cloudBuildTimeout'
+        end
+      end
+      
       class ContainerInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -549,6 +569,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_window_length, as: 'aggregationWindowLength'
           property :target_utilization, as: 'targetUtilization'
+        end
+      end
+      
+      class CreateVersionMetadataV1
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_build_id, as: 'cloudBuildId'
         end
       end
       
@@ -576,6 +603,8 @@ module Google
       class Deployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_build_options, as: 'cloudBuildOptions', class: Google::Apis::AppengineV1::CloudBuildOptions, decorator: Google::Apis::AppengineV1::CloudBuildOptions::Representation
+      
           property :container, as: 'container', class: Google::Apis::AppengineV1::ContainerInfo, decorator: Google::Apis::AppengineV1::ContainerInfo::Representation
       
           hash :files, as: 'files', class: Google::Apis::AppengineV1::FileInfo, decorator: Google::Apis::AppengineV1::FileInfo::Representation
@@ -876,6 +905,8 @@ module Google
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_version_metadata, as: 'createVersionMetadata', class: Google::Apis::AppengineV1::CreateVersionMetadataV1, decorator: Google::Apis::AppengineV1::CreateVersionMetadataV1::Representation
+      
           property :end_time, as: 'endTime'
           property :ephemeral_message, as: 'ephemeralMessage'
           property :insert_time, as: 'insertTime'

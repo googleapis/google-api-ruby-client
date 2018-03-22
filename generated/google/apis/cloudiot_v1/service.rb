@@ -542,7 +542,7 @@ module Google
         #   Only updates the `device` fields indicated by this mask.
         #   The field mask must not be empty, and it must not contain fields that
         #   are immutable or only set by the server.
-        #   Mutable top-level fields: `credentials`, `enabled_state`, and `metadata`
+        #   Mutable top-level fields: `credentials`, `blocked`, and `metadata`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

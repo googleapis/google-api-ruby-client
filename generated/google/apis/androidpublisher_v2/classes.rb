@@ -1383,10 +1383,28 @@ module Google
         # @return [String]
         attr_accessor :developer_payload
       
+        # The email address of the user when the subscription was purchased. Only
+        # present for purchases made with 'Subscribe with Google'.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
         # Time at which the subscription will expire, in milliseconds since the Epoch.
         # Corresponds to the JSON property `expiryTimeMillis`
         # @return [Fixnum]
         attr_accessor :expiry_time_millis
+      
+        # The family name of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # The given name of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
       
         # This kind represents a subscriptionPurchase object in the androidpublisher
         # service.
@@ -1436,6 +1454,18 @@ module Google
         # @return [String]
         attr_accessor :price_currency_code
       
+        # The profile id of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
+        # Corresponds to the JSON property `profileId`
+        # @return [String]
+        attr_accessor :profile_id
+      
+        # The profile name of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
+        # Corresponds to the JSON property `profileName`
+        # @return [String]
+        attr_accessor :profile_name
+      
         # The type of purchase of the subscription. This field is only set if this
         # purchase was not made using the standard in-app billing flow. Possible values
         # are:
@@ -1465,13 +1495,18 @@ module Google
           @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
           @country_code = args[:country_code] if args.key?(:country_code)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+          @email_address = args[:email_address] if args.key?(:email_address)
           @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @given_name = args[:given_name] if args.key?(:given_name)
           @kind = args[:kind] if args.key?(:kind)
           @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
           @order_id = args[:order_id] if args.key?(:order_id)
           @payment_state = args[:payment_state] if args.key?(:payment_state)
           @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @profile_name = args[:profile_name] if args.key?(:profile_name)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
           @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)

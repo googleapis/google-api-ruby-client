@@ -394,18 +394,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Visibility
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VisibilityRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Api
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -983,8 +971,6 @@ module Google
       
           property :usage, as: 'usage', class: Google::Apis::ServiceuserV1::Usage, decorator: Google::Apis::ServiceuserV1::Usage::Representation
       
-          property :visibility, as: 'visibility', class: Google::Apis::ServiceuserV1::Visibility, decorator: Google::Apis::ServiceuserV1::Visibility::Representation
-      
         end
       end
       
@@ -1076,22 +1062,6 @@ module Google
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
           property :selector, as: 'selector'
           property :skip_service_control, as: 'skipServiceControl'
-        end
-      end
-      
-      class Visibility
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :rules, as: 'rules', class: Google::Apis::ServiceuserV1::VisibilityRule, decorator: Google::Apis::ServiceuserV1::VisibilityRule::Representation
-      
-        end
-      end
-      
-      class VisibilityRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :restriction, as: 'restriction'
-          property :selector, as: 'selector'
         end
       end
     end

@@ -498,6 +498,36 @@ module Google
         end
       end
       
+      # Options for the build operations performed as a part of the version deployment.
+      # Only applicable for App Engine flexible environment when creating a version
+      # using source code directly.
+      class CloudBuildOptions
+        include Google::Apis::Core::Hashable
+      
+        # Path to the yaml file used in deployment, used to determine runtime
+        # configuration details.Required for flexible environment builds.See https://
+        # cloud.google.com/appengine/docs/standard/python/config/appref for more details.
+        # Corresponds to the JSON property `appYamlPath`
+        # @return [String]
+        attr_accessor :app_yaml_path
+      
+        # The Cloud Build timeout used as part of any dependent builds performed by
+        # version creation. Defaults to 10 minutes.
+        # Corresponds to the JSON property `cloudBuildTimeout`
+        # @return [String]
+        attr_accessor :cloud_build_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_yaml_path = args[:app_yaml_path] if args.key?(:app_yaml_path)
+          @cloud_build_timeout = args[:cloud_build_timeout] if args.key?(:cloud_build_timeout)
+        end
+      end
+      
       # Docker image that is used to create a container and start a VM instance for
       # the version that you deploy. Only applicable for instances running in the App
       # Engine flexible environment.
@@ -543,6 +573,27 @@ module Google
         def update!(**args)
           @aggregation_window_length = args[:aggregation_window_length] if args.key?(:aggregation_window_length)
           @target_utilization = args[:target_utilization] if args.key?(:target_utilization)
+        end
+      end
+      
+      # Metadata for the given google.longrunning.Operation during a google.appengine.
+      # v1.CreateVersionRequest.
+      class CreateVersionMetadataV1
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Build ID if one was created as part of the version create. @
+        # OutputOnly
+        # Corresponds to the JSON property `cloudBuildId`
+        # @return [String]
+        attr_accessor :cloud_build_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_build_id = args[:cloud_build_id] if args.key?(:cloud_build_id)
         end
       end
       
@@ -615,6 +666,13 @@ module Google
       class Deployment
         include Google::Apis::Core::Hashable
       
+        # Options for the build operations performed as a part of the version deployment.
+        # Only applicable for App Engine flexible environment when creating a version
+        # using source code directly.
+        # Corresponds to the JSON property `cloudBuildOptions`
+        # @return [Google::Apis::AppengineV1::CloudBuildOptions]
+        attr_accessor :cloud_build_options
+      
         # Docker image that is used to create a container and start a VM instance for
         # the version that you deploy. Only applicable for instances running in the App
         # Engine flexible environment.
@@ -640,6 +698,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_build_options = args[:cloud_build_options] if args.key?(:cloud_build_options)
           @container = args[:container] if args.key?(:container)
           @files = args[:files] if args.key?(:files)
           @zip = args[:zip] if args.key?(:zip)
@@ -745,9 +804,10 @@ module Google
       
       # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
       # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
-      # via an NGINX proxy.The fields here refer to the name and configuration id of a
-      # "service" resource in the Service Management API (https://cloud.google.com/
-      # service-management/overview).
+      # via an NGINX proxy. Only valid for App Engine Flexible environment deployments.
+      # The fields here refer to the name and configuration id of a "service" resource
+      # in the Service Management API (https://cloud.google.com/service-management/
+      # overview).
       class EndpointsApiService
         include Google::Apis::Core::Hashable
       
@@ -1776,6 +1836,12 @@ module Google
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       
+        # Metadata for the given google.longrunning.Operation during a google.appengine.
+        # v1.CreateVersionRequest.
+        # Corresponds to the JSON property `createVersionMetadata`
+        # @return [Google::Apis::AppengineV1::CreateVersionMetadataV1]
+        attr_accessor :create_version_metadata
+      
         # Time that this operation completed.@OutputOnly
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -1820,6 +1886,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_version_metadata = args[:create_version_metadata] if args.key?(:create_version_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @ephemeral_message = args[:ephemeral_message] if args.key?(:ephemeral_message)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
@@ -2626,9 +2693,10 @@ module Google
       
         # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
         # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
-        # via an NGINX proxy.The fields here refer to the name and configuration id of a
-        # "service" resource in the Service Management API (https://cloud.google.com/
-        # service-management/overview).
+        # via an NGINX proxy. Only valid for App Engine Flexible environment deployments.
+        # The fields here refer to the name and configuration id of a "service" resource
+        # in the Service Management API (https://cloud.google.com/service-management/
+        # overview).
         # Corresponds to the JSON property `endpointsApiService`
         # @return [Google::Apis::AppengineV1::EndpointsApiService]
         attr_accessor :endpoints_api_service
