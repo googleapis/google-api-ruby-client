@@ -34,6 +34,6 @@ module Google
       end.strip
     rescue
       RUBY_PLATFORM
-    end
+    end.strip
   end
 end
