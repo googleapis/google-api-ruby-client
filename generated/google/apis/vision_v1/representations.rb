@@ -543,6 +543,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1OutputConfig, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1OutputConfig::Representation
       
+          collection :outputs, as: 'outputs', class: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1GcsDestination, decorator: Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1GcsDestination::Representation
+      
         end
       end
       

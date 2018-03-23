@@ -2208,6 +2208,11 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::WorkflowGraph]
         attr_accessor :graph
       
+        # Map from parameter names to values that were used for those parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
         # Output only. The workflow state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2233,6 +2238,7 @@ module Google
           @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
           @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
           @graph = args[:graph] if args.key?(:graph)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @state = args[:state] if args.key?(:state)
           @template = args[:template] if args.key?(:template)
           @version = args[:version] if args.key?(:version)

@@ -968,6 +968,11 @@ module Google
         # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1OutputConfig]
         attr_accessor :output_config
       
+        # The full list of output files in GCS.
+        # Corresponds to the JSON property `outputs`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p2beta1GcsDestination>]
+        attr_accessor :outputs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -975,6 +980,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @output_config = args[:output_config] if args.key?(:output_config)
+          @outputs = args[:outputs] if args.key?(:outputs)
         end
       end
       

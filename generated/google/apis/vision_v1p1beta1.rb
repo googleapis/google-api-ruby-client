@@ -18,7 +18,7 @@ require 'google/apis/vision_v1p1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Vision API
+    # Cloud Vision API
     #
     # Integrates Google Vision features, including image labeling, face, logo, and
     # landmark detection, optical character recognition (OCR), and detection of
@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/vision/
     module VisionV1p1beta1
       VERSION = 'V1p1beta1'
-      REVISION = '20180221'
+      REVISION = '20180320'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

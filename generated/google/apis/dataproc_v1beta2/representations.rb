@@ -885,6 +885,7 @@ module Google
       
           property :graph, as: 'graph', class: Google::Apis::DataprocV1beta2::WorkflowGraph, decorator: Google::Apis::DataprocV1beta2::WorkflowGraph::Representation
       
+          hash :parameters, as: 'parameters'
           property :state, as: 'state'
           property :template, as: 'template'
           property :version, as: 'version'

@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VisionV1p2beta1
-      # Google Cloud Vision API
+      # Cloud Vision API
       #
       # Integrates Google Vision features, including image labeling, face, logo, and
       #  landmark detection, optical character recognition (OCR), and detection of

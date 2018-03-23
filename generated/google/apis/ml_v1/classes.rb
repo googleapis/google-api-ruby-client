@@ -401,6 +401,7 @@ module Google
         # file referenced from the --config command-line argument. For
         # details, see the guide to
         # <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
+        # Next ID: 22
         # Corresponds to the JSON property `trainingInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingInput]
         attr_accessor :training_input
@@ -984,6 +985,7 @@ module Google
       # file referenced from the --config command-line argument. For
       # details, see the guide to
       # <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
+      # Next ID: 22
       class GoogleCloudMlV1TrainingInput
         include Google::Apis::Core::Hashable
       
