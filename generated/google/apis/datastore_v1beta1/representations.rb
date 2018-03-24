@@ -22,6 +22,42 @@ module Google
   module Apis
     module DatastoreV1beta1
       
+      class GoogleDatastoreAdminV1CommonMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1EntityFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1ExportEntitiesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1ExportEntitiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1ImportEntitiesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1Progress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1beta1CommonMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -80,6 +116,70 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1CommonMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          hash :labels, as: 'labels'
+          property :operation_type, as: 'operationType'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1EntityFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :kinds, as: 'kinds'
+          collection :namespace_ids, as: 'namespaceIds'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1ExportEntitiesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1CommonMetadata, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1CommonMetadata::Representation
+      
+          property :entity_filter, as: 'entityFilter', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1EntityFilter, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1EntityFilter::Representation
+      
+          property :output_url_prefix, as: 'outputUrlPrefix'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
+      
+          property :progress_entities, as: 'progressEntities', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
+      
+        end
+      end
+      
+      class GoogleDatastoreAdminV1ExportEntitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_url, as: 'outputUrl'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1ImportEntitiesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1CommonMetadata, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1CommonMetadata::Representation
+      
+          property :entity_filter, as: 'entityFilter', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1EntityFilter, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1EntityFilter::Representation
+      
+          property :input_url, as: 'inputUrl'
+          property :progress_bytes, as: 'progressBytes', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
+      
+          property :progress_entities, as: 'progressEntities', class: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress, decorator: Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1Progress::Representation
+      
+        end
+      end
+      
+      class GoogleDatastoreAdminV1Progress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :work_completed, :numeric_string => true, as: 'workCompleted'
+          property :work_estimated, :numeric_string => true, as: 'workEstimated'
+        end
       end
       
       class GoogleDatastoreAdminV1beta1CommonMetadata

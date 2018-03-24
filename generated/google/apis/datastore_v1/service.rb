@@ -149,6 +149,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports a copy of all or a subset of entities from Google Cloud Datastore
+        # to another storage system, such as Google Cloud Storage. Recent updates to
+        # entities may not be reflected in the export. The export occurs in the
+        # background and its progress can be monitored and managed via the
+        # Operation resource that is created. The output of an export may only be
+        # used once the associated operation is done. If an export operation is
+        # cancelled before completion it may leave partial data behind in Google
+        # Cloud Storage.
+        # @param [String] project_id
+        #   Project ID against which to make the request.
+        # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ExportEntitiesRequest] google_datastore_admin_v1_export_entities_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project(project_id, google_datastore_admin_v1_export_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}:export', options)
+          command.request_representation = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ExportEntitiesRequest::Representation
+          command.request_object = google_datastore_admin_v1_export_entities_request_object
+          command.response_representation = Google::Apis::DatastoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DatastoreV1::GoogleLongrunningOperation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports entities into Google Cloud Datastore. Existing entities with the
+        # same key are overwritten. The import occurs in the background and its
+        # progress can be monitored and managed via the Operation resource that is
+        # created. If an ImportEntities operation is cancelled, it is possible
+        # that a subset of the data has already been imported to Cloud Datastore.
+        # @param [String] project_id
+        #   Project ID against which to make the request.
+        # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ImportEntitiesRequest] google_datastore_admin_v1_import_entities_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project(project_id, google_datastore_admin_v1_import_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/projects/{projectId}:import', options)
+          command.request_representation = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ImportEntitiesRequest::Representation
+          command.request_object = google_datastore_admin_v1_import_entities_request_object
+          command.response_representation = Google::Apis::DatastoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DatastoreV1::GoogleLongrunningOperation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Looks up entities by key.
         # @param [String] project_id
         #   The ID of the project against which to make the request.

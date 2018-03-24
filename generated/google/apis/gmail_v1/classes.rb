@@ -1147,7 +1147,8 @@ module Google
         # A name that appears in the "From:" header for mail sent using this alias. For
         # custom "from" addresses, when this is empty, Gmail will populate the "From:"
         # header with the name that is used for the primary address associated with the
-        # account.
+        # account. If the admin has disabled the ability for users to update their name
+        # format, requests to update this field for the primary login will silently fail.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name

@@ -355,6 +355,10 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :operation_id, as: 'operationId'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
@@ -395,6 +399,7 @@ module Google
           property :label_fingerprint, as: 'labelFingerprint'
           property :legacy_abac, as: 'legacyAbac', class: Google::Apis::ContainerV1::LegacyAbac, decorator: Google::Apis::ContainerV1::LegacyAbac::Representation
       
+          property :location, as: 'location'
           collection :locations, as: 'locations'
           property :logging_service, as: 'loggingService'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
@@ -444,6 +449,10 @@ module Google
       class CompleteIpRotationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
@@ -452,14 +461,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster', class: Google::Apis::ContainerV1::Cluster, decorator: Google::Apis::ContainerV1::Cluster::Representation
       
+          property :parent, as: 'parent'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class CreateNodePoolRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :node_pool, as: 'nodePool', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
       
+          property :parent, as: 'parent'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
@@ -663,6 +679,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detail, as: 'detail'
           property :end_time, as: 'endTime'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :operation_type, as: 'operationType'
           property :self_link, as: 'selfLink'
@@ -677,6 +694,11 @@ module Google
       class RollbackNodePoolUpgradeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :node_pool_id, as: 'nodePoolId'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
@@ -696,43 +718,67 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetLabelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :label_fingerprint, as: 'labelFingerprint'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
           hash :resource_labels, as: 'resourceLabels'
+          property :zone, as: 'zone'
         end
       end
       
       class SetLegacyAbacRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :enabled, as: 'enabled'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetLocationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           collection :locations, as: 'locations'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetLoggingServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :logging_service, as: 'loggingService'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetMaintenancePolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
       
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
@@ -740,23 +786,35 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
           property :update, as: 'update', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
       
+          property :zone, as: 'zone'
         end
       end
       
       class SetMonitoringServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :monitoring_service, as: 'monitoringService'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetNetworkPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
           property :network_policy, as: 'networkPolicy', class: Google::Apis::ContainerV1::NetworkPolicy, decorator: Google::Apis::ContainerV1::NetworkPolicy::Representation
       
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
@@ -765,50 +823,82 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
       
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :node_pool_id, as: 'nodePoolId'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetNodePoolManagementRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
       
+          property :name, as: 'name'
+          property :node_pool_id, as: 'nodePoolId'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class SetNodePoolSizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
           property :node_count, as: 'nodeCount'
+          property :node_pool_id, as: 'nodePoolId'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class StartIpRotationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class UpdateClusterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
           property :update, as: 'update', class: Google::Apis::ContainerV1::ClusterUpdate, decorator: Google::Apis::ContainerV1::ClusterUpdate::Representation
       
+          property :zone, as: 'zone'
         end
       end
       
       class UpdateMasterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :master_version, as: 'masterVersion'
+          property :name, as: 'name'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
       
       class UpdateNodePoolRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
           property :image_type, as: 'imageType'
+          property :name, as: 'name'
+          property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
+          property :project_id, as: 'projectId'
+          property :zone, as: 'zone'
         end
       end
     end

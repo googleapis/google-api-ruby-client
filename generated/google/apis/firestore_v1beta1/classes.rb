@@ -358,7 +358,7 @@ module Google
         attr_accessor :name
       
         # Output only. The time at which the document was last changed.
-        # This value is initally set to the `create_time` then increases
+        # This value is initially set to the `create_time` then increases
         # monotonically with each change to the document. It can also be
         # compared to values from other documents and the `read_time` of a query.
         # Corresponds to the JSON property `updateTime`
