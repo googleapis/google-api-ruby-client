@@ -570,7 +570,6 @@ module Google
           property :creative_id, as: 'creativeId'
           property :deal_id, :numeric_string => true, as: 'dealId'
           property :environment, as: 'environment'
-          property :format, as: 'format'
           collection :formats, as: 'formats'
           property :name, as: 'name'
           collection :platforms, as: 'platforms'

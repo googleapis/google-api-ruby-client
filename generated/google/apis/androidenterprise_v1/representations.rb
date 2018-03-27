@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -705,6 +711,14 @@ module Google
         end
       end
       
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_ms, :numeric_string => true, as: 'durationMs'
+          property :start_time_after_midnight_ms, :numeric_string => true, as: 'startTimeAfterMidnightMs'
+        end
+      end
+      
       class ManagedConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -854,6 +868,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_update_policy, as: 'autoUpdatePolicy'
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::AndroidenterpriseV1::MaintenanceWindow, decorator: Google::Apis::AndroidenterpriseV1::MaintenanceWindow::Representation
+      
           property :product_availability_policy, as: 'productAvailabilityPolicy'
           collection :product_policy, as: 'productPolicy', class: Google::Apis::AndroidenterpriseV1::ProductPolicy, decorator: Google::Apis::AndroidenterpriseV1::ProductPolicy::Representation
       

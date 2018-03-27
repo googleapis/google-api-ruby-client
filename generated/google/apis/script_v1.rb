@@ -18,14 +18,14 @@ require 'google/apis/script_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Apps Script API
+    # Apps Script API
     #
     # An API for managing and executing Google Apps Script projects.
     #
     # @see https://developers.google.com/apps-script/api/
     module ScriptV1
       VERSION = 'V1'
-      REVISION = '20180305'
+      REVISION = '20180323'
 
       # Read, send, delete, and manage your email
       AUTH_SCOPE = 'https://mail.google.com/'

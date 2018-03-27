@@ -1066,6 +1066,34 @@ module Google
         end
       end
       
+      # Maintenance window for managed Google Play Accounts. This allows Play store to
+      # update the apps on the foreground in the designated window.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Duration of the maintenance window, in milliseconds. The duration must be
+        # between 30 minutes and 24 hours (inclusive).
+        # Corresponds to the JSON property `durationMs`
+        # @return [Fixnum]
+        attr_accessor :duration_ms
+      
+        # Start time of the maintenance window, in milliseconds after midnight on the
+        # device. Windows can span midnight.
+        # Corresponds to the JSON property `startTimeAfterMidnightMs`
+        # @return [Fixnum]
+        attr_accessor :start_time_after_midnight_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
+          @start_time_after_midnight_ms = args[:start_time_after_midnight_ms] if args.key?(:start_time_after_midnight_ms)
+        end
+      end
+      
       # A managed configuration resource contains the set of managed properties
       # defined by the app developer in the app's managed configurations schema, as
       # well as any configuration variables defined for the user.
@@ -1599,6 +1627,12 @@ module Google
         # @return [String]
         attr_accessor :auto_update_policy
       
+        # Maintenance window for managed Google Play Accounts. This allows Play store to
+        # update the apps on the foreground in the designated window.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::AndroidenterpriseV1::MaintenanceWindow]
+        attr_accessor :maintenance_window
+      
         # The availability granted to the device for the specified products. "all" gives
         # the device access to all products, regardless of approval status. "allApproved"
         # entitles the device to access all products that are approved for the
@@ -1624,6 +1658,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_update_policy = args[:auto_update_policy] if args.key?(:auto_update_policy)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @product_availability_policy = args[:product_availability_policy] if args.key?(:product_availability_policy)
           @product_policy = args[:product_policy] if args.key?(:product_policy)
         end

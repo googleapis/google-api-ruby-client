@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ScriptV1
-      # Google Apps Script API
+      # Apps Script API
       #
       # An API for managing and executing Google Apps Script projects.
       #

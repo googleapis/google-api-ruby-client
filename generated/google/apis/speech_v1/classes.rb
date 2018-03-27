@@ -301,7 +301,7 @@ module Google
       class RecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # *Output-only* Sequential list of transcription results corresponding to
+        # Output only. Sequential list of transcription results corresponding to
         # sequential portions of audio.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionResult>]
@@ -346,7 +346,7 @@ module Google
       class SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
       
-        # *Output-only* The confidence estimate between 0.0 and 1.0. A higher number
+        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. This field is set only for the top alternative of a non-streaming
         # result or, of a streaming result where `is_final=true`.
@@ -357,12 +357,12 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # *Output-only* Transcript text representing the words that the user spoke.
+        # Output only. Transcript text representing the words that the user spoke.
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
       
-        # *Output-only* A list of word-specific information for each recognized word.
+        # Output only. A list of word-specific information for each recognized word.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::SpeechV1::WordInfo>]
         attr_accessor :words
@@ -383,7 +383,7 @@ module Google
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
       
-        # *Output-only* May contain one or more recognition hypotheses (up to the
+        # Output only. May contain one or more recognition hypotheses (up to the
         # maximum specified in `max_alternatives`).
         # These alternatives are ordered in terms of accuracy, with the top (first)
         # alternative being the most probable, as ranked by the recognizer.
@@ -477,7 +477,7 @@ module Google
       class WordInfo
         include Google::Apis::Core::Hashable
       
-        # *Output-only* Time offset relative to the beginning of the audio,
+        # Output only. Time offset relative to the beginning of the audio,
         # and corresponding to the end of the spoken word.
         # This field is only set if `enable_word_time_offsets=true` and only
         # in the top hypothesis.
@@ -487,7 +487,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # *Output-only* Time offset relative to the beginning of the audio,
+        # Output only. Time offset relative to the beginning of the audio,
         # and corresponding to the start of the spoken word.
         # This field is only set if `enable_word_time_offsets=true` and only
         # in the top hypothesis.
@@ -497,7 +497,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # *Output-only* The word corresponding to this set of information.
+        # Output only. The word corresponding to this set of information.
         # Corresponds to the JSON property `word`
         # @return [String]
         attr_accessor :word
