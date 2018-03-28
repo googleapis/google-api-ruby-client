@@ -22,6 +22,69 @@ module Google
   module Apis
     module CloudbuildV1
       
+      # Files in the workspace to upload to Cloud Storage upon successful
+      # completion of all build steps.
+      class ArtifactObjects
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket and optional object path, in the form
+        # "gs://bucket/path/to/somewhere/". (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ).
+        # Files in the workspace matching any path pattern will be uploaded to
+        # Cloud Storage with this location as a prefix.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Path globs used to match files in the build's workspace.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<String>]
+        attr_accessor :paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # Artifacts produced by a build that should be uploaded upon
+      # successful completion of all build steps.
+      class Artifacts
+        include Google::Apis::Core::Hashable
+      
+        # A list of images to be pushed upon the successful completion of all build
+        # steps.
+        # The images will be pushed using the builder service account's credentials.
+        # The digests of the pushed images will be stored in the Build resource's
+        # results field.
+        # If any of the images fail to be pushed, the build is marked FAILURE.
+        # Corresponds to the JSON property `images`
+        # @return [Array<String>]
+        attr_accessor :images
+      
+        # Files in the workspace to upload to Cloud Storage upon successful
+        # completion of all build steps.
+        # Corresponds to the JSON property `objects`
+        # @return [Google::Apis::CloudbuildV1::ArtifactObjects]
+        attr_accessor :objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @images = args[:images] if args.key?(:images)
+          @objects = args[:objects] if args.key?(:objects)
+        end
+      end
+      
       # A build resource in the Container Builder API.
       # At a high level, a `Build` describes where to find source code, how to build
       # it (for example, the builder image to run on the source), and where to store
@@ -38,6 +101,12 @@ module Google
       # - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
       class Build
         include Google::Apis::Core::Hashable
+      
+        # Artifacts produced by a build that should be uploaded upon
+        # successful completion of all build steps.
+        # Corresponds to the JSON property `artifacts`
+        # @return [Google::Apis::CloudbuildV1::Artifacts]
+        attr_accessor :artifacts
       
         # The ID of the `BuildTrigger` that triggered this build, if it was
         # triggered automatically.
@@ -182,6 +251,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifacts = args[:artifacts] if args.key?(:artifacts)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
@@ -849,6 +919,11 @@ module Google
       class Results
         include Google::Apis::Core::Hashable
       
+        # Path to the artifact manifest. Only populated when artifacts are uploaded.
+        # Corresponds to the JSON property `artifactManifest`
+        # @return [String]
+        attr_accessor :artifact_manifest
+      
         # List of build step digests, in the order corresponding to build step
         # indices.
         # Corresponds to the JSON property `buildStepImages`
@@ -860,14 +935,21 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::BuiltImage>]
         attr_accessor :images
       
+        # Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        # Corresponds to the JSON property `numArtifacts`
+        # @return [Fixnum]
+        attr_accessor :num_artifacts
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @artifact_manifest = args[:artifact_manifest] if args.key?(:artifact_manifest)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @images = args[:images] if args.key?(:images)
+          @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
         end
       end
       

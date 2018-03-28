@@ -182,6 +182,7 @@ module Google
       end
       
       # Response for the `ListTopicSnapshots` method.
+      # [ALPHA] This method is a part of a closed Alpha API.
       class ListTopicSnapshotsResponse
         include Google::Apis::Core::Hashable
       
@@ -747,6 +748,7 @@ module Google
         # of acknowledged messages, and thus configures how far back in time a `Seek`
         # can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
         # minutes.
+        # [ALPHA] This field is a part of a closed Alpha API.
         # Corresponds to the JSON property `messageRetentionDuration`
         # @return [String]
         attr_accessor :message_retention_duration
@@ -770,6 +772,7 @@ module Google
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration`
         # window.
+        # [ALPHA] This field is a part of a closed Alpha API.
         # Corresponds to the JSON property `retainAckedMessages`
         # @return [Boolean]
         attr_accessor :retain_acked_messages

@@ -22,6 +22,18 @@ module Google
   module Apis
     module CloudbuildV1
       
+      class ArtifactObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Artifacts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Build
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,9 +184,28 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          collection :paths, as: 'paths'
+        end
+      end
+      
+      class Artifacts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :images, as: 'images'
+          property :objects, as: 'objects', class: Google::Apis::CloudbuildV1::ArtifactObjects, decorator: Google::Apis::CloudbuildV1::ArtifactObjects::Representation
+      
+        end
+      end
+      
       class Build
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifacts, as: 'artifacts', class: Google::Apis::CloudbuildV1::Artifacts, decorator: Google::Apis::CloudbuildV1::Artifacts::Representation
+      
           property :build_trigger_id, as: 'buildTriggerId'
           property :create_time, as: 'createTime'
           property :finish_time, as: 'finishTime'
@@ -359,9 +390,11 @@ module Google
       class Results
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_manifest, as: 'artifactManifest'
           collection :build_step_images, as: 'buildStepImages'
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
       
+          property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
         end
       end
       

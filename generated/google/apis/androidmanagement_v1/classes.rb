@@ -238,6 +238,12 @@ module Google
         # @return [String]
         attr_accessor :duration
       
+        # If the command failed, an error code explaining the failure. This is not set
+        # when the command is cancelled by the caller.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
         # For commands of type RESET_PASSWORD, optionally specifies the new password.
         # Corresponds to the JSON property `newPassword`
         # @return [String]
@@ -268,6 +274,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @duration = args[:duration] if args.key?(:duration)
+          @error_code = args[:error_code] if args.key?(:error_code)
           @new_password = args[:new_password] if args.key?(:new_password)
           @reset_password_flags = args[:reset_password_flags] if args.key?(:reset_password_flags)
           @type = args[:type] if args.key?(:type)
@@ -1636,9 +1643,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :android_device_policy_tracks
       
-        # The auto update policy value. Specifies whether the user is given a choice to
-        # configure the app update policy, or otherwise contains the enforced update
-        # policy
+        # The app auto update policy, which controls when automatic app updates can be
+        # applied.
         # Corresponds to the JSON property `appAutoUpdatePolicy`
         # @return [String]
         attr_accessor :app_auto_update_policy
@@ -1733,6 +1739,17 @@ module Google
         # @return [String]
         attr_accessor :default_permission_policy
       
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `deviceOwnerLockScreenInfo`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :device_owner_lock_screen_info
+      
+        # Whether encryption is enabled
+        # Corresponds to the JSON property `encryptionPolicy`
+        # @return [String]
+        attr_accessor :encryption_policy
+      
         # Whether app verification is force-enabled.
         # Corresponds to the JSON property `ensureVerifyAppsEnabled`
         # @return [Boolean]
@@ -1793,6 +1810,12 @@ module Google
         # @return [Boolean]
         attr_accessor :kiosk_custom_launcher_enabled
         alias_method :kiosk_custom_launcher_enabled?, :kiosk_custom_launcher_enabled
+      
+        # The degree of location detection enabled. The user may change the value unless
+        # the user is otherwise blocked from accessing device settings.
+        # Corresponds to the JSON property `locationMode`
+        # @return [String]
+        attr_accessor :location_mode
       
         # Provides a user-facing message with locale info. The maximum message length is
         # 4096 characters.
@@ -1917,11 +1940,25 @@ module Google
         attr_accessor :set_wallpaper_disabled
         alias_method :set_wallpaper_disabled?, :set_wallpaper_disabled
       
+        # Whether location sharing is disabled.
+        # Corresponds to the JSON property `shareLocationDisabled`
+        # @return [Boolean]
+        attr_accessor :share_location_disabled
+        alias_method :share_location_disabled?, :share_location_disabled
+      
         # Provides a user-facing message with locale info. The maximum message length is
         # 4096 characters.
         # Corresponds to the JSON property `shortSupportMessage`
         # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
         attr_accessor :short_support_message
+      
+        # Flag to skip hints on the first use. Enterprise admin can enable the system
+        # recommendation for apps to skip their user tutorial and other introductory
+        # hints on first start-up.
+        # Corresponds to the JSON property `skipFirstUseHintsEnabled`
+        # @return [Boolean]
+        attr_accessor :skip_first_use_hints_enabled
+        alias_method :skip_first_use_hints_enabled?, :skip_first_use_hints_enabled
       
         # Whether sending and receiving SMS messages is disabled.
         # Corresponds to the JSON property `smsDisabled`
@@ -1977,6 +2014,13 @@ module Google
         attr_accessor :usb_file_transfer_disabled
         alias_method :usb_file_transfer_disabled?, :usb_file_transfer_disabled
       
+        # Allows admins to toggle whether USB storge is enabled or disabled on user's
+        # devices. Next ID: 113
+        # Corresponds to the JSON property `usbMassStorageEnabled`
+        # @return [Boolean]
+        attr_accessor :usb_mass_storage_enabled
+        alias_method :usb_mass_storage_enabled?, :usb_mass_storage_enabled
+      
         # The version of the policy. This is a read-only field. The version is
         # incremented each time the policy is updated.
         # Corresponds to the JSON property `version`
@@ -2028,6 +2072,8 @@ module Google
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
+          @device_owner_lock_screen_info = args[:device_owner_lock_screen_info] if args.key?(:device_owner_lock_screen_info)
+          @encryption_policy = args[:encryption_policy] if args.key?(:encryption_policy)
           @ensure_verify_apps_enabled = args[:ensure_verify_apps_enabled] if args.key?(:ensure_verify_apps_enabled)
           @factory_reset_disabled = args[:factory_reset_disabled] if args.key?(:factory_reset_disabled)
           @frp_admin_emails = args[:frp_admin_emails] if args.key?(:frp_admin_emails)
@@ -2037,6 +2083,7 @@ module Google
           @keyguard_disabled = args[:keyguard_disabled] if args.key?(:keyguard_disabled)
           @keyguard_disabled_features = args[:keyguard_disabled_features] if args.key?(:keyguard_disabled_features)
           @kiosk_custom_launcher_enabled = args[:kiosk_custom_launcher_enabled] if args.key?(:kiosk_custom_launcher_enabled)
+          @location_mode = args[:location_mode] if args.key?(:location_mode)
           @long_support_message = args[:long_support_message] if args.key?(:long_support_message)
           @maximum_time_to_lock = args[:maximum_time_to_lock] if args.key?(:maximum_time_to_lock)
           @mobile_networks_config_disabled = args[:mobile_networks_config_disabled] if args.key?(:mobile_networks_config_disabled)
@@ -2057,7 +2104,9 @@ module Google
           @screen_capture_disabled = args[:screen_capture_disabled] if args.key?(:screen_capture_disabled)
           @set_user_icon_disabled = args[:set_user_icon_disabled] if args.key?(:set_user_icon_disabled)
           @set_wallpaper_disabled = args[:set_wallpaper_disabled] if args.key?(:set_wallpaper_disabled)
+          @share_location_disabled = args[:share_location_disabled] if args.key?(:share_location_disabled)
           @short_support_message = args[:short_support_message] if args.key?(:short_support_message)
+          @skip_first_use_hints_enabled = args[:skip_first_use_hints_enabled] if args.key?(:skip_first_use_hints_enabled)
           @sms_disabled = args[:sms_disabled] if args.key?(:sms_disabled)
           @status_bar_disabled = args[:status_bar_disabled] if args.key?(:status_bar_disabled)
           @status_reporting_settings = args[:status_reporting_settings] if args.key?(:status_reporting_settings)
@@ -2067,6 +2116,7 @@ module Google
           @uninstall_apps_disabled = args[:uninstall_apps_disabled] if args.key?(:uninstall_apps_disabled)
           @unmute_microphone_disabled = args[:unmute_microphone_disabled] if args.key?(:unmute_microphone_disabled)
           @usb_file_transfer_disabled = args[:usb_file_transfer_disabled] if args.key?(:usb_file_transfer_disabled)
+          @usb_mass_storage_enabled = args[:usb_mass_storage_enabled] if args.key?(:usb_mass_storage_enabled)
           @version = args[:version] if args.key?(:version)
           @vpn_config_disabled = args[:vpn_config_disabled] if args.key?(:vpn_config_disabled)
           @wifi_config_disabled = args[:wifi_config_disabled] if args.key?(:wifi_config_disabled)

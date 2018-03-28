@@ -324,6 +324,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :duration, as: 'duration'
+          property :error_code, as: 'errorCode'
           property :new_password, as: 'newPassword'
           collection :reset_password_flags, as: 'resetPasswordFlags'
           property :type, as: 'type'
@@ -663,6 +664,9 @@ module Google
           property :data_roaming_disabled, as: 'dataRoamingDisabled'
           property :debugging_features_allowed, as: 'debuggingFeaturesAllowed'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
+          property :device_owner_lock_screen_info, as: 'deviceOwnerLockScreenInfo', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :encryption_policy, as: 'encryptionPolicy'
           property :ensure_verify_apps_enabled, as: 'ensureVerifyAppsEnabled'
           property :factory_reset_disabled, as: 'factoryResetDisabled'
           collection :frp_admin_emails, as: 'frpAdminEmails'
@@ -672,6 +676,7 @@ module Google
           property :keyguard_disabled, as: 'keyguardDisabled'
           collection :keyguard_disabled_features, as: 'keyguardDisabledFeatures'
           property :kiosk_custom_launcher_enabled, as: 'kioskCustomLauncherEnabled'
+          property :location_mode, as: 'locationMode'
           property :long_support_message, as: 'longSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           property :maximum_time_to_lock, :numeric_string => true, as: 'maximumTimeToLock'
@@ -697,8 +702,10 @@ module Google
           property :screen_capture_disabled, as: 'screenCaptureDisabled'
           property :set_user_icon_disabled, as: 'setUserIconDisabled'
           property :set_wallpaper_disabled, as: 'setWallpaperDisabled'
+          property :share_location_disabled, as: 'shareLocationDisabled'
           property :short_support_message, as: 'shortSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
+          property :skip_first_use_hints_enabled, as: 'skipFirstUseHintsEnabled'
           property :sms_disabled, as: 'smsDisabled'
           property :status_bar_disabled, as: 'statusBarDisabled'
           property :status_reporting_settings, as: 'statusReportingSettings', class: Google::Apis::AndroidmanagementV1::StatusReportingSettings, decorator: Google::Apis::AndroidmanagementV1::StatusReportingSettings::Representation
@@ -710,6 +717,7 @@ module Google
           property :uninstall_apps_disabled, as: 'uninstallAppsDisabled'
           property :unmute_microphone_disabled, as: 'unmuteMicrophoneDisabled'
           property :usb_file_transfer_disabled, as: 'usbFileTransferDisabled'
+          property :usb_mass_storage_enabled, as: 'usbMassStorageEnabled'
           property :version, :numeric_string => true, as: 'version'
           property :vpn_config_disabled, as: 'vpnConfigDisabled'
           property :wifi_config_disabled, as: 'wifiConfigDisabled'

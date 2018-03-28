@@ -47,6 +47,7 @@ module Google
           @batch_path = 'batch'
         end
         
+        # [ALPHA] This method is a part of a closed Alpha API.
         # Creates a snapshot from the requested subscription.
         # If the snapshot already exists, returns `ALREADY_EXISTS`.
         # If the requested subscription doesn't exist, returns `NOT_FOUND`.
@@ -100,6 +101,7 @@ module Google
         # are immediately dropped. After a snapshot is deleted, a new one may be
         # created with the same name, but the new one has no association with the old
         # snapshot or its subscription, unless the same subscription is specified.
+        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] snapshot
         #   The name of the snapshot to delete.
         #   Format is `projects/`project`/snapshots/`snap``.
@@ -131,6 +133,7 @@ module Google
         end
         
         # Gets the configuration details of a snapshot.
+        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] snapshot
         #   The name of the snapshot to get.
         #   Format is `projects/`project`/snapshots/`snap``.
@@ -195,6 +198,7 @@ module Google
         end
         
         # Lists the existing snapshots.
+        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] project
         #   The name of the cloud project that snapshots belong to.
         #   Format is `projects/`project``.
@@ -235,6 +239,7 @@ module Google
         
         # Updates an existing snapshot. Note that certain properties of a
         # snapshot are not modifiable.
+        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] name
         #   The name of the snapshot.
         # @param [Google::Apis::PubsubV1::UpdateSnapshotRequest] update_snapshot_request_object
@@ -718,6 +723,7 @@ module Google
         
         # Seeks an existing subscription to a point in time or to a given snapshot,
         # whichever is provided in the request.
+        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] subscription
         #   The subscription to affect.
         # @param [Google::Apis::PubsubV1::SeekRequest] seek_request_object
@@ -1111,6 +1117,7 @@ module Google
         end
         
         # Lists the names of the snapshots on this topic.
+        # [ALPHA] This method is a part of a closed Alpha API.
         # @param [String] topic
         #   The name of the topic that snapshots are attached to.
         #   Format is `projects/`project`/topics/`topic``.
