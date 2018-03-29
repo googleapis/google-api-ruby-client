@@ -106,18 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Entitlement
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListEntitlementsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ExpansionFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -459,28 +447,6 @@ module Google
           property :screen_density_dpi, as: 'screenDensityDpi'
           property :screen_height_px, as: 'screenHeightPx'
           property :screen_width_px, as: 'screenWidthPx'
-        end
-      end
-      
-      class Entitlement
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :product_id, as: 'productId'
-          property :product_type, as: 'productType'
-          property :token, as: 'token'
-        end
-      end
-      
-      class ListEntitlementsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_info, as: 'pageInfo', class: Google::Apis::AndroidpublisherV2::PageInfo, decorator: Google::Apis::AndroidpublisherV2::PageInfo::Representation
-      
-          collection :resources, as: 'resources', class: Google::Apis::AndroidpublisherV2::Entitlement, decorator: Google::Apis::AndroidpublisherV2::Entitlement::Representation
-      
-          property :token_pagination, as: 'tokenPagination', class: Google::Apis::AndroidpublisherV2::TokenPagination, decorator: Google::Apis::AndroidpublisherV2::TokenPagination::Representation
-      
         end
       end
       

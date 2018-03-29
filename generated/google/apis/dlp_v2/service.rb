@@ -49,7 +49,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns sensitive information types DLP supports.
+        # Returns a list of the sensitive information types that the DLP API
+        # supports. For more information, see [Listing supported predefined
+        # infoTypes](/dlp/docs/listing-infotypes).
         # @param [String] filter
         #   Optional filter to only return infoTypes supported by certain parts of the
         #   API. Defaults to supported_by=INSPECT.

@@ -73,13 +73,7 @@ module Google
         attr_accessor :lifespan_count
       
         # Required. The unique identifier of the context. Format:
-        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
-        # or
-        # `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
-        # ID>/contexts/<Context ID>`.
-        # Note: Runtimes are under construction and will be available soon.
-        # The Context ID is always converted to lowercase.
-        # If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -308,7 +302,7 @@ module Google
         alias_method :is_fallback?, :is_fallback
       
         # Optional. The collection of rich messages corresponding to the
-        # `Response` field in API.AI console.
+        # `Response` field in the Dialogflow console.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentMessage>]
         attr_accessor :messages
@@ -437,7 +431,7 @@ module Google
         end
       end
       
-      # Corresponds to the `Response` field in API.AI console.
+      # Corresponds to the `Response` field in the Dialogflow console.
       class GoogleCloudDialogflowV2IntentMessage
         include Google::Apis::Core::Hashable
       
@@ -1434,7 +1428,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The URI of the agent's avatar.
-        # Avatars are used throughout API.AI console and in the self-hosted
+        # Avatars are used throughout the Dialogflow console and in the self-hosted
         # [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.
         # Corresponds to the JSON property `avatarUri`
         # @return [String]
@@ -1800,11 +1794,12 @@ module Google
         # Required. The unique identifier of the context. Format:
         # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
         # or
-        # `projects/<Project ID>/agent/runtimes/<Runtime ID>/sessions/<Session
-        # ID>/contexts/<Context ID>`.
-        # Note: Runtimes are under construction and will be available soon.
-        # The Context ID is always converted to lowercase.
-        # If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+        # ID>/sessions/<Session ID>/contexts/<Context ID>`. Note: Environments and
+        # users are under construction and will be available soon. The Context ID is
+        # always converted to lowercase. If <Environment ID> is not specified, we
+        # assume default 'draft' environment. If <User ID> is not specified, we
+        # assume default '-' user.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2267,7 +2262,7 @@ module Google
         alias_method :is_fallback?, :is_fallback
       
         # Optional. The collection of rich messages corresponding to the
-        # `Response` field in API.AI console.
+        # `Response` field in the Dialogflow console.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessage>]
         attr_accessor :messages
@@ -2432,7 +2427,7 @@ module Google
         end
       end
       
-      # Corresponds to the `Response` field in API.AI console.
+      # Corresponds to the `Response` field in the Dialogflow console.
       class GoogleCloudDialogflowV2beta1IntentMessage
         include Google::Apis::Core::Hashable
       
@@ -3625,10 +3620,12 @@ module Google
         # Required. The unique identifier of this session entity type. Format:
         # `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
         # Display Name>`, or
-        # `projects/<Project ID>/agent/runtimes/<Runtime ID>sessions/<Session
-        # ID>/entityTypes/<Entity Type Display Name>`.
-        # Note: Runtimes are under construction and will be available soon.
-        # If <Runtime ID> is not specified, we assume default 'sandbox' runtime.
+        # `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+        # ID>/sessions
+        # /<Session ID>/entityTypes/<Entity Type Display Name>`.
+        # Note: Environments and users are under construction and will be available
+        # soon. If <Environment ID> is not specified, we assume default 'draft'
+        # environment. If <User ID> is not specified, we assume default '-' user.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

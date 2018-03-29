@@ -1802,52 +1802,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's current inapp item or subscription entitlements
-        # @param [String] package_name
-        #   The package name of the application the inapp product was sold in (for example,
-        #   'com.some.thing').
-        # @param [Fixnum] max_results
-        # @param [String] product_id
-        #   The product id of the inapp product (for example, 'sku1'). This can be used to
-        #   restrict the result set.
-        # @param [Fixnum] start_index
-        # @param [String] token
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV2::ListEntitlementsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidpublisherV2::ListEntitlementsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_entitlements(package_name, max_results: nil, product_id: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{packageName}/entitlements', options)
-          command.response_representation = Google::Apis::AndroidpublisherV2::ListEntitlementsResponse::Representation
-          command.response_class = Google::Apis::AndroidpublisherV2::ListEntitlementsResponse
-          command.params['packageName'] = package_name unless package_name.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['productId'] = product_id unless product_id.nil?
-          command.query['startIndex'] = start_index unless start_index.nil?
-          command.query['token'] = token unless token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Delete an in-app product for an app.
         # @param [String] package_name
         #   Unique identifier for the Android app with the in-app product; for example, "

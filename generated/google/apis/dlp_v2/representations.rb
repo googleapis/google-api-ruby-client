@@ -1347,6 +1347,7 @@ module Google
           property :bytes_limit_per_file, :numeric_string => true, as: 'bytesLimitPerFile'
           property :file_set, as: 'fileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet::Representation
       
+          collection :file_types, as: 'fileTypes'
         end
       end
       

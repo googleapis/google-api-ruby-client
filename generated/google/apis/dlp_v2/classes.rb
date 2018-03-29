@@ -572,6 +572,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet]
         attr_accessor :file_set
       
+        # List of file type groups to include in the scan.
+        # If empty, all files are scanned and available data format processors
+        # are applied.
+        # Corresponds to the JSON property `fileTypes`
+        # @return [Array<String>]
+        attr_accessor :file_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -580,6 +587,7 @@ module Google
         def update!(**args)
           @bytes_limit_per_file = args[:bytes_limit_per_file] if args.key?(:bytes_limit_per_file)
           @file_set = args[:file_set] if args.key?(:file_set)
+          @file_types = args[:file_types] if args.key?(:file_types)
         end
       end
       
@@ -1081,8 +1089,8 @@ module Google
       
         # Message for detecting output from deidentification transformations
         # such as
-        # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/content/deidentify#
-        # CryptoReplaceFfxFpeConfig).
+        # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/organizations.
+        # deidentifyTemplates#cryptoreplaceffxfpeconfig).
         # These types of transformations are
         # those that perform pseudonymization, thereby producing a "surrogate" as
         # output. This should be used in conjunction with a field on the
@@ -2144,7 +2152,6 @@ module Google
       
         # Restricts what info_types to look for. The values must correspond to
         # InfoType values returned by ListInfoTypes or found in documentation.
-        # Empty info_types runs all enabled detectors.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -4145,8 +4152,8 @@ module Google
       
       # Message for detecting output from deidentification transformations
       # such as
-      # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/content/deidentify#
-      # CryptoReplaceFfxFpeConfig).
+      # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/organizations.
+      # deidentifyTemplates#cryptoreplaceffxfpeconfig).
       # These types of transformations are
       # those that perform pseudonymization, thereby producing a "surrogate" as
       # output. This should be used in conjunction with a field on the
