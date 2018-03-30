@@ -673,22 +673,6 @@ module Google
         # @return [Google::Apis::LoggingV2::MonitoredResource]
         attr_accessor :resource
       
-        # An object representing a resource that can be used for monitoring, logging,
-        # billing, or other purposes. Examples include virtual machine instances,
-        # databases, and storage devices such as disks. The type field identifies a
-        # MonitoredResourceDescriptor object that describes the resource's schema.
-        # Information in the labels field identifies the actual resource and its
-        # attributes according to the schema. For example, a particular Compute Engine
-        # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
-        # Corresponds to the JSON property `secondaryResource`
-        # @return [Google::Apis::LoggingV2::MonitoredResource]
-        attr_accessor :secondary_resource
-      
         # Optional. The severity of the log entry. The default value is LogSeverity.
         # DEFAULT.
         # Corresponds to the JSON property `severity`
@@ -749,7 +733,6 @@ module Google
           @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
           @receive_timestamp = args[:receive_timestamp] if args.key?(:receive_timestamp)
           @resource = args[:resource] if args.key?(:resource)
-          @secondary_resource = args[:secondary_resource] if args.key?(:secondary_resource)
           @severity = args[:severity] if args.key?(:severity)
           @source_location = args[:source_location] if args.key?(:source_location)
           @span_id = args[:span_id] if args.key?(:span_id)
@@ -1724,22 +1707,6 @@ module Google
         # @return [Google::Apis::LoggingV2::MonitoredResource]
         attr_accessor :resource
       
-        # An object representing a resource that can be used for monitoring, logging,
-        # billing, or other purposes. Examples include virtual machine instances,
-        # databases, and storage devices such as disks. The type field identifies a
-        # MonitoredResourceDescriptor object that describes the resource's schema.
-        # Information in the labels field identifies the actual resource and its
-        # attributes according to the schema. For example, a particular Compute Engine
-        # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
-        # Corresponds to the JSON property `secondaryResource`
-        # @return [Google::Apis::LoggingV2::MonitoredResource]
-        attr_accessor :secondary_resource
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1752,7 +1719,6 @@ module Google
           @log_name = args[:log_name] if args.key?(:log_name)
           @partial_success = args[:partial_success] if args.key?(:partial_success)
           @resource = args[:resource] if args.key?(:resource)
-          @secondary_resource = args[:secondary_resource] if args.key?(:secondary_resource)
         end
       end
       

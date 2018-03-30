@@ -284,6 +284,13 @@ module Google
         # found in validMasterVersions returned by getServerConfig.  The version can
         # be upgraded over time; such upgrades are reflected in
         # currentMasterVersion and currentNodeVersion.
+        # Users may specify either explicit versions offered by
+        # Kubernetes Engine or version aliases, which have the following behavior:
+        # - "latest": picks the highest valid Kubernetes version
+        # - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        # - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        # - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        # - "","-": picks the default Kubernetes version
         # Corresponds to the JSON property `initialClusterVersion`
         # @return [String]
         attr_accessor :initial_cluster_version
@@ -393,7 +400,8 @@ module Google
         # The name of the Google Compute Engine
         # [network](/compute/docs/networks-and-firewalls#networks) to which the
         # cluster is connected. If left unspecified, the `default` network
-        # will be used.
+        # will be used. On output this shows the network ID instead of
+        # the name.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -469,7 +477,8 @@ module Google
       
         # The name of the Google Compute Engine
         # [subnetwork](/compute/docs/subnetworks) to which the
-        # cluster is connected.
+        # cluster is connected. On output this shows the subnetwork ID instead of
+        # the name.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -567,8 +576,14 @@ module Google
         attr_accessor :desired_master_authorized_networks_config
       
         # The Kubernetes version to change the master to. The only valid value is the
-        # latest supported version. Use "-" to have the server automatically select
-        # the latest version.
+        # latest supported version.
+        # Users may specify either explicit versions offered by
+        # Kubernetes Engine or version aliases, which have the following behavior:
+        # - "latest": picks the highest valid Kubernetes version
+        # - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        # - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        # - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        # - "-": picks the default Kubernetes version
         # Corresponds to the JSON property `desiredMasterVersion`
         # @return [String]
         attr_accessor :desired_master_version
@@ -596,8 +611,14 @@ module Google
         attr_accessor :desired_node_pool_id
       
         # The Kubernetes version to change the nodes to (typically an
-        # upgrade). Use `-` to upgrade to the latest version supported by
-        # the server.
+        # upgrade).
+        # Users may specify either explicit versions offered by
+        # Kubernetes Engine or version aliases, which have the following behavior:
+        # - "latest": picks the highest valid Kubernetes version
+        # - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        # - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        # - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        # - "-": picks the Kubernetes master version
         # Corresponds to the JSON property `desiredNodeVersion`
         # @return [String]
         attr_accessor :desired_node_version
@@ -2621,9 +2642,14 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # The Kubernetes version to change the master to. The only valid value is the
-        # latest supported version. Use "-" to have the server automatically select
-        # the latest version.
+        # The Kubernetes version to change the master to.
+        # Users may specify either explicit versions offered by
+        # Kubernetes Engine or version aliases, which have the following behavior:
+        # - "latest": picks the highest valid Kubernetes version
+        # - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        # - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        # - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        # - "-": picks the default Kubernetes version
         # Corresponds to the JSON property `masterVersion`
         # @return [String]
         attr_accessor :master_version
@@ -2691,8 +2717,14 @@ module Google
         attr_accessor :node_pool_id
       
         # The Kubernetes version to change the nodes to (typically an
-        # upgrade). Use `-` to upgrade to the latest version supported by
-        # the server.
+        # upgrade).
+        # Users may specify either explicit versions offered by Kubernetes Engine or
+        # version aliases, which have the following behavior:
+        # - "latest": picks the highest valid Kubernetes version
+        # - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        # - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        # - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        # - "-": picks the Kubernetes master version
         # Corresponds to the JSON property `nodeVersion`
         # @return [String]
         attr_accessor :node_version

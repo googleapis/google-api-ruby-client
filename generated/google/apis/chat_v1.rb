@@ -20,12 +20,12 @@ module Google
   module Apis
     # Hangouts Chat API
     #
-    # Create bots and extend the new Hangouts Chat.
+    # Enables bots to fetch information and perform actions in the new Hangouts Chat.
     #
     # @see https://developers.google.com/hangouts/chat
     module ChatV1
       VERSION = 'V1'
-      REVISION = '20180316'
+      REVISION = '20180326'
     end
   end
 end
