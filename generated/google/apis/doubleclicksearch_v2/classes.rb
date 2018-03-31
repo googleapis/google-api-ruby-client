@@ -592,6 +592,7 @@ module Google
         # columns and saved columns. For DoubleClick Search columns, only the columnName
         # parameter is required. For saved columns only the savedColumnName parameter is
         # required. Both columnName and savedColumnName cannot be set in the same stanza.
+        # The maximum number of columns per request is 300.
         # Corresponds to the JSON property `columns`
         # @return [Array<Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec>]
         attr_accessor :columns
@@ -603,6 +604,7 @@ module Google
         attr_accessor :download_format
       
         # A list of filters to be applied to the report.
+        # The maximum number of filters per request is 300.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::DoubleclicksearchV2::ReportRequest::Filter>]
         attr_accessor :filters
@@ -630,6 +632,7 @@ module Google
       
         # Synchronous report only. A list of columns and directions defining sorting to
         # be performed on the report rows.
+        # The maximum number of orderings per request is 300.
         # Corresponds to the JSON property `orderBy`
         # @return [Array<Google::Apis::DoubleclicksearchV2::ReportRequest::OrderBy>]
         attr_accessor :order_by
@@ -720,6 +723,7 @@ module Google
           attr_accessor :operator
         
           # A list of values to filter the column value against.
+          # The maximum number of filter values per request is 300.
           # Corresponds to the JSON property `values`
           # @return [Array<Object>]
           attr_accessor :values

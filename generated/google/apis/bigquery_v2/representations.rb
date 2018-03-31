@@ -1000,10 +1000,10 @@ module Google
       class QueryTimelineSample
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :active_inputs, :numeric_string => true, as: 'activeInputs'
-          property :completed_inputs, :numeric_string => true, as: 'completedInputs'
+          property :active_units, :numeric_string => true, as: 'activeUnits'
+          property :completed_units, :numeric_string => true, as: 'completedUnits'
           property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
-          property :pending_inputs, :numeric_string => true, as: 'pendingInputs'
+          property :pending_units, :numeric_string => true, as: 'pendingUnits'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
         end
       end

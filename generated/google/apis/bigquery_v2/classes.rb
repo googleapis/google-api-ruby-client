@@ -2701,16 +2701,17 @@ module Google
       class QueryTimelineSample
         include Google::Apis::Core::Hashable
       
-        # Total number of active workers. This does not correspond directly to slot
-        # usage. This is the largest value observed since the last sample.
-        # Corresponds to the JSON property `activeInputs`
+        # Total number of units currently being processed by workers. This does not
+        # correspond directly to slot usage. This is the largest value observed since
+        # the last sample.
+        # Corresponds to the JSON property `activeUnits`
         # @return [Fixnum]
-        attr_accessor :active_inputs
+        attr_accessor :active_units
       
         # Total parallel units of work completed by this query.
-        # Corresponds to the JSON property `completedInputs`
+        # Corresponds to the JSON property `completedUnits`
         # @return [Fixnum]
-        attr_accessor :completed_inputs
+        attr_accessor :completed_units
       
         # Milliseconds elapsed since the start of query execution.
         # Corresponds to the JSON property `elapsedMs`
@@ -2718,9 +2719,9 @@ module Google
         attr_accessor :elapsed_ms
       
         # Total parallel units of work remaining for the active stages.
-        # Corresponds to the JSON property `pendingInputs`
+        # Corresponds to the JSON property `pendingUnits`
         # @return [Fixnum]
-        attr_accessor :pending_inputs
+        attr_accessor :pending_units
       
         # Cumulative slot-ms consumed by the query.
         # Corresponds to the JSON property `totalSlotMs`
@@ -2733,10 +2734,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @active_inputs = args[:active_inputs] if args.key?(:active_inputs)
-          @completed_inputs = args[:completed_inputs] if args.key?(:completed_inputs)
+          @active_units = args[:active_units] if args.key?(:active_units)
+          @completed_units = args[:completed_units] if args.key?(:completed_units)
           @elapsed_ms = args[:elapsed_ms] if args.key?(:elapsed_ms)
-          @pending_inputs = args[:pending_inputs] if args.key?(:pending_inputs)
+          @pending_units = args[:pending_units] if args.key?(:pending_units)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
         end
       end

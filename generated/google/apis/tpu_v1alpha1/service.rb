@@ -43,11 +43,11 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://content-tpu.googleapis.com/', '')
+          super('https://tpu.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
-        # Get information about a location.
+        # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
         # @param [String] fields

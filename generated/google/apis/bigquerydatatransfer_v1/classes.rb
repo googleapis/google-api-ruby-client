@@ -131,7 +131,7 @@ module Google
         # @return [String]
         attr_accessor :minimum_schedule_interval
       
-        # Data source resource name.
+        # Output only. Data source resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -643,7 +643,6 @@ module Google
       # When a new transfer configuration is created, the specified
       # `destination_dataset_id` is created when needed and shared with the
       # appropriate data source service account.
-      # Next id: 21
       class TransferConfig
         include Google::Apis::Core::Hashable
       
@@ -794,7 +793,6 @@ module Google
       end
       
       # Represents a data transfer run.
-      # Next id: 27
       class TransferRun
         include Google::Apis::Core::Hashable
       

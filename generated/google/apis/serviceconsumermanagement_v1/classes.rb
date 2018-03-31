@@ -296,12 +296,7 @@ module Google
       class AuthenticationRule
         include Google::Apis::Core::Hashable
       
-        # Whether to allow requests without a credential. The credential can be
-        # an OAuth token, Google cookies (first-party auth) or EndUserCreds.
-        # For requests without credentials, if the service control environment is
-        # specified, each incoming request **must** be associated with a service
-        # consumer. This can be done by passing an API key that belongs to a consumer
-        # project.
+        # If true, the service accepts API keys without any other credential.
         # Corresponds to the JSON property `allowWithoutCredential`
         # @return [Boolean]
         attr_accessor :allow_without_credential
@@ -3324,7 +3319,8 @@ module Google
         # The email format of the service account will be
         # "<account-id>@<tenant-project-id>.iam.gserviceaccount.com".
         # This account id has to be unique within tenant project and producers
-        # have to guarantee it.
+        # have to guarantee it. And it must be 6-30 characters long, and matches the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])`.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
