@@ -320,7 +320,8 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
-        # The provided URL can be at most 2 kB in length.
+        # The provided URL can be at most 2 kB in length. The URL itself is saved
+        # with the image, and exposed via the Image.source_url field.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -527,7 +528,7 @@ module Google
       
       # Creates an embedded Google Sheets chart.
       # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
-      # spreadsheets, drive.readonly, or drive OAuth scopes.
+      # spreadsheets, drive.readonly, drive.file, or drive OAuth scopes.
       class CreateSheetsChartRequest
         include Google::Apis::Core::Hashable
       
@@ -1537,7 +1538,7 @@ module Google
       end
       
       # A PageElement kind representing a
-      # line, curved connector, or bent connector.
+      # non-connector line, straight connector, curved connector or bent connector.
       class Line
         include Google::Apis::Core::Hashable
       
@@ -2081,7 +2082,7 @@ module Google
         attr_accessor :image
       
         # A PageElement kind representing a
-        # line, curved connector, or bent connector.
+        # non-connector line, straight connector, curved connector or bent connector.
         # Corresponds to the JSON property `line`
         # @return [Google::Apis::SlidesV1::Line]
         attr_accessor :line
@@ -2591,7 +2592,8 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
-        # The provided URL can be at most 2 kB in length.
+        # The provided URL can be at most 2 kB in length. The URL itself is saved
+        # with the image, and exposed via the Image.source_url field.
         # Corresponds to the JSON property `imageUrl`
         # @return [String]
         attr_accessor :image_url
@@ -2790,7 +2792,8 @@ module Google
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
         # format.
-        # The provided URL can be at most 2 kB in length.
+        # The provided URL can be at most 2 kB in length. The URL itself is saved
+        # with the image, and exposed via the Image.source_url field.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2841,7 +2844,7 @@ module Google
       
         # Creates an embedded Google Sheets chart.
         # NOTE: Chart creation requires at least one of the spreadsheets.readonly,
-        # spreadsheets, drive.readonly, or drive OAuth scopes.
+        # spreadsheets, drive.readonly, drive.file, or drive OAuth scopes.
         # Corresponds to the JSON property `createSheetsChart`
         # @return [Google::Apis::SlidesV1::CreateSheetsChartRequest]
         attr_accessor :create_sheets_chart

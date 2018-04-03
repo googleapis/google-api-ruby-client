@@ -22,7 +22,7 @@ module Google
     module TexttospeechV1beta1
       # Cloud Text-to-Speech API
       #
-      # Cloud Text-to-Speech API.
+      # Synthesizes natural-sounding speech by applying powerful neural network models.
       #
       # @example
       #    require 'google/apis/texttospeech_v1beta1'

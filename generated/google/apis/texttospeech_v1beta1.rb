@@ -20,12 +20,12 @@ module Google
   module Apis
     # Cloud Text-to-Speech API
     #
-    # Cloud Text-to-Speech API.
+    # Synthesizes natural-sounding speech by applying powerful neural network models.
     #
     # @see http://cloud.google.com/speech/text-to-speech/
     module TexttospeechV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20180323'
+      REVISION = '20180330'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

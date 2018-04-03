@@ -2015,7 +2015,7 @@ module Google
         alias_method :usb_file_transfer_disabled?, :usb_file_transfer_disabled
       
         # Allows admins to toggle whether USB storge is enabled or disabled on user's
-        # devices. Next ID: 113
+        # devices. Next ID: 114
         # Corresponds to the JSON property `usbMassStorageEnabled`
         # @return [Boolean]
         attr_accessor :usb_mass_storage_enabled

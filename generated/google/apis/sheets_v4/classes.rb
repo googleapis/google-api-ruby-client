@@ -2540,7 +2540,8 @@ module Google
         # with length 1.
         # The domain (if it exists) & all series must have the same number
         # of source ranges. If using more than one source range, then the source
-        # range at a given offset must be contiguous across the domain and series.
+        # range at a given offset must be in order and contiguous across the domain
+        # and series.
         # For example, these are valid configurations:
         # domain sources: A1:A5
         # series1 sources: B1:B5
@@ -3033,7 +3034,7 @@ module Google
       
         # A value the condition is based on.
         # The value will be parsed as if the user typed into a cell.
-        # Formulas are supported (and must begin with an `=`).
+        # Formulas are supported (and must begin with an `=` or a '+').
         # Corresponds to the JSON property `userEnteredValue`
         # @return [String]
         attr_accessor :user_entered_value
@@ -4830,19 +4831,21 @@ module Google
       class HistogramRule
         include Google::Apis::Core::Hashable
       
-        # Optional. The maximum value at which items will be placed into buckets
+        # The maximum value at which items will be placed into buckets
         # of constant size. Values above end will be lumped into a single bucket.
+        # This field is optional.
         # Corresponds to the JSON property `end`
         # @return [Float]
         attr_accessor :end
       
-        # Required. The size of the buckets that will be created. Must be positive.
+        # The size of the buckets that will be created. Must be positive.
         # Corresponds to the JSON property `interval`
         # @return [Float]
         attr_accessor :interval
       
-        # Optional. The minimum value at which items will be placed into buckets
+        # The minimum value at which items will be placed into buckets
         # of constant size. Values below start will be lumped into a single bucket.
+        # This field is optional.
         # Corresponds to the JSON property `start`
         # @return [Float]
         attr_accessor :start
@@ -9492,9 +9495,9 @@ module Google
         # subtotal. Otherwise, the subtotal appears after the data point with
         # this index. A series can have multiple subtotals at arbitrary indices,
         # but subtotals do not affect the indices of the data points. For
-        # example, if a series has 3 data points, their indices will always be 0,
-        # 1, and 2, regardless of how many subtotals exist on the series or what
-        # data points they are associated with.
+        # example, if a series has three data points, their indices will always
+        # be 0, 1, and 2, regardless of how many subtotals exist on the series or
+        # what data points they are associated with.
         # Corresponds to the JSON property `subtotalIndex`
         # @return [Fixnum]
         attr_accessor :subtotal_index
