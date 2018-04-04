@@ -848,6 +848,7 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :afa_info_shared, as: 'afaInfoShared'
           collection :available_adwords_manager_accounts, as: 'availableAdwordsManagerAccounts', class: Google::Apis::PartnersV2::AdWordsManagerAccountInfo, decorator: Google::Apis::PartnersV2::AdWordsManagerAccountInfo::Representation
       
           collection :certification_status, as: 'certificationStatus', class: Google::Apis::PartnersV2::Certification, decorator: Google::Apis::PartnersV2::Certification::Representation

@@ -87,6 +87,81 @@ module Google
         end
       end
       
+      # Request to create a managed Short Dynamic Link.
+      class CreateManagedShortLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information about a Dynamic Link.
+        # Corresponds to the JSON property `dynamicLinkInfo`
+        # @return [Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo]
+        attr_accessor :dynamic_link_info
+      
+        # Full long Dynamic Link URL with desired query parameters specified.
+        # For example,
+        # "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
+        # [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-
+        # shortener).
+        # Corresponds to the JSON property `longDynamicLink`
+        # @return [String]
+        attr_accessor :long_dynamic_link
+      
+        # Link name to associate with the link. It's used for marketer to identify
+        # manually-created links in the Firebase console
+        # (https://console.firebase.google.com/).
+        # Links must be named to be tracked.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Short Dynamic Link suffix.
+        # Corresponds to the JSON property `suffix`
+        # @return [Google::Apis::FirebasedynamiclinksV1::Suffix]
+        attr_accessor :suffix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_link_info = args[:dynamic_link_info] if args.key?(:dynamic_link_info)
+          @long_dynamic_link = args[:long_dynamic_link] if args.key?(:long_dynamic_link)
+          @name = args[:name] if args.key?(:name)
+          @suffix = args[:suffix] if args.key?(:suffix)
+        end
+      end
+      
+      # Response to create a short Dynamic Link.
+      class CreateManagedShortLinkResponse
+        include Google::Apis::Core::Hashable
+      
+        # Managed Short Link.
+        # Corresponds to the JSON property `managedShortLink`
+        # @return [Google::Apis::FirebasedynamiclinksV1::ManagedShortLink]
+        attr_accessor :managed_short_link
+      
+        # Preview link to show the link flow chart. (debug info.)
+        # Corresponds to the JSON property `previewLink`
+        # @return [String]
+        attr_accessor :preview_link
+      
+        # Information about potential warnings on link creation.
+        # Corresponds to the JSON property `warning`
+        # @return [Array<Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning>]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @managed_short_link = args[:managed_short_link] if args.key?(:managed_short_link)
+          @preview_link = args[:preview_link] if args.key?(:preview_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+      end
+      
       # Request to create a short Dynamic Link.
       class CreateShortDynamicLinkRequest
         include Google::Apis::Core::Hashable
@@ -126,7 +201,7 @@ module Google
       class CreateShortDynamicLinkResponse
         include Google::Apis::Core::Hashable
       
-        # Preivew link to show the link flow chart.
+        # Preview link to show the link flow chart. (debug info.)
         # Corresponds to the JSON property `previewLink`
         # @return [String]
         attr_accessor :preview_link
@@ -281,6 +356,13 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::DesktopInfo]
         attr_accessor :desktop_info
       
+        # E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps
+        # More examples can be found in description of getNormalizedUriPrefix in
+        # j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
+        # Corresponds to the JSON property `domainUriPrefix`
+        # @return [String]
+        attr_accessor :domain_uri_prefix
+      
         # Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
         # [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive)
         # on how to set up Dynamic Link domain associated with your Firebase project.
@@ -324,6 +406,7 @@ module Google
           @analytics_info = args[:analytics_info] if args.key?(:analytics_info)
           @android_info = args[:android_info] if args.key?(:android_info)
           @desktop_info = args[:desktop_info] if args.key?(:desktop_info)
+          @domain_uri_prefix = args[:domain_uri_prefix] if args.key?(:domain_uri_prefix)
           @dynamic_link_domain = args[:dynamic_link_domain] if args.key?(:dynamic_link_domain)
           @ios_info = args[:ios_info] if args.key?(:ios_info)
           @link = args[:link] if args.key?(:link)
@@ -710,6 +793,57 @@ module Google
         end
       end
       
+      # Managed Short Link.
+      class ManagedShortLink
+        include Google::Apis::Core::Hashable
+      
+        # Creation timestamp of the short link.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # Attributes that have been flagged about this short url.
+        # Corresponds to the JSON property `flaggedAttribute`
+        # @return [Array<String>]
+        attr_accessor :flagged_attribute
+      
+        # Information about a Dynamic Link.
+        # Corresponds to the JSON property `info`
+        # @return [Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo]
+        attr_accessor :info
+      
+        # Short durable link url, for example, "https://sample.app.goo.gl/xyz123".
+        # Required.
+        # Corresponds to the JSON property `link`
+        # @return [String]
+        attr_accessor :link
+      
+        # Link name defined by the creator.
+        # Required.
+        # Corresponds to the JSON property `linkName`
+        # @return [String]
+        attr_accessor :link_name
+      
+        # Visibility status of link.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @flagged_attribute = args[:flagged_attribute] if args.key?(:flagged_attribute)
+          @info = args[:info] if args.key?(:info)
+          @link = args[:link] if args.key?(:link)
+          @link_name = args[:link_name] if args.key?(:link_name)
+          @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
       # Information of navigation behavior.
       class NavigationInfo
         include Google::Apis::Core::Hashable
@@ -767,6 +901,11 @@ module Google
       class Suffix
         include Google::Apis::Core::Hashable
       
+        # Only applies to Option.CUSTOM.
+        # Corresponds to the JSON property `customSuffix`
+        # @return [String]
+        attr_accessor :custom_suffix
+      
         # Suffix option.
         # Corresponds to the JSON property `option`
         # @return [String]
@@ -778,6 +917,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_suffix = args[:custom_suffix] if args.key?(:custom_suffix)
           @option = args[:option] if args.key?(:option)
         end
       end

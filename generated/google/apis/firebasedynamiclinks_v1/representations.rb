@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateManagedShortLinkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateManagedShortLinkResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateShortDynamicLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedShortLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NavigationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -147,6 +165,29 @@ module Google
           property :android_link, as: 'androidLink'
           property :android_min_package_version_code, as: 'androidMinPackageVersionCode'
           property :android_package_name, as: 'androidPackageName'
+        end
+      end
+      
+      class CreateManagedShortLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_link_info, as: 'dynamicLinkInfo', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo::Representation
+      
+          property :long_dynamic_link, as: 'longDynamicLink'
+          property :name, as: 'name'
+          property :suffix, as: 'suffix', class: Google::Apis::FirebasedynamiclinksV1::Suffix, decorator: Google::Apis::FirebasedynamiclinksV1::Suffix::Representation
+      
+        end
+      end
+      
+      class CreateManagedShortLinkResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_short_link, as: 'managedShortLink', class: Google::Apis::FirebasedynamiclinksV1::ManagedShortLink, decorator: Google::Apis::FirebasedynamiclinksV1::ManagedShortLink::Representation
+      
+          property :preview_link, as: 'previewLink'
+          collection :warning, as: 'warning', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkWarning::Representation
+      
         end
       end
       
@@ -209,6 +250,7 @@ module Google
       
           property :desktop_info, as: 'desktopInfo', class: Google::Apis::FirebasedynamiclinksV1::DesktopInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DesktopInfo::Representation
       
+          property :domain_uri_prefix, as: 'domainUriPrefix'
           property :dynamic_link_domain, as: 'dynamicLinkDomain'
           property :ios_info, as: 'iosInfo', class: Google::Apis::FirebasedynamiclinksV1::IosInfo, decorator: Google::Apis::FirebasedynamiclinksV1::IosInfo::Representation
       
@@ -305,6 +347,19 @@ module Google
         end
       end
       
+      class ManagedShortLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          collection :flagged_attribute, as: 'flaggedAttribute'
+          property :info, as: 'info', class: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo, decorator: Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo::Representation
+      
+          property :link, as: 'link'
+          property :link_name, as: 'linkName'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
       class NavigationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -324,6 +379,7 @@ module Google
       class Suffix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_suffix, as: 'customSuffix'
           property :option, as: 'option'
         end
       end

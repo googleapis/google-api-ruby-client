@@ -748,7 +748,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+        # month.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
@@ -2016,6 +2017,13 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
+        # Whether or not the user has opted to share their Academy for Ads info with
+        # Google Partners.
+        # Corresponds to the JSON property `afaInfoShared`
+        # @return [Boolean]
+        attr_accessor :afa_info_shared
+        alias_method :afa_info_shared?, :afa_info_shared
+      
         # This is the list of AdWords Manager Accounts the user has edit access to.
         # If the user has edit access to multiple accounts, the user can choose the
         # preferred account and we use this when a personal account is needed. Can
@@ -2089,6 +2097,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @afa_info_shared = args[:afa_info_shared] if args.key?(:afa_info_shared)
           @available_adwords_manager_accounts = args[:available_adwords_manager_accounts] if args.key?(:available_adwords_manager_accounts)
           @certification_status = args[:certification_status] if args.key?(:certification_status)
           @company = args[:company] if args.key?(:company)

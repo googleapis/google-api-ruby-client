@@ -47,6 +47,46 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a managed short Dynamic Link given either a valid long Dynamic Link
+        # or details such as Dynamic Link domain, Android and iOS app information.
+        # The created short Dynamic Link will not expire.
+        # This differs from CreateShortDynamicLink in the following ways:
+        # - The request will also contain a name for the link (non unique name
+        # for the front end).
+        # - The response must be authenticated with an auth token (generated with
+        # the admin service account).
+        # - The link will appear in the FDL list of links in the console front end.
+        # The Dynamic Link domain in the request must be owned by requester's
+        # Firebase project.
+        # @param [Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkRequest] create_managed_short_link_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_managed_short_link(create_managed_short_link_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/managedShortLinks:create', options)
+          command.request_representation = Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkRequest::Representation
+          command.request_object = create_managed_short_link_request_object
+          command.response_representation = Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkResponse::Representation
+          command.response_class = Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a short Dynamic Link given either a valid long Dynamic Link or
         # details such as Dynamic Link domain, Android and iOS app information.
         # The created short Dynamic Link will not expire.
