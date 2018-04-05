@@ -18,7 +18,7 @@ require 'google/apis/testing_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Testing API
+    # Cloud Testing API
     #
     # Allows developers to run automated tests for their mobile applications on
     # Google infrastructure.
@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/cloud-test-lab/
     module TestingV1
       VERSION = 'V1'
-      REVISION = '20180316'
+      REVISION = '20180404'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -18,7 +18,7 @@ require 'google/apis/safebrowsing_v4/representations.rb'
 
 module Google
   module Apis
-    # Google Safe Browsing API
+    # Safe Browsing API
     #
     # Enables client applications to check web resources (most commonly URLs)
     # against Google-generated lists of unsafe web resources.
@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/safe-browsing/
     module SafebrowsingV4
       VERSION = 'V4'
-      REVISION = '20180215'
+      REVISION = '20180403'
     end
   end
 end

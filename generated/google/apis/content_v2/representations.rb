@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatafeedsFetchNowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDatafeedsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1326,6 +1332,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :destination, as: 'destination'
           property :detail, as: 'detail'
           property :id, as: 'id'
           property :severity, as: 'severity'
@@ -1337,6 +1344,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :destination, as: 'destination'
           property :detail, as: 'detail'
           property :displayed_value, as: 'displayedValue'
           collection :example_items, as: 'exampleItems', class: Google::Apis::ContentV2::AccountStatusExampleItem, decorator: Google::Apis::ContentV2::AccountStatusExampleItem::Representation
@@ -1480,6 +1488,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, :numeric_string => true, as: 'accountId'
           property :batch_id, as: 'batchId'
+          collection :destinations, as: 'destinations'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
         end
@@ -1718,6 +1727,13 @@ module Google
       
           property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::Errors::Representation
       
+        end
+      end
+      
+      class DatafeedsFetchNowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
         end
       end
       
@@ -3288,6 +3304,7 @@ module Google
       class ProductStatusDataQualityIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
           property :detail, as: 'detail'
           property :fetch_status, as: 'fetchStatus'
           property :id, as: 'id'
@@ -3411,6 +3428,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
+          collection :destinations, as: 'destinations'
           property :include_attributes, as: 'includeAttributes'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'

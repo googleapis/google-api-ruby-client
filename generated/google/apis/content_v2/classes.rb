@@ -254,6 +254,11 @@ module Google
         # @return [String]
         attr_accessor :country
       
+        # The destination the issue applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
         # Additional details about the issue.
         # Corresponds to the JSON property `detail`
         # @return [String]
@@ -281,6 +286,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @destination = args[:destination] if args.key?(:destination)
           @detail = args[:detail] if args.key?(:detail)
           @id = args[:id] if args.key?(:id)
           @severity = args[:severity] if args.key?(:severity)
@@ -296,6 +302,11 @@ module Google
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
+      
+        # The destination the issue applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
       
         # A more detailed description of the issue.
         # Corresponds to the JSON property `detail`
@@ -349,6 +360,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @destination = args[:destination] if args.key?(:destination)
           @detail = args[:detail] if args.key?(:detail)
           @displayed_value = args[:displayed_value] if args.key?(:displayed_value)
           @example_items = args[:example_items] if args.key?(:example_items)
@@ -802,6 +814,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
+        # If set, only issues for the specified destinations are returned, otherwise
+        # only issues for the Shopping destination.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<String>]
+        attr_accessor :destinations
+      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -820,6 +838,7 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @destinations = args[:destinations] if args.key?(:destinations)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
         end
@@ -1666,6 +1685,26 @@ module Google
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @datafeed = args[:datafeed] if args.key?(:datafeed)
           @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # 
+      class DatafeedsFetchNowResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # datafeedsFetchNowResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -5960,7 +5999,7 @@ module Google
         # @return [Google::Apis::ContentV2::PosStore]
         attr_accessor :store
       
-        # The store code. Required only to get/submit store information.
+        # The store code. Set this only if the method is delete or get.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7429,6 +7468,11 @@ module Google
       class ProductStatusDataQualityIssue
         include Google::Apis::Core::Hashable
       
+        # The destination the issue applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
         # A more detailed error string.
         # Corresponds to the JSON property `detail`
         # @return [String]
@@ -7475,6 +7519,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
           @detail = args[:detail] if args.key?(:detail)
           @fetch_status = args[:fetch_status] if args.key?(:fetch_status)
           @id = args[:id] if args.key?(:id)
@@ -7857,6 +7902,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
+        # If set, only issues for the specified destinations are returned, otherwise
+        # only issues for the Shopping destination.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<String>]
+        attr_accessor :destinations
+      
         # 
         # Corresponds to the JSON property `includeAttributes`
         # @return [Boolean]
@@ -7885,6 +7936,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
+          @destinations = args[:destinations] if args.key?(:destinations)
           @include_attributes = args[:include_attributes] if args.key?(:include_attributes)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)

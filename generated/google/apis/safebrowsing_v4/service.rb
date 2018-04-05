@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SafebrowsingV4
-      # Google Safe Browsing API
+      # Safe Browsing API
       #
       # Enables client applications to check web resources (most commonly URLs)
       #  against Google-generated lists of unsafe web resources.

@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TestingV1
-      # Google Cloud Testing API
+      # Cloud Testing API
       #
       # Allows developers to run automated tests for their mobile applications on
       #  Google infrastructure.

@@ -469,6 +469,9 @@ module Google
         #   of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
+        # @param [Array<String>, String] destinations
+        #   If set, only issues for the specified destinations are returned, otherwise
+        #   only issues for the Shopping destination.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -490,12 +493,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_status(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_status(merchant_id, account_id, destinations: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accountstatuses/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2::AccountStatus::Representation
           command.response_class = Google::Apis::ContentV2::AccountStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['destinations'] = destinations unless destinations.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -505,6 +509,9 @@ module Google
         # Lists the statuses of the sub-accounts in your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. This must be a multi-client account.
+        # @param [Array<String>, String] destinations
+        #   If set, only issues for the specified destinations are returned, otherwise
+        #   only issues for the Shopping destination.
         # @param [Fixnum] max_results
         #   The maximum number of account statuses to return in the response, used for
         #   paging.
@@ -531,11 +538,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_statuses(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_statuses(merchant_id, destinations: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/accountstatuses', options)
           command.response_representation = Google::Apis::ContentV2::ListAccountStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListAccountStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['destinations'] = destinations unless destinations.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -824,6 +832,48 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_datafeed(merchant_id, datafeed_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, '{merchantId}/datafeeds/{datafeedId}', options)
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['datafeedId'] = datafeed_id unless datafeed_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Invokes a fetch for the datafeed in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the datafeed. This account cannot be a
+        #   multi-client account.
+        # @param [Fixnum] datafeed_id
+        #   The ID of the datafeed to be fetched.
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2::DatafeedsFetchNowResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2::DatafeedsFetchNowResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetchnow_datafeed(merchant_id, datafeed_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{merchantId}/datafeeds/{datafeedId}/fetchNow', options)
+          command.response_representation = Google::Apis::ContentV2::DatafeedsFetchNowResponse::Representation
+          command.response_class = Google::Apis::ContentV2::DatafeedsFetchNowResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['datafeedId'] = datafeed_id unless datafeed_id.nil?
           command.query['dryRun'] = dry_run unless dry_run.nil?
@@ -3052,6 +3102,9 @@ module Google
         #   multi-client account.
         # @param [String] product_id
         #   The REST id of the product.
+        # @param [Array<String>, String] destinations
+        #   If set, only issues for the specified destinations are returned, otherwise
+        #   only issues for the Shopping destination.
         # @param [Boolean] include_attributes
         #   Flag to include full product data in the result of this get request. The
         #   default value is false.
@@ -3076,12 +3129,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_product_status(merchant_id, product_id, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_product_status(merchant_id, product_id, destinations: nil, include_attributes: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/productstatuses/{productId}', options)
           command.response_representation = Google::Apis::ContentV2::ProductStatus::Representation
           command.response_class = Google::Apis::ContentV2::ProductStatus
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['productId'] = product_id unless product_id.nil?
+          command.query['destinations'] = destinations unless destinations.nil?
           command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3093,6 +3147,9 @@ module Google
         # @param [Fixnum] merchant_id
         #   The ID of the account that contains the products. This account cannot be a
         #   multi-client account.
+        # @param [Array<String>, String] destinations
+        #   If set, only issues for the specified destinations are returned, otherwise
+        #   only issues for the Shopping destination.
         # @param [Boolean] include_attributes
         #   Flag to include full product data in the results of the list request. The
         #   default value is false.
@@ -3125,11 +3182,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_product_statuses(merchant_id, include_attributes: nil, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_product_statuses(merchant_id, destinations: nil, include_attributes: nil, include_invalid_inserted_items: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, '{merchantId}/productstatuses', options)
           command.response_representation = Google::Apis::ContentV2::ListProductStatusesResponse::Representation
           command.response_class = Google::Apis::ContentV2::ListProductStatusesResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['destinations'] = destinations unless destinations.nil?
           command.query['includeAttributes'] = include_attributes unless include_attributes.nil?
           command.query['includeInvalidInsertedItems'] = include_invalid_inserted_items unless include_invalid_inserted_items.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

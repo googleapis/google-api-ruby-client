@@ -6363,7 +6363,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a date without a
+        # month.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month

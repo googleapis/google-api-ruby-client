@@ -51,8 +51,8 @@ module Google
         end
       end
       
-      # An AwsS3Data can be a data source, but not a data sink.
-      # In an AwsS3Data, an object's name is the S3 object's key name.
+      # An AwsS3Data resource can be a data source, but not a data sink.
+      # In an AwsS3Data resource, an object's name is the S3 object's key name.
       class AwsS3Data
         include Google::Apis::Core::Hashable
       
@@ -200,9 +200,9 @@ module Google
         end
       end
       
-      # In a GcsData, an object's name is the Google Cloud Storage object's name and
-      # its `lastModificationTime` refers to the object's updated time, which changes
-      # when the content or the metadata of the object is updated.
+      # In a GcsData resource, an object's name is the Google Cloud Storage object's
+      # name and its `lastModificationTime` refers to the object's updated time,
+      # which changes when the content or the metadata of the object is updated.
       class GcsData
         include Google::Apis::Core::Hashable
       
@@ -243,9 +243,9 @@ module Google
         end
       end
       
-      # An HttpData specifies a list of objects on the web to be transferred over
-      # HTTP.  The information of the objects to be transferred is contained in a
-      # file referenced by a URL. The first line in the file must be
+      # An HttpData resource specifies a list of objects on the web to be transferred
+      # over HTTP.  The information of the objects to be transferred is contained in
+      # a file referenced by a URL. The first line in the file must be
       # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
       # specify the information of the list of objects, one object per list entry.
       # Each entry has the following tab-delimited fields:
@@ -253,12 +253,11 @@ module Google
       # * Length - The size of the object in bytes.
       # * MD5 - The base64-encoded MD5 hash of the object.
       # For an example of a valid TSV file, see
-      # [Transferring data from URLs](https://cloud.google.com/storage/transfer/create-
-      # url-list).
+      # [Transferring data from
+      # URLs](https://cloud.google.com/storage/transfer/create-url-list).
       # When transferring data based on a URL list, keep the following in mind:
       # * When an object located at `http(s)://hostname:port/<URL-path>` is
-      # transferred
-      # to a data sink, the name of the object at the data sink is
+      # transferred to a data sink, the name of the object at the data sink is
       # `<hostname>/<URL-path>`.
       # * If the specified size of an object does not match the actual size of the
       # object fetched, the object will not be transferred.
@@ -999,29 +998,29 @@ module Google
       class TransferSpec
         include Google::Apis::Core::Hashable
       
-        # An AwsS3Data can be a data source, but not a data sink.
-        # In an AwsS3Data, an object's name is the S3 object's key name.
+        # An AwsS3Data resource can be a data source, but not a data sink.
+        # In an AwsS3Data resource, an object's name is the S3 object's key name.
         # Corresponds to the JSON property `awsS3DataSource`
         # @return [Google::Apis::StoragetransferV1::AwsS3Data]
         attr_accessor :aws_s3_data_source
       
-        # In a GcsData, an object's name is the Google Cloud Storage object's name and
-        # its `lastModificationTime` refers to the object's updated time, which changes
-        # when the content or the metadata of the object is updated.
+        # In a GcsData resource, an object's name is the Google Cloud Storage object's
+        # name and its `lastModificationTime` refers to the object's updated time,
+        # which changes when the content or the metadata of the object is updated.
         # Corresponds to the JSON property `gcsDataSink`
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_sink
       
-        # In a GcsData, an object's name is the Google Cloud Storage object's name and
-        # its `lastModificationTime` refers to the object's updated time, which changes
-        # when the content or the metadata of the object is updated.
+        # In a GcsData resource, an object's name is the Google Cloud Storage object's
+        # name and its `lastModificationTime` refers to the object's updated time,
+        # which changes when the content or the metadata of the object is updated.
         # Corresponds to the JSON property `gcsDataSource`
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_source
       
-        # An HttpData specifies a list of objects on the web to be transferred over
-        # HTTP.  The information of the objects to be transferred is contained in a
-        # file referenced by a URL. The first line in the file must be
+        # An HttpData resource specifies a list of objects on the web to be transferred
+        # over HTTP.  The information of the objects to be transferred is contained in
+        # a file referenced by a URL. The first line in the file must be
         # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
         # specify the information of the list of objects, one object per list entry.
         # Each entry has the following tab-delimited fields:
@@ -1029,12 +1028,11 @@ module Google
         # * Length - The size of the object in bytes.
         # * MD5 - The base64-encoded MD5 hash of the object.
         # For an example of a valid TSV file, see
-        # [Transferring data from URLs](https://cloud.google.com/storage/transfer/create-
-        # url-list).
+        # [Transferring data from
+        # URLs](https://cloud.google.com/storage/transfer/create-url-list).
         # When transferring data based on a URL list, keep the following in mind:
         # * When an object located at `http(s)://hostname:port/<URL-path>` is
-        # transferred
-        # to a data sink, the name of the object at the data sink is
+        # transferred to a data sink, the name of the object at the data sink is
         # `<hostname>/<URL-path>`.
         # * If the specified size of an object does not match the actual size of the
         # object fetched, the object will not be transferred.
