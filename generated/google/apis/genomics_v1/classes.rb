@@ -276,8 +276,6 @@ module Google
       
       # A call set is a collection of variant calls, typically for one sample. It
       # belongs to a variant set.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class CallSet
         include Google::Apis::Core::Hashable
       
@@ -574,8 +572,6 @@ module Google
       end
       
       # A Dataset is a collection of genomic data.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class Dataset
         include Google::Apis::Core::Hashable
       
@@ -1761,8 +1757,6 @@ module Google
       # which were read by the sequencer). A read is equivalent to a line in a SAM
       # file. A read belongs to exactly one read group and exactly one
       # read group set.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       # ### Reverse-stranded reads
       # Mapped reads (reads having a non-null `alignment`) can be aligned to either
       # the forward or the reverse strand of their associated reference. Strandedness
@@ -2073,8 +2067,6 @@ module Google
       # * A read group set belongs to one dataset.
       # * A read group belongs to one read group set.
       # * A read belongs to one read group.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class ReadGroupSet
         include Google::Apis::Core::Hashable
       
@@ -2135,8 +2127,6 @@ module Google
       # reference coordinate space for other genomic annotations. A single reference
       # might represent the human chromosome 1 or mitochandrial DNA, for instance. A
       # reference belongs to one or more reference sets.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class Reference
         include Google::Apis::Core::Hashable
       
@@ -2227,8 +2217,6 @@ module Google
       # of the human genome. A reference set defines a common coordinate space for
       # comparing reference-aligned experimental data. A reference set contains 1 or
       # more references.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class ReferenceSet
         include Google::Apis::Core::Hashable
       
@@ -3318,8 +3306,6 @@ module Google
       # A variant represents a change in DNA sequence relative to a reference
       # sequence. For example, a variant could represent a SNP or an insertion.
       # Variants belong to a variant set.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       # Each of the calls on a variant represent a determination of genotype with
       # respect to that variant. For example, a call might assign probability of 0.32
       # to the occurrence of a SNP named rs1234 in a sample named NA12345. A call
@@ -3563,8 +3549,6 @@ module Google
       
       # A variant set is a collection of call sets and variants. It contains summary
       # statistics of those contents. A variant set belongs to a dataset.
-      # For more genomics resource definitions, see [Fundamentals of Google
-      # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
       class VariantSet
         include Google::Apis::Core::Hashable
       

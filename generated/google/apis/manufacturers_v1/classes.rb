@@ -75,6 +75,11 @@ module Google
         # @return [String]
         attr_accessor :disclosure_date
       
+        # A list of excluded destinations.
+        # Corresponds to the JSON property `excludedDestination`
+        # @return [Array<String>]
+        attr_accessor :excluded_destination
+      
         # The rich format description of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#featuredesc.
         # Corresponds to the JSON property `featureDescription`
@@ -109,6 +114,11 @@ module Google
         # Corresponds to the JSON property `imageLink`
         # @return [Google::Apis::ManufacturersV1::Image]
         attr_accessor :image_link
+      
+        # A list of included destinations.
+        # Corresponds to the JSON property `includedDestination`
+        # @return [Array<String>]
+        attr_accessor :included_destination
       
         # The item group id of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#itemgroupid.
@@ -238,12 +248,14 @@ module Google
           @count = args[:count] if args.key?(:count)
           @description = args[:description] if args.key?(:description)
           @disclosure_date = args[:disclosure_date] if args.key?(:disclosure_date)
+          @excluded_destination = args[:excluded_destination] if args.key?(:excluded_destination)
           @feature_description = args[:feature_description] if args.key?(:feature_description)
           @flavor = args[:flavor] if args.key?(:flavor)
           @format = args[:format] if args.key?(:format)
           @gender = args[:gender] if args.key?(:gender)
           @gtin = args[:gtin] if args.key?(:gtin)
           @image_link = args[:image_link] if args.key?(:image_link)
+          @included_destination = args[:included_destination] if args.key?(:included_destination)
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
           @material = args[:material] if args.key?(:material)
           @mpn = args[:mpn] if args.key?(:mpn)
@@ -315,6 +327,31 @@ module Google
         def update!(**args)
           @unit = args[:unit] if args.key?(:unit)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The destination status.
+      class DestinationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The name of the destination.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # The status of the destination.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -420,6 +457,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The destination this issue applies to.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # What needs to happen to resolve the issue.
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
         # The severity of the issue.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -429,6 +476,11 @@ module Google
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
+      
+        # Short title describing the nature of the issue.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
       
         # The server-generated type of the issue, for example,
         # “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
@@ -444,8 +496,11 @@ module Google
         def update!(**args)
           @attribute = args[:attribute] if args.key?(:attribute)
           @description = args[:description] if args.key?(:description)
+          @destination = args[:destination] if args.key?(:destination)
+          @resolution = args[:resolution] if args.key?(:resolution)
           @severity = args[:severity] if args.key?(:severity)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -504,12 +559,22 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # Attributes of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::ManufacturersV1::Attributes]
+        attr_accessor :attributes
+      
         # The content language of the product as a two-letter ISO 639-1 language code
         # (for example, en).
-        # @OutputOnly
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
+      
+        # The status of the destinations.
+        # Corresponds to the JSON property `destinationStatuses`
+        # @return [Array<Google::Apis::ManufacturersV1::DestinationStatus>]
+        attr_accessor :destination_statuses
       
         # Attributes of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116.
@@ -518,14 +583,14 @@ module Google
         attr_accessor :final_attributes
       
         # A server-generated list of issues associated with the product.
-        # @OutputOnly
         # Corresponds to the JSON property `issues`
         # @return [Array<Google::Apis::ManufacturersV1::Issue>]
         attr_accessor :issues
       
         # Names of the attributes of the product deleted manually via the
         # Manufacturer Center UI.
-        # @OutputOnly
+        # This field is deprecated and will be removed end of July 2018. Please use
+        # attributes.
         # Corresponds to the JSON property `manuallyDeletedAttributes`
         # @return [Array<String>]
         attr_accessor :manually_deleted_attributes
@@ -544,28 +609,24 @@ module Google
         # `product_id`     -   The ID of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#
         # id.
-        # @OutputOnly
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Parent ID in the format `accounts/`account_id``.
         # `account_id` - The ID of the Manufacturer Center account.
-        # @OutputOnly
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
         # The ID of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#id.
-        # @OutputOnly
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
         # The target country of the product as a CLDR territory code (for example,
         # US).
-        # @OutputOnly
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -582,7 +643,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
           @content_language = args[:content_language] if args.key?(:content_language)
+          @destination_statuses = args[:destination_statuses] if args.key?(:destination_statuses)
           @final_attributes = args[:final_attributes] if args.key?(:final_attributes)
           @issues = args[:issues] if args.key?(:issues)
           @manually_deleted_attributes = args[:manually_deleted_attributes] if args.key?(:manually_deleted_attributes)

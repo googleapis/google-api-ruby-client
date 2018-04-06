@@ -2328,6 +2328,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Headers that the HTTP/S load balancer should add to proxied requests.
+        # Corresponds to the JSON property `customRequestHeaders`
+        # @return [Array<String>]
+        attr_accessor :custom_request_headers
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -2464,6 +2469,7 @@ module Google
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -16462,6 +16468,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfig]
         attr_accessor :config
       
+        # Represents an expression text. Example:
+        # title: "User account presence" description: "Determines whether the request
+        # has a user account" expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `expr`
+        # @return [Google::Apis::ComputeBeta::Expr]
+        attr_accessor :expr
+      
         # CIDR IP address range.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
@@ -16482,6 +16495,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @expr = args[:expr] if args.key?(:expr)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
         end

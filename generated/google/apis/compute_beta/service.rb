@@ -17769,9 +17769,9 @@ module Google
         
         # Patches the specified subnetwork with the data included in the request. Only
         # the following fields within the subnetwork resource can be specified in the
-        # request: secondary_ip_range and allow_subnet_cidr_routes_overlap. It is also
-        # mandatory to specify the current fingeprint of the subnetwork resource being
-        # patched.
+        # request: secondary_ip_range, allow_subnet_cidr_routes_overlap and role. It is
+        # also mandatory to specify the current fingeprint of the subnetwork resource
+        # being patched.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region

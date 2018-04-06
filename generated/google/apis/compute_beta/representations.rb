@@ -3564,6 +3564,7 @@ module Google
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeBeta::ConnectionDraining, decorator: Google::Apis::ComputeBeta::ConnectionDraining::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_request_headers, as: 'customRequestHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCDN'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -7083,6 +7084,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfig::Representation
+      
+          property :expr, as: 'expr', class: Google::Apis::ComputeBeta::Expr, decorator: Google::Apis::ComputeBeta::Expr::Representation
       
           collection :src_ip_ranges, as: 'srcIpRanges'
           property :versioned_expr, as: 'versionedExpr'

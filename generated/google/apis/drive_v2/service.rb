@@ -2303,15 +2303,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a property, or adds it if it doesn't exist. This method supports patch
-        # semantics.
+        # Updates a property. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
         #   The key of the property.
         # @param [Google::Apis::DriveV2::Property] property_object
         # @param [String] visibility
-        #   The visibility of the property.
+        #   The visibility of the property. Allowed values are PRIVATE and PUBLIC. (
+        #   Default: PRIVATE)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2348,14 +2348,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a property, or adds it if it doesn't exist.
+        # Updates a property.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
         #   The key of the property.
         # @param [Google::Apis::DriveV2::Property] property_object
         # @param [String] visibility
-        #   The visibility of the property.
+        #   The visibility of the property. Allowed values are PRIVATE and PUBLIC. (
+        #   Default: PRIVATE)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

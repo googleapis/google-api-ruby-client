@@ -43,7 +43,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://content-manufacturers.googleapis.com/', '')
+          super('https://manufacturers.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
@@ -106,6 +106,12 @@ module Google
         #   `product_id`     -   The ID of the product. For more information, see
         #   https://support.google.com/manufacturers/answer/6124116#
         #   id.
+        # @param [Array<String>, String] include
+        #   The information to be included in the response. Only sections listed here
+        #   will be returned.
+        #   If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
+        #   This behavior is temporary and will be removed once all clients are ready
+        #   or at the latest end of July 2018. After that no sections will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -123,12 +129,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_product(parent, name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_account_product(parent, name, include: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/products/{+name}', options)
           command.response_representation = Google::Apis::ManufacturersV1::Product::Representation
           command.response_class = Google::Apis::ManufacturersV1::Product
           command.params['parent'] = parent unless parent.nil?
           command.params['name'] = name unless name.nil?
+          command.query['include'] = include unless include.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -138,6 +145,12 @@ module Google
         # @param [String] parent
         #   Parent ID in the format `accounts/`account_id``.
         #   `account_id` - The ID of the Manufacturer Center account.
+        # @param [Array<String>, String] include
+        #   The information to be included in the response. Only sections listed here
+        #   will be returned.
+        #   If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
+        #   This behavior is temporary and will be removed once all clients are ready
+        #   or at the latest end of July 2018. After that no sections will be returned.
         # @param [Fixnum] page_size
         #   Maximum number of product statuses to return in the response, used for
         #   paging.
@@ -160,11 +173,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_products(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_account_products(parent, include: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command =  make_simple_command(:get, 'v1/{+parent}/products', options)
           command.response_representation = Google::Apis::ManufacturersV1::ListProductsResponse::Representation
           command.response_class = Google::Apis::ManufacturersV1::ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['include'] = include unless include.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

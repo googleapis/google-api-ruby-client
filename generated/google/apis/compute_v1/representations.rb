@@ -1342,6 +1342,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicenseCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicenseCodeLicenseAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicenseResourceRequirements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicensesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2014,6 +2050,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslPoliciesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPoliciesListAvailableFeaturesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Subnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2453,6 +2537,18 @@ module Google
       end
       
       class TestFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3464,6 +3560,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_attach_timestamp, as: 'lastAttachTimestamp'
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
+          collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :options, as: 'options'
@@ -4128,6 +4225,7 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
@@ -5114,9 +5212,79 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :charges_use_fee, as: 'chargesUseFee'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :license_code, :numeric_string => true, as: 'licenseCode'
+          property :name, as: 'name'
+          property :resource_requirements, as: 'resourceRequirements', class: Google::Apis::ComputeV1::LicenseResourceRequirements, decorator: Google::Apis::ComputeV1::LicenseResourceRequirements::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :transferable, as: 'transferable'
+        end
+      end
+      
+      class LicenseCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          collection :license_alias, as: 'licenseAlias', class: Google::Apis::ComputeV1::LicenseCodeLicenseAlias, decorator: Google::Apis::ComputeV1::LicenseCodeLicenseAlias::Representation
+      
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :transferable, as: 'transferable'
+        end
+      end
+      
+      class LicenseCodeLicenseAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class LicenseResourceRequirements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_guest_cpu_count, as: 'minGuestCpuCount'
+          property :min_memory_mb, as: 'minMemoryMb'
+        end
+      end
+      
+      class LicensesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::License, decorator: Google::Apis::ComputeV1::License::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::LicensesListResponse::Warning, decorator: Google::Apis::ComputeV1::LicensesListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::LicensesListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::LicensesListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -6238,6 +6406,7 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
@@ -6328,6 +6497,89 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SslPoliciesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::SslPolicy, decorator: Google::Apis::ComputeV1::SslPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::SslPoliciesList::Warning, decorator: Google::Apis::ComputeV1::SslPoliciesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::SslPoliciesList::Warning::Datum, decorator: Google::Apis::ComputeV1::SslPoliciesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class SslPoliciesListAvailableFeaturesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :features, as: 'features'
+        end
+      end
+      
+      class SslPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_features, as: 'customFeatures'
+          property :description, as: 'description'
+          collection :enabled_features, as: 'enabledFeatures'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :min_tls_version, as: 'minTlsVersion'
+          property :name, as: 'name'
+          property :profile, as: 'profile'
+          property :self_link, as: 'selfLink'
+          collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::SslPolicy::Warning, decorator: Google::Apis::ComputeV1::SslPolicy::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::SslPolicy::Warning::Datum, decorator: Google::Apis::ComputeV1::SslPolicy::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class SslPolicyReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssl_policy, as: 'sslPolicy'
         end
       end
       
@@ -6546,6 +6798,7 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           collection :ssl_certificates, as: 'sslCertificates'
+          property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'
         end
       end
@@ -6880,6 +7133,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :service, as: 'service'
           collection :ssl_certificates, as: 'sslCertificates'
+          property :ssl_policy, as: 'sslPolicy'
         end
       end
       
@@ -7091,6 +7345,20 @@ module Google
           property :expected_service, as: 'expectedService'
           property :host, as: 'host'
           property :path, as: 'path'
+        end
+      end
+      
+      class TestPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       

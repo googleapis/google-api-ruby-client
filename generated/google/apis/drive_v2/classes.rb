@@ -2684,7 +2684,8 @@ module Google
         # @return [String]
         attr_accessor :value
       
-        # The visibility of this property.
+        # The visibility of this property. Allowed values are PRIVATE and PUBLIC. (
+        # Default: PRIVATE)
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility

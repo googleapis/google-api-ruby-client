@@ -3373,6 +3373,11 @@ module Google
         # @return [String]
         attr_accessor :last_detach_timestamp
       
+        # Integer license codes indicating which licenses are attached to this disk.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
         # Any applicable publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
@@ -3507,6 +3512,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_attach_timestamp = args[:last_attach_timestamp] if args.key?(:last_attach_timestamp)
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
@@ -6186,6 +6192,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Integer license codes indicating which licenses are attached to this image.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
         # Any applicable license URI.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
@@ -6309,6 +6320,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
@@ -10072,10 +10084,33 @@ module Google
         attr_accessor :charges_use_fee
         alias_method :charges_use_fee?, :charges_use_fee
       
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional textual description of the resource; provided by the client when
+        # the resource is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
         # [Output Only] Type of resource. Always compute#license for licenses.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # [Output Only] The unique code used to attach this license to images, snapshots,
+        # and disks.
+        # Corresponds to the JSON property `licenseCode`
+        # @return [Fixnum]
+        attr_accessor :license_code
       
         # [Output Only] Name of the resource. The name is 1-63 characters long and
         # complies with RFC1035.
@@ -10083,7 +10118,124 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `resourceRequirements`
+        # @return [Google::Apis::ComputeV1::LicenseResourceRequirements]
+        attr_accessor :resource_requirements
+      
         # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # If false, licenses will not be copied from the source resource when creating
+        # an image from a disk, disk from snapshot, or snapshot from disk.
+        # Corresponds to the JSON property `transferable`
+        # @return [Boolean]
+        attr_accessor :transferable
+        alias_method :transferable?, :transferable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charges_use_fee = args[:charges_use_fee] if args.key?(:charges_use_fee)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @license_code = args[:license_code] if args.key?(:license_code)
+          @name = args[:name] if args.key?(:name)
+          @resource_requirements = args[:resource_requirements] if args.key?(:resource_requirements)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @transferable = args[:transferable] if args.key?(:transferable)
+        end
+      end
+      
+      # 
+      class LicenseCode
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] Description of this License Code.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of resource. Always compute#licenseCode for licenses.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] URL and description aliases of Licenses with the same License
+        # Code.
+        # Corresponds to the JSON property `licenseAlias`
+        # @return [Array<Google::Apis::ComputeV1::LicenseCodeLicenseAlias>]
+        attr_accessor :license_alias
+      
+        # [Output Only] Name of the resource. The name is 1-20 characters long and must
+        # be a valid 64 bit integer.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Current state of this License Code.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # [Output Only] If true, the license will remain attached when creating images
+        # or snapshots from disks. Otherwise, the license is not transferred.
+        # Corresponds to the JSON property `transferable`
+        # @return [Boolean]
+        attr_accessor :transferable
+        alias_method :transferable?, :transferable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @license_alias = args[:license_alias] if args.key?(:license_alias)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @transferable = args[:transferable] if args.key?(:transferable)
+        end
+      end
+      
+      # 
+      class LicenseCodeLicenseAlias
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Description of this License Code.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] URL of license corresponding to this License Code.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -10094,10 +10246,146 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @charges_use_fee = args[:charges_use_fee] if args.key?(:charges_use_fee)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
+          @description = args[:description] if args.key?(:description)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class LicenseResourceRequirements
+        include Google::Apis::Core::Hashable
+      
+        # Minimum number of guest cpus required to use the Instance. Enforced at
+        # Instance creation and Instance start.
+        # Corresponds to the JSON property `minGuestCpuCount`
+        # @return [Fixnum]
+        attr_accessor :min_guest_cpu_count
+      
+        # Minimum memory required to use the Instance. Enforced at Instance creation and
+        # Instance start.
+        # Corresponds to the JSON property `minMemoryMb`
+        # @return [Fixnum]
+        attr_accessor :min_memory_mb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_guest_cpu_count = args[:min_guest_cpu_count] if args.key?(:min_guest_cpu_count)
+          @min_memory_mb = args[:min_memory_mb] if args.key?(:min_memory_mb)
+        end
+      end
+      
+      # 
+      class LicensesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of License resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::License>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::LicensesListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::LicensesListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -14406,6 +14694,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Integer license codes indicating which licenses are attached to this snapshot.
+        # Corresponds to the JSON property `licenseCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :license_codes
+      
         # [Output Only] A list of public visible licenses that apply to this snapshot.
         # This can be because the original image had licenses attached (such as a
         # Windows image).
@@ -14483,6 +14776,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -14802,6 +15096,334 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class SslPoliciesList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SslPolicy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::SslPolicy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#sslPoliciesList for lists
+        # of sslPolicies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::SslPoliciesList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::SslPoliciesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SslPoliciesListAvailableFeaturesResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+        end
+      end
+      
+      # A SSL policy specifies the server-side support for SSL features. This can be
+      # attached to a TargetHttpsProxy or a TargetSslProxy. This affects connections
+      # between clients and the HTTPS or SSL proxy load balancer. They do not affect
+      # the connection between the load balancers and the backends.
+      class SslPolicy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # List of features enabled when the selected profile is CUSTOM. The
+        # - method returns the set of features that can be specified in this list. This
+        # field must be empty if the profile is not CUSTOM.
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Array<String>]
+        attr_accessor :custom_features
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The list of features enabled in the SSL policy.
+        # Corresponds to the JSON property `enabledFeatures`
+        # @return [Array<String>]
+        attr_accessor :enabled_features
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a SslPolicy. An up-to-date fingerprint must be provided in order to
+        # update the SslPolicy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The minimum version of SSL protocol that can be used by the clients to
+        # establish a connection with the load balancer. This can be one of TLS_1_0,
+        # TLS_1_1, TLS_1_2, TLS_1_3.
+        # Corresponds to the JSON property `minTlsVersion`
+        # @return [String]
+        attr_accessor :min_tls_version
+      
+        # Name of the resource. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Profile specifies the set of SSL features that can be used by the load
+        # balancer when negotiating SSL with clients. This can be one of COMPATIBLE,
+        # MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to
+        # enable must be specified in the customFeatures field.
+        # Corresponds to the JSON property `profile`
+        # @return [String]
+        attr_accessor :profile
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] If potential misconfigurations are detected for this SSL policy,
+        # this field will be populated with warning messages.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ComputeV1::SslPolicy::Warning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @description = args[:description] if args.key?(:description)
+          @enabled_features = args[:enabled_features] if args.key?(:enabled_features)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
+          @name = args[:name] if args.key?(:name)
+          @profile = args[:profile] if args.key?(:profile)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+        
+        # 
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::SslPolicy::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class SslPolicyReference
+        include Google::Apis::Core::Hashable
+      
+        # URL of the SSL policy resource. Set this to empty string to clear any existing
+        # SSL policy associated with the target proxy resource.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
         end
       end
       
@@ -15658,6 +16280,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ssl_certificates
       
+        # URL of SslPolicy resource that will be associated with the TargetHttpsProxy
+        # resource. If not set, the TargetHttpsProxy resource will not have any SSL
+        # policy configured.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
         # A fully-qualified or valid partial URL to the UrlMap resource that defines the
         # mapping from URL to the BackendService. For example, the following are all
         # valid URLs for specifying a URL map:
@@ -15681,6 +16310,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @self_link = args[:self_link] if args.key?(:self_link)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
           @url_map = args[:url_map] if args.key?(:url_map)
         end
       end
@@ -16916,6 +17546,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ssl_certificates
       
+        # URL of SslPolicy resource that will be associated with the TargetSslProxy
+        # resource. If not set, the TargetSslProxy resource will not have any SSL policy
+        # configured.
+        # Corresponds to the JSON property `sslPolicy`
+        # @return [String]
+        attr_accessor :ssl_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16931,6 +17568,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
+          @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
         end
       end
       
@@ -17733,6 +18371,45 @@ module Google
           @expected_service = args[:expected_service] if args.key?(:expected_service)
           @host = args[:host] if args.key?(:host)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # 
+      class TestPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of permissions to check for the 'resource'. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # 
+      class TestPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @permissions = args[:permissions] if args.key?(:permissions)
         end
       end
       

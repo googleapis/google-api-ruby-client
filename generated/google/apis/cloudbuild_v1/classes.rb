@@ -42,6 +42,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :paths
       
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `timing`
+        # @return [Google::Apis::CloudbuildV1::TimeSpan]
+        attr_accessor :timing
+      
         def initialize(**args)
            update!(**args)
         end
@@ -50,6 +55,7 @@ module Google
         def update!(**args)
           @location = args[:location] if args.key?(:location)
           @paths = args[:paths] if args.key?(:paths)
+          @timing = args[:timing] if args.key?(:timing)
         end
       end
       

@@ -189,6 +189,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
           collection :paths, as: 'paths'
+          property :timing, as: 'timing', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
         end
       end
       

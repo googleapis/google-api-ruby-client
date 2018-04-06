@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DestinationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -102,6 +108,7 @@ module Google
       
           property :description, as: 'description'
           property :disclosure_date, as: 'disclosureDate'
+          collection :excluded_destination, as: 'excludedDestination'
           collection :feature_description, as: 'featureDescription', class: Google::Apis::ManufacturersV1::FeatureDescription, decorator: Google::Apis::ManufacturersV1::FeatureDescription::Representation
       
           property :flavor, as: 'flavor'
@@ -110,6 +117,7 @@ module Google
           collection :gtin, as: 'gtin'
           property :image_link, as: 'imageLink', class: Google::Apis::ManufacturersV1::Image, decorator: Google::Apis::ManufacturersV1::Image::Representation
       
+          collection :included_destination, as: 'includedDestination'
           property :item_group_id, as: 'itemGroupId'
           property :material, as: 'material'
           property :mpn, as: 'mpn'
@@ -150,6 +158,14 @@ module Google
         end
       end
       
+      class DestinationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :status, as: 'status'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -180,8 +196,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attribute, as: 'attribute'
           property :description, as: 'description'
+          property :destination, as: 'destination'
+          property :resolution, as: 'resolution'
           property :severity, as: 'severity'
           property :timestamp, as: 'timestamp'
+          property :title, as: 'title'
           property :type, as: 'type'
         end
       end
@@ -206,7 +225,11 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
+      
           property :content_language, as: 'contentLanguage'
+          collection :destination_statuses, as: 'destinationStatuses', class: Google::Apis::ManufacturersV1::DestinationStatus, decorator: Google::Apis::ManufacturersV1::DestinationStatus::Representation
+      
           property :final_attributes, as: 'finalAttributes', class: Google::Apis::ManufacturersV1::Attributes, decorator: Google::Apis::ManufacturersV1::Attributes::Representation
       
           collection :issues, as: 'issues', class: Google::Apis::ManufacturersV1::Issue, decorator: Google::Apis::ManufacturersV1::Issue::Representation

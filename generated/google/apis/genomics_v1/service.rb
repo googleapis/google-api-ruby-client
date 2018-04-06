@@ -448,9 +448,6 @@ module Google
         end
         
         # Creates a new call set.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [Google::Apis::GenomicsV1::CallSet] call_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -481,9 +478,6 @@ module Google
         end
         
         # Deletes a call set.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] call_set_id
         #   The ID of the call set to be deleted.
         # @param [String] fields
@@ -514,9 +508,6 @@ module Google
         end
         
         # Gets a call set by ID.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] call_set_id
         #   The ID of the call set.
         # @param [String] fields
@@ -547,9 +538,6 @@ module Google
         end
         
         # Updates a call set.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # This method supports patch semantics.
         # @param [String] call_set_id
         #   The ID of the call set to be updated.
@@ -590,9 +578,6 @@ module Google
         end
         
         # Gets a list of call sets matching the criteria.
-        # For the definitions of call sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.
         # 1/src/main/resources/avro/variantmethods.avdl#L178).
@@ -626,9 +611,6 @@ module Google
         end
         
         # Creates a new dataset.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [Google::Apis::GenomicsV1::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -664,9 +646,6 @@ module Google
         # the
         # datasets.undelete
         # operation.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] dataset_id
         #   The ID of the dataset to be deleted.
         # @param [String] fields
@@ -697,9 +676,6 @@ module Google
         end
         
         # Gets a dataset by ID.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] dataset_id
         #   The ID of the dataset.
         # @param [String] fields
@@ -733,9 +709,6 @@ module Google
         # policy or resource does not exist.
         # See <a href="/iam/docs/managing-policies#getting_a_policy">Getting a
         # Policy</a> for more information.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] resource
         #   REQUIRED: The resource for which policy is being specified. Format is
         #   `datasets/<dataset ID>`.
@@ -770,9 +743,6 @@ module Google
         end
         
         # Lists datasets within a project.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single page. If unspecified,
         #   defaults to 50. The maximum value is 1024.
@@ -812,9 +782,6 @@ module Google
         end
         
         # Updates a dataset.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # This method supports patch semantics.
         # @param [String] dataset_id
         #   The ID of the dataset to be updated.
@@ -856,9 +823,6 @@ module Google
         
         # Sets the access control policy on the specified dataset. Replaces any
         # existing policy.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # See <a href="/iam/docs/managing-policies#setting_a_policy">Setting a
         # Policy</a> for more information.
         # @param [String] resource
@@ -897,9 +861,6 @@ module Google
         # Returns permissions that a caller has on the specified resource.
         # See <a href="/iam/docs/managing-policies#testing_permissions">Testing
         # Permissions</a> for more information.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] resource
         #   REQUIRED: The resource for which policy is being specified. Format is
         #   `datasets/<dataset ID>`.
@@ -934,9 +895,6 @@ module Google
         end
         
         # Undeletes a dataset by restoring a dataset which was deleted via this API.
-        # For the definitions of datasets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # This operation is only possible for a week after the deletion occurred.
         # @param [String] dataset_id
         #   The ID of the dataset to be undeleted.
@@ -1102,9 +1060,6 @@ module Google
         end
         
         # Deletes a read group set.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] read_group_set_id
         #   The ID of the read group set to be deleted. The caller must have WRITE
         #   permissions to the dataset associated with this read group set.
@@ -1136,9 +1091,6 @@ module Google
         end
         
         # Exports a read group set to a BAM file in Google Cloud Storage.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Note that currently there may be some differences between exported BAM
         # files and the original BAM file at the time of import. See
         # ImportReadGroupSets
@@ -1177,9 +1129,6 @@ module Google
         end
         
         # Gets a read group set by ID.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] read_group_set_id
         #   The ID of the read group set.
         # @param [String] fields
@@ -1211,9 +1160,6 @@ module Google
         
         # Creates read group sets by asynchronously importing the provided
         # information.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # The caller must have WRITE permissions to the dataset.
         # ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import
         # - Tags will be converted to strings - tag types are not preserved
@@ -1253,9 +1199,6 @@ module Google
         end
         
         # Updates a read group set.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # This method supports patch semantics.
         # @param [String] read_group_set_id
         #   The ID of the read group set to be updated. The caller must have WRITE
@@ -1298,9 +1241,6 @@ module Google
         end
         
         # Searches for read group sets matching the criteria.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.searchReadGroupSets](https://github.com/ga4gh/schemas/blob/
         # v0.5.1/src/main/resources/avro/readmethods.avdl#L135).
@@ -1336,9 +1276,6 @@ module Google
         # Lists fixed width coverage buckets for a read group set, each of which
         # correspond to a range of a reference sequence. Each bucket summarizes
         # coverage information across its corresponding genomic range.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Coverage is defined as the number of reads which are aligned to a given
         # base in the reference sequence. Coverage buckets are available at several
         # precomputed bucket widths, enabling retrieval of various coverage 'zoom
@@ -1405,9 +1342,6 @@ module Google
         end
         
         # Gets a list of reads for one or more read group sets.
-        # For the definitions of read group sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Reads search operates over a genomic coordinate space of reference sequence
         # & position defined over the reference sequences to which the requested
         # read group sets are aligned.
@@ -1454,9 +1388,6 @@ module Google
         end
         
         # Gets a reference.
-        # For the definitions of references and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/
         # src/main/resources/avro/referencemethods.avdl#L158).
@@ -1490,9 +1421,6 @@ module Google
         end
         
         # Searches for references which match the given criteria.
-        # For the definitions of references and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.
         # 5.1/src/main/resources/avro/referencemethods.avdl#L146).
@@ -1526,9 +1454,6 @@ module Google
         end
         
         # Lists the bases in a reference, optionally restricted to a range.
-        # For the definitions of references and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.
         # 5.1/src/main/resources/avro/referencemethods.avdl#L221).
@@ -1579,9 +1504,6 @@ module Google
         end
         
         # Gets a reference set.
-        # For the definitions of references and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schemas/blob/v0.5.
         # 1/src/main/resources/avro/referencemethods.avdl#L83).
@@ -1615,9 +1537,6 @@ module Google
         end
         
         # Searches for reference sets which match the given criteria.
-        # For the definitions of references and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/schemas/blob/
         # v0.5.1/src/main/resources/avro/referencemethods.avdl#L71)
@@ -1651,9 +1570,6 @@ module Google
         end
         
         # Creates a new variant.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [Google::Apis::GenomicsV1::Variant] variant_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1684,9 +1600,6 @@ module Google
         end
         
         # Deletes a variant.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] variant_id
         #   The ID of the variant to be deleted.
         # @param [String] fields
@@ -1717,9 +1630,6 @@ module Google
         end
         
         # Gets a variant by ID.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] variant_id
         #   The ID of the variant.
         # @param [String] fields
@@ -1750,9 +1660,6 @@ module Google
         end
         
         # Creates variant data by asynchronously importing the provided information.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # The variants for import will be merged with any existing variant that
         # matches its reference sequence, start, end, reference bases, and
         # alternative bases. If no such variant exists, a new one will be created.
@@ -1794,9 +1701,6 @@ module Google
         end
         
         # Merges the given variants with existing variants.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Each variant will be
         # merged with an existing variant that matches its reference sequence,
         # start, end, reference bases, and alternative bases. If no such variant
@@ -1905,9 +1809,6 @@ module Google
         end
         
         # Updates a variant.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # This method supports patch semantics. Returns the modified variant without
         # its calls.
         # @param [String] variant_id
@@ -1949,9 +1850,6 @@ module Google
         end
         
         # Gets a list of variants matching the criteria.
-        # For the definitions of variants and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.
         # 1/src/main/resources/avro/variantmethods.avdl#L126).
@@ -1985,9 +1883,6 @@ module Google
         end
         
         # Creates a new variant set.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # The provided variant set must have a valid `datasetId` set - all other
         # fields are optional. Note that the `id` field will be ignored, as this is
         # assigned by the server.
@@ -2022,9 +1917,6 @@ module Google
         
         # Deletes a variant set including all variants, call sets, and calls within.
         # This is not reversible.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] variant_set_id
         #   The ID of the variant set to be deleted.
         # @param [String] fields
@@ -2055,9 +1947,6 @@ module Google
         end
         
         # Exports variant set data to an external destination.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] variant_set_id
         #   Required. The ID of the variant set that contains variant data which
         #   should be exported. The caller must have READ access to this variant set.
@@ -2092,9 +1981,6 @@ module Google
         end
         
         # Gets a variant set by ID.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] variant_set_id
         #   Required. The ID of the variant set.
         # @param [String] fields
@@ -2125,9 +2011,6 @@ module Google
         end
         
         # Updates a variant set using patch semantics.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # @param [String] variant_set_id
         #   The ID of the variant to be updated (must already exist).
         # @param [Google::Apis::GenomicsV1::VariantSet] variant_set_object
@@ -2169,9 +2052,6 @@ module Google
         end
         
         # Returns a list of all variant sets matching search criteria.
-        # For the definitions of variant sets and other genomics resources, see
-        # [Fundamentals of Google
-        # Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         # Implements
         # [GlobalAllianceApi.searchVariantSets](https://github.com/ga4gh/schemas/blob/v0.
         # 5.1/src/main/resources/avro/variantmethods.avdl#L49).

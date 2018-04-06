@@ -95,7 +95,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The configuration for logging of each type of permission.
-        # Next ID: 4
         # Corresponds to the JSON property `auditLogConfigs`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::AuditLogConfig>]
         attr_accessor :audit_log_configs

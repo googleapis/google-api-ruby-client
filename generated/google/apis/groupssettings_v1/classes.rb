@@ -147,7 +147,7 @@ module Google
         attr_accessor :spam_moderation_level
       
         # Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
-        # ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
+        # ALL_OWNERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
         # Corresponds to the JSON property `whoCanAdd`
         # @return [String]
         attr_accessor :who_can_add
@@ -160,7 +160,7 @@ module Google
         attr_accessor :who_can_contact_owner
       
         # Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
-        # ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
+        # ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE
         # Corresponds to the JSON property `whoCanInvite`
         # @return [String]
         attr_accessor :who_can_invite
@@ -172,7 +172,7 @@ module Google
         attr_accessor :who_can_join
       
         # Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-        # ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
+        # ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
         # Corresponds to the JSON property `whoCanLeaveGroup`
         # @return [String]
         attr_accessor :who_can_leave_group
@@ -186,6 +186,7 @@ module Google
       
         # Permissions to view group. Possible values are: ANYONE_CAN_VIEW
         # ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
+        # ALL_OWNERS_CAN_VIEW
         # Corresponds to the JSON property `whoCanViewGroup`
         # @return [String]
         attr_accessor :who_can_view_group
