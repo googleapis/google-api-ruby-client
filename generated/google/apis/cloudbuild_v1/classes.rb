@@ -59,6 +59,34 @@ module Google
         end
       end
       
+      # An artifact that was uploaded during a build. This
+      # is a single record in the artifact manifest JSON file.
+      class ArtifactResult
+        include Google::Apis::Core::Hashable
+      
+        # The file hash of the artifact.
+        # Corresponds to the JSON property `fileHash`
+        # @return [Array<Google::Apis::CloudbuildV1::FileHashes>]
+        attr_accessor :file_hash
+      
+        # The path of an artifact in a Google Cloud Storage bucket, with the
+        # generation number. For example,
+        # `gs://mybucket/path/to/output.jar#generation`.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hash = args[:file_hash] if args.key?(:file_hash)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
       # Artifacts produced by a build that should be uploaded upon
       # successful completion of all build steps.
       class Artifacts

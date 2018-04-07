@@ -348,8 +348,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
-        # The geographic location where the dataset should reside. Possible values
-        # include EU and US. The default value is US.
+        # The geographic location where the dataset should reside. The default value is
+        # US.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location

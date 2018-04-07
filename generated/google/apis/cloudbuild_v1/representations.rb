@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Artifacts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,15 @@ module Google
           collection :paths, as: 'paths'
           property :timing, as: 'timing', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
       
+        end
+      end
+      
+      class ArtifactResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :location, as: 'location'
         end
       end
       
