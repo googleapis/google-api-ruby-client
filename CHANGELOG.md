@@ -1,3 +1,38 @@
+# 0.20.1
+* Backwards compatible changes:
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `bigquery_v2`
+  * Updated `classroom_v1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `content_v2`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dlp_v2`
+  * Updated `dlp_v2beta1`
+  * Updated `dlp_v2beta2`
+  * Updated `drive_v2`
+  * Updated `firebasedynamiclinks_v1`
+  * Updated `genomics_v1`
+  * Updated `groupssettings_v1`
+  * Updated `iam_v1`
+  * Updated `manufacturers_v1`
+  * Updated `partners_v2`
+  * Updated `people_v1`
+  * Updated `safebrowsing_v4`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceuser_v1`
+  * Updated `spanner_v1`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+  * Updated `youtube_partner_v1`
+
 # 0.20.0
 * Breaking changes:
   * Deleted `clouduseraccounts_alpha`
