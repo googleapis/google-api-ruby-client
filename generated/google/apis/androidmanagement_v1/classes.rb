@@ -788,6 +788,12 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
+        # Terms and conditions that must be accepted when provisioning a device for this
+        # enterprise. A page of terms is generated for each value in this list.
+        # Corresponds to the JSON property `termsAndConditions`
+        # @return [Array<Google::Apis::AndroidmanagementV1::TermsAndConditions>]
+        attr_accessor :terms_and_conditions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -801,6 +807,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @primary_color = args[:primary_color] if args.key?(:primary_color)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @terms_and_conditions = args[:terms_and_conditions] if args.key?(:terms_and_conditions)
         end
       end
       
@@ -2456,6 +2463,33 @@ module Google
           @end_minutes = args[:end_minutes] if args.key?(:end_minutes)
           @start_minutes = args[:start_minutes] if args.key?(:start_minutes)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A terms and conditions page to be accepted during provisioning.
+      class TermsAndConditions
+        include Google::Apis::Core::Hashable
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :content
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @header = args[:header] if args.key?(:header)
         end
       end
       

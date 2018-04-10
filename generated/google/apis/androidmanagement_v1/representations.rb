@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TermsAndConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserFacingMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +449,8 @@ module Google
           property :name, as: 'name'
           property :primary_color, as: 'primaryColor'
           property :pubsub_topic, as: 'pubsubTopic'
+          collection :terms_and_conditions, as: 'termsAndConditions', class: Google::Apis::AndroidmanagementV1::TermsAndConditions, decorator: Google::Apis::AndroidmanagementV1::TermsAndConditions::Representation
+      
         end
       end
       
@@ -795,6 +803,16 @@ module Google
           property :end_minutes, as: 'endMinutes'
           property :start_minutes, as: 'startMinutes'
           property :type, as: 'type'
+        end
+      end
+      
+      class TermsAndConditions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :header, as: 'header', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
         end
       end
       

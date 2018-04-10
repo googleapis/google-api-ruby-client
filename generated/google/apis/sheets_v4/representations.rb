@@ -1300,6 +1300,8 @@ module Google
       class BasicChartSeries
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
           property :line_style, as: 'lineStyle', class: Google::Apis::SheetsV4::LineStyle, decorator: Google::Apis::SheetsV4::LineStyle::Representation
       
           property :series, as: 'series', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
