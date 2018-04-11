@@ -898,6 +898,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :platforms
       
+        # For Exchange Bidding buyers only.
+        # The list of publisher identifiers on which to filter; may be empty.
+        # The filters represented by multiple publisher identifiers are ORed
+        # together.
+        # Corresponds to the JSON property `publisherIdentifiers`
+        # @return [Array<String>]
+        attr_accessor :publisher_identifiers
+      
         # An open-ended realtime time range specified by the start timestamp.
         # For filter sets that specify a realtime time range RTB metrics continue to
         # be aggregated throughout the lifetime of the filter set.
@@ -915,6 +923,7 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange]
         attr_accessor :relative_date_range
       
+        # For Ad Exchange buyers only.
         # The list of IDs of the seller (publisher) networks on which to filter;
         # may be empty. The filters represented by multiple seller network IDs are
         # ORed together (i.e. if non-empty, results must match any one of the
@@ -945,6 +954,7 @@ module Google
           @formats = args[:formats] if args.key?(:formats)
           @name = args[:name] if args.key?(:name)
           @platforms = args[:platforms] if args.key?(:platforms)
+          @publisher_identifiers = args[:publisher_identifiers] if args.key?(:publisher_identifiers)
           @realtime_time_range = args[:realtime_time_range] if args.key?(:realtime_time_range)
           @relative_date_range = args[:relative_date_range] if args.key?(:relative_date_range)
           @seller_network_ids = args[:seller_network_ids] if args.key?(:seller_network_ids)
@@ -1664,6 +1674,26 @@ module Google
         end
       end
       
+      # Response message for listing publishers that had recent inventory matches
+      # with the requesting buyer.
+      class ListPublishersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of publishers.
+        # Corresponds to the JSON property `publisher`
+        # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Publisher>]
+        attr_accessor :publisher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publisher = args[:publisher] if args.key?(:publisher)
+        end
+      end
+      
       # @OutputOnly The Geo criteria the restriction applies to.
       class LocationContext
         include Google::Apis::Core::Hashable
@@ -1863,6 +1893,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @platforms = args[:platforms] if args.key?(:platforms)
+        end
+      end
+      
+      # The publisher ID and name contain values relevant to the requesting buyer
+      # depending on whether it is an Ad Exchange buyer or Exchange Bidding buyer.
+      class Publisher
+        include Google::Apis::Core::Hashable
+      
+        # Publisher name contains:
+        # - Seller network name when the requesting buyer is an Ad Exchange buyer.
+        # - DFP network name or AdMob publisher code when the requesting buyer is an
+        # Exchange Bidding buyer.
+        # Corresponds to the JSON property `publisherDisplayName`
+        # @return [String]
+        attr_accessor :publisher_display_name
+      
+        # Publisher ID contains:
+        # - Seller network ID when the requesting buyer is an Ad Exchange buyer.
+        # See [seller-network-ids](https://developers.google.com/ad-exchange/rtb/
+        # downloads/seller-network-ids)
+        # - DFP network code or AdMob publisher code when the requesting buyer is an
+        # Exchange Bidding buyer.
+        # Corresponds to the JSON property `publisherId`
+        # @return [String]
+        attr_accessor :publisher_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publisher_display_name = args[:publisher_display_name] if args.key?(:publisher_display_name)
+          @publisher_id = args[:publisher_id] if args.key?(:publisher_id)
         end
       end
       

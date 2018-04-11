@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPublishersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class PlatformContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Publisher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -573,6 +585,7 @@ module Google
           collection :formats, as: 'formats'
           property :name, as: 'name'
           collection :platforms, as: 'platforms'
+          collection :publisher_identifiers, as: 'publisherIdentifiers'
           property :realtime_time_range, as: 'realtimeTimeRange', class: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::RealtimeTimeRange::Representation
       
           property :relative_date_range, as: 'relativeDateRange', class: Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange, decorator: Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange::Representation
@@ -795,6 +808,14 @@ module Google
         end
       end
       
+      class ListPublishersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :publisher, as: 'publisher', class: Google::Apis::Adexchangebuyer2V2beta1::Publisher, decorator: Google::Apis::Adexchangebuyer2V2beta1::Publisher::Representation
+      
+        end
+      end
+      
       class LocationContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -847,6 +868,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :platforms, as: 'platforms'
+        end
+      end
+      
+      class Publisher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publisher_display_name, as: 'publisherDisplayName'
+          property :publisher_id, as: 'publisherId'
         end
       end
       

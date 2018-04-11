@@ -754,12 +754,10 @@ module Google
         class AccountSettings
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :admob_reporting, as: 'admobReporting'
-            property :sharing_with_google_any_sales, as: 'sharingWithGoogleAnySales'
-            property :sharing_with_google_products, as: 'sharingWithGoogleProducts'
-            property :sharing_with_google_sales, as: 'sharingWithGoogleSales'
-            property :sharing_with_google_support, as: 'sharingWithGoogleSupport'
-            property :sharing_with_others, as: 'sharingWithOthers'
+            property :share_anonymously_with_others, as: 'shareAnonymouslyWithOthers'
+            property :share_with_google_products, as: 'shareWithGoogleProducts'
+            property :share_with_specialists, as: 'shareWithSpecialists'
+            property :share_with_support, as: 'shareWithSupport'
           end
         end
       end
@@ -781,12 +779,10 @@ module Google
         class AccountSettings
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :admob_reporting, as: 'admobReporting'
-            property :sharing_with_google_any_sales, as: 'sharingWithGoogleAnySales'
-            property :sharing_with_google_products, as: 'sharingWithGoogleProducts'
-            property :sharing_with_google_sales, as: 'sharingWithGoogleSales'
-            property :sharing_with_google_support, as: 'sharingWithGoogleSupport'
-            property :sharing_with_others, as: 'sharingWithOthers'
+            property :share_anonymously_with_others, as: 'shareAnonymouslyWithOthers'
+            property :share_with_google_products, as: 'shareWithGoogleProducts'
+            property :share_with_specialists, as: 'shareWithSpecialists'
+            property :share_with_support, as: 'shareWithSupport'
           end
         end
       end

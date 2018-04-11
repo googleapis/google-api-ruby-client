@@ -315,6 +315,7 @@ module Google
       class GoogleCloudMlV1HyperparameterSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
           property :enable_trial_early_stopping, as: 'enableTrialEarlyStopping'
           property :goal, as: 'goal'
           property :hyperparameter_metric_tag, as: 'hyperparameterMetricTag'

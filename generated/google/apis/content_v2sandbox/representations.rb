@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderCustomerMarketingRightsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderDeliveryDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestOrderCustomerMarketingRightsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestOrderLineItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -558,6 +570,17 @@ module Google
           property :email, as: 'email'
           property :explicit_marketing_preference, as: 'explicitMarketingPreference'
           property :full_name, as: 'fullName'
+          property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2sandbox::OrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2sandbox::OrderCustomerMarketingRightsInfo::Representation
+      
+        end
+      end
+      
+      class OrderCustomerMarketingRightsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explicit_marketing_preference, as: 'explicitMarketingPreference'
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :marketing_email_address, as: 'marketingEmailAddress'
         end
       end
       
@@ -1312,6 +1335,16 @@ module Google
           property :email, as: 'email'
           property :explicit_marketing_preference, as: 'explicitMarketingPreference'
           property :full_name, as: 'fullName'
+          property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2sandbox::TestOrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2sandbox::TestOrderCustomerMarketingRightsInfo::Representation
+      
+        end
+      end
+      
+      class TestOrderCustomerMarketingRightsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explicit_marketing_preference, as: 'explicitMarketingPreference'
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
         end
       end
       

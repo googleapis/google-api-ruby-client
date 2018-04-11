@@ -18,14 +18,14 @@ require 'google/apis/pubsub_v1beta2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Pub/Sub API
+    # Cloud Pub/Sub API
     #
     # Provides reliable, many-to-many, asynchronous messaging between applications.
     #
     # @see https://cloud.google.com/pubsub/docs
     module PubsubV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20180103'
+      REVISION = '20180402'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

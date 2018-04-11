@@ -399,40 +399,28 @@ module Google
           include Google::Apis::Core::Hashable
         
           # 
-          # Corresponds to the JSON property `admobReporting`
+          # Corresponds to the JSON property `shareAnonymouslyWithOthers`
           # @return [Boolean]
-          attr_accessor :admob_reporting
-          alias_method :admob_reporting?, :admob_reporting
+          attr_accessor :share_anonymously_with_others
+          alias_method :share_anonymously_with_others?, :share_anonymously_with_others
         
           # 
-          # Corresponds to the JSON property `sharingWithGoogleAnySales`
+          # Corresponds to the JSON property `shareWithGoogleProducts`
           # @return [Boolean]
-          attr_accessor :sharing_with_google_any_sales
-          alias_method :sharing_with_google_any_sales?, :sharing_with_google_any_sales
+          attr_accessor :share_with_google_products
+          alias_method :share_with_google_products?, :share_with_google_products
         
           # 
-          # Corresponds to the JSON property `sharingWithGoogleProducts`
+          # Corresponds to the JSON property `shareWithSpecialists`
           # @return [Boolean]
-          attr_accessor :sharing_with_google_products
-          alias_method :sharing_with_google_products?, :sharing_with_google_products
+          attr_accessor :share_with_specialists
+          alias_method :share_with_specialists?, :share_with_specialists
         
           # 
-          # Corresponds to the JSON property `sharingWithGoogleSales`
+          # Corresponds to the JSON property `shareWithSupport`
           # @return [Boolean]
-          attr_accessor :sharing_with_google_sales
-          alias_method :sharing_with_google_sales?, :sharing_with_google_sales
-        
-          # 
-          # Corresponds to the JSON property `sharingWithGoogleSupport`
-          # @return [Boolean]
-          attr_accessor :sharing_with_google_support
-          alias_method :sharing_with_google_support?, :sharing_with_google_support
-        
-          # 
-          # Corresponds to the JSON property `sharingWithOthers`
-          # @return [Boolean]
-          attr_accessor :sharing_with_others
-          alias_method :sharing_with_others?, :sharing_with_others
+          attr_accessor :share_with_support
+          alias_method :share_with_support?, :share_with_support
         
           def initialize(**args)
              update!(**args)
@@ -440,12 +428,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @admob_reporting = args[:admob_reporting] if args.key?(:admob_reporting)
-            @sharing_with_google_any_sales = args[:sharing_with_google_any_sales] if args.key?(:sharing_with_google_any_sales)
-            @sharing_with_google_products = args[:sharing_with_google_products] if args.key?(:sharing_with_google_products)
-            @sharing_with_google_sales = args[:sharing_with_google_sales] if args.key?(:sharing_with_google_sales)
-            @sharing_with_google_support = args[:sharing_with_google_support] if args.key?(:sharing_with_google_support)
-            @sharing_with_others = args[:sharing_with_others] if args.key?(:sharing_with_others)
+            @share_anonymously_with_others = args[:share_anonymously_with_others] if args.key?(:share_anonymously_with_others)
+            @share_with_google_products = args[:share_with_google_products] if args.key?(:share_with_google_products)
+            @share_with_specialists = args[:share_with_specialists] if args.key?(:share_with_specialists)
+            @share_with_support = args[:share_with_support] if args.key?(:share_with_support)
           end
         end
       end
@@ -499,40 +485,28 @@ module Google
           include Google::Apis::Core::Hashable
         
           # 
-          # Corresponds to the JSON property `admobReporting`
+          # Corresponds to the JSON property `shareAnonymouslyWithOthers`
           # @return [Boolean]
-          attr_accessor :admob_reporting
-          alias_method :admob_reporting?, :admob_reporting
+          attr_accessor :share_anonymously_with_others
+          alias_method :share_anonymously_with_others?, :share_anonymously_with_others
         
           # 
-          # Corresponds to the JSON property `sharingWithGoogleAnySales`
+          # Corresponds to the JSON property `shareWithGoogleProducts`
           # @return [Boolean]
-          attr_accessor :sharing_with_google_any_sales
-          alias_method :sharing_with_google_any_sales?, :sharing_with_google_any_sales
+          attr_accessor :share_with_google_products
+          alias_method :share_with_google_products?, :share_with_google_products
         
           # 
-          # Corresponds to the JSON property `sharingWithGoogleProducts`
+          # Corresponds to the JSON property `shareWithSpecialists`
           # @return [Boolean]
-          attr_accessor :sharing_with_google_products
-          alias_method :sharing_with_google_products?, :sharing_with_google_products
+          attr_accessor :share_with_specialists
+          alias_method :share_with_specialists?, :share_with_specialists
         
           # 
-          # Corresponds to the JSON property `sharingWithGoogleSales`
+          # Corresponds to the JSON property `shareWithSupport`
           # @return [Boolean]
-          attr_accessor :sharing_with_google_sales
-          alias_method :sharing_with_google_sales?, :sharing_with_google_sales
-        
-          # 
-          # Corresponds to the JSON property `sharingWithGoogleSupport`
-          # @return [Boolean]
-          attr_accessor :sharing_with_google_support
-          alias_method :sharing_with_google_support?, :sharing_with_google_support
-        
-          # 
-          # Corresponds to the JSON property `sharingWithOthers`
-          # @return [Boolean]
-          attr_accessor :sharing_with_others
-          alias_method :sharing_with_others?, :sharing_with_others
+          attr_accessor :share_with_support
+          alias_method :share_with_support?, :share_with_support
         
           def initialize(**args)
              update!(**args)
@@ -540,12 +514,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
-            @admob_reporting = args[:admob_reporting] if args.key?(:admob_reporting)
-            @sharing_with_google_any_sales = args[:sharing_with_google_any_sales] if args.key?(:sharing_with_google_any_sales)
-            @sharing_with_google_products = args[:sharing_with_google_products] if args.key?(:sharing_with_google_products)
-            @sharing_with_google_sales = args[:sharing_with_google_sales] if args.key?(:sharing_with_google_sales)
-            @sharing_with_google_support = args[:sharing_with_google_support] if args.key?(:sharing_with_google_support)
-            @sharing_with_others = args[:sharing_with_others] if args.key?(:sharing_with_others)
+            @share_anonymously_with_others = args[:share_anonymously_with_others] if args.key?(:share_anonymously_with_others)
+            @share_with_google_products = args[:share_with_google_products] if args.key?(:share_with_google_products)
+            @share_with_specialists = args[:share_with_specialists] if args.key?(:share_with_specialists)
+            @share_with_support = args[:share_with_support] if args.key?(:share_with_support)
           end
         end
       end

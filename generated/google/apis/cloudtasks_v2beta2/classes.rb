@@ -580,7 +580,8 @@ module Google
         # tag is equal to `<my-tag>`. `<my-tag>` must be
         # less than 500 characters.
         # When `filter` is set to `tag_function=oldest_tag()`, only tasks which have
-        # the same tag as the task with the oldest schedule_time will be returned.
+        # the same tag as the task with the oldest
+        # schedule_time will be returned.
         # Grammar Syntax:
         # * `filter = "tag=" tag | "tag_function=" function`
         # * `tag = string`

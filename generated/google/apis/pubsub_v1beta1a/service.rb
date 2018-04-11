@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PubsubV1beta1a
-      # Google Cloud Pub/Sub API
+      # Cloud Pub/Sub API
       #
       # Provides reliable, many-to-many, asynchronous messaging between applications.
       #

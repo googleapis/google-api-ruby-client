@@ -48,7 +48,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Get information about a location.
+        # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
         # @param [String] fields

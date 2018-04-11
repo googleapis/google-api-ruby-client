@@ -345,10 +345,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # If set, this indicates the user explicitly chose to opt in or out of providing
-        # marketing rights to the merchant. If unset, this indicates the user has
-        # already made this choice in a previous purchase, and was thus not shown the
-        # marketing right opt in/out checkbox during the checkout flow.
+        # Deprecated. Please use marketingRightsInfo instead.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [Boolean]
         attr_accessor :explicit_marketing_preference
@@ -359,6 +356,11 @@ module Google
         # @return [String]
         attr_accessor :full_name
       
+        # Customer's marketing preferences.
+        # Corresponds to the JSON property `marketingRightsInfo`
+        # @return [Google::Apis::ContentV2sandbox::OrderCustomerMarketingRightsInfo]
+        attr_accessor :marketing_rights_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -368,6 +370,41 @@ module Google
           @email = args[:email] if args.key?(:email)
           @explicit_marketing_preference = args[:explicit_marketing_preference] if args.key?(:explicit_marketing_preference)
           @full_name = args[:full_name] if args.key?(:full_name)
+          @marketing_rights_info = args[:marketing_rights_info] if args.key?(:marketing_rights_info)
+        end
+      end
+      
+      # 
+      class OrderCustomerMarketingRightsInfo
+        include Google::Apis::Core::Hashable
+      
+        # Last known user selection regarding marketing preferences. In certain cases
+        # this selection might not be known, so this field would be empty.
+        # Corresponds to the JSON property `explicitMarketingPreference`
+        # @return [String]
+        attr_accessor :explicit_marketing_preference
+      
+        # Timestamp when last time marketing preference was updated. Could be empty, if
+        # user wasn't offered a selection yet.
+        # Corresponds to the JSON property `lastUpdatedTimestamp`
+        # @return [String]
+        attr_accessor :last_updated_timestamp
+      
+        # Email address that can be used for marketing purposes. This field is only
+        # filled when explicitMarketingPreference is equal to 'granted'.
+        # Corresponds to the JSON property `marketingEmailAddress`
+        # @return [String]
+        attr_accessor :marketing_email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explicit_marketing_preference = args[:explicit_marketing_preference] if args.key?(:explicit_marketing_preference)
+          @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
+          @marketing_email_address = args[:marketing_email_address] if args.key?(:marketing_email_address)
         end
       end
       
@@ -3059,10 +3096,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # If set, this indicates the user explicitly chose to opt in or out of providing
-        # marketing rights to the merchant. If unset, this indicates the user has
-        # already made this choice in a previous purchase, and was thus not shown the
-        # marketing right opt in/out checkbox during the checkout flow. Optional.
+        # Deprecated. Please use marketingRightsInfo instead.
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [Boolean]
         attr_accessor :explicit_marketing_preference
@@ -3073,6 +3107,11 @@ module Google
         # @return [String]
         attr_accessor :full_name
       
+        # Customer's marketing preferences.
+        # Corresponds to the JSON property `marketingRightsInfo`
+        # @return [Google::Apis::ContentV2sandbox::TestOrderCustomerMarketingRightsInfo]
+        attr_accessor :marketing_rights_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3082,6 +3121,34 @@ module Google
           @email = args[:email] if args.key?(:email)
           @explicit_marketing_preference = args[:explicit_marketing_preference] if args.key?(:explicit_marketing_preference)
           @full_name = args[:full_name] if args.key?(:full_name)
+          @marketing_rights_info = args[:marketing_rights_info] if args.key?(:marketing_rights_info)
+        end
+      end
+      
+      # 
+      class TestOrderCustomerMarketingRightsInfo
+        include Google::Apis::Core::Hashable
+      
+        # Last know user use selection regards marketing preferences. In certain cases
+        # selection might not be known, so this field would be empty.
+        # Corresponds to the JSON property `explicitMarketingPreference`
+        # @return [String]
+        attr_accessor :explicit_marketing_preference
+      
+        # Timestamp when last time marketing preference was updated. Could be empty, if
+        # user wasn't offered a selection yet.
+        # Corresponds to the JSON property `lastUpdatedTimestamp`
+        # @return [String]
+        attr_accessor :last_updated_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explicit_marketing_preference = args[:explicit_marketing_preference] if args.key?(:explicit_marketing_preference)
+          @last_updated_timestamp = args[:last_updated_timestamp] if args.key?(:last_updated_timestamp)
         end
       end
       

@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderCustomerMarketingRightsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderDeliveryDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1235,6 +1241,12 @@ module Google
       end
       
       class TestOrderCustomer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestOrderCustomerMarketingRightsInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2208,6 +2220,17 @@ module Google
           property :email, as: 'email'
           property :explicit_marketing_preference, as: 'explicitMarketingPreference'
           property :full_name, as: 'fullName'
+          property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2::OrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2::OrderCustomerMarketingRightsInfo::Representation
+      
+        end
+      end
+      
+      class OrderCustomerMarketingRightsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explicit_marketing_preference, as: 'explicitMarketingPreference'
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :marketing_email_address, as: 'marketingEmailAddress'
         end
       end
       
@@ -3331,7 +3354,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attribute_name, as: 'attributeName'
           property :code, as: 'code'
+          property :description, as: 'description'
           property :destination, as: 'destination'
+          property :detail, as: 'detail'
+          property :documentation, as: 'documentation'
           property :resolution, as: 'resolution'
           property :servability, as: 'servability'
         end
@@ -3498,6 +3524,7 @@ module Google
           property :delivery_country, as: 'deliveryCountry'
           property :delivery_time, as: 'deliveryTime', class: Google::Apis::ContentV2::DeliveryTime, decorator: Google::Apis::ContentV2::DeliveryTime::Representation
       
+          property :eligibility, as: 'eligibility'
           property :minimum_order_value, as: 'minimumOrderValue', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :name, as: 'name'
@@ -3627,6 +3654,16 @@ module Google
           property :email, as: 'email'
           property :explicit_marketing_preference, as: 'explicitMarketingPreference'
           property :full_name, as: 'fullName'
+          property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2::TestOrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2::TestOrderCustomerMarketingRightsInfo::Representation
+      
+        end
+      end
+      
+      class TestOrderCustomerMarketingRightsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explicit_marketing_preference, as: 'explicitMarketingPreference'
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
         end
       end
       

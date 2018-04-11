@@ -1538,7 +1538,7 @@ module Google
       end
       
       # A PageElement kind representing a
-      # non-connector line, straight connector, curved connector or bent connector.
+      # non-connector line, straight connector, curved connector, or bent connector.
       class Line
         include Google::Apis::Core::Hashable
       
@@ -2082,7 +2082,7 @@ module Google
         attr_accessor :image
       
         # A PageElement kind representing a
-        # non-connector line, straight connector, curved connector or bent connector.
+        # non-connector line, straight connector, curved connector, or bent connector.
         # Corresponds to the JSON property `line`
         # @return [Google::Apis::SlidesV1::Line]
         attr_accessor :line
@@ -2568,6 +2568,8 @@ module Google
       end
       
       # Replaces all shapes that match the given criteria with the provided image.
+      # The images replacing the shapes are rectangular after being inserted into
+      # the presentation and do not take on the forms of the shapes.
       class ReplaceAllShapesWithImageRequest
         include Google::Apis::Core::Hashable
       
@@ -2938,6 +2940,8 @@ module Google
         attr_accessor :refresh_sheets_chart
       
         # Replaces all shapes that match the given criteria with the provided image.
+        # The images replacing the shapes are rectangular after being inserted into
+        # the presentation and do not take on the forms of the shapes.
         # Corresponds to the JSON property `replaceAllShapesWithImage`
         # @return [Google::Apis::SlidesV1::ReplaceAllShapesWithImageRequest]
         attr_accessor :replace_all_shapes_with_image

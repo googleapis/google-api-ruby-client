@@ -281,6 +281,14 @@ module Google
       class GoogleCloudMlV1HyperparameterSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. The search algorithm specified for the hyperparameter
+        # tuning job.
+        # Uses the default CloudML Engine hyperparameter tuning
+        # algorithm if unspecified.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
         # Optional. Indicates if the hyperparameter tuning job enables auto trial
         # early stopping.
         # Corresponds to the JSON property `enableTrialEarlyStopping`
@@ -341,6 +349,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
           @enable_trial_early_stopping = args[:enable_trial_early_stopping] if args.key?(:enable_trial_early_stopping)
           @goal = args[:goal] if args.key?(:goal)
           @hyperparameter_metric_tag = args[:hyperparameter_metric_tag] if args.key?(:hyperparameter_metric_tag)
@@ -401,7 +410,6 @@ module Google
         # file referenced from the --config command-line argument. For
         # details, see the guide to
         # <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
-        # Next ID: 22
         # Corresponds to the JSON property `trainingInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingInput]
         attr_accessor :training_input
@@ -985,7 +993,6 @@ module Google
       # file referenced from the --config command-line argument. For
       # details, see the guide to
       # <a href="/ml-engine/docs/training-jobs">submitting a training job</a>.
-      # Next ID: 22
       class GoogleCloudMlV1TrainingInput
         include Google::Apis::Core::Hashable
       
@@ -1385,7 +1392,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The configuration for logging of each type of permission.
-        # Next ID: 4
         # Corresponds to the JSON property `auditLogConfigs`
         # @return [Array<Google::Apis::MlV1::GoogleIamV1AuditLogConfig>]
         attr_accessor :audit_log_configs
