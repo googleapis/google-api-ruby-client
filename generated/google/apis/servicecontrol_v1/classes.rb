@@ -1100,6 +1100,7 @@ module Google
         attr_accessor :resource_container
       
         # The resources that are involved in the operation.
+        # The maximum supported number of entries in this field is 100.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ServicecontrolV1::ResourceInfo>]
         attr_accessor :resources

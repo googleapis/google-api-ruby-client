@@ -18,7 +18,7 @@ require 'google/apis/servicemanagement_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Service Management API
+    # Service Management API
     #
     # Google Service Management allows service producers to publish their services
     # on Google Cloud Platform so that they can be discovered and used by service
@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/service-management/
     module ServicemanagementV1
       VERSION = 'V1'
-      REVISION = '20180330'
+      REVISION = '20180406'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ServicemanagementV1
-      # Google Service Management API
+      # Service Management API
       #
       # Google Service Management allows service producers to publish their services
       #  on Google Cloud Platform so that they can be discovered and used by service

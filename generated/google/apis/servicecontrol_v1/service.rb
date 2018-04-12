@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ServicecontrolV1
-      # Google Service Control API
+      # Service Control API
       #
       # Google Service Control provides control plane functionality to managed
       #  services, such as logging, monitoring, and status checks.

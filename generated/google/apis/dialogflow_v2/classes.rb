@@ -1035,7 +1035,9 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentMessageListSelect]
         attr_accessor :list_select
       
-        # The response containing a custom payload.
+        # Returns a response containing a custom, platform-specific payload.
+        # See the Intent.Message.Platform type for a description of the
+        # structure that may be required for your platform.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -1860,8 +1862,7 @@ module Google
         attr_accessor :payload
       
         # The source of this request, e.g., `google`, `facebook`, `slack`. It is set
-        # by Dialogflow-owned servers. Possible values of this field correspond to
-        # Intent.Message.Platform.
+        # by Dialogflow-owned servers.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -2323,6 +2324,27 @@ module Google
         attr_accessor :output_contexts
       
         # Optional. This value is passed directly to `QueryResult.webhook_payload`.
+        # See the related `fulfillment_messages[i].payload field`, which may be used
+        # as an alternative to this field.
+        # This field can be used for Actions on Google responses.
+        # It should have a structure similar to the JSON message shown here. For more
+        # information, see
+        # [Actions on Google Webhook
+        # Format](https://developers.google.com/actions/dialogflow/webhook)
+        # `
+        # "google": `
+        # "expectUserResponse": true,
+        # "richResponse": `
+        # "items": [
+        # `
+        # "simpleResponse": `
+        # "textToSpeech": "this is a simple response"
+        # `
+        # `
+        # ]
+        # `
+        # `
+        # `
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -2816,7 +2838,9 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageListSelect]
         attr_accessor :list_select
       
-        # Returns a response containing a custom payload.
+        # Returns a response containing a custom, platform-specific payload.
+        # See the Intent.Message.Platform type for a description of the
+        # structure that may be required for your platform.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -3533,8 +3557,7 @@ module Google
         attr_accessor :payload
       
         # The source of this request, e.g., `google`, `facebook`, `slack`. It is set
-        # by Dialogflow-owned servers. Possible values of this field correspond to
-        # Intent.Message.Platform.
+        # by Dialogflow-owned servers.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -3749,6 +3772,27 @@ module Google
         attr_accessor :output_contexts
       
         # Optional. This value is passed directly to `QueryResult.webhook_payload`.
+        # See the related `fulfillment_messages[i].payload field`, which may be used
+        # as an alternative to this field.
+        # This field can be used for Actions on Google responses.
+        # It should have a structure similar to the JSON message shown here. For more
+        # information, see
+        # [Actions on Google Webhook
+        # Format](https://developers.google.com/actions/dialogflow/webhook)
+        # `
+        # "google": `
+        # "expectUserResponse": true,
+        # "richResponse": `
+        # "items": [
+        # `
+        # "simpleResponse": `
+        # "textToSpeech": "this is a simple response"
+        # `
+        # `
+        # ]
+        # `
+        # `
+        # `
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload

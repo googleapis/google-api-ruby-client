@@ -18,7 +18,7 @@ require 'google/apis/servicecontrol_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Service Control API
+    # Service Control API
     #
     # Google Service Control provides control plane functionality to managed
     # services, such as logging, monitoring, and status checks.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/service-control/
     module ServicecontrolV1
       VERSION = 'V1'
-      REVISION = '20180312'
+      REVISION = '20180410'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

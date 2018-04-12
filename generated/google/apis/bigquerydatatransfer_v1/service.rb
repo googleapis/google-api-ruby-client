@@ -346,7 +346,7 @@ module Google
         # Creates a new data transfer configuration.
         # @param [String] parent
         #   The BigQuery project id where the transfer configuration should be created.
-        #   Must be in the format /projects/`project_id`/locations/`location_id`
+        #   Must be in the format projects/`project_id`/locations/`location_id`
         #   If specified location and location of the destination bigquery dataset
         #   do not match - the request will fail.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
@@ -759,7 +759,7 @@ module Google
         # Creates a new data transfer configuration.
         # @param [String] parent
         #   The BigQuery project id where the transfer configuration should be created.
-        #   Must be in the format /projects/`project_id`/locations/`location_id`
+        #   Must be in the format projects/`project_id`/locations/`location_id`
         #   If specified location and location of the destination bigquery dataset
         #   do not match - the request will fail.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
