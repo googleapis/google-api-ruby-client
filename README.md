@@ -1,19 +1,10 @@
 # Google API Client
 
-## Library maintenance
+These client libraries are officially supported by Google.  However, the libraries are considered complete and are in maintenance mode. This means that we will address critical bugs and security issues but will not add any new features.
 
-This client library is supported but in maintenance mode only.  We are fixing necessary bugs and adding essential features to ensure this library continues to meet your needs for accessing Google APIs.  Non-critical issues will be closed.  Any issue may be reopened if it is causing ongoing problems.
+## Google Cloud Platform
 
-## Alpha
-
-This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible
-changes when necessary.
-
-## Working with Google Cloud Platform APIs?
-
-If you're working with Google Cloud Platform APIs such as Datastore, Cloud Storage or Pub/Sub, consider using [google-cloud](https://github.com/GoogleCloudPlatform/google-cloud-ruby), an idiomatic Ruby client for Google Cloud Platform services.
-
-You can find the list of Google Cloud Platform APIs supported by google-cloud in the [google-cloud docs](https://googlecloudplatform.github.io/google-cloud-ruby/#/docs/google-cloud).
+For Google Cloud Platform APIs such as Datastore, Cloud Storage or Pub/Sub, we recommend using [GoogleCloudPlatform/google-cloud-ruby](https://github.com/GoogleCloudPlatform/google-cloud-ruby) which is under active development.
 
 ## Migrating from 0.8.x
 
