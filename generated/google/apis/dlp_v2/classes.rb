@@ -27,13 +27,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Publish the results of a DlpJob to a pub sub channel.
-        # Compatible with: Inpect, Risk
+        # Compatible with: Inspect, Risk
         # Corresponds to the JSON property `pubSub`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
         attr_accessor :pub_sub
       
         # If set, the detailed findings will be persisted to the specified
-        # OutputStorageConfig. Compatible with: Inspect
+        # OutputStorageConfig. Only a single instance of this action can be
+        # specified.
+        # Compatible with: Inspect
         # Corresponds to the JSON property `saveFindings`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings]
         attr_accessor :save_findings
@@ -3492,7 +3494,7 @@ module Google
       end
       
       # Publish the results of a DlpJob to a pub sub channel.
-      # Compatible with: Inpect, Risk
+      # Compatible with: Inspect, Risk
       class GooglePrivacyDlpV2PublishToPubSub
         include Google::Apis::Core::Hashable
       
@@ -4035,7 +4037,9 @@ module Google
       end
       
       # If set, the detailed findings will be persisted to the specified
-      # OutputStorageConfig. Compatible with: Inspect
+      # OutputStorageConfig. Only a single instance of this action can be
+      # specified.
+      # Compatible with: Inspect
       class GooglePrivacyDlpV2SaveFindings
         include Google::Apis::Core::Hashable
       

@@ -87,8 +87,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a de-identify template for re-using frequently used configuration
-        # for Deidentifying content, images, and storage.
+        # Creates a DeidentifyTemplate for re-using frequently used configuration
+        # for de-identifying content, images, and storage.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -122,7 +122,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a de-identify template.
+        # Deletes a DeidentifyTemplate.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be deleted,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -154,7 +154,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a de-identify template.
+        # Gets a DeidentifyTemplate.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be read, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -186,7 +186,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists de-identify templates.
+        # Lists DeidentifyTemplates.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -225,7 +225,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the de-identify template.
+        # Updates the DeidentifyTemplate.
         # @param [String] name
         #   Resource name of organization and deidentify template to be updated, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -260,7 +260,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an inspect template for re-using frequently used configuration
+        # Creates an InspectTemplate for re-using frequently used configuration
         # for inspecting content, images, and storage.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
@@ -295,7 +295,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an inspect template.
+        # Deletes an InspectTemplate.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be deleted, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -327,7 +327,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an inspect template.
+        # Gets an InspectTemplate.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be read, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -359,7 +359,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists inspect templates.
+        # Lists InspectTemplates.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -398,7 +398,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the inspect template.
+        # Updates the InspectTemplate.
         # @param [String] name
         #   Resource name of organization and inspectTemplate to be updated, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -537,8 +537,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a de-identify template for re-using frequently used configuration
-        # for Deidentifying content, images, and storage.
+        # Creates a DeidentifyTemplate for re-using frequently used configuration
+        # for de-identifying content, images, and storage.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -572,7 +572,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a de-identify template.
+        # Deletes a DeidentifyTemplate.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be deleted,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -604,7 +604,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a de-identify template.
+        # Gets a DeidentifyTemplate.
         # @param [String] name
         #   Resource name of the organization and deidentify template to be read, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -636,7 +636,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists de-identify templates.
+        # Lists DeidentifyTemplates.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -675,7 +675,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the de-identify template.
+        # Updates the DeidentifyTemplate.
         # @param [String] name
         #   Resource name of organization and deidentify template to be updated, for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -745,8 +745,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new job to inspect storage or calculate risk metrics [How-to
-        # guide](/dlp/docs/compute-risk-analysis).
+        # Creates a new job to inspect storage or calculate risk metrics.
+        # [How-to guide](/dlp/docs/compute-risk-analysis).
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
@@ -935,7 +935,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an inspect template for re-using frequently used configuration
+        # Creates an InspectTemplate for re-using frequently used configuration
         # for inspecting content, images, and storage.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
@@ -970,7 +970,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an inspect template.
+        # Deletes an InspectTemplate.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be deleted, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -1002,7 +1002,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an inspect template.
+        # Gets an InspectTemplate.
         # @param [String] name
         #   Resource name of the organization and inspectTemplate to be read, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
@@ -1034,7 +1034,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists inspect templates.
+        # Lists InspectTemplates.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
@@ -1073,7 +1073,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the inspect template.
+        # Updates the InspectTemplate.
         # @param [String] name
         #   Resource name of organization and inspectTemplate to be updated, for
         #   example `organizations/433245324/inspectTemplates/432452342` or

@@ -50,7 +50,8 @@ module Google
         
         # Creates a billing account.
         # This method can only be used to create
-        # [billing subaccounts](https://cloud.google.com/billing/docs/concepts).
+        # [billing subaccounts](https://cloud.google.com/billing/docs/concepts)
+        # for GCP resellers.
         # When creating a subaccount, the current authenticated user must have the
         # `billing.accounts.update` IAM permission on the master account, which is
         # typically given to billing account

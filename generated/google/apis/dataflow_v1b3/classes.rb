@@ -2241,6 +2241,13 @@ module Google
         # @return [Object]
         attr_accessor :distribution
       
+        # A struct value describing properties of a Gauge.
+        # Metrics of gauge type show the value of a metric across time, and is
+        # aggregated based on the newest value.
+        # Corresponds to the JSON property `gauge`
+        # @return [Object]
+        attr_accessor :gauge
+      
         # Worker-computed aggregate value for internal use by the Dataflow
         # service.
         # Corresponds to the JSON property `internal`
@@ -2307,6 +2314,7 @@ module Google
         def update!(**args)
           @cumulative = args[:cumulative] if args.key?(:cumulative)
           @distribution = args[:distribution] if args.key?(:distribution)
+          @gauge = args[:gauge] if args.key?(:gauge)
           @internal = args[:internal] if args.key?(:internal)
           @kind = args[:kind] if args.key?(:kind)
           @mean_count = args[:mean_count] if args.key?(:mean_count)

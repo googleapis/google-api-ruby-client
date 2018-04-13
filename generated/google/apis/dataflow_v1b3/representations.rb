@@ -1377,6 +1377,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cumulative, as: 'cumulative'
           property :distribution, as: 'distribution'
+          property :gauge, as: 'gauge'
           property :internal, as: 'internal'
           property :kind, as: 'kind'
           property :mean_count, as: 'meanCount'

@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DataprocV1beta2
-      # Google Cloud Dataproc API
+      # Cloud Dataproc API
       #
       # Manages Hadoop-based clusters and jobs on Google Cloud Platform.
       #

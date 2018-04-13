@@ -18,14 +18,14 @@ require 'google/apis/dataproc_v1beta2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Dataproc API
+    # Cloud Dataproc API
     #
     # Manages Hadoop-based clusters and jobs on Google Cloud Platform.
     #
     # @see https://cloud.google.com/dataproc/
     module DataprocV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20180404'
+      REVISION = '20180409'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

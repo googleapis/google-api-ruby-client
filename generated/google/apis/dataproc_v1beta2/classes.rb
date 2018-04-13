@@ -1872,9 +1872,10 @@ module Google
       class SoftwareConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The version of software inside the cluster. It must match the
-        # regular expression [0-9]+\.[0-9]+. If unspecified, it defaults to the latest
-        # version (see Cloud Dataproc Versioning).
+        # Optional. The version of software inside the cluster. It must be one of the
+        # supported Cloud Dataproc Versions, such as "1.2" (including a subminor version,
+        # such as "1.2.29"), or the "preview" version. If unspecified, it defaults to
+        # the latest version.
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
