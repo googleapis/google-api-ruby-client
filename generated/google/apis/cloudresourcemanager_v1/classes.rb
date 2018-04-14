@@ -474,7 +474,7 @@ module Google
       
         # Ancestors are ordered from bottom to top of the resource hierarchy. The
         # first ancestor is the project itself, followed by the project's parent,
-        # etc.
+        # etc..
         # Corresponds to the JSON property `ancestor`
         # @return [Array<Google::Apis::CloudresourcemanagerV1::Ancestor>]
         attr_accessor :ancestor

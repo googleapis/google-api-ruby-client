@@ -5351,7 +5351,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details about the specified managed instance group. Get a
+        # Returns all of the details about the specified managed instance group. Gets a
         # list of available managed instance groups by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -6443,7 +6443,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance template. Get a list of available instance
+        # Returns the specified instance template. Gets a list of available instance
         # templates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -9280,7 +9280,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine type. Get a list of available machine types by
+        # Returns the specified machine type. Gets a list of available machine types by
         # making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -10052,8 +10052,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the shared VPC host project that this project links to. May be empty if no
-        # link exists.
+        # Gets the shared VPC host project that this project links to. May be empty if
+        # no link exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] fields
@@ -10088,7 +10088,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get service resources (a.k.a service project) associated with this host
+        # Gets service resources (a.k.a service project) associated with this host
         # project.
         # @param [String] project
         #   Project ID for this request.
@@ -10132,7 +10132,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all shared VPC host projects visible to the user in an organization.
+        # Lists all shared VPC host projects visible to the user in an organization.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
@@ -13725,7 +13725,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the ordered rules present in a single specified policy.
+        # Lists all of the ordered rules present in a single specified policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_policy
@@ -13815,7 +13815,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all the SSL policies that have been configured for the specified project.
+        # Lists all the SSL policies that have been configured for the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
