@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ContainerV1
-      # Google Kubernetes Engine API
+      # Kubernetes Engine API
       #
       # The Google Kubernetes Engine API is used for building and managing container
       #  based applications, powered by the open source Kubernetes technology.
@@ -92,8 +92,7 @@ module Google
         # Completes master IP rotation.
         # @param [String] name
         #   The name (project, location, cluster id) of the cluster to complete IP
-        #   rotation.
-        #   Specified in the format 'projects/*/locations/*/clusters/*'.
+        #   rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
         # @param [Google::Apis::ContainerV1::CompleteIpRotationRequest] complete_ip_rotation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -553,8 +552,7 @@ module Google
         # Enables/Disables Network Policy for a cluster.
         # @param [String] name
         #   The name (project, location, cluster id) of the cluster to set networking
-        #   policy.
-        #   Specified in the format 'projects/*/locations/*/clusters/*'.
+        #   policy. Specified in the format 'projects/*/locations/*/clusters/*'.
         # @param [Google::Apis::ContainerV1::SetNetworkPolicyRequest] set_network_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -621,8 +619,8 @@ module Google
         
         # Start master IP rotation.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to start IP rotation.
-        #   Specified in the format 'projects/*/locations/*/clusters/*'.
+        #   The name (project, location, cluster id) of the cluster to start IP
+        #   rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
         # @param [Google::Apis::ContainerV1::StartIpRotationRequest] start_ip_rotation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -723,8 +721,9 @@ module Google
         
         # Creates a node pool for a cluster.
         # @param [String] parent
-        #   The parent (project, location, cluster id) where the node pool will be created.
-        #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   The parent (project, location, cluster id) where the node pool will be
+        #   created. Specified in the format
+        #   'projects/*/locations/*/clusters/*/nodePools/*'.
         # @param [Google::Apis::ContainerV1::CreateNodePoolRequest] create_node_pool_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -757,8 +756,9 @@ module Google
         
         # Deletes a node pool from a cluster.
         # @param [String] name
-        #   The name (project, location, cluster, node pool id) of the node pool to delete.
-        #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   The name (project, location, cluster, node pool id) of the node pool to
+        #   delete. Specified in the format
+        #   'projects/*/locations/*/clusters/*/nodePools/*'.
         # @param [String] cluster_id
         #   Deprecated. The name of the cluster.
         #   This field has been deprecated and replaced by the name field.
@@ -807,8 +807,9 @@ module Google
         
         # Retrieves the node pool requested.
         # @param [String] name
-        #   The name (project, location, cluster, node pool id) of the node pool to get.
-        #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   The name (project, location, cluster, node pool id) of the node pool to
+        #   get. Specified in the format
+        #   'projects/*/locations/*/clusters/*/nodePools/*'.
         # @param [String] cluster_id
         #   Deprecated. The name of the cluster.
         #   This field has been deprecated and replaced by the name field.
@@ -857,8 +858,8 @@ module Google
         
         # Lists the node pools for a cluster.
         # @param [String] parent
-        #   The parent (project, location, cluster id) where the node pools will be listed.
-        #   Specified in the format 'projects/*/locations/*/clusters/*'.
+        #   The parent (project, location, cluster id) where the node pools will be
+        #   listed. Specified in the format 'projects/*/locations/*/clusters/*'.
         # @param [String] cluster_id
         #   Deprecated. The name of the cluster.
         #   This field has been deprecated and replaced by the parent field.
@@ -1044,8 +1045,9 @@ module Google
         
         # Updates the version and/or image type of a specific node pool.
         # @param [String] name
-        #   The name (project, location, cluster, node pool) of the node pool to update.
-        #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   The name (project, location, cluster, node pool) of the node pool to
+        #   update. Specified in the format
+        #   'projects/*/locations/*/clusters/*/nodePools/*'.
         # @param [Google::Apis::ContainerV1::UpdateNodePoolRequest] update_node_pool_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1166,10 +1168,9 @@ module Google
         #   number](https://support.google.com/cloud/answer/6158840).
         #   This field has been deprecated and replaced by the parent field.
         # @param [String] zone
-        #   Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#
-        #   available)
-        #   to return operations for, or `-` for all zones.
-        #   This field has been deprecated and replaced by the parent field.
+        #   Deprecated. The name of the Google Compute Engine
+        #   [zone](/compute/docs/zones#available) to return operations for, or `-` for
+        #   all zones. This field has been deprecated and replaced by the parent field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2127,8 +2128,9 @@ module Google
         #   Deprecated. The name of the node pool to delete.
         #   This field has been deprecated and replaced by the name field.
         # @param [String] name
-        #   The name (project, location, cluster, node pool id) of the node pool to delete.
-        #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   The name (project, location, cluster, node pool id) of the node pool to
+        #   delete. Specified in the format
+        #   'projects/*/locations/*/clusters/*/nodePools/*'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2177,8 +2179,9 @@ module Google
         #   Deprecated. The name of the node pool.
         #   This field has been deprecated and replaced by the name field.
         # @param [String] name
-        #   The name (project, location, cluster, node pool id) of the node pool to get.
-        #   Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        #   The name (project, location, cluster, node pool id) of the node pool to
+        #   get. Specified in the format
+        #   'projects/*/locations/*/clusters/*/nodePools/*'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2224,8 +2227,8 @@ module Google
         #   Deprecated. The name of the cluster.
         #   This field has been deprecated and replaced by the parent field.
         # @param [String] parent
-        #   The parent (project, location, cluster id) where the node pools will be listed.
-        #   Specified in the format 'projects/*/locations/*/clusters/*'.
+        #   The parent (project, location, cluster id) where the node pools will be
+        #   listed. Specified in the format 'projects/*/locations/*/clusters/*'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2549,10 +2552,9 @@ module Google
         #   number](https://support.google.com/cloud/answer/6158840).
         #   This field has been deprecated and replaced by the parent field.
         # @param [String] zone
-        #   Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#
-        #   available)
-        #   to return operations for, or `-` for all zones.
-        #   This field has been deprecated and replaced by the parent field.
+        #   Deprecated. The name of the Google Compute Engine
+        #   [zone](/compute/docs/zones#available) to return operations for, or `-` for
+        #   all zones. This field has been deprecated and replaced by the parent field.
         # @param [String] parent
         #   The parent (project and location) where the operations will be listed.
         #   Specified in the format 'projects/*/locations/*'.

@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListUsableSubnetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class MasterAuthorizedNetworksConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsableSubnetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadMetadataConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +448,8 @@ module Google
           property :monitoring_service, as: 'monitoringService'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1beta1::NetworkConfig, decorator: Google::Apis::ContainerV1beta1::NetworkConfig::Representation
+      
           property :network_policy, as: 'networkPolicy', class: Google::Apis::ContainerV1beta1::NetworkPolicy, decorator: Google::Apis::ContainerV1beta1::NetworkPolicy::Representation
       
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1beta1::NodeConfig, decorator: Google::Apis::ContainerV1beta1::NodeConfig::Representation
@@ -589,6 +609,15 @@ module Google
         end
       end
       
+      class ListUsableSubnetworksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subnetworks, as: 'subnetworks', class: Google::Apis::ContainerV1beta1::UsableSubnetwork, decorator: Google::Apis::ContainerV1beta1::UsableSubnetwork::Representation
+      
+        end
+      end
+      
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -624,6 +653,14 @@ module Google
           collection :cidr_blocks, as: 'cidrBlocks', class: Google::Apis::ContainerV1beta1::CidrBlock, decorator: Google::Apis::ContainerV1beta1::CidrBlock::Representation
       
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class NetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -907,6 +944,7 @@ module Google
           property :cluster_id, as: 'clusterId'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :rotate_credentials, as: 'rotateCredentials'
           property :zone, as: 'zone'
         end
       end
@@ -944,6 +982,15 @@ module Google
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UsableSubnetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_cidr_range, as: 'ipCidrRange'
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       

@@ -7466,7 +7466,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete selected per-instance configs for the managed instance group.
+        # Deletes selected per-instance configs for the managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7511,7 +7511,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details about the specified managed instance group. Get a
+        # Returns all of the details about the specified managed instance group. Gets a
         # list of available managed instance groups by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -9074,7 +9074,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance template. Get a list of available instance
+        # Returns the specified instance template. Gets a list of available instance
         # templates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -9333,64 +9333,6 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['networkInterface'] = network_interface unless network_interface.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Adds existing maintenance policies to an instance. You can only add one policy
-        # right now which will be applied to this instance for scheduling live
-        # migrations.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] zone
-        #   The name of the zone for this request.
-        # @param [String] instance
-        #   The instance name for this request.
-        # @param [Google::Apis::ComputeAlpha::InstancesAddMaintenancePoliciesRequest] instances_add_maintenance_policies_request_object
-        # @param [String] request_id
-        #   An optional request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and the
-        #   request times out. If you make the request again with the same request ID, the
-        #   server can check if original operation with the same request ID was received,
-        #   and if so, will ignore the second request. This prevents clients from
-        #   accidentally creating duplicate commitments.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
-        #   supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_maintenance_policies(project, zone, instance, instances_add_maintenance_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addMaintenancePolicies', options)
-          command.request_representation = Google::Apis::ComputeAlpha::InstancesAddMaintenancePoliciesRequest::Representation
-          command.request_object = instances_add_maintenance_policies_request_object
-          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
-          command.response_class = Google::Apis::ComputeAlpha::Operation
-          command.params['project'] = project unless project.nil?
-          command.params['zone'] = zone unless zone.nil?
-          command.params['instance'] = instance unless instance.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -10095,62 +10037,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Removes maintenance policies from an instance.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] zone
-        #   The name of the zone for this request.
-        # @param [String] instance
-        #   The instance name for this request.
-        # @param [Google::Apis::ComputeAlpha::InstancesRemoveMaintenancePoliciesRequest] instances_remove_maintenance_policies_request_object
-        # @param [String] request_id
-        #   An optional request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and the
-        #   request times out. If you make the request again with the same request ID, the
-        #   server can check if original operation with the same request ID was received,
-        #   and if so, will ignore the second request. This prevents clients from
-        #   accidentally creating duplicate commitments.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
-        #   supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_instance_maintenance_policies(project, zone, instance, instances_remove_maintenance_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/removeMaintenancePolicies', options)
-          command.request_representation = Google::Apis::ComputeAlpha::InstancesRemoveMaintenancePoliciesRequest::Representation
-          command.request_object = instances_remove_maintenance_policies_request_object
-          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
-          command.response_class = Google::Apis::ComputeAlpha::Operation
-          command.params['project'] = project unless project.nil?
-          command.params['zone'] = zone unless zone.nil?
-          command.params['instance'] = instance unless instance.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13135,7 +13021,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified machine type. Get a list of available machine types by
+        # Returns the specified machine type. Gets a list of available machine types by
         # making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -13247,434 +13133,6 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves an aggregated list of maintenance policies.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] filter
-        #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, a comparison operator, and the value
-        #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
-        #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
-        # @param [Fixnum] max_results
-        #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
-        # @param [String] order_by
-        #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
-        # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_maintenance_policy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/aggregated/maintenancePolicies', options)
-          command.response_representation = Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList::Representation
-          command.response_class = Google::Apis::ComputeAlpha::MaintenancePolicyAggregatedList
-          command.params['project'] = project unless project.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes the specified maintenance policy.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   Name of the region for this request.
-        # @param [String] maintenance_policy
-        #   Name of the maintenance policy to delete.
-        # @param [String] request_id
-        #   An optional request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and the
-        #   request times out. If you make the request again with the same request ID, the
-        #   server can check if original operation with the same request ID was received,
-        #   and if so, will ignore the second request. This prevents clients from
-        #   accidentally creating duplicate commitments.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
-        #   supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_maintenance_policy(project, region, maintenance_policy, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:delete, '{project}/regions/{region}/maintenancePolicies/{maintenancePolicy}', options)
-          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
-          command.response_class = Google::Apis::ComputeAlpha::Operation
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['maintenancePolicy'] = maintenance_policy unless maintenance_policy.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves all information of the specified maintenance policy.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   Name of the region for this request.
-        # @param [String] maintenance_policy
-        #   Name of the maintenance policy to retrieve.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::MaintenancePolicy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::MaintenancePolicy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_maintenance_policy(project, region, maintenance_policy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/maintenancePolicies/{maintenancePolicy}', options)
-          command.response_representation = Google::Apis::ComputeAlpha::MaintenancePolicy::Representation
-          command.response_class = Google::Apis::ComputeAlpha::MaintenancePolicy
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['maintenancePolicy'] = maintenance_policy unless maintenance_policy.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   The name of the region for this request.
-        # @param [String] resource
-        #   Name of the resource for this request.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_maintenance_policy_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/maintenancePolicies/{resource}/getIamPolicy', options)
-          command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.response_class = Google::Apis::ComputeAlpha::Policy
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new maintenance policy.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   Name of the region for this request.
-        # @param [Google::Apis::ComputeAlpha::MaintenancePolicy] maintenance_policy_object
-        # @param [String] request_id
-        #   An optional request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed.
-        #   For example, consider a situation where you make an initial request and the
-        #   request times out. If you make the request again with the same request ID, the
-        #   server can check if original operation with the same request ID was received,
-        #   and if so, will ignore the second request. This prevents clients from
-        #   accidentally creating duplicate commitments.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
-        #   supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_maintenance_policy(project, region, maintenance_policy_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/maintenancePolicies', options)
-          command.request_representation = Google::Apis::ComputeAlpha::MaintenancePolicy::Representation
-          command.request_object = maintenance_policy_object
-          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
-          command.response_class = Google::Apis::ComputeAlpha::Operation
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all the maintenance policies that have been configured for the specified
-        # project in specified region.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   Name of the region for this request.
-        # @param [String] filter
-        #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, a comparison operator, and the value
-        #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
-        #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
-        #   for automatic restarts. You can use filtering on nested fields to filter based
-        #   on resource labels.
-        #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
-        # @param [Fixnum] max_results
-        #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
-        # @param [String] order_by
-        #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name.
-        #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
-        #   Use this to sort resources like operations so that the newest operation is
-        #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
-        # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::MaintenancePoliciesList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::MaintenancePoliciesList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_maintenance_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:get, '{project}/regions/{region}/maintenancePolicies', options)
-          command.response_representation = Google::Apis::ComputeAlpha::MaintenancePoliciesList::Representation
-          command.response_class = Google::Apis::ComputeAlpha::MaintenancePoliciesList
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   The name of the region for this request.
-        # @param [String] resource
-        #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::Policy] policy_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_maintenance_policy_iam_policy(project, region, resource, policy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/maintenancePolicies/{resource}/setIamPolicy', options)
-          command.request_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.request_object = policy_object
-          command.response_representation = Google::Apis::ComputeAlpha::Policy::Representation
-          command.response_class = Google::Apis::ComputeAlpha::Policy
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns permissions that a caller has on the specified resource.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] region
-        #   The name of the region for this request.
-        # @param [String] resource
-        #   Name of the resource for this request.
-        # @param [Google::Apis::ComputeAlpha::TestPermissionsRequest] test_permissions_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::TestPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::TestPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_maintenance_policy_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command =  make_simple_command(:post, '{project}/regions/{region}/maintenancePolicies/{resource}/testIamPermissions', options)
-          command.request_representation = Google::Apis::ComputeAlpha::TestPermissionsRequest::Representation
-          command.request_object = test_permissions_request_object
-          command.response_representation = Google::Apis::ComputeAlpha::TestPermissionsResponse::Representation
-          command.response_class = Google::Apis::ComputeAlpha::TestPermissionsResponse
-          command.params['project'] = project unless project.nil?
-          command.params['region'] = region unless region.nil?
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14104,7 +13562,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the network endpoints in the specified network endpoint group.
+        # Lists the network endpoints in the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -14498,7 +13956,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the internal IP owners in the specified network.
+        # Lists the internal IP owners in the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -14787,6 +14245,286 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds specified number of nodes to the node group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the NodeGroup resource to delete.
+        # @param [Google::Apis::ComputeAlpha::NodeGroupsAddNodesRequest] node_groups_add_nodes_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_node_group_nodes(project, zone, node_group, node_groups_add_nodes_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/addNodes', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsAddNodesRequest::Representation
+          command.request_object = node_groups_add_nodes_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an aggregated list of node groups.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeGroupAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeGroupAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_node_group_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/nodeGroups', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeGroupAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeGroupAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified NodeGroup resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the NodeGroup resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_node_group(project, zone, node_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes specified nodes from the node group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the NodeGroup resource to delete.
+        # @param [Google::Apis::ComputeAlpha::NodeGroupsDeleteNodesRequest] node_groups_delete_nodes_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_node_group_nodes(project, zone, node_group, node_groups_delete_nodes_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/deleteNodes', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsDeleteNodesRequest::Representation
+          command.request_object = node_groups_delete_nodes_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified NodeGroup. Get a list of available NodeGroups by making
+        # a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the node group to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_node_group(project, zone, node_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeGroup::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeGroup
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. May be empty if no such policy
         # or resource exists.
         # @param [String] project
@@ -14823,6 +14561,139 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a NodeGroup resource in the specified project using the data included
+        # in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [Fixnum] initial_node_count
+        #   Initial count of nodes in the node group.
+        # @param [Google::Apis::ComputeAlpha::NodeGroup] node_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_node_group(project, zone, initial_node_count, node_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NodeGroup::Representation
+          command.request_object = node_group_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['initialNodeCount'] = initial_node_count unless initial_node_count.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of node groups available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeGroupList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeGroupList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_node_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeGroups', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeGroupList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeGroupList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14874,6 +14745,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the node template of the node group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the NodeGroup resource to delete.
+        # @param [Google::Apis::ComputeAlpha::NodeGroupsSetNodeTemplateRequest] node_groups_set_node_template_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_node_group_node_template(project, zone, node_group, node_groups_set_node_template_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/nodeGroups/{nodeGroup}/setNodeTemplate', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NodeGroupsSetNodeTemplateRequest::Representation
+          command.request_object = node_groups_set_node_template_request_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
@@ -14918,6 +14845,174 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves an aggregated list of node templates.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeTemplateAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeTemplateAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_node_template_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/nodeTemplates', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeTemplateAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeTemplateAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified NodeTemplate resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] node_template
+        #   Name of the NodeTemplate resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_node_template(project, region, node_template, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, '{project}/regions/{region}/nodeTemplates/{nodeTemplate}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['nodeTemplate'] = node_template unless node_template.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified node template. Get a list of available node templates by
+        # making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] node_template
+        #   Name of the node template to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_node_template(project, region, node_template, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/nodeTemplates/{nodeTemplate}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeTemplate::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeTemplate
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['nodeTemplate'] = node_template unless node_template.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. May be empty if no such policy
         # or resource exists.
         # @param [String] project
@@ -14954,6 +15049,136 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a NodeTemplate resource in the specified project using the data
+        # included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [Google::Apis::ComputeAlpha::NodeTemplate] node_template_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_node_template(project, region, node_template_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{project}/regions/{region}/nodeTemplates', options)
+          command.request_representation = Google::Apis::ComputeAlpha::NodeTemplate::Representation
+          command.request_object = node_template_object
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of node templates available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeTemplateList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeTemplateList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_node_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/regions/{region}/nodeTemplates', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeTemplateList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeTemplateList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15043,6 +15268,197 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an aggregated list of node types.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeTypeAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeTypeAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_node_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/aggregated/nodeTypes', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeTypeAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeTypeAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified node type. Get a list of available node types by making
+        # a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_type
+        #   Name of the node type to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeType] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeType]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_node_type(project, zone, node_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeTypes/{nodeType}', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeType::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeType
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeType'] = node_type unless node_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of node types available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::NodeTypeList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::NodeTypeList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_node_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/nodeTypes', options)
+          command.response_representation = Google::Apis::ComputeAlpha::NodeTypeList::Representation
+          command.response_class = Google::Apis::ComputeAlpha::NodeTypeList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -15280,8 +15696,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the shared VPC host project that this project links to. May be empty if no
-        # link exists.
+        # Gets the shared VPC host project that this project links to. May be empty if
+        # no link exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] fields
@@ -15316,7 +15732,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get service resources (a.k.a service project) associated with this host
+        # Gets service resources (a.k.a service project) associated with this host
         # project.
         # @param [String] project
         #   Project ID for this request.
@@ -15360,7 +15776,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all shared VPC host projects visible to the user in an organization.
+        # Lists all shared VPC host projects visible to the user in an organization.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeAlpha::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
@@ -17995,7 +18411,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete selected per-instance configs for the managed instance group.
+        # Deletes selected per-instance configs for the managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19369,7 +19785,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified TargetHttpProxy resource in the specified region. Get a
+        # Returns the specified TargetHttpProxy resource in the specified region. Gets a
         # list of available target HTTP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -22063,7 +22479,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the ordered rules present in a single specified policy.
+        # Lists all of the ordered rules present in a single specified policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_policy
@@ -22153,7 +22569,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all the SSL policies that have been configured for the specified project.
+        # Lists all the SSL policies that have been configured for the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter

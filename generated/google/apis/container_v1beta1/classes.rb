@@ -406,6 +406,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # NetworkConfig reports the relative names of network & subnetwork.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::ContainerV1beta1::NetworkConfig]
+        attr_accessor :network_config
+      
         # Configuration options for the NetworkPolicy feature.
         # https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
         # Corresponds to the JSON property `networkPolicy`
@@ -444,8 +449,8 @@ module Google
         attr_accessor :private_cluster
         alias_method :private_cluster?, :private_cluster
       
-        # The resource labels for the cluster to use to annotate any related GCE
-        # resources.
+        # The resource labels for the cluster to use to annotate any related
+        # Google Compute Engine resources.
         # Corresponds to the JSON property `resourceLabels`
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
@@ -523,6 +528,7 @@ module Google
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @network_policy = args[:network_policy] if args.key?(:network_policy)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
@@ -658,8 +664,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to complete IP
-        # rotation.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -755,8 +760,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePool]
         attr_accessor :node_pool
       
-        # The parent (project, location, cluster id) where the node pool will be created.
-        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # The parent (project, location, cluster id) where the node pool will be
+        # created. Specified in the format
+        # 'projects/*/locations/*/clusters/*/nodePools/*'.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1139,6 +1145,35 @@ module Google
         end
       end
       
+      # ListUsableSubnetworksResponse is the response of
+      # ListUsableSubnetworksRequest.
+      class ListUsableSubnetworksResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token allows you to get the next page of results for list requests.
+        # If the number of results is larger than `page_size`, use the
+        # `next_page_token` as a value for the query parameter `page_token` in the
+        # next request. The value will become empty when there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of usable subnetworks in the specified network project.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<Google::Apis::ContainerV1beta1::UsableSubnetwork>]
+        attr_accessor :subnetworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
       # MaintenancePolicy defines the maintenance policy to be used for the cluster.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
@@ -1263,6 +1298,35 @@ module Google
         def update!(**args)
           @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # NetworkConfig reports the relative names of network & subnetwork.
+      class NetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the Google Compute Engine
+        # network(/compute/docs/networks-and-firewalls#networks).
+        # Example: projects/my-project/global/networks/my-network
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The name of the Google Compute Engine
+        # [subnetwork](/compute/docs/vpc).
+        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -1397,8 +1461,9 @@ module Google
         # friendly names of CPU platforms, such as
         # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
         # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
-        # information, read [how to specify min CPU platform](https://cloud.google.com/
-        # compute/docs/instances/specify-min-cpu-platform)
+        # information, read [how to specify min CPU
+        # platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-
+        # platform)
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -2316,8 +2381,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to set networking
-        # policy.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # policy. Specified in the format 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2546,8 +2610,8 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # The name (project, location, cluster id) of the cluster to start IP rotation.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # The name (project, location, cluster id) of the cluster to start IP
+        # rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2558,6 +2622,12 @@ module Google
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
+      
+        # Whether to rotate credentials during IP rotation.
+        # Corresponds to the JSON property `rotateCredentials`
+        # @return [Boolean]
+        attr_accessor :rotate_credentials
+        alias_method :rotate_credentials?, :rotate_credentials
       
         # Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
@@ -2576,6 +2646,7 @@ module Google
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @rotate_credentials = args[:rotate_credentials] if args.key?(:rotate_credentials)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -2704,8 +2775,9 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
-        # The name (project, location, cluster, node pool) of the node pool to update.
-        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # The name (project, location, cluster, node pool) of the node pool to
+        # update. Specified in the format
+        # 'projects/*/locations/*/clusters/*/nodePools/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2757,6 +2829,40 @@ module Google
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # UsableSubnetwork resource returns the subnetwork name, its associated network
+      # and the primary CIDR range.
+      class UsableSubnetwork
+        include Google::Apis::Core::Hashable
+      
+        # The range of internal addresses that are owned by this subnetwork.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Network Name.
+        # Example: projects/my-project/global/networks/my-network
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Subnetwork Name.
+        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       

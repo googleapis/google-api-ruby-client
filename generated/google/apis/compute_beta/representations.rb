@@ -3870,6 +3870,7 @@ module Google
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
           property :raw_key, as: 'rawKey'
           property :rsa_encrypted_key, as: 'rsaEncryptedKey'
           property :sha256, as: 'sha256'

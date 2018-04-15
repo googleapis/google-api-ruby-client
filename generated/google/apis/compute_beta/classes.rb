@@ -362,7 +362,7 @@ module Google
       class AcceleratorTypesScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of accelerator types contained in this scope.
+        # [Output Only] A list of accelerator types contained in this scope.
         # Corresponds to the JSON property `acceleratorTypes`
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorType>]
         attr_accessor :accelerator_types
@@ -899,7 +899,7 @@ module Google
       class AddressesScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of addresses contained in this scope.
+        # [Output Only] A list of addresses contained in this scope.
         # Corresponds to the JSON property `addresses`
         # @return [Array<Google::Apis::ComputeBeta::Address>]
         attr_accessor :addresses
@@ -1690,7 +1690,7 @@ module Google
       class AutoscalersScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of autoscalers contained in this scope.
+        # [Output Only] A list of autoscalers contained in this scope.
         # Corresponds to the JSON property `autoscalers`
         # @return [Array<Google::Apis::ComputeBeta::Autoscaler>]
         attr_accessor :autoscalers
@@ -2831,7 +2831,7 @@ module Google
       class BackendServicesScopedList
         include Google::Apis::Core::Hashable
       
-        # List of BackendServices contained in this scope.
+        # A list of BackendServices contained in this scope.
         # Corresponds to the JSON property `backendServices`
         # @return [Array<Google::Apis::ComputeBeta::BackendService>]
         attr_accessor :backend_services
@@ -3109,8 +3109,8 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of commitment amounts for particular resources. Note that VCPU and MEMORY
-        # resource commitments must occur together.
+        # A list of commitment amounts for particular resources. Note that VCPU and
+        # MEMORY resource commitments must occur together.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ComputeBeta::ResourceCommitment>]
         attr_accessor :resources
@@ -3399,7 +3399,7 @@ module Google
       class CommitmentsScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of commitments contained in this scope.
+        # [Output Only] A list of commitments contained in this scope.
         # Corresponds to the JSON property `commitments`
         # @return [Array<Google::Apis::ComputeBeta::Commitment>]
         attr_accessor :commitments
@@ -3560,6 +3560,11 @@ module Google
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
+        # The name of the encryption key that is stored in Google Cloud KMS.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
         # base64 to either encrypt or decrypt this resource.
         # Corresponds to the JSON property `rawKey`
@@ -3572,7 +3577,7 @@ module Google
         # Compute Engine:
         # - The key is wrapped using a RSA public key certificate provided by Google.
         # - After being wrapped, the key must be encoded in RFC 4648 base64 encoding.
-        # Get the RSA public key certificate provided by Google at:
+        # Gets the RSA public key certificate provided by Google at:
         # https://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
         # Corresponds to the JSON property `rsaEncryptedKey`
         # @return [String]
@@ -3590,6 +3595,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @raw_key = args[:raw_key] if args.key?(:raw_key)
           @rsa_encrypted_key = args[:rsa_encrypted_key] if args.key?(:rsa_encrypted_key)
           @sha256 = args[:sha256] if args.key?(:sha256)
@@ -4558,7 +4564,7 @@ module Google
       class DiskTypesScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of disk types contained in this scope.
+        # [Output Only] A list of disk types contained in this scope.
         # Corresponds to the JSON property `diskTypes`
         # @return [Array<Google::Apis::ComputeBeta::DiskType>]
         attr_accessor :disk_types
@@ -4668,7 +4674,7 @@ module Google
       class DisksScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of disks contained in this scope.
+        # [Output Only] A list of disks contained in this scope.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::ComputeBeta::Disk>]
         attr_accessor :disks
@@ -5725,7 +5731,7 @@ module Google
       class ForwardingRulesScopedList
         include Google::Apis::Core::Hashable
       
-        # List of forwarding rules contained in this scope.
+        # A list of forwarding rules contained in this scope.
         # Corresponds to the JSON property `forwardingRules`
         # @return [Array<Google::Apis::ComputeBeta::ForwardingRule>]
         attr_accessor :forwarding_rules
@@ -7183,7 +7189,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AttachedDisk>]
         attr_accessor :disks
       
-        # List of the type and count of accelerator cards attached to the instance.
+        # A list of the type and count of accelerator cards attached to the instance.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
@@ -7522,8 +7528,8 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The URL of the region where the instance group is located (for regional
-        # resources).
+        # [Output Only] The URL of the region where the instance group is located (for
+        # regional resources).
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -7538,7 +7544,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # The URL of the subnetwork to which all instances in the instance group belong.
+        # [Output Only] The URL of the subnetwork to which all instances in the instance
+        # group belong.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -9693,7 +9700,7 @@ module Google
       class InstancesScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of instances contained in this scope.
+        # [Output Only] A list of instances contained in this scope.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::ComputeBeta::Instance>]
         attr_accessor :instances
@@ -9812,7 +9819,7 @@ module Google
       class InstancesSetMachineResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # List of the type and count of accelerator cards attached to the instance.
+        # A list of the type and count of accelerator cards attached to the instance.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
@@ -9932,7 +9939,7 @@ module Google
         attr_accessor :admin_enabled
         alias_method :admin_enabled?, :admin_enabled
       
-        # [Output Only] List of CircuitInfo objects, that describe the individual
+        # [Output Only] A list of CircuitInfo objects, that describe the individual
         # circuits in this LAG.
         # Corresponds to the JSON property `circuitInfos`
         # @return [Array<Google::Apis::ComputeBeta::InterconnectCircuitInfo>]
@@ -9955,7 +9962,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] List of outages expected for this Interconnect.
+        # [Output Only] A list of outages expected for this Interconnect.
         # Corresponds to the JSON property `expectedOutages`
         # @return [Array<Google::Apis::ComputeBeta::InterconnectOutageNotification>]
         attr_accessor :expected_outages
@@ -10636,7 +10643,7 @@ module Google
       class InterconnectAttachmentsScopedList
         include Google::Apis::Core::Hashable
       
-        # List of interconnect attachments contained in this scope.
+        # A list of interconnect attachments contained in this scope.
         # Corresponds to the JSON property `interconnectAttachments`
         # @return [Array<Google::Apis::ComputeBeta::InterconnectAttachment>]
         attr_accessor :interconnect_attachments
@@ -11983,7 +11990,7 @@ module Google
       class MachineTypesScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of machine types contained in this scope.
+        # [Output Only] A list of machine types contained in this scope.
         # Corresponds to the JSON property `machineTypes`
         # @return [Array<Google::Apis::ComputeBeta::MachineType>]
         attr_accessor :machine_types
@@ -12395,7 +12402,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] List of network peerings for the resource.
+        # [Output Only] A list of network peerings for the resource.
         # Corresponds to the JSON property `peerings`
         # @return [Array<Google::Apis::ComputeBeta::NetworkPeering>]
         attr_accessor :peerings
@@ -13320,7 +13327,7 @@ module Google
       class OperationsScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of operations contained in this scope.
+        # [Output Only] A list of operations contained in this scope.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::ComputeBeta::Operation>]
         attr_accessor :operations
@@ -14455,7 +14462,7 @@ module Google
       class RegionInstanceGroupManagersListInstancesResponse
         include Google::Apis::Core::Hashable
       
-        # List of managed instances.
+        # A list of managed instances.
         # Corresponds to the JSON property `managedInstances`
         # @return [Array<Google::Apis::ComputeBeta::ManagedInstance>]
         attr_accessor :managed_instances
@@ -15947,7 +15954,7 @@ module Google
       class RoutersScopedList
         include Google::Apis::Core::Hashable
       
-        # List of routers contained in this scope.
+        # A list of routers contained in this scope.
         # Corresponds to the JSON property `routers`
         # @return [Array<Google::Apis::ComputeBeta::Router>]
         attr_accessor :routers
@@ -16238,9 +16245,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # List of rules that belong to this policy. There must always be a default rule (
-        # rule with priority 2147483647 and match "*"). If no rules are provided when
-        # creating a security policy, a default rule with action "allow" will be added.
+        # A list of rules that belong to this policy. There must always be a default
+        # rule (rule with priority 2147483647 and match "*"). If no rules are provided
+        # when creating a security policy, a default rule with action "allow" will be
+        # added.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRule>]
         attr_accessor :rules
@@ -17251,7 +17259,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # List of features enabled when the selected profile is CUSTOM. The
+        # A list of features enabled when the selected profile is CUSTOM. The
         # - method returns the set of features that can be specified in this list. This
         # field must be empty if the profile is not CUSTOM.
         # Corresponds to the JSON property `customFeatures`
@@ -17864,7 +17872,7 @@ module Google
       class SubnetworksScopedList
         include Google::Apis::Core::Hashable
       
-        # List of subnetworks contained in this scope.
+        # A list of subnetworks contained in this scope.
         # Corresponds to the JSON property `subnetworks`
         # @return [Array<Google::Apis::ComputeBeta::Subnetwork>]
         attr_accessor :subnetworks
@@ -18816,7 +18824,7 @@ module Google
       class TargetInstancesScopedList
         include Google::Apis::Core::Hashable
       
-        # List of target instances contained in this scope.
+        # A list of target instances contained in this scope.
         # Corresponds to the JSON property `targetInstances`
         # @return [Array<Google::Apis::ComputeBeta::TargetInstance>]
         attr_accessor :target_instances
@@ -19379,7 +19387,7 @@ module Google
       class TargetPoolsScopedList
         include Google::Apis::Core::Hashable
       
-        # List of target pools contained in this scope.
+        # A list of target pools contained in this scope.
         # Corresponds to the JSON property `targetPools`
         # @return [Array<Google::Apis::ComputeBeta::TargetPool>]
         attr_accessor :target_pools
@@ -20329,7 +20337,7 @@ module Google
       class TargetVpnGatewaysScopedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] List of target vpn gateways contained in this scope.
+        # [Output Only] A list of target vpn gateways contained in this scope.
         # Corresponds to the JSON property `targetVpnGateways`
         # @return [Array<Google::Apis::ComputeBeta::TargetVpnGateway>]
         attr_accessor :target_vpn_gateways
@@ -21455,7 +21463,7 @@ module Google
       class VpnTunnelsScopedList
         include Google::Apis::Core::Hashable
       
-        # List of vpn tunnels contained in this scope.
+        # A list of vpn tunnels contained in this scope.
         # Corresponds to the JSON property `vpnTunnels`
         # @return [Array<Google::Apis::ComputeBeta::VpnTunnel>]
         attr_accessor :vpn_tunnels

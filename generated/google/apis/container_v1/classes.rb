@@ -628,8 +628,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to complete IP
-        # rotation.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -725,8 +724,9 @@ module Google
         # @return [Google::Apis::ContainerV1::NodePool]
         attr_accessor :node_pool
       
-        # The parent (project, location, cluster id) where the node pool will be created.
-        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # The parent (project, location, cluster id) where the node pool will be
+        # created. Specified in the format
+        # 'projects/*/locations/*/clusters/*/nodePools/*'.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1354,8 +1354,9 @@ module Google
         # friendly names of CPU platforms, such as
         # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
         # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
-        # information, read [how to specify min CPU platform](https://cloud.google.com/
-        # compute/docs/instances/specify-min-cpu-platform)
+        # information, read [how to specify min CPU
+        # platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-
+        # platform)
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -2208,8 +2209,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to set networking
-        # policy.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # policy. Specified in the format 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2438,8 +2438,8 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # The name (project, location, cluster id) of the cluster to start IP rotation.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # The name (project, location, cluster id) of the cluster to start IP
+        # rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2450,6 +2450,12 @@ module Google
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
+      
+        # Whether to rotate credentials during IP rotation.
+        # Corresponds to the JSON property `rotateCredentials`
+        # @return [Boolean]
+        attr_accessor :rotate_credentials
+        alias_method :rotate_credentials?, :rotate_credentials
       
         # Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
@@ -2468,6 +2474,7 @@ module Google
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @rotate_credentials = args[:rotate_credentials] if args.key?(:rotate_credentials)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -2596,8 +2603,9 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
-        # The name (project, location, cluster, node pool) of the node pool to update.
-        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # The name (project, location, cluster, node pool) of the node pool to
+        # update. Specified in the format
+        # 'projects/*/locations/*/clusters/*/nodePools/*'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -862,6 +862,7 @@ module Google
           property :cluster_id, as: 'clusterId'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :rotate_credentials, as: 'rotateCredentials'
           property :zone, as: 'zone'
         end
       end
