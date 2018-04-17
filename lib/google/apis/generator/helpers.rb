@@ -37,7 +37,9 @@ module Google
         # @param [String] name
         # @return [String] updated param name
         def normalize_param_name(name)
-          name = ActiveSupport::Inflector.underscore(name.gsub(/\W/, '_'))
+          name = name.gsub(/\W/, '_')
+          name = name.gsub(/IPv4/, 'Ipv4')
+          name = ActiveSupport::Inflector.underscore(name)
           if reserved?(name)
             logger.warn { sprintf('Found reserved keyword \'%1$s\'', name) }
             name += '_'
