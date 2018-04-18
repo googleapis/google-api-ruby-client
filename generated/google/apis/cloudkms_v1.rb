@@ -18,7 +18,7 @@ require 'google/apis/cloudkms_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Key Management Service (KMS) API
+    # Cloud Key Management Service (KMS) API
     #
     # Manages encryption for your cloud services the same way you do on-premises.
     # You can generate, use, rotate, and destroy AES256 encryption keys.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/kms/
     module CloudkmsV1
       VERSION = 'V1'
-      REVISION = '20180329'
+      REVISION = '20180413'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

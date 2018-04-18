@@ -568,7 +568,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an existing ManagedZone. This method supports patch semantics.
+        # Apply a partial update to an existing ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone

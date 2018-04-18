@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudkmsV1
-      # Google Cloud Key Management Service (KMS) API
+      # Cloud Key Management Service (KMS) API
       #
       # Manages encryption for your cloud services the same way you do on-premises.
       #  You can generate, use, rotate, and destroy AES256 encryption keys.
