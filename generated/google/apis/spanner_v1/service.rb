@@ -1126,11 +1126,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Executes an SQL query, returning all rows in a single reply. This
+        # Executes an SQL statement, returning all results in a single reply. This
         # method cannot be used to return a result set larger than 10 MiB;
         # if the query yields more data than that, the query fails with
         # a `FAILED_PRECONDITION` error.
-        # Queries inside read-write transactions might return `ABORTED`. If
+        # Operations inside read-write transactions might return `ABORTED`. If
         # this occurs, the application should restart the transaction from
         # the beginning. See Transaction for more details.
         # Larger result sets can be fetched in streaming fashion by calling

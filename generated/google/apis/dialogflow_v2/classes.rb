@@ -2331,7 +2331,7 @@ module Google
         # information, see
         # [Actions on Google Webhook
         # Format](https://developers.google.com/actions/dialogflow/webhook)
-        # `
+        # <pre>`
         # "google": `
         # "expectUserResponse": true,
         # "richResponse": `
@@ -2344,7 +2344,7 @@ module Google
         # ]
         # `
         # `
-        # `
+        # `</pre>
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -3545,6 +3545,25 @@ module Google
         end
       end
       
+      # Metadata in google::longrunning::Operation for Knowledge operations.
+      class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Required. The current state of this operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Represents the contents of the original request that was passed to
       # the `[Streaming]DetectIntent` call.
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
@@ -3779,7 +3798,7 @@ module Google
         # information, see
         # [Actions on Google Webhook
         # Format](https://developers.google.com/actions/dialogflow/webhook)
-        # `
+        # <pre>`
         # "google": `
         # "expectUserResponse": true,
         # "richResponse": `
@@ -3792,7 +3811,7 @@ module Google
         # ]
         # `
         # `
-        # `
+        # `</pre>
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload

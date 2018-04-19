@@ -22,8 +22,7 @@ module Google
     module CloudfunctionsV1
       # Google Cloud Functions API
       #
-      # API for managing lightweight user-provided functions executed in response to
-      #  events.
+      # Manages lightweight user-provided functions executed in response to events.
       #
       # @example
       #    require 'google/apis/cloudfunctions_v1'
@@ -318,7 +317,7 @@ module Google
         # * Source file size should not exceed 100MB limit.
         # When making a HTTP PUT request, these two headers need to be specified:
         # * `content-type: application/zip`
-        # * `x-google-content-length-range: 0,104857600`
+        # * `x-goog-content-length-range: 0,104857600`
         # @param [String] parent
         #   The project and location in which the Google Cloud Storage signed URL
         #   should be generated, specified in the format `projects/*/locations/*`.

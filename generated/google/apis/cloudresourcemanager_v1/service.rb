@@ -1228,9 +1228,11 @@ module Google
         # + A user cannot be granted the owner role using `setIamPolicy()`. The user
         # must be granted the owner role using the Cloud Platform Console and must
         # explicitly accept the invitation.
-        # + Invitations to grant the owner role cannot be sent using
-        # `setIamPolicy()`;
-        # they must be sent only using the Cloud Platform Console.
+        # + You can only grant ownership of a project to a member by using the
+        # GCP Console. Inviting a member will deliver an invitation email that
+        # they must accept. An invitation email is not generated if you are
+        # granting a role other than owner, or if both the member you are inviting
+        # and the project are part of your organization.
         # + Membership changes that leave the project without any owners that have
         # accepted the Terms of Service (ToS) will be rejected.
         # + If the project is not part of an organization, there must be at least

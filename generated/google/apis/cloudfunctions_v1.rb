@@ -20,13 +20,12 @@ module Google
   module Apis
     # Google Cloud Functions API
     #
-    # API for managing lightweight user-provided functions executed in response to
-    # events.
+    # Manages lightweight user-provided functions executed in response to events.
     #
     # @see https://cloud.google.com/functions
     module CloudfunctionsV1
       VERSION = 'V1'
-      REVISION = '20171208'
+      REVISION = '20180416'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

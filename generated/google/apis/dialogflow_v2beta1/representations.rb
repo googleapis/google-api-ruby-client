@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ListContextsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1466,6 +1472,13 @@ module Google
           property :entity_type, as: 'entityType'
           property :text, as: 'text'
           property :user_defined, as: 'userDefined'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       

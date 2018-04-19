@@ -117,6 +117,11 @@ module Google
         # @return [String]
         attr_accessor :home_directory
       
+        # The operating system type where this account applies.
+        # Corresponds to the JSON property `operatingSystemType`
+        # @return [String]
+        attr_accessor :operating_system_type
+      
         # Only one POSIX account can be marked as primary.
         # Corresponds to the JSON property `primary`
         # @return [Boolean]
@@ -154,6 +159,7 @@ module Google
           @gecos = args[:gecos] if args.key?(:gecos)
           @gid = args[:gid] if args.key?(:gid)
           @home_directory = args[:home_directory] if args.key?(:home_directory)
+          @operating_system_type = args[:operating_system_type] if args.key?(:operating_system_type)
           @primary = args[:primary] if args.key?(:primary)
           @shell = args[:shell] if args.key?(:shell)
           @system_id = args[:system_id] if args.key?(:system_id)

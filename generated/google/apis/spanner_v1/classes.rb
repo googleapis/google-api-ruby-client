@@ -194,6 +194,7 @@ module Google
         # restriction also applies to in-progress reads and/or SQL queries whose
         # timestamp become too old while executing. Reads and SQL queries with
         # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+        # ##
         # Corresponds to the JSON property `options`
         # @return [Google::Apis::SpannerV1::TransactionOptions]
         attr_accessor :options
@@ -469,6 +470,7 @@ module Google
         # restriction also applies to in-progress reads and/or SQL queries whose
         # timestamp become too old while executing. Reads and SQL queries with
         # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+        # ##
         # Corresponds to the JSON property `singleUseTransaction`
         # @return [Google::Apis::SpannerV1::TransactionOptions]
         attr_accessor :single_use_transaction
@@ -737,21 +739,21 @@ module Google
         # from a JSON value.  For example, values of type `BYTES` and values
         # of type `STRING` both appear in params as JSON strings.
         # In these cases, `param_types` can be used to specify the exact
-        # SQL type for some or all of the SQL query parameters. See the
+        # SQL type for some or all of the SQL statement parameters. See the
         # definition of Type for more information
         # about SQL types.
         # Corresponds to the JSON property `paramTypes`
         # @return [Hash<String,Google::Apis::SpannerV1::Type>]
         attr_accessor :param_types
       
-        # The SQL query string can contain parameter placeholders. A parameter
+        # The SQL string can contain parameter placeholders. A parameter
         # placeholder consists of `'@'` followed by the parameter
         # name. Parameter names consist of any combination of letters,
         # numbers, and underscores.
         # Parameters can appear anywhere that a literal value is expected.  The same
         # parameter name can be used more than once, for example:
         # `"WHERE id > @msg_id AND id < @msg_id + 100"`
-        # It is an error to execute an SQL query with unbound parameters.
+        # It is an error to execute an SQL statement with unbound parameters.
         # Parameter values are specified using `params`, which is a JSON
         # object whose keys are parameter names, and whose values are the
         # corresponding parameter values.
@@ -775,10 +777,10 @@ module Google
         # @return [String]
         attr_accessor :query_mode
       
-        # If this request is resuming a previously interrupted SQL query
+        # If this request is resuming a previously interrupted SQL statement
         # execution, `resume_token` should be copied from the last
         # PartialResultSet yielded before the interruption. Doing this
-        # enables the new SQL query execution to resume where the last one left
+        # enables the new SQL statement execution to resume where the last one left
         # off. The rest of the request parameters must exactly match the
         # request that yielded this token.
         # Corresponds to the JSON property `resumeToken`
@@ -786,7 +788,7 @@ module Google
         # @return [String]
         attr_accessor :resume_token
       
-        # Required. The SQL query string.
+        # Required. The SQL string.
         # Corresponds to the JSON property `sql`
         # @return [String]
         attr_accessor :sql
@@ -2650,6 +2652,7 @@ module Google
       # restriction also applies to in-progress reads and/or SQL queries whose
       # timestamp become too old while executing. Reads and SQL queries with
       # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+      # ##
       class TransactionOptions
         include Google::Apis::Core::Hashable
       
@@ -2850,6 +2853,7 @@ module Google
         # restriction also applies to in-progress reads and/or SQL queries whose
         # timestamp become too old while executing. Reads and SQL queries with
         # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+        # ##
         # Corresponds to the JSON property `begin`
         # @return [Google::Apis::SpannerV1::TransactionOptions]
         attr_accessor :begin
@@ -3028,6 +3032,7 @@ module Google
         # restriction also applies to in-progress reads and/or SQL queries whose
         # timestamp become too old while executing. Reads and SQL queries with
         # too-old read timestamps fail with the error `FAILED_PRECONDITION`.
+        # ##
         # Corresponds to the JSON property `singleUse`
         # @return [Google::Apis::SpannerV1::TransactionOptions]
         attr_accessor :single_use

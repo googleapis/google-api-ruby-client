@@ -165,6 +165,32 @@ module Google
         end
       end
       
+      # Response to a single file annotation request. A file may contain one or more
+      # images, which individually have their own responses.
+      class GoogleCloudVisionV1p2beta1AnnotateFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The desired input location and metadata.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1InputConfig]
+        attr_accessor :input_config
+      
+        # Individual responses to images found within the file.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_config = args[:input_config] if args.key?(:input_config)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
       # Request for performing Google Cloud Vision API tasks over a user-provided
       # image, with user-requested features.
       class GoogleCloudVisionV1p2beta1AnnotateImageRequest
@@ -510,6 +536,11 @@ module Google
       class GoogleCloudVisionV1p2beta1BoundingPoly
         include Google::Apis::Core::Hashable
       
+        # The bounding polygon normalized vertices.
+        # Corresponds to the JSON property `normalizedVertices`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1NormalizedVertex>]
+        attr_accessor :normalized_vertices
+      
         # The bounding polygon vertices.
         # Corresponds to the JSON property `vertices`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1Vertex>]
@@ -521,6 +552,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @normalized_vertices = args[:normalized_vertices] if args.key?(:normalized_vertices)
           @vertices = args[:vertices] if args.key?(:vertices)
         end
       end
@@ -1038,8 +1070,8 @@ module Google
       class GoogleCloudVisionV1p2beta1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI for the input file. This must only be a GCS
-        # object. Wildcards are not currently supported.
+        # Google Cloud Storage URI for the input file. This must only be a
+        # Google Cloud Storage object. Wildcards are not currently supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1296,6 +1328,33 @@ module Google
         end
       end
       
+      # A vertex represents a 2D point in the image.
+      # NOTE: the normalized vertex coordinates are relative to the original image
+      # and range from 0 to 1.
+      class GoogleCloudVisionV1p2beta1NormalizedVertex
+        include Google::Apis::Core::Hashable
+      
+        # X coordinate.
+        # Corresponds to the JSON property `x`
+        # @return [Float]
+        attr_accessor :x
+      
+        # Y coordinate.
+        # Corresponds to the JSON property `y`
+        # @return [Float]
+        attr_accessor :y
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @x = args[:x] if args.key?(:x)
+          @y = args[:y] if args.key?(:y)
+        end
+      end
+      
       # Contains metadata for the BatchAnnotateImages operation.
       class GoogleCloudVisionV1p2beta1OperationMetadata
         include Google::Apis::Core::Hashable
@@ -1331,7 +1390,8 @@ module Google
       class GoogleCloudVisionV1p2beta1OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The max number of response protos to put into each output JSON file on GCS.
+        # The max number of response protos to put into each output JSON file on
+        # Google Cloud Storage.
         # The valid range is [1, 100]. If not specified, the default value is 20.
         # For example, for one pdf file with 100 pages, 100 response protos will
         # be generated. If `batch_size` = 20, then 5 json files each
