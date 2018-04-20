@@ -1236,6 +1236,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
       
+          property :rows_limit, :numeric_string => true, as: 'rowsLimit'
           property :table_reference, as: 'tableReference', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
       
         end

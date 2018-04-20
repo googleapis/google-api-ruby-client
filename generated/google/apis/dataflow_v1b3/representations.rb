@@ -825,6 +825,7 @@ module Google
           property :event_type, as: 'eventType'
           property :target_num_workers, :numeric_string => true, as: 'targetNumWorkers'
           property :time, as: 'time'
+          property :worker_pool, as: 'workerPool'
         end
       end
       

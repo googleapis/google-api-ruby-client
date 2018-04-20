@@ -158,6 +158,12 @@ module Google
         # @return [String]
         attr_accessor :time
       
+        # A short and friendly name for the worker pool this event refers to,
+        # populated from the value of PoolStageRelation::user_pool_name.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -169,6 +175,7 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @target_num_workers = args[:target_num_workers] if args.key?(:target_num_workers)
           @time = args[:time] if args.key?(:time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       

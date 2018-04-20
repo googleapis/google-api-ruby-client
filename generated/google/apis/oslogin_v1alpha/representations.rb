@@ -84,6 +84,7 @@ module Google
           property :gecos, as: 'gecos'
           property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'
+          property :operating_system_type, as: 'operatingSystemType'
           property :primary, as: 'primary'
           property :shell, as: 'shell'
           property :system_id, as: 'systemId'

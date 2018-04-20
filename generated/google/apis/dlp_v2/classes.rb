@@ -192,6 +192,13 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :identifying_fields
       
+        # Max number of rows to scan. If the table has more rows than this value, the
+        # rest of the rows are omitted. If not set, or if set to 0, all rows will be
+        # scanned. Cannot be used in conjunction with TimespanConfig.
+        # Corresponds to the JSON property `rowsLimit`
+        # @return [Fixnum]
+        attr_accessor :rows_limit
+      
         # Message defining the location of a BigQuery table. A table is uniquely
         # identified  by its project_id, dataset_id, and table_name. Within a query
         # a table is often referenced with a string in the format of:
@@ -208,6 +215,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @identifying_fields = args[:identifying_fields] if args.key?(:identifying_fields)
+          @rows_limit = args[:rows_limit] if args.key?(:rows_limit)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
         end
       end

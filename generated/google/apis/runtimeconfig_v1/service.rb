@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module RuntimeconfigV1
-      # Google Cloud Runtime Configuration API
+      # Cloud Runtime Configuration API
       #
       # The Runtime Configurator allows you to dynamically configure and expose
       #  variables through Google Cloud Platform. In addition, you can also set

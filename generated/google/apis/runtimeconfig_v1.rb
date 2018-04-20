@@ -18,7 +18,7 @@ require 'google/apis/runtimeconfig_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Runtime Configuration API
+    # Cloud Runtime Configuration API
     #
     # The Runtime Configurator allows you to dynamically configure and expose
     # variables through Google Cloud Platform. In addition, you can also set
@@ -28,7 +28,7 @@ module Google
     # @see https://cloud.google.com/deployment-manager/runtime-configurator/
     module RuntimeconfigV1
       VERSION = 'V1'
-      REVISION = '20170829'
+      REVISION = '20180416'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
