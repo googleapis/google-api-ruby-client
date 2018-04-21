@@ -196,6 +196,27 @@ module Google
       end
       
       # 
+      class Clustering
+        include Google::Apis::Core::Hashable
+      
+        # [Repeated] One or more fields on which data should be clustered. Only top-
+        # level, non-repeated, simple-type fields are supported. The order of the fields
+        # will determine how clusters will be generated, so it is important.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<String>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # 
       class CsvOptions
         include Google::Apis::Core::Hashable
       
@@ -1095,6 +1116,12 @@ module Google
       class GoogleSheetsOptions
         include Google::Apis::Core::Hashable
       
+        # [Experimental] [Optional] Range of a sheet to query from. Only used when non-
+        # empty. Typical format: !:
+        # Corresponds to the JSON property `range`
+        # @return [String]
+        attr_accessor :range
+      
         # [Optional] The number of rows at the top of a sheet that BigQuery will skip
         # when reading the data. The default value is 0. This property is useful if you
         # have header rows that should be skipped. When autodetect is on, behavior is
@@ -1116,6 +1143,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @range = args[:range] if args.key?(:range)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
         end
       end
@@ -1362,12 +1390,19 @@ module Google
         attr_accessor :allow_quoted_newlines
         alias_method :allow_quoted_newlines?, :allow_quoted_newlines
       
-        # Indicates if we should automatically infer the options and schema for CSV and
-        # JSON sources.
+        # [Optional] Indicates if we should automatically infer the options and schema
+        # for CSV and JSON sources.
         # Corresponds to the JSON property `autodetect`
         # @return [Boolean]
         attr_accessor :autodetect
         alias_method :autodetect?, :autodetect
+      
+        # [Experimental] Clustering specification for the destination table. Must be
+        # specified with time-based partitioning, data in the table will be first
+        # partitioned and subsequently clustered.
+        # Corresponds to the JSON property `clustering`
+        # @return [Google::Apis::BigqueryV2::Clustering]
+        attr_accessor :clustering
       
         # [Optional] Specifies whether the job is allowed to create new tables. The
         # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
@@ -1520,7 +1555,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_uris
       
-        # If specified, configures time-based partitioning for the destination table.
+        # Time-based partitioning specification for the destination table.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -1546,6 +1581,7 @@ module Google
           @allow_jagged_rows = args[:allow_jagged_rows] if args.key?(:allow_jagged_rows)
           @allow_quoted_newlines = args[:allow_quoted_newlines] if args.key?(:allow_quoted_newlines)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
+          @clustering = args[:clustering] if args.key?(:clustering)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
@@ -1582,6 +1618,13 @@ module Google
         # @return [Boolean]
         attr_accessor :allow_large_results
         alias_method :allow_large_results?, :allow_large_results
+      
+        # [Experimental] Clustering specification for the destination table. Must be
+        # specified with time-based partitioning, data in the table will be first
+        # partitioned and subsequently clustered.
+        # Corresponds to the JSON property `clustering`
+        # @return [Google::Apis::BigqueryV2::Clustering]
+        attr_accessor :clustering
       
         # [Optional] Specifies whether the job is allowed to create new tables. The
         # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
@@ -1683,7 +1726,7 @@ module Google
         # @return [Hash<String,Google::Apis::BigqueryV2::ExternalDataConfiguration>]
         attr_accessor :table_definitions
       
-        # If specified, configures time-based partitioning for the destination table.
+        # Time-based partitioning specification for the destination table.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -1732,6 +1775,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_large_results = args[:allow_large_results] if args.key?(:allow_large_results)
+          @clustering = args[:clustering] if args.key?(:clustering)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
@@ -2780,6 +2824,13 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
+        # [Experimental] Clustering specification for the table. Must be specified with
+        # time-based partitioning, data in the table will be first partitioned and
+        # subsequently clustered.
+        # Corresponds to the JSON property `clustering`
+        # @return [Google::Apis::BigqueryV2::Clustering]
+        attr_accessor :clustering
+      
         # [Output-only] The time when this table was created, in milliseconds since the
         # epoch.
         # Corresponds to the JSON property `creationTime`
@@ -2893,7 +2944,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :table_reference
       
-        # If specified, configures time-based partitioning for this table.
+        # Time-based partitioning specification for this table.
         # Corresponds to the JSON property `timePartitioning`
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
@@ -2917,6 +2968,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @clustering = args[:clustering] if args.key?(:clustering)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
@@ -3232,6 +3284,11 @@ module Google
         class Table
           include Google::Apis::Core::Hashable
         
+          # [Experimental] Clustering specification for this table, if configured.
+          # Corresponds to the JSON property `clustering`
+          # @return [Google::Apis::BigqueryV2::Clustering]
+          attr_accessor :clustering
+        
           # The time when this table was created, in milliseconds since the epoch.
           # Corresponds to the JSON property `creationTime`
           # @return [Fixnum]
@@ -3270,7 +3327,7 @@ module Google
           # @return [Google::Apis::BigqueryV2::TableReference]
           attr_accessor :table_reference
         
-          # The time-based partitioning for this table.
+          # The time-based partitioning specification for this table, if configured.
           # Corresponds to the JSON property `timePartitioning`
           # @return [Google::Apis::BigqueryV2::TimePartitioning]
           attr_accessor :time_partitioning
@@ -3291,6 +3348,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @clustering = args[:clustering] if args.key?(:clustering)
             @creation_time = args[:creation_time] if args.key?(:creation_time)
             @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
             @friendly_name = args[:friendly_name] if args.key?(:friendly_name)

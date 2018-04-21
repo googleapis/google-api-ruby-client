@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DatastoreV1beta1
-      # Google Cloud Datastore API
+      # Cloud Datastore API
       #
       # Accesses the schemaless NoSQL database to provide fully managed, robust,
       #  scalable storage for your application.

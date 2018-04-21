@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module FirestoreV1beta1
-      # Google Cloud Firestore API
+      # Cloud Firestore API
       #
       # 
       #

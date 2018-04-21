@@ -18,7 +18,7 @@ require 'google/apis/datastore_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Datastore API
+    # Cloud Datastore API
     #
     # Accesses the schemaless NoSQL database to provide fully managed, robust,
     # scalable storage for your application.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/datastore/
     module DatastoreV1
       VERSION = 'V1'
-      REVISION = '20180321'
+      REVISION = '20180417'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

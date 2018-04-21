@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Clustering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CsvOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -422,6 +428,13 @@ module Google
         end
       end
       
+      class Clustering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields'
+        end
+      end
+      
       class CsvOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -622,6 +635,7 @@ module Google
       class GoogleSheetsOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
         end
       end
@@ -691,6 +705,8 @@ module Google
           property :allow_jagged_rows, as: 'allowJaggedRows'
           property :allow_quoted_newlines, as: 'allowQuotedNewlines'
           property :autodetect, as: 'autodetect'
+          property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
+      
           property :create_disposition, as: 'createDisposition'
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
@@ -723,6 +739,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_large_results, as: 'allowLargeResults'
+          property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
+      
           property :create_disposition, as: 'createDisposition'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
@@ -1020,6 +1038,8 @@ module Google
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
+      
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :description, as: 'description'
           property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
@@ -1135,6 +1155,8 @@ module Google
         class Table
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
+        
             property :creation_time, :numeric_string => true, as: 'creationTime'
             property :expiration_time, :numeric_string => true, as: 'expirationTime'
             property :friendly_name, as: 'friendlyName'
