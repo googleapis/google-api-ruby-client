@@ -6857,6 +6857,7 @@ module Google
           property :advertised_route_priority, as: 'advertisedRoutePriority'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :management_type, as: 'managementType'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
@@ -6869,6 +6870,7 @@ module Google
           property :ip_range, as: 'ipRange'
           property :linked_interconnect_attachment, as: 'linkedInterconnectAttachment'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :management_type, as: 'managementType'
           property :name, as: 'name'
         end
       end

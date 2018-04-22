@@ -15598,6 +15598,15 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # [Output Only] Type of how the resource/configuration of the BGP peer is
+        # managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
+        # represents an BGP peer that is automatically created for PARTNER
+        # interconnectAttachment, Google will automatically create/delete this type of
+        # BGP peer when the PARTNER interconnectAttachment is created/deleted.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
         # Name of this BGP peer. The name must be 1-63 characters long and comply with
         # RFC1035.
         # Corresponds to the JSON property `name`
@@ -15627,6 +15636,7 @@ module Google
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
@@ -15659,6 +15669,16 @@ module Google
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
+        # [Output Only] Type of how the resource/configuration of the interface is
+        # managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
+        # represents an interface that is automatically created for PARTNER type
+        # interconnectAttachment, Google will automatically create/update/delete this
+        # type of interface when the PARTNER interconnectAttachment is created/
+        # provisioned/deleted.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
         # Name of this interface entry. The name must be 1-63 characters long and comply
         # with RFC1035.
         # Corresponds to the JSON property `name`
@@ -15674,6 +15694,7 @@ module Google
           @ip_range = args[:ip_range] if args.key?(:ip_range)
           @linked_interconnect_attachment = args[:linked_interconnect_attachment] if args.key?(:linked_interconnect_attachment)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
+          @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -17299,7 +17320,7 @@ module Google
       
         # The minimum version of SSL protocol that can be used by the clients to
         # establish a connection with the load balancer. This can be one of TLS_1_0,
-        # TLS_1_1, TLS_1_2, TLS_1_3.
+        # TLS_1_1, TLS_1_2.
         # Corresponds to the JSON property `minTlsVersion`
         # @return [String]
         attr_accessor :min_tls_version

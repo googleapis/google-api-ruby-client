@@ -22319,7 +22319,7 @@ module Google
       
         # The minimum version of SSL protocol that can be used by the clients to
         # establish a connection with the load balancer. This can be one of TLS_1_0,
-        # TLS_1_1, TLS_1_2, TLS_1_3.
+        # TLS_1_1, TLS_1_2.
         # Corresponds to the JSON property `minTlsVersion`
         # @return [String]
         attr_accessor :min_tls_version
