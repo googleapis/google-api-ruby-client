@@ -717,6 +717,12 @@ module Google
       class Quota
         include Google::Apis::Core::Hashable
       
+        # Whether a black hole zone should suppress system zones for this project.
+        # Corresponds to the JSON property `blackHoleHidesSystemZones`
+        # @return [Boolean]
+        attr_accessor :black_hole_hides_system_zones
+        alias_method :black_hole_hides_system_zones?, :black_hole_hides_system_zones
+      
         # Maximum allowed number of DnsKeys per ManagedZone.
         # Corresponds to the JSON property `dnsKeysPerManagedZone`
         # @return [Fixnum]
@@ -769,6 +775,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @black_hole_hides_system_zones = args[:black_hole_hides_system_zones] if args.key?(:black_hole_hides_system_zones)
           @dns_keys_per_managed_zone = args[:dns_keys_per_managed_zone] if args.key?(:dns_keys_per_managed_zone)
           @kind = args[:kind] if args.key?(:kind)
           @managed_zones = args[:managed_zones] if args.key?(:managed_zones)

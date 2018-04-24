@@ -18,7 +18,7 @@ require 'google/apis/abusiveexperiencereport_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Abusive Experience Report API
+    # Abusive Experience Report API
     #
     # View Abusive Experience Report data, and get a list of sites that have a
     # significant number of abusive experiences.
@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/abusive-experience-report/
     module AbusiveexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20171129'
+      REVISION = '20180419'
 
       # Test scope for access to the Zoo service
       AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'

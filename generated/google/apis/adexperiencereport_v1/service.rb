@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdexperiencereportV1
-      # Google Ad Experience Report API
+      # Ad Experience Report API
       #
       # View Ad Experience Report data, and get a list of sites that have a
       #  significant number of annoying ads.

@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AbusiveexperiencereportV1
-      # Google Abusive Experience Report API
+      # Abusive Experience Report API
       #
       # View Abusive Experience Report data, and get a list of sites that have a
       #  significant number of abusive experiences.

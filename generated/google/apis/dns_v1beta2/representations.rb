@@ -307,6 +307,7 @@ module Google
       class Quota
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :black_hole_hides_system_zones, as: 'blackHoleHidesSystemZones'
           property :dns_keys_per_managed_zone, as: 'dnsKeysPerManagedZone'
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'

@@ -79,6 +79,7 @@ module Google
       end
       
       # Response message for GetSiteSummary.
+      # Do not confuse with same message in google.chrome.abusiveexperiencereport.v1
       class SiteSummaryResponse
         include Google::Apis::Core::Hashable
       

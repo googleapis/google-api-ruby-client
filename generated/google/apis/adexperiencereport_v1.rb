@@ -18,7 +18,7 @@ require 'google/apis/adexperiencereport_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Ad Experience Report API
+    # Ad Experience Report API
     #
     # View Ad Experience Report data, and get a list of sites that have a
     # significant number of annoying ads.
@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/ad-experience-report/
     module AdexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20170918'
+      REVISION = '20180420'
 
       # Test scope for access to the Zoo service
       AUTH_XAPI_ZOO = 'https://www.googleapis.com/auth/xapi.zoo'

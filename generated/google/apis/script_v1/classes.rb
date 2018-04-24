@@ -1043,9 +1043,9 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
-        # The status code. For this API, this value either: <ul> <li> 3, indicating an `
-        # INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</
-        # li> </ul>
+        # The status code. For this API, this value either: <ul> <li> 10, indicating a `
+        # SCRIPT_TIMEOUT` error,</li> <li> 3, indicating an `INVALID_ARGUMENT` error, or<
+        # /li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
