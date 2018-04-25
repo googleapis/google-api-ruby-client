@@ -363,6 +363,8 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
+        # Note: When enable_speaker_diarization is true, you will see all the words
+        # from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::SpeechV1::WordInfo>]
         attr_accessor :words
@@ -487,6 +489,15 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct integer value is assigned for every speaker within
+        # the audio. This field specifies which one of those speakers was detected to
+        # have spoken this word. Value ranges from '1' to diarization_speaker_count.
+        # speaker_tag is set if enable_speaker_diarization = 'true' and only in the
+        # top alternative.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
+      
         # Output only. Time offset relative to the beginning of the audio,
         # and corresponding to the start of the spoken word.
         # This field is only set if `enable_word_time_offsets=true` and only
@@ -509,6 +520,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
         end

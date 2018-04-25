@@ -147,7 +147,7 @@ module Google
       
         # The default policy for all permissions requested by the app. If specified,
         # this overrides the policy-level default_permission_policy which applies to all
-        # apps.
+        # apps. It does not override the permission_grants which applies to all apps.
         # Corresponds to the JSON property `defaultPermissionPolicy`
         # @return [String]
         attr_accessor :default_permission_policy
@@ -199,7 +199,7 @@ module Google
         attr_accessor :package_name
       
         # Explicit permission grants or denials for the app. These values override the
-        # default_permission_policy.
+        # default_permission_policy and permission_grants which apply to all apps.
         # Corresponds to the JSON property `permissionGrants`
         # @return [Array<Google::Apis::AndroidmanagementV1::PermissionGrant>]
         attr_accessor :permission_grants
@@ -2022,7 +2022,7 @@ module Google
         alias_method :usb_file_transfer_disabled?, :usb_file_transfer_disabled
       
         # Allows admins to toggle whether USB storge is enabled or disabled on user's
-        # devices. Next ID: 114
+        # devices.
         # Corresponds to the JSON property `usbMassStorageEnabled`
         # @return [Boolean]
         attr_accessor :usb_mass_storage_enabled

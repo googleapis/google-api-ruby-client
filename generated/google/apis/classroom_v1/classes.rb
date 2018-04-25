@@ -315,7 +315,7 @@ module Google
       
         # Name of the course.
         # For example, "10th Grade Biology".
-        # The name is required. It must be between 1 and 50 characters and a valid
+        # The name is required. It must be between 1 and 750 characters and a valid
         # UTF-8 string.
         # Corresponds to the JSON property `name`
         # @return [String]

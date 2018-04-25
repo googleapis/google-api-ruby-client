@@ -188,6 +188,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
         end
