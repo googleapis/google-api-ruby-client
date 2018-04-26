@@ -2209,15 +2209,20 @@ module Google
       
         # Optional. The collection of phrase hints which are used to boost accuracy
         # of speech recognition.
-        # Refer to [Cloud Speech API documentation](/speech/docs/basics#phrase-hints)
+        # Refer to
+        # [Cloud Speech API
+        # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
+        # hints)
         # for more details.
         # Corresponds to the JSON property `phraseHints`
         # @return [Array<String>]
         attr_accessor :phrase_hints
       
         # Required. Sample rate (in Hertz) of the audio content sent in the query.
-        # Refer to [Cloud Speech API documentation](/speech/docs/basics) for more
-        # details.
+        # Refer to
+        # [Cloud Speech API
+        # documentation](https://cloud.google.com/speech-to-text/docs/basics) for
+        # more details.
         # Corresponds to the JSON property `sampleRateHertz`
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz

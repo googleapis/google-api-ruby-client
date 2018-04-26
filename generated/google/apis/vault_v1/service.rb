@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VaultV1
-      # Google Vault API
+      # G Suite Vault API
       #
       # Archiving and eDiscovery for G Suite.
       #

@@ -2303,7 +2303,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a property. This method supports patch semantics.
+        # Updates a property.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key

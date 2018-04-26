@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2CloudStoragePath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +605,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2Proximity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2PublishSummaryToCscc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1185,6 +1197,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pub_sub, as: 'pubSub', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub::Representation
       
+          property :publish_summary_to_cscc, as: 'publishSummaryToCscc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc::Representation
+      
           property :save_findings, as: 'saveFindings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings::Representation
       
         end
@@ -1349,6 +1363,13 @@ module Google
           property :file_set, as: 'fileSet', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet::Representation
       
           collection :file_types, as: 'fileTypes'
+        end
+      end
+      
+      class GooglePrivacyDlpV2CloudStoragePath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
         end
       end
       
@@ -1597,6 +1618,8 @@ module Google
       class GooglePrivacyDlpV2Dictionary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_path, as: 'cloudStoragePath', class: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath::Representation
+      
           property :word_list, as: 'wordList', class: Google::Apis::DlpV2::GooglePrivacyDlpV2WordList, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2WordList::Representation
       
         end
@@ -2193,6 +2216,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :window_after, as: 'windowAfter'
           property :window_before, as: 'windowBefore'
+        end
+      end
+      
+      class GooglePrivacyDlpV2PublishSummaryToCscc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

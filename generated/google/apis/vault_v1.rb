@@ -18,14 +18,14 @@ require 'google/apis/vault_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Vault API
+    # G Suite Vault API
     #
     # Archiving and eDiscovery for G Suite.
     #
     # @see https://developers.google.com/vault
     module VaultV1
       VERSION = 'V1'
-      REVISION = '20180303'
+      REVISION = '20180403'
 
       # Manage your eDiscovery data
       AUTH_EDISCOVERY = 'https://www.googleapis.com/auth/ediscovery'

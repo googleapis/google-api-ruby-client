@@ -335,6 +335,7 @@ module Google
       
           collection :annotations, as: 'annotations', class: Google::Apis::ChatV1::Annotation, decorator: Google::Apis::ChatV1::Annotation::Representation
       
+          property :argument_text, as: 'argumentText'
           collection :cards, as: 'cards', class: Google::Apis::ChatV1::Card, decorator: Google::Apis::ChatV1::Card::Representation
       
           property :create_time, as: 'createTime'

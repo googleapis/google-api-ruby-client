@@ -32,6 +32,20 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
         attr_accessor :pub_sub
       
+        # Publish the result summary of a DlpJob to the Cloud Security
+        # Command Center (CSCC Alpha).
+        # This action is only available for projects which are parts of
+        # an organization and whitelisted for the alpha Cloud Security Command
+        # Center.
+        # The action will publish count of finding instances and their info types.
+        # The summary of findings will be persisted in CSCC and are governed by CSCC
+        # service-specific policy, see https://cloud.google.com/terms/service-terms
+        # Only a single instance of this action can be specified.
+        # Compatible with: Inspect
+        # Corresponds to the JSON property `publishSummaryToCscc`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc]
+        attr_accessor :publish_summary_to_cscc
+      
         # If set, the detailed findings will be persisted to the specified
         # OutputStorageConfig. Only a single instance of this action can be
         # specified.
@@ -47,6 +61,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
+          @publish_summary_to_cscc = args[:publish_summary_to_cscc] if args.key?(:publish_summary_to_cscc)
           @save_findings = args[:save_findings] if args.key?(:save_findings)
         end
       end
@@ -598,6 +613,26 @@ module Google
           @bytes_limit_per_file = args[:bytes_limit_per_file] if args.key?(:bytes_limit_per_file)
           @file_set = args[:file_set] if args.key?(:file_set)
           @file_types = args[:file_types] if args.key?(:file_types)
+        end
+      end
+      
+      # Message representing a path in Cloud Storage.
+      class GooglePrivacyDlpV2CloudStoragePath
+        include Google::Apis::Core::Hashable
+      
+        # A url representing a file or path (no wildcards) in Cloud Storage.
+        # Example: gs://[BUCKET_NAME]/dictionary.txt
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -1470,6 +1505,11 @@ module Google
       class GooglePrivacyDlpV2Dictionary
         include Google::Apis::Core::Hashable
       
+        # Message representing a path in Cloud Storage.
+        # Corresponds to the JSON property `cloudStoragePath`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStoragePath]
+        attr_accessor :cloud_storage_path
+      
         # Message defining a list of words or phrases to search for in the data.
         # Corresponds to the JSON property `wordList`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2WordList]
@@ -1481,6 +1521,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_storage_path = args[:cloud_storage_path] if args.key?(:cloud_storage_path)
           @word_list = args[:word_list] if args.key?(:word_list)
         end
       end
@@ -3498,6 +3539,28 @@ module Google
         def update!(**args)
           @window_after = args[:window_after] if args.key?(:window_after)
           @window_before = args[:window_before] if args.key?(:window_before)
+        end
+      end
+      
+      # Publish the result summary of a DlpJob to the Cloud Security
+      # Command Center (CSCC Alpha).
+      # This action is only available for projects which are parts of
+      # an organization and whitelisted for the alpha Cloud Security Command
+      # Center.
+      # The action will publish count of finding instances and their info types.
+      # The summary of findings will be persisted in CSCC and are governed by CSCC
+      # service-specific policy, see https://cloud.google.com/terms/service-terms
+      # Only a single instance of this action can be specified.
+      # Compatible with: Inspect
+      class GooglePrivacyDlpV2PublishSummaryToCscc
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

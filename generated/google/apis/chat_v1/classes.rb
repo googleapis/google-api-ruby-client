@@ -550,6 +550,11 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
       
+        # Plain-text body of the message with all bot mentions stripped out.
+        # Corresponds to the JSON property `argumentText`
+        # @return [String]
+        attr_accessor :argument_text
+      
         # Rich, formatted and interactive cards that can be used to display UI
         # elements such as: formatted texts, buttons, clickable images. Cards are
         # normally displayed below the plain-text body of the message.
@@ -610,6 +615,7 @@ module Google
         def update!(**args)
           @action_response = args[:action_response] if args.key?(:action_response)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @argument_text = args[:argument_text] if args.key?(:argument_text)
           @cards = args[:cards] if args.key?(:cards)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)

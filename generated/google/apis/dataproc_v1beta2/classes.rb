@@ -66,7 +66,7 @@ module Google
         # allAuthenticatedUsers: A special identifier that represents anyone  who is
         # authenticated with a Google account or a service account.
         # user:`emailid`: An email address that represents a specific Google  account.
-        # For example, alice@gmail.com or joe@example.com.
+        # For example, alice@gmail.com .
         # serviceAccount:`emailid`: An email address that represents a service  account.
         # For example, my-other-app@appspot.gserviceaccount.com.
         # group:`emailid`: An email address that represents a Google group.  For example,
@@ -671,6 +671,19 @@ module Google
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
           @tags = args[:tags] if args.key?(:tags)
           @zone_uri = args[:zone_uri] if args.key?(:zone_uri)
+        end
+      end
+      
+      # Request message for GetIamPolicy method.
+      class GetIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

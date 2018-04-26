@@ -208,8 +208,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Google Cloud Storage bucket name (see
-        # [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#
-        # requirements)).
+        # [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         # Required.
         # Corresponds to the JSON property `bucketName`
         # @return [String]

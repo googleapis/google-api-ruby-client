@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HadoopJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -507,6 +513,12 @@ module Google
           property :subnetwork_uri, as: 'subnetworkUri'
           collection :tags, as: 'tags'
           property :zone_uri, as: 'zoneUri'
+        end
+      end
+      
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
