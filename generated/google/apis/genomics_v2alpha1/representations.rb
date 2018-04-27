@@ -22,6 +22,12 @@ module Google
   module Apis
     module GenomicsV2alpha1
       
+      class Accelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Action
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Accelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :type, as: 'type'
+        end
+      end
+      
       class Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -357,11 +371,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
           collection :events, as: 'events', class: Google::Apis::GenomicsV2alpha1::Event, decorator: Google::Apis::GenomicsV2alpha1::Event::Representation
       
           hash :labels, as: 'labels'
           property :pipeline, as: 'pipeline', class: Google::Apis::GenomicsV2alpha1::Pipeline, decorator: Google::Apis::GenomicsV2alpha1::Pipeline::Representation
       
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -500,6 +516,8 @@ module Google
       class VirtualMachine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::GenomicsV2alpha1::Accelerator, decorator: Google::Apis::GenomicsV2alpha1::Accelerator::Representation
+      
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :boot_image, as: 'bootImage'
           property :cpu_platform, as: 'cpuPlatform'
@@ -509,6 +527,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :network, as: 'network', class: Google::Apis::GenomicsV2alpha1::Network, decorator: Google::Apis::GenomicsV2alpha1::Network::Representation
       
+          property :nvidia_driver_version, as: 'nvidiaDriverVersion'
           property :preemptible, as: 'preemptible'
           property :service_account, as: 'serviceAccount', class: Google::Apis::GenomicsV2alpha1::ServiceAccount, decorator: Google::Apis::GenomicsV2alpha1::ServiceAccount::Representation
       

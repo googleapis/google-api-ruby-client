@@ -66,7 +66,7 @@ module Google
         #   a script function with the given function name.
         # @param [String] user_process_filter_project_name
         #   Optional field used to limit returned processes to those originating from
-        #   projects with a specific project name.
+        #   projects with project names containing a specific string.
         # @param [String] user_process_filter_script_id
         #   Optional field used to limit returned processes to those originating from
         #   projects with a specific script ID.

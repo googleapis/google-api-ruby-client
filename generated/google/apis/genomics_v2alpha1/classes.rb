@@ -22,6 +22,37 @@ module Google
   module Apis
     module GenomicsV2alpha1
       
+      # Carries information about an accelerator that can be attached to a VM.
+      class Accelerator
+        include Google::Apis::Core::Hashable
+      
+        # How many accelerators of this type to attach.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The accelerator type string (eg nvidia-tesla-k80).
+        # Only NVIDIA GPU accelerators are currently supported.  If an NVIDIA GPU is
+        # attached, the required runtime libraries will be made available to all
+        # containers under `/usr/local/nvidia`.  The driver version to install must
+        # be specified using the NVIDIA driver version parameter on the virtual
+        # machine specification.  Note that attaching a GPU increases the worker VM
+        # startup time by a few minutes.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Action specifies a single action that runs a docker container.
       class Action
         include Google::Apis::Core::Hashable
@@ -577,6 +608,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The time at which execution was completed and resources were cleaned up.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The list of events that have happened so far during the execution of this
         # operation.
         # Corresponds to the JSON property `events`
@@ -594,6 +630,11 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::Pipeline]
         attr_accessor :pipeline
       
+        # The first time at which resources were allocated to execute the pipeline.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -601,9 +642,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @events = args[:events] if args.key?(:events)
           @labels = args[:labels] if args.key?(:labels)
           @pipeline = args[:pipeline] if args.key?(:pipeline)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -1163,6 +1206,11 @@ module Google
       class VirtualMachine
         include Google::Apis::Core::Hashable
       
+        # The list of accelerators to attach to the VM.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::GenomicsV2alpha1::Accelerator>]
+        attr_accessor :accelerators
+      
         # The size of the boot disk, in gigabytes. The boot disk must be large
         # enough to accommodate all of the docker images from each action in the
         # pipeline at the same time. If not specified, a small but reasonable
@@ -1221,6 +1269,14 @@ module Google
         # @return [Google::Apis::GenomicsV2alpha1::Network]
         attr_accessor :network
       
+        # The NVIDIA driver version to use when attaching an NVIDIA GPU accelerator.
+        # The version specified here must be compatible with the GPU libraries
+        # contained in the container being executed, and must be one of the drivers
+        # hosted in the 'nvidia-drivers-us-public' bucket on Google Cloud Storage.
+        # Corresponds to the JSON property `nvidiaDriverVersion`
+        # @return [String]
+        attr_accessor :nvidia_driver_version
+      
         # If true, allocate a preemptible VM.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
@@ -1238,6 +1294,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @boot_image = args[:boot_image] if args.key?(:boot_image)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
@@ -1245,6 +1302,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @network = args[:network] if args.key?(:network)
+          @nvidia_driver_version = args[:nvidia_driver_version] if args.key?(:nvidia_driver_version)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @service_account = args[:service_account] if args.key?(:service_account)
         end
