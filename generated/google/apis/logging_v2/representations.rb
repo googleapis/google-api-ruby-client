@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoredResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -343,6 +349,8 @@ module Google
           hash :json_payload, as: 'jsonPayload'
           hash :labels, as: 'labels'
           property :log_name, as: 'logName'
+          property :metadata, as: 'metadata', class: Google::Apis::LoggingV2::MonitoredResourceMetadata, decorator: Google::Apis::LoggingV2::MonitoredResourceMetadata::Representation
+      
           property :operation, as: 'operation', class: Google::Apis::LoggingV2::LogEntryOperation, decorator: Google::Apis::LoggingV2::LogEntryOperation::Representation
       
           hash :proto_payload, as: 'protoPayload'
@@ -461,6 +469,14 @@ module Google
       
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class MonitoredResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :system_labels, as: 'systemLabels'
+          hash :user_labels, as: 'userLabels'
         end
       end
       

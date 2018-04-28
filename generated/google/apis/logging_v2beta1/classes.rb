@@ -613,6 +613,16 @@ module Google
         # @return [String]
         attr_accessor :log_name
       
+        # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+        # contain the minimum set of information to uniquely identify a monitored
+        # resource instance. There is some other useful auxiliary metadata. Google
+        # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
+        # metadata for cloud resources of all types , and stores the metadata in this
+        # message.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::LoggingV2beta1::MonitoredResourceMetadata]
+        attr_accessor :metadata
+      
         # Additional information about a potentially long-running operation with which a
         # log entry is associated.
         # Corresponds to the JSON property `operation`
@@ -674,11 +684,12 @@ module Google
         # Optional. The time the event described by the log entry occurred. This time is
         # used to compute the log entry's age and to enforce the logs retention period.
         # If this field is omitted in a new log entry, then Stackdriver Logging assigns
-        # it the current time.Incoming log entries should have timestamps that are no
-        # more than the logs retention period in the past, and no more than 24 hours in
-        # the future. Log entries outside those time boundaries will not be available
-        # when calling entries.list, but those log entries can still be exported with
-        # LogSinks.
+        # it the current time. Timestamps have nanosecond accuracy, but trailing zeros
+        # in the fractional seconds might be omitted when the timestamp is displayed.
+        # Incoming log entries should have timestamps that are no more than the logs
+        # retention period in the past, and no more than 24 hours in the future. Log
+        # entries outside those time boundaries will not be available when calling
+        # entries.list, but those log entries can still be exported with LogSinks.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -702,6 +713,7 @@ module Google
           @json_payload = args[:json_payload] if args.key?(:json_payload)
           @labels = args[:labels] if args.key?(:labels)
           @log_name = args[:log_name] if args.key?(:log_name)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @operation = args[:operation] if args.key?(:operation)
           @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
           @receive_timestamp = args[:receive_timestamp] if args.key?(:receive_timestamp)
@@ -1263,6 +1275,44 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
+      # contain the minimum set of information to uniquely identify a monitored
+      # resource instance. There is some other useful auxiliary metadata. Google
+      # Stackdriver Monitoring & Logging uses an ingestion pipeline to extract
+      # metadata for cloud resources of all types , and stores the metadata in this
+      # message.
+      class MonitoredResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Values for predefined system metadata labels. System labels are a
+        # kind of metadata extracted by Google Stackdriver. Stackdriver determines what
+        # system labels are useful and how to obtain their values. Some examples: "
+        # machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
+        # label values can be only strings, Boolean values, or a list of strings. For
+        # example:
+        # ` "name": "my-test-instance",
+        # "security_group": ["a", "b", "c"],
+        # "spot_instance": false `
+        # Corresponds to the JSON property `systemLabels`
+        # @return [Hash<String,Object>]
+        attr_accessor :system_labels
+      
+        # Output only. A map of user-defined metadata labels.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @system_labels = args[:system_labels] if args.key?(:system_labels)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       

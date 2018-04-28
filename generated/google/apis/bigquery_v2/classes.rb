@@ -370,7 +370,7 @@ module Google
         attr_accessor :last_modified_time
       
         # The geographic location where the dataset should reside. The default value is
-        # US.
+        # US. See details at https://cloud.google.com/bigquery/docs/dataset-locations.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -700,7 +700,7 @@ module Google
         # @return [Float]
         attr_accessor :compute_ratio_max
       
-        # Stage end time in milliseconds.
+        # Stage end time represented as milliseconds since epoch.
         # Corresponds to the JSON property `endMs`
         # @return [Fixnum]
         attr_accessor :end_ms
@@ -765,7 +765,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :shuffle_output_bytes_spilled
       
-        # Stage start time in milliseconds.
+        # Stage start time represented as milliseconds since epoch.
         # Corresponds to the JSON property `startMs`
         # @return [Fixnum]
         attr_accessor :start_ms
