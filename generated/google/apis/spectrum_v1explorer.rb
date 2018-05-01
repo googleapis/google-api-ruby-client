@@ -25,7 +25,7 @@ module Google
     # @see http://developers.google.com/spectrum
     module SpectrumV1explorer
       VERSION = 'V1explorer'
-      REVISION = '20170306'
+      REVISION = '20180313'
     end
   end
 end

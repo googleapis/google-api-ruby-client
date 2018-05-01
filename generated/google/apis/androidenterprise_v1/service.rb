@@ -591,7 +591,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the Android Device Policy config resource.
+        # Deprecated and unused.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -918,10 +918,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the Android Device Policy config resource. EMM may use this method to
-        # enable or disable Android Device Policy support for the specified enterprise.
-        # To learn more about managing devices and apps with Android Device Policy, see
-        # the Android Management API.
+        # Deprecated and unused.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::AndroidDevicePolicyConfig] android_device_policy_config_object

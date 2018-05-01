@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/games/services/web/api/states
     module AppstateV1
       VERSION = 'V1'
-      REVISION = '20170911'
+      REVISION = '20180417'
 
       # View and manage your data for this application
       AUTH_APPSTATE = 'https://www.googleapis.com/auth/appstate'

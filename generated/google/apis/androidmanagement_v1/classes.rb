@@ -743,9 +743,7 @@ module Google
       class Enterprise
         include Google::Apis::Core::Hashable
       
-        # Whether permissions for apps installed via policy are automatically approved.
-        # If enabled, you must display an app's permissions to the enterprise admin
-        # before setting the app to be installed in a policy.
+        # Deprecated and unused.
         # Corresponds to the JSON property `appAutoApprovalEnabled`
         # @return [Boolean]
         attr_accessor :app_auto_approval_enabled

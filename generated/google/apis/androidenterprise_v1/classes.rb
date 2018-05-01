@@ -106,7 +106,7 @@ module Google
         end
       end
       
-      # The Android Device Policy configuration of an enterprise.
+      # Deprecated and unused.
       class AndroidDevicePolicyConfig
         include Google::Apis::Core::Hashable
       
@@ -116,9 +116,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The state of Android Device Policy. "enabled" indicates that Android Device
-        # Policy is enabled for the enterprise and the EMM is allowed to manage devices
-        # with Android Device Policy, while "disabled" means that it cannot.
+        # Deprecated and unused.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
